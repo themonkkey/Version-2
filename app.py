@@ -463,7 +463,16 @@ def handle_query(user_input):
                     district_folder = prev
                     break
 
-    hits = retrieve(user_input, index, district_folder=district_folder)
+    try:
+        hits = retrieve(user_input, index, district_folder=district_folder)
+    except Exception as e:
+        msg = ("The search service is temporarily unavailable (embedding quota reached). "
+               "Please try again shortly.") if "429" in str(e) or "quota" in str(e).lower() \
+              else f"Sorry, search failed: {e}"
+        with st.chat_message("assistant"):
+            st.markdown(msg)
+        st.session_state.messages.append({"role": "assistant", "content": msg, "sources": ""})
+        return
     context_block = build_context_block(hits)
     history = [
         {"role": m["role"], "content": m["content"][:600]}

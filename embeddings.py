@@ -129,5 +129,31 @@ def embed(texts, is_query=False, api_key=None):
     return _normalize(vecs)
 
 
+def _cohere_keys():
+    """All configured Cohere keys, in order. COHERE_API_KEYS (comma-separated)
+    lets us rotate across several trial keys; falls back to the single key."""
+    keys = [k.strip() for k in os.environ.get("COHERE_API_KEYS", "").split(",") if k.strip()]
+    if not keys:
+        single = os.environ.get("COHERE_API_KEY", "").strip()
+        keys = [single] if single else []
+    return keys
+
+
 def embed_query(text):
-    return embed([text], is_query=True)[0]
+    """Embed one query. For Cohere, rotate across all configured keys so a single
+    quota-exhausted (429) trial key does not take the whole app down."""
+    if provider() != "cohere":
+        return embed([text], is_query=True)[0]
+    keys = _cohere_keys()
+    if not keys:
+        raise RuntimeError("No Cohere API key configured (set COHERE_API_KEYS or COHERE_API_KEY).")
+    last = None
+    for key in keys:
+        try:
+            return embed([text], is_query=True, api_key=key)[0]
+        except RuntimeError as e:
+            last = e
+            if "429" in str(e):  # rate or monthly-quota limit — try the next key
+                continue
+            raise
+    raise RuntimeError(f"All Cohere keys are rate/quota limited: {last}")
