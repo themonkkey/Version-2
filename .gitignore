@@ -8,3 +8,20 @@ embed_index.npz
 index.pkl
 corpus_files/vision_documents/
 .DS_Store
+
+# eval/benchmark run outputs (ephemeral)
+bench*_out.txt
+bench_out.txt
+*_pid.txt
+bench_log_*.jsonl
+optimize_log_*.jsonl
+optimize_out.txt
+rejudge_out.txt
+query_emb_cache.pkl
+concept_dataset.json
+concept_compact.json
+concept_cert.json
+stress_dataset.json
+rejudge_opus.json
+optimized_prompt.txt
+.claude/

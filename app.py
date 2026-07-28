@@ -327,6 +327,18 @@ def call_llm(messages):
             model=os.environ.get("GEMINI_MODEL", "gemini-2.0-flash"), contents=prompt
         )
         return resp.text
+    elif provider == "claude":
+        # local Claude Code CLI backend (no API key) — uses `claude -p`
+        import subprocess
+        prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
+        r = subprocess.run(
+            ["claude", "-p", "--model", os.environ.get("CLAUDE_MODEL", "haiku")],
+            input=prompt, capture_output=True, text=True, timeout=180,
+        )
+        out = (r.stdout or r.stderr).strip()
+        if not out:
+            raise RuntimeError("claude CLI returned no output")
+        return out
     else:
         raise RuntimeError(f"Unknown LLM_PROVIDER: {provider}")
 
@@ -340,7 +352,7 @@ st.set_page_config(
 BRAND_CSS = """
 <style>
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
-:root{--bg:#17201C;--bg-2:#1E2A24;--panel:#212E27;--neon:#01EF6C;--neon-dk:#00C957;--line:#2E3E35;--ink:#EAF3ED;--muted:#8FA598;}
+:root{--bg:#F4F7F4;--bg-2:#FFFFFF;--panel:#FFFFFF;--neon:#01EF6C;--neon-dk:#0A8F45;--green:#0A8F45;--line:rgba(0,0,0,.10);--ink:#16211C;--muted:#5B6B64;}
 html,body,[class*="css"],.stApp{font-family:'Inter',sans-serif;background:var(--bg) !important;color:var(--ink);}
 #MainMenu,footer,header[data-testid="stHeader"]{visibility:hidden;}
 .block-container{padding-top:1.2rem;padding-bottom:7rem;max-width:820px;}
@@ -351,9 +363,9 @@ html,body,[class*="css"],.stApp{font-family:'Inter',sans-serif;background:var(--
 .sa-header::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--neon);}
 .sa-emblem{width:44px;height:44px;border-radius:10px;background:rgba(1,239,108,.10);border:1px solid rgba(1,239,108,.30);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
 .sa-htext h1{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:24px;color:var(--ink);line-height:1.05;margin:0;letter-spacing:-.01em;}
-.sa-htext h1 span{color:var(--neon);}
+.sa-htext h1 span{color:var(--green);}
 .sa-htext p{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin:5px 0 0;font-weight:400;letter-spacing:.02em;}
-.sa-badge{margin-left:auto;background:rgba(1,239,108,.12);color:var(--neon);border:1px solid rgba(1,239,108,.35);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;padding:5px 12px;border-radius:6px;white-space:nowrap;text-transform:uppercase;letter-spacing:.08em;}
+.sa-badge{margin-left:auto;background:rgba(1,239,108,.12);color:var(--green);border:1px solid rgba(1,239,108,.35);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;padding:5px 12px;border-radius:6px;white-space:nowrap;text-transform:uppercase;letter-spacing:.08em;}
 .sa-sub{font-size:13px;color:var(--muted);margin:12px 2px 4px;font-weight:300;line-height:1.65;}
 
 /* chat bubbles */
@@ -362,8 +374,8 @@ html,body,[class*="css"],.stApp{font-family:'Inter',sans-serif;background:var(--
 /* avatars — recolor Streamlit defaults to match the dark/neon theme */
 [data-testid="stChatMessageAvatarUser"]{background:var(--neon) !important;border:none !important;}
 [data-testid="stChatMessageAvatarUser"] *{color:#06130C !important;fill:#06130C !important;}
-[data-testid="stChatMessageAvatarAssistant"]{background:var(--bg-2) !important;border:1px solid var(--neon) !important;}
-[data-testid="stChatMessageAvatarAssistant"] *{color:var(--neon) !important;fill:var(--neon) !important;}
+[data-testid="stChatMessageAvatarAssistant"]{background:var(--bg-2) !important;border:1px solid var(--green) !important;}
+[data-testid="stChatMessageAvatarAssistant"] *{color:var(--green) !important;fill:var(--green) !important;}
 /* assistant message card */
 .stChatMessage:has([data-testid="stChatMessageAvatarAssistant"]) [data-testid="stChatMessageContent"]{
   background:var(--panel);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:14px 18px;border-left:3px solid var(--neon);}
@@ -375,22 +387,22 @@ html,body,[class*="css"],.stApp{font-family:'Inter',sans-serif;background:var(--
 /* welcome chips */
 div.stButton>button{background:var(--bg-2);border:1px solid var(--line);color:var(--ink);border-radius:10px;font-size:13px;
   font-weight:400;padding:11px 16px;text-align:left;transition:all .12s;font-family:'Inter';}
-div.stButton>button:hover{border-color:var(--neon);background:var(--panel);color:var(--neon);}
+div.stButton>button:hover{border-color:var(--green);background:var(--panel);color:var(--green);}
 
 /* sources expander */
 [data-testid="stExpander"]{border:none;background:transparent;}
 [data-testid="stExpander"] summary{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);font-weight:400;text-transform:uppercase;letter-spacing:.06em;}
-[data-testid="stExpander"] summary:hover{color:var(--neon);}
+[data-testid="stExpander"] summary:hover{color:var(--green);}
 [data-testid="stExpander"] [data-testid="stExpanderDetails"]{color:var(--muted);font-size:12px;}
 
 /* chat input */
 [data-testid="stChatInput"]{border:1px solid var(--line);border-radius:12px;background:var(--bg-2);}
-[data-testid="stChatInput"]:focus-within{border-color:var(--neon);box-shadow:0 0 0 1px rgba(1,239,108,.25);}
+[data-testid="stChatInput"]:focus-within{border-color:var(--green);box-shadow:0 0 0 1px rgba(1,239,108,.25);}
 [data-testid="stChatInput"] textarea{font-size:15px;color:var(--ink);}
 [data-testid="stChatInput"] button{background:var(--neon);border-radius:9px;}
 [data-testid="stChatInput"] button svg{color:#06130C;fill:#06130C;}
 
-a{color:var(--neon) !important;}
+a{color:var(--green) !important;}
 .sa-foot{text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:.04em;}
 </style>
 """
