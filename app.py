@@ -156,6 +156,13 @@ def _scores(query, index):
     return cosine_similarity(qvec, index["matrix"]).flatten()
 
 
+# Benchmark-only ablation switches (default off -> production behaviour unchanged).
+# run_hard_retrieval.py flips these to measure what the embeddings contribute on their
+# own, separately from the two hand-tuned rules layered on top of them.
+ABLATE_FORCE = False    # skip the forced district_data injection
+ABLATE_RESCUE = False   # skip the keyword rescue for numeric tables
+
+
 def retrieve(query, index, district_folder=None):
     if index is None:
         return []
@@ -193,7 +200,7 @@ def retrieve(query, index, district_folder=None):
 
     # a detected district name is a stronger signal than TF-IDF score — force its snapshot
     # and sector files in first so they aren't drowned out by generic methodology docs.
-    if district_folder:
+    if district_folder and not ABLATE_FORCE:
         sector_prefix = f"district_data/{district_folder}/"
         snapshot_name = f"district_data/{district_folder}_Snapshot.txt"
         forced = [
@@ -235,7 +242,7 @@ def retrieve(query, index, district_folder=None):
             "are", "to", "me", "tell", "about", "give", "show", "district", "mandal",
             "constituency", "target", "targets", "plan"}
     qwords = set(w for w in re.findall(r"[a-z]+", query.lower()) if len(w) > 3 and w not in stop)
-    if qwords:
+    if qwords and not ABLATE_RESCUE:
         top_sources = []
         for i in primary[:5]:
             s = index["chunks"][i]["source"]

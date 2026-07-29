@@ -25,3 +25,12 @@ stress_dataset.json
 rejudge_opus.json
 optimized_prompt.txt
 .claude/
+.cohere_live_keys
+streamlit_secrets.toml
+
+# large local artifacts (rebuildable, must never be pushed)
+voyage_out/
+pilot_chunks.pkl
+pilot_index.npz
+*.log
+*_out.txt

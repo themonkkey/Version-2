@@ -15,6 +15,14 @@ import os
 
 import numpy as np
 
+# voyage-4-nano, run locally from open weights (Apache 2.0). 32k context, so no chunk
+# is ever truncated -- 18.4% of the corpus exceeds Cohere v3's 512-token cap today and
+# is silently cut. Native output is 2048-dim; Matryoshka lets us keep the first 1024 so
+# the stored matrix stays the same size as the Cohere index it replaces.
+VOYAGE_LOCAL_MODEL = os.environ.get("EMBED_MODEL", "voyageai/voyage-4-nano")
+VOYAGE_LOCAL_DIM = int(os.environ.get("EMBED_DIM", "1024"))
+_VOYAGE_LOCAL = None
+
 COHERE_MODEL = os.environ.get("EMBED_MODEL", "embed-english-v3.0")
 VOYAGE_MODEL = os.environ.get("EMBED_MODEL", "voyage-3.5-lite")
 GEMINI_MODEL = os.environ.get("EMBED_MODEL", "gemini-embedding-001")
@@ -33,6 +41,8 @@ def provider():
 
 def model_id():
     p = provider()
+    if p == "voyage_local":
+        return f"voyage_local:{VOYAGE_LOCAL_MODEL}:{VOYAGE_LOCAL_DIM}"
     if p == "cohere":
         return f"cohere:{COHERE_MODEL}"
     if p == "voyage":
@@ -49,6 +59,38 @@ def _normalize(mat):
     norms = np.linalg.norm(mat, axis=1, keepdims=True)
     norms[norms == 0] = 1.0
     return mat / norms
+
+
+def _voyage_local_model():
+    """Load the local model once and keep it. Costs ~50s and ~1.5GB RAM on first call."""
+    global _VOYAGE_LOCAL
+    if _VOYAGE_LOCAL is None:
+        import torch
+        from sentence_transformers import SentenceTransformer
+
+        device = os.environ.get("EMBED_DEVICE")
+        if not device:
+            device = "mps" if torch.backends.mps.is_available() else "cpu"
+        _VOYAGE_LOCAL = SentenceTransformer(
+            VOYAGE_LOCAL_MODEL, trust_remote_code=True, device=device)
+    return _VOYAGE_LOCAL
+
+
+def _embed_voyage_local(texts, is_query, batch_size=16):
+    """Embed locally, using the model's own query/document prompts.
+
+    The two are not interchangeable: the model prepends a different instruction to each,
+    which is what gives asymmetric retrieval its advantage.
+    """
+    m = _voyage_local_model()
+    fn = m.encode_query if is_query else m.encode_document
+    vecs = fn(texts, batch_size=batch_size, show_progress_bar=False,
+              convert_to_numpy=True)
+    # Matryoshka truncation: the first N dimensions are a valid embedding on their own,
+    # provided they are re-normalized (which _normalize does on the way out).
+    if VOYAGE_LOCAL_DIM and vecs.shape[1] > VOYAGE_LOCAL_DIM:
+        vecs = vecs[:, :VOYAGE_LOCAL_DIM]
+    return vecs
 
 
 def _embed_cohere(texts, is_query, api_key=None):
@@ -116,7 +158,9 @@ def embed(texts, is_query=False, api_key=None):
     if isinstance(texts, str):
         texts = [texts]
     p = provider()
-    if p == "cohere":
+    if p == "voyage_local":
+        vecs = _embed_voyage_local(texts, is_query)
+    elif p == "cohere":
         vecs = _embed_cohere(texts, is_query, api_key=api_key)
     elif p == "voyage":
         vecs = _embed_voyage(texts, is_query)
