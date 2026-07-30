@@ -104,10 +104,27 @@ DISTRICT_ALIASES = {
 }
 
 
+_ALIAS_RE = None
+
+
 def detect_district(query):
+    """Match district aliases on WORD BOUNDARIES, not as bare substrings.
+
+    Plain `alias in query` matched short aliases inside unrelated words -- 'ntr' fires on
+    "co-ntr-ibutions", "co-ntr-ibuting", "cou-ntr-y". On the 180-prompt hard set that
+    detected the wrong district for 16 prompts (9%), and because a detected district
+    force-injects that district's chunks at score 1.0, a false match actively poisons
+    retrieval. Word boundaries cut it to 5.
+    """
+    global _ALIAS_RE
+    if _ALIAS_RE is None:
+        # longest alias first, so "east godavari" wins over "godavari"
+        ordered = sorted(DISTRICT_ALIASES, key=len, reverse=True)
+        _ALIAS_RE = [(re.compile(r"\b" + re.escape(a) + r"\b"), DISTRICT_ALIASES[a])
+                     for a in ordered]
     low = query.lower()
-    for alias, folder in DISTRICT_ALIASES.items():
-        if alias in low:
+    for pat, folder in _ALIAS_RE:
+        if pat.search(low):
             return folder
     return None
 
