@@ -33,20 +33,20 @@ echo "==> python env"
 ./venv/bin/pip install -q streamlit numpy requests groq "transformers<5" torch sentence-transformers
 
 echo "==> voyage index"
-# The index (~300 MB) is NOT in git -- it exceeds GitHub's file limits and would bloat the
-# repo. Fetch it from wherever you published it, or scp it up from your Mac:
-#   scp -r voyage_out/ user@<vm-ip>:~/swarna-andhra-chatbot/
-if [ ! -f voyage_out/voyage_index.npz ]; then
-  echo "  !! voyage_out/voyage_index.npz missing."
+# The index is NOT in git (too large, and rebuildable). Ship the 512-dim float16 build:
+# 130 MB instead of 528 MB, and measured at identical recall@10 (47.2%) through the full
+# app pipeline -- Matryoshka truncation plus fp16 storage costs nothing here.
+INDEX_DIR="${INDEX_DIR:-voyage_out_512}"
+if [ ! -f "$INDEX_DIR/voyage_index.npz" ]; then
+  echo "  !! $INDEX_DIR/voyage_index.npz missing."
   echo "  !! From your Mac, run:"
-  echo "     scp ~/swarna-andhra-chatbot/voyage_out/voyage_index.npz \\"
-  echo "         ~/swarna-andhra-chatbot/voyage_out/voyage_chunks.pkl \\"
-  echo "         \$USER@<vm-ip>:$APP_DIR/voyage_out/"
-  mkdir -p voyage_out
+  echo "     scp -r ~/swarna-andhra-chatbot/voyage_out_512 \\"
+  echo "         \$USER@<vm-ip>:$APP_DIR/"
+  mkdir -p "$INDEX_DIR"
 fi
 
 echo "==> warm the model cache (downloads ~670 MB once, so first user request is fast)"
-EMBED_PROVIDER=voyage_local EMBED_DEVICE=cpu ./venv/bin/python - <<'PY' || echo "  (skipped: run again after index is present)"
+EMBED_PROVIDER=voyage_local EMBED_DEVICE=cpu EMBED_DIM=512 ./venv/bin/python - <<'PY' || echo "  (skipped: run again after index is present)"
 import embeddings
 m = embeddings._voyage_local_model()
 print("  model ready:", m.max_seq_length, "tokens,", m.device)
@@ -64,6 +64,8 @@ WorkingDirectory=$APP_DIR
 EnvironmentFile=$APP_DIR/.env
 Environment=EMBED_PROVIDER=voyage_local
 Environment=EMBED_DEVICE=cpu
+Environment=EMBED_DIM=512
+Environment=VOYAGE_OUT=$APP_DIR/$INDEX_DIR
 Environment=LLM_PROVIDER=groq
 ExecStart=$APP_DIR/venv/bin/streamlit run app.py \\
   --server.port=8501 --server.address=0.0.0.0 --server.headless=true

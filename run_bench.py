@@ -19,31 +19,41 @@ import sys, json, re, math, time, subprocess, datetime, os, pickle, itertools
 # ---- Cohere query embeddings: rotate across all trial keys + cache to disk ----
 # (each trial key = 1000 calls/month; rotation multiplies quota, cache avoids re-spend)
 import embeddings as _emb
-_CK = [k.strip() for k in os.environ.get("COHERE_API_KEYS", "").split(",") if k.strip()] \
-      or [os.environ.get("COHERE_API_KEY", "")]
-_cyc = itertools.cycle(_CK)
-_QC_PATH = "query_emb_cache.pkl"
-try:
-    _QC = pickle.load(open(_QC_PATH, "rb"))
-except Exception:
-    _QC = {}
-def _embed_query_rr(text):
-    if text in _QC:
-        return _QC[text]
-    last = None
-    for _ in range(len(_CK)):
-        try:
-            v = _emb.embed([text], is_query=True, api_key=next(_cyc))[0]
-            _QC[text] = v
-            pickle.dump(_QC, open(_QC_PATH, "wb"))
-            return v
-        except RuntimeError as e:
-            last = e
-            if "429" in str(e):
-                continue
-            raise
-    raise RuntimeError(f"all Cohere keys quota/rate limited: {last}")
-_emb.embed_query = _embed_query_rr
+
+# The key-rotating cache below is COHERE-SPECIFIC and its cache file holds Cohere vectors.
+# Installing it under any other provider silently scores cached Cohere vectors against a
+# different model's index -- no error, just near-random similarities. Guard on provider.
+if _emb.provider() == "cohere":
+    _CK = [k.strip() for k in os.environ.get("COHERE_API_KEYS", "").split(",") if k.strip()] \
+          or [os.environ.get("COHERE_API_KEY", "")]
+    _cyc = itertools.cycle(_CK)
+    _QC_PATH = "query_emb_cache.pkl"
+    try:
+        _QC = pickle.load(open(_QC_PATH, "rb"))
+    except Exception:
+        _QC = {}
+
+    def _embed_query_rr(text):
+        if text in _QC:
+            return _QC[text]
+        last = None
+        for _ in range(len(_CK)):
+            try:
+                v = _emb.embed([text], is_query=True, api_key=next(_cyc))[0]
+                _QC[text] = v
+                pickle.dump(_QC, open(_QC_PATH, "wb"))
+                return v
+            except RuntimeError as e:
+                last = e
+                if "429" in str(e):
+                    continue
+                raise
+        raise RuntimeError(f"all Cohere keys quota/rate limited: {last}")
+    _emb.embed_query = _embed_query_rr
+else:
+    # local/other providers: embed directly, no key rotation, no cross-provider cache
+    _emb.embed_query = lambda text: _emb.embed([text], is_query=True)[0]
+print(f"[bench] embedding provider = {_emb.model_id()}")
 
 GOLD = "gold_prompts.jsonl"
 E2E_N = int(sys.argv[1]) if len(sys.argv) > 1 else 120
