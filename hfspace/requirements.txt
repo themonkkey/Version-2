@@ -1,0 +1,10 @@
+streamlit
+numpy
+requests
+groq
+google-genai
+# voyage-4-nano runs locally from open weights -- no embedding API key, no quota.
+# torch is CPU-only here: measured on Apple silicon, MPS was slower than CPU and
+# doubled memory pressure, and HF Spaces free tier is CPU anyway.
+torch
+sentence-transformers

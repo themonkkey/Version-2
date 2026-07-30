@@ -50,8 +50,20 @@ EMBED_CHUNKS = os.path.join(_BASE, "embed_chunks.pkl")
 # reassembled here at load time
 EMBED_PARTS = [os.path.join(_BASE, f"embed_index_part{i}.npz") for i in range(2)]
 
+# voyage-4-nano index, built by embed_voyage.py. Runs from local open weights, so the
+# deployment needs no embedding API key at all -- which is what took the app down before.
+VOYAGE_DIR = os.environ.get("VOYAGE_OUT", os.path.join(_BASE, "voyage_out"))
+VOYAGE_NPZ = os.path.join(VOYAGE_DIR, "voyage_index.npz")
+VOYAGE_CHUNKS = os.path.join(VOYAGE_DIR, "voyage_chunks.pkl")
+
+
+def _using_voyage():
+    return os.environ.get("EMBED_PROVIDER", "cohere").lower() == "voyage_local"
+
 
 def _load_matrix():
+    if _using_voyage() and os.path.exists(VOYAGE_NPZ):
+        return np.load(VOYAGE_NPZ)["matrix"]
     if os.path.exists(EMBED_NPZ):
         return np.load(EMBED_NPZ)["matrix"]
     if all(os.path.exists(p) for p in EMBED_PARTS):
@@ -128,11 +140,23 @@ don't have that specific figure rather than guessing numbers.
 def load_index():
     # semantic (embedding) index — preferred
     matrix = _load_matrix()
-    if matrix is not None and os.path.exists(EMBED_CHUNKS):
-        with open(EMBED_CHUNKS, "rb") as f:
+    chunks_path = VOYAGE_CHUNKS if (_using_voyage() and os.path.exists(VOYAGE_CHUNKS)) \
+        else EMBED_CHUNKS
+    if matrix is not None and os.path.exists(chunks_path):
+        with open(chunks_path, "rb") as f:
             meta = pickle.load(f)
+        model_id = meta.get("model_id")
+        # A query embedded by one model and scored against another model's index gives
+        # near-random similarities and no error -- it silently returns plausible garbage.
+        # Fail loudly instead.
+        import embeddings
+        if model_id and model_id != embeddings.model_id():
+            raise RuntimeError(
+                f"Index/model mismatch: index was built with '{model_id}' but "
+                f"EMBED_PROVIDER resolves to '{embeddings.model_id()}'. "
+                f"Set EMBED_PROVIDER to match the index, or rebuild the index.")
         return {"mode": "embed", "chunks": meta["chunks"],
-                "matrix": matrix.astype(np.float32), "model_id": meta.get("model_id")}
+                "matrix": matrix.astype(np.float32), "model_id": model_id}
     # legacy TF-IDF fallback
     if os.path.exists(INDEX_PATH):
         with open(INDEX_PATH, "rb") as f:
