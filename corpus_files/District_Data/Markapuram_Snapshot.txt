@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Markapuram (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Forestry & Logging: 6.47% of district GVA, Rs. 668.28 Cr., statewide rank 2
   - Live stock: 3.94% of district GVA, Rs. 6,944.00 Cr., statewide rank 13
   - Horticulture: 2.89% of district GVA, Rs. 4,123.60 Cr., statewide rank 14
@@ -14,7 +14,7 @@ Fastest-growing sectors in Markapuram (2025-26 (FAE) YoY):
   - Other Services: 12.52% growth, Rs. 2,254.98 Cr.
   - Transport by Other means & Storage: 12.43% growth, Rs. 2,161.17 Cr.
 
-Best statewide ranks (sectors where Markapuram leads other districts):
+Statewide rank comparison for Markapuram -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Forestry & Logging: rank 2 of 28, Rs. 668.28 Cr.
   - Live stock: rank 13 of 28, Rs. 6,944.00 Cr.
   - Horticulture: rank 14 of 28, Rs. 4,123.60 Cr.

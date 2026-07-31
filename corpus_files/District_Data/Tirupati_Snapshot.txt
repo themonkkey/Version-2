@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Tirupati (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Manufacturing: 15.16% of district GVA, Rs. 26,711.71 Cr., statewide rank 2
   - Banking & Insurance: 6.15% of district GVA, Rs. 5,273.00 Cr., statewide rank 4
   - Other Services: 5.97% of district GVA, Rs. 8,545.18 Cr., statewide rank 4
@@ -14,7 +14,7 @@ Fastest-growing sectors in Tirupati (2025-26 (FAE) YoY):
   - Horticulture: 14.62% growth, Rs. 7,127.55 Cr.
   - Other Services: 14.34% growth, Rs. 8,545.18 Cr.
 
-Best statewide ranks (sectors where Tirupati leads other districts):
+Statewide rank comparison for Tirupati -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Manufacturing: rank 2 of 28, Rs. 26,711.71 Cr.
   - Public Admn.: rank 2 of 28, Rs. 3,140.40 Cr.
   - Forestry & Logging: rank 4 of 28, Rs. 569.86 Cr.

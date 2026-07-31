@@ -23,6 +23,15 @@ def _install():
     st.button = lambda *a, **k: False
     st.chat_input = lambda *a, **k: None
     st.chat_message = cm; st.spinner = cm; st.expander = cm; st.container = cm
+    # st.sidebar is used as a context manager AND as a namespace (st.sidebar.markdown).
+    # _Ctx supports both: __enter__ for `with`, __getattr__ returning a no-op callable.
+    st.sidebar = _Ctx()
+    st.tabs = lambda labels, *a, **k: [_Ctx() for _ in labels]
+    st.form = cm; st.status = cm; st.popover = cm
+    st.metric = noop; st.badge = noop; st.html = noop; st.image = noop
+    st.text_input = lambda *a, **k: ""
+    st.toggle = st.checkbox = lambda *a, **k: False
+    st.selectbox = st.radio = lambda label, opts, *a, **k: (opts[0] if opts else None)
     st.cache_resource = lambda f=None, **k: (f if callable(f) else (lambda g: g))
     st.cache_data = st.cache_resource
     sys.modules["streamlit"] = st

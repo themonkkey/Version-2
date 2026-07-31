@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Ananthapuramu (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Railways: 11.70% of district GVA, Rs. 1,172.00 Cr., statewide rank 3
   - Horticulture: 11.63% of district GVA, Rs. 16,588.13 Cr., statewide rank 1
   - Electricity, Gas, Water Supply: 6.44% of district GVA, Rs. 2,855.87 Cr., statewide rank 4
@@ -14,7 +14,7 @@ Fastest-growing sectors in Ananthapuramu (2025-26 (FAE) YoY):
   - Communications: 17.02% growth, Rs. 1,451.00 Cr.
   - Banking & Insurance: 15.16% growth, Rs. 2,970.00 Cr.
 
-Best statewide ranks (sectors where Ananthapuramu leads other districts):
+Statewide rank comparison for Ananthapuramu -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Horticulture: rank 1 of 28, Rs. 16,588.13 Cr.
   - Railways: rank 3 of 28, Rs. 1,172.00 Cr.
   - Live stock: rank 4 of 28, Rs. 9,554.00 Cr.

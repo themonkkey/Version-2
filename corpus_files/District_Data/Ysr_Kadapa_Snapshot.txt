@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Ysr Kadapa (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Horticulture: 8.06% of district GVA, Rs. 11,487.18 Cr., statewide rank 2
   - Forestry & Logging: 7.28% of district GVA, Rs. 751.03 Cr., statewide rank 1
   - Mining & Quarrying: 7.11% of district GVA, Rs. 2,414.00 Cr., statewide rank 5
@@ -14,7 +14,7 @@ Fastest-growing sectors in Ysr Kadapa (2025-26 (FAE) YoY):
   - Banking & Insurance: 15.60% growth, Rs. 2,993.00 Cr.
   - Other Services: 15.34% growth, Rs. 7,602.18 Cr.
 
-Best statewide ranks (sectors where Ysr Kadapa leads other districts):
+Statewide rank comparison for Ysr Kadapa -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Forestry & Logging: rank 1 of 28, Rs. 751.03 Cr.
   - Horticulture: rank 2 of 28, Rs. 11,487.18 Cr.
   - Electricity, Gas, Water Supply: rank 3 of 28, Rs. 3,095.57 Cr.

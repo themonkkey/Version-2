@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Visakhapatnam (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Trade,Hotel & Restaurants: 32.29% of district GVA, Rs. 39,583.73 Cr., statewide rank 1
   - Manufacturing: 21.15% of district GVA, Rs. 37,266.58 Cr., statewide rank 1
   - Railways: 14.52% of district GVA, Rs. 1,455.00 Cr., statewide rank 2
@@ -14,7 +14,7 @@ Fastest-growing sectors in Visakhapatnam (2025-26 (FAE) YoY):
   - AGRICULTURE & ALLIED SECTOR: 17.40% growth, Rs. 5,014.19 Cr.
   - Communications: 17.27% growth, Rs. 2,526.00 Cr.
 
-Best statewide ranks (sectors where Visakhapatnam leads other districts):
+Statewide rank comparison for Visakhapatnam -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Manufacturing: rank 1 of 28, Rs. 37,266.58 Cr.
   - Construction: rank 1 of 28, Rs. 14,434.93 Cr.
   - Trade,Hotel & Restaurants: rank 1 of 28, Rs. 39,583.73 Cr.

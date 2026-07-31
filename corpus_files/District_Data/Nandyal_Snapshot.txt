@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Nandyal (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Agriculture: 7.90% of district GVA, Rs. 4,533.87 Cr., statewide rank 1
   - Forestry & Logging: 5.70% of district GVA, Rs. 588.29 Cr., statewide rank 3
   - Horticulture: 4.57% of district GVA, Rs. 6,518.41 Cr., statewide rank 8
@@ -14,7 +14,7 @@ Fastest-growing sectors in Nandyal (2025-26 (FAE) YoY):
   - Agriculture: 16.44% growth, Rs. 4,533.87 Cr.
   - Banking & Insurance: 14.43% growth, Rs. 1,840.00 Cr.
 
-Best statewide ranks (sectors where Nandyal leads other districts):
+Statewide rank comparison for Nandyal -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Agriculture: rank 1 of 28, Rs. 4,533.87 Cr.
   - Forestry & Logging: rank 3 of 28, Rs. 588.29 Cr.
   - Horticulture: rank 8 of 28, Rs. 6,518.41 Cr.

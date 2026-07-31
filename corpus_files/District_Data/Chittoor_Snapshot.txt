@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Chittoor (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Mining & Quarrying: 9.17% of district GVA, Rs. 3,113.00 Cr., statewide rank 4
   - Live stock: 5.42% of district GVA, Rs. 9,549.00 Cr., statewide rank 5
   - Horticulture: 4.40% of district GVA, Rs. 6,273.82 Cr., statewide rank 9
@@ -14,7 +14,7 @@ Fastest-growing sectors in Chittoor (2025-26 (FAE) YoY):
   - Other Services: 14.95% growth, Rs. 4,368.01 Cr.
   - Live stock: 14.36% growth, Rs. 9,549.00 Cr.
 
-Best statewide ranks (sectors where Chittoor leads other districts):
+Statewide rank comparison for Chittoor -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Mining & Quarrying: rank 4 of 28, Rs. 3,113.00 Cr.
   - Live stock: rank 5 of 28, Rs. 9,549.00 Cr.
   - Horticulture: rank 9 of 28, Rs. 6,273.82 Cr.

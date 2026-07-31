@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Palnadu (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Agriculture: 5.77% of district GVA, Rs. 3,311.22 Cr., statewide rank 6
   - Live stock: 4.36% of district GVA, Rs. 7,681.00 Cr., statewide rank 9
   - Forestry & Logging: 4.18% of district GVA, Rs. 431.42 Cr., statewide rank 11
@@ -14,7 +14,7 @@ Fastest-growing sectors in Palnadu (2025-26 (FAE) YoY):
   - Other Services: 16.61% growth, Rs. 4,733.04 Cr.
   - Communications: 16.53% growth, Rs. 1,234.00 Cr.
 
-Best statewide ranks (sectors where Palnadu leads other districts):
+Statewide rank comparison for Palnadu -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Agriculture: rank 6 of 28, Rs. 3,311.22 Cr.
   - Live stock: rank 9 of 28, Rs. 7,681.00 Cr.
   - Horticulture: rank 11 of 28, Rs. 5,649.58 Cr.

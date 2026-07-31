@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Srikakulam (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Agriculture: 3.93% of district GVA, Rs. 2,255.41 Cr., statewide rank 12
   - Other Services: 3.82% of district GVA, Rs. 5,461.88 Cr., statewide rank 12
   - Public Admn.: 3.63% of district GVA, Rs. 2,172.13 Cr., statewide rank 13
@@ -14,7 +14,7 @@ Fastest-growing sectors in Srikakulam (2025-26 (FAE) YoY):
   - Banking & Insurance: 16.66% growth, Rs. 2,059.00 Cr.
   - Trade,Hotel & Restaurants: 14.95% growth, Rs. 2,990.53 Cr.
 
-Best statewide ranks (sectors where Srikakulam leads other districts):
+Statewide rank comparison for Srikakulam -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Fishing & Aquaculture: rank 9 of 28, Rs. 3,133.27 Cr.
   - Trade,Hotel & Restaurants: rank 10 of 28, Rs. 2,990.53 Cr.
   - Railways: rank 10 of 28, Rs. 252.00 Cr.

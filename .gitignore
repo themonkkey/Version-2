@@ -34,3 +34,13 @@ pilot_chunks.pkl
 pilot_index.npz
 *.log
 *_out.txt
+haiku_tasks/
+bakeoff_*.jsonl
+voyage_out_512/
+keys.md
+KEYS.md
+*.bak
+*.broken
+.env.bak.*
+app.py.bak.*
+*.jsonl.bak

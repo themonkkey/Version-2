@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Sri Satya Sai (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Horticulture: 8.01% of district GVA, Rs. 11,418.05 Cr., statewide rank 3
   - Manufacturing: 6.51% of district GVA, Rs. 11,476.85 Cr., statewide rank 4
   - Live stock: 5.64% of district GVA, Rs. 9,932.00 Cr., statewide rank 3
@@ -14,7 +14,7 @@ Fastest-growing sectors in Sri Satya Sai (2025-26 (FAE) YoY):
   - Banking & Insurance: 15.70% growth, Rs. 1,747.00 Cr.
   - Real est., Ownership of Dwellings: 13.85% growth, Rs. 4,323.95 Cr.
 
-Best statewide ranks (sectors where Sri Satya Sai leads other districts):
+Statewide rank comparison for Sri Satya Sai -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Horticulture: rank 3 of 28, Rs. 11,418.05 Cr.
   - Live stock: rank 3 of 28, Rs. 9,932.00 Cr.
   - Manufacturing: rank 4 of 28, Rs. 11,476.85 Cr.

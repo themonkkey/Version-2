@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Guntur (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Mining & Quarrying: 10.69% of district GVA, Rs. 3,629.00 Cr., statewide rank 3
   - Public Admn.: 9.02% of district GVA, Rs. 5,405.36 Cr., statewide rank 1
   - Banking & Insurance: 7.62% of district GVA, Rs. 6,541.00 Cr., statewide rank 3
@@ -14,7 +14,7 @@ Fastest-growing sectors in Guntur (2025-26 (FAE) YoY):
   - Communications: 17.57% growth, Rs. 1,914.00 Cr.
   - Banking & Insurance: 15.65% growth, Rs. 6,541.00 Cr.
 
-Best statewide ranks (sectors where Guntur leads other districts):
+Statewide rank comparison for Guntur -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Public Admn.: rank 1 of 28, Rs. 5,405.36 Cr.
   - Mining & Quarrying: rank 3 of 28, Rs. 3,629.00 Cr.
   - Construction: rank 3 of 28, Rs. 9,150.31 Cr.

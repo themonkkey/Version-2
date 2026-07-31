@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Sps Nellore (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Electricity, Gas, Water Supply: 21.29% of district GVA, Rs. 9,440.85 Cr., statewide rank 1
   - Fishing & Aquaculture: 6.66% of district GVA, Rs. 10,184.38 Cr., statewide rank 5
   - Transport by Other means & Storage: 6.27% of district GVA, Rs. 6,752.39 Cr., statewide rank 3
@@ -14,7 +14,7 @@ Fastest-growing sectors in Sps Nellore (2025-26 (FAE) YoY):
   - Other Services: 14.59% growth, Rs. 6,791.98 Cr.
   - Real est., Ownership of Dwellings: 13.63% growth, Rs. 6,943.73 Cr.
 
-Best statewide ranks (sectors where Sps Nellore leads other districts):
+Statewide rank comparison for Sps Nellore -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Electricity, Gas, Water Supply: rank 1 of 28, Rs. 9,440.85 Cr.
   - Transport by Other means & Storage: rank 3 of 28, Rs. 6,752.39 Cr.
   - Railways: rank 4 of 28, Rs. 571.00 Cr.

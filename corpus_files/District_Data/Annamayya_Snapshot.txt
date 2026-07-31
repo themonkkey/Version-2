@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Annamayya (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Live stock: 4.57% of district GVA, Rs. 8,050.00 Cr., statewide rank 8
   - Forestry & Logging: 3.66% of district GVA, Rs. 378.11 Cr., statewide rank 12
   - Horticulture: 3.41% of district GVA, Rs. 4,858.02 Cr., statewide rank 12
@@ -14,7 +14,7 @@ Fastest-growing sectors in Annamayya (2025-26 (FAE) YoY):
   - Other Services: 13.70% growth, Rs. 3,593.43 Cr.
   - Construction: 12.85% growth, Rs. 3,239.68 Cr.
 
-Best statewide ranks (sectors where Annamayya leads other districts):
+Statewide rank comparison for Annamayya -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Live stock: rank 8 of 28, Rs. 8,050.00 Cr.
   - Horticulture: rank 12 of 28, Rs. 4,858.02 Cr.
   - Forestry & Logging: rank 12 of 28, Rs. 378.11 Cr.

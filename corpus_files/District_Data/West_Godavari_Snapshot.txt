@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: West Godavari (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Fishing & Aquaculture: 15.57% of district GVA, Rs. 23,825.98 Cr., statewide rank 3
   - AGRICULTURE & ALLIED SECTOR: 6.13% of district GVA, Rs. 33,061.44 Cr., statewide rank 3
   - Agriculture: 4.68% of district GVA, Rs. 2,683.58 Cr., statewide rank 9
@@ -14,7 +14,7 @@ Fastest-growing sectors in West Godavari (2025-26 (FAE) YoY):
   - AGRICULTURE & ALLIED SECTOR: 16.35% growth, Rs. 33,061.44 Cr.
   - Banking & Insurance: 16.25% growth, Rs. 3,369.00 Cr.
 
-Best statewide ranks (sectors where West Godavari leads other districts):
+Statewide rank comparison for West Godavari -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Fishing & Aquaculture: rank 3 of 28, Rs. 23,825.98 Cr.
   - AGRICULTURE & ALLIED SECTOR: rank 3 of 28, Rs. 33,061.44 Cr.
   - Mining & Quarrying: rank 8 of 28, Rs. 1,335.00 Cr.

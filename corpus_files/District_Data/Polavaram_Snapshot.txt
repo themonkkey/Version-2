@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Polavaram (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Forestry & Logging: 4.57% of district GVA, Rs. 471.09 Cr., statewide rank 8
   - Public Admn.: 1.15% of district GVA, Rs. 690.77 Cr., statewide rank 28
   - Horticulture: 1.03% of district GVA, Rs. 1,466.42 Cr., statewide rank 27
@@ -14,7 +14,7 @@ Fastest-growing sectors in Polavaram (2025-26 (FAE) YoY):
   - Communications: 15.82% growth, Rs. 183.00 Cr.
   - Real est., Ownership of Dwellings: 15.32% growth, Rs. 542.19 Cr.
 
-Best statewide ranks (sectors where Polavaram leads other districts):
+Statewide rank comparison for Polavaram -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Forestry & Logging: rank 8 of 28, Rs. 471.09 Cr.
   - Fishing & Aquaculture: rank 24 of 28, Rs. 110.45 Cr.
   - Electricity, Gas, Water Supply: rank 26 of 28, Rs. 291.68 Cr.

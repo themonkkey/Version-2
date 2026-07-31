@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Parvathipuram Manyam (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Forestry & Logging: 2.52% of district GVA, Rs. 260.05 Cr., statewide rank 19
   - Agriculture: 2.08% of district GVA, Rs. 1,192.85 Cr., statewide rank 21
   - Public Admn.: 2.06% of district GVA, Rs. 1,233.81 Cr., statewide rank 25
@@ -14,7 +14,7 @@ Fastest-growing sectors in Parvathipuram Manyam (2025-26 (FAE) YoY):
   - Agriculture: 14.16% growth, Rs. 1,192.85 Cr.
   - Real est., Ownership of Dwellings: 14.06% growth, Rs. 1,711.68 Cr.
 
-Best statewide ranks (sectors where Parvathipuram Manyam leads other districts):
+Statewide rank comparison for Parvathipuram Manyam -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Forestry & Logging: rank 19 of 28, Rs. 260.05 Cr.
   - Horticulture: rank 20 of 28, Rs. 2,891.95 Cr.
   - Fishing & Aquaculture: rank 20 of 28, Rs. 271.70 Cr.

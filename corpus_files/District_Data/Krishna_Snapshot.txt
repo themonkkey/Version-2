@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Krishna (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Fishing & Aquaculture: 23.79% of district GVA, Rs. 36,393.31 Cr., statewide rank 1
   - AGRICULTURE & ALLIED SECTOR: 8.98% of district GVA, Rs. 48,454.75 Cr., statewide rank 2
   - Transport by Other means & Storage: 6.96% of district GVA, Rs. 7,489.94 Cr., statewide rank 2
@@ -14,7 +14,7 @@ Fastest-growing sectors in Krishna (2025-26 (FAE) YoY):
   - Communications: 16.88% growth, Rs. 1,253.00 Cr.
   - Other Services: 15.35% growth, Rs. 4,531.58 Cr.
 
-Best statewide ranks (sectors where Krishna leads other districts):
+Statewide rank comparison for Krishna -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Fishing & Aquaculture: rank 1 of 28, Rs. 36,393.31 Cr.
   - AGRICULTURE & ALLIED SECTOR: rank 2 of 28, Rs. 48,454.75 Cr.
   - Transport by Other means & Storage: rank 2 of 28, Rs. 7,489.94 Cr.

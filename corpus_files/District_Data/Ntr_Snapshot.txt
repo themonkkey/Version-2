@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Ntr (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Railways: 31.26% of district GVA, Rs. 3,133.00 Cr., statewide rank 1
   - Trade,Hotel & Restaurants: 13.95% of district GVA, Rs. 17,101.85 Cr., statewide rank 2
   - Banking & Insurance: 13.82% of district GVA, Rs. 11,861.00 Cr., statewide rank 1
@@ -14,7 +14,7 @@ Fastest-growing sectors in Ntr (2025-26 (FAE) YoY):
   - Trade,Hotel & Restaurants: 16.91% growth, Rs. 17,101.85 Cr.
   - Other Services: 16.42% growth, Rs. 11,720.33 Cr.
 
-Best statewide ranks (sectors where Ntr leads other districts):
+Statewide rank comparison for Ntr -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Railways: rank 1 of 28, Rs. 3,133.00 Cr.
   - Banking & Insurance: rank 1 of 28, Rs. 11,861.00 Cr.
   - Real est., Ownership of Dwellings: rank 1 of 28, Rs. 11,450.79 Cr.

@@ -369,12 +369,28 @@ def call_llm(messages):
     elif provider == "gemini":
         from google import genai
 
+        import time as _t
+
         client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
         prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
-        resp = client.models.generate_content(
-            model=os.environ.get("GEMINI_MODEL", "gemini-2.0-flash"), contents=prompt
-        )
-        return resp.text
+        # Pinned to the chosen production model. gemini-2.0-flash (the old default) is two
+        # generations old and quota-blocked on this account.
+        model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
+        # 503/UNAVAILABLE is transient (seen twice in testing) — retry with backoff so a
+        # blip does not surface to an officer as a failed answer. Quota (429) is not retried.
+        last = None
+        for attempt in range(4):
+            try:
+                return client.models.generate_content(model=model, contents=prompt).text
+            except Exception as e:
+                last = e
+                s = str(e).upper()
+                transient = ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s)
+                if transient and attempt < 3:
+                    _t.sleep(2 ** attempt)
+                    continue
+                raise
+        raise last
     elif provider == "claude":
         # local Claude Code CLI backend (no API key) — uses `claude -p`
         import subprocess
@@ -395,63 +411,119 @@ st.set_page_config(
     page_title="Swarna Andhra GVA Assistant",
     page_icon="🏛️",
     layout="centered",
+    initial_sidebar_state="expanded",
 )
 
 BRAND_CSS = """
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
-:root{--bg:#F4F7F4;--bg-2:#FFFFFF;--panel:#FFFFFF;--neon:#01EF6C;--neon-dk:#0A8F45;--green:#0A8F45;--line:rgba(0,0,0,.10);--ink:#16211C;--muted:#5B6B64;}
-html,body,[class*="css"],.stApp{font-family:'Inter',sans-serif;background:var(--bg) !important;color:var(--ink);}
+/* Apple system design language: SF Pro, grouped-background greys, squircle cards,
+   soft layered depth, tight optical tracking on display type. */
+:root{
+  --bg:#F2F2F7; --surface:#FFFFFF; --fill:#F7F7FA;
+  --label:#000000; --label-2:rgba(60,60,67,.60); --label-3:rgba(60,60,67,.30);
+  --sep:rgba(60,60,67,.16); --green:#248A3D; --green-v:#34C759;
+  --r:20px; --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px -8px rgba(0,0,0,.10);
+}
+html,body,[class*="css"],.stApp{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",
+    "Helvetica Neue",system-ui,sans-serif !important;
+  background:var(--bg) !important;color:var(--label);-webkit-font-smoothing:antialiased;}
 #MainMenu,footer,header[data-testid="stHeader"]{visibility:hidden;}
-.block-container{padding-top:1.2rem;padding-bottom:7rem;max-width:820px;}
+.block-container{padding-top:2.8rem;padding-bottom:7.5rem;max-width:760px;}
 .stApp{background:var(--bg);}
 
-/* branded header */
-.sa-header{display:flex;align-items:center;gap:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin-bottom:6px;position:relative;overflow:hidden;}
-.sa-header::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--neon);}
-.sa-emblem{width:44px;height:44px;border-radius:10px;background:rgba(1,239,108,.10);border:1px solid rgba(1,239,108,.30);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.sa-htext h1{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:24px;color:var(--ink);line-height:1.05;margin:0;letter-spacing:-.01em;}
+.sa-header{background:transparent;border:none;padding:0;margin:0;position:static;overflow:visible;
+  display:block;}
+.sa-header::before{display:none;}
+.sa-emblem{display:none;}
+.sa-htext h1{font-size:30px;font-weight:700;letter-spacing:-.024em;line-height:1.12;color:var(--label);margin:0;}
 .sa-htext h1 span{color:var(--green);}
-.sa-htext p{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin:5px 0 0;font-weight:400;letter-spacing:.02em;}
-.sa-badge{margin-left:auto;background:rgba(1,239,108,.12);color:var(--green);border:1px solid rgba(1,239,108,.35);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;padding:5px 12px;border-radius:6px;white-space:nowrap;text-transform:uppercase;letter-spacing:.08em;}
-.sa-sub{font-size:13px;color:var(--muted);margin:12px 2px 4px;font-weight:300;line-height:1.65;}
+.sa-htext p{font-size:13px;color:var(--label-2);margin:6px 0 0;font-weight:400;letter-spacing:-.01em;}
+.sa-badge{display:none;}
+.sa-sub{font-size:15px;color:var(--label-2);margin:16px 0 0;line-height:1.5;letter-spacing:-.011em;}
 
-/* chat bubbles */
+.sa-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 6px;}
+.sa-stat{background:var(--surface);border-radius:var(--r);padding:18px 16px;box-shadow:var(--shadow);}
+.sa-stat .v{font-size:26px;font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--label);
+  font-variant-numeric:tabular-nums;}
+.sa-stat .k{font-size:11.5px;color:var(--label-2);margin-top:7px;font-weight:500;letter-spacing:-.005em;}
+
+.sa-label{font-size:12.5px;color:var(--label-2);margin:26px 4px 10px;font-weight:500;letter-spacing:-.005em;}
+
+section[data-testid="stSidebar"]{background:var(--surface);border-right:1px solid var(--sep);}
+section[data-testid="stSidebar"] .block-container{padding-top:2.8rem;}
+.sb-title{font-size:11px;font-weight:600;color:var(--label-2);letter-spacing:.05em;
+  text-transform:uppercase;margin:24px 0 10px;}
+.sb-title:first-child{margin-top:0;}
+.sb-item{font-size:13px;color:var(--label-2);line-height:1.55;margin-bottom:8px;letter-spacing:-.008em;}
+.sb-item b{color:var(--label);font-weight:600;}
+.sb-note{font-size:12.5px;color:var(--label-2);line-height:1.55;background:var(--fill);
+  border-radius:14px;padding:13px 15px;margin-top:12px;letter-spacing:-.008em;}
+.sb-note b{color:var(--label);font-weight:600;}
+.sb-pill{display:inline-block;font-size:11px;color:var(--label-2);background:var(--fill);
+  border-radius:8px;padding:5px 10px;margin:0 5px 6px 0;font-weight:500;letter-spacing:-.005em;}
+
 [data-testid="stChatMessage"]{background:transparent;padding:.2rem 0;}
-[data-testid="stChatMessageContent"]{font-size:15px;line-height:1.65;color:var(--ink);}
-/* avatars — recolor Streamlit defaults to match the dark/neon theme */
-[data-testid="stChatMessageAvatarUser"]{background:var(--neon) !important;border:none !important;}
-[data-testid="stChatMessageAvatarUser"] *{color:#06130C !important;fill:#06130C !important;}
-[data-testid="stChatMessageAvatarAssistant"]{background:var(--bg-2) !important;border:1px solid var(--green) !important;}
-[data-testid="stChatMessageAvatarAssistant"] *{color:var(--green) !important;fill:var(--green) !important;}
-/* assistant message card */
+[data-testid="stChatMessageContent"]{font-size:15px;line-height:1.55;color:var(--label);letter-spacing:-.011em;}
+[data-testid="stChatMessageAvatarUser"]{background:var(--label) !important;border:none !important;}
+[data-testid="stChatMessageAvatarUser"] *{color:#FFF !important;fill:#FFF !important;}
+[data-testid="stChatMessageAvatarAssistant"]{background:var(--green-v) !important;border:none !important;}
+[data-testid="stChatMessageAvatarAssistant"] *{color:#FFF !important;fill:#FFF !important;}
 .stChatMessage:has([data-testid="stChatMessageAvatarAssistant"]) [data-testid="stChatMessageContent"]{
-  background:var(--panel);border:1px solid var(--line);border-radius:4px 14px 14px 14px;padding:14px 18px;border-left:3px solid var(--neon);}
-/* user message card */
+  background:var(--surface);border-radius:var(--r);padding:18px 20px;box-shadow:var(--shadow);}
 .stChatMessage:has([data-testid="stChatMessageAvatarUser"]) [data-testid="stChatMessageContent"]{
-  background:var(--neon);color:#06130C;border-radius:14px 4px 14px 14px;padding:12px 18px;font-weight:500;}
-.stChatMessage:has([data-testid="stChatMessageAvatarUser"]) [data-testid="stChatMessageContent"] *{color:#06130C !important;}
+  background:var(--fill);border-radius:18px;padding:12px 16px;}
 
-/* welcome chips */
-div.stButton>button{background:var(--bg-2);border:1px solid var(--line);color:var(--ink);border-radius:10px;font-size:13px;
-  font-weight:400;padding:11px 16px;text-align:left;transition:all .12s;font-family:'Inter';}
-div.stButton>button:hover{border-color:var(--green);background:var(--panel);color:var(--green);}
+[data-testid="stChatMessageContent"] h1,
+[data-testid="stChatMessageContent"] h2,
+[data-testid="stChatMessageContent"] h3{
+  font-size:15px !important;font-weight:600 !important;color:var(--label) !important;
+  letter-spacing:-.014em !important;text-transform:none !important;line-height:1.35 !important;
+  margin:20px 0 8px !important;padding:0 !important;}
+[data-testid="stChatMessageContent"] h1:first-child,
+[data-testid="stChatMessageContent"] h2:first-child,
+[data-testid="stChatMessageContent"] h3:first-child{margin-top:0 !important;}
+[data-testid="stChatMessageContent"] p{margin-bottom:11px;}
+[data-testid="stChatMessageContent"] ul,[data-testid="stChatMessageContent"] ol{margin:6px 0 12px;padding-left:20px;}
+[data-testid="stChatMessageContent"] li{margin-bottom:7px;line-height:1.55;}
+[data-testid="stChatMessageContent"] li::marker{color:var(--label-3);}
+[data-testid="stChatMessageContent"] strong{font-weight:600;}
+[data-testid="stChatMessageContent"] code{font-family:ui-monospace,"SF Mono",Menlo,monospace;
+  font-size:12px;background:var(--fill);color:var(--label-2);padding:2px 6px;border-radius:6px;}
+[data-testid="stChatMessageContent"] table{font-size:13px;border-collapse:collapse;margin:12px 0;width:100%;}
+[data-testid="stChatMessageContent"] th{font-weight:600;text-align:left;color:var(--label-2);font-size:12px;}
+[data-testid="stChatMessageContent"] th,[data-testid="stChatMessageContent"] td{
+  border-bottom:1px solid var(--sep);padding:9px 14px 9px 0;font-variant-numeric:tabular-nums;}
 
-/* sources expander */
-[data-testid="stExpander"]{border:none;background:transparent;}
-[data-testid="stExpander"] summary{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);font-weight:400;text-transform:uppercase;letter-spacing:.06em;}
-[data-testid="stExpander"] summary:hover{color:var(--green);}
-[data-testid="stExpander"] [data-testid="stExpanderDetails"]{color:var(--muted);font-size:12px;}
+div.stButton>button{background:var(--surface);border:none;color:var(--label);border-radius:16px;
+  font-size:14px;font-weight:400;padding:16px 18px;text-align:left;line-height:1.45;
+  letter-spacing:-.011em;height:100%;box-shadow:var(--shadow);
+  transition:transform .18s cubic-bezier(.4,0,.2,1),box-shadow .18s;}
+div.stButton>button:hover{transform:scale(1.015);
+  box-shadow:0 2px 4px rgba(0,0,0,.05),0 12px 30px -8px rgba(0,0,0,.14);color:var(--label);}
+div.stButton>button:active{transform:scale(.985);}
+div.stButton>button:focus:not(:active){color:var(--label);box-shadow:var(--shadow),0 0 0 3px rgba(52,199,89,.28);}
 
-/* chat input */
-[data-testid="stChatInput"]{border:1px solid var(--line);border-radius:12px;background:var(--bg-2);}
-[data-testid="stChatInput"]:focus-within{border-color:var(--green);box-shadow:0 0 0 1px rgba(1,239,108,.25);}
-[data-testid="stChatInput"] textarea{font-size:15px;color:var(--ink);}
-[data-testid="stChatInput"] button{background:var(--neon);border-radius:9px;}
-[data-testid="stChatInput"] button svg{color:#06130C;fill:#06130C;}
+[data-testid="stExpander"]{border:none;background:transparent;margin-top:6px;}
+[data-testid="stExpander"] details{border:none;background:transparent;}
+[data-testid="stExpander"] summary{font-size:12.5px;color:var(--green);font-weight:500;padding:4px 0;
+  letter-spacing:-.008em;}
+[data-testid="stExpander"] [data-testid="stExpanderDetails"]{color:var(--label-2);font-size:12px;padding:4px 0 6px;}
+[data-testid="stExpander"] [data-testid="stExpanderDetails"] code{font-size:11px;background:transparent;
+  color:var(--label-2);padding:0;word-break:break-all;}
 
+[data-testid="stChatInput"]{border:none;border-radius:22px;background:var(--surface);
+  box-shadow:0 2px 6px rgba(0,0,0,.05),0 12px 32px -10px rgba(0,0,0,.16);}
+[data-testid="stChatInput"]:focus-within{box-shadow:0 2px 6px rgba(0,0,0,.05),
+  0 12px 32px -10px rgba(0,0,0,.16),0 0 0 3px rgba(52,199,89,.26);}
+[data-testid="stChatInput"] textarea{font-size:15px;color:var(--label);letter-spacing:-.011em;}
+[data-testid="stChatInput"] button{background:var(--green-v);border-radius:50%;transition:transform .15s;}
+[data-testid="stChatInput"] button:hover{transform:scale(1.08);}
+[data-testid="stChatInput"] button svg{color:#FFF;fill:#FFF;}
+
+[data-testid="stSpinner"] p{font-size:13px;color:var(--label-2);letter-spacing:-.008em;}
 a{color:var(--green) !important;}
-.sa-foot{text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);margin-top:8px;letter-spacing:.04em;}
+.sa-foot{text-align:center;font-size:12px;color:var(--label-3);margin-top:30px;letter-spacing:-.005em;}
 </style>
 """
 st.markdown(BRAND_CSS, unsafe_allow_html=True)
@@ -482,22 +554,75 @@ if "messages" not in st.session_state:
 if "pending" not in st.session_state:
     st.session_state.pending = None
 
-EXAMPLES = [
-    "What is the GDDP and per capita income of Kakinada?",
-    "How is district income estimated — top-down or bottom-up?",
-    "Economic priorities in the Bapatla constituency vision plan?",
-    "Which sectors give Visakhapatnam its comparative advantage?",
+# starter prompts, grouped so the welcome screen shows what the assistant can actually do
+EXAMPLE_GROUPS = [
+    ("District data", "figures straight from the official workbook", [
+        "What is the GDDP and per capita income of Kakinada?",
+        "Which sectors give Visakhapatnam its comparative advantage?",
+    ]),
+    ("Methodology", "how the estimates are produced", [
+        "How is district income estimated — top-down or bottom-up?",
+        "What is the difference between GVA and GDP?",
+    ]),
+    ("Vision plans", "constituency and mandal action plans", [
+        "Economic priorities in the Bapatla constituency vision plan?",
+        "What is the paddy productivity target for Anaparthi mandal?",
+    ]),
 ]
+
+with st.sidebar:
+    st.markdown("<div class='sb-title'>What's inside</div>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='sb-item'><span class='sb-dot'>▸</span><span>"
+        "<b>28</b> districts, four years of GSDP and DDP data</span></div>"
+        "<div class='sb-item'><span class='sb-dot'>▸</span><span>"
+        "<b>175</b> constituency and <b>1,378</b> mandal vision plans</span></div>"
+        "<div class='sb-item'><span class='sb-dot'>▸</span><span>"
+        "Official DDP and GSVA methodology guidelines</span></div>"
+        "<div class='sb-item'><span class='sb-dot'>▸</span><span>"
+        "Sector case studies and training material</span></div>",
+        unsafe_allow_html=True)
+
+    st.markdown("<div class='sb-title'>How to read answers</div>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='sb-item'><span class='sb-dot'>▸</span><span>"
+        "Every answer cites the source file it drew from</span></div>"
+        "<div class='sb-item'><span class='sb-dot'>▸</span><span>"
+        "If a figure is not in the corpus, it says so rather than guessing</span></div>",
+        unsafe_allow_html=True)
+    st.markdown(
+        "<div class='sb-note'><b>Reliability.</b> Numeric lookups are reliable. "
+        "Open-ended interpretive questions are weaker and can vary between asks, "
+        "so verify anything you plan to quote.</div>",
+        unsafe_allow_html=True)
+
+    st.markdown("<div class='sb-title'>Build</div>", unsafe_allow_html=True)
+    st.markdown(
+        f"<span class='sb-pill'>{os.environ.get('GEMINI_MODEL','model') if os.environ.get('LLM_PROVIDER')=='gemini' else os.environ.get('LLM_PROVIDER','model')}</span> "
+        "<span class='sb-pill'>voyage-4-nano</span> <span class='sb-pill'>prototype</span>",
+        unsafe_allow_html=True)
 
 # welcome screen with starter questions (only before the first message)
 if not st.session_state.messages:
-    st.markdown("<div class='sa-sub' style='margin-top:18px;font-weight:500;color:var(--ink)'>Try asking</div>",
-                unsafe_allow_html=True)
-    cols = st.columns(2)
-    for i, ex in enumerate(EXAMPLES):
-        if cols[i % 2].button(ex, key=f"ex{i}", use_container_width=True):
-            st.session_state.pending = ex
-            st.rerun()
+    st.markdown(
+        "<div class='sa-stats'>"
+        "<div class='sa-stat'><div class='v'>59,388</div><div class='k'>indexed chunks</div></div>"
+        "<div class='sa-stat'><div class='v'>28</div><div class='k'>districts</div></div>"
+        "<div class='sa-stat'><div class='v'>175</div><div class='k'>constituencies</div></div>"
+        "<div class='sa-stat'><div class='v'>1,378</div><div class='k'>vision documents</div></div>"
+        "</div>",
+        unsafe_allow_html=True)
+
+    n = 0
+    for title, blurb, prompts in EXAMPLE_GROUPS:
+        st.markdown(f"<div class='sa-label'>{title} <span>· {blurb}</span></div>",
+                    unsafe_allow_html=True)
+        cols = st.columns(2)
+        for j, ex in enumerate(prompts):
+            if cols[j].button(ex, key=f"ex{n}", use_container_width=True):
+                st.session_state.pending = ex
+                st.rerun()
+            n += 1
 
 # replay history
 for msg in st.session_state.messages:
@@ -545,7 +670,7 @@ def handle_query(user_input):
     )
 
     with st.chat_message("assistant"):
-        with st.spinner("Searching the corpus…"):
+        with st.spinner("Searching the corpus and drafting an answer…"):
             try:
                 answer = call_llm(llm_messages)
             except KeyError as e:

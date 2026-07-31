@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Dr.B.R.Ambedkar Konaseema (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Mining & Quarrying: 19.46% of district GVA, Rs. 6,609.00 Cr., statewide rank 1
   - Fishing & Aquaculture: 5.74% of district GVA, Rs. 8,780.72 Cr., statewide rank 6
   - Horticulture: 3.27% of district GVA, Rs. 4,656.56 Cr., statewide rank 13
@@ -14,7 +14,7 @@ Fastest-growing sectors in Dr.B.R.Ambedkar Konaseema (2025-26 (FAE) YoY):
   - Trade,Hotel & Restaurants: 15.22% growth, Rs. 2,241.22 Cr.
   - Banking & Insurance: 14.75% growth, Rs. 1,828.00 Cr.
 
-Best statewide ranks (sectors where Dr.B.R.Ambedkar Konaseema leads other districts):
+Statewide rank comparison for Dr.B.R.Ambedkar Konaseema -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Mining & Quarrying: rank 1 of 28, Rs. 6,609.00 Cr.
   - Fishing & Aquaculture: rank 6 of 28, Rs. 8,780.72 Cr.
   - Horticulture: rank 13 of 28, Rs. 4,656.56 Cr.

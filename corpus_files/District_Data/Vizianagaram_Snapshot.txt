@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Vizianagaram (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Public Admn.: 3.96% of district GVA, Rs. 2,374.29 Cr., statewide rank 10
   - Live stock: 3.83% of district GVA, Rs. 6,752.00 Cr., statewide rank 14
   - Agriculture: 3.61% of district GVA, Rs. 2,071.07 Cr., statewide rank 14
@@ -14,7 +14,7 @@ Fastest-growing sectors in Vizianagaram (2025-26 (FAE) YoY):
   - Communications: 17.32% growth, Rs. 1,165.00 Cr.
   - Banking & Insurance: 16.16% growth, Rs. 1,905.00 Cr.
 
-Best statewide ranks (sectors where Vizianagaram leads other districts):
+Statewide rank comparison for Vizianagaram -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Railways: rank 8 of 28, Rs. 313.00 Cr.
   - Public Admn.: rank 10 of 28, Rs. 2,374.29 Cr.
   - Mining & Quarrying: rank 13 of 28, Rs. 892.00 Cr.

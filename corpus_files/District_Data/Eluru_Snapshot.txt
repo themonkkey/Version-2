@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Eluru (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Fishing & Aquaculture: 20.45% of district GVA, Rs. 31,287.74 Cr., statewide rank 2
   - AGRICULTURE & ALLIED SECTOR: 9.91% of district GVA, Rs. 53,448.34 Cr., statewide rank 1
   - Live stock: 6.43% of district GVA, Rs. 11,326.00 Cr., statewide rank 1
@@ -14,7 +14,7 @@ Fastest-growing sectors in Eluru (2025-26 (FAE) YoY):
   - Real est., Ownership of Dwellings: 14.31% growth, Rs. 5,120.32 Cr.
   - Fishing & Aquaculture: 13.82% growth, Rs. 31,287.74 Cr.
 
-Best statewide ranks (sectors where Eluru leads other districts):
+Statewide rank comparison for Eluru -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Live stock: rank 1 of 28, Rs. 11,326.00 Cr.
   - AGRICULTURE & ALLIED SECTOR: rank 1 of 28, Rs. 53,448.34 Cr.
   - Fishing & Aquaculture: rank 2 of 28, Rs. 31,287.74 Cr.

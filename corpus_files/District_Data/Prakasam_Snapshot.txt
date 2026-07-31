@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Prakasam (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Mining & Quarrying: 6.50% of district GVA, Rs. 2,207.00 Cr., statewide rank 6
   - Live stock: 4.77% of district GVA, Rs. 8,399.00 Cr., statewide rank 7
   - Agriculture: 3.45% of district GVA, Rs. 1,980.34 Cr., statewide rank 15
@@ -14,7 +14,7 @@ Fastest-growing sectors in Prakasam (2025-26 (FAE) YoY):
   - Other Services: 16.48% growth, Rs. 4,261.19 Cr.
   - Banking & Insurance: 16.35% growth, Rs. 2,555.00 Cr.
 
-Best statewide ranks (sectors where Prakasam leads other districts):
+Statewide rank comparison for Prakasam -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Mining & Quarrying: rank 6 of 28, Rs. 2,207.00 Cr.
   - Live stock: rank 7 of 28, Rs. 8,399.00 Cr.
   - Fishing & Aquaculture: rank 8 of 28, Rs. 3,213.55 Cr.

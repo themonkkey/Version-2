@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Alluri Seetha Rama Raju (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Horticulture: 6.22% of district GVA, Rs. 8,875.16 Cr., statewide rank 4
   - Forestry & Logging: 4.55% of district GVA, Rs. 469.26 Cr., statewide rank 9
   - AGRICULTURE & ALLIED SECTOR: 2.16% of district GVA, Rs. 11,630.49 Cr., statewide rank 22
@@ -14,7 +14,7 @@ Fastest-growing sectors in Alluri Seetha Rama Raju (2025-26 (FAE) YoY):
   - Real est., Ownership of Dwellings: 14.95% growth, Rs. 883.90 Cr.
   - Transport by Other means & Storage: 12.78% growth, Rs. 299.54 Cr.
 
-Best statewide ranks (sectors where Alluri Seetha Rama Raju leads other districts):
+Statewide rank comparison for Alluri Seetha Rama Raju -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Horticulture: rank 4 of 28, Rs. 8,875.16 Cr.
   - Forestry & Logging: rank 9 of 28, Rs. 469.26 Cr.
   - Railways: rank 20 of 28, Rs. 74.00 Cr.

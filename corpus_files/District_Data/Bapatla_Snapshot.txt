@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Bapatla (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Fishing & Aquaculture: 9.19% of district GVA, Rs. 14,053.90 Cr., statewide rank 4
   - Agriculture: 7.60% of district GVA, Rs. 4,361.70 Cr., statewide rank 2
   - AGRICULTURE & ALLIED SECTOR: 4.66% of district GVA, Rs. 25,154.55 Cr., statewide rank 6
@@ -14,7 +14,7 @@ Fastest-growing sectors in Bapatla (2025-26 (FAE) YoY):
   - Agriculture: 31.58% growth, Rs. 4,361.70 Cr.
   - Fishing & Aquaculture: 24.03% growth, Rs. 14,053.90 Cr.
 
-Best statewide ranks (sectors where Bapatla leads other districts):
+Statewide rank comparison for Bapatla -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Agriculture: rank 2 of 28, Rs. 4,361.70 Cr.
   - Fishing & Aquaculture: rank 4 of 28, Rs. 14,053.90 Cr.
   - AGRICULTURE & ALLIED SECTOR: rank 6 of 28, Rs. 25,154.55 Cr.

@@ -87,9 +87,25 @@ def retrieve_for(q):
     return df, hits, ctx
 
 def bot_answer(q, hits):
-    """Answer via Claude (CLI) powering the chatbot — same system prompt + context
-    the production app uses, just a different generation model."""
+    """Answer with the same system prompt + context the production app uses.
+
+    BOT_MODEL selects the answerer:
+      groq | gemini -> app.call_llm(), i.e. the REAL production code path
+      anything else -> `claude -p --model <name>` (haiku/sonnet/opus via the CLI)
+
+    This used to shell out to the Claude CLI unconditionally, so passing "groq"
+    ran `claude -p --model groq` -- a model that does not exist. Every answer came
+    back as a CLI error string and scored 0, which looks exactly like a catastrophic
+    model failure rather than a harness bug.
+    """
     block = app.build_context_block(hits)
+    if BOT_MODEL in ("groq", "gemini"):
+        os.environ["LLM_PROVIDER"] = BOT_MODEL
+        messages = [{"role": "system", "content": app.SYSTEM_PROMPT},
+                    {"role": "user",
+                     "content": f"CONTEXT:\n{block}\n\nQUESTION: {q}\n\n"
+                                f"Answer, citing the source file:"}]
+        return app.call_llm(messages).strip()
     prompt = (f"{app.SYSTEM_PROMPT}\n\nCONTEXT:\n{block}\n\nQUESTION: {q}\n\n"
               f"Answer, citing the source file:")
     r = subprocess.run(["claude", "-p", "--model", BOT_MODEL], input=prompt,

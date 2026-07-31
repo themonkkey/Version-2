@@ -160,7 +160,13 @@ def write_district_snapshot(district, sector_rows):
 
     lines = [f"District Economic Profile Snapshot: {district.title()} (latest year: {latest_year})", ""]
 
-    lines.append("Top sectors by contribution to district GVA (comparative advantage):")
+    # Two sections below list the SAME sectors in different orders (by share vs by rank).
+    # Before this was disambiguated, models answering "which sectors give X its strongest
+    # comparative advantage" frequently returned the rank-ordered list's top three instead.
+    # Every wrong answer in the 2026-07-30 four-model bake-off was that confusion.
+    lines.append("Top sectors by contribution to district GVA (comparative advantage), "
+                 "ordered by share of district GVA -- THIS is the district's comparative "
+                 "advantage ranking:")
     for label, d, _ in by_contribution[:5]:
         lines.append(
             f"  - {label}: {fmt_num(d['contribution_pct'])}% of district GVA, "
@@ -173,7 +179,9 @@ def write_district_snapshot(district, sector_rows):
         lines.append(f"  - {label}: {fmt_num(d['growth_pct'])}% growth, Rs. {fmt_num(d['value'])} Cr.")
     lines.append("")
 
-    lines.append(f"Best statewide ranks (sectors where {district.title()} leads other districts):")
+    lines.append(f"Statewide rank comparison for {district.title()} -- the same sectors "
+                 f"re-ordered by rank among 28 districts. NOT the comparative-advantage "
+                 f"ordering; use the section above for that:")
     for label, d, _ in by_rank[:5]:
         lines.append(f"  - {label}: rank {d['rank']} of 28, Rs. {fmt_num(d['value'])} Cr.")
     lines.append("")

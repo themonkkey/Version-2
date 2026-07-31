@@ -1,6 +1,6 @@
 District Economic Profile Snapshot: Kakinada (latest year: 2025-26 (FAE))
 
-Top sectors by contribution to district GVA (comparative advantage):
+Top sectors by contribution to district GVA (comparative advantage), ordered by share of district GVA -- THIS is the district's comparative advantage ranking:
   - Mining & Quarrying: 10.69% of district GVA, Rs. 3,630.00 Cr., statewide rank 2
   - Manufacturing: 4.88% of district GVA, Rs. 8,596.80 Cr., statewide rank 6
   - Fishing & Aquaculture: 4.86% of district GVA, Rs. 7,435.38 Cr., statewide rank 7
@@ -14,7 +14,7 @@ Fastest-growing sectors in Kakinada (2025-26 (FAE) YoY):
   - Communications: 17.34% growth, Rs. 1,570.00 Cr.
   - Banking & Insurance: 16.10% growth, Rs. 3,302.00 Cr.
 
-Best statewide ranks (sectors where Kakinada leads other districts):
+Statewide rank comparison for Kakinada -- the same sectors re-ordered by rank among 28 districts. NOT the comparative-advantage ordering; use the section above for that:
   - Mining & Quarrying: rank 2 of 28, Rs. 3,630.00 Cr.
   - Manufacturing: rank 6 of 28, Rs. 8,596.80 Cr.
   - Trade,Hotel & Restaurants: rank 6 of 28, Rs. 5,103.20 Cr.
