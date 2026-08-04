@@ -1,0 +1,35 @@
+<svg width="460" height="340" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="460" height="340" fill="#E5E5E5"/>
+<g id="sc3-three-approaches">
+<rect width="460" height="340" fill="#0E4A3C"/>
+<g id="node-state">
+<rect x="140" y="44" width="180" height="54" rx="13" fill="white" fill-opacity="0.14"/>
+<rect x="140.5" y="44.5" width="179" height="53" rx="12.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g id="node-district-0">
+<rect x="42" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="42.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g id="node-district-1">
+<rect x="120" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="120.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g id="node-district-2">
+<rect x="198" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="198.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g id="node-district-3">
+<rect x="276" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="276.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g id="node-district-4">
+<rect x="354" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="354.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<path id="flow-0" d="M230 104C230 171 74 171 74 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<path id="flow-1" d="M230 104C230 171 152 171 152 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<path id="flow-2" d="M230 104C230 171 230 171 230 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<path id="flow-3" d="M230 104C230 171 308 171 308 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<path id="flow-4" d="M230 104C230 171 386 171 386 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+</g>
+</svg>

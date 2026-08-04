@@ -1,0 +1,25 @@
+<svg width="460" height="340" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="460" height="340" fill="#E5E5E5"/>
+<g id="sc4-formula-chain">
+<rect width="460" height="340" fill="#0E4A3C"/>
+<g id="term-t1">
+<rect x="80" y="52" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="52.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle id="chain-dot-0" cx="230" cy="117" r="3" fill="white" fill-opacity="0.3"/>
+<g id="term-t2">
+<rect x="80" y="128" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="128.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle id="chain-dot-1" cx="230" cy="193" r="3" fill="white" fill-opacity="0.3"/>
+<g id="term-t3">
+<rect x="80" y="204" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="204.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle id="chain-dot-2" cx="230" cy="269" r="3" fill="white" fill-opacity="0.3"/>
+<g id="term-t4">
+<rect x="80" y="280" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="280.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+</g>
+</svg>

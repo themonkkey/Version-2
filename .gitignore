@@ -40,6 +40,7 @@ voyage_out_512/
 keys.md
 KEYS.md
 *.bak
+*.bak.*
 *.broken
 .env.bak.*
 app.py.bak.*

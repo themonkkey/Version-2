@@ -4,174 +4,681 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Swarna Andhra GVA Assistant</title>
+<meta name="description" content="Ask about GDP, GSDP and GVA for Andhra Pradesh. An AI assistant trained on official DDP guidelines, GSVA estimates, and the vision plans of every district, constituency, and mandal in the state — every answer cites its source.">
+<meta name="theme-color" content="#0E4A3C">
+
+<!-- update og:url / twitter's implicit url once this sits on a permanent domain -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://landing-lac-psi-72.vercel.app/">
+<meta property="og:title" content="Swarna Andhra GVA Assistant">
+<meta property="og:description" content="Ask about GDP, GSDP and GVA for Andhra Pradesh. Every answer cites its source in the official DDP and GSVA material.">
+<meta property="og:image" content="og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Swarna Andhra GVA Assistant">
+<meta name="twitter:description" content="Ask about GDP, GSDP and GVA for Andhra Pradesh — every answer cites its source.">
+<meta name="twitter:image" content="og-image.jpg">
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+
+<!-- Bodoni Moda: a real Bodoni/Didone revival for headlines — the same lineage
+     as the serifs on actual fashion mastheads, used here for editorial
+     weight without being decorative. Public Sans: the clean, institutional
+     sans (originally built for USWDS) for body copy and UI chrome, standing
+     in for the generic system-font stack every AI-built page defaults to. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.4.0/dist/tabler-icons.min.css">
 <style>
 :root{
-  --bg:#F4F7F4; --bg2:#FFFFFF; --bg3:#EAF1EC; --line:rgba(0,0,0,.10);
-  --neon:#01EF6C; --neon-dim:#0BCB60; --text:#16211C; --muted:#5B6B64;
-  --green:#0A8F45;
-  --maxw:1280px; --pad-x:clamp(18px,4vw,64px);
+  --bg:#EEF1F0;
+  --label:#000000; --label-2:#3C3C43A6; --label-3:#3C3C4360;
+  --green:#248A3D; --green-v:#34C759; --green-deep:#2FA84F;
+  --glass:rgba(255,255,255,.62);
+  --glass-strong:rgba(255,255,255,.78);
+  --glass-border:rgba(255,255,255,.75);
+  --blur:blur(28px) saturate(180%);
+  --neu-out:-7px -7px 16px rgba(255,255,255,.75), 7px 7px 18px rgba(163,177,198,.35);
+  --neu-in:inset 3px 3px 7px rgba(163,177,198,.28), inset -3px -3px 7px rgba(255,255,255,.7);
+  --hair:rgba(60,60,67,.10);
+  /* dark stage — illustration ground the hero glass floats on */
+  --ink:#0E4A3C; --ink-2:#0B2E20; --lime:#C6FF6A; --teal:#127C67;
+  --r:18px; --r-lg:24px;
+  --maxw:1180px; --pad-x:clamp(20px,5vw,56px);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;}
+body{
+  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--label);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  letter-spacing:-.011em;position:relative;min-height:100vh;}
+
+/* soft green mesh — same layer the assistant uses, so the two pages share a ground */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(760px 660px at 4% 2%, rgba(52,199,89,.26), transparent 64%),
+    radial-gradient(700px 620px at 98% 10%, rgba(48,209,88,.16), transparent 64%),
+    radial-gradient(820px 680px at 50% 100%, rgba(52,199,89,.13), transparent 64%),
+    radial-gradient(600px 560px at 88% 92%, rgba(100,210,180,.14), transparent 64%);}
+body > *{position:relative;z-index:1;}
+
 .wrap{max-width:var(--maxw);margin:0 auto;}
 img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
-.mono{font-family:'JetBrains Mono',monospace;}
-h1,h2,h3{font-family:'JetBrains Mono',monospace;font-weight:800;letter-spacing:-.01em;line-height:1.02;text-transform:uppercase;}
+h1,h2,h3,h4{font-weight:600;letter-spacing:-.024em;line-height:1.12;color:var(--label);}
+/* display serif for real headlines; h4 stays in Public Sans — Bodoni's thin
+   hairlines get fragile at the small sizes h4 is used at (card titles) */
+h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
+.num{font-variant-numeric:tabular-nums;}
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:50;background:rgba(244,247,244,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
-.nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px var(--pad-x);}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand-logo-wrap{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 9px;display:flex;align-items:center;}
-.brand-logo{height:clamp(26px,3.4vw,34px);width:auto;}
-.brand-tag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
-.navlinks{display:flex;gap:clamp(14px,2vw,28px);align-items:center;}
-.navlinks .nl{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;padding:6px 0;transition:color .12s;}
-.navlinks .nl:hover,.navlinks .nl.active{color:var(--text);}
-.navlinks .nl.active{color:var(--green);}
-.btn-neon{font-family:'JetBrains Mono',monospace;background:var(--neon);color:#06130B;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:10px 18px;border:none;border-radius:6px;cursor:pointer;transition:background .12s,transform .12s;}
-.btn-neon:hover{background:#3BFF8C;transform:translateY(-1px);}
-.hamburger{display:none;background:none;border:none;font-size:26px;color:var(--text);cursor:pointer;}
+/* ---------- NAV ---------- */
+/* Every page opens straight into a dark vstage (hero / handloom / ledger /
+   isometric), so the nav sits permanently on the dark system too — same
+   fix as the footer, no light-glass seam at the top of any page. */
+.nav{position:sticky;top:0;z-index:50;
+  background:rgba(11,46,32,.62);
+  backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);
+  border-bottom:1px solid rgba(255,255,255,.14);
+  box-shadow:0 1px 24px rgba(0,0,0,.18);}
+.nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:11px var(--pad-x);}
+.brand{display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;}
+.brand-logo-wrap{background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);
+  border-radius:11px;padding:5px 8px;display:flex;align-items:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.18);}
+.brand-logo{height:clamp(24px,3vw,30px);width:auto;}
+.brand-tag{font-size:13.5px;font-weight:700;color:#FFF;letter-spacing:-.012em;white-space:nowrap;}
+.navlinks{display:flex;gap:clamp(4px,1vw,10px);align-items:center;}
+.navlinks .nl{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.68);cursor:pointer;
+  background:none;border:none;padding:7px 12px;border-radius:10px;letter-spacing:-.01em;
+  transition:color .18s,background .18s;}
+.navlinks .nl:hover{color:#FFF;background:rgba(255,255,255,.12);}
+.navlinks .nl.active{color:var(--lime);background:rgba(198,255,106,.14);font-weight:700;}
+.hamburger{display:none;background:none;border:none;font-size:23px;color:#FFF;cursor:pointer;padding:4px 6px;}
 
-.btn-ghost{font-family:'JetBrains Mono',monospace;background:transparent;color:var(--text);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:13px 22px;border:1px solid var(--line);border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:border-color .12s,background .12s;}
-.btn-ghost:hover{border-color:var(--green);background:rgba(1,239,108,.06);}
-.btn-primary{font-family:'JetBrains Mono',monospace;background:var(--neon);color:#06130B;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:14px 24px;border:none;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:background .12s,transform .12s;}
-.btn-primary:hover{background:#3BFF8C;transform:translateY(-1px);}
+/* ---------- BUTTONS ---------- */
+.btn-primary{font-family:inherit;font-size:14px;font-weight:600;letter-spacing:-.012em;
+  background:linear-gradient(150deg,#4CD964,var(--green-deep));color:#FFF;
+  padding:12px 22px;border:none;border-radius:980px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;
+  box-shadow:0 6px 18px rgba(52,199,89,.34), inset 0 1px 0 rgba(255,255,255,.4);
+  transition:transform .18s cubic-bezier(.4,0,.2,1),box-shadow .18s;}
+.btn-primary:hover{transform:translateY(-1.5px);box-shadow:0 9px 24px rgba(52,199,89,.4), inset 0 1px 0 rgba(255,255,255,.45);}
+.btn-primary:active{transform:translateY(0);box-shadow:0 3px 10px rgba(52,199,89,.3);}
+.btn-nav{font-size:13px;padding:9px 17px;}
+.btn-ghost{font-family:inherit;font-size:14px;font-weight:500;letter-spacing:-.012em;
+  background:var(--glass);color:var(--label);
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  padding:12px 22px;border:1px solid var(--glass-border);border-radius:980px;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;box-shadow:var(--neu-out);
+  transition:transform .18s cubic-bezier(.4,0,.2,1),box-shadow .18s;}
+.btn-ghost:hover{transform:translateY(-1.5px);
+  box-shadow:-9px -9px 20px rgba(255,255,255,.8),9px 9px 22px rgba(163,177,198,.4);}
+.btn-ghost:active{transform:translateY(0);box-shadow:var(--neu-in);}
 
 .page{display:none;}
 .page.active{display:block;}
 
-/* HERO */
-.hero{position:relative;padding:clamp(56px,10vw,120px) var(--pad-x) clamp(40px,6vw,72px);overflow:hidden;border-bottom:1px solid var(--line);}
-.hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(0,0,0,.05) 1px,transparent 0);background-size:34px 34px;pointer-events:none;}
-.hero::after{content:'';position:absolute;right:-140px;top:-120px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(1,239,108,.12),transparent 70%);pointer-events:none;}
-.hero-content{position:relative;max-width:920px;}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:clamp(11px,1.4vw,13px);color:var(--green);letter-spacing:.12em;text-transform:uppercase;margin-bottom:clamp(18px,2.5vw,28px);}
-.hero h1{font-size:clamp(34px,7vw,76px);color:var(--text);}
-.hero h1 span{color:var(--green);}
-.hero p{font-family:'Inter';font-size:clamp(14px,1.7vw,18px);color:var(--muted);line-height:1.6;max-width:600px;margin-top:clamp(20px,3vw,30px);font-weight:300;}
-.hero-cta{display:flex;gap:14px;margin-top:clamp(28px,4vw,40px);flex-wrap:wrap;}
+/* ---------- AMBIENT VIDEO LAYER ----------
+   A slow loop sits behind the content; a frosted scrim over it is what makes
+   the glass read as glass. Until the mp4s exist, .amb-fallback drifts a
+   gradient in the same colours so the layer is never empty or broken. */
+.amb{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;
+  border-radius:inherit;}
+/* .narr's OWN ambient layer (its direct-child .amb, mounted on the outer
+   scroll body) is a special case: that container spans the whole four-chapter
+   scroll — thousands of px tall. Left as position:absolute, the video would
+   have to stretch to cover that entire height, blowing a single 720p loop up
+   many times over into one static, pixelated crop. Pin it to the viewport
+   instead, exactly like a fixed background-attachment, so it always renders
+   at natural size no matter how tall the scroll gets. The nested narr-open /
+   narr-close sections keep the normal absolute behaviour — they're each one
+   viewport tall, so covering them correctly is not a problem. */
+.narr > .amb{position:fixed;}
+.amb video{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  min-width:100%;min-height:100%;width:auto;height:auto;object-fit:cover;
+  opacity:0;transition:opacity 1.2s ease;}
+.amb video.ready{opacity:1;}
+/* the fallback is a later sibling, so it paints over the video — retire it
+   once the loop is actually playing, or the footage never shows */
+.amb video.ready ~ .amb-fallback{opacity:0;}
+.amb-fallback{transition:opacity 1.2s ease;}
+.amb-fallback{position:absolute;inset:-30%;background:var(--ink);}
+.amb-fallback::after{content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(closest-side, rgba(198,255,106,.30), transparent 70%) 14% 20%/54% 54% no-repeat,
+    radial-gradient(closest-side, rgba(18,124,103,.75), transparent 70%) 82% 14%/56% 56% no-repeat,
+    radial-gradient(closest-side, rgba(52,199,89,.42), transparent 70%) 64% 86%/58% 58% no-repeat,
+    radial-gradient(closest-side, rgba(11,46,32,.85), transparent 70%) 20% 80%/52% 52% no-repeat;
+  filter:blur(26px);
+  animation:ambDrift 34s ease-in-out infinite alternate;}
+@keyframes ambDrift{
+  0%  {transform:translate3d(0,0,0) scale(1);}
+  50% {transform:translate3d(2.5%,-2%,0) scale(1.07);}
+  100%{transform:translate3d(-2%,2.5%,0) scale(1.03);}
+}
+/* deep-green wash over the motion: saturates it and guarantees white text
+   contrast, while leaving enough of the footage visible to be worth having */
+.amb-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(11,46,32,.72) 0%, rgba(11,46,32,.62) 45%, rgba(11,46,32,.80) 100%),
+    radial-gradient(120% 90% at 78% 8%, rgba(52,199,89,.30), transparent 62%);}
 
-/* STATS */
-.stats{padding:clamp(28px,4vw,44px) var(--pad-x);}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-.stat{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:clamp(20px,2.5vw,30px);transition:border-color .15s;}
-.stat:hover{border-color:var(--green);}
-.stat.hl{background:var(--neon);}
-.stat .n{font-family:'JetBrains Mono',monospace;font-size:clamp(28px,4vw,46px);font-weight:800;color:var(--green);line-height:1;letter-spacing:-.02em;}
-.stat.hl .n{color:#06130B;}
-.stat .lbl{font-family:'JetBrains Mono',monospace;font-size:clamp(10px,1.2vw,12px);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:10px;}
-.stat.hl .lbl{color:rgba(6,19,11,.7);}
+@media (prefers-reduced-motion:reduce){
+  .amb-fallback{animation:none;}
+}
 
-/* SECTION */
-.section{padding:clamp(48px,7vw,96px) var(--pad-x);}
-.sec-head{margin-bottom:clamp(28px,4vw,44px);max-width:760px;}
-.sec-head .kick{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green);letter-spacing:.12em;text-transform:uppercase;}
-.sec-head h2{font-size:clamp(26px,4.5vw,46px);color:var(--text);margin-top:12px;}
-.sec-head p{font-family:'Inter';font-size:clamp(14px,1.6vw,17px);color:var(--muted);line-height:1.7;margin-top:16px;font-weight:300;}
+/* ==========================================================================
+   VIDEO STAGE — any section can become one with data-vid="<loop>".
+   The script injects the video, fallback and scrim; these rules flip the
+   section's content to the dark-glass treatment so it reads over footage.
+   ========================================================================== */
+.vstage{position:relative;overflow:hidden;background:var(--ink);color:#FFF;}
+.vstage > .wrap,.vstage > .amb ~ *{position:relative;z-index:1;}
+.vstage h2,.vstage h3,.vstage h4,.vstage .sec-head h2{color:#FFF;}
+.vstage .sec-head .kick{color:var(--lime);}
+.vstage .sec-head p,.vstage .prose p,.vstage .prose li{color:rgba(255,255,255,.75);}
+.vstage .prose h3{color:#FFF;}
+.vstage .prose strong{color:#FFF;}
+.vstage .prose li::before{background:var(--lime);}
 
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
-.fcard{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:clamp(22px,3vw,30px);transition:border-color .15s,transform .15s;}
-.fcard:hover{border-color:var(--green);transform:translateY(-3px);}
-.fnum{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green);letter-spacing:.08em;}
-.fcard h4{font-family:'JetBrains Mono',monospace;font-size:clamp(15px,1.8vw,18px);font-weight:700;text-transform:uppercase;color:var(--text);margin:16px 0 8px;letter-spacing:-.01em;}
-.fcard p{font-family:'Inter';font-size:clamp(13px,1.4vw,14px);color:var(--muted);line-height:1.6;font-weight:300;}
+/* glass panels on a dark stage — Apple/Samsung style: low-alpha white,
+   heavy blur, a bright top edge and a soft outer shadow */
+.vstage .fcard,.vstage .acard,
+/* the night port/road loop is worth seeing, not just frosting over — a
+   lighter blur than the standard vstage glass so the lights and lane
+   lines stay legible through the map/panel cards */
+#page-districts .map-box,#page-districts .panel{
+  backdrop-filter:blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter:blur(14px) saturate(160%) !important;
+  background:rgba(255,255,255,.07) !important;}
 
-/* prose */
-.prose{max-width:820px;}
-.prose p{font-family:'Inter';font-size:clamp(14px,1.6vw,16px);line-height:1.8;color:#3f4d47;margin-bottom:18px;font-weight:300;}
-.prose h3{font-size:clamp(16px,2.2vw,22px);color:var(--green);margin:34px 0 14px;}
-.prose ul{margin:0 0 18px;padding-left:20px;}
-.prose li{font-family:'Inter';font-size:clamp(14px,1.6vw,16px);line-height:1.75;color:#3f4d47;margin-bottom:9px;font-weight:300;}
-.prose strong{color:var(--text);font-weight:600;}
-.formula{background:var(--bg2);border-left:2px solid var(--neon);padding:14px 18px;border-radius:0 8px 8px 0;font-family:'JetBrains Mono',monospace;font-size:clamp(12px,1.5vw,14px);color:var(--green);margin-bottom:16px;}
-.approach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:8px 0 24px;}
-.acard{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:22px;}
-.acard .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.06em;}
-.acard h4{font-family:'JetBrains Mono',monospace;font-size:16px;text-transform:uppercase;color:var(--text);margin:10px 0 8px;}
-.acard p{font-family:'Inter';font-size:13px;color:var(--muted);line-height:1.6;font-weight:300;}
+.vstage .map-box,.vstage .panel,.vstage .formula{
+  background:rgba(255,255,255,.10);
+  backdrop-filter:blur(30px) saturate(170%);
+  -webkit-backdrop-filter:blur(30px) saturate(170%);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 16px 44px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.28);}
+.vstage .fcard:hover{transform:translateY(-3px);background:rgba(255,255,255,.15);
+  box-shadow:0 22px 54px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.32);}
+.vstage .fcard p,.vstage .acard p{color:rgba(255,255,255,.72);}
+/* card titles carry the accent — lime reads clearly on the dark glass and
+   ties the cards to the buttons and section kickers */
+.vstage .fcard h4,.vstage .acard h4{color:var(--lime);font-weight:700;}
+.vstage .ficon{background:rgba(198,255,106,.18);}
+.vstage .ficon i{color:var(--lime);}
+.vstage .acard .tag{background:rgba(198,255,106,.18);color:var(--lime);}
+.vstage .formula{color:var(--lime);}
+.vstage .btn-ghost{background:rgba(255,255,255,.14);color:#FFF;
+  border:1px solid rgba(255,255,255,.26);
+  box-shadow:0 10px 28px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.26);}
+.vstage .btn-primary{background:var(--lime);color:#08301C;
+  box-shadow:0 10px 30px rgba(198,255,106,.3), inset 0 1px 0 rgba(255,255,255,.45);}
 
-/* CTA */
-.cta-wrap{padding:0 var(--pad-x) clamp(40px,6vw,72px);}
-.cta{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:clamp(32px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;position:relative;overflow:hidden;}
-.cta::after{content:'';position:absolute;left:-80px;bottom:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(1,239,108,.1),transparent 70%);}
-.cta h3{position:relative;font-size:clamp(22px,3.4vw,34px);color:var(--text);max-width:520px;}
-.cta h3 span{color:var(--green);}
+/* districts panel on a stage */
+.vstage .metric{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16);}
+.vstage .metric .ml{color:rgba(255,255,255,.66);}
+.vstage .metric .mv{color:#FFF;}
+.vstage .metric .mv small{color:var(--lime);}
+.vstage .panel h3{color:#FFF;}
+.vstage .panel .sub,.vstage .panel h5{color:rgba(255,255,255,.6);}
+.vstage .sector-row{border-bottom-color:rgba(255,255,255,.12);}
+.vstage .sector-row .sn{color:rgba(255,255,255,.9);}
+.vstage .sector-row .sc{color:var(--lime);}
+.vstage .bar{background:rgba(255,255,255,.14);}
+.vstage .panel-empty,.vstage .panel-empty i{color:rgba(255,255,255,.5);}
+.vstage .map-hint{color:rgba(255,255,255,.5);}
+.vstage #ap-map path{fill:rgba(255,255,255,.16);stroke:rgba(255,255,255,.30);}
+.vstage #ap-map path:hover{fill:rgba(198,255,106,.55);}
+.vstage #ap-map path.selected{fill:var(--lime);stroke:#FFF;}
+.vstage .ask-link{background:rgba(198,255,106,.16);color:var(--lime);}
+.vstage .ask-link:hover{background:rgba(198,255,106,.26);}
+.vstage .sa-foot,.vstage .f-note{color:rgba(255,255,255,.45);}
 
-/* FOOTER */
-.footer{border-top:1px solid var(--line);}
-.footer-inner{max-width:var(--maxw);margin:0 auto;padding:24px var(--pad-x);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-.f-brand{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
-.f-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:#5c6f68;letter-spacing:.04em;}
+/* ---------- HERO (dark video stage) ---------- */
+.hero{position:relative;overflow:hidden;background:var(--ink);
+  padding:clamp(64px,11vw,120px) var(--pad-x) clamp(56px,8vw,92px);}
+.hero-content{position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center;}
+.hero .hero-mark{background:rgba(255,255,255,.14);
+  backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 12px 34px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.35);}
+.hero .hero-mark i{color:#FFF;}
+.hero .eyebrow{color:#D8FBE4;background:rgba(255,255,255,.13);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.22);}
+.hero h1{color:#FFF;text-shadow:0 2px 24px rgba(0,0,0,.22);}
+.hero h1 span{color:var(--lime);}
+.hero p{color:rgba(255,255,255,.80);}
+/* buttons on the dark stage */
+.hero .btn-ghost{background:rgba(255,255,255,.14);color:#FFF;
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 10px 28px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.28);}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.2);
+  box-shadow:0 14px 34px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.32);}
+.hero .btn-primary{background:var(--lime);color:#08301C;
+  box-shadow:0 10px 30px rgba(198,255,106,.32), inset 0 1px 0 rgba(255,255,255,.45);}
+.hero .btn-primary:hover{box-shadow:0 14px 38px rgba(198,255,106,.4), inset 0 1px 0 rgba(255,255,255,.5);}
 
-/* DISTRICTS MAP */
-.map-layout{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(20px,3vw,36px);align-items:start;}
-.map-box{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:clamp(14px,2vw,22px);}
+/* glass stat tiles floating on the dark stage */
+.hero-stats{position:relative;z-index:1;max-width:var(--maxw);margin:clamp(38px,6vw,60px) auto 0;
+  display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:13px;}
+.gstat{background:rgba(255,255,255,.11);border-radius:20px;padding:clamp(16px,2vw,22px);
+  backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%);
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 14px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.30);
+  transition:transform .22s cubic-bezier(.4,0,.2,1),background .22s;}
+.gstat:hover{transform:translateY(-3px);background:rgba(255,255,255,.16);}
+.gstat .n{font-size:clamp(26px,3vw,36px);font-weight:700;color:#FFF;line-height:1;
+  letter-spacing:-.032em;font-variant-numeric:tabular-nums;}
+.gstat .n em{font-style:normal;font-size:.55em;font-weight:600;
+  color:var(--lime);margin-left:2px;letter-spacing:-.01em;}
+.gstat .lbl{font-size:13px;color:#FFF;margin-top:9px;font-weight:600;letter-spacing:-.012em;}
+.gstat .sub{font-size:11.5px;color:rgba(255,255,255,.58);margin-top:4px;line-height:1.4;}
+
+/* the tiles are questions — make that legible without shouting */
+button.gstat{font-family:inherit;text-align:left;cursor:pointer;
+  display:flex;flex-direction:column;width:100%;}
+button.gstat::after{content:"Ask this ↗";font-size:11px;font-weight:600;
+  color:var(--lime);opacity:0;margin-top:10px;letter-spacing:-.004em;
+  transition:opacity .22s ease;}
+button.gstat:hover::after,button.gstat:focus-visible::after{opacity:1;}
+button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
+.hero-mark{width:52px;height:52px;border-radius:16px;margin:0 auto 24px;
+  background:linear-gradient(150deg,#4CD964,var(--green-deep));
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 26px rgba(52,199,89,.36), inset 0 1px 0 rgba(255,255,255,.45);}
+.hero-mark i{font-size:25px;color:#FFF;}
+.eyebrow{display:inline-block;font-size:12.5px;font-weight:600;color:var(--green);
+  letter-spacing:-.006em;background:rgba(52,199,89,.12);
+  padding:6px 14px;border-radius:980px;margin-bottom:22px;}
+/* sizing only — colour for the dark stage is set in the hero block above */
+.hero h1{font-size:clamp(32px,5.6vw,58px);line-height:1.08;letter-spacing:-.028em;font-weight:600;}
+.hero p{font-size:clamp(15px,1.7vw,18px);line-height:1.55;
+  max-width:600px;margin:20px auto 0;font-weight:400;}
+.hero-cta{display:flex;gap:12px;margin-top:clamp(26px,4vw,36px);flex-wrap:wrap;justify-content:center;}
+
+/* ---------- STATS ---------- */
+.stats{padding:clamp(8px,2vw,20px) var(--pad-x) clamp(20px,3vw,32px);}
+/* auto-rows:1fr keeps both rows equal when the grid wraps to 2x2 and one
+   label runs to a second line */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:14px;}
+.stat{background:var(--glass);border-radius:var(--r);padding:clamp(18px,2.2vw,24px);
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s;
+  display:flex;flex-direction:column;}
+.stat:hover{transform:translateY(-3px);
+  box-shadow:-9px -9px 20px rgba(255,255,255,.8),9px 9px 24px rgba(163,177,198,.42), inset 0 1px 0 rgba(255,255,255,.9);}
+.stat .sicon{width:30px;height:30px;border-radius:9px;background:rgba(52,199,89,.13);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.stat .sicon i{font-size:16px;color:var(--green);}
+.stat .n{font-size:clamp(26px,3vw,34px);font-weight:700;color:var(--label);
+  line-height:1;letter-spacing:-.032em;font-variant-numeric:tabular-nums;}
+.stat .lbl{font-size:13.5px;color:var(--label);margin-top:9px;font-weight:600;letter-spacing:-.012em;}
+.stat .sub{font-size:12px;color:var(--label-3);margin-top:3px;font-weight:400;
+  letter-spacing:-.004em;line-height:1.35;}
+
+/* ---------- SECTION ---------- */
+.section{padding:clamp(40px,6vw,80px) var(--pad-x);}
+.sec-head{margin-bottom:clamp(24px,3.5vw,38px);max-width:720px;}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+.sec-head .kick{font-size:11px;font-weight:600;color:var(--label-3);
+  letter-spacing:.05em;text-transform:uppercase;}
+.sec-head h2{font-size:clamp(24px,3.6vw,38px);margin-top:11px;letter-spacing:-.026em;}
+.sec-head p{font-size:clamp(14.5px,1.6vw,17px);color:var(--label-2);line-height:1.6;margin-top:14px;font-weight:400;}
+
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;}
+
+/* centred invitation under the cards */
+.sec-cta{display:flex;flex-direction:column;align-items:center;text-align:center;
+  margin-top:clamp(36px,5.5vw,60px);}
+.sec-cta-h{font-size:clamp(20px,2.8vw,28px);color:#FFF;margin-bottom:20px;
+  letter-spacing:-.024em;}
+.btn-lg{font-size:15.5px;padding:16px 32px;}
+.btn-lg i{font-size:17px;}
+.sec-cta-note{font-size:12.5px;color:rgba(255,255,255,.55);margin-top:14px;
+  letter-spacing:-.006em;}
+/* a soft halo so the lime button holds its own over moving footage */
+.vstage .sec-cta .btn-primary{
+  box-shadow:0 12px 38px rgba(198,255,106,.36), 0 0 0 6px rgba(198,255,106,.10),
+             inset 0 1px 0 rgba(255,255,255,.45);}
+.vstage .sec-cta .btn-primary:hover{
+  box-shadow:0 16px 46px rgba(198,255,106,.44), 0 0 0 9px rgba(198,255,106,.13),
+             inset 0 1px 0 rgba(255,255,255,.5);}
+.fcard{background:var(--glass);border-radius:var(--r);padding:clamp(20px,2.6vw,28px);
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .2s cubic-bezier(.4,0,.2,1),box-shadow .2s;}
+.fcard:hover{transform:translateY(-3px);
+  box-shadow:-9px -9px 20px rgba(255,255,255,.8),9px 9px 24px rgba(163,177,198,.42), inset 0 1px 0 rgba(255,255,255,.9);}
+.ficon{width:36px;height:36px;border-radius:11px;background:rgba(52,199,89,.14);
+  display:flex;align-items:center;justify-content:center;margin-bottom:15px;}
+.ficon i{font-size:18px;color:var(--green);}
+.fcard h4{font-size:16px;font-weight:700;color:var(--green);margin-bottom:7px;letter-spacing:-.016em;}
+.fcard p{font-size:14px;color:var(--label-2);line-height:1.55;font-weight:400;}
+
+/* ---------- PROSE ---------- */
+.prose{max-width:760px;}
+.prose p{font-size:16px;line-height:1.7;color:var(--label-2);margin-bottom:16px;font-weight:400;}
+.prose h3{font-size:19px;color:var(--label);margin:32px 0 13px;font-weight:600;letter-spacing:-.02em;}
+.prose ul{margin:0 0 16px;padding-left:2px;list-style:none;}
+.prose li{font-size:16px;line-height:1.7;color:var(--label-2);margin-bottom:11px;font-weight:400;
+  padding-left:22px;position:relative;}
+.prose li::before{content:"";position:absolute;left:4px;top:10px;width:6px;height:6px;
+  border-radius:50%;background:var(--green-v);}
+.prose strong{color:var(--label);font-weight:600;}
+.formula{background:var(--glass);border-radius:14px;padding:14px 18px;margin-bottom:11px;
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);box-shadow:var(--neu-in);
+  font-size:14.5px;color:var(--green);font-weight:500;letter-spacing:-.008em;
+  font-variant-numeric:tabular-nums;}
+.approach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;margin:6px 0 24px;}
+.acard{background:var(--glass);border-radius:16px;padding:20px;
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.85);}
+.acard .tag{display:inline-block;font-size:11px;font-weight:600;color:var(--green);
+  background:rgba(52,199,89,.12);padding:4px 10px;border-radius:980px;letter-spacing:-.004em;}
+.acard h4{font-size:15.5px;color:var(--label);margin:11px 0 7px;font-weight:600;letter-spacing:-.016em;}
+.acard p{font-size:13.5px;color:var(--label-2);line-height:1.55;font-weight:400;}
+
+/* ---------- CTA ---------- */
+
+/* ---------- FOOTER ----------
+   Every page ends on a dark vstage (ink / handloom / longexposure /
+   isometric), so the footer stays on the same dark system permanently
+   rather than cutting back to a light bar — no seam, no per-page logic. */
+.footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.10);}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:22px var(--pad-x);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.f-brand{font-size:13px;color:#FFF;font-weight:700;letter-spacing:-.01em;}
+.f-note{font-size:12.5px;color:rgba(255,255,255,.5);letter-spacing:-.006em;}
+
+/* ---------- DISTRICT MAP ---------- */
+/* stretch, not start — the two cards are meant to read as one pair, so the
+   shorter one (the panel) fills to match the map's natural height rather
+   than floating short beside it */
+.map-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(18px,2.6vw,30px);align-items:stretch;}
+.map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(14px,2vw,22px);
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);
+  position:relative;display:flex;flex-direction:column;justify-content:center;}
 #ap-map{width:100%;height:auto;display:block;}
-#ap-map path{fill:#D6E2DB;stroke:#FFFFFF;stroke-width:1;cursor:pointer;transition:fill .12s;}
-#ap-map path:hover{fill:var(--neon-dim);}
-#ap-map path.selected{fill:var(--neon);stroke:#06130B;stroke-width:1.2;}
-.map-hint{font-family:'JetBrains Mono',monospace;font-size:11px;color:#5c6f68;text-align:center;margin-top:12px;letter-spacing:.03em;}
-.map-tooltip{position:fixed;pointer-events:none;background:var(--neon);color:#06130B;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;padding:5px 10px;border-radius:5px;opacity:0;transition:opacity .1s;z-index:100;white-space:nowrap;}
-.panel{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,3vw,30px);min-height:360px;}
-.panel-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:320px;text-align:center;color:var(--muted);}
-.panel-empty i{font-size:38px;color:#B9C8C1;margin-bottom:14px;}
-.panel-empty p{font-family:'Inter';font-size:14px;font-weight:300;max-width:260px;line-height:1.6;}
-.panel h3{font-family:'JetBrains Mono',monospace;font-size:clamp(20px,3vw,28px);color:var(--green);margin-bottom:4px;text-transform:uppercase;}
-.panel .sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:20px;text-transform:uppercase;letter-spacing:.04em;}
-.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;}
-.metric{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;}
-.metric .ml{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
-.metric .mv{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:800;color:var(--text);margin-top:6px;}
-.metric .mv small{font-size:12px;color:var(--green);font-weight:600;margin-left:4px;}
-.panel h5{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 12px;}
-.sector-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:13px;gap:14px;}
-.sector-row:last-child{border-bottom:none;}
-.sector-row .sn{font-family:'Inter';color:#3f4d47;}
-.sector-row .sc{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--green);}
-.bar{height:5px;background:var(--bg);border-radius:3px;margin-top:4px;overflow:hidden;}
-.bar span{display:block;height:100%;background:var(--neon);}
-.panel-cta{margin-top:22px;}
-.ask-link{font-family:'JetBrains Mono',monospace;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--green);cursor:pointer;}
+#ap-map path{fill:#DCE6E0;stroke:rgba(255,255,255,.9);stroke-width:1;cursor:pointer;
+  transition:fill .16s cubic-bezier(.4,0,.2,1);}
+#ap-map path:hover{fill:#9FDCB4;}
+#ap-map path.selected{fill:var(--green-v);stroke:#FFF;stroke-width:1.4;}
 
-/* RESPONSIVE */
+/* state label over the map — pointer-events:none so clicks pass straight
+   through to the district paths beneath it */
+.map-label{position:absolute;top:clamp(18px,3vw,28px);left:50%;transform:translateX(-50%);
+  text-align:center;pointer-events:none;transition:opacity .35s ease;z-index:1;}
+.map-label .t{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;
+  font-size:clamp(22px,3vw,32px);font-weight:500;letter-spacing:-.012em;
+  color:var(--label-3);}
+.map-label .c{font-size:12px;color:var(--label-3);margin-top:8px;
+  letter-spacing:-.004em;}
+.map-box.picked .map-label{opacity:0;}
+.vstage .map-label .t,.vstage .map-label .c{color:rgba(255,255,255,.55);}
+
+.map-hint{font-size:12px;color:var(--label-3);text-align:center;margin-top:12px;letter-spacing:-.006em;}
+.map-tooltip{position:fixed;pointer-events:none;
+  background:rgba(28,28,30,.86);color:#FFF;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  font-size:12px;font-weight:500;padding:6px 11px;border-radius:9px;
+  opacity:0;transition:opacity .12s;z-index:100;white-space:nowrap;letter-spacing:-.008em;
+  box-shadow:0 4px 16px rgba(0,0,0,.22);}
+
+.panel{background:var(--glass-strong);border-radius:var(--r-lg);padding:clamp(20px,2.8vw,28px);
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);min-height:360px;}
+.panel-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:320px;text-align:center;color:var(--label-2);}
+.panel-empty i{font-size:34px;color:var(--label-3);margin-bottom:13px;}
+.panel-empty p{font-size:14px;font-weight:400;max-width:250px;line-height:1.55;}
+.panel h3{font-size:clamp(20px,2.6vw,26px);color:var(--label);margin-bottom:4px;letter-spacing:-.026em;}
+.panel .sub{font-size:12.5px;color:var(--label-2);margin-bottom:20px;letter-spacing:-.006em;}
+.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:22px;}
+.metric{background:rgba(255,255,255,.5);border-radius:14px;padding:14px 16px;
+  border:1px solid var(--glass-border);box-shadow:var(--neu-in);}
+.metric .ml{font-size:11.5px;color:var(--label-2);font-weight:500;letter-spacing:-.004em;}
+.metric .mv{font-size:20px;font-weight:700;color:var(--label);margin-top:6px;
+  letter-spacing:-.026em;font-variant-numeric:tabular-nums;}
+.metric .mv small{font-size:12.5px;color:var(--green);font-weight:600;margin-left:5px;letter-spacing:-.01em;}
+.panel h5{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--label-3);margin:0 0 12px;}
+.sector-row{display:flex;align-items:center;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid var(--hair);font-size:13.5px;gap:14px;}
+.sector-row:last-child{border-bottom:none;}
+.sector-row .sn{color:var(--label);font-weight:500;letter-spacing:-.01em;}
+.sector-row .sc{font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;letter-spacing:-.016em;}
+.bar{height:6px;background:rgba(163,177,198,.2);border-radius:3px;margin-top:6px;overflow:hidden;}
+.bar span{display:block;height:100%;border-radius:3px;
+  background:linear-gradient(90deg,#4CD964,var(--green-deep));}
+.panel-cta{margin-top:22px;}
+.ask-link{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
+  color:var(--green);cursor:pointer;letter-spacing:-.012em;
+  padding:9px 15px;border-radius:980px;background:rgba(52,199,89,.11);
+  transition:background .18s;}
+.ask-link:hover{background:rgba(52,199,89,.19);}
+
+/* ==========================================================================
+   METHODOLOGY — scroll narrative
+   Each chapter pins a visual while its steps scroll past. An
+   IntersectionObserver writes data-step on the chapter; every bit of motion
+   below is driven off that one attribute, so the CSS stays declarative and
+   there is no per-frame JavaScript.
+   ========================================================================== */
+.grain{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.055;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");}
+
+.narr{background:var(--ink);color:#FFF;position:relative;overflow:hidden;}
+.narr .serif{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,"Times New Roman",serif;
+  font-weight:400;letter-spacing:-.018em;}
+
+/* opening title card */
+.narr-open{min-height:88vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:clamp(40px,8vw,90px) var(--pad-x);}
+.narr-open .kick{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--lime);margin-bottom:26px;}
+.narr-open h2{font-size:clamp(38px,8vw,86px);line-height:1.02;color:#FFF;}
+.narr-open h2 em{font-style:italic;color:var(--lime);}
+.narr-open p{font-size:clamp(15px,1.7vw,18px);color:rgba(255,255,255,.7);
+  max-width:520px;margin:26px auto 0;line-height:1.6;}
+.narr-scrollcue{margin-top:46px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);display:flex;flex-direction:column;align-items:center;gap:10px;}
+.narr-scrollcue span{width:1px;height:44px;background:linear-gradient(180deg,var(--lime),transparent);
+  animation:cueDrop 2.4s ease-in-out infinite;}
+@keyframes cueDrop{0%,100%{opacity:.25;transform:scaleY(.6);transform-origin:top;}50%{opacity:1;transform:scaleY(1);}}
+
+/* progress rail */
+.rail{position:fixed;left:clamp(14px,2.4vw,30px);top:50%;transform:translateY(-50%);
+  z-index:60;display:flex;flex-direction:column;gap:14px;opacity:0;
+  transition:opacity .4s;pointer-events:none;}
+.rail.show{opacity:1;pointer-events:auto;}
+.rail button{width:26px;height:26px;border:none;background:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;padding:0;}
+.rail .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);
+  transition:all .3s cubic-bezier(.4,0,.2,1);}
+.rail button:hover .dot{background:rgba(255,255,255,.6);}
+.rail button.on .dot{background:var(--lime);width:9px;height:9px;
+  box-shadow:0 0 0 5px rgba(198,255,106,.16);}
+
+/* chapter shell */
+.chap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x);
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);align-items:start;}
+.chap-vis{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;}
+.chap-vis svg{width:100%;max-width:460px;height:auto;overflow:visible;}
+.chap-steps{padding:22vh 0;}
+.step{min-height:74vh;display:flex;flex-direction:column;justify-content:center;
+  opacity:.22;transition:opacity .5s ease;}
+.step.on{opacity:1;}
+.step .no{font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--lime);
+  margin-bottom:14px;font-variant-numeric:tabular-nums;}
+.step h3{font-size:clamp(24px,3.4vw,38px);color:#FFF;line-height:1.14;margin-bottom:16px;}
+.step p{font-size:clamp(14.5px,1.6vw,17px);color:rgba(255,255,255,.72);line-height:1.68;
+  max-width:440px;}
+.step p + p{margin-top:13px;}
+.step .pull{margin-top:20px;padding:15px 19px;border-radius:16px;
+  background:rgba(255,255,255,.09);
+  backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
+  border:1px solid rgba(255,255,255,.18);
+  font-size:14.5px;color:#FFF;line-height:1.5;max-width:440px;
+  font-variant-numeric:tabular-nums;}
+.step .pull b{color:var(--lime);font-weight:600;}
+
+/* chapter marker between chapters */
+.chap-mark{max-width:var(--maxw);margin:0 auto;padding:clamp(40px,7vw,80px) var(--pad-x);
+  display:flex;align-items:baseline;gap:20px;border-top:1px solid rgba(255,255,255,.12);}
+.chap-mark .big{font-size:clamp(48px,9vw,110px);line-height:.9;color:rgba(255,255,255,.10);
+  font-variant-numeric:tabular-nums;}
+.chap-mark .ttl{font-size:clamp(17px,2.2vw,24px);color:#FFF;}
+
+/* ---- shared SVG scene styling ---- */
+.sc{transition:opacity .6s ease,transform .6s cubic-bezier(.4,0,.2,1),fill .6s ease;}
+.sc-lbl{font-size:11px;fill:rgba(255,255,255,.62);
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.004em;}
+.sc-lbl.hi{fill:var(--lime);}
+.sc-val{font-size:13px;font-weight:700;fill:#FFF;font-variant-numeric:tabular-nums;
+  font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+
+/* Figma exports any shape with both a fill and a stroke as a <g> of two
+   rects — fill first, stroke second. Opacity and transform go on the <g>;
+   colour has to reach the child rects. */
+
+/* scene 1 — state splits into districts */
+#sc1 .dist{opacity:0;transform:scale(.94);transform-origin:center;transform-box:fill-box;}
+[data-step="2"] #sc1 .dist,[data-step="3"] #sc1 .dist{opacity:1;transform:scale(1);}
+[data-step="2"] #sc1 .blob > rect,[data-step="3"] #sc1 .blob > rect{opacity:.35;}
+[data-step="3"] #sc1 .pick{opacity:1;}
+[data-step="3"] #sc1 .pick > rect{fill:var(--lime);stroke:var(--lime);fill-opacity:1;stroke-opacity:1;}
+[data-step="3"] #sc1 .dist:not(.pick){opacity:.38;}
+
+/* scene 2 — eleven industries in three groups */
+#sc2 .bar{fill:rgba(255,255,255,.18);transform-origin:bottom;transform-box:fill-box;
+  transform:scaleY(.25);}
+[data-step="1"] #sc2 .bar{transform:scaleY(1);}
+[data-step="2"] #sc2 .bar{transform:scaleY(1);}
+[data-step="2"] #sc2 .bar.g1{fill:var(--lime);}
+[data-step="2"] #sc2 .bar:not(.g1){opacity:.3;}
+[data-step="3"] #sc2 .bar{transform:scaleY(1);}
+[data-step="3"] #sc2 .bar.g2{fill:#5CD6A0;}
+[data-step="3"] #sc2 .bar:not(.g2){opacity:.3;}
+[data-step="4"] #sc2 .bar{transform:scaleY(1);}
+[data-step="4"] #sc2 .bar.g3{fill:#8FE3FF;}
+[data-step="4"] #sc2 .bar:not(.g3){opacity:.3;}
+
+/* scene 3 — three estimation approaches.
+   The same five curves serve both directions: dash travel runs one way for
+   top-down and the other for bottom-up, so no second set of paths is needed. */
+#sc3 .flow{opacity:0;}
+[data-step="1"] #sc3 .flow{opacity:1;animation:dashDown 1.5s linear infinite;}
+[data-step="2"] #sc3 .flow{opacity:1;animation:dashUp 1.5s linear infinite;}
+[data-step="3"] #sc3 .flow.down{opacity:.9;animation:dashDown 1.5s linear infinite;}
+[data-step="3"] #sc3 .flow.up{opacity:.9;animation:dashUp 1.5s linear infinite;}
+[data-step="1"] #sc3 .top > rect{fill:var(--lime);fill-opacity:1;}
+[data-step="2"] #sc3 .bot > rect{fill:var(--lime);fill-opacity:1;}
+[data-step="3"] #sc3 .top > rect:first-child,
+[data-step="3"] #sc3 .bot > rect:first-child{fill:var(--lime);fill-opacity:.45;}
+@keyframes dashDown{to{stroke-dashoffset:-22;}}
+@keyframes dashUp{to{stroke-dashoffset:22;}}
+
+/* scene 4 — the formula chain */
+#sc4 .term{opacity:.16;transition:opacity .5s ease;}
+[data-step="1"] #sc4 .t1,
+[data-step="2"] #sc4 .t1,[data-step="2"] #sc4 .t2,
+[data-step="3"] #sc4 .t1,[data-step="3"] #sc4 .t2,[data-step="3"] #sc4 .t3,
+[data-step="4"] #sc4 .t1,[data-step="4"] #sc4 .t2,[data-step="4"] #sc4 .t3,[data-step="4"] #sc4 .t4{opacity:1;}
+[data-step="1"] #sc4 .t1 > rect,[data-step="2"] #sc4 .t2 > rect,
+[data-step="3"] #sc4 .t3 > rect,[data-step="4"] #sc4 .t4 > rect{
+  fill:var(--lime);fill-opacity:.18;stroke:var(--lime);stroke-opacity:1;}
+
+/* closing */
+.narr-close{text-align:center;padding:clamp(56px,9vw,110px) var(--pad-x) clamp(64px,10vw,120px);
+  border-top:1px solid rgba(255,255,255,.12);}
+.narr-close h3{font-size:clamp(24px,4vw,42px);color:#FFF;max-width:640px;margin:0 auto 12px;}
+.narr-close h3 em{font-style:italic;color:var(--lime);}
+.narr-close p{color:rgba(255,255,255,.66);max-width:480px;margin:0 auto 28px;
+  font-size:16px;line-height:1.6;}
+.narr-close .btn-primary{background:var(--lime);color:#08301C;
+  box-shadow:0 10px 30px rgba(198,255,106,.3), inset 0 1px 0 rgba(255,255,255,.45);}
+
+@media (max-width:900px){
+  .chap{grid-template-columns:1fr;gap:0;}
+  .chap-vis{height:52vh;top:0;background:linear-gradient(180deg,var(--ink) 78%,transparent);
+    z-index:2;margin:0 calc(var(--pad-x) * -1);padding:0 var(--pad-x);}
+  .chap-vis svg{max-width:300px;}
+  .chap-steps{padding:4vh 0 14vh;}
+  .step{min-height:62vh;}
+  .rail{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .sc,.step,#sc4 .term{transition:none !important;}
+  #sc3 .flow{animation:none !important;}
+  .narr-scrollcue span{animation:none;}
+  .step{opacity:1;}
+}
+
+/* ---------- RESPONSIVE ---------- */
 .mobile-menu{display:none;}
 @media (max-width:900px){
   .navlinks .nl,.navlinks .btn-wrap{display:none;}
   .hamburger{display:block;}
-  .mobile-menu.open{display:flex;flex-direction:column;gap:2px;padding:8px var(--pad-x) 16px;border-bottom:1px solid var(--line);background:var(--bg);}
-  .mobile-menu .nl{font-family:'JetBrains Mono',monospace;text-align:left;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:none;border:none;padding:11px 0;cursor:pointer;border-bottom:1px solid var(--line);}
-  .stats-grid{grid-template-columns:1fr 1fr;}
+  .mobile-menu.open{display:flex;flex-direction:column;gap:2px;
+    padding:8px var(--pad-x) 16px;
+    background:rgba(11,46,32,.92);
+    backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);
+    border-bottom:1px solid rgba(255,255,255,.14);}
+  .mobile-menu .nl{font-family:inherit;text-align:left;font-size:15px;font-weight:500;
+    color:rgba(255,255,255,.78);background:none;border:none;padding:13px 4px;cursor:pointer;
+    border-bottom:1px solid rgba(255,255,255,.12);letter-spacing:-.012em;}
+  .mobile-menu .nl.active{color:var(--lime);font-weight:700;}
+  .stats-grid,.hero-stats{grid-template-columns:1fr 1fr;}
   .map-layout{grid-template-columns:1fr;}
 }
 @media (max-width:560px){
   .stats-grid{grid-template-columns:1fr 1fr;}
+  /* the qualifier wraps to three cramped lines in a 160px column — number and
+     label carry the meaning on their own at this width */
+  .stat .sub{display:none;}
+  .stat .sicon{margin-bottom:12px;}
   .cta{flex-direction:column;align-items:flex-start;}
   .metric-row{grid-template-columns:1fr;}
+  .hero-cta .btn-primary,.hero-cta .btn-ghost{width:100%;justify-content:center;}
 }
-@media (min-width:1600px){:root{--maxw:1440px;}}
+@media (min-width:1600px){:root{--maxw:1280px;}}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;}
+  html{scroll-behavior:auto;}
+}
 </style>
 </head>
 <body>
 
 <nav class="nav">
   <div class="nav-inner">
-    <button class="brand nl" data-page="home" style="background:none;border:none;cursor:pointer">
+    <button class="brand nl" data-page="home">
       <span class="brand-logo-wrap"><img src="assets/swarna-logo-crop.svg" alt="Swarna Andhra @2047" class="brand-logo"></span>
-      <span class="brand-tag">// GVA Assistant</span>
+      <span class="brand-tag">GVA Assistant</span>
     </button>
     <div class="navlinks">
       <button class="nl active" data-page="home">Home</button>
       <button class="nl" data-page="about">About</button>
       <button class="nl" data-page="methodology">Methodology</button>
       <button class="nl" data-page="districts">Districts</button>
-      <a href="https://andhrachatbot.streamlit.app" class="btn-wrap"><button class="btn-neon">Open assistant ↗</button></a>
+      <a href="https://andhrachatbot.streamlit.app" class="btn-wrap"><button class="btn-primary btn-nav">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
     </div>
   </div>
@@ -180,49 +687,76 @@ h1,h2,h3{font-family:'JetBrains Mono',monospace;font-weight:800;letter-spacing:-
     <button class="nl" data-page="about">About</button>
     <button class="nl" data-page="methodology">Methodology</button>
     <button class="nl" data-page="districts">Districts</button>
-    <a href="https://andhrachatbot.streamlit.app"><button class="btn-neon" style="width:100%;margin-top:10px">Open assistant ↗</button></a>
+    <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary" style="width:100%;justify-content:center;margin-top:12px">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
   </div>
 </nav>
 
 <!-- HOME -->
 <div class="page active" id="page-home">
-  <header class="hero"><div class="wrap"><div class="hero-content">
-    <div class="eyebrow">// Pahlé India Foundation — Capacity Building</div>
-    <h1>Ask anything about<br><span>GDP, GSDP &amp; GVA</span><br>for Andhra Pradesh</h1>
-    <p>An AI assistant trained on official DDP guidelines, GSVA estimates, and the vision plans of every district, constituency, and mandal in the state. Built for the Swarna Andhra @2047 mission.</p>
+  <!-- Loops live in assets/video/: aerial · longexposure · ink · handloom ·
+       ledger · vector · isometric · glass. Change data-vid to swap one.
+       ?loop=<name> overrides the hero for side-by-side comparison. -->
+  <header class="hero vstage" data-vid="aerial">
+    <div class="wrap"><div class="hero-content">
+    <div class="hero-mark"><i class="ti ti-building-bank"></i></div>
+    <div class="eyebrow">Pahlé India Foundation · Capacity Building</div>
+    <h1>Every district's economy,<br><span>one question away</span></h1>
+    <p>Ask how district income is measured, or what is actually happening in Bapatla, Annamayya or Visakhapatnam. Answers come from the official DDP and GSVA material, and every one names its source.</p>
     <div class="hero-cta">
       <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary"><i class="ti ti-message-2"></i> Start asking questions</button></a>
       <button class="btn-ghost nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
     </div>
-  </div></div></header>
+    </div></div>
 
-  <section class="stats"><div class="wrap"><div class="stats-grid">
-    <div class="stat hl"><div class="n">59,388</div><div class="lbl">Indexed chunks</div></div>
-    <div class="stat"><div class="n">28</div><div class="lbl">Districts</div></div>
-    <div class="stat"><div class="n">175</div><div class="lbl">Constituencies</div></div>
-    <div class="stat"><div class="n">1,378</div><div class="lbl">Vision documents</div></div>
-  </div></div></section>
+    <!-- Real findings from the corpus, not corpus statistics. Each tile is a
+         question the assistant can answer, so clicking one asks it. -->
+    <div class="hero-stats">
+      <button class="gstat ask" data-q="Why is per capita income in Visakhapatnam more than four times that of Parvathipuram Manyam?">
+        <div class="n">4.2<em>×</em></div>
+        <div class="lbl">Richest district to poorest</div>
+        <div class="sub">Visakhapatnam ₹6.59L vs Parvathipuram Manyam ₹1.57L per person</div>
+      </button>
+      <button class="gstat ask" data-q="Which sectors drove Bapatla's 19.19% district income growth in 2025-26?">
+        <div class="n">19.2<em>%</em></div>
+        <div class="lbl">Bapatla, fastest growing</div>
+        <div class="sub">Highest district income growth in the state</div>
+      </button>
+      <button class="gstat ask" data-q="Why did Annamayya district income contract by 1.35% in 2025-26, and which sectors fell?">
+        <div class="n">&minus;1.4<em>%</em></div>
+        <div class="lbl">Annamayya, the one that shrank</div>
+        <div class="sub">The only district to contract this year</div>
+      </button>
+      <button class="gstat ask" data-q="What is the combined district income of all 28 districts of Andhra Pradesh, and which districts contribute most?">
+        <div class="n">₹17.6<em>L cr</em></div>
+        <div class="lbl">All 28 districts combined</div>
+        <div class="sub">2025-26 First Advance Estimate</div>
+      </button>
+    </div>
+  </header>
 
-  <section class="section"><div class="wrap">
-    <div class="sec-head"><div class="kick">// What you can ask</div><h2>Grounded in official material</h2></div>
+  <section class="section vstage" data-vid="ink"><div class="wrap">
+    <div class="sec-head center"><div class="kick">What you can ask</div><h2>Grounded in official material</h2></div>
     <div class="feature-grid">
-      <div class="fcard"><div class="fnum">01</div><h4>GDP / GSDP methodology</h4><p>Production, income, and expenditure approaches. Top-down versus bottom-up. Which sector uses which method.</p></div>
-      <div class="fcard"><div class="fnum">02</div><h4>GVA calculation</h4><p>How Gross Value Added is measured across agriculture, industry, and services sectors.</p></div>
-      <div class="fcard"><div class="fnum">03</div><h4>District profiles</h4><p>Comparative-advantage sectors, fastest-growing industries, and interventions to boost GVA per district.</p></div>
-      <div class="fcard"><div class="fnum">04</div><h4>Vision plans</h4><p>Every constituency and mandal vision plan, plus GSDP, GDDP, and per-capita figures across four years.</p></div>
+      <div class="fcard"><div class="ficon"><i class="ti ti-chart-histogram"></i></div><h4>GDP and GSDP methodology</h4><p>Production, income, and expenditure approaches. Top-down versus bottom-up, and which sector uses which method.</p></div>
+      <div class="fcard"><div class="ficon"><i class="ti ti-calculator"></i></div><h4>GVA calculation</h4><p>How Gross Value Added is measured across the agriculture, industry, and services sectors.</p></div>
+      <div class="fcard"><div class="ficon"><i class="ti ti-map-pin"></i></div><h4>District profiles</h4><p>Comparative-advantage sectors, fastest-growing industries, and interventions to raise GVA in each district.</p></div>
+      <div class="fcard"><div class="ficon"><i class="ti ti-file-text"></i></div><h4>Vision plans</h4><p>Every constituency and mandal vision plan, plus GSDP, GDDP, and per-capita figures across four years.</p></div>
+    </div>
+    <div class="sec-cta">
+      <h3 class="sec-cta-h">Try it on a district you know.</h3>
+      <a href="https://andhrachatbot.streamlit.app">
+        <button class="btn-primary btn-lg"><i class="ti ti-message-2"></i> Explore the chatbot</button>
+      </a>
+      <div class="sec-cta-note">Free to use · every answer cites its source</div>
     </div>
   </div></section>
 
-  <section class="cta-wrap"><div class="wrap"><div class="cta">
-    <h3>Put the entire corpus <span>one question away.</span></h3>
-    <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary"><i class="ti ti-arrow-right"></i> Launch the assistant</button></a>
-  </div></div></section>
 </div>
 
 <!-- ABOUT -->
 <div class="page" id="page-about">
-  <section class="section"><div class="wrap">
-    <div class="sec-head"><div class="kick">// About</div><h2>What this assistant is</h2></div>
+  <section class="section vstage" data-vid="handloom"><div class="wrap">
+    <div class="sec-head"><div class="kick">About</div><h2>What this assistant is</h2></div>
     <div class="prose">
       <p>The Swarna Andhra GVA Assistant is a question-and-answer tool built by Pahlé India Foundation for the state capacity-building programme. It helps district, constituency, and mandal officers find clear answers about how state and district income is measured, and how to raise it.</p>
       <h3>Who it is for</h3>
@@ -241,45 +775,201 @@ h1,h2,h3{font-family:'JetBrains Mono',monospace;font-weight:800;letter-spacing:-
         <li>Vision and action plans for every constituency and mandal, plus sector case studies.</li>
       </ul>
     </div>
-    <div style="margin-top:32px"><a href="https://andhrachatbot.streamlit.app"><button class="btn-primary"><i class="ti ti-message-2"></i> Try the assistant</button></a></div>
+    <div style="margin-top:30px"><a href="https://andhrachatbot.streamlit.app"><button class="btn-primary"><i class="ti ti-message-2"></i> Try the assistant</button></a></div>
   </div></section>
 </div>
 
 <!-- METHODOLOGY -->
 <div class="page" id="page-methodology">
-  <section class="section"><div class="wrap">
-    <div class="sec-head"><div class="kick">// Methodology</div><h2>How district income is estimated</h2>
-      <p>This follows the official Guideline for Compilation of District Domestic Product issued by the National Statistics Office, consistent with the revised GSVA series under base year 2022-23.</p>
-    </div>
-    <div class="prose">
-      <p>District Domestic Product (DDP) measures the total value of goods and services produced within a district over a year. It is the district-level counterpart of GSDP at the state level and GDP at the national level.</p>
-      <p>For estimation, the district economy is divided into <strong>eleven broad industries</strong>: agriculture and allied, mining, manufacturing, electricity and utilities, construction, trade and hotels, transport and communication, financial services, real estate and professional services, public administration, and other services.</p>
-      <h3>The three approaches</h3>
-      <div class="approach-grid">
-        <div class="acard"><span class="tag">Top-down</span><h4>State to district</h4><p>State totals are estimated first, then shared among districts using indicators. Used when direct district data is not available.</p></div>
-        <div class="acard"><span class="tag">Bottom-up</span><h4>District first</h4><p>Values are estimated directly from data within each district, then added up to the state total. Reflects local conditions best.</p></div>
-        <div class="acard"><span class="tag">Mixed</span><h4>Best of both</h4><p>Bottom-up where reliable district data exists, top-down for the rest. Balances accuracy against data availability.</p></div>
-      </div>
-      <h3>From GVA to district income</h3>
-      <div class="formula">GDVA = sum of adjusted GVA across all sectors</div>
-      <div class="formula">GDDP = GDVA + Taxes on Products − Subsidies on Products</div>
-      <div class="formula">NDDP = NDVA + Taxes − Subsidies, where NVA = GVA − Consumption of Fixed Capital</div>
-      <p><strong>Per capita district income</strong> is the total district income divided by the mid-year projected population, measured in rupees per person.</p>
-    </div>
-    <div style="margin-top:32px"><a href="https://andhrachatbot.streamlit.app"><button class="btn-primary"><i class="ti ti-message-2"></i> Ask about a specific sector</button></a></div>
-  </div></section>
+ <div class="narr vstage" data-vid="gridwork">
+  <section class="narr-open vstage" data-vid="ledger">
+    <div class="kick">Methodology</div>
+    <h2 class="serif">How a district's<br><em>income</em> is estimated</h2>
+    <p>The official method, from state total to rupees per person. Four chapters, following the National Statistics Office guideline for District Domestic Product.</p>
+    <div class="narr-scrollcue"><span></span>Scroll</div>
+  </section>
+
+<div class="chap-mark"><div class="big serif">01</div><div class="ttl serif">What district income measures</div></div>
+<div class="chap" data-chap-i="0" data-step="1">
+  <div class="chap-vis"><svg id="sc1" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<g >
+<g class="sc blob">
+<rect x="80" y="60" width="300" height="220" rx="26" fill="white" fill-opacity="0.14"/>
+<rect x="80.75" y="60.75" width="298.5" height="218.5" rx="25.25" stroke="white" stroke-opacity="0.35" stroke-width="1.5"/>
+</g>
+<g class="sc dist">
+<rect x="92" y="72" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="92.5" y="72.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="170" y="72" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="170.5" y="72.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="248" y="72" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="248.5" y="72.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="326" y="72" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="326.5" y="72.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="92" y="146" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="92.5" y="146.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="170" y="146" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="170.5" y="146.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<rect class="sc dist pick" x="248.5" y="146.5" width="67" height="63" rx="9.5" fill="#C6FF6A" stroke="#C6FF6A"/>
+<g class="sc dist">
+<rect x="326" y="146" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="326.5" y="146.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="92" y="220" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="92.5" y="220.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="170" y="220" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="170.5" y="220.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="248" y="220" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="248.5" y="220.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+<g class="sc dist">
+<rect x="326" y="220" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
+<rect x="326.5" y="220.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
+</g>
+</g>
+</svg></div>
+  <div class="chap-steps">
+<div class="step" data-chap="0"><div class="no">01</div><h3 class="serif">One state total</h3><p>Gross State Domestic Product is a single number for all of Andhra Pradesh: the value of everything produced in the state in a year.</p><p>Useful for comparing states. Useless for deciding where to build a cold-storage unit.</p></div>
+<div class="step" data-chap="0"><div class="no">02</div><h3 class="serif">Twenty-eight parts</h3><p>District Domestic Product breaks that total apart. Each district gets its own estimate, built from its own economy.</p><div class='pull'>DDP is to a district what <b>GSDP</b> is to a state and <b>GDP</b> is to the country. Same idea, smaller frame.</div></div>
+<div class="step" data-chap="0"><div class="no">03</div><h3 class="serif">One district, in focus</h3><p>Once a district has its own number, it can be compared, tracked across years, and divided by population to give per-capita income.</p><div class='pull'>All <b>28</b> districts, <b>four</b> years each, are in the corpus behind this assistant.</div></div>
+  </div>
+</div>
+
+<div class="chap-mark"><div class="big serif">02</div><div class="ttl serif">The eleven industries</div></div>
+<div class="chap" data-chap-i="1" data-step="1">
+  <div class="chap-vis"><svg id="sc2" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<g >
+<rect class="sc bar g1" x="52" y="114" width="26" height="168" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g2" x="88" y="218" width="26" height="64" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g2" x="124" y="162" width="26" height="120" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g2" x="160" y="228" width="26" height="54" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g2" x="196" y="186" width="26" height="96" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g3" x="232" y="142" width="26" height="140" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g3" x="268" y="194" width="26" height="88" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g3" x="304" y="172" width="26" height="110" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g3" x="340" y="206" width="26" height="76" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g3" x="376" y="150" width="26" height="132" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc bar g3" x="412" y="222" width="26" height="60" rx="6" fill="white" fill-opacity="0.18"/>
+<rect class="sc base" x="52" y="288" width="356" height="1" fill="white" fill-opacity="0.22"/>
+</g>
+</svg></div>
+  <div class="chap-steps">
+<div class="step" data-chap="1"><div class="no">04</div><h3 class="serif">The economy, divided</h3><p>Estimation never treats a district as one lump. It is split into eleven broad industry groups, each measured on its own terms.</p></div>
+<div class="step" data-chap="1"><div class="no">05</div><h3 class="serif">Primary</h3><p>Agriculture and allied activities: crops, livestock, forestry, fishing. Measured from production volumes and prices.</p><div class='pull'>In most AP districts this is where <b>comparative advantage</b> shows up first.</div></div>
+<div class="step" data-chap="1"><div class="no">06</div><h3 class="serif">Secondary</h3><p>Mining, manufacturing, electricity and utilities, construction. Estimated from registered output, sales tax records and workforce data.</p></div>
+<div class="step" data-chap="1"><div class="no">07</div><h3 class="serif">Tertiary</h3><p>Trade and hotels, transport and communication, financial services, real estate, public administration, other services. The hardest to measure and the fastest growing.</p><div class='pull'>Six of the eleven groups are services, which is why service-sector indicators drive so much of the estimate.</div></div>
+  </div>
+</div>
+
+<div class="chap-mark"><div class="big serif">03</div><div class="ttl serif">How the numbers are built</div></div>
+<div class="chap" data-chap-i="2" data-step="1">
+  <div class="chap-vis"><svg id="sc3" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<g >
+<g class="sc node top">
+<rect x="140" y="44" width="180" height="54" rx="13" fill="white" fill-opacity="0.14"/>
+<rect x="140.5" y="44.5" width="179" height="53" rx="12.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g class="sc node bot">
+<rect x="42" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="42.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g class="sc node bot">
+<rect x="120" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="120.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g class="sc node bot">
+<rect x="198" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="198.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g class="sc node bot">
+<rect x="276" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="276.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<g class="sc node bot">
+<rect x="354" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
+<rect x="354.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+</g>
+<path class="sc flow down" d="M230 104C230 171 74 171 74 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<path class="sc flow down" d="M230 104C230 171 152 171 152 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<path class="sc flow up" d="M230 104C230 171 230 171 230 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<path class="sc flow up" d="M230 104C230 171 308 171 308 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<path class="sc flow up" d="M230 104C230 171 386 171 386 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+</g>
+</svg></div>
+  <div class="chap-steps">
+<div class="step" data-chap="2"><div class="no">08</div><h3 class="serif">Top-down</h3><p>Start with the state total, then share it out across districts using an indicator that tracks where the activity actually happened: workforce, output, or registered units.</p><p>Used wherever direct district data does not exist.</p></div>
+<div class="step" data-chap="2"><div class="no">09</div><h3 class="serif">Bottom-up</h3><p>Go the other way. Measure each district directly from local data, then add them up. The state total is whatever the districts sum to.</p><div class='pull'>Bottom-up reflects local conditions best, so it is preferred <b>wherever the data supports it</b>.</div></div>
+<div class="step" data-chap="2"><div class="no">10</div><h3 class="serif">Mixed, in practice</h3><p>Neither approach wins outright. The official method uses bottom-up for industries with reliable district data and top-down for the rest.</p><div class='pull'>Accuracy where possible, coverage everywhere else.</div></div>
+  </div>
+</div>
+
+<div class="chap-mark"><div class="big serif">04</div><div class="ttl serif">From value added to income</div></div>
+<div class="chap" data-chap-i="3" data-step="1">
+  <div class="chap-vis"><svg id="sc4" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<g >
+<g class="sc term t1">
+<rect x="80" y="52" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="52.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle class="sc dot" cx="230" cy="117" r="3" fill="white" fill-opacity="0.3"/>
+<g class="sc term t2">
+<rect x="80" y="128" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="128.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle class="sc dot" cx="230" cy="193" r="3" fill="white" fill-opacity="0.3"/>
+<g class="sc term t3">
+<rect x="80" y="204" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="204.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle class="sc dot" cx="230" cy="269" r="3" fill="white" fill-opacity="0.3"/>
+<g class="sc term t4">
+<rect x="80" y="280" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="280.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+</g>
+</svg></div>
+  <div class="chap-steps">
+<div class="step" data-chap="3"><div class="no">11</div><h3 class="serif">Gross Value Added</h3><p>Each industry's contribution, measured at basic prices: the value it produces, less the cost of what it consumed producing it.</p><div class='pull'>GVA is measured at <b>basic prices</b> — before product taxes and subsidies enter.</div></div>
+<div class="step" data-chap="3"><div class="no">12</div><h3 class="serif">Summed across sectors</h3><p>Add the adjusted GVA of all eleven industries and you have Gross District Value Added.</p><div class='pull'>GDVA = sum of adjusted GVA across all sectors</div></div>
+<div class="step" data-chap="3"><div class="no">13</div><h3 class="serif">To district product</h3><p>Add taxes on products, subtract subsidies on products. That shift from basic prices to market prices is what separates value added from domestic product.</p><div class='pull'>GDDP = GDVA + Taxes on Products &minus; Subsidies on Products</div></div>
+<div class="step" data-chap="3"><div class="no">14</div><h3 class="serif">To income per person</h3><p>Subtract consumption of fixed capital for the net figure, then divide by mid-year projected population.</p><div class='pull'>Per capita district income, in rupees per person &mdash; the number most often quoted, and the one most often quoted without its base year.</div></div>
+  </div>
+</div>
+  <section class="narr-close vstage" data-vid="glass">
+    <h3 class="serif">Now ask it about <em>a real district.</em></h3>
+    <p>The assistant holds every figure behind this method, for all 28 districts, and cites the source document for each one.</p>
+    <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary">Open the assistant <i class="ti ti-arrow-right"></i></button></a>
+  </section>
+ </div>
 </div>
 
 <!-- DISTRICTS -->
 <div class="page" id="page-districts">
-  <section class="section"><div class="wrap">
-    <div class="sec-head"><div class="kick">// Districts</div><h2>Explore the district map</h2>
+  <section class="section vstage" data-vid="longexposure"><div class="wrap">
+    <div class="sec-head"><div class="kick">Districts</div><h2>Explore the district map</h2>
       <p>Select any district to see its latest economic snapshot: district income, per-capita income, and the sectors where it has the strongest comparative advantage.</p>
     </div>
     <div class="map-layout">
-      <div class="map-box">
+      <div class="map-box" id="mapBox">
         <svg id="ap-map" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clickable map of Andhra Pradesh districts"></svg>
-        <div class="map-hint">// Tap a district to view its figures</div>
+        <div class="map-label"><div class="t">Andhra Pradesh</div><div class="c">Click any district to explore</div></div>
+        <div class="map-hint">Click any district to explore</div>
       </div>
       <div class="panel" id="districtPanel">
         <div class="panel-empty"><i class="ti ti-hand-finger"></i><p>Select a district on the map to see its economic snapshot.</p></div>
@@ -290,19 +980,160 @@ h1,h2,h3{font-family:'JetBrains Mono',monospace;font-weight:800;letter-spacing:-
 
 <footer class="footer"><div class="footer-inner">
   <div class="f-brand">Pahlé India Foundation</div>
-  <div class="f-note">// Aligned with Swarna Andhra @2047 · Planning Department</div>
+  <div class="f-note">Aligned with Swarna Andhra @2047 · Planning Department</div>
 </div></footer>
 
 <div class="map-tooltip" id="mapTooltip"></div>
+<div class="grain"></div>
+<div class="rail" id="rail"></div>
 
 <script>
+// ---------- hero stat tiles are questions ----------
+// Each tile opens the assistant with its question prefilled, so the headline
+// figure and the thing you do about it are the same click.
+document.querySelectorAll('.gstat.ask').forEach(function(b){
+  b.addEventListener('click', function(){
+    const q = b.dataset.q;
+    window.open(window.CHATBOT_URL + '?q=' + encodeURIComponent(q), '_blank', 'noopener');
+  });
+});
+
+// ---------- methodology scroll narrative ----------
+// One observer over every .step. The step nearest the middle of the viewport
+// wins; it sets data-step on its chapter and lights its rail dot. All motion
+// is CSS off that attribute, so there is no scroll handler and no rAF loop.
+(function(){
+  const steps = [...document.querySelectorAll('#page-methodology .step')];
+  if(!steps.length) return;
+  const chaps = [...document.querySelectorAll('#page-methodology .chap')];
+  const rail  = document.getElementById('rail');
+
+  // rail dots, one per chapter
+  chaps.forEach((c,i)=>{
+    const b=document.createElement('button');
+    b.innerHTML='<span class="dot"></span>';
+    b.setAttribute('aria-label','Chapter '+(i+1));
+    b.addEventListener('click',()=>c.scrollIntoView({behavior:'smooth',block:'start'}));
+    rail.appendChild(b);
+  });
+  const dots=[...rail.children];
+
+  // index of each step within its own chapter
+  steps.forEach(s=>{
+    const sib=[...s.parentElement.children];
+    s._i = sib.indexOf(s)+1;
+  });
+
+  const narr=document.querySelector('#page-methodology .narr');
+  let active=null, queued=false;
+
+  function sync(){
+    queued=false;
+    if(!narr.offsetParent){ rail.classList.remove('show'); return; }
+    const mid=window.innerHeight/2;
+
+    // rail visible only while the narrative occupies the viewport
+    const nb=narr.getBoundingClientRect();
+    rail.classList.toggle('show', nb.top < mid && nb.bottom > mid);
+
+    // the step whose centre is nearest the viewport centre wins
+    let best=null, bestD=Infinity;
+    for(const s of steps){
+      const b=s.getBoundingClientRect();
+      const d=Math.abs((b.top+b.bottom)/2 - mid);
+      if(d<bestD){ bestD=d; best=s; }
+    }
+    if(!best || best===active) return;
+    active=best;
+    steps.forEach(x=>x.classList.toggle('on', x===best));
+    const chap=best.closest('.chap');
+    chap.setAttribute('data-step', best._i);
+    const ci=chaps.indexOf(chap);
+    dots.forEach((d,i)=>d.classList.toggle('on', i===ci));
+  }
+
+  function onScroll(){
+    if(queued) return;
+    queued=true;
+    requestAnimationFrame(sync);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  // the router shows this page after first paint, so sync once it is visible
+  window.addEventListener('hashchange', ()=>setTimeout(sync,0));
+  sync();
+  window.__syncNarr = sync;   // lets the page be driven in tests
+})();
+
+// ---------- ambient video ----------
+// The mp4 only takes over once it can actually play; if the file is missing or
+// the user prefers reduced motion, the CSS fallback stays and nothing breaks.
+// Each loop needs its own scrim weight — a bright ledger has to be pushed back
+// much harder than dark night footage, or the white headline stops reading.
+const LOOP_SCRIM = {
+  glass:        [.60,.52,.74],
+  vector:       [.66,.58,.78],
+  ink:          [.68,.60,.80],
+  isometric:    [.68,.60,.80],
+  longexposure: [.70,.62,.82],
+  handloom:     [.72,.64,.84],
+  gridwork:     [.72,.64,.84],
+  aerial:       [.74,.66,.82],
+  ledger:       [.78,.70,.86],
+};
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const override = new URLSearchParams(location.search).get('loop');
+
+  function scrimCSS(s){
+    return `linear-gradient(180deg, rgba(11,46,32,${s[0]}) 0%, rgba(11,46,32,${s[1]}) 45%, rgba(11,46,32,${s[2]}) 100%),`+
+           `radial-gradient(120% 90% at 78% 8%, rgba(52,199,89,.30), transparent 62%)`;
+  }
+
+  // Only the hero autoplays immediately. The rest wait until they scroll near
+  // the viewport, so a visit to Home does not pull down eight video files.
+  function mount(section, name, eager){
+    const s = LOOP_SCRIM[name] || LOOP_SCRIM.aerial;
+    const amb = document.createElement('div');
+    amb.className = 'amb';
+    amb.innerHTML = '<div class="amb-fallback"></div>'+
+                    '<div class="amb-scrim" style="background:'+scrimCSS(s)+'"></div>';
+    section.prepend(amb);
+    if(reduce) return;
+
+    const load = ()=>{
+      const v = document.createElement('video');
+      v.muted = true; v.loop = true; v.autoplay = true;
+      v.playsInline = true; v.setAttribute('playsinline','');
+      v.preload = 'auto';
+      v.addEventListener('canplay', ()=>v.classList.add('ready'), {once:true});
+      v.addEventListener('error', ()=>v.remove());
+      v.src = 'assets/video/' + name + '.mp4';
+      amb.prepend(v);           // must precede .amb-fallback for the ~ rule
+      return v;
+    };
+
+    if(eager){ load(); return; }
+    const io = new IntersectionObserver(function(es){
+      if(es.some(e=>e.isIntersecting)){ io.disconnect(); load(); }
+    },{rootMargin:'300px'});
+    io.observe(section);
+  }
+
+  document.querySelectorAll('[data-vid]').forEach(function(sec){
+    const eager = sec.classList.contains('hero');
+    const name  = (eager && override) ? override : sec.dataset.vid;
+    mount(sec, LOOP_SCRIM[name] ? name : 'aerial', eager);
+  });
+})();
+
 // ---------- router ----------
 const pages = ['home','about','methodology','districts'];
 function go(page){
   if(!pages.includes(page)) page='home';
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
-  document.querySelectorAll('.navlinks .nl').forEach(b=>b.classList.toggle('active', b.dataset.page===page));
+  document.querySelectorAll('.navlinks .nl, .mobile-menu .nl').forEach(b=>b.classList.toggle('active', b.dataset.page===page));
   document.getElementById('mobileMenu').classList.remove('open');
   window.scrollTo(0,0);
   if(location.hash!=='#'+page) history.replaceState(null,'','#'+page);
@@ -364,6 +1195,7 @@ async function initMap(){
       const t=e.target.closest('path'); if(!t) return;
       svg.querySelectorAll('path').forEach(p=>p.classList.remove('selected'));
       t.classList.add('selected');
+      document.getElementById('mapBox').classList.add('picked');
       showDistrict(t.getAttribute('data-key'), t.getAttribute('data-name'));
     });
   }catch(err){
@@ -387,7 +1219,7 @@ function showDistrict(key, name){
       '<div class="metric"><div class="ml">Per capita income</div><div class="mv">'+fmtRs(d.pci)+'</div></div>'+
     '</div>'+
     '<h5>Top sectors by contribution</h5>'+sectors+
-    '<div class="panel-cta"><a class="ask-link" href="'+window.CHATBOT_URL+'"><i class="ti ti-message-2"></i> Ask the assistant about '+name+'</a></div>';
+    '<div class="panel-cta"><a class="ask-link" href="'+window.CHATBOT_URL+'" target="_blank" rel="noopener"><i class="ti ti-message-2"></i> Ask the assistant about '+name+'</a></div>';
 }
 
 // --- chatbot link wiring --------------------------------------------------
