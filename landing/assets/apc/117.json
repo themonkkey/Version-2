@@ -1,0 +1,197 @@
+{
+ "code": 117,
+ "name": "Kovvur (SC)",
+ "district": "East Godavari",
+ "logoUrl": "117\\Logo\\117IMAGE2026072715063594020_portal icon 2.jpg",
+ "profile": {
+  "population": "226004 (As per Census 2011)",
+  "voterCount": "184245 (As per 2024 Elections)",
+  "area": "323.84",
+  "mandals": "Chagallu-R,Kovvur-R,Kovvur-U,Tallapudi-R",
+  "revenueVillages": "47",
+  "municipal_wards": "23",
+  "municipalities": "Kovvur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Kovvur Constituency in East Godavari district, Andhra Pradesh, comprises Kovvur, Tallapudi, and Chagallu mandals, and Kovvur Municipality. It's a SC reserved constituency bounded by Rajamahendravaram, Gopalapuram, Polavaram, and Nidavole constituencies. Kovvur is known for its fertile lands, water resources, and cultural heritage, with significant potential in agriculture, aquaculture, and eco-tourism.The constituency is strategically located near Rajamahendravaram (4 km) and Amaravathi (170 km), spanning 323.84 sq. km. Kovvur is famous for Goshpada Kshetram, a popular tourist spot where Godavari Pushkaralu takes place. The constituency is separated from Rajamahendravaram by the river Godavari, with four bridges: the historical Hawlack Bridge (1897), Road cum Rail Bridge (1974), Spanning Railway Bridge (1997), and Gammon Road Bridge (2008). These bridges have historical and economic significance, with the Gammon Bridge reducing the road distance between Kolkata and Chennai on National Highway 16. With its rich cultural heritage and natural resources, Kovvur is poised for sustainable development through targeted interventions.",
+  "constituencyMap": "117\\MAP\\117IMAGE2025090318524493795_kovvuru.png",
+  "geography": "<p>Kovvuru constituency is located in East Godavari District and spans 323.84 sq km It shares boundaries with Gopalapuram, Rajamahendravaram, Polavaram, Nidavole constituencies. Kovvur&#8217;s geography is characterized by fertile alluvial soils.</p>",
+  "populationDesc": "The Kovvur Assembly Constituency has a total population of 2,26,004 with 82% resists in rural areas and 18% in Urban areas, comprising 112127 males and 113877 females. The sex ratio stands at 1015 females per 1,000 males. The Literacy rate stands at 66.60%.<br><p><br></p>",
+  "administrationDesc": "Kovvuru Constituency is in East Godavari District. It includes 1) Kovvur Mandal 2) Tallapudi Mandal 3) Chagallu  Mandal and also it has Kovvur&#160; municipality.<p><br></p>",
+  "educationHealthcareDesc": "Educational infrastructure comprises 54 high schools, 4 junior colleges, 4-degree colleges, two education colleges, one professional MBA/MCA college and 1 PG nonprofessional college. 8 Primary Health Centers (PHCs), 2 urban health centers and 40 sub centers.",
+  "culturalheritageDesc": "Kovvur has a rich cultural heritage and significant landmarks.Goshpada kshetram,The river bank has several ghats and temples,The Ramananda Gowdiyamath is famous agency for promotion of Krishna Bhakthi through dance and folk arts with related to spiritualization."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "b8N1viFGpyxMVG3n1ov86g==",
+   "economy_Text": "<font size=\"5\"><b>Kovvur&#8217;s Economy at a Glance</b></font><p><font size=\"5\"><b><br></b></font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"3\">Kovvur&#8217;s economy is projected to grow robustly from 2024 to 2029, with Gross Constituency Domestic Product (GCDP) rising from &#8377;6,604 Cr to &#8377;13,139 Cr, driven by a diversified mix of agriculture (44.21%), industry (21.87%), and services (33.92%). High-value horticulture and livestock anchor agriculture, while manufacturing and construction fuel industrial expansion, complemented by real estate and transport in services.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"3\">Despite challenges like cyclones, these strategies aim to ensure sustainable livelihoods, enhanced rural-urban linkages, and a per capita income increase from &#8377;246,099 to &#8377;481,327 by 2028-29, positioning Kovvur as a model for inclusive development.</font></p><p></p>",
+   "gcdP_Growth_Text": "Kovvur is witnessing steady economic momentum with a targeted 15%<b> annual GCDP growth rate</b> across key sectors like&#160; Livestock, Horticulture,&#10;<p>and manufacturing. This growth trajectory aligns with the long-term vision of making the Constituency a Vibrant Urban and <b>economic hub by 2047.</b></p>",
+   "createdDate": "2025-09-04T06:29:43.66"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6604.0,
+   "cagR_Pct": 15.42,
+   "targetAmountCrore": 13139.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2072.0,
+   "cagR_Pct": 14.87,
+   "targetAmountCrore": 4101.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1336.0,
+   "cagR_Pct": 18.13,
+   "targetAmountCrore": 3183.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2701.0,
+   "cagR_Pct": 13.16,
+   "targetAmountCrore": 4871.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 117,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.92
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 21.87
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 44.21
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 117,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 268,
+   "constituencyId": 117,
+   "name": "Muppidi Venkateswara Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 270,
+   "constituencyId": 117,
+   "name": "Taneti Vanitha",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 271,
+   "constituencyId": 117,
+   "name": "K. S. Jawahar",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 272,
+   "constituencyId": 117,
+   "name": "T. V. Rama Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 273,
+   "constituencyId": 117,
+   "name": "Pendyala Venkata Krishna Rao",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

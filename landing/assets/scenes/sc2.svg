@@ -14,5 +14,8 @@
 <rect id="bar-g3-9" x="376" y="150" width="26" height="132" rx="6" fill="white" fill-opacity="0.18"/>
 <rect id="bar-g3-10" x="412" y="222" width="26" height="60" rx="6" fill="white" fill-opacity="0.18"/>
 <rect id="baseline" x="52" y="288" width="356" height="1" fill="white" fill-opacity="0.22"/>
+<text id="lbl-primary" x="65" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">PRIMARY</text>
+<text id="lbl-secondary" x="155" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">SECONDARY</text>
+<text id="lbl-tertiary" x="335" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">TERTIARY</text>
 </g>
 </svg>

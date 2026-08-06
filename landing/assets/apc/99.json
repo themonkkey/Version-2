@@ -1,0 +1,197 @@
+{
+ "code": 99,
+ "name": "Tiruvuru (SC)",
+ "district": "NTR",
+ "logoUrl": "assets/constituencies_logos/tiruvuru (sc).png",
+ "profile": {
+  "population": "256536 (As per Census 2011)",
+  "voterCount": "207190 (As per 2024 Elections)",
+  "area": "795.99",
+  "mandals": "A.Konduru-R,Gampalagudem-R,Tiruvuru-R,Tiruvuru-U,Vissannapeta-R",
+  "revenueVillages": "63",
+  "municipal_wards": "20",
+  "municipalities": "Tiruvuru",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Tiruvuru Assembly Constituency Vision Action Plan 2024&#8211;29 is a strategic roadmap designed to harness the region&#8217;s strengths in agriculture, industry, construction, and services. Aligned with Andhra Pradesh&#8217;s Swarna Andhra@2047 vision and India&#8217;s Viksit Bharat@2047 agenda, the plan focuses on inclusive growth, sustainability, and development.<br>Tiruvuru constituency, located in NTR district of Andhra Pradesh, comprises four mandals&#8212;Tiruvuru with 19 revenue villages, Vissannapeta with 10 revenue villages, A Konduru with 13 revenue villages, and Gampalagudem with 21 revenue villages&#8212;along with Tiruvuru municipality. The region is enriched with a strong cultural and historical background, with notable landmarks such as the Gampalagudem Sri Nemali Venugopala Swami Temple and the Putrela Sri Maremma Thalli Temple attracting visitors and preserving heritage.<br>The constituency plays a vital role in agriculture and horticulture, forming the backbone of the local economy. With its strategic location and excellent connectivity to both Vijayawada and Khammam, Tiruvuru holds immense potential for trade expansion, industrial growth, and overall economic development.<br>The growth ambition of this action plan is to achieve 15% annual growth across key sectors. By leveraging its agricultural strengths, evolving industrial base, thriving construction sector, and expanding service industry, Tiruvuru is positioned to become a hub of balanced and sustainable progress, contributing significantly to the state and national development agenda.<br>",
+  "constituencyMap": "99\\MAP\\99IMAGE2025090317140919468_tiruvuru.jpg",
+  "geography": "Tiruvuru constituency spans 795.99 sq. km in NTR district, Andhra Pradesh, with fertile black cotton soil supporting extensive paddy cultivation. Water resources include Krishna River and canals, enhancing agricultural productivity. The region experiences a tropical climate with 1147.9 mm annual rainfall. Land usage is diverse, with 13,506 acres of forest, 5,549 acres of barren land, and 1,304 acres of permanent pastures. Agriculture dominates, with 85% of land cultivating paddy, mango, and other crops",
+  "populationDesc": "Population (2011 Census): 2,56,536 people, with 1,29,435 males and 1,27,101 females. The sex ratio stands at 980 females per 1,000 males.",
+  "administrationDesc": "Tiruvuru Constituency is one of the six assembly constituencies in Krishna District. It has Tiruvuru, Vissannapeta, A Konduru, Gampalagudem&#160;",
+  "educationHealthcareDesc": "Tiruvuru constituency has a diverse educational landscape with 186 government primary schools, 34 upper primary schools, and limited higher education options. Healthcare infrastructure includes 4 Community Health Centers with 110 beds, 2 Primary Health Centers, and 44 sub-centers. Emergency services are supported by 4 Fixed Day Health Services vehicles and 4 ambulances. Hostel facilities are available for marginalized communities, with 9 boys' hostels and 8 girls' hostels, though gaps exist, particularly for ST students.",
+  "culturalheritageDesc": "The Tiruvuru Assembly Constituency in NTR district has a vibrant cultural heritage rooted in temples, festivals, agriculture, and folk arts. Notable landmarks include the Sri Nemali Venugopala Swamy Temple at Gampalagudem and the Sri Maremma Thalli Temple at Putrela, famous for its annual Jatara. Festivals like Sankranti, Ugadi, and Dasara highlight community spirit, while mango cultivation in the Nuzvid&#8211;Tiruvuru belt reflects agrarian pride. Folk arts, weaving, pottery, and bamboo crafts further enrich the constituency&#8217;s cultural identity."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Er5d//+FI2OX2qN3eymzTw==",
+   "economy_Text": "<p><b><font size=\"5\"><span lang=\"EN-GB\"><span>Tiruvuru'</span></span><span>s Economy at a Glance</span></font></b></p><span lang=\"EN-GB\"><p><span>Tiruvuru outlines a clear roadmap to drive economic growth, generate employment, and promote inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377; 9,591 crores in 2023&#8211;24, the constituency is poised for steady expansion, projected to reach &#8377;1,85,244 crores by 2047&#8211;48. This growth reflects a transformative shift across the agriculture, industry, and services sectors.&#160;As of 2023-24, the economy is led by the&#160;</span><span>service sector</span><span>, contributing 40.77% to the Gross Value Added (GVA), followed by the&#160;</span><span>agriculture and allied sector</span><span>&#160;at 37.38%, and the industrial sector at 21.85%.</span></p></span>",
+   "gcdP_Growth_Text": "Tiruvuru is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Horticulture, Live stock, and real estate. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.<br>",
+   "createdDate": "2025-09-06T07:41:58.43"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9591.0,
+   "cagR_Pct": 17.03,
+   "targetAmountCrore": 18626.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3617.0,
+   "cagR_Pct": 20.11,
+   "targetAmountCrore": 7544.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1939.0,
+   "cagR_Pct": 19.35,
+   "targetAmountCrore": 3930.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3316.0,
+   "cagR_Pct": 14.23,
+   "targetAmountCrore": 5865.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 99,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 40.77
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 21.85
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 37.38
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 99,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 128,
+   "constituencyId": 99,
+   "name": "Kolikapudi Srinivasa Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 131,
+   "constituencyId": 99,
+   "name": "Kokkiligadda Rakshana Nidhi",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party ",
+   "photo": ""
+  },
+  {
+   "id": 132,
+   "constituencyId": 99,
+   "name": "Kokkiligadda Rakshana Nidhi",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 134,
+   "constituencyId": 99,
+   "name": "Dirisam Padma Jyothi",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress (INC)",
+   "photo": ""
+  },
+  {
+   "id": 135,
+   "constituencyId": 99,
+   "name": "Koneru Ranga Rao",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": " Indian National Congress ",
+   "photo": ""
+  }
+ ]
+}

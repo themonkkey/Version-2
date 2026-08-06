@@ -1,0 +1,197 @@
+{
+ "code": 8,
+ "name": "Tadikonda (SC)",
+ "district": "Guntur",
+ "logoUrl": "assets/constituencies_logos/tadikonda-sc.png",
+ "profile": {
+  "population": "245636 (As per Census 2011)",
+  "voterCount": "207832 (As per 2024 Elections)",
+  "area": "470.22",
+  "mandals": "Medikonduru-R,Phirangipuram-R,Tadikonda-R,Thulluru-R",
+  "revenueVillages": "60",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Tadikonda Assembly Constituency was established in 1967. The region&#8217;s economy is predominantly agrarian, with agriculture serving as the primary livelihood for many residents. Its fertile lands support the cultivation of diverse crops, significantly contributing to the local economy. In recent years, the area has also seen notable advancements in renewable energy.&#10;Tadikonda boasts a rich historical and cultural heritage, diverse geographical features, and strong potential for economic growth. Its strategic proximity to key towns such as Guntur, Tadikonda, Narasaraopeta, and Sattenapalli ensures excellent connectivity, promoting trade, commerce, and tourism.&#10;The Tadikonda Vision Action Plan 2024&#8211;2029 has been carefully crafted to harness the constituency&#8217;s strengths in agriculture, a dynamic industrial base, a growing construction sector, and a robust services industry. This comprehensive plan is aligned with Andhra Pradesh&#8217;s ambitious Swarna Andhra @ 2047 vision and complements the national development agenda of Viksit Bharat @ 2047.&#10;Situated within and around the Amaravati Capital Region, Tadikonda and Thullur Mandals are emerging as hubs for construction, education, innovation, commerce, and services. These unique advantages position the constituency to achieve an ambitious annual growth rate of 15% across all major sectors.&#10;<br>",
+  "constituencyMap": "8\\MAP\\8IMAGE2025090410151247751_tadikonda.jpg",
+  "geography": "Tadikonda Assembly Constituency, located in the northern part of Guntur District within the Amaravati Capital Region, benefits from its proximity to Vijayawada and the Krishna River. The region&#8217;s soils are predominantly black cotton (84%) and red loamy (16%), with patches of sandy alluvial soil, supporting a diverse range of crops.&#160;",
+  "populationDesc": "Tadikonda has a total population of 2,67,736 residing in rural areas. The constituency has 67,370 households, with a sex ratio of 1021 female per 1,000 males.&#10;&#10;<br>",
+  "administrationDesc": "Tadikonda Constituency is one of the seven assembly constituencies in Guntur District. It has Tadikonda, Tulluru, Medikonduru, and Phirangipuram Mandals.",
+  "educationHealthcareDesc": "The constituency has a robust education network with 170 primary, 15 upper primary, and 46 high schools, supported by 4 junior colleges, 2 degree colleges, 3 polytechnics, 4 engineering colleges, and an agriculture college. Education is strengthened through digital learning, teacher training, and infrastructure upgrades, while NSDC and PMKVY initiatives enhance youth employability in agriculture, IT, construction, and services. Healthcare facilities include 2 area hospitals, 5 Primary Health Centres, and 43 sub-centres, ensuring accessible preventive and curative services.",
+  "culturalheritageDesc": "Tadikonda is renowned for its rich cultural and spiritual heritage, reflected in diverse religious landmarks and historic significance. The Cathedral Church stands as a symbol of Christian faith and architecture, while the Mulakureswari Temple at Phirangipuram is a revered Shakti shrine attracting pilgrims. The hilltop Ananthavaram Venkateshwara Swamy Temple and the Venkateshwara Swamy Temple at Venkatapalem serve as vibrant spiritual centers. Its proximity to Amaravati, with its Buddhist relics and monuments, further enhances Tadikonda&#8217;s identity as a heritage tourism hub."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "i2Xw1wfvyN1IIuu2ok+cOw==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Tadikonda&#8217;s Economy at a Glance</h2><p><br></p><p>The Economic Vision Plan for Tadikonda outlines a comprehensive roadmap to&#160;<span>transform the constituency into a dynamic, investment-ready, and employment-</span><span>generating region. With a Gross Constituency Domestic Product (GCDP) of &#8377;9,023&#160;</span><span>crores in 2023&#8211;24, the constituency is projected to reach&#160;</span><span><font face=\"Roboto\"><span>&#8377;</span>16463<span>&#160;crores by 2028&#8211;29, reflecting a robust and sustainable annual growth&#160;</span></font></span><span>rate of 12&#8211;15%. This ambitious economic strategy is built on leveraging&#160;</span><span>Tadikonda&#8217;s sectoral strengths, addressing key infrastructure and employment&#160;</span><span>challenges, and fostering industrial diversification.&#160;</span><span>As of 2023-24, the economy is led by the service sector, contributing 41.22% to the Gross Value Added (GVA), followed by the&#160;</span><span>agriculture and allied&#160;</span><span>sector at 31.57%</span><span>&#160;and the&#160;</span><span>industry&#160;</span><span>sector at 27.21%.</span></p>",
+   "gcdP_Growth_Text": "<span>Tadikonda is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like horticulture, construction, manufacturing and real estate. </span><span>This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-06T10:28:44.96"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 8347.0,
+   "cagR_Pct": 15.47,
+   "targetAmountCrore": 15071.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3441.0,
+   "cagR_Pct": 19.04,
+   "targetAmountCrore": 6254.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2272.0,
+   "cagR_Pct": 17.59,
+   "targetAmountCrore": 5220.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2635.0,
+   "cagR_Pct": 7.01,
+   "targetAmountCrore": 3598.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 8,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 41.22
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 27.21
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 31.57
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 8,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 792,
+   "constituencyId": 8,
+   "name": "Tenali Sravan Kumar",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 794,
+   "constituencyId": 8,
+   "name": "undavalli Sridevi",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 795,
+   "constituencyId": 8,
+   "name": "Tenali Sravan Kumar",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": " Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 796,
+   "constituencyId": 8,
+   "name": "Dokka Manikya Vara Prasada Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 797,
+   "constituencyId": 8,
+   "name": " Dokka Manikya Vara Prasada Rao",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": " Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

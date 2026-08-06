@@ -1,0 +1,206 @@
+{
+ "code": 142,
+ "name": "Yemmiganur",
+ "district": "Kurnool",
+ "logoUrl": "assets/constituencies_logos/yemmiganur.png",
+ "profile": {
+  "population": "304432 (As per Census 2011)",
+  "voterCount": "247752 (As per 2024 Elections)",
+  "area": "845.13",
+  "mandals": "Gonegandla-R,Nandavaram-R,Yemmiganur-R,Yemmiganur-U",
+  "revenueVillages": "55",
+  "municipal_wards": "34",
+  "municipalities": "Yemmiganur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Yemmiganur Constituency consists of three mandals: Yemmiganur, Gonegandla, and Nandavaram, and        one municipality: Yemmiganur. These are located in the Kurnool district of Andhra Pradesh, with Yemmiganur serving as the headquarters.&#10;The car festival of Shree Neelakanteswara Swamy Temple in Yemmiganur Town is celebrated every year in the month of January and it is grandly celebrated by all people irrespective of religion, caste etc. In Nandavaram mandal, there is an old Shiva Temple at Gurujala Village which is situated at Tungabadra River Bank. Every year, during the festival of &#8220;Mahashiva Ratri&#8221; a car festival will be celebrated very grandly in the name of &#8220;Lord Sri Ramalingeshwara swamy&#8221;. As per the Scripture mentioned on the ancient monument in the temple, the &#8220;Sivalingam&#8221; was installed by &#8220;Lord Sri Rama&#8221; while he was touring with Seethamma and Laxman in Dhandaka Aranyam which is now called South India. Sri Chintala MuniRanga Swamy Temple is located at Gonegandla and Ganjahalli also located in Gonegandla mandal in Kurnool district.&#10;<br>",
+  "constituencyMap": "142\\MAP\\142IMAGE2025090512391966514_yemmiganur map.jpg",
+  "geography": "Yemmiganur is situated at a distance of 70 km from the District Headquarters Kurnool towards the south-western side. The constituency predominantly features Fertile alluvial soils, which are highly conducive to agriculture. These soils support extensive Paddy cultivation, making Yemmiganur a significant agricultural hub in the region. The constituency has 50% of its land under agriculture, primarily cultivating Paddy, while 10% comprises wetlands and forests.",
+  "populationDesc": "Population (2011 Census): 304432 people, with 152119 males and 144,851 females. The sex ratio stands at 991 females per 1,000 males.&#10;Households: There are 58,371 households.&#10;The constituency has a literacy rate of 48.54%, with 1,26,378 literates, including 67,120 males and 59,258 females.<p>&#10;</p>",
+  "administrationDesc": "Yemmiganur Constituency is one of the seven assembly constituencies in Kurnool district. It includes Yemmiganur, Gonegandla, and Nandavaram and Yemmiganur municipality.",
+  "educationHealthcareDesc": "Yemmiganur boasts a robust healthcare infrastructure designed to cater to the diverse medical needs of its residents. The constituency is equipped with 1 Community Health Centers (CHCs), 4 Primary Health Centers (PHCs), and 42 sub-centers, ensuring accessible healthcare services across the region. Additionally, the area is supported by 4-104 Fixed Day Health Services (FDHS) vehicles and 3-108 ambulance services, providing critical emergency response capabilities. Veterinary care is also well-represented with 2 veterinary hospitals and 7 veterinary dispensaries, addressing the health needs of livestock and pets in the community. The educational landscape in Yemmiganur is comprehensive, with a wide array of institutions catering to various levels of learning. The constituency is home to 135 primary schools, 11 upper primary schools, and 34 high schools, all operating under different managements to provide quality education to young learners. For higher education, there are 11 junior colleges, 7 degree colleges, 1 Industrial Training Institute (ITI), and 1 engineering college. Additionally, the area supports students from diverse backgrounds with 1 BC Welfare Girls Hostel, 4 BC Welfare Boys Hostels, 1 Social Welfare Boys Hostel.&#10;&#10;<br>",
+  "culturalheritageDesc": "Culturally, Yemmiganur is home to significant heritage sites such as the Neelakanteshvara swami and Ramalingeshvara Swami Temples, the Samadhi and Asram of Sree Raghavendra swami at Ibrahimpuram village, and the Sri Chinthalamuni Rangadu temple and Ganjahalli Urusu at Gonegandla. Ancient M.B Jerushalem Church at Yemmiganur town ."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "bM2rCDcp9FkRzXucAS7ijw==",
+   "economy_Text": "<p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The Yemmiganur Economic Vision Plan (2024&#8211;2029) aims to transform the constituency into a sustainable, high-growth economic hub by leveraging its strengths in agriculture (38.52% of GCVA), industry (19.78%), and services (41.70%), with a target Gross Constituency Domestic Product (GCDP) of &#8377;10,327 crores by 2028-29 and &#8377;1,07,371 crores by 2047-48.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Key strategies include modernizing agriculture through irrigation upgrades, crop diversification, and food processing; fostering industrial growth via food processing parks, textile clusters, and renewable energy projects; and expanding the services sector by promoting tourism, financial inclusion, and digital infrastructure.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Supported by infrastructure modernization, skill development for 15,000 jobs, and data-driven governance, the plan aligns with Andhra Pradesh&#8217;s Swarna Andhra @2047 vision, positioning Yemmiganur as a vibrant economic hub with a projected per capita income rise from &#8377;1,28,552 in 2023-24 to &#8377;2,75,585 by 2028-29.</font></p>",
+   "gcdP_Growth_Text": "<font size=\"4\" face=\"Times New Roman\">By 2029, Yemmiganur will transition from a primarily agrarian economy to a <strong>balanced agri&#8211;industry&#8211;services hub</strong>, laying the foundation for 2047 transformation</font>",
+   "createdDate": "2025-09-05T20:15:14.627"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4700.0,
+   "cagR_Pct": 19.2,
+   "targetAmountCrore": 10327.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1813.0,
+   "cagR_Pct": 22.16,
+   "targetAmountCrore": 4552.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 860.0,
+   "cagR_Pct": 20.11,
+   "targetAmountCrore": 1980.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1675.0,
+   "cagR_Pct": 15.0,
+   "targetAmountCrore": 3043.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 142,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 41.7
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.78
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 38.52
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 142,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 703,
+   "constituencyId": 142,
+   "name": "Byreddy Jaya Nageswara Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 698,
+   "constituencyId": 142,
+   "name": "K. Chennakesava Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 702,
+   "constituencyId": 142,
+   "name": "Byreddy Jaya Nageswara Reddy ",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 711,
+   "constituencyId": 142,
+   "name": "K. Chennakesava Reddy",
+   "termFrom": 2012,
+   "termTo": 2014,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 717,
+   "constituencyId": 142,
+   "name": "K. Chennakesava Reddy",
+   "termFrom": 2009,
+   "termTo": 2012,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 720,
+   "constituencyId": 142,
+   "name": "K. Chennakesava Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

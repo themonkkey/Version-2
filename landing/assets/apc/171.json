@@ -1,0 +1,236 @@
+{
+ "code": 171,
+ "name": "Visakhapatnam North",
+ "district": "Visakhapatnam",
+ "logoUrl": "assets/constituencies_logos/visakhapatnam north.png",
+ "profile": {
+  "population": "263922 (As per Census 2011)",
+  "voterCount": "286016 (As per 2024 Elections)",
+  "area": "75",
+  "mandals": "Gvmc (Visakhapatnam)-U",
+  "revenueVillages": "0",
+  "municipal_wards": "17",
+  "municipalities": "Gvmc (Visakhapatnam)",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Visakhapatnam North (Constituency No. 23) is a key urban assembly segment in Visakhapatnam district, Andhra Pradesh, formed in 2008 after delimitation. It is one of seven assembly segments of the Visakhapatnam Lok Sabha constituency and holds a fully urban electorate. Known for its affluent neighborhoods, IT corridors, and proximity to coastal economic zones, it plays a vital role in driving the city&#8217;s financial and industrial growth, aligning with the Swarna Andhra Vision @ 2047. The constituency falls under the General category and contributes significantly to urban development and economic expansion. Administratively, it includes parts of Visakhapatnam Urban and Gopalapatnam mandals, specifically GVMC wards 14, 24&#8211;26, 42&#8211;51, and 53&#8211;55 within Zones III and V.&#160; As part of the District Vision Action Plan 2024&#8211;2029, it remains integral to enhancing Gross District Domestic Product (GDDP).",
+  "constituencyMap": "171\\MAP\\171IMAGE2025090415462788274_vizag north map.png",
+  "geography": "Visakhapatnam North spans approximately 75 sq. km, a subset of the district&#8217;s total area of 1,049 sq. km (0.6% of Andhra Pradesh&#8217;s geographical area). It is entirely urban, comprising densely populated residential and commercial areas within Visakhapatnam city. The constituency is bordered by Visakhapatnam South, Visakhapatnam West, and Gajuwaka assembly constituencies, with no inter-state boundaries.",
+  "populationDesc": "Visakhapatnam North&#8217;s demographic data is derived from the 2011 Census, district plan projections, and estimated growth trends. The constituency&#8217;s population is a significant portion of the district&#8217;s 19.60 lakhs (2011), with a projected district population of 22.45 lakhs in 2023.",
+  "administrationDesc": "Visakhapatnam North Assembly Constituency is an entirely urban segment within Visakhapatnam district, established in 2008 following delimitation. Administratively, it covers parts of Visakhapatnam Urban Mandal and Gopalapatnam Mandal, falling under the Greater Visakhapatnam Municipal Corporation (GVMC) limits. The constituency comprises GVMC wards 14, 24&#8211;26, 42&#8211;51, and 53&#8211;55, spread across Zones III and V, ensuring a balanced mix of residential, commercial, and industrial areas.",
+  "educationHealthcareDesc": "Visakhapatnam North Constituency has a strong healthcare and education base. It hosts 5 PHCs, contributing to the district&#8217;s 77 facilities, with health indicators like an MMR of 74.73 per lakh live births and an IMR of 3.58 per 1,000 (June 2024). The area benefits from proximity to VIMS, Homi Bhabha Cancer Hospital, and AMTZ in Pedagantyada, boosting medical innovation and jobs. Education includes ~30 government and ~50 private schools, alongside access to 59 degree and 40 professional colleges district-wide, with GITAM University nearby. Skill development initiatives aim to train 10,000 youth by 2029, positioning the constituency as a key hub.",
+  "culturalheritageDesc": "Visakhapatnam North Constituency is culturally vibrant, blending history, spirituality, and modern identity. It is home to the famed Simhachalam Temple, dedicated to Lord Varaha Narasimha, a major pilgrimage attracting lakhs of devotees. The area celebrates festivals like Chandanotsavam, drawing national attention. Cultural hubs include Kala Bharathi Auditorium and community centers that host music, dance, and literary programs, sustaining Telugu traditions. Its coastline and scenic spots also serve as backdrops for cinema and tourism, reinforcing its cultural influence. The constituency reflects Visakhapatnam&#8217;s rich spiritual heritage while fostering contemporary cultural expressions, making it both a religious and artistic landmark in Andhra Pradesh."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "5z0n7BKwYJ1QxR/8RPdM5Q==",
+   "economy_Text": "<p><span>Visakhapatnam North&#8217;s Gross Constituency Domestic Product (GCDP) stood at &#8377;11,260.00 crores in 2023-24 and is projected to reach &#8377;21,992.00 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of approximately 12-15%. This growth is driven by a strategic vision that leverages sectoral strengths, addresses infrastructure and employment challenges, and promotes industrial diversification. Key initiatives include improving connectivity, fostering tourism, and investing in skill development to create sustainable job opportunities.</span></p><p><span><b>Sectoral Contributions and Growth:</b></span></p><p><span><b><i>Service Sector</i></b>: Contributes &#8377;7,626.00 crores (2023-24), projected to grow to &#8377;15,977.00 crores by 2028-29 at a growth rate of 18.65%, driven by tourism, IT, and trade.</span></p><p><span><b><i>Industry:</i></b> Valued at &#8377;2,779.00 crores (2023-24), expected to reach &#8377;4,706.00 crores by 2028-29 with a growth rate of 14.08%, fueled by manufacturing diversification and infrastructure improvements.</span></p><p><span><b><i>Agriculture &amp; Allied:</i></b> Accounts for &#8377;47.00 crores (2023-24), projected to decline to &#8377;29.00 crores by 2028-29 at a Negative growth rate, due to limited arable land and urban constraints.</span></p>",
+   "gcdP_Growth_Text": "<p><span>Visakhapatnam North&#8217;s Gross Constituency Domestic Product (GCDP) is set to grow from &#8377;11,260.00 crores in 2023-24 to &#8377;21,992.00 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of 12-15%. The services sector, with a growth rate of 18.65%, will rise from &#8377;7,626.00 crores to &#8377;15,977.00 crores, fueled by tourism and IT. The industrial sector, growing at 14.08%, will increase from &#8377;2,779.00 crores to &#8377;4,706.00 crores, driven by manufacturing and infrastructure enhancements.</span></p>",
+   "createdDate": "2025-09-04T07:35:03.5"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 11260.0,
+   "cagR_Pct": 18.22,
+   "targetAmountCrore": 21992.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 7626.0,
+   "cagR_Pct": 18.65,
+   "targetAmountCrore": 15977.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2779.0,
+   "cagR_Pct": 14.08,
+   "targetAmountCrore": 4706.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 47.0,
+   "cagR_Pct": 0.0,
+   "targetAmountCrore": 29.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 171,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 73.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 27.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 0.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 171,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 10,
+   "sectorName": "Port-led Development",
+   "description": "Ports, multimodal logistics, inland waterways, and warehousing.",
+   "imageUrl": "assets/img/sectors/port-led-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 432,
+   "constituencyId": 171,
+   "name": "Penmetsa Vishnu Kumar Raju",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Bharatiya Janata Party",
+   "photo": ""
+  },
+  {
+   "id": 827,
+   "constituencyId": 171,
+   "name": "Ganta Srinivasa Rao",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 829,
+   "constituencyId": 171,
+   "name": "Penmetsa Vishnu Kumar Raju",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Bharatiya Janata Party",
+   "photo": ""
+  },
+  {
+   "id": 831,
+   "constituencyId": 171,
+   "name": "Thynala Vijaya Kumar",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

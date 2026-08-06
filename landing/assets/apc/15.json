@@ -1,0 +1,221 @@
+{
+ "code": 15,
+ "name": "DARSI",
+ "district": "Prakasam",
+ "logoUrl": "assets/constituencies_logos/darsi.png",
+ "profile": {
+  "population": "2,80,834",
+  "voterCount": "226231",
+  "area": "1602. 17",
+  "mandals": "Darsi, Donakonda, Kurichedu, Mundlamuru, Tallur",
+  "revenueVillages": "132",
+  "municipal_wards": "20",
+  "municipalities": "1 (Darsi Nagar Panchayat)",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>Darsi is one of the eight assembly constituencies in the Prakasam district of Andhra Pradesh and has held political significance since its establishment in 1951. It falls under the Ongole Lok Sabha constituency and spans parts of the Kanigiri and Ongole revenue divisions. The constituency comprises five mandals: Darsi, Donakonda, Kurichedu, Mundlamuru, and Thalluru. According to the 2011 Census, the constituency comprises 132 revenue villages, with 118 inhabited and 14 uninhabited. There are 95 Gram Panchayats and one Nagar Panchayat in the region. To improve local governance and service delivery, these were reorganized into 74 Village Secretariats and 5 Ward Secretariats.</p><p><br></p><p>Agriculture is the backbone of the constituency&#8217;s economy, supported by predominantly red loamy soil, which is ideal for cultivating a variety of crops such as groundnut, cotton, maize, paddy, tobacco, red gram, and chilli. The area benefits from multiple irrigation sources, including the Gundlakamma River, which flows near Darsi and serves as a key source of drinking water and irrigation. The Gundlakamma Reservoir Project further strengthens water availability for farmers in Darsi, Kurichedu, and Mundlamuru mandals. Additionally, the Nagarjuna Sagar Project (NSP) canal passes through Kurichedu, Thalluru, and Darsi mandals, significantly enhancing the region&#8217;s irrigation potential.</p>",
+  "constituencyMap": "15\\MAP\\15IMAGE2025090422255784547_DARSI MAP.jpg",
+  "geography": "The Darsi constituency is located in Prakasam District and spans 1602.17 sq. km. It shares boundaries with the Santhanuthalapadu, Yerragondapalem, Markapuram, Addanki, and Parchur constituencies &amp; Palnadu District. Mix of red loamy and black  soils.&#10;<p><br></p>",
+  "populationDesc": "The total population is 280,834, with approximately 90.08% residing in rural areas and 9.82% in urban areas. There are 68,016 households, and the sex ratio is 951 females per 1,000 males. The literacy rate stands at 55.06%&#10;<p><br></p>",
+  "administrationDesc": "Darsi  Constituency is one of the eight assembly constituencies in Prakasam District. It includes 1) Darsi, 2) Donakonda, 3) Kurichedu, 4) Mundlamuru, and 5) Thalluru &amp; 1 Nagara Panchayat (Darsi). The Darsi constituency comes under the Ongole Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "constituency has a modest yet essential public healthcare network. It includes 1 government general hospital and 1 community health center, serving as key referral points for medical care. 7 Primary Health Centres (PHCs) cater to rural areas, while 1 Urban Primary Health Centre (UPHC) serves the urban population.<br>The Darsi constituency has a well-spread foundational education network with 286 primary schools and 35 upper primary schools, ensuring basic education access across rural and semi-urban areas. 79 high schools support secondary education, while 24 junior colleges cater to higher secondary needs. For higher education, the region has 7 degree colleges, Veda College of Pharmacy, Additionally, Darsi houses one polytechnic college.<br><p><br></p>",
+  "culturalheritageDesc": "Buddhist Heritage Site&#8212;Chandavaram, Chandavaram Buddhist site, Gangamma Temple (East Gangavaram), Pulipadu Pond (ecological spot)."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "WK1SR+6AVqfYItaxy8VwkQ==",
+   "economy_Text": "<b><font size=\"4\">Economy at a Glance</font></b><p>Darsi&#8217;s economy is predominantly agrarian, with the Agriculture and Allied sectors contributing approximately 54.43% to the Gross Value Added (GVA) in the fiscal year 2023-24. Within this sector, Livestock accounts for 27% and Horticulture for 14% of the total contribution. The constituency has significant potential for the cultivation of commercial crops such as tobacco, cotton, and red gram. With the expansion and improvement of irrigation infrastructure, including projects like the Gundlakamma Reservoir and the Nagarjuna Sagar Project canal, agricultural productivity is expected to rise, enabling farmers to diversify into more profitable cash crops, thereby increasing rural incomes and livelihood security.<b><font size=\"4\"></font></b></p><p>Industrial development is set to accelerate with the establishment of the MSME Park Phase I at Chandaluru, spanning 50 acres, which will serve as a catalyst for local economic activity by fostering small and medium enterprises and generating employment opportunities. Furthermore, Donakonda holds promise for industrial growth due to its improving connectivity and available land for industrial setups.</p><p>&#10;</p><p>Connectivity in Darsi is rapidly improving, contributing to its economic potential. The Guntur&#8211;Nandyal railway line, passing through Donakonda, is already operational, facilitating the movement of goods and people. Additionally, the upcoming Nadikudi&#8211;Srikalahasti railway corridor will enhance connectivity further. The Bengaluru&#8211;Kadapa&#8211;Vijayawada Greenfield Expressway (NH-544G), currently under construction, is another significant infrastructure project that will run through mandals adjacent to Darsi, such as Thalluru. This expressway will drastically reduce travel time, promote regional integration, and stimulate economic growth by connecting Darsi more effectively with major urban and industrial centers.</p>",
+   "gcdP_Growth_Text": "Darsi is experiencing promising economic growth driven by its strong agricultural base and expanding industrial potential. With a targeted annual GVA growth rate of 12-15%, the constituency is focusing on boosting sectors such as agriculture, horticulture, livestock, small and medium enterprises, and infrastructure development. This growth trajectory supports the long-term vision of transforming Darsi into a resilient and connected rural-economic hub, fostering sustainable livelihoods and enhanced quality of life by 2047",
+   "createdDate": "2025-09-05T02:55:19.363"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4780.0,
+   "cagR_Pct": 14.95,
+   "targetAmountCrore": 9596.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1339.0,
+   "cagR_Pct": 15.6,
+   "targetAmountCrore": 2763.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 676.4,
+   "cagR_Pct": 18.5,
+   "targetAmountCrore": 1586.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2407.8,
+   "cagR_Pct": 17.8,
+   "targetAmountCrore": 5462.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 15,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 30.28
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 15.29
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 54.43
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 15,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 8,
+   "sectorName": "Mining Industries",
+   "description": "Extraction of minerals and creation of value-adding industries and processing chains.",
+   "imageUrl": "assets/img/sectors/mining-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 9,
+   "sectorName": "Renewable Energy",
+   "description": "Solar, wind, green hydrogen, and hybrid energy projects with grid integration.",
+   "imageUrl": "assets/img/sectors/renewable-energy.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 542,
+   "constituencyId": 15,
+   "name": "Buchepalli Siva Prasad Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 543,
+   "constituencyId": 15,
+   "name": "Maddisetty Venugopal",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 544,
+   "constituencyId": 15,
+   "name": "Sidda Raghava Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 545,
+   "constituencyId": 15,
+   "name": "Buchepalli Siva Prasad Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 546,
+   "constituencyId": 15,
+   "name": "Buchepalli Subba Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Independent",
+   "photo": ""
+  }
+ ]
+}

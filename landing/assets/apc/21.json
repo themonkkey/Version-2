@@ -1,0 +1,233 @@
+{
+ "code": 21,
+ "name": "Sarvepalli",
+ "district": "Spsr Nellore",
+ "logoUrl": "21\\Logo\\21IMAGE2026051419253356482_WhatsApp Image 2026-04-24 at 5.46.06 PM.jpeg",
+ "profile": {
+  "population": "276990 (As per Census 2011)",
+  "voterCount": "232034 (As per 2024 Elections)",
+  "area": "1298",
+  "mandals": "Manubolu-R,Muthukur-R,Podalakur-R,Totapalligudur-R,Venkatachalam-R",
+  "revenueVillages": "110",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "&#34;Sarvepalli Assembly constituency is located in the Nellore district of Andhra Pradesh and is one of the seven segments under the Tirupati Lok Sabha constituency. It includes five key mandals: Muthukur, Thotapalligudur, Venkatachalam, Manubolu, and Podalakur, encompassing 116 grama panchayats. Geographically, the region is situated along the southeastern coastal belt with a mix of black cotton and red loamy soils, which support both agriculture and aquaculture. It receives an average annual rainfall of 1050 mm. The region has 63,036 hectares of cultivable land, supported by irrigation sources such as the Sarvepalli reservoir, 11,387 tube wells, and three lift irrigation projects covering 405 hectares.<p><br></p><p>Economically, Sarvepalli is an emerging growth center with a targeted annual growth rate of 15% across key sectors. Agriculture remains the backbone, but aquaculture is gaining prominence&#8212;fisheries and aquaculture alone contributed approximately 20% to the Gross Constituency Value Added (GCVA) in 2023&#8211;24. The presence of the Krishnapatnam Sea Port provides a strong foundation for trade, logistics, and transport services. Additionally, companies like APGENCO and SEIL strategically position the constituency for industrial development, particularly in the manufacturing of equipment for thermal power projects. There is also potential for renewable energy, especially solar power, and existing edible oil industries add to the economic mix. Educational and service sectors are also expanding. With strong infrastructure and natural resource advantages, Sarvepalli stands as a promising constituency for sustained economic and regional development.&#34;&#10;</p><p><br></p>",
+  "constituencyMap": "21\\MAP\\21IMAGE2025090813025457399_SARVEPALLI  MAP_11zon.jpg",
+  "geography": "Sarvepalli constituency is located in Nellore District and spans 1298 sq. km. It shares boundaries with the Atmakur, Gudur, and Nellore constituencies. It has various soils, such as  black cotton soil and red loamy soil.&#10;<p><br></p>",
+  "populationDesc": "The total population is 287,683, with approximately 100% residing in rural areas. There are 76,323 households, and the sex ratio is 990 females per 1,000 males. The literacy rate stands at 56.76%.&#10;<p><br></p>",
+  "administrationDesc": "Sarvepalli  Constituency is one of the eight assembly constituencies in SPSR Nellore District. It includes 1) Muthukur, 2) Thotapalli Gudur, 3) Venkatachalam, 4) Manubolu, and 5) Podalakur Mandals. Sarvepalli  Constituency comes under Tirupathi Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "2 engineering colleges &amp; 1 agriculture college. The region also has 2 community health centers.<p><br></p>",
+  "culturalheritageDesc": "&#34;Kotha Koduru Beach, Venangini Matha Church &amp; Sri Venkaiah Swamy Temple, Fun Park, Golagamudi, and Nelaturu Rock Beach&#34;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "mXkHRvhiaf5pI3pnOnwDwQ==",
+   "economy_Text": "<font face=\"Times New Roman\"><span>The economy of Sarvepalli Assembly constituency is diverse and steadily growing, with agriculture being the dominant sector. In 2023&#8211;24 (First Revised Estimates), the agriculture sector contributed 43.25% to the constituency&#8217;s Gross Value Added (GVA), amounting to &#8377;5,242 crore. This is expected to grow significantly, reaching &#8377;9,498 crore by 2028&#8211;29. Within agriculture, horticulture occupies 3,785 hectares and contributed &#8377;466 crore (3.84%) to GVA, with key crops including coconut, mango, lemon, papaya, cashewnut, dragon fruit, and chillies. Animal husbandry is another important sub-sector, accounting for &#8377;1,782 crore (14.7%) of the GVA, supported by the region&#8217;s rich livestock base.</span><span>Key Growth Drivers:</span><br>The industrial sector contributes 19.9% to the GVA (&#8377;2,412 crore in 2023&#8211;24) and is viewed as a pillar for future economic transformation. The presence of the Krishnapatnam Sea Port gives Sarvepalli a strategic advantage in trade and export-led industrialization. The region holds strong potential for the establishment of manufacturing units related to thermal power equipment, with companies like APGENCO and SEIL already active. There is also considerable scope for expansion in solar power generation and edible oil processing, supported by the presence of 11 refinery industries in the constituency.<br>The service sector is the second-largest contributor to the economy, accounting for 36.84% (&#8377;4,466 crore) of GVA in 2023&#8211;24, and is projected to grow to &#8377;10,165 crore by 2028&#8211;29. This growth is driven by developments in education, logistics, tourism, and public services<br><span>Aquaculture &#8211; Major GCVA contributor with growing value-chain investments</span><span>Krishnapatnam Port &#8211; Catalyzing trade, export-oriented industries, and logistics</span><span>Multi-Modal Logistics Parks (MMLPs) &#8211; Boosting connectivity and freight handling</span><span>Renewable Energy &amp; Edible Oil Industry &#8211; Driving industrial diversification</span></font><p></p>",
+   "gcdP_Growth_Text": "<p><font face=\"Times New Roman\">Sarvepalli is witnessing steady economic momentum with a targeted 12&#8211;15% annual Gross Constituency Domestic Product (GCDP) growth rate, driven by strategic investments and sectoral expansion. Key growth engines include industries, digital infrastructure, transport and logistics, sea port&#8211;led development, and agriculture. The presence of Krishnapatnam Port, expanding road and rail connectivity, and the rise of logistics parks are enhancing regional competitiveness and trade potential. This growth trajectory aligns with the long-term vision of making the&#160;<span>constituency a vibrant urban and economic hub by 2047.</span></font></p>",
+   "createdDate": "2025-09-03T17:29:28.403"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 13101.0,
+   "cagR_Pct": 15.46,
+   "targetAmountCrore": 26884.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 4466.0,
+   "cagR_Pct": 17.88,
+   "targetAmountCrore": 10165.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2412.0,
+   "cagR_Pct": 17.69,
+   "targetAmountCrore": 5445.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 5242.0,
+   "cagR_Pct": 12.62,
+   "targetAmountCrore": 9498.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 21,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 36.85
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.9
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 43.25
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 21,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 10,
+   "sectorName": "Port-led Development",
+   "description": "Ports, multimodal logistics, inland waterways, and warehousing.",
+   "imageUrl": "assets/img/sectors/port-led-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 200,
+   "constituencyId": 21,
+   "name": "Somireddy Chandra Mohan Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 202,
+   "constituencyId": 21,
+   "name": "Kakani Govardhan Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 203,
+   "constituencyId": 21,
+   "name": "Kakani Govardhan Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 204,
+   "constituencyId": 21,
+   "name": "Adala Prabhakara Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 206,
+   "constituencyId": 21,
+   "name": "Adala Prabhakara Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": " Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

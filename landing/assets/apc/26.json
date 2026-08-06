@@ -1,0 +1,197 @@
+{
+ "code": 26,
+ "name": "Nagari",
+ "district": "Chittoor",
+ "logoUrl": "assets/constituencies_logos/nagari.png",
+ "profile": {
+  "population": "266766 (As per Census 2011)",
+  "voterCount": "202713 (As per 2024 Elections)",
+  "area": "774.7",
+  "mandals": "Nagari-R,Nagari-U,Nindra-R,Puttur-R,Puttur-U,Vadamalapeta-R,Vijaya Puram-R",
+  "revenueVillages": "102",
+  "municipal_wards": "56",
+  "municipalities": "Nagari, Puttur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Nagari Constituency, covering 774.30 sq. km, includes five mandals&#8212;Nagari, Nindra, Vijayapuram, Puttur, and Vadamalapet&#8212;and two municipalities, with Nagari as headquarters. Known for its rich cultural heritage and famous temples like Sri Prasanna Venkateswara Swamy and Sri Kasi Visweshara, it attracts pilgrims nationwide. The region features fertile sandy clay loam and sandy loam soils, with 30% of land under agriculture and 31% forest cover. Major crops include mango, sugarcane, groundnut, and paddy, supported by 10,707 tubewells, 3,140 dug wells, and 262 MI tanks. The tropical climate receives 1,124 mm of annual rainfall. The population is 2.67 lakh with a 72.17% literacy rate and a sex ratio of 1010. The economy has a GVA of &#8377;5,031 crore, driven by services (50.55%), industry (27.89%), and agriculture (21.56%). Key industries include power loom weaving, plastics, granite, and food processing. Social infrastructure comprises healthcare centers, veterinary facilities, and numerous educational institutions, including engineering and law colleges. Physical infrastructure includes NH-716B, state highways, extensive road networks, electricity, and water supply systems. Despite strong growth, challenges remain in irrigation, healthcare, and economic diversification. Nagari's focused development in infrastructure, skill training, and resource management positions it for inclusive and sustainable progress.",
+  "constituencyMap": "26\\MAP\\26IMAGE2025090515263336686_NAGIRI MAP_11zon.jpg",
+  "geography": "Nagiri constituency is located in Chittoor District and spans 774.75 sq. km. It shares boundaries with Srikalahasthi, Chandragiri &amp; GD Nellore constituencies, and Tamil Nadu state and is strategically positioned between the cities of Chennai and Tirupati in Tamil Nadu and Andhra Pradesh.&#160; A mix of Black and Red Soils.",
+  "populationDesc": "The total population is 266,766, with approximately 78.4% residing in rural areas and 24.31% in urban areas. There are 66,613 households, and the sex ratio is 1,010 females per 1,000 males. The literacy rate stands at 68.5%.",
+  "administrationDesc": "Nagari Constituency is one of the seven assembly constituencies in Chittoor District. It includes 1) Nindra Mandal 2) Vijayapuram Mandal 3) Nagari  Mandal 4) Puttur Mandal 5) Vadamalapeta. The Nagari constituency comes under the Chittoor Loksabha Constituency.",
+  "educationHealthcareDesc": "The constituency is home to 309 primary schools, 45 upper primary schools, and 67 high schools; one Model Residential school; and one SC APRES residential school for girls. For higher education, there are 14 junior colleges, 8 degree colleges, 4 engineering colleges, 4 polytechnic colleges, 10 MBA courses, 10 MCA courses, 4 pharmacy colleges, 1 law college, and 2 Industrial Training Institutes (ITI). Additionally, the area supports students from diverse backgrounds with 9 SC Welfare Boys hostels, 4 SC Welfare Girls hostels, 7 BC Welfare Boys hostels, and 2 BC Welfare Girls hostels.<br><br>The constituency is equipped with 2 community health centers, 6 primary health centers (PHCs), 77 village clinics, and 6 AYUSH clinics, ensuring accessible healthcare services across the region. Veterinary care is also well-represented with 2 veterinary hospitals, 13 veterinary dispensaries, and 11 Rural Livestock Units.",
+  "culturalheritageDesc": "Nagari hills, Moolakona, Pandurajuguta, Akachellilagunta, Chelapalama Kona, Mukukonda Prasana Venkateswaraswamy Temple, Anjaramma Kanauma Temple, Sai Baba Temple, Draupathi sametha dharmaraju temple, Nagari Hills, Moolakona, Pandurajuguta, Akachellilagunta, Chelapalama Kona, Mukukonda"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "SwmEKQZn95vYt5Z/v3xWXQ==",
+   "economy_Text": "<b>Economy at a Glance</b><p><b><br></b></p><p>Nagari&#8217;s economy is service-driven, with a <span>balanced and diversified structure</span> that reflects its potential for multi-sectoral growth. The <span>Service Sector</span> leads with a <span>50.55% share</span> in Gross Value Added (GVA), propelled by trade, education, healthcare, and government services.</p><p>The <span>Industries Sector</span> contributes a significant <span>27.89%</span>, supported by traditional industries such as <span>power looms</span>, <span>food processing</span>, and the upcoming <span>APIIC industrial and MSME parks</span>, which are expected to boost local manufacturing and employment.</p><p>The <span>Agricultural &amp; Allied Sector</span> accounts for <span>21.56%</span>, with a focus on food crops, dairy, and allied rural livelihoods. With opportunities in <span>agri-processing</span>, cold chains, and value addition, the sector holds potential for growth through modernization and market linkages.</p><p>&#128313; <span>Sector-wise Share in GVA (2023&#8211;24):</span></p><ul>&#10;<li>&#10;<p><span>Service Sector:</span> 50.55%</p>&#10;</li>&#10;<li>&#10;<p><span>Industry Sector:</span> 27.89%</p>&#10;</li>&#10;<li>&#10;<p><span>Agriculture &amp; Allied Activities:</span> 21.56%</p>&#10;</li>&#10;</ul><p>&#10;&#10;&#10;&#10;&#10;</p><p>With a foundation in traditional sectors and growing investments in infrastructure and industry, Nagari is well-positioned for <span>inclusive and sustained economic growth</span>.</p>",
+   "gcdP_Growth_Text": "<p>Nagari is set to achieve a targeted 14-15% annual GCDP growth rate driven by expanding industrial parks, MSME clusters, and the traditional powerloom sector, alongside growth in food processing and service industries. This momentum supports the vision of transforming Nagari into a balanced, inclusive, and sustainable economic hub by 2047.</p>",
+   "createdDate": "2025-09-07T05:20:44.74"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5438.0,
+   "cagR_Pct": 15.63,
+   "targetAmountCrore": 11242.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2482.0,
+   "cagR_Pct": 14.86,
+   "targetAmountCrore": 5086.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1403.0,
+   "cagR_Pct": 15.98,
+   "targetAmountCrore": 2945.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1085.0,
+   "cagR_Pct": 16.11,
+   "targetAmountCrore": 2290.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 26,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 50.55
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 27.89
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 21.56
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 26,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 13,
+   "sectorName": "Handicrafts, Handlooms & Textiles",
+   "description": "Promotion of traditional crafts, modern design integration, and export facilitation.",
+   "imageUrl": "assets/img/sectors/handicrafts-handlooms-textiles.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 845,
+   "constituencyId": 26,
+   "name": "Gali Bhanu Prakash Naidu\t\t\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 847,
+   "constituencyId": 26,
+   "name": "R K ROJA\t\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 848,
+   "constituencyId": 26,
+   "name": "R K ROJA\t\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 849,
+   "constituencyId": 26,
+   "name": "Gali Muddu Krishnama Naidu\t\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 850,
+   "constituencyId": 26,
+   "name": "Reddyvari Chenga Reddy\t\t \t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,221 @@
+{
+ "code": 61,
+ "name": "Cheepurupalli",
+ "district": "Vizianagaram",
+ "logoUrl": "assets/constituencies_logos/cheepurupalle.png",
+ "profile": {
+  "population": "253629 (As per Census 2011)",
+  "voterCount": "205484 (As per 2024 Elections)",
+  "area": "612.11",
+  "mandals": "Cheepurupalli-R,Garividi-R,Gurla-R,Merakamudidam-R",
+  "revenueVillages": "150",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Cheepurupalli Assembly Constituency, located in Vizianagaram district of Andhra Pradesh, plays a significant role in the region&#8217;s political, economic, and cultural landscape. The constituency comprises Cheepurupalli, Gurla, Garividi, Merakamudidam, and a part of Nellimarla mandal, with Cheepurupalli town serving as its headquarters. The area is well connected by road and rail networks, facilitating trade and movement to nearby towns like Vizianagaram and Srikakulam.Agriculture is the backbone of the local economy, with paddy, sugarcane, pulses, and groundnut being the major crops. Irrigation is supported by seasonal streams, tanks, and groundwater, though the constituency often faces water scarcity during summer months. In recent years, horticulture and small-scale industries, particularly cashew and rice mills, have contributed to economic diversification.Educationally, Cheepurupalli hosts a number of government and private schools, junior colleges, and degree colleges, ensuring access to basic and higher learning. Healthcare facilities include Primary Health Centers, sub-centers, and private clinics, though advanced care is sought in Vizianagaram town.Culturally, the constituency reflects traditional Andhra heritage with vibrant festivals, temples, and rural arts. With a blend of agriculture, small industries, and service activities, Cheepurupalli continues to evolve as a dynamic constituency with strong developmental potential.",
+  "constituencyMap": "61\\MAP\\61IMAGE2025090312373484654_cheepurupalli map.png",
+  "geography": "Cheepurupalli Assembly Constituency is strategically located in Vizianagaram District within the Uttara Andhra region. The Constituency has a mix of sand loamy and sandy clay soil and red loamy soil, supporting a variety of crops. Agriculture is a key activity, with 4230 hectares of land cultivable under major irrigation sources (Thotapalli Canal), 1335 MI Tanks covering 10186 hectors, 4367 tube wells and 5373 dug wells . The annual rainfall of 358.88 mm, ensuring better water availability for farming.&#160;",
+  "populationDesc": "The total population of the Constituency is 2,53,629 (2011 census) constituting 1,26,712 Males and 1,26,917 Females. The Sex ratio of the Constituency is 1002.",
+  "administrationDesc": "The Cheepurupalli Assembly Constituency comprises four mandals, namely Merakamudidam, Garividi, Cheepurupalli, and Gurla.",
+  "educationHealthcareDesc": "The constituency has strong healthcare and educational infrastructure, including 1 Community Health Centre, 8 PHCs, 50 sub-centres, 6 FDHS vehicles, and 4 ambulance services. Education facilities consist of 209 primary schools, 37 upper primary schools, 57 high schools, 15 junior colleges, 5 degree colleges, 2 ITIs, 1 engineering college, 1 B.Ed. college, 2 polytechnic colleges, and 1 veterinary college. Student support is provided through 2 BC Welfare Girls Hostels, 2 BC Welfare Boys Hostels, and 1 SC Welfare Hostel.",
+  "culturalheritageDesc": "Cheepurupalli is renowned for its cultural and spiritual heritage, especially the Sri Kanaka Mahalakshmi Temple, located 2 km from the Mandal headquarters in Vizianagaram district. During the temple&#8217;s three-day annual festival, the town attracts devotees from across North Andhra, with over 4 lakh participants offering prayers."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "oVVU2NO1ooT2wV4m3hBiVw==",
+   "economy_Text": "<p dir=\"ltr\">Cheepurupalli Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;5,194 crores in 2023-24, is poised to reach &#8377;10,353.2 crores by 2028-29, driven by a sustainable annual growth rate of 12-15%. The Economic Vision Plan harnesses sectoral strengths, enhances infrastructure, and promotes industrial diversification to create an investment-friendly and employment-driven region. The <strong>Services Sector</strong>, valued at &#8377;1,606.4 crores in 2023-24 with a 15.00% growth rate, is projected to grow to &#8377;3,377.2 crores by 2028-29, supported by advancements in service-based enterprises. The <strong>Industries Sector</strong>, contributing &#8377;892.9 crores with a 17.50% growth rate, is expected to reach &#8377;1,882.2 crores, fueled by industrial expansion. The <strong>Agricultural &amp; Allied Sector</strong>, at &#8377;2,305.8 crores with a 12.80% growth rate, is anticipated to expand to &#8377;4,361.6 crores, driven by sustainable agricultural practices. This strategy ensures inclusive and resilient economic progress, positioning Cheepurupalli as a vibrant economic hub in Andhra Pradesh</p>",
+   "gcdP_Growth_Text": "<p>Cheepurupalli&#8217;s GCDP, at &#8377;5,194 crores in 2023-24, is set to reach &#8377;10,353.2 crores by 2028-29, with a robust 12-15% annual growth rate. The Services (15.00%), Industries (17.50%), and Agricultural &amp; Allied (12.80%) sectors drive this economic momentum toward a thriving future by 2047.&#160;</p>",
+   "createdDate": "2025-09-05T06:32:48.647"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5194.1,
+   "cagR_Pct": 15.0,
+   "targetAmountCrore": 10353.2,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1606.4,
+   "cagR_Pct": 15.0,
+   "targetAmountCrore": 3377.2,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 892.9,
+   "cagR_Pct": 17.5,
+   "targetAmountCrore": 1882.2,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2305.8,
+   "cagR_Pct": 12.8,
+   "targetAmountCrore": 4361.6,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 61,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 48.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 61,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 75,
+   "constituencyId": 61,
+   "name": "KAMIDI KALA VENKAT RAO",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": "61\\mla\\61IMAGE2025090312405824876_Cheepurpalli MLA 24-29.jpg"
+  },
+  {
+   "id": 516,
+   "constituencyId": 61,
+   "name": "Botcha Satyanarayana",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 517,
+   "constituencyId": 61,
+   "name": "Kimidi Mrunalini",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 518,
+   "constituencyId": 61,
+   "name": "Botcha Satyanarayana",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 519,
+   "constituencyId": 61,
+   "name": "Botcha Satyanarayana",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

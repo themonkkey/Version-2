@@ -1,0 +1,188 @@
+{
+ "code": 140,
+ "name": "Rajahmundry City",
+ "district": "East Godavari",
+ "logoUrl": "assets/constituencies_logos/rajahmundry city.png",
+ "profile": {
+  "population": "341831 (As per Census 2011)",
+  "voterCount": "267484 (As per 2024 Elections)",
+  "area": "44.5",
+  "mandals": "Rajahmundry-U",
+  "revenueVillages": "1",
+  "municipal_wards": "42",
+  "municipalities": "Rajahmundry",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Rajahmundry, located on the left bank of the Godavari River in East Godavari district, is a municipal corporation and headquarters of Rajahmundry Rural and Urban mandals. With a population of 3,41,831 (2011 census), it's the seventh most populous city in Andhra Pradesh. Known as the &#34;Cultural Capital of Andhra Pradesh,&#34; Rajahmundry boasts a rich history dating back to the 11th century, established by King Rajaraja Narendra.The city is significant in Telugu language and literature, being the home of poet Nannayya. Strategically located on the Godavari River, Rajahmundry has been a center for governance, commerce, and culture. Today, it remains a critical node in the state's economic and transportation network. The city is famous for its historic, cultural, and agricultural heritage.Rajahmundry is connected to Kovvur by one of the longest road-cum-rail bridges across the Godavari River. This connectivity enhances the city's importance in the region's economic and social fabric. With its rich history and cultural significance, Rajahmundry continues to thrive as a key city in Andhra Pradesh.",
+  "constituencyMap": "140\\MAP\\140IMAGE2025090412355111084_rajahmundry city.jpg",
+  "geography": "Rajahmundry City constituency is located in East Godavari District and spans 44.5 Sq Km . Rajahmundry located on the banks of the Godavari River benefits from fertile alluvial soil .<p><br></p>",
+  "populationDesc": "Rajahmundry  City has a total population of&#160; 3,41,831. There are 76,908&#160; households, and the sex ratio is 1060 females per 1,000 males. The literacy rate stands at 84.1 %.&#10;<p><br></p>",
+  "administrationDesc": "Rajahmundry City Constituency is in East Godavari District.It is a municipal corporation and also the headquarters of both Rajahmundry  Rural and Rajahmundry  Urban mandals administered under the Rajahmundry  revenue division.&#160;<p><br></p>",
+  "educationHealthcareDesc": "Andhra Polytechnic College and Government Polytechnic College for Women, 244 schools and more than 3,000 youth engaging in skill training annually through NSDC and PMKVY programs. Rajahmundry&#8217;s healthcare infrastructure includes 1 Government General Hospital, 13 Urban Primary Health Centers (UPHCs), 1 Government Homeopathy Hospital, 1 Government Unani Hospital, and 3 Government Ayurvedic Hospitals.",
+  "culturalheritageDesc": "The Godavari India&#8217;s second-longest river, The Dowlaiswaram Barrage, Diwancheruvu Reserve Forest, Godavari MahaPushkaravanam,Kadiyapulanka&#8217;s vibrant nurseries, Temples like Kotilingeswara and Iskcon. Heritage shines with delicacies like Pootharekulu, Pulasa fish curry."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "pz5DMgjLG7IHocshSw0H9w==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Rajahmundry City&#8217;s Economy at a Glance</h2><p><span>Rajahmundry city's economy is built on a balanced trio of services, industry, and agriculture, targeting a &#8377;3.6 lakh crore GCDP by 2047 with an annual growth rate of 12&#8211;15%.Currently, the economy is diversified, with the services sector being the primary contributor at 78.97% of the Gross Value Added (GVA). The industrial sector accounts for 13.52%, and agriculture and allied activities contribute 7.51%. The constituency boasts 414 registered MSMEs, attracting substantial industrial investment and generating significant employment.</span></p>",
+   "gcdP_Growth_Text": "<span>Rajahmundry is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,</span><br><span>tourism, and manufacturing. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-04T10:29:14.753"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9587.0,
+   "cagR_Pct": 15.16,
+   "targetAmountCrore": 17366.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 7646.0,
+   "cagR_Pct": 14.76,
+   "targetAmountCrore": 12873.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1265.0,
+   "cagR_Pct": 17.99,
+   "targetAmountCrore": 4273.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 676.0,
+   "cagR_Pct": 13.03,
+   "targetAmountCrore": 220.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 140,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 78.97
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 13.52
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 7.51
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 140,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 347,
+   "constituencyId": 140,
+   "name": "Adireddy Srinivas",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 348,
+   "constituencyId": 140,
+   "name": "Adireddy Bhavani",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 349,
+   "constituencyId": 140,
+   "name": "Akula Satyanarayana",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "BJP",
+   "photo": ""
+  },
+  {
+   "id": 350,
+   "constituencyId": 140,
+   "name": "Routhu Surya Prakasa Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

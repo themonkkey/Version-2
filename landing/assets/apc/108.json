@@ -1,0 +1,188 @@
+{
+ "code": 108,
+ "name": "Gannavaram (SC)",
+ "district": "Dr. B.R. Ambedkar Konaseema",
+ "logoUrl": "assets/constituencies_logos/gannavaram-sc.png",
+ "profile": {
+  "population": "256827 (As per Census 2011)",
+  "voterCount": "198739 (As per 2024 Elections)",
+  "area": "284.66",
+  "mandals": "Ainavilli-R,Ambajipeta-R,Mamidikuduru-R,P.Gannavaram-R",
+  "revenueVillages": "59",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>The P. Gannavaram Assembly Constituency Vision Action Plan 2024-29 has been meticulously designed to leverage the constituency's agricultural strength, dynamic industrial base, thriving construction sector, and robust service sector. This strategic blueprint aligns with Andhra Pradesh&#8217;s ambitious Swarna Andhra@2047 vision, which resonates with the national agenda of Viksit Bharat@2047 P. Gannavaram Constituency consists of four mandals1. Ainavilli&#10;</p><p>2. Ambajipeta3.P. Gannavaram. Part of Mamidikuduru Mandal (11 village) These are located in the Dr.B.R. Ambedkar Konaseema District of Andhra Pradesh. P. Gannavaram serving as the Head-Quarters. It is one of the seven assembly segments of the Amalapuram Lok-Sabha constituency. There is a total of 189,258 electors in the constituency. The constituency established in 2008 per the Delimitation orders (2008). P. Gannavaram has a rich history dating back to ancient times. The village is believed to have been formed when Sage Vainateya stole part of the Vashishta River from Sage Vashishta, who cursed him for his actions. To lift the curse, Vainateya prayed to Garuda, the vehicle of lord Vishnu, to bring a Sivalingam from Varanasi. While bringing the Sivalingam, Garuda&#8217;s hand slipped, and it fell down in this village, which was then installed and became known as Garudavaram, later known as Gannavaram&#10;</p><p><br></p><p>&#10;</p>",
+  "constituencyMap": "108\\MAP\\108IMAGE2025090412330846021_p gannavaram map.jpg",
+  "geography": "Mandapeta constituency is located to Ambedkar konaseema district.  spans 284.66 Sq.KMs. It shares boundaries with Amalapuram, Kothapeta, Razole and Mummidivaram&#160; &#160;constituencies.",
+  "populationDesc": "The total Population (2011 Census):251,856&#160; people, with 126,856 males and 125,000 females. The sex ratio stands at 986 females per 1,000 males.&#160;",
+  "administrationDesc": "P.Gannavaram Constituency is one of the  assembly constituencies in  Ambedkar konaseema District .Four mandals 1. Ainavilli 2. Ambajipeta 3.P. Gannavaram 4. Part of Mamidikuduru Mandal (11 villages",
+  "educationHealthcareDesc": "1 Community Health Center (CHCs), 7 Primary Health Centers (PHCs) and 61 sub-centers.&amp;221-primary schools, 7-upper primary,40-high schools 7-Junior colleges, 3-Degree colleges, 1-Industrial Training Institute (ITI),2-Polytechnic college, 1-B.Ed college, 1-B.PEd college",
+  "culturalheritageDesc": "Sri Siddi Vinayaka Temple: Ainavilli,&#160; Kshana Mukteswara Swamy Temple,coconut gardens, plain Mango and Jack trees Konaseema appears as a part of heaven came down to earth."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "pgb85crxaHLjzes12PIeCQ==",
+   "economy_Text": "<p><span lang=\"EN-US\"></span></p><h2 class=\"inner-page-header pt-2\">P Gannavaram&#8217;s Economy at a Glance</h2><span lang=\"EN-US\"><p><span lang=\"EN-US\"><font size=\"4\"><br></font></span></p></span><p><span lang=\"EN-US\"><font size=\"4\">The&#10;Economic Vision Plan for P. Gannavaram lays a structured path for accelerating economic&#10;growth, boosting employment, and ensuring inclusive development. With a Gross&#10;Constituency Domestic Product (GCDP) of &#8377;3,893 crores in 2023-24, P. Gannavaram&#10;is projected to expand steadily, reaching <b>&#8377;<span lang=\"EN-US\">8611&#160;</span></b>crores by 2028-29,&#10;marking a significant transformation across agriculture, industry, and services&#10;sectors.&#160;<span>The&#10;industrial sector accounts for&#160;</span><b><span lang=\"EN-US\">13.86</span></b><span>%, agriculture and allied activities&#10;contribute&#160;</span><b><span lang=\"EN-US\">49.84</span></b><span>% and service sector contributes&#160;</span><b><span lang=\"EN-US\">36.30</span></b><span>%.</span></font></span></p><p class=\"MsoNormal\"><span></span></p>",
+   "gcdP_Growth_Text": "<span>P Gannavaram is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like horticulture,&#160;</span><span><span>Fishing &amp; Aquaculture and construction.</span></span><span>&#160;This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-05T06:18:09.903"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 3893.0,
+   "cagR_Pct": 17.33,
+   "targetAmountCrore": 8611.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1307.0,
+   "cagR_Pct": 15.16,
+   "targetAmountCrore": 2644.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 499.0,
+   "cagR_Pct": 16.63,
+   "targetAmountCrore": 1074.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1795.0,
+   "cagR_Pct": 18.9,
+   "targetAmountCrore": 4247.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 108,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 36.3
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 13.86
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 49.84
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 108,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 938,
+   "constituencyId": 108,
+   "name": "Sri Giddi Satyanarayana",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "JSP",
+   "photo": ""
+  },
+  {
+   "id": 249,
+   "constituencyId": 108,
+   "name": "Kondeti Chitti Babu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 250,
+   "constituencyId": 108,
+   "name": "Pulaparty Narayana Murty",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 251,
+   "constituencyId": 108,
+   "name": "Pamula Rajeswari Devi",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

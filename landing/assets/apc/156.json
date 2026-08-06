@@ -1,0 +1,188 @@
+{
+ "code": 156,
+ "name": "Vijayawada Central",
+ "district": "NTR",
+ "logoUrl": "156\\Logo\\156IMAGE2026062417092721275_maxresdefault.jpg",
+ "profile": {
+  "population": "330340 (As per Census 2011)",
+  "voterCount": "277724 (As per 2024 Elections)",
+  "area": "19.35",
+  "mandals": "Vijayawada-U",
+  "revenueVillages": "0",
+  "municipal_wards": "21",
+  "municipalities": "Vijayawada",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Vijayawada Central Assembly Constituency Vision Action Plan 2024-29 has been meticulously designed to leverage the constituency's agricultural strength, dynamic industrial base, thriving construction sector, and robust service sector. This strategic blueprint aligns with Andhra Pradesh&#8217;s ambitious Swarna Andhra @ 2047 vision, which resonates with the national agenda of Viksit Bharat@2047.&#10;Vijayawada Central is located in the heart of Vijayawada city in NTR District, the constituency spans vibrant neighborhoods such as Governorpet, Suryaraopet, Labbipet, Moghalrajpuram. It is bounded by Vijayawada West, Vijayawada East Constituencies, and the Krishna River to the north and east. Known for its administrative significance, bustling business corridors (like MG Road), and proximity to the Krishna River, Vijayawada Central is positioned for robust growth with an ambitious annual sectoral growth target of 12&#8211;15%.The area&#8217;s surrounded by its strategic urban core, encompassing key civic infrastructure like Vijayawada Railway Junction, NTR Bus Station, and major government and commercial establishments.&#10;<br>",
+  "constituencyMap": "156\\MAP\\156IMAGE2025090407014821267_vij central.jpg",
+  "geography": "Vijayawada Central is an urban constituency situated on the Krishna River's banks, bordered by the Indrakeeladri Hills. Covering 19.35 sq. km, it has limited open land but features well-planned urban infrastructure and major transport corridors. The region benefits from abundant groundwater and an average annual rainfall of 1,100 mm, primarily from the Southwest monsoon.&#160;",
+  "populationDesc": "Vijayawada Central has an estimated population of 4,23,000 (2024 projection), with 100% urban residents. The sex ratio stands at 1,015 females per 1,000 males.",
+  "administrationDesc": "Vijayawada Cenral Constituency is one of the seven assembly constituencies in NTR District. It has Vijayawada Municipal Corporation.",
+  "educationHealthcareDesc": "Vijayawada Central has notable institutions like SRR &amp; CVR Government Degree College, established in 1937, and the Regional Ayurveda Research Institute (RARI), operating under the Ministry of AYUSH. The constituency has 23 primary schools, 1 upper primary school, 10 high schools, 1 junior college, and various healthcare facilities, including a 1 government general hospital, 1 community health centers, 16 urban primary health centers, 3 dispensaries, and 1 health sub-centers, providing comprehensive education and healthcare services to its residents.",
+  "culturalheritageDesc": "Vijayawada Central Constituency is renowned for its rich cultural heritage, blending history, tradition, and modernity. The Kanaka Durga Temple on Indrakeeladri hill stands as a spiritual landmark, attracting lakhs of devotees. The city&#8217;s cultural life is enriched by Kuchipudi dance, literature, theatre, and traditional festivals like Dasara. Historic landmarks, markets, and temples reflect its vibrant past, while institutions preserve art and learning. Vijayawada&#8217;s central region symbolizes Andhra Pradesh&#8217;s cultural spirit, harmonizing devotion, education, and artistic excellence."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "pc2NmzaRxL4oP+7Q3PjK1g==",
+   "economy_Text": "<p><b><font size=\"5\"><span>Vijayawada Central</span>&#8217;s Economy at a Glance</font></b></p><font size=\"3\"><p><span>Vijayawada Central is targeting a &#8377;</span><span><span lang=\"EN\">306199</span></span><span></span><span>&#160;crores GCDP by 2047 with an annual growth rate of 12&#8211;15%.&#160;</span><font color=\"#333333\">As of 2023-24, the economy is led by the service sector, contributing 81.79% to the Gross Value Added (GVA), followed by the industry sector at 17.33%, and the&#160;</font><span>agriculture and allied sector</span><font color=\"#333333\">&#160;at 0.88%.</font></p></font>",
+   "gcdP_Growth_Text": "<p class=\"gdp-txt\">Vijayawada Central is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Trade, Tourism, and real estate. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047</p>",
+   "createdDate": "2025-09-07T09:53:27.38"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 13907.0,
+   "cagR_Pct": 18.09,
+   "targetAmountCrore": 28539.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 10524.0,
+   "cagR_Pct": 18.2,
+   "targetAmountCrore": 21972.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2228.0,
+   "cagR_Pct": 17.61,
+   "targetAmountCrore": 4507.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 114.0,
+   "cagR_Pct": 17.5,
+   "targetAmountCrore": 193.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 156,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 81.79
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 17.33
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 0.88
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 156,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 528,
+   "constituencyId": 156,
+   "name": "Bonda Umamaheswara Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 529,
+   "constituencyId": 156,
+   "name": "Malladi Vishnu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 530,
+   "constituencyId": 156,
+   "name": "Bonda Umamaheswara Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 531,
+   "constituencyId": 156,
+   "name": "Malladi Vishnu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,233 @@
+{
+ "code": 186,
+ "name": "Kadiri",
+ "district": "Sri Satya Sai",
+ "logoUrl": "assets/constituencies_logos/kadiri.png",
+ "profile": {
+  "population": "304334 (As per Census 2011)",
+  "voterCount": "253682 (As per 2024 Elections)",
+  "area": "1797.53",
+  "mandals": "Gandlapenta-R,Kadiri-R,Kadiri-U,N.P.Kunta-R,Nallachervu-R,Talupula-R,Tanakallu-R",
+  "revenueVillages": "85",
+  "municipal_wards": "36",
+  "municipalities": "Kadiri",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Kadiri is one of 7 segments within 20-Hindupur Parliamentary Constituency. It is situated at South-East corner in Sri Sathya Sai District. It is a part and parcel of the erstwhile Taluk, Kadiri.  It consists of 6 Mandals viz., Talupula, Kadiri, Gandlapenta, N.P.Kunta, Nallacheruvu, and Tanakal in full and the head quarters of this Segment is Kadiri. It was reconstituted under delimitation and from Kadiri and Nallamada Assembly Constituencies. Mudigubba Constituency in old Kadiri Constituency is merged with  Dharmavaram Constituency and Tanakal and Nallacheruvu Constituencys are joined from old Nallamada Constituency.",
+  "constituencyMap": "186\\MAP\\186IMAGE2025090810255583439_WhatsApp Image 2025-09-08 at 10.25.09 AM.jpeg",
+  "geography": "Kadiri is situated at South-East corner in Sri Sathya Sai  District.&#160; This Constituency is very stony and barren, and it is cut up by detached rocky hills, which are usually destitute of vegetation.The soil is very poor being chiefly coarse red earth mixed with disintegrated granite, which is often impregnated with soda and other salts.",
+  "populationDesc": "Kadiri constituency has a population of approximately 3.04 Lakhs consisting of 1.51 Lakhs male population and 1.53 female population out of which 60% reside in rural areas and 40% residing in urban area. The constituency possess a literacy rate of 59.88%, out of which male literacy rate 72.04%, female literacy rate 47.78% represents a decent improvement in the education sector. The gender ratio stands at 999 females per 1,000 males.",
+  "administrationDesc": "Kadiri Constituency is one of the six assembly constituencies in Sri Satya Sai  District. It includes Tanakallu, Nambulapulakunta, Gandlapenta, Kadiri, Nallacheruvu and Talupula and Kadiri Muncipality.",
+  "educationHealthcareDesc": "Kadiri Constituency Social infrastructure includes one area hospital, Six primary health centers (PHCs), and 93 sub-centers to meet the growing healthcare needs of the population. Educational infrastructure in the constituency comprises 43 government high schools, 8 junior colleges, 2 Degree colleges and one Polytechnic college.&#160;",
+  "culturalheritageDesc": "Kadiri constituency has Historical and&#160; Heritage Tourism sites like, The Lakshmi Narasimhaswamy temple in Kadiri Mandal , Thimamma marrimanu in N.P Kunta Mandal, yogi vemana tomb-Gandlapenta Mandal.&#160;"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "u0Mk/I2MgnV7VRhjIdpCsw==",
+   "economy_Text": "<p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The Economic Vision Plan for Kadiri (2024-2029) targets a robust GCDP growth of 16.12% annually, aiming to increase from Rs. 7,569 Crores in 2023-24 to Rs. 15,574 Crores by 2028-29, driven by strategic interventions across agriculture, industry, and services.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The agriculture sector, contributing 51.50% to GVA, will focus on high-value crops, micro-irrigation, sericulture, and technology adoption to enhance productivity and farmer incomes.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The industry sector (14.39% GVA) will expand through MSME clusters, industrial parks (textiles, logistics), and infrastructure investments via APIIC, targeting 16.12% annual growth.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The services sector (34.11% GVA) will drive high-value employment through temple tourism, digital services, and real estate, with a 16.12% growth rate.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">These efforts, supported by modernization and digital integration, position Kadiri as a sustainable, inclusive economic hub aligned with the Swarna Andhra @2047 Vision.</font></p>",
+   "gcdP_Growth_Text": "<font face=\"Times New Roman\" size=\"4\"><span>Kadiri is witnessing steady economic momentum with a targeted 16.12%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,&#160;</span><span>industrial infrastructure, heritage tourism, and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant tourism and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span></font>",
+   "createdDate": "2025-09-04T09:01:01.783"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7569.0,
+   "cagR_Pct": 16.12,
+   "targetAmountCrore": 15574.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2388.0,
+   "cagR_Pct": 16.12,
+   "targetAmountCrore": 4982.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1008.0,
+   "cagR_Pct": 16.12,
+   "targetAmountCrore": 2314.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3606.0,
+   "cagR_Pct": 16.12,
+   "targetAmountCrore": 7202.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 186,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 34.11
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 14.39
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 51.5
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 186,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 12,
+   "sectorName": "Pilgrimage & Cultural Centre",
+   "description": "Restoration of heritage sites, amenities for pilgrims, and promotion of cultural tourism.",
+   "imageUrl": "assets/img/sectors/pilgrimage-cultural-centre.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 359,
+   "constituencyId": 186,
+   "name": "Kandikunta Venkata Prasad",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 364,
+   "constituencyId": 186,
+   "name": "P.V. SIDDA REDDY ",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 365,
+   "constituencyId": 186,
+   "name": " ATTAR. CHAND BASHA",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 366,
+   "constituencyId": 186,
+   "name": "KANDIKUNTA VENKATA PRASAD ",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 369,
+   "constituencyId": 186,
+   "name": "Jonna Ramaiah ",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "iNC",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,188 @@
+{
+ "code": 113,
+ "name": "Nidadavole",
+ "district": "East Godavari",
+ "logoUrl": "113\\Logo\\113IMAGE2026050116291363394_NIDADAVOLE1.jpg",
+ "profile": {
+  "population": "260928 (As per Census 2011)",
+  "voterCount": "213396 (As per 2024 Elections)",
+  "area": "295.49",
+  "mandals": "Nidadavole-R,Nidadavole-U,Peravali-R,Undrajavaram-R",
+  "revenueVillages": "55",
+  "municipal_wards": "28",
+  "municipalities": "Nidadavole",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Nidadavole Assembly Constituency's Vision Action Plan (2024-29) leverages its fertile lands, agro-industrial base, and strategic connectivity. The plan aligns with Andhra Pradesh's Swarna Andhra@2047 initiative and India's Viksit Bharat@2047 vision. The constituency comprises Nidadavole, Undrajavaram, and Peravali mandals, spanning East and West Godavari districts.Nidadavole boasts historical and cultural significance, with ancient temples like Sri Kota Sattemma Ammavaari Temple. The region's fertile lands and Godavari canals support high agricultural productivity, particularly in paddy, sugarcane, and horticulture. Undrajavaram and Peravali mandals are emerging as hubs for agri-based industries and warehousing due to their proximity to NH-216A and railways.The constituency is poised for growth in logistics, retail, and industry, driven by connectivity to Rajahmundry, Tanuku, and Eluru. With a hardworking, literate, and youth-driven population, Nidadavole aims for transformation through infrastructure, skill development, and digital enablement.&#160;",
+  "constituencyMap": "113\\MAP\\113IMAGE2025090411374430503_nidadavole.png",
+  "geography": "Nidadavole constituency is located in East Godavari District and spans 295.49 Sq Km. It shares boundaries with Kovvur, Tanuku, and Rajahmundry Rural constituencies. The region is dominated by fertile alluvial and black cotton soils.",
+  "populationDesc": "The Nidadavole Assembly Constituency has a total population of 2,60,928 people, The sex ratio stands at 995 females per 1,000 males.There are approximately 79,420 households.<p><br></p>",
+  "administrationDesc": "Nidadavole Constituency is in East Godavari District. It includes 1) Nidadavole Mandal 2) Undrajavaram Mandal 3) Peravali  Mandal .These fall within the jurisdiction of the East Godavari and West Godavari districts, with Nidadavole town serving as the administrative and economic nucleus of the constituency.&#160;<p><br></p>",
+  "educationHealthcareDesc": "The educational infrastructure is comprehensive, with about 119 primary schools, 29 upper primary schools, and 38 high schools across the constituency, Higher education includes 11 junior colleges, 4 degree colleges, and 1 Industrial Training Institute (ITI).1 Community Health Center (CHC) , Approximately 8 Primary Health Centers (PHCs).&#160;&#160;",
+  "culturalheritageDesc": "The constituency is home to several historically and spiritually significant temples, including the Temple sri kotasattemma ammavari temple. The Sri Kasi Viswanatha Temple, and Sri Anjaneya Swamy Temple ,Sri Uma visweswara swamy Temple,Sri Golineswara swamy Temple, Sri Rama lingeswara swamy&#160;<span>Temple, Sri Subramanyeswara swamy Temple.</span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "F0RhriX6+Ti75vuVtNRnrA==",
+   "economy_Text": "<p><b><font size=\"5\">Nidadavole&#8217;s Economy at a Glance</font></b></p><p><b><font size=\"5\"><br></font></b></p><p><font size=\"3\">The Economic Vision Plan for Nidadavole Constituency outlines a transformative roadmap for accelerating growth across its diverse economy. With a current Gross Constituency Domestic Product (GCDP) of &#8377;7350 crores in 2023-24, the region is poised for significant development, reaching an estimated &#8377;13,034 crores by 2028-29. This economic leap will be driven by integrated advancements in agriculture, industrial modernization, and a robust services sector. Leveraging strategic location advantages&#8212; such as rail and road connectivity, fertile deltas, and entrepreneurial communities&#8212;the plan emphasizes sustainable growth, innovation, and inclusive prosperity.</font></p>",
+   "gcdP_Growth_Text": "Nidadavole is witnessing steady economic momentum with a targeted 15% <b>annual GCDP growth rate</b> across key sectors like Livestock, Horticulture and Real estate Ownership of Dwellings.&#160;<span>This growth trajectory aligns with the long-term vision of making the constituency a vibrant urban and </span><b>economic hub by 2047.</b>",
+   "createdDate": "2025-09-04T06:54:32.12"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7350.0,
+   "cagR_Pct": 15.42,
+   "targetAmountCrore": 14089.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2231.0,
+   "cagR_Pct": 14.87,
+   "targetAmountCrore": 4431.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1116.0,
+   "cagR_Pct": 18.13,
+   "targetAmountCrore": 2544.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3452.0,
+   "cagR_Pct": 13.16,
+   "targetAmountCrore": 6059.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 113,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.45
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 15.64
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 50.91
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 113,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 310,
+   "constituencyId": 113,
+   "name": "Kandula Durgesh",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Janasena Party",
+   "photo": ""
+  },
+  {
+   "id": 313,
+   "constituencyId": 113,
+   "name": "Geddam Srinivas Naidu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 314,
+   "constituencyId": 113,
+   "name": "Burugupalli Sesha Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 316,
+   "constituencyId": 113,
+   "name": "Burugupalli Sesha Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

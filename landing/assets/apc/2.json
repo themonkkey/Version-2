@@ -1,0 +1,197 @@
+{
+ "code": 2,
+ "name": "Ponnur",
+ "district": "Guntur",
+ "logoUrl": "assets/constituencies_logos/ponnur.png",
+ "profile": {
+  "population": "269247 (As per Census 2011)",
+  "voterCount": "227648 (As per 2024 Elections)",
+  "area": "421.26",
+  "mandals": "Chebrole-R,Pedakakani-R,Ponnur-R,Ponnur-U",
+  "revenueVillages": "41",
+  "municipal_wards": "31",
+  "municipalities": "Ponnur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Ponnur Assembly Constituency Vision Action Plan 2024&#8211;29 outlines a comprehensive roadmap for inclusive and sustainable development, aligning with Swarna Andhra @ 2047 and Viksit Bharat @ 2047. The plan integrates the constituency&#8217;s strengths in agriculture, industry, and services into a balanced growth framework, ensuring local development contributes to wider state and national goals.&#10;Ponnur Constituency, strategically located in Guntur District and close to the Amaravati Capital Region, enjoys connectivity with key coastal towns such as Nizampatnam, Bapatla, and Chirala. Spanning 421.26 sq. km, the region comprises 41 revenue villages, 19 hamlets, 54 grama panchayats, 56 village secretariats, and 17 ward secretariats, with a strong governance structure. Based on the 2011 Census, it houses 57,771 rural households and 16,138 urban households, reflecting a diverse demographic profile.&#10;Agriculture remains the backbone of the constituency, supported by fertile black cotton and red loamy soils. With 24,611 hectares of cultivable land, major crops thrive under irrigation from tube wells and eight lift irrigation projects. At the same time, Ponnur is leveraging its industrial base and growing service sector to create employment and skill development opportunities.&#10;This vision document positions Ponnur as a dynamic growth corridor, harmonizing cultural heritage, agriculture, industry, and social infrastructure, while systematically addressing developmental challenges to build a resilient and prosperous future.&#10;<br>&#10;",
+  "constituencyMap": "2\\MAP\\2IMAGE2025090410570781333_ponnuru.jpg",
+  "geography": "Ponnur Assembly Constituency, spanning 421.26 sq. km in Guntur District, is strategically located near the Amaravati Capital Region and close to coastal towns like Nizampatnam, Bapatla, and Chirala. The region is characterized by a mix of black cotton, red soils, and sandy loam, which provide a fertile base for agriculture. With 24,611 hectares of cultivable land, supported by tube wells and lift irrigation projects, Ponnur sustains diverse crop cultivation and continues to thrive as an agriculturally vibrant constituency.",
+  "populationDesc": "Ponnur Assembly Constituency has a total population of 2,69,247, with 72% residing in rural areas and 30% in urban areas. The constituency has 73,909 households, with a sex ratio of 1,017 females per 1,000 males.",
+  "administrationDesc": "Ponnuru Constituency is one of the seven assembly constituencies in Guntur District. It has Ponnur, Pedakakani, Chebrolu Mandals.&#10;<p> &#10;</p><p><br></p>",
+  "educationHealthcareDesc": "Primary Schools 160 Upper Primary Schools 37 High Schools 49 Junior Colleges 24 Degree Colleges 4 Polytechnics 2 Engineering Colleges 6 Medical Colleges 1 Ponnur Assembly Constituency in Guntur district is a growing hub for education and healthcare. It hosts Acharya Nagarjuna University, Vignan University, professional colleges, and 249 schools adopting smart classrooms, while NSDC and PMKVY programs strengthen youth employability. Healthcare services include 6 PHCs, 58 sub-centres, and 3 CHCs, with goals to cut maternal mortality and achieve universal immunization. Challenges remain in rural-urban disparities, congestion, and sanitation, requiring balanced planning for sustainable and inclusive development.",
+  "culturalheritageDesc": "Ponnur Assembly Constituency is spiritually vibrant, reflecting a harmonious blend of Hindu, Muslim, and Christian traditions. It is home to revered temples such as Sakshi Bhavanarayana Swamy Temple, Sahasra Lingeswara Swamy Temple, Chaturmukha Brahma Lingeswara Swamy Temple, Adi Kesava Swamy Temple, and Nageswara Swamy Temple, alongside the iconic Sri Anjaneya Swamy statue, one of the tallest in the region. The constituency also hosts historic sites like Kakani Thota, Sivalayam, and the Darga in Pedakakani, symbolizing its multi-religious cultural heritage."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "iN72wxT/Gpp3wPJE3YgIDQ==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Ponnur&#8217;s Economy at a Glance</h2><p><br></p><p>The Economic Vision Plan for Ponnur Assembly Constituency outlines a thorough&#160;<span>growth strategy aimed at transforming the constituency into a region that is&#160;</span><span>economically vibrant, conducive to investment, and focused on employment&#160;</span><span>generation. With a Gross Constituency Domestic Product (GCDP) of 7,298Cr for the&#160;</span><span>year 2023-24, Ponnur Assembly Constituency is anticipated to experience&#160;</span><span><font face=\"Roboto\"><span>growth of </span>14812<span>&#160;Cr for The Year 2028-29, indicating a robust and sustainable annual&#160;</span></font></span><span>growth path. This economic strategy is crafted to capitalize on sectoral strengths,&#160;</span><span>tackle infrastructure and employment issues, and encourage industrial diversification,&#160;</span><span>thereby ensuring inclusive and resilient economic advancement.</span></p>",
+   "gcdP_Growth_Text": "<span>Ponnur is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate, livestock, manufacturing,&#160;</span><span>agriculture and construction. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-06T09:00:02.913"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7298.0,
+   "cagR_Pct": 15.44,
+   "targetAmountCrore": 14812.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3203.0,
+   "cagR_Pct": 16.71,
+   "targetAmountCrore": 7117.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1952.0,
+   "cagR_Pct": 16.02,
+   "targetAmountCrore": 4035.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1595.0,
+   "cagR_Pct": 11.09,
+   "targetAmountCrore": 2537.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 2,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 47.45
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 28.92
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 23.63
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 2,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 819,
+   "constituencyId": 2,
+   "name": "Dhulipalla Narendra Kumar",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 820,
+   "constituencyId": 2,
+   "name": "Kilari Venkata Rosaiah",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 821,
+   "constituencyId": 2,
+   "name": "Dhulipalla Narendra Kumar",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 822,
+   "constituencyId": 2,
+   "name": " Dhulipalla Narendra Kumar",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": " TDP",
+   "photo": ""
+  },
+  {
+   "id": 823,
+   "constituencyId": 2,
+   "name": " Dhulipalla Narendra Kuma",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": " TDP",
+   "photo": ""
+  }
+ ]
+}

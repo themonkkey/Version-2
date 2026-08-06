@@ -1,0 +1,212 @@
+{
+ "code": 75,
+ "name": "Paderu (ST)",
+ "district": "Alluri Seetharama Raju",
+ "logoUrl": "assets/constituencies_logos/paderu (st).png",
+ "profile": {
+  "population": "298320 (As per Census 2011)",
+  "voterCount": "248473 (As per 2024 Elections)",
+  "area": "3256.57",
+  "mandals": "Chintapalli-R,G.K Veedhi-R,G.Madugula-R,Koyyuru-R,Paderu-R",
+  "revenueVillages": "844",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p><span>Paderu Assembly Constituency, located in the Eastern Ghats, is a tribal-dominated region known for its hilly terrain, dense forests, and rich biodiversity. It is home to communities like Koya, Kondadora, Valmiki, Bagata, and Porja, who continue to preserve traditional customs, festivals, and the famous Dhimsa dance. In 2022, Paderu became the headquarters of the newly formed Alluri Sitarama Raju district and serves as the center for Integrated Tribal Development Agency (ITDA) operations, which focus on improving tribal welfare. Historically, the region holds great significance as the base of freedom fighter Alluri Sitarama Raju during the Rampa Rebellion (1922&#8211;24), a legacy that continues to inspire local pride and identity. Geographically, the constituency spans 3,256.57 sq. km with 919 villages, 109 gram panchayats, and 97 sachivalayams, spread across five mandals&#8212;Paderu, G. Madugula, Chinthapalli, G.K. Veedhi, and Koyyuru. Rich in natural resources and scenic beauty, Paderu has immense potential for eco-tourism, organic farming, and forest-based livelihoods. Despite this potential, the region faces persistent challenges such as deforestation, poor healthcare infrastructure, and limited access to higher education. Sustainable development and better connectivity remain vital to improving living standards for its tribal population.</span></p>",
+  "constituencyMap": "75\\MAP\\75IMAGE2025090516071373933_Paderu.jpg",
+  "geography": "<p><span>Paderu is a tribal-dominated area situated in the Eastern Ghats Known for its hilly terrain, dense forests, and rich biodiversity. Home to various tribal communities such as Koya, Kondadora, Valmiki, Bagata and Porja. Historically isolated, the region has strong tribal traditions and culture.</span></p>",
+  "populationDesc": "<p><span>Paderu (ST) constituency is 2,41,601 comprising 1,18,970 males and 1,22,631 females. The sex ratio is 970 females per 1000 males. The area includes 73,464 households.</span></p>",
+  "administrationDesc": "The Paderu Assembly Constituency consists of five mandals under its jurisdiction: Paderu, G. Madugula, Chinthapalli, G.K. Veedhi, and Koyyuru.",
+  "educationHealthcareDesc": "<p><span>Paderu Constituency has a modest educational network with 623 primary schools, 41 upper primary schools, 94 high schools, 111 tribal welfare schools, and 4 KGBVs. Higher education includes 12 junior colleges, 4 degree colleges, 1 polytechnic, and 2 ITI colleges, though professional institutes are lacking. Healthcare remains limited, with 1 Community Health Centre, 19 PHCs, an Area Hospital at Chintapalli, and a Digital Hospital at Paderu, insufficient for tribal needs.</span></p>",
+  "culturalheritageDesc": "<p><span>Paderu, nestled in the Eastern Ghats, is rich in cultural heritage and natural attractions. It is home to tribal communities like Konda Doras, Bagathas, PVTGs, and Valmikis, who preserve traditions through the famous Dhimsa dance, harvest festivals, and bamboo crafts. The region also honors freedom fighter Alluri Sitarama Raju, whose legacy of resistance adds historical value. Tourist highlights include the cool hill station Lambasingi, known as the &#8220;Kashmir of Andhra Pradesh,&#8221; the scenic Tajangi Reservoir, Chaparai waterfalls, and lush forests ideal for trekking and eco-tourism. Tribal museums, local markets, and shrines further showcase Paderu&#8217;s unique culture, making it a hub for heritage and eco-tourism.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "rA4OPobY51HQxR+M0VMlpw==",
+   "economy_Text": "<p dir=\"ltr\">Paderu Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;6,374 crores in 2023-24, is projected to grow to &#8377;12,790 crores by 2028-29, reflecting a steady annual growth rate of approximately 15%. The Economic Vision Plan drives sustainable growth, employment, and infrastructure development, aiming to transform Paderu into a self-reliant economic hub. The <strong>Services Sector</strong>, valued at &#8377;1,911 crores in 2023-24 with a 14.95% growth rate, is expected to reach &#8377;3,835 crores by 2028-29, propelled by tourism and service-based initiatives. The <strong>Industries Sector</strong>, contributing &#8377;247 crores in 2023-24 with a 14.95% growth rate, is forecasted to grow to &#8377;496 crores, supported by small-scale industrial development. The <strong>Agricultural &amp; Allied Sector</strong>, the largest contributor at &#8377;3,739 crores in 2023-24 with a 14.95% growth rate, is anticipated to expand to &#8377;7,503 crores, driven by sustainable agricultural advancements. This roadmap ensures inclusive and resilient economic progress for Paderu.</p>",
+   "gcdP_Growth_Text": "<p dir=\"auto\">Paderu Constituency&#8217;s GCDP, at &#8377;6,374 crores in 2023-24, is projected to reach &#8377;12,790 crores by 2028-29, driven by a consistent 15% annual growth rate. The Services (14.95%), Industries (14.95%), and Agricultural &amp; Allied (14.95%) sectors fuel this economic progress toward a self-reliant hub by 2047.</p>",
+   "createdDate": "2025-09-05T10:46:00.453"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6374.0,
+   "cagR_Pct": 14.95,
+   "targetAmountCrore": 12790.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1911.0,
+   "cagR_Pct": 14.95,
+   "targetAmountCrore": 3835.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 247.0,
+   "cagR_Pct": 14.95,
+   "targetAmountCrore": 496.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3739.0,
+   "cagR_Pct": 14.95,
+   "targetAmountCrore": 7503.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 75,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 32.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 5.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 63.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 75,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 16,
+   "sectorName": "Forest & Eco Tourist Sites",
+   "description": "Conservation-based tourism, trekking trails, and forest-based livelihood development.",
+   "imageUrl": "assets/img/sectors/forest-eco-tourist-sites.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 303,
+   "constituencyId": 75,
+   "name": "Matsyarasa Visweswara Raju",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 304,
+   "constituencyId": 75,
+   "name": "Kottagulli Bhagya Lakshmi",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 305,
+   "constituencyId": 75,
+   "name": "Giddi Eswari",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 306,
+   "constituencyId": 75,
+   "name": "Pasupuleti Balaraju",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

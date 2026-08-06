@@ -1,0 +1,185 @@
+{
+ "code": 120,
+ "name": "Vemuru (SC)",
+ "district": "Bapatla",
+ "logoUrl": "assets/constituencies_logos/vemuru (sc).png",
+ "profile": {
+  "population": "239652 (As per Census 2011)",
+  "voterCount": "197397 (As per 2024 Elections)",
+  "area": "542",
+  "mandals": "Amruthaluru-R,Bhattiprolu-R,Kolluru-R,Tsunduru-R,Vemuru-R",
+  "revenueVillages": "62",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Vemuru Assembly constituency is a Scheduled Caste reserved seat in Bapatla district, Andhra Pradesh, with 194,748 electors. It comprises five mandals: Tsunduru, Amruthaluru, Vemuru, Kolluru and Bhattiprolu. The constituency has a rich history and is home to notable figures like actors Vemuru Gaggaiah, Kongara Jaggaiah, Gummadi Venkateswara Rao and director Kasinadhuni Viswanath. The region is fertile with the Krishna River flowing along its east side, supporting agriculture with crops like paddy, maize and sugarcane. Nakka Ananda Babu of TDP is the current MLA, winning in 2024 with 94,922 votes .&#160; Vemuru is positioned as a key economic growth hub, balancing service, industry, and agriculture sectors. With strategic infrastructure upgrades, industrial expansion, educational institutions, healthcare improvements, and sustainable development initiatives, the constituency is on track for inclusive and balanced growth under the Vision Plan 2024-2029.",
+  "constituencyMap": "120\\MAP\\120IMAGE2025090410372338532_vemuru.png",
+  "geography": "Vemuru Constituency comes under geographical part of Costal Area of Andhra Pradesh. The people of this region are well versed with cultural diversity and faith of traditional values. Krishna River flows along East Side of Vemuru Constituency. Hence, most of the Land is very fertile, abundant water, with 90% area is tilled under agriculture and 10% area is under forest cover. The major crops are Paddy, Maize, Corn, Sugurcane and Termaric",
+  "populationDesc": "emuru Mandal in Andhra Pradesh's Guntur district has a population of 43,586, with 21,752 males and 21,834 females. The literacy rate is 70.68%, with a total of 28,079 literate individuals. The mandal comprises 13 villages, with Vemuru being the largest village by area and population, covering 2,284 hectares with 9,796 residents. The sex ratio stands at 1,019 females per 1,000 males, and Scheduled Castes and Tribes account for 15,664 and 2,008 individuals, respectively. The mandal is part of the Andhra Pradesh Capital Region and plays a significant role in education&#160;",
+  "administrationDesc": "The Vemuru Assembly constituency comprises five mandals: Vemuru, Tsunduru, Amruthalur, Kollur, and Bhattiprolu",
+  "educationHealthcareDesc": "Vemuru is a home to education is being strengthened with 279 schools, 40+ smart classrooms, and 30,000 youth undergoing skill training under NSDC and PMKVY initiatives.&#10;<p>The healthcare sector includes 11 PHC/UPHCs, 73 sub-centers,75 wellness centers,  1 government Hospital, 8 government ayurvedic hospitals, and achieve 100% vaccination&#9;coverage. A&#9;strong&#9; public health infrastructure ensures access to affordable and quality medical services.&#10;</p><p><br></p>",
+  "culturalheritageDesc": "Vemuru's cultural heritage is deeply rooted in its history and traditions, reflecting the broader Indian cultural landscape. The region's rich cultural tapestry is woven with&#160;<p>- Traditional Practices: Family values, respect for elders and strong kinship bonds are fundamental to the community.</p><p>- Festivals and Celebrations: Vibrant festivals like Diwali and Holi bring people together, showcasing unity in diversity.</p><p>- Art and Architecture: Intricate handicrafts, textiles and traditional attire like sarees and kurta-pajamas showcase the region's artistic heritage.</p><p>- Music and Dance: Classical forms like Bharatanatyam and Kathak are performed during cultural events, highlighting the community's love for artistic expression.</p><p>- Culinary Traditions: Local cuisine plays a significant role in shaping Vemuru's cultural identity, with traditional dishes passed down through generations.</p><p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "dYrqKw6iJ3lP2XwSObxH5g==",
+   "economy_Text": "<p><b><font size=\"5\">Vemuru&#8217;s Economy at a Glance<br></font></b></p><p><span>Vemuru presents a comprehensive growth strategy to transform the constituency into an economically vibrant, investment-friendly, and employment-driven region. With a Gross Constituency Domestic Product(GCDP)of &#8377;5361.52 crores in 2023-24, Vemuru is projected to achieve &#8377;1,14584.25 crores by 2047-48 and &#8377;10894 crores by 2028-29, reflecting a strong and sustainable annual growth trajectory averaging 15-20%. The economic structure is currently anchored in agriculture, which contributes 62.27% to the Gross Value Added (GVA), but is steadily diversifying with the services sector contributing 27.55% and industry accounting for 10.19%.</span></p>",
+   "gcdP_Growth_Text": "Vemuru is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like livestock, Horticulture, and Agriculture. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.",
+   "createdDate": "2025-09-04T11:27:19.727"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5361.0,
+   "cagR_Pct": 19.1,
+   "targetAmountCrore": 10894.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1364.0,
+   "cagR_Pct": 20.49,
+   "targetAmountCrore": 2874.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 504.0,
+   "cagR_Pct": 19.59,
+   "targetAmountCrore": 1031.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3083.0,
+   "cagR_Pct": 18.39,
+   "targetAmountCrore": 6057.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 120,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 27.54
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 10.19
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 62.27
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 120,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 292,
+   "constituencyId": 120,
+   "name": "Nakka Ananda Babu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 293,
+   "constituencyId": 120,
+   "name": "Merugu Nagarjuna\t ",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "Yuvajana Sramika Rythu Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 294,
+   "constituencyId": 120,
+   "name": "Nakka Ananda Babu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party ",
+   "photo": ""
+  },
+  {
+   "id": 295,
+   "constituencyId": 120,
+   "name": "Nakka Ananda Babu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party ",
+   "photo": ""
+  },
+  {
+   "id": 296,
+   "constituencyId": 120,
+   "name": "Satishpaul Raj\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress ",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,365 @@
+/* ===========================================================================
+   Swarna Andhra — dashboard component library
+   Composes ONLY from the CSS custom properties already declared in
+   landing/index.html :root. No new colour literals except neutral
+   black/white alpha (matching the existing .vstage override pattern) and
+   sector colours supplied inline by the AP portal data itself.
+   =========================================================================== */
+
+.dash{
+  display:flex; flex-direction:column; gap:22px;
+  max-width:100%;
+}
+.dash *,.dash *::before,.dash *::after{box-sizing:border-box;}
+
+/* ---------- section wrapper ---------- */
+.d-sec{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:var(--r-lg);
+  -webkit-backdrop-filter:var(--blur); backdrop-filter:var(--blur);
+  box-shadow:var(--neu-out);
+  padding:clamp(16px,2.4vw,26px);
+  max-width:100%; min-width:0;
+}
+.d-sec > .d-sec-h{
+  display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+  margin:0 0 14px; padding:0 0 10px;
+  border-bottom:1px solid var(--hair);
+}
+.d-sec-h h4{
+  margin:0; font-size:.98rem; font-weight:700; letter-spacing:-.01em;
+  color:var(--ink);
+}
+.d-sec-h .d-sec-note{
+  font-size:.72rem; color:var(--label-3); font-weight:500;
+}
+.d-sec-b{min-width:0;}
+
+/* ---------- stat card ---------- */
+.d-stats{
+  display:grid; gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+}
+.d-stat{
+  background:var(--glass-strong);
+  border:1px solid var(--glass-border);
+  border-radius:var(--r);
+  box-shadow:var(--neu-out);
+  padding:14px 16px; min-width:0;
+}
+.d-stat .d-stat-l{
+  display:block; font-size:.68rem; font-weight:700;
+  letter-spacing:.09em; text-transform:uppercase;
+  color:var(--label-2); margin-bottom:7px;
+}
+.d-stat .d-stat-v{
+  display:block; font-size:clamp(1.25rem,2.6vw,1.7rem);
+  font-weight:700; line-height:1.1; letter-spacing:-.02em;
+  color:var(--label); overflow-wrap:anywhere;
+}
+.d-stat .d-stat-s{
+  display:block; margin-top:6px; font-size:.72rem; line-height:1.35;
+  color:var(--label-3);
+}
+.d-stat .d-stat-d{
+  display:inline-block; margin-top:8px;
+  font-size:.7rem; font-weight:700;
+  padding:3px 9px; border-radius:999px;
+  background:rgba(36,138,61,.12); color:var(--green);
+}
+.d-stat .d-stat-d.is-down{
+  background:rgba(60,60,67,.10); color:var(--label-2);
+}
+
+/* ---------- donut ---------- */
+.d-donut{
+  display:flex; align-items:center; gap:clamp(14px,3vw,28px);
+  flex-wrap:wrap; min-width:0;
+}
+.d-donut-svg{
+  flex:0 0 auto; width:clamp(132px,30%,168px); height:auto; max-width:100%;
+}
+.d-donut-svg .d-seg{
+  transition:opacity .25s ease, stroke-width .25s ease;
+}
+.d-donut-svg .d-seg.is-dim{opacity:.42;}
+/* font-size inside an SVG resolves in USER UNITS, and the viewBox is 42
+   units wide — so these are deliberately small numbers, not px. */
+.d-donut-c1{
+  font-size:7.2px; font-weight:700; fill:var(--label);
+  letter-spacing:-.2px;
+}
+.d-donut-c2{
+  font-size:2.5px; font-weight:600; fill:var(--label-3);
+  letter-spacing:.28px; text-transform:uppercase;
+}
+.d-legend{
+  flex:1 1 190px; min-width:0;
+  display:flex; flex-direction:column; gap:9px; margin:0; padding:0;
+  list-style:none;
+}
+.d-legend li{
+  display:flex; align-items:center; gap:9px;
+  font-size:.82rem; color:var(--label);
+  padding-bottom:8px; border-bottom:1px solid var(--hair);
+}
+.d-legend li:last-child{border-bottom:0; padding-bottom:0;}
+.d-legend li.is-emph{font-weight:700;}
+.d-legend .d-dot{
+  flex:0 0 auto; width:11px; height:11px; border-radius:4px;
+}
+.d-legend .d-lg-n{flex:1 1 auto; min-width:0;}
+.d-legend .d-lg-v{flex:0 0 auto; font-variant-numeric:tabular-nums; font-weight:700;}
+
+/* ---------- growth bullet ---------- */
+.d-bul{display:flex; flex-direction:column; gap:15px; min-width:0;}
+.d-bul-row{min-width:0;}
+.d-bul-hd{
+  display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+  margin-bottom:6px;
+}
+.d-bul-hd .d-bul-n{
+  font-size:.84rem; font-weight:600; color:var(--label);
+  flex:1 1 auto; min-width:0;
+}
+.d-bul-row.is-emph .d-bul-n{font-weight:800;}
+.d-bul-hd .d-bul-cagr{
+  flex:0 0 auto; font-size:.7rem; font-weight:700;
+  padding:2px 8px; border-radius:999px;
+  background:rgba(36,138,61,.12); color:var(--green);
+  font-variant-numeric:tabular-nums;
+}
+/* Rounding lives on the track, not on shapes inside the SVG: the SVG scales
+   horizontally only, so any rx in there would stretch into an ellipse. */
+.d-bul-track{
+  width:100%; max-width:100%; height:14px; overflow:hidden;
+  border-radius:7px; background:rgba(60,60,67,.09);
+  box-shadow:var(--neu-in);
+}
+.d-bul-svg{display:block; width:100%; height:14px;}
+.d-bul-ft{
+  display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+  margin-top:5px; font-size:.71rem; color:var(--label-3);
+  font-variant-numeric:tabular-nums;
+}
+.d-bul-key{
+  display:flex; gap:16px; flex-wrap:wrap; align-items:center;
+  margin-top:2px; padding-top:11px; border-top:1px solid var(--hair);
+  font-size:.71rem; color:var(--label-2);
+}
+.d-bul-key span{display:inline-flex; align-items:center; gap:7px;}
+.d-bul-key i{
+  width:20px; height:11px; border-radius:3px; display:inline-block;
+  background:var(--label-3);
+}
+.d-bul-key i.d-k-g{background:var(--label-3); opacity:.28;}
+.d-bul-key i.d-k-t{
+  background:transparent; width:0; height:13px; border-radius:0;
+  border:0; border-left:2px dashed var(--label-2);
+}
+
+/* ---------- composition bars ---------- */
+.d-comp{display:flex; flex-direction:column; gap:12px; min-width:0;}
+.d-comp-row{min-width:0;}
+.d-comp-hd{
+  display:flex; justify-content:space-between; gap:10px;
+  font-size:.8rem; color:var(--label); margin-bottom:5px;
+}
+.d-comp-hd b{font-variant-numeric:tabular-nums;}
+.d-comp-track{
+  height:10px; border-radius:999px; width:100%; overflow:hidden;
+  background:rgba(60,60,67,.10); box-shadow:var(--neu-in);
+}
+.d-comp-fill{
+  height:100%; border-radius:999px; min-width:2px;
+  background:var(--green);
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+
+/* ---------- thrust chips ---------- */
+.d-chips{
+  display:flex; flex-wrap:wrap; gap:9px; margin:0; padding:0; list-style:none;
+}
+.d-chip{
+  display:inline-block; padding:7px 14px; border-radius:999px;
+  font-size:.78rem; font-weight:600; line-height:1.25;
+  color:var(--ink);
+  background:var(--glass-strong);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--neu-out);
+}
+
+/* ---------- narrative ---------- */
+.d-narr{font-size:.9rem; line-height:1.62; color:var(--label-2); min-width:0;}
+.d-narr > *:first-child{margin-top:0;}
+.d-narr > *:last-child{margin-bottom:0;}
+.d-narr p{margin:0 0 .85em;}
+.d-narr strong,.d-narr b{color:var(--label); font-weight:700;}
+.d-narr ul,.d-narr ol{margin:0 0 .85em; padding-left:1.15em;}
+.d-narr li{margin-bottom:.35em;}
+.d-narr h1,.d-narr h2,.d-narr h3,.d-narr h4,.d-narr h5,.d-narr h6{
+  font-size:.9rem; font-weight:700; color:var(--ink); margin:1.1em 0 .5em;
+}
+.d-narr a{color:var(--teal); text-decoration:underline;}
+.d-narr img,.d-narr table{max-width:100%;}
+.d-narr table{display:block; overflow-x:auto; border-collapse:collapse;}
+
+/* ---------- drill list ---------- */
+.d-drill{
+  display:grid; gap:9px; margin:0; padding:0; list-style:none;
+  grid-template-columns:repeat(auto-fill,minmax(178px,1fr));
+}
+.d-drill-lbl{
+  font-size:.68rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--label-2); margin:0 0 10px;
+}
+.d-drill-i{min-width:0;}
+.d-drill-i > *{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  width:100%; text-align:left;
+  font:inherit; font-size:.82rem; font-weight:600; color:var(--label);
+  padding:11px 14px; border-radius:var(--r);
+  background:var(--glass-strong);
+  border:1px solid var(--glass-border);
+  box-shadow:var(--neu-out);
+  min-width:0;
+}
+.d-drill-i button{cursor:pointer; transition:transform .18s ease, box-shadow .18s ease;}
+.d-drill-i button:hover{transform:translateY(-2px);}
+.d-drill-i button:focus-visible{outline:2px solid var(--green); outline-offset:2px;}
+.d-drill-i .d-drill-n{
+  min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.d-drill-i .d-drill-a{flex:0 0 auto; color:var(--label-3); font-weight:700;}
+
+/* ---------- rank strip ---------- */
+.d-rank{display:flex; flex-direction:column; gap:8px; min-width:0;}
+.d-rank-lbl{
+  font-size:.68rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--label-2); margin:0;
+}
+.d-rank-peer{
+  display:grid; grid-template-columns:minmax(0,1fr) 3.4fr auto;
+  align-items:center; gap:10px; font-size:.79rem; color:var(--label-2);
+}
+.d-rank-peer .d-rank-n{
+  min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.d-rank-peer .d-rank-t{
+  height:9px; border-radius:999px; width:100%;
+  background:rgba(60,60,67,.10); box-shadow:var(--neu-in); overflow:hidden;
+}
+.d-rank-peer .d-rank-f{
+  height:100%; border-radius:999px; min-width:2px;
+  background:var(--label-3);
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.d-rank-peer .d-rank-v{font-variant-numeric:tabular-nums; font-weight:600;}
+.d-rank-peer.is-self{color:var(--label); font-weight:700;}
+.d-rank-peer.is-self .d-rank-f{background:var(--green);}
+
+/* ---------- source note ---------- */
+.d-src{
+  display:block; margin-top:2px;
+  font-size:.71rem; line-height:1.5; color:var(--label-3);
+  padding-left:11px; border-left:2px solid var(--hair);
+}
+
+/* ---------- empty state (calm, not an error) ---------- */
+.d-empty{
+  display:flex; align-items:flex-start; gap:6px 11px; flex-wrap:wrap;
+  border-radius:var(--r);
+  border:1px dashed var(--hair);
+  background:rgba(60,60,67,.03);
+  padding:15px 17px; font-size:.82rem; line-height:1.5;
+  color:var(--label-2); min-width:0;
+}
+.d-empty .d-empty-k{
+  flex:0 0 auto; font-size:.66rem; font-weight:700; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--label-3);
+  padding-top:.15em;
+}
+.d-empty .d-empty-r{flex:1 1 150px; min-width:0;}
+
+/* ===========================================================================
+   Dark stage — light-on-dark, following the existing .vstage pattern
+   =========================================================================== */
+.vstage .d-sec,
+.vstage .d-stat,
+.vstage .d-chip,
+.vstage .d-drill-i > *{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:none;
+  -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+}
+.vstage .d-sec-h{border-bottom-color:rgba(255,255,255,.14);}
+.vstage .d-sec-h h4{color:#FFF;}
+.vstage .d-sec-h .d-sec-note{color:rgba(255,255,255,.55);}
+
+.vstage .d-stat .d-stat-l{color:rgba(255,255,255,.62);}
+.vstage .d-stat .d-stat-v{color:#FFF;}
+.vstage .d-stat .d-stat-s{color:rgba(255,255,255,.55);}
+.vstage .d-stat .d-stat-d{background:rgba(198,255,106,.18); color:var(--lime);}
+.vstage .d-stat .d-stat-d.is-down{background:rgba(255,255,255,.12); color:rgba(255,255,255,.72);}
+
+.vstage .d-donut-c1{fill:#FFF;}
+.vstage .d-donut-c2{fill:rgba(255,255,255,.58);}
+.vstage .d-legend li{color:rgba(255,255,255,.86); border-bottom-color:rgba(255,255,255,.12);}
+
+.vstage .d-bul-hd .d-bul-n{color:rgba(255,255,255,.92);}
+.vstage .d-bul-hd .d-bul-cagr{background:rgba(198,255,106,.18); color:var(--lime);}
+.vstage .d-bul-ft{color:rgba(255,255,255,.58);}
+.vstage .d-bul-key{color:rgba(255,255,255,.66); border-top-color:rgba(255,255,255,.12);}
+.vstage .d-bul-key i{background:rgba(255,255,255,.5);}
+.vstage .d-bul-key i.d-k-g{background:rgba(255,255,255,.5); opacity:.3;}
+.vstage .d-bul-key i.d-k-t{background:transparent; border-left-color:rgba(255,255,255,.7);}
+.vstage .d-bul-track{background:rgba(255,255,255,.13); box-shadow:none;}
+
+.vstage .d-comp-hd{color:rgba(255,255,255,.88);}
+.vstage .d-comp-track,
+.vstage .d-rank-peer .d-rank-t{background:rgba(255,255,255,.13); box-shadow:none;}
+.vstage .d-comp-fill{background:var(--lime);}
+
+.vstage .d-chip{color:var(--lime);}
+
+.vstage .d-narr{color:rgba(255,255,255,.76);}
+.vstage .d-narr strong,.vstage .d-narr b{color:#FFF;}
+.vstage .d-narr h1,.vstage .d-narr h2,.vstage .d-narr h3,
+.vstage .d-narr h4,.vstage .d-narr h5,.vstage .d-narr h6{color:#FFF;}
+.vstage .d-narr a{color:var(--lime);}
+
+.vstage .d-drill-lbl,.vstage .d-rank-lbl{color:rgba(255,255,255,.62);}
+.vstage .d-drill-i > *{color:#FFF;}
+.vstage .d-drill-i .d-drill-a{color:var(--lime);}
+.vstage .d-drill-i button:focus-visible{outline-color:var(--lime);}
+
+.vstage .d-rank-peer{color:rgba(255,255,255,.66);}
+.vstage .d-rank-peer .d-rank-f{background:rgba(255,255,255,.42);}
+.vstage .d-rank-peer.is-self{color:#FFF;}
+.vstage .d-rank-peer.is-self .d-rank-f{background:var(--lime);}
+
+.vstage .d-src{color:rgba(255,255,255,.52); border-left-color:rgba(255,255,255,.18);}
+
+.vstage .d-empty{
+  background:rgba(255,255,255,.05);
+  border-color:rgba(255,255,255,.18);
+  color:rgba(255,255,255,.72);
+}
+.vstage .d-empty .d-empty-k{color:rgba(255,255,255,.5);}
+
+/* ---------- motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  .dash *,.dash *::before,.dash *::after{
+    transition:none !important; animation:none !important;
+  }
+  .d-drill-i button:hover{transform:none;}
+}
+
+/* ---------- narrow screens ---------- */
+@media (max-width:520px){
+  .d-donut{flex-direction:column; align-items:stretch;}
+  .d-donut-svg{width:min(180px,60%); align-self:center;}
+  .d-rank-peer{grid-template-columns:minmax(0,1fr) 2fr auto; font-size:.74rem;}
+}

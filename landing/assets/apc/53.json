@@ -1,0 +1,224 @@
+{
+ "code": 53,
+ "name": "Amadalavalasa",
+ "district": "Srikakulam",
+ "logoUrl": "assets/constituencies_logos/amadalavalasa.png",
+ "profile": {
+  "population": "233545 (As per Census 2011)",
+  "voterCount": "196098 (As per 2024 Elections)",
+  "area": "419.61",
+  "mandals": "Amadalavalasa-R, Burja-R, Ponduru-R, Sarubujjili-R",
+  "revenueVillages": "201",
+  "municipal_wards": "23",
+  "municipalities": "Amudalavalasa",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>The Amadalavalasa Assembly Constituency initially formed in 1976. The region's economy is predominantly agrarian, with agriculture serving as the <span>&#9;</span>mainstay for many residents. The fertile lands support the cultivation of various <span>&#9;</span>crops, contributing to the local economy.&#160;</p><p>The constituency has a historical and cultural heritage, with diverse geographical features and potential for economic growth. Its proximity to nearby towns like Srikakulam, makes it well-connected for trade, and tourism development. The Constituency headquarters is Located in Amadalavalasa mandal &amp; Srikakulam revenue division. It falls under the Srikakulam Parliamentary Constituency Amadalavalasa means the town of castor oil. During the times of Ashoka, this place was called Herandapalli. Heranda in Sanskrit means castor oil. However, there are no castor oil plants being grown or castor oil being produced in this place.</p>",
+  "constituencyMap": "53\\MAP\\53IMAGE2025090213154948594_Amudalavalasa.jpg",
+  "geography": "<p><span>Amadalavalasa Constituency covers 419.61 sq. km, bordered by Etcherla, G. Sigadam, Srikakulam, Narasannapeta, Pathapatnam, Palakonda, and Rajam constituencies. Its terrain is mostly fertile plains with gentle hills, featuring black cotton and red soils that support crops like paddy, maize, sugarcane, and pulses. Major rivers, including the Vamsadhara and Nagavali, along with smaller streams from the Eastern Ghats, provide vital irrigation. The area has a tropical climate with very hot summers reaching 43&#176;C, winters dropping to 12&#176;C, and an annual average rainfall of 1,119.5 mm, mainly from the southwest monsoon. Cyclones and tidal storms occasionally disrupt agriculture and groundwater quality.</span></p>",
+  "populationDesc": "Total Population 2,73,344 people, comprising 1,36,820 males and 1,36,524 females. The sex ratio is 1002 females per 1,000 males.",
+  "administrationDesc": "Amadalavalasa Constituency is one of the eight assembly constituencies in Srikakulam District. It includes 1) Amudalavalasa (Urban) 2) Amadalavalasa (Rural) 2) Burja 4) Sarbujjili 5) Ponduru.",
+  "educationHealthcareDesc": "<p><span>Amadalavalasa Constituency has a strong educational network with 353 institutions, including 287 MPP/ZPP schools, 41 private-aided, and 18 private unaided schools, along with 3 AP Model Schools and 4 Kasturba Gandhi Balika Vidyalayas (KGBVs). This wide spread of primary, upper primary, and high schools reflects the constituency&#8217;s emphasis on expanding access to school education. In terms of healthcare, the constituency is served by 3 community health centers, 11 primary health centers, 70 sub-centers, and 4 AYUSH dispensaries, supported by a blood storage unit at Burja mandal. Emergency medical services include 7 FDHS vehicles, 5 ambulances, and 3 Thalli&#8211;Bidda Express vehicles, which remain insufficient for the growing healthcare needs of the population.</span></p>",
+  "culturalheritageDesc": "<p><span>Amadalavalasa Constituency is home to notable cultural and heritage sites. Sangameshwara Swamy Konda is a revered hill shrine dedicated to Lord Shiva, attracting devotees from surrounding regions. Palapolamma Thalli Temple stands as a significant place of worship for local communities, known for its traditional festivals and rituals. The constituency also features a Megalithic Site, highlighting its ancient past and archaeological importance, with remnants that provide insights into early human settlements and burial practices. Together, these landmarks reflect the constituency&#8217;s rich blend of spirituality, tradition, and historical heritage.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "hFQQEpzvT0aLjJQAJ5Gr+A==",
+   "economy_Text": "<p><span>The Economic Vision Plan for Amadalavalasa sets a transformative agenda for sustainable economic growth, targeting a rise in the Gross Constituency Domestic Product (GCDP) from &#8377;3,768.00 crores in 2023-24 to &#8377;8,219.00 crores by 2028-29. By capitalizing on the constituency&#8217;s strengths in agriculture, industry, and services, the plan drives progress through strategic investments, infrastructure enhancements, and employment generation. Focused on overcoming infrastructural challenges and fostering sectoral advancements, Amadalavalasa aims to emerge as a self-reliant economic hub, contributing significantly to Andhra Pradesh&#8217;s broader development goals.</span></p>",
+   "gcdP_Growth_Text": "Amadalavalasa Constituency is witnessing steady economic momentum with a targeted 12-15% annual GCDP growth rate across key sectors like&#160;<span>Horticulture, Aquaculture, Dairy - Manufacturing,&#160;</span><span>cultural heritage,&#160;</span><span>Tourism, Realest. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and economic hub by 2047.</span>",
+   "createdDate": "2025-09-03T12:17:02.58"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 3768.0,
+   "cagR_Pct": 16.93,
+   "targetAmountCrore": 8219.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1618.0,
+   "cagR_Pct": 18.64,
+   "targetAmountCrore": 3515.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 642.0,
+   "cagR_Pct": 18.18,
+   "targetAmountCrore": 1466.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1225.0,
+   "cagR_Pct": 13.98,
+   "targetAmountCrore": 2565.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 53,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 46.43
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 18.4
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 35.17
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 53,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 12,
+   "sectorName": "Pilgrimage & Cultural Centre",
+   "description": "Restoration of heritage sites, amenities for pilgrims, and promotion of cultural tourism.",
+   "imageUrl": "assets/img/sectors/pilgrimage-cultural-centre.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 23,
+   "constituencyId": 53,
+   "name": "Koona Ravi Kumar",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": "53\\mla\\53IMAGE2025090213232141747_Amadalavalasa-mla-24-29.jpg"
+  },
+  {
+   "id": 624,
+   "constituencyId": 53,
+   "name": "Thammineni Seetharam",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 626,
+   "constituencyId": 53,
+   "name": "Koona Ravi Kumar",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 629,
+   "constituencyId": 53,
+   "name": "Boddepalli Satyavathi",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,5539 @@
+{
+ "districts": {
+  "Srikakulam": {
+   "archetype": "D4",
+   "why": "PCI rank 26/28 \u2014 emerging",
+   "shares": {
+    "agri": 30.2,
+    "industry": 19.6,
+    "services": 50.2
+   },
+   "pci_rank": 26,
+   "constituencies": [
+    "Amadalavalasa",
+    "Etcherla",
+    "Ichchapuram",
+    "Narasannapeta",
+    "Palasa",
+    "Pathapatnam",
+    "Srikakulam",
+    "Tekkali"
+   ]
+  },
+  "Vizianagaram": {
+   "archetype": "D4",
+   "why": "PCI rank 25/28 \u2014 emerging",
+   "shares": {
+    "agri": 30.4,
+    "industry": 19.9,
+    "services": 49.7
+   },
+   "pci_rank": 25,
+   "constituencies": [
+    "Bobbili",
+    "Cheepurupalli",
+    "Gajapathinagaram",
+    "Nellimarla",
+    "Rajam_SC",
+    "Srungavarapukota",
+    "Vizianagaram"
+   ]
+  },
+  "Parvathipuram_Manyam": {
+   "archetype": "D4",
+   "why": "scheduled/agency district",
+   "shares": {},
+   "pci_rank": 28,
+   "constituencies": [
+    "Kurupam_ST",
+    "Palakonda_ST",
+    "Parvathipuram_SC",
+    "Saluru_ST"
+   ]
+  },
+  "Alluri_Seetha_Rama_Raju": {
+   "archetype": "D4",
+   "why": "scheduled/agency district",
+   "shares": {},
+   "pci_rank": 16,
+   "constituencies": [
+    "Araku_Valley_ST",
+    "Paderu_ST"
+   ]
+  },
+  "Polavaram": {
+   "archetype": "D4",
+   "why": "scheduled/agency district",
+   "shares": {},
+   "pci_rank": 27,
+   "constituencies": [
+    "Rampachodavaram_ST"
+   ]
+  },
+  "Visakhapatnam": {
+   "archetype": "D1",
+   "why": "services 59.9%, PCI rank 1 \u2014 metro/urban core",
+   "shares": {
+    "agri": 3.4,
+    "industry": 36.7,
+    "services": 59.9
+   },
+   "pci_rank": 1,
+   "constituencies": [
+    "Bhimili",
+    "Gajuwaka",
+    "Pendurthi",
+    "Visakhapatnam_East",
+    "Visakhapatnam_North",
+    "Visakhapatnam_South",
+    "Visakhapatnam_West"
+   ]
+  },
+  "Anakapalle": {
+   "archetype": "D3",
+   "why": "industry 52.6% \u2014 industrial corridor",
+   "shares": {
+    "agri": 21.0,
+    "industry": 52.6,
+    "services": 26.4
+   },
+   "pci_rank": 15,
+   "constituencies": [
+    "Anakapalli",
+    "Chodavaram",
+    "Madugula",
+    "Narsipatnam",
+    "Payakaraopet_SC",
+    "Yelamanchili"
+   ]
+  },
+  "Kakinada": {
+   "archetype": "D1",
+   "why": "services 42.4% \u2014 services-led",
+   "shares": {
+    "agri": 29.7,
+    "industry": 27.9,
+    "services": 42.4
+   },
+   "pci_rank": 9,
+   "constituencies": [
+    "Jaggampeta",
+    "Kakinada_City",
+    "Kakinada_Rural",
+    "Peddapuram",
+    "Pithapuram",
+    "Prathipadu",
+    "Tuni"
+   ]
+  },
+  "Dr.B.R.Ambedkar_Konaseema": {
+   "archetype": "D2",
+   "why": "agriculture 41.4% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 41.4,
+    "industry": 23.5,
+    "services": 35.0
+   },
+   "pci_rank": 17,
+   "constituencies": [
+    "Amalapuram_SC",
+    "Gannavaram_SC",
+    "Kothapeta",
+    "Mummidivaram",
+    "Ramachandrapuram",
+    "Razole_SC"
+   ]
+  },
+  "East_Godavari": {
+   "archetype": "D2",
+   "why": "agriculture 35.5% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 35.5,
+    "industry": 18.9,
+    "services": 45.6
+   },
+   "pci_rank": 14,
+   "constituencies": [
+    "Anaparthy",
+    "Gopalapuram_SC",
+    "Kovvur_SC",
+    "Mandapeta",
+    "Nidadavole",
+    "Rajahmundry_City",
+    "Rajahmundry_Rural",
+    "Rajanagaram"
+   ]
+  },
+  "West_Godavari": {
+   "archetype": "D2",
+   "why": "agriculture 48.4% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 48.4,
+    "industry": 14.1,
+    "services": 37.5
+   },
+   "pci_rank": 6,
+   "constituencies": [
+    "Achanta",
+    "Bhimavaram",
+    "Narasapuram",
+    "Palacole",
+    "Tadepalligudem",
+    "Tanuku",
+    "Undi"
+   ]
+  },
+  "Eluru": {
+   "archetype": "D2",
+   "why": "agriculture 65.5% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 65.5,
+    "industry": 8.6,
+    "services": 25.8
+   },
+   "pci_rank": 4,
+   "constituencies": [
+    "Chintalapudi_SC",
+    "Denduluru",
+    "Eluru",
+    "Kaikalur",
+    "Nuzvid",
+    "Polavaram_ST",
+    "Ungutur"
+   ]
+  },
+  "Krishna": {
+   "archetype": "D2",
+   "why": "agriculture 53.2% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 53.2,
+    "industry": 11.0,
+    "services": 35.8
+   },
+   "pci_rank": 2,
+   "constituencies": [
+    "Avanigadda",
+    "Gannavaram",
+    "Gudivada",
+    "Machilipatnam",
+    "Pamarru_SC",
+    "Pedana",
+    "Penamaluru"
+   ]
+  },
+  "Ntr": {
+   "archetype": "D1",
+   "why": "services 67.4%, PCI rank 3 \u2014 metro/urban core",
+   "shares": {
+    "agri": 11.8,
+    "industry": 20.8,
+    "services": 67.4
+   },
+   "pci_rank": 3,
+   "constituencies": [
+    "Jaggayyapeta",
+    "Mylavaram",
+    "Nandigama_SC",
+    "Tiruvuru_SC",
+    "Vijayawada_Central",
+    "Vijayawada_East",
+    "Vijayawada_West"
+   ]
+  },
+  "Guntur": {
+   "archetype": "D1",
+   "why": "services 58.6%, PCI rank 7 \u2014 metro/urban core",
+   "shares": {
+    "agri": 14.0,
+    "industry": 27.3,
+    "services": 58.6
+   },
+   "pci_rank": 7,
+   "constituencies": [
+    "Guntur_East",
+    "Guntur_West",
+    "Mangalagiri",
+    "Ponnur",
+    "Prathipadu_SC",
+    "Tadikonda_SC",
+    "Tenali"
+   ]
+  },
+  "Bapatla": {
+   "archetype": "D2",
+   "why": "agriculture 58.8% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 58.8,
+    "industry": 12.6,
+    "services": 28.6
+   },
+   "pci_rank": 8,
+   "constituencies": [
+    "Bapatla",
+    "Chirala",
+    "Parchur",
+    "Repalle",
+    "Vemuru_SC"
+   ]
+  },
+  "Palnadu": {
+   "archetype": "D4",
+   "why": "PCI rank 23/28 \u2014 emerging",
+   "shares": {
+    "agri": 41.4,
+    "industry": 16.3,
+    "services": 42.3
+   },
+   "pci_rank": 23,
+   "constituencies": [
+    "Chilakaluripet",
+    "Gurajala",
+    "Macherla",
+    "Narasaraopet",
+    "Pedakurapadu",
+    "Sattenapalle",
+    "Vinukonda"
+   ]
+  },
+  "Markapuram": {
+   "archetype": "D4",
+   "why": "PCI rank 21/28 \u2014 emerging",
+   "shares": {
+    "agri": 49.3,
+    "industry": 11.9,
+    "services": 38.7
+   },
+   "pci_rank": 21,
+   "constituencies": [
+    "GIDDALUR",
+    "KANIGIRI",
+    "Markapuram",
+    "YERRAGONDAPALEM_SC"
+   ]
+  },
+  "Prakasam": {
+   "archetype": "D2",
+   "why": "agriculture 37.1% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 37.1,
+    "industry": 23.2,
+    "services": 39.8
+   },
+   "pci_rank": 19,
+   "constituencies": [
+    "Addanki",
+    "DARSI",
+    "Kandukur",
+    "Kondapi_SC",
+    "ONGOLE",
+    "Santhanuthalapadu_SC"
+   ]
+  },
+  "Sps_Nellore": {
+   "archetype": "D1",
+   "why": "services 41.8% \u2014 services-led",
+   "shares": {
+    "agri": 33.6,
+    "industry": 24.6,
+    "services": 41.8
+   },
+   "pci_rank": 10,
+   "constituencies": [
+    "Atmakur",
+    "Gudur_SC",
+    "Kavali",
+    "Kovur",
+    "Nellore_City",
+    "Nellore_Rural",
+    "Sarvepalli",
+    "Udayagiri"
+   ]
+  },
+  "Kurnool": {
+   "archetype": "D4",
+   "why": "PCI rank 24/28 \u2014 emerging",
+   "shares": {
+    "agri": 33.0,
+    "industry": 19.8,
+    "services": 47.3
+   },
+   "pci_rank": 24,
+   "constituencies": [
+    "Adoni",
+    "Alur",
+    "Kodumur_SC",
+    "Kurnool",
+    "Mantralayam",
+    "Pattikonda",
+    "Yemmiganur"
+   ]
+  },
+  "Nandyal": {
+   "archetype": "D2",
+   "why": "agriculture 40.2% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 40.2,
+    "industry": 19.5,
+    "services": 40.3
+   },
+   "pci_rank": 20,
+   "constituencies": [
+    "Allagadda",
+    "Banaganapalle",
+    "Dhone",
+    "Nandikotkur_SC",
+    "Nandyal",
+    "Panyam",
+    "Srisailam"
+   ]
+  },
+  "Ananthapuramu": {
+   "archetype": "D2",
+   "why": "agriculture 40.9% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 40.9,
+    "industry": 21.0,
+    "services": 38.1
+   },
+   "pci_rank": 11,
+   "constituencies": [
+    "Anantapur_Urban",
+    "Guntakal",
+    "Kalyandurg",
+    "Raptadu",
+    "Rayadurg",
+    "Singanamala_SC",
+    "Tadipatri",
+    "Uravakonda"
+   ]
+  },
+  "Sri_Satya_Sai": {
+   "archetype": "D2",
+   "why": "agriculture 39.8% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 39.8,
+    "industry": 30.2,
+    "services": 30.0
+   },
+   "pci_rank": 13,
+   "constituencies": [
+    "Dharmavaram",
+    "Hindupur",
+    "Kadiri",
+    "Madakasira_SC",
+    "Penukonda",
+    "Puttaparthi"
+   ]
+  },
+  "Ysr_Kadapa": {
+   "archetype": "D3",
+   "why": "industry 32.5% \u2014 industrial corridor",
+   "shares": {
+    "agri": 29.1,
+    "industry": 32.5,
+    "services": 38.4
+   },
+   "pci_rank": 12,
+   "constituencies": [
+    "Badvel_SC",
+    "Jammalamadugu",
+    "Kadapa",
+    "Kamalapuram",
+    "Mydukur",
+    "Proddatur",
+    "Pulivendula",
+    "Rajampet"
+   ]
+  },
+  "Annamayya": {
+   "archetype": "D4",
+   "why": "PCI rank 22/28 \u2014 emerging",
+   "shares": {
+    "agri": 41.6,
+    "industry": 15.7,
+    "services": 42.6
+   },
+   "pci_rank": 22,
+   "constituencies": [
+    "Madanapalle",
+    "Pileru",
+    "Punganur",
+    "Rayachoti",
+    "Thamballapalle"
+   ]
+  },
+  "Chittoor": {
+   "archetype": "D2",
+   "why": "agriculture 37.0% \u2014 agrarian heartland",
+   "shares": {
+    "agri": 37.0,
+    "industry": 21.5,
+    "services": 41.5
+   },
+   "pci_rank": 18,
+   "constituencies": [
+    "Chittoor",
+    "Gangadhara_Nellore_SC",
+    "Kuppam",
+    "Nagari",
+    "Palamaner",
+    "Puthalapattu_SC"
+   ]
+  },
+  "Tirupati": {
+   "archetype": "D1",
+   "why": "services 39.9%, PCI rank 5 \u2014 metro/urban core",
+   "shares": {
+    "agri": 20.4,
+    "industry": 39.7,
+    "services": 39.9
+   },
+   "pci_rank": 5,
+   "constituencies": [
+    "Chandragiri",
+    "Railway_Kodur_SC",
+    "Satyavedu_SC",
+    "Srikalahasti",
+    "Sullurpeta_SC",
+    "Tirupati",
+    "Venkatagiri"
+   ]
+  }
+ },
+ "constituencies": {
+  "Amadalavalasa": {
+   "district": "Srikakulam",
+   "code": 53,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 46.43,
+    "industry": 18.4,
+    "agri": 35.17
+   },
+   "gcdp_baseline": 3768.0,
+   "gcdp_target": 8219.0,
+   "cagr": 16.93,
+   "population": 233545.0,
+   "area_sqkm": 419.61,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Manufacturing",
+    "Pilgrimage & Cultural Centre",
+    "Tourism"
+   ],
+   "mandals": [
+    "Amadalavalasa-R",
+    "Burja-R",
+    "Ponduru-R",
+    "Sarubujjili-R"
+   ]
+  },
+  "Etcherla": {
+   "district": "Srikakulam",
+   "code": 56,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 37.0,
+    "industry": 31.0,
+    "agri": 32.0
+   },
+   "gcdp_baseline": 6497.0,
+   "gcdp_target": 13584.0,
+   "cagr": 16.6,
+   "population": 299883.0,
+   "area_sqkm": 692.87,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Etcherla-R",
+    "G.Sigadam-R",
+    "Laveru-R",
+    "Ranasthalam-R"
+   ]
+  },
+  "Ichchapuram": {
+   "district": "Srikakulam",
+   "code": 189,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 51.61,
+    "industry": 17.82,
+    "agri": 30.57
+   },
+   "gcdp_baseline": 3782.0,
+   "gcdp_target": 8103.0,
+   "cagr": 17.49,
+   "population": 310504.0,
+   "area_sqkm": 533.24,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Ichapuram-U",
+    "Ichchapuram-R",
+    "Kanchili-R",
+    "Kaviti-R",
+    "Sompeta-R"
+   ]
+  },
+  "Narasannapeta": {
+   "district": "Srikakulam",
+   "code": 49,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 45.35,
+    "industry": 17.19,
+    "agri": 37.46
+   },
+   "gcdp_baseline": 3499.0,
+   "gcdp_target": 7451.0,
+   "cagr": 16.63,
+   "population": 254785.0,
+   "area_sqkm": 612.95,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Jalumuru-R",
+    "Narasannapeta-R",
+    "Polaki-R",
+    "Saravakota-R"
+   ]
+  },
+  "Palasa": {
+   "district": "Srikakulam",
+   "code": 47,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 52.0,
+    "industry": 26.0,
+    "agri": 22.0
+   },
+   "gcdp_baseline": 3956.0,
+   "gcdp_target": 8227.0,
+   "cagr": 17.34,
+   "population": 253462.0,
+   "area_sqkm": 761.63,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "Mandasa-R",
+    "Palasa-R",
+    "Palasakasibugga-U",
+    "Vajrapukothuru-R"
+   ]
+  },
+  "Pathapatnam": {
+   "district": "Srikakulam",
+   "code": 50,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 45.0,
+    "industry": 18.0,
+    "agri": 37.0
+   },
+   "gcdp_baseline": 3369.0,
+   "gcdp_target": 7092.0,
+   "cagr": 16.43,
+   "population": 263594.0,
+   "area_sqkm": 847.0,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Hiramandalam-R",
+    "Kothuru-R",
+    "L.N.Peta-R",
+    "Meliaputti-R",
+    "Pathapatnam-R"
+   ]
+  },
+  "Srikakulam": {
+   "district": "Srikakulam",
+   "code": 163,
+   "archetype": "C1",
+   "why": "services 79.0% \u2014 urban/services-led",
+   "shares": {
+    "services": 79.0,
+    "industry": 9.0,
+    "agri": 12.0
+   },
+   "gcdp_baseline": 8190.0,
+   "gcdp_target": 17213.0,
+   "cagr": 17.37,
+   "population": 299949.0,
+   "area_sqkm": 318.0,
+   "thrust": [
+    "Agro-Processing",
+    "Logistics",
+    "Pilgrimage & Cultural Centre",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Etcherla-R",
+    "Gara-R",
+    "Srikakulam-R",
+    "Srikakulam-U"
+   ]
+  },
+  "Tekkali": {
+   "district": "Srikakulam",
+   "code": 48,
+   "archetype": "C2",
+   "why": "agriculture 41.0% \u2014 agrarian",
+   "shares": {
+    "services": 39.0,
+    "industry": 20.0,
+    "agri": 41.0
+   },
+   "gcdp_baseline": 4379.0,
+   "gcdp_target": 9101.0,
+   "cagr": 16.0,
+   "population": 275715.0,
+   "area_sqkm": 612.35,
+   "thrust": [
+    "Agro-Processing",
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Kotabommali-R",
+    "Nandigam-R",
+    "Santhabommali-R",
+    "Tekkali-R"
+   ]
+  },
+  "Bobbili": {
+   "district": "Vizianagaram",
+   "code": 57,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 48.0,
+    "industry": 20.0,
+    "agri": 32.0
+   },
+   "gcdp_baseline": 4602.5,
+   "gcdp_target": 9507.1,
+   "cagr": 16.0,
+   "population": 282500.0,
+   "area_sqkm": 617.01,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Badangi-R",
+    "Bobbili-R",
+    "Bobbili-U",
+    "Ramabhadrapuram-R",
+    "Therlam-R"
+   ]
+  },
+  "Cheepurupalli": {
+   "district": "Vizianagaram",
+   "code": 61,
+   "archetype": "C2",
+   "why": "agriculture 48.0% \u2014 agrarian",
+   "shares": {
+    "services": 33.0,
+    "industry": 19.0,
+    "agri": 48.0
+   },
+   "gcdp_baseline": 5194.1,
+   "gcdp_target": 10353.2,
+   "cagr": 15.0,
+   "population": 253629.0,
+   "area_sqkm": 612.11,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Cheepurupalli-R",
+    "Garividi-R",
+    "Gurla-R",
+    "Merakamudidam-R"
+   ]
+  },
+  "Gajapathinagaram": {
+   "district": "Vizianagaram",
+   "code": 62,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 40.0,
+    "industry": 22.0,
+    "agri": 38.0
+   },
+   "gcdp_baseline": 4351.0,
+   "gcdp_target": 8916.3,
+   "cagr": 15.1,
+   "population": 254327.0,
+   "area_sqkm": 770.55,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bondapalli-R",
+    "Dattirajeru-R",
+    "Gajapathinagaram-R",
+    "Gantyada-R",
+    "Jami-R"
+   ]
+  },
+  "Nellimarla": {
+   "district": "Vizianagaram",
+   "code": 60,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 40.0,
+    "industry": 24.0,
+    "agri": 36.0
+   },
+   "gcdp_baseline": 5056.6,
+   "gcdp_target": 10570.0,
+   "cagr": 15.6,
+   "population": 258259.0,
+   "area_sqkm": 538.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bhogapuram-R",
+    "Denkada-R",
+    "Nellimarla-R",
+    "Nellimarla-U",
+    "Pusapatirega-R"
+   ]
+  },
+  "Rajam_SC": {
+   "district": "Vizianagaram",
+   "code": 55,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 47.0,
+    "industry": 28.0,
+    "agri": 25.0
+   },
+   "gcdp_baseline": 4103.7,
+   "gcdp_target": 8566.7,
+   "cagr": 16.0,
+   "population": 271084.0,
+   "area_sqkm": 542.35,
+   "thrust": [
+    "Agro-Processing",
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "R.Amadalavalasa-R",
+    "Rajam-R",
+    "Rajam-U",
+    "Santhakaviti-R",
+    "Vangara-R"
+   ]
+  },
+  "Srungavarapukota": {
+   "district": "Vizianagaram",
+   "code": 52,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 51.8,
+    "industry": 20.6,
+    "agri": 27.6
+   },
+   "gcdp_baseline": 4874.7,
+   "gcdp_target": 10001.8,
+   "cagr": 16.0,
+   "population": 280607.0,
+   "area_sqkm": 660.66,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Manufacturing",
+    "Pilgrimage & Cultural Centre"
+   ],
+   "mandals": [
+    "Jami-R",
+    "Kothavalasa-R",
+    "Lakkavarapukota-R",
+    "Srungavarapukota-R",
+    "Vepada-R"
+   ]
+  },
+  "Vizianagaram": {
+   "district": "Vizianagaram",
+   "code": 166,
+   "archetype": "C1",
+   "why": "services 84.0% \u2014 urban/services-led",
+   "shares": {
+    "services": 84.0,
+    "industry": 12.0,
+    "agri": 4.0
+   },
+   "gcdp_baseline": 6723.5,
+   "gcdp_target": 14106.9,
+   "cagr": 13.8,
+   "population": 283550.0,
+   "area_sqkm": 124.0,
+   "thrust": [
+    "Education & Skill Development",
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Vijayanagaram-U",
+    "Vizianagaram-R"
+   ]
+  },
+  "Kurupam_ST": {
+   "district": "Parvathipuram_Manyam",
+   "code": 59,
+   "archetype": "C2",
+   "why": "agriculture 47.0% \u2014 agrarian",
+   "shares": {
+    "services": 47.0,
+    "industry": 6.0,
+    "agri": 47.0
+   },
+   "gcdp_baseline": 4070.0,
+   "gcdp_target": 8548.0,
+   "cagr": 17.34,
+   "population": 249035.0,
+   "area_sqkm": 1296.1,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Forest & Eco Tourist Sites",
+    "Horticulture",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Garugubilli-R",
+    "Gummalaxmipuram-R",
+    "Jiyyammavalasa-R",
+    "Komarada-R",
+    "Kurupam-R"
+   ]
+  },
+  "Palakonda_ST": {
+   "district": "Parvathipuram_Manyam",
+   "code": 54,
+   "archetype": "C3",
+   "why": "industry 40.0% \u2014 industrial",
+   "shares": {
+    "services": 31.0,
+    "industry": 40.0,
+    "agri": 29.0
+   },
+   "gcdp_baseline": 3609.0,
+   "gcdp_target": 7134.0,
+   "cagr": 15.77,
+   "population": 240593.0,
+   "area_sqkm": 745.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Logistics",
+    "Tourism"
+   ],
+   "mandals": [
+    "Bhamini-R",
+    "Palakonda-R",
+    "Palakonda-U",
+    "Seethampeta-R",
+    "Veeraghattam-R"
+   ]
+  },
+  "Parvathipuram_SC": {
+   "district": "Parvathipuram_Manyam",
+   "code": 169,
+   "archetype": "C1",
+   "why": "services 58.92% \u2014 urban/services-led",
+   "shares": {
+    "services": 58.92,
+    "industry": 8.08,
+    "agri": 33.0
+   },
+   "gcdp_baseline": 4406.0,
+   "gcdp_target": 8496.0,
+   "cagr": 15.11,
+   "population": 231584.0,
+   "area_sqkm": 618.48,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Balijipeta-R",
+    "Parvathipuram-R",
+    "Parvathipuram-U",
+    "Seethanagaram-R"
+   ]
+  },
+  "Saluru_ST": {
+   "district": "Parvathipuram_Manyam",
+   "code": 58,
+   "archetype": "C2",
+   "why": "agriculture 48.0% \u2014 agrarian",
+   "shares": {
+    "services": 41.0,
+    "industry": 11.0,
+    "agri": 48.0
+   },
+   "gcdp_baseline": 4647.0,
+   "gcdp_target": 9693.0,
+   "cagr": 17.17,
+   "population": 250983.0,
+   "area_sqkm": 1173.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Forest & Eco Tourist Sites",
+    "Horticulture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Makkuva-R",
+    "Mentada-R",
+    "Pachipenta-R",
+    "Salur-R",
+    "Saluru-U"
+   ]
+  },
+  "Araku_Valley_ST": {
+   "district": "Alluri_Seetha_Rama_Raju",
+   "code": 77,
+   "archetype": "C2",
+   "why": "agriculture 64.0% \u2014 agrarian",
+   "shares": {
+    "services": 31.0,
+    "industry": 5.0,
+    "agri": 64.0
+   },
+   "gcdp_baseline": 5945.0,
+   "gcdp_target": 11929.0,
+   "cagr": 14.95,
+   "population": 305727.0,
+   "area_sqkm": 2155.82,
+   "thrust": [
+    "Dairy & Poultry",
+    "Forest & Eco Tourist Sites",
+    "Horticulture",
+    "Pilgrimage & Cultural Centre",
+    "Tourism"
+   ],
+   "mandals": [
+    "Ananthagiri-R",
+    "Araku Valley-R",
+    "Dumbriguda-R",
+    "Hukumpeta-R",
+    "Munchingaputtu-R",
+    "Pedabayalu-R"
+   ]
+  },
+  "Paderu_ST": {
+   "district": "Alluri_Seetha_Rama_Raju",
+   "code": 75,
+   "archetype": "C2",
+   "why": "agriculture 63.0% \u2014 agrarian",
+   "shares": {
+    "services": 32.0,
+    "industry": 5.0,
+    "agri": 63.0
+   },
+   "gcdp_baseline": 6374.0,
+   "gcdp_target": 12790.0,
+   "cagr": 14.95,
+   "population": 298320.0,
+   "area_sqkm": 3256.57,
+   "thrust": [
+    "Dairy & Poultry",
+    "Forest & Eco Tourist Sites",
+    "Horticulture",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Chintapalli-R",
+    "G.K Veedhi-R",
+    "G.Madugula-R",
+    "Koyyuru-R",
+    "Paderu-R"
+   ]
+  },
+  "Rampachodavaram_ST": {
+   "district": "Polavaram",
+   "code": 79,
+   "archetype": "C2",
+   "why": "agriculture 57.0% \u2014 agrarian",
+   "shares": {
+    "services": 34.0,
+    "industry": 9.0,
+    "agri": 57.0
+   },
+   "gcdp_baseline": 4725.0,
+   "gcdp_target": 9481.0,
+   "cagr": 14.95,
+   "population": 349913.0,
+   "area_sqkm": 6431.63,
+   "thrust": [
+    "Dairy & Poultry",
+    "Forest & Eco Tourist Sites",
+    "Horticulture",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Addateegala-R",
+    "Chintoor-R",
+    "Devipatnam-R",
+    "Gangavaram Agency-R",
+    "Kunavaram-R",
+    "Maredumilli-R",
+    "Nellipaka-R",
+    "Rajavommangi-R",
+    "Rampachodavaram-R",
+    "Vararamachandrapuram-R",
+    "Y.Ramavaram-R"
+   ]
+  },
+  "Bhimili": {
+   "district": "Visakhapatnam",
+   "code": 68,
+   "archetype": "C3",
+   "why": "industry 40.0% \u2014 industrial",
+   "shares": {
+    "services": 48.0,
+    "industry": 40.0,
+    "agri": 12.0
+   },
+   "gcdp_baseline": 23767.0,
+   "gcdp_target": 46420.0,
+   "cagr": 18.22,
+   "population": 229217.0,
+   "area_sqkm": 598.23,
+   "thrust": [
+    "Agro-Processing",
+    "Food Processing Industries",
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Anandapuram-R",
+    "Bheemunipatnam-R",
+    "Gvmc (Bheemili)-U",
+    "Gvmc (Visakhapatnam)-U",
+    "Padmanabham-R"
+   ]
+  },
+  "Gajuwaka": {
+   "district": "Visakhapatnam",
+   "code": 150,
+   "archetype": "C3",
+   "why": "industry 68.0% \u2014 industrial",
+   "shares": {
+    "services": 31.0,
+    "industry": 68.0,
+    "agri": 1.0
+   },
+   "gcdp_baseline": 28973.0,
+   "gcdp_target": 56588.0,
+   "cagr": 18.22,
+   "population": 331693.0,
+   "area_sqkm": 142.0,
+   "thrust": [
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Gvmc (Visakhapatnam)-U"
+   ]
+  },
+  "Pendurthi": {
+   "district": "Visakhapatnam",
+   "code": 67,
+   "archetype": "C3",
+   "why": "industry 58.0% \u2014 industrial",
+   "shares": {
+    "services": 33.0,
+    "industry": 58.0,
+    "agri": 9.0
+   },
+   "gcdp_baseline": 18468.0,
+   "gcdp_target": 34487.0,
+   "cagr": 18.22,
+   "population": 306170.0,
+   "area_sqkm": 485.62,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Gvmc (Visakhapatnam)-U",
+    "Parawada-R",
+    "Pendurthi-R",
+    "Sabbavaram-R"
+   ]
+  },
+  "Visakhapatnam_East": {
+   "district": "Visakhapatnam",
+   "code": 157,
+   "archetype": "C1",
+   "why": "services 70.0% \u2014 urban/services-led",
+   "shares": {
+    "services": 70.0,
+    "industry": 28.0,
+    "agri": 2.0
+   },
+   "gcdp_baseline": 10736.0,
+   "gcdp_target": 20969.0,
+   "cagr": 18.22,
+   "population": 628525.0,
+   "area_sqkm": 70.42,
+   "thrust": [
+    "Logistics",
+    "Manufacturing",
+    "Real Estate",
+    "Shipbuilding and Ship Breaking",
+    "Special Economic Zones / Industrial Corridors",
+    "Tourism"
+   ],
+   "mandals": [
+    "Gvmc (Visakhapatnam)-U"
+   ]
+  },
+  "Visakhapatnam_North": {
+   "district": "Visakhapatnam",
+   "code": 171,
+   "archetype": "C1",
+   "why": "services 73.0% \u2014 urban/services-led",
+   "shares": {
+    "services": 73.0,
+    "industry": 27.0,
+    "agri": 0.0
+   },
+   "gcdp_baseline": 11260.0,
+   "gcdp_target": 21992.0,
+   "cagr": 18.22,
+   "population": 263922.0,
+   "area_sqkm": 75.0,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Education & Skill Development",
+    "Large Scale Industries",
+    "Logistics",
+    "Port-led Development",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Gvmc (Visakhapatnam)-U"
+   ]
+  },
+  "Visakhapatnam_South": {
+   "district": "Visakhapatnam",
+   "code": 158,
+   "archetype": "C1",
+   "why": "services 76.0% \u2014 urban/services-led",
+   "shares": {
+    "services": 76.0,
+    "industry": 12.0,
+    "agri": 12.0
+   },
+   "gcdp_baseline": 13566.0,
+   "gcdp_target": 26496.0,
+   "cagr": 18.22,
+   "population": 249848.0,
+   "area_sqkm": 34.0,
+   "thrust": [
+    "Agro-Processing",
+    "Aquaculture",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Gvmc (Visakhapatnam)-U"
+   ]
+  },
+  "Visakhapatnam_West": {
+   "district": "Visakhapatnam",
+   "code": 172,
+   "archetype": "C3",
+   "why": "industry 67.0% \u2014 industrial",
+   "shares": {
+    "services": 33.0,
+    "industry": 67.0,
+    "agri": 0.0
+   },
+   "gcdp_baseline": 17534.0,
+   "gcdp_target": 34246.0,
+   "cagr": 14.32,
+   "population": 123802.0,
+   "area_sqkm": 83.52,
+   "thrust": [
+    "Education & Skill Development",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate",
+    "Special Economic Zones / Industrial Corridors",
+    "Tourism"
+   ],
+   "mandals": [
+    "Gvmc (Visakhapatnam)-U"
+   ]
+  },
+  "Anakapalli": {
+   "district": "Anakapalle",
+   "code": 66,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 45.0,
+    "industry": 33.0,
+    "agri": 22.0
+   },
+   "gcdp_baseline": 6656.0,
+   "gcdp_target": 12961.0,
+   "cagr": 19.0,
+   "population": 254199.0,
+   "area_sqkm": 352.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Forest & Eco Tourist Sites",
+    "Manufacturing",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Anakapalli-R",
+    "Gvmc (Anakapalli)-U",
+    "Kasimkota-R"
+   ]
+  },
+  "Chodavaram": {
+   "district": "Anakapalle",
+   "code": 63,
+   "archetype": "C2",
+   "why": "agriculture 44.0% \u2014 agrarian",
+   "shares": {
+    "services": 35.0,
+    "industry": 21.0,
+    "agri": 44.0
+   },
+   "gcdp_baseline": 4432.0,
+   "gcdp_target": 7886.0,
+   "cagr": 16.0,
+   "population": 273856.0,
+   "area_sqkm": 747.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Butchayyapeta-R",
+    "Chodavaram-R",
+    "Ravikamatham-R",
+    "Rolugunta-R"
+   ]
+  },
+  "Madugula": {
+   "district": "Anakapalle",
+   "code": 76,
+   "archetype": "C2",
+   "why": "agriculture 62.0% \u2014 agrarian",
+   "shares": {
+    "services": 27.0,
+    "industry": 11.0,
+    "agri": 62.0
+   },
+   "gcdp_baseline": 3950.0,
+   "gcdp_target": 7058.0,
+   "cagr": 15.74,
+   "population": 237459.0,
+   "area_sqkm": 653.0,
+   "thrust": [
+    "Aquaculture",
+    "Food Processing Industries",
+    "Horticulture",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Cheedikada-R",
+    "Devarapalli-R",
+    "K.Kotapadu-R",
+    "V. Madugula-R"
+   ]
+  },
+  "Narsipatnam": {
+   "district": "Anakapalle",
+   "code": 174,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 40.85,
+    "industry": 20.37,
+    "agri": 38.78
+   },
+   "gcdp_baseline": 5185.0,
+   "gcdp_target": 9678.0,
+   "cagr": 17.33,
+   "population": 266639.0,
+   "area_sqkm": 899.18,
+   "thrust": [
+    "Dairy & Poultry",
+    "Forest & Eco Tourist Sites",
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Golugonda-R",
+    "Makavarapalem-R",
+    "Narsipatnam-R",
+    "Narsipatnam-U",
+    "Nathavaram-R"
+   ]
+  },
+  "Payakaraopet_SC": {
+   "district": "Anakapalle",
+   "code": 65,
+   "archetype": "C3",
+   "why": "industry 40.3% \u2014 industrial",
+   "shares": {
+    "services": 21.3,
+    "industry": 40.3,
+    "agri": 38.4
+   },
+   "gcdp_baseline": 7927.0,
+   "gcdp_target": 20387.0,
+   "cagr": 31.43,
+   "population": 302783.0,
+   "area_sqkm": 760.0,
+   "thrust": [
+    "Aquaculture",
+    "Horticulture",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Kotauratla-R",
+    "Nakkapalli-R",
+    "Payakaraopeta-R",
+    "S. Rayavaram-R"
+   ]
+  },
+  "Yelamanchili": {
+   "district": "Anakapalle",
+   "code": 64,
+   "archetype": "C3",
+   "why": "industry 72.3% \u2014 industrial",
+   "shares": {
+    "services": 12.38,
+    "industry": 72.3,
+    "agri": 15.32
+   },
+   "gcdp_baseline": 13902.0,
+   "gcdp_target": 28982.0,
+   "cagr": 21.69,
+   "population": 246563.0,
+   "area_sqkm": 508.11,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Forest & Eco Tourist Sites",
+    "Manufacturing",
+    "Tourism"
+   ],
+   "mandals": [
+    "Atchuthapuram-R",
+    "Munagapaka-R",
+    "Rambilli-R",
+    "Yelamanchili-U",
+    "Yellamanchili-R"
+   ]
+  },
+  "Jaggampeta": {
+   "district": "Kakinada",
+   "code": 74,
+   "archetype": "C2",
+   "why": "agriculture 53.27% \u2014 agrarian",
+   "shares": {
+    "services": 25.54,
+    "industry": 21.19,
+    "agri": 53.27
+   },
+   "gcdp_baseline": 7517.0,
+   "gcdp_target": 14399.0,
+   "cagr": 13.99,
+   "population": 277893.0,
+   "area_sqkm": 539.99,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "Gandepalli-R",
+    "Gokavaram-R",
+    "Jaggampeta-R",
+    "Kirlampudi-R"
+   ]
+  },
+  "Kakinada_City": {
+   "district": "Kakinada",
+   "code": 141,
+   "archetype": "C1",
+   "why": "services 78.97% \u2014 urban/services-led",
+   "shares": {
+    "services": 78.97,
+    "industry": 13.52,
+    "agri": 7.51
+   },
+   "gcdp_baseline": 9450.0,
+   "gcdp_target": 19259.0,
+   "cagr": 15.34,
+   "population": 312538.0,
+   "area_sqkm": 31.95,
+   "thrust": [
+    "Aquaculture",
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Kakinada-U"
+   ]
+  },
+  "Kakinada_Rural": {
+   "district": "Kakinada",
+   "code": 70,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 43.77,
+    "industry": 31.6,
+    "agri": 24.63
+   },
+   "gcdp_baseline": 8445.0,
+   "gcdp_target": 17950.0,
+   "cagr": 16.52,
+   "population": 250527.0,
+   "area_sqkm": 213.2,
+   "thrust": [
+    "Aquaculture",
+    "Manufacturing",
+    "Tourism"
+   ],
+   "mandals": [
+    "Kakinada Rural-R",
+    "Kakinada-U",
+    "Karapa-R"
+   ]
+  },
+  "Peddapuram": {
+   "district": "Kakinada",
+   "code": 109,
+   "archetype": "C3",
+   "why": "industry 35.78% \u2014 industrial",
+   "shares": {
+    "services": 35.23,
+    "industry": 35.78,
+    "agri": 28.99
+   },
+   "gcdp_baseline": 7835.0,
+   "gcdp_target": 16376.0,
+   "cagr": 16.21,
+   "population": 261378.0,
+   "area_sqkm": 291.42,
+   "thrust": [
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Peddapuram-R",
+    "Peddapuram-U",
+    "Samalkot-R",
+    "Samalkot-U"
+   ]
+  },
+  "Pithapuram": {
+   "district": "Kakinada",
+   "code": 82,
+   "archetype": "C2",
+   "why": "agriculture 42.87% \u2014 agrarian",
+   "shares": {
+    "services": 34.69,
+    "industry": 22.44,
+    "agri": 42.87
+   },
+   "gcdp_baseline": 6677.0,
+   "gcdp_target": 13108.0,
+   "cagr": 14.53,
+   "population": 290996.0,
+   "area_sqkm": 362.0,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "Gollaprolu-R",
+    "Gollaprolu-U",
+    "Pithapuram-R",
+    "Pithapuram-U",
+    "U.Kothapalli-R"
+   ]
+  },
+  "Prathipadu": {
+   "district": "Kakinada",
+   "code": 84,
+   "archetype": "C2",
+   "why": "agriculture 44.75% \u2014 agrarian",
+   "shares": {
+    "services": 32.12,
+    "industry": 23.13,
+    "agri": 44.75
+   },
+   "gcdp_baseline": 6113.0,
+   "gcdp_target": 12011.0,
+   "cagr": 14.49,
+   "population": 287040.0,
+   "area_sqkm": 624.24,
+   "thrust": [
+    "Aquaculture",
+    "Horticulture",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "Prathipadu-R",
+    "Rowthulapudi-R",
+    "Sankhavaram-R",
+    "Yeleswaram-R",
+    "Yeleswaram-U"
+   ]
+  },
+  "Tuni": {
+   "district": "Kakinada",
+   "code": 111,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 34.06,
+    "industry": 26.97,
+    "agri": 38.97
+   },
+   "gcdp_baseline": 7129.0,
+   "gcdp_target": 14428.0,
+   "cagr": 13.24,
+   "population": 274183.0,
+   "area_sqkm": 479.57,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "Kotananduru-R",
+    "Thondangi-R",
+    "Tuni-R",
+    "Tuni-U"
+   ]
+  },
+  "Amalapuram_SC": {
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "code": 81,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 30.1,
+    "industry": 31.1,
+    "agri": 38.8
+   },
+   "gcdp_baseline": 10383.0,
+   "gcdp_target": 23635.0,
+   "cagr": 18.02,
+   "population": 269866.0,
+   "area_sqkm": 310.28,
+   "thrust": [
+    "Aquaculture",
+    "Mining Industries",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Allavaram-R",
+    "Amalapuram-R",
+    "Amalapuram-U",
+    "Uppalaguptam-R"
+   ]
+  },
+  "Gannavaram_SC": {
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "code": 108,
+   "archetype": "C2",
+   "why": "agriculture 49.84% \u2014 agrarian",
+   "shares": {
+    "services": 36.3,
+    "industry": 13.86,
+    "agri": 49.84
+   },
+   "gcdp_baseline": 3893.0,
+   "gcdp_target": 8611.0,
+   "cagr": 17.33,
+   "population": 256827.0,
+   "area_sqkm": 284.66,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Horticulture"
+   ],
+   "mandals": [
+    "Ainavilli-R",
+    "Ambajipeta-R",
+    "Mamidikuduru-R",
+    "P.Gannavaram-R"
+   ]
+  },
+  "Kothapeta": {
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "code": 107,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 34.6,
+    "industry": 26.02,
+    "agri": 39.38
+   },
+   "gcdp_baseline": 6137.0,
+   "gcdp_target": 12561.0,
+   "cagr": 15.44,
+   "population": 300824.0,
+   "area_sqkm": 316.59,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "Alamuru-R",
+    "Atreyapuram-R",
+    "Kothapeta-R",
+    "Ravulapalem-R"
+   ]
+  },
+  "Mummidivaram": {
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "code": 69,
+   "archetype": "C3",
+   "why": "industry 44.7% \u2014 industrial",
+   "shares": {
+    "services": 19.11,
+    "industry": 44.7,
+    "agri": 36.19
+   },
+   "gcdp_baseline": 10840.0,
+   "gcdp_target": 24216.0,
+   "cagr": 17.65,
+   "population": 293638.0,
+   "area_sqkm": 778.04,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "I.Polavaram-R",
+    "Katrenikona-R",
+    "Mummidivaram-R",
+    "Mummidivaram-U",
+    "Tallarevu-R"
+   ]
+  },
+  "Ramachandrapuram": {
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "code": 180,
+   "archetype": "C2",
+   "why": "agriculture 42.71% \u2014 agrarian",
+   "shares": {
+    "services": 43.73,
+    "industry": 13.56,
+    "agri": 42.71
+   },
+   "gcdp_baseline": 4527.0,
+   "gcdp_target": 9643.0,
+   "cagr": 16.44,
+   "population": 248443.0,
+   "area_sqkm": 350.47,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "K.Gangavaram-R",
+    "Kajuluru-R",
+    "Ramachandrapuram-R",
+    "Ramachandrapuram-U"
+   ]
+  },
+  "Razole_SC": {
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "code": 80,
+   "archetype": "C3",
+   "why": "industry 59.8% \u2014 industrial",
+   "shares": {
+    "services": 17.62,
+    "industry": 59.8,
+    "agri": 22.58
+   },
+   "gcdp_baseline": 8062.0,
+   "gcdp_target": 18412.0,
+   "cagr": 18.17,
+   "population": 237253.0,
+   "area_sqkm": 294.2,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "Malkipuram-R",
+    "Mamidikuduru-R",
+    "Razole-R",
+    "Sakhinetipalli-R"
+   ]
+  },
+  "Anaparthy": {
+   "district": "East_Godavari",
+   "code": 71,
+   "archetype": "C2",
+   "why": "agriculture 62.5% \u2014 agrarian",
+   "shares": {
+    "services": 22.0,
+    "industry": 15.5,
+    "agri": 62.5
+   },
+   "gcdp_baseline": 10550.0,
+   "gcdp_target": 19743.0,
+   "cagr": 15.42,
+   "population": 269701.0,
+   "area_sqkm": 412.68,
+   "thrust": [
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Anaparthi-R",
+    "Biccavole-R",
+    "Pedapudi-R",
+    "Rangampeta-R"
+   ]
+  },
+  "Gopalapuram_SC": {
+   "district": "East_Godavari",
+   "code": 94,
+   "archetype": "C2",
+   "why": "agriculture 57.68% \u2014 agrarian",
+   "shares": {
+    "services": 22.36,
+    "industry": 19.96,
+    "agri": 57.68
+   },
+   "gcdp_baseline": 10742.0,
+   "gcdp_target": 20717.0,
+   "cagr": 15.42,
+   "population": 289945.0,
+   "area_sqkm": 934.67,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Horticulture"
+   ],
+   "mandals": [
+    "Devarapalli",
+    "Dwaraka Tirumala",
+    "Gopalapuram",
+    "Nallajerla"
+   ]
+  },
+  "Kovvur_SC": {
+   "district": "East_Godavari",
+   "code": 117,
+   "archetype": "C2",
+   "why": "agriculture 44.21% \u2014 agrarian",
+   "shares": {
+    "services": 33.92,
+    "industry": 21.87,
+    "agri": 44.21
+   },
+   "gcdp_baseline": 6604.0,
+   "gcdp_target": 13139.0,
+   "cagr": 15.42,
+   "population": 226004.0,
+   "area_sqkm": 323.84,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "Chagallu-R",
+    "Kovvur-R",
+    "Kovvur-U",
+    "Tallapudi-R"
+   ]
+  },
+  "Mandapeta": {
+   "district": "East_Godavari",
+   "code": 78,
+   "archetype": "C2",
+   "why": "agriculture 46.86% \u2014 agrarian",
+   "shares": {
+    "services": 36.2,
+    "industry": 16.94,
+    "agri": 46.86
+   },
+   "gcdp_baseline": 6375.0,
+   "gcdp_target": 13133.0,
+   "cagr": 15.59,
+   "population": 265944.0,
+   "area_sqkm": 295.63,
+   "thrust": [
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Kapileswarapuram-R",
+    "Mandapet-U",
+    "Mandapeta-R",
+    "Rayavaram-R"
+   ]
+  },
+  "Nidadavole": {
+   "district": "East_Godavari",
+   "code": 113,
+   "archetype": "C2",
+   "why": "agriculture 50.91% \u2014 agrarian",
+   "shares": {
+    "services": 33.45,
+    "industry": 15.64,
+    "agri": 50.91
+   },
+   "gcdp_baseline": 7350.0,
+   "gcdp_target": 14089.0,
+   "cagr": 15.42,
+   "population": 260928.0,
+   "area_sqkm": 295.49,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Nidadavole-R",
+    "Nidadavole-U",
+    "Peravali-R",
+    "Undrajavaram-R"
+   ]
+  },
+  "Rajahmundry_City": {
+   "district": "East_Godavari",
+   "code": 140,
+   "archetype": "C1",
+   "why": "services 78.97% \u2014 urban/services-led",
+   "shares": {
+    "services": 78.97,
+    "industry": 13.52,
+    "agri": 7.51
+   },
+   "gcdp_baseline": 9587.0,
+   "gcdp_target": 17366.0,
+   "cagr": 15.16,
+   "population": 341831.0,
+   "area_sqkm": 44.5,
+   "thrust": [
+    "Manufacturing",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Rajahmundry-U"
+   ]
+  },
+  "Rajahmundry_Rural": {
+   "district": "East_Godavari",
+   "code": 73,
+   "archetype": "C1",
+   "why": "services 56.0% \u2014 urban/services-led",
+   "shares": {
+    "services": 56.0,
+    "industry": 26.0,
+    "agri": 18.0
+   },
+   "gcdp_baseline": 5558.0,
+   "gcdp_target": 11397.0,
+   "cagr": 15.42,
+   "population": 257472.0,
+   "area_sqkm": 153.85,
+   "thrust": [
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Kadiam-R",
+    "Rajahmundry-U",
+    "Rajamahendravaram Rural-R"
+   ]
+  },
+  "Rajanagaram": {
+   "district": "East_Godavari",
+   "code": 110,
+   "archetype": "C2",
+   "why": "agriculture 43.69% \u2014 agrarian",
+   "shares": {
+    "services": 36.0,
+    "industry": 20.31,
+    "agri": 43.69
+   },
+   "gcdp_baseline": 6184.0,
+   "gcdp_target": 12894.0,
+   "cagr": 15.42,
+   "population": 257303.0,
+   "area_sqkm": 573.5,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Korukonda-R",
+    "Rajanagaram-R",
+    "Seethanagaram-R"
+   ]
+  },
+  "Achanta": {
+   "district": "West_Godavari",
+   "code": 85,
+   "archetype": "C2",
+   "why": "agriculture 49.0% \u2014 agrarian",
+   "shares": {
+    "services": 33.0,
+    "industry": 18.0,
+    "agri": 49.0
+   },
+   "gcdp_baseline": 5162.0,
+   "gcdp_target": 10407.0,
+   "cagr": 15.05,
+   "population": 223693.0,
+   "area_sqkm": 274.6,
+   "thrust": [
+    "Aquaculture",
+    "Horticulture",
+    "Tourism"
+   ],
+   "mandals": [
+    "Achanta-R",
+    "Penugonda-R",
+    "Penumantra-R",
+    "Poduru-R"
+   ]
+  },
+  "Bhimavaram": {
+   "district": "West_Godavari",
+   "code": 112,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 49.0,
+    "industry": 12.0,
+    "agri": 39.0
+   },
+   "gcdp_baseline": 11617.0,
+   "gcdp_target": 23426.0,
+   "cagr": 15.06,
+   "population": 291409.0,
+   "area_sqkm": 309.89,
+   "thrust": [
+    "Aquaculture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bhimavaram-R",
+    "Bhimavaram-U",
+    "Veeravasaram-R"
+   ]
+  },
+  "Narasapuram": {
+   "district": "West_Godavari",
+   "code": 88,
+   "archetype": "C2",
+   "why": "agriculture 69.0% \u2014 agrarian",
+   "shares": {
+    "services": 22.0,
+    "industry": 9.0,
+    "agri": 69.0
+   },
+   "gcdp_baseline": 9489.0,
+   "gcdp_target": 19130.0,
+   "cagr": 15.05,
+   "population": 210996.0,
+   "area_sqkm": 287.08,
+   "thrust": [
+    "Agro-Processing",
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Mogalturu-R",
+    "Narasapur-U",
+    "Narasapuram-R"
+   ]
+  },
+  "Palacole": {
+   "district": "West_Godavari",
+   "code": 114,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 44.0,
+    "industry": 18.0,
+    "agri": 38.0
+   },
+   "gcdp_baseline": 5646.0,
+   "gcdp_target": 11383.0,
+   "cagr": 15.05,
+   "population": 233801.0,
+   "area_sqkm": 224.09,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Tourism"
+   ],
+   "mandals": [
+    "Elamanchili-R",
+    "Palakol-R",
+    "Palakol-U",
+    "Poduru-R"
+   ]
+  },
+  "Tadepalligudem": {
+   "district": "West_Godavari",
+   "code": 116,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 51.0,
+    "industry": 20.0,
+    "agri": 29.0
+   },
+   "gcdp_baseline": 6647.0,
+   "gcdp_target": 13402.0,
+   "cagr": 15.06,
+   "population": 262620.0,
+   "area_sqkm": 335.56,
+   "thrust": [
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Pentapadu-R",
+    "Tadepalligudem-R",
+    "Tadepalligudem-U"
+   ]
+  },
+  "Tanuku": {
+   "district": "West_Godavari",
+   "code": 143,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 50.23,
+    "industry": 20.49,
+    "agri": 29.28
+   },
+   "gcdp_baseline": 7332.0,
+   "gcdp_target": 14783.0,
+   "cagr": 15.06,
+   "population": 283241.0,
+   "area_sqkm": 242.65,
+   "thrust": [
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Attili-R",
+    "Iragavaram-R",
+    "Tanuku-R",
+    "Tanuku-U"
+   ]
+  },
+  "Undi": {
+   "district": "West_Godavari",
+   "code": 86,
+   "archetype": "C2",
+   "why": "agriculture 63.74% \u2014 agrarian",
+   "shares": {
+    "services": 20.55,
+    "industry": 15.71,
+    "agri": 63.74
+   },
+   "gcdp_baseline": 11794.0,
+   "gcdp_target": 23783.0,
+   "cagr": 15.18,
+   "population": 274175.0,
+   "area_sqkm": 449.8,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Tourism"
+   ],
+   "mandals": [
+    "Akiveedu-R",
+    "Akiveedu-U",
+    "Kalla-R",
+    "Palakoderu-R",
+    "Undi-R"
+   ]
+  },
+  "Chintalapudi_SC": {
+   "district": "Eluru",
+   "code": 95,
+   "archetype": "C2",
+   "why": "agriculture 58.0% \u2014 agrarian",
+   "shares": {
+    "services": 30.0,
+    "industry": 12.0,
+    "agri": 58.0
+   },
+   "gcdp_baseline": 8044.0,
+   "gcdp_target": 17006.0,
+   "cagr": 22.09,
+   "population": 317182.0,
+   "area_sqkm": 974.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "Chintalapudi-R",
+    "Jangareddigudem-R",
+    "Jangareddygudem-U",
+    "Kamavarapukota-R",
+    "Lingapalem-R"
+   ]
+  },
+  "Denduluru": {
+   "district": "Eluru",
+   "code": 92,
+   "archetype": "C2",
+   "why": "agriculture 73.58% \u2014 agrarian",
+   "shares": {
+    "services": 18.35,
+    "industry": 8.07,
+    "agri": 73.58
+   },
+   "gcdp_baseline": 12267.0,
+   "gcdp_target": 25474.0,
+   "cagr": 21.27,
+   "population": 245200.0,
+   "area_sqkm": 797.95,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Horticulture"
+   ],
+   "mandals": [
+    "Denduluru-R",
+    "Eluru-R",
+    "Eluru-U",
+    "Pedapadu-R",
+    "Pedavegi-R"
+   ]
+  },
+  "Eluru": {
+   "district": "Eluru",
+   "code": 91,
+   "archetype": "C1",
+   "why": "services 88.94% \u2014 urban/services-led",
+   "shares": {
+    "services": 88.94,
+    "industry": 9.06,
+    "agri": 2.0
+   },
+   "gcdp_baseline": 5672.0,
+   "gcdp_target": 12969.0,
+   "cagr": 25.81,
+   "population": 298875.0,
+   "area_sqkm": 62.09,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Handicrafts, Handlooms & Textiles",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Eluru-U"
+   ]
+  },
+  "Kaikalur": {
+   "district": "Eluru",
+   "code": 89,
+   "archetype": "C2",
+   "why": "agriculture 83.98% \u2014 agrarian",
+   "shares": {
+    "services": 10.6,
+    "industry": 5.42,
+    "agri": 83.98
+   },
+   "gcdp_baseline": 17735.0,
+   "gcdp_target": 36706.0,
+   "cagr": 21.13,
+   "population": 261387.0,
+   "area_sqkm": 678.78,
+   "thrust": [
+    "Aquaculture",
+    "Food Processing Industries",
+    "Logistics"
+   ],
+   "mandals": [
+    "Kaikaluru-R",
+    "Kalidindi-R",
+    "Mandavalli-R",
+    "Mudinepalli-R"
+   ]
+  },
+  "Nuzvid": {
+   "district": "Eluru",
+   "code": 104,
+   "archetype": "C2",
+   "why": "agriculture 61.0% \u2014 agrarian",
+   "shares": {
+    "services": 30.0,
+    "industry": 9.0,
+    "agri": 61.0
+   },
+   "gcdp_baseline": 8638.0,
+   "gcdp_target": 18183.0,
+   "cagr": 21.89,
+   "population": 302341.0,
+   "area_sqkm": 957.88,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Horticulture"
+   ],
+   "mandals": [
+    "Agiripalli-R",
+    "Chatrai-R",
+    "Musunuru-R",
+    "Nuzividu-U",
+    "Nuzvid-R"
+   ]
+  },
+  "Polavaram_ST": {
+   "district": "Eluru",
+   "code": 87,
+   "archetype": "C2",
+   "why": "agriculture 54.0% \u2014 agrarian",
+   "shares": {
+    "services": 25.0,
+    "industry": 21.0,
+    "agri": 54.0
+   },
+   "gcdp_baseline": 7693.0,
+   "gcdp_target": 14998.0,
+   "cagr": 18.52,
+   "population": 319149.0,
+   "area_sqkm": 2008.85,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "Buttaigudem-R",
+    "Jeelugumilli-R",
+    "Koyyalagudem-R",
+    "Kukkunuru-R",
+    "Polavaram-R",
+    "T.Narasapuram-R",
+    "Velairpadu-R"
+   ]
+  },
+  "Ungutur": {
+   "district": "Eluru",
+   "code": 93,
+   "archetype": "C2",
+   "why": "agriculture 76.01% \u2014 agrarian",
+   "shares": {
+    "services": 16.0,
+    "industry": 7.99,
+    "agri": 76.01
+   },
+   "gcdp_baseline": 11371.0,
+   "gcdp_target": 23142.0,
+   "cagr": 20.45,
+   "population": 258524.0,
+   "area_sqkm": 638.3,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bhimadole-R",
+    "Ganapavaram-R",
+    "Nidamarru-R",
+    "Unguturu-R"
+   ]
+  },
+  "Avanigadda": {
+   "district": "Krishna",
+   "code": 102,
+   "archetype": "C2",
+   "why": "agriculture 68.91% \u2014 agrarian",
+   "shares": {
+    "services": 20.71,
+    "industry": 10.38,
+    "agri": 68.91
+   },
+   "gcdp_baseline": 13285.34,
+   "gcdp_target": 24205.04,
+   "cagr": 16.44,
+   "population": 293693.0,
+   "area_sqkm": 774.35,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Avanigadda",
+    "Challapalli",
+    "Ghanasala",
+    "Koduru",
+    "Mopidevi",
+    "Nagayalanka"
+   ]
+  },
+  "Gannavaram": {
+   "district": "Krishna",
+   "code": 97,
+   "archetype": "C1",
+   "why": "services 65.82% \u2014 urban/services-led",
+   "shares": {
+    "services": 65.82,
+    "industry": 14.72,
+    "agri": 19.46
+   },
+   "gcdp_baseline": 15939.29,
+   "gcdp_target": 32881.93,
+   "cagr": 10.98,
+   "population": 316377.0,
+   "area_sqkm": 670.393,
+   "thrust": [
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Bapulapadu-R",
+    "Gannavaram-R",
+    "Unguturu-R",
+    "Vijayawada Rural-R"
+   ]
+  },
+  "Gudivada": {
+   "district": "Krishna",
+   "code": 90,
+   "archetype": "C2",
+   "why": "agriculture 57.52% \u2014 agrarian",
+   "shares": {
+    "services": 32.5,
+    "industry": 9.98,
+    "agri": 57.52
+   },
+   "gcdp_baseline": 10401.86,
+   "gcdp_target": 21506.56,
+   "cagr": 21.35,
+   "population": 250130.0,
+   "area_sqkm": 402.63,
+   "thrust": [
+    "Aquaculture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Gudivada-R",
+    "Gudivada-U",
+    "Gudlavalleru-R",
+    "Nandiwada-R"
+   ]
+  },
+  "Machilipatnam": {
+   "district": "Krishna",
+   "code": 162,
+   "archetype": "C2",
+   "why": "agriculture 47.55% \u2014 agrarian",
+   "shares": {
+    "services": 42.82,
+    "industry": 9.63,
+    "agri": 47.55
+   },
+   "gcdp_baseline": 10507.37,
+   "gcdp_target": 21717.88,
+   "cagr": 21.34,
+   "population": 238962.0,
+   "area_sqkm": 388.99,
+   "thrust": [
+    "Aquaculture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Machilipatnam"
+   ]
+  },
+  "Pamarru_SC": {
+   "district": "Krishna",
+   "code": 118,
+   "archetype": "C2",
+   "why": "agriculture 49.27% \u2014 agrarian",
+   "shares": {
+    "services": 34.0,
+    "industry": 16.73,
+    "agri": 49.27
+   },
+   "gcdp_baseline": 6351.43,
+   "gcdp_target": 16385.95,
+   "cagr": 31.6,
+   "population": 231510.0,
+   "area_sqkm": 585.44,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Movva-R",
+    "Pamarru-R",
+    "Pamidimukkala-R",
+    "Pedaparupudi-R",
+    "Thotlavalluru-R"
+   ]
+  },
+  "Pedana": {
+   "district": "Krishna",
+   "code": 101,
+   "archetype": "C2",
+   "why": "agriculture 77.75% \u2014 agrarian",
+   "shares": {
+    "services": 12.93,
+    "industry": 9.32,
+    "agri": 77.75
+   },
+   "gcdp_baseline": 13954.37,
+   "gcdp_target": 25586.79,
+   "cagr": 16.67,
+   "population": 210147.0,
+   "area_sqkm": 560.06,
+   "thrust": [
+    "Aquaculture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bantumilli-R",
+    "Guduru-R",
+    "Kruthivennu-R",
+    "Pedana-R",
+    "Pedana-U"
+   ]
+  },
+  "Penamaluru": {
+   "district": "Krishna",
+   "code": 96,
+   "archetype": "C1",
+   "why": "services 75.01% \u2014 urban/services-led",
+   "shares": {
+    "services": 75.01,
+    "industry": 11.68,
+    "agri": 13.31
+   },
+   "gcdp_baseline": 12193.71,
+   "gcdp_target": 28464.08,
+   "cagr": 26.69,
+   "population": 314287.0,
+   "area_sqkm": 274.66,
+   "thrust": [
+    "Education & Skill Development",
+    "Logistics",
+    "Tourism"
+   ],
+   "mandals": [
+    "Kankipadu",
+    "Penamaluru",
+    "Vuyyuru"
+   ]
+  },
+  "Jaggayyapeta": {
+   "district": "Ntr",
+   "code": 122,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 47.15,
+    "industry": 29.0,
+    "agri": 23.85
+   },
+   "gcdp_baseline": 9713.0,
+   "gcdp_target": 19284.0,
+   "cagr": 17.84,
+   "population": 259210.0,
+   "area_sqkm": 696.0,
+   "thrust": [
+    "Horticulture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Jaggayyapeta-R",
+    "Jaggayyapeta-U",
+    "Nandigama-R",
+    "Penuganchiprolu-R",
+    "Vatsavai-R"
+   ]
+  },
+  "Mylavaram": {
+   "district": "Ntr",
+   "code": 98,
+   "archetype": "C1",
+   "why": "services 55.43% \u2014 urban/services-led",
+   "shares": {
+    "services": 55.43,
+    "industry": 24.76,
+    "agri": 19.81
+   },
+   "gcdp_baseline": 13071.0,
+   "gcdp_target": 26091.0,
+   "cagr": 18.0,
+   "population": 325359.0,
+   "area_sqkm": 993.24,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "G Konduru-R",
+    "Ibrahimpatnam-R",
+    "Ibrahimpatnam-U",
+    "Mylavaram-R",
+    "Reddigudem-R",
+    "Vijayawada Rural-R"
+   ]
+  },
+  "Nandigama_SC": {
+   "district": "Ntr",
+   "code": 100,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 54.4,
+    "industry": 20.4,
+    "agri": 25.2
+   },
+   "gcdp_baseline": 6665.0,
+   "gcdp_target": 14905.0,
+   "cagr": 14.4,
+   "population": 253023.0,
+   "area_sqkm": 718.51,
+   "thrust": [
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Chandarlapadu-R",
+    "Kanchikacherla-R",
+    "Nandigama-R",
+    "Nandigama-U",
+    "Veerullapadu-R"
+   ]
+  },
+  "Tiruvuru_SC": {
+   "district": "Ntr",
+   "code": 99,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 40.77,
+    "industry": 21.85,
+    "agri": 37.38
+   },
+   "gcdp_baseline": 9591.0,
+   "gcdp_target": 18626.0,
+   "cagr": 17.03,
+   "population": 256536.0,
+   "area_sqkm": 795.99,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "A.Konduru-R",
+    "Gampalagudem-R",
+    "Tiruvuru-R",
+    "Tiruvuru-U",
+    "Vissannapeta-R"
+   ]
+  },
+  "Vijayawada_Central": {
+   "district": "Ntr",
+   "code": 156,
+   "archetype": "C1",
+   "why": "services 81.79% \u2014 urban/services-led",
+   "shares": {
+    "services": 81.79,
+    "industry": 17.33,
+    "agri": 0.88
+   },
+   "gcdp_baseline": 13907.0,
+   "gcdp_target": 28539.0,
+   "cagr": 18.09,
+   "population": 330340.0,
+   "area_sqkm": 19.35,
+   "thrust": [
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Vijayawada-U"
+   ]
+  },
+  "Vijayawada_East": {
+   "district": "Ntr",
+   "code": 165,
+   "archetype": "C1",
+   "why": "services 79.86% \u2014 urban/services-led",
+   "shares": {
+    "services": 79.86,
+    "industry": 19.8,
+    "agri": 0.34
+   },
+   "gcdp_baseline": 12025.0,
+   "gcdp_target": 24654.0,
+   "cagr": 36.01,
+   "population": 339897.0,
+   "area_sqkm": 22.0,
+   "thrust": [
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Vijayawada-U"
+   ]
+  },
+  "Vijayawada_West": {
+   "district": "Ntr",
+   "code": 155,
+   "archetype": "C1",
+   "why": "services 87.13% \u2014 urban/services-led",
+   "shares": {
+    "services": 87.13,
+    "industry": 12.65,
+    "agri": 0.22
+   },
+   "gcdp_baseline": 16024.0,
+   "gcdp_target": 33052.0,
+   "cagr": 19.69,
+   "population": 300988.0,
+   "area_sqkm": 11.81,
+   "thrust": [
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "1"
+   ]
+  },
+  "Guntur_East": {
+   "district": "Guntur",
+   "code": 132,
+   "archetype": "C1",
+   "why": "services 68.39% \u2014 urban/services-led",
+   "shares": {
+    "services": 68.39,
+    "industry": 31.03,
+    "agri": 0.58
+   },
+   "gcdp_baseline": 7590.0,
+   "gcdp_target": 16815.0,
+   "cagr": 18.37,
+   "population": 327180.0,
+   "area_sqkm": 22.6,
+   "thrust": [
+    "Logistics",
+    "Manufacturing",
+    "Tourism"
+   ],
+   "mandals": [
+    "Guntur-U"
+   ]
+  },
+  "Guntur_West": {
+   "district": "Guntur",
+   "code": 152,
+   "archetype": "C1",
+   "why": "services 58.92% \u2014 urban/services-led",
+   "shares": {
+    "services": 58.92,
+    "industry": 21.83,
+    "agri": 19.25
+   },
+   "gcdp_baseline": 12547.0,
+   "gcdp_target": 24665.0,
+   "cagr": 13.62,
+   "population": 342893.0,
+   "area_sqkm": 23.19,
+   "thrust": [
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "GUNTUR"
+   ]
+  },
+  "Mangalagiri": {
+   "district": "Guntur",
+   "code": 1,
+   "archetype": "C1",
+   "why": "services 60.48% \u2014 urban/services-led",
+   "shares": {
+    "services": 60.48,
+    "industry": 21.57,
+    "agri": 17.95
+   },
+   "gcdp_baseline": 11843.0,
+   "gcdp_target": 24348.0,
+   "cagr": 15.62,
+   "population": 353000.0,
+   "area_sqkm": 347.58,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Handicrafts, Handlooms & Textiles",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Duggirala",
+    "Tadepalli",
+    "Mangalgiri"
+   ]
+  },
+  "Ponnur": {
+   "district": "Guntur",
+   "code": 2,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 47.45,
+    "industry": 28.92,
+    "agri": 23.63
+   },
+   "gcdp_baseline": 7298.0,
+   "gcdp_target": 14812.0,
+   "cagr": 15.44,
+   "population": 269247.0,
+   "area_sqkm": 421.26,
+   "thrust": [
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Chebrole-R",
+    "Pedakakani-R",
+    "Ponnur-R",
+    "Ponnur-U"
+   ]
+  },
+  "Prathipadu_SC": {
+   "district": "Guntur",
+   "code": 119,
+   "archetype": "C3",
+   "why": "industry 40.13% \u2014 industrial",
+   "shares": {
+    "services": 35.53,
+    "industry": 40.13,
+    "agri": 24.34
+   },
+   "gcdp_baseline": 12421.0,
+   "gcdp_target": 22516.0,
+   "cagr": 11.22,
+   "population": 269294.0,
+   "area_sqkm": 699.74,
+   "thrust": [
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "Guntur Rural-R",
+    "Guntur-U",
+    "Kakumanu-R",
+    "Pedanandipadu-R",
+    "Prathipadu-R",
+    "Vatticherukuru-R"
+   ]
+  },
+  "Tadikonda_SC": {
+   "district": "Guntur",
+   "code": 8,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 41.22,
+    "industry": 27.21,
+    "agri": 31.57
+   },
+   "gcdp_baseline": 8347.0,
+   "gcdp_target": 15071.0,
+   "cagr": 15.47,
+   "population": 245636.0,
+   "area_sqkm": 470.22,
+   "thrust": [
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Medikonduru-R",
+    "Phirangipuram-R",
+    "Tadikonda-R",
+    "Thulluru-R"
+   ]
+  },
+  "Tenali": {
+   "district": "Guntur",
+   "code": 105,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 54.27,
+    "industry": 26.8,
+    "agri": 18.93
+   },
+   "gcdp_baseline": 7612.0,
+   "gcdp_target": 13739.0,
+   "cagr": 12.3,
+   "population": 296963.0,
+   "area_sqkm": 251.81,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Kollipara",
+    "Tenali"
+   ]
+  },
+  "Bapatla": {
+   "district": "Bapatla",
+   "code": 3,
+   "archetype": "C2",
+   "why": "agriculture 57.47% \u2014 agrarian",
+   "shares": {
+    "services": 34.6,
+    "industry": 7.93,
+    "agri": 57.47
+   },
+   "gcdp_baseline": 6744.0,
+   "gcdp_target": 14015.0,
+   "cagr": 19.86,
+   "population": 232754.0,
+   "area_sqkm": 447.75,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bapatla-R",
+    "Bapatla-U",
+    "Karlapalem-R",
+    "Pittalavanipalem-R"
+   ]
+  },
+  "Chirala": {
+   "district": "Bapatla",
+   "code": 19,
+   "archetype": "C2",
+   "why": "agriculture 49.54% \u2014 agrarian",
+   "shares": {
+    "services": 31.54,
+    "industry": 18.92,
+    "agri": 49.54
+   },
+   "gcdp_baseline": 4702.0,
+   "gcdp_target": 9894.0,
+   "cagr": 13.24,
+   "population": 248045.0,
+   "area_sqkm": 188.56,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Chirala-R",
+    "Chirala-U",
+    "Vetapalem-R"
+   ]
+  },
+  "Parchur": {
+   "district": "Bapatla",
+   "code": 125,
+   "archetype": "C2",
+   "why": "agriculture 62.17% \u2014 agrarian",
+   "shares": {
+    "services": 20.88,
+    "industry": 16.95,
+    "agri": 62.17
+   },
+   "gcdp_baseline": 8187.0,
+   "gcdp_target": 16920.0,
+   "cagr": 30.89,
+   "population": 287833.0,
+   "area_sqkm": 987.72,
+   "thrust": [
+    "Agro-Processing",
+    "Aquaculture",
+    "Dairy & Poultry"
+   ],
+   "mandals": [
+    "Chinaganjam-R",
+    "Inkollu-R",
+    "Karamchedu-R",
+    "Martur-R",
+    "Parchur-R",
+    "Yeddanapudi-R"
+   ]
+  },
+  "Repalle": {
+   "district": "Bapatla",
+   "code": 123,
+   "archetype": "C2",
+   "why": "agriculture 72.85% \u2014 agrarian",
+   "shares": {
+    "services": 20.29,
+    "industry": 6.86,
+    "agri": 72.85
+   },
+   "gcdp_baseline": 9156.0,
+   "gcdp_target": 19271.0,
+   "cagr": 20.26,
+   "population": 282609.0,
+   "area_sqkm": 559.87,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Cherukupalli",
+    "Nagaram",
+    "Nizampatnam",
+    "Repalle"
+   ]
+  },
+  "Vemuru_SC": {
+   "district": "Bapatla",
+   "code": 120,
+   "archetype": "C2",
+   "why": "agriculture 62.27% \u2014 agrarian",
+   "shares": {
+    "services": 27.54,
+    "industry": 10.19,
+    "agri": 62.27
+   },
+   "gcdp_baseline": 5361.0,
+   "gcdp_target": 10894.0,
+   "cagr": 19.1,
+   "population": 239652.0,
+   "area_sqkm": 542.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture"
+   ],
+   "mandals": [
+    "Amruthaluru-R",
+    "Bhattiprolu-R",
+    "Kolluru-R",
+    "Tsunduru-R",
+    "Vemuru-R"
+   ]
+  },
+  "Chilakaluripet": {
+   "district": "Palnadu",
+   "code": 6,
+   "archetype": "C3",
+   "why": "industry 37.04% \u2014 industrial",
+   "shares": {
+    "services": 32.38,
+    "industry": 37.04,
+    "agri": 30.58
+   },
+   "gcdp_baseline": 7951.0,
+   "gcdp_target": 14791.0,
+   "cagr": 15.13,
+   "population": 278928.0,
+   "area_sqkm": 628.18,
+   "thrust": [
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "Chilakaluripet-R",
+    "Chilakaluripet-U",
+    "Edlapadu-R",
+    "Nadendla-R"
+   ]
+  },
+  "Gurajala": {
+   "district": "Palnadu",
+   "code": 11,
+   "archetype": "C2",
+   "why": "agriculture 43.71% \u2014 agrarian",
+   "shares": {
+    "services": 34.9,
+    "industry": 21.39,
+    "agri": 43.71
+   },
+   "gcdp_baseline": 5837.0,
+   "gcdp_target": 12115.0,
+   "cagr": 17.97,
+   "population": 316091.0,
+   "area_sqkm": 1033.33,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Dachepalli-R",
+    "Dachepalli-U",
+    "Gurazala-R",
+    "Gurazala-U",
+    "Machavaram-R",
+    "Piduguralla-R",
+    "Piduguralla-U"
+   ]
+  },
+  "Macherla": {
+   "district": "Palnadu",
+   "code": 106,
+   "archetype": "C2",
+   "why": "agriculture 41.91% \u2014 agrarian",
+   "shares": {
+    "services": 42.08,
+    "industry": 16.01,
+    "agri": 41.91
+   },
+   "gcdp_baseline": 6566.0,
+   "gcdp_target": 13755.0,
+   "cagr": 18.1,
+   "population": 313355.0,
+   "area_sqkm": 1800.76,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Durgi",
+    "Karempudi",
+    "Macherla",
+    "Rentachintala",
+    "Veldurthy"
+   ]
+  },
+  "Narasaraopet": {
+   "district": "Palnadu",
+   "code": 5,
+   "archetype": "C1",
+   "why": "services 61.41% \u2014 urban/services-led",
+   "shares": {
+    "services": 61.41,
+    "industry": 16.36,
+    "agri": 22.23
+   },
+   "gcdp_baseline": 5698.0,
+   "gcdp_target": 12035.0,
+   "cagr": 18.21,
+   "population": 274008.0,
+   "area_sqkm": 466.08,
+   "thrust": [
+    "Dairy & Poultry",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Narasaraopet-R",
+    "Narasaraopet-U",
+    "Rompicherla-R"
+   ]
+  },
+  "Pedakurapadu": {
+   "district": "Palnadu",
+   "code": 10,
+   "archetype": "C2",
+   "why": "agriculture 62.0% \u2014 agrarian",
+   "shares": {
+    "services": 26.0,
+    "industry": 12.0,
+    "agri": 62.0
+   },
+   "gcdp_baseline": 5511.0,
+   "gcdp_target": 11083.0,
+   "cagr": 13.74,
+   "population": 269517.0,
+   "area_sqkm": 1093.14,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Achampeta-R",
+    "Amaravati-R",
+    "Bellamkonda-R",
+    "Krosuru-R",
+    "Pedakurapadu-R"
+   ]
+  },
+  "Sattenapalle": {
+   "district": "Palnadu",
+   "code": 121,
+   "archetype": "C2",
+   "why": "agriculture 43.6% \u2014 agrarian",
+   "shares": {
+    "services": 37.07,
+    "industry": 19.33,
+    "agri": 43.6
+   },
+   "gcdp_baseline": 5044.0,
+   "gcdp_target": 10494.0,
+   "cagr": 17.8,
+   "population": 281679.0,
+   "area_sqkm": 733.16,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Muppalla-R",
+    "Nekarikallu-R",
+    "Rajupalem-R",
+    "Sattenapalle-U",
+    "Sattenapalli-R"
+   ]
+  },
+  "Vinukonda": {
+   "district": "Palnadu",
+   "code": 4,
+   "archetype": "C2",
+   "why": "agriculture 49.36% \u2014 agrarian",
+   "shares": {
+    "services": 36.62,
+    "industry": 14.02,
+    "agri": 49.36
+   },
+   "gcdp_baseline": 6228.0,
+   "gcdp_target": 12737.0,
+   "cagr": 14.47,
+   "population": 308145.0,
+   "area_sqkm": 1623.7,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bollapalli-R",
+    "Ipuru-R",
+    "Nuzendla-R",
+    "Savalyapuram-R",
+    "Vinukonda-R",
+    "Vinukonda-U"
+   ]
+  },
+  "GIDDALUR": {
+   "district": "Markapuram",
+   "code": 14,
+   "archetype": "C2",
+   "why": "agriculture 50.9% \u2014 agrarian",
+   "shares": {
+    "services": 37.55,
+    "industry": 11.55,
+    "agri": 50.9
+   },
+   "gcdp_baseline": 9298.0,
+   "gcdp_target": 232738.0,
+   "cagr": 13.24,
+   "population": 297659.0,
+   "area_sqkm": 2182.65,
+   "thrust": [
+    "Forest & Eco Tourist Sites",
+    "Horticulture",
+    "Large Scale Industries",
+    "Manufacturing",
+    "Renewable Energy"
+   ],
+   "mandals": [
+    "Ardhaveedu-R",
+    "Bestavaripeta-R",
+    "Cumbum-R",
+    "Giddalur-R",
+    "Giddalur-U",
+    "Komarole-R",
+    "Racherla-R"
+   ]
+  },
+  "KANIGIRI": {
+   "district": "Markapuram",
+   "code": 7,
+   "archetype": "C2",
+   "why": "agriculture 54.1% \u2014 agrarian",
+   "shares": {
+    "services": 26.82,
+    "industry": 19.08,
+    "agri": 54.1
+   },
+   "gcdp_baseline": 5056.0,
+   "gcdp_target": 12069.0,
+   "cagr": 19.0,
+   "population": 304336.0,
+   "area_sqkm": 2482.17,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Manufacturing",
+    "Renewable Energy",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Cspuram-R",
+    "Hmpadu-R",
+    "Kanigiri-R",
+    "Kanigiri-U",
+    "Pamur-R",
+    "Pcpalli-R",
+    "Veligandla-R"
+   ]
+  },
+  "Markapuram": {
+   "district": "Markapuram",
+   "code": 13,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 50.45,
+    "industry": 14.83,
+    "agri": 34.72
+   },
+   "gcdp_baseline": 5571.7,
+   "gcdp_target": 12907.0,
+   "cagr": 13.24,
+   "population": 273900.0,
+   "area_sqkm": 1486.86,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Large Scale Industries"
+   ],
+   "mandals": [
+    "Kkmitla-R",
+    "Markapur-R",
+    "Markapur-U",
+    "Podili-R",
+    "Tarlupadu-R"
+   ]
+  },
+  "YERRAGONDAPALEM_SC": {
+   "district": "Markapuram",
+   "code": 182,
+   "archetype": "C2",
+   "why": "agriculture 64.05% \u2014 agrarian",
+   "shares": {
+    "services": 26.3,
+    "industry": 9.65,
+    "agri": 64.05
+   },
+   "gcdp_baseline": 5581.0,
+   "gcdp_target": 12638.0,
+   "cagr": 17.75,
+   "population": 266418.0,
+   "area_sqkm": 3316.26,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Large Scale Industries",
+    "Tourism"
+   ],
+   "mandals": [
+    "Dornala-R",
+    "Peddaraveedu-R",
+    "Pullalacheruvu-R",
+    "Triputanthakam-R",
+    "Yerragondapalem-R"
+   ]
+  },
+  "Addanki": {
+   "district": "Prakasam",
+   "code": 18,
+   "archetype": "C3",
+   "why": "industry 50.0% \u2014 industrial",
+   "shares": {
+    "services": 25.0,
+    "industry": 50.0,
+    "agri": 25.0
+   },
+   "gcdp_baseline": 7199.0,
+   "gcdp_target": 14872.0,
+   "cagr": 16.63,
+   "population": 296025.0,
+   "area_sqkm": 1075.0,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Real Estate",
+    "Renewable Energy",
+    "Tourism"
+   ],
+   "mandals": [
+    "Addanki",
+    "Ballikurava",
+    "Janakavaram Panguluru",
+    "Korisapadu",
+    "Santhamaguluru"
+   ]
+  },
+  "DARSI": {
+   "district": "Prakasam",
+   "code": 15,
+   "archetype": "C2",
+   "why": "agriculture 54.43% \u2014 agrarian",
+   "shares": {
+    "services": 30.28,
+    "industry": 15.29,
+    "agri": 54.43
+   },
+   "gcdp_baseline": 4780.0,
+   "gcdp_target": 9596.0,
+   "cagr": 14.95,
+   "population": 280834.0,
+   "area_sqkm": 1602.0,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Large Scale Industries",
+    "Mining Industries",
+    "Renewable Energy"
+   ],
+   "mandals": [
+    "Darsi",
+    "Donakonda",
+    "Kurichedu",
+    "Mundlamuru",
+    "Tallur"
+   ]
+  },
+  "Kandukur": {
+   "district": "Prakasam",
+   "code": 12,
+   "archetype": "C2",
+   "why": "agriculture 45.1% \u2014 agrarian",
+   "shares": {
+    "services": 41.5,
+    "industry": 13.4,
+    "agri": 45.1
+   },
+   "gcdp_baseline": 6005.0,
+   "gcdp_target": 11800.0,
+   "cagr": 14.94,
+   "population": 277519.0,
+   "area_sqkm": 1121.0,
+   "thrust": [
+    "Education & Skill Development",
+    "Horticulture",
+    "Port-led Development",
+    "Renewable Energy",
+    "Shipbuilding and Ship Breaking",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Gudluru-R",
+    "Kandukur-R",
+    "Kandukur-U",
+    "Lingasamudram-R",
+    "Ulavapadu-R",
+    "Vvpalem-R"
+   ]
+  },
+  "Kondapi_SC": {
+   "district": "Prakasam",
+   "code": 181,
+   "archetype": "C2",
+   "why": "agriculture 50.16% \u2014 agrarian",
+   "shares": {
+    "services": 29.93,
+    "industry": 19.91,
+    "agri": 50.16
+   },
+   "gcdp_baseline": 7232.24,
+   "gcdp_target": 16431.0,
+   "cagr": 17.8,
+   "population": 296136.0,
+   "area_sqkm": 1404.77,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Large Scale Industries",
+    "Manufacturing",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "Kondapi-R",
+    "Marripudi-R",
+    "Ponnalur-R",
+    "Skonda-R",
+    "Tangutur-R",
+    "Zarugumalli-R"
+   ]
+  },
+  "ONGOLE": {
+   "district": "Prakasam",
+   "code": 124,
+   "archetype": "C1",
+   "why": "services 69.02% \u2014 urban/services-led",
+   "shares": {
+    "services": 69.02,
+    "industry": 14.29,
+    "agri": 16.69
+   },
+   "gcdp_baseline": 9123.2,
+   "gcdp_target": 21579.0,
+   "cagr": 18.78,
+   "population": 303128.0,
+   "area_sqkm": 366.61,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Education & Skill Development",
+    "Food Processing Industries",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Kothapatnam-R",
+    "Ongole-R",
+    "Ongole-U"
+   ]
+  },
+  "Santhanuthalapadu_SC": {
+   "district": "Prakasam",
+   "code": 17,
+   "archetype": "C3",
+   "why": "industry 43.87% \u2014 industrial",
+   "shares": {
+    "services": 29.1,
+    "industry": 43.87,
+    "agri": 27.03
+   },
+   "gcdp_baseline": 7302.0,
+   "gcdp_target": 15417.0,
+   "cagr": 16.12,
+   "population": 265615.0,
+   "area_sqkm": 956.4,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Logistics",
+    "Mining Industries",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Cheemakurthy-U",
+    "Chimakurthy-R",
+    "Maddipadu-R",
+    "Ngpadu-R",
+    "Snpadu-R"
+   ]
+  },
+  "Atmakur": {
+   "district": "Sps_Nellore",
+   "code": 126,
+   "archetype": "C2",
+   "why": "agriculture 52.88% \u2014 agrarian",
+   "shares": {
+    "services": 33.1,
+    "industry": 14.02,
+    "agri": 52.88
+   },
+   "gcdp_baseline": 6715.0,
+   "gcdp_target": 13128.0,
+   "cagr": 14.35,
+   "population": 261850.0,
+   "area_sqkm": 2116.4,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Ananthasagaram-R",
+    "Anumasamudram Peta-R",
+    "Atmakur-R",
+    "Atmakurnlr-U",
+    "Chejerla-R",
+    "Marripadu-R",
+    "Sangam-R"
+   ]
+  },
+  "Gudur_SC": {
+   "district": "Sps_Nellore",
+   "code": 127,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 27.97,
+    "industry": 32.41,
+    "agri": 39.62
+   },
+   "gcdp_baseline": 9298.0,
+   "gcdp_target": 232738.0,
+   "cagr": 13.24,
+   "population": 302630.0,
+   "area_sqkm": 1274.0,
+   "thrust": [
+    "Aquaculture",
+    "Food Processing Industries",
+    "Manufacturing",
+    "Shipbuilding and Ship Breaking",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Chillakur-R",
+    "Chittamur-R",
+    "Gudur-R",
+    "Gudurnlr-U",
+    "Kota-R",
+    "Vakadu-R"
+   ]
+  },
+  "Kavali": {
+   "district": "Sps_Nellore",
+   "code": 27,
+   "archetype": "C2",
+   "why": "agriculture 40.73% \u2014 agrarian",
+   "shares": {
+    "services": 40.45,
+    "industry": 18.82,
+    "agri": 40.73
+   },
+   "gcdp_baseline": 8730.0,
+   "gcdp_target": 17803.0,
+   "cagr": 11.6,
+   "population": 289461.0,
+   "area_sqkm": 947.9,
+   "thrust": [
+    "Agro-Processing",
+    "Aquaculture",
+    "Forest & Eco Tourist Sites",
+    "Logistics",
+    "Port-led Development",
+    "Real Estate",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Allur-R",
+    "Bogole-R",
+    "Dagadarthi-R",
+    "Kavali-R",
+    "Kavali-U"
+   ]
+  },
+  "Kovur": {
+   "district": "Sps_Nellore",
+   "code": 20,
+   "archetype": "C2",
+   "why": "agriculture 44.44% \u2014 agrarian",
+   "shares": {
+    "services": 31.13,
+    "industry": 24.43,
+    "agri": 44.44
+   },
+   "gcdp_baseline": 8800.0,
+   "gcdp_target": 17797.0,
+   "cagr": 15.12,
+   "population": 309920.0,
+   "area_sqkm": 620.0,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Real Estate",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Buchireddypalem-R",
+    "Buchireddypalem-U",
+    "Indukurpet-R",
+    "Kodavalur-R",
+    "Kovur-R",
+    "Vidavalur-R"
+   ]
+  },
+  "Nellore_City": {
+   "district": "Sps_Nellore",
+   "code": 168,
+   "archetype": "C1",
+   "why": "services 58.92% \u2014 urban/services-led",
+   "shares": {
+    "services": 58.92,
+    "industry": 21.83,
+    "agri": 19.25
+   },
+   "gcdp_baseline": 10760.0,
+   "gcdp_target": 23599.0,
+   "cagr": 17.01,
+   "population": 294103.0,
+   "area_sqkm": 21.5,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Education & Skill Development",
+    "Medical Tourism",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Nellore-U"
+   ]
+  },
+  "Nellore_Rural": {
+   "district": "Sps_Nellore",
+   "code": 167,
+   "archetype": "C1",
+   "why": "services 67.47% \u2014 urban/services-led",
+   "shares": {
+    "services": 67.47,
+    "industry": 17.63,
+    "agri": 14.9
+   },
+   "gcdp_baseline": 5097.0,
+   "gcdp_target": 11013.0,
+   "cagr": 16.66,
+   "population": 337688.0,
+   "area_sqkm": 330.24,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Education & Skill Development",
+    "Food Processing Industries",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Nellore Rural-R",
+    "Nellore-U"
+   ]
+  },
+  "Sarvepalli": {
+   "district": "Sps_Nellore",
+   "code": 21,
+   "archetype": "C2",
+   "why": "agriculture 43.25% \u2014 agrarian",
+   "shares": {
+    "services": 36.85,
+    "industry": 19.9,
+    "agri": 43.25
+   },
+   "gcdp_baseline": 13101.0,
+   "gcdp_target": 26884.0,
+   "cagr": 15.46,
+   "population": 276990.0,
+   "area_sqkm": 1298.0,
+   "thrust": [
+    "Aquaculture",
+    "Food Processing Industries",
+    "Large Scale Industries",
+    "Logistics",
+    "Port-led Development",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Manubolu-R",
+    "Muthukur-R",
+    "Podalakur-R",
+    "Totapalligudur-R",
+    "Venkatachalam-R"
+   ]
+  },
+  "Udayagiri": {
+   "district": "Sps_Nellore",
+   "code": 28,
+   "archetype": "C2",
+   "why": "agriculture 48.82% \u2014 agrarian",
+   "shares": {
+    "services": 34.1,
+    "industry": 17.08,
+    "agri": 48.82
+   },
+   "gcdp_baseline": 6202.0,
+   "gcdp_target": 12106.0,
+   "cagr": 14.31,
+   "population": 289488.0,
+   "area_sqkm": 2684.96,
+   "thrust": [
+    "Agro-Processing",
+    "Food Processing Industries",
+    "Horticulture",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Duttalur-R",
+    "Jaladanki-R",
+    "Kaligiri-R",
+    "Kondapuram-R",
+    "Seetharamapuram-R",
+    "Udayagiri-R",
+    "Varikuntapadu-R",
+    "Vinjamur-R"
+   ]
+  },
+  "Adoni": {
+   "district": "Kurnool",
+   "code": 134,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 47.6,
+    "industry": 24.28,
+    "agri": 28.12
+   },
+   "gcdp_baseline": 4980.0,
+   "gcdp_target": 11082.0,
+   "cagr": 19.37,
+   "population": 269286.0,
+   "area_sqkm": 559.02,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Horticulture",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Adoni 01-R & Adoni 02-R",
+    "Adoni-U"
+   ]
+  },
+  "Alur": {
+   "district": "Kurnool",
+   "code": 133,
+   "archetype": "C2",
+   "why": "agriculture 58.24% \u2014 agrarian",
+   "shares": {
+    "services": 27.54,
+    "industry": 14.22,
+    "agri": 58.24
+   },
+   "gcdp_baseline": 6452.0,
+   "gcdp_target": 13343.0,
+   "cagr": 17.84,
+   "population": 317274.0,
+   "area_sqkm": 2194.92,
+   "thrust": [
+    "Dairy & Poultry",
+    "Digital Infrastructure, IT & Start-ups",
+    "Horticulture",
+    "Logistics"
+   ],
+   "mandals": [
+    "Alur-R",
+    "Aspari-R",
+    "Chippagiri-R",
+    "Devanakonda-R",
+    "Halaharvi-R",
+    "Holagunda-R"
+   ]
+  },
+  "Kodumur_SC": {
+   "district": "Kurnool",
+   "code": 136,
+   "archetype": "C2",
+   "why": "agriculture 41.48% \u2014 agrarian",
+   "shares": {
+    "services": 30.24,
+    "industry": 28.28,
+    "agri": 41.48
+   },
+   "gcdp_baseline": 5540.0,
+   "gcdp_target": 11568.0,
+   "cagr": 14.04,
+   "population": 245295.0,
+   "area_sqkm": 943.36,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Horticulture",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "C-Belagal-R",
+    "Gudur-R",
+    "Gudurknl-U",
+    "Kodumur-R",
+    "Kurnool-R",
+    "Kurnool-U"
+   ]
+  },
+  "Kurnool": {
+   "district": "Kurnool",
+   "code": 153,
+   "archetype": "C1",
+   "why": "services 85.24% \u2014 urban/services-led",
+   "shares": {
+    "services": 85.24,
+    "industry": 13.98,
+    "agri": 0.78
+   },
+   "gcdp_baseline": 9306.0,
+   "gcdp_target": 21603.0,
+   "cagr": 19.81,
+   "population": 339529.0,
+   "area_sqkm": 114.0,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Kurnool-U"
+   ]
+  },
+  "Mantralayam": {
+   "district": "Kurnool",
+   "code": 135,
+   "archetype": "C2",
+   "why": "agriculture 50.0% \u2014 agrarian",
+   "shares": {
+    "services": 33.0,
+    "industry": 17.0,
+    "agri": 50.0
+   },
+   "gcdp_baseline": 5709.0,
+   "gcdp_target": 11890.0,
+   "cagr": 17.74,
+   "population": 265684.0,
+   "area_sqkm": 1014.31,
+   "thrust": [
+    "Horticulture",
+    "Manufacturing",
+    "Pilgrimage & Cultural Centre",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Kosigi-R",
+    "Kowthalam-R",
+    "Mantralayam-R",
+    "Peddakadubur-R"
+   ]
+  },
+  "Pattikonda": {
+   "district": "Kurnool",
+   "code": 45,
+   "archetype": "C2",
+   "why": "agriculture 44.16% \u2014 agrarian",
+   "shares": {
+    "services": 29.55,
+    "industry": 26.29,
+    "agri": 44.16
+   },
+   "gcdp_baseline": 5711.0,
+   "gcdp_target": 11860.0,
+   "cagr": 17.19,
+   "population": 275481.0,
+   "area_sqkm": 1475.0,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Horticulture",
+    "Logistics",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "Krishnagiri-R",
+    "Maddikera-R",
+    "Mahanandi-R",
+    "Pattikonda-R",
+    "Tuggali-R",
+    "Veldurthy-R"
+   ]
+  },
+  "Yemmiganur": {
+   "district": "Kurnool",
+   "code": 142,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 41.7,
+    "industry": 19.78,
+    "agri": 38.52
+   },
+   "gcdp_baseline": 4700.0,
+   "gcdp_target": 10327.0,
+   "cagr": 19.2,
+   "population": 304432.0,
+   "area_sqkm": 845.13,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Horticulture",
+    "Logistics"
+   ],
+   "mandals": [
+    "Gonegandla-R",
+    "Nandavaram-R",
+    "Yemmiganur-R",
+    "Yemmiganur-U"
+   ]
+  },
+  "Allagadda": {
+   "district": "Nandyal",
+   "code": 164,
+   "archetype": "C2",
+   "why": "agriculture 52.13% \u2014 agrarian",
+   "shares": {
+    "services": 34.01,
+    "industry": 13.86,
+    "agri": 52.13
+   },
+   "gcdp_baseline": 5024.0,
+   "gcdp_target": 9651.0,
+   "cagr": 15.42,
+   "population": 291510.0,
+   "area_sqkm": 1823.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics"
+   ],
+   "mandals": [
+    "Allagadda-R",
+    "Allagadda-U",
+    "Chagalamarri-R",
+    "Dornipadu-R",
+    "Rudravaram-R",
+    "Sirivella-R",
+    "Uyyalawada-R"
+   ]
+  },
+  "Banaganapalle": {
+   "district": "Nandyal",
+   "code": 130,
+   "archetype": "C2",
+   "why": "agriculture 40.58% \u2014 agrarian",
+   "shares": {
+    "services": 28.3,
+    "industry": 31.12,
+    "agri": 40.58
+   },
+   "gcdp_baseline": 7137.0,
+   "gcdp_target": 13804.0,
+   "cagr": 14.24,
+   "population": 291103.0,
+   "area_sqkm": 1776.37,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Mining Industries"
+   ],
+   "mandals": [
+    "Banaganapalli-R",
+    "Koilkuntla-R",
+    "Kolimigundla-R",
+    "Owk-R",
+    "Sanjamala-R"
+   ]
+  },
+  "Dhone": {
+   "district": "Nandyal",
+   "code": 46,
+   "archetype": "C2",
+   "why": "agriculture 49.47% \u2014 agrarian",
+   "shares": {
+    "services": 34.89,
+    "industry": 15.64,
+    "agri": 49.47
+   },
+   "gcdp_baseline": 7409.0,
+   "gcdp_target": 14468.0,
+   "cagr": 14.44,
+   "population": 282650.0,
+   "area_sqkm": 1104.0,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bethamcherla-R",
+    "Bethamcherla-U",
+    "Dhone-R",
+    "Dhone-U",
+    "Peapully-R"
+   ]
+  },
+  "Nandikotkur_SC": {
+   "district": "Nandyal",
+   "code": 139,
+   "archetype": "C2",
+   "why": "agriculture 55.64% \u2014 agrarian",
+   "shares": {
+    "services": 30.72,
+    "industry": 13.64,
+    "agri": 55.64
+   },
+   "gcdp_baseline": 4798.0,
+   "gcdp_target": 9010.0,
+   "cagr": 13.56,
+   "population": 269053.0,
+   "area_sqkm": 1430.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics"
+   ],
+   "mandals": [
+    "Jupadubungalow-R",
+    "Kothapalli-R",
+    "Midthur-R",
+    "Nandikotkur-R",
+    "Nandikotkur-U",
+    "Pagidyala-R",
+    "Pamulapadu-R"
+   ]
+  },
+  "Nandyal": {
+   "district": "Nandyal",
+   "code": 154,
+   "archetype": "C1",
+   "why": "services 67.13% \u2014 urban/services-led",
+   "shares": {
+    "services": 67.13,
+    "industry": 21.47,
+    "agri": 11.4
+   },
+   "gcdp_baseline": 6980.0,
+   "gcdp_target": 14114.0,
+   "cagr": 15.26,
+   "population": 310434.0,
+   "area_sqkm": 352.0,
+   "thrust": [
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Gospadu-R",
+    "Nandyal-R",
+    "Nandyal-U"
+   ]
+  },
+  "Panyam": {
+   "district": "Nandyal",
+   "code": 159,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 39.75,
+    "industry": 25.61,
+    "agri": 34.64
+   },
+   "gcdp_baseline": 7078.0,
+   "gcdp_target": 14032.0,
+   "cagr": 14.83,
+   "population": 348941.0,
+   "area_sqkm": 1245.92,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Horticulture",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate",
+    "Renewable Energy"
+   ],
+   "mandals": [
+    "Gadivemula-R",
+    "Kallur-R",
+    "Kurnool-U",
+    "Orvkal-R",
+    "Panyam-R"
+   ]
+  },
+  "Srisailam": {
+   "district": "Nandyal",
+   "code": 131,
+   "archetype": "C2",
+   "why": "agriculture 48.9% \u2014 agrarian",
+   "shares": {
+    "services": 40.29,
+    "industry": 10.81,
+    "agri": 48.9
+   },
+   "gcdp_baseline": 5271.0,
+   "gcdp_target": 10130.0,
+   "cagr": 14.1,
+   "population": 242791.0,
+   "area_sqkm": 2669.05,
+   "thrust": [
+    "Forest & Eco Tourist Sites",
+    "Horticulture",
+    "Pilgrimage & Cultural Centre",
+    "Tourism"
+   ],
+   "mandals": [
+    "Atmakur-R",
+    "Atmakurknl-U",
+    "Bandiatmakur-R",
+    "Mahanandi-R",
+    "Velgode-R"
+   ]
+  },
+  "Anantapur_Urban": {
+   "district": "Ananthapuramu",
+   "code": 179,
+   "archetype": "C1",
+   "why": "services 80.08% \u2014 urban/services-led",
+   "shares": {
+    "services": 80.08,
+    "industry": 19.64,
+    "agri": 0.28
+   },
+   "gcdp_baseline": 7479.0,
+   "gcdp_target": 17046.19,
+   "cagr": 13.57,
+   "population": 334456.0,
+   "area_sqkm": 33.71,
+   "thrust": [
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Anantapur-U",
+    "Ananthapuram Rural-R"
+   ]
+  },
+  "Guntakal": {
+   "district": "Ananthapuramu",
+   "code": 138,
+   "archetype": "C1",
+   "why": "services 61.18% \u2014 urban/services-led",
+   "shares": {
+    "services": 61.18,
+    "industry": 17.03,
+    "agri": 21.79
+   },
+   "gcdp_baseline": 7352.38,
+   "gcdp_target": 16756.7,
+   "cagr": 13.52,
+   "population": 315845.0,
+   "area_sqkm": 966.08,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Gooty-R",
+    "Gooty-U",
+    "Guntakal-U",
+    "Gunthakal-R",
+    "Pamidi-R"
+   ]
+  },
+  "Kalyandurg": {
+   "district": "Ananthapuramu",
+   "code": 42,
+   "archetype": "C2",
+   "why": "agriculture 51.91% \u2014 agrarian",
+   "shares": {
+    "services": 30.95,
+    "industry": 17.14,
+    "agri": 51.91
+   },
+   "gcdp_baseline": 7139.0,
+   "gcdp_target": 16271.2,
+   "cagr": 15.99,
+   "population": 280192.0,
+   "area_sqkm": 1789.69,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Bramhasamudram-R",
+    "Kalyanadurgam-U",
+    "Kalyandurg-R",
+    "Kambadur-R",
+    "Kundurpi-R",
+    "Settur-R"
+   ]
+  },
+  "Raptadu": {
+   "district": "Ananthapuramu",
+   "code": 146,
+   "archetype": "C2",
+   "why": "agriculture 50.0% \u2014 agrarian",
+   "shares": {
+    "services": 35.0,
+    "industry": 15.0,
+    "agri": 50.0
+   },
+   "gcdp_baseline": 9435.0,
+   "gcdp_target": 20676.0,
+   "cagr": 13.67,
+   "population": 248619.0,
+   "area_sqkm": 1988.25,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Ananthapuram Rural-R",
+    "Atmakur-R",
+    "Ck Palli-R",
+    "Kanaganapalli-R",
+    "Ramagiri-R",
+    "Rapthadu-R"
+   ]
+  },
+  "Rayadurg": {
+   "district": "Ananthapuramu",
+   "code": 187,
+   "archetype": "C2",
+   "why": "agriculture 41.41% \u2014 agrarian",
+   "shares": {
+    "services": 33.31,
+    "industry": 25.28,
+    "agri": 41.41
+   },
+   "gcdp_baseline": 6733.38,
+   "gcdp_target": 15345.9,
+   "cagr": 13.29,
+   "population": 319479.0,
+   "area_sqkm": 1625.85,
+   "thrust": [
+    "Dairy & Poultry",
+    "Handicrafts, Handlooms & Textiles",
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bommanahal-R",
+    "D.Hirehal-R",
+    "Gummagatta-R",
+    "Kanekal-R",
+    "Rayadurg-R",
+    "Rayadurg-U"
+   ]
+  },
+  "Singanamala_SC": {
+   "district": "Ananthapuramu",
+   "code": 40,
+   "archetype": "C2",
+   "why": "agriculture 66.0% \u2014 agrarian",
+   "shares": {
+    "services": 19.88,
+    "industry": 14.12,
+    "agri": 66.0
+   },
+   "gcdp_baseline": 10643.0,
+   "gcdp_target": 24257.6,
+   "cagr": 14.56,
+   "population": 292414.0,
+   "area_sqkm": 1799.01,
+   "thrust": [
+    "Horticulture",
+    "Logistics",
+    "Renewable Energy"
+   ],
+   "mandals": [
+    "Bukkarayasamudram-R",
+    "Garladinne-R",
+    "Narpala-R",
+    "Putlur-R",
+    "Singanamala-R",
+    "Yellanur-R"
+   ]
+  },
+  "Tadipatri": {
+   "district": "Ananthapuramu",
+   "code": 144,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 41.52,
+    "industry": 32.41,
+    "agri": 26.07
+   },
+   "gcdp_baseline": 10348.0,
+   "gcdp_target": 23585.0,
+   "cagr": 14.48,
+   "population": 302394.0,
+   "area_sqkm": 1248.13,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Education & Skill Development",
+    "Logistics",
+    "Medical Tourism"
+   ],
+   "mandals": [
+    "Peddapappur-R",
+    "Peddavadugur-R",
+    "Tadipartri-R",
+    "Tadipatri-U",
+    "Yadiki-R"
+   ]
+  },
+  "Uravakonda": {
+   "district": "Ananthapuramu",
+   "code": 43,
+   "archetype": "C2",
+   "why": "agriculture 57.33% \u2014 agrarian",
+   "shares": {
+    "services": 26.5,
+    "industry": 16.17,
+    "agri": 57.33
+   },
+   "gcdp_baseline": 7059.0,
+   "gcdp_target": 16575.0,
+   "cagr": 15.76,
+   "population": 265731.0,
+   "area_sqkm": 1908.42,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Beluguppa-R",
+    "Kuderu-R",
+    "Uravakonda-R",
+    "Vajrakarur-R",
+    "Vidapankal-R"
+   ]
+  },
+  "Dharmavaram": {
+   "district": "Sri_Satya_Sai",
+   "code": 185,
+   "archetype": "C2",
+   "why": "agriculture 46.19% \u2014 agrarian",
+   "shares": {
+    "services": 37.08,
+    "industry": 16.73,
+    "agri": 46.19
+   },
+   "gcdp_baseline": 7197.0,
+   "gcdp_target": 14454.0,
+   "cagr": 16.12,
+   "population": 304706.0,
+   "area_sqkm": 1333.61,
+   "thrust": [
+    "Dairy & Poultry",
+    "Handicrafts, Handlooms & Textiles",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Bathalapalli-R",
+    "Dharmavaram-R",
+    "Dharmavaram-U",
+    "Mudigubba-R",
+    "Tadimirri-R"
+   ]
+  },
+  "Hindupur": {
+   "district": "Sri_Satya_Sai",
+   "code": 41,
+   "archetype": "C3",
+   "why": "industry 49.8% \u2014 industrial",
+   "shares": {
+    "services": 38.86,
+    "industry": 49.8,
+    "agri": 11.34
+   },
+   "gcdp_baseline": 9674.0,
+   "gcdp_target": 20769.0,
+   "cagr": 16.12,
+   "population": 300116.0,
+   "area_sqkm": 567.15,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Manufacturing",
+    "Pilgrimage & Cultural Centre",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Chilmathur-R",
+    "Hindupur-R",
+    "Hindupur-U",
+    "Lepakshi-R"
+   ]
+  },
+  "Kadiri": {
+   "district": "Sri_Satya_Sai",
+   "code": 186,
+   "archetype": "C2",
+   "why": "agriculture 51.5% \u2014 agrarian",
+   "shares": {
+    "services": 34.11,
+    "industry": 14.39,
+    "agri": 51.5
+   },
+   "gcdp_baseline": 7569.0,
+   "gcdp_target": 15574.0,
+   "cagr": 16.12,
+   "population": 304334.0,
+   "area_sqkm": 1797.53,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Logistics",
+    "Pilgrimage & Cultural Centre",
+    "Real Estate",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Gandlapenta-R",
+    "Kadiri-R",
+    "Kadiri-U",
+    "N.P.Kunta-R",
+    "Nallachervu-R",
+    "Talupula-R",
+    "Tanakallu-R"
+   ]
+  },
+  "Madakasira_SC": {
+   "district": "Sri_Satya_Sai",
+   "code": 148,
+   "archetype": "C2",
+   "why": "agriculture 61.0% \u2014 agrarian",
+   "shares": {
+    "services": 25.0,
+    "industry": 14.0,
+    "agri": 61.0
+   },
+   "gcdp_baseline": 5467.0,
+   "gcdp_target": 11499.0,
+   "cagr": 16.12,
+   "population": 265825.0,
+   "area_sqkm": 1082.87,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Agali-R",
+    "Amarapuram-R",
+    "Gudibanda-R",
+    "Madakasira-R",
+    "Madakasira-U",
+    "Rolla-R"
+   ]
+  },
+  "Penukonda": {
+   "district": "Sri_Satya_Sai",
+   "code": 178,
+   "archetype": "C3",
+   "why": "industry 60.2% \u2014 industrial",
+   "shares": {
+    "services": 21.18,
+    "industry": 60.2,
+    "agri": 18.62
+   },
+   "gcdp_baseline": 14897.0,
+   "gcdp_target": 27084.0,
+   "cagr": 16.12,
+   "population": 289638.0,
+   "area_sqkm": 1413.04,
+   "thrust": [
+    "Automobile Industries",
+    "Dairy & Poultry",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Gorantla-R",
+    "Parigi-R",
+    "Penukonda-R",
+    "Penukonda-U",
+    "Roddam-R",
+    "Somandepalli-R"
+   ]
+  },
+  "Puttaparthi": {
+   "district": "Sri_Satya_Sai",
+   "code": 44,
+   "archetype": "C2",
+   "why": "agriculture 51.0% \u2014 agrarian",
+   "shares": {
+    "services": 35.77,
+    "industry": 13.23,
+    "agri": 51.0
+   },
+   "gcdp_baseline": 5268.0,
+   "gcdp_target": 10170.0,
+   "cagr": 16.12,
+   "population": 257399.0,
+   "area_sqkm": 1549.83,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Pilgrimage & Cultural Centre",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Amadgur-R",
+    "Bukkapatnam-R",
+    "Kothacheruvu-R",
+    "Nallamada-R",
+    "Obula Devara Cheruvu-R",
+    "Puttaparthy-R",
+    "Puttaparthy-U"
+   ]
+  },
+  "Badvel_SC": {
+   "district": "Ysr_Kadapa",
+   "code": 36,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 43.12,
+    "industry": 21.55,
+    "agri": 35.33
+   },
+   "gcdp_baseline": 6190.0,
+   "gcdp_target": 12239.0,
+   "cagr": 14.61,
+   "population": 274179.0,
+   "area_sqkm": 2650.0,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Education & Skill Development",
+    "Horticulture",
+    "Logistics",
+    "Renewable Energy"
+   ],
+   "mandals": [
+    "Atloor-R",
+    "B.Kodur-R",
+    "Badvel-R",
+    "Gopavaram-R",
+    "Kalasapadu-R",
+    "Porumamilla-R",
+    "S.A.K.N. Mandal-R"
+   ]
+  },
+  "Jammalamadugu": {
+   "district": "Ysr_Kadapa",
+   "code": 39,
+   "archetype": "C3",
+   "why": "industry 39.59% \u2014 industrial",
+   "shares": {
+    "services": 35.61,
+    "industry": 39.59,
+    "agri": 24.8
+   },
+   "gcdp_baseline": 9371.0,
+   "gcdp_target": 18643.0,
+   "cagr": 14.18,
+   "population": 306323.0,
+   "area_sqkm": 2062.0,
+   "thrust": [
+    "Horticulture",
+    "Logistics",
+    "Mining Industries",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Jammalamadugu-R",
+    "Jammalamadugu-U",
+    "Kondapuram-R",
+    "Muddanur-R",
+    "Mylavaram-R",
+    "Peddamudium-R",
+    "Yerraguntla-R",
+    "Yerraguntla-U"
+   ]
+  },
+  "Kadapa": {
+   "district": "Ysr_Kadapa",
+   "code": 151,
+   "archetype": "C1",
+   "why": "services 72.38% \u2014 urban/services-led",
+   "shares": {
+    "services": 72.38,
+    "industry": 25.92,
+    "agri": 1.7
+   },
+   "gcdp_baseline": 6805.0,
+   "gcdp_target": 13338.0,
+   "cagr": 14.91,
+   "population": 318916.0,
+   "area_sqkm": 96.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Digital Infrastructure, IT & Start-ups",
+    "Manufacturing",
+    "Real Estate",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Kadapa-U"
+   ]
+  },
+  "Kamalapuram": {
+   "district": "Ysr_Kadapa",
+   "code": 34,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 40.24,
+    "industry": 24.41,
+    "agri": 35.35
+   },
+   "gcdp_baseline": 7391.0,
+   "gcdp_target": 14807.0,
+   "cagr": 14.91,
+   "population": 249734.0,
+   "area_sqkm": 1993.06,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Education & Skill Development",
+    "Logistics",
+    "Renewable Energy"
+   ],
+   "mandals": [
+    "C.K.Dinne-R",
+    "Chennur-R",
+    "Kadapa-U",
+    "Kamalapuram-R",
+    "Kamalapuram-U",
+    "Pendlimarri-R",
+    "Vallur-R",
+    "Veerapunayunipalle-R"
+   ]
+  },
+  "Mydukur": {
+   "district": "Ysr_Kadapa",
+   "code": 149,
+   "archetype": "C2",
+   "why": "agriculture 42.15% \u2014 agrarian",
+   "shares": {
+    "services": 36.59,
+    "industry": 21.26,
+    "agri": 42.15
+   },
+   "gcdp_baseline": 6351.0,
+   "gcdp_target": 12621.0,
+   "cagr": 14.73,
+   "population": 261868.0,
+   "area_sqkm": 1798.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Horticulture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "B.Mattam-R",
+    "Chapadu-R",
+    "Duvvur-R",
+    "Khajipeta-R",
+    "Mydukur-R",
+    "Mydukur-U"
+   ]
+  },
+  "Proddatur": {
+   "district": "Ysr_Kadapa",
+   "code": 145,
+   "archetype": "C1",
+   "why": "services 62.23% \u2014 urban/services-led",
+   "shares": {
+    "services": 62.23,
+    "industry": 27.55,
+    "agri": 10.22
+   },
+   "gcdp_baseline": 5083.0,
+   "gcdp_target": 10011.0,
+   "cagr": 14.52,
+   "population": 291708.0,
+   "area_sqkm": 379.0,
+   "thrust": [
+    "Dairy & Poultry",
+    "Logistics",
+    "Manufacturing",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Proddatur-R",
+    "Proddatur-U",
+    "Rajupalem-R"
+   ]
+  },
+  "Pulivendula": {
+   "district": "Ysr_Kadapa",
+   "code": 160,
+   "archetype": "C1",
+   "why": "services 57.17% \u2014 urban/services-led",
+   "shares": {
+    "services": 57.17,
+    "industry": 19.2,
+    "agri": 23.63
+   },
+   "gcdp_baseline": 12351.0,
+   "gcdp_target": 25036.0,
+   "cagr": 15.18,
+   "population": 287374.0,
+   "area_sqkm": 1745.19,
+   "thrust": [
+    "Horticulture",
+    "Logistics",
+    "Real Estate"
+   ],
+   "mandals": [
+    "Chakrayapeta",
+    "Lingala",
+    "Pulivendula",
+    "Simhadripuram",
+    "Thondur",
+    "Vempalle",
+    "Vemula"
+   ]
+  },
+  "Rajampet": {
+   "district": "Ysr_Kadapa",
+   "code": 35,
+   "archetype": "C2",
+   "why": "agriculture 43.19% \u2014 agrarian",
+   "shares": {
+    "services": 40.96,
+    "industry": 15.85,
+    "agri": 43.19
+   },
+   "gcdp_baseline": 6768.0,
+   "gcdp_target": 14446.0,
+   "cagr": 13.24,
+   "population": 306995.0,
+   "area_sqkm": 302.0,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Logistics",
+    "Special Economic Zones / Industrial Corridors",
+    "Tourism"
+   ],
+   "mandals": [
+    "Nandalur-R",
+    "Rajampet-R",
+    "Rajampet-U",
+    "Sidhout-R",
+    "T.Sundupalli-R",
+    "Veeraballi-R",
+    "Vontimitta-R"
+   ]
+  },
+  "Madanapalle": {
+   "district": "Annamayya",
+   "code": 29,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 51.92,
+    "industry": 14.99,
+    "agri": 33.09
+   },
+   "gcdp_baseline": 6500.0,
+   "gcdp_target": 14042.0,
+   "cagr": 13.24,
+   "population": 315274.0,
+   "area_sqkm": 690.9,
+   "thrust": [
+    "Food Processing Industries",
+    "Horticulture",
+    "Logistics",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Madanapalle-U",
+    "Mandhanpalle-R",
+    "Nimmanapalle-R",
+    "Ramasamudram-R"
+   ]
+  },
+  "Pileru": {
+   "district": "Annamayya",
+   "code": 184,
+   "archetype": "C2",
+   "why": "agriculture 49.58% \u2014 agrarian",
+   "shares": {
+    "services": 36.57,
+    "industry": 13.85,
+    "agri": 49.58
+   },
+   "gcdp_baseline": 5782.0,
+   "gcdp_target": 11953.0,
+   "cagr": 13.24,
+   "population": 286468.0,
+   "area_sqkm": 1503.3,
+   "thrust": [
+    "Agro-Processing",
+    "Dairy & Poultry",
+    "Horticulture",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Gurramkonda-R",
+    "Kalakada-R",
+    "Kalikiri-R",
+    "Kambhamvaripalle-R",
+    "Pileru-R",
+    "Valmikipuram-R"
+   ]
+  },
+  "Punganur": {
+   "district": "Annamayya",
+   "code": 24,
+   "archetype": "C2",
+   "why": "agriculture 49.07% \u2014 agrarian",
+   "shares": {
+    "services": 39.63,
+    "industry": 11.3,
+    "agri": 49.07
+   },
+   "gcdp_baseline": 7775.0,
+   "gcdp_target": 15919.0,
+   "cagr": 16.1,
+   "population": 293170.0,
+   "area_sqkm": 1485.22,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Large Scale Industries",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Chowdepalle-R",
+    "Pulicherla-R",
+    "Punganur-R",
+    "Punganur-U",
+    "Rompicherla-R",
+    "Sodam-R",
+    "Somala-R"
+   ]
+  },
+  "Rayachoti": {
+   "district": "Annamayya",
+   "code": 161,
+   "archetype": "C2",
+   "why": "agriculture 43.27% \u2014 agrarian",
+   "shares": {
+    "services": 38.3,
+    "industry": 18.43,
+    "agri": 43.27
+   },
+   "gcdp_baseline": 6284.0,
+   "gcdp_target": 14498.0,
+   "cagr": 13.24,
+   "population": 317385.0,
+   "area_sqkm": 1648.29,
+   "thrust": [
+    "Agro-Processing",
+    "Food Processing Industries",
+    "Horticulture",
+    "Manufacturing"
+   ],
+   "mandals": [
+    "Chinnamandem-R",
+    "Galiveedu-R",
+    "Lakkireddypalli-R",
+    "Ramapuram-R",
+    "Rayachoty-R",
+    "Rayachoty-U",
+    "Sambepalle-R"
+   ]
+  },
+  "Thamballapalle": {
+   "district": "Annamayya",
+   "code": 38,
+   "archetype": "C2",
+   "why": "agriculture 61.24% \u2014 agrarian",
+   "shares": {
+    "services": 23.83,
+    "industry": 14.93,
+    "agri": 61.24
+   },
+   "gcdp_baseline": 6028.0,
+   "gcdp_target": 12865.0,
+   "cagr": 16.3,
+   "population": 273751.0,
+   "area_sqkm": 1625.7,
+   "thrust": [
+    "Agro-Processing",
+    "Food Processing Industries",
+    "Horticulture",
+    "Special Economic Zones / Industrial Corridors",
+    "Tourism"
+   ],
+   "mandals": [
+    "B Kothakota-R",
+    "Kurabalakota-R",
+    "Mulakalacheruvu-R",
+    "Peddamandyam-R",
+    "Peddathippasamudram-R",
+    "Thamballapalle-R"
+   ]
+  },
+  "Chittoor": {
+   "district": "Chittoor",
+   "code": 33,
+   "archetype": "C1",
+   "why": "services 57.92% \u2014 urban/services-led",
+   "shares": {
+    "services": 57.92,
+    "industry": 27.36,
+    "agri": 14.72
+   },
+   "gcdp_baseline": 452121.0,
+   "gcdp_target": 458524.0,
+   "cagr": 0.01,
+   "population": 256122.0,
+   "area_sqkm": 391.84,
+   "thrust": [
+    "Aquaculture",
+    "Dairy & Poultry",
+    "Digital Infrastructure, IT & Start-ups",
+    "Food Processing Industries",
+    "Forest & Eco Tourist Sites",
+    "Mining Industries",
+    "Real Estate",
+    "Renewable Energy",
+    "Special Economic Zones / Industrial Corridors",
+    "Tourism"
+   ],
+   "mandals": [
+    "Chittoor-R",
+    "Chittoor-U",
+    "Gudipala-R"
+   ]
+  },
+  "Gangadhara_Nellore_SC": {
+   "district": "Chittoor",
+   "code": 30,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 40.16,
+    "industry": 19.92,
+    "agri": 39.92
+   },
+   "gcdp_baseline": 6136.0,
+   "gcdp_target": 13654.0,
+   "cagr": 17.7,
+   "population": 268282.0,
+   "area_sqkm": 1088.36,
+   "thrust": [
+    "Food Processing Industries",
+    "Horticulture",
+    "Large Scale Industries",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Gangadhara Nellore-R",
+    "Karvetinagar-R",
+    "Palasamudram-R",
+    "Penumuru-R",
+    "Srirangarajapuram-R",
+    "Veduru Kuppam-R"
+   ]
+  },
+  "Kuppam": {
+   "district": "Chittoor",
+   "code": 31,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 40.0,
+    "industry": 22.0,
+    "agri": 38.0
+   },
+   "gcdp_baseline": 4511.0,
+   "gcdp_target": 10576.0,
+   "cagr": 15.26,
+   "population": 285123.0,
+   "area_sqkm": 1051.0,
+   "thrust": [
+    "Agro-Processing",
+    "Education & Skill Development",
+    "Horticulture",
+    "Logistics",
+    "Manufacturing",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Gudi Palle-R",
+    "Kuppam-R",
+    "Kuppam-U",
+    "Rama Kuppam-R",
+    "Santhi Puram-R"
+   ]
+  },
+  "Nagari": {
+   "district": "Chittoor",
+   "code": 26,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 50.55,
+    "industry": 27.89,
+    "agri": 21.56
+   },
+   "gcdp_baseline": 5438.0,
+   "gcdp_target": 11242.0,
+   "cagr": 15.63,
+   "population": 266766.0,
+   "area_sqkm": 774.7,
+   "thrust": [
+    "Handicrafts, Handlooms & Textiles",
+    "Manufacturing",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Nagari-R",
+    "Nagari-U",
+    "Nindra-R",
+    "Puttur-R",
+    "Puttur-U",
+    "Vadamalapeta-R",
+    "Vijaya Puram-R"
+   ]
+  },
+  "Palamaner": {
+   "district": "Chittoor",
+   "code": 32,
+   "archetype": "C2",
+   "why": "agriculture 54.43% \u2014 agrarian",
+   "shares": {
+    "services": 32.49,
+    "industry": 13.08,
+    "agri": 54.43
+   },
+   "gcdp_baseline": 8483.0,
+   "gcdp_target": 17201.0,
+   "cagr": 13.24,
+   "population": 340935.0,
+   "area_sqkm": 1279.72,
+   "thrust": [
+    "Dairy & Poultry",
+    "Food Processing Industries",
+    "Horticulture",
+    "Manufacturing",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Baireddi Palle-R",
+    "Gangavaram-R",
+    "Palamaner-R",
+    "Palamaner-U",
+    "Pedda Panjani-R",
+    "Venkatagiri Kota-R"
+   ]
+  },
+  "Puthalapattu_SC": {
+   "district": "Chittoor",
+   "code": 129,
+   "archetype": "C2",
+   "why": "agriculture 43.5% \u2014 agrarian",
+   "shares": {
+    "services": 33.4,
+    "industry": 23.1,
+    "agri": 43.5
+   },
+   "gcdp_baseline": 7471.0,
+   "gcdp_target": 16164.0,
+   "cagr": 17.0,
+   "population": 274126.0,
+   "area_sqkm": 1142.32,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Manufacturing",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Bangarupalem-R",
+    "Irala-R",
+    "Puthalapattu-R",
+    "Thavanampalle-R",
+    "Yadamari-R"
+   ]
+  },
+  "Chandragiri": {
+   "district": "Tirupati",
+   "code": 25,
+   "archetype": "C4",
+   "why": "no dominant sector \u2014 mixed/transitional",
+   "shares": {
+    "services": 48.65,
+    "industry": 18.64,
+    "agri": 32.71
+   },
+   "gcdp_baseline": 10101.0,
+   "gcdp_target": 20470.0,
+   "cagr": 14.14,
+   "population": 340234.0,
+   "area_sqkm": 1363.0,
+   "thrust": [
+    "Education & Skill Development",
+    "Food Processing Industries",
+    "Horticulture",
+    "Manufacturing",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Chandragiri-R",
+    "Chinnagottigallu-R",
+    "Pakala-R",
+    "Ramachandrapuram-R",
+    "Tirupati Rural-R",
+    "Yerravaripalem-R"
+   ]
+  },
+  "Railway_Kodur_SC": {
+   "district": "Tirupati",
+   "code": 177,
+   "archetype": "C2",
+   "why": "agriculture 50.25% \u2014 agrarian",
+   "shares": {
+    "services": 17.3,
+    "industry": 32.45,
+    "agri": 50.25
+   },
+   "gcdp_baseline": 6807.0,
+   "gcdp_target": 14526.0,
+   "cagr": 13.24,
+   "population": 267987.0,
+   "area_sqkm": 1318.6,
+   "thrust": [
+    "Agro-Processing",
+    "Horticulture",
+    "Mining Industries",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Chitvel-R",
+    "Kodur-R",
+    "Obulavaripalle-R",
+    "Penagalur-R",
+    "Pullampet-R"
+   ]
+  },
+  "Satyavedu_SC": {
+   "district": "Tirupati",
+   "code": 128,
+   "archetype": "C3",
+   "why": "industry 71.5% \u2014 industrial",
+   "shares": {
+    "services": 15.3,
+    "industry": 71.5,
+    "agri": 13.2
+   },
+   "gcdp_baseline": 15654.0,
+   "gcdp_target": 34445.0,
+   "cagr": 14.05,
+   "population": 277010.0,
+   "area_sqkm": 1669.71,
+   "thrust": [
+    "Automobile Industries",
+    "Logistics",
+    "Manufacturing",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Buchinaidu Khandriga-R",
+    "K V B Puram-R",
+    "Nagalapuram-R",
+    "Narayanavanam-R",
+    "Pichatur-R",
+    "Satyavedu-R",
+    "Varadaiahpalem-R"
+   ]
+  },
+  "Srikalahasti": {
+   "district": "Tirupati",
+   "code": 37,
+   "archetype": "C3",
+   "why": "industry 62.86% \u2014 industrial",
+   "shares": {
+    "services": 25.2,
+    "industry": 62.86,
+    "agri": 11.94
+   },
+   "gcdp_baseline": 15371.0,
+   "gcdp_target": 31618.0,
+   "cagr": 15.51,
+   "population": 312873.0,
+   "area_sqkm": 999.68,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Handicrafts, Handlooms & Textiles",
+    "Manufacturing",
+    "Pilgrimage & Cultural Centre",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Renigunta-R",
+    "Srikalahasti-R",
+    "Srikalahasti-U",
+    "Thottambedu-R",
+    "Yerpedu-R"
+   ]
+  },
+  "Sullurpeta_SC": {
+   "district": "Tirupati",
+   "code": 16,
+   "archetype": "C3",
+   "why": "industry 64.94% \u2014 industrial",
+   "shares": {
+    "services": 20.35,
+    "industry": 64.94,
+    "agri": 14.71
+   },
+   "gcdp_baseline": 12493.0,
+   "gcdp_target": 26192.0,
+   "cagr": 15.95,
+   "population": 314830.0,
+   "area_sqkm": 1516.0,
+   "thrust": [
+    "Food Processing Industries",
+    "Logistics",
+    "Manufacturing",
+    "Special Economic Zones / Industrial Corridors",
+    "Tourism"
+   ],
+   "mandals": [
+    "Doravarisatram-R",
+    "Naidupet-U",
+    "Naidupeta-R",
+    "Ojili-R",
+    "Pellakur-R",
+    "Sullurpet-R",
+    "Sullurpeta-U",
+    "Tada-R"
+   ]
+  },
+  "Tirupati": {
+   "district": "Tirupati",
+   "code": 137,
+   "archetype": "C1",
+   "why": "services 87.3% \u2014 urban/services-led",
+   "shares": {
+    "services": 87.3,
+    "industry": 11.88,
+    "agri": 0.82
+   },
+   "gcdp_baseline": 12491.0,
+   "gcdp_target": 25096.0,
+   "cagr": 14.14,
+   "population": 383930.0,
+   "area_sqkm": 280.91,
+   "thrust": [
+    "Digital Infrastructure, IT & Start-ups",
+    "Education & Skill Development",
+    "Pilgrimage & Cultural Centre",
+    "Real Estate",
+    "Tourism"
+   ],
+   "mandals": [
+    "Tirupati-U"
+   ]
+  },
+  "Venkatagiri": {
+   "district": "Tirupati",
+   "code": 22,
+   "archetype": "C2",
+   "why": "agriculture 48.1% \u2014 agrarian",
+   "shares": {
+    "services": 34.5,
+    "industry": 17.4,
+    "agri": 48.1
+   },
+   "gcdp_baseline": 7246.0,
+   "gcdp_target": 14461.0,
+   "cagr": 14.8,
+   "population": 286597.0,
+   "area_sqkm": 2266.53,
+   "thrust": [
+    "Food Processing Industries",
+    "Handicrafts, Handlooms & Textiles",
+    "Horticulture",
+    "Special Economic Zones / Industrial Corridors"
+   ],
+   "mandals": [
+    "Balayapalli-R",
+    "Dakkili-R",
+    "Kaluvoya-R",
+    "Rapur-R",
+    "Sydapuram-R",
+    "Venkatagiri-R",
+    "Venkatagiri-U"
+   ]
+  }
+ },
+ "_counts": {
+  "C1": 32,
+  "C2": 83,
+  "C3": 20,
+  "C4": 40,
+  "D1": 6,
+  "D2": 11,
+  "D3": 2,
+  "D4": 9
+ }
+}

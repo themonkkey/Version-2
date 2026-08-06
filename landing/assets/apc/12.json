@@ -1,0 +1,233 @@
+{
+ "code": 12,
+ "name": "Kandukur",
+ "district": "Prakasam",
+ "logoUrl": "assets/constituencies_logos/kandukur.png",
+ "profile": {
+  "population": "277519 (As per Census 2011)",
+  "voterCount": "228979 (As per 2024 Elections)",
+  "area": "1121",
+  "mandals": "Gudluru-R,Kandukur-R,Kandukur-U,Lingasamudram-R,Ulavapadu-R,Vvpalem-R",
+  "revenueVillages": "91",
+  "municipal_wards": "32",
+  "municipalities": "Kandukur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "&#34;Kandukur Assembly Constituency, located in the <font face=\"Arial\">Prakasam</font>&#160;District, is an important administrative and economic region that falls under the Nellore Lok Sabha Constituency. It comprises five mandals&#8212;Kandukur, Voletivaripalem, Gudluru, Lingasamudram, and Ulavapadu&#8212;along with the Kandukur Municipality, which serves as the only urban local body in the constituency. This region is predominantly rural in character, with vast stretches of agricultural land, a long coastline, and a growing base of horticulture and aquaculture activities.<p><br></p><p>As per recent estimates, the constituency has a total population of 277,519 residing in 68,582 households. A significant 79.3% of the population lives in rural areas, while 20.6% is urban. The constituency has a sex ratio of 986 females for every 1,000 males and a literacy rate of 58.63%, which is relatively lower than the state average, indicating the need for focused educational and skill development initiatives. The workforce is predominantly engaged in agriculture and allied activities, which remain the mainstay of the local economy.</p><p><br></p><p>Kandukur&#8217;s geographical features are well-suited for agriculture, with fertile black cotton and red soils supporting diverse crop patterns. The region is particularly renowned for Ulavapadu mangoes, a horticultural highlight that has market potential both within and outside the state. In addition to agriculture, fisheries and aquaculture are emerging as key contributors to the local economy, supported by the constituency&#8217;s 16 km coastal belt along the Bay of Bengal. This natural advantage positions Kandukur as a key player in the district&#8217;s &#34;&#34;blue economy&#34;&#34; sector.</p><p><br></p><p>Infrastructure-wise, Kandukur is strategically located on National Highway 16 (part of the Chennai&#8211;Kolkata economic corridor), ensuring smooth connectivity for the movement of goods and people. Its proximity to the upcoming Ramayapatnam Port significantly enhances its economic potential, paving the way for development in sectors such as logistics, trade, and port-based industries. The expected commissioning of the Dagadarthi Greenfield Airport in the near future further strengthens the constituency&#8217;s connectivity and investment attractiveness.</p><p><br></p><p>Culturally, Kandukur is rich in heritage and tradition. The constituency is home to several religious and tourist landmarks, including the Ramayapatnam Beach and Lighthouse&#8212;a scenic coastal destination with historic significance. Religious sites such as Sri Malyadri Lakshmi Narasimha Swamy Temple and Sri Dattatreya Swamy Temple draw devotees from across the region and have the potential to be further developed as spiritual tourism hubs. These cultural assets, along with the natural coastline, offer opportunities for promoting ecotourism and religious tourism.</p><p><br></p><p>Looking ahead, Kandukur is poised for a phase of accelerated growth and transformation. With strong foundations in agriculture, emerging strengths in fisheries and aquaculture, and improving connectivity via highway, port, and air transport, the constituency is well-positioned to attract strategic investments. It is expected to achieve an ambitious annual growth rate of 15% across key sectors, including agriculture, trade, logistics, tourism, and services. The planned development of industrial corridors, agro-processing units, and smart townships will further drive economic activity and employment generation, helping Kandukur evolve into a vibrant and self-sustaining growth hub in southern Andhra Pradesh.&#34;&#10;</p><p><i><br></i></p>",
+  "constituencyMap": "12\\MAP\\12IMAGE2026062914175844913_1001571392.jpg",
+  "geography": "The Kandukuru constituency is located in the Prakasam District and spans 1121 sq. km. It shares boundaries with the Kondepi, Kanigiri, and Kavali constituencies. Mix of red soil, black soil, and sandy soils&#10;<p><br></p>",
+  "populationDesc": "The total population is 277,519, with approximately 79.3% residing in rural areas and 20.6% in urban areas. There are 68,582 households, and the sex ratio is 986  females per 1,000 males. The literacy rate stands at 58.63%.&#10;<p><br></p>",
+  "administrationDesc": "Kandukuru Constituency is one of the six assembly constituencies in Prakasam District. It includes 1) Kandukur Mandal 2) Voletivaripalem Mandal 3) Gudluru Mandal 4) Lingasamudram Mandals and 5) Ulavapadu, and it also has Kandukur municipality. The Kandukuru constituency comes under the Nellore Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "1 engineering college &amp; 1 horticulture college. and it has 1 government general hospital &amp; 1 area hospital.<p><br></p>",
+  "culturalheritageDesc": "Ramayapatnam Beach &amp; Lighthouse,  Sri Malyadri Lakshmi Narasimha  Swamy Temple &amp; Sri Dattathreya Swamy Temple. Syd BB Sulthan Dargha.&#10;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "S1tfAg6K3QI76VDbPDIhMQ==",
+   "economy_Text": "<b><font size=\"4\">Economy at a Glance</font></b><p><font size=\"3\">Kandukur is poised for a historic economic transformation, evolving from a regional economy into a high-value industrial, commercial, and services-driven hub. With a Gross Constituency Domestic Product (GCDP) of &#8377;6,005 crore in 2023-24, the region is set for sustained growth across sectors. Agriculture and allied activities currently contribute 48.83% of the Gross Value Added (GVA), projected to decline to 43.26% as the economy diversifies. To sustain and enhance rural incomes, strategic interventions are needed in irrigation, crop diversification, post-harvest infrastructure, fisheries, aquaculture, and agri-tech adoption. The services sector, contributing 36.75% of GVA (&#8377;2,042 crore) in 2023-24, is projected to rise significantly to 40.21% (&#8377;4,418 crore), driven by expansion in trade, logistics, finance, education, and digital services. With its strong agricultural base, growing aquaculture potential, and improving connectivity through highways, ports, and air transport, Kandukur is on the cusp of transformational growth and is well-positioned to attract strategic investments.</font></p>",
+   "gcdP_Growth_Text": "Kandukuru is experiencing steady economic growth, targeting a 15% annual GCDP increase driven by infrastructure, port-led industrial development, aquaculture, logistics, and modern agriculture. With strategic investments and improved connectivity, the constituency is transitioning into a diversified, industrial growth engine, aiming to become a vibrant and sustainable economic center by 2047.",
+   "createdDate": "2025-09-04T07:06:51.867"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6005.0,
+   "cagR_Pct": 14.94,
+   "targetAmountCrore": 11800.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2534.0,
+   "cagR_Pct": 16.7,
+   "targetAmountCrore": 5494.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 801.0,
+   "cagR_Pct": 17.79,
+   "targetAmountCrore": 1816.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2713.0,
+   "cagR_Pct": 11.87,
+   "targetAmountCrore": 4753.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 12,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 41.5
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 13.4
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 45.1
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 12,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 10,
+   "sectorName": "Port-led Development",
+   "description": "Ports, multimodal logistics, inland waterways, and warehousing.",
+   "imageUrl": "assets/img/sectors/port-led-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 9,
+   "sectorName": "Renewable Energy",
+   "description": "Solar, wind, green hydrogen, and hybrid energy projects with grid integration.",
+   "imageUrl": "assets/img/sectors/renewable-energy.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 21,
+   "sectorName": "Shipbuilding and Ship Breaking",
+   "description": "Promotion of shipyards, shipbuilding units, and repair docks.",
+   "imageUrl": "assets/img/sectors/shipbuilding-and-ship-breaking.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 176,
+   "constituencyId": 12,
+   "name": "Inturi Nageswara Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 177,
+   "constituencyId": 12,
+   "name": "Manugunta Maheedhar Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 178,
+   "constituencyId": 12,
+   "name": "Potula Ramarao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 179,
+   "constituencyId": 12,
+   "name": "Manugunta Maheedhar Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 180,
+   "constituencyId": 12,
+   "name": "Manugunta Maheedhar Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

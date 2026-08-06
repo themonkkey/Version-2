@@ -1,0 +1,221 @@
+{
+ "code": 181,
+ "name": "Kondapi (SC)",
+ "district": "Prakasam",
+ "logoUrl": "assets/constituencies_logos/kondapi (sc).png",
+ "profile": {
+  "population": "296136 (As per Census 2011)",
+  "voterCount": "239702 (As per 2024 Elections)",
+  "area": "1404.77",
+  "mandals": "Kondapi-R,Marripudi-R,Ponnalur-R,Skonda-R,Tangutur-R,Zarugumalli-R",
+  "revenueVillages": "120",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>The Kondapi Assembly Constituency is situated in Prakasam District, Andhra Pradesh, near the district headquarters, Ongole. It has a total population of 296,136, entirely residing in rural areas, with 74,447 households and a sex ratio of 998 females for every 1,000 males. The literacy rate is relatively low at 54%. The constituency spans approximately 31 km along National Highway-16 (NH-16), offering logistical advantages for transport and trade. Kondapi's economy is predominantly agro-based, with agriculture and allied sectors providing livelihoods to nearly half the population. Major crops cultivated include the Bengal gram, black gram, red gram, tobacco, paddy, chilies, and sesamum. The constituency also benefits from a 15 km stretch of coastline, supporting aquaculture and related industries. Notable aquaculture and food processing companies in the area include Devi Sea Foods Private Limited, Sagargrandhi Exports Limited, and Citron Marine Private Limited. With its agricultural base, coastal access, and highway connectivity, Kondapi holds significant potential for economic growth through expansion in the industrial and service sectors.</p>",
+  "constituencyMap": "181\\MAP\\181IMAGE2025090508044213509_KONDAPI MAP.png",
+  "geography": "Kondapi constituency is located in Prakasam District, spans 1404.49 sq. km, and has a coastal length of 50 km; it shares boundaries with the following: north: Markapuram, Ongole Constituency &amp; SN Padu Assembly Constituency; south: Kandukuru Assembly Constituency; west: Kanigiri Assembly Constituency; east: Bay of Bengal. The constituency features a mix of red loamy, black cotton, and sandy loamy soils.<p><br></p>",
+  "populationDesc": "The total population is 296,136, with approximately 100% residing in rural areas and 0% in urban areas. There are 74,447 households, and the sex ratio is 998 females per 1,000 males. The literacy rate stands at 54%.&#10;<p><br></p>",
+  "administrationDesc": "Kondapi Constituency is one of the eight assembly constituencies in Prakasam District. It includes Singarayakonda, Kondapi, Tangutur, Zarugumilli, Ponnaluru, and Marripudi. Kondapi constituency comes under Ongole Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "Kondapi Assembly Constituency has gained recognition as an educational hub with prominent institutions such as PACE, RISE, PNCA, and KGBV, and it has one area hospital.<p><br></p>",
+  "culturalheritageDesc": "Sri Lakshmi Narasimha swamy temple, Valluramma Thalli Temple, and Pakala beach&#10;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "VKE+5jRn/7rhTwKoKt6DrQ==",
+   "economy_Text": "<b><font size=\"4\">Economy at a Glance</font></b><p><b><font size=\"4\"><br></font></b></p><p><font face=\"Times New Roman\">Kondapi&#8217;s economy is primarily driven by agriculture, supported by growing industrial and service sectors. As of the baseline year 2023&#8211;24, the constituency's <span>Gross Constituency Domestic Product (GCDP)</span> stands at <span>&#8377;7,232.24 crore</span>. The <span>agriculture and allied sector</span> is the largest contributor, reflecting the constituency&#8217;s strong rural and agrarian foundation, with a <span>share of 50.16%</span>. Th<span>e </span><span>service sector</span><span> contributes </span><span>29.3%</span><span>, highlighting emerging opportunities in rural services, logistics, and public services.</span></font></p><p><font face=\"Times New Roman\">The upcoming <span>MSME Park in Nennurupadu Village</span> of Kondapi Mandal is set to boost industrial growth, particularly for micro, small, and medium enterprises. Additionally, the <span>VCIC (Vizag-Chennai Industrial Corridor)</span> is expected to enhance infrastructure and connectivity, attracting investments and promoting industrial diversification.&#160;</font><span>In agriculture, modernization efforts targeting </span><span>agriculture and horticulture</span><span> aim to increase productivity and sustainability through advanced farming techniques and better irrigation. Simultaneously, the constituency is focusing on </span><span>promoting fisheries and aquaculture.</span></p>",
+   "gcdP_Growth_Text": "<font face=\"Times New Roman\" size=\"4\"><span>Kondapi is witnessing steady economic momentum with a targeted 12- 16%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like Horticulture, real estate,&#160;</span><span>&#160;infrastructure, industries, and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant rural and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span></font>",
+   "createdDate": "2025-09-06T04:25:32.763"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7232.24,
+   "cagR_Pct": 17.8,
+   "targetAmountCrore": 16431.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2002.3,
+   "cagR_Pct": 17.81,
+   "targetAmountCrore": 4545.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1332.1,
+   "cagR_Pct": 18.03,
+   "targetAmountCrore": 3052.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3356.0,
+   "cagR_Pct": 17.77,
+   "targetAmountCrore": 7605.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 181,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 29.93
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.91
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 50.16
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 181,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 8,
+   "sectorName": "Mining Industries",
+   "description": "Extraction of minerals and creation of value-adding industries and processing chains.",
+   "imageUrl": "assets/img/sectors/mining-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 557,
+   "constituencyId": 181,
+   "name": "Dola Sree Bala Veeranjaneya Swamy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 558,
+   "constituencyId": 181,
+   "name": "Dola Sree Bala Veeranjaneya Swamy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 559,
+   "constituencyId": 181,
+   "name": "Dola Sree Bala Veeranjaneya Swamy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 560,
+   "constituencyId": 181,
+   "name": "\" Gurrala Venkata Seshu \"",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 561,
+   "constituencyId": 181,
+   "name": "Pothula Rama Rao",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

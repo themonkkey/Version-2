@@ -1,0 +1,224 @@
+{
+ "code": 50,
+ "name": "Pathapatnam",
+ "district": "Srikakulam",
+ "logoUrl": "assets/constituencies_logos/pathapatnam.png",
+ "profile": {
+  "population": "263594 (As per Census 2011)",
+  "voterCount": "227167 (As per 2024 Elections)",
+  "area": "847",
+  "mandals": "Hiramandalam-R,Kothuru-R,L.N.Peta-R,Meliaputti-R,Pathapatnam-R",
+  "revenueVillages": "242",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\">Pathapatnam Assembly Constituency, established in 1951, is an important segment of Srikakulam district and falls under the Srikakulam Parliamentary Constituency. It comprises five mandals&#8212;Pathapatnam, Meliaputti, L.N. Peta, Kothuru, and Hiramandalam&#8212;with Pathapatnam as the administrative hub. Situated close to the Odisha border, it reflects cultural diversity and benefits from cross-border trade. The region&#8217;s economy is primarily agrarian, supported by fertile plains, hilly tracts, and rivers like the Mahendratanaya and Vamsadhara that provide irrigation for crops such as paddy, maize, pulses, and sugarcane, alongside aquaculture and horticulture. Known for its temples, fairs, and festivals, the constituency also has improving education and healthcare infrastructure, though rural areas still depend heavily on government services. Connectivity is provided by APSRTC bus services and road links to Srikakulam and Palasa, with railway access at Palasa and Srikakulam Road stations. With its strategic location, agricultural base, and evolving social infrastructure, Pathapatnam plays a vital role in the district&#8217;s growth and development.</p>",
+  "constituencyMap": "50\\MAP\\50IMAGE2025090310463259898_Pathapatnam.jpg",
+  "geography": "<p class=\"MsoNormal\">Pathapatnam, in Srikakulam district, sits at an elevation of 82 meters (272 feet) on the banks of the Mahendratanaya River, a tributary of the Vamsadhara. Originating in the Eastern Ghats, this river flows through Pathapatnam before merging with the Vamsadhara at Kallata&#8211;Avalingi in Hiramandalam Mandal, supporting irrigation and water needs. The region has a tropical climate marked by scorching summers exceeding 40&#176;C, seasonal storms, and heavy rains. Though inland, its climate is influenced by Srikakulam district&#8217;s 193 km Bay of Bengal coastline, which enriches the area&#8217;s biodiversity.</p>",
+  "populationDesc": "<p class=\"MsoNormal\">The constituency has a total&#10;population of&#160;2,63,594&#160;people,&#10;comprising&#160;1,30,989males&#160;and&#160;1,31,647&#160;females. The&#160;sex&#10;ratio&#160;stands at&#160;1,010 females for every 1,000 males. There&#10;are&#160;67,329&#160;households&#160;in the constituency.</p>",
+  "administrationDesc": "<p class=\"MsoNormal\">Pathapatnam Constituency consists&#10;of Five mandals Pathapatnam, Meliaputti, L.N. Peta, Kothuru, and Hiramandalam.</p>",
+  "educationHealthcareDesc": "<p><span>Across the five mandals, there are 292 MPP primary schools, 40 upper primary schools, and 46 ZPP high schools, along with 25 private schools and one KGBV in each mandal. Higher education includes seven government and seven private junior colleges, while Pathapatnam alone has a government degree college supported by five private degree colleges across other mandals. In health services, the region has two area hospitals, 10 PHCs, and 72 sub-centers, with 183 ANMs and 310 ASHAs delivering primary care. Emergency facilities include six 104 FDHS vehicles, five 108 ambulances, and five Thalli Bidda Express services, ensuring at least one in every mandal</span></p>",
+  "culturalheritageDesc": "<p class=\"MsoNormal\">The Pathapatnam constituency is home to notable places of worship that reflect its spiritual and cultural heritage. Sri Nilamani Durga Devalayam is a revered temple dedicated to Goddess Durga, attracting devotees during festivals and special occasions. Equally significant is the Sri Radha Govindha Swamy Devalayam, a temple devoted to Lord Krishna and Radha, which serves as a center for religious activities and community gatherings. Together, these temples highlight the constituency&#8217;s rich traditions and its importance as a center of faith and devotion.</p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "5Ens3Sm+yD3Ko2Yj3dZxmA==",
+   "economy_Text": "<p><span>Economic Vision Plan for Pathapatnam outlines a strategic roadmap to transform the constituency into a resilient, inclusive economic hub by 2047, aligning with the Swarna Andhra @2047 vision. With a Gross Constituency Domestic Product (GCDP) of &#8377;3,369.00 crores in 2023-24, the economy is projected to reach &#8377;7,092.00 crores by 2028-29, driven by advancements in agriculture, industry, and services. Agriculture, contributing 36.61% of GCVA (&#8377;1,144 crores), will grow to 16.72% (&#8377;10,621 crores) by 2047-48 through irrigation upgrades via the Vamsadhara project, horticulture, aquaculture, and agri-processing facilities, boosting productivity and rural incomes. The industrial sector, at 20.20% of GCVA (&#8377;631 crores), is set to expand to 15.54% (&#8377;9,869 crores) by 2047-48, focusing on MSMEs, food and seafood processing, coir, cashew industries, and green energy initiatives like solar installations, supported by industrial clusters along NH-16. The service sector, currently 43.19% of GCVA (&#8377;1,350 crores), is projected to dominate at 67.74% (&#8377;43,019 crores) by 2047-48, propelled by ecotourism at B.R.R. Vamsadhara Reservoir and Gotta Barrage, festival tourism, education, healthcare, digital services, and trade. Infrastructure upgrades, skill hubs, digital job platforms, and self-employment schemes will empower the skilled youth, enhancing employment and economic diversification</span></p>",
+   "gcdP_Growth_Text": "<p><span>Pathapatnam&#8217;s Economic Vision Plan targets a Gross Constituency Domestic Product (GCDP) of &#8377;7,092.00 crores by 2028-29, up from &#8377;3,369.00 crores in 2023-24. With a 15% annual growth rate, the plan leverages agriculture, industry, and services, aiming for sustainable, inclusive economic transformation aligned with Swarna Andhra @2047.</span></p>",
+   "createdDate": "2025-09-03T12:46:32.74"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 3369.0,
+   "cagR_Pct": 16.43,
+   "targetAmountCrore": 7092.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1406.0,
+   "cagR_Pct": 18.26,
+   "targetAmountCrore": 3035.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 564.0,
+   "cagR_Pct": 17.44,
+   "targetAmountCrore": 1184.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1147.0,
+   "cagR_Pct": 13.58,
+   "targetAmountCrore": 2291.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 50,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 45.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 18.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 37.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 50,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 43,
+   "constituencyId": 50,
+   "name": "Mamidi Govinda Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": "50\\mla\\50IMAGE2025090220241564774_Pathapatanam MLA 24-29.jpg"
+  },
+  {
+   "id": 645,
+   "constituencyId": 50,
+   "name": "Reddy Shanthi",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 950,
+   "constituencyId": 50,
+   "name": "Kalamata Venkata Ramana Murthy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 648,
+   "constituencyId": 50,
+   "name": "Vijaya Ramaraju Setrucharla",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

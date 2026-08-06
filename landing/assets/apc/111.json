@@ -1,0 +1,197 @@
+{
+ "code": 111,
+ "name": "Tuni",
+ "district": "Kakinada",
+ "logoUrl": "assets/constituencies_logos/tuni.png",
+ "profile": {
+  "population": "274183 (As per Census 2011)",
+  "voterCount": "224702 (As per 2024 Elections)",
+  "area": "479.57",
+  "mandals": "Kotananduru-R,Thondangi-R,Tuni-R,Tuni-U",
+  "revenueVillages": "53",
+  "municipal_wards": "30",
+  "municipalities": "Tuni",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Tuni Constituency consists of three mandals, i.e., Tuni, Thondangi, and Kotananduru, and one  municipality. It is located in the Kakinada district of Andhra Pradesh, with Tuni serving as the headquarters.&#10;<p>Tuni, a prominent constituency in the Kakinada district of Andhra Pradesh, is known for its fertile agricultural lands, abundant water resources, and cultural heritage. The constituency is strategically located, connecting major urban centers like Kakinada, 70 km away; Rajahmundry, 100 km away; and Visakhapatnam, 100 km away. Spanning an area of 479.57 sq. km, Tuni offers significant potential in agriculture, horticulture, aquaculture, and ecotourism. Targeted interventions can promote balanced and sustainable development in this diverse and resource-rich constituency.</p><p><br></p>",
+  "constituencyMap": "111\\MAP\\111IMAGE2025090213143163655_tuni.jpg",
+  "geography": "The Tuni constituency is located in the Kakinada district. spans 479.57 sq. km, and the coastal length of the constituency is 16.8 km. It shares boundaries with the Pithapuram, Narasipatnam, Prathipadu, and Payakaraopeta constituencies.",
+  "populationDesc": "&#10;<p><span>The total population (2011 Census): 212,899 people, with approximately 80% residing in rural areas and 20% in urban areas. There are 67397 households. The sex ratio stands at 997 females per 1,000 males.</span></p><p><br></p>",
+  "administrationDesc": "Tuni Constituency is one of the assembly constituencies in Kakinada District, with four mandals: Tuni, Thondangi, Kotananduru, and Tuni municipality.",
+  "educationHealthcareDesc": "One area hospital, Madhava eye hospital, Adi kavi nannaya university",
+  "culturalheritageDesc": "Thalupulamma lova temple, sri gopala krishna swamy temple, cococnut groves and cashew processing is a major identity"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Ywbblpk0KqnY9cGycDvGVg==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Tuni&#8217;s Economy at a Glance</h2><p><br></p>The Economic Vision Plan for Tuni lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;7,129 crores in 2023-24, Tuni is projected to expand steadily, reaching &#8377;14,428&#160; crores by 2028-29, marking a significant transformation across agriculture, industry, and services sectors.&#160;The agriculture sector, currently 38.97% of GCDP (&#8377;2570 crores) in 2023-24,&#160;industrial sector, contributing 26.97% of GCDP (&#8377;1779 crores) in 2023-24 and&#160;service sector, currently 34.06% of GCDP (&#8377;2,246 crores) in 2023-24.",
+   "gcdP_Growth_Text": "<p>Tuni is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like Fishing &amp; Aquaculture, manufacturing and livestock.<span>&#160;This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and economic hub by 2047.</span></p>",
+   "createdDate": "2025-09-07T09:13:14.36"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7129.0,
+   "cagR_Pct": 13.24,
+   "targetAmountCrore": 14428.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2246.0,
+   "cagR_Pct": 14.15,
+   "targetAmountCrore": 4441.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1779.0,
+   "cagR_Pct": 19.11,
+   "targetAmountCrore": 4258.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2570.0,
+   "cagR_Pct": 12.78,
+   "targetAmountCrore": 4648.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 111,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 34.06
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 26.97
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 38.97
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 111,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 27,
+   "constituencyId": 111,
+   "name": "Smt Yanamala Divya",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": "111\\mla\\111IMAGE2025090213255541717_Tuni_MLA_Photo.jpg"
+  },
+  {
+   "id": 258,
+   "constituencyId": 111,
+   "name": "Dadisetti Raja",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 259,
+   "constituencyId": 111,
+   "name": "Dadisetti Raja",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 260,
+   "constituencyId": 111,
+   "name": "Raja Vatsvaya Venkata Krishnam raju",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 261,
+   "constituencyId": 111,
+   "name": "Yanamala Rama krishnudu",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

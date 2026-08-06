@@ -1,0 +1,197 @@
+{
+ "code": 116,
+ "name": "Tadepalligudem",
+ "district": "West Godavari",
+ "logoUrl": "assets/constituencies_logos/tadepalligudem.png",
+ "profile": {
+  "population": "262620 (As per Census 2011)",
+  "voterCount": "215325 (As per 2024 Elections)",
+  "area": "335.56",
+  "mandals": "Pentapadu-R,Tadepalligudem-R,Tadepalligudem-U",
+  "revenueVillages": "44",
+  "municipal_wards": "35",
+  "municipalities": "Tadepalligudem",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\"><span lang=\"EN-US\">Tadepalligudem Assembly Constituency's Vision Action Plan (2024-29) leverages its agricultural strength, industrial base, construction sector, and service sector, aligning with Andhra Pradesh's Swarna Andhra@2047 vision and India's Viksit Bharat@2047 agenda. The constituency comprises Tadepalligudem and Pentapadu mandals and Tadepalligudem municipality.Renowned for its cultural heritage and historical landmarks, Tadepalligudem is home to educational institutions like NIT University, Horticultural University, and Adikavi Nannayya University. The constituency boasts industries like Food Fats &amp; Fertilizers, P.K.S, Gamini, and Banian &amp; Underwear companies. Tadepalligudem is a significant hub for agriculture, horticulture, fish tanks, and aquaculture With excellent connectivity to major urban centers like West Godavari and Rajahmundry, Tadepalligudem enhances its potential for trade and industrial development.&#160;</span></p>",
+  "constituencyMap": "116\\MAP\\116IMAGE2025090311481170001_Tadepalligudem.png",
+  "geography": "<span lang=\"EN-US\">Tadepalligudem&#10;spans an area of 335.56 sq. km.</span><span>It shares&#10;boundaries with Tanuku, Unguturu &amp; Nidadavolu constituencies, and is&#10;strategically positioned within the West Godavari district of Andhra Pradesh.The constituency predominantly features fertile alluvial soils.</span><p class=\"MsoNormal\"><span lang=\"EN-US\"></span></p>",
+  "populationDesc": "<span>Tadepalligudem Constituency Total Population Is 2,62,620 people, with 1,31,277 males and 1,31,343 females. The sex ratio stands at 998 females per 1,000 males.</span><span lang=\"EN-US\">There&#10;are 73,646 households.</span>",
+  "administrationDesc": "<span lang=\"EN-US\">Tadepalligudem Constituency consists of two mandals:&#10;Tadepalligudem, Pentapadu and One municipality Tadepalligudem.&#160;</span><span>These are located in the West Godavari district of Andhra&#10;Pradesh, with Tadepalligudem serving as the headquarters.</span><p class=\"MsoNormal\"><span lang=\"EN-US\"></span></p>",
+  "educationHealthcareDesc": "<span lang=\"EN-US\"><span lang=\"EN-US\">The&#10;constituency is home to 132 primary schools, 41 upper primary schools, and 33&#10;high schools&#160;</span><span lang=\"EN-US\">For&#10;higher education, there are 20 junior colleges, 7 degree colleges, 2 Industrial&#10;Training Institute (ITI), and 3 engineering colleges.</span>The&#10;constituency is equipped with 1 Community Health Centers (CHCs), 84 Urban&#10;Health Centers (UHCs), 4 Primary Health Centers (PHCs) and 8 sub-centers, 82&#10;ensuring accessible healthcare services across the region.&#160;</span>",
+  "culturalheritageDesc": "<span>Tadepalligudem is home to the Educational Hub i.e., NIT university, Horticultural University, Adikavi Nannayya University, Buffallo Research Station, Seed Development &amp; Soil Testing Labs.</span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "9CPN8Fa5gzDHPbJNrBDBQg==",
+   "economy_Text": "<b><font size=\"5\">Tadepalligudem&#8217;s Economy at a Glance</font></b><p><b><br></b></p><p>The Economic Vision Plan for Tadepalligudem lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of Rs. 6,647 crores in 2023-24, Tadepalligudem is projected to expand steadily, reaching Rs.13,402 crores by 2028-29, marking a significant transformation across agriculture, industry, and services sectors.&#160;&#160;The industrial sector accounts for 19.63%, agriculture and allied activities contribute 29.05% and service sector supports with 51.32%.&#160;</p><p><br></p>",
+   "gcdP_Growth_Text": "Tadepalligudem is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like Promoting crop diversification, modernizing irrigation, developing aquaculture, enhancing livestock and dairy, and expanding organic farming<span>. This growth trajectory aligns with the long-term vision of making the constituency a vibrant and economic hub by 2047.</span>",
+   "createdDate": "2025-09-03T13:26:53.17"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6647.0,
+   "cagR_Pct": 15.06,
+   "targetAmountCrore": 13402.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3156.0,
+   "cagR_Pct": 14.98,
+   "targetAmountCrore": 6343.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1207.0,
+   "cagR_Pct": 15.56,
+   "targetAmountCrore": 2487.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1786.0,
+   "cagR_Pct": 15.09,
+   "targetAmountCrore": 3607.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 116,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 51.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 20.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 29.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 116,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 65,
+   "constituencyId": 116,
+   "name": "Bolisetty Srinivas",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Janasena Party",
+   "photo": "116\\mla\\116IMAGE2025090311513714882_Tadepalligudem_MLA_Photo.jpg"
+  },
+  {
+   "id": 507,
+   "constituencyId": 116,
+   "name": " Kottu Satyanarayana",
+   "termFrom": 2014,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 509,
+   "constituencyId": 116,
+   "name": "Pydikondala Manikyala Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "BJP",
+   "photo": ""
+  },
+  {
+   "id": 510,
+   "constituencyId": 116,
+   "name": "Eli Venkata Madhusudhanarao (Nani)",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "PRP",
+   "photo": ""
+  },
+  {
+   "id": 513,
+   "constituencyId": 116,
+   "name": "Kottu Satyanarayana",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

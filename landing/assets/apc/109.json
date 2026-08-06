@@ -1,0 +1,197 @@
+{
+ "code": 109,
+ "name": "Peddapuram",
+ "district": "Kakinada",
+ "logoUrl": "assets/constituencies_logos/peddapuram.png",
+ "profile": {
+  "population": "261378 (As per Census 2011)",
+  "voterCount": "215095 (As per 2024 Elections)",
+  "area": "291.42",
+  "mandals": "Peddapuram-R,Peddapuram-U,Samalkot-R,Samalkot-U",
+  "revenueVillages": "41",
+  "municipal_wards": "60",
+  "municipalities": "Peddapuram, Samalkot",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<span>Peddapuram Constituency consists of 2 mandals i.e., Peddapuram and Samalkota and 2 Municipalities i.e., Peddapuram Municipality and Samalkota Municipality which are located in Kakinada district and its head quarter is Peddapuram. Peddapuram revenue division is an administrative division in the Kakinada district. The Constituency is strategically located, connecting major urban centers like Kakinada, just 22 km away, Rajahmundry, 40 km away and Visakhapatnam 158 km away. Spanning an area of 291.46 sq. km, Peddapuram offers significant potential in agriculture, aquaculture and eco-tourism.Peddapuram geography is characterized by fertile alluvial soils and a network of rivers and canals, including the Yeleru canal, which is a lifeline for irrigation. The Constituency has 57% of its land under agriculture and horticulture, primarily cultivating Paddy, Oil palm and Tapioca. Peddapuram Constituency, located in Kakinada district, comprises two mandals (Peddapuram and Samalkota) and two municipalities. Strategically positioned near Kakinada (22 km), Rajahmundry (40 km), and Visakhapatnam (158 km), it boasts fertile agricultural lands, abundant water resources, and cultural heritage. Spanning 291.46 sq. km, Peddapuram offers significant potential in agriculture, aquaculture, and eco-tourism. The geography is characterized by fertile alluvial soils and a network of rivers and canals, including the Yeleru canal, which supports irrigation. Key statistics:</span><p class=\"MsoNormal\"><span><span></span></span></p><p class=\"MsoBodyText\"><span lang=\"EN-US\"></span></p>",
+  "constituencyMap": "109\\MAP\\109IMAGE2025090313040617314_peddapuram map.png",
+  "geography": "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"768\"><tbody><tr height=\"57\">&#10;  <td height=\"57\" class=\"xl66\" width=\"768\">Peddapuram constituency is located to kakinada district.&#160;&#10;  spans&#160;<span>291.46 s</span>&#160;&#160;<span>Sq.KMs</span><span>&#160; </span><span>It shares boundaries with jaggampeta,pithapuram, prathipadu,kakinada constituencies.</span><br></td></tr></tbody></table><br>",
+  "populationDesc": "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"768\"><tbody><tr height=\"97\">&#10;  <td height=\"97\" class=\"xl66\" width=\"768\">The&#10;  total Population 261378 (2011 Census): people, with approximately 1.30 lakhs males and 1.31lakhs females. There are 78171 house holds. The sex ratio stands&#10;  at 1005 females per 1,000 males.</td></tr></tbody></table>",
+  "administrationDesc": "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"768\"><tbody><tr height=\"98\">&#10;  <td height=\"98\" class=\"xl66\" width=\"768\">Peddapuram&#160; Constituency is one of the&#160; assembly&#10;  constituencies in kakinada District it&#160;<span>consists<span> </span>of<span> </span>2<span> </span>mandals<span>&#10;</span>i.e.,<span> </span>Peddapuram<span> </span>and<span>&#10;Samalkota</span>&#160;</span></td></tr></tbody></table>",
+  "educationHealthcareDesc": "<span>2 CHCs, 3 PHCs, 25 Sub-Centres&#160;</span><span>2 veterinary hospitals &amp;&#160;</span><span>108 Primary Schools, 15 Upper Primary Schools, 28 High&#10;Schools&#160;<span>2 Engineering College&#160;</span><span>5 Junior Colleges, 6 Degree&#160;</span>&#160;</span>",
+  "culturalheritageDesc": "<span>Kumara Bheemeswara Swamy temple,&#160;<span>Sri Sringara Vallabha Swami Temple,&#160;</span><span>Aranyavasa&#8217;.&#8220;Bheemunipadalu&#8217; (prints of Bheema&#8217;s&#10;feet)</span>&#160;</span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "o0TIvSXmH2LvAUfBBQWDPg==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Peddapuram&#8217;s Economy at a Glance</h2><p><br></p><p>The Economic Vision Plan for Peddapuram lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;7,835 crores in 2023-24, Peddapuram is projected to expand steadily, reaching &#8377;16,376 crores by 2028-29, marking a significant transformation across agriculture, industry, and services sectors.&#160;The Gross Constituency Domestic Product (GCDP) reached &#8377;7,835Crores and the total GVA of the Constituency is 7,248cr. Agriculture &amp; Allied Sector contribution is 2,101cr. with a share of 28.99%. The industry sector contribution is 2,593 cr. with share of 35.78%. The services sector contribution is 2554cr. with share of 35.23%. The per capita income of the Constituency is Rs.2,48,259.</p>",
+   "gcdP_Growth_Text": "<p>Peddapuram is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like Real estate, Ownership of Dwellings, manufacturing, livestock and&#160;<span>&#160;agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and economic hub by 2047.</span></p>",
+   "createdDate": "2025-09-07T08:50:29.407"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7835.0,
+   "cagR_Pct": 16.21,
+   "targetAmountCrore": 16376.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2554.0,
+   "cagR_Pct": 14.98,
+   "targetAmountCrore": 5112.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2593.0,
+   "cagR_Pct": 20.03,
+   "targetAmountCrore": 6407.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2101.0,
+   "cagR_Pct": 11.65,
+   "targetAmountCrore": 3631.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 109,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 35.23
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 35.78
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 28.99
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 109,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 86,
+   "constituencyId": 109,
+   "name": "Nimmakayala Chinnarajappa",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": "109\\mla\\109IMAGE2025090314114535270_Peddapuram_MLA_Photo.jpg"
+  },
+  {
+   "id": 282,
+   "constituencyId": 109,
+   "name": "Nimmakayala Chinnarajappa",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 284,
+   "constituencyId": 109,
+   "name": "Nimmakayala Chinnarajappa",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 285,
+   "constituencyId": 109,
+   "name": "Pantam Gandhi Mohan",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 287,
+   "constituencyId": 109,
+   "name": "Thota Gopala Krishna",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

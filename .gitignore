@@ -29,6 +29,7 @@ optimized_prompt.txt
 streamlit_secrets.toml
 
 # large local artifacts (rebuildable, must never be pushed)
+corpus_files/gis/assembly_constituencies/
 voyage_out/
 pilot_chunks.pkl
 pilot_index.npz
@@ -45,3 +46,6 @@ KEYS.md
 .env.bak.*
 app.py.bak.*
 *.jsonl.bak
+
+# scratch staging page — would be published if committed under landing/
+landing/_audit_stage.html

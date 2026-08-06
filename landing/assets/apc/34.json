@@ -1,0 +1,209 @@
+{
+ "code": 34,
+ "name": "Kamalapuram",
+ "district": "YSR Kadapa",
+ "logoUrl": "34\\Logo\\34IMAGE2026042913201836584_Pushpagiri temple.png",
+ "profile": {
+  "population": "249734 (As per Census 2011)",
+  "voterCount": "204169 (As per 2024 Elections)",
+  "area": "1993.06",
+  "mandals": "C.K.Dinne-R,Chennur-R,Kadapa-U,Kamalapuram-R,Kamalapuram-U,Pendlimarri-R,Vallur-R,Veerapunayunipalle-R",
+  "revenueVillages": "128",
+  "municipal_wards": "4",
+  "municipalities": "Kamalapuram (Nagar Panchayath)",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "In Kamalapuram Constituency,the administrative headquarters is located at Kamalapuram town, which serves as a hub for agricultural trade and regional connectivity.&#10;The constituency showcases diverse geographical and economic characteristics, from the black cotton soils and irrigated fields of CK Dinne and Pendlimarri to the mineral-rich uplands of VN Palle and the historically significant temple complex of Pushpagiri in Vallur. Key infrastructure assets include the Kadapa airport located in Vallur Mandal and the medium-scale Sarvaraya Sagar Project in VN Palle. Major transport corridors like the Kadapa&#8211;Tadipatri road and the newly sanctioned national highways passing through VN Palle enhances its strategic value.&#10;With a strong base in paddy, cotton, pulses, and horticulture, coupled with untapped potential in mining and solar energy, the constituency is poised for cross-sectoral development. The vision targets an annual economic growth rate of 12 to 14 percent across the primary, secondary, and tertiary sectors, supported by investments in irrigation, rural infrastructure, education, and natural resource conservation.&#10;<br>",
+  "constituencyMap": "34\\MAP\\34IMAGE2025090416032134144_kamalprm.jpg",
+  "geography": "Kamalapuram Constituency is geographically positioned in a central-western corridor of YSR Kadapa District. It is bounded by Kadapa town to the east, Mydukur region to the north, and Tadipatri and Vempalle corridors to the west and south respectively. The soil profile across the constituency is diverse. Black cotton soils,Red sandy , loamy soils and Mixed soil .",
+  "populationDesc": "The Kamalapuram Constituency has a total population of approximately 2,49,734,Males-125804 and Females-123930.Households: There are about 62,639 households. The sex ratio stands at around 985 females per 1,000 males",
+  "administrationDesc": "Kamalapuram Constituency is situated in the central-western part of YSR Kadapa District and consists of six mandals: Kamalapuram, Pendlimarri, CK Dinne, Chennur, Vallur, and Veerapunayunipalle (commonly known as VN Palle). The administrative headquarters is located at Kamalapuram town",
+  "educationHealthcareDesc": "Kamalapuram Constituency ,Education : Primary Schools-295,&#10;Upper Primary Schools-36,&#10;High Schools-64,&#10;Junior Colleges-6,&#10;Degree Colleges-1,&#10;Polytechnics-1,&#10;Engineering Colleges-6,&#10;Agriculture Colleges-1, Health care : Community Health Centres-1,&#10;Primary Health Centres (Rural)-7,&#10;Health Sub Centres-67",
+  "culturalheritageDesc": "Pushpagiri Temple in Kamalapuram Constituency holds immense religious and cultural value. Efforts focus on sustainable tourism, preserving its ancient heritage and natural setting."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "SSnk0mXO1+vCH4KfqOMJPg==",
+   "economy_Text": "<p dir=\"ltr\">Kamalapuram's economy is poised for robust growth, with the Gross Constituency Domestic Product (GCDP) projected to double from &#8377;7,391 crores in 2023-24 to &#8377;14,807 crores by 2028-29, achieving a CAGR of 15%.&#160;</p><p dir=\"ltr\">The agriculture sector, led by horticulture and livestock, will grow at a 15.23% CAGR, driven by crop diversification, modern irrigation, and dairy advancements.&#160;</p><p dir=\"ltr\">The industry sector, with a slightly higher CAGR of 15.83%, will see its share rise to 25.3%, fueled by construction, renewable energy, and industrial corridors like the Kopparthy Node.&#160;</p><p dir=\"ltr\">The services sector, the largest contributor, will grow at 14.23%, supported by digital transformation, tourism, and logistics.&#160;</p><p dir=\"ltr\">Strategic investments in infrastructure, skill development, and policy reforms underpin this balanced economic diversification and growth trajectory.</p>",
+   "gcdP_Growth_Text": "<span>Kamalapuram is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like trade,</span><span>&#160;infrastructure, transport and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant industrial and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span>",
+   "createdDate": "2025-09-05T09:52:09.82"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7391.0,
+   "cagR_Pct": 14.91,
+   "targetAmountCrore": 14807.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2753.0,
+   "cagR_Pct": 14.23,
+   "targetAmountCrore": 5351.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1669.0,
+   "cagR_Pct": 15.83,
+   "targetAmountCrore": 3479.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2418.0,
+   "cagR_Pct": 15.23,
+   "targetAmountCrore": 4912.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 34,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 40.24
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 24.41
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 35.35
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 34,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 9,
+   "sectorName": "Renewable Energy",
+   "description": "Solar, wind, green hydrogen, and hybrid energy projects with grid integration.",
+   "imageUrl": "assets/img/sectors/renewable-energy.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 434,
+   "constituencyId": 34,
+   "name": "Sri Krishna Chaitanya Reddy Putta",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 436,
+   "constituencyId": 34,
+   "name": "Pochimareddy Ravindranath Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 437,
+   "constituencyId": 34,
+   "name": "Pochimareddy Ravindranath Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 438,
+   "constituencyId": 34,
+   "name": "Gandluru Veera Siva Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 440,
+   "constituencyId": 34,
+   "name": "Gandluru Veera Siva Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

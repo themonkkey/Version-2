@@ -1,0 +1,197 @@
+{
+ "code": 179,
+ "name": "Anantapur Urban",
+ "district": "Ananthapur",
+ "logoUrl": "assets/constituencies_logos/anantapur-urban.png",
+ "profile": {
+  "population": "334456 (As per Census 2011)",
+  "voterCount": "281403 (As per 2024 Elections)",
+  "area": "33.71",
+  "mandals": "Anantapur-U,Ananthapuram Rural-R",
+  "revenueVillages": "4",
+  "municipal_wards": "50",
+  "municipalities": "Anantapur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Anantapur constituency is a region with significant potential for growth and development. Located in the heart of Rayalaseema, it boasts excellent connectivity via National Highway 44, facilitating easy access to major cities and trade hubs. One of the constituency's greatest strengths is its educational infrastructure, with prestigious institutions which play a vital role in providing quality education and research opportunities, contributing to the region's human capital and innovation ecosystem. With its strategic location and strong educational foundation, the Anantapur constituency is well-positioned to drive growth and development in key sectors, including construction and services. By leveraging these advantages, the region can achieve an ambitious annual growth target of and become a thriving hub of economic activity.&#160; Anantapur Urban Constituency boasts a strong social infrastructure, with well-developed educational institutions, healthcare facilities, water and sanitation systems, and civic amenities managed by the Anantapur Municipal Corporation and the local grama panchayats.&#10;<br>",
+  "constituencyMap": "179\\MAP\\179IMAGE2025090815035420839_ATP MAP_page-0001.jpg",
+  "geography": "Anantapur Constituency is situated on the south side of the district, covering a geographical area of 33.71 square kilometers.The constituency's soil composition is predominantly red soils and while black soils.",
+  "populationDesc": "The total population of Anantapur Urban is indeed 3,06,465, consisting of 1,54,350 males and 1,52,115 females. The region has a literacy rate of 81.23%, with a sex ratio of 977 females for every 1000 male literacy rate of 64.28%.&#160;",
+  "administrationDesc": "The Anantapur constituency comprises Anantapur Municipal Corporation, A. Narayanapuram, Anantapur Rural, Rajiv Colony, and Rudrampet.This region comprises 2 revenue villages, 6 habitations, and 1 Municipal Corporation.",
+  "educationHealthcareDesc": "The Anantapur Urban Constituency has a diverse range of educational institutions, including JNTU Anantapur, Government Medical College, Sri Satya Sai Institute of Higher Learning, and Police Training College,Sri Venkateswara University and&#160; Skill Lab (CRTC) Center for teaching and training medical and nursing students,.Health care :&#160; Government General hospital with a capacity of 500 beds, a Super Specialty Hospital established under the PMSSY Phase-III&#160; with&#160; 200-bed capacity,1 Primary Health Centers (PHCs), 10 sub-centers and 3 Ayush.",
+  "culturalheritageDesc": "Anantapur Urban Constituency is a vibrant cultural hub with a rich historical and spiritual legacy, deeply rooted in the traditions of Andhra Pradesh and the historical Vijayanagara Empire. Its cultural significance is reflected in its landmarks, festivals, and diverse population Culturally. Oliga is a traditional and famous sweet delicacy in Anantapur.Tourist places : Sri Chennakesava Swamy Temple,The Clock Tower in Anantapur, built in 1947, serves as a memorial to India's freedom fighters,Kalluru Subbarao Archeological Museum."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "GZRTUeG+FZsBftxb8lRyvg==",
+   "economy_Text": "<p dir=\"ltr\">Anantapur Urban Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;7,479 crores in 2023-24, is projected to grow to &#8377;17,046.19 crores by 2028-29, driven by a sustainable annual growth rate of 9-13%.&#160;</p><p dir=\"ltr\">The Economic Vision Plan leverages sectoral strengths, enhances infrastructure, and promotes industrial diversification to foster an investment-friendly and employment-driven region.&#160;</p><p dir=\"ltr\">The <strong>Services Sector</strong>, valued at &#8377;5,540.79 crores in 2023-24 with a 12.52% growth rate, is expected to reach &#8377;12,372 crores by 2028-29, propelled by technological advancements and service-based enterprises.&#160;</p><p dir=\"ltr\">The <strong>Industries Sector</strong>, contributing &#8377;1,358.91 crores with an 11.62% growth rate, is forecasted to grow to &#8377;3,731 crores, supported by industrial expansion.&#160;</p><p dir=\"ltr\">The <strong>Agricultural &amp; Allied Sector</strong>, though smaller at &#8377;19.11 crores with a 9.57% growth rate, is anticipated to reach &#8377;48 crores, driven by sustainable agricultural practices.&#160;</p><p dir=\"ltr\">This strategy ensures inclusive and resilient economic progress, positioning Anantapur Urban as a vibrant economic hub.</p>",
+   "gcdP_Growth_Text": "<p dir=\"auto\">Anantapur Urban&#8217;s GCDP, at &#8377;7,479 crores in 2023-24, is projected to reach &#8377;17,046.19 crores by 2028-29, with a steady 9-13% annual growth rate. The Services (12.52%), Industries (11.62%), and Agricultural &amp; Allied (9.57%) sectors drive this progress toward a vibrant economic hub by 2047</p>",
+   "createdDate": "2025-09-05T11:33:10.753"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7479.0,
+   "cagR_Pct": 13.57,
+   "targetAmountCrore": 17046.19,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 5540.79,
+   "cagR_Pct": 12.52,
+   "targetAmountCrore": 12372.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1358.91,
+   "cagR_Pct": 11.62,
+   "targetAmountCrore": 3731.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 19.11,
+   "cagR_Pct": 9.57,
+   "targetAmountCrore": 48.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 179,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 80.08
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.64
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 0.28
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 179,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 631,
+   "constituencyId": 179,
+   "name": "Sri Daggupati Venkateswara Prasad",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 634,
+   "constituencyId": 179,
+   "name": "Anantha Venkatarami Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 635,
+   "constituencyId": 179,
+   "name": "V. Prabhakar Chowdary",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 636,
+   "constituencyId": 179,
+   "name": "Bodimalla Gurunatha Reddy",
+   "termFrom": 2012,
+   "termTo": 2014,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 637,
+   "constituencyId": 179,
+   "name": "B Gurunatha Reddy",
+   "termFrom": 2009,
+   "termTo": 2012,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

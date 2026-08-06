@@ -1,0 +1,209 @@
+{
+ "code": 144,
+ "name": "Tadipatri",
+ "district": "Ananthapur",
+ "logoUrl": "assets/constituencies_logos/tadipatri.png",
+ "profile": {
+  "population": "302394 (As per Census 2011)",
+  "voterCount": "248880 (As per 2024 Elections)",
+  "area": "1248.13",
+  "mandals": "Peddapappur-R,Peddavadugur-R,Tadipartri-R,Tadipatri-U,Yadiki-R",
+  "revenueVillages": "82",
+  "municipal_wards": "36",
+  "municipalities": "Tadipatri",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Tadipatri Assembly Constituency is a significant legislative segment in the Anantapur district of Andhra Pradesh. Established in 1951 as part of the Delimitation Orders, it is one of the seven assembly segments under the Anantapur Lok Sabha constituency. The constituency comprises four mandals: Peddavadugur, Yadiki, Tadipatri (Rural and Urban), and Peddapappur. Historically, Tadipatri derives its name from Tatipalle village, which is located on the banks of the Pennar River. Over the years, it has developed into a crucial industrial hub, known for its cement, granite, and steel industries, making it an economic powerhouse in the region.",
+  "constituencyMap": "144\\MAP\\144IMAGE2025090518283835757_tdipatri.jpg",
+  "geography": "The Tadipatri Assembly Constituency is located in the eastern part of Ananthapuramu District, Andhra Pradesh. This prominent constituency in the Rayalaseema region encompasses four mandals.. It shares boundaries with Banaganapalle and Dhone to the North, Singanamala to the South, Jammalamadugu to the East and Guntakal constituencies to the West.The predominant soil type in the region is black cotton soil.",
+  "populationDesc": "According to the 2011 census, the population of the Tadipatri Assembly constituency has a total population of 3,02,394 people, comprising 1,52,519 males and 1,49,875 females.The constituency has a sex ratio of 982 females per 1,000 males.&#160;",
+  "administrationDesc": "This Tadipatri constituency in the Rayalaseema region encompasses four mandals: Tadipatri, Peddavadugur, Peddapappuru and Yadiki.",
+  "educationHealthcareDesc": "Educational infrastructure&#160; 153 government and 43 private primary schools, 29 government and 31 private upper primary schools, 36 government and 42 private high schools. 6 High Schools attached to junior colleges,4 KGBV schools, 2Model schools, 3 government and private ITI colleges, 3 government &amp; 8 private junior colleges,1government polytechnic and 1private polytechnic, 1 Private Agriculture college, 1 government degree college and 4 private degree colleges, 2 private Engineering colleges. Health care includes 1 Area Hospital, 6 PHCs,4 UHCs, 53Village Health clinics and 2 Ayush dispensaries.",
+  "culturalheritageDesc": "Tadipatri has a rich cultural and historical heritage, with several important landmarks showcasing the Vijayanagara architectural style. The Chintala Venkataramana Swamy Temple ,Bugga RamalingeswaraSwamy Temple,Sri Aswarthanarayana Swami Temple,Alurkona, located 10 km from Tadipatri, is known for the Sri Ranganatha Swamy Temple, builtin 1330 by Yerra maraju. The site also features a waterfall with a perennial spring, making it both a pilgrimage center and a scenic picnic spot."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Y9Pp3Nvjjzlz/19XsqTkqg==",
+   "economy_Text": "<p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Tadipatri's economy is poised for robust growth, with its Gross Constituency Domestic Product (GCDP) projected to rise from &#8377;10,348 crores in 2023&#8211;24 to &#8377;23,585 crores by 2028&#8211;29, achieving a growth rate of approximately 15%.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">This expansion is driven by a shift toward industrialization and services, with the industry sector's share increasing from 32.41% to 37.00% and services slightly declining from 41.52% to 38.70%, while agriculture's contribution dips from 26.07% to 24.50%.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Key growth drivers include infrastructure investments, policy reforms, and technological integration, with notable sub-sector contributions from manufacturing (11.56% growth), horticulture (10.28%), and trade/hospitality (10.22%).&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Thrust areas include infrastructure development, human capital enhancement through education and skills, sustainability via climate-resilient practices, and policy support for MSMEs and digitalization, positioning Tadipatri for a dynamic, service-oriented economy by 2029.</font></p>",
+   "gcdP_Growth_Text": "<font face=\"Times New Roman\" size=\"4\">By 2029, <strong>Industry overtakes Agriculture in share (37% vs 24.5%)</strong>, while <strong>Services remain the largest contributor (38.7%)</strong>. This marks Tadipatri&#8217;s transition toward an urban-industrial-service economy</font>",
+   "createdDate": "2025-09-05T23:04:48.807"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 10348.0,
+   "cagR_Pct": 14.48,
+   "targetAmountCrore": 23585.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3975.0,
+   "cagR_Pct": 11.41,
+   "targetAmountCrore": 8648.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 3102.0,
+   "cagR_Pct": 13.31,
+   "targetAmountCrore": 8268.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2496.0,
+   "cagR_Pct": 10.49,
+   "targetAmountCrore": 5475.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 144,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 41.52
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 32.41
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 26.07
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 144,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 15,
+   "sectorName": "Medical Tourism",
+   "description": "Development of hospitals, wellness centers, and international patient care services.",
+   "imageUrl": "assets/img/sectors/medical-tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 917,
+   "constituencyId": 144,
+   "name": "J.C. Asmit Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 955,
+   "constituencyId": 144,
+   "name": "Kethireddy Pedda Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 956,
+   "constituencyId": 144,
+   "name": "J. C. Prabhakar Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 958,
+   "constituencyId": 144,
+   "name": "J. C. Diwakar Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 960,
+   "constituencyId": 144,
+   "name": "J. C. Diwakar Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

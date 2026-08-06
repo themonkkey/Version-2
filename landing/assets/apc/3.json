@@ -1,0 +1,197 @@
+{
+ "code": 3,
+ "name": "Bapatla",
+ "district": "Bapatla",
+ "logoUrl": "assets/constituencies_logos/bapatla.png",
+ "profile": {
+  "population": "232754 (As per Census 2011)",
+  "voterCount": "192192 (As per 2024 Elections)",
+  "area": "447.75",
+  "mandals": "Bapatla-R,Bapatla-U,Karlapalem-R,Pittalavanipalem-R",
+  "revenueVillages": "31",
+  "municipal_wards": "34",
+  "municipalities": "Bapatla",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "&#160;The Bapatla constituency holds strategic importance due to its close proximity to Vijayawada city, Gannavaram Airport, and a well-developed network of road and railway transportation. This connectivity significantly enhances its economic potential.&#10;<p>The constituency is well-suited to adopt the 4Ps model&#8212;Public, Private, and People Participation&#8212;for tourism development. With the renowned Suryalanka Beach, Bapatla has strong potential for the establishment of star hotels, mini cinema studios, pre-wedding venues, and other tourism infrastructure.&#10;</p><p>&#160;This district is also home to a significant number of wealthy individuals with a strong heritage and entrepreneurial spirit, which further supports local economic initiatives. Additionally, Bapatla is a growing educational hub, housing numerous prestigious colleges and research centers, adding considerable value to the district&#8217;s development prospects.&#10;</p><p>&#160;The region also boasts fertile mixed soils, supporting a robust agriculture sector, as well as thriving aquaculture activities, laying a strong foundation for allied industries With a dynamic mix of agriculture, aquaculture, industry, and service sectors, Bapatla is emerging as a key economic hub.</p>",
+  "constituencyMap": "3\\MAP\\3IMAGE2025090416220716933_bapatla.jpg",
+  "geography": "Coastal Region: Bapatla is situated in the coastal region of Andhra Pradesh, with a coastline of 13 km on the Bay of Bengal, famously known as Surya Lanka Beach. The River Krishna delta makes Bapatla fertile and suitable for agriculture cum aquaculture due to its plain terrain with minimal elevation changes. The region's coastal plains are characterized by a mix of agricultural land, water bodies, and coastal ecosystems",
+  "populationDesc": "BAPATLA Constituency has a total population of 123,456, with 66% residing in rural areas and 34% in urban areas. The constituency has 63,954 households, with a sex ratio of 998 females per 1,100 males. The literacy rate stands at 72.3%, indicating steady progress in education levels. Agriculture, industries, handloom weaving, and services primarily engage the workforce.",
+  "administrationDesc": "<p><span>Bapatla Constituency has 3 mandals: KARLAPALEM, PITTALAVANIPALEM, and BAPATLA.</span></p><p><br></p>",
+  "educationHealthcareDesc": "Bapatla constituency education system comprises of various schools and well-known colleges offering different curricula and courses, for example: -Agriculture college Bapatla, Food and Technology college of Baptla, Bapatla Engineering college, Pharmacy college, Polytechnic college Etc. forms prominent educational strength to Bapatla literacy. And also it serves the best hospitality for tourists who visits with its beautiful atmosphere along with many hotels and restaurants special in sea food.",
+  "culturalheritageDesc": "The BhavaNarayana Swamy Temple located in mid of Bapatla town, Bapatla constituency is an old temple dedicated to Lord Bhavanarayana, also known as lord Vishnu. This ancient temple, built by Chola King Krimikanta Chola in 1265.It has features of Dravidian architecture and is recognized as a monument of national importance. The main deity, Ksheera Bhavanarayana Swamy, is self-manifested and resides with his consort, Sundarvalli. The temple celebrates Pavitrotsvam and Rathotsavam, attracting thousands of devotees. The temple is situated in Bapatla, Bapatla district, Andhra Pradesh."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "G6Fuij9h43SDEvErKhOnbA==",
+   "economy_Text": "<p><b><font size=\"5\">Bapatla&#8217;s Economy at a Glance</font></b></p><p>Bapatla presents a comprehensive growth strategy to transform the constituency into an economically vibrant, investment-friendly, and employment-driven region. With a Gross Constituency Domestic Product (GCDP) of &#8377;6744 crores in 2023-24, Bapatla is projected to achieve &#8377;138494 crores by 2047-48 and &#8377;14015 crores by 2028-29, reflecting a strong and sustainable annual growth trajectory averaging 12-15%. &#160;As of 2023-24, the economy is led by the agriculture and allied sector, contributing 57.47% to the Gross Value Added (GVA), followed by the service sector at 34.6%, and the industrial sector at 7.93%.</p>",
+   "gcdP_Growth_Text": "Bapatla is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Fishing &amp; Aquaculture, Live stock, and real estate. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.",
+   "createdDate": "2025-09-04T12:11:12.133"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6744.0,
+   "cagR_Pct": 19.86,
+   "targetAmountCrore": 14015.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2174.0,
+   "cagR_Pct": 19.85,
+   "targetAmountCrore": 4486.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 498.0,
+   "cagR_Pct": 19.99,
+   "targetAmountCrore": 1033.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3612.0,
+   "cagR_Pct": 19.84,
+   "targetAmountCrore": 7449.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 3,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 34.6
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 7.93
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 57.47
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 3,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 597,
+   "constituencyId": 3,
+   "name": "VEGESANA NARENDRA VARMA RAJU",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 628,
+   "constituencyId": 3,
+   "name": "Kona Raghupathi\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 630,
+   "constituencyId": 3,
+   "name": "Kona Raghupathi\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 632,
+   "constituencyId": 3,
+   "name": "Gade Venkata Reddy\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 633,
+   "constituencyId": 3,
+   "name": "Gade Venkata Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

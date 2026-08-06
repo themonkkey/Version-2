@@ -1,0 +1,188 @@
+{
+ "code": 101,
+ "name": "Pedana",
+ "district": "Krishna",
+ "logoUrl": "assets/constituencies_logos/pedana.png",
+ "profile": {
+  "population": "210147 (As per Census 2011)",
+  "voterCount": "167622 (As per 2024 Elections)",
+  "area": "560.06",
+  "mandals": "Bantumilli-R,Guduru-R,Kruthivennu-R,Pedana-R,Pedana-U",
+  "revenueVillages": "90",
+  "municipal_wards": "23",
+  "municipalities": "-",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\"><span>The Pedana Assembly&#10;Constituency Vision Action Plan 2024-29 has been meticulously designed to&#10;leverage the constituency's agricultural strength, dynamic industrial base,&#10;thriving construction sector, and robust service sector. This strategic&#10;blueprint aligns with Andhra Pradesh&#8217;s ambitious Swarna Andhra@2047 vision,&#10;which resonates with the national agenda of Viksit Bharat@2047. </span></p>&#10;&#10;<p class=\"MsoNormal\"><span>Pedana Constituency&#10;consists of four mandals: Pedana, Guduru, Bantumilli &amp; Kruthivennu and one municipality&#10;named Pedana Urban. These are located in the Krishna district of Andhra&#10;Pradesh, with Pedana serving as the headquarters. &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Pedana&#10;Constituency has 90 revenue villages, 88 panchayats, 136 hamlet, 150&#10;habitations, 67 village secretariats and 9 ward secretariats.</span></p>&#10;&#10;<p class=\"MsoNormal\"><span>Renowned for its rich&#10;cultural heritage and historical landmarks, Pedana is home to Paidamma temple&#10;and Sri Ganga Parvathi sametha Agastheswara swamy temple. Pedana is home to&#10;Pedana Kalamkari Fabrics from Krishna, Andhra Pradesh, exemplify the region's&#10;rich artistic heritage and craftsmanship. Using traditional techniques, skilled&#10;artisans intricately hand-paint elaborate designs onto fabric, creating&#10;stunning motifs and patterns. Each piece tells a story, often drawing&#10;inspiration from mythology or nature, and reflects the cultural richness of the&#10;region. With their vibrant colors and meticulous detailing, Pedana Kalamkari&#10;Fabrics are cherished as timeless works of art, showcasing Andhra Pradesh's&#10;traditional textile mastery.</span></p>&#10;&#10;<p class=\"MsoNormal\"><span>Pedana constituency&#10;stands out for its significant contributions to agriculture and aquaculture.&#10;Its strategic location, with excellent connectivity to major urban centers like&#10;Machilipatnam, Gudivada, Vijayawada, Narsapuram and Bhimavaram enhances its&#10;potential for trade and industrial development. Additionally, its coastal&#10;region makes it a significant hub for tourism and cultural preservation,&#10;positioning the constituency to achieve an ambitious annual growth target of&#10;15% across all key sectors.&#160;</span></p>",
+  "constituencyMap": "101\\MAP\\101IMAGE2025090311301395898_pedana.png",
+  "geography": "Pedana constituency spans 560.06 sq. km in Krishna district, Andhra Pradesh, with fertile soils supporting extensive paddy cultivation. It has a 74% agricultural land usage, primarily for paddy. Water resources include the Krishna Canal System, rivers, and canals, enhancing agricultural productivity. The 25 km coastal belt offers opportunities for fisheries and aquaculture. Pedana experiences a tropical climate with 1048 mm annual rainfall, conducive to agriculture, but occasionally faces cyclones and heavy rains. Strategic location and resources make it a significant agricultural hub.",
+  "populationDesc": "<p class=\"MsoNormal\">Population (2011 Census):<span> 2,10,147 people, with 1,05,175&#10;males and 1,04,972 females. The sex ratio stands at 973&#10;females per 1,000 males.</span></p>&#10;&#10;<p class=\"MsoNormal\"><br></p>",
+  "administrationDesc": "<span>Pedana Constituency is one of the seven assembly constituencies in Krishna District. It has&#160;</span><span lang=\"EN-US\">Pedana, Guduru, Bantumilli &amp; Kruthivennu</span>",
+  "educationHealthcareDesc": "Pedana has a comprehensive educational landscape with 200 primary schools, 36 upper primary schools, 52 high schools, and several higher education institutions, including 7 junior colleges and 1 engineering college. The constituency also supports students with 2 BC Welfare Hostels. Healthcare infrastructure includes 1 CHC, 8 PHCs, and 68 sub-centers, with 4-104 FDHS vehicles and 4-108 ambulance services. Veterinary care is provided through 2 hospitals and 10 dispensaries, ensuring accessible healthcare services for residents and livestock.",
+  "culturalheritageDesc": "<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160; Pedana is home to significant heritage sites like the Paidamma temple and Sri Ganga Parvathi sametha Agastyeswara swami temple. The area has a diverse cultural landscape with temples, mosques, and churches. Targeted interventions can promote balanced and sustainable development in this resource-rich constituency.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "BAxeEE6cOfQneU8KwRSGkw==",
+   "economy_Text": "<p><b><font size=\"5\">Pedana&#8217;s Economy at a Glance</font></b></p><p>Pedana lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development with a Gross Constituency Value Added (GCVA) of &#8377;12909.29 crores in 2023-24, Pedana is projected to expand steadily, reaching &#8377;237962.39 crores by 2047-48, and &#8377;25586.79 crores by 2028-29 with an annual growth rate of 12&#8211;15%. Currently, agriculture and allied sectors dominate the local economy, contributing 77.75% of the Gross Constituency Value Added (GCVA). The services sector contributes 12.93%, while industry accounts for 9.32%.<br></p><p><br></p><p></p>",
+   "gcdP_Growth_Text": "Pedana is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Fishing &amp; Aquaculture, construction, and Agriculture. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.",
+   "createdDate": "2025-09-04T06:46:33.533"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 13954.37,
+   "cagR_Pct": 16.67,
+   "targetAmountCrore": 25586.79,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1669.59,
+   "cagR_Pct": 44.51,
+   "targetAmountCrore": 10393.99,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1202.71,
+   "cagR_Pct": 37.61,
+   "targetAmountCrore": 3464.66,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 10036.99,
+   "cagR_Pct": 1.7,
+   "targetAmountCrore": 10888.94,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 101,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 12.93
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 9.32
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 77.75
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 101,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 60,
+   "constituencyId": 101,
+   "name": "Kagitha Krishna Prasad",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": "101\\mla\\101IMAGE2025090311464539360_ffd2d03c7c19d62ee15e3ea58e16c7a59d213276.jpg"
+  },
+  {
+   "id": 62,
+   "constituencyId": 101,
+   "name": "Jogi Ramesh",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party (YSRCP)",
+   "photo": "101\\mla\\101IMAGE2025090311494929191_ffd2d03c7c19d62ee15e3ea58e16c7a59d213276.jpg"
+  },
+  {
+   "id": 63,
+   "constituencyId": 101,
+   "name": "Kagitha Venkata Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": "101\\mla\\101IMAGE2025090311504191367_ffd2d03c7c19d62ee15e3ea58e16c7a59d213276.jpg"
+  },
+  {
+   "id": 64,
+   "constituencyId": 101,
+   "name": "Jogi Ramesh",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress (INC)",
+   "photo": "101\\mla\\101IMAGE2025090311513257425_ffd2d03c7c19d62ee15e3ea58e16c7a59d213276.jpg"
+  }
+ ]
+}

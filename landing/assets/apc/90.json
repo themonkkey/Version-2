@@ -1,0 +1,197 @@
+{
+ "code": 90,
+ "name": "Gudivada",
+ "district": "Krishna",
+ "logoUrl": "assets/constituencies_logos/gudivada.png",
+ "profile": {
+  "population": "250130 (As per Census 2011)",
+  "voterCount": "204271 (As per 2024 Elections)",
+  "area": "402.63",
+  "mandals": "Gudivada-R,Gudivada-U,Gudlavalleru-R,Nandiwada-R",
+  "revenueVillages": "76",
+  "municipal_wards": "36",
+  "municipalities": "Gudivada",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<span lang=\"EN-US\">The Gudivada Assembly Constituency Vision Action Plan2024-29 has been meticulously designed to leverage the constituency's agricultural strength, dynamic industrial base, thriving construction sector, and robust service sector. This strategic blue print alignswith Andhra Pradesh&#8217;s ambitious Swarna Andhra@2047 vision, which resonates with the national agenda of Viksit Bharat@2047.</span><span></span><span lang=\"EN-US\">Gudivada Constituency consists of Three mandals: Gudivada, Gudlavalleru, Nandivada and one Urban Development Authority. These are located in the Krishna district of Andhra Pradesh, with Gudivada serving as the headquarters. Renowned for its rich cultural heritage and historical landmarks and religious temples Gudivada is a home to the sri vasavi kanyaka parameswari temple. The town has been a nurturing ground for classical arts local institutions promoting music and dances. Additionally, the presence of Ancient Buddist Relics discovered in and around gudivada underscores.its importance as a cultural and spiritual hub since antiquity.</span><span lang=\"EN-US\">Gudivada plays a vital role in the regions Agriculture and trade Sectors, with Fertile Lands supporting the cultivation of paddy, aquaculture and other crops. Well established transport links including road and rail connectivity to Vijayawada and Machilipatnam supporting to thriving Trade and Commercial Activities.The town host strong educational institutions contributing to its development. Blending Tradition with progress. Gudivada is poised to achieve a 15% annual growth across core sectors.</span>",
+  "constituencyMap": "90\\MAP\\90IMAGE2025090315091410008_resize-17568921021509398142gudivadA_11zon.jpg",
+  "geography": "Gudivada Constituency spans 402.63 sq. km in Krishna district, Andhra Pradesh. It is well connected to nearby cities and features fertile alluvial and clay loam soils. Water resources include the Krishna Eastern Delta System and Bandar canal.&#160;",
+  "populationDesc": "<p class=\"MsoNormal\"><span lang=\"EN-US\">Population&#10;(2011Census): </span><span lang=\"EN-US\">2,50,130 people, with 1,24,954 males and 1,25,176&#10;females. These ratio</span><span lang=\"EN-US\">&#10;stands at 1002 females per 1,000 males.</span></p>",
+  "administrationDesc": "Gudivada Constituency is one of the seven assembly constituencies in Krishna District. It has&#160;<span lang=\"EN-US\">Gudivada, Gudlavalleru, Nandivada&#160;</span>",
+  "educationHealthcareDesc": "Gudivada has a robust healthcare system with a 100-bed Area Hospital, 5 Primary Health Centers, 8 sub-centers, and 28 Wellness Centers. Emergency services include 2-104 Fixed Day Health Services vehicles and 2-108 ambulance services. The area is also home to 6 veterinary dispensaries. For education, Gudivada has 155 primary schools, 37 upper primary schools, 51 high schools, 13 junior colleges, and several higher education institutions, including Dr. Gururaj Government Homoeopathic Medical College, founded in 1945. There are also 3 BC Welfare Hostels.",
+  "culturalheritageDesc": "&#160;Sri Kanyaka Parmeswari Temple, Sri Renuka Puttalamba Temple, Sri Kondalamma Ammavari Temple, BCE Buddhist Stupa and an ancient Digambar Jain Temple."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "VYeBC9NhoAAhPi+3e5TzIA==",
+   "economy_Text": "<b><font size=\"5\">Gudivada's Economy at a Glance</font></b><p>Gudivada presents a comprehensive growth strategy to transform the constituency into an economically vibrant, investment-friendly, and employment-driven region. With a Gross Constituency Domestic Product (GCDP) of Rs. 9622.83 crores in 2023-24, Gudivada is projected to achieve Rs. 195591.41 crores by 2047-48 and Rs.21506.56 by 2028-29, reflecting a strong and sustainable annual growth trajectory averaging (12-15)%. As of 2023-24, the economy is led by the agriculture and allied sector, contributing 57.52% to the Gross Value Added (GVA), followed by the services sector at 32.51%, and the industrial sector at 9.98%.</p><p><br><b>Growth Drivers:</b> Agri-based industrialization, aquaculture expansion, food processing, renewable energy integration. &#160;</p><p><br></p><p></p>",
+   "gcdP_Growth_Text": "Gudivada is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Fishing &amp; Aquaculture, Real estate, and Transport. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.",
+   "createdDate": "2025-09-04T03:08:10.497"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 10401.86,
+   "cagR_Pct": 21.35,
+   "targetAmountCrore": 21506.56,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3128.12,
+   "cagR_Pct": 34.14,
+   "targetAmountCrore": 8468.53,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 959.9,
+   "cagR_Pct": 38.82,
+   "targetAmountCrore": 2822.84,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 5534.82,
+   "cagR_Pct": 12.06,
+   "targetAmountCrore": 8871.79,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 90,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 32.5
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 9.98
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 57.52
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 90,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 100,
+   "constituencyId": 90,
+   "name": "Venigandla Ramu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 101,
+   "constituencyId": 90,
+   "name": "Kodali Sri Venkateswara Rao (Nani)",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party (YSRCP)",
+   "photo": ""
+  },
+  {
+   "id": 102,
+   "constituencyId": 90,
+   "name": "Kodali Sri Venkateswara Rao (Nani)",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party (YSRCP)",
+   "photo": ""
+  },
+  {
+   "id": 103,
+   "constituencyId": 90,
+   "name": "Kodali Sri Venkateswara Rao (Nani)",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 104,
+   "constituencyId": 90,
+   "name": " Kodali Sri Venkateswara Rao (Nani)",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  }
+ ]
+}

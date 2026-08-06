@@ -1,0 +1,221 @@
+{
+ "code": 151,
+ "name": "Kadapa",
+ "district": "YSR Kadapa",
+ "logoUrl": "151\\Logo\\151IMAGE2026072217013063127_ChatGPT Image Jul 22, 2026, 04_51_30 PM.png",
+ "profile": {
+  "population": "318916 (As per Census 2011)",
+  "voterCount": "190527 (As per 2024 Elections)",
+  "area": "96",
+  "mandals": "Kadapa-U",
+  "revenueVillages": "11",
+  "municipal_wards": "50",
+  "municipalities": "Kadapa",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Kadapa derives its name from the Telugu word &#8220;Gadapa&#8221; (threshold), symbolizing its role as the northern gateway to the sacred Tirumala hills. The city is deeply rooted in communal harmony, as exemplified by the Devuni Kadapa temple, Ameen Peer Dargah, and Mariyapuram Roman Catholic Church, all of which serve as enduring symbols of cultural and religious unity.&#10;Kadapa town, the constituency headquarters, is not only a religious hub but also a growing urban center with expanding educational, healthcare, and infrastructure facilities. It attracts pilgrims and visitors from across the region and benefits from excellent road, rail, and air connectivity to cities like Bangalore, Chennai, and Hyderabad. This convergence of culture and connectivity sets the stage for the constituency's economic transformation across tourism, services, and logistics sectors.Kadapa is positioned as a key economic and urban growth hub, balancing agriculture, industry, and service sectors. Environmental sustainability ensures long-term prosperity for Kadapa. Initiatives like Miyawaki forests, tank rejuvenation, and rooftop solar promote ecological balance. APCNF, solid waste management, and community awareness drive eco-friendly practices. Preserving nature safeguards biodiversity, water security, and climate resilience, making Kadapa greener, healthier, and more sustainable.",
+  "constituencyMap": "151\\MAP\\151IMAGE2025090413174176372_kdp.jpg",
+  "geography": "Kadapa Assembly Constituency lies centrally in YSR Kadapa District and shares borders with Chennur mandal to the north, Sidhout mandal to the east, and Chinthakommadinne mandal to the west.",
+  "populationDesc": "As per the 2011 Census, the Kadapa Assembly Constituency has a total population of approximately 3.15 lakh residing in around 78,000 households. The sex ratio is around 991 females per 1,000 males.",
+  "administrationDesc": "Kadapa Constituency has Kadapa Municipal corporation with 50 Wards and 101 Ward Sachivalayams",
+  "educationHealthcareDesc": "Kadapa Constituency has Education services :Primary Schools-127,Primary with Upper Primary Schools-69,Upper Primary Schools-127,High Schools-38,Junior Colleges-30,Degree Colleges-14,ITI colleges-12,Polytechnical colleges-3,Engineering Colleges-2,Medical Colleges-2, Health care services : Government General Hospital-1,Community Health Centres-9,Primary Health Centres (Rural)-13,Dispensaries-27,Health Sub Centres-448,<br>",
+  "culturalheritageDesc": "Kadapa derives its name from the Telugu word &#8220;Gadapa&#8221; (threshold), symbolizing its role as the northern gateway to the sacred Tirumala hills. The city is deeply rooted in communal harmony, as exemplified by the Devuni Kadapa temple, Ameen Peer Dargah, and Mariyapuram Roman Catholic Church, all of which serve as enduring symbols of cultural and religious unity."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "1sNZyuLBkSoxE2KwuIc5Gw==",
+   "economy_Text": "<p dir=\"ltr\">The economy of Kadapa is poised for significant growth from 2024 to 2029, with the Gross Constituency Domestic Product (GCDP) projected to rise at a CAGR of 15%, driven by robust expansion across agriculture, industry, and services sectors.&#160;</p><p dir=\"ltr\">The agriculture sector will grow from &#8377;107 crores to &#8377;208 crores (CAGR 15.23%), emphasizing precision agriculture, sustainability, and livestock-dominated growth.</p><p dir=\"ltr\">The industry sector will see the highest growth, from &#8377;1,632 crores to &#8377;3,352 crores (CAGR 15.83%), fueled by construction, manufacturing and the Kadapa Industrial Corridor.&#160;</p><p dir=\"ltr\">The services sector, the economic backbone, will expand from &#8377;4,557 crores to &#8377;8,797 crores (CAGR 14.23%), driven by real estate, digital initiatives and tourism development.&#160;</p><p dir=\"ltr\">This transformation, aligned with Swarna Andhra @ 2047, leverages infrastructure, technology, and rural entrepreneurship to establish Kadapa as a diversified, future-ready economic hub.</p>",
+   "gcdP_Growth_Text": "<span>Kadapa is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,</span><span>&#160;infrastructure, manufacturing and trade. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span>",
+   "createdDate": "2025-09-05T10:30:26.15"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6805.0,
+   "cagR_Pct": 14.91,
+   "targetAmountCrore": 13338.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 4557.0,
+   "cagR_Pct": 14.23,
+   "targetAmountCrore": 8797.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1632.0,
+   "cagR_Pct": 15.83,
+   "targetAmountCrore": 3352.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 107.0,
+   "cagR_Pct": 15.23,
+   "targetAmountCrore": 208.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 151,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 72.38
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 25.92
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 1.7
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 151,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 358,
+   "constituencyId": 151,
+   "name": "Smt Reddeppagari Madhavi Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 360,
+   "constituencyId": 151,
+   "name": "Amzath Basha Shaik Bepari",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 361,
+   "constituencyId": 151,
+   "name": "Amzath Basha Shaik Bepari",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 362,
+   "constituencyId": 151,
+   "name": "Ahamadulla Mohammad Syed",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 363,
+   "constituencyId": 151,
+   "name": "Ahamadulla Mohammad Syed",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

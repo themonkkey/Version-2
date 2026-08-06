@@ -1,0 +1,200 @@
+{
+ "code": 47,
+ "name": "Palasa",
+ "district": "Srikakulam",
+ "logoUrl": "assets/constituencies_logos/palasa.png",
+ "profile": {
+  "population": "253462 (As per Census 2011)",
+  "voterCount": "219348 (As per 2024 Elections)",
+  "area": "761.63",
+  "mandals": "Mandasa-R,Palasa-R,Palasakasibugga-U,Vajrapukothuru-R",
+  "revenueVillages": "220",
+  "municipal_wards": "31",
+  "municipalities": "Palasakasibugga",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\">Palasa Assembly Constituency, an important segment of Srikakulam district in North Andhra Pradesh, comprises three mandals&#8212;Palasa, Mandasa, and Vajrapukotturu&#8212;and is anchored by the Palasa-Kasibugga municipality, which serves as its administrative and commercial hub. Historically, the mandals of Palasa and Vajrapukotturu were carved out of the erstwhile Tekkali Taluk, highlighting the region&#8217;s administrative significance. Geographically part of the coastal Andhra region, Palasa is strategically positioned with a long seashore belt that not only enriches its natural beauty but also strengthens the local economy through fishing and allied coastal activities. The constituency is predominantly agrarian, with agriculture and horticulture serving as the backbone of livelihood for the majority of residents. Fertile soils support the cultivation of crops such as paddy, black gram, green gram, and groundnut, while horticultural produce like cashew, oil palm, coconut, and mango significantly contribute to household incomes and trade. Cashew, in particular, has made Palasa famous as a key cashew-processing hub in Andhra Pradesh, generating both employment and exports. With its blend of agricultural productivity, coastal advantages, and growing urban base, the constituency continues to play a vital role in the district&#8217;s socio-economic and cultural development.</p>",
+  "constituencyMap": "47\\MAP\\47IMAGE2025090311093289678_Palasa.jpg",
+  "geography": "<p class=\"MsoNormal\">Palasa Assembly Constituency in Srikakulam district spans 545.44 sq. km, bordered by Ichchapuram, Odisha, Pathapatnam, Tekkali, and the Bay of Bengal. The region has fertile red sandy soils rich in iron oxides, supporting agriculture and horticulture, with paddy, cashew, coconut, and mango as major crops. About 15,000 hectares are under horticulture, alongside wetlands and forests. Irrigation is supported by the Vamsadhara, Nagavali, and smaller rivers, with a 36 km coastal belt aiding fisheries and aquaculture. The climate is tropical savanna, with hot summers (40&#8211;45&#176;C), mild winters (18&#8211;28&#176;C), and rainfall mainly from the southwest and northeast monsoons.</p>",
+  "populationDesc": "<p class=\"MsoNormal\">The constituency has a total&#10;population of 2,58,086 people, comprising&#160;1,26,604 males&#160;and&#160;1,31,482&#10;females. The&#160;sex ratio&#160;stands at&#160;1,038 &#160;females for every 1,000 males. There are&#160;63,408&#10;households&#160;in the constituency.</p>",
+  "administrationDesc": "<p class=\"MsoNormal\"><span>Palasa&#10;constituency consists of three mandals Palasa, Mandasa and Vajrapukotturu and one&#10;municipality named as Palasa- kasibugga.&#160;</span><u><span><br clear=\"all\">&#10;</span></u></p>",
+  "educationHealthcareDesc": "Palasa has a well-developed education and healthcare system, with 240 primary schools, 38 upper primary schools, 73 high schools, and 15 private institutions providing quality learning, along with 15 junior colleges, 14 degree colleges, and one Industrial Training Institute (ITI) for higher education. The healthcare network includes 2 Community Health Centres, 8 Primary Health Centres, and 40 sub-centres with around 196 beds, while a major highlight is the 200-bed Super Speciality Kidney Research Centre with a dialysis unit, established to address chronic kidney disease cases in the Uddanam region.",
+  "culturalheritageDesc": "<p class=\"MsoNormal\">Palasa Assembly Constituency is home to several culturally and historically significant landmarks. Tarlakota and Mandasa Port highlight the region&#8217;s maritime and trade importance, while ancient temples like the Vasudeva Perumallu Temple, Vallabha Narayana Temple, and Vaidyanadha Alayam stand as symbols of spiritual heritage. The Jami Yellamma Thalli Temple and Swayambhu Lingeshwara Swamy Temple attract devotees during festivals, reinforcing local traditions. Equally revered is the Dattatreya Swami Temple, a center of faith and community gatherings. Together, these sites reflect Palasa&#8217;s rich blend of religion, culture, and history, making it a hub of devotion and heritage in North Andhra.</p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "SK/i7/vY7H57mXUtGYiihg==",
+   "economy_Text": "<p><span>Palasa, a vibrant legislative constituency in Andhra Pradesh&#8217;s Srikakulam district, is poised for robust economic growth under its strategic economic vision plan. With a Gross Constituency Domestic Product (GCDP) of Rs. 3,956.00 crores in 2023-24, the constituency is projected to more than double its economic output to Rs. 8,227.00 crores by 2028-29, driven by an impressive compound annual growth rate (CAGR) of 17.34%. This ambitious roadmap leverages Palasa&#8217;s agricultural strengths, particularly in cashew, pepper, and organic farming, while addressing infrastructural bottlenecks through enhanced connectivity and processing units</span></p><p><span><br></span></p><p><span>Base Year (2023-24): Rs. 3,956.00 crores</span></p><p><span>Target Year (2028-29): Rs. 8,227.00 crores</span></p><p><span>Compound Annual Growth Rate (CAGR): 17.34%</span></p><p><span><br></span></p><p><span><b>Key Drivers:</b></span></p><p><span><b>Agriculture:</b> Expansion of cashew, pepper, and organic farming with modern technologies like satellite sensing and bio-fertilizers.</span></p><p><span><b>Industry:</b> Growth in agro-based processing units and small-scale enterprises to enhance value addition.</span></p><p><span><b>Tourism:</b> Promotion of cultural festivals (e.g., Seed Festival, Sankranti) and eco-tourism around Vanjangi Hills.</span></p><p><span><b>Infrastructure:</b> Addressing bottlenecks through improved roads, irrigation, and local processing facilities.</span></p><p><span><b>Employment: </b>Skill training and education programs to boost job creation, especially for tribal youth.</span></p>",
+   "gcdP_Growth_Text": "<p><span>&#160;Palasa is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like Horticulture and organic farming &amp; Agro Industries</span><span>. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant Rural and economic hub by 2047.</span></p><p><br></p><p>&#10;</p>",
+   "createdDate": "2025-09-04T04:42:01.723"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 3956.0,
+   "cagR_Pct": 17.34,
+   "targetAmountCrore": 8227.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1921.0,
+   "cagR_Pct": 18.29,
+   "targetAmountCrore": 4142.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 934.0,
+   "cagR_Pct": 17.27,
+   "targetAmountCrore": 1846.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 806.0,
+   "cagR_Pct": 14.97,
+   "targetAmountCrore": 1565.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 47,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 52.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 26.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 22.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 47,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 44,
+   "constituencyId": 47,
+   "name": "Gouthu Sireesha",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": "47\\mla\\47IMAGE2025090222173032336_Palasa MLA 24-29.jpg"
+  },
+  {
+   "id": 666,
+   "constituencyId": 47,
+   "name": "Seediri Appalaraju",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 667,
+   "constituencyId": 47,
+   "name": "Gouthu Syam Sunder Sivaji",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 668,
+   "constituencyId": 47,
+   "name": "Juttu Jagannaikulu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,221 @@
+{
+ "code": 163,
+ "name": "Srikakulam",
+ "district": "Srikakulam",
+ "logoUrl": "assets/constituencies_logos/srikakulam.png",
+ "profile": {
+  "population": "299949 (As per Census 2011)",
+  "voterCount": "273260 (As per 2024 Elections)",
+  "area": "318",
+  "mandals": "Etcherla-R,Gara-R,Srikakulam-R,Srikakulam-U",
+  "revenueVillages": "56",
+  "municipal_wards": "50",
+  "municipalities": "Etcherla, Srikakulam",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Srikakulam Assembly Constituency Vision Action Plan 2024&#8211;29 focuses on leveraging agriculture, aquaculture, coastal and river belt resources, construction, and services, aligning with Andhra Pradesh&#8217;s Swarna Andhra @ 2047 and the national Viksit Bharat @ 2047 agenda. The constituency comprises Srikakulam and Gara mandals along with Srikakulam Municipality, which also serves as the district headquarters. Rich in cultural heritage, it houses the renowned Arasavilli Sun Temple&#8212;the only one of its kind in India&#8212;and the unique Srikurmam Temple, the only Vishnu shrine with two Dwaja Sthambas. The ancient Buddhist site at Salihundam, preserved by the Archaeological Survey of India, further highlights its historic significance. Strategically located along NH-16, Srikakulam enjoys excellent connectivity to Visakhapatnam and Vizianagaram, supporting trade and industrial growth. With strong contributions to agriculture, aquaculture, and religious tourism, the constituency is well-positioned to achieve 15% annual growth across multiple sectors while preserving its cultural legacy.",
+  "constituencyMap": "163\\MAP\\163IMAGE2025090512092160217_srikakulam map.png",
+  "geography": "Srikakulam spans an area of 318 sq. km and It shares boundaries with Amadalavalasa, Narasannapeta, Etcherla constituencies and Bay of Bengal isstrategically positioned within the Srikakulam district of Andhra Pradesh.",
+  "populationDesc": "According to the 2011 Census, Srikakulam had a population of 299,949, comprising 149,442 males and 150,507 females, with a sex ratio of 1,006 females for every 1,000 males.",
+  "administrationDesc": "Srikakulam Constituency consists of two mandals: Srikakulam, Gara, and municipal corporation. These are located in the Srikakulam district of Andhra Pradesh, with Srikakulam serving as the headquarters.",
+  "educationHealthcareDesc": "Srikakulam has strong healthcare infrastructure with 13 sub-centers, 2 FDHS vehicles, and 2 ambulances, ensuring accessible services and emergency response. Veterinary care is supported by 2 hospitals and 6 dispensaries for livestock and pets. Education is comprehensive, with 166 primary, 64 upper primary, and 78 high schools. Higher education includes 28 junior colleges, 19 degree colleges, 9 ITIs, 3 polytechnic colleges, 1 agriculture college, 3 medical colleges, 6 DIET colleges, and 1 law college. The constituency also supports students through a BC Welfare Boys Hostel and 405 Anganwadi centers, ensuring inclusive learning opportunities and community development.",
+  "culturalheritageDesc": "Srikakulam Assembly Constituency is renowned for its rich cultural and spiritual legacy, reflecting centuries of history and devotion. The Arasavilli Sun Temple, one of the very few temples in India dedicated to Lord Surya, attracts pilgrims nationwide with its unique architecture and rituals. Equally significant is the Srikurmam Temple, the only shrine of Lord Vishnu in the form of Kurma (tortoise avatar), distinguished for having two Dwaja Stambhas, a rare architectural feature. The constituency also hosts the Buddhist site of Salihundam, with ancient stupas and relics preserved by the Archaeological Survey of India, showcasing Srikakulam&#8217;s Buddhist heritage. Together, these landmarks highlight the region&#8217;s cultural vibrancy, religious diversity, and historic significance, making it a vital hub for heritage tourism and spiritual enrichment."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "YuX0qhxdE2UCIdvD3OuPbg==",
+   "economy_Text": "<p dir=\"ltr\">Srikakulam's Economic Vision Plan charts a dynamic course for sustainable growth, projecting the Gross Constituency Domestic Product (GCDP) to rise from &#8377;8,190.00 crores in 2023-24 to &#8377;17,213.00 crores by 2028-29. This ambitious roadmap harnesses the district's strengths in agriculture, industry, and services while addressing infrastructural challenges and promoting industrial diversification. By prioritizing employment generation, tourism development, and inclusive progress, the plan aims to transform Srikakulam into a vibrant economic hub, setting a benchmark for balanced and resilient growth in Andhra Pradesh.</p>",
+   "gcdP_Growth_Text": "<span>Srikakulam is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like Trade and Hotels, real estate,&#160;</span><span>digital infrastructure, and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span>",
+   "createdDate": "2025-09-03T09:58:46.627"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 8190.0,
+   "cagR_Pct": 17.37,
+   "targetAmountCrore": 17213.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 5949.0,
+   "cagR_Pct": 17.92,
+   "targetAmountCrore": 12450.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 712.0,
+   "cagR_Pct": 17.43,
+   "targetAmountCrore": 1440.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 915.0,
+   "cagR_Pct": 13.38,
+   "targetAmountCrore": 1913.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 163,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 79.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 9.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 12.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 163,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 12,
+   "sectorName": "Pilgrimage & Cultural Centre",
+   "description": "Restoration of heritage sites, amenities for pilgrims, and promotion of cultural tourism.",
+   "imageUrl": "assets/img/sectors/pilgrimage-cultural-centre.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 949,
+   "constituencyId": 163,
+   "name": "Gondu Shankar Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 662,
+   "constituencyId": 163,
+   "name": "Dharmana Prasada Rao",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 663,
+   "constituencyId": 163,
+   "name": "Gunda Lakshmi Devi",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 664,
+   "constituencyId": 163,
+   "name": "Dharmana Prasada Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 665,
+   "constituencyId": 163,
+   "name": "Dharmana Prasada Rao",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

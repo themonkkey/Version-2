@@ -1,0 +1,221 @@
+{
+ "code": 7,
+ "name": "KANIGIRI",
+ "district": "Marakapuram",
+ "logoUrl": "assets/constituencies_logos/kanigiri.png",
+ "profile": {
+  "population": "304336 (As per Census 2011)",
+  "voterCount": "240079 (As per 2024 Elections)",
+  "area": "2482.17",
+  "mandals": "Cspuram-R,Hmpadu-R,Kanigiri-R,Kanigiri-U,Pamur-R,Pcpalli-R,Veligandla-R",
+  "revenueVillages": "182",
+  "municipal_wards": "20",
+  "municipalities": "Kanigiri",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Kanigiri Assembly Constituency is one of the largest in Markapuram district, spread over 2,482 sq. km, comprising six mandals: Hanumanthunipadu, Veligandla, Chandrasekharapuram, Kanigiri, Pedacherlopalli, and Pamuru. It is bounded by the Kondapi constituency to the east, Giddalur to the west, Markapur and Kondapi to the north, and the SPSR Nellore district to the south. As per the 2011 Census, the constituency had a population of 3.04 lakh, projected to rise to 3.26 lakh by 2024, with SCs forming 22.6% and STs about 2.3% of the total. The literacy rate is 62.29%, close to the district average, while the sex ratio is 949 females per 1000 males. Agriculture forms the backbone of the local economy, supported by rivers like Manneru and Paleru and irrigation through tanks, reservoirs, and borewells. Redgram, paddy, tobacco, blackgram, and Bengalgram are the major crops, with livestock and horticulture also playing a significant role.<p><br></p><p>Development and Resources</p><p>The constituency has 182 revenue villages, 135 gram panchayats, 93 village secretariats, and 12 ward secretariats, highlighting a strong rural administrative setup. Forests cover about 20% of the geographical area, especially in C.S. Puram and Pedacherlopalli mandals, while the upland climate results in hot summers and dependency on erratic monsoon rainfall. Education infrastructure includes 365 primary schools, 65 high schools, 16 junior colleges, and higher education institutions such as degree, ITI, polytechnic, and engineering colleges, reflecting good access, though quality improvement is needed. Healthcare facilities consist of 1 CHC, 12 PHCs, 93 clinics, and 2 Ayush dispensaries, but there is a shortage of specialist doctors. Kanigiri also has significant cultural and tourism potential, with sites like Bhairavakona Temple and waterfalls, Kanigiri Fort, Lakshmi Narasimha Swamy Temple at Challagirigala, and Paleti Gangamma Temple attracting visitors. With its natural resources, agriculture, granite potential, and cultural heritage, Kanigiri constituency has ample scope for balanced economic growth and improved living standards if irrigation, industrial opportunities, and social infrastructure are further strengthened.</p>",
+  "constituencyMap": "7\\MAP\\7IMAGE2025090417001950929_KANIGIRI MAP.png",
+  "geography": "The Kanigiri constituency is located in Markapuram District and spans 2482.17&#160;sq. km. It shares boundaries with the Kondapi, Giddalur, and Markapur constituencies. Mix of sandy loams, red soils, and black cotton soils, and red shallow gravelly loam soils.&#10;<p><br></p>",
+  "populationDesc": "The total population is 304,336, with approximately 85.3% residing in rural areas and 14.7% in urban areas. There are 71,261  households, and the sex ratio is 949  females per 1,000 males. The literacy rate stands at 62.29%.&#10;<p><br></p>",
+  "administrationDesc": "The Kanigiri constituency is one of the eight assembly constituencies in Markapuram District. It includes 1) Hanumanthunipadu, 2) Veligandla, 3) Chandrashekarapuram, 4) Kanigiri, 5) Pedacherlopalli, and 6) Pamuru Mandals. The Kanigiri constituency comes under the Ongole Loksabha Constituency.",
+  "educationHealthcareDesc": "Kanigiri constituency has a strong educational network with 365 primary schools, 65 high schools, 16 junior colleges, and higher institutions, including degree and engineering colleges, serving rural and semi-urban students.<p>Healthcare is supported through 1 CHC, 12 PHCs, 93 village health clinics, and 2 AYUSH dispensaries, ensuring basic medical services across the region.<br></p><p><br></p><p></p>",
+  "culturalheritageDesc": "&#34;Kanigiri Fort (Durgam),  Sri Narayana&#160;<p>Swami Temple, Bhairavakonda Temple,&#160;</p><p>Paleti Gangamma Temple. Nallamala Forest, Kanigiri Hills,&#160;</p><p>Bhairavakonda Hills.&#34;&#10;</p><p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "DV//ZU9oJDl2ZImTFPhpCA==",
+   "economy_Text": "<b>Economy at a Glance</b><p><font face=\"Times New Roman\">Kanigiri&#8217;s economy rests on a strong agricultural base, supported by expanding service and industrial sectors. The Gross Constituency Domestic Product (GCDP) for 2023&#8211;24 is &#8377;5,056 crore, targeting &#8377;11,380 crore by 2028&#8211;29.</font></p><p><font face=\"Times New Roman\">Agriculture and allied sectors remain central, with a focus on <span>modernization of agriculture and horticulture</span> and <span>efficient water resource management</span> to boost productivity and sustainability.</font></p><p><font face=\"Times New Roman\">The service sector, contributing significantly, is growing alongside rising trade, healthcare, and education services.&#160;<span>The industrial sector, though currently modest, is set to grow through initiatives like </span><span>MSME upgradation and expansion</span><span>, development of </span><span>industrial corridors</span><span>, and the establishment of a </span><span>logistics hub</span><span>. The constituency is also exploring </span><span>renewable energy</span><span> projects to support sustainable industrial growth.</span></font></p><p><b><br></b></p>",
+   "gcdP_Growth_Text": "Kanigiri is experiencing rapid economic growth with a targeted 14-16% annual GCDP growth rate driven by key sectors such as agriculture modernization, MSME expansion, industrial corridors, and renewable energy. This growth trajectory supports the long-term vision of transforming the constituency into a balanced rural-industrial hub with sustainable development by 2047.",
+   "createdDate": "2025-09-06T06:52:44.4"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5056.0,
+   "cagR_Pct": 19.0,
+   "targetAmountCrore": 12069.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1324.0,
+   "cagR_Pct": 19.4,
+   "targetAmountCrore": 4957.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 981.0,
+   "cagR_Pct": 18.27,
+   "targetAmountCrore": 1544.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2751.0,
+   "cagR_Pct": 18.86,
+   "targetAmountCrore": 5568.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 7,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 26.82
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.08
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 54.1
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 7,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 9,
+   "sectorName": "Renewable Energy",
+   "description": "Solar, wind, green hydrogen, and hybrid energy projects with grid integration.",
+   "imageUrl": "assets/img/sectors/renewable-energy.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 492,
+   "constituencyId": 7,
+   "name": "Sri Mukku Ugra Narasimha Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 493,
+   "constituencyId": 7,
+   "name": "Sri Burra Madhu Sudhan Yadav",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 494,
+   "constituencyId": 7,
+   "name": "Sri Kadiri Babu Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 495,
+   "constituencyId": 7,
+   "name": "Sri Mukku Ugra Narasimha Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 496,
+   "constituencyId": 7,
+   "name": "Sri Erigineni Thirupathi Naidu",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

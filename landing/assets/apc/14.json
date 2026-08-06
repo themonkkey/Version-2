@@ -1,0 +1,221 @@
+{
+ "code": 14,
+ "name": "GIDDALUR",
+ "district": "Marakapuram",
+ "logoUrl": "assets/constituencies_logos/giddalur.png",
+ "profile": {
+  "population": "297659 (As per Census 2011)",
+  "voterCount": "245114 (As per 2024 Elections)",
+  "area": "2182.65",
+  "mandals": "Ardhaveedu-R,Bestavaripeta-R,Cumbum-R,Giddalur-R,Giddalur-U,Komarole-R,Racherla-R",
+  "revenueVillages": "107",
+  "municipal_wards": "20",
+  "municipalities": "Giddalur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>The Giddalur Assembly Constituency, located in Markapur District, covers six mandals and one municipality, with a geographical area of 2,182.65 sq. km and a population of about 3.03 lakh (projected 2024). It lies in the tropical uplands at the foothills of the Nallamala forests, bordered by the Markapur, Kanigiri, Allagadda, Srisailam, Yerragondapalem, and Badvel constituencies. The region is rich in natural resources, with rivers like Gundlakamma and Sagileru, extensive forests covering over half its area, and irrigation potential through tanks, wells, and the ongoing Veligonda (Poola Subbaiah) Project. Agriculture is the backbone of the local economy, with major crops such as paddy, maize, red gram, tobacco, chillies, cotton, and millets. The famous Cumbum Tank, one of Asia&#8217;s oldest man-made lakes and a UNESCO-recognized heritage irrigation structure, highlights the constituency&#8217;s historical and agricultural importance.</p><p><br></p><p>Socially and economically, Giddalur has a literacy rate of 65.3% and a sex ratio of 979 females per 1000 males, both higher than the district average. The constituency has 107 villages, 95 gram panchayats, and 284 polling booths, with infrastructure steadily improving in health, education, and civic services. It has 2 CHCs, 13 PHCs, 61 health clinics, 265 primary schools, 87 high schools, and several junior and degree colleges, though primary education and healthcare still need strengthening. NH-544D and rail links to Hyderabad, Vijayawada, and other major cities support connectivity. Culturally, the region is home to ancient temples like Sri Nemaligundla Ranganayaka Swamy, Sri Patala Nageswara Swamy, and Sri Mukteswara Swamy, along with rich traditions of folk arts and festivals. Giddalur, with its agriculture, mining, forestry, and emerging infrastructure, is well-positioned for inclusive development, striking a balance between economic growth and its rich cultural and environmental heritage.</p>",
+  "constituencyMap": "14\\MAP\\14IMAGE2025090416064957443_giddaluru map.jpg",
+  "geography": "Giddalur Constituency is located in Markapuram District and spans 2182.65  sq. km. It shares boundaries with the Markapur, Kanigiri, Allagadda, Srisailam, Yerragondapalem, and Badvel constituencies. Mix of red soil, black soil, and blushed soil.<p><br></p>",
+  "populationDesc": "The total population is 297,659, with approximately 88.19% residing in rural areas and 11.81%  in urban areas. There are 76,320 households, and the sex ratio is 979  females per 1,000 males. The literacy rate stands at 65.30%.&#10;<p><br></p>",
+  "administrationDesc": "Giddalur is one of the eight assembly constituencies in Markapur District. It includes Ardhaveedu, Cumbum, Bestavaripeta, Racherla, Giddalur, and Komarole, as well as one Nagar Panchayat. Giddalur constituency comes under Ongole Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "11 degree colleges, 24 junior colleges, 1 pharmacy college, 1 B.Ed., and 1 polytechnic.<p><br></p>",
+  "culturalheritageDesc": "<p><span>Cumbum Tank, Vana Vihari, Nemiligundla Ranganayakulaswamy&#160;</span><span>temple, Patalanageswaraswmy Temple.</span></p><p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "1qRzEZ8P5c+R6YAb8lchig==",
+   "economy_Text": "<b>Economy at a Glance</b><p><b><br></b></p><p>Giddalur, located in the western region of Prakasam district, is predominantly an agrarian constituency, with <span>Agriculture and Allied Sectors contributing 50.9%</span> to the local economy. Major crops include groundnut, pulses, and millets, with a significant portion of the population depending on farming and livestock for their livelihoods.</p><p>The <span>Service Sector</span> contributes <span>37.55%</span>, reflecting growing activity in education, retail, logistics, and public services. The <span>Industrial Sector</span>, currently accounting for <span>11.55%</span>, is set to witness a significant boost with the establishment of the <span>APIIC Industrial Park in Giddalur</span>. This park is expected to attract micro, small, and medium enterprises (MSMEs), create local employment, and diversify the economic base beyond agriculture.</p><p>&#10;&#10;</p><p>Giddalur&#8217;s <span>strategic connectivity</span> enhances its development potential. It is well-linked by <span>rail through the Guntur&#8211;Nandyal - Bangalore line</span>, providing access to major towns.</p>",
+   "gcdP_Growth_Text": "Giddalur is poised for balanced economic growth, driven by agriculture, small-scale industries, and expanding services. With the development of the APIIC Industrial Park and strong rail and road connectivity&#8212;including links to Guntur, Nandyal, and Bengaluru the constituency is targeting accelerated growth across agro-processing, logistics, and rural enterprises. This trajectory aligns with the long-term vision of transforming Giddalur into a regional growth hub by 2047.",
+   "createdDate": "2025-09-06T05:48:11.24"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9298.0,
+   "cagR_Pct": 13.24,
+   "targetAmountCrore": 232738.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2045.0,
+   "cagR_Pct": 18.75,
+   "targetAmountCrore": 4830.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 629.0,
+   "cagR_Pct": 18.88,
+   "targetAmountCrore": 1494.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2771.0,
+   "cagR_Pct": 17.9,
+   "targetAmountCrore": 6319.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 14,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 37.55
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 11.55
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 50.9
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 14,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 16,
+   "sectorName": "Forest & Eco Tourist Sites",
+   "description": "Conservation-based tourism, trekking trails, and forest-based livelihood development.",
+   "imageUrl": "assets/img/sectors/forest-eco-tourist-sites.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 9,
+   "sectorName": "Renewable Energy",
+   "description": "Solar, wind, green hydrogen, and hybrid energy projects with grid integration.",
+   "imageUrl": "assets/img/sectors/renewable-energy.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 447,
+   "constituencyId": 14,
+   "name": "Sri Muthumula Ashok Reddy ",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 448,
+   "constituencyId": 14,
+   "name": "Sri Anna Rambabu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 449,
+   "constituencyId": 14,
+   "name": "Sri Muthumula Ashok Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 450,
+   "constituencyId": 14,
+   "name": "Sri Anna Rambabu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Prajarajyam Party",
+   "photo": ""
+  },
+  {
+   "id": 451,
+   "constituencyId": 14,
+   "name": "Sri Pagadala Ramaiah",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

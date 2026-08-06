@@ -1,0 +1,221 @@
+{
+ "code": 57,
+ "name": "Bobbili",
+ "district": "Vizianagaram",
+ "logoUrl": "assets/constituencies_logos/bobbili.png",
+ "profile": {
+  "population": "282500 (As per Census 2011)",
+  "voterCount": "231232 (As per 2024 Elections)",
+  "area": "617.01",
+  "mandals": "Badangi-R,Bobbili-R,Bobbili-U,Ramabhadrapuram-R,Therlam-R",
+  "revenueVillages": "155",
+  "municipal_wards": "16",
+  "municipalities": "Bobbili",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p><span>Bobbili Assembly Constituency was formed in 1951 and situated in the Vizianagaram district of Andhra Pradesh, India. The constituency had undergone changes in its boundaries due to delimitation exercises, with the most recent one occurring in 2008.The constituency encompasses withBobbili, Ramabhadrapuram,Badangi and Therlammandals and Bobbili Municipality stand out for their significant contributions to the industries, construction, education, innovation, tourism and service sectors. These unique advantages position the constituency to achieve an ambitious annual growth target of 15% across all key sectors. Bobbili Municipality was established on November 1, 1956, as a third-grade municipality.Later, in 1980, it was upgraded to a second-grade municipality.</span></p>",
+  "constituencyMap": "57\\MAP\\57IMAGE2025090216305434309_BOBBILI MAP.png",
+  "geography": "<p><span>Bobbili Assembly Constituency is strategically located in Vizianagaram District. The constituency has rich geography, with fertile lands, water bodies, forests, and minerals. It supports agriculture, industries, and trade, making it an important region in Andhra Pradesh. Bobbili has a mix of red loamy, laterite, and alluvial soils, supporting agriculture, horticulture, and plantations.</span></p>",
+  "populationDesc": "<p><span>Bobbili Constituency has a total population of 2,82,500, with 80% residing in rural areas and 20% in urban areas. The constituency has 71,686 households, with a sex ratio of 1011 females per 1,000&#160;</span></p>",
+  "administrationDesc": "<p><span>The Bobbili Assembly Constituency comprises five mandals,namely Bobbili, Bobbili Urban, Ramabhadrapuram, Badangi, and Therla.</span></p>",
+  "educationHealthcareDesc": "<p><span>Bobbili is a town and constituency in Vizianagaram district of Andhra Pradesh, which has a well-developed social infrastructure that supports the education, healthcare, transport, and public services of its residents.&#160; School education is being strengthened with 214 Government&amp; Private Primary schools,42 Upper Primary Government &amp; Private Schools, 64 High schools Government &amp; Private, 13 Government &amp; Private Junior colleges, 7 Government &amp; Private Degree colleges, One Government ITI, 2 BED Colleges, 2 Engineering Colleges and 4 Polytechnic Colleges. Bobbili Constituency also Supports the Education system with 4 S.C., 1 S.T., 5 BC Pre-Metric Welfare Hostels and 2 S.C., 2 S.T., 2 B.C. Post-Metric Welfare Hostels.The healthcare sector includes 7PHCs,3UPHCs, 85Health&amp;WellnessCenters, 2 CHC s with plans to reduce maternal mortality by 50%, bring infant mortality below 10 per 1,000 live births, and achieve 100% vaccination coverage.&#160;</span></p>",
+  "culturalheritageDesc": "<p><span>Bobbili Constituency is known for its rich cultural and spiritual heritage, with key attractions such as The Venugopala Swamy Temple in Bobbili. It is an important spiritual and cultural landmark in the region, attracting devotees and tourists alike.&#160; and The Bobbili Veena is a symbol of Andhra Pradesh&#8217;s rich musical tradition and royal legacy. Its unique craftsmanship and melodious sound continue to make it a prized instrument in classical music and Bobbili has a rich cultural heritage shaped by its royal history, classical arts, music, festivals, and local traditions. The region is famous for its warrior legacy, artistic contributions, and spiritual centers.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "oym0IwXowusGBf8NRx4KOA==",
+   "economy_Text": "<p dir=\"ltr\">Bobbili Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;<span>4,602.50&#160;</span>crores in 2023-24, is set to grow to &#8377;9,507.1 crores by 2028-29, driven by a sustainable annual growth rate of 12-15%. The Economic Vision Plan leverages sectoral strengths to foster an investment-friendly and employment-driven region. The <strong>Services Sector</strong>, valued at &#8377;2,061.7 crores in 2023-24 with a 17.90% growth rate, is projected to reach &#8377;4,453.7 crores by 2028-29. The <strong>Industries Sector</strong>, contributing &#8377;847.4 crores with a 17.80% growth rate, is expected to grow to &#8377;1,762.7 crores. The <strong>Agricultural &amp; Allied Sector</strong>, at &#8377;1,348.7 crores with a 12.60% growth rate, is anticipated to reach &#8377;2,641.9 crores. This strategy promotes industrial diversification, infrastructure development, and inclusive economic progress, positioning Bobbili as a vibrant economic hub in Andhra Pradesh.</p>",
+   "gcdP_Growth_Text": "<p dir=\"auto\">Bobbili Constituency&#8217;s GCDP, at &#8377;<span>4,602.50</span>&#160;crores in 2023-24, is projected to reach &#8377;9,507.1 crores by 2028-29, with a robust 12-15% annual growth rate. The Services (17.90%), Industries (17.80%), and Agricultural &amp; Allied (12.60%) sectors drive this economic surge toward a thriving future by 2047.</p>",
+   "createdDate": "2025-09-05T06:19:11.817"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4602.5,
+   "cagR_Pct": 16.0,
+   "targetAmountCrore": 9507.1,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2061.7,
+   "cagR_Pct": 17.9,
+   "targetAmountCrore": 4453.7,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 847.4,
+   "cagR_Pct": 17.8,
+   "targetAmountCrore": 1762.7,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1348.7,
+   "cagR_Pct": 12.6,
+   "targetAmountCrore": 2641.9,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 57,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 48.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 20.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 32.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 57,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 969,
+   "constituencyId": 57,
+   "name": " R. V. Sujay Krishna Ranga Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 511,
+   "constituencyId": 57,
+   "name": "Sambangi Venkata China Appala Naidu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 512,
+   "constituencyId": 57,
+   "name": "R. V. Sujay Krishna Ranga Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 514,
+   "constituencyId": 57,
+   "name": "R. V. Sujay Krishna Ranga Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 515,
+   "constituencyId": 57,
+   "name": "R. V. Sujay Krishna Ranga Rao",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,230 @@
+{
+ "code": 124,
+ "name": "ONGOLE",
+ "district": "Prakasam",
+ "logoUrl": "assets/constituencies_logos/ongole.png",
+ "profile": {
+  "population": "303128 (As per Census 2011)",
+  "voterCount": "240242 (As per 2024 Elections)",
+  "area": "366.61",
+  "mandals": "Kothapatnam-R,Ongole-R,Ongole-U",
+  "revenueVillages": "26",
+  "municipal_wards": "50",
+  "municipalities": "Ongole Muncipal Corporation",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>Ongole Assembly Constituency, located in Prakasam district of Andhra Pradesh, is a significant region known for its unique blend of urban and rural characteristics. It forms a part of the Ongole Lok Sabha constituency and includes two mandals: Ongole mandal and Kothapatnam mandal. The constituency covers the bustling Ongole city, which is also the district's administrative headquarters, along with surrounding rural areas such as Ongole Rural.</p><p><br></p><p>With a population of approximately 3,03,128, Ongole stands out for its socio-economic diversity and growing infrastructure. The presence of a medical college, numerous private schools, colleges, and hospitals has positioned Ongole as a regional educational and healthcare hub, further stimulating the local economy.</p><p><br></p><p>The constituency is famous worldwide for the Ongole breed of cattle, native to the region and prized for its strength and resilience. This legacy reflects the area's deep agricultural roots alongside its growing urban profile. The coastal stretch in Kothapatnam is a popular tourist destination known for its beaches and resorts, which also supports thriving coastal fisheries, contributing to livelihoods and local trade.</p><p><br></p><p>Economically, Ongole plays a pivotal role in the tobacco industry, especially the cultivation and trade of flue-cured Virginia (FCV) tobacco, which is a major source of income and employment. Additionally, small-scale industries such as rice mills, spinning mills, and aqua-agro processing units form an essential part of the industrial landscape.</p><p><br></p><p>In recent years, the constituency has experienced a boom in real estate and construction activities, driven by rapid urbanization and economic growth. This expansion, coupled with the development of commercial and educational infrastructure, continues to drive Ongole&#8217;s transformation into a vibrant economic and cultural center in the region.</p>",
+  "constituencyMap": "124\\MAP\\124IMAGE2025090507392521062_ONGOLE MAP.jpg",
+  "geography": "Ongole constiteuncy is located in Prakasam District and spans 366.61 Sq. km and having coastal length of the constituency is 27 KMs. It shares boundaries with Bay of  Bengal, Santhanuthalapadu, and Kondepi  constituencies. Mix of Alluvial, Red and Black Cotton Soils.&#10;<p><br></p>",
+  "populationDesc": "The total population is 3,03,128, with approximately 27% residing in rural areas and 73% in urban areas. There are 78,244 households, and the sex ratio is 993 females per 1,000 males. The literacy rate stands at 69%.&#10;<p><br></p>",
+  "administrationDesc": "Ongole Constituency is one of the Six assembly constituencies in Prakasam District. It includes Ongole mandal and Kothapatnam mandal &amp;  Ongole municipalities. constituency comes under Ongole Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "1 Engineering college&amp; 1 Medical college and it has 1 Government General Hospital&#10;<p>&#160;</p>",
+  "culturalheritageDesc": "Ongole Bull,Kothapatnam Beach,Sirigiri Hills,Gandhi Park, Gundamala and Gundayapalem Backwaters,Sri Prasanna Chennakesava Swamy Temple,Shivalayam Temple at Madanuru,  Srigiri Venkateswra swamy Temle,Chejarla Ammavaru Temple,Saibaba Temple at Santhapeta&#10;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "r2iYR7QgBs+2Sm4CcOwcQg==",
+   "economy_Text": "<b><font size=\"4\">Economy at a Glance</font></b><p><b><font size=\"4\"><br></font></b></p><p>The economy of Ongole Assembly Constituency in <span>2023&#8211;24</span> is driven by a rapidly expanding service sector, supported by steady growth in industry and agriculture. With a <span>Gross Constituency Domestic Product (GCDP) of &#8377;9,123.20 crore</span>, Ongole is emerging as a dynamic urban center with diversified economic drivers.</p><p>The <span>service sector</span> remains the dominant contributor, accounting for <span>&#8377;5,825.70 crore</span> or <span>69%</span> of the GCDP. This reflects Ongole's growing strength in education, healthcare, real estate, retail, and administrative services&#8212;sectors bolstered by urbanization and strong infrastructure.</p><p>The <span>industrial sector</span> contributes <span>&#8377;1,206.00 crore</span> (<span>14.3%</span>), supported by small-scale industries, agro and aqua processing units, and expanding opportunities linked to the upcoming MSME initiatives and connectivity to the <span>VCIC corridor</span>.</p><p>&#10;&#10;&#10;</p><p>The <span>agriculture and allied sector</span> provides a foundation to rural livelihoods, contributing <span>&#8377;1,408.00 crore</span> (<span>16.7%</span>), with tobacco (especially FCV tobacco), paddy, and fisheries forming key components. The coastal stretch near Kothapatnam further supports aquaculture and marine-based livelihoods.</p><p><br></p>",
+   "gcdP_Growth_Text": "Ongole is experiencing strong economic growth with a targeted annual GCDP growth rate of 14- 16% across key sectors such as urban services, real estate, agro and aqua processing, healthcare, and education. This growth trajectory supports the long-term vision of transforming the constituency into a regional economic and service hub by 2047, leveraging its urban infrastructure, coastal access, and industrial potential.",
+   "createdDate": "2025-09-06T05:06:51.07"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9123.2,
+   "cagR_Pct": 18.78,
+   "targetAmountCrore": 21579.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 5825.7,
+   "cagR_Pct": 18.9,
+   "targetAmountCrore": 13845.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1206.0,
+   "cagR_Pct": 18.75,
+   "targetAmountCrore": 2849.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1408.0,
+   "cagR_Pct": 18.34,
+   "targetAmountCrore": 3269.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 124,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 69.02
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 14.29
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 16.69
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 124,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 552,
+   "constituencyId": 124,
+   "name": "Damacharla Janardhana Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 553,
+   "constituencyId": 124,
+   "name": "Balineni Srinivasa Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 554,
+   "constituencyId": 124,
+   "name": " Damacharla Janardhana Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 923,
+   "constituencyId": 124,
+   "name": " Balineni Srinivasa Reddy",
+   "termFrom": 2012,
+   "termTo": 2014,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 922,
+   "constituencyId": 124,
+   "name": "Balineni Srinivasa Reddy",
+   "termFrom": 2009,
+   "termTo": 2012,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 556,
+   "constituencyId": 124,
+   "name": "Balineni Srinivasa Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

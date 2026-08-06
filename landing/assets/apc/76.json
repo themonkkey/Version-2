@@ -1,0 +1,212 @@
+{
+ "code": 76,
+ "name": "Madugula",
+ "district": "Anakapalli",
+ "logoUrl": "assets/constituencies_logos/madugula.png",
+ "profile": {
+  "population": "237459 (As per Census 2011)",
+  "voterCount": "189560 (As per 2024 Elections)",
+  "area": "653",
+  "mandals": "Cheedikada-R,Devarapalli-R,K.Kotapadu-R,V. Madugula-R",
+  "revenueVillages": "162",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\">Madugula Assembly Constituency, established in 1951 under the Delimitation Orders, is part of Anakapalli district and consists of four mandals&#8212;Madugula, Devarapalli, K.Kotapadu, and Cheedikada&#8212;with Madugula serving as the administrative headquarters. The constituency is largely rural, and agriculture forms the backbone of its economy, supported by vital reservoirs like Pedderu, Raiwada, and Konam, which sustain the cultivation of paddy, sugarcane, and palm oil. Madugula is also widely known for its signature sweet, the Madugula Halwa, a 134-year-old wheat-based delicacy that has earned regional and national recognition and is now in the process of securing a Geographical Indication (GI) tag to safeguard its authenticity and heritage. The constituency&#8217;s spiritual landscape is enriched by revered temples, most notably the Sri Modakondamma Ammavaru Temple at V. Madugula, a historic shrine dating back to the 18th century that hosts vibrant festivals drawing pilgrims from across the region. Adding to its cultural identity, K.Kotapadu is famous for its traditional bronze craftsmanship, where skilled artisans produce fine utensils and decorative pieces, keeping centuries-old artistry alive. Together, agriculture, culinary heritage, spiritual significance, and artisanal traditions define Madugula as a region of rich cultural and economic importance.</p>",
+  "constituencyMap": "76\\MAP\\76IMAGE2025090315230149946_Madugula_11zon.jpg",
+  "geography": "<p class=\"MsoNormal\">The Madugula Assembly Constituency, located in northern Anakapalli district of Andhra Pradesh, spans 653 sq. km and comprises four mandals&#8212;Madugula, Devarapalli, K.Kotapadu, and Cheedikada. The region has diverse soils, with red soils in Devarapalli and black cotton soils in the other mandals, making it ideal for paddy cultivation. Key water resources include the Pedderu, Raiwada, and Konam reservoirs, along with rivers and canals that support agriculture. With an average elevation of 275 feet, the constituency receives about 875 mm of rainfall annually, mainly from the South-West monsoon, though droughts can occur during weak rainfall years.</p>",
+  "populationDesc": "<p class=\"MsoNormal\"><span>The constituency has a total population of 2,37,459,&#10;comprising&#160;1,17,380 males and 1,20,079 females. The sex ratio stands at 1022&#10;females for every 1,000 males. There are 62,140 households in the&#10;constituency.&#160;</span></p>",
+  "administrationDesc": "<p class=\"MsoNormal\"><span>Madugula&#10;Constituency consists of four mandals: Madugula, Devarapalli, K.Kotapadu and&#10;Cheedikada.&#160;</span></p>",
+  "educationHealthcareDesc": "<p class=\"MsoNormal\">Madugula Constituency has a well-structured educational network with 167 primary schools, 28 upper primary schools, 45 high schools, 4 KGBV schools, 5 welfare residential schools, 3 private ITI colleges, 3 government junior colleges, and 2 degree colleges (government and private). Efforts are ongoing to enhance facilities with libraries, ramps, and smart tools, while housing conditions are improving through government schemes like PMAY. The healthcare system is robust, featuring 2 Community Health Centers, 9 Primary Health Centers, 3 AYUSH hospitals, and 78 sub-centers, supported by 7 FDHS vehicles and 4 ambulances, ensuring accessible services and strong emergency response across the region.</p>",
+  "culturalheritageDesc": "<p class=\"MsoNormal\">Madugula Constituency is home to notable cultural and natural landmarks. The Madugula Kondamma Ammavari Devasthanam is a revered temple dedicated to Goddess Kondamma, attracting devotees from across the region during its annual festivals, which are celebrated with great religious fervor and traditional rituals. Alongside its spiritual prominence, the constituency also features the Sariya Waterfalls, a picturesque natural attraction nestled amidst lush greenery, offering scenic beauty and a refreshing retreat for visitors. Together, these landmarks highlight Madugula&#8217;s blend of spirituality, culture, and natural charm, making the region both a devotional center and a destination for nature lovers.</p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "/lkw8qXek1VTYxUF3OqMbg==",
+   "economy_Text": "<p dir=\"ltr\">Madugula&#8217;s Gross Constituency Domestic Product (GCDP) stood at &#8377;3,950 crores in 2023-24 and is projected to reach &#8377;7,058.00 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of approximately 12-15%. This growth is driven by a strategic vision that leverages sectoral strengths, addresses infrastructure and employment challenges, and promotes industrial diversification. Key initiatives include improving connectivity, fostering eco-tourism, and investing in skill development to create sustainable job opportunities, particularly for rural and tribal communities.</p><p dir=\"ltr\"><strong>Sectoral Contributions and Growth</strong></p><ul class=\"tight\" dir=\"ltr\"><li><p dir=\"ltr\"><strong>Services</strong>: Contributes &#8377;985.00 crores (2023-24), projected to grow to &#8377;1,846.00 crores by 2028-29 at a growth rate of 20.25%, driven by eco-tourism and trade.</p></li><li><p dir=\"ltr\"><strong>Industry</strong>: Valued at &#8377;413.00 crores (2023-24), expected to reach &#8377;781.00 crores by 2028-29 with a growth rate of 20.63%, fueled by agro-based industries and infrastructure improvements.</p></li><li><p dir=\"ltr\"><strong>Agriculture &amp; Allied</strong>: Accounts for &#8377;2,256.00 crores (2023-24), projected to grow to &#8377;3,945.00 crores by 2028-29 at a growth rate of 17.56%, driven by organic farming and modern agricultural technologies.</p></li></ul>",
+   "gcdP_Growth_Text": "<div><div><p dir=\"auto\">Madugula is driving robust economic momentum, targeting a consistent 15% annual Gross Constituency Domestic Product (GCDP) growth rate, fueled by key sectors such as agriculture, industry, and eco-tourism. This ambitious growth trajectory aligns with a visionary goal to transform Madugula into a vibrant, sustainable economic hub by 2047, fostering investment opportunities, job creation, and inclusive prosperity for its rural and tribal communities.</p></div><section></section><section></section><div></div></div>",
+   "createdDate": "2025-09-04T13:15:16.3"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 3950.0,
+   "cagR_Pct": 15.74,
+   "targetAmountCrore": 7058.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 985.0,
+   "cagR_Pct": 20.25,
+   "targetAmountCrore": 1846.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 413.0,
+   "cagR_Pct": 20.63,
+   "targetAmountCrore": 781.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2256.0,
+   "cagR_Pct": 17.56,
+   "targetAmountCrore": 3945.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 76,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 27.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 11.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 62.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 76,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 89,
+   "constituencyId": 76,
+   "name": "Bandaru Satyanarayana Murthy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 730,
+   "constituencyId": 76,
+   "name": "Budi Mutyala Naidu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 966,
+   "constituencyId": 76,
+   "name": "Budi Mutyala Naidu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 967,
+   "constituencyId": 76,
+   "name": "Gavireddi Rama Naidu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": " Telugu Desam Party (TDP)",
+   "photo": ""
+  }
+ ]
+}

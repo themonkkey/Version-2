@@ -1,0 +1,221 @@
+{
+ "code": 36,
+ "name": "Badvel (SC)",
+ "district": "YSR Kadapa",
+ "logoUrl": "assets/constituencies_logos/badvel.png",
+ "profile": {
+  "population": "274179 (As per Census 2011)",
+  "voterCount": "220220 (As per 2024 Elections)",
+  "area": "2650",
+  "mandals": "Atloor-R,B.Kodur-R,Badvel-R,Gopavaram-R,Kalasapadu-R,Porumamilla-R,S.A.K.N. Mandal-R",
+  "revenueVillages": "153",
+  "municipal_wards": "35",
+  "municipalities": "Badvel",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Badvel Constituency is in the YSR Kadapa District and consists of seven mandals: Atloor, B. Kodur, Badvel, Gopavaram, Kalasapadu, Porumamilla, and Sri Avadhutha Kasinayana (S.A.K.N.). The constituency has 153 revenue villages, 28 uninhabited villages, 492 hamlets, and 86 Grama Panchayats, covering a geographical area of 2, 650 sq. km (~2, 65, 007 ha) with about 68, 182 households (2011).&#10;Badvel town acts as the constituency headquarters and is evolving into an urban hub for education and healthcare, supporting surrounding rural and tribal pockets. Its cultural identity is strengthened by spiritual sites and revered saints like Samartha Sadhguru Sri Kasinayana, fostering social harmony and local pilgrimage tourism.&#10;Geographically, the region includes the Sagileru River and seasonal streams, making water resource management vital. The terrain ranges from floodplains in B. Kodur to hilly, forested areas in Kalasapadu and Porumamilla. Forests cover about 1, 48, 839 ha, while thenet area sown is around 16, 076 ha, indicating significant cultivable potential alongside 42, 493 ha of long-period non-agricultural use (LPNAU) and 23, 691 ha under current fallow.&#10;The constituency aims for an annual growth rate of 12&#8211;15% across agriculture, industry, and services through investments in irrigation, skill development, infrastructure, and climate-resilient agriculture.Badvel is positioned as a key economic and urban growth hub, balancing agriculture, industry, and service sectors. With strategic infrastructure upgrades, industrial expansion, educational institutions, healthcare improvements, and sustainable development initiatives, the constituency is on track for inclusive and balanced growth under the Vision Plan 2024-2029.",
+  "constituencyMap": "36\\MAP\\36IMAGE2025090410392221110_badvel-min.jpg",
+  "geography": "Badvel Constituency lies in the northern part of Kadapa district, bordered by Prakasam district to the north, Rajampet to the south, and Mydukur to the west. It spans varying terrain from low-lying floodplains in B. Kodur and Badvel to hillocks and forested zones in Kalasapadu and Porumamilla.Red loamy soils dominate the hilly.Soil fertility varies, necessitating localized soil management practices and organic farming support.",
+  "populationDesc": "Population(2011): 2, 74, 179&#160; ,with Males:1,39,966 and Female : 1,34,213. The sex ratio stands at 958 females per 1, 000 males. Households: There are about 68,182 households (2011).",
+  "administrationDesc": "Badvel Constituency is in the YSR Kadapa District and consists of seven mandals: Atloor, B. Kodur, Badvel, Gopavaram, Kalasapadu, Porumamilla, and Sri Avadhutha Kasinayana (S.A.K.N.). The constituency has 153 revenue villages, 28 uninhabited villages, 492 hamlets, and 86 Grama Panchayats.",
+  "educationHealthcareDesc": "Education : Primary Schools-338,Primary with Upper Primary Schools-36,Upper Primary Schools-36,High Schools-67,Junior Colleges-15&#10;Degree Colleges-5,Polytechnical college-1,Agriculture College-1&#160; &#160;Health care: Area Hospitals-2,&#10;Community Health Centres-4&#10;,Primary Health Centres (Rural)-14&#10;,Urban Primary Health Centres-2,&#10;Health Sub Centres-136&#10;<br><br>",
+  "culturalheritageDesc": "&#160;Culturally, the region hosts ancient temples and traditional festivals that reflect its spiritual heritage. Conservation of eco-regions and promotion of eco-tourism can enhance both environmental sustainability and community-driven cultural preservation."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "PICQnGfpb4EZ//H97ltZwA==",
+   "economy_Text": "<p><font size=\"4\" face=\"Times New Roman\">The Economic Vision Plan for Badvel Constituency (2024&#8211;2029) projects a robust GCDP growth from &#8377;6,190 crores to &#8377;12,239 crores, achieving a CAGR of 15%, driven by strategic interventions across agriculture, industry, and services.</font></p><p><span>The agriculture sector, contributing 35.33% to GCDP, will grow through irrigation enhancements, crop diversification, aquaculture, livestock promotion, and organic farming, targeting &#8377;4,050 crores by 2028-29 (CAGR: 14.89%).&#160;</span></p><p><font size=\"4\" face=\"Times New Roman\">The industry sector (21.55% of GCDP) will expand to &#8377;2,548 crores (CAGR: 15.61%) via renewable energy infrastructure, agro-processing, farm mechanization, and dairy-based enterprises.&#160;</font></p><p><font size=\"4\" face=\"Times New Roman\">The services sector, with a 43.12% share, will reach &#8377;4,748 crores (CAGR: 13.97%) through investments in education, digital services, entrepreneurship in livestock and fisheries, and eco-tourism.&#160;</font></p><p><font size=\"4\" face=\"Times New Roman\">These initiatives, supported by infrastructure development and policy reforms, aim to foster inclusive, sustainable economic growth.</font></p><p></p><p></p>",
+   "gcdP_Growth_Text": "<font face=\"Times New Roman\" size=\"4\">Badvel is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like real estate,&#160;<span>infrastructure, transport and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant logistics and economic hub by 2047</span></font>",
+   "createdDate": "2025-09-04T06:04:28.057"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6190.0,
+   "cagR_Pct": 14.61,
+   "targetAmountCrore": 12239.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2469.0,
+   "cagR_Pct": 13.97,
+   "targetAmountCrore": 4748.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1234.0,
+   "cagR_Pct": 15.61,
+   "targetAmountCrore": 2548.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2023.0,
+   "cagR_Pct": 14.89,
+   "targetAmountCrore": 4050.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 36,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 43.12
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 21.55
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 35.33
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 36,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 9,
+   "sectorName": "Renewable Energy",
+   "description": "Solar, wind, green hydrogen, and hybrid energy projects with grid integration.",
+   "imageUrl": "assets/img/sectors/renewable-energy.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 330,
+   "constituencyId": 36,
+   "name": "Dasari Sudha",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 331,
+   "constituencyId": 36,
+   "name": "Gunthoti Venkata Subbaiah",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 332,
+   "constituencyId": 36,
+   "name": "Thiriveedi Jayaramulu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 333,
+   "constituencyId": 36,
+   "name": "\tP. M. Kamalamma",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 334,
+   "constituencyId": 36,
+   "name": "Devasani Chinna Govinda Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

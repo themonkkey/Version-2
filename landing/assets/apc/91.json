@@ -1,0 +1,209 @@
+{
+ "code": 91,
+ "name": "Eluru",
+ "district": "Eluru",
+ "logoUrl": "assets/constituencies_logos/eluru.png",
+ "profile": {
+  "population": "298875 (As per Census 2011)",
+  "voterCount": "235464 (As per 2024 Elections)",
+  "area": "62.09",
+  "mandals": "Eluru-U",
+  "revenueVillages": "0",
+  "municipal_wards": "50",
+  "municipalities": "Eluru",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Eluru Assembly Constituency Vision Action Plan 2024-29 has been meticulously designed to leverage the constituency's agricultural strength, dynamic industrial base, thriving construction sector, and robust service sector. This strategic blueprint aligns with Andhra Pradesh&#8217;s ambitious Swarna Andhra@2047 vision, which resonates with the national agenda of Viksit Bharat@2047.&#10;<p>A.D. Historical evidence can be found at the villages of Pedavegi and Guntupalli (Jilakarragudem Eluru Constituency consists of Eluru municipal corporation: 1 to 50 wards. These are located in the Eluru district of Andhra Pradesh. The Eluru Urban Development Authority (EUDA) is an urban planning agency in Eluru district of the Indian state of Andhra Pradesh. It was constituted on 1 January 2019, under Andhra Pradesh Metropolitan Region and Urban Development Authority Act, 2016 with the headquarters located at Eluru.</p>",
+  "constituencyMap": "91\\MAP\\91IMAGE2025090510362178975_eluru.jpg",
+  "geography": "Eluru constituency is located to Eluru district. spans 62.09 Sq.KMs&#160; It shares boundaries with Denduluru, Chinthalapudi, Tanuku, Unguturu constituencies.",
+  "populationDesc": "The total Population (2011 Census):2,81,680&#160; &#160;people, with 1,39,103 males and 1,42,577 females.The sex ratio stands at 1001 females per 1,000 males",
+  "administrationDesc": "Eluru&#160; Constituency is one of the assembly constituencies in Eluru District with one urban mandal: one eluru municipal corporation",
+  "educationHealthcareDesc": "10 Urban Health Centers (UHCs), and sub-centers, Veterinary care is also well-represented with 3 veterinary hospitals &amp; 74 primary schools, 36 upper primary schools, and 53 high schools,4 junior colleges and 5 Government junior colleges, 4 degree colleges,&#160;",
+  "culturalheritageDesc": "Chennakeswara swami temple (Gaali gopuram), Ambica Devi temple are most famous temples,Brundhavan&#9;park,&#9;opposite town raithu bazar, 4. Mothevari thota Park (Namestha Park), Beside of Ashok Nagar Bridge&#160;<p></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "cPnkEgR0k7xdIcnhAFVBBg==",
+   "economy_Text": "<p><font face=\"Arial\" size=\"4\"><b>Eluru&#8217;s Economy at a Glance</b></font></p><p><span>The Economic Vision Plan for Eluru lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;5,672 crores in 2023-24, Eluru is projected to expand steadily, reaching </span><span>&#8377;</span><span>12,969</span><span> crores by 2028-29, marking a significant transformation across agriculture, industry, and services sectors.&#160;</span></p><p><font face=\"Arial\"><span>The I</span><span>ndustrial sector accounts for&#160;</span><span>9.06</span><span>%, Agriculture &amp; allied activities&#10;contribute 2% and Service sector contributes 88.94%.</span></font></p><p class=\"MsoNormal\"><span></span></p>",
+   "gcdP_Growth_Text": "<span>Eluru is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,</span><br><span>physical infrastructure, and transportation. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-06T03:28:37.01"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5672.0,
+   "cagR_Pct": 25.81,
+   "targetAmountCrore": 12969.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 4668.0,
+   "cagR_Pct": 26.66,
+   "targetAmountCrore": 10891.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 475.0,
+   "cagR_Pct": 19.47,
+   "targetAmountCrore": 938.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 105.0,
+   "cagR_Pct": 16.43,
+   "targetAmountCrore": 191.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 91,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 88.94
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 9.06
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 2.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 91,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 13,
+   "sectorName": "Handicrafts, Handlooms & Textiles",
+   "description": "Promotion of traditional crafts, modern design integration, and export facilitation.",
+   "imageUrl": "assets/img/sectors/handicrafts-handlooms-textiles.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 581,
+   "constituencyId": 91,
+   "name": "Sri Badeti Radha Krishnayya (chanti)",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 582,
+   "constituencyId": 91,
+   "name": "Alla Kali Krishna srinivas",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 583,
+   "constituencyId": 91,
+   "name": "Sri Badeti Kota Rama Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 588,
+   "constituencyId": 91,
+   "name": " Alla Kali Krishna srinivas",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 590,
+   "constituencyId": 91,
+   "name": " Alla Kali Krishna srinivas",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

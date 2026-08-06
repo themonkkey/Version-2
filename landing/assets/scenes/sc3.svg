@@ -31,5 +31,7 @@
 <path id="flow-2" d="M230 104C230 171 230 171 230 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
 <path id="flow-3" d="M230 104C230 171 308 171 308 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
 <path id="flow-4" d="M230 104C230 171 386 171 386 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text id="lbl-topstate" x="230" y="76" font-family="Public Sans" font-weight="600" font-size="13" letter-spacing="1.3" fill="white" fill-opacity="0.85" text-anchor="middle">STATE</text>
+<text id="lbl-districts" x="230" y="320" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.55" text-anchor="middle">DISTRICTS</text>
 </g>
 </svg>

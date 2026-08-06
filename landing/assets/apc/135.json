@@ -1,0 +1,200 @@
+{
+ "code": 135,
+ "name": "Mantralayam",
+ "district": "Kurnool",
+ "logoUrl": "assets/constituencies_logos/mantralayam.png",
+ "profile": {
+  "population": "265684 (As per Census 2011)",
+  "voterCount": "208407 (As per 2024 Elections)",
+  "area": "1014.31",
+  "mandals": "Kosigi-R,Kowthalam-R,Mantralayam-R,Peddakadubur-R",
+  "revenueVillages": "101",
+  "municipal_wards": "0",
+  "municipalities": "-",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Mantralayam Assembly Constituency was established in 2008. The region's economy is predominantly agrarian, with agriculture serving as the mainstay for many residents. The fertile lands support the cultivation of various crops, contributing to the local economy. Additionally, out of 4 mandals in this constituency 3 are connected with Tungabhadra River and this river bank catchment area has been cultivating with lift irrigation of Tungabhadra river. The constituency is having a famous pilgrim city in the constituency headquarters and it has a rich historical and cultural heritage, with diverse geographical features and potential for economic growth. Its proximity to nearby towns like Adoni and Raichur makes it well-connected for trade, commerce, and tourism development.",
+  "constituencyMap": "135\\MAP\\135IMAGE2025090415271351554_mantralayam map.jpg",
+  "geography": "The Mantralayam Assembly Constituency is located in the southern part of Kurnool District, Andhra Pradesh. Mantralayam spans 1025.78 sq.km . It shares boundaries with Yemmiganur, Adoni constituencies and Karnataka State. The constituency Consists both black cotton soils and red soils found in some areas of Mantralayam, Peddakadabur, Kosigi and Kowthalammandals.Crops Cultivated in each mandal",
+  "populationDesc": "According to the 2011 Census, the population of the Mantralayam Assembly Constituency stands at 2,65,684 people, comprising 1,32,073 males and 1,33,611 females. The sex ratio is 988 females per 1,000 males, equal to the district average (988) and slightly lower than state average(993).&#160;",
+  "administrationDesc": "Mantralayam Constituency is one of the seven assembly constituencies in Kurnool District. It includes Mantralayam, Peddakadabur, Kosigi and Kowthalam mandals.",
+  "educationHealthcareDesc": "Social infrastructure includes 5 primary health centers (PHCs), 76 sub-centers which are insufficient to meet the growing healthcare needs of the population. Educational infrastructure comprises 141 government and private primary schools, 28 government and private upper primary school 50 government and private high schools,4 KGBV schools, 3 Model schools, 8 government &amp; private junior colleges, 2 government degree college , one private degree college and one BC-Boys welfare hostel.&#160;",
+  "culturalheritageDesc": "Mantralayam is rich in cultural landmarks, such as the Sri Guru Raghavendra Swamy Temple, Sri Urukundhu Eranna Swamy Temple, Kosigi Yellamma and Sri Pairayya Anjaneya Swamy Temple. It is also known for Every Year One Month Sri Raghavendra Swami Aaradana Cart Festival In Mantralayam Constituency."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "qYJNg0l76G4wnKXLH2JcKw==",
+   "economy_Text": "<p dir=\"ltr\">The Economic Vision Plan for Mantralayam (2024-2029) projects a robust 15% average annual GCDP growth, elevating the constituency&#8217;s economy from &#8377;5,709 Crores (2023-24) to &#8377;11,890 Crores by 2028-29, transitioning from an agriculture-dominated base to a diversified economy.&#160;</p><p dir=\"ltr\">Agriculture will modernize through irrigation upgrades, crop diversification, and agri-processing.&#160;</p><p dir=\"ltr\">Industry, led by MSMEs, food processing, and renewable energy, will grow at 19% annually, contributing 19.53% to GCVA.&#160;</p><p dir=\"ltr\">The services sector, driven by tourism, IT, and financial inclusion, will expand rapidly at 20% annually, increasing its share to 39.43%.&#160;</p><p dir=\"ltr\">Strategic investments in infrastructure, skill development, and sustainable practices align with the Swarna Andhra @2047 vision, aiming for inclusive growth and a per capita income rise from &#8377;1,78,932 to &#8377;3,63,559.</p>",
+   "gcdP_Growth_Text": "<span>Mantralayam is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like investments,</span><span>&#160;infrastructure, pilgrim tourism and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant tourism and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span>",
+   "createdDate": "2025-09-05T05:56:32.137"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5709.0,
+   "cagR_Pct": 17.74,
+   "targetAmountCrore": 11890.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1830.0,
+   "cagR_Pct": 20.28,
+   "targetAmountCrore": 4328.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 970.0,
+   "cagR_Pct": 18.99,
+   "targetAmountCrore": 2143.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2842.0,
+   "cagR_Pct": 14.98,
+   "targetAmountCrore": 4505.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 135,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 17.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 50.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 135,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 12,
+   "sectorName": "Pilgrimage & Cultural Centre",
+   "description": "Restoration of heritage sites, amenities for pilgrims, and promotion of cultural tourism.",
+   "imageUrl": "assets/img/sectors/pilgrimage-cultural-centre.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 433,
+   "constituencyId": 135,
+   "name": "Y. BALANAGI REDDY",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 441,
+   "constituencyId": 135,
+   "name": "Y. BALANAGI REDDY",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 442,
+   "constituencyId": 135,
+   "name": "Y. BALANAGI REDDY",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 444,
+   "constituencyId": 135,
+   "name": "Y. BALANAGI REDDY",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

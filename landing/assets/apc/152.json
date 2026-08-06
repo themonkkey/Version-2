@@ -1,0 +1,176 @@
+{
+ "code": 152,
+ "name": "Guntur West",
+ "district": "Guntur",
+ "logoUrl": "assets/constituencies_logos/guntur west.png",
+ "profile": {
+  "population": "342893 (As per Census 2011)",
+  "voterCount": "278480 (As per 2024 Elections)",
+  "area": "23.19",
+  "mandals": "GUNTUR",
+  "revenueVillages": "0",
+  "municipal_wards": "26",
+  "municipalities": "Guntur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Guntur West Assembly Constituency Vision Action Plan 2024&#8211;29 outlines a comprehensive roadmap to transform the constituency into a vibrant hub of agriculture, industry, and services. Designed to achieve an ambitious 15% annual growth rate, the plan aligns with Andhra Pradesh&#8217;s Swarna Andhra @ 2047 vision and the national framework of Viksit Bharat @ 2047.&#10;Located within Guntur district headquarters, the constituency spans 23.11 sq. km and falls under the Guntur Municipal Corporation, which was upgraded to corporation status in 1994. Its strategic location, serving as the district headquarters and its proximity to Amaravati, the state capital, gives it a unique advantage for growth and development.&#10;Guntur West is highly urbanized and serves as a key administrative, commercial, and service hub. It is home to many state government offices, agencies, and institutions that contribute to governance and public service delivery. The constituency also stands out as a major trading centre, particularly for agricultural commodities. It hosts the largest chilli market yard in Asia, while cotton and tobacco exports further strengthen its agrarian economy.&#10;Beyond agriculture, the constituency plays a crucial role in transport, education, healthcare, and commerce. With strong road and rail connectivity, reputed educational institutions, advanced healthcare facilities, and a thriving commercial base, Guntur West has evolved into a dynamic urban centre.&#10;The Vision Action Plan emphasizes balanced growth, ensuring that economic development is paired with improved urban infrastructure, sustainable practices, and inclusive social welfare, positioning Guntur West as a model constituency of progress.&#10;<br><p>&#10;</p>",
+  "constituencyMap": "152\\MAP\\152IMAGE2025090413164377029_guntur west-min.png",
+  "geography": "Guntur West Assembly Constituency, spread over 23.1<font face=\"Arial\">9</font> sq. km, lies in Guntur district with fertile black cotton soils. Strategically positioned near Amaravati, Vijayawada, Gannavaram Airport, and the Krishna River, it shares borders with Guntur East and Prathipadu. The region has a tropical savanna climate with hot summers, moderate winters, and 831 mm annual rainfall.&#160;",
+  "populationDesc": "Population (2011 Census): 3,33,998 people, with 1,970,58 males and 1,36,940 females. The sex ratio stands at 1016 females per 1,000 males.",
+  "administrationDesc": "Guntur West Constituency is one of the seven assembly constituencies in Guntur District. It has Guntur West Municipal Corporation.",
+  "educationHealthcareDesc": "Guntur West Assembly Constituency is a major hub for education and healthcare, reflecting its strong urban character. The constituency hosts 42 primary schools, 8 upper primary schools, and 4 high schools, along with 32 junior colleges and 16 degree colleges, making it a prominent center for higher education. Technical and professional education is supported by 1 ITI, 5 polytechnics, 4 engineering colleges, and a medical college, providing diverse learning opportunities. Healthcare facilities include 6 Primary Health Centres and 1 dispensary, ensuring essential health services for the community.",
+  "culturalheritageDesc": "Guntur West Assembly Constituency reflects a vibrant blend of tradition and modernity. It is home to historic temples, mosques, and churches that symbolize the region&#8217;s cultural diversity and communal harmony. Festivals like Sankranti, Ugadi, Dasara, Ramzan, and Christmas are celebrated with equal enthusiasm, drawing communities together. Traditional bazaars and markets add to its cultural charm, while its proximity to Amaravati connects it to Andhra Pradesh&#8217;s rich historical and spiritual heritage. The constituency continues to preserve its traditions while embracing urban progress."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "rpYfshOsimSb2k2mfVMq/Q==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Guntur West&#8217;s Economy at a Glance</h2><p><br></p><p>The Economic Vision Plan for Guntur West presents a comprehensive growth strategy to&#160;<span>transform the constituency into an economically vibrant, investment-friendly, and&#160;</span><span>employment-driven region. With a Gross Constituency Domestic Product (GCDP) of&#160;</span><span>&#8377;10,828 crores in 2022-23(SRE), Guntur West is projected to achieve &#8377;</span><span><font face=\"Roboto\">24665</font></span><span>&#160;crores by&#160;</span><span>2028-29, reflecting a strong and sustainable annual growth trajectory averaging 12-15%.&#160;</span><span>The economic strategy is designed to leverage sectoral strengths, address infrastructure&#160;</span><span>and employment challenges, and promote industrial diversification, ensuring inclusive&#160;</span><span>and resilient economic progress.</span></p>",
+   "gcdP_Growth_Text": "<span>Guntur West is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span><font color=\"#333333\"><span>&#160;across key sectors like real estate, ownership of dwellings, trade, hotels</span></font></span><font color=\"#333333\"><span>&#160;&amp; restaurants, and construction.&#160;</span></font><span>This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-06T10:02:38.957"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 12547.0,
+   "cagR_Pct": 13.62,
+   "targetAmountCrore": 24665.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 10144.0,
+   "cagR_Pct": 13.25,
+   "targetAmountCrore": 19775.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1350.0,
+   "cagR_Pct": 15.2,
+   "targetAmountCrore": 2796.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 115.0,
+   "cagR_Pct": 8.39,
+   "targetAmountCrore": 159.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 152,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 58.92
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 21.83
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 19.25
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 152,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 941,
+   "constituencyId": 152,
+   "name": "Galla Madhavi",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 942,
+   "constituencyId": 152,
+   "name": " Maddali Giridhara Rao",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": " TDP",
+   "photo": ""
+  },
+  {
+   "id": 695,
+   "constituencyId": 152,
+   "name": "Modugula Venugopala Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 943,
+   "constituencyId": 152,
+   "name": "\tKanna Lakshmi Narayana",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,197 @@
+{
+ "code": 71,
+ "name": "Anaparthy",
+ "district": "East Godavari",
+ "logoUrl": "assets/constituencies_logos/anaparthy.png",
+ "profile": {
+  "population": "269701 (As per Census 2011)",
+  "voterCount": "226103 (As per 2024 Elections)",
+  "area": "412.68",
+  "mandals": "Anaparthi-R,Biccavole-R,Pedapudi-R,Rangampeta-R",
+  "revenueVillages": "55",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Anaparthi Assembly Constituency's Vision Action Plan (2024-29) leverages its strengths in agriculture, industry, construction, and services, aligning with Andhra Pradesh's Swarna Andhra@2047 vision and India's Viksit Bharat@2047 agenda. The constituency comprises Anaparthi, Biccavolu, Rangampeta, and Pedapudi mandals, known for significant contributions to agriculture, industry, education, innovation, commerce, and services. With a rich historical legacy, Anaparthi aims for 15% annual growth across key sectors.The constituency is strategically located near Kakinada (40 km) and Rajahmundry (30 km), spanning 412.68 sq. km. Anaparthi has a population of 2,70,095 and 2,26,278 voters. The constituency features government schools, APSWR schools and colleges, and private junior and degree colleges. It has veterinary hospitals, primary health centers, and nationalized banks. Key industries include rice mills, ITC Ltd, and distilleries. Anaparthi has a &#34;D&#34; category railway station under South Central Railway Zone. With its fertile lands, water resources, and cultural heritage, Anaparthi is poised for growth, driven by its unique advantages and strategic location.",
+  "constituencyMap": "71\\MAP\\71IMAGE2025090317562160761_Anaparthy.png",
+  "geography": "Anaparthy constituency is located in East Godavari District and spans 412.68 sq km. It shares boundaries with Peddapuram, Rajamahendravaram Rural, Rajanagaram, Mandapeta constituencies. It is characterized by sandy soils, red soils and deltaic alluvial soils.",
+  "populationDesc": "The total population is 2,70,095 With 100% residing in rural areas. . There are 79,209 households, and the with a sex ratio of 999 females per 1,000 males. The literacy rate stands at 65.69%.<p><br></p>",
+  "administrationDesc": "Anaparthy Constituency is in East Godavari District. It includes 1) Anaparthi Mandal 2) Biccavolu Mandal 3) Rangampeta  Mandal and 4) Pedapudi&#160; Mandals. Anaparthi village is the constituency head quarter.",
+  "educationHealthcareDesc": "Anaparthi Mandal in Anaparthi Constituency is a major educational Center for professional courses like MBA, MCA and Polytechnic. The healthcare sector includes 8 PHCs, 64 sub-centers, 1 Area Hospital, and 1 AYUSH dispensaries (Homeo).",
+  "culturalheritageDesc": "Anaparthi Constituency is full of cultural heritage and significant landmarks. The Kumara Subrahmanyeswara Swamy, The Village Pulugurtha in Anaparthi Mandal is famous for it&#8217;s Malkha Yarn Cotton Fabrics, Biccavolu is known for beautiful stone temple of Lord Shiva built by the Eastern Chalukyas."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "wRtVVx6nbx+EtJ3vJArD8g==",
+   "economy_Text": "<span><p dir=\"ltr\"><span></span></p><h2 class=\"inner-page-header pt-2\">Anaparthy&#8217;s Economy at a Glance</h2><p dir=\"ltr\"><span><br></span></p><p dir=\"ltr\"><span>The economy of the Constituency presents a dynamic and multifaceted landscape, driven by significant contributions from the agriculture, industry and services sectors. As of the fiscal year 2023-24, the Gross Constituency Domestic Product (GCDP) reached &#8377; 10,549 Crores, with agriculture and allied sectors accounting for 62.77% (&#8377;6,126 Crores), the industrial sector contributing 15.56% (&#8377;1,519 Crores) and the services sector making up 21.67%(&#8377;2,115 Crores). The Constituency has shown remarkable resilience by prioritizing high-value horticulture crops, which have emerged as a key driver of Horticultural income and economic stability.</span></p><p><span><br></span></p></span>",
+   "gcdP_Growth_Text": "<span>Anaparthy is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like livestock, agriculture and manufacturing.</span><span>&#160;This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-04T09:58:11.02"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 10550.0,
+   "cagR_Pct": 15.42,
+   "targetAmountCrore": 19743.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2115.0,
+   "cagR_Pct": 14.87,
+   "targetAmountCrore": 4196.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1519.0,
+   "cagR_Pct": 18.13,
+   "targetAmountCrore": 3612.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 6126.0,
+   "cagR_Pct": 13.16,
+   "targetAmountCrore": 10457.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 71,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 22.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 15.5
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 62.5
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 71,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 155,
+   "constituencyId": 71,
+   "name": "Ramakrishna Reddy Nallamilli",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Bharatiya Janata Party",
+   "photo": ""
+  },
+  {
+   "id": 156,
+   "constituencyId": 71,
+   "name": "Sathi Suryanarayana Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 157,
+   "constituencyId": 71,
+   "name": "Nallamilli Ramakrishna Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 158,
+   "constituencyId": 71,
+   "name": "Nallamilli Seshareddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC (INDIAN NATIONAL CONGRESS)",
+   "photo": ""
+  },
+  {
+   "id": 159,
+   "constituencyId": 71,
+   "name": "Tetali Rama Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC (INDIAN NATIONAL CONGRESS)",
+   "photo": ""
+  }
+ ]
+}

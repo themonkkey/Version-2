@@ -1,0 +1,197 @@
+{
+ "code": 86,
+ "name": "Undi",
+ "district": "West Godavari",
+ "logoUrl": "86\\Logo\\86IMAGE2026030917510841389_undi_logo.png",
+ "profile": {
+  "population": "274175 (As per Census 2011)",
+  "voterCount": "224831 (As per 2024 Elections)",
+  "area": "449.8",
+  "mandals": "Akiveedu-R,Akiveedu-U,Kalla-R,Palakoderu-R,Undi-R",
+  "revenueVillages": "62",
+  "municipal_wards": "20",
+  "municipalities": "Akiveedu",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\">Undi Constituency in West Godavari district, Andhra Pradesh, is known for its fertile agricultural lands, abundant water resources, and cultural heritage. Strategically located near Bhimavaram (8 km) and Tadepalligudem (15 km), it spans 499.8 sq. km. The constituency offers potential in agriculture, aquaculture, and eco-tourism, with attractions like the Sri  Venkateswara Swamy Temple in Kallakuru.The constituency comprises 4 mandals (Undi, Akiveedu, Kalla, and Palakoderu) and 1 nagar panchayat (Akiveedu), with 62 revenue villages, 70 gram panchayats, and 72 gram sachivalayams. With its diverse resources and strategic location, Undi is poised for balanced and sustainable development through targeted interventions, driving growth and progress. The constituency's rich cultural heritage and natural resources make it an attractive destination for visitors and investors. By leveraging its strengths, Undi can achieve significant economic and social progress.</p>",
+  "constituencyMap": "86\\MAP\\86IMAGE2025090310241543882_undi.jpg",
+  "geography": "<p class=\"MsoNormal\">Undi constiteuncy is located in West Godavari District and spanning an Area of&#160; 499.8 sq. km . Undi&#8217;s geography is characterized by fertile alluvial soils.</p><p class=\"MsoNormal\"><br></p>",
+  "populationDesc": "<span>Undi has a population of&#10;approximately 2,74,175 (2011 Census) of which 88% reside in rural areas and 12%&#10;side in urban areas.&#160; The&#10;gender ratio stands at 1007 Females per 1,000 Males.The Constituency boasts a literacy rate of 72.35%.</span>",
+  "administrationDesc": "<span>Undi a prominent Constituency&#10;in the West Godavari district of Andhra Pradesh.&#160;</span><span>The Undi Constituency consists&#10;of 4 Mandals such as 1. Undi, 2. Akiveedu, 3. Kalla,4. Palakoderu and one&#10;Nagara Panchayat of Akiveedu. It is having 62 Revenue Villages, 136 Habitations, 70 Gram Panchayats and 72 Gram Sachivlayams and Nagar Panchayat with 20 municipal wards and 5 Ward Sachivalayams.&#160;</span>",
+  "educationHealthcareDesc": "<span>It includes one CHC hospital, five primary health centres (PHCs), and 76&#10;sub-centres. Educational infrastructure comprises 36 Government high schools, 13&#10;junior colleges, and 3-degree college and one Engineering College, but there is&#10;a pressing need for vocational training centres to equip the youth with&#10;Industry-relevant skills.</span>",
+  "culturalheritageDesc": "<span>Undi is full of cultural&#10;heritage and significant landmarks. The Venkateswara Swamy Temple in Kallakuru&#10;Village,&#160;</span><span>Sri Chennakesava Swamy&#10;temple in the Uppuluru village,&#160;</span><span><span>Shree Adinadh Jain&#10;Swetamber Teerth Mandir in Pedamiram village </span><span><span>&#160;</span></span><span><span>And&#160;</span>Manyam Veerudu&#34; Sri Alluri Sitarama Raju&#8217;s statue.</span><span>&#160;</span></span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "QNJa2+C5ZNIvStQlHaSFiQ==",
+   "economy_Text": "<span><p dir=\"ltr\"><span></span></p><h2 class=\"inner-page-header pt-2\">Undi&#8217;s Economy at a Glance</h2><p><br></p><p dir=\"ltr\"><span>The Economic Vision Plan for Undi presents a comprehensive Growth Strategy to transform the Constituency into an Economically vibrant, investment-friendly, and employment-driven region. With a Gross Constituency Domestic Product (GCDP) of </span><span>Rs</span><span>11,794 Crores in 2023-24, Undi is projected to achieve </span><span>Rs</span><span>2,50,150 Crores by 2047-48, reflecting a strong and sustainable annual Growth Trajectory averaging 12 to 15%. The Economic Strategy is designed to leverage sectoral strengths, address infrastructure and employment challenges, and promote industrial diversification, ensuring inclusive and resilient Economic progress.</span></p></span>",
+   "gcdP_Growth_Text": "<span>Undi is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like&#160;</span><span><span>Fishing &amp;Aquaculture, Construction and livestock. </span></span><span>This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-06T06:37:43.19"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 11794.0,
+   "cagR_Pct": 15.18,
+   "targetAmountCrore": 23783.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2243.0,
+   "cagR_Pct": 15.62,
+   "targetAmountCrore": 4634.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1714.0,
+   "cagR_Pct": 12.95,
+   "targetAmountCrore": 3421.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 6954.0,
+   "cagR_Pct": 9.57,
+   "targetAmountCrore": 14014.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 86,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 20.55
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 15.71
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 63.74
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 86,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 473,
+   "constituencyId": 86,
+   "name": "Kanumuru Raghu Rama Krishna Raju (Rrr)",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 475,
+   "constituencyId": 86,
+   "name": "Mantena Rama Raju",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 477,
+   "constituencyId": 86,
+   "name": "Vetukuri Venkata Siva Rama Raju",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 481,
+   "constituencyId": 86,
+   "name": "Vetukuri Venkata Siva Rama Raju",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 482,
+   "constituencyId": 86,
+   "name": "Pathapati Sarraju",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

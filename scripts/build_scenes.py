@@ -36,6 +36,11 @@ CLASS_MAP = [
     (re.compile(r"^flow-([234])$"),       "sc flow up"),
     (re.compile(r"^term-(t\d)$"),         "sc term {0}"),
     (re.compile(r"^chain-dot-\d+$"),      "sc dot"),
+    # on-canvas labels — reuse the same class as the element they annotate,
+    # so they fade in/highlight in sync rather than sitting static
+    (re.compile(r"^lbl-pick$"),           "dist pick"),
+    (re.compile(r"^(val|lbl)-(t\d)$"),    "term {1}"),
+    (re.compile(r"^lbl-(?:state|primary|secondary|tertiary|topstate|districts)$"), None),
 ]
 
 SCENES = {

@@ -1,0 +1,221 @@
+{
+ "code": 38,
+ "name": "Thamballapalle",
+ "district": "Annamayya",
+ "logoUrl": "38\\Logo\\38IMAGE2026042814594139097_Horsley Hills.jpg",
+ "profile": {
+  "population": "273751 (As per Census 2011)",
+  "voterCount": "224802 (As per 2024 Elections)",
+  "area": "1625.7",
+  "mandals": "B Kothakota-R,Kurabalakota-R,Mulakalacheruvu-R,Peddamandyam-R,Peddathippasamudram-R,Thamballapalle-R",
+  "revenueVillages": "79",
+  "municipal_wards": "20",
+  "municipalities": "B Kothakota",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>Thamballapalle lies in the western part of Annamayya district, Andhra Pradesh, and is one of the key assembly segments under the Rajampet Lok Sabha constituency. It spans six mandals&#8212;Thamballapalle, Mulakalacheruvu, Peddamandyam, Kurabalakota, Peddathippasamudram, and B. Kothakota&#8212;with a total population of approximately 2.74 lakh. The scenic Horsley Hills hill station, and the renowned Rishi Valley School. These sites contribute to the constituency&#8217;s tourism potential, alongside emerging opportunities in services and small-scale industries.</p><p>&#10;</p><p><br></p><p>The constituency is predominantly agrarian, with agriculture contributing 61.23% to the local economy. It benefits from irrigation projects like the Handri-Neeva Sujala Sravanthi (HNSS) Canal and the Mudivedu Reservoir, which support cultivation across a variety of red, loamy, and black soils. Key crops include groundnut, millets, and horticultural produce, sustaining a large rural population.</p>",
+  "constituencyMap": "38\\MAP\\38IMAGE2025090515062983435_THAMBALAPALLE MAP.jpg",
+  "geography": "Thambalapalli constiteuncy is located in Annamayya District and spans 1625.7 Sq. km.  It shares boundaries with Thambalapalli shares boundary with Rayachoti, Madanapalle, and Pilleru constituencies .Mix of red soils, Loam Sandy soils, Black cotton soil and laterite soils.",
+  "populationDesc": "The total population is 2,73,751, with approximately56% residing in rural areas and 44% in urban areas. There are 14,568 households, and the sex ratio is 997 females per 1,000 males. The literacy rate stands at 61.33%.",
+  "administrationDesc": "Thamballapalli  Constituency is one of the six assembly constituencies in Annamayya District. It includes 1)Thamballapalli, 2)Peddamandyam,3) Kurabalakota, 4)Pedda tippasamudraum,5) Mulakalacheruvu and 6)B.Kothakota. Thamballapalli constituency comes under Rajampet Loksabha Constituency.",
+  "educationHealthcareDesc": "It has 3 Government General Hospitals &amp; 1 Area Hospital.",
+  "culturalheritageDesc": "Horsley Hills, Mallaiah Konda,Lakshmi narasimha swami temple&#160;"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "1dTu9GuTPKl7GJWrygcu3w==",
+   "economy_Text": "<b>Economy at a Glance</b><p>Thamballapalle&#8217;s economy is heavily agriculture-centric, with the <span>Agricultural &amp; Allied Sector</span> contributing a dominant <span>61.24%</span> to the local GCDP. This is supported by fertile red, loamy, and black soils, and irrigation from the <span>Handri-Neeva Canal</span> and <span>Mudivedu Reservoir</span>, enabling the cultivation of groundnut, millets, pulses, vegetables, and horticultural crops.</p><p>The <span>Industries Sector</span>, contributing <span>14.93%</span>, is gradually expanding with opportunities in <span>agro-processing</span>, <span>local manufacturing</span>, and <span>MSMEs</span>, especially along the <span>NH-42 corridor</span>. Small-scale industries related to food processing, brick-making, and construction materials are emerging drivers.</p><p>The <span>Service Sector</span> makes up <span>23.83%</span> of the economy, led by <span>education, retail, transport, and tourism services</span>. With growing interest in eco and heritage tourism&#8212;attractions like <span>Horsley Hills</span> and <span>Mallikarjuna Swamy Temple</span>&#8212;the service sector holds strong potential for future growth.</p><p>&#10;&#10;<br></p><p class=\"MsoNormal\"><span lang=\"EN-US\">Agriculture drives over 60% of the local&#10;economy, supported by irrigation from Handri-Neeva and Mudivedu Reservoir.&#10;Promoting high-value crops like mango, guava, and vegetables, alongside organic&#10;and precision farming, can boost productivity and farmer incomes.</span></p><p>&#10;&#10;</p><p class=\"MsoNormal\"><span lang=\"EN-US\">With attractions like Horsley Hills&#10;and Mallikarjuna Swamy Temple, Thamballapalle has strong potential for&#10;eco and heritage tourism. Developing basic infrastructure, homestays, and&#10;nature trails can drive rural employment and local revenue. Agro-processing,&#10;packaging, and small-scale manufacturing (bricks, food products) can thrive&#10;with NH-42 connectivity. Supporting local entrepreneurship and value-addition&#10;industries will diversify the economy and create jobs.</span></p>",
+   "gcdP_Growth_Text": "Thamballapalle is poised for steady economic progress with a targeted 13% annual GCDP growth rate driven by key sectors such as agriculture, agro-processing, eco-tourism, and rural services. This growth path supports the constituency&#8217;s vision of fostering a resilient and inclusive rural economy while preserving its natural and cultural heritage by 2047.",
+   "createdDate": "2025-09-07T10:43:13.87"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6028.0,
+   "cagR_Pct": 16.3,
+   "targetAmountCrore": 12865.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1329.0,
+   "cagR_Pct": 16.37,
+   "targetAmountCrore": 2837.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 833.0,
+   "cagR_Pct": 16.36,
+   "targetAmountCrore": 1777.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3415.0,
+   "cagR_Pct": 16.37,
+   "targetAmountCrore": 7288.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 38,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 23.83
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 14.93
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 61.24
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 38,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 839,
+   "constituencyId": 38,
+   "name": "Peddireddy Dwarakanadha Reddy\t\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 841,
+   "constituencyId": 38,
+   "name": "Peddireddy Dwarakanadha Reddy\t\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 843,
+   "constituencyId": 38,
+   "name": "G. Shankar Yadav\t\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 844,
+   "constituencyId": 38,
+   "name": "Anipireddy Venkata Praveen Kumar Reddy\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 846,
+   "constituencyId": 38,
+   "name": "Kalicherla Prabakar Reddy\t\t\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

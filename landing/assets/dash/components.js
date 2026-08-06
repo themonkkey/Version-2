@@ -1,0 +1,578 @@
+/* ===========================================================================
+   Swarna Andhra — dashboard shared component library
+   Plain script. Defines window.DASH. Every builder returns an HTML STRING.
+
+   Honesty contract enforced here, not left to callers:
+     - no builder invents a number; missing input yields DASH.empty(reason)
+     - baseline (measured) and target (planned) render differently and are
+       never summed
+     - portal prose is sanitised, portal text is escaped
+   =========================================================================== */
+(function (global) {
+  'use strict';
+
+  /* ---------------------------------------------------------------- utils */
+
+  function esc(s) {
+    if (s === null || s === undefined) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function isNum(n) {
+    return typeof n === 'number' && isFinite(n);
+  }
+
+  /* Coerce portal values that arrive as numeric strings ("419.61"). */
+  function num(v) {
+    if (isNum(v)) return v;
+    if (typeof v === 'string') {
+      var c = v.replace(/,/g, '').trim();
+      if (c !== '' && isFinite(Number(c))) return Number(c);
+    }
+    return null;
+  }
+
+  function grp(n) {
+    // Indian digit grouping: 12,34,567
+    var s = String(n);
+    var neg = s.charAt(0) === '-';
+    if (neg) s = s.slice(1);
+    var parts = s.split('.');
+    var i = parts[0];
+    var out;
+    if (i.length <= 3) {
+      out = i;
+    } else {
+      var last3 = i.slice(-3);
+      var rest = i.slice(0, -3);
+      out = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + last3;
+    }
+    if (parts[1]) out += '.' + parts[1];
+    return (neg ? '-' : '') + out;
+  }
+
+  function round(n, dp) {
+    var f = Math.pow(10, dp || 0);
+    return Math.round(n * f) / f;
+  }
+
+  /** Rupees-crore. fmtCr(3768) -> "₹3,768 cr". Returns '' when not a number. */
+  function fmtCr(n) {
+    var v = num(n);
+    if (v === null) return '';
+    var dp = Math.abs(v) < 100 ? 1 : 0;
+    return '₹' + grp(round(v, dp)) + ' cr';
+  }
+
+  /** Plain rupees. */
+  function fmtRs(n) {
+    var v = num(n);
+    if (v === null) return '';
+    return '₹' + grp(round(v, 0));
+  }
+
+  /** Percent. fmtPct(46.43) -> "46.4%" */
+  function fmtPct(n, dp) {
+    var v = num(n);
+    if (v === null) return '';
+    return round(v, dp === undefined ? 1 : dp) + '%';
+  }
+
+  /* --------------------------------------------------------- sanitisation */
+
+  var ALLOWED_TAGS = {
+    P: 1, BR: 1, SPAN: 1, DIV: 1, STRONG: 1, B: 1, EM: 1, I: 1, U: 1,
+    UL: 1, OL: 1, LI: 1, H1: 1, H2: 1, H3: 1, H4: 1, H5: 1, H6: 1,
+    BLOCKQUOTE: 1, A: 1, SMALL: 1, SUB: 1, SUP: 1, HR: 1,
+    TABLE: 1, THEAD: 1, TBODY: 1, TR: 1, TH: 1, TD: 1
+  };
+  var ALLOWED_ATTRS = { href: 1, title: 1, colspan: 1, rowspan: 1 };
+  var DROP_WHOLE = { SCRIPT: 1, STYLE: 1, IFRAME: 1, OBJECT: 1, EMBED: 1, LINK: 1, META: 1, FORM: 1, INPUT: 1, BUTTON: 1, SVG: 1, MATH: 1, TEMPLATE: 1, NOSCRIPT: 1, IMG: 1, PICTURE: 1, SOURCE: 1,
+    AUDIO: 1, VIDEO: 1, BASE: 1, TEXTAREA: 1, SELECT: 1, OPTION: 1, LABEL: 1 };
+
+  /**
+   * Strip everything not on the allow-list from portal-supplied HTML prose.
+   * Removes script/style/iframe wholesale, drops every event-handler
+   * attribute, and blocks javascript:/data: URLs.
+   */
+  function sanitise(html) {
+    if (html === null || html === undefined) return '';
+    var src = String(html);
+    if (typeof document === 'undefined') return esc(src);
+
+    // Parse into a <template>. Its contents live in an inert owner document
+    // with no browsing context, so nothing loads and nothing executes — not
+    // scripts, and not <img onerror>, which DOES fire in a plain detached div.
+    // The clean-up therefore happens entirely inside tpl.content; only after
+    // every dangerous node is gone do we adopt it into the live document.
+    var tpl = document.createElement('template');
+    tpl.innerHTML = src;
+    var host = tpl.content;
+
+    (function walk(node) {
+      var kids = Array.prototype.slice.call(node.childNodes);
+      for (var i = 0; i < kids.length; i++) {
+        var el = kids[i];
+        if (el.nodeType === 8) { node.removeChild(el); continue; }   // comment
+        if (el.nodeType !== 1) continue;                              // text ok
+        var tag = el.tagName;
+
+        if (DROP_WHOLE[tag]) { node.removeChild(el); continue; }
+
+        if (!ALLOWED_TAGS[tag]) {
+          // Unknown tag: keep its text content, discard the element.
+          while (el.firstChild) node.insertBefore(el.firstChild, el);
+          node.removeChild(el);
+          continue;
+        }
+
+        var attrs = Array.prototype.slice.call(el.attributes);
+        for (var j = 0; j < attrs.length; j++) {
+          var name = attrs[j].name.toLowerCase();
+          var val = attrs[j].value;
+          if (!ALLOWED_ATTRS[name] || /^on/.test(name)) {
+            el.removeAttribute(attrs[j].name);
+            continue;
+          }
+          if (name === 'href') {
+            var u = val.replace(/[\s\u0000-\u001F]/g, '').toLowerCase();
+            if (!/^(https?:|mailto:|tel:|#|\/)/.test(u)) {
+              el.removeAttribute('href');
+            } else {
+              el.setAttribute('rel', 'noopener noreferrer');
+              el.setAttribute('target', '_blank');
+            }
+          }
+        }
+        walk(el);
+      }
+    })(host);
+
+    // Everything unsafe is gone; serialise via a wrapper (fragments have no
+    // innerHTML of their own).
+    var out = document.createElement('div');
+    out.appendChild(host);
+    return out.innerHTML;
+  }
+
+  /* Sector colours the portal supplies inline; reject anything else. */
+  function hex(c, fallback) {
+    if (typeof c === 'string' && /^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(c.trim())) {
+      return c.trim();
+    }
+    return fallback || 'var(--label-3)';
+  }
+
+  /* ------------------------------------------------------------ primitives */
+
+  /** Explicit, calm "no data and why" state. */
+  function empty(reason) {
+    return '<div class="d-empty">' +
+      '<span class="d-empty-k">No data</span>' +
+      '<span class="d-empty-r">' + esc(reason || 'This figure is not available for this place.') + '</span>' +
+      '</div>';
+  }
+
+  /** Titled wrapper. body is an html string. */
+  function section(o) {
+    o = o || {};
+    var body = typeof o.body === 'string' ? o.body : '';
+    if (!body) return '';
+    var head = '';
+    if (o.title) {
+      head = '<div class="d-sec-h"><h4>' + esc(o.title) + '</h4>' +
+        (o.note ? '<span class="d-sec-note">' + esc(o.note) + '</span>' : '') +
+        '</div>';
+    }
+    return '<section class="d-sec">' + head + '<div class="d-sec-b">' + body + '</div></section>';
+  }
+
+  function sourceNote(text) {
+    if (!text) return '';
+    return '<p class="d-src">' + esc(text) + '</p>';
+  }
+
+  function narrative(htmlString) {
+    var clean = sanitise(htmlString);
+    if (!clean.replace(/<[^>]*>/g, '').trim()) {
+      return empty('No narrative text was published for this place.');
+    }
+    return '<div class="d-narr">' + clean + '</div>';
+  }
+
+  /* ------------------------------------------------------------- statCard */
+
+  /**
+   * statCard({label, value, sub, delta})
+   * value may be a preformatted string or a number. If value is absent the
+   * card is replaced by an empty state — never a placeholder figure.
+   */
+  function statCard(o) {
+    o = o || {};
+    var v = o.value;
+    if (v === null || v === undefined || v === '' || (typeof v === 'number' && !isFinite(v))) {
+      return empty((o.label ? esc(o.label) + ': ' : '') + 'figure not published.');
+    }
+    var down = typeof o.delta === 'string' && /^-|\bdown\b|\bfall/i.test(o.delta.trim());
+    return '<div class="d-stat">' +
+      (o.label ? '<span class="d-stat-l">' + esc(o.label) + '</span>' : '') +
+      '<span class="d-stat-v">' + esc(v) + '</span>' +
+      (o.sub ? '<span class="d-stat-s">' + esc(o.sub) + '</span>' : '') +
+      (o.delta ? '<span class="d-stat-d' + (down ? ' is-down' : '') + '">' + esc(o.delta) + '</span>' : '') +
+      '</div>';
+  }
+
+  /* ----------------------------------------------------------- sectorDonut */
+
+  var SECTOR_LABEL = { agri: 'Agriculture & allied', industry: 'Industry', services: 'Services' };
+  /* Portal-supplied sector colours (share_current[].colorHex). Used only as a
+     fallback when the caller passes bare shares with no colours attached.
+     These are the portal's own values, verified across all 175 harvested records —
+     do not substitute look-alikes. #F5B400 in particular belongs to whole-economy
+     GCDP, not to Industry, and an earlier draft shipped it here by mistake. */
+  var SECTOR_COLOR = { agri: '#16A34A', industry: '#FF8A00', services: '#C93A2C' };
+
+  /**
+   * sectorDonut({shares, emphasis, colors, title, centerLabel})
+   * shares = {agri, industry, services} in percent.
+   * emphasis = key to explode/highlight.
+   */
+  function sectorDonut(o) {
+    o = o || {};
+    var shares = o.shares || {};
+    var colors = o.colors || {};
+    var keys = ['agri', 'industry', 'services'].filter(function (k) {
+      return num(shares[k]) !== null;
+    });
+    // allow arbitrary extra keys too
+    Object.keys(shares).forEach(function (k) {
+      if (keys.indexOf(k) === -1 && num(shares[k]) !== null) keys.push(k);
+    });
+    if (!keys.length) {
+      return empty('Sector shares are not published for this place.');
+    }
+    var total = keys.reduce(function (a, k) { return a + num(shares[k]); }, 0);
+    if (total <= 0) return empty('Sector shares are not published for this place.');
+
+    var emph = o.emphasis && num(shares[o.emphasis]) !== null ? o.emphasis : null;
+
+    // circumference 100 => dasharray values are straight percentages
+    var R = 15.9155, CX = 21, CY = 21;
+    var segs = '', legend = '', offset = 25; // start at 12 o'clock
+    var ariaBits = [];
+
+    keys.forEach(function (k) {
+      var pct = num(shares[k]) / total * 100;
+      var label = SECTOR_LABEL[k] || k;
+      var col = hex(colors[k], SECTOR_COLOR[k] || 'var(--label-3)');
+      var on = !emph || emph === k;
+      var w = (emph === k) ? 6.4 : 4.6;
+      segs += '<circle class="d-seg' + (on ? '' : ' is-dim') + '"' +
+        ' cx="' + CX + '" cy="' + CY + '" r="' + R + '"' +
+        ' fill="none" stroke="' + esc(col) + '" stroke-width="' + w + '"' +
+        ' stroke-dasharray="' + round(pct, 3) + ' ' + round(100 - pct, 3) + '"' +
+        ' stroke-dashoffset="' + round(offset, 3) + '"></circle>';
+      offset -= pct;
+
+      legend += '<li' + (emph === k ? ' class="is-emph"' : '') + '>' +
+        '<span class="d-dot" style="background:' + esc(col) + '"></span>' +
+        '<span class="d-lg-n">' + esc(label) + '</span>' +
+        '<span class="d-lg-v">' + fmtPct(num(shares[k])) + '</span>' +
+        '</li>';
+      ariaBits.push(label + ' ' + fmtPct(num(shares[k])));
+    });
+
+    var centreVal = emph ? fmtPct(num(shares[emph])) : fmtPct(total, 0);
+    var centreLbl = o.centerLabel || (emph ? (SECTOR_LABEL[emph] || emph) : 'of GCDP');
+
+    var aria = (o.title ? o.title + '. ' : 'Sector shares. ') + ariaBits.join(', ') + '.';
+
+    return '<div class="d-donut">' +
+      '<svg class="d-donut-svg" viewBox="0 0 42 42" role="img" aria-label="' + esc(aria) + '">' +
+        '<title>' + esc(aria) + '</title>' +
+        '<circle cx="' + CX + '" cy="' + CY + '" r="' + R + '" fill="none" stroke="currentColor" stroke-opacity=".10" stroke-width="4.6"></circle>' +
+        segs +
+        '<text class="d-donut-c1" x="21" y="21.6" text-anchor="middle">' + esc(centreVal) + '</text>' +
+        '<text class="d-donut-c2" x="21" y="25.6" text-anchor="middle">' + esc(centreLbl) + '</text>' +
+      '</svg>' +
+      '<ul class="d-legend">' + legend + '</ul>' +
+      '</div>';
+  }
+
+  /* ---------------------------------------------------------- growthBullet */
+
+  /**
+   * growthBullet({rows, emphasis, baselineYear, targetYear})
+   * rows = [{name, baseline, target, cagr, colorHex}]
+   * Baseline is measured and renders solid; target is a plan and renders as an
+   * outlined marker. They are never added together.
+   */
+  function growthBullet(o) {
+    o = o || {};
+    var rows = (o.rows || []).map(function (r) {
+      return {
+        name: r && r.name ? String(r.name) : '',
+        baseline: num(r && r.baseline),
+        target: num(r && r.target),
+        cagr: num(r && r.cagr),
+        colorHex: hex(r && r.colorHex, 'var(--green)')
+      };
+    }).filter(function (r) {
+      return r.name && (r.baseline !== null || r.target !== null);
+    });
+
+    if (!rows.length) {
+      return empty('No baseline or target figures are published for these sectors.');
+    }
+
+    var max = 0;
+    rows.forEach(function (r) {
+      if (r.baseline !== null) max = Math.max(max, r.baseline);
+      if (r.target !== null) max = Math.max(max, r.target);
+    });
+    if (max <= 0) return empty('Baseline and target figures are zero or unpublished.');
+
+    var by = o.baselineYear || '2023-24';
+    var ty = o.targetYear || '2028-29';
+
+    /* The bar scales horizontally only (preserveAspectRatio="none"), so no
+       rounded corners live inside the SVG — they would stretch into ellipses.
+       Rounding comes from the wrapping .d-bul-track, and the target marker is
+       a vertical rule with a non-scaling stroke, which cannot distort. */
+    var W = 1000, H = 14;
+
+    var out = '<div class="d-bul">';
+    rows.forEach(function (r) {
+      var isE = o.emphasis && r.name.toLowerCase().indexOf(String(o.emphasis).toLowerCase()) === 0;
+      var bw = r.baseline !== null ? (r.baseline / max) * W : 0;
+      var tx = r.target !== null ? (r.target / max) * W : null;
+
+      var parts = [];
+      if (r.baseline !== null) parts.push('baseline ' + by + ' ' + fmtCr(r.baseline));
+      if (r.target !== null) parts.push('target ' + ty + ' ' + fmtCr(r.target));
+      if (r.cagr !== null) parts.push('CAGR ' + fmtPct(r.cagr) + ' a year');
+      var aria = r.name + ': ' + parts.join(', ') + '.';
+
+      out += '<div class="d-bul-row' + (isE ? ' is-emph' : '') + '">' +
+        '<div class="d-bul-hd">' +
+          '<span class="d-bul-n">' + esc(r.name) + '</span>' +
+          (r.cagr !== null ? '<span class="d-bul-cagr">' + fmtPct(r.cagr) + ' CAGR</span>' : '') +
+        '</div>' +
+        '<div class="d-bul-track">' +
+        '<svg class="d-bul-svg" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none"' +
+        ' role="img" aria-label="' + esc(aria) + '">' +
+          '<title>' + esc(aria) + '</title>';
+
+      if (tx !== null && r.baseline !== null && tx > bw) {
+        // The planned gap: same colour, washed out. Explicitly not an outturn.
+        out += '<rect x="' + round(bw, 1) + '" y="0" width="' + round(tx - bw, 1) + '" height="' + H + '"' +
+          ' fill="' + esc(r.colorHex) + '" fill-opacity="0.20"></rect>';
+      }
+      if (r.baseline !== null) {
+        // Baseline = measured. Solid.
+        out += '<rect x="0" y="0" width="' + round(bw, 1) + '" height="' + H + '"' +
+          ' fill="' + esc(r.colorHex) + '"></rect>';
+      }
+      if (tx !== null) {
+        // Target = plan. A dashed rule, never a solid fill.
+        out += '<line x1="' + round(tx, 1) + '" y1="0" x2="' + round(tx, 1) + '" y2="' + H + '"' +
+          ' stroke="' + esc(r.colorHex) + '" stroke-width="2" stroke-dasharray="3 2"' +
+          ' vector-effect="non-scaling-stroke"></line>';
+      }
+      out += '</svg></div>' +
+        '<div class="d-bul-ft">' +
+          '<span>' + (r.baseline !== null ? 'Baseline ' + esc(by) + ' &middot; ' + fmtCr(r.baseline) : 'Baseline not published') + '</span>' +
+          '<span>' + (r.target !== null ? 'Target ' + esc(ty) + ' &middot; ' + fmtCr(r.target) : 'Target not published') + '</span>' +
+        '</div>' +
+      '</div>';
+    });
+
+    out += '<div class="d-bul-key">' +
+      '<span><i></i>Baseline ' + esc(by) + ' &mdash; measured</span>' +
+      '<span><i class="d-k-g"></i>Planned gap</span>' +
+      '<span><i class="d-k-t"></i>Target ' + esc(ty) + ' &mdash; a plan, not an outturn</span>' +
+      '</div></div>';
+    return out;
+  }
+
+  /* -------------------------------------------------------- compositionBars */
+
+  /**
+   * compositionBars({items, scale}) — items = [{name, pct, colorHex}]
+   *
+   * scale:'share' (default) draws each bar against a fixed 100% track, so the bar
+   * width IS the share. scale:'relative' draws against the largest item.
+   *
+   * The default used to be relative-only, which made the largest bar full width
+   * whatever its value — a 41% share rendered as a full bar under a heading that
+   * said "share of GCDP". That reads as 100% and is not defensible in a
+   * government-facing figure. Relative is still available, but a caller asking
+   * for it is asserting the axis is a ranking, and must label it as one.
+   */
+  function compositionBars(o) {
+    o = o || {};
+    var items = (o.items || []).map(function (it) {
+      return {
+        name: it && it.name ? String(it.name) : '',
+        pct: num(it && it.pct),
+        colorHex: hex(it && it.colorHex, '')
+      };
+    }).filter(function (it) { return it.name && it.pct !== null; });
+
+    if (!items.length) return empty('No sector composition figures are published for this place.');
+
+    var peak = items.reduce(function (a, it) { return Math.max(a, it.pct); }, 0);
+    if (peak <= 0) return empty('Sector composition figures are zero or unpublished.');
+
+    /* share (default): the track is 100%, so width == the published percentage.
+       relative: the track is the largest item, so width == rank position. */
+    var relative = o.scale === 'relative';
+    var max = relative ? peak : 100;
+
+    var out = '<div class="d-comp">';
+    items.forEach(function (it) {
+      var w = Math.min(100, (it.pct / max) * 100);
+      var style = 'width:' + round(w, 2) + '%' +
+        (it.colorHex && it.colorHex.charAt(0) === '#' ? ';background:' + esc(it.colorHex) : '');
+      out += '<div class="d-comp-row">' +
+        '<div class="d-comp-hd"><span>' + esc(it.name) + '</span><b>' + fmtPct(it.pct) + '</b></div>' +
+        '<div class="d-comp-track" role="img" aria-label="' + esc(it.name + ' ' + fmtPct(it.pct)) + '">' +
+          '<div class="d-comp-fill" style="' + style + '"></div>' +
+        '</div>' +
+      '</div>';
+    });
+    return out + '</div>';
+  }
+
+  /* ------------------------------------------------------------ thrustChips */
+
+  function thrustChips(list) {
+    var items = (list || []).map(function (t) {
+      if (typeof t === 'string') return t;
+      if (t && t.sectorName) return String(t.sectorName);
+      if (t && t.name) return String(t.name);
+      return '';
+    }).filter(Boolean);
+    if (!items.length) return empty('No thrust sectors are listed for this place.');
+    return '<ul class="d-chips">' + items.map(function (t) {
+      return '<li class="d-chip">' + esc(t) + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  /* -------------------------------------------------------------- drillList */
+
+  /**
+   * drillList({items, label, onpick})
+   * items = strings or {name, sub}. onpick is the NAME of a global function;
+   * it is called as onpick('<name>'). Omit onpick for a non-interactive list.
+   */
+  function drillList(o) {
+    o = o || {};
+    var items = (o.items || []).map(function (it) {
+      if (typeof it === 'string') return { name: it };
+      if (it && it.name) return { name: String(it.name), sub: it.sub };
+      return null;
+    }).filter(Boolean);
+
+    if (!items.length) {
+      return empty(o.emptyReason || 'No child areas are listed for this place.');
+    }
+
+    var fn = typeof o.onpick === 'string' && /^[A-Za-z_$][\w$.]*$/.test(o.onpick) ? o.onpick : null;
+
+    var out = '';
+    if (o.label) out += '<p class="d-drill-lbl">' + esc(o.label) + '</p>';
+    out += '<ul class="d-drill">';
+    items.forEach(function (it) {
+      var inner = '<span class="d-drill-n">' + esc(it.name) + '</span>' +
+        '<span class="d-drill-a">' + (it.sub ? esc(it.sub) : (fn ? '→' : '')) + '</span>';
+      /* Guard the call site rather than the caller. A template names a handler it
+         expects the page to provide; until integration defines it, clicking must do
+         nothing rather than throw a ReferenceError at the user. This also keeps the
+         templates free of any assumption about when wiring lands. */
+      var call = 'if(typeof ' + fn + '===\'function\'){' + fn + '(this.dataset.name)}';
+      out += '<li class="d-drill-i">' + (fn
+        ? '<button type="button" onclick="' + esc(call) + '" data-name="' + esc(it.name) + '">' + inner + '</button>'
+        : '<div>' + inner + '</div>') + '</li>';
+    });
+    return out + '</ul>';
+  }
+
+  /* -------------------------------------------------------------- rankStrip */
+
+  /**
+   * rankStrip({label, value, peers, unit})
+   * peers = [{name, value}] INCLUDING this one; `value` identifies self by
+   * matching name when {selfName} is given, otherwise by equal value.
+   */
+  function rankStrip(o) {
+    o = o || {};
+    var peers = (o.peers || []).map(function (p) {
+      return { name: p && p.name ? String(p.name) : '', value: num(p && p.value) };
+    }).filter(function (p) { return p.name && p.value !== null; });
+
+    if (peers.length < 2) {
+      return empty('A peer comparison needs at least two places with published figures.');
+    }
+    var max = peers.reduce(function (a, p) { return Math.max(a, p.value); }, 0);
+    if (max <= 0) return empty('Peer figures are zero or unpublished.');
+
+    var sorted = peers.slice().sort(function (a, b) { return b.value - a.value; });
+    var selfName = o.selfName || o.label;
+    var selfVal = num(o.value);
+
+    var out = '';
+    if (o.label) out += '<p class="d-rank-lbl">' + esc(o.label) + '</p>';
+    out += '<div class="d-rank">';
+    sorted.forEach(function (p) {
+      var self = (selfName && p.name === selfName) || (selfVal !== null && p.value === selfVal);
+      var v = o.unit ? grp(round(p.value, 1)) + ' ' + o.unit : grp(round(p.value, 1));
+      out += '<div class="d-rank-peer' + (self ? ' is-self' : '') + '">' +
+        '<span class="d-rank-n">' + esc(p.name) + '</span>' +
+        '<span class="d-rank-t" role="img" aria-label="' + esc(p.name + ' ' + v) + '">' +
+          '<span class="d-rank-f" style="width:' + round(p.value / max * 100, 2) + '%"></span>' +
+        '</span>' +
+        '<span class="d-rank-v">' + esc(v) + '</span>' +
+      '</div>';
+    });
+    return out + '</div>';
+  }
+
+  /* ------------------------------------------------------------------ export */
+
+  var DASH = {
+    statCard: statCard,
+    sectorDonut: sectorDonut,
+    growthBullet: growthBullet,
+    compositionBars: compositionBars,
+    thrustChips: thrustChips,
+    narrative: narrative,
+    drillList: drillList,
+    rankStrip: rankStrip,
+    sourceNote: sourceNote,
+    section: section,
+    empty: empty,
+    fmtCr: fmtCr,
+    fmtRs: fmtRs,
+    fmtPct: fmtPct,
+    esc: esc,
+    // helpers templates may find useful; not part of the binding contract
+    num: num,
+    grp: grp,
+    sanitise: sanitise,
+    statRow: function (cards) {
+      var s = (cards || []).filter(Boolean).join('');
+      return s ? '<div class="d-stats">' + s + '</div>' : '';
+    },
+    SOURCE_APC: 'Source: AP Assembly Constituencies portal. GCDP baseline 2023-24; target 2028-29 (Swarna Andhra Vision 2029 plan).',
+    SOURCE_DIST: 'Source: AP district workbook. District figures are 2025-26 (First Advance Estimates).'
+  };
+
+  global.DASH = DASH;
+  global.DASH_TPL = global.DASH_TPL || {};
+})(typeof window !== 'undefined' ? window : this);

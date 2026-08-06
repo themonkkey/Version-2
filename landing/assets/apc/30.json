@@ -1,0 +1,200 @@
+{
+ "code": 30,
+ "name": "Gangadhara Nellore (SC)",
+ "district": "Chittoor",
+ "logoUrl": "assets/constituencies_logos/gangadhara-nellore.png",
+ "profile": {
+  "population": "268282 (As per Census 2011)",
+  "voterCount": "205424 (As per 2024 Elections)",
+  "area": "1088.36",
+  "mandals": "Gangadhara Nellore-R,Karvetinagar-R,Palasamudram-R,Penumuru-R,Srirangarajapuram-R,Veduru Kuppam-R",
+  "revenueVillages": "167",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Gangadhara Nellore Constituency, comprising six mandals including its headquarters, Gangadhara Nellore, is a rapidly developing region in Andhra Pradesh. Known for its contributions to agriculture, horticulture, livestock, services, and industry, the area benefits from excellent connectivity to Chittoor, Tirupati, Chennai, and Bangalore, supporting its ambitious goal of 15% annual growth across key sectors. A highlight of the constituency is Puligundu in Penumuru mandal&#8212;an awe-inspiring twin-rock formation rising 1,000 feet, offering a rare combination of spiritual significance and adventure tourism. With rich resources and a strategic location, Gangadhara Nellore stands as a promising hub for trade, tourism, and overall development.&#160;",
+  "constituencyMap": "30\\MAP\\30IMAGE2025090511522042481_GANGADHARA NELLORE MAP (2).jpg",
+  "geography": "Gangadhara Nellore constituency is located in Chittoor District and spans 1088.36 sq. km. It shares boundaries with the Nagari, Chandragiri, Puthalapattu, and Chittoor constituencies and the state of Tamil Nadu. The area features a mix of  sandy clay loams and sandy loam soils.",
+  "populationDesc": "The total population is 268,282, with approximately 100% residing in rural areas and 0% in urban areas. There are 66,489 households, and the sex ratio is 986 females per 1,000 males. The literacy rate stands at 70.69%",
+  "administrationDesc": "Gangadhara Nellore  Constituency is one of the seven assembly constituencies in Chittoor District. It includes 1. Gangadhara Nellore, 2. Sree Rangaraja Puram, 3. Palasamudram, 4. Karvetnagar, 5. Vedurukuppam, and 6. Penumuru mandals, with Gangadhara Nellore as the constituency headquarters. The Gangadhara Nellore constituency comes under the Chittoor Loksabha constituency.",
+  "educationHealthcareDesc": "Gangadhara Nellore has basic health care via a PHC; advanced care is available. Education includes primary to junior colleges, with literacy around 74&#8211;80%. State initiatives aim to improve services, with plans for a local degree college and better healthcare through diagnostic upgrades and midwife training.&#10;<p><br></p>",
+  "culturalheritageDesc": "Puligundu, Vepamjeri Sri Lakshmi Narasimha Swamy temple, Kalikiri konda."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "GtYxk0UiJBaN5v6rdCoN/g==",
+   "economy_Text": "<b>Economy at a Glance</b><p><b><br></b></p><p>GD Nellore has a balanced economic structure, with the service sector contributing 40.16%, agriculture and allied activities 39.92%, and industry 19.92% to the local economy. Agriculture remains a vital pillar, increasingly adopting organic farming and modern practices in horticulture and fruit cultivation, enhancing productivity and sustainability.</p><p>&#10;</p><p>Significant opportunities lie in developing food processing units and establishing industrial estates to add value to local produce and create employment. The region&#8217;s strategic location near the Chennai-Bangalore Industrial Corridor is set to accelerate industrial growth, attracting investments and fostering infrastructure development. The expansion of industries, combined with the evolving services sector, including education, healthcare, and retail, positions GD Nellore for inclusive and sustainable economic advancement.</p>",
+   "gcdP_Growth_Text": "GD Nellore is poised for steady economic growth with a targeted 12% annual GCDP increase, driven by key sectors such as agriculture modernization, food processing, industrial estates, and expanding service industries. This growth aligns with the long-term vision of transforming the constituency into a sustainable and diversified economic hub by 2047",
+   "createdDate": "2025-09-07T04:09:45.46"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6136.0,
+   "cagR_Pct": 17.7,
+   "targetAmountCrore": 13654.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2279.0,
+   "cagR_Pct": 17.3,
+   "targetAmountCrore": 5169.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1131.0,
+   "cagR_Pct": 19.6,
+   "targetAmountCrore": 2553.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2266.0,
+   "cagR_Pct": 17.4,
+   "targetAmountCrore": 4922.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 30,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 40.16
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.92
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 39.92
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 30,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 640,
+   "constituencyId": 30,
+   "name": "Dr.V.M.Thomas\t\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 642,
+   "constituencyId": 30,
+   "name": "K.Narayana Swamy\t\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 643,
+   "constituencyId": 30,
+   "name": "K.Narayana Swamy\t\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 644,
+   "constituencyId": 30,
+   "name": "Gummadi Kuthuhalamma\t\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

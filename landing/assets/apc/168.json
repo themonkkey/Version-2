@@ -1,0 +1,200 @@
+{
+ "code": 168,
+ "name": "Nellore City",
+ "district": "Spsr Nellore",
+ "logoUrl": "168\\Logo\\168IMAGE2026022613133281626_nellore-logo.jpg",
+ "profile": {
+  "population": "294103 (As per Census 2011)",
+  "voterCount": "239544 (As per 2024 Elections)",
+  "area": "21.5",
+  "mandals": "Nellore-U",
+  "revenueVillages": "0",
+  "municipal_wards": "28",
+  "municipalities": "Nellore",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "&#34;Nellore City Assembly Constituency, one of the eight in SPSR Nellore District, falls under the Nellore Lok Sabha Constituency. The city, historically known as Vikrama Simhapuri, is steeped in cultural and royal heritage. It played a pivotal role in the  formation of Andhra Pradesh, being the birthplace of Potti Sriramulu, who sacrificed his life for the state&#8217;s creation. Located along the banks of the Penna River, Nellore is both historically significant and economically vibrant.<p><br></p><p>Nellore City has a diverse economic base, with the services sector contributing 76% of its economy. Its strategic location on NH-16 and NH-67, coupled with strong rail connectivity, facilitates trade and transport. Proximity to Krishnapatnam Port (just 25 km away) further enhances its economic potential. With expanding real estate, commercial zones, educational institutions, and emerging incubation hubs, Nellore is well-positioned to become a regional services and investment hub, especially for IT and financial sectors.</p><p><br></p><p>Culturally, the city is known for the Bara Shaheed Dargah near the Swarnala Cheruvu, reflecting its rich spiritual and communal harmony.&#34;</p>",
+  "constituencyMap": "168\\MAP\\168IMAGE2025090413331281189_NELLORE CITY MAP.png",
+  "geography": "Nellore City constiteuncy is located in Nellore District and spans 21.5 Sq. km.It is surrounded by the Kovur Constituency and the Nellore Rural Constituency. mix of Black &amp; Red Soil",
+  "populationDesc": "The total population is 3,08,267,with approximately 100% in urban areas. There are 71,776households, and the sex ratio is 968 females per 1,000 males. The literacy rate stands at 83.59%",
+  "administrationDesc": "Nellore City Constituency is one of the Eight assembly constituencies in SPSR Nellore District.  it has 1 Municipal Corporation.Nellore City constituency comes under Nellore Loksabha Constituency.",
+  "educationHealthcareDesc": "Nellore Medical college and has famous Venkatagiri Raja College for Degree and Law. &amp; 10 UPHCs&#160;",
+  "culturalheritageDesc": "Nellore Barrage, Rottela Pandaga at Swarnala Cheruvu,Sri Talpagiri Ranganayakula Swamy Temple, Bara Shaheed Dargah, St Joseph&#8217;s Cathedral Church"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "IFWt3UJZOiyAu6d/Z3kdjg==",
+   "economy_Text": "<b><font size=\"4\">Economy at a Glance</font></b><p><b><font size=\"4\"><br></font></b></p><p><font face=\"Times New Roman\" size=\"3\">Nellore&#8217;s economy is poised for significant growth, with its current <span>Gross Constituency Domestic Product (GCDP)</span> at <span>&#8377;10,760 crores</span> and projected to more than double to <span>&#8377;23,599 crores by 2028-29</span>.&#160;<span>The </span><span>services sector</span><span> is the largest contributor to the local economy, accounting for </span><span>&#8377;7,175 crores</span><span> (72% of Gross Value Added - GVA) in 2023-24. This sector is expected to grow at a </span><span>17% annual compound growth rate</span><span>, reaching </span><span>&#8377;16,022 crores</span><span> by 2028-29. Key sub-sectors driving this expansion include </span><span>real estate</span><span>, </span><span>trade</span><span>, </span><span>hotels</span><span>, and </span><span>commercial development</span><span>.&#160;</span><span>This rapid growth will be fueled by advancements in </span><span>transportation</span><span>, </span><span>real estate</span><span>, </span><span>tourism</span><span>, </span><span>education</span><span>, </span><span>banking</span><span>, </span><span>trade &amp; hospitality</span><span>, </span><span>healthcare</span><span>, </span><span>communications</span><span>, and </span><span>digital governance</span><span>.&#160;</span></font><span>Nellore is rapidly emerging as a </span><span>medical hub</span><span>, with top-tier institutions and hospitals, making the city a leader in </span><span>advanced healthcare services</span><span>. Additionally, the development of the </span><span>IT and digital economy</span><span> will further strengthen its economic base, positioning Nellore as a key center for innovation and services in the region.</span></p>",
+   "gcdP_Growth_Text": "Nellore City is witnessing robust economic momentum, with a targeted <span>annual GCDP growth rate of 15%</span>, driven by key sectors such as <span>real estate</span>, <span>digital infrastructure</span>, <span>medical tourism</span>, and <span>healthcare services</span>. This growth trajectory is aligned with the long-term vision of transforming the city into a <span>dynamic urban and economic hub</span> by 2047, with a focus on infrastructure development, innovation, and expanding services.",
+   "createdDate": "2025-09-04T08:56:20.217"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 10760.0,
+   "cagR_Pct": 17.01,
+   "targetAmountCrore": 23599.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3675.0,
+   "cagR_Pct": 17.43,
+   "targetAmountCrore": 16022.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1386.0,
+   "cagR_Pct": 17.28,
+   "targetAmountCrore": 6005.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1210.0,
+   "cagR_Pct": 9.61,
+   "targetAmountCrore": 114.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 168,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 58.92
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 21.83
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 19.25
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 168,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 15,
+   "sectorName": "Medical Tourism",
+   "description": "Development of hospitals, wellness centers, and international patient care services.",
+   "imageUrl": "assets/img/sectors/medical-tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 377,
+   "constituencyId": 168,
+   "name": "Ponguru Narayana",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 378,
+   "constituencyId": 168,
+   "name": "Anil Kumar Poluboina",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 379,
+   "constituencyId": 168,
+   "name": "Anil Kumar Poluboina",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 380,
+   "constituencyId": 168,
+   "name": "Mungamuru Sridhara Krishna Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "PRP",
+   "photo": ""
+  }
+ ]
+}

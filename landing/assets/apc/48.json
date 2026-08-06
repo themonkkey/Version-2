@@ -1,0 +1,245 @@
+{
+ "code": 48,
+ "name": "Tekkali",
+ "district": "Srikakulam",
+ "logoUrl": "assets/constituencies_logos/tekkali.png",
+ "profile": {
+  "population": "275715 (As per Census 2011)",
+  "voterCount": "236327 (As per 2024 Elections)",
+  "area": "612.35",
+  "mandals": "Kotabommali-R,Nandigam-R,Santhabommali-R,Tekkali-R",
+  "revenueVillages": "255",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Tekkali Assembly Constituency Vision Action Plan 2024&#8211;29 is designed to harness agricultural strength, a growing industrial base, construction activity, and a robust service sector, in line with Andhra Pradesh&#8217;s Swarna Andhra @2047 and the national Viksit Bharat @2047 vision. The constituency comprises four mandals&#8212;Tekkali, Kotabommali, Santhabommali, and Nandigam&#8212;with Tekkali as its headquarters. Rich in culture and spirituality, it is home to the Endala Mallikarjuna Swamy Temple, the Kottammathalli Jathara recognized as a state festival, Paravastu Ayyavaru Temple with its unique rituals, and the scenic Bhavanapadu Beach. The constituency&#8217;s economy is powered by agriculture, coastal resources, industry, forestry, and skilled human capital, supported by excellent road and rail connectivity. Leveraging Bhavanapadu&#8217;s port potential and promoting tourism can drive further economic activity. With inclusive initiatives such as women-led enterprises and community development, Tekkali is positioned to achieve 15% annual growth while safeguarding its cultural heritage and social harmony.",
+  "constituencyMap": "48\\MAP\\48IMAGE2025090513093832720_tekkali map.png",
+  "geography": "Tekkali spans an area of 612.35 sq.km and It shares boundaries with Palasa, Pathapatnam and Narasannapeta constituencies &amp; strategically positioned within the Srikakulam district of Andhra Pradesh.",
+  "populationDesc": "Tekkali Constituency has 69,492 Nos of households (population of 2,75,175 consists of 1,37,282 male and 1,38,433 female) resides in rural areas out of which only 54% are literates as per 2011 Census, with Sex ratio is 1009 females per 1000 males.&#160;",
+  "administrationDesc": "Tekkali Constituency is composed of four mandals: Tekkali, Kotabommali, Santhabommali, and Nandigam.",
+  "educationHealthcareDesc": "Tekkali has a strong healthcare system with a District Hospital at Tekkali, a CHC at Kotabommali, 10 PHCs, and 84 sub-centers, supported by 7 FDHS vehicles and 4 ambulances for emergency care. Veterinary needs are served by 3 hospitals and 9 dispensaries. Education is equally robust, with 295 primary, 41 upper primary, and 58 high schools, along with 18 junior colleges, 6 degree colleges, and 2 ITIs. The constituency also hosts AITAM (Aditya Institute of Technology and Management) at K.Kotturu, offering engineering, diploma, and management programs. Inclusive growth is fostered through 19 Welfare Hostels, ensuring access to education for students from diverse backgrounds. Together, these facilities strengthen health and education infrastructure across Tekkali.",
+  "culturalheritageDesc": "Tekkali Constituency has a tropical climate, with monsoon weather dominating most of the year. November to February is mild and cool, while March to May is hot, with May being the warmest month. Average peak rainfall reaches about 193 mm in August, with temperatures around 28&#176;C, and humidity is higher in monsoon months. Agriculture is the primary livelihood, with paddy as the main crop in both Kharif and Rabi seasons. Culturally, Tekkali is rich with heritage sites like Sri Endala Mallikharjuna Swamy Temple at Ravivalasa, Kottammathalli Temple at Kotabommali (a State Festival), and Paravastu Ayyavaru Temple at Chetlathandra. Tribal traditions and fisherman community festivals further enrich its cultural harmony and spiritual vibrancy."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "mIacVVmL+rWI7EPLZhieAw==",
+   "economy_Text": "<p dir=\"ltr\">Tekkali's Economic Vision Plan outlines a robust strategy to transform the constituency into a dynamic, investment-friendly, and employment-driven hub. With a Gross Constituency Domestic Product (GCDP) of &#8377;4,379 crores in 2023-24, the plan projects a remarkable growth to &#8377;9,101 crores by 2028-29, driven by a sustainable annual growth rate of 12-15%. This ambitious roadmap leverages Tekkali's sectoral strengths, addresses critical infrastructure and employment challenges, and promotes industrial diversification to foster inclusive and resilient economic progress, positioning the region as a beacon of sustainable development.</p>",
+   "gcdP_Growth_Text": "<p><span>Tekkali is witnessing steady economic momentum with a targeted 12-15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like&#160;</span><span>Aquaculture, Dairy, Manufacture and Logistics,</span><span>&#160;This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047.</span></p>",
+   "createdDate": "2025-09-03T09:32:02.297"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4379.0,
+   "cagR_Pct": 16.0,
+   "targetAmountCrore": 9101.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1595.0,
+   "cagR_Pct": 14.71,
+   "targetAmountCrore": 1781.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 812.0,
+   "cagR_Pct": 14.99,
+   "targetAmountCrore": 930.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1643.0,
+   "cagR_Pct": 14.78,
+   "targetAmountCrore": 1810.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 48,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 39.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 20.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 41.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 48,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 733,
+   "constituencyId": 48,
+   "name": "Kinjarapu Atchannaidu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 734,
+   "constituencyId": 48,
+   "name": "Kinjarapu Atchannaidu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 735,
+   "constituencyId": 48,
+   "name": "Kinjarapu Atchannaidu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 736,
+   "constituencyId": 48,
+   "name": "Korla Revatipathi",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 737,
+   "constituencyId": 48,
+   "name": "Appayya Dora Hanumanthu",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

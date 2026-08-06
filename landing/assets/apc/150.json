@@ -1,0 +1,212 @@
+{
+ "code": 150,
+ "name": "Gajuwaka",
+ "district": "Visakhapatnam",
+ "logoUrl": "assets/constituencies_logos/gajuwaka.png",
+ "profile": {
+  "population": "331693 (As per Census 2011)",
+  "voterCount": "333611 (As per 2024 Elections)",
+  "area": "142",
+  "mandals": "Gvmc (Visakhapatnam)-U",
+  "revenueVillages": "22",
+  "municipal_wards": "19",
+  "municipalities": "Gvmc (Visakhapatnam)",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Gajuwaka Assembly Constituency in Visakhapatnam district, established in 2008, is Andhra Pradesh&#8217;s largest by electorate with 309,326 voters (2024). Comprising Gajuwaka and Pedagantyada mandals, it covers 19 wards and is strategically positioned with the Bay of Bengal to the east, Visakhapatnam West to the north, and Pendurthi and Parawada to the west and south. Known as a major industrial and urban hub, it hosts the Visakhapatnam Steel Plant, Adani Port, VSEZ, APIIC-IALA, and MSME clusters. It is part of the Visakhapatnam&#8211;Kakinada PCPIR and the Visakhapatnam&#8211;Chennai Industrial Corridor, enhancing its industrial prominence. With strong connectivity via port, airport, and Duvvada Railway Station, the constituency drives manufacturing, construction, logistics, services, and commerce. Positioned to achieve 15% annual growth, Gajuwaka plays a pivotal role in Andhra Pradesh&#8217;s industrial transformation, aligning with the state&#8217;s Swarna Andhra @ 2047 vision and the national Viksit Bharat @ 2047 agenda.",
+  "constituencyMap": "150\\MAP\\150IMAGE2025090510381386741_gajuwaka map.png",
+  "geography": "<p>GajuwakaAssembly Constituency is strategically located South of Visakhapatnam district, benefiting from its proximity to Anakapalli District, Visakhapatnam International Airport and the Adani port and Yarada beach. Gajuwaka is located in the coastal plains of Andhra Pradesh, adjacent to the Bay of Bengal.&#160;</p>",
+  "populationDesc": "Gajuwaka Constituency has a total population of 3,31,693. The constituency has 84,191 households, with a sex ratio of 963 females per 1,000 males.&#160;",
+  "administrationDesc": "The Gajuwaka Assembly Constituency consists of two mandals &#8211; Gajuwaka Mandal and Pedagantyada Mandal &#8211; and includes 19 municipal wards under the Greater Visakhapatnam Municipal Corporation (GVMC).",
+  "educationHealthcareDesc": "Gajuwaka is a major educational hub with government (Zilla Parishad, Municipal) and private schools (Sri Chaitanya, Narayana, Bhashyam) covering primary to higher secondary levels. Junior and degree colleges like Sri Prakash, Vignan, and Aditya, along with ITIs and polytechnics, provide higher and technical education. The constituency has 256 schools, 100+ smart classrooms, and youth benefit from NSDC and PMKVY skill training. Healthcare is anchored by KIMS Hospital and Homi Bhabha Cancer Hospital &amp; Research Centre, supported by 3 PHCs, 98 sub-centers, 1 Area Hospital, and 4 AYUSH dispensaries. With initiatives to halve maternal mortality, reduce infant mortality below 10 per 1,000 births, and achieve full vaccination, Gajuwaka ensures strong, accessible public health services.",
+  "culturalheritageDesc": "Gajuwaka is noted for its cultural and spiritual heritage, with the Sri Sagar Giri Kanaka Durga Temple located on Sagar Island in Yarada Village, off the Bay of Bengal coast, accessible by both boat and road. Alongside its spiritual significance, the constituency emphasizes environmental conservation through afforestation and eco-friendly initiatives. Waste management and sanitation programs are actively implemented to ensure a cleaner, healthier living environment, balancing rapid industrial growth with cultural preservation and sustainable development."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "nBQsJBo2lHNnA7eRmBC0dA==",
+   "economy_Text": "<p dir=\"ltr\"><font face=\"Arial\">Gajuwaka&#8217;s Gross Constituency Domestic Product (GCDP) stood at &#8377;28,973.00 crores in 2023-24 and is projected to reach &#8377;56,588.00 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of approximately 12-15%. This growth is driven by a strategic vision that leverages sectoral strengths, addresses infrastructure and employment challenges, and promotes industrial diversification. Key initiatives include enhancing connectivity, fostering tourism, and investing in skill development to create sustainable job opportunities.</font></p><p dir=\"ltr\"><strong><font face=\"Arial\">Sectoral Contributions and Growth</font></strong></p><ul class=\"tight\" dir=\"ltr\"><li><p dir=\"ltr\"><font face=\"Arial\"><strong>Services</strong>: Contributes &#8377;8,395.00 crores (2023-24), projected to grow to &#8377;12,659.00 crores by 2028-29 at a growth rate of 18.66%, driven by trade, tourism, and IT services.</font></p></li><li><p dir=\"ltr\"><font face=\"Arial\"><strong>Industry</strong>: Valued at &#8377;18,248.00 crores (2023-24), expected to reach &#8377;40,376.00 crores by 2028-29 with a growth rate of 18.63%, fueled by manufacturing diversification and infrastructure improvements.</font></p></li><li><p dir=\"ltr\"></p><p><font face=\"Arial\"><strong>Agriculture &amp; Allied</strong><span>: Accounts for &#8377;155.00 crores (2023-24), projected to decline to &#8377;85.00 crores by 2028-29 with a growth rate of 0.00%, due to limited arable land and urban-industrial focus.&#160;</span></font></p><p></p></li></ul>",
+   "gcdP_Growth_Text": "<p><font color=\"#4b5563\" face=\"Times New Roman\"><span>Gajuwaka </span></font><span>is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like Industrial,</span><span>&#160;tourism. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant Rural economic hub by 2047.</span></p>",
+   "createdDate": "2025-09-04T09:14:22.63"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 28973.0,
+   "cagR_Pct": 18.22,
+   "targetAmountCrore": 56588.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 8395.0,
+   "cagR_Pct": 18.66,
+   "targetAmountCrore": 12659.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 18248.0,
+   "cagR_Pct": 18.63,
+   "targetAmountCrore": 40376.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 155.0,
+   "cagR_Pct": 0.0,
+   "targetAmountCrore": 85.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 150,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 31.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 68.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 1.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 150,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 592,
+   "constituencyId": 150,
+   "name": "Palla Srinivasa Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 593,
+   "constituencyId": 150,
+   "name": "Tippala Nagireddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 594,
+   "constituencyId": 150,
+   "name": "Palla Srinivasa Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 595,
+   "constituencyId": 150,
+   "name": "Chinthalapudi Venkataramaiah",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Praja Rajyam Party",
+   "photo": ""
+  }
+ ]
+}

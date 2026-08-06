@@ -1,0 +1,209 @@
+{
+ "code": 143,
+ "name": "Tanuku",
+ "district": "West Godavari",
+ "logoUrl": "assets/constituencies_logos/tanuku.png",
+ "profile": {
+  "population": "283241 (As per Census 2011)",
+  "voterCount": "234677 (As per 2024 Elections)",
+  "area": "242.65",
+  "mandals": "Attili-R,Iragavaram-R,Tanuku-R,Tanuku-U",
+  "revenueVillages": "46",
+  "municipal_wards": "34",
+  "municipalities": "Tanuku",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\">Tanuku Constituency is in West Godavari district, Andhra Pradesh, comprises Tanuku, Iragavaram, and Attili mandals, and Tanuku Municipality. Known for fertile agricultural lands, abundant water resources, and cultural heritage, the constituency is strategically located near urban centers like Tadepalligudem (20 km), Palakol (35 km), and Bhimavaram (36 km).Spanning 242.65 sq. km, Tanuku offers potential in agriculture, horticulture, and eco-tourism. The constituency boasts historical and cultural significance with attractions like:- Sri Kesava Swamy Temple,Sri Yellaramma Temple,Sri Surya Devalayam,Sri Lakshmi Narsimha Swamy Temple,Sri Yellaramma Temple,Sri Ramana Maharshi Asharam.These sites attract pilgrims and tourists, contributing to the constituency's growth. With its diverse resources and strategic location, Tanuku is poised for balanced and sustainable development through targeted interventions. By leveraging its strengths, the constituency can achieve significant economic and social progress. Tanuku's rich cultural heritage and natural resources make it an attractive destination for visitors and investors.</p>",
+  "constituencyMap": "143\\MAP\\143IMAGE2025090214240490976_tanuku.jpg",
+  "geography": "Tanuku constiteuncy is located in West Godavari District and spanning an Area of 242.65 Sq. km and&#160; Tanuku Constituency geography is characterized by fertile Black soils.",
+  "populationDesc": "The Total population is 2,83,241, with approximately 68.07% residing in rural areas and 31.93% in urban areas. There are 80,598 households , and the sex ratio is 1010 females per 1,000 males. The literacy rate stands at 79.72 %.",
+  "administrationDesc": "Tanuku Constituency is in West Godavari District. It includes 1) Tanuku Mandal 2) Iragavaram Mandal&#160; and 3) Attili&#160; Mandal and also it has Tanuku Municipality. which are located in West Godavari District of Andhra Pradesh and it&#8217;s headquarter is Tanuku Constituency.",
+  "educationHealthcareDesc": "Five primary health centers (PHCs), Two urban health centers and 49 sub-centers, which are insufficient to meet the growing healthcare needs of the population. Educational infrastructure comprises 62 high schools, 15 junior colleges, and 9-degree colleges.",
+  "culturalheritageDesc": "<span lang=\"EN-US\">Tanuku Constituency is full of cultural heritage and significant landmarks.&#10;Famous ancient temples like Sri KesavaSwamy Temple in Tanuku, Sri Yellaramma&#10;temple in Mandapaka, Sri Lakshmi NarsimhaSwamy temple in Relangi, Sri&#10;DaneswariAmmaVaari temple in Duvva, Sri Valli Deva Senasametha Subrahmanyeswara&#10;Swamy temple in Attili.</span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "boE3gGBVtb/6nqfoEc6PVw==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Tanuku's Economy at a Glance</h2><p><br></p><p>The Economic Vision Plan for Tanuku presents a comprehensive growth strategy to transform the constituency into an economically vibrant, investment-friendly, and employment-driven region. With a Gross Constituency Domestic Product (GCDP) of Rs.7,332 crores in 2023-24, Tanuku is projected to achieve Rs.14,783 crores by 2028-29, reflecting a strong and sustainable annual growth trajectory averaging 12-15%. The economic strategy is designed to leverage sectoral strengths, address infrastructure and employment challenges, and promote industrial diversification, ensuring inclusive and resilient economic progress.</p>",
+   "gcdP_Growth_Text": "<span>Tanuku is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,</span><br><span>livestock, manufacturing, agriculture and construction. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-06T06:50:57.22"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7332.0,
+   "cagR_Pct": 15.06,
+   "targetAmountCrore": 14783.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3407.0,
+   "cagR_Pct": 15.48,
+   "targetAmountCrore": 6997.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1390.0,
+   "cagR_Pct": 14.57,
+   "targetAmountCrore": 2744.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1986.0,
+   "cagR_Pct": 14.91,
+   "targetAmountCrore": 3979.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 143,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 50.23
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 20.49
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 29.28
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 143,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 423,
+   "constituencyId": 143,
+   "name": "Arimilli Radha Krishna",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 425,
+   "constituencyId": 143,
+   "name": "Karumuri Venkata Nageswara Rao",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 426,
+   "constituencyId": 143,
+   "name": "Arimilli Radha Krishna",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 428,
+   "constituencyId": 143,
+   "name": "Karumuri Venkata Nageswara Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 431,
+   "constituencyId": 143,
+   "name": "Chitturi Bapineedu",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

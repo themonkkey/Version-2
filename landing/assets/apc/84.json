@@ -1,0 +1,197 @@
+{
+ "code": 84,
+ "name": "Prathipadu",
+ "district": "Kakinada",
+ "logoUrl": "84\\Logo\\84IMAGE2025092518052114407_parthipadu (1).jpeg",
+ "profile": {
+  "population": "287040 (As per Census 2011)",
+  "voterCount": "217267 (As per 2024 Elections)",
+  "area": "624.24",
+  "mandals": "Prathipadu-R,Rowthulapudi-R,Sankhavaram-R,Yeleswaram-R,Yeleswaram-U",
+  "revenueVillages": "129",
+  "municipal_wards": "9",
+  "municipalities": "Yeleswaram",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\"><span lang=\"EN-US\">Prathipadu Constituency&#10;consists of Four mandals: Prathipadu, Sankhavaram, Yeleswaram and Rowthulapudi,&#10;and One Nagar Panchayat : Yeleswaram. These are located in the Kakinada&#10;district of Andhra Pradesh, with Prathipadu serving as the headquarters.</span><span>Prathipadu Constituency having&#10;nearest cities areKakinada, Rajamahendravaram and nearest railway stations are&#10;samalkota junction (SLO) , annavaram railway station (ANV) and nearest airport&#10;is Rajahmundry airport</span><span>&#160; </span><span>which is located&#10;at Madhurapudi.</span><span>Prathipadu stands out for its&#10;significant contributions to Agriculture and aquaculture. Its strategic&#10;location, with excellent connectivity to major urban centers like Kakinada and&#10;Rajahmundry, enhances its potential for trade and industrial development.&#10;Additionally, its rich cultural heritage makes it a significant hub for&#10;religious tourism and cultural preservation, positioning the constituency to&#10;achieve an ambitious annual growth target of 15% across all key sectors.</span></p><p class=\"MsoNormal\"><span lang=\"EN-US\"></span></p><p class=\"MsoNormal\"><span lang=\"EN-US\"></span></p>",
+  "constituencyMap": "84\\MAP\\84IMAGE2025090315144573706_prathipadu map.jpg",
+  "geography": "Prathipadu&#160; constituency is located to kakinada district.&#160; spans 624.24&#160; Sq.KMs&#160; It shares boundaries with&#160;<span lang=\"EN-US\">Tuni,&#160;</span><span>Jaggampeta,&#160;</span><span lang=\"EN-US\">Rampachodavaram,&#160;</span><span>Pithapuram</span><p class=\"MsoNormal\"><span lang=\"EN-US\"></span></p><p class=\"MsoNormal\"><span lang=\"EN-US\"></span></p>&#160;constituencies.",
+  "populationDesc": "The total Population 269294 (2011 Census): people, with approximately 134697 males and 134597 females. The sex ratio stands at 999 females per 1,000 males.",
+  "administrationDesc": "Prathipadu&#160; Constituency is one of the&#160; assembly constituencies in kakinada District four mandals&#160;<span lang=\"EN-US\">Prathipadu, Sankhavaram, Yeleswaram and Rowthulapudi, and One Nagar&#10;Panchayat : Yeleswaram</span>",
+  "educationHealthcareDesc": "<span lang=\"EN-US\">3 Community Health Centers (CHCs), 7 Primary Health Centers (PHCs), and&#10;71 sub-centers &amp;&#160;</span><span lang=\"EN-US\">134 primary schools, 32&#160; upper primary schools, and 49&#160; high schools, 4&#160;</span><span lang=\"EN-US\">degree colleges 10 junior colleges</span>",
+  "culturalheritageDesc": "<span lang=\"EN-US\">Veera Venkata Satyanarayanaswamy (Annavaram),&#160;yerravaram anjaneya swamy temple, swamy vivekanancda statue,Dharapalli water falls</span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "ttklSHg5uqr/+iL7bxfomQ==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Prathipadu&#8217;s Economy at a Glance</h2><p><br></p>The Economic Vision Plan for Prathipadu lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;6,113 crores in 2023-24, Prathipadu is projected to expand steadily, reaching &#8377;12,011 crores by 2028-29, marking a significant transformation across agriculture, industry, and services sectors.The agriculture sector, currently 44.75% of GCDP (&#8377;2,531 crores) in 2023-24,&#160;&#160;industrial sector, contributing 23.13% of GCDP (&#8377;1,308 crores) in 2023-24 and&#160;service sector, currently 32.12% of GCDP (&#8377;1,816 crores) in 2023-24.",
+   "gcdP_Growth_Text": "<p>Prathipadu is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like Fishing &amp; Aquaculture, manufacturing and horticulture.&#160;<span>This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and economic hub by 2047.</span></p>",
+   "createdDate": "2025-09-07T09:22:14.54"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6113.0,
+   "cagR_Pct": 14.49,
+   "targetAmountCrore": 12011.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1816.0,
+   "cagR_Pct": 14.73,
+   "targetAmountCrore": 3591.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1308.0,
+   "cagR_Pct": 17.25,
+   "targetAmountCrore": 2936.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2531.0,
+   "cagR_Pct": 12.6,
+   "targetAmountCrore": 4584.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 84,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 32.12
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 23.13
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 44.75
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 84,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 106,
+   "constituencyId": 84,
+   "name": "Smt Varupula Satya Prabha",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 269,
+   "constituencyId": 84,
+   "name": "Parvatha Purna chandra prasad",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 274,
+   "constituencyId": 84,
+   "name": "Varapula Subba rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 275,
+   "constituencyId": 84,
+   "name": "Parvatha Sri Satya narayana murthy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 276,
+   "constituencyId": 84,
+   "name": "Varupula Subbarao",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

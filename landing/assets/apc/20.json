@@ -1,0 +1,218 @@
+{
+ "code": 20,
+ "name": "Kovur",
+ "district": "Spsr Nellore",
+ "logoUrl": "assets/constituencies_logos/kovur.png",
+ "profile": {
+  "population": "309920 (As per Census 2011)",
+  "voterCount": "267345 (As per 2024 Elections)",
+  "area": "620",
+  "mandals": "Buchireddypalem-R,Buchireddypalem-U,Indukurpet-R,Kodavalur-R,Kovur-R,Vidavalur-R",
+  "revenueVillages": "66",
+  "municipal_wards": "28",
+  "municipalities": "Buchireddy Palem",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Kovur Assembly Constituency, located in the central part of Sri Potti Sriramulu Nellore District, comprises the mandals of Kovur, Kodavalur, Vidavaluru, Indukurupet, and Buchireddypalem. It falls under the Nellore Parliamentary Constituency and includes Kovur town, which is part of the Nellore Urban Development Authority (NUDA) and lies adjacent to the district headquarters, Nellore city. The constituency enjoys strong transport connectivity through National Highway 16 (Chennai&#8211;Kolkata corridor) and NH-67, enhancing its role in agri-trade and aquaculture exports. Its proximity to Nellore City provides access to larger commercial markets, advanced healthcare, and educational infrastructure. Kovur is witnessing steady development in its public infrastructure, with the presence of primary health centers (PHCs), urban clinics, and educational institutions ranging from primary schools to junior colleges. Positioned within the core area of the Nellore Region, the constituency contributes significantly to sectors such as construction, education, innovation, commerce, and services. With a targeted annual growth rate of 15% across key sectors, Kovur is emerging as a vital economic and urban hub, balancing growth across agriculture, industry, and services. Strategic infrastructure upgrades, industrial development, and sustainable initiatives are paving the way for inclusive and balanced progress in the region.&#10;<p><br></p>",
+  "constituencyMap": "20\\MAP\\20IMAGE2025090322055630574_WhatsApp Image 2025-09-03 at 10.00.25 PM.jpeg",
+  "geography": "The Kovuru constituency is located in Nellore District and spans 620 sq. km. It is on the bank of the Penna River and has a mix of black cotton soil, sandy soil, and red soil.&#10;<p><br></p>",
+  "populationDesc": "The total population is 309,920, with approximately 44.9% residing in rural areas and 55.1% in urban areas. There are 86,080 households, and the sex ratio is 1,014  females per 1,000 males. The literacy rate stands at 68.22%.&#10;<p><br></p>",
+  "administrationDesc": "Kovuru Constituency is one of the eight assembly constituencies in SPSR Nellore District. The constituency includes 5 mandals and has 1 municipal corporation. The Kovur constituency comes under the Nellore Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "The Geethanjali Institute of Science &amp; Technology is home to one area hospital. 9 PHCs, 65 sub-centers, and 3 CHCs.<p><br></p>",
+  "culturalheritageDesc": "Mypadu Beach and Ramathetham Beach offer serene coastal beauty and tranquil settings ideal for relaxation and seaside activities. Gandhi Ashramam in Pallipadu is a peaceful historical site dedicated to Mahatma Gandhi, attracting visitors interested in history and heritage. Together, they enrich the region&#8217;s tourism appeal.&#10;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "adBwISjpRBkpPh7/MhccJQ==",
+   "economy_Text": "<b><font size=\"4\">Economy At a Glance</font></b><br><br><font face=\"Times New Roman\">Kovur, located in the Nellore district, is a dynamic agro-industrial economy, with a strong focus on agriculture and emerging industrial sectors. The region's economy is largely driven by agriculture, with major crops like paddy and groundnut forming the backbone of local livelihoods. The constituency is home to several large-scale industries, including Green House Agro Products, Krebs Biochemicals &amp; Industries Ltd., Siemens Gamesa Renewable Power Private Ltd., and Fedora Sea Foods Pvt. Ltd. These industries contribute significantly to the area's economic growth.</font><font face=\"Times New Roman\"><br></font><font face=\"Times New Roman\">In 2023-24, the agriculture sector contributes 44.44% of the Gross Value Added (GVA), amounting to &#8377;3,618 crore. Meanwhile, the industrial sector plays a more prominent role, contributing 24.43% (&#8377;1,989 crore) to the GVA, and is expected to grow further, reaching an estimated 27% of the GVA. This growth is primarily fueled by the expansion of food processing industries and other industrial activities.</font><font face=\"Times New Roman\"><br></font><font face=\"Times New Roman\">The services sector is also on the rise, driven by urbanization and the growth of real estate and commercial developments. As Kovur's urban areas expand, the services sector will continue to grow, complementing the agricultural and industrial bases, and positioning the constituency for sustainable long-term economic growth.&#160;</font>",
+   "gcdP_Growth_Text": "Kovur is set for steady economic growth, targeting a 12-15% annual GCDP increase, driven by agriculture, industrial manufacturing, and expanding services. With a strong agro-industrial base and emerging sectors like food processing and real estate, Kovur is on track to become a vibrant urban and economic hub by 2047.",
+   "createdDate": "2025-09-04T07:42:58.6"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 8800.0,
+   "cagR_Pct": 15.12,
+   "targetAmountCrore": 17797.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2534.0,
+   "cagR_Pct": 16.74,
+   "targetAmountCrore": 5494.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1989.0,
+   "cagR_Pct": 17.65,
+   "targetAmountCrore": 4483.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3618.0,
+   "cagR_Pct": 12.87,
+   "targetAmountCrore": 6627.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 20,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 31.13
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 24.43
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 44.44
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 20,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 181,
+   "constituencyId": 20,
+   "name": "Vemireddy Prashanthi Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 182,
+   "constituencyId": 20,
+   "name": "Nallapareddy Prasanna Kumar Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 183,
+   "constituencyId": 20,
+   "name": "Polamreddy Srinivasulu Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 184,
+   "constituencyId": 20,
+   "name": "Nallapareddy Prasanna Kumar Reddy",
+   "termFrom": 2012,
+   "termTo": 2014,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 185,
+   "constituencyId": 20,
+   "name": "Nallapareddy Prasanna Kumar Reddy",
+   "termFrom": 2009,
+   "termTo": 2012,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 186,
+   "constituencyId": 20,
+   "name": "Polamreddy Srinivasulu Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,221 @@
+{
+ "code": 134,
+ "name": "Adoni",
+ "district": "Kurnool",
+ "logoUrl": "assets/constituencies_logos/adoni.png",
+ "profile": {
+  "population": "269286 (As per Census 2011)",
+  "voterCount": "263169 (As per 2024 Elections)",
+  "area": "559.02",
+  "mandals": "Adoni 01-R & Adoni 02-R ,Adoni-U",
+  "revenueVillages": "46",
+  "municipal_wards": "42",
+  "municipalities": "Adoni Municipality",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Adoni Assembly Constituency, established in 1951, is predominantly agrarian, with agriculture serving as the main source of livelihood. Its fertile lands sustain various crops, significantly contributing to the local economy. Historically known as the &#8220;Second Mumbai&#8221; during the British era and early post-independence years, Adoni thrived in trade and commerce, particularly in the cotton sector. Situated in Kurnool district, Adoni has a rich history shaped by dynasties such as the Rashtrakutas, Kakatiyas, and the Vijayanagara Empire. The iconic Adoni Fort underscores its past strategic importance. With its diverse geography, cultural heritage, and economic potential, Adoni is well-positioned to leverage its proximity to Siruguppa, Raichur, and Bellary for trade and tourism development.",
+  "constituencyMap": "134\\MAP\\134IMAGE2025090511131220256_ADONI MAP.jpg",
+  "geography": "The Adoni Assembly Constituency is located in the western part of Kurnool district, Andhra Pradesh. Adoni is situated approximately 90 kilometers (64 miles) from Kurnool, the district headquarters. This prominent constituency in the Rayalaseema region encompasses Adoni Municipality and Adoni Mandal. The constituency is predominantly characterized by black cotton soils, with patches of red soil found in certain areas of Adoni Mandal and Adoni Municipality. It is bordered by Aspari and Yemmiganur Mandals to the east, the Karnataka state border to the west, Kowthalam and Peddakadubur Mandals to the north, and Alur and Holagunda to the south.",
+  "populationDesc": "Adoni has a total population of 269,286, with 38% residing in rural areas and 62% in urban areas. The constituency comprises 52,503 households, with a sex ratio of 1,005 females per 1,000 males. The literacy rate stands at 59.33%.",
+  "administrationDesc": "Adoni Constituency is one of the seven assembly constituencies in Kurnool district. It includes Adoni Mandal and Adoni Municipality.",
+  "educationHealthcareDesc": "The constituency is equipped with 1 Government General Hospital (GGH), 2 Primary Health Centres (PHCs), 4 Urban Primary Health Centres (UPHCs), 28 sub-centres, and 1 Mother and Child Health Hospital, ensuring accessible healthcare services across the region. The educational infrastructure comprises 127 government and private primary schools, 70 government and private upper primary schools, 65 government and private high schools, 2 KGBV schools, 1 social welfare residential school, 1 government ITI college, 1 private ITI college, 10 government and private junior colleges, 4 government polytechnic colleges, 1 government degree college, and 1 private degree college.&#160;",
+  "culturalheritageDesc": "Adoni is known for its rich cultural, mythological, ecological, Historical and spiritual heritage, with key attractions such as Adoni Fort, Ramjala Lake, Parshvamani Parshvanath Jain Temple, Sri Ramalayam Temple, Ancient Jamia Masjid, Sri Mahayogi Lakshmamma Avva Temple, Ranamandala Anjaneya Swamy Temple."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "K4XLIOey3K6ME3lxEy8wMg==",
+   "economy_Text": "<p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Adoni's economy is poised for robust growth from 2024 to 2029, with the Gross City Domestic Product (GCDP) projected to rise from &#8377;4,980 Crores in 2023-24 to approximately &#8377;11,082 Crores by 2028-29, driven by an average annual growth rate of 12-15% and a peak of 19.37% in 2028-29.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The service sector will lead this expansion, increasing its GCVA share from 47.60% to 52.92%, fueled by real estate, finance, IT, and hospitality, with growth rates of 15-17% annually.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The agricultural sector, while declining in relative contribution from 28.12% to 23.13%, will maintain absolute growth through precision farming, horticulture, and aquaculture, achieving a 15.44% growth rate by 2028-29.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The industry sector will hold steady at 23.95% of GCVA, with manufacturing, construction, and renewable energy driving 12-14% annual growth.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Key thrust areas include infrastructure modernization, MSME development, digital integration, and sustainable investments, aligning with Swarna Andhra @ 2047 for inclusive development and job creation.</font></p>",
+   "gcdP_Growth_Text": "<p class=\"MsoNormal\"><span lang=\"EN-US\"><font size=\"4\" face=\"Times New Roman\">Adoni is witnessing steady economic momentum with a targeted 15%&#160;<b>annual GCDP&#10;growth rate</b>&#160;across key sectors like real estate,&#160;infrastructure, finance, manufacturing, transport and agriculture. This growth&#10;trajectory aligns with the long-term vision of making the constituency a vibrant urban and&#160;</font><b><font size=\"4\" face=\"Times New Roman\">economic hub by 2047</font><span></span></b></span></p>",
+   "createdDate": "2025-09-05T13:08:53.443"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4980.0,
+   "cagR_Pct": 19.37,
+   "targetAmountCrore": 11082.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2193.0,
+   "cagR_Pct": 21.77,
+   "targetAmountCrore": 5443.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1118.0,
+   "cagR_Pct": 18.88,
+   "targetAmountCrore": 2464.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1296.0,
+   "cagR_Pct": 15.44,
+   "targetAmountCrore": 2379.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 134,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 47.6
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 24.28
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 28.12
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 134,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 948,
+   "constituencyId": 134,
+   "name": "P.V. Partha Sarathi ",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Bharatiya Janatha Party",
+   "photo": ""
+  },
+  {
+   "id": 611,
+   "constituencyId": 134,
+   "name": "Y. Sai Prasad Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 612,
+   "constituencyId": 134,
+   "name": "Y. Sai Prasad Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 613,
+   "constituencyId": 134,
+   "name": "K. Meenakshi Naidu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 615,
+   "constituencyId": 134,
+   "name": "Y. Sai Prasad Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

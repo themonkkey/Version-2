@@ -1,0 +1,209 @@
+{
+ "code": 43,
+ "name": "Uravakonda",
+ "district": "Ananthapur",
+ "logoUrl": "assets/constituencies_logos/uravakonda.png",
+ "profile": {
+  "population": "265731 (As per Census 2011)",
+  "voterCount": "224339 (As per 2024 Elections)",
+  "area": "1908.42",
+  "mandals": "Beluguppa-R,Kuderu-R,Uravakonda-R,Vajrakarur-R,Vidapankal-R",
+  "revenueVillages": "80",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Uravakonda Assembly Constituency initially formed in 1962 and restructured in 2008. The region's economy is predominantly agrarian, with agriculture serving as the mainstay for many residents. The fertile lands support the cultivation of various crops, contributing to the local economy. Additionally, the area has seen developments in renewable energy. The constituency has a rich historical and cultural heritage, with diverse geographical features and potential for economic growth. Its proximity to nearby towns like Ananthapuramu, Guntakal and Bellary makes it well-connected for trade, commerce, and tourism development.It shares boundaries with Guntakal, Kalyandurg, Rapthadu, Singanamala, Ananthapuramu, Rayadurg constituencies and Karnataka State.Uravakonda Constituency is a region with diverse opportunities and challenges. While agriculture, supported by robust irrigation infrastructure, remains the backbone of the economy, the constituency is poised for growth in the services sector, especially tourism and hospitality. The constituency&#8217;s rich cultural heritage, alongside its transportation connectivity, presents a unique opportunity for tourism-",
+  "constituencyMap": "43\\MAP\\43IMAGE2025090516114198951_uravakonda.jpg",
+  "geography": "The Uravakonda Assembly Constituency is located in the western part of Ananthapuramu District, Andhra Pradesh. This prominent constituency in the Rayalaseema region encompasses five mandals.The constituency mainly features black cotton soils, with red soils .",
+  "populationDesc": "According to the 2011 Census, the population of the Uravakonda Assembly Constituency stands at 2,65,731 people, comprising 1,34,486 males and 1,31,245 females. The sex ratio is 976 females per 1,000 males, slightly lower than the district average (978) and state average (993). The area includes 60,397 households.&#160;",
+  "administrationDesc": "The Uravakonda constituency in the Rayalaseema region encompasses five mandals: Uravakonda, Vajrakarur, Vidapanakal, Beluguppa, and Kuderu.&#160;",
+  "educationHealthcareDesc": "Health care includes 2 community health centers,10&#160;<span>PHCs, 76 sub-centers and 4 Ayush dispensaries&#160;&#160;</span>Educational infrastructure comprises 155 government and private primary schools, 57 government and private upper primary school 54 government and private high schools, 5 KGBV schools, 3 Model schools, 1 social welfare residential school, 2 Tribal welfare residential schools, 1 backward welfare residential school, 1 government ITI college, 1 private ITI college, 4 government &amp; private junior colleges,  1 government polytechnic, 1 government degree college and 1 private degree college.&#160;",
+  "culturalheritageDesc": "Uravakonda is rich in cultural landmarks, such as the Penna Ahobilam Lakshmi Narasimha Swamy Temple, Suryanarayana Swamy Temple, Gavimatam Samsthanam, and Jarutla Ramalingeswara Swamy Temple. It is also known for the Kadale Gowramma Cart Festival and Jambu Dweepa Chakra, an ancient Jain cosmographical art work."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "jRqY51oGeOo4I1Y68fAhQQ==",
+   "economy_Text": "<p dir=\"ltr\"><font face=\"Times New Roman\" size=\"3\">Uravakonda&#8217;s economy is poised for robust growth from 2024 to 2029, with the Gross Constituency Domestic Product (GCDP) projected to rise from &#8377;7,059 crores to &#8377;16,575 crores, achieving an average annual growth rate of 15%.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"3\">The agriculture sector, led by horticulture and livestock, remains the backbone, growing from &#8377;3,744 crores to &#8377;8,214 crores, driven by irrigation modernization, crop diversification, and agri-processing infrastructure.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"3\">The industry sector will expand from &#8377;1,056 crores to &#8377;2,561 crores, fueled by construction, renewable energy, and MSME development.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"3\">The services sector growing from &#8377;1,730 crores to &#8377;4,364 crores, will see significant contributions from real estate, trade, and tourism, supported by skill development and digital connectivity.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"3\">Strategic initiatives, including industrial parks, sustainable energy projects and financial inclusion programs align with the Swarna Andhra @2047 vision, positioning Uravakonda as a diversified and resilient economic hub by 2029.</font></p>",
+   "gcdP_Growth_Text": "<font size=\"4\" face=\"Times New Roman\">Uravakonda&#160;<span>emphasizes strong rural employment generation through agri-processing, construction, MSMEs and services, aligning with the Swarna Andhra @2047 vision laying a solid foundation for the ambitious target of &#8377;1,78,043 crores GCDP by 2047</span></font>",
+   "createdDate": "2025-09-05T22:38:28.977"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7059.0,
+   "cagR_Pct": 15.76,
+   "targetAmountCrore": 16575.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1730.0,
+   "cagR_Pct": 16.82,
+   "targetAmountCrore": 4364.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1056.0,
+   "cagR_Pct": 17.15,
+   "targetAmountCrore": 2561.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3744.0,
+   "cagR_Pct": 13.93,
+   "targetAmountCrore": 8214.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 43,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 26.5
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 16.17
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 57.33
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 43,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 880,
+   "constituencyId": 43,
+   "name": "Payyavula Keshav",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 962,
+   "constituencyId": 43,
+   "name": "Payyavula Keshav",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 963,
+   "constituencyId": 43,
+   "name": "Y. Visweswara Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 964,
+   "constituencyId": 43,
+   "name": "Payyavula Keshav",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": " TDP",
+   "photo": ""
+  },
+  {
+   "id": 965,
+   "constituencyId": 43,
+   "name": "Payyavula Keshav",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

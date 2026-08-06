@@ -1,0 +1,197 @@
+{
+ "code": 165,
+ "name": "Vijayawada East",
+ "district": "NTR",
+ "logoUrl": "assets/constituencies_logos/vijayawada east.png",
+ "profile": {
+  "population": "339897 (As per Census 2011)",
+  "voterCount": "264778 (As per 2024 Elections)",
+  "area": "22",
+  "mandals": "Vijayawada-U",
+  "revenueVillages": "4",
+  "municipal_wards": "21",
+  "municipalities": "Vijayawada",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Vijayawada, formerly known as Bezawada, is the second-largest city in Andhra Pradesh and serves as a vital commercial hub for the state. Nestled on the banks of the Krishna River and surrounded by the scenic Indrakeeladri Hills of the Eastern Ghats, it boasts a rich cultural heritage.&#10;Gunadala Matha Shrine, also known as Our Lady of Lourdes or Mary Matha Church, is a prominent Roman Catholic pilgrimage site located in Gunadala, Vijayawada, Andhra Pradesh. Vijayawada is often referred to as the commercial, political, cultural, educational, and health capital of the region, particularly in relation to Amaravati.&#10;As the administrative headquarters of the NTR district, Vijayawada plays a crucial role in local governance. The Prakasam Barrage, which spans the Krishna River, connects the NTR and Guntur districts, enhancing trade and transportation.&#10;Recognized as one of the fastest-growing urban areas in India and among the top 10 fastest-growing cities globally, as noted in an Oxford Economics report, Vijayawada is poised for continued growth and development in the coming years.&#10;<br>",
+  "constituencyMap": "165\\MAP\\165IMAGE2025090407270127427_vij east.jpg",
+  "geography": "Vijayawada East Constituency spans an area of 22 sq. km, characterized by fertile red and black cotton soils that support agriculture in select pockets. Predominantly urban in nature, it forms a vital part of the bustling city of Vijayawada, with dense residential, commercial, and institutional zones.&#160;",
+  "populationDesc": "Vijayawada East Constituency has a total population of 339897, with urban area. The constituency has 100966 households, with a sex ratio of 965 females per 1,000 males.",
+  "administrationDesc": "Vijayawada East Constituency is one of the seven assembly constituencies in NTR District. It has Vijayawada Municipal Corporation.",
+  "educationHealthcareDesc": "Vijayawada East Constituency is a key educational hub, hosting premier institutions such as Andhra Loyola Institute of Engineering and Technology, the School of Planning and Architecture, and P.B. Siddhartha College of Arts and Science. School education is strengthened by 89 schools and 12 major colleges, alongside skill training under NSDC and PMKVY. The healthcare system includes 12 Urban Primary Health Centres and one ESI dispensary, with goals to cut maternal mortality by 50%, reduce infant mortality, and achieve 100% vaccination coverage.",
+  "culturalheritageDesc": "Vijayawada East Constituency reflects a vibrant cultural heritage, blending tradition with modern urban life. The area hosts historic temples, cultural centers, and community spaces that showcase Telugu art, literature, and theatre. Festivals such as Dasara, Sankranti, and Ugadi are celebrated with devotion and grandeur, reinforcing the region&#8217;s cultural identity. With institutions promoting performing arts and youth engagement, the constituency nurtures classical dance, music, and folk traditions, making it a hub of spiritual, artistic, and social vibrancy in Vijayawada."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "qEVAlXvsTMD9iWhvalULGg==",
+   "economy_Text": "<font size=\"5\"><b><span>Vijayawada East&#160;</span><span>&#8217;s Economy at a Glance</span></b></font><p><span><br></span></p><p><span>Vijayawada East Constituency is targeting a &#8377;24,654 crores GCDP by 2047 with an annual growth rate of 12&#8211;15%.&#160;</span><font color=\"#333333\">As of 2023-24, the economy is led by the&#160;</font><span>service sector,</span><font color=\"#333333\">&#160;contributing 79.86% to the Gross Value Added (GVA), followed by the industry sector at 19.79%, and the&#160;</font><span>agriculture and allied sector&#160;</span><font color=\"#333333\">industrial sector at 0.34%.</font></p><p></p>",
+   "gcdP_Growth_Text": "<span>Vijayawada East</span><span>&#160;is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Trade, Tourism, Financial services, and real estate. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.</span>",
+   "createdDate": "2025-09-06T10:05:32.51"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 12025.0,
+   "cagR_Pct": 36.01,
+   "targetAmountCrore": 24654.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 8884.0,
+   "cagR_Pct": 19.76,
+   "targetAmountCrore": 18513.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2201.0,
+   "cagR_Pct": 19.46,
+   "targetAmountCrore": 4463.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 39.0,
+   "cagR_Pct": 11.11,
+   "targetAmountCrore": 64.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 165,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 79.86
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.8
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 0.34
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 165,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 562,
+   "constituencyId": 165,
+   "name": "Gadde Rama Mohan",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 563,
+   "constituencyId": 165,
+   "name": "Gadde Rama Mohan",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": " Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 564,
+   "constituencyId": 165,
+   "name": " Gadde Rama Mohan",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": " Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 565,
+   "constituencyId": 165,
+   "name": "Ravi Yalamanchili",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Praja Rajyam Party",
+   "photo": ""
+  },
+  {
+   "id": 931,
+   "constituencyId": 165,
+   "name": "Vangaveeti Radha Krishna",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

@@ -21,5 +21,13 @@
 <rect x="80" y="280" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
 <rect x="80.5" y="280.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
 </g>
+<text id="val-t1" x="98" y="85" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GVA</text>
+<text id="lbl-t1" x="380" y="83" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Gross Value Added</text>
+<text id="val-t2" x="98" y="161" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GDVA</text>
+<text id="lbl-t2" x="380" y="159" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Summed across sectors</text>
+<text id="val-t3" x="98" y="237" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GDDP</text>
+<text id="lbl-t3" x="380" y="235" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">+ Taxes &#8722; Subsidies</text>
+<text id="val-t4" x="98" y="313" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">PER CAPITA</text>
+<text id="lbl-t4" x="380" y="311" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">&#247; population</text>
 </g>
 </svg>

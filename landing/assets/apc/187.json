@@ -1,0 +1,230 @@
+{
+ "code": 187,
+ "name": "Rayadurg",
+ "district": "Ananthapur",
+ "logoUrl": "187\\Logo\\187IMAGE2025090620493344833_Rayadurg.jpg",
+ "profile": {
+  "population": "319479 (As per Census 2011)",
+  "voterCount": "264418 (As per 2024 Elections)",
+  "area": "1625.85",
+  "mandals": "Bommanahal-R,D.Hirehal-R,Gummagatta-R,Kanekal-R,Rayadurg-R,Rayadurg-U",
+  "revenueVillages": "77",
+  "municipal_wards": "32",
+  "municipalities": "Rayadurg",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Rayadurg Assembly Constituency is located in the Anantapur district of Andhra Pradesh and was established in 1951 as part of the Delimitation Orders. It is one of the seven assembly segments under the AnantapurLok Sabha constituency. The constituency includes five mandals: Rayadurg (Rural and Urban), D.Hirehal, Bommanahal, Kanekal and Gummagata. Situated in the western part of Anantapur district, Rayadurg has historical significance. The region is known for its industrial development, particularly in textile and mining of Iron ore.Rayadurg Assembly constituency is a constituency in Anantapur district of Andhra Pradesh that elects representatives to the Andhra Pradesh Legislative Assembly in India. It is one of the seven assembly segments of the constituencies in Anantapur Lok Sabha constituency.Rayadurg is a town in Anantapur District in the Indian state of Andhra Pradesh. It is governed by a municipal council. Rayadurgam is known for its production of textile goods and textile manufacturing industry. Rayadurgam is in Southern India about 451.6 km (280.6 mi) from Hyderabad. Rayadurg is now slowly developing with proper transportation, modern amenities. Rayadurg is well connected with other cities in Andhra Pradesh and Karnataka through well infrastructure of NH 544DD Highway. The nearest airport is Ballari Airport in Karnataka followed by Kurnool, Puttaparthi and Bengaluru . Rayadurg also has a train station with major stations nearby such as Ballari, Guntakal, Gooty &amp; Anantapur.",
+  "constituencyMap": "187\\MAP\\187IMAGE2025090516405289677_rayadurg map.jpg",
+  "geography": "Rayadurg Constituency Covering a total area of 1,625.85 sq. km. The constituency shares its borders with Uravakonda, Kalyandurg and Karnataka. The predominant soil type is red soil&amp; black soil, which is well suited for agriculture. Rayadurg is well connected by National Highway NH 544D and has rail connectivity to major cities like Bengaluru and Bellary.",
+  "populationDesc": "The total population of Rayadurg Constituency is 3,19,479, with 66,551 households. The urban population stands at 61,749, while the rural population is significantly higher at 2,57,730 the child population (0-6 years) population growth rate from 2001 to 2011 is 10.41% and The sex ratio is 978 females per 1,000 males. The literacy rate in the constituency is 54.51%, with male literacy at 63.65% and female literacy at 49.21%.&#160;",
+  "administrationDesc": "Rayadurg Constituency is one of the eight assembly constituencies in Ananthapuramu district. It includes Rayadurg (Rural and Urban), D.Hirehal, Bommanahal, Kanekal and Gummagata mandals.&#160;",
+  "educationHealthcareDesc": "The constituency has a well-developed education system, comprising 217 primary schools, 43 upper primary schools, 77 high schools,09 High schools attached junior colleges, 08 junior colleges, 02-degree colleges, 01 polytechnic institutes in Rayadurg town. Healthcare infrastructure includes 01 area hospital, 09Primary Health Centers (PHCs), 78 sub-centers/village health clinics, 03 urban PHCs, 01 community health center and 03 AYUSH dispensaries. The infant mortality rate (IMR) stands at 1.77 per 1,000 live births, while the maternal mortality rate (MMR) is 75.64 per 1 lakh live births.",
+  "culturalheritageDesc": "Rayadurg is home to several historical and religious sites displaying the Vijayanagara architectural style. Prominent landmarks include the Prasanna Venkateswara Swamy Temple and Dasabhuja Ganapathi renowned for its intricate carvings and sculptures, the Sri Anjaneya Swamy Temple (Nemakal), Anjaneya Swamy Temple (Muradi), Sri GaviSiddeswara Swamy Temple (H.Siddapuram) and Rayadurg fort are significant pilgrimage sites in Rayadurg constituency."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Rf++mEaiMd4HcNkccI4zSg==",
+   "economy_Text": "<p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Rayadurg Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;6,733.38 crores in 2023-24, is projected to grow to &#8377;15,345.90 crores by 2028-29, reflecting a robust annual growth trajectory.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The Economic Vision Plan leverages sectoral diversity, focusing on high-value horticulture, industrial expansion, and service-based enterprises to drive sustainable growth.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The <strong>Services Sector</strong>, contributing &#8377;2,074.94 crores (33.31%) in 2023-24 with a 10.07% growth rate, is expected to reach &#8377;4,536.60 crores by 2028-29, propelled by advancements in service-oriented industries.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\"><strong>Industries Sector</strong>, valued at &#8377;1,574.43 crores (25.28%) with an 11.80% growth rate, is forecasted to grow to &#8377;4,260.34 crores, driven by industrial diversification.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\"><strong>Agricultural &amp; Allied Sector</strong>, the largest contributor at &#8377;2,579.72 crores (41.41%) with a 10.71% growth rate, is anticipated to expand to &#8377;5,743.46 crores, supported by resilient high-value horticulture despite low rainfall challenges.</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">This strategy fosters inclusive and resilient economic progress for the Constituency.</font></p>",
+   "gcdP_Growth_Text": "<p dir=\"auto\"><font face=\"Times New Roman\" size=\"4\">Rayadurg's GCDP, at &#8377;6,733.38 crores in 2023-24, is projected to reach &#8377;15,345.90 crores by 2028-29, driven by robust annual growth. The Services (10.07%), Industries (11.80%), and Agricultural &amp; Allied (10.71%) sectors fuel this trajectory toward a resilient economic hub</font></p>",
+   "createdDate": "2025-09-05T12:42:22.073"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6733.38,
+   "cagR_Pct": 13.29,
+   "targetAmountCrore": 15345.9,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2074.94,
+   "cagR_Pct": 10.07,
+   "targetAmountCrore": 4536.6,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1574.43,
+   "cagR_Pct": 11.8,
+   "targetAmountCrore": 4260.34,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2579.72,
+   "cagR_Pct": 10.71,
+   "targetAmountCrore": 5743.46,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 187,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.31
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 25.28
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 41.41
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 187,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 13,
+   "sectorName": "Handicrafts, Handlooms & Textiles",
+   "description": "Promotion of traditional crafts, modern design integration, and export facilitation.",
+   "imageUrl": "assets/img/sectors/handicrafts-handlooms-textiles.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 906,
+   "constituencyId": 187,
+   "name": "Kalava Srinivasulu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 909,
+   "constituencyId": 187,
+   "name": "Kapu Ramachandra Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party ",
+   "photo": ""
+  },
+  {
+   "id": 908,
+   "constituencyId": 187,
+   "name": "Kalava Srinivasulu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 961,
+   "constituencyId": 187,
+   "name": "Kapu Ramachandra Reddy",
+   "termFrom": 2012,
+   "termTo": 2014,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 959,
+   "constituencyId": 187,
+   "name": "Kapu Ramachandra Reddy",
+   "termFrom": 2009,
+   "termTo": 2012,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 911,
+   "constituencyId": 187,
+   "name": "Mettu Govinda Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

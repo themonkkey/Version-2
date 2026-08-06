@@ -1,0 +1,212 @@
+{
+ "code": 138,
+ "name": "Guntakal",
+ "district": "Ananthapur",
+ "logoUrl": "138\\Logo\\138IMAGE2026042716074445654_SRI NETIKANTI ANJINAYASWAMY HD.png",
+ "profile": {
+  "population": "315845 (As per Census 2011)",
+  "voterCount": "271057 (As per 2024 Elections)",
+  "area": "966.08",
+  "mandals": "Gooty-R,Gooty-U,Guntakal-U,Gunthakal-R,Pamidi-R",
+  "revenueVillages": "64",
+  "municipal_wards": "55",
+  "municipalities": "Gooty, Guntakal",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Guntakal Assembly Constituency is a significant legislative segment in the Anantapur district of Andhra Pradesh. Established in 2008 as part of the Delimitation Orders, it is one of the seven assembly segments under the Anantapur Lok Sabha constituency. &#10;&#10;The Guntakal constituency comprising three mandals Guntakal and Gooty (Rural &amp; Urban), and Pamidi stand out for their significant contributions to the construction, education, innovation, commerce, and service sectors. These unique advantages position the constituency to achieve an ambitious annual growth target of 15% across all key sectors.&#10;Historically, Guntakal derives its name from Guntakallu village. Established as a municipality in 1948 and over the years, it has developed into a crucial industrial hub, known for its cement, granite, and steel industries, making it an economic powerhouse in the region. &#10;Guntakal constituency is located in the rain shadow area of the Indian Peninsula, leading to less rainfall. The workforce is primarily engaged in agriculture, industries, handloom weaving, and services .Historically, Guntakal derives its name from Guntakallu village. Established as a municipality in 1948 and over the years, it has developed into a crucial industrial hub, known for its cement, granite, and steel industries, making it an economic powerhouse in the region.",
+  "constituencyMap": "138\\MAP\\138IMAGE2025090513225465991_guntakul.jpg",
+  "geography": "Guntakal covers an area of 966.08 square kilo-meters . It is bordered by Kurnool and Nandyal District to the north, Vajrakarur to the west, Uravakonda to the south, and Gooty to the east. The predominant soil type in the region is black cotton soil.",
+  "populationDesc": "Guntakal has a total population of 3,15,845, comprising 72,964 households. The urban population is 1,74,928, whereas the rural population is significantly higher at 1,40,917. The constituency has a sex ratio of 993 females per 1,000 males.House Holds: There are about 72964 households.",
+  "administrationDesc": "The Guntakal constituency comprising three mandals - Guntakal and Gooty (Rural &amp; Urban), and Pamidi .",
+  "educationHealthcareDesc": "The education system in Guntakal Constituency comprises 202 primary schools, 46 upper primary schools, and 80 high schools. Higher education institutions include 20 junior colleges, 4-degree colleges, 1 polytechnic institute, and 4 ITI colleges. Healthcare facilities include one area hospital, six Primary Health Centers (PHCs), and 55 village health clinics.",
+  "culturalheritageDesc": "Guntakal Constituency a symbol of the region's rich history and cultural heritage and tourist attraction, drawing visitors for its historical significance, architectural beauty &amp; panoramic views. Guntakal Constituency can enhance its tourism potential and contribute to the cultural and economic development.The region is also known for its handicrafts, such as Kalamkari (hand-painted or block-printed fabric) and Stone Carving which represent the region's artistic heritage.<br>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "n3517rY+wCBur+nNli6OKQ==",
+   "economy_Text": "<p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Guntakal Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;7,352.38 crores in 2023-24, is projected to grow to &#8377;16,756.70 crores by 2028-29, driven by a sustainable annual growth rate of 12-15%.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The Economic Vision Plan leverages sectoral strengths, enhances infrastructure, and promotes industrial diversification to create an investment-friendly and employment-driven region.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The <strong>Services Sector</strong>, valued at &#8377;4,142.13 crores in 2023-24 with an 11.86% growth rate, is expected to reach &#8377;9,288.60 crores by 2028-29, fueled by advancements in service-based enterprises.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The <strong>Industries Sector</strong>, contributing &#8377;1,186 crores with an 11.32% growth rate, is forecasted to grow to &#8377;3,254.98 crores, supported by industrial expansion.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The <strong>Agricultural &amp; Allied Sector</strong>, at &#8377;1,473 crores with a 9.74% growth rate, is anticipated to expand to &#8377;3,334.37 crores, driven by sustainable agricultural practices.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">This strategy ensures inclusive and resilient economic progress, positioning Guntakal as a vibrant economic hub in Andhra Pradesh.</font></p>",
+   "gcdP_Growth_Text": "<p dir=\"auto\"><font face=\"Times New Roman\" size=\"4\">Guntakal&#8217;s GCDP at &#8377;7,352.38 crores in 2023-24 is projected to reach &#8377;16,756.70 crores by 2028-29, driven by a 12-15% annual growth rate. The Services (11.86%), Industries (11.32%), and Agricultural &amp; Allied (9.74%) sectors fuel this progress toward a vibrant economic hub by 2047</font></p>",
+   "createdDate": "2025-09-05T11:47:28.18"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7352.38,
+   "cagR_Pct": 13.52,
+   "targetAmountCrore": 16756.7,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 4142.13,
+   "cagR_Pct": 11.86,
+   "targetAmountCrore": 9288.6,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1186.0,
+   "cagR_Pct": 11.32,
+   "targetAmountCrore": 3254.98,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1473.0,
+   "cagR_Pct": 9.74,
+   "targetAmountCrore": 3334.37,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 138,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 61.18
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 17.03
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 21.79
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 138,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 753,
+   "constituencyId": 138,
+   "name": "Sri Gummanur Jayaram",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 754,
+   "constituencyId": 138,
+   "name": "Y. Venkatrami Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 756,
+   "constituencyId": 138,
+   "name": "R Jithendra Goud",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 758,
+   "constituencyId": 138,
+   "name": "Kotrike Madhusudan Gupta",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

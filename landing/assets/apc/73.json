@@ -1,0 +1,188 @@
+{
+ "code": 73,
+ "name": "Rajahmundry Rural",
+ "district": "East Godavari",
+ "logoUrl": "assets/constituencies_logos/rajahmundry rural.png",
+ "profile": {
+  "population": "257472 (As per Census 2011)",
+  "voterCount": "272942 (As per 2024 Elections)",
+  "area": "153.85",
+  "mandals": "Kadiam-R,Rajahmundry-U,Rajamahendravaram Rural-R",
+  "revenueVillages": "16",
+  "municipal_wards": "8",
+  "municipalities": "Rajahmundry",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Rajahmundry Rural Constituency in East Godavari district, Andhra Pradesh, spans 150.94 sq. km, covering Rajahmundry Rural and Kadiam mandals, and part of Rajahmundry municipal corporation. The constituency has 16 revenue villages, 21 gram panchayats, and 8 municipal wards. Known for fertile agricultural lands and abundant water resources, Rajahmundry Rural is strategically located near urban centers like Rajahmundry city (13 km), Kakinada (60 km), and Vijayawada (159 km).Kadiam mandal is renowned as the &#34;Nursery Capital of India&#34; due to its fertile alluvial soil and 8 km riverbank along the Godavari. The constituency offers potential in agriculture, horticulture, industry, and eco-tourism. The Chennai-Kolkata National Highway-216A passes through the constituency, enhancing connectivity.Rajahmundry Rural is also known for the Sir-Arthur Cotton Barrage at Dowelaiswaram and industrial development. With its diverse resources and strategic location, the constituency is poised for balanced and sustainable development through targeted interventions. By leveraging its strengths, Rajahmundry Rural can achieve significant growth and progress.&#10;<p><br></p>",
+  "constituencyMap": "73\\MAP\\73IMAGE2025090413225546628_rajamundry rural.jpg",
+  "geography": "Rajahmundry Rural constiteuncy is located in East Godavari District and spans 153.85 Sq.km. Rajahmundry Rural Constituency geography is characterized by fertile Deep Black soils .&#10;<p><br></p>",
+  "populationDesc": "Rajahmundry rural constituency has a Total population of 3,11,730 with 80% residing in rural areas and 20% in urban areas. The constituency has 82,274 households, with a sex ratio of 1016 females per 1,000 males.&#10;<p><br></p>",
+  "administrationDesc": "Two rural mandals&#160; 1. Rajahmundry Rural 2. Kadiam mandal and some part (urban) of Rajahmundry municipal corporation. The Constituency consists 16 revenue Village, and 21 grama Panchayat, and 8 municipal wards from Rajahmundry municipal corporation.&#10;<p><br></p>",
+  "educationHealthcareDesc": "Primary Health Centers (PHCs), 50 Village health clinics. Educational infrastructure comprises 110 government schools, 102 private schools 10 junior colleges, 2-degree college,2 nursing colleges, 1 agriculture college, 2 ITI colleges, 1 Polytechnic college, 4 vocational training centers to equip the youth with industry-relevant skills.&#10;<p><br></p>",
+  "culturalheritageDesc": "Rajahmundry Rural constituency boasts a vibrant cultural heritage, featuring iconic temples like Dowelaiswaram Janardhana swamy temple at Dowelaiswaram. The district&#8217;s natural beauty shines through Kadiam Nurseries and Dowelaiswaram barrage.&#10;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "RWs5HqGaz1evaL0BaqmZ2Q==",
+   "economy_Text": "<p><b><font size=\"5\">Rajahmundry Rural&#8217;s Economy at a Glance</font></b></p><p><br></p>The economy of the Constituency presents a dynamic and multifaceted landscape, driven by significant contributions from the agriculture, industry and services sectors. As of the fiscal year 2023-24, the Gross Constituency Domestic Product (GCDP) reached &#8377; 6,007&#160;<span>Crores, with agriculture and allied sectors accounting for 18% (&#8377;988Crores), the industrial sector contributing 26% (&#8377;1,438 Crores) and the services sector making up 56%(&#8377;3,132 Crores). Despite challenges such as frequent cyclones and floods, the Constituency has shown remarkable resilience by prioritizing high-value horticulture crops, which have emerged as a key driver of agricultural income and economic stability.</span>",
+   "gcdP_Growth_Text": "Rajahmundry Rural is witnessing steady economic momentum with a targeted 15% <b>annual GCDP growth rate</b> across key sectors like real estate,&#10;<p>horticulture, and manufacturing. This growth trajectory aligns with the long-term vision of making the&#160;<span>constituency a vibrant </span><b>urban and economic hub by 2047.</b></p>",
+   "createdDate": "2025-09-04T07:22:41.093"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5558.0,
+   "cagR_Pct": 15.42,
+   "targetAmountCrore": 11397.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3132.0,
+   "cagR_Pct": 14.87,
+   "targetAmountCrore": 6269.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1438.0,
+   "cagR_Pct": 18.13,
+   "targetAmountCrore": 3234.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 988.0,
+   "cagR_Pct": 13.16,
+   "targetAmountCrore": 1895.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 73,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 56.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 26.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 18.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 73,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 367,
+   "constituencyId": 73,
+   "name": "Gorantla Butchaiah Chowdary",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 368,
+   "constituencyId": 73,
+   "name": "Gorantla Butchaiah Chowdary",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 370,
+   "constituencyId": 73,
+   "name": "Gorantla Butchaiah Chowdary",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 371,
+   "constituencyId": 73,
+   "name": "Chandana Ramesh",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

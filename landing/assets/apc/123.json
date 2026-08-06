@@ -1,0 +1,197 @@
+{
+ "code": 123,
+ "name": "Repalle",
+ "district": "Bapatla",
+ "logoUrl": "123\\Logo\\123IMAGE2026051616153147714_NZM PIC1.png",
+ "profile": {
+  "population": "282609",
+  "voterCount": "226893",
+  "area": "559.87",
+  "mandals": "Cherukupalli, Nagaram, Nizampatnam, Repalle",
+  "revenueVillages": "48",
+  "municipal_wards": "28",
+  "municipalities": "Repalle",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Repalle Assembly Constituency is located 80 km from Amaravati and 50 km from Bapatla district headquarters. The constituency excels in agriculture, aquaculture, construction, education, commerce, handlooms and services, aiming for 15% annual growth. With a rich history, Repalle Constituency was established in its current form in 2009, comprising Repalle, Nizampatnam, Cherukupalli and Nagaram mandals. Nizampatnam was a thriving port under the Velanati Cholas and a trading post for the Dutch and British East India Company. Mahatma Gandhi visited the mandal in 1933 for harijan upliftment and cyclone relief efforts. The Repalle railway station opened in 1916, and the municipality was formed in 1956. The constituency has a total of 226893 voters and is part of the Bapatla Lok Sabha constituency. Anagani Satya Prasad is the current MLA from the Telugu Desam Party",
+  "constituencyMap": "123\\MAP\\123IMAGE2025090409581924124_repalle.jpg",
+  "geography": "Repalle geography is characterized by a low elevation, situated on plains in the Bapatla district of Andhra Pradesh. It has an average elevation of 7 meters (23 feet) . The area is known for its agricultural land, with black cotton soil dominating 74% of the district and red loamy soil covering the remaining 26%.Repalle is located 25 kilometres (16 mi) from the sea coast. Total coastal area of the constituency is approximately 25Kms.&#160;",
+  "populationDesc": "Repalle Constituency has a total population of 2,82,609, with 82% residing in rural areas and 18% in urban areas. The constituency has 98310 households, with a sex ratio of 1056 females per 1,000 males. The literacy rate stands at 65.04% in Rural and 81.32 in Urban area, indicating steady progress in education levels. The workforce is primarily engaged in agriculture, Aqua culture, Industry, handloom weaving, and services.&#10;<p>&#10;</p><p><br></p>",
+  "administrationDesc": "Repalle Constituency is one of the six assembly constituencies in Bapatla District.&#160;",
+  "educationHealthcareDesc": "Repalle is a major educational hub hosting Government and Corporate schools, Sri ABR Govt. Degree College, 15 Junior colleges, Govt Polytechnic College, Nursing College and Professional colleges. School education is being strengthened with 309 Govt. schools and ZPHS having smart classrooms, youth undergoing skill training under NSDC and PMKVY initiatives.&#10;<p>The healthcare sector includes 3 CHCs , 3 UHCs, 8 PHCs, 61 sub-centers, 3 Blood Storage Units, 6-104 Vehicles , 4-108 Vehicles  ,1-Talli Bidda Express having 95 ANMs and 212 Asha Workers plans to reduce maternal mortality by 50%,bring infant mortality below 10 per 1,000 live births, and achieve 100% vaccination coverage. A strong public health infrastructure ensures access to affordable and quality medical services.&#10;</p><p><br></p>",
+  "culturalheritageDesc": "&#8226;&#9;Morthota Temple named as Dhakshina Kasi, Aravapalli Bala Koteswara Swamy Temple, Sri Prudweswara Swamy Temple, Kanagala a prominent pilgrimage site attracting devotees and tourists annually.&#10;<p>&#8226;&#9;Potential for eco-tourism<font face=\"Arial\"> </font>and river front development along the Krishna River.&#10;</p><p><br></p><p>&#10;</p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "fMfod0YKirojheSUm2cu+Q==",
+   "economy_Text": "<p><b><font size=\"5\"><span>Repalle</span>&#8217;s Economy at a Glance</font></b></p><p><span>Repalle presents a comprehensive growth strategy to transform the constituency into an economically vibrant, investment-friendly, and employment-driven region. With a Gross Constituency Domestic Product (GCDP) of &#8377;9156 crores in 2023-24, Repalle is projected to achieve &#8377;202698 crores by 2047-48 and &#8377;19271 crores by 2028-29, reflecting a strong and sustainable annual growth trajectory averaging 12-15%. &#160;As of 2023-24, the economy is led by the services sector, contributing 72.84% to the Gross Value Added (GVA), followed by the agriculture and allied sector at 20.29%, and the industrial sector at 6.86%.</span></p>",
+   "gcdP_Growth_Text": "Repalle is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Fishing &amp; Aquaculture, Livestock, and real estate. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.",
+   "createdDate": "2025-09-04T11:33:51.167"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9156.0,
+   "cagR_Pct": 20.26,
+   "targetAmountCrore": 19271.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1721.0,
+   "cagR_Pct": 20.5,
+   "targetAmountCrore": 3611.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 582.0,
+   "cagR_Pct": 19.69,
+   "targetAmountCrore": 1194.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 6177.0,
+   "cagR_Pct": 20.2,
+   "targetAmountCrore": 12928.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 123,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 20.29
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 6.86
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 72.85
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 123,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 263,
+   "constituencyId": 123,
+   "name": "Anagani Satya Prasad\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 264,
+   "constituencyId": 123,
+   "name": "Anagani Satya Prasad",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 265,
+   "constituencyId": 123,
+   "name": "Anagani Satya Prasad",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 266,
+   "constituencyId": 123,
+   "name": "Mopidevi Venkata Ramana Rao\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 267,
+   "constituencyId": 123,
+   "name": "Devineni Mallikharjuna Rao\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

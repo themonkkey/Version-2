@@ -1,0 +1,206 @@
+{
+ "code": 106,
+ "name": "Macherla",
+ "district": "Palnadu",
+ "logoUrl": "106\\Logo\\106IMAGE2026052515550925661_MCL PROFILE PIC.jpg",
+ "profile": {
+  "population": "313355",
+  "voterCount": "262518",
+  "area": "1800.76",
+  "mandals": "Durgi, Karempudi, Macherla, Rentachintala, Veldurthy",
+  "revenueVillages": "53",
+  "municipal_wards": "31",
+  "municipalities": "Macherla",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>Here&#8217;s our vision for Macherla.</p><p>We&#8217;ve put together a new five-year plan, running from 2024 to 2029. The whole idea is to build on what we already do best.</p><p>Macherla has so many strengths. We&#8217;re a powerhouse in farming. We have a growing industrial base. Our construction and service sectors are booming. Plus, our location is a huge advantage, sitting right on the border of Andhra Pradesh and Telangana.</p><p>We&#8217;re known for more than just one thing. People count on us for construction, education, and new ideas. Commerce and services are a core part of who we are.</p><p>Because of these unique advantages, we&#8217;re setting a big goal: 25% growth every year. We want to see that growth across every single one of these key sectors.</p><p>Macherla has a proud history. We became a municipality back in 1983 and now serve as a Second Grade Municipality. We&#8217;re ready to take the next big step.</p><p>This plan is our roadmap to get there. Let's work together to build an even stronger future for Macherla.</p><p>&#10;</p>",
+  "constituencyMap": "106\\MAP\\106IMAGE2025090516185249218_macherla.jpg",
+  "geography": "Macherla Assembly Constituency is strategically located in Palnadu District, benefiting from its proximity to Nagarjuna Sagar (Reservoir), Airport (Trainee Center) at Vijayapurisouth, and the Krishna River across the constituency. The region has a mix of black cotton soil (46%) and red loamy soil (54%), supporting a variety of crops.",
+  "populationDesc": "Macherla has a total population of 3,50,631, with 78% residing in rural areas and 22% in urban areas. The constituency has&#160;<span>80,243</span>&#160;households, with as sex ratio of 988 females per 1,000 males. The literacy rate stands at 50.8%, indicating steady progress in education levels. The workforce is primarily engaged in agriculture, industries, and Tourist services.",
+  "administrationDesc": "Macherla Constituency is one of the seven assembly constituencies in Palnadu District. It has Macherla , Veldurthi,Durgi,Rentadchintla,Karempudi,Macherla mandal.&#10;<p>&#10;</p><p><br></p>",
+  "educationHealthcareDesc": "Macherla constituency has witnessed significant developments in its social infrastructure. The constituency has a good network of educational institutions, including 261 government schools and private schools, and 21 colleges. Some notable institutions include the Government Degree College, Macherla, and Sri Venkateswara Institute of Technology. It has 2 community health centerS 13 primary health centers, 62 sub centers and several private hospitals, providing basic healthcare services to the population. The government hospital offers emergency services, outpatient services, and inpatient facilities.",
+  "culturalheritageDesc": "&#160;Palnati Yudhdham (War of Palnadu),&#160;<span>Chennakesava Swamy temple,&#160;</span><span>Nagarjunakonda Museum,&#160;</span><span>Durgi stone carving.</span><p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "V8d9n43FfiKyeEsKs2KXFg==",
+   "economy_Text": "<p><span lang=\"EN-US\"><font size=\"5\"><b><span>Macherla</span>&#8217;s Economy at a Glance</b></font></span></p><span lang=\"EN-US\"><p><span>Macherla presents a comprehensive growth strategy to transform the constituency into an economically vibrant, investment-friendly, and employment-driven region. With a Gross Constituency Domestic Product (GCDP)of 6,566 crores in 2023-24, Macherla is projected to achieve 1,45,854 crores by 2047-48,&#160;reflecting a strong and sustainable annual growth trajectory averaging 12-15%.&#160;&#160;As of 2023-24, the economy is led by the service sector, contributing 42.08% to the Gross Value Added (GVA), followed by the agriculture and allied sector at 41.91% and the industrial sector at 16.01%.</span></p></span><span></span>",
+   "gcdP_Growth_Text": "<span>Macherla</span><span>&#160;is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Horticulture, Live stock, and real estate. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.</span>",
+   "createdDate": "2025-09-06T06:26:16.49"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6566.0,
+   "cagR_Pct": 18.1,
+   "targetAmountCrore": 13755.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2556.0,
+   "cagR_Pct": 19.59,
+   "targetAmountCrore": 5751.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 973.0,
+   "cagR_Pct": 20.45,
+   "targetAmountCrore": 4403.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2546.0,
+   "cagR_Pct": 15.36,
+   "targetAmountCrore": 4733.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 106,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 42.08
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 16.01
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 41.91
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 106,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 885,
+   "constituencyId": 106,
+   "name": "Julakanti Brahmananda Reddy\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 886,
+   "constituencyId": 106,
+   "name": "Pinnelli Rama Krishna Reddy\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 889,
+   "constituencyId": 106,
+   "name": "Pinnelli Rama Krishna Reddy\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party ",
+   "photo": ""
+  },
+  {
+   "id": 893,
+   "constituencyId": 106,
+   "name": "Pinnelli Rama Krishna Reddy\t",
+   "termFrom": 2012,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 894,
+   "constituencyId": 106,
+   "name": "Pinnelli Rama Krishna Reddy",
+   "termFrom": 2009,
+   "termTo": 2012,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 895,
+   "constituencyId": 106,
+   "name": "Pinnelli Laxma Reddy\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

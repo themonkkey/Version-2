@@ -1,0 +1,188 @@
+{
+ "code": 110,
+ "name": "Rajanagaram",
+ "district": "East Godavari",
+ "logoUrl": "assets/constituencies_logos/rajanagaram.png",
+ "profile": {
+  "population": "257303 (As per Census 2011)",
+  "voterCount": "216976 (As per 2024 Elections)",
+  "area": "573.5",
+  "mandals": "Korukonda-R,Rajanagaram-R,Seethanagaram-R",
+  "revenueVillages": "53",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Rajanagaram Constituency in East Godavari district, Andhra Pradesh, comprises Seethanagaram, Korukonda, and Rajanagaram mandals. Known for its fertile agricultural lands, abundant water resources, and cultural heritage, the constituency is strategically located near urban centers like East Godavari (40 km), Rajahmundry (20 km), and Visakhapatnam (180 km).Spanning an Area of&#160; 573.50 sq. km, Rajanagaram offers potential in agriculture, aquaculture, and eco-tourism.",
+  "constituencyMap": "110\\MAP\\110IMAGE2025090415190677137_Rajanagaram.jpg",
+  "geography": "Rajanagaram constiteuncy is located in East Godavari District and spans573.50 Sq Km. Mix of Black cotton and Red Soils. Rajanagaram&#8217;s geography is characterized by fertile alluvial soils.<p><br></p>",
+  "populationDesc": "Rajanagaram Constituency The total population is 2,61,180. There are 77,455 households. The literacy rate stands at 59.6%.",
+  "administrationDesc": "Rajanagaram Constituency consists of 3 mandals 1. Seethanagaram 2. Korukonda and 3.Rajanagaram which are located in East Godavari district of Andhra Pradesh and its head quarter is Rajanagaram.",
+  "educationHealthcareDesc": "Educational infrastructure comprises 69 high schools, 12 junior colleges, 4 degree college and 4 engineering colleges and Adikavi Nannayya University And GSL Medical College and Two Dental Colleges. 7 Primary Health Centres (PHCs), and 70 Village health clinics.&#160;",
+  "culturalheritageDesc": "Sri Lakshmi Narasimha swamy temple, Vyshnava Divya Kshetra , Buddhist Stupas and Pandava Caves At Kapavaram."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "/FgHvK1CgLqkCcTdrOBWKw==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Rajanagaram&#8217;s Economy at a Glance</h2><p><span><span><br></span></span></p><span><span>The economy of the Constituency presents a dynamic and multifaceted landscape, driven by significant contributions from the agriculture, industry and services sectors. As of the fiscal year 2023-24, the Gross Constituency Domestic Product (GCDP) reached &#8377;6184.09 Crores, with agriculture and allied sectors accounting for 43.69% (&#8377;2700.92 Crores), the industrial sector contributing 20.31% (&#8377;1256.52 Crores) and the services sector making up 36.00%(&#8377;2226.6 Crores). Despite challenges such as frequent cyclones and Godavari floods, the Constituency has shown remarkable resilience by prioritizing high-value horticulture crops, which have emerged as a key driver of agricultural income and economic stability.</span></span>",
+   "gcdP_Growth_Text": "<p class=\"MsoNormal\"><span>Rahanagaram</span><span>&#160;is witnessing steady economic momentum with a targeted 15%&#160;</span><b>annual GCDP&#10;growth rate</b><span>&#160;across key sectors like Livestock, Horticulture,&#10;agriculture and aquaculture.&#160;This growth trajectory aligns with the&#10;long-term vision of making the&#160;constituency a vibrant urban and&#160;</span><b>economic&#10;hub by 2047.</b></p><p class=\"MsoNormal\"><span></span></p><p class=\"MsoNormal\"><br></p>",
+   "createdDate": "2025-09-04T09:16:02.737"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6184.0,
+   "cagR_Pct": 15.42,
+   "targetAmountCrore": 12894.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2227.0,
+   "cagR_Pct": 14.87,
+   "targetAmountCrore": 4390.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1257.0,
+   "cagR_Pct": 18.13,
+   "targetAmountCrore": 2740.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2701.0,
+   "cagR_Pct": 13.16,
+   "targetAmountCrore": 4799.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 110,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 36.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 20.31
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 43.69
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 110,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 400,
+   "constituencyId": 110,
+   "name": "Bathula Balaramakrishna",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Janasena Party",
+   "photo": ""
+  },
+  {
+   "id": 403,
+   "constituencyId": 110,
+   "name": "Jakkampudi Raja",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 405,
+   "constituencyId": 110,
+   "name": "Pendurthi Venkatesh",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 408,
+   "constituencyId": 110,
+   "name": "Pendurthi Venkatesh",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

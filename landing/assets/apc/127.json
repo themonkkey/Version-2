@@ -1,0 +1,221 @@
+{
+ "code": 127,
+ "name": "Gudur (SC)",
+ "district": "Spsr Nellore",
+ "logoUrl": "assets/constituencies_logos/gudur (sc).png",
+ "profile": {
+  "population": "302630 (As per Census 2011)",
+  "voterCount": "245205 (As per 2024 Elections)",
+  "area": "1274",
+  "mandals": "Chillakur-R,Chittamur-R,Gudur-R,Gudurnlr-U,Kota-R,Vakadu-R",
+  "revenueVillages": "155",
+  "municipal_wards": "34",
+  "municipalities": "Gudurnlr",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Gudur Assembly Constituency, located in Tirupati district, covers five mandals Gudur, Chillakur, Kota, Vakadu, and Chittamur, with Gudur town as its headquarters. Spanning 1,273.92 sq. km, it is a mix of urban and rural areas, well connected by National Highway-16, a busy railway junction, and close to Krishnapatnam Port. The region has fertile alluvial soils, supported by irrigation projects like Telugu Ganga and Swarnamukhi Barrage, making it a hub for paddy, lemon, and aquaculture. About 65% of the land is under agriculture, and the coastal belt supports fisheries. The constituency also has a rich cultural heritage, with ancient temples like Alaganadha Swamy Temple and Subrahmanya Swamy Temple.<p><br></p><p>Economically, Gudur contributes strongly to agriculture (46.6% of income) while industry and services sectors are steadily growing with major industries like Nelcast Ltd and Tirumala Milk Products. With a population of around 3 lakh, including significant SC (32.7%) and ST (14.3%) communities, it has a literacy rate of 65%. The area has good social infrastructure with schools, colleges, healthcare centers, and welfare hostels. However, challenges remain in irrigation efficiency, healthcare, and economic diversification. With proper planning under the Vision 2024&#8211;29, Gudur can become a model constituency for balanced growth in agriculture, industry, services, and tourism.</p>",
+  "constituencyMap": "127\\MAP\\127IMAGE2026051209562735005_GUDUR-CONSTITUENCY-MAP.jpg.jpeg",
+  "geography": "Gudur constituency is located in Tirupati District and spans 1273.92 sq. km. It shares boundaries with Venkatagiri, Sarvepalli and Sullurpeta constituencies. Mix of Alluvial Soil&#160;&#160;",
+  "populationDesc": "The total population is 3,02,630, with approximately 75.77 % residing in rural areas and 24.23% in urban areas. There are 63645 households, and the sex ratio is 952 females per 1,000 males. The literacy rate stands at 65.44%.",
+  "administrationDesc": "Gudur Constituency is one of the seven assembly constituencies in Tirupati District. It includes 1. Gudur, 2.Chillakur, 3.Kota, 4.Vakadu, 5.Chittamur and one municipality is Gudur. Gudur&#160; constituency comes under Tirupati Loksabha Constituency.",
+  "educationHealthcareDesc": "&#160;It has 3 Engineering colleges ,&#160; 3 Community Health Centers (CHCs)",
+  "culturalheritageDesc": "Kanupuru Mutyalamma temple, Mallam Subhramanyaswami temple, Palamma Temple and Tupilipalem Beach, Durgarajapatnam port"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "0sZMSqTSmRnVKNNP5mB4RQ==",
+   "economy_Text": "<b>Economy at a Glance</b><p>Gudur&#8217;s economy is driven by agriculture, industry, and services, with key thrust sectors including fishing &amp; aquaculture (22.1% GCVA contribution), manufacturing (19.75%), and agriculture overall (39.6%). The coastal belt supports strong marine exports, while fertile lands enable paddy and lemon cultivation.</p><p>Major opportunities lie in developing shipbuilding and shipbreaking SEZs at Duggarajapatnam, leveraging its strategic coastal location for marine industries. The upcoming food processing parks focusing on&#160; seafood will boost agro-industry growth. Industrial expansion is further supported by VCIC development and MSME cluster strengthening.</p><p>&#10;&#10;</p><p>Excellent connectivity to National Highways ( NH-16), railways, Chennai, and Krishnapatnam Port&#160; enhances trade and logistics, positioning Gudur as a key hub for sustainable growth in agriculture, manufacturing, and marine sectors.</p>",
+   "gcdP_Growth_Text": "Gudur is experiencing steady economic progress with a targeted 15% annual GCDP growth rate, driven by key sectors such as&#160; manufacturing, marine exports, food processing, and emerging shipbuilding and shipbreaking industries. This growth supports the long-term vision of transforming the constituency into a sustainable and thriving industrial and agricultural hub by 2047.",
+   "createdDate": "2025-09-06T12:38:24.703"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9298.0,
+   "cagR_Pct": 13.24,
+   "targetAmountCrore": 232738.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2423.0,
+   "cagR_Pct": 13.93,
+   "targetAmountCrore": 2699.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2808.0,
+   "cagR_Pct": 13.44,
+   "targetAmountCrore": 5983.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3431.0,
+   "cagR_Pct": 12.13,
+   "targetAmountCrore": 6820.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 127,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 27.97
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 32.41
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 39.62
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 127,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 21,
+   "sectorName": "Shipbuilding and Ship Breaking",
+   "description": "Promotion of shipyards, shipbuilding units, and repair docks.",
+   "imageUrl": "assets/img/sectors/shipbuilding-and-ship-breaking.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 352,
+   "constituencyId": 127,
+   "name": "Sri Dr. PASIM SUNIL KUMAR",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 353,
+   "constituencyId": 127,
+   "name": "SRI VELAGAPALLI VARAPRASAD RAO",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 354,
+   "constituencyId": 127,
+   "name": "SRI DR.PASIM SUNIL KUMAR",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 355,
+   "constituencyId": 127,
+   "name": "SRI BALLI DURGA PRASAD RAO",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 356,
+   "constituencyId": 127,
+   "name": "SRI PATRA PRAKASA RAO",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

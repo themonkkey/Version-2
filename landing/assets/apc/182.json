@@ -1,0 +1,200 @@
+{
+ "code": 182,
+ "name": "YERRAGONDAPALEM (SC)",
+ "district": "Marakapuram",
+ "logoUrl": "182\\Logo\\182IMAGE2026051817330077025_IMG_20260518_163453.jpg.jpeg",
+ "profile": {
+  "population": "266418 (As per Census 2011)",
+  "voterCount": "207435 (As per 2024 Elections)",
+  "area": "3316.26",
+  "mandals": "Dornala-R,Peddaraveedu-R,Pullalacheruvu-R,Triputanthakam-R,Yerragondapalem-R",
+  "revenueVillages": "101",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Yerragondapalem Assembly Constituency, established in 2008, is located on the western side of Prakasam District, adjoining the Nallamala forest and Krishna River. It spans a geographical area of 3,316 sq. km with 101 revenue villages, 94 gram panchayats, and a projected population of 3.15 lakh in 2024. Agriculture is the backbone of the economy, supported by red loamy and black cotton soils, with major crops including paddy, chillies, cotton, tobacco, maize, and pulses. Irrigation is primarily dependent on borewells, tanks, and canals, such as the NSP right canal and the under-construction Poola Subbaiah Veligonda Project. Alongside farming, livestock rearing and small-scale industries like maize drying, dal mills, and rice mills add to local livelihoods. Rich in forests and natural resources, the constituency also has important tourist attractions like Tripuranthakeswara Swamy Temple, Dornala (gateway to Srisailam), and Istakameswari Temple within the Nallamala forest.<p><br></p><p>Yerragondapalem has a diverse and growing economy, with agriculture contributing nearly 58% of its income, followed by services (31%) and industry (11%). The constituency&#8217;s Gross Constituency Domestic Product (GCDP) is valued at &#8377;4,136.94 crores (2022&#8211;23), with a per capita income of &#8377;1.30 lakh. Infrastructure is improving with four major national highways (NH 544D, NH 565, NH 765, and NH 340C) ensuring connectivity to Hyderabad, Markapur, and other key towns. Education is supported by 238 primary schools, 43 high schools, 9 junior colleges, 4 degree colleges, and 1 engineering college, while healthcare is served by 1 CHC, 11 PHCs, and 86 sub-centers. With its fertile lands, cultural heritage, forest-based ecotourism, and emerging urban hubs like Yerragondapalem town and Hanuman Junction, the constituency is poised for balanced growth under the Vision Action Plan 2024&#8211;29, aligned with Swarna Andhra@2047.</p>",
+  "constituencyMap": "182\\MAP\\182IMAGE2025090416300731012_YARRAGONDAPALEM MAP.jpg",
+  "geography": "Yarragondapalem constituency is located in Prakasam District and spans  3316.26 sq. km. It shares boundaries with the Markapuram and Darsi constituencies.  Mix of Red loamy soils&#10;<p><br></p>",
+  "populationDesc": "The total population is 266,418, with approximately 100% residing in rural areas. There are 62,643 households, and the sex ratio is  944 females per 1,000 males. The literacy rate stands at 45.13%.&#10;<p><br></p>",
+  "administrationDesc": "Yarragondapalem constituency is one of the eight assembly constituencies in Prakasam District. It includes 1) Yerragondlapalem Mandal 2) Pullalacheruvu Mandal 3) Tripuranthakam  Mandal and 4) Dornala Mandals 5) Peda Araveedu. Yarragondapalem's constituency comes under Ongole Loksabha's.<p><br></p>",
+  "educationHealthcareDesc": "1 engineering college and 1 area hospital.<p><br></p>",
+  "culturalheritageDesc": "Tripuranthakeswara Swamy Temple, Istakameswari Temple (in NALLAMALA FOREST), Dornala<p>&#160;</p><p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "zeAY1J5aBU4MStL4/4WcMA==",
+   "economy_Text": "<b><font size=\"4\">Economy at a Glance</font></b><p><br></p><p>Yerragondapalem, located in the western part of Prakasam district, has traditionally been an agriculture-dependent constituency with a strong rural character. As of 2023&#8211;24, its Gross Constituency Domestic Product (GCDP) is estimated at &#8377;5,581 crore, with a projected growth to &#8377;12,638 crore by 2029&#8211;30 at a CAGR of 17.75%.</p><p>The local economy is driven by agriculture and allied activities, particularly <span>livestock and horticulture</span>, which offer significant potential for value addition. The <span>Veligonda Irrigation Project</span>, once completed, will expand irrigation access and enable a shift toward <span>high-value horticultural crops</span>, boosting farm incomes and agri-entrepreneurship.</p><p>&#10;&#10;</p><p>Opportunities are also emerging in <span>agro-processing, cold storage</span>, and <span>rural industries</span>, which can create employment and support local economic diversification. The <span>Tripuranthakam temple</span> presents untapped potential for development as part of the <span>Srisailam Tourist Circuit</span>, opening doors for growth in <span>religious tourism, hospitality, and local services</span>.</p>",
+   "gcdP_Growth_Text": "Yerragondapalem is on a path of inclusive rural transformation with a targeted annual GCDP growth rate of 13-15%, driven by agriculture, horticulture, rural industries, and emerging tourism. With the expansion of irrigation under the Veligonda Project and the development potential around Tripuranthakam temple, the constituency is poised to become a vibrant agri-based and cultural growth hub by 2047.",
+   "createdDate": "2025-09-06T06:16:20.027"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5581.0,
+   "cagR_Pct": 17.75,
+   "targetAmountCrore": 12638.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1358.0,
+   "cagR_Pct": 17.8,
+   "targetAmountCrore": 3081.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 498.0,
+   "cagR_Pct": 17.8,
+   "targetAmountCrore": 1130.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3307.0,
+   "cagR_Pct": 17.73,
+   "targetAmountCrore": 7480.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 182,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 26.3
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 9.65
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 64.05
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 182,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 463,
+   "constituencyId": 182,
+   "name": "Sri Tatiparthi Chandrasekhar",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 464,
+   "constituencyId": 182,
+   "name": "Sri Audimulapu Suresh",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 465,
+   "constituencyId": 182,
+   "name": "Sri David Raju Palaparthi",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 466,
+   "constituencyId": 182,
+   "name": "Sri Audimulapu Suresh",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

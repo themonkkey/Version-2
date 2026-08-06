@@ -1,0 +1,209 @@
+{
+ "code": 45,
+ "name": "Pattikonda",
+ "district": "Kurnool",
+ "logoUrl": "assets/constituencies_logos/pattikonda.png",
+ "profile": {
+  "population": "275481 (As per Census 2011)",
+  "voterCount": "223603 (As per 2024 Elections)",
+  "area": "1475",
+  "mandals": "Krishnagiri-R,Maddikera-R,Mahanandi-R,Pattikonda-R,Tuggali-R,Veldurthy-R",
+  "revenueVillages": "62",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Pattikonda Assembly Constituency initially formed in 1951 and restructured in 2008. The region's economy is predominantly agrarian, with agriculture serving as the mainstay for many residents. The fertile lands support the cultivation of various crops, contributing to the local economy. Additionally, the area has seen developments in renewable energy. The constituency has a rich historical and cultural heritage, with diverse geographical features and potential for economic growth. Its proximity to nearby towns like Adoni, Guntakal and Gooty makes it well-connected for trade, commerce, and tourism development.",
+  "constituencyMap": "45\\MAP\\45IMAGE2025090513432431938_pattikonda map.jpg",
+  "geography": "The Pattikonda Assembly Constituency initially formed in 1951 and restructured in 2008. The region's economy is predominantly agrarian, with agriculture serving as the mainstay for many residents. The Pattikonda Assembly Constituency is located in the western part of Kurnool District, Andhra Pradesh. It shares boundaries with Adhoni, Kodumuru, Yemmiganuru, Kurnool, Aluru, Mantralayam constituencies.&#10;Soil Type -The constituency mainly features black Cotton soils, with red soils found in some areas of Pattikonda, Maddikera, Tuggali, Krishnagiri, Veldurthi mandals.<br>&#10;",
+  "populationDesc": "According to the 2011 Census, the population of the Pattikonda Assembly Constituency stands at 2,75,481 people, comprising 1,39,360 male and 1,36,121 female. The sex ratio is 976 females per 1,000 males, slightly lower than the district average (988) and state average (993). The area includes 58,751 households.&#160;",
+  "administrationDesc": "Pattikonda Constituency is one of the seven assembly constituencies in Kurnool district. It includes&#160;<span>Pattikonda, Tuggali, Maddikera, Veldhurthi and Krishnagiri.</span><br>",
+  "educationHealthcareDesc": "Social infrastructure includes 2 community health centers, 7 primary health centers (PHCs), 72 sub-centers dispensaries. Educational infrastructure comprises176 government and private primary schools, 40 government and private upper primary school 62 government and private high schools, five KGBV schools, three Model schools, 1 social welfare residential school, 1 Tribal welfare residential schools, 1 backward welfare residential school, 2 private ITI college, 7 government &amp; private junior colleges, 8 government and private degree colleges.&#160;",
+  "culturalheritageDesc": "Pattikonda is rich in cultural landmarks, such as the Peravali Ranganatha Swamy Temple, Maddikera Maddamma Temple, Sree Venkateswara Temple at Veldurthi, Rajula Mandagiri Sivalayam Temple in Mandagiri Pattikonda mandal, and Pattikonda Sai Baba Temple, Bramhagundam Temple in Veldurthi Mandal. Veera Brahmendra Swamy Jathara (festival) and Ashoka ancient encryptions located at Jonnagiri and Rajula Mandagiri and Gooty Yerragudi."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "unBu75HvLtGrNeAJh+e3Nw==",
+   "economy_Text": "<p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The Economic Vision Plan for Pattikonda (2024&#8211;2029) outlines a strategic roadmap to elevate the Gross Constituency Domestic Product (GCDP) from &#8377;5,711 crores in 2023-24 to &#8377;11,860 crores by 2028-29, targeting a 17.79% annual growth rate and a long-term projection of &#8377;1,17,092 crores by 2047-48, aligning with the SwarnaAndhra@2047 vision.</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">This growth will be driven by modernizing agriculture through irrigation upgrades, crop diversification, and agri-processing; expanding industry via MSME support, renewable energy, and construction; and boosting the services sector through IT, financial inclusion, and tourism.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Key thrust areas include sustainable infrastructure, digital connectivity, and skill development, ensuring inclusive growth, increased per capita income from &#8377;1,72,616 to &#8377;3,49,742, and alignment with national goals like Viksit Bharat and Net-Zero pathways.</font></p>",
+   "gcdP_Growth_Text": "<font face=\"Times New Roman\" size=\"4\">Pattikonda will experience a <strong>15% annual GCDP growth</strong>, led by <strong>agriculture modernization (14&#8211;15% CAGR)</strong>, <strong>industrial expansion (17&#8211;18% CAGR)</strong>, and a <strong>services boom (21&#8211;22% CAGR)</strong>. By 2029, agriculture&#8217;s share will decline moderately as industry and services expand, signalling a <strong>balanced diversification</strong> toward a more resilient economy</font>",
+   "createdDate": "2025-09-05T22:10:36.21"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5711.0,
+   "cagR_Pct": 17.19,
+   "targetAmountCrore": 11860.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1561.0,
+   "cagR_Pct": 21.62,
+   "targetAmountCrore": 3846.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1389.0,
+   "cagR_Pct": 17.66,
+   "targetAmountCrore": 2887.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2333.0,
+   "cagR_Pct": 14.76,
+   "targetAmountCrore": 4213.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 45,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 29.55
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 26.29
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 44.16
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 45,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 8,
+   "sectorName": "Mining Industries",
+   "description": "Extraction of minerals and creation of value-adding industries and processing chains.",
+   "imageUrl": "assets/img/sectors/mining-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 788,
+   "constituencyId": 45,
+   "name": "K. E. Shyam Babu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 789,
+   "constituencyId": 45,
+   "name": "Kangati Sreedevi",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 790,
+   "constituencyId": 45,
+   "name": "K. E. Krishnamurthy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 791,
+   "constituencyId": 45,
+   "name": "K. E. Prabhakar",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 793,
+   "constituencyId": 45,
+   "name": "Somula Venkat Subba Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

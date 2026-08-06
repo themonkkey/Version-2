@@ -1,0 +1,197 @@
+{
+ "code": 94,
+ "name": "Gopalapuram (SC)",
+ "district": "East Godavari",
+ "logoUrl": "94\\Logo\\94IMAGE2026051216250784481_Picsart_26-04-30_22-49-43-957.jpg.jpeg",
+ "profile": {
+  "population": "2,89,945 (As Per 2011 Census)",
+  "voterCount": "2,26,278 (As Per 2019 Census)",
+  "area": "934.67",
+  "mandals": "Devarapalli, Dwaraka Tirumala, Gopalapuram, Nallajerla",
+  "revenueVillages": "80",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Gopalapuram Assembly Constituency's Vision Action Plan (2024-29) leverages its agricultural strength, industrial base, construction sector, and service sector, aligning with Andhra Pradesh's Swarna Andhra@2047 vision and India's Viksit Bharat@2047 agenda. The constituency comprises Gopalapuram, Devarapalli, Nallajerla, and Dwaraka Tirumala mandals in East Godavari District.Gopalapuram is known for its fertile lands, scenic hills in Dwaraka Tirumala, abundant water resources, and cultural heritage. Strategically located near Rajamahendravaram (36 km), Kovvur (27 km), and Nidadavole (33 km), it spans 934.67 sq. km. The constituency offers potential in agriculture, horticulture, and eco-tourism, with renowned sites like Sri Lakshmi Narasimha swamy temple, Sri Venkateswara temple, and Nirmalagiri Mary Matha Church.Gopalapuram excels in agriculture and aquaculture, with excellent connectivity to Rajahmundry enhancing trade and industrial potential. Its rich cultural heritage makes it a hub for religious tourism and cultural preservation.",
+  "constituencyMap": "94\\MAP\\94IMAGE2025090410472633752_gopalapuram(1).jpg",
+  "geography": "Gopalapuram constituency is located in East Godavari District and spans 934.67 Sq Km . It shares boundaries with Kovvur, Unguturu, Polavaram constituencies. The constituency predominantly features fertile alluvial soils.",
+  "populationDesc": "The total population is 2,89,945 with 100% residing in rural&#160; areas. There are 81,836 households and the sex ratio stands at 991 per 1,000 males.",
+  "administrationDesc": "Gopalapuram Constituency is in East Godavri District. It includes 1.Gopalapuram 2.Devarapalli 3.Nallajerla and 4. Dwaraka tirumala Mandals. Gopalapuram is the headquarters of Gopalapuram Constituency.<p><br></p>",
+  "educationHealthcareDesc": "The constituency is home to 157 primary schools, 19 upper primary schools, and 38 high schools, 4 junior colleges, 3 degree colleges, Industrial Training Institute (ITI), and 1 MBA college. The constituency is equipped with 1 Community Health Centers (CHCs), 9 Primary Health Centers (PHCs), and 41 sub centers.",
+  "culturalheritageDesc": "Gopalapuram is home to significant heritage sites such as the Sri Lakshmi Narasimha swamy temple and Lord &#34;Sri Venkateswara&#34; At Dwaraka Tirumala, Nirmalagiri Mary Matha Church at Gowripatnam."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "I7yrFlsx/xTpRs+14vpiHA==",
+   "economy_Text": "<p><b><font size=\"5\">Gopalapuram&#8217;s Economy at a Glance</font></b></p><p><br></p>The economy of the Constituency presents a dynamic and multifaceted landscape, driven by significant contributions from the agriculture, industry and services sectors. As of the year 2023-24, the Gross Constituency Domestic Product (GCDP) is &#8377; 10,742 Crores, with agriculture and allied sectors accounting for 65% (&#8377;5,732 Crores), the industrial sector contributing 13.46% (&#8377;1,984 Crores) and the services sector making up&#160; 21.54%( &#8377; 2,221 Crores). Despite challenges such as frequent cyclones and yarrakaluva, nakkala kaaluva, kovvada kaluva floods, the Constituency has shown remarkable resilience by prioritizing high-value horticulture crops, which have emerged as a key driver of agricultural income and economic stability.",
+   "gcdP_Growth_Text": "Gopalapuram is witnessing steady economic momentum with a targeted 15%<b> annual GCDP growth rate </b>across key sectors like livestock,&#10;<p>horticulture and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;<span>constituency a vibrant </span><b>urban and economic hub by 2047.</b></p>",
+   "createdDate": "2025-09-04T07:53:41.977"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 10742.0,
+   "cagR_Pct": 15.42,
+   "targetAmountCrore": 20717.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2221.0,
+   "cagR_Pct": 14.87,
+   "targetAmountCrore": 4395.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1984.0,
+   "cagR_Pct": 18.13,
+   "targetAmountCrore": 4346.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 5732.0,
+   "cagR_Pct": 13.16,
+   "targetAmountCrore": 10424.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 94,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 22.36
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.96
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 57.68
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 94,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 297,
+   "constituencyId": 94,
+   "name": "Maddipati Venkata Raju",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 299,
+   "constituencyId": 94,
+   "name": "Talari Venkat Rao",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 300,
+   "constituencyId": 94,
+   "name": "Muppidi Venkateswara Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 301,
+   "constituencyId": 94,
+   "name": "Taneti Vanitha",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 302,
+   "constituencyId": 94,
+   "name": "Maddala Suneeta",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

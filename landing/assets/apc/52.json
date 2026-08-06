@@ -1,0 +1,233 @@
+{
+ "code": 52,
+ "name": "Srungavarapukota",
+ "district": "Vizianagaram",
+ "logoUrl": "assets/constituencies_logos/srungavarapukota.png",
+ "profile": {
+  "population": "280607 (As per Census 2011)",
+  "voterCount": "223353 (As per 2024 Elections)",
+  "area": "660.66",
+  "mandals": "Jami-R,Kothavalasa-R,Lakkavarapukota-R,Srungavarapukota-R,Vepada-R",
+  "revenueVillages": "165",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Srungavarapu Kota Assembly Constituency, formed in 1962 and restructured in 2008, has traditionally been agro-based but is now transitioning into a mixed economy. This transformation is driven by major infrastructure developments, notably the passage of two National Highways. NH-516B, connecting Pendurthi (Visakhapatnam) to Raipur (Chhattisgarh), runs 14 km through the mandal, while NH-516E, linking Rajahmundry to Raipur via Rampachodavaram, Seeleru, Paderu, and Araku Valley, covers 9 km here. Both highways converge at Bowdara village, extending 15 km, and further connect to the Greenfield NH-130CD at Korlam in Gantyada mandal. These strategic linkages enhance regional connectivity, facilitating trade, tourism, and investment opportunities. With these advantages, the constituency is well-positioned to target 15% annual growth across sectors, supporting Andhra Pradesh&#8217;s Swarna Andhra@2047 vision, which aligns with the national development agenda of Viksit Bharat@2047.",
+  "constituencyMap": "52\\MAP\\52IMAGE2025090314411393081_S KOTA MAP.png",
+  "geography": "Srungavarapu Kota spans 660.66 sq. km and It shares boundaries with Araku (ST), Gajapathinagaram of Vizianagaram District, Bheemili, Pendurthi of Visakhapatnam District and Madugula Assembly Constituency of Anakapalle District.",
+  "populationDesc": "According to the 2011 Census, the population of the Srungavarapu Kota Assembly Constituency stands at 2,80,607 people, comprising 1,38,642 males and 1,41,965 females. The sex ratio is 1021 females per 1,000 males",
+  "administrationDesc": "The Srungavarapukota Assembly Constituency is composed of the mandals Srungavarapu Kota, Vepada (Urban), Lakkavarapukota, Kothavalasa, and a part of Jami mandal.",
+  "educationHealthcareDesc": "Srungavarapu Kota&#8217;s social infrastructure includes one community health center, 9 PHCs, 89 sub-centers, and 7 Ayush dispensaries&#8212;insufficient for growing healthcare needs. Education facilities comprise 222 primary, 31 upper primary, 55 high schools, 3 KGBVs, 3 Model schools, and various colleges, including 1 government degree, 8 private, and 1 polytechnic.",
+  "culturalheritageDesc": "Srungavarapu Kota is also having significance on cultural and spiritual heritage, with key attractions such as Sri Punyagiri Kshethram in S.Kota village and agri-products are a significant contributor to the economy."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "jpg0+R/T+B93y5T96m4WNQ==",
+   "economy_Text": "<p dir=\"ltr\">Srungavarapu Kota&#8217;s economy, with a Gross Constituency Domestic Product (GCDP) of &#8377;4874 crores in 2023-24, is poised for transformative growth, targeting &#8377;10,001 crores by 2028-29. The service sector, currently contributing 51.8% to the Gross Value Added (GVA), will lead as the primary growth driver, rising to 53.4% by 2028-29, fueled by robust expansion in finance, IT, hospitality, and trade at 15% annually. The industrial sector, holding a 20.6% GVA share, will maintain stability at 20.8% by 2028-29, driven by manufacturing growth at 9% annually, MSME cluster development, and investments in renewable energy and logistics. Agriculture, currently at 27.6% of GVA, will see its share decline to 1.8% by 2028-29, but absolute output will grow significantly, with horticulture expanding from &#8377;436 crores to &#8377;890 crores and livestock from &#8377;608.6 crores to &#8377;1083 crores, supported by precision farming and micro-irrigation. This diversified, sustainable approach aligns with the Swarna Andhra @2047 vision, positioning Srungavarapu Kota as a vibrant economic hub.</p>",
+   "gcdP_Growth_Text": "<p dir=\"ltr\">Srungavarapu Kota&#8217;s Gross Constituency Domestic Product (GCDP) is projected to grow from &#8377;<span>4,874.70</span>&#160;crores in 2023-24 to an ambitious &#8377;10,001 crores by 2028-29, achieving a robust and sustainable annual growth rate of 12-15%. This growth trajectory is underpinned by strategic sectoral diversification, with the service sector leading the charge through high-value expansions in finance, IT, and tourism, averaging 15% annual growth. The industrial sector will contribute through steady 9-12% annual growth in manufacturing and construction, bolstered by investments in MSME clusters, renewable energy, and digital infrastructure. Agriculture, while reducing its GVA share, will see absolute growth, peaking at a 16% growth rate by 2025-26 before stabilizing at 6.8% by 2028-29, driven by advancements in horticulture, livestock, and climate-resilient practices.</p>",
+   "createdDate": "2025-09-03T05:30:08.807"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4874.7,
+   "cagR_Pct": 16.0,
+   "targetAmountCrore": 10001.8,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2336.8,
+   "cagR_Pct": 17.6,
+   "targetAmountCrore": 4977.4,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 928.4,
+   "cagR_Pct": 9.0,
+   "targetAmountCrore": 1937.9,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1246.9,
+   "cagR_Pct": 12.8,
+   "targetAmountCrore": 2404.1,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 52,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 51.8
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 20.6
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 27.6
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 52,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 12,
+   "sectorName": "Pilgrimage & Cultural Centre",
+   "description": "Restoration of heritage sites, amenities for pilgrims, and promotion of cultural tourism.",
+   "imageUrl": "assets/img/sectors/pilgrimage-cultural-centre.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 92,
+   "constituencyId": 52,
+   "name": "KOLLA LALITHA KUMARI",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 520,
+   "constituencyId": 52,
+   "name": "Kadubandi Srinivasa Rao",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 522,
+   "constituencyId": 52,
+   "name": "Kolla Lalitha Kumari",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 524,
+   "constituencyId": 52,
+   "name": "Kolla Lalitha Kumari",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 525,
+   "constituencyId": 52,
+   "name": "D. Kumbha Ravibabu",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

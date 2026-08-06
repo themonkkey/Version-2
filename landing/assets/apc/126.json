@@ -1,0 +1,218 @@
+{
+ "code": 126,
+ "name": "Atmakur",
+ "district": "Spsr Nellore",
+ "logoUrl": "126\\Logo\\126IMAGE2026042710220945572_WhatsApp Image 2026-04-24 at 3,23,17 PM-Picsart-AiIm.jpeg",
+ "profile": {
+  "population": "261850 (As per Census 2011)",
+  "voterCount": "215460 (As per 2024 Elections)",
+  "area": "2116.4",
+  "mandals": "Ananthasagaram-R,Anumasamudram Peta-R,Atmakur-R,Atmakurnlr-U,Chejerla-R,Marripadu-R,Sangam-R",
+  "revenueVillages": "119",
+  "municipal_wards": "23",
+  "municipalities": "Atmakurnlr",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "&#34;Atmakur Assembly Constituency, formed in 1951, is located in the western part of SPSR Nellore District. The region is predominantly agrarian, with agriculture serving as the mainstay for the majority of residents. Somasila Dam and Sangam Barrage, built on the Pennar River, serve as key irrigation sources, supporting the cultivation of crops across 78,686 hectares of cultivable land. The constituency mainly features black cotton soils, with red soils present in parts of Atmakur and Marripadu mandals.<p><br></p><p>The constituency comprises six mandals: Atmakur, AS Peta, Ananthasagaram, Chejarla, Sangam, and Marripadu. Rich in historical and cultural heritage, and endowed with diverse geographical features, Atmakur has strong potential for economic development.</p><p><br></p><p>Well-connected through National Highways NH-67 and NH-565, it links to Krishnapatnam Port and Ramayapatnam Port via NH-167BG and State Highway SH-424, boosting trade and logistics. The recent inauguration of an MSME Park at Narampet village near Atmakur municipality marks a new phase of industrial and economic diversification for the region.&#34;&#10;</p><p><br></p>",
+  "constituencyMap": "126\\MAP\\126IMAGE2025090407210866439_WhatsApp Image 2025-09-04 at 7.11.47 AM.jpeg",
+  "geography": "Atmakuru constiteuncy is located in Nellore District and spans 2116.40  Sq. km. It shares boundaries with Nellore Rural, Udayagiri, Kavali, Kovur, Venkatagiri and Sarvepalli Constituencies and Kadapa District. Mix of Black cotton soils, with red soils &#10;<p><br></p>",
+  "populationDesc": "The total population is 2,61,850 , with approximately 88.3% residing in rural areas and 11.7% in urban areas. There are 68,261 households, and the sex ratio is 975 females per 1,000 males. The literacy rate stands at 63.90%.&#10;<p><br></p>",
+  "administrationDesc": "Atmakuru  Constituency is one of the Eight assembly constituencies in SPSR Nellore District. Six Mandals: Atmakur, AS Peta, Ananthasagaram, Chejarla, Sangam and Marripadu. The constituency has geographical features, Yerra Konda Hills and Vellikonda Hills. Atmakuru constituency comes under Nellore Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "1 Engineering college &amp; 1 Agriculture polytechnic Colleges, 1&#160;<span>polytechnic College,</span>&#160;2 ITI Colleges, 328 primary Schools, 46 upper Primary Schools, 73 High Schools, 5 High School with Junior Colleges,&#160;<span>18&#160;</span>&#160;Junior Colleges, 8 Degree colleges.&#160;<span>&#160;it has 1 Government General Hospital &amp; 4 Area Hospitals.</span><br><p><br></p>",
+  "culturalheritageDesc": "Somasila, Sangam, Kothula Gundam Waterfalls, Someswara Temple, Sangameswara Temple, Alghanadha Swamy Temple, Varadharaja Swamy Temple, A.S.Peta Dargha, Kotitheerdham, Thirunalla Thippa"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "OtgRzKk+hZlRj/GvMh+0lg==",
+   "economy_Text": "<b>Economy at a Glance</b><br><br><p><span>The agriculture sector currently contributes 52.88% of the total GVA in 2023&#8211;24 (FRE), amounting to &#8377;3,285 crores. This is projected to grow to &#8377;5,867 crores by 2028&#8211;29, although its share in GVA is expected to decline to 48.02% due to a gradual shift towards high-value industries and services. Major horticulture crops in the constituency include mango, acid lime, green and red chillies, and papaya. Livestock will continue to make a significant contribution to the agricultural economy. Currently, horticulture covers 4,474 hectares, and there is strong potential to expand this area with high-value crops.</span></p><p><font face=\"Times New Roman\" size=\"3\"><span>The industrial sector contributed 14.02% (&#8377;871 crores) to the GVA in 2023&#8211;24 and is expected to grow steadily, reaching 16.06% by 2028&#8211;29, making it a key pillar of economic transformation.&#160;</span><span>The services sector currently accounts for 33.10% of the GVA and is projected to increase to 35.92%, driven by growth in trade, education, health, and public services.<br><br><b>Growth Driver : </b>Horticulture Expansion, Livestock and Dairy Development, Agro-Processing and Food Industries, MSME Development.</span></font></p>",
+   "gcdP_Growth_Text": "Atmakur is witnessing steady economic growth with a targeted 15% annual GCDP growth rate, supported by key sectors such as agriculture, horticulture, livestock, MSME development. With improved connectivity to major ports and highways, along with initiatives like the MSME Park at Narampet, the constituency is gradually shifting towards a more diversified and resilient economy. This growth trajectory aligns with the long-term vision of transforming Atmakur into a sustainable and inclusive economic hub by 2047, driven by rural strength, industrial expansion, and service sector opportunities.",
+   "createdDate": "2025-09-04T00:45:00.87"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6715.0,
+   "cagR_Pct": 14.35,
+   "targetAmountCrore": 13128.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2056.0,
+   "cagR_Pct": 16.38,
+   "targetAmountCrore": 4389.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 871.0,
+   "cagR_Pct": 17.63,
+   "targetAmountCrore": 1962.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3285.0,
+   "cagR_Pct": 12.3,
+   "targetAmountCrore": 5867.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 126,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.1
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 14.02
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 52.88
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 126,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 230,
+   "constituencyId": 126,
+   "name": "Sri Anam Ramanarayana Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 234,
+   "constituencyId": 126,
+   "name": "Sri Mekapati Vikaram Reddy",
+   "termFrom": 2022,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 235,
+   "constituencyId": 126,
+   "name": "Sri Mekapati Goutham Reddy",
+   "termFrom": 2019,
+   "termTo": 2022,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 233,
+   "constituencyId": 126,
+   "name": "Sri Mekapati Goutham Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 236,
+   "constituencyId": 126,
+   "name": "Sri Anam Ramanarayana Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 237,
+   "constituencyId": 126,
+   "name": "Sri Kommi Laksmaiah Naidu",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Independent",
+   "photo": ""
+  }
+ ]
+}

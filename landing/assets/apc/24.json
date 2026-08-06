@@ -1,0 +1,221 @@
+{
+ "code": 24,
+ "name": "Punganur",
+ "district": "Annamayya",
+ "logoUrl": "assets/constituencies_logos/punganur.png",
+ "profile": {
+  "population": "293170 (As per Census 2011)",
+  "voterCount": "239256 (As per 2024 Elections)",
+  "area": "1485.22",
+  "mandals": "Chowdepalle-R,Pulicherla-R,Punganur-R,Punganur-U,Rompicherla-R,Sodam-R,Somala-R",
+  "revenueVillages": "82",
+  "municipal_wards": "31",
+  "municipalities": "Punganur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Established in 1955 and reorganized in 2008, the constituency comprises six mandals&#8212;Punganur, Chowdepalle, Somala, Sodam, Pulicherla, and Rompicherla&#8212;and Punganur Municipality in Annamayya district. Strategically located on NH-42, it connects to Palamaner, Madanapalle, and Bangalore. Spanning 1,485.22 sq. km, with fertile sandy loam soils, 33% of land is under cultivation, supporting crops like mango, tomato, groundnut, paddy, and pulses. Agriculture relies on 15,495 tubewells, 1,536 dug wells, and 1,272 MI tanks. The region receives 803 mm of annual rainfall and has a tropical climate. Punganur also boasts rich temple tourism, featuring ancient sites like Boyakonda Gangamma Temple and Punganur Palace.<p><br></p><p>&#160;The population is 293,170, with a sex ratio of 993 and a literacy rate of 68.24%. The constituency includes 82 revenue villages, 111 GPs, and 98 village secretariats.&#160;</p>",
+  "constituencyMap": "24\\MAP\\24IMAGE2025090709570527835_punganur.jpg",
+  "geography": "Punganur constituency is located in Annamayya District and spans 1485.22 sq. km. It shares boundaries with the Tirupati district, the Piler, Madanapalli, Puthalapattu, and Palamaner constituencies, and the state of Karnataka and is strategically positioned on the NH-42 connecting Madanapalli, Palamaner, and Kuppam. The area features a mix of red sandy loam soil and regular sandy loam.<p><br></p>",
+  "populationDesc": "The total population is 293170, with approximately 81.32% residing in rural areas and 18.67% in urban areas. There are 94,276<p>households, and the sex ratio is 993 females per 1,000 males. The literacy rate stands at 68.24%.</p>",
+  "administrationDesc": "Punganur is one of the five assembly constituencies in Annamayya District. It includes 1. Sodam, 2. Somala, 3. Chowdepalle and Punganur. Punganuru comes under Rajampeta Loksabha Constituency.",
+  "educationHealthcareDesc": "The constituency is equipped with one area hospital, one engineering college, and one MBA college",
+  "culturalheritageDesc": "Punganur Palace Boyakonda Gangamma Temple, and Eco park at Boyakonda<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Vs9ic8WoUuFu7MmzulL+8Q==",
+   "economy_Text": "<b>Economy at a Glance<br><br></b>The Punganur&#8217;s economy is primarily driven by agriculture and allied activities, contributing 49.07% to the GVA. Within this, horticulture plays a significant role with a 19% contribution, focusing on major fruit crops like mango and papaya. Livestock also forms a vital part of the economy, contributing around 24% to the GVA. The service sector accounts for 39.63%, while the industrial sector holds 11.3%, reflecting a balanced mix of traditional agriculture and emerging services and industries.<br>Punganur presents strong opportunities for organic farming and cultivating export-oriented horticultural varieties like mango and papaya. The region&#8217;s agro-processing potential can add significant value to local produce, benefiting farmers and businesses alike. With ample barren land available, there is scope for establishing new manufacturing industries, especially leveraging its strategic location along the Chennai-Bangalore Industrial Corridor (CBIC) to attract investments, boost industrial growth, and drive economic development.<b></b>",
+   "gcdP_Growth_Text": "Punganur is aiming for a targeted <span>14-15% annual GCDP growth rate</span>, driven by key sectors such as agriculture, horticulture, livestock, agro-processing, and emerging manufacturing industries. With a strong rural base, expanding service sector, and untapped industrial potential along the <span>Chennai&#8211;Bangalore Industrial Corridor (CBIC)</span>, this growth trajectory aligns with the long-term vision of transforming Punganur into a <span>sustainable agri-industrial hub by 2047</span>.",
+   "createdDate": "2025-09-07T04:43:26.03"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7775.0,
+   "cagR_Pct": 16.1,
+   "targetAmountCrore": 15919.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2851.0,
+   "cagR_Pct": 16.1,
+   "targetAmountCrore": 5857.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 812.0,
+   "cagR_Pct": 16.1,
+   "targetAmountCrore": 1854.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3530.0,
+   "cagR_Pct": 14.9,
+   "targetAmountCrore": 6919.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 24,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 39.63
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 11.3
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 49.07
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 24,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 762,
+   "constituencyId": 24,
+   "name": "Peddireddy Ramachandra reddy\t\t\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 763,
+   "constituencyId": 24,
+   "name": "Peddireddy Ramachandra reddy\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 764,
+   "constituencyId": 24,
+   "name": "peddireddy Ramachandra reddy\t\t\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 765,
+   "constituencyId": 24,
+   "name": "Peddireddy Ramachandra reddy\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 766,
+   "constituencyId": 24,
+   "name": "N.Amarantha Reddy\t\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

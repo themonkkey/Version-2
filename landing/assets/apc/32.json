@@ -1,0 +1,221 @@
+{
+ "code": 32,
+ "name": "Palamaner",
+ "district": "Chittoor",
+ "logoUrl": "assets/constituencies_logos/palamaner.png",
+ "profile": {
+  "population": "340935 (As per Census 2011)",
+  "voterCount": "268135 (As per 2024 Elections)",
+  "area": "1279.72",
+  "mandals": "Baireddi Palle-R,Gangavaram-R,Palamaner-R,Palamaner-U,Pedda Panjani-R,Venkatagiri Kota-R",
+  "revenueVillages": "114",
+  "municipal_wards": "31",
+  "municipalities": "Palamaner",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Palamaner Assembly Constituency, established in 1955 and reorganized in 2008, comprises five mandals: Palamaner, Baireddipalle, V.Kota, Gangavaram, and Peddapanjani in Chittoor district. Strategically located at the tri-junction of Andhra Pradesh, Tamil Nadu, and Karnataka, it spans 1279.72 sq. km with strong connectivity via NH-42, NH-69, and the Bangalore-Chennai Expressway. The region is known for its fertile sandy clay and loam soils, supporting agriculture, horticulture, and sericulture. Major crops include paddy, groundnut, redgram, mango, vegetables, and mulberry.&#10;<p>&#10;</p><p>The population is 289,461, with a sex ratio of 1002 and a literacy rate of 68.94%. Palamaner has a vibrant cultural and tourism profile, including Konetirayala Swamy Temple and scenic waterfalls like Kaigal and Ganganna Sirassu. Renowned for terracotta craftsmanship, the town also hosts a &#8377;2 crore Terracotta Crafts Centre.&#10;</p><p>Infrastructure includes 713 PW schemes, 802 MI tanks, 391 primary schools, one engineering college, robust healthcare and veterinary services, and extensive road and electricity networks. The region receives 824 mm of annual rainfall, making agriculture the primary livelihood for most residents.</p><p>&#10;</p>",
+  "constituencyMap": "32\\MAP\\32IMAGE2025090512515487031_PALAMANERU MAP.jpg",
+  "geography": "The Palamaneru constituency is located in the Chittor District and spans 1279.72 sq. km. It shares boundaries with It shares boundaries with the Puthalapattu and Punganur constituencies and the Karnataka and Tamil Nadu states and is strategically positioned at a trijunction of Chittoor, Kuppam, and Punganur, as well as between Bangalore and Chittoor cities. Mix of sandy clay loam soils.",
+  "populationDesc": "The total population is 289,461, with approximately 68.87% residing in rural areas and 31.12% in urban areas. There are 77,455 households, and the sex ratio is 997 females per 1,000 males. The literacy rate stands at 65.48%.",
+  "administrationDesc": "Palamaneru is one of the seven assembly constituencies in Chittoor District. It includes 1) Baireddy Palle. 2) Gangavaram 3) Palamaneru 4) Peddapanjani 5) V. Kota. Palamaneru's constituency comes under Chittoor Loksabha's.",
+  "educationHealthcareDesc": "3 Engineering colleges and it has 1 Area Hospitals.",
+  "culturalheritageDesc": "Konetirayala Swamy Hindu Temple, Keelapatla Village, Gangavaram mandal Konetirayala Swamy Temple (ancient Hindu temple), Keelapatla village, Gangavaram mandal Kaigal waterfalls, Kalynarevu waterfalls"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "PAn7fQu+OMJMTEJBJZ2hhg==",
+   "economy_Text": "<b>Economy at a Glance</b><p><font face=\"Times New Roman\"><span>Palamaneru Assembly Constituency</span> has a predominantly agrarian economy, with the <span>agriculture and allied sectors contributing 54.43%</span> to the Gross Value Added (GVA). Within this, <span>livestock and dairy account for a significant 37%</span>, highlighting the importance of animal husbandry alongside crop cultivation. The region is known for high-value <span>horticulture crops</span> spread over 7,600 hectares, including <span>mango, banana, papaya, and vegetables</span>, along with <span>coconut, tamarind, and flower cultivation</span>.</font></p><p><font face=\"Times New Roman\">The <span>service sector contributes 32.49%</span> of the constituency&#8217;s GVA, driven by expanding education, healthcare, retail, and logistics services. The <span>industrial sector</span>, accounting for 13.08%, is growing with key projects in agro-processing, dairy, and small-scale manufacturing.&#160;<span>Major industrial initiatives include </span><span>M/s Kurlon Enterprises Ltd.</span><span> investing &#8377;42.9 crore in mattresses and foam products and&#160;</span><span>M/s AVICHEM Lifesciences Pvt. Ltd.</span><span> planning a &#8377;75 crore veterinary and poultry feed supplements unit. Additionally, a flatted factory complex</span><span>&#160;worth &#8377;15.27 crore is approved to boost MSME development.</span></font></p><p><font face=\"Times New Roman\">Key players like <span>Tirumala Milk Products</span>, <span>Dodla Dairy</span>, <span>Vishwaa Apparels</span>, and <span>Parag Milk Foods</span> contribute substantially to employment and economic growth. Palamaneru benefits from excellent connectivity via the <span>Chennai&#8211;Bangalore Greenfield Expressway</span>, <span>Tirupati&#8211;Bangalore NH</span>, and <span>Krishnagiri&#8211;Palamaneru roads</span>, with the upcoming <span>Kuppam Greenfield Airport</span> enhancing accessibility.&#160;<span>With strong foundations in agriculture, livestock, and emerging industries, Palamaneru is poised for growth in </span><span>organic farming, food processing, dairy development, and textile industries</span><span>, making it a balanced rural-industrial hub with promising prospects.</span></font></p>",
+   "gcdP_Growth_Text": "Palamaneru is set for robust economic growth with a targeted 15% annual GCDP growth rate, driven by key sectors such as agriculture, livestock and dairy, agro-processing, and emerging industrial projects. This growth strategy aims to transform Palamaneru into a balanced rural-industrial hub, leveraging its strong agrarian base and expanding service and manufacturing sectors, aligned with the vision of sustainable development by 2047.",
+   "createdDate": "2025-09-07T06:23:28.273"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 8483.0,
+   "cagR_Pct": 13.24,
+   "targetAmountCrore": 17201.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2603.0,
+   "cagR_Pct": 16.2,
+   "targetAmountCrore": 5268.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1026.0,
+   "cagR_Pct": 15.5,
+   "targetAmountCrore": 1923.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 4271.0,
+   "cagR_Pct": 16.2,
+   "targetAmountCrore": 8643.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 32,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 32.49
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 13.08
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 54.43
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 32,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 722,
+   "constituencyId": 32,
+   "name": "Sri N.Amarnath Reddy\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 724,
+   "constituencyId": 32,
+   "name": "Sri N. Venkate Gowda\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 726,
+   "constituencyId": 32,
+   "name": "Sri N.Amarnath Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": " YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 728,
+   "constituencyId": 32,
+   "name": "Sri N.Amarnath Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 729,
+   "constituencyId": 32,
+   "name": "Smt L. Lalitha Kumari",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

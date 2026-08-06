@@ -1,0 +1,209 @@
+{
+ "code": 184,
+ "name": "Pileru",
+ "district": "Annamayya",
+ "logoUrl": "184\\Logo\\184IMAGE2026051214533256887_Icon_image.png",
+ "profile": {
+  "population": "286468 (As per Census 2011)",
+  "voterCount": "234608 (As per 2024 Elections)",
+  "area": "1503.3",
+  "mandals": "Gurramkonda-R,Kalakada-R,Kalikiri-R,Kambhamvaripalle-R,Pileru-R,Valmikipuram-R",
+  "revenueVillages": "100",
+  "municipal_wards": "0",
+  "municipalities": "-",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Pileru constituency in Annamayya district, Andhra Pradesh, spans 1,503 sq. km and includes six mandals&#8212;Piler, Kalikiri, Gurramkonda, Kalakada, K.V. Palli, and Valmikipuram. It is agriculturally dominant, with 70% of land under cultivation and horticulture and paddy as key crops. Agriculture contributes 52% to the economy, followed by services (33%) and industry (15%). The constituency has rich natural resources, fertile alluvial soils, and key irrigation sources like the Yeleru Canal. However, irrigation inefficiencies persist despite minor irrigation projects.&#10;<p>&#10;</p><p>Social infrastructure includes 3 CHCs, 13 PHCs, 68 sub-centers, 67 high schools, 12 junior colleges, 8-degree colleges, and 5 veterinary hospitals. Electrification covers all villages and hamlets, and drinking water is provided through over 1,100 PWS schemes. The population is around 3.06 lakh (2023 est.), with SCs and STs forming 15% of the total.&#10;</p><p>Culturally significant sites include Gurramkonda Fort, Tarigonda Lakshmi Narasimha Swamy Temple, and Valmikipuram's Pattabhi Rama temple. With NH-71 and NH-40 enhancing connectivity and a vision aligned with &#8220;Swarna Andhra@2047,&#8221; Pileru holds growth potential in agriculture, aquaculture, tourism, and services. Key challenges remain in healthcare, irrigation, and employment, calling for targeted investment and sustainable development.</p><p>&#10;</p>",
+  "constituencyMap": "184\\MAP\\184IMAGE2025090512353458364_PILERU MAP.jpg",
+  "geography": "Pileru constiteuncy is located in Annamayya District and spans 1503.30 Sq. km. It shares boundaries with Rayachoti,Madanapalli constituencies &amp;Chittoor district. Red Soils.",
+  "populationDesc": "The total population is 2, 86, 468, with approximately100% residing in rural areas . There are 65,710 households, and the sex ratio is 998 females per 1,000 males. The literacy rate stands at 68.98%.",
+  "administrationDesc": "Pileru Constituency is one of the six assembly constituencies in Annamayya District. It includes 1)Piler, 2)Kalikiri,3) Gurramkonda, 4)Kalakada, 5)K V Palli and 6)Valmikipuram mandals. Pileru Constituency comes under Rajampet Loksabha Constituency.",
+  "educationHealthcareDesc": "In the Pileru constituency, the medical and health infrastructure is fairly well-developed to cater to the needs of the population. There are twelve Primary Health Centres (PHCs) that provide essential healthcare services at the grassroots level. Additionally, four Community Health Centres (CHCs) are available to offer more specialized medical care. The area is further supported by sixty-eight Sub-Centres, which help extend basic health services to even the most remote parts of the constituency.<p><br></p><p>When it comes to education, Pileru constituency boasts a strong network of institutions across different levels. There are 308 Primary Schools, ensuring that young children have access to foundational education. Forty Upper Primary (UP) Schools cater to the educational needs of students beyond the primary level. For higher education, sixty-seven High Schools and fifteen Junior Colleges are available, providing opportunities for secondary and intermediate education. Furthermore, the constituency has seven Degree Colleges, enabling students to pursue higher education within the region</p>",
+  "culturalheritageDesc": "Gurram Konda Fort,Sri Lakshmi Narasimha Swamy temple -Tarigonda, pattabhi Rama Swamy temple, Redamma Konda."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "9EgWO1pmNm1sXwuvC3Ugdg==",
+   "economy_Text": "<b>Economy at a Glance</b><p>The economy of Pileru constituency is predominantly driven by the Agricultural and Allied Sector, which accounts for nearly half of the economic activity with a share of 49.58%. This highlights the constituency&#8217;s strong reliance on farming and related agricultural industries as a primary source of livelihood. The Service Sector is the next significant contributor, comprising 36.57% of the economy. This sector includes various services such as trade, transport, education, and healthcare, playing a vital role in supporting the local population and economic development. The Industries Sector contributes 13.85% to the economy, reflecting the presence of manufacturing and industrial activities, though it remains the smallest among the three major sectors. Overall, the economy of Pileru is largely agrarian but steadily supported by services and industry.<br><br>The Handrineeva Canal will revolutionize horticulture in the region by ensuring reliable irrigation, enabling farmers to grow high-value crops like fruits, vegetables, and flowers. This will boost productivity, diversify farming, and increase incomes. Enhanced water supply also paves the way for modern techniques such as drip irrigation and greenhouse farming. Beyond agriculture, it can spark growth in agro-processing and marketing, creating jobs and strengthening the local economy.<br>&#160;Pileru is also emerging as an industrial hub with industrial parks developed by APIIC and an MSME park, creating strong opportunities for manufacturing, processing, and employment.<b></b></p>",
+   "gcdP_Growth_Text": "Pileru constituency is targeting a steady 12% annual growth in its Gross Constituency Domestic Product (GCDP). This growth is expected to be fueled by key sectors such as agriculture, enhanced horticulture through the Handrineeva Canal, and the development of industrial parks by APIIC along with MSME hubs. By focusing on sustainable development across agriculture, industry, and services, Pileru aspires to become a vibrant and economically balanced region by 2047",
+   "createdDate": "2025-09-07T07:58:25.407"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5782.0,
+   "cagR_Pct": 13.24,
+   "targetAmountCrore": 11953.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1894.0,
+   "cagR_Pct": 14.15,
+   "targetAmountCrore": 4043.6,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 718.0,
+   "cagR_Pct": 12.95,
+   "targetAmountCrore": 1532.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2569.0,
+   "cagR_Pct": 9.57,
+   "targetAmountCrore": 5483.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 184,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 36.57
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 13.85
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 49.58
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 184,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 707,
+   "constituencyId": 184,
+   "name": "Sri N.Kishore Kumar Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 709,
+   "constituencyId": 184,
+   "name": "Sri Chinthala Ramachandra Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 713,
+   "constituencyId": 184,
+   "name": "Sri Chinthala Ramachandra Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 716,
+   "constituencyId": 184,
+   "name": "Sri N.Kiran Kumar Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 718,
+   "constituencyId": 184,
+   "name": "Sri P.Ramachandra Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

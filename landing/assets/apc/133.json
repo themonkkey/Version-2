@@ -1,0 +1,209 @@
+{
+ "code": 133,
+ "name": "Alur",
+ "district": "Kurnool",
+ "logoUrl": "assets/constituencies_logos/alur.png",
+ "profile": {
+  "population": "317274 (As per Census 2011)",
+  "voterCount": "258997 (As per 2024 Elections)",
+  "area": "2194.92",
+  "mandals": "Alur-R,Aspari-R,Chippagiri-R,Devanakonda-R,Halaharvi-R,Holagunda-R",
+  "revenueVillages": "111",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Alur Assembly Constituency was initially formed in 1955.The region's economy is predominantly agrarian, with agriculture serving as the main stay for many residents. The fertile lands support the cultivation of various crops, contributing to the local economy. Additionally, the area has seen development in renewable energy. The constituency has a rich historical and cultural heritage, with diverse Geographical features and potential for economic growth. Its proximity to nearby towns like Kurnool, Adoni and Bellary makes it well-connected for Trade, Commerce and Tourism Development.Alur Constituency is a region with diverse opportunities and challenges. While agriculture, supported by robust irrigation infrastructure, remains the back bone of the economy, the constituency is poised for growth in the services sector, especially tourism and hospitality. The constituency&#8217;s rich cultural heritage, alongside its transportation connectivity, presents a unique opportunity for tourism - driven economic growth.",
+  "constituencyMap": "133\\MAP\\133IMAGE2025090818041316616_alur (1).jpg",
+  "geography": "The Alur Assembly Constituency is located in the western part of Kurnool District, Andhra Pradesh. It shares boundaries with 6 other Assembly Constituencies i.e., Adoni, Yemmiganur, Kodumur, Pathikonda, Uruvakonda and Guntakal Constituencies and this Constituency shares an interstate border with Karnataka State.",
+  "populationDesc": "Alur Constituency has a total population of 3,17,274 . The constituency comprises 60,436 households, with a sex ratio of 967 females per 1,000 males. The literacy rate stands at 44.87%.",
+  "administrationDesc": "Alur Constituency is one of the seven assembly constituencies in Kurnool district. It includes Alur, Devanakonda, Halaharvi, Aspari, Holagunda and Chippagiri.",
+  "educationHealthcareDesc": "Alur Constituency Social Infrastructure includes 01 Community Health Centers (CHC), 10 Primary Health Centers (PHCs), 90 Sub-Centers, 01 Blood storage and 01 Ayush dispensaries which are insufficient to meet the growing healthcare needs of the population. Educational Infrastructure comprises 186 Government and Private Primary Schools, 52 Government and Private Upper Primary School 48 Government and Private High Schools, 06 KGBV Schools, 02 Model Schools, 01 Social Welfare Residential School, 01 Tribal Welfare Residential School, 01 Backward Welfare Residential School, 01 Special Education School, 01 Government ITI College, 06 Government &amp; Private Junior Colleges, 02 Government Polytechnic, 03 Government Degree and Private Degree College.&#160;",
+  "culturalheritageDesc": "Alur Constituency is rich in cultural landmarks, such as the Banni Festival-Devaragattu, Shri Kshetragudi Anjaneya Swamy, Mekala Benchi, Gadderalla Maremmavva Temple, Yellarthi Darga, Bhogeswara Swamy Temple, Belligunda AnjaneyaSwami Temple, Sri Sri Vijaya Dasara Catte, Cart Festival &#8211;Gadilingappa thatha."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "cyAU9ZxmYD0aejSvxMmIIg==",
+   "economy_Text": "<p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The Economic Vision Plan for Alur (2024&#8211;2029) outlines a transformative strategy for sustainable growth, targeting a Gross Constituency Domestic Product (GCDP) increase from &#8377;6,452 Crores to &#8377;13,343 Crores by 2028-29, with a per capita income rise from &#8377;1,69,321 to &#8377;3,41,638.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">Anchored in agriculture (58.24% of GCVA), industry (14.22%), and services (27.55%), the plan emphasizes irrigation modernization, crop diversification, and agri-processing for agriculture; MSME development, renewable energy, and infrastructure for industry; and IT, tourism, and financial inclusion for services.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">Thrust areas include sustainable infrastructure, skill development, industrial and agricultural modernization, economic diversification, and inclusive development.</font></p>",
+   "gcdP_Growth_Text": "<font size=\"4\" face=\"Times New Roman\">Alur&#8217;s economy will <strong>diversify from agriculture dominance to a more balanced structure</strong> with growing industry and services. Growth will hinge on <strong>horticulture expansion, construction boom, renewable energy adoption, MSME development, and service sector modernization</strong>&#8212;making it a resilient, inclusive, and future-ready constituency aligned with <em>Swarna Andhra @2047</em></font>",
+   "createdDate": "2025-09-05T20:37:53.363"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6452.0,
+   "cagR_Pct": 17.84,
+   "targetAmountCrore": 13343.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1644.0,
+   "cagR_Pct": 21.55,
+   "targetAmountCrore": 4044.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 848.0,
+   "cagR_Pct": 20.04,
+   "targetAmountCrore": 1947.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3476.0,
+   "cagR_Pct": 15.08,
+   "targetAmountCrore": 6319.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 133,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 27.54
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 14.22
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 58.24
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 133,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 646,
+   "constituencyId": 133,
+   "name": "Busine Virupakshi",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 649,
+   "constituencyId": 133,
+   "name": "Gummanur Jayaram",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 951,
+   "constituencyId": 133,
+   "name": "Gummanur Jayaram",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 656,
+   "constituencyId": 133,
+   "name": " Patil Neeraja Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 655,
+   "constituencyId": 133,
+   "name": "Moolinti Mareppa",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

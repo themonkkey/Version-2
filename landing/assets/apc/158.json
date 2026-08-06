@@ -1,0 +1,224 @@
+{
+ "code": 158,
+ "name": "Visakhapatnam South",
+ "district": "Visakhapatnam",
+ "logoUrl": "assets/constituencies_logos/visakhapatnam south.png",
+ "profile": {
+  "population": "249848",
+  "voterCount": "216970 (As per 2024 Elections)",
+  "area": "34",
+  "mandals": "Gvmc (Visakhapatnam)-U",
+  "revenueVillages": "0",
+  "municipal_wards": "13",
+  "municipalities": "Gvmc (Visakhapatnam)",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Visakhapatnam South Constituency is a vibrant urban hub characterized by its compact geography and diverse demographics. Covering just 34 square kilometers, it is one of the most densely populated constituencies, with a population of 2.96 lakh. Administratively, the constituency is divided into 15 wards, supported by 68 Ward Secretariats, ensuring decentralized governance and efficient delivery of civic services. A literacy rate of 75% reflects a relatively educated population, providing a strong base for skill development and knowledge-driven industries. The constituency also demonstrates a favorable sex ratio of 1009, highlighting balanced gender representation and supporting inclusive development. Its strategic location within Visakhapatnam city, coupled with dense residential and commercial zones, makes it a focal point for urban development and infrastructure planning. With its robust demographic base, educated workforce, and balanced social structure, Visakhapatnam South is well-positioned to drive economic growth, foster social progress, and strengthen urban governance.",
+  "constituencyMap": "158\\MAP\\158IMAGE2025090415073383513_VIZAG SOUTH MAP2.png",
+  "geography": "The constituency, covering an area of around 34 square kilometers, includes significant parts of the Greater Visakhapatnam Municipal Corporation, specifically Wards 27, 29 to 32, 41, and 42. It is bordered by Visakhapatnam East, West, and North constituencies and encompasses major commercial and residential localities such as Dabagardens, Maharani Peta, Jagadamba Junction, and Gnanapuram. The constituency is densely populated and economically vibrant.",
+  "populationDesc": "Visakhapatnam South Constituency spans 34 sq. km with a population of 2.96 lakh. Divided into 15 wards and supported by 68 Ward Secretariats, it is densely populated, urban, and vibrant. With a 75% literacy rate and a sex ratio of 1009, it reflects balanced, progressive demographics.",
+  "administrationDesc": "The Visakhapatnam South Assembly Constituency falls under the Greater Visakhapatnam Municipal Corporation (GVMC) and is divided into 15 wards, managed through 68 Ward Secretariats for effective local governance. It encompasses key urban areas such as Dabagardens, Maharani Peta, Jagadamba Junction, and Gnanapuram, serving as major administrative, residential, and commercial hubs.",
+  "educationHealthcareDesc": "The Visakhapatnam South Constituency presents a diverse yet uneven landscape in education and healthcare. It hosts 109 schools, of which 23 primary, 2 upper primary, and 6 high schools are government-run, while 69 private schools dominate, particularly at the high school (34) and upper primary (20) levels. Higher education includes 26 junior colleges (24 private unaided, 2 government), 6 degree colleges (1 government, 1 autonomous, 4 private unaided), and single institutions for MBA, medical, law, and polytechnic, highlighting options but limited availability. Healthcare access remains a concern, with 9 UPHCs and 85 Sub Centers but no 24/7 PHCs. Grassroots care is supported by 85 ANMs and 82 ASHA workers, crucial for maternal and child health. Emergency services include 15 ambulances under 108 and 23 Thalli-Bidda Express vehicles, though only one blood storage unit and absence of 104 FDHS vehicles limit emergency and outreach capacity.",
+  "culturalheritageDesc": "The Visakhapatnam South Constituency is steeped in rich cultural heritage, blending history, spirituality, and urban vibrancy. It is home to iconic landmarks such as the Sri Sampath Vinayaka Temple, Sri Kali Matha Temple, and Polamamba Temple, which serve as spiritual centers and host vibrant festivals like Vinayaka Chavithi and Navaratri. The bustling Jagadamba Junction and Dabagardens symbolize the area&#8217;s commercial and cultural pulse, often hosting community events. The constituency also showcases colonial-era architecture, traditional markets, and theaters, reflecting Visakhapatnam&#8217;s maritime legacy and artistic traditions. Together, these elements create a unique cultural fabric that strengthens the city&#8217;s identity."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "N32eLNzZcUQcsVM6xvZyHw==",
+   "economy_Text": "<p><span>Visakhapatnam South&#8217;s Gross Constituency Domestic Product (GCDP) stood at &#8377;13,566 crores in 2023-24 and is projected to reach &#8377;26,496 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of 15%. This growth is driven by a strategic vision focusing on trade, hotels, restaurants, construction, transport, and storage, while addressing infrastructure bottlenecks and promoting industrial diversification. Investments in skill development and sustainable practices ensure inclusive economic progress, particularly for urban communities. The plan leverages government schemes like PM-JU Gram Abhiyan and integrates modern technologies to create sustainable employment opportunities, establishing Visakhapatnam South as a beacon of resilient economic development in Andhra Pradesh.</span></p><p><br></p><p><b>Sectoral Contributions and Growth:&#160;</b></p><p><b>Services:</b> Contributes &#8377;9,489 crores (2023-24), projected to grow to &#8377;20,389 crores by 2028-29 at a growth rate of 18.63%, driven by trade, hotels, restaurants, transport, and storage.</p><p><b><i>Industry: </i></b>Valued at &#8377;1,492 crores (2023-24), expected to reach &#8377;2,650 crores by 2028-29 with a growth rate of 15.44%, fueled by construction and industrial diversification.</p><p><b><i>Agriculture &amp; Allied:</i></b> Accounts for &#8377;1,586 crores (2023-24), projected to grow to &#8377;1,855 crores by 2028-29 at a growth rate of 3.99%, limited by urban land constraints.</p><p><br></p>",
+   "gcdP_Growth_Text": "<p><span>Visakhapatnam is experiencing robust economic growth, targeting a consistent 15% annual Gross Constituency Domestic Product (GCDP) growth rate, driven by key sectors such as industry, tourism, Information Technology and Aquaculture. This dynamic trajectory supports the ambitious vision of transforming Visakhapatnam into a thriving urban and economic hub by 2047, fostering sustainable development, investment opportunities, and inclusive prosperity</span></p>",
+   "createdDate": "2025-09-04T07:03:39.463"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 13566.0,
+   "cagR_Pct": 18.22,
+   "targetAmountCrore": 26496.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 9489.0,
+   "cagR_Pct": 18.63,
+   "targetAmountCrore": 20389.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1492.0,
+   "cagR_Pct": 15.44,
+   "targetAmountCrore": 2650.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1586.0,
+   "cagR_Pct": 3.99,
+   "targetAmountCrore": 1855.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 158,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 76.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 12.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 12.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 158,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 394,
+   "constituencyId": 158,
+   "name": "Ch. Vamsi Krishna Srinivas Yadav",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "JANASENA PARTY",
+   "photo": ""
+  },
+  {
+   "id": 812,
+   "constituencyId": 158,
+   "name": "Vasupalli Ganesh Kumar",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 813,
+   "constituencyId": 158,
+   "name": "Vasupalli Ganesh Kumar",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 814,
+   "constituencyId": 158,
+   "name": "Dronamraju Srinivasa Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

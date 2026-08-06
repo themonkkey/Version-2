@@ -1,0 +1,197 @@
+{
+ "code": 4,
+ "name": "Vinukonda",
+ "district": "Palnadu",
+ "logoUrl": "4\\Logo\\4IMAGE2026062311120887796_Back Drop image.png",
+ "profile": {
+  "population": "308145 (As per Census 2011)",
+  "voterCount": "264770 (As per 2024 Elections)",
+  "area": "1623.7",
+  "mandals": "Bollapalli-R,Ipuru-R,Nuzendla-R,Savalyapuram-R,Vinukonda-R,Vinukonda-U",
+  "revenueVillages": "77",
+  "municipal_wards": "32",
+  "municipalities": "Vinukonda",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Vinukonda Constituency Vision Action Plan 2024-29 leverages the region's agricultural strength, industrial base, construction sector, and service sector to drive growth and development. Located in the Palnadu district, Andhra Pradesh, the constituency comprises five mandals and one municipality. Vinukonda is renowned for its rich cultural heritage and historical landmarks, including the Ramalingeswara Swami temple and Jama Masjid. The region is strategically located on the Guntur-Kurnool-Ballary highway and has a railway station with direct train services to major cities. Vinukonda stands out for its significant contributions to agriculture and aquaculture, with excellent connectivity to major urban centers. The constituency aims to achieve an ambitious annual growth target of 15% across all key sectors, driven by its potential for trade, industrial development, and cultural tourism. Vinukonda, with its robust foundation and potential for growth, stands poised to emerge as a significant hub for economic development and cultural preservation. The constituency is also notable for being the birthplace of Telugu poet Gurram Jashuva, a legendary figure in Telugu literature. Vinukonda's climate is characterized by hot summers, with rainfall primarily during the monsoon months. The region's underground water reserves have high fluoride concentrations. Overall, Vinukonda's unusual combination of cultural heritage, strategic location, and economic potential makes it an exciting region for growth and development.",
+  "constituencyMap": "4\\MAP\\4IMAGE2025090515520870028_vinukonda.jpg",
+  "geography": "Vinukonda spans 362 sq. km in Palnadu District, Andhra Pradesh, with geographical coordinates differing slightly from the provided details. The area features fertile soils, including Black Cotton (40%), Red loamy (60%), and Red sandy.&#160;",
+  "populationDesc": "Population (2011 Census): 308,145 people, with 154,659 males and 153,486 females. The sex ratio stands at 994 females per 1,000 males.",
+  "administrationDesc": "Vinukonda Constituency is one of the seven assembly constituencies in Palnadu District. It has  Vinukonda, Bollapalli, Ipur, Nuzendla, and Savalyapuram mandals.",
+  "educationHealthcareDesc": "Vinukonda has a robust healthcare system with 2 Community Health Centers, 9 Primary Health Centers, and 59 sub-centers. The region also features emergency services like 5-104 Fixed Day Health Services vehicles, 5-108 ambulance services, and a blood storage unit. For animal care, there are 2 veterinary hospitals and11 dispensaries. Educationally, Vinukonda is well-equipped with 246 primary schools, 21 upper primary schools, 39 high schools, 10 junior colleges, and 1 degree college, along with welfare hostels for students from diverse backgrounds.",
+  "culturalheritageDesc": "The Vinukonda constituency holds rich cultural heritage rooted in mythology, history, and tradition. Its name signifies Rama hearing of Sita&#8217;s abduction at Vinukonda Hill, once the Vishnukundina capital. The region showcases megalithic remains, medieval forts, and inscriptions. Sacred temples like Ramalingeswara Swamy, Lakshmi Narasimha Swamy, and a 400-year-old Jama Masjid highlight religious diversity. Festivals such as Tirunallu, Ugadi, and Sankranti attract devotees. Rural traditions, vibrant village arts, and the reformist legacy of Hemalatha Lavanam further enrich its cultural identity."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Qyir2Q0vnOxUFi4DSiZfaw==",
+   "economy_Text": "<p><b><font size=\"5\"><span>Vinukonda</span><span>&#8217;s Economy at a Glance</span></font></b></p><span><p><span>Vinukonda lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;228&#160;crores in 2023-24, Vinukonda is projected to expand steadily, reaching &#8377;28144&#160;crores by 2047-48 and&#160;&#8377;12737 crores by 2028-29, marking a significant transformation across agriculture, industry and services sectors.&#160;</span><span></span><span>&#160;As of 2023-24, the economy is led by the&#160;</span><span>agriculture and allied</span><span>&#160;sector, contributing&#160;</span><span>49.36</span><span>% to the Gross Value Added (GVA), followed by the&#160;</span><span>service&#160;</span><span>sector at 36.62%, and the industrial sector at 14.02%.&#160;</span></p></span>",
+   "gcdP_Growth_Text": "<span>Vinukonda</span>&#160;is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Live stock, Horticulture and real estate. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.",
+   "createdDate": "2025-09-06T05:55:57.963"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6228.0,
+   "cagR_Pct": 14.47,
+   "targetAmountCrore": 12737.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2110.0,
+   "cagR_Pct": 16.87,
+   "targetAmountCrore": 4566.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 808.0,
+   "cagR_Pct": 16.49,
+   "targetAmountCrore": 1805.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2844.0,
+   "cagR_Pct": 11.43,
+   "targetAmountCrore": 5345.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 4,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 36.62
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 14.02
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 49.36
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 4,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 875,
+   "constituencyId": 4,
+   "name": "G V Anzaneyulu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 876,
+   "constituencyId": 4,
+   "name": "Bolla Brahma Naidu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 877,
+   "constituencyId": 4,
+   "name": "G V Anzaneyulu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": " TDP",
+   "photo": ""
+  },
+  {
+   "id": 878,
+   "constituencyId": 4,
+   "name": "G V Anzaneyulu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": " TDP",
+   "photo": ""
+  },
+  {
+   "id": 879,
+   "constituencyId": 4,
+   "name": "Makkena Mallikarjuna Rao",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

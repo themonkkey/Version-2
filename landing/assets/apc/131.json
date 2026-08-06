@@ -1,0 +1,200 @@
+{
+ "code": 131,
+ "name": "Srisailam",
+ "district": "Nandyala",
+ "logoUrl": "assets/constituencies_logos/srisailam.png",
+ "profile": {
+  "population": "242791 (As per Census 2011)",
+  "voterCount": "196596 (As per 2024 Elections)",
+  "area": "2669.05",
+  "mandals": "Atmakur-R,Atmakurknl-U,Bandiatmakur-R,Mahanandi-R,Velgode-R",
+  "revenueVillages": "43",
+  "municipal_wards": "24",
+  "municipalities": "Atmakur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\"><span>Srisailam is&#10;famous since the 4th century A.D, according to Nasik inscription, which was&#10;carved by Pulomavi of the Satavahana dynasty. According to this inscription,&#10;the mountain was divided into 3 parts. One of them was Sirithan. Later, it was&#10;called as Nallamala. Pulomavi ruled Deccan from 102 to 130 A.D.; thus about&#10;Srisailam primarily, we can see in this inscription only.</span></p>&#10;&#10;<p class=\"MsoNormal\"><span>Srisailam Renowned for its&#10;rich cultural heritage and historical landmarks. Srisailam is well known by its&#10;name itself to the entire world. Srisailam is one of the 12 Jyothirlingas Mallikarjuna&#10;swamy temple and one of the Ashta Dasha Shaktipetam Bramaramba Devi temples.</span></p>&#10;&#10;<p class=\"MsoNormal\"><span>In Srisailam&#10;constituency other famous Siva temples is there, In Atmakur mandal Rudrakoduru&#10;temple, In Bandi atmakur mandal Gundlabrahmmeswaram temple and Omkaram temple&#10;and in mahanandi mandal Mahanandi temple also.</span></p><p class=\"MsoNormal\"><span>In&#10;this vast Kshetra, besides the main temple of Sri Mallikarjuna swamy temple and&#10;Sri Bramaramba temple, every step land on here gives a feeling of sanctity to&#10;the devotees. Even though thousands of places are here to see, a few places are&#10;being brought before you. It is our intention to explain about Srisailam&#10;accessories as one of the devotees of lord Shiva.</span></p>",
+  "constituencyMap": "131\\MAP\\131IMAGE2025090217345953057_srs.jpg",
+  "geography": "<p>Srisailam is located with Nandyal and Nandikotkur Constituencies and Prakasham District as boundaries. The constituency mainly features black cotton soils, and red soils are found in some areas of incept soils and entisols in Mahanandi mandal which are highly conducive to agriculture.</p>",
+  "populationDesc": "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"646\"><tbody><tr height=\"136\">&#10;  <td height=\"136\" class=\"xl65\" width=\"646\">&#160;Population (2011 Census): 2,42,791 People&#10;  with 1,23,620 Males<br>&#160;and 1,19,171 Females.&#160; &#160; &#160;&#160;<br>&#160;The sex ratio stands at 964 females per 1,000 males.<br>&#160;Total Literates 138754.&#160;Literacy Ratio 64.75%<br>&#160;Households: There are 58,877 households<br>&#10;    </td></tr></tbody></table>",
+  "administrationDesc": "Srisailam Constituency in the Nandyal district, with Atmakur serving as the headquarters, it consists of five mandals: Srisailam, Atmakur, Velugodu, Bandiatmakur, Mahanandi and one Municipality: Atmakur",
+  "educationHealthcareDesc": "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"646\"><tbody><tr height=\"42\">&#10;  <td height=\"42\" class=\"xl65\" width=\"646\">Acharya&#10;  NG Ranga university - Government Agriculture College <br>at&#160;Mahanandi. 2 Homeopathy&#10;  Hospitals, 2 Ayurvedic Hospitals,<br>2 Naturopathy Hospitals, 2 Veterinary hospitals.<br><br></td></tr></tbody></table>",
+  "culturalheritageDesc": "<span>Srisailam is famous since the 4th century A.D, according to&#160;</span><span>Nasik&#160;inscription, which was carved by Pulomavi of the</span><br><span>Satavahana dynasty.&#160;According to this inscription, the mountain&#160;</span><span>was divided into 3 parts.One of them was Sirithan. Later, it was&#160;</span><span>called as Nallamala. Pulomavi ruled Deccan from 102 to 130 A.D.</span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "mYezRLTg3P/6BJGhnIBHdw==",
+   "economy_Text": "<p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Srisailam&#8217;s economy is set to undergo significant transformation from 2024 to 2029, with its Gross Constituency Domestic Product (GCDP) projected to grow from Rs. 5,271 crores to Rs. 10,130 crores, achieving an annual growth rate of 15%.</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The agriculture sector, contributing 46.24% to GCVA by 2028-29, will be driven by horticulture, livestock, and fisheries, supported by irrigation modernization and organic farming.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">The industry sector, growing at 17.78%, will leverage food processing, textiles, and MSME clusters, while the services sector, with a 14.57% growth rate, will capitalize on tourism assets like the Sri Bhramaramba Mallikarjuna Swamy Temple&#160;and Jungle Safari, alongside logistics and digital infrastructure development.&#160;</font></p><p dir=\"ltr\"><font size=\"4\" face=\"Times New Roman\">Strategic investments in infrastructure, skill development, and policy reforms will position Srisailam as a sustainable, inclusive economic hub aligned with the Swarna Andhra @2047 vision.</font></p>",
+   "gcdP_Growth_Text": "<font face=\"Times New Roman\">By 2029, Srisailam&#8217;s GCDP is expected to nearly <strong>double to Rs. 10130 crores</strong>&#160;with <strong>balanced growth</strong> across all three sectors, creating a <strong>diversified, inclusive and resilient economy</strong></font>",
+   "createdDate": "2025-09-07T07:39:18.12"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5271.0,
+   "cagR_Pct": 14.1,
+   "targetAmountCrore": 10130.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1964.0,
+   "cagR_Pct": 14.57,
+   "targetAmountCrore": 3861.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 527.0,
+   "cagR_Pct": 17.78,
+   "targetAmountCrore": 1194.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2384.0,
+   "cagR_Pct": 12.92,
+   "targetAmountCrore": 4348.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 131,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 40.29
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 10.81
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 48.9
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 131,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 16,
+   "sectorName": "Forest & Eco Tourist Sites",
+   "description": "Conservation-based tourism, trekking trails, and forest-based livelihood development.",
+   "imageUrl": "assets/img/sectors/forest-eco-tourist-sites.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 12,
+   "sectorName": "Pilgrimage & Cultural Centre",
+   "description": "Restoration of heritage sites, amenities for pilgrims, and promotion of cultural tourism.",
+   "imageUrl": "assets/img/sectors/pilgrimage-cultural-centre.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 38,
+   "constituencyId": 131,
+   "name": "Sri Budda Rajasekhar Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": "131\\mla\\131IMAGE2025090217214662995_srisailam1.png"
+  },
+  {
+   "id": 107,
+   "constituencyId": 131,
+   "name": "Silpa Chakrapani Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party ",
+   "photo": ""
+  },
+  {
+   "id": 108,
+   "constituencyId": 131,
+   "name": "Sri Budda Rajasekhara Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": " YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 109,
+   "constituencyId": 131,
+   "name": "Earasu Prathap Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

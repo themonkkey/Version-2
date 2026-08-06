@@ -1,0 +1,200 @@
+{
+ "code": 129,
+ "name": "Puthalapattu (SC)",
+ "district": "Chittoor",
+ "logoUrl": "129\\Logo\\129IMAGE2026061013084986563_WhatsApp Image 2026-06-10 at 1.05.25 PM.jpeg",
+ "profile": {
+  "population": "274126 (As per Census 2011)",
+  "voterCount": "220999 (As per 2024 Elections)",
+  "area": "1142.32",
+  "mandals": "Bangarupalem-R,Irala-R,Puthalapattu-R,Thavanampalle-R,Yadamari-R",
+  "revenueVillages": "114",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Puthalapattu Assembly Constituency, established in 1955 and reorganized in 2008, includes five mandals&#8212;Puthalapattu, Irala, Tavanampalli, Bangarupalem, and Yadamarri&#8212;with Puthalapattu as its headquarters in Chittoor district. It hosts revered temples such as Sri Varasidhi Vinayakaswamy (Kanipakam), Ardhagiri Anjaneyaswamy (Ardhagiri), and Mogileeswara Swamy (Mogili), attracting national pilgrims.<p><span>Spanning 1,142.32 sq km, it borders Tamil Nadu and is well-connected to Chittoor, Tirupati, Chennai, and Bangalore. Fertile sandy clay loams underpin agriculture, with 35% of land cultivated&#8212;main crops include mango, groundnut, pulses, and paddy; forests make up 27.7%. Water resources include 15,531 tubewells, 2,232 dug wells, and 442 MI tanks. With a tropical climate at 327 m elevation, the region receives ~905 mm of annual rainfall.</span></p><p><span>It has excellent connectivity, located near major corridors such as the NE-7 Bangalore&#8211;Chennai Expressway, NH-69 (Honnavar&#8211;Chittoor), and NH-40 (Kurnool&#8211;Ranipet), making it a strategic location for industrial and logistics growth. MSMEs, granite polishing, food processing, and renewable energy can bolster development. Healthcare includes CHCs, PHCs, village clinics, and AYUSH and veterinary facilities. Education spans 312 primary to professional colleges. Infrastructure features national and state highways, rail access, extensive roads, water supply schemes, a robust electricity grid, a rationing system, Anganwadis, post offices, banks, and PACS. The constituency's infrastructure supports agriculture, which sustains roughly three-fourths of its population.</span></p>",
+  "constituencyMap": "129\\MAP\\129IMAGE2025090514220610586_PUTHALAPATTU MAP.jpg",
+  "geography": "Puthalapattu constituency is located in Chittoor District and spans 1142.32 sq. km. It shares boundaries with Gangadhara Nellore, Chandragiri, Palamaner, and Chittoor constituencies and the state of Tamil Nadu and is strategically positioned between the cities of Tirupati and Chittoor and also the metropolitan cities of Chennai and Bangalore in the states of Tamil Nadu and Karnataka at distances of 182 km and 196 km, respectively. Mix of sandy clay loams and sandy loams.",
+  "populationDesc": "The total population is 274126, with approximately 100% residing in rural areas and 0% in urban areas. There are 71,168 households, and the sex ratio is 998 females per 1,000 males. The literacy rate stands at 65.80%.",
+  "administrationDesc": "Puthalapattu is one of the seven assembly constituencies in Chittoor District. It includes 1. Puthalapattu. 2. Irala 3. Thavanampalli 4. Bangarupalem 5. Yadamari. Puthalapattu constituency comes under Chittoor Loksabha Constituency.",
+  "educationHealthcareDesc": "<p>There are 312 primary schools, 36 upper primary schools, and 65 high schools; one Model Residential school; one SC APRES residential school for boys; and one APTW residential school for boys, all operating under different management to provide quality education to young learners. For higher education, there are 13 junior colleges, 4 degree colleges, 2 engineering colleges, 3 MBA colleges, 2 MCA colleges, 2 polytechnics, 2 pharmacy colleges, and one Industrial Training Institute (ITI).&#160;<br>The constituency is equipped with 2 Community Health Centers, 10 Primary Health Centers (PHCs), 98 Village Clinics, and 6 AYUSH clinics, ensuring accessible healthcare services across the region. Veterinary care is also well-represented with 3 veterinary hospitals and 11 veterinary dispensaries</p>",
+  "culturalheritageDesc": "Sri Varasidhi Vinayaka Swami Temple, Ardhagiri Anjaneya Swami Temple, Sri Swayambu Mogileeswaraswami Temple and Bheemeswaraswamy temple."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "pSNhlI/MTqwEW/PkWxSEFg==",
+   "economy_Text": "<b>Economy at a Glance</b><br>Puthalapattu has a balanced economic structure with <span>agriculture &amp; allied activities</span> contributing <span>43.5%</span>, followed by the <span>service sector</span> at <span>33.4%</span>, and <span>industry</span> at <span>23.1%</span> of GVA. The region benefits from strong <span>horticulture, dairy, and livestock</span> activity, growing <span>services</span> due to proximity to Chittoor, and emerging <span>industrial opportunities</span> in agro-processing and MSMEs. This mix positions Puthalapattu for inclusive and sustainable economic growth.<br><br>The region is known for its <span>mango cultivation</span>, supported by existing <span>mango food processing parks</span>, offering high potential for <span>agro-processing industries</span>, <span>cold storage chains</span>, and <span>export-oriented units</span>. With available land and growing infrastructure, Puthalapattu can be developed further by establishing <span>MSME clusters</span>, <span>logistics hubs</span>, and <span>value-added agri-industries</span>, turning it into a model for <span>rural-industrial convergence</span>.",
+   "gcdP_Growth_Text": "Puthalapattu is poised for balanced and inclusive growth, targeting a <span>14-15% annual GCDP growth rate</span> across key sectors such as <span>agriculture and allied activities</span>, <span>agro-processing</span>, <span>logistics</span>, and <span>services</span>. Leveraging its strong connectivity to national highways and expressways, along with thriving mango cultivation and emerging food processing infrastructure, the constituency aims to transform into a <span>rural-industrial growth hub</span> by <span>2047</span>, aligning with the vision of sustainable, decentralized economic development.",
+   "createdDate": "2025-09-07T05:58:56.2"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7471.0,
+   "cagR_Pct": 17.0,
+   "targetAmountCrore": 16164.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2312.0,
+   "cagR_Pct": 17.0,
+   "targetAmountCrore": 5076.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1593.0,
+   "cagR_Pct": 15.1,
+   "targetAmountCrore": 3175.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3007.0,
+   "cagR_Pct": 17.04,
+   "targetAmountCrore": 6514.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 129,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.4
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 23.1
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 43.5
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 129,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 861,
+   "constituencyId": 129,
+   "name": "Dr Kalikiri Murali Mohan\t\t\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 862,
+   "constituencyId": 129,
+   "name": "Ms Babu\t\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 863,
+   "constituencyId": 129,
+   "name": "M.Suneel Kumar\t\t\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 864,
+   "constituencyId": 129,
+   "name": "P.Ravi\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

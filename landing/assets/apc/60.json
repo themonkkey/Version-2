@@ -1,0 +1,212 @@
+{
+ "code": 60,
+ "name": "Nellimarla",
+ "district": "Vizianagaram",
+ "logoUrl": "assets/constituencies_logos/nellimarla.png",
+ "profile": {
+  "population": "258259 (As per Census 2011)",
+  "voterCount": "213551 (As per 2024 Elections)",
+  "area": "538",
+  "mandals": "Bhogapuram-R,Denkada-R,Nellimarla-R,Nellimarla-U,Pusapatirega-R",
+  "revenueVillages": "120",
+  "municipal_wards": "20",
+  "municipalities": "Nellimarla",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p><span>Nellimarla Assembly Constituency initially formed in 1962 and restructured in 2008.  The region&#8217;s economy is mixed economy, which is recently developing by providing infrastructure viz., expanded l Highway (NH16), establishment of Pharma related industries, Industrial Park at Nellimarla, Sri Ramatheertham Temple, establishment of Bhogapuram International Greenfield Airport, Coastal corridor &amp; Fishing in this region.The core area of the Bhogapuram International Green filed Airport stand out for their significant contributions and it leads to the construction, communication, transport, education, innovation, commerce, and service sectors. These unique advantages position the constituency to achieve an ambitious annual growth target of 15% across all key sectors. This strategic blueprint aligns with Andhra Pradesh&#8217;s ambitious Swarna Andhra@2047 vision, which resonates with the national agenda of Viksit Bharat@2047.&#160;&#160;</span></p>",
+  "constituencyMap": "60\\MAP\\60IMAGE2025090213081993363_nellimarla map.png",
+  "geography": "<p><span>&#160;Nellimarla spans 538 sq. km and It shares boundaries with Bheemili, Vizianagaram, Cheepurupalli, japathinagaram and Etcharla Assembly Constituency of Srikakulam District, constituencies and Bay of Bengal.&#160;</span></p>",
+  "populationDesc": "<p><span>According to the 2011 Census, the population of the Nellimarla Assembly Constituency stands at 2,58,259 people, comprising 1,29,347 males and 1,29,912 females. The sex ratio is 992 females per 1,000 males.</span></p>",
+  "administrationDesc": "<p><span>Nellimarla constituency is comprises 4 Mandals viz., Nellimarla, Pusapati Rega, Denkada and Bhogapuram and it is spread around the Nellimarla Town from south to north.</span></p>",
+  "educationHealthcareDesc": "<p><span>Social infrastructure includes one private medical college, two community health centres, 8 primary health centres (PHCs), 64 sub-centres and 1 Ayush dispensaries which are still insufficient to meet the growing healthcare needs of the population. Educational infrastructure comprises 240 government and private primary schools, 40 government and private upper primary school 54 government and private high schools, 4 KGBV schools, three Model schools, 2 social welfare residential school, 1 Tribal welfare residential schools, 2 backward welfare residential school, 17government &amp; private junior colleges, 2private polytechnic, 6-degree colleges.</span></p>",
+  "culturalheritageDesc": "<p><span>Nellimarlahasa spiritual heritage, with key attractions such as Sri Sitha sametha Sri Rama, Lakshmana swamy vari (Ramatheertham) Temple, Sri Ibbilingeswara swamy Temple, Saripalliin Nellimarla (M), Geetha Bhavan in Govindapuram (V) and the Kumili Temple in Kumili (V) of Pusapati Rega (M), Sri Venkateswara Swamy Temple in Gantlam Village of Denkada Mandal etc., besides the Chintapalli Beach are a significant contributor to the economy from the tourism sector.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "5kEqYkUvvaj2sq+wlwjRLw==",
+   "economy_Text": "<p dir=\"ltr\">Nellimarla Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;5,056.6 crores in 2023-24, is poised for robust growth, projected to reach &#8377;10,570 crores by 2028-29, driven by a sustainable annual growth rate of 12-15%. The Economic Vision Plan focuses on leveraging sectoral strengths, enhancing infrastructure, promoting industrial diversification, and boosting employment to establish Nellimarla as a vibrant, investment-friendly economic hub. The <strong>Services Sector</strong>, valued at &#8377;1,874.9 crores in 2023-24 with a growth rate of 17.40%, is expected to reach &#8377;3,979.3 crores by 2028-29, driven by advancements in tourism and service-based enterprises. The <strong>Industries Sector</strong>, contributing &#8377;1,117.9 crores in 2023-24 with a growth rate of 17.90%, is projected to grow to &#8377;2,303 crores by 2028-29, supported by industrial diversification and infrastructure development. The <strong>Agricultural &amp; Allied Sector</strong>, while not detailed in the provided data, contributes to the overall GCDP and is anticipated to align with the constituency&#8217;s growth trajectory, supported by sustainable farming initiatives. This strategic approach aims to foster inclusive and resilient economic progress, positioning Nellimarla as a model constituency in Andhra Pradesh.</p>",
+   "gcdP_Growth_Text": "<p dir=\"auto\">Nellimarla&#8217;s GCDP, at &#8377;5,056.6 crores in 2023-24, is projected to reach &#8377;10,570 crores by 2028-29, with a steady 12-15% annual growth rate. The Services Sector (17.40% growth) and Industries Sector (17.90% growth) drive this economic momentum toward a vibrant future by 2047</p>",
+   "createdDate": "2025-09-05T06:02:39.44"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5056.6,
+   "cagR_Pct": 15.6,
+   "targetAmountCrore": 10570.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1874.9,
+   "cagR_Pct": 17.4,
+   "targetAmountCrore": 3979.3,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1117.9,
+   "cagR_Pct": 17.9,
+   "targetAmountCrore": 2303.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1685.2,
+   "cagR_Pct": 13.1,
+   "targetAmountCrore": 3574.8,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 60,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 40.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 24.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 36.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 60,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 85,
+   "constituencyId": 60,
+   "name": "LOKAM NAGA MADHAVI",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "JANASENA PARTY",
+   "photo": "60\\mla\\60IMAGE2025090313040217619_Nellemarla MLA 24-29.jpg"
+  },
+  {
+   "id": 501,
+   "constituencyId": 60,
+   "name": "Appala Naidu Baddukonda",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 502,
+   "constituencyId": 60,
+   "name": "Pathivada Narayana Swamy Naidu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 503,
+   "constituencyId": 60,
+   "name": "Appalanaidu Baddukonda",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

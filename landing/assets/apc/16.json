@@ -1,0 +1,221 @@
+{
+ "code": 16,
+ "name": "Sullurpeta (SC)",
+ "district": "Tirupati",
+ "logoUrl": "assets/constituencies_logos/sullurpeta (sc).png",
+ "profile": {
+  "population": "314830 (As per Census 2011)",
+  "voterCount": "242704 (As per 2024 Elections)",
+  "area": "1516",
+  "mandals": "Doravarisatram-R,Naidupet-U,Naidupeta-R,Ojili-R,Pellakur-R,Sullurpet-R,Sullurpeta-U,Tada-R",
+  "revenueVillages": "223",
+  "municipal_wards": "50",
+  "municipalities": "Naidupet, Sullurpeta",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Sullurupeta Assembly Constituency, located in Tirupati District, is a key growth hub with a strong base in agriculture, industry, aquaculture, and services. It comprises six mandals&#8212;Sullurupeta, Tada, Doravarisatram, Naidupeta, Ozili, and Pellakuru&#8212;along with two municipalities. The region is culturally significant, housing the famous Sri Chengalamma Temple and Venadu Darga, while also being close to Pulicat Lake, Nelapattu Bird Sanctuary, and Sriharikota (SHAR). Agriculture remains vital, supported by fertile red loamy and sandy soils, irrigation from the Swarnamukhi and Kalangi rivers, and the Telugu Ganga canal. Major crops include paddy, mango, acid lime, groundnut, and chillies, while its 45 km coastal belt supports fisheries and aquaculture. With a population of over 3.1 lakh, Sullurupeta combines cultural heritage with agricultural prosperity.<p><br></p><p>Economically, Sullurupeta is powered by its industrial clusters and SEZs at Menakur, Mambattu, and Ativaram, which host pharmaceutical, textile, chemical, electronics, and footwear companies such as Aurobindo Pharma, Tata Chemicals, Apache Footwear, and Loyal Textiles. The industrial sector contributes nearly 41% to the constituency&#8217;s GVA, while agriculture and services contribute 30% and 29% respectively, giving it a per capita income higher than the district average. Social infrastructure is well-developed, with 14 PHCs, 67 sub-centres, and 311 primary schools, 40 high schools, and multiple colleges providing education and healthcare facilities. Strong connectivity through NH-16, a major railway line, and proximity to Chennai further boost trade and development potential. Guided by the Vision Action Plan 2024&#8211;29, Sullurupeta is poised for inclusive growth, blending tradition, industry, and innovation in line with Swarna Andhra@2047.</p>",
+  "constituencyMap": "16\\MAP\\16IMAGE2025090415462070445_SULLURUPETA MAP.jpg",
+  "geography": "Sullurpeta constiteuncy is located in Tirupati District and spans 1516 Sq. km. Sullurupeta Assembly Constituency is strategically located in Tirupati District, benefiting from its proximity to SHAAR, Nelapattu Bird Sanctuary, Pulicotlake, Chengalamma temple and Venadu Darga and Mix of Red loamy soil , Sandy Soil  .&#10;<p><br></p>",
+  "populationDesc": "The total population is 3,14,830,with approximately 73.87 % residing in rural areas and 26.12 % in urban areas. There are 83,584<p>households, and the sex ratio is 996 females per 1,000 males. The literacy rate stands at 55.73%</p><p><br></p>",
+  "administrationDesc": "Sullurupet Constituency is one of the seven assembly constituencies in Tirupati District.It includes  1.Ojili,2.Naidupeta,3.Pellakur,4.Doravarisatram,5.Sullurpeta,6.Tada. Sullurupet constituency comes under Tirupati Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "The constituency is equipped with, 14 Primary Health Centre&#8217;s (PHCs), and 67 sub-centres, ensuring accessible healthcare services across the region. 311 primary schools, 35 upper primary schools, and 40 high schools,2 Engineering colleges&#10;<p><br></p>",
+  "culturalheritageDesc": "Sri ChengalammaParameswri Temple at Sullurupeta, Venadu Darga at Venadu, Ameershavali Darga at Naidupeta,Nelapattu Bird Sanctuary, Pulicotlake, Bheemulavaripallem, Tada Atakanitippa, Sriharikota SHAR (SrihariKota).&#10;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "kIw4Tly5W1Rg5a5JvI0mIg==",
+   "economy_Text": "Economy at a Glance<br><br>Sullurpeta, located in Tirupati District, is a strategically positioned industrial and economic hub, with <span>industries contributing 64.94% of the GCVA in 2023&#8211;24</span>. The constituency houses major industrial infrastructure including <span>Menakuru, Mambattu, and Athivaram SEZs</span>, spread across over <span>1,300 acres</span>, incorporating a <span>Special Economic Zone (SEZ)</span>&#160;and an <span>Electronic Manufacturing Cluster (EMC)</span>. Its strong connectivity to <span>national highways ( NH-16), rail networks</span>, and proximity to <span>Chennai and Krishnapatnam ports</span> (both within 100 km) enhances its manufacturing and export potential, particularly in electronics and marine products. <br><br>The <span>service sector accounts for 20.35% of the GCVA</span>, driven by logistics, retail, and emerging tourism. A planned <span>tourism circuit</span> linking <span>Nelapattu Bird Sanctuary</span>, <span>Chengalla Parameswari Temple</span>, <span>Venadu Darga</span>, and <span>SHAR (Sriharikota)</span> will further boost eco-tourism and related services. The <span>agriculture and allied sector</span>, contributing <span>14.71% to the GCVA</span>, is supported by <span>aquaculture, marine exports</span>, and upcoming <span>food processing parks</span> specializing in <span>rice milling and seafood processing</span>. As part of the <span>Visakhapatnam&#8211;Chennai Industrial Corridor (VCIC)</span>, the region is also set to benefit from MSME cluster strengthening and infrastructure upgrades. Sullurpeta&#8217;s economic profile reflects a well-integrated growth model&#8212;anchored in industrial development, supported by services, and sustained through agri-based value addition.",
+   "gcdP_Growth_Text": "Sullurpeta is emerging as a strategic growth corridor with a targeted annual GCDP growth driven by high-impact sectors such as manufacturing, logistics, food processing, and eco-tourism. With robust industrial infrastructure, proximity to major ports, and expanding service ecosystems, the constituency is on a transformative path to become a key industrial and innovation hub in Andhra Pradesh by 2047.",
+   "createdDate": "2025-09-06T12:09:47"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 12493.0,
+   "cagR_Pct": 15.95,
+   "targetAmountCrore": 26192.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2663.0,
+   "cagR_Pct": 14.47,
+   "targetAmountCrore": 5236.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 7160.0,
+   "cagR_Pct": 15.92,
+   "targetAmountCrore": 14992.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1734.0,
+   "cagR_Pct": 16.4,
+   "targetAmountCrore": 3706.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 16,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 20.35
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 64.94
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 14.71
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 16,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 418,
+   "constituencyId": 16,
+   "name": "Smt Dr.Nelavala Vijayasree",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 419,
+   "constituencyId": 16,
+   "name": "Sri Kiliveti Sanjeevaiah",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 420,
+   "constituencyId": 16,
+   "name": "Sri Kiliveti Sanjeevaiah",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 421,
+   "constituencyId": 16,
+   "name": "Sri Dr. Parasa Venkata Rathnam",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 422,
+   "constituencyId": 16,
+   "name": "Sri Nelavala Subrahmanyam",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

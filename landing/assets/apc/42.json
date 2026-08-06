@@ -1,0 +1,221 @@
+{
+ "code": 42,
+ "name": "Kalyandurg",
+ "district": "Ananthapur",
+ "logoUrl": "assets/constituencies_logos/kalyandurg.png",
+ "profile": {
+  "population": "280192 (As per Census 2011)",
+  "voterCount": "230785 (As per 2024 Elections)",
+  "area": "1789.69",
+  "mandals": "Bramhasamudram-R, Kalyanadurgam-U, Kalyandurg-R, Kambadur-R, Kundurpi-R, Settur-R",
+  "revenueVillages": "60",
+  "municipal_wards": "24",
+  "municipalities": "Kalyanadurgam",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Kalyandurg Assembly Constituency initially formed in 1951 and restructured in 2008. The region's economy is predominantly agrarian, with agriculture serving as the mainstay for many residents. The fertile lands support the cultivation of various crops, contributing to the local economy. Additionally, the area has seen developments in renewable energy like Solar and Wind. The constituency has a rich historical and cultural heritage, with diverse geographical features and potential for economic growth. Its proximity to nearby towns like Ananthapuramu, Pavagada, Rayadurgam, Bellary and Chellikera makes it well-connected for trade, commerce, and tourism development.",
+  "constituencyMap": "42\\MAP\\42IMAGE2025090515572580232_KALYANADURG MAP.jpg",
+  "geography": "The Kalyandurg Assembly Constituency is located in the western part of Ananthapuramu District, Andhra Pradesh. This prominent constituency in the Rayalaseema region. It shares boundaries with Rapthadu, Rayadurg, Uravakonda constituencies and Karnataka State.<span>The constituency mainly features red soils found in entire constituency.</span><br><p>&#10;</p>",
+  "populationDesc": "According to the 2011 Census, the population of the Kalyandurg Assembly Constituency stands at 2,80,192 people, comprising 1,41,899 males and 1,38,293 females. The sex ratio is 975 females per 1,000 males. The area includes 62,889 households.",
+  "administrationDesc": "Kalyandurg Constituency is one of the eight assembly constituencies in Ananthapuramu district. It includes Bramhasamudram, Kalyandurg, Kambadur, Kundirpi &amp; Setturu mandals and Kalyandurgam Municipality.<br>",
+  "educationHealthcareDesc": "Social infrastructure includes One community health center, 7 primary health centers (PHCs), 59 sub-centers and 5 Ayush dispensaries which are insufficient to meet the growing healthcare needs of the population.&#10;Educational infrastructure comprises 223 government and private primary schools, 57 government and private upper primary school 67 government and private high schools, 5 KGBV schools, 1 Model school, 2 social welfare residential schools, 1 Tribal welfare residential school, 1 backward welfare residential school, one private ITI college, 7 government &amp; private junior colleges, 1 government polytechnic college, 1 government degree college and 2 private degree colleges.&#160;",
+  "culturalheritageDesc": "Kalyandurg is rich in cultural landmarks, such as the Ancient Shri Kamala Malleswara swamy Temple (kambadur), Akkamamba Temple (Kalyandurg), Shri Pattabhi Ramaswamy Temple kota veedhi (kalyandurg), Shri Dona Thimmaraya swamy Temple (Vitlampalli), Shri Aruda Chennamalleswara swamy Temple (sugepalli).&#160;"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "9u6lQ8CC+DX1vjic84RtXw==",
+   "economy_Text": "<p dir=\"ltr\">Kalyandurgam Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;7,139 crores in 2023-24, is projected to grow to &#8377;1,58,771 crores by 2047-48, driven by a robust annual growth rate and advancements in key sectors.&#160;</p><p dir=\"ltr\">The Economic Vision Plan leverages sectoral strengths, infrastructure upgrades, and strategic investments to transform Kalyandurgam into a self-reliant economic hub.&#160;</p><p dir=\"ltr\">The <strong>Services Sector</strong>, valued at &#8377;2,044 crores in 2023-24 with a 15.50% growth rate, is expected to reach &#8377;4,578.48 crores by 2028-29, propelled by service-based enterprises and technological advancements.&#160;</p><p dir=\"ltr\">The <strong>Industries Sector</strong>, contributing &#8377;1,132 crores with a 21.72% growth rate, is forecasted to grow to &#8377;3,098.57 crores by 2028-29, supported by industrial diversification.&#160;</p><p dir=\"ltr\">The <strong>Agricultural &amp; Allied Sector</strong>, at &#8377;3,428 crores with a 15.72% growth rate, is anticipated to expand to &#8377;7,738.71 crores by 2028-29, driven by sustainable agricultural practices.&#160;</p><p dir=\"ltr\">This roadmap ensures inclusive and resilient economic progress for Kalyandurgam.</p>",
+   "gcdP_Growth_Text": "<p dir=\"auto\">Kalyandurgam&#8217;s GCDP, at &#8377;7,139 crores in 2023-24, is projected to soar to &#8377;1,58,771 crores by 2047-48, driven by robust annual growth. The Services (15.50%), Industries (21.72%), and Agricultural &amp; Allied (15.72%) sectors fuel this trajectory toward a self-reliant economic hub</p>",
+   "createdDate": "2025-09-05T12:02:36.603"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7139.0,
+   "cagR_Pct": 15.99,
+   "targetAmountCrore": 16271.2,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2044.0,
+   "cagR_Pct": 15.5,
+   "targetAmountCrore": 4578.48,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1132.0,
+   "cagR_Pct": 21.72,
+   "targetAmountCrore": 3098.57,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3428.0,
+   "cagR_Pct": 15.72,
+   "targetAmountCrore": 7738.71,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 42,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 30.95
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 17.14
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 51.91
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 42,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 870,
+   "constituencyId": 42,
+   "name": "Amilineni Surendra Babu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 871,
+   "constituencyId": 42,
+   "name": "K. V. Ushashri Charan",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 872,
+   "constituencyId": 42,
+   "name": "VUNNAM HANUMANTHARAYA CHOWDARY",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 873,
+   "constituencyId": 42,
+   "name": "NEELAKANTAPURAM RAGHUVEERA REDDY ",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 874,
+   "constituencyId": 42,
+   "name": "B. C. Govindappa",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

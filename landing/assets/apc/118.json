@@ -1,0 +1,197 @@
+{
+ "code": 118,
+ "name": "Pamarru (SC)",
+ "district": "Krishna",
+ "logoUrl": "assets/constituencies_logos/pamarru (sc).png",
+ "profile": {
+  "population": "231510 (As per Census 2011)",
+  "voterCount": "184716 (As per 2024 Elections)",
+  "area": "585.44",
+  "mandals": "Movva-R,Pamarru-R,Pamidimukkala-R,Pedaparupudi-R,Thotlavalluru-R",
+  "revenueVillages": "105",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160;The Pamarru Assembly Constituency Vision&#10;Action Plan 2024&#8211;29 has been meticulously designed to leverage the region&#8217;s&#10;agricultural strength, dynamic industrial base, thriving construction sector,&#10;and robust service economy. This strategic blueprint aligns with Andhra&#10;Pradesh&#8217;s ambitious Swarna Andhra@2047 vision and resonates with the national&#10;agenda of Viksit Bharat@2047.</span></p>&#10;&#10;<p class=\"MsoNormal\"><span lang=\"EN-US\">Pamarru Constituency consists of&#10;five mandals: Pamarru, Movva, Pedaparupudi, Pamidimukkala and Thotlavalluru,&#10;all located in Krishna district, Andhra Pradesh, With Pamarru serving as the&#10;constituency headquarters.</span></p>&#10;&#10;<p class=\"MsoNormal\"><span lang=\"EN-US\">Renowned for its rich cultural&#10;heritage and historical landmarks, Pamarru Constituency is deeply rooted in&#10;agricultural traditions and rural lifestyles that have shaped its identity over&#10;centuries.</span></p>&#10;&#10;<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160;Pamarru Constituency stands out for its&#10;significant contributions to agriculture. Its strategic location with excellent&#10;connectivity to major urban centers like Eluru and Vijayawada enhances its&#10;potential for trade and industrial development. Additionally, its vibrant&#10;cultural heritage positions it as a hub for religious tourism and cultural&#10;preservation, aligning with the constituency&#8217;s goal of achieving a 15% annual&#10;growth rate across all key sectors.</span></p>",
+  "constituencyMap": "118\\MAP\\118IMAGE2025090311303856377_pamarru.jpg",
+  "geography": "<p class=\"MsoNormal\"><span lang=\"EN-US\">Pamarru&#10;spans an area of 592.38 sq. km.</span><b><span lang=\"EN-US\">&#160;</span></b><span lang=\"EN-US\">The region is&#10;characterized by fertile alluvial plains. The Krishna River, a major water source.</span><span lang=\"EN-US\">&#160;</span><span lang=\"EN-US\">The&#10;predominant soil types are Black Cotton (70.5%) and Sandy Clay Loams (22.3%),&#10;with small patches of sandy soils.</span></p>&#10;&#10;<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160;</span></p>&#10;&#10;<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160;</span></p>&#10;&#10;<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160;</span></p>",
+  "populationDesc": "<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160;</span><span>According to the 2011 Census, the&#10;constituency has a total population of 2,31,510, residing in 70,100 households.&#10;Of this population, 1,14,940 are males and 1,16,570 are females, resulting in a&#10;sex ratio of 1,016 females per 1,000 males&#8212;indicating a slightly higher female&#10;population.</span></p>",
+  "administrationDesc": "Pamarru Constituency is one of the seven assembly constituencies in Krishna District. It has Pamarru, Thotlavalluru, Pamidimukkala, Movva, and PedaparupudiMandals",
+  "educationHealthcareDesc": "<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160;The constituency is home to 192 primary schools, 23 upper&#10;primary schools, and 32 high schools, all operating under different managements&#10;to provide quality education to young learners. For higher education, there are&#10;8 junior colleges, 2degree colleges, 1 polytechnical college, 1 Industrial&#10;Training Institute (ITI). Additionally, the area supports students from diverse&#10;backgrounds with 4 social Welfare Hostel.&#160;</span><span>Pamarru boasts a robust&#10;healthcare infrastructure designed to cater to the diverse medical needs of its&#10;residents. The constituency is equipped with 1 Community Health Centers (CHCs),&#10;11 Primary Health Centers (PHCs), and 52 sub-centers, ensuring accessible&#10;healthcare services across the region. Additionally, the area is supported by&#10;4-104 Fixed Day Health Services (FDHS) vehicles and 5-108 ambulance services,&#10;providing critical emergency response capabilities. Veterinary care is also&#10;well-represented with 2 veterinary hospitals and 13 veterinary dispensaries,&#10;addressing the health needs of livestock and pets in the community.</span></p><p class=\"MsoNormal\"><span lang=\"EN-US\"></span></p>",
+  "culturalheritageDesc": "<p class=\"MsoNormal\"><span lang=\"EN-US\">&#160;</span><span>The Kuchipudi KALAKSHETRAM is the world famous among the cultural Dance&#10;category, the Venugopala Swami Temple in Movva Village and nimmakuru village is&#10;the birth place of sri.Nandamuri taraka ramarao garu famous telugu film star,&#10;attracting pilgrims from various states.&#160;</span></p><p></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "UP2uj/BSwGqrdLEMlvpU9Q==",
+   "economy_Text": "<b><font size=\"5\">Pamarru&#8217;s Economy at a Glance&#10;</font></b><p>Pamarru lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;6351.43 crores in 2023-24, Pamarru is projected to expand steadily, reaching &#8377;186198.20 crores by 2047-48 and &#8377;16385.95 crores by 2028-29.  The agriculture and allied sector leads with 49.27% of the GVA. The services sector follows with 34%. The industrial sector is contributing 16.73%.</p>",
+   "gcdP_Growth_Text": "<p><span>Pamarru is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Livestock, Agriculture, and Construction. This growth trajectory aligns with the long-term vision of making the constituency a vibrant &#160;economic hub by 2047.</span></p>",
+   "createdDate": "2025-09-03T13:36:19.563"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6351.43,
+   "cagR_Pct": 31.6,
+   "targetAmountCrore": 16385.95,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1997.79,
+   "cagR_Pct": 35.85,
+   "targetAmountCrore": 5578.77,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 983.18,
+   "cagR_Pct": 17.83,
+   "targetAmountCrore": 1859.59,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2894.78,
+   "cagR_Pct": 20.38,
+   "targetAmountCrore": 5844.43,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 118,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 34.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 16.73
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 49.27
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 118,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 59,
+   "constituencyId": 118,
+   "name": "Varla Kumar Raja",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": "118\\mla\\118IMAGE2025090311405964999_Pamarru_MLA_Photo.jpg"
+  },
+  {
+   "id": 66,
+   "constituencyId": 118,
+   "name": "Kaile Anil Kumar",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party (YSRCP)",
+   "photo": "118\\mla\\118IMAGE2025090311554772074_Pamarru_MLA_Photo.jpg"
+  },
+  {
+   "id": 67,
+   "constituencyId": 118,
+   "name": "Uppuleti Kalpana",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party (YSRCP)",
+   "photo": "118\\mla\\118IMAGE2025090311565442516_Pamarru_MLA_Photo.jpg"
+  },
+  {
+   "id": 68,
+   "constituencyId": 118,
+   "name": "Dovari Yesu Das",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 69,
+   "constituencyId": 118,
+   "name": "Uppuleti Kalpana",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": "118\\mla\\118IMAGE2025090311582894118_Pamarru_MLA_Photo.jpg"
+  }
+ ]
+}

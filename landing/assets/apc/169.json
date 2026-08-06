@@ -1,0 +1,224 @@
+{
+ "code": 169,
+ "name": "Parvathipuram (SC)",
+ "district": "Parvathipuram Manyam",
+ "logoUrl": "assets/constituencies_logos/parvathipuram (sc).png",
+ "profile": {
+  "population": "231584 (As per Census 2011)",
+  "voterCount": "190512 (As per 2024 Elections)",
+  "area": "618.48",
+  "mandals": "Balijipeta-R,Parvathipuram-R,Parvathipuram-U,Seethanagaram-R",
+  "revenueVillages": "132",
+  "municipal_wards": "30",
+  "municipalities": "Parvathipuram",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\">Parvathipuram, the district headquarters of Parvathipuram Manyam, is a municipality established in 1959, spanning 11.24 sq. km with 30 wards. Strategically located in the Eastern Ghats and bordering Odisha, it serves as both district and divisional headquarters, covering 304 sq. km. The region is well-connected by rail through Parvathipuram and Parvathipuram Town stations and by APSRTC services linking major Andhra and Odisha cities; the nearest airport is in Visakhapatnam, 150 km away. Educational institutions include Dr. YSR Horticultural University, Sri Venkateswara Degree College, and reputed schools. Rich in heritage, the constituency houses the 1010 AD Neelakanteswara Temple in Narayanapuram, Kasi Viswanath Temple in Addapusila, and Sri Varaha Lakshmi Narasimha Swamy Temple on the Suvarnamukhi riverbanks. Tourist attractions include Janjavathi Rubber Dam and Thotapalli Reservoir. With fertile red sandy loam soils, crops like paddy, maize, cashew, pulses, and oil palm thrive. Stone mines and sand reaches further boost construction activity, supporting an ambitious 15% growth target across key sectors.</p>",
+  "constituencyMap": "169\\MAP\\169IMAGE2025090311575249084_Parvathipuram.jpg",
+  "geography": "<p class=\"MsoNormal\"><span>The town is situated in the north-eastern part&#10;of Andhra Pradesh, bordering the Constituency of Kurupam to the north. The&#10;region is characterized by its proximity to the Eastern Ghats, offering scenic&#10;views and diverse terrain. The Constituency is bounded by the Komarda Mandal of&#10;Kurupam Constituency to the north, Vizianagaram district to the south, Saluru&#10;Constituency to the west, and Palakonda Constituency to the east.&#160;</span></p>",
+  "populationDesc": "<p class=\"MsoNormal\">The constituency has a total population of 2,31,584 people, comprising 1,14,978 males and 1,16,606 females. The sex ratio stands at 1,015&#160; females for every 1,000 males. There are 59,267 households in the constituency.&#160;</p>",
+  "administrationDesc": "<p class=\"MsoNormal\">Parvathipuram constituency consists of three mandals Balijipeta, Seethanagaram, and Parvathipuram.</p>",
+  "educationHealthcareDesc": "<p class=\"MsoNormal\"><span lang=\"EN-US\">Parvathipuram is a major educational hub,&#10;School education is being strengthened with 272 schools and 60 youth undergoing&#10;skill training under NSDC and PMKVY initiatives. &amp;&#160;</span><span>The healthcare sector includes one District&#10;Hospital, 10 PHCs and 76 Grama /Ward Sachivalayamwith plans to reduce maternal&#10;mortality by 50%, bring infant mortality below 10 per 1,000 live births, and&#10;achieve 100% vaccination coverage. A strong public health infrastructure&#10;ensures access to affordable and quality medical services.</span></p>",
+  "culturalheritageDesc": "<p class=\"MsoNormal\">Parvathipuram constituency is home to several important religious and cultural landmarks that reflect its diversity and heritage. The Kasi Viswanath Temple and Sri Kamalingeswara Swamy Temple are ancient shrines revered for their spiritual significance and traditional architecture. The Sri Venkateswara Swamy Temple serves as another prominent pilgrimage site, drawing devotees from nearby regions. Adding to this cultural fabric, St. Paul&#8217;s Lutheran Church and the Roman Catholic Church highlight the constituency&#8217;s religious harmony and long-standing Christian presence. Together, these temples and churches stand as symbols of faith, history, and communal coexistence, making Parvathipuram a center of both devotion and cultural richness.</p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Pg+ruDo2enF4jRe30vbWzg==",
+   "economy_Text": "<p dir=\"ltr\">Parvathipuram&#8217;s Gross Constituency Domestic Product (GCDP) stood at &#8377;4,406 crores in 2023-24 and is projected to reach &#8377;8,496.00 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of approximately 12-15%. This growth is driven by a strategic vision that leverages sectoral strengths, addresses infrastructure and employment challenges, and promotes industrial diversification. Key initiatives include improving connectivity, fostering eco-tourism, and investing in skill development to create sustainable job opportunities, particularly for tribal and rural communities</p><p dir=\"ltr\"><strong>Sectoral Contributions and Growth</strong></p><ul class=\"tight\" dir=\"ltr\"><li><p dir=\"ltr\"><strong>Services</strong>: Contributes &#8377;2,395.00 crores (2023-24), projected to grow to &#8377;4,436.00 crores by 2028-29 at a growth rate of 14.48%, driven by eco-tourism and trade.</p></li><li><p dir=\"ltr\"><strong>Industry</strong>: Valued at &#8377;346.00 crores (2023-24), expected to reach &#8377;689.00 crores by 2028-29 with a growth rate of 17.00%, fueled by agro-based industries and infrastructure improvements.</p></li><li><p dir=\"ltr\"><strong>Agriculture &amp; Allied</strong>: Accounts for &#8377;1,363.00 crores (2023-24), projected to grow to &#8377;2,726.00 crores by 2028-29 at a growth rate of 15.84%, driven by organic farming and modern agricultural technologies.</p></li></ul>",
+   "gcdP_Growth_Text": "<div><div><p dir=\"auto\">Parvathipuram is driving dynamic economic growth, aiming for a consistent 15% annual Gross Constituency Domestic Product (GCDP) growth rate, fueled by thriving sectors such as agriculture, industry, and eco-tourism. This ambitious trajectory supports a visionary goal to establish Parvathipuram as a vibrant, sustainable economic hub by 2047, promoting investment opportunities, job creation, and inclusive prosperity for its tribal and rural communities.</p></div><section></section><section></section><div></div></div>",
+   "createdDate": "2025-09-04T11:12:26.76"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4406.0,
+   "cagR_Pct": 15.11,
+   "targetAmountCrore": 8496.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2395.0,
+   "cagR_Pct": 14.48,
+   "targetAmountCrore": 4436.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 346.0,
+   "cagR_Pct": 17.0,
+   "targetAmountCrore": 689.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1363.0,
+   "cagR_Pct": 15.84,
+   "targetAmountCrore": 2726.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 169,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 58.92
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 8.08
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 33.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 169,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 47,
+   "constituencyId": 169,
+   "name": "Bonela Vijaya Chandra",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": "169\\mla\\169IMAGE2025090306492321688_Parvathipuram(SC) MLA 24-29.jpg"
+  },
+  {
+   "id": 708,
+   "constituencyId": 169,
+   "name": "Alajangi Jogarao",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 710,
+   "constituencyId": 169,
+   "name": "Bobbili Chiranjeevulu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 714,
+   "constituencyId": 169,
+   "name": "Savarapu Jayamani",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

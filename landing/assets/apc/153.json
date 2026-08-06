@@ -1,0 +1,197 @@
+{
+ "code": 153,
+ "name": "Kurnool",
+ "district": "Kurnool",
+ "logoUrl": "153\\Logo\\153IMAGE2026061015113898097_konda reddy buruzu.png",
+ "profile": {
+  "population": "339529 (As per Census 2011)",
+  "voterCount": "274557 (As per 2024 Elections)",
+  "area": "114",
+  "mandals": "Kurnool-U",
+  "revenueVillages": "2",
+  "municipal_wards": "52",
+  "municipalities": "Kurnool",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The overall Kurnool Constituency is a urbanized municipal corporation. It is located in the Kurnool district of Andhra Pradesh, with Kurnool serving as the headquarters.&#10;Kurnool is situated on the southern banks of the Tungabhadra and Hundri rivers in the central west part of Andhra Pradesh. Kurnool was the former capital of Andhra Pradesh from 1953 until 1956. It is the headquarters of the district. It is developed as transit place on the southern banks of the river Tungabhadra and was commonly known as &#8216;Kandenavolu&#8217;. It was a greasing place for the carts which used to transport stone for the construction of temples at Alampur from which the name &#8216;Kandenavolu&#8217; was derived. Kurnool is renowned for Kondareddy fort also known as Kondareddy Buruju is a fort situated in the city of Kurnool at a distance of 2 km from Kurnool Railway Station, 2.9 km from Kurnool New Bus Stand. Kurnool is famous for devotional Sai Baba temple also known for Dakshina shiridi located on the banks of river Thungabadra, The Jumma Masjid in Kurnool is a significant 17th-century mosque known for its impressive architecture and historical importance. It's believed to have been built by Madu Qadiri, a governor serving Adil Shah, and is considered a landmark in Kurnool. The mosque features beautiful minarets, domes, and spacious prayer halls, it acts as a sacred place for Kurnool muslim community peoples. Coles Centennial Telugu Baptist Church, located in Kurnool, has a rich history dating back to 1918. &#10;Kurnool stands out for its significant contributions to allied in agriculture sector, industry and service sector. Its strategic location, with excellent connectivity to major metropolitan cities like Hyderabad and Bangalore, enhances its potential for trade and industrial development. Additionally, its urbanized development makes the constituency to achieve an ambitious annual growth target of 15% across all key sectors.&#10;<br>",
+  "constituencyMap": "153\\MAP\\153IMAGE2025090416022422277_KURNOOL MAP.jpg",
+  "geography": "Kurnool spans an area of 114 sq. km. It shares boundaries with Panyam and Kodumuru constituencies, and it is totally classified as urban which consists of 34 wards in the Kurnool district of Andhra Pradesh. Kurnool has a hot semi-arid climate, characterized by extremely hot summers, moderate monsoon rains, and mild winters.<p>&#10;</p>",
+  "populationDesc": "Population (2011 Census): 3,05,981 people, with 1,52,282 males and 1,53,699 females. The sex ratio stands at 1009 females per 1,000 males.&#10;Households: There are 68,352 households.&#10;<br><p>&#10;</p>",
+  "administrationDesc": "Kurnool Constituency is one of the seven assembly constituencies in Kurnool  District. It is the major Major Municipal Corporation.",
+  "educationHealthcareDesc": "Kurnool boasts a robust healthcare infrastructure designed to cater to the diverse medical needs of its residents. The constituency is equipped with 1 Tertiary Hospital, 13 Urban Health Centers (UPHCs).Veterinary care is also well-represented with 1 veterinary hospitals addressing the health needs of livestock and pets in the community. The constituency is home to 70 primary schools, 14 upper primary schools, and 29 high schools, all operating under different managements to provide quality education to young learners. For higher education, there are 23 junior colleges, 3 degree colleges, 1 Industrial Training Institute (ITI), 1 Medical College, 1 D.Ed college, 1 B.Ed college and for specializations in different streams the constituency has 4 Post Graduation colleges.",
+  "culturalheritageDesc": "&#160;Kurnool boasts iconic heritage sites like the 12th-century Konda Reddy Fort, Jumma Masjid, and the Coles Centennial Baptist Church.&#10;Important religious centers such as Shirdi Sai Baba Temple (Dakshina Shirdi) and Roja Dargah draw devotees from multiple faiths, reflecting strong interfaith cultural harmony.&#10;<br>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "IJ3142ET7PyOAtBnvEOBCg==",
+   "economy_Text": "<p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The <strong>Kurnool Economic Vision Plan 2024-2029</strong> aims to transform Kurnool into a sustainable, inclusive, and high-growth economic hub in Andhra Pradesh, aligning with the <strong>Swarna Andhra @2047</strong> vision.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">By leveraging its dominant services sector (85.24% of GVA, projected to reach &#8377;17,305 crores by 2028-29), emerging industrial potential (13.98% of GVA, &#8377;2,696 crores), and allied agricultural activities (0.78% of GVA, &#8377;113 crores), Kurnool&#8217;s GCDP is expected to grow from &#8377;9,306 crores in 2023-24 to &#8377;21,603 crores by 2028-29, with per capita income rising from &#8377;2,28,217 to &#8377;5,16,887.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">Key growth drivers include infrastructure modernization, digital transformation, MSMEs, renewable energy, and tourism, supported by thrust areas such as industrial diversification, agricultural modernization, and inclusive development through skill hubs and financial inclusion.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">By 2029, Kurnool will establish itself as a resilient economic hub, with a long-term GCDP target of &#8377;2,67,672 crores by 2047, setting a benchmark for economic and social excellence.</font></p>",
+   "gcdP_Growth_Text": "<font size=\"4\" face=\"Times New Roman\"><strong>Kurnool&#8217;s 2024&#8211;2029 focus</strong> is on <strong>service-led growth with industry diversification and agricultural resilience</strong>, positioning the district as a <strong>financial, logistics, and tourism hub</strong> while ensuring inclusive rural development</font>",
+   "createdDate": "2025-09-05T21:14:08.077"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9306.0,
+   "cagR_Pct": 19.81,
+   "targetAmountCrore": 21603.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 7338.0,
+   "cagR_Pct": 20.18,
+   "targetAmountCrore": 17305.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1204.0,
+   "cagR_Pct": 19.39,
+   "targetAmountCrore": 2696.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 67.0,
+   "cagR_Pct": 11.96,
+   "targetAmountCrore": 113.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 153,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 85.24
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 13.98
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 0.78
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 153,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 483,
+   "constituencyId": 153,
+   "name": "T.G. Bharath",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 484,
+   "constituencyId": 153,
+   "name": "M. A. Hafeez Khan",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 485,
+   "constituencyId": 153,
+   "name": "S. V. Mohan Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": " YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 487,
+   "constituencyId": 153,
+   "name": "T. G. Venkatesh",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 488,
+   "constituencyId": 153,
+   "name": "M. Abdul Gafoor",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "CPI(M)",
+   "photo": ""
+  }
+ ]
+}

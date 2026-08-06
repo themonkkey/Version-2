@@ -1,0 +1,224 @@
+{
+ "code": 172,
+ "name": "Visakhapatnam West",
+ "district": "Visakhapatnam",
+ "logoUrl": "assets/constituencies_logos/visakhapatnam west.png",
+ "profile": {
+  "population": "123802 (As per Census 2011)",
+  "voterCount": "213912 (As per 2024 Elections)",
+  "area": "83.52",
+  "mandals": "Gvmc (Visakhapatnam)-U",
+  "revenueVillages": "7",
+  "municipal_wards": "14",
+  "municipalities": "GVMC (Visakhapatnam)",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Visakhapatnam West Assembly Constituency Vision Action Plan 2024&#8211;29 aims to harness its industrial base, construction growth, and service sector, aligning with Andhra Pradesh&#8217;s Swarna Andhra @ 2047 and the national Viksit Bharat @ 2047 agenda. Formed on 03.04.2018 through AP Gazette No.24/2018, it comprises Gopalapatnam and Mulagada mandals, carved from Visakhapatnam Urban and Rural mandals, spanning 83.52 sq. km. Bordered by Visakhapatnam South, Pendurthi, Visakhapatnam North, and Gajuwaka constituencies, it hosts HPCL, Hindustan Shipyard, Naval Dockyard, maritime port, several PSUs, and Visakhapatnam Airport. With livelihoods driven by industry and services, the constituency plays a pivotal role in Visakhapatnam&#8217;s urban and economic development, fostering balanced industrial and infrastructural growth.",
+  "constituencyMap": "172\\MAP\\172IMAGE2025090511193926849_vizag west map.png",
+  "geography": "Visakhapatnam West Assembly Constituency is strategically located in Visakhapatnam District benefiting from its proximity to Visakhapatnam port authority, as the major large-scale industries are located in this area industrial sector is playing a major role.&#160;",
+  "populationDesc": "Visakhapatnam West has a total population of 2,38,992 and&#160; 87,663 households, with a sex ratio of 983 females per 1,000 males.",
+  "administrationDesc": "Visakhapatnam West constituency Consists of 2 Mandals i.e., Gopalapatnam Mandal and Mulagada Mandal Which were originated from Visakhapatnam Urban and Visakhapatnam Rural mandals and these mandals were formed on 03.04.2018 vide AP Gazette Issue No.24/2018 of Government of Andhra Pradesh.",
+  "educationHealthcareDesc": "Visakhapatnam West is a key educational hub with 201 schools, 100+ smart classrooms, 18 junior colleges, 5 vocational colleges, 8 degree colleges, 1 B.Ed college, and 2 polytechnic colleges. Healthcare infrastructure includes 16 UPHCs, 120 sub-centers, 1 CHC, and 4 AYUSH dispensaries, with targets to cut maternal mortality by 15%, reduce infant mortality below 10 per 1,000 births, and achieve universal vaccination. Strong public health facilities ensure affordable, quality services. The constituency also promotes sports with open grounds equipped with floodlights at Durga Nagar ASR Colony and Siddharth Nagar, along with an indoor stadium at Gopalapatnam ZP High School.",
+  "culturalheritageDesc": "<p>Visakhapatnam West Constituency emphasizes environmental conservation through afforestation programs, eco-friendly initiatives, and effective waste management and sanitation systems to ensure a clean, healthy environment. The region is also noted for its cultural and spiritual richness, housing landmarks such as the Sagar Giri Kanaka Durga Temple, Gurudwara Singh Sabha, Gurudwara Nanak Darbar, and Oriya Bhavan, which hosts social gatherings representing diverse religious communities across India. Additionally, the Odiya School at Hindustan Shipyard provides education up to 5th class, reflecting the constituency&#8217;s inclusive spirit. Together, these aspects highlight Visakhapatnam West&#8217;s cultural integrity and commitment to sustainable development.</p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "UidbTdxActWwIDSIIvn8/Q==",
+   "economy_Text": "<p><span>Visakhapatnam West&#8217;s Gross Constituency Domestic Product (GCDP) stood at &#8377;17,534.00 crores in 2023-24 and is projected to reach &#8377;34,246.00 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of approximately 12-15%. This growth is driven by a strategic vision that leverages sectoral strengths, addresses manufacturing and construction challenges, and promotes industrial diversification. Key initiatives include improving infrastructure, fostering tourism, and investing in skill development to create sustainable employment opportunities</span></p><p><span><b>Sectoral Contributions and Growth:&#160;</b></span></p><p><span><b><i>Services:</i></b> Contributes &#8377;5,291.00 crores (2023-24), projected to grow to &#8377;15,068.00 crores by 2028-29 at a growth rate of 18.66%, driven by tourism, IT, and skill-based services.</span></p><p><span><b><i>Industry:</i></b> Valued at &#8377;10,818.00 crores (2023-24), expected to reach &#8377;17,017.00 crores by 2028-29 with a growth rate of 11.99%, fueled by manufacturing diversification and infrastructure improvements.</span></p><p><span><b><i>Agriculture &amp; Allied:</i></b> Accounts for &#8377;98.00 crores (2023-24), projected to decline to &#8377;51.00 crores by 2028-29 at a growth rate of -14.17%, due to challenges in rural productivity and limited arable land.&#160;</span></p><p><span>This multi-sectoral approach positions Visakhapatnam West as a beacon of sustainable economic development in Andhra Pradesh.</span></p>",
+   "gcdP_Growth_Text": "<p><span>Visakhapatnam West is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like Industrial, tourism, Skill Sectors. This growth trajectory aligns with the long-term vision of making the constituency a vibrant urban and economic hub by 2047.</span></p>",
+   "createdDate": "2025-09-04T05:58:23.62"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 17534.0,
+   "cagR_Pct": 14.32,
+   "targetAmountCrore": 34246.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 5291.0,
+   "cagR_Pct": 23.28,
+   "targetAmountCrore": 15068.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 10818.0,
+   "cagR_Pct": 9.48,
+   "targetAmountCrore": 17017.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 98.0,
+   "cagR_Pct": 0.0,
+   "targetAmountCrore": 51.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 172,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 67.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 0.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 172,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 617,
+   "constituencyId": 172,
+   "name": "P. G. V. R. Naidu (Gana Babu)",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 619,
+   "constituencyId": 172,
+   "name": "P. G. V. R. Naidu (Gana Babu)",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 620,
+   "constituencyId": 172,
+   "name": "P. G. V. R. Naidu (Gana Babu)",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 623,
+   "constituencyId": 172,
+   "name": "Malla Vijaya Prasad",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

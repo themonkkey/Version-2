@@ -1,0 +1,212 @@
+{
+ "code": 66,
+ "name": "Anakapalli",
+ "district": "Anakapalli",
+ "logoUrl": "assets/constituencies_logos/anakapalle.png",
+ "profile": {
+  "population": "254199 (As per Census 2011)",
+  "voterCount": "213714 (As per 2024 Elections)",
+  "area": "352",
+  "mandals": "Anakapalli-R,Gvmc (Anakapalli)-U,Kasimkota-R",
+  "revenueVillages": "62",
+  "municipal_wards": "5",
+  "municipalities": "Gvmc (Anakapalli)",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "&#160;Anakapalli Constituency consists of two Mandals, Anakapalli Constituency, Kasimkota, and one zone of Greater Visakhapatnam Municipal Corporation. Anakapalli Constituency serves as the headquarters of the Anakapalli Constituency District of Andhra Pradesh. Renowned for its rich cultural heritage and historical landmarks, Anakapalli Constituency is famous for the Sri Nookambika temple, and the constituency also features the ancient Buddhist rock-cut caves, both Bojjanna Konda and Lingala Konda at Sankaram village, which date back to the second century, maintained by the Archaeological Survey of India. Anakapalli Constituency stands out for its significant contributions to agriculture. Its strategic location, with excellent connectivity to major urban centers like Anakapalli and Visakhapatnam, enhances its potential for trade and industrial development. Additionally, its rich cultural heritage makes it a significant hub for religious tourism and cultural preservation, positioning the constituency to achieve an ambitious annual growth target of 15% across all key sectors.",
+  "constituencyMap": "66\\MAP\\66IMAGE2025090320585994714_Anakapalli.jpg",
+  "geography": "<div>The constituency, spread over 352 sq. km in Anakapalli district, lies along NH-16 and the Chennai&#8211;Howrah railway line, sharing borders with Chodavaram and Pendurthi. It has 111 habitations in 62 revenue villages, with a population of 2,54,199 and 66% literacy (2011 census). The Sarada River flows north to south on its eastern side.</div><div>&#10;</div>",
+  "populationDesc": "The constituency has a total population of 2,54,199, comprising 1,25,495 males and 1,28,704 females. The sex ratio stands at 1,034 females for every 1,000 males. There are 66,341 households in the constituency.&#160;",
+  "administrationDesc": "The Anakapalli Constituency comprises two rural mandals Anakapalli and Kasimkota, along with the Anakapalli Municipality, which serves as its urban center.",
+  "educationHealthcareDesc": "<p><span>Anakapalli Constituency has a strong healthcare and education network. Medical facilities include 1 District Hospital (NTR Hospital), 4 PHCs, 4 UPHCs, 2 AYUSH Hospitals, and 73 Sub-centers, supported by 4 FDHS vehicles and 2 emergency ambulances. Education is equally robust, with 140 primary schools, 54 high schools, 23 junior colleges, 9 degree colleges, 4 ITIs, 5 polytechnics, and 2 engineering colleges. Student support infrastructure features 1 BC Girls Hostel, 4 BC Boys Hostels, 1 SC Boys Hostel, 4 AP Residential Hostels, and 1 Integrated Girls&#8217; Hostel, ensuring access to quality education and opportunities for learners across diverse backgrounds.</span></p>",
+  "culturalheritageDesc": "Anakapalli Constituency is culturally vibrant, housing several notable heritage sites and places of worship. The revered Nookambika Temple and Padamatamma Temple attract devotees from across the region, while the ancient Bojjanna Konda Buddhist Stupa, maintained by the Archaeological Survey of India, stands as a testament to its Buddhist legacy. Other significant religious landmarks include the Suryanarayana Murthy Temple at Rajupalem, the Satyanarayana Swamy Hill Temple in Satyanarayanapuram, and the Padamatamma Lova in Vissanapeta Village, a hamlet of Bayyavaram. Together, these sites reflect the constituency&#8217;s rich cultural heritage and its importance as a spiritual hub."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "fpiA/lJtYHTQKWQXZC8Ctg==",
+   "economy_Text": "<p dir=\"ltr\">Anakapalle Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;5,874 crores in 2022-23, is poised for robust economic growth, projected to reach &#8377;<span>12,961</span>&#160;crores by 2028-29. The Economic Vision Plan emphasizes sustainable development across agriculture, industry, and services sectors by leveraging local strengths, addressing infrastructure gaps, promoting industrial diversification, and expanding tourism.</p><b><p><b>Sector-Wise Economic Overview</b></p></b><ul class=\"tight\" dir=\"ltr\"><li><p dir=\"ltr\"><strong>Services Sector</strong>: Contributes &#8377;2,765 crores (2023-24) with a growth rate of 21.12%, expected to reach &#8377;5,293 crores by 2028-29.</p></li><li><p dir=\"ltr\"><strong>Industries Sector</strong>: Valued at &#8377;2,043 crores (2023-24) with a growth rate of 22.39%, projected to grow to &#8377;4,032 crores by 2028-29.</p></li><li><p dir=\"ltr\"><strong>Agricultural &amp; Allied Sector</strong>: Stands at &#8377;1,350 crores (2023-24) with a growth rate of 23.65%, anticipated to reach &#8377;2,743 crores by 2028-29.</p></li></ul>",
+   "gcdP_Growth_Text": "<p dir=\"ltr\">Anakapalli is experiencing robust economic growth, targeting a consistent 15% annual GCDP growth rate across its core sectors: agriculture, industry, and services. This ambitious trajectory supports the long-term vision of transforming the constituency into a dynamic urban and economic hub by 2047, fostering sustainable development, job creation, and inclusive prosperity.</p>",
+   "createdDate": "2025-09-04T14:50:54.397"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6656.0,
+   "cagR_Pct": 19.0,
+   "targetAmountCrore": 12961.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2765.0,
+   "cagR_Pct": 21.12,
+   "targetAmountCrore": 5293.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2043.0,
+   "cagR_Pct": 22.39,
+   "targetAmountCrore": 4032.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1350.0,
+   "cagR_Pct": 23.65,
+   "targetAmountCrore": 2743.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 66,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 45.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 33.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 22.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 66,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 16,
+   "sectorName": "Forest & Eco Tourist Sites",
+   "description": "Conservation-based tourism, trekking trails, and forest-based livelihood development.",
+   "imageUrl": "assets/img/sectors/forest-eco-tourist-sites.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 167,
+   "constituencyId": 66,
+   "name": "Konathala Ramakrishna",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Janasena Party",
+   "photo": ""
+  },
+  {
+   "id": 168,
+   "constituencyId": 66,
+   "name": "Gudivada Amarnath",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 891,
+   "constituencyId": 66,
+   "name": "Peela Govinda Satyanarayana",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": " Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 892,
+   "constituencyId": 66,
+   "name": "Ganta Srinivasa Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

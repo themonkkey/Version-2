@@ -1,0 +1,188 @@
+{
+ "code": 78,
+ "name": "Mandapeta",
+ "district": "East Godavari",
+ "logoUrl": "assets/constituencies_logos/mandapeta.png",
+ "profile": {
+  "population": "265944 (As per Census 2011)",
+  "voterCount": "220563 (As per 2024 Elections)",
+  "area": "295.63",
+  "mandals": "Kapileswarapuram-R,Mandapet-U,Mandapeta-R,Rayavaram-R",
+  "revenueVillages": "39",
+  "municipal_wards": "30",
+  "municipalities": "Mandapet",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoNormal\">Mandapeta is located in the East Godavari district of Andhra&#10;Pradesh, serving as the headquarters. Mandapeta municipality, was originally&#10;known as &#34;Mandavyapuram&#34; after Sage Mandukya. It gained municipal&#10;status on October 1, 1958, marking an important milestone in its development.&#10;The Mandapeta Assembly Constituency Vision Action Plan 2024-29 aims to harness&#10;the constituency's agricultural strength, industrial base, and service sector.&#10;Aligned with Andhra Pradesh's Swarna Andhra@2047 vision and India's Viksit&#10;Bharat@2047 agenda, the plan focuses on balanced development. - Location:&#10;Mandapeta constituency spans 295.63 sq. km in East Godavari constituency's agricultural strength, industrial base, and service sector.&#10;Aligned with Andhra Pradesh's Swarna Andhra@2047 vision and India's Viksit&#10;Bharat@2047 agenda, the plan focuses on balanced development. - Location:&#10;Mandapeta constituency spans 295.63 sq. km in East Godavari district, Andhra&#10;Pradesh.The Mandapeta Assembly Constituency Vision Action Plan 2024-29 aims to&#10;harness the</p><p>&#10;&#10;</p><p class=\"MsoNormal\">Agriculture: Fertile alluvial soil supports extensive paddy&#10;cultivation, making Mandapeta a significant agricultural hub. Water Resources:&#10;The Godavari River System is a crucial irrigation source.</p><p><br></p><p>&#10;</p><p>&#10;</p><p>&#10;</p>",
+  "constituencyMap": "78\\MAP\\78IMAGE2025090411472653378_mandapeta map.jpg",
+  "geography": "Mandapeta constituency is located to East Godavari district.  spans 295.63 sq km&#160; It shares boundaries with Kothapeta, Ramachandrapuram, Anaparthi, Rajanagaram and Rajamahendravaram rural&#160; constituencies.",
+  "populationDesc": "The total Population 2,68,374 (2011 Census):&#160; people, 1,33,478 males and 1,34,896 females.&#160; The sex ratio stands at 1008 females per 1,000 males.",
+  "administrationDesc": "<p class=\"MsoNormal\">Mandapeta Constituency is one of the assembly constituencies&#10;in East Godavari District three mandals: Mandapeta, Kapileswarapuram, Rayavaram&#10;One municipality: Mandapet.&#160;</p>",
+  "educationHealthcareDesc": "2 Community Health Centres (CHCs), 9 Primary Health Centres (PHCs), 37 sub-Centres &amp;142 primary schools, 52 upper primary schools, and 52 high schools, 15 junior colleges, 6-degree colleges, and 1 Industrial Training Institute (ITI).&#160;",
+  "culturalheritageDesc": "1.&#9;Ayyappa swamy temple, Dwarapudi,2.&#9;Sri Balatripura Sundari Sametha Agasteswara Kailaseswara Swamy Temple ,4. Sangameswara temple &amp;1.&#9;The Zamindari Board Middle School in Kapileswarapuram,2.&#9;Dhanamma Marri,3.&#9;The Tapeswaram Kaja"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "ry9jY0rNAbfP/oDBKskgUw==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Mandapeta&#8217;s Economy at a Glance</h2><span><span><p><span><span><br></span></span></p>Mandapeta's Economic Vision Plan charts a roadmap for rapid economic growth, job creation, and inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;6,375 crores (2023-24), the constituency aims to achieve a remarkable GCDP of &#8377; 13133 crores by 2028-29. </span></span><span>The&#10;industrial sector accounts for&#160;</span><span><span>16.94</span></span><span>%, agriculture and allied activities&#10;contribute&#160;</span><span><span>46.86</span></span><span>% and service sector contributes&#160;</span><span><span>36.20</span></span><span>%.</span><p class=\"MsoNormal\"><span></span></p>",
+   "gcdP_Growth_Text": "<span>Mandapeta is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like livestock, real estate, manufacturing and agriculture. </span><span>This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-05T05:47:12.77"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6375.0,
+   "cagR_Pct": 15.59,
+   "targetAmountCrore": 13133.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2135.0,
+   "cagR_Pct": 16.14,
+   "targetAmountCrore": 4504.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 999.0,
+   "cagR_Pct": 15.08,
+   "targetAmountCrore": 2017.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1651.0,
+   "cagR_Pct": 9.57,
+   "targetAmountCrore": 17835.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 78,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 36.2
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 16.94
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 46.86
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 78,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 321,
+   "constituencyId": 78,
+   "name": "Sri Vegulla Jogeswara Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 324,
+   "constituencyId": 78,
+   "name": "Sri Vegulla Jogeswara Rao",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 325,
+   "constituencyId": 78,
+   "name": "Sri Vegulla Jogeswara Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 326,
+   "constituencyId": 78,
+   "name": " Sri Vegulla Jogeswara Rao",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

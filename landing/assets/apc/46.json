@@ -1,0 +1,209 @@
+{
+ "code": 46,
+ "name": "Dhone",
+ "district": "Nandyala",
+ "logoUrl": "assets/constituencies_logos/dhone.png",
+ "profile": {
+  "population": "282650 (As per Census 2011)",
+  "voterCount": "227351 (As per 2024 Elections)",
+  "area": "1104",
+  "mandals": "Bethamcherla-R,Bethamcherla-U,Dhone-R,Dhone-U,Peapully-R",
+  "revenueVillages": "46",
+  "municipal_wards": "55",
+  "municipalities": "Bethamcharla, Dhone",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p><span><br></span></p><span>T</span><span>he Dhone constituency</span><span>&#160;is situated in the Nandyal district, Andhra Pradesh.&#160;</span><span>It</span><span>&#160;was established in 1951 following the Delimitation Orders</span><span>, 1951</span><span>.</span><span>&#160;T</span><span>he Dhone Assembly Constituency comprises&#160;</span><b><span>Dhone municipality, Bethamcherla Nagara panchayat</span></b><span>&#160;and&#160;</span><span>three diverse and strategically important mandals&#160;</span><b><span>viz.,&#160;</span></b><b><span>Dhone, Peapully&#160;and Bethamcherla</span></b><span>.</span><span>&#160;</span><span>Each of these mandals&#160;</span><span>and urban local bodies&#160;</span><span>add a unique dimension to the constituency&#8217;s overall character, contributing to its socio-economic and cultural fabric.</span><p><span>The Dhone constituency represents a dynamic blend of urban growth, agricultural activity and industrial potential. With continued focus on development and sustainability, the region holds promise for a more resilient and prosperous future.The combination of terrain, climate&#160;and resource availability plays a crucial role in shaping the economic and agricultural activities of the Dhone constituency.&#160;</span></p><p><span>The Dhone constituency is rich in natural landscapes, religious heritage&#160;and artisanal&#160; traditions.&#160;</span><span>From sacred caves and ancient temples to sustainable&#160;</span><span>water bodies&#160;</span><span>and stone craft, the region presents a vibrant blend of environmental beauty and cultural depth.&#160;</span><span>These assets not only define local identity but also offer potential for eco-cultural tourism and community-based development. Its&#160;</span><span>location on NH-44 and being a railway junction with&#160;</span><span>proximity to nearby&#160;</span><span>cities</span><span>&#160;like Kurnool, Nandyala and Ananthapur makes it well-connected for trade, commerce and tourism development.</span></p>",
+  "constituencyMap": "46\\MAP\\46IMAGE2025090310542376730_DHONE map.jpg",
+  "geography": "<b>Dhone</b> islocated in the south-central part of Andhra Pradesh. It lies to the west of the Nandyal district headquarters and is well connected by road&#160; and rail to nearby towns and cities. It shares boundaries with Banaganapalle, Panyam, Pattikonda and Guntakal constituencies.",
+  "populationDesc": "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"646\"><tbody><tr height=\"72\">&#10;  <td height=\"72\" class=\"xl65\" width=\"646\">Population&#10;  (2011 Census): <br>282650 people,with 142597(50.45%)male and&#10;  140053(49.55%)females.<br>The sex ratio stands at 982 females per 1,000males<br>Households:There are 63,940 households.</td></tr></tbody></table>",
+  "administrationDesc": "The Dhone Assembly Constituency comprises Dhone municipality,Bethamcherla Nagara panchayatand three diverse and strategically important mandals viz., Dhone, Peapully and Bethamcherla.<br>",
+  "educationHealthcareDesc": "Dhone Assembly Constituency consists of&#160;7 Health Centers and 58 sub-centers, 3 veterinary hospitals4 ITI college and 1 Polutechnic college,1 Veterinary College<br>",
+  "culturalheritageDesc": "<span>Culturally, Dhone is known for its ancient temples like Maddileti Swamy and&#160;Muchatla Mallikarjuna Swamy.Sites like Bilva Swargam caves and Valmiki Caves&#160;add environmental and religious significance&#160;</span><span>&#160;</span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "RWoZE2kXHlw4RECBTMPmdA==",
+   "economy_Text": "<p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The Economic Vision Plan for Dhone (2024-2029) aims to transform its agrarian economy into a diversified, sustainable, and resilient economic hub, projecting a Gross Constituency Domestic Product (GCDP) growth from &#8377;7,409 crores in 2023-24 to &#8377;14,468 crores by 2028-29, with an annual growth rate of 15%.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The plan focuses on modernizing agriculture through crop diversification, irrigation upgrades, and organic farming, while expanding the industry sector via food processing, mining, and industrial estates, and boosting the services sector through tourism and digital transformation.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">Key strategies include infrastructure development, skill enhancement, and policy reforms to leverage local strengths like agriculture, minerals, and heritage tourism.</font></p>",
+   "gcdP_Growth_Text": "<font face=\"Times New Roman\" size=\"4\"><span>Dhone is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,&#160;</span><span>infrastructure, manufacturing and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant industrial and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span></font>",
+   "createdDate": "2025-09-05T06:34:36.39"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7409.0,
+   "cagR_Pct": 14.44,
+   "targetAmountCrore": 14468.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2391.0,
+   "cagR_Pct": 14.35,
+   "targetAmountCrore": 4660.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1072.0,
+   "cagR_Pct": 18.05,
+   "targetAmountCrore": 2450.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3391.0,
+   "cagR_Pct": 13.41,
+   "targetAmountCrore": 6335.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 46,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 34.89
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 15.64
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 49.47
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 46,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 42,
+   "constituencyId": 46,
+   "name": "Sri Kotla Jaya Surya Prakash Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": "46\\mla\\46IMAGE2025090218431299258_dhone.png"
+  },
+  {
+   "id": 115,
+   "constituencyId": 46,
+   "name": "Buggana Rajendranath Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 116,
+   "constituencyId": 46,
+   "name": "Buggana Rajendranath",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 117,
+   "constituencyId": 46,
+   "name": "K. E. Krishna Murthy\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 118,
+   "constituencyId": 46,
+   "name": "Kotla Sujathamma",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

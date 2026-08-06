@@ -1,0 +1,224 @@
+{
+ "code": 58,
+ "name": "Saluru (ST)",
+ "district": "Parvathipuram Manyam",
+ "logoUrl": "assets/constituencies_logos/salur (st).png",
+ "profile": {
+  "population": "250983 (As per Census 2011)",
+  "voterCount": "204489 (As per 2024 Elections)",
+  "area": "1173",
+  "mandals": "Makkuva-R,Mentada-R,Pachipenta-R,Salur-R,Saluru-U",
+  "revenueVillages": "235",
+  "municipal_wards": "29",
+  "municipalities": "Saluru",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p><span>Saluru Assembly Constituency, located within the core area of Parvathipuram Manyam district, plays a significant role in the construction, education, innovation, commerce, and service sectors, positioning it to achieve an ambitious annual growth target of 15% across key areas. Saluru is a municipality established on October 3, 1950, as a 3rd Grade Municipality and upgraded to 2nd Grade in 2001. The constituency comprises Saluru, Makkuva, and Pachipenta mandals of Parvathipuram Manyam district, along with Mentada mandal of Vizianagaram district. Connectivity is strong, with the Saluru&#8211;Bobbili rail route spanning 16.45 km and served daily by the Saluru&#8211;Bobbili Railbus, while APSRTC buses link the town to major Andhra and Odisha cities, and Visakhapatnam Airport lies 150 km away. The region is rich in culture and tourism, with temples like Sri Pancha Mukheswara Swamy Temple in Saluru and Sri Polamamba Ammavari Temple in Sambara, alongside scenic waterfalls that attract visitors from neighboring districts and Odisha. Saluru also supports education with institutions such as the Government Degree College and several reputed schools offering diverse curricula, reflecting its growing role as a hub of both learning and heritage.</span></p>",
+  "constituencyMap": "58\\MAP\\58IMAGE2025090613072914954_Salur_1.jpg",
+  "geography": "<p><span>Saluru Constituency, located in the northwestern part of Andhra Pradesh, shares its boundaries with Parvathipuram Mandal of Parvathipuram Constituency to the north, Seethanagaram Mandal of Manyam district and Rambhadrapuram&#8211;Gajapathinagaram of Vizianagaram district to the east, Odisha state to the west, and Gajapathinagaram Constituency to the south. The region lies close to the Eastern Ghats, characterized by scenic hills, diverse terrain, and rich natural resources. Extensive forest cover supports biodiversity, while numerous water bodies contribute to agriculture and tourism. These features enhance the ecological significance of the constituency while sustaining local livelihoods.</span></p>",
+  "populationDesc": "<p><span>Saluru Constituency had a population of 2,50,983, with 80% residing in rural areas and 20% in urban areas. The constituency has 62,001 householdswith a sex ratio of 1,033 females for every 1,000 males.</span></p>",
+  "administrationDesc": "<p><span>Saluru Assembly Constituency, located in Parvathipuram Manyam district, is made up of four mandals&#8212;Saluru, Pachipenta, Mentada, and Makkuva&#8212;and includes one urban local body, the Salur Municipality,</span></p>",
+  "educationHealthcareDesc": "<p><span>Saluru is a major educational hub, where school education is supported by 403 schools, and 60 youth are undergoing skill training under NSDC and PMKVY initiatives. The healthcare sector is anchored by one Area Hospital, nine Primary Health Centres, and 70 Grama/Ward Sachivalayams, with focused plans to reduce maternal mortality by 50%, bring infant mortality below 10 per 1,000 live births, and achieve 100% vaccination coverage.</span></p>",
+  "culturalheritageDesc": "<p><span>Saluru and its surroundings are known for their cultural richness, with prominent temples such as the Sri Pancha Mukheswara Swamy Temple near the town, the Sri Polamamba Ammavari Temple at Sambara, and the Parammakonda Temple at Pedachipuruvalasa attracting pilgrims from across states. Alongside its spiritual heritage, the region emphasizes environmental conservation through afforestation, eco-friendly initiatives, and improved waste management and sanitation. Positioned as a key hub of economic and urban growth, Saluru is driving balanced progress through agricultural strength, industrial expansion, infrastructure upgrades, quality education, enhanced healthcare, and sustainable development initiatives outlined in the Vision Plan 2024&#8211;2029.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Bv/dVtDlgLFK6CV6aFPakw==",
+   "economy_Text": "<p dir=\"ltr\"><font face=\"Times New Roman\">Saluru&#8217;s Gross Constituency Domestic Product (GCDP) stood at &#8377;4,647.00 crores in 2023-24 and is projected to reach &#8377;9,693.00 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of approximately 12-15%. This growth is driven by a strategic vision istening vision that leverages sectoral strengths, addresses infrastructure and employment challenges, and promotes industrial diversification. Key initiatives include improving connectivity, fostering eco-tourism, and investing in skill development to create sustainable job opportunities, particularly for tribal and rural communities.</font></p><p dir=\"ltr\"><strong><font face=\"Times New Roman\">Sectoral Contributions and Growth</font></strong></p><ul class=\"tight\" dir=\"ltr\"><li><p dir=\"ltr\"><font face=\"Times New Roman\"><strong>Services</strong>: Contributes &#8377;1,763.00 crores (2023-24), projected to grow to &#8377;3,329.00 crores by 2028-29 at a growth rate of 15.50%, driven by eco-tourism and trade.</font></p></li><li><p dir=\"ltr\"><font face=\"Times New Roman\"><strong>Industry</strong>: Valued at &#8377;453.00 crores (2023-24), expected to reach &#8377;941.00 crores by 2028-29 with a growth rate of 17.04%, fueled by agro-based industries and infrastructure improvements.</font></p></li><li><p dir=\"ltr\"></p><p><font face=\"Times New Roman\"><strong>Agriculture &amp; Allied</strong><span>: Accounts for &#8377;2,072.00 crores (2023-24), projected to grow to &#8377;4,661.00 crores by 2028-29 at a growth rate of 19.61%, driven by organic farming and modern agricultural technologies.</span></font></p><p><br></p><p></p></li></ul>",
+   "gcdP_Growth_Text": "<p dir=\"auto\">Saluru is experiencing robust economic momentum, targeting a consistent 15% annual Gross Constituency Domestic Product (GCDP) growth rate, driven by key sectors such as agriculture, industry, and eco-tourism. This dynamic growth trajectory aligns with a long-term vision to transform Saluru into a vibrant, sustainable economic hub by 2047</p>",
+   "createdDate": "2025-09-04T10:39:47.203"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4647.0,
+   "cagR_Pct": 17.17,
+   "targetAmountCrore": 9693.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1763.0,
+   "cagR_Pct": 15.5,
+   "targetAmountCrore": 3329.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 453.0,
+   "cagR_Pct": 17.04,
+   "targetAmountCrore": 941.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2072.0,
+   "cagR_Pct": 19.61,
+   "targetAmountCrore": 4661.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 58,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 41.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 11.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 48.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 58,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 16,
+   "sectorName": "Forest & Eco Tourist Sites",
+   "description": "Conservation-based tourism, trekking trails, and forest-based livelihood development.",
+   "imageUrl": "assets/img/sectors/forest-eco-tourist-sites.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 486,
+   "constituencyId": 58,
+   "name": "Gummadi Sandhya Rani",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 489,
+   "constituencyId": 58,
+   "name": "Rajanna Dora Peedika",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 490,
+   "constituencyId": 58,
+   "name": "Rajanna Dora Peedika",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 491,
+   "constituencyId": 58,
+   "name": "Rajanna Dora Peedika",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

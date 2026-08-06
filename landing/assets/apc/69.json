@@ -1,0 +1,209 @@
+{
+ "code": 69,
+ "name": "Mummidivaram",
+ "district": "Dr. B.R. Ambedkar Konaseema",
+ "logoUrl": "assets/constituencies_logos/mummidivaram.png",
+ "profile": {
+  "population": "293638 (As per Census 2011)",
+  "voterCount": "245471 (As per 2024 Elections)",
+  "area": "778.04",
+  "mandals": "I.Polavaram-R,Katrenikona-R,Mummidivaram-R,Mummidivaram-U,Tallarevu-R",
+  "revenueVillages": "49",
+  "municipal_wards": "7",
+  "municipalities": "Mummidivaram",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Mummidivaram Assembly Constituency Vision Action Plan 2024-29 has been meticulously designed to leverage the constituency's agricultural strength, dynamic industrial base, thriving construction sector, and robust service sector. This strategic blueprint aligns with Andhra Pradesh&#8217;s ambitious Swarna Andhra@2047 vision, which resonates with the national agenda of Viksit Bharat@2047. These are located in the Konaseema district of Andhra Pradesh, with Mummidivaram serving as the headquarters. The name Mummidivaram is derived from the ancient name &#8220;MUNIVARAM&#8221; (&#8220;Blessings of Rishis &amp; Saints&#8221;). In the early days the sages, saints used to perform tapsya (Penance) in this region and stands as a holy place. Mummidivaram Mandal is an earst while Taluka of Amalapuram Division, later days it becomes constituency Head Quarter Mummidivaram Mandal was separated as Rural and Urban in the year of 2014      Mummidivaram is located on NH 216 and is about 13 Km from District HQ, as well as Divisional HQ, Amalapuram. Mummidivaram consists of 7 Degree Colleges includes 1 Govt. Degree College, 18 Junior Colleges including 6 Govt. institutions offering +2 courses (including 3 ZP High Schools) in addition to this 3 Engineering Colleges, 2 ITI Colleges of Private Management extending their services to uplift &#10;<p>&#10;</p><p><br></p>",
+  "constituencyMap": "69\\MAP\\69IMAGE2025090411305576401_mummidivaram map.jpg",
+  "geography": "Mummidivaram constituency is located to Ambedkar konaseema district.  spans 778.04 Sq.KMs . It shares boundaries with Kakinada towards North, Bay of Bengal towards East, Amalapuram Mandal towards South, Ainavilli Mandal towards West. constituencies.",
+  "populationDesc": "The total Population (2011 Census): 293638 people, with 1,47,568 were Male and 1,46,070 femalesThe sex ratio stands at 918 females per 1,000 males.",
+  "administrationDesc": "Mummidivaram Constituency is one of the  assembly constituencies in Ambedkar konaseema District four mandals:    1.Tallarevu,  2 Polavaram 3.Mummidivaram 4.Katrenikona  5. Mummidivaram Nagara Panchayat",
+  "educationHealthcareDesc": "3 Community Health Centers, 6 Primary Health Centers, 1 Urban Health Center as well as 77 Health Sub Centers &amp;255 Primary Schools 12 Primary Schools were in Private sector.15 Upper Primary Schools in Government Sector&#160;",
+  "culturalheritageDesc": "Balayogi Temple, Sri Bhadrakali Sametha Sri Veereswaraswamy Temple, Kothalanka Valibaba Dargha, Coringa Mangrove Forest and Wildlife Sanctuary ,Magasanitippa Island"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "3euweVr0ssptIAuRg3MdGQ==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Mummidivaram&#8217;s Economy at a Glance</h2><span><span><p><span><span><font size=\"4\"><br></font></span></span></p></span></span><p><font size=\"4\"><span><span>The Economic Vision Plan for Mummidivaram lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;10,840 crores in 2023-24, Mummidivaram is projected to expand steadily, reaching &#8377;<span><span>24216</span></span> crores by 2028-29, marking a significant transformation across agriculture, industry, and services sectors.&#160;</span></span><span>The&#10;industrial sector accounts for&#160;</span><span><span>44.70</span></span><span>%, agriculture and allied activities&#10;contribute&#160;</span><span><span>36.19</span></span><span>% and service sector contributes&#160;</span><span><span>19.11</span></span><span>%.</span></font></p><p class=\"MsoNormal\"><span></span></p>",
+   "gcdP_Growth_Text": "<span>Mummidivaram is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like&#160;</span><span><span>Fishing &amp; Aquaculture ,</span></span><span><span>Mining &amp; Quarrying , </span></span><span><span>Manufacturing  and livestock.</span></span><span>&#160;This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-06T02:27:14.63"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 10840.0,
+   "cagR_Pct": 17.65,
+   "targetAmountCrore": 24216.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1917.0,
+   "cagR_Pct": 15.35,
+   "targetAmountCrore": 3914.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 4482.0,
+   "cagR_Pct": 18.21,
+   "targetAmountCrore": 10245.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 3629.0,
+   "cagR_Pct": 18.08,
+   "targetAmountCrore": 8242.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 69,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 19.11
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 44.7
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 36.19
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 69,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 8,
+   "sectorName": "Mining Industries",
+   "description": "Extraction of minerals and creation of value-adding industries and processing chains.",
+   "imageUrl": "assets/img/sectors/mining-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 223,
+   "constituencyId": 69,
+   "name": "Sri Datla SubbaRaju (Buchi babu)",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 226,
+   "constituencyId": 69,
+   "name": "Ponnada Venkata Satish ",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 227,
+   "constituencyId": 69,
+   "name": "Datla SubbaRaju (Buchi babu)",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 228,
+   "constituencyId": 69,
+   "name": "Ponnada Venkata Satish",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 229,
+   "constituencyId": 69,
+   "name": "Pinipe Viswarup",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

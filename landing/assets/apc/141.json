@@ -1,0 +1,200 @@
+{
+ "code": 141,
+ "name": "Kakinada City",
+ "district": "Kakinada",
+ "logoUrl": "assets/constituencies_logos/kakinada city.png",
+ "profile": {
+  "population": "312538 (As per Census 2011)",
+  "voterCount": "241697 (As per 2024 Elections)",
+  "area": "31.95",
+  "mandals": "Kakinada-U",
+  "revenueVillages": "4",
+  "municipal_wards": "42",
+  "municipalities": "Kakinada",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoBodyText\"><span lang=\"EN-US\">Kakinada&#10;Urban Constituency is located in Kakinada District of Andhra Pradesh. It is not&#10;only<span> </span>Constituency Head<span> </span>quarter but also<span> </span>District Head quarter. It is<span>&#10;</span>the largest city in the District stand out for their significant&#10;contributions to<span> </span>the construction,&#10;education, innovation, commerce, and service sectors. These unique advantages&#10;position the constituency to achieve an ambitious annual<span> </span>growth<span> </span>target<span> </span>of<span> </span>15%<span> </span>across<span>&#10;</span>all<span> </span>key<span> </span>sectors.</span><span>Kakinada&#10;City has a rich historical and administrative legacy. Established as a&#10;municipality in 1866, Traditionally,</span><span> </span><span>there</span><span> </span><span>was</span><span> </span><span>a</span><span> </span><span>small</span><span> </span><span>village</span><span> </span><span>by</span><span> </span><span>name</span><span> </span><span>&#8220;</span><b>Kakavandivada</b><span>&#8221;</span><span> </span><span>situated near</span><span> </span><span>the</span><span> </span><span>present</span><span> </span><span>Kakinada</span><span>&#10;</span><span>City.</span><span> </span><span>But</span><span> </span><span>soon</span><span> </span><span>after</span><span> </span><span>the</span><span> </span><span>settlement</span><span> </span><span>of</span><span> </span><span>Dutch</span><span> </span><span>here</span><span> </span><span>in</span><span> </span><span>their first Establishment, they used to&#10;call it as &#8220;</span><b>Co-Canada</b><span>&#8221; which&#10;subsequently transformed into &#8220;</span><b>Kakinada</b><span>&#8221;&#10;after independence.</span><span> </span><span>However, there&#10;are several theories</span><span> </span><span>in</span><span> </span><span>circulation</span><span> </span><span>with</span><span> </span><span>regard</span><span> </span><span>to</span><span> </span><span>the</span><span> </span><span>origin</span><span>&#10;</span><span>of</span><span> </span><span>the</span><span> </span><span>name</span><span> </span><span>of</span><span> </span><span>Kakinada</span><span>&#10;</span><span>on</span><span> </span><span>the</span><span> </span><span>basis of legends history, Logic, Geographical and other factors.</span></p><p class=\"MsoBodyText\"><span lang=\"EN-US\"></span></p>",
+  "constituencyMap": "141\\MAP\\141IMAGE2025090312002770493_kknd city map.jpg",
+  "geography": "Kakinada city constituency is located to kakinada district.  spans 123.04 31.95  Sq.KMs  It shares boundaries with the East, Indraplem village on west, Ramanayyapeta Village on the north and Turangi Village",
+  "populationDesc": "<p class=\"MsoBodyText\"><span lang=\"EN-US\">Kakinada&#10;City<span> </span>has<span> </span>a<span> </span>total<span> </span>population<span> </span>of<span> </span>312538.<span> </span>The<span> </span>constituency<span> </span><span>&#160;</span>sex<span> </span>ratio<span> </span>of<span> </span>1048&#10;females per 1,000 males. The literacy rate stands at 80.62%, indicating steady&#10;progress in education levels.</span></p>",
+  "administrationDesc": "Kakinada  Constituency is one of the  assembly constituencies in kakinada District kakinada is muncipal corporation and 4 revenue villages.",
+  "educationHealthcareDesc": "<span lang=\"EN-US\">1 Government General Hospital,13&#160;&#160;&#10;UPHCs, 1 Govt.<span> </span>Homeopathy<span> </span><span>Hospital,&#10;</span>&#160;1 Govt.<span> </span>Unani<span> Hospital, </span>&amp;JNTUK University and RMC Medical college</span>",
+  "culturalheritageDesc": "<span lang=\"EN-US\">Sri&#10;Bhanulingeswara Swami temple,<span lang=\"EN-US\">Sri&#10;Adhi Kumbeswara Swamy Temple ,</span>&#160;</span><span lang=\"EN-US\">Kakinada Kaja is<span lang=\"EN-US\">currently in the process of securing a&#10;Geographical Indication&#160;</span>&#160;</span>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "VqKTDtPoU9pUXGU8zJoH0w==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Kakinada City&#8217;s Economy at a Glance</h2><p><br></p><p>The Economic Vision Plan for Kakinada City presents a comprehensive growth strategy to transform the constituency into an economically vibrant, investment- friendly, and employment-driven region. With a Gross Constituency Domestic Product (GCDP) of &#8377;9,450crores in 2023 24(FRE),Kakinada City is projected to achieve &#8377;19,259 crores by 2028-29, reflecting a strong and sustainable annual growth trajectory averaging 12-15%. The economic strategy is designed to leverage sectoral strengths, address infrastructure and employment challenges and promote industrial diversification, ensuring inclusive and resilient economic progress.</p>",
+   "gcdP_Growth_Text": "<span>Kakinada City is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span><font color=\"#333333\"><span>&#160;across key sectors like real estate Ownership of&#160; Dwellings,</span></font></span><span><font color=\"#333333\"><span>&#160;tourism, and Trade, Hotel &amp; Restaurants. This growth trajectory aligns with the long-term vision of making the&#160;</span></font></span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-07T08:25:10.373"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9450.0,
+   "cagR_Pct": 15.34,
+   "targetAmountCrore": 19259.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 6905.0,
+   "cagR_Pct": 14.98,
+   "targetAmountCrore": 13849.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1181.0,
+   "cagR_Pct": 17.78,
+   "targetAmountCrore": 2689.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 656.0,
+   "cagR_Pct": 14.3,
+   "targetAmountCrore": 1279.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 141,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 78.97
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 13.52
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 7.51
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 141,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 70,
+   "constituencyId": 141,
+   "name": "Sri Vanamadi Venkateswara Rao (Konda babu)",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": "141\\mla\\141IMAGE2025090312051083014_Kakinada City_MLA_Photo.jpg"
+  },
+  {
+   "id": 767,
+   "constituencyId": 141,
+   "name": "Dwarapudi Chandrasekar",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 768,
+   "constituencyId": 141,
+   "name": "Sri Vanamadi Venkateswara Rao (Konda babu)",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 769,
+   "constituencyId": 141,
+   "name": "Dwarapudi Chandrasekar",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,212 @@
+{
+ "code": 146,
+ "name": "Raptadu",
+ "district": "Ananthapur",
+ "logoUrl": "146\\Logo\\146IMAGE2026072112505075385_Screenshot 2026-01-28 112113.png",
+ "profile": {
+  "population": "248619 (As per Census 2011)",
+  "voterCount": "250571 (As per 2024 Elections)",
+  "area": "1988.25",
+  "mandals": "Ananthapuram Rural-R,Atmakur-R,Ck Palli-R,Kanaganapalli-R,Ramagiri-R,Rapthadu-R",
+  "revenueVillages": "68",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Raptadu Assembly Constituency is one of the Hindupur Parliamentary Constituencies and it was originally part of Anantapur Assembly Constituency before becoming a separate entity in 1967. As it is Reserved for Scheduled Castes (SCs) since 1978, the constituency was undergone by delimitation in 2008. It has been leading with the inclusion of Anantapur Rural, Atmakur, and Raptadu Mandals under Annathapuramu District. Remaing mandals were reassigned to Sri Sathya Sai district in district bifurcation process. It Covers an area of 1,988.25 sq. km. it is located 8 km away from Anantapur, it is well-connected for trading, education, and economic development.&#10;&#160; &#160; &#160; &#160; &#160; &#160;155 - Rapthadu Assembly Constituency is one of the 7 segments within 20- Hindupur Parliamentary Constituency. 155- Rapthadu Assembly Constituency&#160; area of approximately 1988.25 Sq.miles. Rapthadu Assembly Constituency comprises of Anantapur Rural, Atmakur, Raptadu, Kanaganapalli, C.K. Palli and Ramagiri, Rapthadu has been a focal point for developmental initiatives, particularly in agricultural and infrastructure.it is reflecting the broader Socio-Economic trends of the Ananathapuramu District.Rapthadu would play a vital role in the broader economy and cultural landscape of Ananthapuramu and Sri Sathya sai Districts in the Rayalaseema region.&#160;",
+  "constituencyMap": "146\\MAP\\146IMAGE2025090514090612476_raptadu.jpg",
+  "geography": "The Raptadu Assembly Constituency is located in the southern part of Ananthapuramu District, Andhra Pradesh. This prominent constituency in the Rayalaseema region encompasses six mandals.The Mandals are having 90 % of red soil ,10 % of Black cotton soil and less extent of Alluvial Soils.",
+  "populationDesc": "According to the 2011 Census, the population of the Raptadu Assembly Constituency stands at 2,76,610 people and comprising 1,41,462 males and 1,35,148 females. The sex ratio is 966 females per 1,000 males, slightly lower than the district average (978) and state average (993). The area includes 66,976 households.&#160;",
+  "administrationDesc": "This Raptadu constituency in the Rayalaseema region encompasses six mandals: Ananatapur Rural ,Atmakur, Raptadu , Kanaganapalli , C.K. Palli and Ramagiri.",
+  "educationHealthcareDesc": "The constituency has a modern education and healthcare network with 231 primary schools, 90 high schools, 18 junior colleges, and 3-degree colleges. In healthcare, Raptadu has 7 Primary Health Centres (PHCs), 90 Sub-centres, and 1 Community Health Centre (CHC).",
+  "culturalheritageDesc": "The constituency also holds important cultural landmarks such as the Mounagiri Hanuman Temple, Pampanuru Subramanyam Swamy Temple, ISKCON Temple, Nasanakota Muthyalamma Temple and Pothulaiah Swamy Temple at Daduluru.&#160;&#160;"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "0+XLqji1yesCHaJW8p1DaQ==",
+   "economy_Text": "<p dir=\"ltr\">Raptadu Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;8,711 crores in 2022-23, is projected to grow to &#8377;20,676 crores by 2028-29, driven by advancements across key sectors.&#160;</p><p dir=\"ltr\">The Economic Vision Plan leverages existing strengths, infrastructure upgrades, and strategic investments to transform Raptadu into a self-reliant economic hub.&#160;</p><p dir=\"ltr\">The <strong>Services Sector</strong>, valued at &#8377;3,081 crores in 2023-24 with a 10.96% growth rate, is expected to reach &#8377;6,771 crores by 2028-29, fueled by service-based enterprises and technological advancements.&#160;</p><p dir=\"ltr\">The <strong>Industries Sector</strong>, contributing &#8377;1,351 crores with an 11.05% growth rate, is forecasted to grow to &#8377;3,530 crores by 2028-29, supported by industrial diversification.&#160;</p><p dir=\"ltr\">The <strong>Agricultural &amp; Allied Sector</strong>, the largest contributor at &#8377;4,297 crores with an 11.38% growth rate, is anticipated to expand to &#8377;9,181 crores by 2028-29, driven by sustainable agricultural practices.&#160;</p><p dir=\"ltr\">This roadmap ensures inclusive and resilient economic progress for Raptadu.</p>",
+   "gcdP_Growth_Text": "<p dir=\"auto\">Raptadu&#8217;s GCDP, at &#8377;8,711 crores in 2022-23, is projected to reach &#8377;20,676 crores by 2028-29, driven by robust annual growth. The Services (10.96%), Industries (11.05%), and Agricultural &amp; Allied (11.38%) sectors propel this trajectory toward a self-reliant economic hub</p>",
+   "createdDate": "2025-09-05T12:19:09.607"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 9435.0,
+   "cagR_Pct": 13.67,
+   "targetAmountCrore": 20676.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3081.0,
+   "cagR_Pct": 10.96,
+   "targetAmountCrore": 6771.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1351.0,
+   "cagR_Pct": 11.05,
+   "targetAmountCrore": 3530.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 4297.0,
+   "cagR_Pct": 11.38,
+   "targetAmountCrore": 9181.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 146,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 35.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 15.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 50.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 146,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 815,
+   "constituencyId": 146,
+   "name": " Smt. Paritala Sunitha",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 816,
+   "constituencyId": 146,
+   "name": "Thopudurthi Prakash Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 817,
+   "constituencyId": 146,
+   "name": "Smt. Paritala Sunitha",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 818,
+   "constituencyId": 146,
+   "name": "Smt. Paritala Sunitha",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

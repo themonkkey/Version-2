@@ -1,0 +1,221 @@
+{
+ "code": 67,
+ "name": "Pendurthi",
+ "district": "Visakhapatnam",
+ "logoUrl": "assets/constituencies_logos/pendurthi.png",
+ "profile": {
+  "population": "306170 (As per Census 2011)",
+  "voterCount": "308023 (As per 2024 Elections)",
+  "area": "485.62",
+  "mandals": "Gvmc (Visakhapatnam)-U,Parawada-R,Pendurthi-R,Sabbavaram-R",
+  "revenueVillages": "78",
+  "municipal_wards": "10",
+  "municipalities": "Gvmc (Visakhapatnam)",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Pendurthi Assembly Constituency Vision Action Plan 2024&#8211;29 is designed to harness agricultural strength, a growing industrial base, thriving construction, and a robust service sector. The plan aligns with Swarna Andhra @ 2047 and Viksit Bharat @ 2047, setting ambitious growth goals. Pendurthi Assembly Constituency, spread across Visakhapatnam and Anakapalli districts, was established in 1978 under the Delimitation Orders. Formerly, Paravada functioned as an independent constituency until its merger in 2009. Today, Pendurthi is one of the seven assembly segments of Anakapalli Lok Sabha constituency. Strategically located within the Visakhapatnam Finance Capital Region, it encompasses Pendurthi, Sabbavaram, Paravada, and parts of Pedagantyada mandals, each playing a vital role in education, commerce, industry, and innovation. These factors position the constituency to achieve an annual growth target of 15%, aiming to transform it into a dynamic hub of economic activity while fostering balanced regional development.",
+  "constituencyMap": "67\\MAP\\67IMAGE2025090416500667926_PENDURTHI MAP.png",
+  "geography": "Pendurthi Assembly Constituency is strategically located in Visakhapatnam  District  in Pendurthi, PedagantyadaPart  mandals and Sabbavaram, Paravada mandals in AnakapalliDistrict  within the Greater Visakhapatnam Municipality Corporation Capital Region, benefiting from its proximity to Visakhapatnam Airport. Total area covered in an extent of 485.62 sq.kms.The constituency shares borders with Kotapadu in the North,Anandapuram in the Noth East,Pedagantyada in the South East,Anakapalli in the West.",
+  "populationDesc": "Pendurthi has a totalpopulation of 4,41,579, with 60% residing in rural areas and 40% in urban areas. The constituency has 76,967 households, with a sex ratio of 990 females per 1,000 males.&#160;",
+  "administrationDesc": "The Pendurthi Assembly Constituency comprises four mandals: Pendurthi, Sabbavaram, Paravada, and part of Pedagantyada.",
+  "educationHealthcareDesc": "<p>Pendurthi is a major educational hub, home to Damodara SanjivayyaNational LawUniversity(DSNLU), Indian Maritime University (IMU) and Indian Institute of Petroleum Energy University(IIPE) ,Engineer colleges,Polytechnical colleges. School education is being strengthened with 321 schools, and 20,000 above students.The healthcare sector includes 10 PHCs, 130 sub-centers, 5 CHCs, dispensaries, with plans to reduce maternal mortality by 50%, bring infant mortality below 10 per 1,000 live births, and achieve 100% vaccination coverage. A strong public health infrastructure ensures access to affordable and quality medical services.</p><p>&#10;</p>",
+  "culturalheritageDesc": "Pendurthi is known for its rich cultural and spiritual heritage, with key attractions such as Ayyappa swamy temple in Pendurthi Mandal and Devipuram Saraswathidevi Temple in SabbavaramMandalandgenerating above 36000 jobs. Large industries such as Simhadri National Thermal Power Corporation (NTPC), IOCL , Jawaharlal Nehru Pharma City(JNPC), Ramky Pharma City  and Other Pharma city industries."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "6540MVUDlRM2HZOkyO1dCw==",
+   "economy_Text": "<p><font face=\"Roboto\">Pendurthi&#8217;s Gross Constituency Domestic Product (GCDP) stood at &#8377;18,468.00 crores in 2023-24 and is projected to reach &#8377;34,487.00 crores by 2028-29, reflecting a compound annual growth rate (CAGR) of approximately 12-15%. This growth is driven by a strategic vision that leverages sectoral strengths, addresses infrastructure and employment challenges, and promotes industrial diversification. Key initiatives include enhancing connectivity, fostering tourism, and investing in skill development to create sustainable job opportunities</font></p><p><font face=\"Roboto\"><b>Sectoral Contributions and Growth:</b></font></p><p><font face=\"Roboto\"><b><i>Services: </i></b>Contributes &#8377;5,662.00 crores (2023-24), projected to grow to &#8377;9,198.00 crores by 2028-29 at a growth rate of 18.58%, driven by tourism, trade, and skill-based services.</font></p><p><font face=\"Roboto\"><b><i>Industry:</i></b> Valued at &#8377;9,928.00 crores (2023-24), expected to reach &#8377;20,016.00 crores by 2028-29 with a growth rate of 23.69%, fueled by manufacturing diversification and infrastructure improvements.</font></p><p><font face=\"Roboto\"><b><i>Agriculture &amp; Allied:</i></b> Accounts for &#8377;1,500.00 crores (2023-24), projected to grow to &#8377;3,595.00 crores by 2028-29 at a growth rate of 33.48%, driven by organic farming and modern agricultural technologies.</font></p>",
+   "gcdP_Growth_Text": "<p><span>Pendurthi is witnessing steady economic momentum with a targeted 15% annual GCDP growth rate across key sectors like Industrial, tourism, and Agriculture. This growth trajectory aligns with the long-term vision of making the constituency a vibrant urban and economic hub by 2047.</span></p>",
+   "createdDate": "2025-09-04T08:12:16.15"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 18468.0,
+   "cagR_Pct": 18.22,
+   "targetAmountCrore": 34487.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 5662.0,
+   "cagR_Pct": 18.58,
+   "targetAmountCrore": 9198.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 9928.0,
+   "cagR_Pct": 23.69,
+   "targetAmountCrore": 20016.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1500.0,
+   "cagR_Pct": 33.48,
+   "targetAmountCrore": 3595.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 67,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 33.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 58.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 9.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 67,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 453,
+   "constituencyId": 67,
+   "name": "Panchakarla Ramesh Babu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "JANASENA PARTY",
+   "photo": ""
+  },
+  {
+   "id": 457,
+   "constituencyId": 67,
+   "name": "Annamreddy Adeep Raj",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 459,
+   "constituencyId": 67,
+   "name": "Bandaru Satyanarayana Murthy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 460,
+   "constituencyId": 67,
+   "name": "Panchakarla Ramesh Babu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Praja Rajyam Party",
+   "photo": ""
+  },
+  {
+   "id": 462,
+   "constituencyId": 67,
+   "name": "Tippala Gurumurthy Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

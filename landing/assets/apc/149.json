@@ -1,0 +1,209 @@
+{
+ "code": 149,
+ "name": "Mydukur",
+ "district": "YSR Kadapa",
+ "logoUrl": "assets/constituencies_logos/mydukur.png",
+ "profile": {
+  "population": "261868 (As per Census 2011)",
+  "voterCount": "211855 (As per 2024 Elections)",
+  "area": "1798",
+  "mandals": "B.Mattam-R,Chapadu-R,Duvvur-R,Khajipeta-R,Mydukur-R,Mydukur-U",
+  "revenueVillages": "92",
+  "municipal_wards": "20",
+  "municipalities": "Mydukur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Mydukur Constituency, located in the Rayalaseema region of YSR Kadapa District, Andhra Pradesh,&#160; alongside the urban settlement of Mydukur Nagar Panchayat. Strategically positioned at the intersection of key transport routes, the constituency is a vital hub for agriculture, spiritual tourism, and infrastructure development.&#10;Mydukur holds historical and cultural significance. The Sri Lakshmi Madhavaraya Swamy Temple houses the original idol (Virat) brought from Gandikota during invasions. The constituency is also home to Brahmamgari Mattam, a revered pilgrimage site honoring Sri Pothuluri Veera Brahmendra Swamy, known for his prophetic work Kalagnanam. Devotees from across India visit the site.&#10;The region is agriculturally rich. KP onion and turmeric from Mydukur are export-quality crops. The KC Canal ayacut irrigates about 45,000 acres here, with paddy being the main crop. Weekly cattle fairs in Mydukur attract farmers from across Rayalaseema. Vanipenta is known for brassware, and Alladupalle houses the sacred Sri Veerabhadraswamy Temple on the banks of the Kundu River.&#10;Overall, Mydukur Constituency blends heritage, agriculture, and spiritual vitality, playing a significant role in the district&#8217;s development landscape.&#10;<br>",
+  "constituencyMap": "149\\MAP\\149IMAGE2025090419520470658_mydukur.jpg",
+  "geography": "Mydukur town is strategically positioned at the intersection of National Highways NH-40 and NH-67, making it a critical transport and commercial junction.The region has fertile soil conducive to diverse agricultural activities. Mydukur is also rich in mineral resources, with reserves of limestone, barytes, dolomite, granite, and quartz.&#160;",
+  "populationDesc": "According to the 2011 Census, the total population stands at 2,61,868, comprising 1,32,448 Males and 1,29,420 Females, resulting in a sex ratio of 974 females per 1000 males.Households: There are 66690 households&#160;&#10;<br>",
+  "administrationDesc": "Mydukur Constituency, located in the Rayalaseema region of YSR Kadapa District, Andhra Pradesh, comprises five mandals&#8212;Mydukur, Khajipet, Duvvur, Chapadu, and Brahmamgari Mattam (B. Mattam)&#8212;alongside the urban settlement of Mydukur Nagar Panchayat.&#160;",
+  "educationHealthcareDesc": "Mydukur Rural -140 schools,Khajipet and Chapadu -82 and 68 schools .Mydukur stands out with a Community Health Centre (CHC), a Primary Health Centre (PHC), and 22 Sub-Centres,Chapadu-2 PHCs and 15 Sub-Centres.Duvvur and B. Mattam -1 PHC and 9 and 14 Sub-Centres",
+  "culturalheritageDesc": "Mydukur constituency plays a vital role in regional connectivity, agriculture, spiritual tourism, and trade. Culturally significant sites like Sri Lakshmi Madhavaraya Swamy Temple and Brahmamgari Mattam, home to Sri Pothuluri Veera Brahmendra Swamy, enhance its spiritual and historical prominence."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "06E7AbAyLOY70hKvtS2ETA==",
+   "economy_Text": "<p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">Mydukur's economy is poised for robust growth, with GCDP projected to reach &#8377;12,621 crores by 2028-29, driven by a 15% annual growth rate across agriculture, industry, and services sectors.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">Agriculture, contributing 42-43% of GCDP, will grow to &#8377;4,994 crores (15.06% CAGR) through high-value horticulture, irrigation modernization, organic farming, and post-harvest infrastructure.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">The industry sector, with a 15.59% CAGR, will reach &#8377;2,578 crores, fueled by MSME clusters, mining, green industries, and agri-based corridors.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">Services, growing at 13.98% CAGR to &#8377;4,134 crores, will leverage tourism (e.g., Brahmamgari Mattam), skill-based services, and digital enablement via SHGs and CSCs.&#160;</font></p><p dir=\"ltr\"><font face=\"Times New Roman\" size=\"4\">Strategic thrusts include PPP-driven agri-parks, logistics hubs, skill development, and tourism master plans, aligning with Swarna Andhra @2047 goals for inclusive and innovative growth.</font></p>",
+   "gcdP_Growth_Text": "<font size=\"4\" face=\"Times New Roman\"><span>Mydukuru is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,&#160;</span><span>infrastructure, transport and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant industrial and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span></font>",
+   "createdDate": "2025-09-05T11:47:56.743"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6351.0,
+   "cagR_Pct": 14.73,
+   "targetAmountCrore": 12621.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2150.0,
+   "cagR_Pct": 13.98,
+   "targetAmountCrore": 4134.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1249.0,
+   "cagR_Pct": 15.59,
+   "targetAmountCrore": 2578.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2476.0,
+   "cagR_Pct": 15.06,
+   "targetAmountCrore": 4994.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 149,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 36.59
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 21.26
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 42.15
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 149,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 532,
+   "constituencyId": 149,
+   "name": " Sri Putta Sudhakar Yadav",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 533,
+   "constituencyId": 149,
+   "name": "Settipalli Raghurami Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 534,
+   "constituencyId": 149,
+   "name": "Settipalli Raghurami Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 535,
+   "constituencyId": 149,
+   "name": "D. L. Ravindra Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 536,
+   "constituencyId": 149,
+   "name": "D. L. Ravindra Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

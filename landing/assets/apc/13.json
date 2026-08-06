@@ -1,0 +1,209 @@
+{
+ "code": 13,
+ "name": "Markapuram",
+ "district": "Marakapuram",
+ "logoUrl": "13\\Logo\\13IMAGE2026050617515443535_WhatsApp Image 2026-05-04 at 6.40.28 PM.jpeg",
+ "profile": {
+  "population": "273900 (As per Census 2011)",
+  "voterCount": "214608 (As per 2024 Elections)",
+  "area": "1486.86",
+  "mandals": "Kkmitla-R,Markapur-R,Markapur-U,Podili-R,Tarlupadu-R",
+  "revenueVillages": "115",
+  "municipal_wards": "53",
+  "municipalities": "Markapur, Podili",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>Markapuram Assembly Constituency is one of the eight legislative constituencies in the Prakasam District of Andhra Pradesh. Geographically, it spans an area of 1486.86&#160; sq. km and shares its boundaries with S. N. Padu, Kondepi, Giddaluru, Darsi, Yerragondapalem, and Kanigiri constituencies. The terrain features a mix of red and black soils, supporting a diverse agricultural landscape. Administratively, the constituency comprises four mandals&#8212;Markapuram, Tarlupadu, Konakanamitla, and Podili&#8212;and includes one municipality and one nagar panchayat. It falls under the Ongole Lok Sabha constituency.</p><p><br></p><p>There are a total of 115 revenue villages in the constituency. Agriculture is the backbone of the local economy, with major crops including paddy, red gram, cotton, and chillies. The area is also witnessing steady growth in horticulture, supported by both surface and groundwater irrigation. The Gundlakamma River, which originates in Bondalapadu village of Markapuram constituency, plays a vital role in local irrigation. Currently, 5,246 hectares are irrigated through minor irrigation sources, while an additional 10,218 acres are irrigated using groundwater resources.</p><p><br></p><p>A major development initiative underway is the Veligonda Project (also known as the Poola Subbaiah Irrigation Project), which aims to significantly enhance irrigation capacity and agricultural productivity across the region. Once completed, it is expected to bring transformational change to the farming landscape of Markapuram by providing a more reliable water source.</p><p><br></p><p>In terms of connectivity, Markapuram has good road and rail access, being located along National Highway 565 and having a functional railway station on the Guntur&#8211;Nandyal line. These transportation links are crucial for the movement of agricultural goods and for regional integration, further supporting the constituency&#8217;s economic development.</p>",
+  "constituencyMap": "13\\MAP\\13IMAGE2025090422410733164_MARKAPURAM MAP.jpg",
+  "geography": "Markapur constiteuncy is located in Prakasam District and spans  1486.86 Sq. km. It shares boundaries with S N Padu, Kondepi,Giddaluru,Darsi ,yarragondapalem,Kanigiri  constituencies. Mix of  Red Soils and Black Soils &#10;<p><br></p>",
+  "populationDesc": "The total population is 2,73,935, with approximately 62.6% residing in rural areas and 37.4% in urban areas. There are 66,242 households, and the sex ratio is 974 females per 1,000 males. The literacy rate stands at 57.88%.&#10;<p><br></p>",
+  "administrationDesc": "Markapur Constituency is one of the Eight assembly constituencies inPrakasam District. It includes 1)Markapuram, 2)Tarlupadu, 3)Konakanamitla, and 4)Podilii  Mandals  and also it has 1 municipality, &amp; 1 Nagara Panchayat. Markapur constituency comes under Ongole Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "5 Engineering colleges &amp;1 Medical College  (Under Construction) and it has 1 Area Hospital.&#10;<p><br></p>",
+  "culturalheritageDesc": "<p><span>Sri Lakshmi Chennakesava Swamy Temple,&#160;</span><span>Sri Rukmini Satyabhama Sametha Venugopala swamy Temple,&#160;</span><span>Sri Nirma Uma Maheswara Swamy Temple,&#160;</span><span>Sri Venkateswara Swamy Temple</span></p><p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "HEqncl9IF3J27WWk4b8CWQ==",
+   "economy_Text": "<b><font size=\"4\">Economy at a Glance</font></b><p>Markapuram&#8217;s economy is predominantly agrarian, with the <span>service sector contributing 50.45%</span> and <span>agriculture and allied sectors accounting for approximately 34.7%</span> of the Gross Value Added (GVA) in the fiscal year 2023-24. Within agriculture, <span>livestock contributes 15%</span> and <span>horticulture 13.5%</span> to the total output. The constituency holds significant potential for cultivating commercial crops such as <span>tobacco, cotton, and red gram</span>, with agriculture remaining the backbone of the local economy. Key crops include <span>paddy, red gram, cotton, and chillies</span>, while horticulture continues to expand steadily.</p><p>&#10;</p><p>The ongoing <span>Veligonda Project</span>, currently under construction, is expected to revolutionize irrigation facilities in the region, leading to a substantial increase in agricultural productivity. Beyond agriculture, Markapuram offers scope for establishing large-scale industries due to the availability of ample land and a skilled workforce. Additionally, the upcoming medical college and hospital will bolster healthcare infrastructure, contributing to improved quality of life and economic development in the constituency.</p>",
+   "gcdP_Growth_Text": "Markapuram is witnessing steady economic progress with a targeted 12-15% annual GVA growth rate, driven by key sectors such as agriculture, horticulture, livestock, emerging industries, and improved healthcare infrastructure. This growth trajectory supports the long-term vision of transforming the constituency into a green corridor of irrigation and inclusive, sustainable development by 2047.",
+   "createdDate": "2025-09-05T06:16:09.513"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5571.7,
+   "cagR_Pct": 13.24,
+   "targetAmountCrore": 12907.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2600.3,
+   "cagR_Pct": 18.37,
+   "targetAmountCrore": 6042.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 764.1,
+   "cagR_Pct": 18.8,
+   "targetAmountCrore": 1808.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1789.7,
+   "cagR_Pct": 17.98,
+   "targetAmountCrore": 4090.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 13,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 50.45
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 14.83
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 34.72
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 13,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 18,
+   "sectorName": "Large Scale Industries",
+   "description": "Promotion of capital-intensive industries, cluster development, and industrial estates.",
+   "imageUrl": "assets/img/sectors/large-scale-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 547,
+   "constituencyId": 13,
+   "name": "Sri Kandula Narayana Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 548,
+   "constituencyId": 13,
+   "name": "Sri Kunduru Nagarjuna Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 549,
+   "constituencyId": 13,
+   "name": "Sri Janke Venkata Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 550,
+   "constituencyId": 13,
+   "name": "Sri Kandula Narayana Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 551,
+   "constituencyId": 13,
+   "name": "Sri Kunduru Pedda Konda Reddy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

@@ -1,0 +1,224 @@
+{
+ "code": 189,
+ "name": "Ichchapuram",
+ "district": "Srikakulam",
+ "logoUrl": "189\\Logo\\189IMAGE2025090621165942160_images (1).jpeg",
+ "profile": {
+  "population": "310504 (As per Census 2011)",
+  "voterCount": "268202 (As per 2024 Elections)",
+  "area": "533.24",
+  "mandals": "Ichapuram-U,Ichchapuram-R,Kanchili-R,Kaviti-R,Sompeta-R",
+  "revenueVillages": "144",
+  "municipal_wards": "23",
+  "municipalities": "Ichapuram",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>Ichapuram Assembly Constituency, located in the northernmost tip of Andhra Pradesh&#8217;s Srikakulam district and bordering Odisha, was established in 1951 and comprises four mandals&#8212;Sompeta, Kanchili, Kaviti&#8212;and Ichchapuram Municipality, its headquarters. The region is defined by a long coastline with sandy beaches, dunes, and backwaters, while the Bahuda River, joining the Bay of Bengal at Donkuru, supports agriculture and fishing. Agriculture, aquaculture, dry fish trade, and cashew processing form the backbone of the local economy, complemented by cross-border trade with Odisha. Educational institutions and healthcare centers cater to basic needs, though advanced services are sought in Srikakulam and Berhampur. Rich in cultural diversity, the area blends Andhra and Odia traditions, with notable temples like the Sri Varaha Lakshmi Narasimha Swamy Temple in Sompeta. Strategically located on the Chennai&#8211;Howrah railway line, with good road connectivity and APSRTC services, Ichchapuram is also prone to cyclonic impacts due to its coastal location, influencing its tropical monsoon climate and livelihood patterns.</p>",
+  "constituencyMap": "189\\MAP\\189IMAGE2025090612405215526__Ichapuram_11.jpg",
+  "geography": "<p>Ichchapuram Assembly Constituency, spanning 533.24 sq. km in Srikakulam district, is bordered by Odisha to the north and west, Palasa to the south, and the Bay of Bengal to the east with a 34.2 km coastline. The region features sandy soils for cashew and coconut, alluvial soils for paddy along the Bahuda River, and red loamy soils for groundnut and ragi. Water sources include rivers, canals, tanks, and groundwater, though salinity affects coastal areas. With aquaculture, tropical climate, 18&#8211;37&#176;C temperatures, and 131 mm peak rainfall in August, agriculture thrives.</p>",
+  "populationDesc": "Ichchapuram constituency has a total population of 3,61,876, with 1,78,962 males and 1,82,914 females, resulting in a sex ratio of 1,044 females for every 1,000 males. The population is distributed across 73,564 households.",
+  "administrationDesc": "The Ichchapuram Assembly Constituency, located in the Srikakulam district of Andhra Pradesh, comprises three mandals&#8212;Sompeta, Kanchili, and Kaviti&#8212;along with the Ichchapuram municipality, which serves as its administrative headquarters.",
+  "educationHealthcareDesc": "<p><span>Ichchapuram constituency has a well-structured network of educational and healthcare facilities spread across its four mandals. In education, Kaviti has 105 schools including 72 primary, 11 upper primary, and 22 high schools, along with a junior college, degree college, and three BC hostels. Kanchili hosts 108 schools, two junior colleges, and a government hostel. Sompeta has 93 schools, six junior colleges, two degree colleges, and nine BC boys&#8217; hostels, while Ichchapuram town includes 88 schools, four junior colleges, two degree colleges, and a KGBV hostel. In terms of healthcare, Kaviti, Sompeta, and Ichchapuram each have a CHC, while PHCs and Sub-centers are distributed across all mandals, ensuring accessible primary and community health services.</span></p>",
+  "culturalheritageDesc": "<p><span>Ichchapuram, located in Srikakulam district, is known for its cultural vibrancy and scenic coastal attractions. The region reflects Andhra Pradesh&#8217;s coastal traditions through festivals, music, dance, and local crafts, with events like the Baruva Beach Festival showcasing heritage, sports, and eco-tourism, while the Olive Ridley Turtle Festival promotes marine conservation. Baruva Beach, once a British-era seaport with a lighthouse and the wreck of SS Chilaka, stands out for its historic charm, while Kaviti&#8211;Iddivanipalem and Donkuru beaches attract visitors with their serene, unspoiled beauty. Nearby bird sanctuaries like Telineelapuram and Telukunchi further enrich the constituency&#8217;s ecological and tourist significance.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "DFL0+WXHc4p9BYQX4Gdv8A==",
+   "economy_Text": "<p><span>The Economic Vision Plan for ICHCHAPURAM charts a dynamic path to transform the constituency into an economically vibrant and investment-friendly hub, targeting a Gross Constituency Domestic Product (GCDP) increase from &#8377;3,782.00 crores in 2023-24 to &#8377;8,103.00 crores by 2028-29, with a robust 12-15% annual growth rate. By leveraging strengths in agriculture, industry, and services, the plan focuses on addressing infrastructural bottlenecks, promoting industrial diversification, and enhancing tourism to drive employment and inclusive growth. These strategic efforts aim to position Ichchapuram as a resilient and model economy within Andhra Pradesh, fostering sustainable development and economic prosperity.</span></p>",
+   "gcdP_Growth_Text": "<p><span>Ichchapuram outlines a robust strategy to elevate the Gross Constituency Domestic Product (GCDP) from &#8377;3,782.00 crores in 2023-24 to &#8377;8,103.00 crores by 2028-29, targeting a sustainable annual growth rate of 12-15%. This ambitious growth is driven by leveraging sectoral strengths in agriculture, industry, and services, while addressing infrastructural bottlenecks and promoting industrial diversification. Strategic investments in tourism, skill development, and employment generation will foster inclusive progress, positioning Ichchapuram as an investment-friendly, economically vibrant hub within Andhra Pradesh</span></p>",
+   "createdDate": "2025-09-03T13:57:12.827"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 3782.0,
+   "cagR_Pct": 17.49,
+   "targetAmountCrore": 8103.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1806.0,
+   "cagR_Pct": 18.65,
+   "targetAmountCrore": 3918.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 624.0,
+   "cagR_Pct": 18.38,
+   "targetAmountCrore": 1266.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1070.0,
+   "cagR_Pct": 15.04,
+   "targetAmountCrore": 2255.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 189,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 51.61
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 17.82
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 30.57
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 189,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 770,
+   "constituencyId": 189,
+   "name": "Dr.Bendalam Ashok",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 771,
+   "constituencyId": 189,
+   "name": "Dr.Bendalam Ashok",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 773,
+   "constituencyId": 189,
+   "name": "Dr.Bendalam Ashok ",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 774,
+   "constituencyId": 189,
+   "name": "Piriya Sairaj",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  }
+ ]
+}

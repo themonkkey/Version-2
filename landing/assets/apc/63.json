@@ -1,0 +1,224 @@
+{
+ "code": 63,
+ "name": "Chodavaram",
+ "district": "Anakapalli",
+ "logoUrl": "assets/constituencies_logos/chodavaram.png",
+ "profile": {
+  "population": "273856 (As per Census 2011)",
+  "voterCount": "218095 (As per 2024 Elections)",
+  "area": "747",
+  "mandals": "Butchayyapeta-R,Chodavaram-R,Ravikamatham-R,Rolugunta-R",
+  "revenueVillages": "134",
+  "municipal_wards": "0",
+  "municipalities": "NA",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>Chodavaram Assembly Constituency, located in Anakapalli district of north coastal Andhra Pradesh, is a significant political, cultural, and agrarian region comprising four mandals&#8212;Chodavaram, Rolugunta, Butchayyapeta, and Ravikamatham&#8212;with Chodavaram town serving as the administrative headquarters and principal commercial center. The area is predominantly rural and agriculture-driven, with fertile soils and favorable climatic conditions supporting the cultivation of rice, ragi, sugarcane, and groundnut, which remain the backbone of the local economy. A cooperative sugar factory in Chodavaram plays a pivotal role in sustaining agro-based industries, while the Kondempudi Krishi Vigyan Kendra provides valuable guidance in modern agricultural practices, crop diversification, and farmer training, thereby strengthening traditional livelihoods. Industrial development, though relatively limited, is slowly expanding through small-scale and agro-processing units, complementing the dominant farming sector. The tropical climate&#8212;with hot summers reaching 35&#8211;40&#176;C, moderate monsoons from June to September, and mild winters between 18&#8211;25&#176;C&#8212;ensures year-round agricultural activity and enhances crop productivity. Beyond agriculture, the region is known for its vibrant cultural fabric, expressed through festivals such as Sankranti, village jatras, and temple fairs that bring communities together. While basic infrastructure in education, healthcare, and transport is available, residents depend on Visakhapatnam for advanced facilities and opportunities. With agriculture as its foundation, supported by emerging industry and services, Chodavaram aspires to achieve a balanced and inclusive growth trajectory, targeting an annual growth rate of 15% across all sectors.</p>",
+  "constituencyMap": "63\\MAP\\63IMAGE2025090810295066925_Chodavaram2.jpg",
+  "geography": "<p><span>Chodavaram Assembly Constituency in Anakapalli district spans 747 sq. km, comprising fertile plains and gentle hills ideal for agriculture. It shares boundaries with Anakapalli, Narsipatnam, Madugula, and Pendurthy constituencies. The region is supported by Kalyanapulova reservoir, supplying water to Ravikamatham and Rolugunta, and Laxmipuram Peda Cheruvu, serving Chodavaram. Out of 74,671 ha geographical area, 29,779 ha is net sown, with forests, fallow, and cultivable waste covering the rest. Soils are mainly light brown sandy clay loams, moderately fertile, well-drained, and suitable for diverse crops, supported by organic amendments, irrigation, and proper management for sustainable agriculture.</span></p>",
+  "populationDesc": "Chodavaram constituency has a population of 2,73,856, comprising 1,34,137 males and 1,39,719 females, with a sex ratio of 1,044 females per 1,000 males; about 92.6% of residents live in rural areas and 7.4% in urban areas, across 72,467 households.",
+  "administrationDesc": "Chodavaram Constituency consists of four mandals: Chodavaram, Rolugunta, Butchayyapeta and Ravikamatham.",
+  "educationHealthcareDesc": "<p><span>Chodavaram constituency maintains a strong base in primary education with 187 primary schools, 232 primary with upper primary schools, and 45 upper primary schools. It has 58 high schools and 20 junior colleges, while higher education is limited to one degree college and one polytechnic, forcing students to depend on Visakhapatnam for advanced studies. Healthcare facilities include 1 Community Health Center, 9 Primary Health Centers, 2 AYUSH hospitals, and 86 sub-centers, supported by 6 FDHS vehicles and 4 ambulances. Together, these institutions provide essential education and healthcare services, though higher learning opportunities remain underdeveloped.</span></p>",
+  "culturalheritageDesc": "<p><span>Chodavaram Assembly Constituency is home to several culturally significant temples, reflecting its rich spiritual heritage. Important places of worship include Syambhu Shivalayam, Syambhu Vinayakalayam, Kalyana Lova, Waddadi Venkanna Alayam, and Muddhurthi Sangameswara Swami Alayam. These temples not only serve as centers of devotion but also host local festivals and gatherings, reinforcing the region&#8217;s traditional and cultural identity.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "jrNd6tuFlWM3Szi+Owy2RA==",
+   "economy_Text": "<p dir=\"ltr\">Chodavaram Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;4,432 crores in 2023-24 (FRE), is set for robust growth, projected to reach &#8377;7,886 crores by 2028-29, driven by a sustainable annual growth rate of 12-15%. The Economic Vision Plan emphasizes leveraging sectoral strengths, improving infrastructure, promoting industrial diversification, and boosting employment to position Chodavaram as a dynamic, investment-friendly economic hub.</p><b><p><b>Sector-Wise Economic Overview :</b></p></b><ul class=\"tight\" dir=\"ltr\"><li><p dir=\"ltr\"><strong>Services Sector</strong>: Valued at &#8377;1,423 crores (2023-24) with a growth rate of 19.32%, expected to reach &#8377;2,606 crores by 2028-29.</p></li><li><p dir=\"ltr\"><strong>Industries Sector</strong>: Contributes &#8377;876 crores (2023-24) with a growth rate of 18.02%, projected to grow to &#8377;1,550 crores by 2028-29.</p></li><li><p dir=\"ltr\"><strong>Agricultural &amp; Allied Sector</strong>: Stands at &#8377;1,801 crores (2023-24) with a growth rate of 18.01%, anticipated to reach &#8377;3,187 crores by 2028-29.</p></li></ul>",
+   "gcdP_Growth_Text": "<p dir=\"ltr\">Chodavaram Constituency is on a vibrant economic upswing, aiming for a steady 15% annual GCDP growth across its key sectors: agriculture, industry, and services. This bold vision drives the transformation of Chodavaram into a thriving urban and economic powerhouse by 2047, championing sustainable growth, job opportunities, and equitable development.</p>",
+   "createdDate": "2025-09-04T16:41:00.06"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4432.0,
+   "cagR_Pct": 16.0,
+   "targetAmountCrore": 7886.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1423.0,
+   "cagR_Pct": 19.32,
+   "targetAmountCrore": 2606.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 876.0,
+   "cagR_Pct": 18.02,
+   "targetAmountCrore": 1550.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1801.0,
+   "cagR_Pct": 18.01,
+   "targetAmountCrore": 3187.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 63,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 35.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 21.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 44.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 63,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 220,
+   "constituencyId": 63,
+   "name": "Kalidindi Suryana Naga Sanyasi Raju",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 897,
+   "constituencyId": 63,
+   "name": "Karanam Dharmasri",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": " YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 898,
+   "constituencyId": 63,
+   "name": "Kalidindi Suryana Naga Sanyasi Raju",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 899,
+   "constituencyId": 63,
+   "name": "Kalidindi Suryana Naga Sanyasi Raju",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  }
+ ]
+}

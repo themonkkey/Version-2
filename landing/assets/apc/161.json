@@ -1,0 +1,209 @@
+{
+ "code": 161,
+ "name": "Rayachoti",
+ "district": "Annamayya",
+ "logoUrl": "assets/constituencies_logos/rayachoti.png",
+ "profile": {
+  "population": "317385 (As per Census 2011)",
+  "voterCount": "257947 (As per 2024 Elections)",
+  "area": "1648.29",
+  "mandals": "Chinnamandem-R,Galiveedu-R,Lakkireddypalli-R,Ramapuram-R,Rayachoty-R,Rayachoty-U,Sambepalle-R",
+  "revenueVillages": "77",
+  "municipal_wards": "34",
+  "municipalities": "Rayachoty",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Rayachoti is a legislative assembly constituency in Annamayya district, Andhra Pradesh, and is part of the Rajampet Lok Sabha segment. Established in 1951, it comprises six mandals: Sambepalli, Chinnamandem, Rayachoti, Galiveedu, Lakkireddipalli, and Ramapuram. The town of Rayachoti also serves as the district headquarters of Annamayya.<p>&#10;</p><p><br></p><p>The local economy is predominantly agrarian, supported by crops such as groundnut, paddy, ragi, and millets. The industrial sector contributes 17.46%, and the service sector 36.79%, indicating growing diversification. Sectors like tourism, hospitality, and real estate show strong potential for future growth.</p><p><br></p><p>Rayachoti&#8217;s landscape includes rich natural resources, with a mix of forest cover and cultivable land, providing opportunities for sustainable development. The social infrastructure is well-established, with 1,975 primary schools, 553 high schools, 7 Primary Health Centres (PHCs), 95 sub-centres, and 1 Community Health Centre (CHC).</p><p><br></p><p>Connectivity is a strength, with access to NH-40, NH-340, and the proposed NH-370, enhancing trade and mobility. The constituency is also culturally rich, home to heritage sites such as the 1,000-year-old Veerabhadra Swamy Temple (known as Dakshina Kasi) and the Sri Lakshmi Narasimha Swamy Temple in Chinnamandem, adding to its tourism appeal.</p>",
+  "constituencyMap": "161\\MAP\\161IMAGE2025090513525196647_RAYACHOTI MAP.jpg",
+  "geography": "Rayachoty constiteuncy is located in Annamayya District and spans 1648.29 Sq. km . it shares boundaries with kadapa District. Mix of Black, Red Ferruginous, Loamy,Red Sandy soils",
+  "populationDesc": "The total population is 3,52,070, with approximately 68.87% residing in rural areas and 31.12% in urban areas. There are 77,455 households, and the sex ratio is 997 females per 1,000 males. The literacy rate stands at 65.48%.",
+  "administrationDesc": "Rayachoty Constituency is one of the six assembly constituencies in Annamayya District. It includes 1)Rayachoty,2)Chinnamandem,3)Sambepalli,4)Lakkireddipalli,5) Ramapuram,6) Galiveedu &amp; 1 Muncipality.Rayachoty Constituency comes under Rajampet Loksabha Constituency.&#10;<p>&#10;</p><p>&#10;</p><p>&#10;</p><p>&#10;</p><p>&#10;</p><p>&#10;</p><p><br></p>",
+  "educationHealthcareDesc": "2  Engineering colleges and it has 1 Area Hospital.",
+  "culturalheritageDesc": "Veligallu Project,Veerabhadra swamy Temple,Gangammathalli Temple, Lakshmi NarasimhaSwamy Temple"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "doqfaoJZnE37cHxjFrYVDw==",
+   "economy_Text": "<b>Economy at a Glance</b><p><font face=\"Times New Roman\">Rayachoti&#8217;s economy is well-balanced across agriculture, industry, and services. The <span>Agricultural &amp; Allied Sector</span> forms the largest share at <span>43.27%</span>, driven by crops like groundnut, paddy, ragi, millets, and significant horticulture including mangoes, dragon fruit, and sapota. The <span>Service Sector</span> contributes <span>38.3%</span> of the economy, fueled by education, healthcare, tourism, and real estate development. Meanwhile, the <span>Industries Sector</span> accounts for <span>18.43%</span>, reflecting growing small-scale industries and agro-processing units that support local employment and economic diversification.<br></font></p><p><font face=\"Times New Roman\">Agriculture and horticulture remain the backbone of Rayachoti&#8217;s economy, with significant potential for growth. The constituency is known for cultivating high-value crops such as mango, groundnut, dragon fruit, and sapota. With over 9,398 hectares dedicated to mango cultivation alone, there is ample opportunity to enhance productivity through modern farming techniques, improved seed varieties, and better pest management practices.</font></p><p><font face=\"Times New Roman\">Irrigation infrastructure plays a crucial role in supporting agricultural growth. The Veligallu Dam Reservoir Project, which aims to irrigate 24,000 acres across Galiveedu, Lakkireddipalli, and Ramapuram mandals, is set to transform farming practices by ensuring reliable water supply. Efficient utilization and expansion of such water resources will enable multiple cropping cycles and increase overall agricultural output.</font></p><p>&#10;&#10;</p><p><font face=\"Times New Roman\">The agro-processing and food industries sector holds promise for adding value to local produce. By promoting units focused on mango processing, groundnut oil extraction, and fruit preservation, Rayachoti can generate employment opportunities and strengthen market linkages. This will help farmers achieve better returns and reduce post-harvest losses.</font></p>",
+   "gcdP_Growth_Text": "Rayachoti is poised for sustained economic growth with a targeted <span>14 - 15% annual GCDP growth rate</span>, driven by key sectors such as agriculture and horticulture, agro-processing industries,&#160; and service expansion. This growth path supports the constituency&#8217;s vision of becoming a resilient and inclusive economy, fostering rural prosperity and cultural heritage development by 2047.",
+   "createdDate": "2025-09-07T10:11:46.487"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6284.0,
+   "cagR_Pct": 13.24,
+   "targetAmountCrore": 14498.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3284.0,
+   "cagR_Pct": 14.15,
+   "targetAmountCrore": 7010.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 684.0,
+   "cagR_Pct": 12.95,
+   "targetAmountCrore": 1460.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2316.0,
+   "cagR_Pct": 9.57,
+   "targetAmountCrore": 4944.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 161,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 38.3
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 18.43
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 43.27
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 161,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 803,
+   "constituencyId": 161,
+   "name": "Mandipalli Ram Prasad Reddy\t\t\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 805,
+   "constituencyId": 161,
+   "name": "Gadikota Srikanth Reddy\t\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 806,
+   "constituencyId": 161,
+   "name": "Gadikota Srikanth Reddy\t\t\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 807,
+   "constituencyId": 161,
+   "name": "Gadikota Srikanth Reddy\t\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 809,
+   "constituencyId": 161,
+   "name": "Sugavasi Palakonda Rayudu\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

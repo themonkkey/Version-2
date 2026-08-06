@@ -1,0 +1,230 @@
+{
+ "code": 137,
+ "name": "Tirupati",
+ "district": "Tirupati",
+ "logoUrl": "assets/constituencies_logos/tirupati.png",
+ "profile": {
+  "population": "383930 (As per Census 2011)",
+  "voterCount": "302503 (As per 2024 Elections)",
+  "area": "280.91",
+  "mandals": "Tirupati-U",
+  "revenueVillages": "23",
+  "municipal_wards": "50",
+  "municipalities": "Tirupati",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Tirupati Assembly Constituency is one of the most prominent regions of Andhra Pradesh, known worldwide for the Tirumala Venkateswara Temple, which attracts millions of pilgrims each year. Geographically, it is located at the foothills of the Seshachalam Hills, a biodiversity hotspot and home to the Seshachalam Biosphere Reserve. The constituency also hosts other cultural and religious landmarks such as the Kapileswara Swamy Temple and Govindaraja Swamy Temple, reflecting its rich spiritual and cultural heritage. Alongside its religious importance, Tirupati is a strong center of education, with institutions like Sri Venkateswara University, Sri Padmavati Mahila University, and specialized institutes in medicine and Vedic studies.<p><br></p><p>Economically, Tirupati is driven mainly by the services sector, with tourism, education, hospitality, healthcare, and trade contributing the largest share. The constituency has strong transport infrastructure, including a major railway station, national highways, and an international airport, strengthening its connectivity to Chennai, Bangalore, and other cities. Social infrastructure is well developed, with renowned hospitals like SVIMS and Ruia Government General Hospital, alongside over 300 schools and 6 universities.&#160;</p>",
+  "constituencyMap": "137\\MAP\\137IMAGE2025090415330978309_TIRUPATHI MAP.jpg",
+  "geography": "Tirupati constituency is located in Tirupati District and spans 280.91 Sq. Km. It shares boundaries with Srikalahasti, Chandragiri, Nagari, Satyavedu. mix of Red soil, Block cotton soil, Gravelly soil&#10;<p><br></p>",
+  "populationDesc": "The total population is 3,77,349, with approximately 31.12% residing in rural areas and 68.87% in urban areas. There are 93,084 households, and the sex ratio is 996 females per 1,000 males. The literacy rate stands at 85.27%  .&#10;<p><br></p>",
+  "administrationDesc": "&#160;Tirupati Constituency is one of the seven assembly constituencies in Tirupati District. It includes  Tirupati Urban mandal,Tirupati Rural mandal. Tirupati  constituency comes under Tirupati Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "<p>&#8226;&#9;Tirupati is home to Sri Venkateswara University (SVU), a major public university offering diverse undergraduate and postgraduate programs.&#10;</p><p>&#8226;&#9;Sri Padmavati Mahila Visvavidyalayam (SPMVV), a dedicated women&#8217;s university, contributes to women's empowerment through higher education.&#10;</p><p>&#8226;&#9;Sri Venkateswara Vedic University, sponsored by Tirumala Tirupati Devasthanams (TTD), promotes traditional Vedic education.&#10;</p><p>&#8226;&#9;The city's educational infrastructure includes 305 schools, 81 colleges, 2 medical colleges, and 6 universities, ensuring wide access to quality education.</p>",
+  "culturalheritageDesc": "&#160; Govindaraja Swamy Temple, Kapila Theertham&#10;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "67DGKDzmJ5lpXLgjnXAnog==",
+   "economy_Text": "<b>Economy at a Glance</b><p>Tirupati&#8217;s economy is driven by the service sector, contributing a dominant 87.3% to the Gross Value Added (GVA). Within this, <span>tourism</span> plays a central role, with trade, hotels, and restaurants contributing 25.15% of the GVA, highlighting its importance as a pilgrimage hub. Real estate ownership, driven by growing residential and commercial developments, adds 15% to the GVA.</p><p>The industrial sector, contributing 11.88%, is expanding, with opportunities in <span>IT</span>, <span>manufacturing</span>, and <span>food processing</span>. <span>Digital IT infrastructure</span> and the establishment of <span>innovation hubs</span> present significant growth potential, positioning Tirupati as a regional leader in tech and entrepreneurship.</p><p>&#10;&#10;</p><p>Tirupati is uniquely positioned to capitalize on its dual strengths: a <span>vibrant tourism economy</span> and emerging <span>technology and industrial sectors</span>. With increasing investments in digital infrastructure and a booming start-up ecosystem, Tirupati is set to become a <span>key economic and innovation hub</span>.&#160;</p>",
+   "gcdP_Growth_Text": "Tirupati aims for a <span>13-15% annual GCDP growth rate</span>, driven by key sectors like <span>tourism</span>, <span>real estate</span>, <span>IT infrastructure</span>, and <span>education</span>. Leveraging its strength as a <span>pilgrimage hub</span>, expanding <span>digital infrastructure</span>, and fostering sectors like <span>technology</span>, <span>manufacturing</span>, and <span>start-ups</span>, Tirupati is on track to become a vibrant, sustainable urban center with global appeal. This growth vision will transform the constituency into a dynamic <span>economic and innovation hub</span> by 2047.",
+   "createdDate": "2025-09-07T02:31:30.833"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 12491.0,
+   "cagR_Pct": 14.14,
+   "targetAmountCrore": 25096.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 10088.0,
+   "cagR_Pct": 13.93,
+   "targetAmountCrore": 20050.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1373.0,
+   "cagR_Pct": 11.27,
+   "targetAmountCrore": 2783.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 94.0,
+   "cagR_Pct": 15.02,
+   "targetAmountCrore": 209.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 137,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 87.3
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 11.88
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 0.82
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 137,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 12,
+   "sectorName": "Pilgrimage & Cultural Centre",
+   "description": "Restoration of heritage sites, amenities for pilgrims, and promotion of cultural tourism.",
+   "imageUrl": "assets/img/sectors/pilgrimage-cultural-centre.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 399,
+   "constituencyId": 137,
+   "name": "Sri Arani Srinivasulu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Janasena Party",
+   "photo": ""
+  },
+  {
+   "id": 401,
+   "constituencyId": 137,
+   "name": "Sri \tBhumana Karunakar Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 407,
+   "constituencyId": 137,
+   "name": "Smt M. Suguna",
+   "termFrom": 2015,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 409,
+   "constituencyId": 137,
+   "name": "Sri M. Venkataramana",
+   "termFrom": 2014,
+   "termTo": 2015,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 410,
+   "constituencyId": 137,
+   "name": "Sri Bhumana Karunakar Reddy",
+   "termFrom": 2012,
+   "termTo": 2014,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 412,
+   "constituencyId": 137,
+   "name": "Sri Konidala Chiranjeevi",
+   "termFrom": 2009,
+   "termTo": 2012,
+   "partyName": "Praja Rajyam Party",
+   "photo": ""
+  }
+ ]
+}

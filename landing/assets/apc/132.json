@@ -1,0 +1,188 @@
+{
+ "code": 132,
+ "name": "Guntur East",
+ "district": "Guntur",
+ "logoUrl": "132\\Logo\\132IMAGE2026052114132265577_Logo.png",
+ "profile": {
+  "population": "327180 (As per Census 2011)",
+  "voterCount": "250790 (As per 2024 Elections)",
+  "area": "22.6",
+  "mandals": "Guntur-U",
+  "revenueVillages": "0",
+  "municipal_wards": "17",
+  "municipalities": "Guntur",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p><span>The Guntur East Assembly Constituency Vision Action Plan 2024&#8211;29 is designed to position the constituency as a modern, inclusive, and dynamic urban hub, building on its strong foundations in commerce, industry, education, healthcare, and governance. Centrally located within Guntur district, the constituency enjoys strategic importance as a thriving centre for trade, services, and public administration. Historically significant, Guntur East is one of the state&#8217;s oldest municipalities and was elevated to a Municipal Corporation in 1994, marking its transformation into a key urban centre of Andhra Pradesh.&#10;The vision plan focuses on leveraging this historical and institutional base to accelerate growth while ensuring balanced development. With a rich cultural heritage and vibrant social fabric, the constituency is home to diverse communities, religious landmarks, and traditional marketplaces, which coexist alongside modern infrastructure and commercial activity. This unique blend of tradition and progress provides the foundation for sustainable development.&#10;Aligned with Swarna Andhra @ 2047 and the national development framework of Viksit Bharat @ 2047, the constituency has set ambitious targets, including achieving 15% annual growth across priority sectors such as commerce, services, education, and urban infrastructure. Special emphasis is placed on strengthening educational institutions, expanding healthcare facilities, promoting digital and smart urban services, and enhancing transport and connectivity.&#10;The plan also seeks to bridge socioeconomic disparities, foster entrepreneurship through MSMEs and startups, and improve quality of life through sustainable housing, sanitation, and green spaces. Guntur East&#8217;s forward-looking roadmap envisions it as a model constituency, harmonizing economic growth with inclusivity and heritage conservation.</span></p>",
+  "constituencyMap": "132\\MAP\\132IMAGE2025090412435662993_guntur east-min.jpg",
+  "geography": "<p><span>Guntur East Assembly Constituency, spread over 22.6 sq. km, is a centrally located urban hub in Guntur district . The region has black cotton soils and a tropical climate marked by hot summers, moderate winters, and seasonal monsoons. Though predominantly urban, it benefits from nearby agricultural zones producing paddy, cotton, and chilli, supported by Asia&#8217;s largest Guntur Mirchi Yard. Strong transport infrastructure and adequate rainfall ensure balanced, sustainable urban growth.</span></p>",
+  "populationDesc": "<p><span>Guntur East Constituency has a total 3,13,266 (population of as per 2011) with 100% residing in urban area. The constituency has 83,538 households, with a sex ratio of 992 females per 1000 males.</span></p>",
+  "administrationDesc": "<p><span>Guntur East Constituency is one of the seven assembly constituencies in Guntur District. It has Guntur East Municipal Corporation.</span></p>",
+  "educationHealthcareDesc": "<p><span>Guntur East Assembly Constituency is a leading hub for education and healthcare in Andhra Pradesh. It hosts 23 primary, 20 upper primary, and 27 high schools, alongside 16 junior colleges, 3 degree colleges, 3 ITIs, 1 polytechnic, and 2 medical colleges, supported by coaching and skill training under NSDC and PMKVY. In healthcare, the region is anchored by the Government General Hospital, with 15 Urban PHCs, 98 clinics, and 286 private hospitals providing advanced and accessible medical services.</span></p>",
+  "culturalheritageDesc": "<p><span>Guntur East Assembly Constituency reflects a rich cultural and spiritual legacy, blending history with modern urban life. The constituency is home to centuries-old Sri Amaralingeswara Swamy Temple, Kotappakonda traditions, and ancient step wells, alongside prominent churches and mosques, symbolizing communal harmony. Festivals like Sankranti, Ugadi, and Dasara are celebrated with great fervor, showcasing folk arts, dance, and music. Proximity to Amaravati&#8217;s Buddhist sites and Guntur Mirchi Yard adds both heritage and economic significance, positioning Guntur East as a vibrant cultural and spiritual hub.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "tyozXvvIBl4xbOe74EKW4Q==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Guntur&#8217;s East Economy at a Glance</h2><p><br></p><p><span><span>Guntur East Constituency, a fully urbanized constituency strategically located within the Andhra Pradesh Capital Region, is set to transform into a model urban economy by 2047 through a vision anchored in sustainability, inclusivity and smart growth. With a strong service sector, industrial base and skilled human capital, the Economic Vision Plan outlines a clear roadmap to boost investments, employment and income. The Gross Constituency Domestic Product (GCDP) is projected to grow from &#8377;6,945 crores in 2022-23 to &#8377;16815 crores by 2028-29, achieving a steady annual growth rate of 12&#8211;15%. This strategy leverages sectoral strengths, addresses infrastructure and job market challenges and promotes industrial diversification to ensure long-term, inclusive economic development.&#160;</span></span></p>",
+   "gcdP_Growth_Text": "<span>Guntur East is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span><font color=\"#333333\"><span>&#160;across key sectors like construction, manufacturing and Trade, Hotel &amp; Restaurants&#160;real estate</span></font></span><span>. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-06T09:47:34.487"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 7590.0,
+   "cagR_Pct": 18.37,
+   "targetAmountCrore": 16815.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 4802.0,
+   "cagR_Pct": 22.74,
+   "targetAmountCrore": 10146.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2179.0,
+   "cagR_Pct": 22.74,
+   "targetAmountCrore": 5454.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 40.0,
+   "cagR_Pct": 2.23,
+   "targetAmountCrore": 44.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 132,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 68.39
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 31.03
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 0.58
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 132,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 940,
+   "constituencyId": 132,
+   "name": "Mohammed Naseer Ahmed",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 670,
+   "constituencyId": 132,
+   "name": "Mohammed Mustafa Shaik",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 671,
+   "constituencyId": 132,
+   "name": " Mohammed Mustafa Shaik",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 939,
+   "constituencyId": 132,
+   "name": "Shaik Mastan Vali",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

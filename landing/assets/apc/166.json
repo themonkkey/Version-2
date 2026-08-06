@@ -1,0 +1,233 @@
+{
+ "code": 166,
+ "name": "Vizianagaram",
+ "district": "Vizianagaram",
+ "logoUrl": "assets/constituencies_logos/vizianagaram.png",
+ "profile": {
+  "population": "283550 (As per Census 2011)",
+  "voterCount": "257760 (As per 2024 Elections)",
+  "area": "124",
+  "mandals": "Vijayanagaram-U,Vizianagaram-R",
+  "revenueVillages": "13",
+  "municipal_wards": "50",
+  "municipalities": "Vijayanagaram",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Vizianagaram Assembly Constituency Vision Action Plan 2024-29 has been meticulously designed to leverage the constituency's robust service sector, dynamicAgro-industrial base, thriving construction sector, and agriculturalwith applied technology. This strategic blueprint aligns with Andhra Pradesh&#8217;s ambitious Swarna Andhra@2047 vision, which resonates with the national agenda of Viksit Bharat@2047.Located around the core area of the Bhogapuram International Green filed Airport stand out for their significant contributions to the construction, communication, transport, education, innovation, commerce, and service sectors. These unique advantages position the constituency to achieve an ambitious annual growth target of 15% across all key sectors.Vizianagaram has a rich historical and administrative legacy. Established as a Municipal Corporation in 2015 with having more than 80% urbanization. &#10;<p><br></p>",
+  "constituencyMap": "166\\MAP\\166IMAGE2025090317524852432_vizianagaram map.png",
+  "geography": "The headquarters of Vizianagaram District is strategically located in Vizianagaram Assembly Constituency and it will more be benefiting from its proximity to Bhogapuram International Green Field Airport and it is very nearby Visakhapatnam City within the radius of 50 Kms. &#10;<p><br></p>",
+  "populationDesc": "Vizianagaram has a total population of 2,83,550, with 85% residing in urban areas and 15% in rural areas. The constituency has 71,570 households, with a sex ratio of 1023 females per 1,000 males.&#10;<p><br></p>",
+  "administrationDesc": "Vizianagaram Assembly Constituency covers the mandals of Vizianagaram (Rural) and Vizianagaram (Urban), which includes the Vizianagaram Municipal Corporation (VMC).&#10;<p><br></p>",
+  "educationHealthcareDesc": "Vizianagaram is a major educational hub, home to JNTU-G, Vizianagaram, Govt. Medical College, KorukondaSainik School, Govt. Music College, Govt. Sanskrit College, and SITAM Engineering College etc, education is being strengthened with 119 schools, 100+ smart classrooms, and 30,000 youth undergoing skill training under NSDC and PMKVY initiatives.The healthcare sector includes 14PHC/UPHCs, 74 sub-centers, District Hospital, ESIHospital with plans to reduce maternal mortality by 50%, bring infant mortality below 10 per 1,000 live births, and achieve 100% vaccination coverage. A strong public health infrastructure ensures access to affordable and quality medical services&#10;<p><br></p>",
+  "culturalheritageDesc": "Vizianagaram is known for its rich cultural and spiritual heritage, with key attractions such as Sri Pydithalli AmmavaruTemple and the Sri Ramanarayanam. The textile market and other petty trading activities especially for agri-productsare a significant contributor to the economy.&#10;<p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "0/FAu70e8zt0BNYU3SQrRQ==",
+   "economy_Text": "<p dir=\"ltr\">Vizianagaram's Economic Vision Plan outlines a robust strategy to transform the constituency into an economically vibrant, investment-friendly, and employment-driven region. With a Gross Constituency Domestic Product (GCDP) of &#8377;6,723 crores in 2023-24, the constituency is poised for significant growth, projected to reach &#8377;14,106.90 crores by 2028-29, driven by a sustainable annual growth rate of 12-15%. This ambitious roadmap leverages sectoral strengths, addresses infrastructure and employment challenges, and promotes industrial diversification to ensure inclusive and resilient economic progress, positioning Vizianagaram as a dynamic hub for investment and opportunity.</p>",
+   "gcdP_Growth_Text": "<p><font face=\"Times New Roman\"><span>Vizianagaram is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,&#160;</span><span>digital infrastructure, medical tourism, and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span></font><span>.</span></p>",
+   "createdDate": "2025-09-03T06:12:34.593"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6723.5,
+   "cagR_Pct": 13.8,
+   "targetAmountCrore": 14106.9,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 5235.6,
+   "cagR_Pct": 11.9,
+   "targetAmountCrore": 11153.6,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 726.7,
+   "cagR_Pct": 17.2,
+   "targetAmountCrore": 1502.5,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 257.6,
+   "cagR_Pct": 13.3,
+   "targetAmountCrore": 502.7,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 166,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 84.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 12.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 4.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 166,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 154,
+   "constituencyId": 166,
+   "name": "Pusapati Aditi Vijayalakshmi",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 776,
+   "constituencyId": 166,
+   "name": "Kolagatla Veerabhadra Swamy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 777,
+   "constituencyId": 166,
+   "name": "Meesala Geetha",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 779,
+   "constituencyId": 166,
+   "name": "Pusapati Ashok Gajapathi",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 780,
+   "constituencyId": 166,
+   "name": "Kolagatla Veerabhadra Swamy",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Independent",
+   "photo": ""
+  }
+ ]
+}

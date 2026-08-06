@@ -1,0 +1,224 @@
+{
+ "code": 55,
+ "name": "Rajam (SC)",
+ "district": "Vizianagaram",
+ "logoUrl": "assets/constituencies_logos/rajam (sc).png",
+ "profile": {
+  "population": "271084 (As per Census 2011)",
+  "voterCount": "228390 (As per 2024 Elections)",
+  "area": "542.35",
+  "mandals": "R.Amadalavalasa-R,Rajam-R,Rajam-U,Santhakaviti-R,Vangara-R",
+  "revenueVillages": "171",
+  "municipal_wards": "20",
+  "municipalities": "Rajam",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Rajam Assembly Constituency Vision Action Plan 2024-29has been meticulously designed to leverage the constituency's agricultural strength, dynamic industrial base, thriving construction sector, and robust service sector. This strategic blueprint aligns with Andhra Pradesh&#8217;s ambitious Swarna Andhra@2047 vision, which resonates with the national agenda of Viksit Bharat@2047.Located Rajam, RegidiAmadalavalasa, Santhakaviti and Vangara Mandals stand out for their significant contributions to the construction, education, innovation, commerce, and service sectors. These unique advantages position the constituency to achieve an ambitious annual growth target of 15% across all key sectors.",
+  "constituencyMap": "55\\MAP\\55IMAGE2025090411054770537_RAJAM MAP.png",
+  "geography": "Rajam Assembly Constituency in Vizianagaram District is an agriculturally rich region with 38,310 hectares of cultivable land. Major irrigation sources include Thotapalli Barrage, Narayanapuram Project, and the medium Madduvalasa Reservoir, supported by the Nagavali River and its tributaries Vegavathi and Suvarnamukhi. Additional channels like Akula Lovagadda, Sayanna, and Regidi head channel, along with 5,100 tube wells, enhance irrigation. With annual rainfall of 949 mm against a normal of 1,072 mm (&#8211;11.75%), the area ensures reliable water for farming.",
+  "populationDesc": "Rajam has a total population of 2,71,084, with 84% residing in rural areas and 16% in urban areas. The constituency has 68,003 households, with a sex ratio of 998 females per 1,000 males.&#160;",
+  "administrationDesc": "The Rajam (SC) Assembly Constituency consists of four mandals: Vangara, Regidi Amadalavalasa, Rajam, and Santhakaviti.",
+  "educationHealthcareDesc": "Rajam is a major educational hub, home to GMRIT. School education is being strengthened with 301 schools, 100+ smart classrooms, and 10,000 youth undergoing skill training underNSDC and PMKVY initiatives.The healthcare sector includes 1 CHC, 7 PHCs and 73 sub-centers with plans to reduce maternal mortality by 50%, bring infant mortality below 10 per 1,000 live births, and achieve 100% vaccination coverage. A strong public health infrastructure ensures access to affordable and quality medical services.",
+  "culturalheritageDesc": "Rajam is known for its rich cultural and spiritual heritage, with key attractions such as Sri PolipalliPaidithalli Temple, TTD Sri Venkateswara Swami Temple, Sri Sita Rama Temple and more."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "UbfFiuvzr0Ba1PnUE7JAfg==",
+   "economy_Text": "<p dir=\"ltr\">Rajam's Economic Vision Plan outlines a robust strategy to transform the constituency into an economically vibrant, investment-friendly, and employment-driven hub. With a Gross Constituency Domestic Product (GCDP) of &#8377;4103.7 crores in 2023-24, Rajam is poised for significant growth, targeting &#8377;8566.7 crores by 2028-29, driven by an ambitious annual growth rate of 12-15%. This comprehensive plan leverages sectoral strengths, addresses infrastructure and employment challenges, and promotes industrial diversification to ensure inclusive, sustainable, and resilient economic progress for the region.</p>",
+   "gcdP_Growth_Text": "<span>Rajam Constituency is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,&#160;</span><span>digital infrastructure, medical tourism, and agriculture. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-03T07:32:14.047"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 4103.7,
+   "cagR_Pct": 16.0,
+   "targetAmountCrore": 8566.7,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1783.1,
+   "cagR_Pct": 14.3,
+   "targetAmountCrore": 3854.6,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1057.4,
+   "cagR_Pct": 12.95,
+   "targetAmountCrore": 2184.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 956.0,
+   "cagR_Pct": 11.8,
+   "targetAmountCrore": 1949.6,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 55,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 47.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 28.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 25.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 55,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 1,
+   "sectorName": "Agro-Processing",
+   "description": "Promotion of value-added agricultural products, cold storage, and supply chain infrastructure.",
+   "imageUrl": "assets/img/sectors/agro-processing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 298,
+   "constituencyId": 55,
+   "name": "Kondru Murali Mohan",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 798,
+   "constituencyId": 55,
+   "name": "Kambala Jogulu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 799,
+   "constituencyId": 55,
+   "name": "Kambala Jogulu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 800,
+   "constituencyId": 55,
+   "name": "Kondru Murali Moha",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

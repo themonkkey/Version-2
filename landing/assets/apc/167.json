@@ -1,0 +1,200 @@
+{
+ "code": 167,
+ "name": "Nellore Rural",
+ "district": "Spsr Nellore",
+ "logoUrl": "assets/constituencies_logos/nellore rural.png",
+ "profile": {
+  "population": "337688 (As per Census 2011)",
+  "voterCount": "280948 (As per 2024 Elections)",
+  "area": "330.24",
+  "mandals": "Nellore Rural-R,Nellore-U",
+  "revenueVillages": "17",
+  "municipal_wards": "26",
+  "municipalities": "Nellore",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "&#34;Nellore Rural Assembly Constituency, one of the eight segments in SPSR Nellore District, falls under the Nellore Lok Sabha Constituency. It comprises Nellore rural mandal and parts of the Nellore Municipal Corporation, making it largely urban in character with 88.1% of its population residing in urban areas. Geographically, it is located along the banks of the Penna River and enjoys excellent connectivity through national highways and railways, supporting both trade and mobility.&#160;<p>The region has a mixed economic base, with agriculture and aquaculture playing key roles. Major crops cultivated include paddy (6,694 hectares), vegetables (179 hectares), and mango (109 hectares). Aquaculture contributes significantly to the Gross Constituency Value Added (GCVA), highlighting its economic importance. Industrial presence is marked by units like Dodla Dairy Ltd, which handles 15 lakh liters of milk per day. The constituency is also a hub for education and healthcare, with reputed government and private medical colleges. With a rich cultural heritage and multiple tourist attractions, Nellore Rural holds strong potential for sustainable development in agriculture, services, tourism, and urban infrastructure.&#34;&#10;</p><p><br></p>",
+  "constituencyMap": "167\\MAP\\167IMAGE2025090407374713621_WhatsApp Image 2025-09-04 at 7.31.40 AM.jpeg",
+  "geography": "Nellore Rural constiteuncy is located in Nellore District and spans 330.24 Sq. km . Red loamy, Red Sandy, Coastal alluvium soils.&#10;<p><br></p>",
+  "populationDesc": "The total population is 3,37,688 , with approximately 11.89 % residing in rural areas and 88.10 % in urban areas. There are 81,681 households, and the sex ratio is 968 females per 1,000 males. The literacy rate stands at 73.54 %.&#10;<p><br></p>",
+  "administrationDesc": "Nellore Rural Constituency is one of the Eight assembly constituencies in SPSR Nellore District. It includes one  Mandal   and also one Municipal Corporation constituency .Nellore Rural Constituency comes under Nellore Loksabha Constituency.&#10;<p><br></p>",
+  "educationHealthcareDesc": "7 Degree Colleges,2 Engineering colleges ,2 Medical Colleges and it has 1 Government General Hospital&#10;<p><br></p>",
+  "culturalheritageDesc": "&#34;Sri vedagiri lakshmi Narasimah Swamy Temple,Sri Rajarajeswari Temple, Bara Shaheed Dargah,<p>Irukala Parameshwari ,Bara Shaheed dargha Boating, Narasimha Konda,</p><p>Irukala Parameshwari Temple,</p><p>Ganesh Ghat</p><p><br></p><p>&#34;&#10;</p><p><br></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "t6qUKGh3V7WrIKep2ZckBw==",
+   "economy_Text": "<b>Economy At a Glance</b><p><font face=\"Times New Roman\" size=\"3\">With a Gross Constituency Domestic Product (GCDP) of &#8377;5,097 crores in 2023&#8211;24 (FRE), Nellore Rural is projected to reach &#8377;11,013 crores by 2028&#8211;29, reflecting a strong and sustainable annual growth rate of 14&#8211;16%.&#160;<span>The services sector is the dominant contributor, accounting for 67.5% of GCVA in 2023&#8211;24, and is expected to rise to 70% by 2028&#8211;29, driven by rapid urbanization, real estate development, and growth in health, education, and tourism.&#160;</span><span>The primary sector contributes 14.90%, supported by paddy cultivation, vegetables, mango orchards, and a growing aquaculture base.&#160;</span><span>The industrial sector, with a 17.63% share, shows strong potential for food processing, agro-based industries, and urban infrastructure projects, especially with support from connectivity via NH-16 and NH-67.</span></font></p><p><b><br></b></p><p><br></p><p></p>",
+   "gcdP_Growth_Text": "<font face=\"Times New Roman\">Nellore Rural is witnessing steady economic momentum with a targeted 14-16 % annual GCDP growth rate across key sectors like real estate,&#160;<span>digital infrastructure, medical tourism, and agriculture. This growth trajectory aligns with the long-term vision of making the</span></font><p><font face=\"Times New Roman\">constituency a vibrant urban and economic hub by 2047.</font></p>",
+   "createdDate": "2025-09-04T01:48:15.737"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5097.0,
+   "cagR_Pct": 16.66,
+   "targetAmountCrore": 11013.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3181.0,
+   "cagR_Pct": 17.7,
+   "targetAmountCrore": 7212.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 831.0,
+   "cagR_Pct": 17.7,
+   "targetAmountCrore": 1880.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 703.0,
+   "cagR_Pct": 11.84,
+   "targetAmountCrore": 1230.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 167,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 67.47
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 17.63
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 14.9
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 167,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 7,
+   "sectorName": "Education & Skill Development",
+   "description": "Setting up educational institutions, skill development centers, vocational training, and research institutions.",
+   "imageUrl": "assets/img/sectors/education-skill-development.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 238,
+   "constituencyId": 167,
+   "name": "Kotamreddy Sridhar Reddy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 239,
+   "constituencyId": 167,
+   "name": "Kotamreddy Sridhar Reddy",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 240,
+   "constituencyId": 167,
+   "name": "Kotamreddy Sridhar Reddy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 241,
+   "constituencyId": 167,
+   "name": "Anam Vivekananda Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

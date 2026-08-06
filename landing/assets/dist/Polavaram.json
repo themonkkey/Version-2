@@ -1,0 +1,334 @@
+{
+ "key": "Polavaram",
+ "name": "Polavaram",
+ "years": [
+  "2022-23 (TRE)",
+  "2023-24 (SRE)",
+  "2024-25 (FRE)",
+  "2025-26 (FAE)"
+ ],
+ "latest_year": "2025-26 (FAE)",
+ "source": "AP district-wise GVA/GDDP workbook",
+ "gddp": [
+  {
+   "year": "2022-23 (TRE)",
+   "value": 4652.761417178149,
+   "growth": null,
+   "rank": 28.0
+  },
+  {
+   "year": "2023-24 (SRE)",
+   "value": 4977.0,
+   "growth": 6.96,
+   "rank": 28.0
+  },
+  {
+   "year": "2024-25 (FRE)",
+   "value": 6223.0,
+   "growth": 25.04,
+   "rank": 28.0
+  },
+  {
+   "year": "2025-26 (FAE)",
+   "value": 6831.0,
+   "growth": 9.77,
+   "rank": 28.0
+  }
+ ],
+ "nddp": [
+  {
+   "year": "2022-23 (TRE)",
+   "value": 4182.801506951326,
+   "growth": null,
+   "rank": 28.0
+  },
+  {
+   "year": "2023-24 (SRE)",
+   "value": 4508.838284684043,
+   "growth": 7.79,
+   "rank": 28.0
+  },
+  {
+   "year": "2024-25 (FRE)",
+   "value": 5644.098015303598,
+   "growth": 25.17,
+   "rank": 28.0
+  },
+  {
+   "year": "2025-26 (FAE)",
+   "value": 6225.8943693523415,
+   "growth": 10.31,
+   "rank": 28.0
+  }
+ ],
+ "pci": [
+  {
+   "year": "2022-23 (TRE)",
+   "value": 111652.0,
+   "growth": null,
+   "rank": 28.0
+  },
+  {
+   "year": "2023-24 (SRE)",
+   "value": 119939.0,
+   "growth": 7.42,
+   "rank": 28.0
+  },
+  {
+   "year": "2024-25 (FRE)",
+   "value": 149618.0,
+   "growth": 24.75,
+   "rank": 27.0
+  },
+  {
+   "year": "2025-26 (FAE)",
+   "value": 164475.0,
+   "growth": 9.93,
+   "rank": 27.0
+  }
+ ],
+ "population": [
+  {
+   "year": "2022-23 (TRE)",
+   "value": 375.0,
+   "growth": null,
+   "rank": 28.0
+  },
+  {
+   "year": "2023-24 (SRE)",
+   "value": 376.0,
+   "growth": 0.27,
+   "rank": 28.0
+  },
+  {
+   "year": "2024-25 (FRE)",
+   "value": 377.2336198022704,
+   "growth": 0.27,
+   "rank": 28.0
+  },
+  {
+   "year": "2025-26 (FAE)",
+   "value": 378.53228366328705,
+   "growth": 0.53,
+   "rank": 28.0
+  }
+ ],
+ "aggregates": {
+  "agri": [
+   {
+    "year": "2022-23 (TRE)",
+    "value": 2221.18983180406,
+    "pct_of_district": 50.92,
+    "pct_of_state_sector": 0.51
+   },
+   {
+    "year": "2023-24 (SRE)",
+    "value": 2249.352994193616,
+    "pct_of_district": 48.75,
+    "pct_of_state_sector": 0.5
+   },
+   {
+    "year": "2024-25 (FRE)",
+    "value": 3027.56071891542,
+    "pct_of_district": 52.6,
+    "pct_of_state_sector": 0.61
+   },
+   {
+    "year": "2025-26 (FAE)",
+    "value": 3331.0819174599774,
+    "pct_of_district": 52.89,
+    "pct_of_state_sector": 0.62
+   }
+  ],
+  "industry": [
+   {
+    "year": "2022-23 (TRE)",
+    "value": 386.8119440438189,
+    "pct_of_district": 8.87,
+    "pct_of_state_sector": 0.13
+   },
+   {
+    "year": "2023-24 (SRE)",
+    "value": 500.56128055214197,
+    "pct_of_district": 10.85,
+    "pct_of_state_sector": 0.15
+   },
+   {
+    "year": "2024-25 (FRE)",
+    "value": 628.0,
+    "pct_of_district": 10.91,
+    "pct_of_state_sector": 0.18
+   },
+   {
+    "year": "2025-26 (FAE)",
+    "value": 558.0,
+    "pct_of_district": 8.86,
+    "pct_of_state_sector": 0.15
+   }
+  ],
+  "services": [
+   {
+    "year": "2022-23 (TRE)",
+    "value": 1754.0450422234126,
+    "pct_of_district": 40.21,
+    "pct_of_state_sector": 0.35
+   },
+   {
+    "year": "2023-24 (SRE)",
+    "value": 1864.0,
+    "pct_of_district": 40.4,
+    "pct_of_state_sector": 0.34
+   },
+   {
+    "year": "2024-25 (FRE)",
+    "value": 2100.256276912334,
+    "pct_of_district": 36.49,
+    "pct_of_state_sector": 0.34
+   },
+   {
+    "year": "2025-26 (FAE)",
+    "value": 2408.2880815169037,
+    "pct_of_district": 38.24,
+    "pct_of_state_sector": 0.34
+   }
+  ]
+ },
+ "sectors": [
+  {
+   "name": "Horticulture",
+   "value": 1466.421730823666,
+   "rank": 27.0,
+   "growth": 69.28,
+   "pct_of_district": 23.29,
+   "pct_of_state_sector": 1.03
+  },
+  {
+   "name": "Live stock",
+   "value": 1041.0,
+   "rank": 28.0,
+   "growth": 1.56,
+   "pct_of_district": 16.53,
+   "pct_of_state_sector": 0.59
+  },
+  {
+   "name": "Public Admn.",
+   "value": 690.7716964567394,
+   "rank": 28.0,
+   "growth": 4.7,
+   "pct_of_district": 10.97,
+   "pct_of_state_sector": 1.15
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "value": 542.1937288778797,
+   "rank": 28.0,
+   "growth": 15.32,
+   "pct_of_district": 8.61,
+   "pct_of_state_sector": 0.39
+  },
+  {
+   "name": "Forestry & Logging",
+   "value": 471.09254255609056,
+   "rank": 8.0,
+   "growth": -38.03,
+   "pct_of_district": 7.48,
+   "pct_of_state_sector": 4.57
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "value": 307.9343000709268,
+   "rank": 27.0,
+   "growth": 13.24,
+   "pct_of_district": 4.89,
+   "pct_of_state_sector": 0.29
+  },
+  {
+   "name": "Other Services",
+   "value": 303.826086587894,
+   "rank": 28.0,
+   "growth": 13.01,
+   "pct_of_district": 4.82,
+   "pct_of_state_sector": 0.21
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "value": 291.6781654509733,
+   "rank": 26.0,
+   "growth": -7.01,
+   "pct_of_district": 4.63,
+   "pct_of_state_sector": 0.66
+  },
+  {
+   "name": "Trade,Hotel & Restaurants",
+   "value": 260.05347469982104,
+   "rank": 27.0,
+   "growth": 58.54,
+   "pct_of_district": 4.13,
+   "pct_of_state_sector": 0.21
+  },
+  {
+   "name": "Agriculture",
+   "value": 242.23875234621084,
+   "rank": 27.0,
+   "growth": -12.64,
+   "pct_of_district": 3.85,
+   "pct_of_state_sector": 0.42
+  },
+  {
+   "name": "Construction",
+   "value": 215.78490791062865,
+   "rank": 28.0,
+   "growth": 6.93,
+   "pct_of_district": 3.43,
+   "pct_of_state_sector": 0.17
+  },
+  {
+   "name": "Communications",
+   "value": 183.0,
+   "rank": 28.0,
+   "growth": 15.82,
+   "pct_of_district": 2.91,
+   "pct_of_state_sector": 0.55
+  },
+  {
+   "name": "Banking & Insurance",
+   "value": 120.0,
+   "rank": 28.0,
+   "growth": 13.21,
+   "pct_of_district": 1.91,
+   "pct_of_state_sector": 0.14
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "value": 110.44646749181668,
+   "rank": 24.0,
+   "growth": 11.11,
+   "pct_of_district": 1.75,
+   "pct_of_state_sector": 0.07
+  },
+  {
+   "name": "Mining & Quarrying",
+   "value": 45.0,
+   "rank": 28.0,
+   "growth": -58.33,
+   "pct_of_district": 0.71,
+   "pct_of_state_sector": 0.13
+  },
+  {
+   "name": "Manufacturing",
+   "value": 5.574486263692747,
+   "rank": 27.0,
+   "growth": 20.0,
+   "pct_of_district": 0.09,
+   "pct_of_state_sector": 0.0
+  },
+  {
+   "name": "Railways",
+   "value": 0.0,
+   "rank": 27.0,
+   "growth": null,
+   "pct_of_district": 0.0,
+   "pct_of_state_sector": 0.0
+  }
+ ]
+}

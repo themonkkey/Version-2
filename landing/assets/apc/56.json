@@ -1,0 +1,245 @@
+{
+ "code": 56,
+ "name": "Etcherla",
+ "district": "Srikakulam",
+ "logoUrl": "assets/constituencies_logos/etcherla.png",
+ "profile": {
+  "population": "299883 (As per Census 2011)",
+  "voterCount": "244760 (As per 2024 Elections)",
+  "area": "692.87",
+  "mandals": "Etcherla-R,G.Sigadam-R,Laveru-R,Ranasthalam-R",
+  "revenueVillages": "171",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Etcherla Assembly Constituency Vision Action Plan 2024&#8211;29 aims to harness agricultural strength, a growing industrial base, thriving construction, and a robust service sector. This blueprint aligns with Andhra Pradesh&#8217;s Swarna Andhra @ 2047 vision and the national Viksit Bharat @ 2047 agenda. The constituency comprises four mandals&#8212;Etcherla, Ranasthalam, Laveru, and Ganguvari Sigadam&#8212;with Etcherla serving as the headquarters in Srikakulam district. Known for its cultural and historical heritage, Etcherla hosts revered shrines such as the Sri Mahalakshmi Temple and Bhadra Mahankali Temple Complex, which attract pilgrims statewide. The region contributes significantly to agriculture and aquaculture, ensuring food security and economic growth. Strategically positioned with excellent connectivity to Srikakulam and Visakhapatnam, it is well-placed to advance trade and industrial activity. With its cultural richness, religious tourism potential, and developmental strengths, Etcherla is poised to achieve an ambitious 15% annual growth across agriculture, industry, services, and tourism while preserving its heritage.",
+  "constituencyMap": "56\\MAP\\56IMAGE2025090512370436814_etcherla map.png",
+  "geography": "Area and Location: Etcherla spans an area of 692.87 sq. km and It shares boundaries with Amadalavalsa, Rajam, and Nellimarla (Vizianagaram) constituencies, and is strategically positioned within the Srikakulam district of Andhra Pradesh.",
+  "populationDesc": "According to the 2011 Census, Etcherla had a population of 2,99,885, comprising 1,52,446 males and 1,47,439 females, with a sex ratio of 967 females for every 1,000 males.",
+  "administrationDesc": "Etcherla Constituency is composed of four mandals: Etcherla, Ranasthalam, Laveru, and Ganguvari Sigadam.",
+  "educationHealthcareDesc": "Etcherla has a strong healthcare network with 1 CHC, 8 PHCs, 90 sub-centers, 7 FDHS vehicles, and 4 ambulances, ensuring accessible and emergency services. Veterinary needs are met by 5 hospitals and 9 dispensaries. Education is well-developed with 270 primary, 50 upper primary, and 46 high schools, alongside 10 junior colleges, 3 degree colleges, 1 ITI, and 2 engineering colleges. Support facilities include 1 BC Welfare Girls Hostel, 17 BC Welfare Boys Hostels, and 1 SC Welfare Hostel. Together, these institutions strengthen human development through healthcare access, quality education, and inclusive opportunities across the constituency.",
+  "culturalheritageDesc": "Etcherla Constituency is rich in cultural and spiritual heritage, reflecting the traditions of Srikakulam district. It is home to prominent temples like the Sri Mahalakshmi Temple and the Bhadra Mahankali Temple complex, which attract pilgrims and devotees from across Andhra Pradesh. These ancient shrines are not only centers of worship but also symbolize the region&#8217;s deep-rooted spiritual practices and architectural beauty. Local festivals celebrated with devotion add to the vibrant cultural fabric of the constituency. This blend of religious significance and cultural diversity positions Etcherla as an important hub for spiritual tourism and heritage preservation."
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "RfJ8gB0igdRKpopPYAkNww==",
+   "economy_Text": "<p dir=\"ltr\">Etcherla's Economic Vision Plan outlines a robust strategy for sustainable economic growth, projecting the Gross Constituency Domestic Product (GCDP) to grow from &#8377;6,497.00 crores in 2023-24 to &#8377;13,584.00 crores by 2028-29. By capitalizing on its agricultural strengths, promoting industrial diversification, and expanding the service sector, particularly through tourism, the plan aims to drive employment and inclusive development. Addressing infrastructural bottlenecks and fostering strategic investments, Etcherla is positioned to emerge as a model economy in Andhra Pradesh, balancing growth across key sectors for a resilient and thriving future.</p>",
+   "gcdP_Growth_Text": "<span>Etcherla is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like Agriculture &amp; Allied , Manufacturing, real estate</span><span>. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-03T11:48:18.72"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6497.0,
+   "cagR_Pct": 16.6,
+   "targetAmountCrore": 13584.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2242.0,
+   "cagR_Pct": 18.46,
+   "targetAmountCrore": 4746.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1851.0,
+   "cagR_Pct": 17.15,
+   "targetAmountCrore": 3875.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1917.0,
+   "cagR_Pct": 13.86,
+   "targetAmountCrore": 3851.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 56,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 37.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 31.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 32.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 56,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 699,
+   "constituencyId": 56,
+   "name": "Nadukuditi Eswara Rao",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Bharatiya Janata Party",
+   "photo": ""
+  },
+  {
+   "id": 700,
+   "constituencyId": 56,
+   "name": "Gorle Kiran Kumar",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 701,
+   "constituencyId": 56,
+   "name": "Kimidi Kalavenkata Rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TELUGU DESAM PARTY",
+   "photo": ""
+  },
+  {
+   "id": 704,
+   "constituencyId": 56,
+   "name": "Meesala Neelakantam",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 705,
+   "constituencyId": 56,
+   "name": "Meesala Neelakantam",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress Party",
+   "photo": ""
+  }
+ ]
+}

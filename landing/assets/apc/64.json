@@ -1,0 +1,212 @@
+{
+ "code": 64,
+ "name": "Yelamanchili",
+ "district": "Anakapalli",
+ "logoUrl": "assets/constituencies_logos/yelamanchili.png",
+ "profile": {
+  "population": "246563 (As per Census 2011)",
+  "voterCount": "206394 (As per 2024 Elections)",
+  "area": "508.11",
+  "mandals": "Atchuthapuram-R,Munagapaka-R,Rambilli-R,Yelamanchili-U,Yellamanchili-R",
+  "revenueVillages": "108",
+  "municipal_wards": "25",
+  "municipalities": "Yelamanchili",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p><span>Yelamanchili Constituency, in Anakapalli district of Andhra Pradesh, consists of four mandals&#8212;Yelamanchili, Rambilli, Atchuthapuram, and Munagapaka&#8212;and one municipality, Yelamanchili, serving as its headquarters. The region holds both strategic and historical significance. A key development is INS Varsha, a 20 sq. km naval base near Rambilli being built to house India&#8217;s nuclear-powered submarines, featuring underground pens and tunnels for stealth operations and strengthening India&#8217;s maritime security. Historically known as Ellamanchi, it was the capital of Madhyama Kalinga and a tax collection hub between the Champavathi and Varaha rivers. Archaeological remains highlight its cultural depth, including the Buddhist site Kotturu Dhanadibbalu, Hindu relics at Dharapalem, and the Panchadharla Dharalingeswara Temple. Excavations around Panchadharla and Dharapalem revealed prehistoric artifacts and a recently discovered statue of Lord Venkateswara, underscoring its cultural evolution from early Buddhism to medieval Hinduism. Rich in heritage and natural landscapes, the constituency also attracts tourism, blending its defense prominence with cultural legacy. With its unique mix of modern strategic importance and ancient history, Yelamanchili stands as a region of national pride, cultural depth, and economic potential.</span></p>",
+  "constituencyMap": "64\\MAP\\64IMAGE2025090613233884054_Yelamanchalli.jpg",
+  "geography": "<p><span>Yelamanchili Constituency in Anakapalli district covers 508.11 sq. km and shares boundaries with Payakaraopeta, Narsipatnam, Anakapalli, Visakhapatnam constituencies, and the Bay of Bengal. Its geography features a mix of fertile plains and gentle hills, well-suited for agriculture, particularly paddy, sugarcane, and horticultural crops. The region has a tropical monsoon climate with hot, humid summers, high humidity, and heavy rainfall during the monsoon season, which sustains its farming activities and lush greenery.</span></p>",
+  "populationDesc": "Yelamanchili Constituency has a population of 2,46,563, with 89% in rural and 11% in urban areas. It has 65,008 households, a sex ratio of 1,016 females per 1,000 males, with 1,12,788 males and 1,14,047 females, reflecting a healthy gender balance.",
+  "administrationDesc": "<p><span>Yelamanchili Constituency consists of four mandals; Yelamanchili, Rambilli, Atchuthapuram and Munagapaka and one municipality: Yelamanchili.</span></p>",
+  "educationHealthcareDesc": "<p><span>Yelamanchili Constituency has a balanced network of education and healthcare facilities. The region hosts 241 schools, including 167 primary, 24 upper primary, and 50 high schools, supported by 15 junior colleges, 4 degree colleges, and 7 professional colleges, though it lacks universities. Healthcare services include 1 Community Health Center, 10 Primary Health Centers, 5 AYUSH hospitals, and 83 sub-centers, supplemented by 6 Fixed Day Health Service vehicles and 2 ambulances, ensuring emergency response. Together, these institutions provide essential support for education and healthcare, contributing to the constituency&#8217;s social development.</span></p>",
+  "culturalheritageDesc": "<p><span>Yelamanchili Constituency is culturally vibrant and historically significant, with temples, heritage sites, and natural attractions enriching its identity. The Dharalingeswara Swamy Temple at Panchadharla (9th century) in Rambilli and the Chodeswara Shiva Temple at Achuthapuram reflect deep spiritual traditions and ancient dynastic influences. Archaeological sites like Kotturu Dhanadibbalu (a Buddhist center) and Dharapalem showcase Satavahana and Eastern Chalukya history, while excavations in Panchadharla and surrounding hills reveal prehistoric remains. Festivals such as bullock cart races in Munagapaka during Sankranti preserve rural customs and promote community spirit. Scenic coastal mangroves, Eastern Ghats landscapes, and historic temples together position Yelamanchili as a hub of heritage and eco-tourism.</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "tUat3rwe+NxSjy1C9xEHdQ==",
+   "economy_Text": "<p dir=\"ltr\">Yelamanchili Constituency, with a Gross Constituency Domestic Product (GCDP) of &#8377;13,902 crores in 2023-24 (FRE), is on a robust growth path, projected to reach &#8377;28,982 crores by 2028-29, driven by a sustainable annual growth rate of 12-15%. The Economic Vision Plan focuses on leveraging sectoral strengths, enhancing infrastructure, promoting industrial diversification, and boosting employment to establish Yelamanchili as an investment-friendly and economically vibrant region.&#160;&#160;</p><b><p><b>Sector-Wise Economic Overview :</b></p></b><ul class=\"tight\" dir=\"ltr\"><li><p dir=\"ltr\"><strong>Services Sector</strong>: Valued at &#8377;1,592 crores (2023-24) with a growth rate of 26.50%, expected to reach &#8377;3,449 crores by 2028-29.</p></li><li><p dir=\"ltr\"><strong>Industries Sector</strong>: Contributes &#8377;9,302 crores (2023-24) with a growth rate of 25.69%, projected to grow to &#8377;19,788 crores by 2028-29.</p></li><li><p dir=\"ltr\"><strong>Agricultural &amp; Allied Sector</strong>: Stands at &#8377;1,967 crores (2023-24) with a growth rate of 20.94%, anticipated to reach &#8377;3,749 crores by 2028-29.</p></li></ul>",
+   "gcdP_Growth_Text": "<p dir=\"ltr\">Yelamanchili is witnessing dynamic economic progress, aiming for a steady 15% annual GCDP growth across its key sectors: agriculture, industry, and services. This forward-looking strategy aligns with the vision of transforming Yelamanchili into a thriving urban and economic center by 2047, promoting sustainable development, employment opportunities, and equitable prosperity.</p>",
+   "createdDate": "2025-09-04T15:29:14.327"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 13902.0,
+   "cagR_Pct": 21.69,
+   "targetAmountCrore": 28982.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1592.0,
+   "cagR_Pct": 26.5,
+   "targetAmountCrore": 3449.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 9302.0,
+   "cagR_Pct": 25.69,
+   "targetAmountCrore": 19788.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1967.0,
+   "cagR_Pct": 20.94,
+   "targetAmountCrore": 3749.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 64,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 12.38
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 72.3
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 15.32
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 64,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 16,
+   "sectorName": "Forest & Eco Tourist Sites",
+   "description": "Conservation-based tourism, trekking trails, and forest-based livelihood development.",
+   "imageUrl": "assets/img/sectors/forest-eco-tourist-sites.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 391,
+   "constituencyId": 64,
+   "name": "Sundarapu Vijay Kumar",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Janasena Party",
+   "photo": ""
+  },
+  {
+   "id": 392,
+   "constituencyId": 64,
+   "name": "Kanna Babu (Uppalapati Venkata Ramanamurti Raju)",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 396,
+   "constituencyId": 64,
+   "name": " Panchakarla Ramesh Babu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party(TDP)",
+   "photo": ""
+  },
+  {
+   "id": 968,
+   "constituencyId": 64,
+   "name": "Kanna Babu (Uppalapati Venkata Ramanamurti Raju)",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

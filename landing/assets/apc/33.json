@@ -1,0 +1,281 @@
+{
+ "code": 33,
+ "name": "Chittoor",
+ "district": "Chittoor",
+ "logoUrl": "assets/constituencies_logos/chittoor.png",
+ "profile": {
+  "population": "256122 (As per Census 2011)",
+  "voterCount": "202850 (As per 2024 Elections)",
+  "area": "391.84",
+  "mandals": "Chittoor-R,Chittoor-U,Gudipala-R",
+  "revenueVillages": "73",
+  "municipal_wards": "50",
+  "municipalities": "Chittoor",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Chittoor Assembly Constituency, established in 1955 and reorganized in 2008, comprises Chittoor Urban, Chittoor Rural, Gudipala mandals, and Chittoor Municipal Corporation. Spanning 391.84 sq. km, it is strategically located between Chennai and Bangalore, with robust road and rail connectivity. The region has fertile sandy clay loams, with 56% land under agriculture and 18% forest cover. Major crops include paddy, mango, groundnut, pulses, and tomato, supported by 3,930 tubewells, 2,560 dug wells, and 124 MI tanks. It receives 1,000 mm of annual rainfall and experiences a tropical climate. The constituency has a population of 2.56 lakh, a literacy rate of 82.15%, and a sex ratio of 1005. Its economy has a GVA of &#8377;6,956 crore, with services (57.9%) as the leading contributor, followed by industry (27.4%) and agriculture (14.7%). Chittoor is home to successful MSMEs, granite polishing, and food processing businesses. Social infrastructure includes government and private healthcare, CMC Hospital, veterinary services, and diverse educational institutions, including colleges and a private university. Physical infrastructure includes NH-40, NH-69, and SH networks, extensive roadways, electricity, water supply, and public facilities. With targeted development in irrigation, healthcare, and skill-building, Chittoor has the potential to become a model for inclusive and sustainable growth.",
+  "constituencyMap": "33\\MAP\\33IMAGE2025090515220665216_CHITTOOR MAP_11zon.jpg",
+  "geography": "The Chittoor constituency is located in Chittoor District and spans 391.84 sq. km. It shares boundaries with the Gangadhara Nellore and Puthalapattu constituencies and the state of Tamil Nadu and is strategically positioned between the metropolitan cities of Chennai and Bangalore in the states of Tamil Nadu and Karnataka.",
+  "populationDesc": "The total population is 256122, with approximately 26.08% residing in rural areas and  73.92% in urban areas. There are 65,488 households, and the sex ratio is 1,005 females per 1,000 males. The literacy rate stands at 82.15%.",
+  "administrationDesc": "The Chittoor Constituency is one of the seven assembly constituencies in the Chittoor District. It includes 1) Chittoor. 2) The Gudipala&#160;Chittoor constituency comes under the Chittoor Loksabha constituency<span>.</span>",
+  "educationHealthcareDesc": "The constituency is equipped with a government district hospital, three primary health centers (PHCs), seven urban PHCs, 77 village clinics, one ESI dispensary, and four AYUSH clinics, ensuring accessible healthcare services across the region.<br><br>The constituency is home to 192 primary schools, 30 upper primary schools, 74 high schools, and one SC APRES. For higher education, there are 21 junior colleges, one residential junior college, 8 degree colleges, 3 Industrial Training Institutes (ITI), 2 Engineering colleges, one MBA college, one MCA college, one Pharmacy college, one polytechnic, and one Private University (Apollo) Residential school for girls and APTW residential schools for girls",
+  "culturalheritageDesc": "Arunagiri hills (Subramanya Swamy Temple), Gangamma Temple, Durga Temple"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "Gli8JgIKhjORYTiFnyp/cw==",
+   "economy_Text": "<b>Economy at a Glance</b><p>Chittoor&#8217;s economy is predominantly driven by the <span>service sector</span>, which contributes <span>57.92%</span> to the Gross Value Added (GVA), reflecting the city&#8217;s growing role in education, retail, hospitality, and public services. The <span>industrial sector accounts for 27.36%</span>, supported by a mix of traditional and modern industries. Meanwhile, the <span>agriculture and allied sector contributes 14.72%</span>, showing the ongoing importance of farming, dairy, and horticulture in the region&#8217;s economic landscape.</p><p>The constituency has a <span>strong industrial base</span>, with a notable presence in <span>granite polishing and cutting</span>, <span>food processing</span>, and <span>construction-related activities</span>. With <span>over 210 granite units</span>, Chittoor has emerged as a key player in the stone-processing industry. The food processing sector is also growing steadily, supported by major enterprises such as <span>TASA Foods</span>, <span>RMM Food Products</span>, and <span>milk chilling centers</span> like <span>Amul</span> and <span>Sruthi</span>. Additionally, <span>five large- and medium-scale industries</span> with a combined investment of &#8377;324 crore are actively operating and generating employment.</p><p>The <span>Micro, Small, and Medium Enterprises (MSME)</span> ecosystem is thriving, with <span>5,088 registered MSMEs</span>, employing over <span>12,700 people,</span> and clocking a combined turnover of <span>&#8377;894 crore</span>. This sector holds potential for further growth through the planned <span>MSME clusters</span>, <span>industrial estates near NH-716B</span>, and support for <span>start-ups and innovation-driven enterprises</span>.</p><p>&#10;&#10;&#10;</p><p>Agriculture remains important, especially in <span>horticulture and organic farming</span>, with opportunities to scale through the development of <span>food processing units</span>, <span>cold storage infrastructure</span>, and <span>value-added agri-based industries</span>. The availability of land and water, coupled with Chittoor&#8217;s strategic connectivity via national highways, makes it well-positioned to attract investment in <span>renewable energy projects</span> and green industries.</p>",
+   "gcdP_Growth_Text": "Chittoor is targeting a <span>15% annual GCDP growth rate</span>, driven by key sectors such as <span>granite and food processing industries</span>, <span>construction</span>, <span>MSMEs</span>, and the <span>service sector</span>. With strategic connectivity, a robust industrial base, and expanding infrastructure, this growth trajectory aligns with the long-term vision of transforming Chittoor into a <span>thriving industrial, commercial, and service-driven hub</span> by <span>2047</span>.",
+   "createdDate": "2025-09-07T07:11:56.3"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 452121.0,
+   "cagR_Pct": 0.01,
+   "targetAmountCrore": 458524.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 4029.0,
+   "cagR_Pct": 14.15,
+   "targetAmountCrore": 8581.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 1903.0,
+   "cagR_Pct": 12.95,
+   "targetAmountCrore": 3622.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1024.0,
+   "cagR_Pct": 9.57,
+   "targetAmountCrore": 2381.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 33,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 57.92
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 27.36
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 14.72
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 33,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 11,
+   "sectorName": "Digital Infrastructure, IT & Start-ups",
+   "description": "Development of IT parks, digital services, and start-up incubation hubs.",
+   "imageUrl": "assets/img/sectors/digital-infrastructure-it-start-ups.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 16,
+   "sectorName": "Forest & Eco Tourist Sites",
+   "description": "Conservation-based tourism, trekking trails, and forest-based livelihood development.",
+   "imageUrl": "assets/img/sectors/forest-eco-tourist-sites.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 8,
+   "sectorName": "Mining Industries",
+   "description": "Extraction of minerals and creation of value-adding industries and processing chains.",
+   "imageUrl": "assets/img/sectors/mining-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 9,
+   "sectorName": "Renewable Energy",
+   "description": "Solar, wind, green hydrogen, and hybrid energy projects with grid integration.",
+   "imageUrl": "assets/img/sectors/renewable-energy.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 854,
+   "constituencyId": 33,
+   "name": "Gurajala Jagan Mohan\t\t\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 856,
+   "constituencyId": 33,
+   "name": "Arani Srinivasulu\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 858,
+   "constituencyId": 33,
+   "name": "D A Satya Prabha\t\t\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 859,
+   "constituencyId": 33,
+   "name": "C K Jayachandra Reddy\t\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 860,
+   "constituencyId": 33,
+   "name": "A S Manohar\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

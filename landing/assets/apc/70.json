@@ -1,0 +1,188 @@
+{
+ "code": 70,
+ "name": "Kakinada Rural",
+ "district": "Kakinada",
+ "logoUrl": "assets/constituencies_logos/kakinada rural.png",
+ "profile": {
+  "population": "250527 (As per Census 2011)",
+  "voterCount": "269330 (As per 2024 Elections)",
+  "area": "213.2",
+  "mandals": "Kakinada Rural-R,Kakinada-U,Karapa-R",
+  "revenueVillages": "34",
+  "municipal_wards": "8",
+  "municipalities": "Kakinada",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "The Kakinada Rural Constituency was formed as part of the delimitation process, which redrew electoral boundaries in Andhra Pradesh. Specifically, the Sampara constituency was one of those abolished, and Kakinada Rural Constituency was established in the East Godavari district as per the Delimitation Commission's recommendations approved in 2008. Kakinada Rural Constituency consists of three mandals, namely: 1) Kakinada Rural, 2) part of Kakinada Urban, and 3) Karapa, all located in Kakinada district of Andhra Pradesh, with its headquarters in Kakinada Rural. Renowned for its rich cultural heritage and historical landmarks, Kakinada Rural is home to the Lord Bhavannarayana Swamy Temple, located in Sarpavaram Village, Kakinada, a 500-year-old Hindu temple dedicated to Lord Vishnu. The temple is considered one of the holiest sites, visited by saints like Agastya and Vyasa, and is believed to grant divine blessings and salvation to devotees.",
+  "constituencyMap": "70\\MAP\\70IMAGE2025090217261964935_kakinada rural.png",
+  "geography": "The Geographical Co-ordinates of&#160; spans 213.20 Sq.KMs and having coastal length of the constituency is 16.8 KMs. It shares boundaries with pithapuram,narasi patnam,prathipadu, payaka raopeta constituencies",
+  "populationDesc": "The total Population (2011 Census): 292727 people, with approximately 2.50 lakh reside in rural areas, while 0.43 lakh live in urban areas. . There are 86466 house holds. The sex ratio stands at 1001 females per 1,000 males.",
+  "administrationDesc": "Kakinada rural Constituency is one of the&#160; assembly constituencies in kakinada District four mandals: Kakinada Rural, Kakinada urban, karapa",
+  "educationHealthcareDesc": "one GGH Kakinada Rural Constituency has a total of 34 private hospitals and clinics, including notable institutions like Sankurathri Foundation JNTUK University Nannayya PG Centre",
+  "culturalheritageDesc": "Bhemeswara swamy Temple,Turangi eswara lora shiva temple,Kakinada beach,Shilparavam, kakinada coast, fisheries"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "VqvCNvU/tsWnnrFhxiDBVw==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Kakinada Rural&#8217;s Economy at a Glance</h2><p><br></p><p>The economy of the Constituency presents a dynamic and multifaceted landscape, driven by significant contributions from the agriculture, industry and services sectors. As of the fiscal year 2023-24, the Gross Constituency Domestic Product (GCDP) reached &#8377;8,445 Crores, with agriculture and allied sectors accounting for 24.63% (&#8377;1,924 Crores), the industrial sector contributing 31.60% (&#8377;2,469 Crores) and the services sector making up 43.77% (&#8377;3,419 Crores).&#160;</p><p><span>The economic potential of the Constituency is further enhanced by untapped opportunities across various sectors. The industry and services sectors in particular, hold significant promise for growth, offering opportunities to complement the strong agricultural foundation. By strategically aligning these sectors with the long-term vision of Swarna Andhra @ 2047.</span></p>",
+   "gcdP_Growth_Text": "<span>Kakinada Rural is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like aquaculture, manufacturing and tourism</span><span>. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-07T09:07:27.207"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 8445.0,
+   "cagR_Pct": 16.52,
+   "targetAmountCrore": 17950.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3419.0,
+   "cagR_Pct": 15.15,
+   "targetAmountCrore": 6916.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 2469.0,
+   "cagR_Pct": 20.08,
+   "targetAmountCrore": 6081.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1924.0,
+   "cagR_Pct": 13.42,
+   "targetAmountCrore": 3609.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 70,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 43.77
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 31.6
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 24.63
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 70,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 39,
+   "constituencyId": 70,
+   "name": "Pantham Venkateswarao (Nanaji)",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "janasena",
+   "photo": "70\\mla\\70IMAGE2025090217393698747_kakinada rural mla.jpg"
+  },
+  {
+   "id": 781,
+   "constituencyId": 70,
+   "name": "Kurasala Kanna babu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSRCP",
+   "photo": ""
+  },
+  {
+   "id": 782,
+   "constituencyId": 70,
+   "name": "Anantha Lakshmi pilli",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 784,
+   "constituencyId": 70,
+   "name": "Kurasala Kanna babu",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "PRP",
+   "photo": ""
+  }
+ ]
+}

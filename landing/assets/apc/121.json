@@ -1,0 +1,197 @@
+{
+ "code": 121,
+ "name": "Sattenapalle",
+ "district": "Palnadu",
+ "logoUrl": "121\\Logo\\121IMAGE2026021210264658818_Screenshot 2026-01-21 114940.png",
+ "profile": {
+  "population": "281679 (As per Census 2011)",
+  "voterCount": "242328 (As per 2024 Elections)",
+  "area": "733.16",
+  "mandals": "Muppalla-R,Nekarikallu-R,Rajupalem-R,Sattenapalle-U,Sattenapalli-R",
+  "revenueVillages": "47",
+  "municipal_wards": "31",
+  "municipalities": "Sattenapalle",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p><span>Sattenapalli Assembly Constituency, located in the Palnadu district of Andhra Pradesh, is a key region within the Amaravati Capital Region. Established in 1951, it has grown into a dynamic constituency with a balanced economy driven by agriculture, industry, and services. Agriculture remains the backbone, with over 26,000 hectares of cultivable land supported by major irrigation sources like the Nagarjuna Sagar Right Canal and thousands of tube wells. The region's diverse soil types and above-average rainfall enhance its agricultural productivity.</span></p><p>With a projected 2024 population of over 3.5 lakhs, Sattenapalli has a strong rural base, moderate literacy levels, and a balanced sex ratio. It hosts 603 schools, two engineering colleges, and a robust health infrastructure with PHCs, CHCs, and urban health centers. Road connectivity, electricity, and piped water supply are improving steadily. Culturally rich, with ancient temples like Kopotheswara and Sri Neti Venkanna Swamy, Sattenapalli is progressing towards inclusive development under Vision 2024&#8211;29.</p>",
+  "constituencyMap": "121\\MAP\\121IMAGE2025090515262769574_sattenapalli.jpg",
+  "geography": "<p><span>Sattenapalli Assembly Constituency is strategically located in Palnadu District major area falls within the Amravati Capital Region, benefiting from its proximity to two district headquarters, i.e. Guntur (35km)and Narasaraopet (24km), and access to Sattenapalli railway station, The region has a mix of black cottons oil  and red loamy soil, supporting a variety of crops.&#160;</span></p>",
+  "populationDesc": "<p><span>Sattenapalli has a total population of 281679, with 79.9% residing in rural areas and 20.1% in urban areas. The constituency has 73399 households, with a sex ratio of 1006 females per 1,000 males. The literacy rate stands at51.49%, indicating steady progress in education levels. The workforce is primarily engaged in agriculture, industries and other services.</span></p>",
+  "administrationDesc": "<p><span>Sattenapalli Constituency is one of the seven assembly constituencies in Palnadu District. It has  Sattenapalli (Muncipality), Sattenapalli(mandal) ,Muppalla,Rajupalem,Nekarikallu mandal.</span></p><p>&#10;</p><p><br></p>",
+  "educationHealthcareDesc": "<p><span>Sattenapalli is a major educational hub, having two engineering colleges. School education is being strengthened with 603 schools. The healthcare sector includes 5 PHCs, 54 sub-centers, 1 CHCs and ONE urban health center with plan store duce maternal mortality by 50%,bringin font mortality below 10 per 1,000 live births, and achieve 100% vaccination coverage. A strong public health infrastructure ensures access to affordable and quality medical services.</span></p>",
+  "culturalheritageDesc": "<p><span>Palanti Tirumala of <b>Sri Neti Venkanna swamy</b> has devotees fondly call, is a famous temple of <b>sri lord Venkateswara swamy</b> located In <b>Devarampadu</b> village of <b>Rajupalem manda</b></span><span><b>l</b> attracts a big number of devotees gathers for four weeks festival on Saturdays. In <b>Nekarakallu mandal</b> the famous Temple of <b>Kopothaswara</b> located in the<b> chejerla</b> village. The oldest Temple of Kopotheswara  (4 or 5 the centuary AD ) is located in Chejerla and is dedicated to <b>Lord Shiva</b> and deity is called kopotheswara The main image of Kopotheswara Linga resembles the &#8216; Kalebara &#8216; of Great King Sibi Chakravarthy with the Head Cut off on the top of the Linga This Temple of Chejerla is rare Exception and this is temple on the&#8220;Ap sidal Model&#8221;. The another Temple of Sri Annapurna Sameta Kasi Vishweswara Swamy (in Narasingapadu village ) is located in this Mandal.&#160;</span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "xrdo3KiOJubkrG0cWa9dYQ==",
+   "economy_Text": "<p><span lang=\"EN-US\"><b><font size=\"5\"><span>Sattenapalli</span>&#8217;s Economy at a Glance</font></b></span></p><p><span lang=\"EN-US\">Sattenapalli presents a comprehensive growth strategy to transform the constituency into an economically vibrant, investment- friendly and employment-driven region. With a Gross Constituency Domestic Product (GCDP) of &#8377;</span><span lang=\"EN-US\">5044 </span><span lang=\"EN-US\">crores in 2023-24, Sattenapalli is projected to achieve&#160;</span><span>&#8377;</span><span>10494 crores by 2028-29 and &#8377;111169 crores by 2047-48, reflecting a strong and sustainable annual growth trajectory averaging 12-15%.&#160;As of 2023-24, the economy is led by the agriculture and allied sector, contributing 43.06% to the Gross Value Added (GVA), followed by the service sector at 37.59%, and the industrial sector at 19.35%.</span></p><span></span>",
+   "gcdP_Growth_Text": "<span>Sattenapalli&#160;</span>is witnessing steady economic momentum with a targeted 12 - 15% annual GCDP growth rate across key sectors like Livestock, Horticulture, and Construction. This growth trajectory aligns with the long-term vision of making the constituency a vibrant economic hub by 2047.",
+   "createdDate": "2025-09-06T04:03:28.007"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5044.0,
+   "cagR_Pct": 17.8,
+   "targetAmountCrore": 10494.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1754.0,
+   "cagR_Pct": 18.92,
+   "targetAmountCrore": 3832.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 903.0,
+   "cagR_Pct": 20.44,
+   "targetAmountCrore": 2036.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2009.0,
+   "cagR_Pct": 15.54,
+   "targetAmountCrore": 3799.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 121,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 37.07
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 19.33
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 43.6
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 121,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 851,
+   "constituencyId": 121,
+   "name": "Kanna Lakshmi Narayana",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 852,
+   "constituencyId": 121,
+   "name": "Ambati Rambabu\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 853,
+   "constituencyId": 121,
+   "name": "Kodela Siva Prasada Rao\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 855,
+   "constituencyId": 121,
+   "name": "Yarram Venkateswara Reddy",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 857,
+   "constituencyId": 121,
+   "name": "Yarram Venkateswara Reddy\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}

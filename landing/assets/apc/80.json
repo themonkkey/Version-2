@@ -1,0 +1,197 @@
+{
+ "code": 80,
+ "name": "Razole (SC)",
+ "district": "Dr. B.R. Ambedkar Konaseema",
+ "logoUrl": "assets/constituencies_logos/razole (sc).png",
+ "profile": {
+  "population": "237253 (As per Census 2011)",
+  "voterCount": "197920 (As per 2024 Elections)",
+  "area": "294.2",
+  "mandals": "Malkipuram-R,Mamidikuduru-R,Razole-R,Sakhinetipalli-R",
+  "revenueVillages": "42",
+  "municipal_wards": "0",
+  "municipalities": "0",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p>The Razole Assembly Constituency Vision Action Plan 2024-29, aligned with Andhra Pradesh&#8217;s Swarna Andhra @ 2047 and the national Viksit Bharat @ 2047 agenda, is designed to harness the region&#8217;s agricultural strength, industrial potential, thriving construction sector, and robust service sector. The constituency comprises four mandals&#8212;Razole, Malikipuram, Sakhinetipalli, and part of Mamidikuduru&#8212;located in Dr. B.R. Ambedkar Konaseema district, with Razole as the headquarters, strategically positioned on NH-216 and about 22 km from the district headquarters. Known for its fertile lands surrounded by the river Vashishta Godavari and abundant coconut and palm trees, Razole also holds cultural significance, having served as a backdrop for many Tollywood films, with Dindi resort on the Godavari banks being a notable attraction. The constituency has a comprehensive educational network with 214 primary schools, 25 upper primary schools, 62 high schools, 1 social welfare school, 18 junior colleges, 7 degree colleges, 8 Industrial Training Institutes and professional training centers, along with hostels including 1 BC welfare hostel and 3 SC welfare hostels to support students from diverse backgrounds. Healthcare infrastructure includes 1 Community Health Center, 6 Primary Health Centers, 52 sub-centers, along with 104 Fixed Day Health Service vehicles and 108 ambulance services, ensuring quality healthcare and emergency response facilities across the region.</p><p>&#10;</p>",
+  "constituencyMap": "80\\MAP\\80IMAGE2025090413260486545_RAZOLE MAP.jpg",
+  "geography": "Razole constituency is located to Ambedkar konaseema district.  spans 294.2 Sq.KMs . It shares boundaries withMamidikuduru mandal, P.Gannavaram,Vasista Godavari, and Bay of Bengal and is strategically positioned&#160; .",
+  "populationDesc": "The total Population (2011 Census): 2,42,224 people, with . is 1,21,130 males and 1,21,094 females. The sex ratio stands at 999 females per 1,000 males",
+  "administrationDesc": "Razole Constituency is one of the  assembly constituencies in  Ambedkar konaseema District four mandals: 4 Mandals: 1.&#9;Razole 2.&#9;Malikipuram 3.&#9;Sakhinetipalli 4.&#9;Mamidikuduru",
+  "educationHealthcareDesc": "with 1 Community Health Centers (CHCs), 06 Primary Health Centers (PHCs), and 52 sub-centers &amp; 214 primary schools, 25 upper primary schools, and 62 high schools, 1 Social Welfare School 18 junior colleges, 7Degree colleges and 8 Industrial Training Institute (ITI) &amp; Professional Training Institute",
+  "culturalheritageDesc": "Kapotheswara Swamy Temple, Lakshmi Narasimha Swamy Temple, Prabhala Theertham, Dindi Resorts, Antarvedi Beach,&#160; 1.  The Sea&#160; 2. The Sagar Sangamam&#160; 3. The Vasishta River<p>&#160; 4.  The Raktakulya River&#160; &#160;5. The Chakrateertham</p><p>&#160;</p><p>&#160;&#160;</p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "THc2B+6sguXYoOAv9dD+BQ==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Razole&#8217;s Economy at a Glance</h2><span><span><font face=\"Verdana, sans-serif\"><p><span><span><font face=\"Verdana, sans-serif\"><br></font></span></span></p>The Economic Vision Plan for Razole lays a structured path for accelerating economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;8062 crores in 2023-24, Razole is projected to expand steadily, reaching </font><span><font face=\"Verdana, sans-serif\">&#8377;18412</font><font face=\"Aptos Narrow\"> </font></span><font face=\"Verdana, sans-serif\">crores by 2028-29, marking a significant transformation across agriculture, industry, and services sectors. </font></span></span><span>The&#10;industrial sector accounts for 59.81%, agriculture and allied activities&#10;contribute 22.58% and service sector contributes 17.62%.</span><p class=\"MsoNormal\"><span></span></p>",
+   "gcdP_Growth_Text": "<span>Razole is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like&#160;</span><span><span>Mining &amp; Quarrying</span></span><span>,</span><br><span><span>Fishing &amp; Aquaculture</span></span><span>, and livestock. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-04T10:57:21.683"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 8062.0,
+   "cagR_Pct": 18.17,
+   "targetAmountCrore": 18412.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1314.0,
+   "cagR_Pct": 14.47,
+   "targetAmountCrore": 2564.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 4460.0,
+   "cagR_Pct": 19.31,
+   "targetAmountCrore": 10719.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1684.0,
+   "cagR_Pct": 17.54,
+   "targetAmountCrore": 3750.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 80,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 17.62
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 59.8
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 22.58
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 80,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 8,
+   "sectorName": "Mining Industries",
+   "description": "Extraction of minerals and creation of value-adding industries and processing chains.",
+   "imageUrl": "assets/img/sectors/mining-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 242,
+   "constituencyId": 80,
+   "name": "Deva Vara prasad",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Janasena",
+   "photo": ""
+  },
+  {
+   "id": 243,
+   "constituencyId": 80,
+   "name": "Rapaka Vara Prasad",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "Jenasena ",
+   "photo": ""
+  },
+  {
+   "id": 244,
+   "constituencyId": 80,
+   "name": "Gollapalli Surya rao",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 245,
+   "constituencyId": 80,
+   "name": "Rapaka Vara Prasad",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 246,
+   "constituencyId": 80,
+   "name": "Alliuri KKrishnam raju",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "INC",
+   "photo": ""
+  }
+ ]
+}

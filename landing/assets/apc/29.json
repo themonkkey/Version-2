@@ -1,0 +1,209 @@
+{
+ "code": 29,
+ "name": "Madanapalle",
+ "district": "Annamayya",
+ "logoUrl": "29\\Logo\\29IMAGE2026042711474847646_WhatsApp Image 2026-04-27 at 11.46.50 AM.jpeg",
+ "profile": {
+  "population": "315274 (As per Census 2011)",
+  "voterCount": "266590 (As per 2024 Elections)",
+  "area": "690.9",
+  "mandals": "Madanapalle-U,Mandhanpalle-R,Nimmanapalle-R,Ramasamudram-R",
+  "revenueVillages": "46",
+  "municipal_wards": "35",
+  "municipalities": "Madanapalle",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Agriculture, handloom weaving, small industries, and services drive the local economy. It is known for crops like tomatoes, groundnuts, mangoes, and silk saree weaving in Neerugattuvaripalle.&#10;<p>&#10;</p><p>Geographically located in the Eastern Ghats, Madanapalle features fertile red and black soils, moderate rainfall (~731 mm), and irrigation from the Handri Neeva canal and Bahuda project. Mineral resources include granite, quartz, and M-sand. The town also holds cultural and spiritual significance&#8212;Tagore translated the National Anthem here, and philosopher Jiddu Krishnamurti was born here.&#10;</p><p>Important landmarks include Sri Prasanna Venkateswara Swamy Temple, CSI Church, Hazrat Baba Dargah, and the Satsang Foundation. Connectivity is enhanced by NH-42, now being upgraded. With 254 schools, 13 PHCs, 1 veterinary hospital, and strong SHG and banking networks, Madanapalle is progressing steadily under Vision 2024&#8211;29, with targeted interventions for inclusive, sustainable growth.</p><p>&#10;</p>",
+  "constituencyMap": "29\\MAP\\29IMAGE2025090513193232297_MADANAPALLE MAP.jpg",
+  "geography": "Madanapalle constiteuncy is located inAnnamayya  District and spans 690.9 Sq. km. It shares boundaries with Valmikipuram (East), Karnataka State border (West), Kurabalakota (North), Karnataka State border(South) constituencies. Mix of Black red sandy soils, red loamy soils, lateritic soils (in hilly areas like Ramasamudram), black cotton soils",
+  "populationDesc": "The total population is 3,15,274 , with approximately 42.9% residing in rural areas and 57.1% in urban areas. There are 76,764  households, and the sex ratio is993  females per 1,000 males. The literacy rate stands at 72%&#160;",
+  "administrationDesc": "Madanapalle constiteuncy is one of the six assembly constituencies in Annamayya District. It includes 1) Madanapalle, 2)Nimmanapalle ,3) Ramasamudram mandals &amp; Madanapalle muncipality. Madanapalle constiteuncy comes under Rajampet Loksabha Constituency.",
+  "educationHealthcareDesc": "1 Engineering colleges,2 Pharmacy colleges &amp; it has 3 Government General Hospitals ,1 Area Hospital.",
+  "culturalheritageDesc": "<ul><li>Besant Theosophical College: Site of Tagore&#8217;s translation &amp; musical notation of national anthem</li><li>Old Collectorate Building: Colonial- era administrative building.</li><li>Madanna &amp; Basavanna Hills / Fort Ruins: Historical fortification sites originating from regional Palegars</li><li>Jiddu krishnamurthy house: Raghavendra rao street, Madanapalle</li><li>C.S.I J.C.M Church, Madanapalle , &#10;</li><li>Satsang foundation, Madanapalle &#61623; Bahudha Dam, Nimmanapalle&#160;</li></ul>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "go0s9AmVuwJWxEVYQjFSGg==",
+   "economy_Text": "<b>Economy at a Glance</b><p><font face=\"Times New Roman\">Madanapalle's economy is anchored by a strong Service Sector, contributing 51.92% to the Gross Constituency Domestic Product (GCDP), followed by the Agricultural &amp; Allied Sector at 33.09%, led by high-value crops like tomatoes, mangoes, and flowers. The Industries Sector accounts for 14.99%, with a rapidly growing MSME base, focused on agro-processing, silk weaving, and light manufacturing. The constituency&#8217;s strategic location along the Tirupati&#8211;Bangalore highway is further enhancing connectivity, logistics, and industrial prospects.</font></p><p><font face=\"Times New Roman\">Irrigation from the Bahuda Project and HNSS Canal supports the expansion of high-value horticulture, offering significant scope for food processing, cold chain infrastructure, and export-oriented production. The fast-growing MSME sector, supported by improved highway connectivity, is driving industrial diversification and rural entrepreneurship. Madanapalle&#8217;s renowned silk industry also presents opportunities for branding, e-commerce, and global outreach. With the Tirupati&#8211;Bangalore corridor strengthening regional access, the constituency is well-positioned to attract investment and emerge as a key agro-industrial and logistics hub in southern Andhra Pradesh.</font></p>",
+   "gcdP_Growth_Text": "Madanapalle is targeting a <span>15% annual GCDP growth rate</span>, driven by expansion in horticulture, agro-processing, MSMEs, and service industries. With improved irrigation infrastructure, a strong MSME ecosystem, and strategic connectivity via the Tirupati&#8211;Bangalore highway, the constituency is poised for accelerated economic development. This growth trajectory supports the long-term vision of transforming Madanapalle into a dynamic agro-industrial and trade hub by <span>2047</span>.",
+   "createdDate": "2025-09-07T08:21:41.447"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 6500.0,
+   "cagR_Pct": 13.24,
+   "targetAmountCrore": 14042.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 3122.0,
+   "cagR_Pct": 14.15,
+   "targetAmountCrore": 5847.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 901.0,
+   "cagR_Pct": 12.95,
+   "targetAmountCrore": 3291.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1989.0,
+   "cagR_Pct": 9.57,
+   "targetAmountCrore": 4906.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 29,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 51.92
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 14.99
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 33.09
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 29,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 4,
+   "sectorName": "Horticulture",
+   "description": "High-yield fruit, vegetable, and floriculture production with cold chain and export linkages.",
+   "imageUrl": "assets/img/sectors/horticulture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 19,
+   "sectorName": "Special Economic Zones / Industrial Corridors",
+   "description": "Development of SEZs and VCIC / HBIC / CBIC corridors with infrastructure and tax incentives.",
+   "imageUrl": "assets/img/sectors/special-economic-zones-industrial-corridors.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 738,
+   "constituencyId": 29,
+   "name": "Mohammed Shahjahan Basha\t\t\t",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  },
+  {
+   "id": 739,
+   "constituencyId": 29,
+   "name": "Mohammed Nawaz Basha\t\t\t",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 740,
+   "constituencyId": 29,
+   "name": "Dr. Desai Thippa Reddy\t\t\t",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 741,
+   "constituencyId": 29,
+   "name": "Mohammed Shahjahan Basha\t\t\t",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  },
+  {
+   "id": 746,
+   "constituencyId": 29,
+   "name": "Dommalapati Ramesh\t\t\t",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "Telugu Desam Party",
+   "photo": ""
+  }
+ ]
+}

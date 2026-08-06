@@ -1,0 +1,197 @@
+{
+ "code": 114,
+ "name": "Palacole",
+ "district": "West Godavari",
+ "logoUrl": "assets/constituencies_logos/palacole.png",
+ "profile": {
+  "population": "233801 (As per Census 2011)",
+  "voterCount": "195146 (As per 2024 Elections)",
+  "area": "224.09",
+  "mandals": "Elamanchili-R,Palakol-R,Palakol-U,Poduru-R",
+  "revenueVillages": "41",
+  "municipal_wards": "31",
+  "municipalities": "Palakol",
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "Palakol Assembly Constituency's Vision Action Plan (2024-29) leverages its agricultural strength, industrial base, construction sector, and service sector, aligning with Andhra Pradesh's Swarna Andhra@2047 vision and India's Viksit Bharat@2047 agenda. The constituency comprises Palakol, Elamanchili, and Poduru mandals, and Palakol Municipality With 41 revenue villages, 67 gram panchayats, and 31 municipal wards, Palakol is known for its fertile lands, abundant water resources, and cultural heritage. Strategically located near Narasapuram (10 km), Tanuku (35 km), and Bhimavaram (22 km), the constituency spans 224.09 sq. km.Palakol offers potential in agriculture, aquaculture, and eco-tourism, with renowned sites like:Sri Ksheera Ramalingeswara Swami Temple (one of the Pancharama Kshetras),Sri Sai Baba Temple.These attractions draw pilgrims and tourists, contributing to the constituency's growth.&#160;<p></p>",
+  "constituencyMap": "114\\MAP\\114IMAGE2025090218042591106_palacole.png",
+  "geography": "<span lang=\"EN-ID\">Palakol spans an area of </span><span lang=\"EN-ID\">224.09sq</span><span lang=\"EN-ID\">.km.</span><span lang=\"EN-ID\">.&#160;It&#160;shares&#160;boundaries&#160;</span><span lang=\"EN-ID\">with&#160;Narsapur, Bhimavaram and Achanta constituencies, and is strategically positioned within the West Godavari district of Andhra Pradesh.The constituency predominantly features fertile alluvial soils.</span>",
+  "populationDesc": "<span>Palakol Constituency Total Population is 2,33,801 people,&#160;&#160;</span><span lang=\"EN-ID\">There&#160;are&#160;</span><span>65787</span><span lang=\"EN-ID\">&#160;households and the&#160;</span><span>The sex ratio stands at 994 females per 1,000 males</span><span lang=\"EN-ID\">.The literacy rate stands at 80.98 %.</span>",
+  "administrationDesc": "<span lang=\"EN-ID\">The Palakol constituency is in West Godavari District ,It consists of 3 Mandals such as 1.Palakol, 2.Elamanchili, 3.Poduru Part, and one Municipality -Palakol.</span>",
+  "educationHealthcareDesc": "<span lang=\"EN-ID\"><span>Educational infrastructure&#10;comprises 29 government high schools, 13 Junior colleges, and 04-Degree College,&#10;01 Polytechnic, and 1 B. pharmacy,&#160;</span><span lang=\"EN-ID\">The&#160;constituency&#160;is&#160;home&#160;to&#10;202&#160;primary schools, 36 upper primary schools, and 50high schools,&#160;<span lang=\"EN-ID\">7 junior colleges, 13 degree colleges, 1 Industrial Training Institute&#10;(ITI), and 4 MBA&amp; MCA colleges.</span>&#160;</span>The constituency is equipped with 1 Community&#10;Health&#160;<span>Centers&#160;(CHCs), 2&#160;</span></span><span>area hospital, five primary health centres (PHCs), and&#10;45 sub-centres.</span>",
+  "culturalheritageDesc": "<p class=\"MsoNormal\"><span lang=\"EN-ID\">Palakol is full of cultural heritage and significant&#10;landmarks. The Sri.Ksheera Ramalingeswara Swamy Temple, Pancha Rama&#10;Kshetram&#160; And&#160;</span><span>Sri Sai Baba temple.</span></p><p class=\"MsoNormal\"><span lang=\"EN-ID\"></span></p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "qeAfD8jnPGAmf2zWWwB7GA==",
+   "economy_Text": "<h2 class=\"inner-page-header pt-2\">Palacole&#8217;s Economy at a Glance</h2><p><span><span>The&#160;Economic&#160;Vision&#160;Plan&#160;for&#160;Palacole&#160;lays&#160;a&#160;structured&#160;path&#160;for&#160;accelerating&#160;economic growth, boosting employment, and ensuring inclusive development. With a Gross Constituency Domestic Product (GCDP) of &#8377;5,646 crores in 2023-24, Palacole is&#160;projected&#160;to&#160;expand&#160;steadily,&#160;reaching</span><span>&#8377;</span></span><span>11,3183 crores&#160;by&#160;2028-29, marking&#160;a significant transformation across agriculture, industry, and services sectors. The service service sector accounts to 43.52% and agriculture sector contributes to 38.36%.industry 18.12</span></p><p><br></p>",
+   "gcdP_Growth_Text": "Palacole&#160;<span>is witnessing steady economic momentum with a targeted 15%&#160;</span><span class=\"fw-bold\">annual GCDP growth rate</span><span>&#160;across key sectors like real estate,</span><br><span>aquaculture, and livestock. This growth trajectory aligns with the long-term vision of making the&#160;</span><span>constituency a vibrant urban and&#160;</span><span class=\"fw-bold\">economic hub by 2047</span><span>.</span>",
+   "createdDate": "2025-09-03T10:21:00.99"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 5646.0,
+   "cagR_Pct": 15.05,
+   "targetAmountCrore": 11383.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 2276.0,
+   "cagR_Pct": 15.11,
+   "targetAmountCrore": 4600.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 948.0,
+   "cagR_Pct": 15.2,
+   "targetAmountCrore": 1923.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 2007.0,
+   "cagR_Pct": 15.02,
+   "targetAmountCrore": 4041.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 114,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 44.0
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 18.0
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 38.0
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 114,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 5,
+   "sectorName": "Tourism",
+   "description": "Eco-tourism, resorts, and adventure-based tourism.",
+   "imageUrl": "assets/img/sectors/tourism.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 452,
+   "constituencyId": 114,
+   "name": "Dr. Nimmala Ramanaidu",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 454,
+   "constituencyId": 114,
+   "name": "Dr. Nimmala Ramanaidu",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 456,
+   "constituencyId": 114,
+   "name": "Dr. Nimmala Ramanaidu",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "TDP",
+   "photo": ""
+  },
+  {
+   "id": 458,
+   "constituencyId": 114,
+   "name": "Bangaru Usha Rani",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "INC",
+   "photo": ""
+  },
+  {
+   "id": 461,
+   "constituencyId": 114,
+   "name": "Ch. Satyanarayana Murthy (Dr.Babjee)",
+   "termFrom": 2004,
+   "termTo": 2009,
+   "partyName": "TDP",
+   "photo": ""
+  }
+ ]
+}

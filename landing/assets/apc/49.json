@@ -1,0 +1,224 @@
+{
+ "code": 49,
+ "name": "Narasannapeta",
+ "district": "Srikakulam",
+ "logoUrl": "assets/constituencies_logos/narasannapeta.png",
+ "profile": {
+  "population": "254785 (As per Census 2011)",
+  "voterCount": "217094 (As per 2024 Elections)",
+  "area": "612.95",
+  "mandals": "Jalumuru-R,Narasannapeta-R,Polaki-R,Saravakota-R",
+  "revenueVillages": "182",
+  "municipal_wards": "0",
+  "municipalities": null,
+  "area_type": "Sq. Km",
+  "constituencyprofile_Text": "<p class=\"MsoBodyText\">Narasannapeta Assembly Constituency, situated in Srikakulam district of Andhra Pradesh, is composed of four mandals&#8212;Narasannapeta, Polaki, Saravakota, and Jalumuru&#8212;with Narasannapeta town serving as the administrative headquarters. The constituency is well known for its cultural heritage, historical importance, and economic potential. A major landmark is Srimukhalingam in Jalumuru mandal, historically known as Kalinganagari, which served as the capital of the Eastern Ganga Dynasty between the 6th and 12th centuries AD. This temple town remains a significant religious and architectural site, attracting thousands of devotees and historians every year. Equally notable is Madapam, where India&#8217;s tallest Hanuman statue, standing at an impressive height of 176 feet, has become a spiritual and tourist attraction. Economically, the constituency is supported by fertile lands and abundant water resources, making agriculture and aquaculture the primary occupations for much of the population. Its strategic geographic location and strong road connectivity to major centers like Srikakulam town enhance opportunities for trade, commerce, and industrial expansion. With its vibrant traditions, religious tourism, and developmental potential, Narasannapeta is charting an ambitious growth path, targeting a 15% annual increase across all key sectors.</p>",
+  "constituencyMap": "49\\MAP\\49IMAGE2025090218325029749_Narasannapeta.jpg",
+  "geography": "<p class=\"MsoNormal\">Narasannapeta&#10;constituency&#160;covers&#160;612.95 sq. km&#160;in&#160;Srikakulam district,&#10;bordered by&#160;Srikakulam, Tekkali, and Pathapatnam constituencies. The&#10;region has&#160;red and fertile alluvial soils, with&#160;61.3% cultivable&#10;area&#160;mainly under&#160;paddy cultivation. Its major irrigation source is&#10;the&#160;Vamsadhara Canal System, supported by rivers and canals. A&#160;9.13&#10;km coastal belt&#160;further boosts the economy through&#160;fisheries and&#10;aquaculture</p>",
+  "populationDesc": "<p class=\"MsoBodyText\">The constituency has a total population of <span>2,54,785 people</span>, comprising <span>1,26,157 males</span> and <span>1,28,628 females</span>. The <span>sex ratio</span> stands at <span>1,020 females for every 1,000 males</span>. There are <span>66,130 households</span> in the constituency</p>",
+  "administrationDesc": "<p class=\"MsoNormal\"><span>Narasannapeta&#10;Constituency consists of Four mandals 1)Narasannapeta, 2)Polaki, 3) Saravakota,&#10;4) Jalumuru.</span></p>",
+  "educationHealthcareDesc": "<p class=\"MsoNormal\">The&#10;Narasannapeta constituency has a strong educational network covering all levels&#10;of learning. At the primary stage, it has 247 government schools and 8 private&#10;schools, while at the upper primary stage, there are 32 government schools and&#10;19 private schools. The high school level includes 40 government schools and 23&#10;private schools, along with 3 KGBVs and 2 model schools. For higher education,&#10;the constituency is served by 7 government junior colleges, 7 private junior&#10;colleges, 3 government degree colleges, and 3 private degree colleges, ensuring&#10;wide access to both school and college education. &amp; The constituency has&#10;good healthcare facilities with 9 Primary Health Centers, 82 Sub-Centers, 2&#10;Community Health Centers, and one blood storage unit, which together provide&#10;basic medical services to the people.</p>",
+  "culturalheritageDesc": "<p>Narasannapeta Constituency is home to several cultural and historical landmarks. Mukhalingam, once the capital of the Eastern Ganga Dynasty, is renowned for its ancient temples and architectural grandeur. Sadhuvula Bungalow stands as a heritage structure reflecting the region&#8217;s historical legacy. India&#8217;s tallest Hanuman statue at Madapam, rising 176 feet, has become both a religious and tourist attraction. Budithi Village is famous for its traditional brass and bell-metal craft, showcasing the constituency&#8217;s rich artisan culture and contributing to its identity as a hub of heritage and craftsmanship.</p>"
+ },
+ "economy_text": [
+  {
+   "id": 0,
+   "constituencyID": "yfVb7wKvyOasyzJxhq0yuA==",
+   "economy_Text": "<p><span>The Economic Vision Plan for Narasannapeta charts a transformative path for sustainable economic growth, projecting the Gross Constituency Domestic Product (GCDP) to surge from &#8377;3,499.00 crores in 2023-24 to &#8377;7,451.00 crores by 2028-29, with a robust 13% annual growth rate. By leveraging strengths in agriculture, industry, and services, the plan focuses on overcoming infrastructural bottlenecks, promoting industrial diversification, and boosting tourism to drive employment and inclusive development. These strategic initiatives aim to establish Narasannapeta as a model economy in Andhra Pradesh, setting a benchmark for sustainable and resilient growth.</span></p>",
+   "gcdP_Growth_Text": "<p><span>Narasannapeta&#8217;s Economic Vision Plan targets a Gross Constituency Domestic Product (GCDP) of &#8377;7,451.00 crores by 2028-29, up from &#8377;3,499.00 crores in 2023-24, with a 13% annual growth rate. Leveraging agriculture, industry, and services, the plan addresses infrastructure challenges and promotes tourism, positioning Narasannapeta as a model economy in Andhra Pradesh.</span></p>",
+   "createdDate": "2025-09-03T13:12:43.143"
+  }
+ ],
+ "growth": [
+  {
+   "sectorId": 0,
+   "sectorName": "GCDP",
+   "sectorCode": "TOTAL",
+   "baselineAmountCrore": 3499.0,
+   "cagR_Pct": 16.63,
+   "targetAmountCrore": 7451.0,
+   "colorHex": "#F5B400",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 1,
+   "sectorName": "Service Sector",
+   "sectorCode": "SERVICE",
+   "baselineAmountCrore": 1468.0,
+   "cagR_Pct": 18.49,
+   "targetAmountCrore": 3170.0,
+   "colorHex": "#C93A2C",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 2,
+   "sectorName": "Industries Sector",
+   "sectorCode": "INDUSTRY",
+   "baselineAmountCrore": 556.0,
+   "cagR_Pct": 17.48,
+   "targetAmountCrore": 1151.0,
+   "colorHex": "#FF8A00",
+   "baselineYear": 1,
+   "targetYear": 22
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Agricultural & Allied Sector",
+   "sectorCode": "AGRIC",
+   "baselineAmountCrore": 1213.0,
+   "cagR_Pct": 14.0,
+   "targetAmountCrore": 2519.0,
+   "colorHex": "#16A34A",
+   "baselineYear": 1,
+   "targetYear": 22
+  }
+ ],
+ "share_current": {
+  "constituencyID": 49,
+  "dataYear": 1,
+  "shareType": "CURRENT",
+  "items": [
+   {
+    "sectorID": 1,
+    "sectorName": "Service Sector",
+    "sectorCode": "SERVICE",
+    "colorHex": "#C93A2C",
+    "sharePct": 45.35
+   },
+   {
+    "sectorID": 2,
+    "sectorName": "Industries Sector",
+    "sectorCode": "INDUSTRY",
+    "colorHex": "#FF8A00",
+    "sharePct": 17.19
+   },
+   {
+    "sectorID": 3,
+    "sectorName": "Agricultural & Allied Sector",
+    "sectorCode": "AGRIC",
+    "colorHex": "#16A34A",
+    "sharePct": 37.46
+   }
+  ]
+ },
+ "share_target": {
+  "constituencyID": 49,
+  "dataYear": 22,
+  "shareType": "TARGET",
+  "items": []
+ },
+ "thrust": [
+  {
+   "sectorId": 2,
+   "sectorName": "Aquaculture",
+   "description": "Marine and inland fish farming with modern technology and export focus.",
+   "imageUrl": "assets/img/sectors/aquaculture.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 3,
+   "sectorName": "Dairy & Poultry",
+   "description": "Development of modern dairy farms, poultry production, and processing units.",
+   "imageUrl": "assets/img/sectors/dairy-poultry.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 22,
+   "sectorName": "Food Processing Industries",
+   "description": "Establishment of food processing units, packaging industries, and food parks with backward linkages to farmers.",
+   "imageUrl": "assets/img/sectors/food-processing-industries.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 17,
+   "sectorName": "Logistics",
+   "description": "Development of integrated logistics parks, transport hubs, and supply chain systems.",
+   "imageUrl": "assets/img/sectors/logistics.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 20,
+   "sectorName": "Manufacturing",
+   "description": "Support for MSMEs and large manufacturers across sectors through enabling industrial policies.",
+   "imageUrl": "assets/img/sectors/manufacturing.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  },
+  {
+   "sectorId": 6,
+   "sectorName": "Real Estate",
+   "description": "Smart townships, affordable housing, commercial hubs and facilitating urbanization, attracting private investment, and supporting infrastructure-led growth.",
+   "imageUrl": "assets/img/sectors/real-estate.png",
+   "subSectors": [
+    {
+     "id": 0,
+     "name": null
+    }
+   ]
+  }
+ ],
+ "mlas": [
+  {
+   "id": 41,
+   "constituencyId": 49,
+   "name": "Baggu Ramanamurthy",
+   "termFrom": 2024,
+   "termTo": 2029,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": "49\\mla\\49IMAGE2025090218363998288_Narasanapeta MLA 24-29.jpg"
+  },
+  {
+   "id": 638,
+   "constituencyId": 49,
+   "name": "Dharmana Krishna Das",
+   "termFrom": 2019,
+   "termTo": 2024,
+   "partyName": "YSR Congress Party",
+   "photo": ""
+  },
+  {
+   "id": 639,
+   "constituencyId": 49,
+   "name": "Baggu Ramanamurthy",
+   "termFrom": 2014,
+   "termTo": 2019,
+   "partyName": "Telugu Desam Party (TDP)",
+   "photo": ""
+  },
+  {
+   "id": 641,
+   "constituencyId": 49,
+   "name": "Dharmana Krishna Das",
+   "termFrom": 2009,
+   "termTo": 2014,
+   "partyName": "Indian National Congress",
+   "photo": ""
+  }
+ ]
+}
