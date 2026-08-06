@@ -189,7 +189,105 @@
         (o.note ? '<span class="d-sec-note">' + esc(o.note) + '</span>' : '') +
         '</div>';
     }
-    return '<section class="d-sec">' + head + '<div class="d-sec-b">' + body + '</div></section>';
+    // wide:true makes the section span both columns once .dash goes two-up.
+    // Use it for anything with a time axis or a long list of names.
+    var cls = 'd-sec' + (o.wide ? ' d-sec--wide' : '');
+    return '<section class="' + cls + '">' + head + '<div class="d-sec-b">' + body + '</div></section>';
+  }
+
+  /* --------------------------------------------------- compositionRibbon */
+
+  /* Stacked area: how a district's economy is DIVIDED, and how that division has
+     moved over four years.
+
+     Why this and not the donut it replaces: a donut shows one year, so the reader
+     sees a split but not a direction. The same data across four years says whether
+     the district is industrialising or drifting to services -- which is the actual
+     economic question. Visakhapatnam reads industry 33.4 -> 36.7 while services
+     fall 63.1 -> 59.9; a single-year ring cannot show that.
+
+     Colour: the three hues are validated (OKLab, dark + light surfaces) for the
+     lightness band, chroma floor, CVD separation and contrast. Tritan separation
+     sits at 7.1 -- inside the 6-8 floor band -- which is permitted ONLY with a
+     secondary encoding, so every band is DIRECT-LABELLED. The labels are not
+     decoration; remove them and the palette is no longer legal. The light surface
+     also returns a contrast WARN, which the same labels answer.
+
+     ribbon({series:{agri:[{label,pct}],industry:[...],services:[...]}}) */
+  var RIBBON = [
+    { key: 'agri', label: 'Agriculture', color: '#BF8A2B' },
+    { key: 'industry', label: 'Industry', color: '#2B93BF' },
+    { key: 'services', label: 'Services', color: '#6FA817' }
+  ];
+
+  function compositionRibbon(o) {
+    o = o || {};
+    var src = o.series || {};
+    var rows = RIBBON.map(function (r) {
+      var pts = (src[r.key] || []).map(function (p) {
+        return { label: (p && (p.label || p.year)) || '', pct: num(p && (p.pct_of_district !== undefined ? p.pct_of_district : p.pct)) };
+      }).filter(function (p) { return p.pct !== null; });
+      return { def: r, pts: pts };
+    }).filter(function (r) { return r.pts.length > 1; });
+
+    if (rows.length < 2) {
+      return empty(o.emptyReason || 'The sector split over time is not published for this district.');
+    }
+
+    var n = Math.min.apply(null, rows.map(function (r) { return r.pts.length; }));
+    var W = 720, H = 240, L = 8, R = 132, T = 16, B = 30;   // R leaves room for labels
+    var plotW = W - L - R, plotH = H - T - B;
+    var x = function (i) { return L + (n === 1 ? plotW / 2 : (plotW * i) / (n - 1)); };
+    var y = function (v) { return T + plotH - (plotH * v) / 100; };
+
+    /* stack bottom-up, and keep a 2px surface gap between adjacent fills so the
+       boundary is a real edge rather than two colours touching */
+    var GAP = 2;
+    var base = [], i;
+    for (i = 0; i < n; i++) base.push(0);
+
+    var bands = '', legend = '', labels = '';
+    rows.forEach(function (r, ri) {
+      var top = [], bot = [];
+      for (i = 0; i < n; i++) {
+        bot.push(base[i]);
+        base[i] += r.pts[i].pct;
+        top.push(base[i]);
+      }
+      var d = 'M' + x(0) + ',' + (y(top[0]) + (ri === rows.length - 1 ? 0 : GAP / 2));
+      for (i = 1; i < n; i++) d += 'L' + x(i) + ',' + (y(top[i]) + (ri === rows.length - 1 ? 0 : GAP / 2));
+      for (i = n - 1; i >= 0; i--) d += 'L' + x(i) + ',' + (y(bot[i]) - (ri === 0 ? 0 : GAP / 2));
+      d += 'Z';
+      bands += '<path d="' + d + '" fill="' + r.def.color + '" fill-opacity=".92"></path>';
+
+      /* direct label at the latest year — required, see the colour note above */
+      var last = r.pts[n - 1].pct, mid = (top[n - 1] + bot[n - 1]) / 2;
+      labels += '<g transform="translate(' + (x(n - 1) + 10) + ',' + y(mid) + ')">' +
+        '<rect x="0" y="-9" width="8" height="8" rx="2" fill="' + r.def.color + '"></rect>' +
+        '<text x="13" y="-2" class="d-rb-lbl">' + esc(r.def.label) + '</text>' +
+        '<text x="13" y="12" class="d-rb-val">' + fmtPct(last) + '</text></g>';
+
+      legend += '<span class="d-rb-key"><i style="background:' + r.def.color + '"></i>' +
+        esc(r.def.label) + '</span>';
+    });
+
+    /* recessive year axis */
+    var axis = '';
+    for (i = 0; i < n; i++) {
+      axis += '<text x="' + x(i) + '" y="' + (H - 10) + '" class="d-rb-ax" ' +
+        'text-anchor="' + (i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle') + '">' +
+        esc(rows[0].pts[i].label) + '</text>';
+    }
+
+    var first = rows.map(function (r) { return r.def.label + ' ' + fmtPct(r.pts[0].pct); }).join(', ');
+    var lastAll = rows.map(function (r) { return r.def.label + ' ' + fmtPct(r.pts[n - 1].pct); }).join(', ');
+
+    return '<figure class="d-ribbon">' +
+      '<div class="d-rb-keys">' + legend + '</div>' +
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet" role="img" ' +
+      'aria-label="Share of district output by sector group, ' + esc(rows[0].pts[0].label) +
+      ' to ' + esc(rows[0].pts[n - 1].label) + '. ' + esc(first) + ' changing to ' + esc(lastAll) + '.">' +
+      bands + labels + axis + '</svg></figure>';
   }
 
   function sourceNote(text) {
@@ -565,6 +663,7 @@
     num: num,
     grp: grp,
     sanitise: sanitise,
+    compositionRibbon: compositionRibbon,
     statRow: function (cards) {
       var s = (cards || []).filter(Boolean).join('');
       return s ? '<div class="d-stats">' + s + '</div>' : '';

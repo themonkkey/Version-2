@@ -335,8 +335,27 @@
       body: compBody
     });
 
+    /* ---- 5b. how the split has MOVED ------------------------------------
+       The section above is one year's division. This is the same division across
+       four, which is where the actual story is: a metro district shifting between
+       industry and services shows up here and nowhere else. */
+    var aggAll = node.aggregates && typeof node.aggregates === 'object' ? node.aggregates : null;
+    if (aggAll) {
+      out += D.section({
+        title: 'How the split has moved',
+        note: 'Share of district output, ' + (node.gddp_series && node.gddp_series.length
+          ? node.gddp_series[0].label + ' to ' + node.gddp_series[node.gddp_series.length - 1].label
+          : 'four years'),
+        wide: true,
+        body: D.compositionRibbon({
+          series: aggAll,
+          emptyReason: 'The year-on-year sector split is not published for this district.'
+        })
+      });
+    }
+
     /* ---- 6. weight in the STATE — pct_of_state_sector, kept apart -------- */
-    var agg = node.aggregates && typeof node.aggregates === 'object' ? node.aggregates : null;
+    var agg = aggAll;
     if (agg) {
       var SEC = [
         { k: 'agri', label: 'Agriculture & allied' },
@@ -452,6 +471,7 @@
         ? cons.length + ' constituencies · figures on the next level are constituency GCDP, ' +
           'a different series from district GDDP'
         : '',
+      wide: true,
       body: D.drillList({
         items: cons.map(function (c) { return String(c).replace(/_/g, ' '); }),
         label: cons.length ? 'Drill down' : '',

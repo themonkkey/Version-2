@@ -412,14 +412,19 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    left the 600x700 map centred inside it and scrolled far out of view. The map
    sticks to the top instead, staying on screen while the dashboard scrolls
    past it. */
-.map-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(18px,2.6vw,30px);align-items:start;}
+/* The map is a CONTROL — clicked once to choose a district — while the panel is
+   what the reader came for. The old 1.1fr/1fr gave the control more room than the
+   content and pushed the data below the fold. */
+.map-layout{display:grid;grid-template-columns:minmax(280px,0.62fr) 1.38fr;gap:clamp(18px,2.6vw,30px);align-items:start;}
 .map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(14px,2vw,22px);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--glass-border);
   box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);
   position:sticky;top:clamp(84px,10vh,104px);
   display:flex;flex-direction:column;justify-content:center;}
-#ap-map{width:100%;height:auto;display:block;}
+/* Cap the map so it cannot grow to two screens on a narrow viewport. Height, not
+   width, is the scarce resource here. */
+#ap-map{width:100%;height:auto;display:block;max-height:46vh;}
 #ap-map path{fill:#DCE6E0;stroke:rgba(255,255,255,.9);stroke-width:1;cursor:pointer;
   transition:fill .16s cubic-bezier(.4,0,.2,1);}
 #ap-map path:hover{fill:#9FDCB4;}
@@ -687,6 +692,10 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   /* single column: the map sits above the dashboard, so pinning it would eat
      the viewport for the whole scroll. Let it scroll away normally. */
   .map-box{position:relative;top:auto;}
+  /* Stacked, the map is pure overhead between the reader and the figures. Measured
+     at 691px wide it was 747px tall — two screens before a single number appeared.
+     Cap it so the first data card is reachable on the opening screen. */
+  #ap-map{max-height:38vh;}
 }
 @media (max-width:560px){
   .stats-grid{grid-template-columns:1fr 1fr;}

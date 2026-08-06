@@ -6,10 +6,24 @@
    sector colours supplied inline by the AP portal data itself.
    =========================================================================== */
 
+/* The container must be the PANEL, not .dash: a container query styles the
+   container's descendants, never the container element itself. Declaring
+   container-type on .dash and then querying .dash silently does nothing. */
+#districtPanel{container-type:inline-size; container-name:dash;}
+
 .dash{
-  display:flex; flex-direction:column; gap:22px;
+  display:grid; grid-template-columns:1fr; gap:22px;
   max-width:100%;
 }
+
+/* TRIED AND REJECTED — do not re-add without measuring.
+   Two columns inside the panel (@container dash, min-width 640px) looked like the
+   obvious fix for a tall panel. Measured at an 863px panel it made things WORSE:
+   4,402px tall against 3,830px in one column, because halving a card's width grows
+   its height by more than the second column saves. The win came from widening the
+   panel itself (the map column went 602px -> 342px), not from splitting it.
+   `d-sec--wide` is kept on the sections that would need it, so the idea is one CSS
+   rule away if the panel ever gets genuinely wide. */
 .dash *,.dash *::before,.dash *::after{box-sizing:border-box;}
 
 /* ---------- section wrapper ---------- */
@@ -39,7 +53,7 @@
 /* ---------- stat card ---------- */
 .d-stats{
   display:grid; gap:12px;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(172px,1fr));
 }
 .d-stat{
   background:var(--glass-strong);
@@ -54,7 +68,7 @@
   color:var(--label-2); margin-bottom:7px;
 }
 .d-stat .d-stat-v{
-  display:block; font-size:clamp(1.25rem,2.6vw,1.7rem);
+  display:block; font-size:clamp(1.15rem,1.5vw,1.45rem);
   font-weight:700; line-height:1.1; letter-spacing:-.02em;
   color:var(--label); overflow-wrap:anywhere;
 }
@@ -363,3 +377,21 @@
   .d-donut-svg{width:min(180px,60%); align-self:center;}
   .d-rank-peer{grid-template-columns:minmax(0,1fr) 2fr auto; font-size:.74rem;}
 }
+
+/* ---------- composition ribbon ---------- */
+/* The direct labels are load-bearing, not decoration: the three series sit at
+   tritan ΔE 7.1 (the 6–8 floor band), which is only legal with a secondary
+   encoding. Do not "clean up" the labels. */
+.d-ribbon{margin:0;}
+.d-ribbon svg{width:100%;height:auto;display:block;overflow:visible;}
+.d-rb-lbl{font-size:12px;font-weight:600;letter-spacing:-.01em;fill:var(--label);}
+.d-rb-val{font-size:12px;font-variant-numeric:tabular-nums;fill:var(--label-2);}
+.d-rb-ax{font-size:11px;font-variant-numeric:tabular-nums;fill:var(--label-3);}
+.d-rb-keys{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 12px;}
+.d-rb-key{display:inline-flex;align-items:center;gap:7px;font-size:12px;
+  color:var(--label-2);letter-spacing:-.006em;}
+.d-rb-key i{width:9px;height:9px;border-radius:3px;flex:none;}
+.vstage .d-rb-lbl{fill:rgba(255,255,255,.92);}
+.vstage .d-rb-val{fill:rgba(255,255,255,.62);}
+.vstage .d-rb-ax{fill:rgba(255,255,255,.45);}
+.vstage .d-rb-key{color:rgba(255,255,255,.66);}
