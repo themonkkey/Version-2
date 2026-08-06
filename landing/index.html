@@ -407,12 +407,18 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* stretch, not start — the two cards are meant to read as one pair, so the
    shorter one (the panel) fills to match the map's natural height rather
    than floating short beside it */
-.map-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(18px,2.6vw,30px);align-items:stretch;}
+/* align-items:start, not stretch. The panel now holds a full constituency
+   dashboard and runs to several thousand px; stretching the map box to match
+   left the 600x700 map centred inside it and scrolled far out of view. The map
+   sticks to the top instead, staying on screen while the dashboard scrolls
+   past it. */
+.map-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(18px,2.6vw,30px);align-items:start;}
 .map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(14px,2vw,22px);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--glass-border);
   box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);
-  position:relative;display:flex;flex-direction:column;justify-content:center;}
+  position:sticky;top:clamp(84px,10vh,104px);
+  display:flex;flex-direction:column;justify-content:center;}
 #ap-map{width:100%;height:auto;display:block;}
 #ap-map path{fill:#DCE6E0;stroke:rgba(255,255,255,.9);stroke-width:1;cursor:pointer;
   transition:fill .16s cubic-bezier(.4,0,.2,1);}
@@ -432,6 +438,17 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .vstage .map-label .t,.vstage .map-label .c{color:rgba(255,255,255,.55);}
 
 .map-hint{font-size:12px;color:var(--label-3);text-align:center;margin-top:12px;letter-spacing:-.006em;}
+
+/* back out of the constituency view — only exists while zoomed in */
+.map-back{position:absolute;top:clamp(14px,2.2vw,20px);left:clamp(14px,2.2vw,20px);z-index:2;
+  display:none;align-items:center;gap:6px;font:inherit;font-size:12.5px;font-weight:600;
+  letter-spacing:-.01em;cursor:pointer;padding:7px 13px;border-radius:980px;
+  background:rgba(255,255,255,.5);border:1px solid var(--glass-border);
+  color:var(--label);box-shadow:var(--neu-out);transition:background .18s;}
+.map-back:hover{background:rgba(255,255,255,.72);}
+.map-box.zoomed .map-back{display:inline-flex;}
+.vstage .map-back{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18);color:#FFF;}
+.vstage .map-back:hover{background:rgba(255,255,255,.2);}
 .map-tooltip{position:fixed;pointer-events:none;
   background:rgba(28,28,30,.86);color:#FFF;
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
@@ -472,6 +489,26 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   padding:9px 15px;border-radius:980px;background:rgba(52,199,89,.11);
   transition:background .18s;}
 .ask-link:hover{background:rgba(52,199,89,.19);}
+
+/* drill-down: constituency -> mandal selects inside the district panel.
+   Reuses .metric's card look so it reads as more dashboard rows, not a form. */
+.drill{margin-top:22px;padding-top:18px;border-top:1px solid var(--hair);}
+.drill-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:14px;}
+.drill-field{background:rgba(255,255,255,.5);border-radius:14px;padding:10px 14px;
+  border:1px solid var(--glass-border);box-shadow:var(--neu-in);}
+.drill-field label{display:block;font-size:11px;color:var(--label-2);font-weight:500;
+  letter-spacing:-.004em;margin-bottom:4px;}
+.drill-field select{width:100%;background:none;border:none;font:inherit;font-size:13.5px;
+  font-weight:600;color:var(--label);letter-spacing:-.012em;cursor:pointer;}
+.drill-field select:disabled{color:var(--label-3);cursor:default;}
+.drill-note{font-size:12.5px;color:var(--label-2);line-height:1.55;letter-spacing:-.004em;}
+.vstage .drill{border-top-color:rgba(255,255,255,.12);}
+.vstage .drill-field{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14);}
+.vstage .drill-field label{color:rgba(255,255,255,.5);}
+.vstage .drill-field select{color:#FFF;}
+.vstage .drill-field select:disabled{color:rgba(255,255,255,.4);}
+.vstage .drill-field select option{color:#111;}
+.vstage .drill-note{color:rgba(255,255,255,.6);}
 
 /* ==========================================================================
    METHODOLOGY — scroll narrative
@@ -647,6 +684,9 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   .mobile-menu .nl.active{color:var(--lime);font-weight:700;}
   .stats-grid,.hero-stats{grid-template-columns:1fr 1fr;}
   .map-layout{grid-template-columns:1fr;}
+  /* single column: the map sits above the dashboard, so pinning it would eat
+     the viewport for the whole scroll. Let it scroll away normally. */
+  .map-box{position:relative;top:auto;}
 }
 @media (max-width:560px){
   .stats-grid{grid-template-columns:1fr 1fr;}
@@ -664,6 +704,21 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   html{scroll-behavior:auto;}
 }
 </style>
+<!-- dashboard: shared component library + the four constituency archetype
+     templates. components.js must load before enrich.js and the templates,
+     which register onto the same window.DASH / window.DASH_TPL globals.
+     See docs/DASHBOARD_ARCHITECTURE.md. -->
+<link rel="stylesheet" href="assets/dash/components.css">
+<script src="assets/dash/components.js" defer></script>
+<script src="assets/dash/enrich.js" defer></script>
+<script src="assets/dash/tpl-c1.js" defer></script>
+<script src="assets/dash/tpl-c2.js" defer></script>
+<script src="assets/dash/tpl-c3.js" defer></script>
+<script src="assets/dash/tpl-c4.js" defer></script>
+<script src="assets/dash/tpl-d1.js" defer></script>
+<script src="assets/dash/tpl-d2.js" defer></script>
+<script src="assets/dash/tpl-d3.js" defer></script>
+<script src="assets/dash/tpl-d4.js" defer></script>
 </head>
 <body>
 
@@ -842,6 +897,8 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 <rect x="326" y="220" width="68" height="64" rx="10" fill="white" fill-opacity="0.13"/>
 <rect x="326.5" y="220.5" width="67" height="63" rx="9.5" stroke="white" stroke-opacity="0.3"/>
 </g>
+<path  d="M100.511 88.13C100.043 88.13 99.5945 88.0737 99.1655 87.961C98.7365 87.844 98.3443 87.6728 97.989 87.4475C97.638 87.2178 97.3477 86.934 97.118 86.596C96.8883 86.2537 96.7475 85.855 96.6955 85.4H98.3335C98.4028 85.7163 98.5393 85.9828 98.743 86.1995C98.951 86.4162 99.2132 86.5808 99.5295 86.6935C99.8458 86.8062 100.199 86.8625 100.589 86.8625C100.936 86.8625 101.259 86.8105 101.558 86.7065C101.857 86.6025 102.099 86.4487 102.286 86.245C102.472 86.037 102.565 85.7813 102.565 85.478C102.565 85.1357 102.444 84.8692 102.201 84.6785C101.963 84.4835 101.62 84.3297 101.174 84.217L99.3345 83.7815C98.8578 83.6732 98.4418 83.515 98.0865 83.307C97.7355 83.099 97.4625 82.826 97.2675 82.488C97.0725 82.1457 96.975 81.7275 96.975 81.2335C96.975 80.6702 97.1288 80.1827 97.4365 79.771C97.7485 79.3593 98.171 79.043 98.704 78.822C99.237 78.5967 99.8372 78.484 100.505 78.484C101.267 78.484 101.911 78.6118 102.435 78.8675C102.959 79.1188 103.358 79.4568 103.631 79.8815C103.904 80.3062 104.043 80.772 104.047 81.279H102.448C102.413 80.902 102.303 80.6052 102.117 80.3885C101.93 80.1675 101.694 80.0072 101.408 79.9075C101.122 79.8078 100.806 79.758 100.459 79.758C99.8437 79.758 99.3865 79.8902 99.0875 80.1545C98.7885 80.4188 98.639 80.7287 98.639 81.084C98.639 81.4177 98.7495 81.682 98.9705 81.877C99.1915 82.072 99.5295 82.2237 99.9845 82.332L101.733 82.7415C102.318 82.8628 102.788 83.0492 103.144 83.3005C103.499 83.5518 103.757 83.8508 103.917 84.1975C104.082 84.5398 104.164 84.919 104.164 85.335C104.164 85.881 104.008 86.3642 103.696 86.7845C103.388 87.2048 102.962 87.5342 102.416 87.7725C101.87 88.0108 101.235 88.13 100.511 88.13ZM108.985 88V80.0245H106.06V78.601H113.392V80.0245H110.571V88H108.985ZM114.023 88L117.396 78.601H119.112L122.486 88H120.9L120.061 85.6405H116.46L115.615 88H114.023ZM116.837 84.2365H119.665L118.254 80.135L116.837 84.2365ZM126.033 88V80.0245H123.108V78.601H130.44V80.0245H127.619V88H126.033ZM132.896 88V78.601H139.11L139.104 79.9595H134.489V82.592H138.564V83.931H134.476V86.622L139.201 86.6285V88H132.896ZM148.247 88V80.0245H145.322V78.601H152.654V80.0245H149.833V88H148.247ZM158.79 88.13C157.924 88.13 157.174 87.9393 156.541 87.558C155.913 87.1767 155.426 86.6263 155.079 85.907C154.737 85.1877 154.565 84.3253 154.565 83.32C154.565 82.306 154.739 81.4372 155.085 80.7135C155.432 79.9898 155.922 79.4352 156.554 79.0495C157.191 78.6638 157.937 78.471 158.79 78.471C159.644 78.471 160.383 78.6638 161.007 79.0495C161.635 79.4352 162.121 79.9898 162.463 80.7135C162.805 81.4372 162.976 82.306 162.976 83.32C162.976 84.3253 162.807 85.1877 162.469 85.907C162.131 86.622 161.648 87.1723 161.02 87.558C160.392 87.9393 159.648 88.13 158.79 88.13ZM158.79 86.804C159.302 86.804 159.742 86.6848 160.11 86.4465C160.478 86.2038 160.76 85.829 160.955 85.322C161.154 84.8107 161.254 84.1498 161.254 83.3395C161.254 82.5162 161.154 81.8445 160.955 81.3245C160.756 80.8002 160.472 80.4145 160.103 80.1675C159.735 79.9205 159.297 79.797 158.79 79.797C158.279 79.797 157.837 79.9227 157.464 80.174C157.096 80.421 156.81 80.8067 156.606 81.331C156.403 81.851 156.301 82.5205 156.301 83.3395C156.301 84.1498 156.403 84.8107 156.606 85.322C156.81 85.829 157.096 86.2038 157.464 86.4465C157.837 86.6848 158.279 86.804 158.79 86.804ZM167.96 88V80.0245H165.035V78.601H172.367V80.0245H169.546V88H167.96ZM172.998 88L176.372 78.601H178.088L181.461 88H179.875L179.037 85.6405H175.436L174.591 88H172.998ZM175.813 84.2365H178.64L177.23 80.135L175.813 84.2365ZM184.078 88L184.084 78.601H185.683V86.635H189.928V88H184.078Z" fill="white" fill-opacity="0.62"/>
+<path class="dist pick" d="M271.033 175V168.316H269.425V167.446C269.933 167.446 270.335 167.404 270.631 167.32C270.931 167.232 271.149 167.104 271.285 166.936C271.425 166.768 271.505 166.564 271.525 166.324H272.521V175H271.033ZM282.665 175.12C281.865 175.12 281.173 174.944 280.589 174.592C280.009 174.24 279.559 173.732 279.239 173.068C278.923 172.404 278.765 171.608 278.765 170.68C278.765 169.744 278.925 168.942 279.245 168.274C279.565 167.606 280.017 167.094 280.601 166.738C281.189 166.382 281.877 166.204 282.665 166.204C283.453 166.204 284.135 166.382 284.711 166.738C285.291 167.094 285.739 167.606 286.055 168.274C286.371 168.942 286.529 169.744 286.529 170.68C286.529 171.608 286.373 172.404 286.061 173.068C285.749 173.728 285.303 174.236 284.723 174.592C284.143 174.944 283.457 175.12 282.665 175.12ZM282.665 173.896C283.137 173.896 283.543 173.786 283.883 173.566C284.223 173.342 284.483 172.996 284.663 172.528C284.847 172.056 284.939 171.446 284.939 170.698C284.939 169.938 284.847 169.318 284.663 168.838C284.479 168.354 284.217 167.998 283.877 167.77C283.537 167.542 283.133 167.428 282.665 167.428C282.193 167.428 281.785 167.544 281.441 167.776C281.101 168.004 280.837 168.36 280.649 168.844C280.461 169.324 280.367 169.942 280.367 170.698C280.367 171.446 280.461 172.056 280.649 172.528C280.837 172.996 281.101 173.342 281.441 173.566C281.785 173.786 282.193 173.896 282.665 173.896ZM288.905 175V166.324H294.581L294.575 167.56H290.387V170.056H294.083V171.274H290.387V175H288.905ZM274.684 189V188.22V187.818C274.684 187.374 274.766 186.992 274.93 186.672C275.094 186.348 275.312 186.066 275.584 185.826C275.856 185.586 276.154 185.374 276.478 185.19C276.806 185.002 277.13 184.826 277.45 184.662C277.774 184.494 278.072 184.322 278.344 184.146C278.616 183.966 278.834 183.766 278.998 183.546C279.166 183.326 279.25 183.064 279.25 182.76C279.25 182.372 279.112 182.056 278.836 181.812C278.564 181.564 278.194 181.44 277.726 181.44C277.23 181.44 276.82 181.582 276.496 181.866C276.176 182.15 275.986 182.55 275.926 183.066H274.51C274.518 182.538 274.644 182.058 274.888 181.626C275.132 181.194 275.494 180.85 275.974 180.594C276.454 180.334 277.052 180.204 277.768 180.204C278.388 180.204 278.922 180.312 279.37 180.528C279.822 180.74 280.17 181.038 280.414 181.422C280.662 181.802 280.786 182.246 280.786 182.754C280.786 183.198 280.704 183.578 280.54 183.894C280.38 184.21 280.166 184.484 279.898 184.716C279.634 184.944 279.342 185.146 279.022 185.322C278.706 185.498 278.388 185.664 278.068 185.82C277.752 185.972 277.46 186.132 277.192 186.3C276.928 186.464 276.714 186.652 276.55 186.864C276.39 187.076 276.31 187.33 276.31 187.626V187.752H280.804V189H274.684ZM286.062 189.126C285.378 189.126 284.78 189.024 284.268 188.82C283.76 188.612 283.364 188.32 283.08 187.944C282.796 187.568 282.654 187.126 282.654 186.618C282.654 186.286 282.736 185.968 282.9 185.664C283.068 185.36 283.282 185.104 283.542 184.896C283.802 184.684 284.07 184.55 284.346 184.494C283.974 184.326 283.662 184.086 283.41 183.774C283.158 183.458 283.032 183.07 283.032 182.61C283.032 182.094 283.164 181.658 283.428 181.302C283.692 180.942 284.052 180.67 284.508 180.486C284.968 180.298 285.486 180.204 286.062 180.204C286.638 180.204 287.154 180.298 287.61 180.486C288.066 180.67 288.426 180.942 288.69 181.302C288.958 181.658 289.092 182.094 289.092 182.61C289.092 183.07 288.968 183.458 288.72 183.774C288.472 184.086 288.158 184.326 287.778 184.494C288.054 184.55 288.322 184.684 288.582 184.896C288.842 185.104 289.056 185.36 289.224 185.664C289.392 185.968 289.476 186.286 289.476 186.618C289.476 187.126 289.334 187.568 289.05 187.944C288.77 188.32 288.372 188.612 287.856 188.82C287.344 189.024 286.746 189.126 286.062 189.126ZM286.062 187.998C286.634 187.998 287.086 187.87 287.418 187.614C287.75 187.358 287.916 187.016 287.916 186.588C287.916 186.304 287.84 186.054 287.688 185.838C287.536 185.618 287.322 185.446 287.046 185.322C286.77 185.198 286.442 185.136 286.062 185.136C285.686 185.136 285.358 185.198 285.078 185.322C284.802 185.446 284.588 185.618 284.436 185.838C284.288 186.054 284.214 186.304 284.214 186.588C284.214 187.016 284.38 187.358 284.712 187.614C285.048 187.87 285.498 187.998 286.062 187.998ZM286.062 183.912C286.518 183.912 286.89 183.796 287.178 183.564C287.47 183.328 287.616 183 287.616 182.58C287.616 182.164 287.47 181.834 287.178 181.59C286.886 181.346 286.514 181.224 286.062 181.224C285.61 181.224 285.236 181.346 284.94 181.59C284.648 181.834 284.502 182.164 284.502 182.58C284.502 183 284.648 183.328 284.94 183.564C285.236 183.796 285.61 183.912 286.062 183.912Z" fill="#0B2E20"/>
 </g>
 </svg></div>
   <div class="chap-steps">
@@ -867,6 +924,9 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 <rect class="sc bar g3" x="376" y="150" width="26" height="132" rx="6" fill="white" fill-opacity="0.18"/>
 <rect class="sc bar g3" x="412" y="222" width="26" height="60" rx="6" fill="white" fill-opacity="0.18"/>
 <rect class="sc base" x="52" y="288" width="356" height="1" fill="white" fill-opacity="0.22"/>
+<text  x="65" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">PRIMARY</text>
+<text  x="155" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">SECONDARY</text>
+<text  x="335" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">TERTIARY</text>
 </g>
 </svg></div>
   <div class="chap-steps">
@@ -910,6 +970,8 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 <path class="sc flow up" d="M230 104C230 171 230 171 230 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
 <path class="sc flow up" d="M230 104C230 171 308 171 308 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
 <path class="sc flow up" d="M230 104C230 171 386 171 386 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
+<text  x="230" y="76" font-family="Public Sans" font-weight="600" font-size="13" letter-spacing="1.3" fill="white" fill-opacity="0.85" text-anchor="middle">STATE</text>
+<text  x="230" y="320" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.55" text-anchor="middle">DISTRICTS</text>
 </g>
 </svg></div>
   <div class="chap-steps">
@@ -942,6 +1004,14 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 <rect x="80" y="280" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
 <rect x="80.5" y="280.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
 </g>
+<text class="term t1" x="98" y="85" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GVA</text>
+<text class="term t1" x="380" y="83" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Gross Value Added</text>
+<text class="term t2" x="98" y="161" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GDVA</text>
+<text class="term t2" x="380" y="159" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Summed across sectors</text>
+<text class="term t3" x="98" y="237" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GDDP</text>
+<text class="term t3" x="380" y="235" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">+ Taxes &#8722; Subsidies</text>
+<text class="term t4" x="98" y="313" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">PER CAPITA</text>
+<text class="term t4" x="380" y="311" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">&#247; population</text>
 </g>
 </svg></div>
   <div class="chap-steps">
@@ -969,6 +1039,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
       <div class="map-box" id="mapBox">
         <svg id="ap-map" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clickable map of Andhra Pradesh districts"></svg>
         <div class="map-label"><div class="t">Andhra Pradesh</div><div class="c">Click any district to explore</div></div>
+        <button class="map-back" id="mapBack"><i class="ti ti-arrow-left"></i> All districts</button>
         <div class="map-hint">Click any district to explore</div>
       </div>
       <div class="panel" id="districtPanel">
@@ -1150,40 +1221,89 @@ window.addEventListener('hashchange', ()=>go(location.hash.replace('#','')));
 go(location.hash.replace('#','') || 'home');
 
 // ---------- map ----------
-let mapReady=false, districtData={};
+// Two levels off one <svg>: the 28-district state view, and a per-district
+// constituency view fitted to that district's own bounds. The map and the
+// drill-down selects are two views of the same selection, kept in sync both
+// ways — clicking a constituency sets the select, and vice versa.
+let mapReady=false, districtData={}, acFeatures=[], districtFeatures=[];
+let mapLevel='state', currentDistrict=null;
 function fmtCr(v){ if(v==null) return 'N/A'; return '₹'+Number(v).toLocaleString('en-IN',{maximumFractionDigits:0})+' Cr'; }
 function fmtRs(v){ if(v==null) return 'N/A'; return '₹'+Number(v).toLocaleString('en-IN',{maximumFractionDigits:0}); }
+
+const eachCoord=(c,f)=>{ if(typeof c[0]==='number') f(c); else c.forEach(cc=>eachCoord(cc,f)); };
+
+// project a feature set into the fixed 600x700 viewBox, fitted to its own extent
+function makeProjector(features){
+  let minX=180,maxX=-180,minY=90,maxY=-90;
+  features.forEach(ft=>eachCoord(ft.geometry.coordinates,c=>{
+    minX=Math.min(minX,c[0]);maxX=Math.max(maxX,c[0]);
+    minY=Math.min(minY,c[1]);maxY=Math.max(maxY,c[1]);
+  }));
+  const W=600,H=700,pad=20;
+  const s=Math.min((W-2*pad)/(maxX-minX),(H-2*pad)/(maxY-minY));
+  const ox=(W-(maxX-minX)*s)/2, oy=(H-(maxY-minY)*s)/2;
+  const px=c=>(c[0]-minX)*s+ox, py=c=>(maxY-c[1])*s+oy;
+  const ring=r=>'M'+r.map(c=>px(c).toFixed(1)+','+py(c).toFixed(1)).join('L')+'Z';
+  return geom => geom.type==='Polygon'
+    ? geom.coordinates.map(ring).join(' ')
+    : geom.coordinates.map(poly=>poly.map(ring).join(' ')).join(' ');
+}
+
+function drawPaths(features, attrsFor){
+  const svg=document.getElementById('ap-map');
+  const toPath=makeProjector(features);
+  svg.innerHTML='';
+  features.forEach(ft=>{
+    const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d', toPath(ft.geometry));
+    const a=attrsFor(ft);
+    Object.keys(a).forEach(k=>p.setAttribute(k,a[k]));
+    svg.appendChild(p);
+  });
+}
+
+function showStateView(){
+  mapLevel='state'; currentDistrict=null;
+  document.getElementById('mapBox').classList.remove('picked','zoomed');
+  document.getElementById('districtPanel').innerHTML=
+    '<div class="panel-empty"><i class="ti ti-hand-finger"></i><p>Select a district on the map to see its economic snapshot.</p></div>';
+  drawPaths(districtFeatures, ft=>({
+    'data-key':ft.properties.data_key, 'data-name':ft.properties.display
+  }));
+}
+
+function showConstituencyView(districtKey, districtName){
+  const feats=acFeatures.filter(f=>f.properties.district_key===districtKey);
+  if(!feats.length) return false;      // no boundaries for this district — stay on state view
+  mapLevel='constituency'; currentDistrict=districtKey;
+  document.getElementById('mapBox').classList.add('zoomed');
+  drawPaths(feats, ft=>({
+    'data-ac':ft.properties.ac_name, 'data-name':ft.properties.display
+  }));
+  return true;
+}
+
+function selectAcOnMap(acName){
+  const svg=document.getElementById('ap-map');
+  svg.querySelectorAll('path').forEach(p=>
+    p.classList.toggle('selected', !!acName && p.getAttribute('data-ac')===acName));
+}
 
 async function initMap(){
   if(mapReady) return;
   mapReady=true;
   const svg = document.getElementById('ap-map');
   try{
-    const [gj, dd] = await Promise.all([
+    const [gj, dd, ac] = await Promise.all([
       fetch('assets/ap_districts.geojson').then(r=>r.json()),
-      fetch('assets/districts_data.json').then(r=>r.json())
+      fetch('assets/district_tree.json').then(r=>r.json()),
+      fetch('assets/ap_constituencies.geojson').then(r=>r.json()).catch(()=>({features:[]}))
     ]);
     districtData = dd;
-    let minX=180,maxX=-180,minY=90,maxY=-90;
-    const eachCoord=(c,f)=>{ if(typeof c[0]==='number') f(c); else c.forEach(cc=>eachCoord(cc,f)); };
-    gj.features.forEach(ft=>eachCoord(ft.geometry.coordinates,c=>{minX=Math.min(minX,c[0]);maxX=Math.max(maxX,c[0]);minY=Math.min(minY,c[1]);maxY=Math.max(maxY,c[1]);}));
-    const W=600,H=700,pad=20;
-    const sx=(W-2*pad)/(maxX-minX), sy=(H-2*pad)/(maxY-minY), s=Math.min(sx,sy);
-    const ox=(W-(maxX-minX)*s)/2, oy=(H-(maxY-minY)*s)/2;
-    const px=c=>pad+ (c[0]-minX)*s - pad + ox;
-    const py=c=>pad+ (maxY-c[1])*s - pad + oy;
-    const ring=r=>'M'+r.map(c=>px(c).toFixed(1)+','+py(c).toFixed(1)).join('L')+'Z';
-    function toPath(geom){
-      if(geom.type==='Polygon') return geom.coordinates.map(ring).join(' ');
-      return geom.coordinates.map(poly=>poly.map(ring).join(' ')).join(' ');
-    }
-    gj.features.forEach(ft=>{
-      const p=document.createElementNS('http://www.w3.org/2000/svg','path');
-      p.setAttribute('d', toPath(ft.geometry));
-      p.setAttribute('data-key', ft.properties.data_key);
-      p.setAttribute('data-name', ft.properties.display);
-      svg.appendChild(p);
-    });
+    districtFeatures = gj.features;
+    acFeatures = ac.features||[];
+    showStateView();
+
     const tip=document.getElementById('mapTooltip');
     svg.addEventListener('mousemove', e=>{
       const t=e.target.closest('path');
@@ -1191,19 +1311,81 @@ async function initMap(){
       else tip.style.opacity=0;
     });
     svg.addEventListener('mouseleave', ()=>tip.style.opacity=0);
+
     svg.addEventListener('click', e=>{
       const t=e.target.closest('path'); if(!t) return;
-      svg.querySelectorAll('path').forEach(p=>p.classList.remove('selected'));
-      t.classList.add('selected');
-      document.getElementById('mapBox').classList.add('picked');
-      showDistrict(t.getAttribute('data-key'), t.getAttribute('data-name'));
+      if(mapLevel==='state'){
+        const key=t.getAttribute('data-key'), name=t.getAttribute('data-name');
+        document.getElementById('mapBox').classList.add('picked');
+        showDistrict(key, name);
+        showConstituencyView(key, name);
+      }else{
+        // Constituency clicked. The district panel is now an archetype template
+        // whose drill-down is a button list, not a <select>, so go straight to
+        // showConstituency. The select branch stays as a fallback for any panel
+        // that still renders the older markup.
+        const ac=t.getAttribute('data-ac');
+        selectAcOnMap(ac);
+        const cs=document.getElementById('constSelect');
+        if(cs){ cs.value=ac; cs.dispatchEvent(new Event('change')); }
+        else showConstituency(ac, currentDistrictName);
+      }
     });
+
+    document.getElementById('mapBack').addEventListener('click', showStateView);
   }catch(err){
     document.getElementById('districtPanel').innerHTML='<div class="panel-empty"><i class="ti ti-alert-triangle"></i><p>Could not load the map data.</p></div>';
   }
 }
 
-function showDistrict(key, name){
+// Which district the panel is currently showing. The archetype templates hand
+// back only a constituency name when one is picked, so the district has to be
+// remembered here rather than threaded through the template.
+let currentDistrictKey = null, currentDistrictName = null;
+const distCache = {};
+
+// A district's dashboard is chosen by its archetype (D1-D4), exactly as a
+// constituency's is by C1-C4 — see docs/DASHBOARD_ARCHITECTURE.md. Falls back to
+// the older inline panel if the dashboard assets did not load, so a CDN miss
+// degrades the page rather than blanking it.
+async function showDistrict(key, name){
+  currentDistrictKey = key; currentDistrictName = name;
+  const panel = document.getElementById('districtPanel');
+  if(!panel) return;
+
+  const idx = await loadDashIndex();
+  const rec = idx && idx.districts ? idx.districts[key] : null;
+
+  if(rec && window.DASH && window.DASH_TPL && window.DASH.enrichDistrict){
+    const tpl = window.DASH_TPL[rec.archetype] || window.DASH_TPL.D2;
+    // paint from the index immediately, then upgrade once the workbook lands
+    panel.innerHTML = tpl(window.DASH.enrichDistrict(rec, key, null, idx));
+
+    let dist = distCache[key];
+    if(dist === undefined){
+      try{ dist = await fetch('assets/dist/'+key+'.json').then(r=>r.ok?r.json():null); }
+      catch(e){ dist = null; }
+      distCache[key] = dist;
+    }
+    // a later click may have already moved the panel on — do not overwrite it
+    if(dist && currentDistrictKey === key){
+      panel.innerHTML = tpl(window.DASH.enrichDistrict(rec, key, dist, idx));
+    }
+    return;
+  }
+
+  showDistrictLegacy(key, name);
+}
+
+// Picking a constituency from a district template's drill-down. The templates
+// call this by name (DASH_PICK_CONSTITUENCY) and pass only the display name.
+window.DASH_PICK_CONSTITUENCY = function(name){
+  const key = String(name).replace(/ /g, '_');
+  selectAcOnMap(key);
+  showConstituency(key, currentDistrictName);
+};
+
+function showDistrictLegacy(key, name){
   const d = districtData[key];
   const panel = document.getElementById('districtPanel');
   if(!d){ panel.innerHTML='<div class="panel-empty"><i class="ti ti-info-circle"></i><p>No data loaded for '+name+' yet.</p></div>'; return; }
@@ -1219,8 +1401,115 @@ function showDistrict(key, name){
       '<div class="metric"><div class="ml">Per capita income</div><div class="mv">'+fmtRs(d.pci)+'</div></div>'+
     '</div>'+
     '<h5>Top sectors by contribution</h5>'+sectors+
+    '<div class="drill">'+
+      '<h5>Drill down</h5>'+
+      '<div class="drill-row">'+
+        '<div class="drill-field"><label>Constituency</label><select id="constSelect"><option value="">All constituencies</option></select></div>'+
+        '<div class="drill-field"><label>Mandal</label><select id="mandalSelect" disabled><option value="">Select a constituency first</option></select></div>'+
+      '</div>'+
+      '<div class="drill-note" id="drillNote">'+name+' has '+Object.keys(d.constituencies||{}).length+' constituencies. Pick one to see its mandals.</div>'+
+    '</div>'+
     '<div class="panel-cta"><a class="ask-link" href="'+window.CHATBOT_URL+'" target="_blank" rel="noopener"><i class="ti ti-message-2"></i> Ask the assistant about '+name+'</a></div>';
+
+  wireDrill(d, name);
 }
+
+// Picking a constituency swaps the panel for its archetype dashboard. Which of
+// the four templates renders is decided by the data, not the page — see
+// docs/DASHBOARD_ARCHITECTURE.md for why one layout cannot serve all 175.
+function wireDrill(d, districtName){
+  const consts = d.constituencies || {};
+  const constSel = document.getElementById('constSelect');
+  const mandalSel = document.getElementById('mandalSelect');
+  const note = document.getElementById('drillNote');
+
+  Object.keys(consts).sort().forEach(c=>{
+    const o=document.createElement('option'); o.value=c; o.textContent=c.replace(/_/g,' ');
+    constSel.appendChild(o);
+  });
+
+  constSel.addEventListener('change', ()=>{
+    const c = constSel.value;
+    selectAcOnMap(c);              // keep the map's highlight on the same pick
+    mandalSel.innerHTML='';
+    if(!c){
+      mandalSel.disabled=true;
+      mandalSel.innerHTML='<option value="">Select a constituency first</option>';
+      note.textContent = districtName+' has '+Object.keys(consts).length+' constituencies. Pick one to see its mandals.';
+      return;
+    }
+    const mandals = (consts[c].mandals||[]).slice().sort();
+    mandalSel.disabled = mandals.length===0;
+    mandalSel.innerHTML = '<option value="">All mandals</option>'+
+      mandals.map(m=>'<option value="'+m+'">'+m.replace(/_/g,' ')+'</option>').join('');
+    note.textContent = c.replace(/_/g,' ')+' constituency has '+mandals.length+' mandals.';
+    showConstituency(c, districtName);
+  });
+
+  mandalSel.addEventListener('change', ()=>{
+    const c = constSel.value, m = mandalSel.value;
+    if(!m){ return; }
+    note.textContent = m.replace(/_/g,' ')+' mandal, '+c.replace(/_/g,' ')+' constituency, '+districtName+' district.';
+  });
+}
+
+// ---------- constituency dashboard ----------
+// Two datasets: dashboard_index.json (always present, 12 fields) and
+// apc/<code>.json (the rich portal payload, fetched on demand). DASH.enrich
+// joins them; the templates only ever see the joined record. If the payload
+// fails to load the bare record still renders — degraded, never broken.
+let dashIndex = null, dashCache = {};
+
+async function loadDashIndex(){
+  if(dashIndex) return dashIndex;
+  try{ dashIndex = await fetch('assets/dashboard_index.json').then(r=>r.json()); }
+  catch(e){ dashIndex = null; }
+  return dashIndex;
+}
+
+async function showConstituency(name, districtName){
+  const panel = document.getElementById('districtPanel');
+  if(!panel || !window.DASH || !window.DASH_TPL) return;
+
+  const idx = await loadDashIndex();
+  const rec = idx && idx.constituencies ? idx.constituencies[name] : null;
+  if(!rec){
+    panel.innerHTML = window.DASH.empty
+      ? window.DASH.empty('No dashboard data is published for '+name.replace(/_/g,' ')+' yet.')
+      : '';
+    return;
+  }
+
+  const tpl = window.DASH_TPL[rec.archetype] || window.DASH_TPL.C4;
+  const label = name.replace(/_/g,' ');
+
+  // render the bare record immediately, then upgrade in place once the portal
+  // payload arrives — the panel is never blank and never blocks on the network
+  panel.innerHTML = tpl(window.DASH.enrich(rec, label, null, idx));
+
+  if(rec.code == null) return;
+  let apc = dashCache[rec.code];
+  if(apc === undefined){
+    try{ apc = await fetch('assets/apc/'+rec.code+'.json').then(r=>r.ok?r.json():null); }
+    catch(e){ apc = null; }
+    dashCache[rec.code] = apc;
+  }
+  // a later pick may have landed while this was in flight
+  const stillCurrent = document.getElementById('constSelect');
+  if(apc && (!stillCurrent || stillCurrent.value === name)){
+    panel.innerHTML = tpl(window.DASH.enrich(rec, label, apc, idx));
+  }
+}
+
+// drillList names this handler; defined here so mandal picks are live once a
+// mandal-level view exists. Until then it narrows the note rather than
+// pretending to open something that is not built.
+window.DASH_PICK_MANDAL = function(mandal){
+  const note = document.getElementById('drillNote');
+  const sel = document.getElementById('mandalSelect');
+  if(sel && [...sel.options].some(o=>o.value===mandal)) sel.value = mandal;
+  if(note) note.textContent = mandal.replace(/_/g,' ')+' mandal — mandal-level figures are not published yet.';
+};
 
 // --- chatbot link wiring --------------------------------------------------
 // Use the local chatbot when this page is served from localhost; otherwise the
