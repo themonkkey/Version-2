@@ -290,6 +290,42 @@
       bands + labels + axis + '</svg></figure>';
   }
 
+  /* ------------------------------------------------------------- muiChart */
+
+  /* Emits a placeholder that mui-charts.js turns into a real MUI X chart after
+     the panel paints. Templates stay plain string-builders and know nothing about
+     React. If the bundle never loads the placeholder simply stays empty, so a
+     chart is always additive -- never the reason a panel breaks.
+
+     type: 'bar' | 'line' | 'pie' | 'spark'   props: the MUI component's props */
+  function muiChart(type, props, o) {
+    o = o || {};
+    var spec = JSON.stringify({ type: type, props: props || {} });
+    return '<div class="d-mui' + (o.className ? ' ' + esc(o.className) : '') + '"' +
+      (o.height ? ' style="height:' + (+o.height) + 'px"' : '') +
+      ' data-mui-chart="' + esc(spec) + '"' +
+      (o.label ? ' role="img" aria-label="' + esc(o.label) + '"' : '') + '></div>';
+  }
+
+  /* A stat card's number says where a district is; the sparkline says which way it
+     is going. Same footprint, and the series was already loaded. */
+  function muiSpark(points, o) {
+    o = o || {};
+    var data = (points || []).map(function (p) {
+      return num(p && (p.value !== undefined ? p.value : p));
+    }).filter(function (v) { return v !== null; });
+    if (data.length < 2) return '';
+    return muiChart('spark', {
+      data: data,
+      height: o.height || 44,
+      showHighlight: true,
+      showTooltip: true,
+      curve: 'linear',
+      area: o.area !== false,
+      color: o.color || '#6FA817'
+    }, { height: o.height || 44, label: o.label || '', className: 'd-mui-spark' });
+  }
+
   function sourceNote(text) {
     if (!text) return '';
     return '<p class="d-src">' + esc(text) + '</p>';
@@ -705,6 +741,8 @@
     grp: grp,
     sanitise: sanitise,
     compositionRibbon: compositionRibbon,
+    muiChart: muiChart,
+    muiSpark: muiSpark,
     statRow: function (cards) {
       var s = (cards || []).filter(Boolean).join('');
       return s ? '<div class="d-stats">' + s + '</div>' : '';

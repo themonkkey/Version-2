@@ -414,3 +414,13 @@
 .vstage .d-cb-cat{fill:rgba(255,255,255,.9);}
 .vstage .d-cb-val{fill:rgba(255,255,255,.95);}
 .vstage .d-cb-tick{fill:rgba(255,255,255,.45);}
+
+/* ---------- MUI chart islands ---------- */
+/* React mounts into these after the panel paints; empty until then, which is why
+   nothing here sets a background — an unmounted placeholder must be invisible. */
+.d-mui{width:100%;min-width:0;}
+.d-mui-spark{margin-top:8px;}
+.d-sparkrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair);}
+.d-spark-l{display:block;font-size:.68rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--label-2);margin-bottom:2px;}

@@ -217,10 +217,25 @@
         sub: 'Share of THIS district’s GVA' + (LATEST ? ', ' + LATEST : '')
       })
     ];
+    /* MUI sparklines under the two figures that HAVE a series. The number says
+       where the district is; the line says which way it is moving. Rendered as
+       placeholders and mounted by mui-charts.js after this panel paints. */
+    var sparkRow = '';
+    if (D.muiSpark) {
+      var sg = D.muiSpark(node.gddp_series, { label: 'District GDDP trend', color: '#6FA817' });
+      var sp = D.muiSpark(node.pci_series, { label: 'Per-capita income trend', color: '#2B93BF' });
+      if (sg || sp) {
+        sparkRow = '<div class="d-sparkrow">' +
+          (sg ? '<div><span class="d-spark-l">District GDDP</span>' + sg + '</div>' : '') +
+          (sp ? '<div><span class="d-spark-l">Per-capita income</span>' + sp + '</div>' : '') +
+          '</div>';
+      }
+    }
+
     out += D.section({
       title: 'The district in four figures',
       note: 'Each figure carries its own year and estimate class',
-      body: D.statRow(cards)
+      body: D.statRow(cards) + sparkRow
     });
 
     /* ---- 2. four-year trajectory ---------------------------------------- */

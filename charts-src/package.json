@@ -1,0 +1,20 @@
+{
+  "name": "swarna-mui-charts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Bundles MUI X Charts into ONE static file for landing/assets/dash/. The landing page has no build step by design; this is built here and the OUTPUT is committed.",
+  "scripts": {
+    "build": "esbuild entry.jsx --bundle --minify --format=iife --target=es2019 --loader:.jsx=jsx --jsx=automatic --outfile=../landing/assets/dash/mui-charts.js"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^9.3.0",
+    "@mui/x-charts": "^9.10.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}

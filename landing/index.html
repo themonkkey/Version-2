@@ -728,6 +728,10 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 <script src="assets/dash/tpl-d2.js" defer></script>
 <script src="assets/dash/tpl-d3.js" defer></script>
 <script src="assets/dash/tpl-d4.js" defer></script>
+<!-- React + MUI X Charts, bundled to one file by charts-src/. Loaded LAST and
+     deferred: every chart is progressive, so if this never arrives the panel
+     still renders with its hand-rolled SVG. 214 KB gzipped. -->
+<script src="assets/dash/mui-charts.js" defer></script>
 </head>
 <body>
 
@@ -1369,6 +1373,7 @@ async function showDistrict(key, name){
     const tpl = window.DASH_TPL[rec.archetype] || window.DASH_TPL.D2;
     // paint from the index immediately, then upgrade once the workbook lands
     panel.innerHTML = tpl(window.DASH.enrichDistrict(rec, key, null, idx));
+    mountCharts(panel);
 
     let dist = distCache[key];
     if(dist === undefined){
@@ -1380,10 +1385,19 @@ async function showDistrict(key, name){
     if(dist && currentDistrictKey === key){
       panel.innerHTML = tpl(window.DASH.enrichDistrict(rec, key, dist, idx));
     }
+    mountCharts(panel);
     return;
   }
 
   showDistrictLegacy(key, name);
+}
+
+// The templates emit chart placeholders as plain HTML; React mounts into them
+// afterwards. innerHTML is replaced wholesale on every render, so this must run
+// after EVERY paint, not once at startup. Guarded because mui-charts.js is
+// deferred and may not have arrived yet — the panel is readable without it.
+function mountCharts(scope){
+  if(window.MUICharts) window.MUICharts.mountAll(scope);
 }
 
 // Picking a constituency from a district template's drill-down. The templates
@@ -1495,6 +1509,7 @@ async function showConstituency(name, districtName){
   // render the bare record immediately, then upgrade in place once the portal
   // payload arrives — the panel is never blank and never blocks on the network
   panel.innerHTML = tpl(window.DASH.enrich(rec, label, null, idx));
+  mountCharts(panel);
 
   if(rec.code == null) return;
   let apc = dashCache[rec.code];
@@ -1507,6 +1522,7 @@ async function showConstituency(name, districtName){
   const stillCurrent = document.getElementById('constSelect');
   if(apc && (!stillCurrent || stillCurrent.value === name)){
     panel.innerHTML = tpl(window.DASH.enrich(rec, label, apc, idx));
+    mountCharts(panel);
   }
 }
 
