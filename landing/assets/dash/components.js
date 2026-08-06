@@ -512,6 +512,20 @@
    * government-facing figure. Relative is still available, but a caller asking
    * for it is asserting the axis is a ranking, and must label it as one.
    */
+  /* A series must wear the SAME colour in every chart on the page, so the hue is
+     keyed off the sector name here rather than taken from whatever the source
+     supplied. The AP portal ships #16A34A / #FF8A00 / #C93A2C, which measured at
+     ΔE 3.9 for protanopia between the green and the orange -- far under the floor
+     of 8. To roughly one man in twelve, agriculture and industry were the same
+     colour. These three are validated on both surfaces; see compositionRibbon. */
+  function sectorHue(name, fallback) {
+    var k = String(name || '').toLowerCase();
+    if (k.indexOf('agri') === 0 || k.indexOf('agriculture') > -1) return '#6FA817';
+    if (k.indexOf('industr') > -1) return '#2B93BF';
+    if (k.indexOf('service') > -1) return '#BF8A2B';
+    return fallback || '#6FA817';
+  }
+
   function compositionBars(o) {
     o = o || {};
     var items = (o.items || []).map(function (it) {
@@ -532,19 +546,46 @@
     var relative = o.scale === 'relative';
     var max = relative ? peak : 100;
 
-    var out = '<div class="d-comp">';
-    items.forEach(function (it) {
-      var w = Math.min(100, (it.pct / max) * 100);
-      var style = 'width:' + round(w, 2) + '%' +
-        (it.colorHex && it.colorHex.charAt(0) === '#' ? ';background:' + esc(it.colorHex) : '');
-      out += '<div class="d-comp-row">' +
-        '<div class="d-comp-hd"><span>' + esc(it.name) + '</span><b>' + fmtPct(it.pct) + '</b></div>' +
-        '<div class="d-comp-track" role="img" aria-label="' + esc(it.name + ' ' + fmtPct(it.pct)) + '">' +
-          '<div class="d-comp-fill" style="' + style + '"></div>' +
-        '</div>' +
-      '</div>';
+    /* Plotted as a real chart rather than three independent progress tracks: one
+       shared axis with gridlines lets a reader compare the bars against each other
+       and against 100%, which separate tracks never allowed. */
+    var LEFT = 168, RIGHT = 56, TOP = 6, ROW = 38, BAR = 19;
+    var W = 720, H = TOP + items.length * ROW + 30;
+    var plotW = W - LEFT - RIGHT;
+    var xa = function (v) { return LEFT + (plotW * Math.min(v, max)) / max; };
+
+    var ticks = relative ? [0, max / 2, max] : [0, 25, 50, 75, 100];
+    var grid = '', axis = '';
+    ticks.forEach(function (t) {
+      grid += '<line x1="' + xa(t) + '" y1="' + TOP + '" x2="' + xa(t) + '" y2="' +
+        (TOP + items.length * ROW) + '" class="d-cb-grid"></line>';
+      axis += '<text x="' + xa(t) + '" y="' + (H - 10) + '" class="d-cb-tick" ' +
+        'text-anchor="' + (t === 0 ? 'start' : t === ticks[ticks.length - 1] ? 'end' : 'middle') +
+        '">' + round(t, 0) + '%</text>';
     });
-    return out + '</div>';
+
+    var bars = '';
+    items.forEach(function (it, i) {
+      var y = TOP + i * ROW + (ROW - BAR) / 2;
+      var w = Math.max(2, xa(it.pct) - LEFT);
+      var fill = sectorHue(it.name, it.colorHex);
+      bars +=
+        '<g class="d-cb-row"><title>' + esc(it.name + ' — ' + fmtPct(it.pct)) + '</title>' +
+        '<text x="' + (LEFT - 14) + '" y="' + (y + BAR / 2 + 4) + '" class="d-cb-cat" ' +
+        'text-anchor="end">' + esc(it.name) + '</text>' +
+        '<rect x="' + LEFT + '" y="' + y + '" width="' + plotW + '" height="' + BAR +
+        '" rx="4" class="d-cb-track"></rect>' +
+        '<rect x="' + LEFT + '" y="' + y + '" width="' + round(w, 1) + '" height="' + BAR +
+        '" rx="4" fill="' + fill + '" class="d-cb-bar"></rect>' +
+        '<text x="' + (LEFT + w + 9) + '" y="' + (y + BAR / 2 + 4) + '" class="d-cb-val">' +
+        fmtPct(it.pct) + '</text></g>';
+    });
+
+    var out = '<figure class="d-comp"><svg viewBox="0 0 ' + W + ' ' + H + '" ' +
+      'preserveAspectRatio="xMidYMid meet" role="img" aria-label="' +
+      esc(items.map(function (it) { return it.name + ' ' + fmtPct(it.pct); }).join(', ')) + '">' +
+      grid + bars + axis + '</svg>';
+    return out + '</figure>';
   }
 
   /* ------------------------------------------------------------ thrustChips */

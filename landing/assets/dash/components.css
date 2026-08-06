@@ -395,3 +395,22 @@
 .vstage .d-rb-val{fill:rgba(255,255,255,.62);}
 .vstage .d-rb-ax{fill:rgba(255,255,255,.45);}
 .vstage .d-rb-key{color:rgba(255,255,255,.66);}
+
+/* ---------- composition bars (chart form) ---------- */
+/* Replaces three independent progress tracks with one plot on a shared axis:
+   MUI-style light gridlines, category labels in a left gutter, 4px rounded
+   data-ends, value at the end of each bar, native <title> hover. */
+.d-comp{margin:0;}
+.d-comp svg{width:100%;height:auto;display:block;overflow:visible;}
+.d-cb-grid{stroke:var(--hair);stroke-width:1;shape-rendering:crispEdges;}
+.d-cb-track{fill:rgba(60,60,67,.07);}
+.d-cb-bar{transition:opacity .18s ease;}
+.d-cb-row:hover .d-cb-bar{opacity:.82;}
+.d-cb-cat{font-size:12.5px;font-weight:600;letter-spacing:-.01em;fill:var(--label);}
+.d-cb-val{font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;fill:var(--label);}
+.d-cb-tick{font-size:11px;font-variant-numeric:tabular-nums;fill:var(--label-3);}
+.vstage .d-cb-grid{stroke:rgba(255,255,255,.14);}
+.vstage .d-cb-track{fill:rgba(255,255,255,.07);}
+.vstage .d-cb-cat{fill:rgba(255,255,255,.9);}
+.vstage .d-cb-val{fill:rgba(255,255,255,.95);}
+.vstage .d-cb-tick{fill:rgba(255,255,255,.45);}
