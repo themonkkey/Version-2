@@ -42,6 +42,14 @@ def _bootstrap_secrets():
 
 _bootstrap_secrets()
 
+# Voice input is optional: with no Sarvam key the app runs exactly as before, minus the
+# mic. A missing or broken key must never take down text search, which is the primary path.
+try:
+    import sarvam
+    SPEECH_ENABLED = bool(os.environ.get("SARVAM_API_KEY", "").strip())
+except Exception:
+    sarvam, SPEECH_ENABLED = None, False
+
 _BASE = os.path.dirname(__file__)
 INDEX_PATH = os.path.join(_BASE, "index.pkl")
 EMBED_NPZ = os.path.join(_BASE, "embed_index.npz")
@@ -846,8 +854,50 @@ def handle_query(user_input):
     )
 
 
+def voice_query():
+    """Mic input. Returns an ENGLISH question, whatever language was spoken.
+
+    The whole pipeline downstream of this -- chunks, embeddings, system prompt -- is
+    English, so the translation has to happen here, before retrieval. Sarvam's
+    mode='translate' with language_code='unknown' does detection and translation in one
+    call, which is why there is no language picker: an officer asking in Telugu and one
+    asking in English press the same button.
+    """
+    if not SPEECH_ENABLED:
+        return None
+    with st.expander("🎙️  Ask by voice — Telugu or English", expanded=False):
+        audio = st.audio_input("Record your question", key="voice_in",
+                               label_visibility="collapsed")
+        if not audio:
+            st.caption("Speak your question, in Telugu or English. Keep it under 30 seconds.")
+            return None
+
+        raw = audio.getvalue()
+        # fingerprint the clip so a rerun does not re-bill the same audio
+        import hashlib
+        sig = hashlib.sha1(raw).hexdigest()
+        if st.session_state.get("voice_sig") == sig:
+            return None
+
+        with st.spinner("Transcribing…"):
+            try:
+                res = sarvam.transcribe(raw, "question.wav", mode="translate")
+            except sarvam.SarvamError as e:
+                st.session_state["voice_sig"] = sig      # do not retry a failing clip
+                st.error(("Voice is unavailable — " + str(e)) if e.quota
+                         else ("Could not transcribe that — " + str(e)))
+                return None
+
+        st.session_state["voice_sig"] = sig
+        lang = (res.get("language") or "").split("-")[0].lower()
+        if lang and lang != "en":
+            st.caption(f"Heard {lang} · asking in English: “{res['text']}”")
+        return res["text"]
+
+
 typed = st.chat_input("Ask about a district, a vision plan, or GVA methodology…")
-query = typed or st.session_state.pending
+spoken = voice_query()
+query = typed or spoken or st.session_state.pending
 st.session_state.pending = None
 if query:
     handle_query(query)
