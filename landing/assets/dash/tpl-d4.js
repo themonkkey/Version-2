@@ -409,7 +409,7 @@
     out += DASH.section({
       title: name ? name + ' — ' + headline(node) : headline(node),
       note: ly + ' — First Advance Estimate',
-      body: stats(node) + classNote +
+      body: stats(node) + DASH.sparkRow(node.gddp_series, node.pci_series) + classNote +
         (node.enriched === false
           ? DASH.sourceNote(
               'Only the summary index record was available for this district; the ' +

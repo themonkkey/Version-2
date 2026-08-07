@@ -218,24 +218,12 @@
       })
     ];
     /* MUI sparklines under the two figures that HAVE a series. The number says
-       where the district is; the line says which way it is moving. Rendered as
-       placeholders and mounted by mui-charts.js after this panel paints. */
-    var sparkRow = '';
-    if (D.muiSpark) {
-      var sg = D.muiSpark(node.gddp_series, { label: 'District GDDP trend', color: '#6FA817' });
-      var sp = D.muiSpark(node.pci_series, { label: 'Per-capita income trend', color: '#2B93BF' });
-      if (sg || sp) {
-        sparkRow = '<div class="d-sparkrow">' +
-          (sg ? '<div><span class="d-spark-l">District GDDP</span>' + sg + '</div>' : '') +
-          (sp ? '<div><span class="d-spark-l">Per-capita income</span>' + sp + '</div>' : '') +
-          '</div>';
-      }
-    }
-
+       where the district is; the line says which way it is moving. Shared with
+       d2/d3/d4 via D.sparkRow; mounted by mui-charts.js after this panel paints. */
     out += D.section({
       title: 'The district in four figures',
       note: 'Each figure carries its own year and estimate class',
-      body: D.statRow(cards) + sparkRow
+      body: D.statRow(cards) + D.sparkRow(node.gddp_series, node.pci_series)
     });
 
     /* ---- 2. four-year trajectory ---------------------------------------- */

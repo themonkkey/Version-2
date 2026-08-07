@@ -338,6 +338,20 @@
     }, { height: o.height || 44, label: o.label || '', className: 'd-mui-spark' });
   }
 
+  /* The two-sparkline row that sits under a district's four stat cards. Factored
+     out of tpl-d1 so d2/d3/d4 render it identically rather than four near-copies.
+     Returns '' when neither series has enough points, so a caller can append it
+     unconditionally. */
+  function sparkRow(gddpSeries, pciSeries) {
+    var sg = muiSpark(gddpSeries, { label: 'District GDDP trend', color: '#6FA817' });
+    var sp = muiSpark(pciSeries, { label: 'Per-capita income trend', color: '#2B93BF' });
+    if (!sg && !sp) return '';
+    return '<div class="d-sparkrow">' +
+      (sg ? '<div><span class="d-spark-l">District GDDP</span>' + sg + '</div>' : '') +
+      (sp ? '<div><span class="d-spark-l">Per-capita income</span>' + sp + '</div>' : '') +
+      '</div>';
+  }
+
   function sourceNote(text) {
     if (!text) return '';
     return '<p class="d-src">' + esc(text) + '</p>';
@@ -755,6 +769,7 @@
     compositionRibbon: compositionRibbon,
     muiChart: muiChart,
     muiSpark: muiSpark,
+    sparkRow: sparkRow,
     statRow: function (cards) {
       var s = (cards || []).filter(Boolean).join('');
       return s ? '<div class="d-stats">' + s + '</div>' : '';

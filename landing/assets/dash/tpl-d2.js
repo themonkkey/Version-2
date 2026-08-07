@@ -407,6 +407,7 @@
       title: name ? name + ' — agrarian heartland' : 'Agrarian heartland district',
       note: yr ? 'District figures, ' + yr : null,
       body: stats(node) +
+        D.sparkRow(node.gddp_series, node.pci_series) +
         (txt(node.why) ? D.sourceNote('Classified agrarian heartland: ' + txt(node.why) + '.') : '') +
         (node.enriched === false
           ? D.sourceNote(

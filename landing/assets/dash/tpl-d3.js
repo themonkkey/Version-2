@@ -207,6 +207,7 @@
          dropped rather than stubbed — but the rank, which IS carried on the
          summary record, is still worth stating, with its peer set named. */
       body: D.statRow(cards) +
+        D.sparkRow(node.gddp_series, node.pci_series) +
         ((n(node.pci) === null && rk !== null && cnt !== null)
           ? D.sourceNote('The per-capita income figure is not attached for this ' +
             'district. Its rank is carried on the summary record: ' + ordinal(rk) +
