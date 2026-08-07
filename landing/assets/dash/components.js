@@ -315,6 +315,16 @@
       return num(p && (p.value !== undefined ? p.value : p));
     }).filter(function (v) { return v !== null; });
     if (data.length < 2) return '';
+
+    /* A sparkline shows SHAPE, not magnitude. Left on MUI's default zero-based
+       axis these series (GDDP 1.10L -> 1.61L crore) sit in the top sixth of the
+       plot and the area fill swamps them into a solid block. Framing the axis on
+       the data's own range, with a little padding, is what makes the trend
+       legible -- and it is honest because the figures themselves are printed on
+       the stat card directly above. */
+    var lo = Math.min.apply(null, data), hi = Math.max.apply(null, data);
+    var pad = (hi - lo) * 0.18 || Math.abs(hi * 0.05) || 1;
+
     return muiChart('spark', {
       data: data,
       height: o.height || 44,
@@ -322,7 +332,9 @@
       showTooltip: true,
       curve: 'linear',
       area: o.area !== false,
-      color: o.color || '#6FA817'
+      color: o.color || '#6FA817',
+      yAxis: { min: lo - pad, max: hi + pad },
+      margin: { top: 4, bottom: 4, left: 0, right: 0 }
     }, { height: o.height || 44, label: o.label || '', className: 'd-mui-spark' });
   }
 

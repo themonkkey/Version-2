@@ -717,24 +717,27 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
      templates. components.js must load before enrich.js and the templates,
      which register onto the same window.DASH / window.DASH_TPL globals.
      See docs/DASHBOARD_ARCHITECTURE.md. -->
-<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-07a">
-<script src="assets/dash/components.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/enrich.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-c1.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-c2.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-c3.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-c4.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-d1.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-d2.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-d3.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-d4.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-m1.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-m2.js?v=2026-08-07a" defer></script>
-<script src="assets/dash/tpl-m3.js?v=2026-08-07a" defer></script>
+<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-07b">
+<script src="assets/dash/components.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/enrich.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-c1.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-c2.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-c3.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-c4.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-d1.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-d2.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-d3.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-d4.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-m1.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-m2.js?v=2026-08-07b" defer></script>
+<script src="assets/dash/tpl-m3.js?v=2026-08-07b" defer></script>
 <!-- React + MUI X Charts, bundled to one file by charts-src/. Loaded LAST and
      deferred: every chart is progressive, so if this never arrives the panel
      still renders with its hand-rolled SVG. 214 KB gzipped. -->
-<script src="assets/dash/mui-charts.js?v=2026-08-07a" defer></script>
+<!-- mui-charts.js (214 KB gzipped) is NOT loaded here. Home, About and
+     Methodology render no charts, so shipping React to them is pure cost.
+     mountCharts() fetches it on demand the first time a chart placeholder
+     actually appears. -->
 </head>
 <body>
 
@@ -1401,10 +1404,34 @@ async function showDistrict(key, name){
 
 // The templates emit chart placeholders as plain HTML; React mounts into them
 // afterwards. innerHTML is replaced wholesale on every render, so this must run
-// after EVERY paint, not once at startup. Guarded because mui-charts.js is
-// deferred and may not have arrived yet — the panel is readable without it.
+// after EVERY paint, not once at startup.
+//
+// The MUI bundle is fetched lazily, on the first paint that actually contains a
+// placeholder — so a visitor who never opens Districts never downloads 214 KB of
+// React. Fetched once and reused; a failed fetch is swallowed because charts are
+// additive and the panel reads fine without them.
+let muiPending = null;
+function loadMui(){
+  if(window.MUICharts) return Promise.resolve();
+  if(muiPending) return muiPending;
+  muiPending = new Promise(function(resolve){
+    var s = document.createElement('script');
+    // reuse whatever stamp the other dash assets carry, so this can never drift
+    var stamped = document.querySelector('script[src*="assets/dash/components.js"]');
+    var v = stamped ? (stamped.getAttribute('src').split('?')[1] || '') : '';
+    s.src = 'assets/dash/mui-charts.js' + (v ? '?' + v : '');
+    s.onload = resolve;
+    s.onerror = resolve;
+    document.head.appendChild(s);
+  });
+  return muiPending;
+}
 function mountCharts(scope){
-  if(window.MUICharts) window.MUICharts.mountAll(scope);
+  if(!scope || !scope.querySelector('[data-mui-chart]')) return;   // nothing to mount
+  if(window.MUICharts){ window.MUICharts.mountAll(scope); return; }
+  loadMui().then(function(){
+    if(window.MUICharts) window.MUICharts.mountAll(scope);
+  });
 }
 
 // Picking a constituency from a district template's drill-down. The templates
