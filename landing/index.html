@@ -717,21 +717,24 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
      templates. components.js must load before enrich.js and the templates,
      which register onto the same window.DASH / window.DASH_TPL globals.
      See docs/DASHBOARD_ARCHITECTURE.md. -->
-<link rel="stylesheet" href="assets/dash/components.css">
-<script src="assets/dash/components.js" defer></script>
-<script src="assets/dash/enrich.js" defer></script>
-<script src="assets/dash/tpl-c1.js" defer></script>
-<script src="assets/dash/tpl-c2.js" defer></script>
-<script src="assets/dash/tpl-c3.js" defer></script>
-<script src="assets/dash/tpl-c4.js" defer></script>
-<script src="assets/dash/tpl-d1.js" defer></script>
-<script src="assets/dash/tpl-d2.js" defer></script>
-<script src="assets/dash/tpl-d3.js" defer></script>
-<script src="assets/dash/tpl-d4.js" defer></script>
+<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-06a">
+<script src="assets/dash/components.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/enrich.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-c1.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-c2.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-c3.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-c4.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-d1.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-d2.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-d3.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-d4.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-m1.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-m2.js?v=2026-08-06a" defer></script>
+<script src="assets/dash/tpl-m3.js?v=2026-08-06a" defer></script>
 <!-- React + MUI X Charts, bundled to one file by charts-src/. Loaded LAST and
      deferred: every chart is progressive, so if this never arrives the panel
      still renders with its hand-rolled SVG. 214 KB gzipped. -->
-<script src="assets/dash/mui-charts.js" defer></script>
+<script src="assets/dash/mui-charts.js?v=2026-08-06a" defer></script>
 </head>
 <body>
 
@@ -1231,7 +1234,11 @@ document.getElementById('hamburger').addEventListener('click', ()=>{
   document.getElementById('mobileMenu').classList.toggle('open');
 });
 window.addEventListener('hashchange', ()=>go(location.hash.replace('#','')));
-go(location.hash.replace('#','') || 'home');
+// Deferred one turn on purpose. go('districts') calls initMap(), which reads
+// `mapReady` and the other map state declared further down this same script;
+// routing synchronously here threw a TDZ ReferenceError for anyone landing on
+// or refreshing #districts directly, and the map never initialised.
+setTimeout(()=>go(location.hash.replace('#','') || 'home'), 0);
 
 // ---------- map ----------
 // Two levels off one <svg>: the 28-district state view, and a per-district
@@ -1471,8 +1478,15 @@ function wireDrill(d, districtName){
 
   mandalSel.addEventListener('change', ()=>{
     const c = constSel.value, m = mandalSel.value;
-    if(!m){ return; }
+    if(!m){
+      // "All mandals" goes back up a level rather than leaving a stale mandal page
+      note.textContent = c.replace(/_/g,' ')+' constituency has '+
+        ((consts[c]||{}).mandals||[]).length+' mandals.';
+      if(c) showConstituency(c, districtName);
+      return;
+    }
     note.textContent = m.replace(/_/g,' ')+' mandal, '+c.replace(/_/g,' ')+' constituency, '+districtName+' district.';
+    showMandal(m, c, districtName);
   });
 }
 
@@ -1490,9 +1504,16 @@ async function loadDashIndex(){
   return dashIndex;
 }
 
+// Which constituency the panel is showing. The mandal drill-down is a button
+// list inside the rendered template, and its handler is only given a mandal
+// name, so the parent has to be remembered here.
+let currentConstituency = null, currentMandal = null;
+
 async function showConstituency(name, districtName){
   const panel = document.getElementById('districtPanel');
   if(!panel || !window.DASH || !window.DASH_TPL) return;
+  currentConstituency = name;
+  currentMandal = null;      // moving up a level retires any mandal pick
 
   const idx = await loadDashIndex();
   const rec = idx && idx.constituencies ? idx.constituencies[name] : null;
@@ -1526,14 +1547,91 @@ async function showConstituency(name, districtName){
   }
 }
 
-// drillList names this handler; defined here so mandal picks are live once a
-// mandal-level view exists. Until then it narrows the note rather than
-// pretending to open something that is not built.
+// ---------- mandal view ----------
+// Three datasets meet here: mandal_index.json (the roster + archetype),
+// dashboard_index.json and apc/<code>.json (the parent constituency). No figures
+// exist at mandal level anywhere in the corpus, so DASH.enrichMandal attaches the
+// parent's numbers under node.inherited with node.inherited_from naming whose they
+// are — the templates never present them as the mandal's own.
+let mandalIndex = null;
+
+async function loadMandalIndex(){
+  if(mandalIndex) return mandalIndex;
+  try{ mandalIndex = await fetch('assets/mandal_index.json').then(r=>r.json()); }
+  catch(e){ mandalIndex = null; }
+  return mandalIndex;
+}
+
+const slugify = s => String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+
+// The constituency select carries tree keys ("Guntur_East"); the mandal roster is
+// keyed on the portal's constituency names ("Guntur East"). Match on alphanumerics.
+function findMandal(mi, constituencyKey, mandalName){
+  if(!mi) return null;
+  const ck = slugify(constituencyKey), mn = slugify(mandalName);
+  let hit = mi.mandals[ck+'__'+mn];
+  if(hit) return hit;
+  for(const slug in mi.mandals){
+    const m = mi.mandals[slug];
+    if(slugify(m.name)===mn && slugify(m.constituency)===ck) return m;
+  }
+  // the tree's PDF-derived name may differ from the portal's; fall back to the
+  // mandal name alone within the selected constituency
+  for(const slug in mi.mandals){
+    const m = mi.mandals[slug];
+    if(slugify(m.constituency)===ck && slugify(m.name).startsWith(mn)) return m;
+  }
+  return null;
+}
+
+async function showMandal(mandalName, constituencyKey, districtName){
+  const panel = document.getElementById('districtPanel');
+  if(!panel || !window.DASH || !window.DASH_TPL) return;
+
+  const [idx, mi] = await Promise.all([loadDashIndex(), loadMandalIndex()]);
+  const m = findMandal(mi, constituencyKey, mandalName);
+  if(!m){
+    panel.innerHTML = window.DASH.empty
+      ? window.DASH.empty('No roster entry is published for '+String(mandalName).replace(/_/g,' ')+' mandal.')
+      : '';
+    return;
+  }
+
+  // parent constituency, enriched, so the mandal page can inherit real figures
+  const cRec = idx && idx.constituencies ? idx.constituencies[constituencyKey] : null;
+  let cNode = null;
+  if(cRec){
+    let apc = dashCache[cRec.code];
+    if(apc === undefined && cRec.code != null){
+      try{ apc = await fetch('assets/apc/'+cRec.code+'.json').then(r=>r.ok?r.json():null); }
+      catch(e){ apc = null; }
+      dashCache[cRec.code] = apc;
+    }
+    cNode = window.DASH.enrich(cRec, constituencyKey.replace(/_/g,' '), apc || null, idx);
+  }
+
+  const sibs = (mi.by_constituency[m.constituency]||[]).map(s=>mi.mandals[s].name);
+  const tpl = window.DASH_TPL[m.archetype] || window.DASH_TPL.M1;
+
+  // a later pick may have landed while the parent payload was in flight
+  if(currentMandal && slugify(currentMandal) !== slugify(mandalName)) return;
+
+  panel.innerHTML = tpl(window.DASH.enrichMandal(m, cNode, sibs));
+  mountCharts(panel);
+  panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+// The mandal drill-down in every constituency template is a drillList whose
+// onpick names this handler; it receives only the mandal name, so the parent
+// constituency comes from currentConstituency. The legacy <select> is still
+// honoured for any panel that renders the older markup.
 window.DASH_PICK_MANDAL = function(mandal){
-  const note = document.getElementById('drillNote');
   const sel = document.getElementById('mandalSelect');
   if(sel && [...sel.options].some(o=>o.value===mandal)) sel.value = mandal;
-  if(note) note.textContent = mandal.replace(/_/g,' ')+' mandal — mandal-level figures are not published yet.';
+  const parent = (document.getElementById('constSelect')||{}).value || currentConstituency;
+  if(!parent) return;
+  currentMandal = mandal;
+  showMandal(mandal, parent, currentDistrictName);
 };
 
 // --- chatbot link wiring --------------------------------------------------

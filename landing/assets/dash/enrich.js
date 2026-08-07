@@ -427,9 +427,98 @@
     return node;
   }
 
+  /* -------------------------------------------------------------- mandals ---
+     THE ENRICHED MANDAL NODE — the contract for the M1-M3 templates.
+
+     READ THIS BEFORE BUILDING A MANDAL TEMPLATE:
+     No structured figures exist at mandal level anywhere in the corpus. The
+     vision documents are prose. Every number a mandal page can show is INHERITED
+     from its parent constituency and describes the constituency, not the mandal.
+     That is why each inherited figure arrives pre-labelled in `.inherited_from`
+     and why the contract has no bare gcdp/population fields — there is nothing
+     to put in them, and a template that renders a constituency figure as though
+     it were the mandal's would be stating something false about a real place.
+
+     {
+       name, slug,
+       kind          : 'rural'|'urban'|'unknown'   portal's -R/-U marker; unknown
+                                                   for 47 of 794 entries and never guessed
+       archetype     : 'M1'|'M2'|'M3'
+       why           : string   plain reason the archetype was assigned
+
+       constituency  : string   parent name
+       district      : string   grandparent key
+       breadcrumb    : [{level,name}]  district -> constituency -> mandal
+
+       // everything below describes the CONSTITUENCY. Never present as the mandal's.
+       inherited_from: string   the constituency these figures belong to, or ''
+       inherited     : {gcdp_baseline, gcdp_target, cagr, shares, thrust,
+                        year_baseline, year_target} | null
+       siblings      : [string] other mandals in the same constituency
+
+       pdfs          : [string] repo-relative vision-document paths, may be empty
+       has_pdf       : boolean
+       source        : string
+       has_own_figures : false   ALWAYS false. It is in the contract so a template
+                                 must acknowledge it rather than quietly assume.
+     }
+  */
+  function enrichMandal(rec, constituencyNode, siblings) {
+    rec = rec || {};
+    var inherited = null;
+
+    if (constituencyNode) {
+      inherited = {
+        gcdp_baseline: num(constituencyNode.gcdp_baseline),
+        gcdp_target: num(constituencyNode.gcdp_target),
+        cagr: num(constituencyNode.cagr),
+        shares: constituencyNode.shares || null,
+        thrust: Array.isArray(constituencyNode.thrust) ? constituencyNode.thrust.slice() : [],
+        year_baseline: constituencyNode.year_baseline || YEAR_BASELINE,
+        year_target: constituencyNode.year_target || YEAR_TARGET
+      };
+    }
+
+    var name = rec.name || '';
+    var constituency = rec.constituency || (constituencyNode && constituencyNode.name) || '';
+    var district = rec.district || '';
+
+    return {
+      name: name,
+      slug: rec.slug || '',
+      kind: rec.kind || 'unknown',
+      archetype: rec.archetype || 'M1',
+      why: rec.why || '',
+
+      constituency: constituency,
+      district: district,
+      breadcrumb: [
+        { level: 'district', name: String(district).replace(/_/g, ' ') },
+        { level: 'constituency', name: constituency },
+        { level: 'mandal', name: name }
+      ].filter(function (b) { return b.name; }),
+
+      inherited_from: inherited ? constituency : '',
+      inherited: inherited,
+      siblings: Array.isArray(siblings) ? siblings.filter(function (s) { return s !== name; }) : [],
+
+      pdfs: Array.isArray(rec.pdfs) ? rec.pdfs.slice() : [],
+      has_pdf: !!(rec.pdfs && rec.pdfs.length),
+      source: 'AP Assembly Constituencies portal (mandal roster) · mandal vision documents',
+      has_own_figures: false
+    };
+  }
+
   global.DASH = global.DASH || {};
   global.DASH.enrich = enrich;
   global.DASH.enrichDistrict = enrichDistrict;
+  global.DASH.enrichMandal = enrichMandal;
+  global.DASH.MANDAL_KEYS = [
+    'name', 'slug', 'kind', 'archetype', 'why',
+    'constituency', 'district', 'breadcrumb',
+    'inherited_from', 'inherited', 'siblings',
+    'pdfs', 'has_pdf', 'source', 'has_own_figures'
+  ];
   global.DASH.DISTRICT_KEYS = [
     'key', 'name', 'archetype', 'why', 'pci_rank', 'district_count',
     'gddp', 'gddp_growth', 'gddp_rank', 'pci', 'pci_growth', 'population',

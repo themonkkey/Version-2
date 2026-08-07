@@ -279,6 +279,7 @@
       body: DASH.drillList({
         items: Array.isArray(node.mandals) ? node.mandals : [],
         label: 'Mandals in this constituency',
+        onpick: 'DASH_PICK_MANDAL',
         emptyReason: 'No mandals are listed for this constituency.'
       })
     });

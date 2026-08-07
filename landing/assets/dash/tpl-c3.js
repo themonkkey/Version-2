@@ -246,6 +246,7 @@
       body: D.drillList({
         items: mandals,
         label: 'Mandals in this constituency',
+        onpick: 'DASH_PICK_MANDAL',
         emptyReason: 'No mandal list is published for this constituency.'
       })
     });

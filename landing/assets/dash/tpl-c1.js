@@ -230,6 +230,9 @@
       note: mandals.length ? mandals.length + ' mandals' : '',
       body: D.drillList({
         items: mandals,
+        /* the page defines DASH_PICK_MANDAL; drillList guards the call site, so
+           an unwired page degrades to a plain list rather than throwing */
+        onpick: 'DASH_PICK_MANDAL',
         emptyReason: 'No mandal list is published for this constituency.'
       })
     });
