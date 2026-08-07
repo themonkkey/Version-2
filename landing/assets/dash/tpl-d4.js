@@ -52,7 +52,6 @@
   var SECTOR_ORDER = ['agri', 'industry', 'services'];
 
   /* how many of the ~17 real sectors the composition block shows */
-  var TOP_SECTORS = 8;
 
   function n(v) { return DASH.num(v); }
   function txt(s) { return String(s === null || s === undefined ? '' : s).trim(); }
@@ -256,7 +255,7 @@
       var name = txt(s.name);
       var pct = pctOfDistrict(s);          /* share of THIS district's GDVA */
       if (!name || pct === null) return;
-      items.push({ name: name, pct: pct });
+      items.push({ name: name, pct: pct, rank: n(s.rank) });
     });
 
     if (!items.length) {
@@ -265,26 +264,18 @@
       );
     }
 
-    var shown = items.slice(0, TOP_SECTORS);
-    var rest = items.length - shown.length;
+    /* Top 3 as a dot plot (see components.js sectorDots). Three sectors carry the
+       "what this place runs on" story; the full 17-bar list was a wall. */
+    var shown = items.slice(0, 3);
+    var covered = shown.reduce(function (a, it) { return a + it.pct; }, 0);
+    var note = DASH.sourceNote(
+      'The three largest of ' + items.length + ' published sectors, together ' +
+      DASH.fmtPct(covered) + ' of this district\'s GDVA. Rank is this district\'s ' +
+      'standing in that sector statewide. Totals, taxes and subsidies are excluded ' +
+      'from the published list, so these shares do not double-count.'
+    );
 
-    var note = '';
-    if (rest > 0) {
-      var covered = shown.reduce(function (a, it) { return a + it.pct; }, 0);
-      note = DASH.sourceNote(
-        'The ' + shown.length + ' largest of ' + items.length + ' published sectors, ' +
-        'together ' + DASH.fmtPct(covered) + ' of this district\'s GDVA. The remaining ' +
-        rest + ' are smaller and are not drawn. Totals, taxes and subsidies are ' +
-        'excluded from the published list, so these shares do not double-count.'
-      );
-    } else {
-      note = DASH.sourceNote(
-        'All ' + items.length + ' published sectors. Totals, taxes and subsidies are ' +
-        'excluded from the published list, so these shares do not double-count.'
-      );
-    }
-
-    return DASH.compositionBars({ items: shown }) + note;
+    return DASH.sectorDots(shown, { total: n(node.district_count) || 28 }) + note;
   }
 
   /* --------------------------------------------------------------- donut --

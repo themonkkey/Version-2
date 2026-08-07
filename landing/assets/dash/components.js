@@ -395,7 +395,11 @@
      These are the portal's own values, verified across all 175 harvested records —
      do not substitute look-alikes. #F5B400 in particular belongs to whole-economy
      GCDP, not to Industry, and an earlier draft shipped it here by mistake. */
-  var SECTOR_COLOR = { agri: '#16A34A', industry: '#FF8A00', services: '#C93A2C' };
+  /* The validated trio, not the AP portal's #16A34A / #FF8A00 / #C93A2C, whose
+     agri-vs-industry pair is ΔE 3.9 for protanopia — see sectorHue(). Keep the
+     donut on the same hues as every other sector chart so a colour means one
+     thing across the whole panel. */
+  var SECTOR_COLOR = { agri: '#6FA817', industry: '#2B93BF', services: '#BF8A2B' };
 
   /**
    * sectorDonut({shares, emphasis, colors, title, centerLabel})
@@ -711,6 +715,76 @@
    * peers = [{name, value}] INCLUDING this one; `value` identifies self by
    * matching name when {selfName} is given, otherwise by equal value.
    */
+  /* ------------------------------------------------------------- sectorDots */
+
+  /* A dot plot of the sectors that dominate a district: category on the left,
+     a single dot placed by share on a shared axis, value and statewide rank on
+     the right. Chosen over bars because a dot reads as a precise position rather
+     than a filled quantity, so the GAP between #1 and #3 is what the eye catches
+     -- which is the point when three sectors can be half the economy or a third
+     of it. The shared axis makes those gaps comparable across districts.
+
+     items: [{name, pct, rank}]   o.total: peer count for "rank X of N" */
+  function sectorDots(items, o) {
+    o = o || {};
+    var rows = (items || []).map(function (it) {
+      return {
+        name: it && it.name ? String(it.name) : '',
+        pct: num(it && it.pct),
+        rank: num(it && it.rank)
+      };
+    }).filter(function (it) { return it.name && it.pct !== null; });
+
+    if (!rows.length) return empty('No sector figures are published for this district.');
+
+    var max = rows.reduce(function (a, r) { return Math.max(a, r.pct); }, 0);
+    // round the axis up to a sensible ceiling so the top dot isn't jammed at the edge
+    var ceil = max <= 10 ? Math.ceil(max / 2) * 2 : max <= 30 ? Math.ceil(max / 5) * 5
+      : Math.ceil(max / 10) * 10;
+    var total = num(o.total);
+
+    var LEFT = 172, RIGHT = 92, TOP = 6, ROW = 40, R = 6;
+    var W = 720, H = TOP + rows.length * ROW + 28;
+    var plotW = W - LEFT - RIGHT;
+    var x = function (v) { return LEFT + (plotW * Math.min(v, ceil)) / ceil; };
+
+    var ticks = [0, ceil / 2, ceil];
+    var grid = '', axis = '';
+    ticks.forEach(function (t) {
+      grid += '<line x1="' + x(t) + '" y1="' + TOP + '" x2="' + x(t) + '" y2="' +
+        (TOP + rows.length * ROW) + '" class="d-cb-grid"></line>';
+      axis += '<text x="' + x(t) + '" y="' + (H - 9) + '" class="d-cb-tick" text-anchor="' +
+        (t === 0 ? 'start' : t === ceil ? 'end' : 'middle') + '">' + round(t, 0) + '%</text>';
+    });
+
+    var dots = '';
+    rows.forEach(function (r, i) {
+      var cy = TOP + i * ROW + ROW / 2;
+      var cx = x(r.pct);
+      var rankTxt = r.rank !== null ? (total ? 'rank ' + round(r.rank, 0) + ' of ' + round(total, 0)
+        : 'rank ' + round(r.rank, 0)) : '';
+      dots +=
+        '<g class="d-sd-row"><title>' + esc(r.name + ' — ' + fmtPct(r.pct) +
+        (rankTxt ? ' · ' + rankTxt + ' statewide' : '')) + '</title>' +
+        // faint stem from the axis to the dot, so a low value still reads as a position
+        '<line x1="' + LEFT + '" y1="' + cy + '" x2="' + cx + '" y2="' + cy +
+        '" class="d-sd-stem"></line>' +
+        '<text x="' + (LEFT - 14) + '" y="' + (cy + 4) + '" class="d-cb-cat" text-anchor="end">' +
+        esc(r.name) + '</text>' +
+        '<circle cx="' + round(cx, 1) + '" cy="' + cy + '" r="' + R + '" class="d-sd-dot"></circle>' +
+        '<text x="' + (LEFT + plotW + 10) + '" y="' + (cy + 1) + '" class="d-cb-val">' +
+        fmtPct(r.pct) + '</text>' +
+        (rankTxt ? '<text x="' + (LEFT + plotW + 10) + '" y="' + (cy + 13) +
+          '" class="d-sd-rank">' + esc(rankTxt) + '</text>' : '') +
+        '</g>';
+    });
+
+    return '<figure class="d-comp"><svg viewBox="0 0 ' + W + ' ' + H + '" ' +
+      'preserveAspectRatio="xMidYMid meet" role="img" aria-label="' +
+      esc(rows.map(function (r) { return r.name + ' ' + fmtPct(r.pct); }).join(', ')) + '">' +
+      grid + dots + axis + '</svg></figure>';
+  }
+
   function rankStrip(o) {
     o = o || {};
     var peers = (o.peers || []).map(function (p) {
@@ -755,6 +829,7 @@
     narrative: narrative,
     drillList: drillList,
     rankStrip: rankStrip,
+    sectorDots: sectorDots,
     sourceNote: sourceNote,
     section: section,
     empty: empty,

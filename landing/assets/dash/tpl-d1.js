@@ -308,33 +308,34 @@
       body: donutBody
     });
 
-    /* ---- 5. the sectors underneath — SHARE OF THIS DISTRICT ------------- */
-    var sectors = arr(node.sectors).filter(function (s) {
+    /* ---- 5. the top sectors — SHARE OF THIS DISTRICT -------------------- */
+    var allSectors = arr(node.sectors).filter(function (s) {
       return s && s.name && n(s.pct_of_district) !== null;
-    }).slice(0, 8);
+    });
+    /* Top 3 only. In most districts the top three sectors are half the economy or
+       more, so three dots tell the "what does this place run on" story without a
+       17-row wall. A dot plot rather than bars: the eye reads the gap between #1
+       and #3 as a position, which is the point. */
+    var sectors = allSectors.slice(0, 3);
 
     var compBody;
     if (sectors.length) {
-      /* scale:'share' is the library default — the track is 100%, so bar width
-         IS the published percentage. Not overridden here. */
-      compBody = D.compositionBars({
-        items: sectors.map(function (s) {
-          return { name: s.name, pct: n(s.pct_of_district) };
-        })
-      });
+      compBody = D.sectorDots(sectors.map(function (s) {
+        return { name: s.name, pct: n(s.pct_of_district), rank: n(s.rank) };
+      }), { total: total });
       compBody += '<p class="d-src">' + D.esc(
-        'Top ' + sectors.length + ' sectors by their share of ' + (name || 'this district') +
+        'The three largest sectors by their share of ' + (name || 'this district') +
         '’s own GVA' + (LATEST ? ', ' + LATEST : '') +
-        '. Bar width is that percentage against a full 100% track. Totals, taxes and ' +
-        'subsidies are excluded, so these do not double-count. ' +
-        arr(node.sectors).length + ' sectors are published in all.'
+        '. Rank is this district’s standing in that sector among the ' + total +
+        ' districts. ' + allSectors.length + ' sectors are published in all; totals, ' +
+        'taxes and subsidies are excluded so these do not double-count.'
       ) + '</p>';
     } else {
       compBody = D.empty('Sector-level figures are not published for this district.');
     }
     out += D.section({
-      title: 'Which sectors the output sits in',
-      note: 'Share of THIS district’s GVA — not of the state',
+      title: 'What this district runs on',
+      note: 'Top three sectors by share of THIS district’s GVA — not of the state',
       body: compBody
     });
 

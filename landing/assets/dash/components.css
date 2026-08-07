@@ -424,3 +424,12 @@
   gap:14px;margin-top:14px;padding-top:14px;border-top:1px solid var(--hair);}
 .d-spark-l{display:block;font-size:.68rem;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:var(--label-2);margin-bottom:2px;}
+
+/* ---------- sector dot plot ---------- */
+.d-sd-stem{stroke:var(--hair);stroke-width:2;}
+.d-sd-dot{fill:#6FA817;stroke:var(--surface);stroke-width:1.5;}
+.d-sd-rank{font-size:10.5px;fill:var(--label-3);}
+.d-sd-row:hover .d-sd-dot{fill:#5a8c13;}
+.vstage .d-sd-stem{stroke:rgba(255,255,255,.16);}
+.vstage .d-sd-dot{fill:#8FC93A;stroke:rgba(11,46,32,.6);}
+.vstage .d-sd-rank{fill:rgba(255,255,255,.45);}
