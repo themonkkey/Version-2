@@ -235,9 +235,14 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 .vstage .bar{background:rgba(255,255,255,.14);}
 .vstage .panel-empty,.vstage .panel-empty i{color:rgba(255,255,255,.5);}
 .vstage .map-hint{color:rgba(255,255,255,.5);}
-.vstage #ap-map path{fill:rgba(255,255,255,.16);stroke:rgba(255,255,255,.30);}
-.vstage #ap-map path:hover{fill:rgba(198,255,106,.55);}
-.vstage #ap-map path.selected{fill:var(--lime);stroke:#FFF;}
+/* On the dark video stage the districts have to hold their own against a busy
+   photographic background, so the fill and stroke are deliberately stronger than
+   a normal glass overlay — at .16/.30 the map was there but effectively invisible,
+   which read as "no map". */
+.vstage #ap-map path{fill:rgba(220,230,224,.34);stroke:rgba(255,255,255,.85);stroke-width:1.1;
+  transition:fill .16s cubic-bezier(.4,0,.2,1);}
+.vstage #ap-map path:hover{fill:rgba(198,255,106,.75);}
+.vstage #ap-map path.selected{fill:var(--lime);stroke:#FFF;stroke-width:1.5;}
 .vstage .ask-link{background:rgba(198,255,106,.16);color:var(--lime);}
 .vstage .ask-link:hover{background:rgba(198,255,106,.26);}
 .vstage .sa-foot,.vstage .f-note{color:rgba(255,255,255,.45);}
@@ -717,20 +722,20 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
      templates. components.js must load before enrich.js and the templates,
      which register onto the same window.DASH / window.DASH_TPL globals.
      See docs/DASHBOARD_ARCHITECTURE.md. -->
-<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-07f">
-<script src="assets/dash/components.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/enrich.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-c1.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-c2.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-c3.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-c4.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-d1.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-d2.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-d3.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-d4.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-m1.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-m2.js?v=2026-08-07f" defer></script>
-<script src="assets/dash/tpl-m3.js?v=2026-08-07f" defer></script>
+<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-07g">
+<script src="assets/dash/components.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/enrich.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-c1.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-c2.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-c3.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-c4.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-d1.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-d2.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-d3.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-d4.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-m1.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-m2.js?v=2026-08-07g" defer></script>
+<script src="assets/dash/tpl-m3.js?v=2026-08-07g" defer></script>
 <!-- React + MUI X Charts, bundled to one file by charts-src/. Loaded LAST and
      deferred: every chart is progressive, so if this never arrives the panel
      still renders with its hand-rolled SVG. 214 KB gzipped. -->
@@ -1057,7 +1062,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
     <div class="map-layout">
       <div class="map-box" id="mapBox">
         <svg id="ap-map" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clickable map of Andhra Pradesh districts"></svg>
-        <div class="map-label"><div class="t">Andhra Pradesh</div><div class="c">Click any district to explore</div></div>
+        <div class="map-label"><div class="t">Andhra Pradesh</div><div class="c">28 districts · tap one</div></div>
         <button class="map-back" id="mapBack"><i class="ti ti-arrow-left"></i> All districts</button>
         <div class="map-hint">Click any district to explore</div>
       </div>
