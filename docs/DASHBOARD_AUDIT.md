@@ -37,6 +37,23 @@ the published percentage. Verified: items `[41, 39, 20]` render at widths `41%, 
 the default under a share caption.
 
 **(b) Wrong fallback sector colours — RESOLVED.**
+
+> **SUPERSEDED 2026-08-07 (later session) — sector colours.** The line below records
+> `agri #16A34A / industry #FF8A00 / services #C93A2C` as the correct fallback, taken
+> from the AP portal. **Those colours have since been replaced and must not be restored.**
+> Measured with the OKLab CVD validator:
+>
+> ```
+> #16A34A (agriculture) vs #FF8A00 (industry)   ΔE 3.9 protanopia   (floor is 8)
+> ```
+>
+> At 3.9 those two bars are effectively the SAME COLOUR to a protanope — roughly one man
+> in twelve — on a tool being handed to government officers. Colour is now keyed off the
+> sector name in `components.js` → `sectorHue()`, using `#6FA817 / #2B93BF / #BF8A2B`,
+> which passes lightness, chroma, CVD separation and contrast on both surfaces.
+> **Do not take chart colours from the portal payload again.** Validate any new palette
+> with the `dataviz` skill's `scripts/validate_palette.js` before shipping it.
+
 `components.js:238` is now `agri #16A34A, industry #FF8A00, services #C93A2C`, matching
 the portal across all 175 harvested records. The previous value shipped `#F5B400` for
 Industry, which the portal reserves for whole-economy GCDP. Both template-level
