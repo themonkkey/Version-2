@@ -404,8 +404,10 @@
     var out = '<div class="dash dash-d2">';
 
     out += D.section({
-      title: name ? name + ' — agrarian heartland' : 'Agrarian heartland district',
+      titleHtml: D.placeCrumb(name || 'District', 'agrarian heartland district'),
       note: yr ? 'District figures, ' + yr : null,
+      aside: D.rankBadge({ rank: node.pci_rank, total: n(node.district_count) || 28,
+        basis: 'per-capita income' }),
       body: stats(node) +
         D.sparkRow(node.gddp_series, node.pci_series) +
         (txt(node.why) ? D.sourceNote('Classified agrarian heartland: ' + txt(node.why) + '.') : '') +

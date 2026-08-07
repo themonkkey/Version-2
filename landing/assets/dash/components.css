@@ -433,3 +433,28 @@
 .vstage .d-sd-stem{stroke:rgba(255,255,255,.16);}
 .vstage .d-sd-dot{fill:#8FC93A;stroke:rgba(11,46,32,.6);}
 .vstage .d-sd-rank{fill:rgba(255,255,255,.45);}
+
+/* ---------- breadcrumb header + rank badge ---------- */
+.d-sec-aside{margin-left:auto;flex:0 0 auto;}
+.d-crumb-self{font-weight:700;}
+.d-crumb-kind{font-weight:600;color:var(--label-2);margin-left:7px;}
+.d-crumb-path{font-weight:500;font-size:.82em;}
+.d-crumb-j{color:var(--label-3);margin:0 4px 0 2px;}
+.d-crumb-parent{color:var(--label-2);}
+.d-crumb-pk{color:var(--label-3);}
+.vstage .d-crumb-kind,.vstage .d-crumb-parent{color:rgba(255,255,255,.66);}
+.vstage .d-crumb-j,.vstage .d-crumb-pk{color:rgba(255,255,255,.42);}
+.d-rankbadge{display:inline-flex;flex-direction:column;align-items:flex-end;
+  gap:1px;padding:6px 13px;border-radius:12px;line-height:1.15;
+  background:var(--glass-strong);border:1px solid var(--glass-border);
+  box-shadow:var(--neu-out);}
+.d-rb-pos{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;color:var(--label);
+  font-variant-numeric:tabular-nums;}
+.d-rb-hash{color:var(--green);margin-right:1px;}
+.d-rb-of{font-size:.62em;font-weight:600;color:var(--label-3);margin-left:5px;}
+.d-rb-basis{font-size:.64rem;font-weight:600;letter-spacing:.02em;color:var(--label-2);
+  text-transform:uppercase;}
+.vstage .d-rb-pos{color:#FFF;}
+.vstage .d-rb-hash{color:var(--lime,#8FC93A);}
+.vstage .d-rb-of{color:rgba(255,255,255,.5);}
+.vstage .d-rb-basis{color:rgba(255,255,255,.62);}

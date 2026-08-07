@@ -398,8 +398,13 @@
       : '';
 
     out += DASH.section({
-      title: name ? name + ' — ' + headline(node) : headline(node),
+      titleHtml: DASH.placeCrumb(name || 'District', headline(node)),
       note: ly + ' — First Advance Estimate',
+      /* D4 leads with direction, not rank (see thesis) — but the rank is still
+         carried honestly in the header aside where the data has it, named by its
+         basis, rather than being buried or omitted. */
+      aside: DASH.rankBadge({ rank: node.pci_rank, total: n(node.district_count) || 28,
+        basis: 'per-capita income' }),
       body: stats(node) + DASH.sparkRow(node.gddp_series, node.pci_series) + classNote +
         (node.enriched === false
           ? DASH.sourceNote(

@@ -123,9 +123,14 @@
     var out = '';
 
     /* ---- 1. headline figures ------------------------------------------- */
+    var c4Dist = district ? district.replace(/_/g, ' ') : '';
+    var c4Rank = DASH.peerRank(node.peers, name, 'gcdp_baseline');
     out += DASH.section({
-      title: 'Headline figures',
+      titleHtml: DASH.placeCrumb(name || 'Constituency', 'mixed / transitional constituency',
+        c4Dist ? [{ kind: 'district', name: c4Dist, joiner: 'of' }] : []),
       note: 'GCDP ' + yb + ' measured · ' + yt + ' planned',
+      aside: c4Rank ? DASH.rankBadge({ rank: c4Rank.rank, total: c4Rank.total,
+        basis: 'GCDP in ' + c4Dist }) : '',
       body: DASH.statRow([
         DASH.statCard({
           label: 'GCDP baseline',

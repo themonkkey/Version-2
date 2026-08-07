@@ -137,9 +137,14 @@
       sub: popBits.join(' · ')
     }));
 
+    var c3Dist = node.district ? String(node.district).replace(/_/g, ' ') : '';
+    var c3Rank = D.peerRank(node.peers, node.name, 'gcdp_baseline');
     out += D.section({
-      title: node.name ? node.name : 'Constituency',
-      note: 'Industrial constituency' + (node.why ? ' — ' + node.why : ''),
+      titleHtml: D.placeCrumb(node.name || 'Constituency', 'industrial constituency',
+        c3Dist ? [{ kind: 'district', name: c3Dist, joiner: 'of' }] : []),
+      note: node.why ? String(node.why) : 'Industrial constituency',
+      aside: c3Rank ? D.rankBadge({ rank: c3Rank.rank, total: c3Rank.total,
+        basis: 'GCDP in ' + c3Dist }) : '',
       body: D.statRow(cards)
     });
 

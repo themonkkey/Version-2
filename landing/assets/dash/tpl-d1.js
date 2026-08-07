@@ -184,8 +184,11 @@
       sub.push('Detailed district workbook figures are not loaded for this record');
     }
     out += D.section({
-      title: name || 'District',
+      titleHtml: D.placeCrumb(name || 'District', 'district'),
       note: LATEST ? 'Latest year ' + LATEST : '',
+      /* Districts rank statewide by per-capita income — the one measure carried
+         for every district on the summary record. */
+      aside: D.rankBadge({ rank: pciRank, total: total, basis: 'per-capita income' }),
       body: '<p class="d-src">' + D.esc(sub.join(' · ')) + '</p>'
     });
 

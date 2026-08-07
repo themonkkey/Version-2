@@ -245,9 +245,17 @@
     var district = txt(node.district);
     var out = '<div class="dash dash-c2">';
 
+    var distName = district.replace(/_/g, ' ');
+    var cRank = DASH.peerRank(node.peers, name, 'gcdp_baseline');
     out += DASH.section({
-      title: name ? name + ' — agrarian constituency' : 'Agrarian constituency',
-      note: district ? district + ' district · ' + by + ' baseline' : by + ' baseline',
+      titleHtml: DASH.placeCrumb(name || 'Constituency', 'agrarian constituency',
+        distName ? [{ kind: 'district', name: distName, joiner: 'of' }] : []),
+      note: by + ' baseline',
+      /* Constituencies rank within their own district by GCDP baseline — the one
+         magnitude the portal carries for every sibling. Stated as "of N in
+         <district>" so the basis and the peer set are unambiguous. */
+      aside: cRank ? DASH.rankBadge({ rank: cRank.rank, total: cRank.total,
+        basis: 'GCDP in ' + distName }) : '',
       body: stats(node) +
         (txt(node.why) ? DASH.sourceNote('Classified agrarian: ' + txt(node.why) + '.') : '')
     });

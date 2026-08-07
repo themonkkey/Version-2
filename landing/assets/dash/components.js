@@ -178,21 +178,95 @@
       '</div>';
   }
 
-  /** Titled wrapper. body is an html string. */
+  /** Titled wrapper. body is an html string.
+      o.aside is optional right-aligned HTML for the header row (e.g. a rank
+      badge). o.titleHtml, when set, is used verbatim instead of esc(o.title) —
+      for a breadcrumb whose parent segments are styled; callers pass pre-escaped
+      HTML only. */
   function section(o) {
     o = o || {};
     var body = typeof o.body === 'string' ? o.body : '';
     if (!body) return '';
     var head = '';
-    if (o.title) {
-      head = '<div class="d-sec-h"><h4>' + esc(o.title) + '</h4>' +
+    if (o.title || o.titleHtml || o.aside) {
+      var h4 = (o.title || o.titleHtml)
+        ? '<h4>' + (o.titleHtml ? o.titleHtml : esc(o.title)) + '</h4>' : '';
+      head = '<div class="d-sec-h">' + h4 +
         (o.note ? '<span class="d-sec-note">' + esc(o.note) + '</span>' : '') +
+        (o.aside ? '<div class="d-sec-aside">' + o.aside + '</div>' : '') +
         '</div>';
     }
     // wide:true makes the section span both columns once .dash goes two-up.
     // Use it for anything with a time axis or a long list of names.
     var cls = 'd-sec' + (o.wide ? ' d-sec--wide' : '');
     return '<section class="' + cls + '">' + head + '<div class="d-sec-b">' + body + '</div></section>';
+  }
+
+  /* Rank of one member within a peer list by a numeric key, plus the count of
+     members that actually carry that key. Used for a constituency's standing
+     among its sibling constituencies in the same district. Returns {rank, total}
+     or null when the self member has no value or fewer than two peers do. */
+  function peerRank(peers, selfName, key) {
+    // peer names are index keys (underscores); a template's node.name is the
+    // display label (spaces). Normalise both so "Visakhapatnam East" matches
+    // "Visakhapatnam_East".
+    var norm = function (s) { return String(s || '').replace(/[\s_]+/g, ' ').trim().toLowerCase(); };
+    var selfKey = norm(selfName);
+    var vals = (peers || []).map(function (p) {
+      return { key: norm(p && p.name), v: num(p && p[key]) };
+    }).filter(function (p) { return p.key && p.v !== null; });
+    if (vals.length < 2) return null;
+    var hasSelf = vals.some(function (p) { return p.key === selfKey; });
+    if (!hasSelf) return null;
+    vals.sort(function (a, b) { return b.v - a.v; });          // 1 = largest
+    var rank = 0;
+    for (var i = 0; i < vals.length; i++) {
+      if (vals[i].key === selfKey) { rank = i + 1; break; }
+    }
+    return { rank: rank, total: vals.length };
+  }
+
+  /* --------------------------------------------------------- place header */
+
+  /* The breadcrumb title for a level's first section: the place, then where it
+     sits. District has no parent, so it is just the name; a constituency reads
+     "Bhimili, constituency of Visakhapatnam"; a mandal "Anaparthi, mandal in
+     Anaparthi of East Godavari". Parents are dimmed so the place itself leads.
+     `of` is an ordered array of {kind, name}, nearest parent first.
+     Returns HTML (pre-escaped) for section({titleHtml}). */
+  function placeCrumb(name, kind, of) {
+    var out = '<span class="d-crumb-self">' + esc(name || '') + '</span>';
+    if (kind) out += '<span class="d-crumb-kind">' + esc(kind) + '</span>';
+    var parents = (of || []).filter(function (p) { return p && p.name; });
+    if (parents.length) {
+      var joiner = parents[0].joiner || 'of';
+      var tail = parents.map(function (p, i) {
+        var j = i === 0 ? joiner : (p.joiner || 'of');
+        return '<span class="d-crumb-j">' + esc(j) + '</span>' +
+          '<span class="d-crumb-parent">' + esc(p.name) + '</span>' +
+          (p.kind ? ' <span class="d-crumb-pk">' + esc(p.kind) + '</span>' : '');
+      }).join(' ');
+      out += ' <span class="d-crumb-path">' + tail + '</span>';
+    }
+    return out;
+  }
+
+  /* Right-aligned rank badge for a header aside. The BASIS is mandatory: a bare
+     "#3 of 28" is meaningless without saying ranked by what, and the ranking
+     logic differs per level (districts by per-capita income statewide,
+     constituencies by GCDP within their district). Returns '' when rank or total
+     is missing, so a level with no rank simply shows no badge rather than a
+     fabricated one. */
+  function rankBadge(o) {
+    o = o || {};
+    var rank = num(o.rank), total = num(o.total);
+    if (rank === null || total === null || total < 1) return '';
+    return '<span class="d-rankbadge" role="img" aria-label="Ranked ' +
+      esc(round(rank, 0) + ' of ' + round(total, 0) + ' by ' + (o.basis || 'this measure')) + '">' +
+      '<span class="d-rb-pos"><span class="d-rb-hash">#</span>' + round(rank, 0) +
+      '<span class="d-rb-of">of ' + round(total, 0) + '</span></span>' +
+      (o.basis ? '<span class="d-rb-basis">' + esc(o.basis) + '</span>' : '') +
+      '</span>';
   }
 
   /* --------------------------------------------------- compositionRibbon */
@@ -832,6 +906,9 @@
     sectorDots: sectorDots,
     sourceNote: sourceNote,
     section: section,
+    peerRank: peerRank,
+    placeCrumb: placeCrumb,
+    rankBadge: rankBadge,
     empty: empty,
     fmtCr: fmtCr,
     fmtRs: fmtRs,

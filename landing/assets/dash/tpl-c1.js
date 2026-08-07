@@ -132,9 +132,14 @@
           : 'Area not published'
       })
     ];
+    var c1Dist = node.district ? String(node.district).replace(/_/g, ' ') : '';
+    var c1Rank = D.peerRank(node.peers, name, 'gcdp_baseline');
     out += D.section({
-      title: 'The place in four figures',
+      titleHtml: D.placeCrumb(name || 'Constituency', 'urban / services-led constituency',
+        c1Dist ? [{ kind: 'district', name: c1Dist, joiner: 'of' }] : []),
       note: 'Mixed vintages — each figure is labelled',
+      aside: c1Rank ? D.rankBadge({ rank: c1Rank.rank, total: c1Rank.total,
+        basis: 'GCDP in ' + c1Dist }) : '',
       body: D.statRow(cards)
     });
 

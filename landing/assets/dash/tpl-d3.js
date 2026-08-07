@@ -199,10 +199,11 @@
     }));
 
     out += D.section({
-      title: node.name || 'District',
+      titleHtml: D.placeCrumb(node.name || 'District', 'industrial corridor district'),
       /* node.why already reads "industry 52.6% — industrial corridor", so the
          archetype name is not repeated in front of it. */
       note: node.why ? String(node.why) : 'Industrial corridor',
+      aside: D.rankBadge({ rank: rk, total: cnt || 28, basis: 'per-capita income' }),
       /* When the per-capita income figure itself is not attached the card is
          dropped rather than stubbed — but the rank, which IS carried on the
          summary record, is still worth stating, with its peer set named. */
