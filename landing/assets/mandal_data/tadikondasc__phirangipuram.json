@@ -1,0 +1,119 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 6269.0,
+   "pct": 3.76
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 27243.0,
+   "pct": 16.35
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 20403.0,
+   "pct": 12.24
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 511.0,
+   "pct": 0.31
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 846.0,
+   "pct": 0.51
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 32619.0,
+   "pct": 19.57
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 10468.0,
+   "pct": 6.28
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 944.0,
+   "pct": 0.57
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 19677.0,
+   "pct": 11.81
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 1909.0,
+   "pct": 1.15
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 101.0,
+   "pct": 0.06
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 8543.0,
+   "pct": 5.13
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 4758.0,
+   "pct": 2.85
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 5808.0,
+   "pct": 3.48
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 13791.0,
+   "pct": 8.27
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2443.0,
+   "pct": 1.47
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 10330.0,
+   "pct": 6.2
+  }
+ ],
+ "headline": {
+  "GMVA": 166663.0,
+  "PRODUCT TAXES": 16429.0,
+  "PRODUCT SUBSIDIES": 5556.0,
+  "GMDP": 177536.0,
+  "NMDP": 157945.0,
+  "POPULATION": 67931.0,
+  "PCI": 232508.0
+ },
+ "demographics": {
+  "area_sqkm": 143.48
+ }
+}

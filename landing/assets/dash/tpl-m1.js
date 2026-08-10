@@ -6,7 +6,12 @@
 
    THE DEFINING CONSTRAINT
    No structured figures exist at mandal level anywhere in the corpus. The
-   mandal vision documents are prose. node.has_own_figures is ALWAYS false.
+   NOT-YET-EXTRACTED, NOT NON-EXISTENT. An earlier version of this file claimed
+   no mandal figures existed anywhere. That was wrong: the mandal vision PDFs
+   carry GVA by broad sector and sub-sector, population, literacy, land holdings,
+   land use, crops, irrigation and more, in extractable tables. They simply have
+   not been parsed into this site yet. node.has_own_figures stays false until an
+   extractor lands; do not word anything as though the data does not exist.
    Every number this page can display is INHERITED from the parent constituency
    and describes THE CONSTITUENCY — a mandal is one of typically 3-6 mandals
    inside it, so a constituency figure is not this mandal's share of anything.
@@ -117,10 +122,10 @@
     /* has_own_figures is always false and is in the contract precisely so that a
        template acknowledges the situation rather than quietly assuming otherwise. */
     if (node.has_own_figures === false) {
-      body += '<p><strong>No economic figures are published at mandal level.</strong> ' +
-        'The mandal vision documents are prose; there is no mandal GCDP, no mandal ' +
-        'population and no mandal sector split anywhere in the published record, and ' +
-        'none can be derived from what exists.' + within + '</p>';
+      body += '<p><strong>Mandal figures are not yet loaded into this dashboard.</strong> ' +
+        'The mandal vision documents do publish them \u2014 GVA by sector, population, ' +
+        'literacy, land use and more \u2014 but those figures have not been extracted ' +
+        'from the PDFs into this dashboard yet.' + within + '</p>';
       body += '<p>Everything numeric below therefore describes ' +
         (cons ? esc(cons) + ' constituency' : 'the parent constituency') +
         ' as a whole &mdash; not ' + (name ? esc(name) : 'this mandal') +
@@ -282,7 +287,8 @@
         title: 'Mandal vision document',
         body: DASH.empty(
           'No mandal vision document has been collected for this mandal. ' +
-          'Where one exists it is prose, and carries no tabulated figures.'
+          'Where one exists it carries the mandal\u2019s own GVA, demographic and ' +
+          'land-use tables.'
         )
       });
     }
@@ -302,8 +308,9 @@
         '<p>' + (pdfs.length === 1 ? 'It is' : 'They are') + ' held in the project ' +
         'corpus as ' + (pdfs.length === 1 ? 'a PDF' : 'PDFs') + ' and ' +
         (pdfs.length === 1 ? 'is' : 'are') + ' not published from this site, so no ' +
-        'link is given here. The text is narrative &mdash; it contains no tabulated ' +
-        'mandal figures.</p>'
+        'link is given here. ' + (pdfs.length === 1 ? 'It carries' : 'They carry') +
+        ' this mandal&rsquo;s own GVA, demographic and land-use tables, which are ' +
+        'not yet extracted into this dashboard.</p>'
       )
     });
   }
@@ -324,13 +331,22 @@
     if (district) noteBits.push(district + ' district');
     if (cons) noteBits.push(cons + ' constituency');
 
+    /* "X mandal in Y constituency of Z district", with the mandal's GMDP rank
+       among its constituency siblings pinned right when the figures exist. */
+    var of = [];
+    if (cons) of.push({ kind: 'constituency', name: cons, joiner: 'in' });
+    if (district) of.push({ kind: 'district', name: district, joiner: 'of' });
+    var mRank = (node.own && node.own.rank !== null && node.own.rank_total !== null)
+      ? DASH.rankBadge({ rank: node.own.rank, total: node.own.rank_total,
+          basis: 'GDDP in ' + cons }) : '';
     out += DASH.section({
-      title: name ? name + ' mandal' : 'Mandal',
-      note: noteBits.length ? noteBits.join(' · ') : null,
+      titleHtml: DASH.placeCrumb(name || 'Mandal', 'mandal', of),
       body: breadcrumb(node) + scopeNote(node),
+      aside: mRank,
       wide: true
     });
 
+    out += DASH.mandalOwnSection(node);
     out += inheritedSection(node);
     out += siblingSection(node);
     out += docSection(node);
@@ -338,8 +354,11 @@
     out += DASH.sourceNote(
       (txt(node.source) ||
         'AP Assembly Constituencies portal (mandal roster) · mandal vision documents') +
-      ' Mandal level carries no published figures of its own; any figure above is a ' +
-      'constituency figure and is labelled as one.'
+      (node.has_own_figures
+        ? ' Mandal GVA figures are from this mandal’s own vision-document statement; ' +
+          'any figure labelled “constituency” is inherited and marked as such.'
+        : ' No GVA table could be extracted for this mandal, so the figures above are ' +
+          'the parent constituency’s, each labelled as one.')
     );
     return out + '</div>';
   };

@@ -1,0 +1,122 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 4102.58,
+   "pct": 5.81
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 12781.14,
+   "pct": 18.09
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 20185.25,
+   "pct": 28.58
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 720.14,
+   "pct": 1.02
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 907.33,
+   "pct": 1.28
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 137.9,
+   "pct": 0.2
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 2914.74,
+   "pct": 4.13
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 6109.86,
+   "pct": 8.65
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 329.18,
+   "pct": 0.47
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 166.69,
+   "pct": 0.24
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 2271.36,
+   "pct": 3.22
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1245.72,
+   "pct": 1.76
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 2663.55,
+   "pct": 3.77
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 4836.51,
+   "pct": 6.85
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 4434.34,
+   "pct": 6.28
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 6831.91,
+   "pct": 9.67
+  }
+ ],
+ "headline": {
+  "GMVA": 70638.2,
+  "PRODUCT TAXES": 6963.17,
+  "PRODUCT SUBSIDIES": 2354.8,
+  "GMDP": 75246.57,
+  "NMDP": 66913.78,
+  "POPULATION": 41804.0,
+  "PCI": 160065.0
+ },
+ "demographics": {
+  "area_sqkm": 207.07,
+  "population_male": 22560.0,
+  "population_female": 22323.0,
+  "population_total": 44883.0
+ }
+}

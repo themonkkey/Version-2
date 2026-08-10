@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 3153.04,
+   "pct": 2.87
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 53111.74,
+   "pct": 48.33
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 13858.11,
+   "pct": 12.61
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 440.79,
+   "pct": 0.4
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 137.27,
+   "pct": 0.12
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 413.69,
+   "pct": 0.38
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 5382.46,
+   "pct": 4.9
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 6930.14,
+   "pct": 6.31
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 4656.6,
+   "pct": 4.24
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 1668.98,
+   "pct": 1.52
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1412.97,
+   "pct": 1.29
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 2663.55,
+   "pct": 2.42
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 5172.21,
+   "pct": 4.71
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 3558.1,
+   "pct": 3.24
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 7344.96,
+   "pct": 6.68
+  }
+ ],
+ "headline": {
+  "GMVA": 109904.61,
+  "PRODUCT TAXES": 10833.86,
+  "PRODUCT SUBSIDIES": 3663.78,
+  "GMDP": 117074.69,
+  "NMDP": 104109.85,
+  "POPULATION": 59710.0,
+  "PCI": 174359.0
+ },
+ "demographics": {}
+}

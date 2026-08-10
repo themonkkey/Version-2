@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 8589.0,
+   "pct": 7.62
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 2655.0,
+   "pct": 2.36
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 39902.0,
+   "pct": 35.42
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 977.0,
+   "pct": 0.87
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 314.0,
+   "pct": 0.28
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 1228.0,
+   "pct": 1.09
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 17014.0,
+   "pct": 15.1
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 1398.0,
+   "pct": 1.24
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 2558.0,
+   "pct": 2.27
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 3281.0,
+   "pct": 2.91
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 1061.0,
+   "pct": 0.94
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 7793.0,
+   "pct": 6.92
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1815.0,
+   "pct": 1.61
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 3685.0,
+   "pct": 3.27
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 4712.0,
+   "pct": 4.18
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 5089.0,
+   "pct": 4.52
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 10583.0,
+   "pct": 9.39
+  }
+ ],
+ "headline": {
+  "GMVA": 112654.0,
+  "PRODUCT TAXES": 11105.0,
+  "PRODUCT SUBSIDIES": 3755.0,
+  "GMDP": 120004.0,
+  "NMDP": 108439.0,
+  "POPULATION": 79994.0,
+  "PCI": 135559.0
+ },
+ "demographics": {}
+}

@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 2450.0,
+   "pct": 0.59
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 23664.0,
+   "pct": 5.7
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 64708.0,
+   "pct": 15.57
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 1427.0,
+   "pct": 0.34
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 347.0,
+   "pct": 0.08
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 54088.0,
+   "pct": 13.02
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 8162.0,
+   "pct": 1.96
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 13677.0,
+   "pct": 3.29
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 33769.0,
+   "pct": 8.13
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 9584.0,
+   "pct": 2.31
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 194.0,
+   "pct": 0.05
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 24049.0,
+   "pct": 5.79
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 7101.0,
+   "pct": 1.71
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 17151.0,
+   "pct": 4.13
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 90246.0,
+   "pct": 21.72
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 24507.0,
+   "pct": 5.9
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 40379.0,
+   "pct": 9.72
+  }
+ ],
+ "headline": {
+  "GMVA": 415503.0,
+  "PRODUCT TAXES": 40958.0,
+  "PRODUCT SUBSIDIES": 13851.0,
+  "GMDP": 442610.0,
+  "NMDP": 405158.0,
+  "POPULATION": 249653.0,
+  "PCI": 162288.0
+ },
+ "demographics": {}
+}

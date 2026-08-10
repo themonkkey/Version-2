@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 8992.0,
+   "pct": 7.03
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 29032.0,
+   "pct": 22.7
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 14882.0,
+   "pct": 11.63
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 879.0,
+   "pct": 0.69
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 308.0,
+   "pct": 0.24
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 334.0,
+   "pct": 0.26
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 28661.0,
+   "pct": 22.41
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 7340.0,
+   "pct": 5.74
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 9939.0,
+   "pct": 7.77
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 17.0,
+   "pct": 0.01
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 4237.0,
+   "pct": 3.31
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 2263.0,
+   "pct": 1.77
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 2473.0,
+   "pct": 1.93
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 7345.0,
+   "pct": 5.74
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2068.0,
+   "pct": 1.62
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 9142.0,
+   "pct": 7.15
+  }
+ ],
+ "headline": {
+  "GMVA": 127912.0,
+  "PRODUCT TAXES": 12609.0,
+  "PRODUCT SUBSIDIES": 4264.0,
+  "GMDP": 136257.0,
+  "NMDP": 121719.0,
+  "POPULATION": 59943.0,
+  "PCI": 203058.0
+ },
+ "demographics": {}
+}

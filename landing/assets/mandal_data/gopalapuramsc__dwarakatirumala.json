@@ -1,0 +1,117 @@
+{
+ "layout": "B",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 9194.0,
+   "pct": 3.53
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 85598.0,
+   "pct": 32.83
+  },
+  {
+   "name": "Livestock",
+   "broad": "agri",
+   "value": 62883.0,
+   "pct": 24.12
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 732.0,
+   "pct": 0.28
+  },
+  {
+   "name": "Fisheries",
+   "broad": "agri",
+   "value": 25677.0,
+   "pct": 9.85
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 13104.0,
+   "pct": 5.03
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 9896.0,
+   "pct": 3.8
+  },
+  {
+   "name": "Electricity, Gas & Water Supply",
+   "broad": "industry",
+   "value": 3022.0,
+   "pct": 1.16
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 8173.0,
+   "pct": 3.13
+  },
+  {
+   "name": "Trade, Repair, Hotel and Restaurants",
+   "broad": "services",
+   "value": 5608.0,
+   "pct": 2.15
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": null
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 7049.0,
+   "pct": 2.7
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1562.0,
+   "pct": 0.6
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 5260.0,
+   "pct": 2.02
+  },
+  {
+   "name": "Real Estate, Ownership of Dwellings and Prof. Services",
+   "broad": "services",
+   "value": 9973.0,
+   "pct": 3.83
+  },
+  {
+   "name": "Public Administration and Defense",
+   "broad": "services",
+   "value": 3534.0,
+   "pct": 1.36
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 9462.0,
+   "pct": 3.63
+  }
+ ],
+ "headline": {},
+ "demographics": {
+  "area_sqkm": 266.0,
+  "population_male": 37256.0,
+  "population_female": 36607.0,
+  "population_total": 73863.0,
+  "literacy_male": 70.2,
+  "literacy_female": 67.1,
+  "literacy_total": 68.6
+ }
+}

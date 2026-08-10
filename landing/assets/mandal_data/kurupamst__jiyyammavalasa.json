@@ -1,0 +1,119 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 7342.0,
+   "pct": 6.76
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 59655.0,
+   "pct": 54.96
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 19360.0,
+   "pct": 17.84
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 390.0,
+   "pct": 0.36
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 1196.0,
+   "pct": 1.1
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 1011.0,
+   "pct": 0.93
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 5343.0,
+   "pct": 4.92
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 250.0,
+   "pct": 0.23
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 1476.0,
+   "pct": 1.36
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 997.0,
+   "pct": 0.92
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 994.0,
+   "pct": 0.92
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 1700.0,
+   "pct": 1.57
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2817.0,
+   "pct": 2.6
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 6013.0,
+   "pct": 5.54
+  }
+ ],
+ "headline": {
+  "GMVA": 108544.0,
+  "PRODUCT TAXES": 10700.0,
+  "PRODUCT SUBSIDIES": 3618.0,
+  "GMDP": 115626.0,
+  "NMDP": 106597.0,
+  "POPULATION": 56058.0,
+  "PCI": 190155.0
+ },
+ "demographics": {
+  "area_sqkm": 166.0
+ }
+}

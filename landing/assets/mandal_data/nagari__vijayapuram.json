@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 4170.28,
+   "pct": 7.46
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 17240.35,
+   "pct": 30.84
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 8753.05,
+   "pct": 15.66
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 550.1,
+   "pct": 0.98
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 39.09,
+   "pct": 0.07
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 3476.72,
+   "pct": 6.22
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 1047.22,
+   "pct": 1.87
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 467.1,
+   "pct": 0.84
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 4311.12,
+   "pct": 7.71
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 2788.33,
+   "pct": 4.99
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 2269.69,
+   "pct": 4.06
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 883.99,
+   "pct": 1.58
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 1131.49,
+   "pct": 2.02
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 1380.12,
+   "pct": 2.47
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 4196.83,
+   "pct": 7.51
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 3204.83,
+   "pct": 5.73
+  }
+ ],
+ "headline": {
+  "GMVA": 55910.31,
+  "PRODUCT TAXES": 5511.37,
+  "PRODUCT SUBSIDIES": 1863.82,
+  "GMDP": 59557.86,
+  "NMDP": 54112.56,
+  "POPULATION": 32171.31,
+  "PCI": 168201.0
+ },
+ "demographics": {}
+}

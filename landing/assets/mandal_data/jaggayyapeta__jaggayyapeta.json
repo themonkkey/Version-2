@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 11425.04,
+   "pct": 2.53
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 14881.25,
+   "pct": 3.3
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 20895.01,
+   "pct": 4.63
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 1373.44,
+   "pct": 0.3
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 1416.99,
+   "pct": 0.31
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 70370.41,
+   "pct": 15.59
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 79378.4,
+   "pct": 17.59
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 17671.61,
+   "pct": 3.92
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 43335.05,
+   "pct": 9.6
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 18928.93,
+   "pct": 4.19
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 34446.18,
+   "pct": 7.63
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 10747.03,
+   "pct": 2.38
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 36626.06,
+   "pct": 8.12
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 45348.07,
+   "pct": 10.05
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 20915.34,
+   "pct": 4.63
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 23556.05,
+   "pct": 5.22
+  }
+ ],
+ "headline": {
+  "GMVA": 451314.86,
+  "PRODUCT TAXES": 44488.45,
+  "PRODUCT SUBSIDIES": 15045.05,
+  "GMDP": 480758.26,
+  "NMDP": 429447.22,
+  "POPULATION": 135195.0,
+  "PCI": 317650.0
+ },
+ "demographics": {}
+}

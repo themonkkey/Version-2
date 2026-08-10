@@ -1,0 +1,121 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 8273.0,
+   "pct": 4.32
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 1381.0,
+   "pct": 0.72
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 29066.0,
+   "pct": 15.19
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 627.0,
+   "pct": 0.33
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 19639.0,
+   "pct": 10.26
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 16267.0,
+   "pct": 8.5
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 6841.0,
+   "pct": 3.58
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 3577.0,
+   "pct": 1.87
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 42630.0,
+   "pct": 22.28
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 14326.0,
+   "pct": 7.49
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 6982.0,
+   "pct": 3.65
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 6712.0,
+   "pct": 3.51
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1770.0,
+   "pct": 0.93
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 4394.0,
+   "pct": 2.3
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 4824.0,
+   "pct": 2.52
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 10641.0,
+   "pct": 5.56
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 13401.0,
+   "pct": 7.0
+  }
+ ],
+ "headline": {
+  "GMVA": 191351.0,
+  "PRODUCT TAXES": 18863.0,
+  "PRODUCT SUBSIDIES": 6379.0,
+  "GMDP": 203835.0,
+  "NMDP": 184194.0,
+  "POPULATION": 79218.0,
+  "PCI": 232515.0
+ },
+ "demographics": {
+  "population_male": 38763.0,
+  "population_female": 40455.0,
+  "population_total": 79218.0
+ }
+}

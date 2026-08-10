@@ -1,0 +1,119 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 3926.0,
+   "pct": 7.14
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 3838.0,
+   "pct": 6.98
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 22124.0,
+   "pct": 40.21
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 659.0,
+   "pct": 1.2
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 2320.0,
+   "pct": 4.22
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 152.0,
+   "pct": 0.28
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 829.0,
+   "pct": 1.51
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 5039.0,
+   "pct": 9.16
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 19.0,
+   "pct": 0.03
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 2062.0,
+   "pct": 3.75
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 963.0,
+   "pct": 1.75
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 3535.0,
+   "pct": 6.43
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 1359.0,
+   "pct": 2.47
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2681.0,
+   "pct": 4.87
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 5510.0,
+   "pct": 10.02
+  }
+ ],
+ "headline": {
+  "GMVA": 55016.0,
+  "PRODUCT TAXES": 5423.0,
+  "PRODUCT SUBSIDIES": 1834.0,
+  "GMDP": 58605.0,
+  "NMDP": 50518.0,
+  "POPULATION": 49938.0,
+  "PCI": 101161.0
+ },
+ "demographics": {
+  "area_sqkm": 116.76
+ }
+}

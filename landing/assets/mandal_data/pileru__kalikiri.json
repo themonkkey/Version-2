@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 2348.0,
+   "pct": 3.16
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 12593.0,
+   "pct": 16.93
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 20385.0,
+   "pct": 27.41
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 2648.0,
+   "pct": 3.56
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 117.0,
+   "pct": 0.16
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 155.0,
+   "pct": 0.21
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 1255.0,
+   "pct": 1.69
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 7493.0,
+   "pct": 10.07
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 645.0,
+   "pct": 0.87
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 124.0,
+   "pct": 0.17
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 4702.0,
+   "pct": 6.32
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1576.0,
+   "pct": 2.12
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 2745.0,
+   "pct": 3.69
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 5902.0,
+   "pct": 7.94
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 4075.0,
+   "pct": 5.48
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 7614.0,
+   "pct": 10.24
+  }
+ ],
+ "headline": {
+  "GMVA": 74377.0,
+  "PRODUCT TAXES": 7332.0,
+  "PRODUCT SUBSIDIES": 2479.0,
+  "GMDP": 79230.0,
+  "NMDP": 72525.0,
+  "POPULATION": 52171.0,
+  "PCI": 139014.0
+ },
+ "demographics": {}
+}

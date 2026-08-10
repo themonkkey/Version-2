@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 4916.14,
+   "pct": 5.95
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 16446.09,
+   "pct": 19.9
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 22883.47,
+   "pct": 27.69
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 1487.99,
+   "pct": 1.8
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 39.09,
+   "pct": 0.05
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 3974.92,
+   "pct": 4.81
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 330.7,
+   "pct": 0.4
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 682.14,
+   "pct": 0.83
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 6513.33,
+   "pct": 7.88
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 1664.06,
+   "pct": 2.01
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 5782.12,
+   "pct": 7.0
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1371.7,
+   "pct": 1.66
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 1414.37,
+   "pct": 1.71
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 3352.13,
+   "pct": 4.06
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 4294.06,
+   "pct": 5.2
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 7476.15,
+   "pct": 9.05
+  }
+ ],
+ "headline": {
+  "GMVA": 82628.46,
+  "PRODUCT TAXES": 8145.12,
+  "PRODUCT SUBSIDIES": 2754.5,
+  "GMDP": 88019.08,
+  "NMDP": 79971.6,
+  "POPULATION": 60533.0,
+  "PCI": 132112.0
+ },
+ "demographics": {}
+}

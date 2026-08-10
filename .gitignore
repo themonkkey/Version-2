@@ -49,3 +49,6 @@ app.py.bak.*
 
 # scratch staging page — would be published if committed under landing/
 landing/_audit_stage.html
+
+# other session review scratch — under landing/, would publish if committed
+landing/__*_tmp.html

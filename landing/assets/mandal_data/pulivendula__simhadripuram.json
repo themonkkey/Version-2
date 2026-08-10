@@ -1,0 +1,125 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 5654.0,
+   "pct": 4.39
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 75342.0,
+   "pct": 58.51
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 13056.0,
+   "pct": 10.14
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 1276.0,
+   "pct": 0.99
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 22.0,
+   "pct": 0.02
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 1667.0,
+   "pct": 1.29
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 940.0,
+   "pct": 0.73
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 7802.0,
+   "pct": 6.06
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 2126.0,
+   "pct": 1.65
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 288.0,
+   "pct": 0.22
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 3666.0,
+   "pct": 2.85
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1802.0,
+   "pct": 1.4
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 3155.0,
+   "pct": 2.45
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 4815.0,
+   "pct": 3.74
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 1446.0,
+   "pct": 1.12
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 5702.0,
+   "pct": 4.43
+  }
+ ],
+ "headline": {
+  "GMVA": 128759.0,
+  "PRODUCT TAXES": 12693.0,
+  "PRODUCT SUBSIDIES": 4292.0,
+  "GMDP": 137160.0,
+  "NMDP": 122342.0,
+  "POPULATION": 35137.0,
+  "PCI": 348186.0
+ },
+ "demographics": {
+  "area_sqkm": 325.36,
+  "population_male": 17486.0,
+  "population_female": 17651.0,
+  "population_total": 35137.0,
+  "literacy_male": 9234.0,
+  "literacy_female": 21416.0,
+  "literacy_total": 65.25
+ }
+}

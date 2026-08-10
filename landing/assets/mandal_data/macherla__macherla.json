@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 10863.0,
+   "pct": 4.39
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 27112.0,
+   "pct": 10.95
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 22632.0,
+   "pct": 9.14
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 2293.0,
+   "pct": 0.93
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 18368.0,
+   "pct": 7.42
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 21232.0,
+   "pct": 8.57
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 2560.0,
+   "pct": 1.03
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 16419.0,
+   "pct": 6.63
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 52563.0,
+   "pct": 21.22
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 62.0,
+   "pct": 0.03
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 12891.0,
+   "pct": 5.2
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 3445.0,
+   "pct": 1.39
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 7357.0,
+   "pct": 2.97
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 27866.0,
+   "pct": 11.25
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2748.0,
+   "pct": 1.11
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 19298.0,
+   "pct": 7.79
+  }
+ ],
+ "headline": {
+  "GMVA": 247709.0,
+  "PRODUCT TAXES": 24418.0,
+  "PRODUCT SUBSIDIES": 8258.0,
+  "GMDP": 263869.0,
+  "NMDP": 240383.0,
+  "POPULATION": 121033.0,
+  "PCI": 198609.0
+ },
+ "demographics": {}
+}

@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 3234.0,
+   "pct": 2.73
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 50808.0,
+   "pct": 42.88
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 17496.0,
+   "pct": 14.76
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 1151.0,
+   "pct": 0.97
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 158.0,
+   "pct": 0.13
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 584.0,
+   "pct": 0.49
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 8591.0,
+   "pct": 7.25
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 9778.0,
+   "pct": 8.25
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 14.0,
+   "pct": 0.01
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 4693.0,
+   "pct": 3.96
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 2226.0,
+   "pct": 1.88
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 1745.0,
+   "pct": 1.47
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 7226.0,
+   "pct": 6.1
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2744.0,
+   "pct": 2.32
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 8050.0,
+   "pct": 6.79
+  }
+ ],
+ "headline": {
+  "GMVA": 118498.0,
+  "PRODUCT TAXES": 11681.0,
+  "PRODUCT SUBSIDIES": 3950.0,
+  "GMDP": 126229.0,
+  "NMDP": 112760.0,
+  "POPULATION": 56936.0,
+  "PCI": 198047.0
+ },
+ "demographics": {}
+}

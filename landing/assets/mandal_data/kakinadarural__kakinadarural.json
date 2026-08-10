@@ -1,0 +1,99 @@
+{
+ "layout": "B",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 3301.0,
+   "pct": 0.62
+  },
+  {
+   "name": "Livestock",
+   "broad": "agri",
+   "value": 21473.0,
+   "pct": 4.06
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 462.0,
+   "pct": 0.09
+  },
+  {
+   "name": "Fisheries",
+   "broad": "agri",
+   "value": 53949.0,
+   "pct": 10.19
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 128459.0,
+   "pct": 24.26
+  },
+  {
+   "name": "Electricity, Gas & Water Supply",
+   "broad": "industry",
+   "value": 6421.0,
+   "pct": 1.21
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 35779.0,
+   "pct": 6.76
+  },
+  {
+   "name": "Trade, Repair, Hotel and Restaurants",
+   "broad": "services",
+   "value": 119291.0,
+   "pct": 22.53
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 159.0,
+   "pct": 0.03
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 21619.0,
+   "pct": 4.09
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 19654.0,
+   "pct": 3.71
+  },
+  {
+   "name": "Real Estate, Ownership of Dwellings and Prof. Services",
+   "broad": "services",
+   "value": 55680.0,
+   "pct": 10.52
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 31158.0,
+   "pct": 5.89
+  }
+ ],
+ "headline": {},
+ "demographics": {
+  "area_sqkm": 74.23,
+  "population_male": 120710.0,
+  "population_female": 124930.0,
+  "population_total": 245640.0,
+  "literacy_male": 63546.0,
+  "literacy_female": 58853.0,
+  "literacy_total": 122399.0
+ }
+}

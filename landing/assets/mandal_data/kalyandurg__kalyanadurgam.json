@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 10304.0,
+   "pct": 3.93
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 94757.0,
+   "pct": 36.13
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 18595.0,
+   "pct": 7.09
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 1392.0,
+   "pct": 0.53
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 241.0,
+   "pct": 0.09
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 15479.0,
+   "pct": 5.9
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 2231.0,
+   "pct": 0.85
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 8471.0,
+   "pct": 3.23
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 17138.0,
+   "pct": 6.53
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 22804.0,
+   "pct": 8.69
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 12179.0,
+   "pct": 4.64
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 3902.0,
+   "pct": 1.49
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 6400.0,
+   "pct": 2.44
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 15768.0,
+   "pct": 6.01
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 11078.0,
+   "pct": 4.22
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 21530.0,
+   "pct": 8.21
+  }
+ ],
+ "headline": {
+  "GMVA": 262269.0,
+  "PRODUCT TAXES": 25853.0,
+  "PRODUCT SUBSIDIES": 8743.0,
+  "GMDP": 279379.0,
+  "NMDP": 249570.0,
+  "POPULATION": 96227.0,
+  "PCI": 259355.0
+ },
+ "demographics": {}
+}

@@ -24,7 +24,13 @@
 
    THE DEFINING CONSTRAINT
    node.has_own_figures is always false. There is no mandal GDP, population or
-   sector split anywhere in the corpus and none can be derived. Everything under
+   NOT-YET-EXTRACTED, NOT NON-EXISTENT. An earlier version of this file claimed
+   no mandal figures existed anywhere. That was wrong: the mandal vision PDFs
+   carry GVA by broad sector and sub-sector, population, literacy, land holdings,
+   land use, crops, irrigation and more, in extractable tables. They simply have
+   not been parsed into this site yet. node.has_own_figures stays false until an
+   extractor lands; do not word anything as though the data does not exist.
+   Everything under
    node.inherited describes THE CONSTITUENCY — a mandal is one of typically 3-6
    inside it — so every inherited figure in this file is rendered inside one
    section that names node.inherited_from, and every label carrying a number
@@ -145,9 +151,10 @@
     /* this mandal plus its siblings — stated only when the roster gives us both */
     var count = sibs.length ? sibs.length + 1 : 0;
 
-    var a = 'No economic figures are published at mandal level anywhere in this corpus. ' +
-      'There is no mandal GDP, no mandal population and no mandal sector split, and none ' +
-      'can be derived from what exists. The mandal vision documents are prose.';
+    var a = 'Mandal-level figures are not yet loaded into this dashboard. The mandal ' +
+      'vision documents do publish them \u2014 GVA by sector, population, literacy and ' +
+      'land use \u2014 but those tables have not been extracted from the PDFs into this ' +
+      'site yet.';
 
     var b;
     if (c) {
@@ -314,8 +321,8 @@
         : pdfs.length + ' mandal vision and action plan documents exist for this mandal:'
     }) + DASH.sourceNote(
       'These are documents held in the project corpus, not files published on this site, ' +
-      'so no download link is offered here. They are prose plans and carry no tabulated ' +
-      'figures for this mandal.'
+      'so no download link is offered here. They carry this mandal\u2019s own GVA, ' +
+      'demographic and land-use tables, which are not yet extracted into this dashboard.'
     );
   }
 
@@ -327,19 +334,31 @@
     }
 
     var name = txt(node.name);
+    var mCons = txt(node.constituency), mDist = txt(node.district).replace(/_/g, ' ');
     var out = '<div class="dash dash-m3">';
 
+    var of = [];
+    if (mCons) of.push({ kind: 'constituency', name: mCons, joiner: 'in' });
+    if (mDist) of.push({ kind: 'district', name: mDist, joiner: 'of' });
+    var mRank = (node.own && node.own.rank !== null && node.own.rank_total !== null)
+      ? DASH.rankBadge({ rank: node.own.rank, total: node.own.rank_total,
+          basis: 'GDDP in ' + mCons }) : '';
     out += DASH.section({
-      title: name ? name + ' — scheduled / agency mandal' : 'Scheduled / agency mandal',
+      titleHtml: DASH.placeCrumb(name || 'Mandal', 'scheduled / agency mandal', of),
       note: txt(node.why) || null,
+      aside: mRank,
       body: identity(node)
     });
 
-    out += DASH.section({
-      title: 'What this page can and cannot show',
-      note: 'No figure on this page is measured for this mandal',
-      body: scope(node)
-    });
+    out += DASH.mandalOwnSection(node);
+
+    if (!node.has_own_figures) {
+      out += DASH.section({
+        title: 'What this page can and cannot show',
+        note: 'No figure on this page is measured for this mandal',
+        body: scope(node)
+      });
+    }
 
     var c = txt(node.inherited_from);
     out += DASH.section({

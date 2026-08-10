@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 4265.29,
+   "pct": 9.87
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 5792.77,
+   "pct": 13.41
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 6127.82,
+   "pct": 14.19
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 935.26,
+   "pct": 2.17
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 840.53,
+   "pct": 1.95
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 6404.53,
+   "pct": 14.83
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 673.94,
+   "pct": 1.56
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 3927.09,
+   "pct": 9.09
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 1875.9,
+   "pct": 4.34
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 3499.36,
+   "pct": 8.1
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 818.66,
+   "pct": 1.9
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 282.87,
+   "pct": 0.65
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 1257.18,
+   "pct": 2.91
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2629.1,
+   "pct": 6.09
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 3863.04,
+   "pct": 8.94
+  }
+ ],
+ "headline": {
+  "GMVA": 43193.34,
+  "PRODUCT TAXES": 4257.79,
+  "PRODUCT SUBSIDIES": 1439.89,
+  "GMDP": 46011.24,
+  "NMDP": 41804.49,
+  "POPULATION": 31041.76,
+  "PCI": 134672.0
+ },
+ "demographics": {}
+}

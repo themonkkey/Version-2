@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 2298.0,
+   "pct": 2.28
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 29428.0,
+   "pct": 29.14
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 32905.0,
+   "pct": 32.58
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 556.0,
+   "pct": 0.55
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 172.0,
+   "pct": 0.17
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 3856.0,
+   "pct": 3.82
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 285.0,
+   "pct": 0.28
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 2541.0,
+   "pct": 2.52
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 6711.0,
+   "pct": 6.65
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 645.0,
+   "pct": 0.64
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 2482.0,
+   "pct": 2.46
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1411.0,
+   "pct": 1.4
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 1829.0,
+   "pct": 1.81
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 5180.0,
+   "pct": 5.13
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 3602.0,
+   "pct": 3.57
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 7085.0,
+   "pct": 7.02
+  }
+ ],
+ "headline": {
+  "GMVA": 100986.0,
+  "PRODUCT TAXES": 9955.0,
+  "PRODUCT SUBSIDIES": 3366.0,
+  "GMDP": 107575.0,
+  "NMDP": 98472.0,
+  "POPULATION": 52677.0,
+  "PCI": 186935.0
+ },
+ "demographics": {}
+}

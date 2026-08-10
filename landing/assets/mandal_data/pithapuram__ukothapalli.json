@@ -1,0 +1,63 @@
+{
+ "layout": "B",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 9852.0,
+   "pct": 5.33
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 965.0,
+   "pct": 0.52
+  },
+  {
+   "name": "Livestock",
+   "broad": "agri",
+   "value": 18662.0,
+   "pct": 10.09
+  },
+  {
+   "name": "Forest",
+   "broad": "agri",
+   "value": 725.0,
+   "pct": 0.39
+  },
+  {
+   "name": "Fisheries",
+   "broad": "agri",
+   "value": 56724.0,
+   "pct": 30.67
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 36796.0,
+   "pct": 19.89
+  },
+  {
+   "name": "Electricity, Gas & Water Supply",
+   "broad": "industry",
+   "value": 1273.0,
+   "pct": 0.69
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 18209.0,
+   "pct": 9.84
+  }
+ ],
+ "headline": {},
+ "demographics": {
+  "area_sqkm": 115.0
+ }
+}

@@ -1,0 +1,2206 @@
+{
+ "mangalagiri__duggirala": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "mangalagiri__tadepalli": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "pedakurapadu__bellamkonda": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "pedakurapadu__krosuru": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "pedakurapadu__pedakurapadu": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "nandigamasc__chandarlapadu": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "nandigamasc__kanchikacherla": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "nandigamasc__nandigama": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "nandigamasc__veerullapadu": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "pedana__bantumilli": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "pedana__guduru": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "pedana__kruthivennu": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "pedana__pedana": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "avanigadda__avanigadda": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "avanigadda__challapalli": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "avanigadda__koduru": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "avanigadda__mopidevi": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "avanigadda__nagayalanka": {
+  "status": "ok",
+  "layout": "A",
+  "cached": true
+ },
+ "nuzvid__agiripalli": {
+  "status": "ok",
+  "layout": "B",
+  "cached": true
+ },
+ "nuzvid__chatrai": {
+  "status": "ok",
+  "layout": "B",
+  "cached": true
+ },
+ "nuzvid__musunuru": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "nuzvid__nuzvid": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "tenali__kollipara": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tenali__tenali": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "macherla__durgi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "macherla__karempudi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "macherla__macherla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "macherla__rentachintala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "macherla__veldurthy": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kothapeta__alamuru": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "kothapeta__kothapeta": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "kothapeta__ravulapalem": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "gannavaramsc__ainavilli": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "gannavaramsc__ambajipeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gannavaramsc__mamidikuduru": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "gannavaramsc__pgannavaram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "peddapuram__peddapuram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "gurajala__dachepalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gurajala__gurazala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gurajala__machavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gurajala__piduguralla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajanagaram__korukonda": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "rajanagaram__rajanagaram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "rajanagaram__seethanagaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tuni__kotananduru": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "tuni__thondangi": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "tuni__tuni": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "nidadavole__nidadavole": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "nidadavole__peravali": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nidadavole__undrajavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palacole__poduru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tadepalligudem__pentapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tadepalligudem__tadepalligudem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kovvursc__chagallu": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "kovvursc__tallapudi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pamarrusc__movva": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pamarrusc__pamarru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pamarrusc__pamidimukkala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pamarrusc__pedaparupudi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pamarrusc__thotlavalluru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "prathipadusc__kakumanu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "prathipadusc__pedanandipadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "prathipadusc__prathipadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "prathipadusc__vatticherukuru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kandukur__gudluru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kandukur__kandukur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kandukur__lingasamudram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kandukur__ulavapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "vemurusc__kolluru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "vemurusc__tsunduru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "vemurusc__vemuru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sattenapalle__muppalla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sattenapalle__nekarikallu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sattenapalle__rajupalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sattenapalle__sattenapalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jaggayyapeta__jaggayyapeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jaggayyapeta__nandigama": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jaggayyapeta__penuganchiprolu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jaggayyapeta__vatsavai": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "repalle__cherukupalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "repalle__nagaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "repalle__nizampatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "repalle__repalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "ongole__kothapatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "parchur__chinaganjam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "parchur__inkollu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "parchur__karamchedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "parchur__martur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "parchur__parchur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "parchur__yeddanapudi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "atmakur__ananthasagaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "atmakur__anumasamudrampeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "atmakur__atmakur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "atmakur__chejerla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "atmakur__marripadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "atmakur__sangam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gudursc__chillakur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gudursc__chittamur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gudursc__gudur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gudursc__kota": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gudursc__vakadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "satyavedusc__kvbpuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "satyavedusc__nagalapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "satyavedusc__narayanavanam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "satyavedusc__pichatur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "satyavedusc__satyavedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "satyavedusc__varadaiahpalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "puthalapattusc__bangarupalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "puthalapattusc__irala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "puthalapattusc__puthalapattu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "puthalapattusc__thavanampalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "markapuram__podili": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "markapuram__tarlupadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "banaganapalle__kolimigundla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "banaganapalle__owk": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "banaganapalle__sanjamala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srisailam__atmakur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srisailam__bandiatmakur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srisailam__mahanandi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "alur__alur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "alur__aspari": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "alur__chippagiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "alur__devanakonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "alur__halaharvi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "alur__holagunda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "adoni__adoni": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mantralayam__kosigi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mantralayam__kowthalam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mantralayam__mantralayam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mantralayam__peddakadubur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kodumursc__cbelagal": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kodumursc__gudur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kodumursc__kodumur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "guntakal__gooty": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "guntakal__guntakal": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "guntakal__pamidi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nandikotkursc__midthur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nandikotkursc__nandikotkur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nandikotkursc__pagidyala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nandikotkursc__pamulapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "giddalur__ardhaveedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "giddalur__bestavaripeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "giddalur__cumbum": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "giddalur__giddalur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "giddalur__komarole": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "giddalur__racherla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "yemmiganur__gonegandla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "yemmiganur__nandavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tanuku__attili": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tanuku__iragavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tanuku__tanuku": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tadipatri__tadipatri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tadipatri__yadiki": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "proddatur__proddatur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "proddatur__rajupalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "raptadu__atmakur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "raptadu__ckpalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "raptadu__ramagiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madakasirasc__agali": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madakasirasc__amarapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madakasirasc__gudibanda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madakasirasc__madakasira": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madakasirasc__rolla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mydukur__chapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mydukur__duvvur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mydukur__mydukur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "darsi__darsi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "darsi__donakonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "darsi__kurichedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "darsi__mundlamuru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "darsi__tallur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nandyal__gospadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nandyal__nandyal": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "panyam__gadivemula": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "panyam__panyam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sullurpetasc__doravarisatram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sullurpetasc__naidupet": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sullurpetasc__pellakur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sullurpetasc__sullurpet": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sullurpetasc__tada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pulivendula__lingala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pulivendula__pulivendula": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pulivendula__simhadripuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pulivendula__thondur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pulivendula__vemula": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayachoti__chinnamandem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayachoti__galiveedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayachoti__lakkireddypalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayachoti__ramapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayachoti__rayachoty": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayachoti__sambepalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "machilipatnam__machilipatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srikakulam__etcherla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srikakulam__gara": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srikakulam__srikakulam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "allagadda__allagadda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "allagadda__chagalamarri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "allagadda__dornipadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "allagadda__rudravaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "allagadda__uyyalawada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nellorerural__nellorerural": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "parvathipuramsc__balijipeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "parvathipuramsc__seethanagaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "santhanuthalapadusc__chimakurthy": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "santhanuthalapadusc__maddipadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narsipatnam__golugonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narsipatnam__makavarapalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narsipatnam__narsipatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narsipatnam__nathavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "railwaykodursc__chitvel": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "railwaykodursc__kodur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "railwaykodursc__obulavaripalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "railwaykodursc__penagalur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "penukonda__gorantla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "penukonda__parigi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "penukonda__penukonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "penukonda__roddam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "penukonda__somandepalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "addanki__addanki": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "addanki__korisapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "ramachandrapuram__ramachandrapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kondapisc__kondapi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kondapisc__marripudi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kondapisc__ponnalur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kondapisc__tangutur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "yerragondapalemsc__dornala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "yerragondapalemsc__peddaraveedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "yerragondapalemsc__pullalacheruvu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "yerragondapalemsc__triputanthakam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "yerragondapalemsc__yerragondapalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pileru__gurramkonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pileru__kalakada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pileru__kalikiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pileru__kambhamvaripalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pileru__pileru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pileru__valmikipuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "dharmavaram__bathalapalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "dharmavaram__dharmavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "dharmavaram__mudigubba": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kadiri__gandlapenta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kadiri__kadiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kadiri__talupula": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayadurg__bommanahal": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayadurg__gummagatta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rayadurg__kanekal": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "ichchapuram__kanchili": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "ichchapuram__kaviti": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "ichchapuram__sompeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chirala__chirala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chirala__vetapalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "ponnur__pedakakani": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "ponnur__ponnur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kovur__buchireddypalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kovur__kodavalur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kovur__kovur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sarvepalli__manubolu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sarvepalli__muthukur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sarvepalli__podalakur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "sarvepalli__venkatachalam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "venkatagiri__balayapalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "venkatagiri__dakkili": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "venkatagiri__kaluvoya": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "venkatagiri__rapur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "venkatagiri__sydapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "venkatagiri__venkatagiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "punganur__chowdepalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "punganur__pulicherla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "punganur__punganur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "punganur__rompicherla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "punganur__sodam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "punganur__somala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chandragiri__chandragiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chandragiri__chinnagottigallu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chandragiri__pakala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chandragiri__ramachandrapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chandragiri__tirupatirural": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chandragiri__yerravaripalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nagari__nagari": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nagari__nindra": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nagari__puttur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nagari__vadamalapeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nagari__vijayapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kavali__allur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kavali__bogole": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kavali__dagadarthi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kavali__kavali": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "udayagiri__jaladanki": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "udayagiri__kaligiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "udayagiri__kondapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "udayagiri__udayagiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "udayagiri__varikuntapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "udayagiri__vinjamur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madanapalle__mandhanpalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madanapalle__nimmanapalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madanapalle__ramasamudram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "bapatla__bapatla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "bapatla__karlapalem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gangadharanelloresc__gangadharanellore": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gangadharanelloresc__karvetinagar": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "gangadharanelloresc__palasamudram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gangadharanelloresc__penumuru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gangadharanelloresc__srirangarajapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gangadharanelloresc__vedurukuppam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kuppam__kuppam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kuppam__ramakuppam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kuppam__santhipuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palamaner__baireddipalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palamaner__gangavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palamaner__palamaner": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palamaner__peddapanjani": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palamaner__venkatagirikota": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chittoor__gudipala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kamalapuram__ckdinne": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kamalapuram__chennur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kamalapuram__kamalapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kamalapuram__pendlimarri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kamalapuram__vallur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kamalapuram__veerapunayunipalle": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajampet__nandalur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajampet__rajampet": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajampet__tsundupalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajampet__veeraballi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajampet__vontimitta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "badvelsc__bkodur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "badvelsc__badvel": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "badvelsc__gopavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "badvelsc__kalasapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "badvelsc__porumamilla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srikalahasti__renigunta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srikalahasti__srikalahasti": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srikalahasti__thottambedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srikalahasti__yerpedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "thamballapalle__bkothakota": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "thamballapalle__kurabalakota": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "thamballapalle__mulakalacheruvu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "thamballapalle__peddamandyam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "thamballapalle__peddathippasamudram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "thamballapalle__thamballapalle": {
+  "status": "failed",
+  "reason": "exception: Invalid octal b'414' (268)",
+  "path": "corpus_files/vision_documents/mandal/Annamayya/Thamballapalle/Thamballapalle_Mandal_Vision_Action_Plan.pdf"
+ },
+ "jammalamadugu__jammalamadugu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jammalamadugu__kondapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jammalamadugu__muddanur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jammalamadugu__mylavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jammalamadugu__peddamudium": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jammalamadugu__yerraguntla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "vinukonda__bollapalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "vinukonda__nuzendla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "vinukonda__savalyapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "vinukonda__vinukonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "singanamalasc__bukkarayasamudram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "singanamalasc__garladinne": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "singanamalasc__narpala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "singanamalasc__putlur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "singanamalasc__singanamala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "singanamalasc__yellanur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "hindupur__hindupur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "hindupur__lepakshi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kalyandurg__kalyanadurgam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kalyandurg__kambadur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kalyandurg__kundurpi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kalyandurg__settur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "uravakonda__beluguppa": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "uravakonda__uravakonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "uravakonda__vajrakarur": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "puttaparthi__bukkapatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "puttaparthi__kothacheruvu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "puttaparthi__nallamada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "puttaparthi__obuladevaracheruvu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pattikonda__krishnagiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pattikonda__maddikera": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pattikonda__mahanandi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pattikonda__pattikonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pattikonda__tuggali": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pattikonda__veldurthy": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "dhone__bethamcherla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "dhone__peapully": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palasa__mandasa": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tekkali__kotabommali": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tekkali__nandigam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tekkali__santhabommali": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tekkali__tekkali": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narasannapeta__jalumuru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narasannapeta__narasannapeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narasannapeta__polaki": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narasannapeta__saravakota": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narasaraopet__narasaraopet": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "narasaraopet__rompicherla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pathapatnam__hiramandalam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pathapatnam__meliaputti": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pathapatnam__pathapatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srungavarapukota__jami": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srungavarapukota__kothavalasa": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "srungavarapukota__vepada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "amadalavalasa__amadalavalasa": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "amadalavalasa__burja": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "amadalavalasa__ponduru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "amadalavalasa__sarubujjili": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palakondast__bhamini": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palakondast__palakonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palakondast__seethampeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "palakondast__veeraghattam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajamsc__rajam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajamsc__santhakaviti": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rajamsc__vangara": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "etcherla__etcherla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "etcherla__gsigadam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "etcherla__laveru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "bobbili__badangi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "bobbili__bobbili": {
+  "status": "failed",
+  "reason": "no recognisable GVA table found",
+  "path": "corpus_files/vision_documents/mandal/Vizianagaram/Bobbili/Bobbili_Mandal_Vision_Action_Plan.pdf"
+ },
+ "bobbili__ramabhadrapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "bobbili__therlam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "salurust__makkuva": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "salurust__mentada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kurupamst__gummalaxmipuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kurupamst__jiyyammavalasa": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kurupamst__komarada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kurupamst__kurupam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chilakaluripet__chilakaluripet": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chilakaluripet__edlapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chilakaluripet__nadendla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nellimarla__bhogapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nellimarla__denkada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nellimarla__nellimarla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "nellimarla__pusapatirega": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "cheepurupalli__cheepurupalli": {
+  "status": "failed",
+  "reason": "no recognisable GVA table found",
+  "path": "corpus_files/vision_documents/mandal/Vizianagaram/Cheepurupalli/Cheepurupalli_Mandal_Vision_Action_Plan.pdf"
+ },
+ "cheepurupalli__garividi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "cheepurupalli__gurla": {
+  "status": "failed",
+  "reason": "exception: Invalid octal b'654' (428)",
+  "path": "corpus_files/vision_documents/mandal/Vizianagaram/Cheepurupalli/Gurla_Mandal_Vision_Action_Plan.pdf"
+ },
+ "cheepurupalli__merakamudidam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gajapathinagaram__bondapalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gajapathinagaram__dattirajeru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gajapathinagaram__gajapathinagaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gajapathinagaram__gantyada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gajapathinagaram__jami": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chodavaram__butchayyapeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chodavaram__chodavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chodavaram__ravikamatham": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "chodavaram__rolugunta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "yelamanchili__yelamanchili": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "payakaraopetsc__kotauratla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "payakaraopetsc__payakaraopeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "payakaraopetsc__srayavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "anakapalli__kasimkota": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pendurthi__pendurthi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pendurthi__sabbavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "bhimili__anandapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "bhimili__bheemunipatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "bhimili__padmanabham": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mummidivaram__ipolavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mummidivaram__katrenikona": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "mummidivaram__mummidivaram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "mummidivaram__tallarevu": {
+  "status": "failed",
+  "reason": "layout B found but failed validation: fewer than 2 broad sectors recovered",
+  "path": "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Mummidivaram/Tallarevu_Mandal_Vision_Action_Plan.pdf"
+ },
+ "kanigiri__kanigiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kanigiri__veligandla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kakinadarural__kakinadarural": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "kakinadarural__karapa": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "anaparthy__anaparthi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "anaparthy__pedapudi": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "anaparthy__rangampeta": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "rajahmundryrural__kadiam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "jaggampeta__gandepalli": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "jaggampeta__gokavaram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "jaggampeta__jaggampeta": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "paderust__gkveedhi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "paderust__gmadugula": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "paderust__koyyuru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "paderust__paderu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madugula__cheedikada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madugula__devarapalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "madugula__kkotapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "arakuvalleyst__ananthagiri": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "arakuvalleyst__dumbriguda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "arakuvalleyst__hukumpeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "arakuvalleyst__pedabayalu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mandapeta__mandapeta": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "mandapeta__rayavaram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "rampachodavaramst__addateegala": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rampachodavaramst__devipatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rampachodavaramst__kunavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rampachodavaramst__maredumilli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rampachodavaramst__rajavommangi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rampachodavaramst__rampachodavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "rampachodavaramst__yramavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tadikondasc__medikonduru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tadikondasc__phirangipuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tadikondasc__tadikonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tadikondasc__thulluru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "razolesc__mamidikuduru": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "razolesc__razole": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "amalapuramsc__allavaram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "amalapuramsc__amalapuram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "amalapuramsc__uppalaguptam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "pithapuram__gollaprolu": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "pithapuram__pithapuram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "pithapuram__ukothapalli": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "prathipadu__prathipadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "prathipadu__sankhavaram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "prathipadu__yeleswaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "achanta__achanta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "achanta__penugonda": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "achanta__penumantra": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "achanta__poduru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "undi__akiveedu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "undi__kalla": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "undi__palakoderu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "undi__undi": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "polavaramst__buttaigudem": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "polavaramst__jeelugumilli": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "polavaramst__polavaram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "polavaramst__tnarasapuram": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "polavaramst__velairpadu": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "narasapuram__narasapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "kaikalur__kaikaluru": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "kaikalur__kalidindi": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "kaikalur__mandavalli": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "kaikalur__mudinepalli": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "gudivada__gudivada": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gudivada__gudlavalleru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "denduluru__denduluru": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "denduluru__pedapadu": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "denduluru__pedavegi": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "ungutur__bhimadole": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "ungutur__ganapavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "ungutur__unguturu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gopalapuramsc__devarapalli": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gopalapuramsc__dwarakatirumala": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "gopalapuramsc__gopalapuram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gopalapuramsc__nallajerla": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "chintalapudisc__jangareddygudem": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "chintalapudisc__kamavarapukota": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "chintalapudisc__lingapalem": {
+  "status": "ok",
+  "layout": "B"
+ },
+ "penamaluru__kankipadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "penamaluru__penamaluru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "penamaluru__vuyyuru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gannavaram__bapulapadu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gannavaram__gannavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gannavaram__unguturu": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "gannavaram__vijayawadarural": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mylavaram__gkonduru": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mylavaram__ibrahimpatnam": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mylavaram__mylavaram": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mylavaram__reddigudem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "mylavaram__vijayawadarural": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tiruvurusc__gampalagudem": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "tiruvurusc__vissannapeta": {
+  "status": "ok",
+  "layout": "A"
+ },
+ "_summary": {
+  "total": 543,
+  "parsed_layout_A": 482,
+  "parsed_layout_B": 56,
+  "failed": 5,
+  "success_rate": 99.1
+ }
+}

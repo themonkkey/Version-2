@@ -1,0 +1,69 @@
+{
+ "layout": "B",
+ "sub_rows": [
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 211.0,
+   "pct": 0.14
+  },
+  {
+   "name": "Trade, Repair, Hotel and Restaurants",
+   "broad": "services",
+   "value": 1274.0,
+   "pct": 0.83
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 7.62,
+   "pct": null
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1.74,
+   "pct": null
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 3781.78,
+   "pct": 2.46
+  },
+  {
+   "name": "Real Estate, Ownership of Dwellings and Prof. Services",
+   "broad": "services",
+   "value": 5018.0,
+   "pct": 3.27
+  },
+  {
+   "name": "Public Administration and Defense",
+   "broad": "services",
+   "value": 2.45,
+   "pct": null
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 8.03,
+   "pct": null
+  }
+ ],
+ "headline": {},
+ "demographics": {
+  "area_sqkm": 145.11,
+  "population_male": 30514.0,
+  "population_female": 30237.0,
+  "population_total": 60752.0,
+  "literacy_male": 58.9,
+  "literacy_female": 58.2,
+  "literacy_total": 58.2
+ }
+}

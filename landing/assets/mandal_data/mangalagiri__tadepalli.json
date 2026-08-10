@@ -1,0 +1,121 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 2348.0,
+   "pct": 0.82
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 20131.0,
+   "pct": 7.0
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 10069.0,
+   "pct": 3.5
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 108.0,
+   "pct": 0.04
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 11239.0,
+   "pct": 3.91
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 436.0,
+   "pct": 0.15
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 10016.0,
+   "pct": 3.48
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 6176.0,
+   "pct": 2.15
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 30595.0,
+   "pct": 10.63
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 52160.0,
+   "pct": 18.12
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 447.0,
+   "pct": 0.16
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 22670.0,
+   "pct": 7.88
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 7398.0,
+   "pct": 2.57
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 13987.0,
+   "pct": 4.86
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 14745.0,
+   "pct": 5.12
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 40475.0,
+   "pct": 14.06
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 44780.0,
+   "pct": 15.56
+  }
+ ],
+ "headline": {
+  "GMVA": 287780.0,
+  "PRODUCT TAXES": 28368.0,
+  "PRODUCT SUBSIDIES": 9593.0,
+  "GMDP": 306555.0,
+  "NMDP": 272725.0,
+  "POPULATION": 106451.0,
+  "PCI": 256198.0
+ },
+ "demographics": {
+  "population_male": 53170.0,
+  "population_female": 53281.0,
+  "population_total": 106451.0
+ }
+}

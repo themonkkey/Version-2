@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 1524.39,
+   "pct": 1.1
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 9368.76,
+   "pct": 6.75
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 13822.04,
+   "pct": 9.96
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 383.66,
+   "pct": 0.28
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 711.04,
+   "pct": 0.51
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 71485.93,
+   "pct": 51.54
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 5643.1,
+   "pct": 4.07
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 7864.1,
+   "pct": 5.67
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 3224.61,
+   "pct": 2.32
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 3305.55,
+   "pct": 2.38
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1603.39,
+   "pct": 1.16
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 958.88,
+   "pct": 0.69
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 6342.62,
+   "pct": 4.57
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 4036.05,
+   "pct": 2.91
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 8433.56,
+   "pct": 6.08
+  }
+ ],
+ "headline": {
+  "GMVA": 138707.68,
+  "PRODUCT TAXES": 13673.13,
+  "PRODUCT SUBSIDIES": 4623.96,
+  "GMDP": 147756.85,
+  "NMDP": 131394.3,
+  "POPULATION": 62338.0,
+  "PCI": 210777.0
+ },
+ "demographics": {}
+}

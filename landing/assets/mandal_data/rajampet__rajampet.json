@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 1343.0,
+   "pct": 0.69
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 52089.0,
+   "pct": 26.93
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 12922.0,
+   "pct": 6.68
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 727.0,
+   "pct": 0.38
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 4212.0,
+   "pct": 2.18
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 6953.0,
+   "pct": 3.59
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 2944.0,
+   "pct": 1.52
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 14567.0,
+   "pct": 7.53
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 5753.0,
+   "pct": 2.97
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 177.0,
+   "pct": 0.09
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 11895.0,
+   "pct": 6.15
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 3063.0,
+   "pct": 1.58
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 13721.0,
+   "pct": 7.09
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 30003.0,
+   "pct": 15.51
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 13178.0,
+   "pct": 6.81
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 19870.0,
+   "pct": 10.27
+  }
+ ],
+ "headline": {
+  "GMVA": 193417.0,
+  "PRODUCT TAXES": 19066.0,
+  "PRODUCT SUBSIDIES": 6448.0,
+  "GMDP": 206035.0,
+  "NMDP": 188600.0,
+  "POPULATION": 111208.0,
+  "PCI": 169592.0
+ },
+ "demographics": {}
+}

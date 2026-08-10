@@ -1,0 +1,119 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 7225.0,
+   "pct": 9.39
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 36833.0,
+   "pct": 47.85
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 10646.0,
+   "pct": 13.83
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 420.0,
+   "pct": 0.55
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 220.0,
+   "pct": 0.29
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 82.0,
+   "pct": 0.11
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 1204.0,
+   "pct": 1.56
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 5072.0,
+   "pct": 6.59
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 972.0,
+   "pct": 1.26
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 1933.0,
+   "pct": 2.51
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 946.0,
+   "pct": 1.23
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 890.0,
+   "pct": 1.16
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 2732.0,
+   "pct": 3.55
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2200.0,
+   "pct": 2.86
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 5608.0,
+   "pct": 7.28
+  }
+ ],
+ "headline": {
+  "GMVA": 76983.0,
+  "PRODUCT TAXES": 7588.0,
+  "PRODUCT SUBSIDIES": 2566.0,
+  "GMDP": 82005.0,
+  "NMDP": 75601.0,
+  "POPULATION": 54074.0,
+  "PCI": 139810.0
+ },
+ "demographics": {
+  "area_sqkm": 184.0
+ }
+}

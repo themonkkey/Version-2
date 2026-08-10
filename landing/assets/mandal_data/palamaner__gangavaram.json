@@ -1,0 +1,117 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 4042.71,
+   "pct": 2.94
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 21125.77,
+   "pct": 15.37
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 57781.51,
+   "pct": 42.03
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 1573.86,
+   "pct": 1.14
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 87.96,
+   "pct": 0.06
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 462.62,
+   "pct": 0.34
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 14462.55,
+   "pct": 10.52
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 2031.64,
+   "pct": 1.48
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 7290.12,
+   "pct": 5.3
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 3262.51,
+   "pct": 2.37
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 6992.17,
+   "pct": 5.09
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1469.02,
+   "pct": 1.07
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 1131.49,
+   "pct": 0.82
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 3339.1,
+   "pct": 2.43
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 3718.81,
+   "pct": 2.71
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 8705.7,
+   "pct": 6.33
+  }
+ ],
+ "headline": {
+  "GMVA": 137477.54,
+  "PRODUCT TAXES": 13551.88,
+  "PRODUCT SUBSIDIES": 4582.95,
+  "GMDP": 146446.47,
+  "NMDP": 133057.1,
+  "POPULATION": 60153.0,
+  "PCI": 221198.0
+ },
+ "demographics": {}
+}

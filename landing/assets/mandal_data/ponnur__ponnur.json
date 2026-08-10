@@ -1,0 +1,119 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 27422.0,
+   "pct": 12.12
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 1661.0,
+   "pct": 0.73
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 22760.0,
+   "pct": 10.06
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 697.0,
+   "pct": 0.31
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 2172.0,
+   "pct": 0.96
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 8726.0,
+   "pct": 3.86
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 1891.0,
+   "pct": 0.84
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 39421.0,
+   "pct": 17.42
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 9267.0,
+   "pct": 4.09
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 157.0,
+   "pct": 0.07
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 18560.0,
+   "pct": 8.2
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 9532.0,
+   "pct": 4.21
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 15053.0,
+   "pct": 6.65
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 24811.0,
+   "pct": 10.96
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 18270.0,
+   "pct": 8.07
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 25936.0,
+   "pct": 11.46
+  }
+ ],
+ "headline": {
+  "GMVA": 226336.0,
+  "PRODUCT TAXES": 22311.0,
+  "PRODUCT SUBSIDIES": 7545.0,
+  "GMDP": 241102.0,
+  "NMDP": 214497.0,
+  "POPULATION": 132135.0,
+  "PCI": 162332.0
+ },
+ "demographics": {
+  "area_sqkm": 177.58
+ }
+}

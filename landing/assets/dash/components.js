@@ -426,6 +426,76 @@
       '</div>';
   }
 
+  /* ----------------------------------------------------- mandalOwnSection */
+
+  /* Renders a mandal's OWN extracted economics — GMDP, per-capita, population,
+     literacy, and its top sectors — from node.own (see enrichMandal). Returns ''
+     when node.own is null, so an M template can append it unconditionally and a
+     mandal with no extractable figures simply shows its inherited context and no
+     own-figures block. Shared by M1/M2/M3 so the three render identically. */
+  function mandalOwnSection(node) {
+    var own = node && node.own;
+    if (!own) return '';
+
+    var ly = '2025-26 (FAE)';
+    var cards = [
+      statCard({ label: 'Mandal GDDP', value: own.gmdp !== null ? fmtCr(own.gmdp) : null,
+        sub: 'Gross Mandal Domestic Product · ' + ly }),
+      statCard({ label: 'Per-capita income', value: own.pci !== null ? fmtRs(own.pci) : null,
+        sub: ly }),
+      statCard({ label: 'Population', value: own.population !== null ? grp(round(own.population, 0)) + ' persons' : null,
+        sub: 'Mandal GVA statement' })
+    ];
+    var dem = own.demographics || {};
+    if (num(dem.literacy_total) !== null) {
+      cards.push(statCard({ label: 'Literacy', value: fmtPct(dem.literacy_total),
+        sub: (num(dem.literacy_female) !== null && num(dem.literacy_male) !== null)
+          ? 'F ' + fmtPct(dem.literacy_female) + ' · M ' + fmtPct(dem.literacy_male) : 'Total' }));
+    }
+
+    var out = statRowInternal(cards);
+
+    /* tri-sector split, aggregated from the sub-rows' broad grouping */
+    var agg = { agri: 0, industry: 0, services: 0 }, any = false;
+    (own.sectors || []).forEach(function (s) {
+      if (s.broad && agg[s.broad] !== undefined && s.pct !== null) { agg[s.broad] += s.pct; any = true; }
+    });
+
+    /* top 3 sectors by share, as the same dot plot the districts use */
+    var top = (own.sectors || []).filter(function (s) { return s.pct !== null && s.pct > 0; })
+      .sort(function (a, b) { return b.pct - a.pct; }).slice(0, 3);
+    if (top.length) {
+      out += '<div style="margin-top:16px">' + sectorDots(top.map(function (s) {
+        return { name: s.name, pct: s.pct };
+      }), {}) + '</div>';
+      out += '<p class="d-src">' + esc(
+        'The three largest sectors by share of this mandal’s GVA, ' + ly + '. ' +
+        (own.sectors || []).length + ' sectors are published; totals, taxes and subsidies ' +
+        'are excluded so these do not double-count.') + '</p>';
+    }
+    if (any) {
+      out += '<p class="d-src">' + esc('Broad split — agriculture & allied ' + fmtPct(agg.agri) +
+        ', industry ' + fmtPct(agg.industry) + ', services ' + fmtPct(agg.services) + '.') + '</p>';
+    }
+
+    return section({
+      title: 'This mandal’s own economy',
+      note: 'From the mandal GVA statement — measured, not inherited from the constituency',
+      aside: (own.rank !== null && own.rank_total !== null)
+        ? rankBadge({ rank: own.rank, total: own.rank_total, basis: 'GDDP in ' + (node.constituency || 'constituency') })
+        : '',
+      body: out,
+      wide: true
+    });
+  }
+
+  /* statRow is exported below as an inline arrow; alias it here so builders above
+     can call it before the export object is defined. */
+  function statRowInternal(cards) {
+    var s = (cards || []).filter(Boolean).join('');
+    return s ? '<div class="d-stats">' + s + '</div>' : '';
+  }
+
   function sourceNote(text) {
     if (!text) return '';
     return '<p class="d-src">' + esc(text) + '</p>';
@@ -909,6 +979,7 @@
     peerRank: peerRank,
     placeCrumb: placeCrumb,
     rankBadge: rankBadge,
+    mandalOwnSection: mandalOwnSection,
     empty: empty,
     fmtCr: fmtCr,
     fmtRs: fmtRs,

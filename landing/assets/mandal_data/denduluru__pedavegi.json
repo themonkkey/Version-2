@@ -1,0 +1,114 @@
+{
+ "layout": "B",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 11597.0,
+   "pct": 5.05
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 55493.0,
+   "pct": 24.16
+  },
+  {
+   "name": "Livestock",
+   "broad": "agri",
+   "value": 67183.0,
+   "pct": 29.25
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 1035.0,
+   "pct": 0.45
+  },
+  {
+   "name": "Fisheries",
+   "broad": "agri",
+   "value": 11790.0,
+   "pct": 5.13
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 236.0,
+   "pct": 0.1
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 22661.0,
+   "pct": 9.87
+  },
+  {
+   "name": "Electricity, Gas & Water Supply",
+   "broad": "industry",
+   "value": 3446.0,
+   "pct": 1.5
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 10093.0,
+   "pct": 4.39
+  },
+  {
+   "name": "Trade, Repair, Hotel and Restaurants",
+   "broad": "services",
+   "value": 2626.0,
+   "pct": 1.14
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": null
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 12858.0,
+   "pct": 5.6
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1928.0,
+   "pct": 0.84
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 3020.0,
+   "pct": 1.31
+  },
+  {
+   "name": "Real Estate, Ownership of Dwellings and Prof. Services",
+   "broad": "services",
+   "value": 8180.0,
+   "pct": 3.56
+  },
+  {
+   "name": "Public Administration and Defense",
+   "broad": "services",
+   "value": 5136.0,
+   "pct": 2.24
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 12398.0,
+   "pct": 5.4
+  }
+ ],
+ "headline": {},
+ "demographics": {
+  "area_sqkm": 257.74,
+  "population_male": 48364.0,
+  "population_female": 46747.0,
+  "population_total": 95111.0
+ }
+}

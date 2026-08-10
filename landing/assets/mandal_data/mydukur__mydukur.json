@@ -1,0 +1,119 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 3633.0,
+   "pct": 2.22
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 41691.0,
+   "pct": 25.48
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 20489.0,
+   "pct": 12.52
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 8282.0,
+   "pct": 5.06
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 204.0,
+   "pct": 0.12
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 104.0,
+   "pct": 0.06
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 7593.0,
+   "pct": 4.64
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 2616.0,
+   "pct": 1.6
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 18367.0,
+   "pct": 11.23
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 4230.0,
+   "pct": 2.59
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 11420.0,
+   "pct": 6.98
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 4243.0,
+   "pct": 2.59
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 3696.0,
+   "pct": 2.26
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 8790.0,
+   "pct": 5.37
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 10899.0,
+   "pct": 6.66
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 17364.0,
+   "pct": 10.61
+  }
+ ],
+ "headline": {
+  "GMVA": 163621.0,
+  "PRODUCT TAXES": 16129.0,
+  "PRODUCT SUBSIDIES": 5454.0,
+  "GMDP": 174296.0,
+  "NMDP": 155463.0,
+  "POPULATION": 86742.0,
+  "PCI": 179225.0
+ },
+ "demographics": {
+  "area_sqkm": 575.61
+ }
+}

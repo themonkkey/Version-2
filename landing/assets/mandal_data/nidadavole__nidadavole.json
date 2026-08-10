@@ -1,0 +1,87 @@
+{
+ "layout": "B",
+ "sub_rows": [
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 11857.0,
+   "pct": 5.49
+  },
+  {
+   "name": "Electricity, Gas & Water Supply",
+   "broad": "industry",
+   "value": 3954.0,
+   "pct": 1.83
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 23476.0,
+   "pct": 10.87
+  },
+  {
+   "name": "Trade, Repair, Hotel and Restaurants",
+   "broad": "services",
+   "value": 8408.0,
+   "pct": 3.89
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 184.0,
+   "pct": 0.09
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 25638.0,
+   "pct": 11.87
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 5248.0,
+   "pct": 2.43
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 4604.0,
+   "pct": 2.13
+  },
+  {
+   "name": "Real Estate, Ownership of Dwellings and Prof. Services",
+   "broad": "services",
+   "value": 25078.0,
+   "pct": 11.61
+  },
+  {
+   "name": "Public Administration and Defense",
+   "broad": "services",
+   "value": 9223.0,
+   "pct": 4.27
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 20963.0,
+   "pct": 9.7
+  }
+ ],
+ "headline": {},
+ "demographics": {
+  "area_sqkm": 131.49,
+  "population_male": 60715.0,
+  "population_female": 61600.0,
+  "population_total": 122315.0,
+  "literacy_male": 37171.0,
+  "literacy_female": 76217.0,
+  "literacy_total": 66.71
+ }
+}

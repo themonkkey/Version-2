@@ -1,0 +1,119 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 1316.05,
+   "pct": 1.59
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 8065.79,
+   "pct": 9.76
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 18526.75,
+   "pct": 22.41
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 473.99,
+   "pct": 0.57
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 4481.64,
+   "pct": 5.42
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 1637.22,
+   "pct": 1.98
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 4694.63,
+   "pct": 5.68
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 2988.47,
+   "pct": 3.62
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 8101.89,
+   "pct": 9.8
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 242.3,
+   "pct": 0.29
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 6854.27,
+   "pct": 8.29
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 1724.23,
+   "pct": 2.09
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 3584.33,
+   "pct": 4.34
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 6075.96,
+   "pct": 7.35
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 3977.29,
+   "pct": 4.81
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 9923.51,
+   "pct": 12.0
+  }
+ ],
+ "headline": {
+  "GMVA": 82668.32,
+  "PRODUCT TAXES": 8149.03,
+  "PRODUCT SUBSIDIES": 2755.83,
+  "GMDP": 88061.52,
+  "NMDP": 78986.04,
+  "POPULATION": 58768.0,
+  "PCI": 134403.0
+ },
+ "demographics": {
+  "area_sqkm": 104.0
+ }
+}

@@ -9,7 +9,12 @@
 
    THE CONSTRAINT THAT SHAPES THIS PAGE
    No structured figures exist at mandal level anywhere in the corpus. The
-   mandal vision documents are prose. node.has_own_figures is ALWAYS false.
+   NOT-YET-EXTRACTED, NOT NON-EXISTENT. An earlier version of this file claimed
+   no mandal figures existed anywhere. That was wrong: the mandal vision PDFs
+   carry GVA by broad sector and sub-sector, population, literacy, land holdings,
+   land use, crops, irrigation and more, in extractable tables. They simply have
+   not been parsed into this site yet. node.has_own_figures stays false until an
+   extractor lands; do not word anything as though the data does not exist.
    Every number this page can show is INHERITED from the parent constituency
    and describes THE CONSTITUENCY — a mandal is one of typically 3-6 inside
    it, so a constituency figure is not this mandal's share of anything.
@@ -110,10 +115,10 @@
         'predates that source and does not yet render them.']);
     }
 
-    var p = ['No economic figures are published at mandal level anywhere in ' +
-      'the Swarna Andhra corpus. The mandal vision documents are prose, so there ' +
-      'is no mandal GCDP, population, sector split or municipal account to show ' +
-      '\u2014 and none can be derived from what exists.'];
+    var p = ['Mandal-level figures are not yet loaded into this dashboard. The ' +
+      'mandal vision documents do publish them \u2014 GVA by broad sector and ' +
+      'sub-sector, population, literacy, land use and more \u2014 but those tables ' +
+      'have not been extracted from the PDFs into this site yet.'];
 
     if (from) {
       p.push('What follows is ' + D.esc(from) + ' constituency context. Those ' +
@@ -260,8 +265,8 @@
     return D.drillList({
       items: items,
       label: pdfs.length === 1
-        ? 'One vision document exists for this mandal. It is prose, and holds no tables of figures.'
-        : pdfs.length + ' vision documents exist for this mandal. They are prose, and hold no tables of figures.'
+        ? 'One vision document exists for this mandal, holding its GVA, demographic and land-use tables. It is not yet extracted into this dashboard.'
+        : pdfs.length + ' vision documents exist for this mandal, holding its GVA, demographic and land-use tables. They are not yet extracted into this dashboard.'
     }) + D.sourceNote('Held in the project corpus, not published on this site, ' +
       'so no link is offered here.');
   }
@@ -285,20 +290,30 @@
     var noteBits = [];
     if (cons) noteBits.push(cons + ' constituency');
     if (district) noteBits.push(district + ' district');
+    var of = [];
+    if (cons) of.push({ kind: 'constituency', name: cons, joiner: 'in' });
+    if (district) of.push({ kind: 'district', name: district, joiner: 'of' });
+    var mRank = (node.own && node.own.rank !== null && node.own.rank_total !== null)
+      ? D.rankBadge({ rank: node.own.rank, total: node.own.rank_total,
+          basis: 'GDDP in ' + cons }) : '';
     out += D.section({
-      title: name
-        ? (node.kind === 'urban' ? name + ' — urban mandal' : name + ' — mandal')
-        : 'Urban mandal',
-      note: noteBits.length ? noteBits.join(' · ') : null,
+      titleHtml: D.placeCrumb(name || 'Mandal', node.kind === 'urban' ? 'urban mandal' : 'mandal', of),
+      aside: mRank,
       body: identity(node)
     });
 
-    /* 2. what this page can and cannot show — before any borrowed number */
-    out += D.section({
-      title: 'What this page can and cannot show',
-      note: 'Read this before the figures below',
-      body: boundary(node)
-    });
+    /* the mandal's own extracted economics, when a GVA table was found */
+    out += D.mandalOwnSection(node);
+
+    /* what this page can and cannot show — only meaningful when there are NO own
+       figures; with own figures present the distinction is already made above */
+    if (!node.has_own_figures) {
+      out += D.section({
+        title: 'What this page can and cannot show',
+        note: 'Read this before the figures below',
+        body: boundary(node)
+      });
+    }
 
     /* 3-5. parent constituency context, only when a parent is attached */
     if (from) {

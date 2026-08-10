@@ -1,0 +1,119 @@
+{
+ "layout": "A",
+ "sub_rows": [
+  {
+   "name": "Agriculture",
+   "broad": "agri",
+   "value": 5486.0,
+   "pct": 7.08
+  },
+  {
+   "name": "Horticulture",
+   "broad": "agri",
+   "value": 484.0,
+   "pct": 0.63
+  },
+  {
+   "name": "Live stock",
+   "broad": "agri",
+   "value": 19993.0,
+   "pct": 25.81
+  },
+  {
+   "name": "Forestry & Logging",
+   "broad": "agri",
+   "value": 366.0,
+   "pct": 0.47
+  },
+  {
+   "name": "Fishing & Aquaculture",
+   "broad": "agri",
+   "value": 4661.0,
+   "pct": 6.02
+  },
+  {
+   "name": "Mining & Quarrying",
+   "broad": "industry",
+   "value": 0.0,
+   "pct": 0.0
+  },
+  {
+   "name": "Manufacturing",
+   "broad": "industry",
+   "value": 15102.0,
+   "pct": 19.49
+  },
+  {
+   "name": "Electricity, Gas, Water Supply",
+   "broad": "industry",
+   "value": 826.0,
+   "pct": 1.07
+  },
+  {
+   "name": "Construction",
+   "broad": "industry",
+   "value": 7143.0,
+   "pct": 9.22
+  },
+  {
+   "name": "Financial Services",
+   "broad": "services",
+   "value": 47.0,
+   "pct": 0.06
+  },
+  {
+   "name": "Railways",
+   "broad": "services",
+   "value": 278.0,
+   "pct": 0.36
+  },
+  {
+   "name": "Transport by Other means & Storage",
+   "broad": "services",
+   "value": 5507.0,
+   "pct": 7.11
+  },
+  {
+   "name": "Communications",
+   "broad": "services",
+   "value": 2016.0,
+   "pct": 2.6
+  },
+  {
+   "name": "Banking & Ins",
+   "broad": "services",
+   "value": 2528.0,
+   "pct": 3.26
+  },
+  {
+   "name": "Real est., Ownership of Dwellings",
+   "broad": "services",
+   "value": 5337.0,
+   "pct": 6.89
+  },
+  {
+   "name": "Public Admn.",
+   "broad": "services",
+   "value": 2128.0,
+   "pct": 2.75
+  },
+  {
+   "name": "Other Services",
+   "broad": "services",
+   "value": 5568.0,
+   "pct": 7.19
+  }
+ ],
+ "headline": {
+  "GMVA": 77470.0,
+  "PRODUCT TAXES": 7593.0,
+  "PRODUCT SUBSIDIES": 1304.0,
+  "GMDP": 83759.0,
+  "NMDP": 76367.0,
+  "POPULATION": 40961.0,
+  "PCI": 186440.0
+ },
+ "demographics": {
+  "area_sqkm": 150.05
+ }
+}
