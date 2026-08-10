@@ -447,6 +447,10 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    aria-disabled and a "coming soon" hint rather than as links, so nobody clicks
    into a dead end and no crawler indexes a route that 404s. Give each an href
    and drop the disabled attribute when its page lands. */
+/* The tabs are a navigation strip, not the start of the section's content, so
+   they belong nearer the nav than a normal section's opening padding puts them.
+   80px of empty stage above them read as a mistake rather than as breathing room. */
+#page-districts > .section{padding-top:clamp(18px,2.4vw,32px);}
 .dtabs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,16px);
   margin-bottom:clamp(18px,2.4vw,28px);}
 .dtab{position:relative;text-align:left;font:inherit;cursor:not-allowed;
