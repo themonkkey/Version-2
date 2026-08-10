@@ -431,9 +431,13 @@
      THE ENRICHED MANDAL NODE — the contract for the M1-M3 templates.
 
      READ THIS BEFORE BUILDING A MANDAL TEMPLATE:
-     No structured figures exist at mandal level anywhere in the corpus. The
-     vision documents are prose. Every number a mandal page can show is INHERITED
-     from its parent constituency and describes the constituency, not the mandal.
+     Mandal figures are NOT YET EXTRACTED — they are not non-existent. An earlier
+     version of this comment claimed no mandal data existed anywhere; that was
+     wrong. The mandal vision PDFs carry GVA by broad sector and sub-sector,
+     population, literacy, land holdings, land use, crops, irrigation and more, in
+     extractable tables (see scripts/extract_mandal_data.py). Until that extractor
+     is wired in, every number a mandal page can show is INHERITED from its parent
+     constituency and describes the constituency, not the mandal.
      That is why each inherited figure arrives pre-labelled in `.inherited_from`
      and why the contract has no bare gcdp/population fields — there is nothing
      to put in them, and a template that renders a constituency figure as though
@@ -463,9 +467,43 @@
                                  must acknowledge it rather than quietly assume.
      }
   */
-  function enrichMandal(rec, constituencyNode, siblings) {
+  function enrichMandal(rec, constituencyNode, siblings, ownData, rankInfo) {
     rec = rec || {};
     var inherited = null;
+
+    /* ownData is the mandal's OWN extracted GVA file (mandal_data/<slug>.json),
+       fetched by showMandal. When present the mandal is no longer a thin
+       inherited-context page: it carries real GMDP / per-capita / population and
+       a sector breakdown. rankInfo is that mandal's standing among its
+       constituency siblings by GMDP (from mandal_ranks.json). Both are optional —
+       237 mandals have no extractable figures — and their absence is honest, not
+       an error. */
+    var own = null;
+    if (ownData && ownData.headline) {
+      var h = ownData.headline;
+      /* The mandal GVA statement reports GMVA/GMDP/NMDP in LAKHS, while the whole
+         dashboard speaks crore (a mandal at 106,969 lakh is ~1,070 cr, not the
+         ~1,07,000 cr that would rival a whole district). Convert once here so
+         every template gets crore. PCI is already in rupees and population in
+         persons — left untouched. */
+      var lakhToCr = function (v) { var n = num(v); return n === null ? null : n / 100; };
+      own = {
+        gmva: lakhToCr(h.GMVA), gmdp: lakhToCr(h.GMDP), nmdp: lakhToCr(h.NMDP),
+        pci: num(h.PCI), population: num(h.POPULATION),
+        /* Sector values are lakhs in the source too, so they convert with the
+           headline. Leaving them raw made `own` internally inconsistent — gmdp in
+           crore next to sectors 100x larger in the same object — which no current
+           template renders as currency, but the next one to try would be silently
+           100x out. One object, one unit. */
+        sectors: (Array.isArray(ownData.sub_rows) ? ownData.sub_rows : [])
+          .map(function (s) {
+            return { name: s.name, broad: s.broad, value: lakhToCr(s.value), pct: num(s.pct) };
+          }).filter(function (s) { return s.name && s.pct !== null; }),
+        demographics: ownData.demographics || null,
+        rank: rankInfo ? num(rankInfo.rank) : null,
+        rank_total: rankInfo ? num(rankInfo.total) : null
+      };
+    }
 
     if (constituencyNode) {
       inherited = {
@@ -504,8 +542,11 @@
 
       pdfs: Array.isArray(rec.pdfs) ? rec.pdfs.slice() : [],
       has_pdf: !!(rec.pdfs && rec.pdfs.length),
-      source: 'AP Assembly Constituencies portal (mandal roster) · mandal vision documents',
-      has_own_figures: false
+      source: own
+        ? 'Mandal GVA statement (mandal vision document) · rank among constituency siblings'
+        : 'AP Assembly Constituencies portal (mandal roster) · mandal vision documents',
+      own: own,
+      has_own_figures: !!own
     };
   }
 
@@ -517,7 +558,7 @@
     'name', 'slug', 'kind', 'archetype', 'why',
     'constituency', 'district', 'breadcrumb',
     'inherited_from', 'inherited', 'siblings',
-    'pdfs', 'has_pdf', 'source', 'has_own_figures'
+    'pdfs', 'has_pdf', 'source', 'own', 'has_own_figures'
   ];
   global.DASH.DISTRICT_KEYS = [
     'key', 'name', 'archetype', 'why', 'pci_rank', 'district_count',
