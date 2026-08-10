@@ -29,7 +29,9 @@ percentages).
 
 **Audit doc:** `docs/DASHBOARD_AUDIT.md` — two rounds of adversarial review on the
 constituency templates, what failed and what was fixed. Still accurate for C1–C4.
-Does NOT cover D1–D4 (never reviewed — see §5) or M1–M3 (reviewed, see §3).
+Does NOT cover M1–M3 (reviewed, see §3). D1–D4 now have their own
+`docs/DASHBOARD_AUDIT_DISTRICTS.md` (2026-08-10, GO, hand-reviewed after three
+workflow attempts died on session limits — see that file's §7).
 
 ---
 
@@ -133,7 +135,7 @@ data at this level" framing anywhere.
   `scale:'share'`, track is 100%); wrong fallback sector colours (fixed to match the
   portal's real values, `agri #16A34A / industry #FF8A00 / services #C93A2C`).
 
-### District (D1–D4) — BUILT, working live, **NEVER ADVERSARIALLY REVIEWED**
+### District (D1–D4) — BUILT, working live, **REVIEWED 2026-08-10, GO**
 
 - `tpl-d1.js` (metro/urban core, 6 districts), `tpl-d2.js` (agrarian, 11), `tpl-d3.js`
   (industrial, 2), `tpl-d4.js` (emerging/agency, 9 — deliberately leads with
@@ -149,14 +151,15 @@ data at this level" framing anywhere.
   `pct_of_district` vs `pct_of_state_sector` — specifically so a template can't
   conflate them. If you touch district templates, do not let this collapse into one
   field.
-- **The review workflow for D1–D4 died on session limits both times it was attempted**
-  (`build:D2` and all 4 reviewers failed with "session limit" mid-run). I verified
-  correctness by hand instead — live-rendered all 28 districts × {bare, enriched} = 56
-  renders, 0 throws, 0 empty-states enriched, and specifically probed for the
-  percentage-trap (a `pct_of_state_sector` value appearing under a "share of the
-  district" caption) across all 28 — **0 hits**. That's a reasonable sanity check but
-  it is NOT the same as the adversarial review C1–C4 got. **This is the biggest
-  outstanding quality gap.** See §5 for how to run it.
+- **The review workflow for D1–D4 died on session limits three times** across two
+  sessions before producing a single finding (~1.1M tokens, zero output). Done by
+  hand instead on 2026-08-10 — see `docs/DASHBOARD_AUDIT_DISTRICTS.md`. Verdict: GO.
+  Zero contract violations across all four, zero percentage-trap confusion (the
+  pct_of_district/pct_of_state_sector distinction above), zero hex colour literals,
+  68 renders with zero throws, the DASH_PICK_CONSTITUENCY handler checked and
+  confirmed wired (not just assumed by analogy to the earlier DASH_PICK_MANDAL bug).
+  One non-blocking gap noted: bare-path empty-state counts are high, same as every
+  other level's bare path, and not the path integration actually serves.
 
 ### Mandal (M1–M3) — BUILT, reviewed once, integrated, **now correcting a wrong premise**
 
