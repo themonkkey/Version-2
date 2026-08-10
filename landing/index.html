@@ -417,10 +417,50 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    left the 600x700 map centred inside it and scrolled far out of view. The map
    sticks to the top instead, staying on screen while the dashboard scrolls
    past it. */
-/* The map is a CONTROL — clicked once to choose a district — while the panel is
-   what the reader came for. The old 1.1fr/1fr gave the control more room than the
-   content and pushed the data below the fold. */
-.map-layout{display:grid;grid-template-columns:minmax(280px,0.62fr) 1.38fr;gap:clamp(18px,2.6vw,30px);align-items:start;}
+/* Two states, not one fixed split.
+   BROWSE  — nothing picked yet: the map is the whole page, because choosing a
+             district is the only thing to do and a 28-district map is easier to
+             read at full width.
+   DETAIL  — a district is picked: the map collapses to a control strip on the
+             left and the panel takes the room, because the figures are now what
+             the reader came for.
+   Flex, not grid: flex-basis is a length and animates cleanly, whereas
+   grid-template-columns in fr units does not tween reliably. The widths below are
+   the animation's start/end points — GSAP drives the transition in
+   setLayoutState(), and these rules are also the no-JS/reduced-motion fallback. */
+.map-layout{display:flex;gap:0;align-items:flex-start;}
+/* Only the MAP's basis is ever animated. The panel is flex:1 1 0 and simply takes
+   whatever is left, so no width needs a calc() that subtracts the gap — GSAP
+   silently refuses to tween to a calc()/clamp() target, which is what broke the
+   first version of this. The gap lives on the panel's margin instead, and is zero
+   while collapsed so the two states add up to exactly 100%. */
+.map-layout .map-box{flex:0 0 100%;min-width:0;}
+.map-layout #districtPanel{flex:1 1 0%;min-width:0;opacity:0;overflow:hidden;
+  padding-left:0;padding-right:0;margin-left:0;}
+.map-layout.split .map-box{flex:0 0 32%;}
+.map-layout.split #districtPanel{opacity:1;overflow:visible;
+  padding-left:clamp(20px,2.8vw,28px);padding-right:clamp(20px,2.8vw,28px);
+  margin-left:clamp(18px,2.6vw,30px);}
+
+/* Section entry points above the map. These are PLACEHOLDERS — the four
+   destinations do not exist yet. They are rendered as disabled controls with
+   aria-disabled and a "coming soon" hint rather than as links, so nobody clicks
+   into a dead end and no crawler indexes a route that 404s. Give each an href
+   and drop the disabled attribute when its page lands. */
+.dtabs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,16px);
+  margin-bottom:clamp(18px,2.4vw,28px);}
+.dtab{position:relative;text-align:left;font:inherit;cursor:not-allowed;
+  padding:clamp(13px,1.7vw,18px) clamp(14px,1.8vw,20px);border-radius:var(--r);
+  background:var(--glass);border:1px solid var(--glass-border);
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
+  box-shadow:var(--neu-out);
+  font-size:clamp(13px,1.4vw,14.5px);font-weight:600;letter-spacing:-.012em;
+  color:var(--label);line-height:1.3;transition:opacity .18s;opacity:.72;}
+.dtab .dtab-soon{display:block;margin-top:6px;font-size:11px;font-weight:500;
+  letter-spacing:.02em;text-transform:uppercase;color:var(--label-3);}
+.vstage .dtab{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);
+  color:#FFF;box-shadow:0 10px 30px rgba(0,0,0,.18);}
+.vstage .dtab .dtab-soon{color:rgba(255,255,255,.55);}
 .map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(14px,2vw,22px);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--glass-border);
@@ -429,7 +469,17 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   display:flex;flex-direction:column;justify-content:center;}
 /* Cap the map so it cannot grow to two screens on a narrow viewport. Height, not
    width, is the scarce resource here. */
-#ap-map{width:100%;height:auto;display:block;max-height:46vh;}
+/* The map's viewBox is 600x700 — PORTRAIT — so at full width it is height-bound,
+   not width-bound: preserveAspectRatio letterboxes it and a low max-height renders
+   a tiny drawing floating in a very wide box (measured 1134x385 before this).
+   So the cap is per state. Browsing, the map owns the page and gets the height to
+   be legible; in detail it is a control strip beside the figures and gives the
+   room back. The transition matches setLayoutState()'s GSAP duration so the
+   drawing rescales in step with the column rather than snapping at the end. */
+#ap-map{width:100%;height:auto;display:block;max-height:44vh;
+  transition:max-height .62s cubic-bezier(.65,0,.35,1);}
+.map-layout:not(.split) #ap-map{max-height:min(66vh,660px);}
+@media (prefers-reduced-motion:reduce){#ap-map{transition:none;}}
 #ap-map path{fill:#DCE6E0;stroke:rgba(255,255,255,.9);stroke-width:1;cursor:pointer;
   transition:fill .16s cubic-bezier(.4,0,.2,1);}
 #ap-map path:hover{fill:#9FDCB4;}
@@ -693,14 +743,24 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
     border-bottom:1px solid rgba(255,255,255,.12);letter-spacing:-.012em;}
   .mobile-menu .nl.active{color:var(--lime);font-weight:700;}
   .stats-grid,.hero-stats{grid-template-columns:1fr 1fr;}
-  .map-layout{grid-template-columns:1fr;}
+  /* Four across is unreadable here — at 375px each tab gets ~78px, and the longest
+     label ("Swarna Andhra 2047 capacity building") wraps to five lines. */
+  .dtabs{grid-template-columns:1fr 1fr;}
+  /* Stacked: there is no room for a side-by-side split, so both states are one
+     column and the panel simply appears below the map once a district is picked.
+     The flex-basis animation is meaningless here and is overridden away. */
+  .map-layout{flex-direction:column;}
+  .map-layout .map-box,
+  .map-layout.split .map-box{flex:0 0 auto;width:100%;}
+  .map-layout #districtPanel{flex:0 0 auto;width:100%;display:none;}
+  .map-layout.split #districtPanel{display:block;flex:0 0 auto;opacity:1;overflow:visible;}
   /* single column: the map sits above the dashboard, so pinning it would eat
      the viewport for the whole scroll. Let it scroll away normally. */
   .map-box{position:relative;top:auto;}
   /* Stacked, the map is pure overhead between the reader and the figures. Measured
      at 691px wide it was 747px tall — two screens before a single number appeared.
-     Cap it so the first data card is reachable on the opening screen. */
-  #ap-map{max-height:38vh;}
+     Cap it in BOTH states so the first data card is reachable on the opening screen. */
+  #ap-map,.map-layout:not(.split) #ap-map{max-height:38vh;}
 }
 @media (max-width:560px){
   .stats-grid{grid-template-columns:1fr 1fr;}
@@ -722,20 +782,23 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
      templates. components.js must load before enrich.js and the templates,
      which register onto the same window.DASH / window.DASH_TPL globals.
      See docs/DASHBOARD_ARCHITECTURE.md. -->
-<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-07g">
-<script src="assets/dash/components.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/enrich.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-c1.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-c2.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-c3.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-c4.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-d1.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-d2.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-d3.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-d4.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-m1.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-m2.js?v=2026-08-07g" defer></script>
-<script src="assets/dash/tpl-m3.js?v=2026-08-07g" defer></script>
+<!-- GSAP, vendored locally (charts-src: npm run build:gsap) rather than a CDN,
+     to keep the no-third-party-runtime rule for a government-facing page. -->
+<script src="assets/dash/gsap.js?v=2026-08-07k" defer></script>
+<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-07k">
+<script src="assets/dash/components.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/enrich.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-c1.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-c2.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-c3.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-c4.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-d1.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-d2.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-d3.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-d4.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-m1.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-m2.js?v=2026-08-07k" defer></script>
+<script src="assets/dash/tpl-m3.js?v=2026-08-07k" defer></script>
 <!-- React + MUI X Charts, bundled to one file by charts-src/. Loaded LAST and
      deferred: every chart is progressive, so if this never arrives the panel
      still renders with its hand-rolled SVG. 214 KB gzipped. -->
@@ -1056,6 +1119,14 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 <!-- DISTRICTS -->
 <div class="page" id="page-districts">
   <section class="section vstage" data-vid="longexposure"><div class="wrap">
+    <!-- Placeholders: none of these four destinations is built yet. Rendered as
+         disabled buttons, not links, so they cannot be clicked into a dead end. -->
+    <div class="dtabs">
+      <button class="dtab" disabled aria-disabled="true">Documents<span class="dtab-soon">Coming soon</span></button>
+      <button class="dtab" disabled aria-disabled="true">How to improve GVA<span class="dtab-soon">Coming soon</span></button>
+      <button class="dtab" disabled aria-disabled="true">Swarna Andhra 2047 capacity building<span class="dtab-soon">Coming soon</span></button>
+      <button class="dtab" disabled aria-disabled="true">Case studies<span class="dtab-soon">Coming soon</span></button>
+    </div>
     <div class="sec-head"><div class="kick">Districts</div><h2>Explore the district map</h2>
       <p>Select any district to see its latest economic snapshot: district income, per-capita income, and the sectors where it has the strongest comparative advantage.</p>
     </div>
@@ -1288,11 +1359,66 @@ function drawPaths(features, attrsFor){
     Object.keys(a).forEach(k=>p.setAttribute(k,a[k]));
     svg.appendChild(p);
   });
+
+  /* Fit the viewBox to what was actually drawn. The projector targets a fixed
+     600x700 frame, but Andhra Pradesh's outline only fills about 560x457 of it —
+     so a third of the viewBox was empty, and preserveAspectRatio shrank the whole
+     map to fit that emptiness into the box. Measured before this: the drawing
+     rendered 475x388 inside a 1134x594 container. Cropping to the real bounds
+     lets the same drawing use the room it has. Recomputed on every draw because
+     the constituency view has quite different bounds from the state view. */
+  try{
+    const b = svg.getBBox();
+    if(b.width > 0 && b.height > 0){
+      const pad = Math.max(b.width, b.height) * 0.03;   // keep strokes off the edge
+      svg.setAttribute('viewBox',
+        (b.x - pad).toFixed(1)+' '+(b.y - pad).toFixed(1)+' '+
+        (b.width + pad*2).toFixed(1)+' '+(b.height + pad*2).toFixed(1));
+    }
+  }catch(e){ /* getBBox throws if the svg is not rendered; keep the authored viewBox */ }
+}
+
+/* BROWSE <-> DETAIL. The .split class alone is a complete, correct implementation
+   of both states; GSAP only smooths the change between them. So if GSAP fails to
+   load, or the reader prefers reduced motion, or the viewport is stacked, we set
+   the class and stop — the layout is right either way, just instant. */
+function setLayoutState(split){
+  const layout = document.querySelector('#page-districts .map-layout');
+  if(!layout) return;
+  if(layout.classList.contains('split') === !!split) return;   // already there
+
+  const map = document.getElementById('mapBox');
+  const panel = document.getElementById('districtPanel');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stacked = window.matchMedia('(max-width:900px)').matches;
+
+  layout.classList.toggle('split', !!split);
+  if(!window.gsap || reduce || stacked) return;
+
+  gsap.killTweensOf([map, panel]);
+
+  if(split){
+    gsap.fromTo(map, {flexBasis:'100%'},
+      {flexBasis:'32%', duration:.62, ease:'power3.inOut', clearProps:'flexBasis'});
+    gsap.fromTo(panel, {opacity:0},
+      {opacity:1, duration:.5, delay:.12, ease:'power2.out', clearProps:'opacity'});
+    // the panel is what the reader came for; fade its contents in just behind the
+    // width change so text is not sliding while it is being read
+    gsap.fromTo(panel.children, {opacity:0, y:14},
+      {opacity:1, y:0, duration:.42, stagger:.05, delay:.22, ease:'power2.out',
+       clearProps:'opacity,transform'});
+  }else{
+    gsap.fromTo(map, {flexBasis:'32%'},
+      {flexBasis:'100%', duration:.5, ease:'power3.inOut', clearProps:'flexBasis'});
+    gsap.fromTo(panel, {opacity:1}, {opacity:0, duration:.28, ease:'power2.in',
+      clearProps:'opacity'});
+  }
 }
 
 function showStateView(){
   mapLevel='state'; currentDistrict=null;
   document.getElementById('mapBox').classList.remove('picked','zoomed');
+  setLayoutState(false);
   document.getElementById('districtPanel').innerHTML=
     '<div class="panel-empty"><i class="ti ti-hand-finger"></i><p>Select a district on the map to see its economic snapshot.</p></div>';
   drawPaths(districtFeatures, ft=>({
@@ -1345,6 +1471,7 @@ async function initMap(){
       if(mapLevel==='state'){
         const key=t.getAttribute('data-key'), name=t.getAttribute('data-name');
         document.getElementById('mapBox').classList.add('picked');
+        setLayoutState(true);          // BROWSE -> DETAIL
         showDistrict(key, name);
         showConstituencyView(key, name);
       }else{
@@ -1594,6 +1721,27 @@ async function loadMandalIndex(){
   return mandalIndex;
 }
 
+// GMDP rank of every mandal within its constituency, precomputed by
+// scripts/rank_mandals.py. Loaded once; absent entries (mandals with no
+// extractable figures) simply yield no rank badge.
+let mandalRanks = null;
+async function loadMandalRanks(){
+  if(mandalRanks) return mandalRanks;
+  try{ mandalRanks = await fetch('assets/mandal_ranks.json').then(r=>r.ok?r.json():{}); }
+  catch(e){ mandalRanks = {}; }
+  return mandalRanks;
+}
+// per-mandal GVA files are small; cache so re-opening a mandal doesn't refetch
+const mandalDataCache = {};
+async function loadMandalData(slug){
+  if(slug in mandalDataCache) return mandalDataCache[slug];
+  let d = null;
+  try{ d = await fetch('assets/mandal_data/'+slug+'.json').then(r=>r.ok?r.json():null); }
+  catch(e){ d = null; }
+  mandalDataCache[slug] = d;
+  return d;
+}
+
 const slugify = s => String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
 
 // The constituency select carries tree keys ("Guntur_East"); the mandal roster is
@@ -1645,10 +1793,15 @@ async function showMandal(mandalName, constituencyKey, districtName){
   const sibs = (mi.by_constituency[m.constituency]||[]).map(s=>mi.mandals[s].name);
   const tpl = window.DASH_TPL[m.archetype] || window.DASH_TPL.M1;
 
-  // a later pick may have landed while the parent payload was in flight
+  // the mandal's OWN extracted GVA (headline + sectors + demographics) and its
+  // GMDP rank among constituency siblings — both may be null, which is honest
+  const [ownData, ranks] = await Promise.all([loadMandalData(m.slug), loadMandalRanks()]);
+  const rankInfo = ranks && ranks[m.slug] ? ranks[m.slug] : null;
+
+  // a later pick may have landed while the payloads were in flight
   if(currentMandal && slugify(currentMandal) !== slugify(mandalName)) return;
 
-  panel.innerHTML = tpl(window.DASH.enrichMandal(m, cNode, sibs));
+  panel.innerHTML = tpl(window.DASH.enrichMandal(m, cNode, sibs, ownData, rankInfo));
   mountCharts(panel);
   panel.scrollIntoView({behavior:'smooth', block:'start'});
 }
