@@ -451,6 +451,9 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    they belong nearer the nav than a normal section's opening padding puts them.
    80px of empty stage above them read as a mistake rather than as breathing room. */
 #page-districts > .section{padding-top:clamp(18px,2.4vw,32px);}
+/* one line, not two: the 720px cap on .sec-head wrapped this intro and cost the
+   map ~30px of height it can use instead. */
+#page-districts .sec-head{max-width:none;}
 .dtabs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,16px);
   margin-bottom:clamp(18px,2.4vw,28px);}
 .dtab{position:relative;text-align:left;font:inherit;cursor:not-allowed;
@@ -480,9 +483,9 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    be legible; in detail it is a control strip beside the figures and gives the
    room back. The transition matches setLayoutState()'s GSAP duration so the
    drawing rescales in step with the column rather than snapping at the end. */
-#ap-map{width:100%;height:auto;display:block;max-height:44vh;
+#ap-map{width:100%;height:auto;display:block;min-height:0;
+  max-height:var(--map-h,44vh);
   transition:max-height .62s cubic-bezier(.65,0,.35,1);}
-.map-layout:not(.split) #ap-map{max-height:min(66vh,660px);}
 @media (prefers-reduced-motion:reduce){#ap-map{transition:none;}}
 #ap-map path{fill:#DCE6E0;stroke:rgba(255,255,255,.9);stroke-width:1;cursor:pointer;
   transition:fill .16s cubic-bezier(.4,0,.2,1);}
@@ -763,8 +766,9 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   .map-box{position:relative;top:auto;}
   /* Stacked, the map is pure overhead between the reader and the figures. Measured
      at 691px wide it was 747px tall — two screens before a single number appeared.
-     Cap it in BOTH states so the first data card is reachable on the opening screen. */
-  #ap-map,.map-layout:not(.split) #ap-map{max-height:38vh;}
+     A flat cap wins here: the fit-to-viewport sizing is for the side-by-side
+     layout, which does not exist at this width. */
+  #ap-map{max-height:38vh;}
 }
 @media (max-width:560px){
   .stats-grid{grid-template-columns:1fr 1fr;}
@@ -1131,13 +1135,13 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
       <button class="dtab" disabled aria-disabled="true">Swarna Andhra 2047 capacity building<span class="dtab-soon">Coming soon</span></button>
       <button class="dtab" disabled aria-disabled="true">Case studies<span class="dtab-soon">Coming soon</span></button>
     </div>
-    <div class="sec-head"><div class="kick">Districts</div><h2>Explore the district map</h2>
-      <p>Select any district to see its latest economic snapshot: district income, per-capita income, and the sectors where it has the strongest comparative advantage.</p>
+    <div class="sec-head"><h2>Explore the district map</h2>
+      <p>Select any district for its income, per-capita income and strongest sectors.</p>
     </div>
     <div class="map-layout">
       <div class="map-box" id="mapBox">
         <svg id="ap-map" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Clickable map of Andhra Pradesh districts"></svg>
-        <div class="map-label"><div class="t">Andhra Pradesh</div><div class="c">28 districts · tap one</div></div>
+        <div class="map-label"><div class="t">Andhra Pradesh</div></div>
         <button class="map-back" id="mapBack"><i class="ti ti-arrow-left"></i> All districts</button>
         <div class="map-hint">Click any district to explore</div>
       </div>
@@ -1380,7 +1384,36 @@ function drawPaths(features, attrsFor){
         (b.width + pad*2).toFixed(1)+' '+(b.height + pad*2).toFixed(1));
     }
   }catch(e){ /* getBBox throws if the svg is not rendered; keep the authored viewBox */ }
+
+  fitMap();
 }
+
+/* Size the map to the room it actually has.
+   A vh cap cannot do this: 66vh is measured against the whole viewport, but the
+   map starts ~394px down the page under the nav, the section tabs and the
+   heading — so the box ran 160px past the fold and the southern tip of the state
+   was cut off on first paint. The height that matters is from the top of the map
+   box to the bottom of the screen, less the box's own chrome (padding, the
+   "Andhra Pradesh" label, the hint line), and only JS can measure that.
+   Falls back to the CSS 44vh if anything here is unavailable. */
+function fitMap(){
+  const box = document.getElementById('mapBox');
+  const svg = document.getElementById('ap-map');
+  if(!box || !svg || !box.offsetParent) return;      // hidden page: nothing to measure
+
+  /* The box's position with the page unscrolled — rect.top is relative to the
+     current scroll, and once the box is stuck that reads as its sticky offset
+     rather than where it actually sits in the layout. Sizing to the stuck offset
+     made the overflow worse (280px past the fold instead of 160). This value does
+     not change as the reader scrolls, so the map does not resize under them. */
+  const docY = box.getBoundingClientRect().top + window.scrollY;
+
+  // everything in the box that is not the map: padding, the state label, the hint
+  const chrome = box.getBoundingClientRect().height - svg.getBoundingClientRect().height;
+  const avail = window.innerHeight - docY - chrome - 24;   // 24 = breathing room
+  svg.style.setProperty('--map-h', Math.max(260, Math.round(avail)) + 'px');
+}
+window.addEventListener('resize', fitMap, {passive:true});
 
 /* BROWSE <-> DETAIL. The .split class alone is a complete, correct implementation
    of both states; GSAP only smooths the change between them. So if GSAP fails to
@@ -1397,7 +1430,18 @@ function setLayoutState(split){
   const stacked = window.matchMedia('(max-width:900px)').matches;
 
   layout.classList.toggle('split', !!split);
+  // the box's top and width both move with the state, so re-measure the slot
+  requestAnimationFrame(fitMap);
   if(!window.gsap || reduce || stacked) return;
+
+  /* Track wall-clock, not frames. GSAP's default lagSmoothing clamps any frame
+     longer than 500ms down to 33ms so a stalled tab does not jump on return —
+     sensible for a long timeline, wrong here. Whenever rAF is throttled (a
+     background tab, a hidden preview pane) a 0.62s transition crawls: measured
+     14% complete after 1.6s. Since clearProps only fires on completion, an
+     interrupted tween leaves an inline flex-basis behind and the layout sticks
+     mid-transition. Disabling the clamp makes the tween finish in real time. */
+  if(gsap.ticker && gsap.ticker.lagSmoothing) gsap.ticker.lagSmoothing(0);
 
   gsap.killTweensOf([map, panel]);
 
