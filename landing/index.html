@@ -1489,6 +1489,37 @@ function setLayoutState(split){
 /* The hint under the map has to say what clicking will actually do. Zoomed into
    a district it still read "Click any district to explore" while every shape on
    screen was a constituency. */
+/* The section heading names where you actually are. Browsing, it invites a
+   pick; once you drill in it states the place and its parent chain, so a reader
+   arriving at a scrolled page (or handed a screenshot) can tell what they are
+   looking at without hunting for the breadcrumb inside the panel. The trailing
+   line does the same for the next action down. */
+function humanPlace(s){ return String(s || '').replace(/_/g, ' '); }
+
+function setExploreHeading(level, place, parents){
+  const head = document.querySelector('#page-districts .sec-head h2');
+  const sub  = document.querySelector('#page-districts .sec-head p');
+  if(!head) return;
+  parents = parents || [];
+
+  if(level === 'state'){
+    head.textContent = 'Explore the district map';
+    if(sub) sub.textContent = 'Select any district for its income, per-capita income and strongest sectors.';
+    return;
+  }
+
+  const chain = [humanPlace(place) + ' ' + level]
+    .concat(parents.map(function(p){ return humanPlace(p.name) + ' ' + p.kind; }));
+  head.textContent = 'You are currently exploring ' + chain.join(' of ');
+
+  if(sub){
+    sub.textContent =
+      level === 'district'     ? 'Select any constituency on the map to go a level deeper.'
+      : level === 'constituency' ? 'Select any mandal from the list to go a level deeper.'
+      : 'Mandal level \u2014 the deepest level published.';
+  }
+}
+
 function setMapHint(level, districtName){
   const el = document.querySelector('#mapBox .map-hint');
   if(!el) return;
@@ -1505,6 +1536,7 @@ function showStateView(){
     '<div class="panel-empty"><i class="ti ti-hand-finger"></i><p>Select a district on the map to see its economic snapshot.</p></div>';
   relocateRankBadge(null);   // no district picked: nothing to show up top either
   setMapHint('district');
+  setExploreHeading('state');
   drawPaths(districtFeatures, ft=>({
     'data-key':ft.properties.data_key, 'data-name':ft.properties.display
   }));
@@ -1590,6 +1622,7 @@ const distCache = {};
 // degrades the page rather than blanking it.
 async function showDistrict(key, name){
   currentDistrictKey = key; currentDistrictName = name;
+  setExploreHeading('district', name);
   const panel = document.getElementById('districtPanel');
   if(!panel) return;
 
@@ -1771,6 +1804,7 @@ async function showConstituency(name, districtName){
   if(!panel || !window.DASH || !window.DASH_TPL) return;
   currentConstituency = name;
   currentMandal = null;      // moving up a level retires any mandal pick
+  setExploreHeading('constituency', name, [{ name: districtName, kind: 'district' }]);
 
   const idx = await loadDashIndex();
   const rec = idx && idx.constituencies ? idx.constituencies[name] : null;
@@ -1844,20 +1878,33 @@ const slugify = s => String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
 
 // The constituency select carries tree keys ("Guntur_East"); the mandal roster is
 // keyed on the portal's constituency names ("Guntur East"). Match on alphanumerics.
+/* The two sides spell mandal names differently and it has to be reconciled here.
+   The constituency templates list them straight off the portal's
+   profile.mandals string, which carries its rural/urban marker — "Alur-R".
+   build_mandal_index.py strips that marker into its own `kind` field, so the
+   roster stores "Alur". slugify() drops the hyphen rather than the marker, so
+   "Alur-R" became "alurr" and matched nothing: every one of the 747 marked
+   mandals reported "No roster entry is published". Only the 47 unmarked ones
+   ever resolved. So strip a trailing -R/-U before comparing. */
+function stripMandalMarker(s){
+  return String(s || '').replace(/[-_\s]+[RU]$/i, '');
+}
+
 function findMandal(mi, constituencyKey, mandalName){
   if(!mi) return null;
-  const ck = slugify(constituencyKey), mn = slugify(mandalName);
+  const ck = slugify(constituencyKey);
+  const mn = slugify(stripMandalMarker(mandalName));
   let hit = mi.mandals[ck+'__'+mn];
   if(hit) return hit;
   for(const slug in mi.mandals){
     const m = mi.mandals[slug];
-    if(slugify(m.name)===mn && slugify(m.constituency)===ck) return m;
+    if(slugify(stripMandalMarker(m.name))===mn && slugify(m.constituency)===ck) return m;
   }
   // the tree's PDF-derived name may differ from the portal's; fall back to the
   // mandal name alone within the selected constituency
   for(const slug in mi.mandals){
     const m = mi.mandals[slug];
-    if(slugify(m.constituency)===ck && slugify(m.name).startsWith(mn)) return m;
+    if(slugify(m.constituency)===ck && slugify(stripMandalMarker(m.name)).startsWith(mn)) return m;
   }
   return null;
 }
@@ -1887,6 +1934,11 @@ async function showMandal(mandalName, constituencyKey, districtName){
     }
     cNode = window.DASH.enrich(cRec, constituencyKey.replace(/_/g,' '), apc || null, idx);
   }
+
+  setExploreHeading('mandal', m.name, [
+    { name: m.constituency, kind: 'constituency' },
+    { name: districtName || m.district, kind: 'district' }
+  ]);
 
   const sibs = (mi.by_constituency[m.constituency]||[]).map(s=>mi.mandals[s].name);
   const tpl = window.DASH_TPL[m.archetype] || window.DASH_TPL.M1;
