@@ -174,7 +174,11 @@
     var label = 'District GDDP by year. ' + aria.join('. ') + '.';
 
     return '<div style="overflow-x:auto;max-width:100%">' +
-      '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" height="auto"' +
+      /* height="auto" is not a valid SVG length (unlike the CSS property of the
+         same name) and threw "Expected length, 'auto'." on every render. The
+         viewBox + preserveAspectRatio + width:100% below already scale the
+         drawing responsively; the attribute was never doing anything. */
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%"' +
       ' preserveAspectRatio="xMidYMid meet" role="img" style="display:block;max-width:100%"' +
       ' aria-label="' + DASH.esc(label) + '">' +
       '<title>' + DASH.esc(label) + '</title>' + body + '</svg></div>';
