@@ -37,12 +37,23 @@ def dedup(leaves):
     return out
 
 
+PREFIX = "corpus_files/vision_documents/"
+
+
+def relpath(dest):
+    # the storage-relative path, identical in Drive and in any future cloud
+    # bucket that preserves the same tree; the cloud provider resolves a leaf
+    # as base_url + this path, so no per-file mapping is needed there.
+    return dest[len(PREFIX):] if dest.startswith(PREFIX) else dest
+
+
 def leaf(d):
     return {
         "id": d["doc_id"],
         "title": clean(d["title"]),
         "kind": d["kind"],
         "mb": round(float(d.get("fileSizeMB") or 0), 1),
+        "path": relpath(d["dest"]),
     }
 
 

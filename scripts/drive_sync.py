@@ -14,7 +14,7 @@ Then point every call at the shared folder as the root via its id.
     # 1) VERIFY — list Drive files, diff against local, report missing/extra
     python3 scripts/drive_sync.py verify --remote gdrive
 
-    # 2) LINKS — make each doc 'anyone with link' and write drive_links.json
+    # 2) LINKS — make each doc 'anyone with link' and write doc_links.json
     python3 scripts/drive_sync.py links  --remote gdrive
 
 Both accept --root-id (defaults to the shared folder id below) and --dry-run.
@@ -23,7 +23,7 @@ import argparse, json, os, subprocess, sys, collections
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(ROOT, "corpus_files", "vision_documents_manifest.json")
-LINKS_OUT = os.path.join(ROOT, "landing", "assets", "drive_links.json")
+LINKS_OUT = os.path.join(ROOT, "landing", "assets", "doc_links.json")
 PREFIX = "corpus_files/vision_documents/"
 SHARED_FOLDER_ID = "1lfMgehWYVglycFVK-dh5ITxwsbJ06IzU"
 
@@ -83,13 +83,13 @@ def cmd_verify(remote, root_id, dry):
 
 def cmd_links(remote, root_id, dry):
     docs = active_docs()
-    links = {}
+    cfg = {}
     if os.path.exists(LINKS_OUT):
         try:
-            links = json.load(open(LINKS_OUT))
+            cfg = json.load(open(LINKS_OUT))
         except Exception:
-            links = {}
-    readme = links.get("_README")
+            cfg = {}
+    links = dict(cfg.get("links") or {})
 
     ok = fail = skip = 0
     by_id = {}
@@ -119,13 +119,11 @@ def cmd_links(remote, root_id, dry):
             print(f"  … {i}/{len(by_id)} paths processed")
 
     if not dry:
-        out = {}
-        if readme:
-            out["_README"] = readme
-        for k in sorted(links, key=lambda x: (x != "_README", x)):
-            if k != "_README":
-                out[k] = links[k]
-        json.dump(out, open(LINKS_OUT, "w"), ensure_ascii=False, indent=1)
+        # preserve the provider seam; only refresh the links map
+        cfg["provider"] = cfg.get("provider", "drive")
+        cfg["cloudBase"] = cfg.get("cloudBase", "")
+        cfg["links"] = {k: links[k] for k in sorted(links, key=lambda x: (len(x), x))}
+        json.dump(cfg, open(LINKS_OUT, "w"), ensure_ascii=False, indent=1)
     print(f"\nlinked={ok}  failed={fail}  already-had={skip}  -> {LINKS_OUT}")
 
 

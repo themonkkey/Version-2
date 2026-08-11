@@ -1,0 +1,6 @@
+{
+  "_README": "Document link source for the Vision-plan library tree. Switch storage by changing 'provider'. provider='drive': each doc resolves from 'links' (doc_id -> Google Drive share URL, or a 'district:<Name>' / 'cons:<District>/<Constituency>' folder-key fallback) because Drive share IDs are opaque and can't be derived from a path. provider='cloud': every doc resolves as cloudBase + '/' + its path (from docs_tree.json), so no per-file mapping is needed once files sit in a path-preserving bucket. Run scripts/drive_sync.py links to populate 'links' for Drive; set provider='cloud' and cloudBase later to cut over with no code change.",
+  "provider": "drive",
+  "cloudBase": "",
+  "links": {}
+}

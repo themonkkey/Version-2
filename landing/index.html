@@ -2166,8 +2166,13 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
 // --- Documents tab: vision-plan library tree ------------------------------
 // A state -> district -> constituency -> mandal tree read from docs_tree.json.
-// A leaf becomes a live Drive link only when drive_links.json carries its id
-// (or an ancestor folder key); otherwise it renders muted as a catalogue entry.
+// Link resolution is behind a provider seam (doc_links.json) so the storage
+// backend can change without touching this code:
+//   provider 'drive' — opaque share IDs, so each doc is looked up in CFG.links
+//     by doc_id (with district:/cons: folder-key fallbacks).
+//   provider 'cloud' — a path-preserving bucket, so a doc resolves as
+//     CFG.cloudBase + '/' + leaf.path, needing no per-file mapping.
+// A leaf with no resolvable URL renders muted as a catalogue entry.
 // Children are built lazily on first expand so the DOM stays small even though
 // the catalogue holds ~1100 documents.
 (function(){
@@ -2177,17 +2182,20 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   var search = document.getElementById('docsSearch');
   if(!docsView || !treeEl) return;
 
-  var DATA = null, LINKS = {}, loaded = false, loading = false;
+  var DATA = null, CFG = {provider:'drive', links:{}}, loaded = false, loading = false;
 
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
-  // Resolve a leaf to a URL: its own id first, then a constituency- or
-  // district-level Drive folder key. Returns null when nothing is mapped.
+  // Resolve a leaf to a URL via the active provider. Returns null when unmapped.
   function linkFor(leaf, dist, cons){
-    if(LINKS[leaf.id]) return LINKS[leaf.id];
-    if(cons && LINKS['cons:'+dist+'/'+cons]) return LINKS['cons:'+dist+'/'+cons];
-    if(LINKS['district:'+dist]) return LINKS['district:'+dist];
+    if(CFG.provider === 'cloud' && CFG.cloudBase){
+      return leaf.path ? CFG.cloudBase.replace(/\/+$/,'') + '/' + leaf.path : null;
+    }
+    var L = CFG.links || {};
+    if(L[leaf.id]) return L[leaf.id];
+    if(cons && L['cons:'+dist+'/'+cons]) return L['cons:'+dist+'/'+cons];
+    if(L['district:'+dist]) return L['district:'+dist];
     return null;
   }
 
@@ -2197,7 +2205,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     var inner = '<i class="ti '+icon+' li"></i><span class="lt">'+esc(leaf.title)+'</span>'+mb;
     if(url) return '<a class="docs-leaf" href="'+esc(url)+'" target="_blank" rel="noopener">'+
       inner+'<i class="ti ti-external-link ext"></i></a>';
-    return '<span class="docs-leaf muted" title="Not yet uploaded to Drive">'+inner+'</span>';
+    return '<span class="docs-leaf muted" title="Not yet linked">'+inner+'</span>';
   }
 
   // Build the leaves for one constituency: its vision plan, profile, then mandals.
@@ -2259,7 +2267,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function render(){
     var h = '';
     if(DATA.state){
-      var url = LINKS[DATA.state.id];
+      var url = linkFor(DATA.state, null, null);
       var head = '<i class="ti ti-flag-3 di"></i><div><div class="dt">'+esc(DATA.state.title)+'</div>'+
         '<div class="dm">State vision plan · '+(DATA.state.mb||'')+' MB</div></div>';
       h += url
@@ -2331,10 +2339,12 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(loaded || loading) return;
     loading = true;
     Promise.all([
-      fetch('assets/docs_tree.json?v=2026-08-11a').then(function(r){ return r.json(); }),
-      fetch('assets/drive_links.json?v=2026-08-11a').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
+      fetch('assets/docs_tree.json?v=2026-08-11b').then(function(r){ return r.json(); }),
+      fetch('assets/doc_links.json?v=2026-08-11b').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
     ]).then(function(res){
-      DATA = res[0]; LINKS = res[1] || {};
+      DATA = res[0];
+      var cfg = res[1] || {};
+      CFG = {provider: cfg.provider || 'drive', cloudBase: cfg.cloudBase || '', links: cfg.links || {}};
       loaded = true; loading = false;
       render();
     }).catch(function(err){

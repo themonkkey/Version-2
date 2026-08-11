@@ -1,3 +1,0 @@
-{
-  "_README": "Map a document's doc_id (see docs_tree.json) to its Google Drive share URL. A leaf goes live as a link only once its id appears here; until then it renders as a catalogued (greyed) entry. You can also link a whole folder: key 'district:<Name>' or 'cons:<District>/<Constituency>' to a Drive folder URL and every doc under it inherits that link. Make each Drive item 'Anyone with the link — Viewer' before pasting. Example: \"489\": \"https://drive.google.com/file/d/XXXX/view\" for the state Vision 2047 plan."
-}
