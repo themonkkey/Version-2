@@ -437,7 +437,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .map-layout .map-box{flex:0 0 100%;min-width:0;}
 .map-layout #districtPanel{flex:1 1 0%;min-width:0;opacity:0;overflow:hidden;
   padding-left:0;padding-right:0;margin-left:0;}
-.map-layout.split .map-box{flex:0 0 32%;}
+.map-layout.split .map-box{flex:0 0 32%;justify-content:flex-start;}
 .map-layout.split #districtPanel{opacity:1;overflow:visible;
   padding-left:clamp(20px,2.8vw,28px);padding-right:clamp(20px,2.8vw,28px);
   margin-left:clamp(18px,2.6vw,30px);}
@@ -1408,7 +1408,67 @@ function drawPaths(features, attrsFor){
     }
   }catch(e){ /* getBBox throws if the svg is not rendered; keep the authored viewBox */ }
 
-  fitMap();
+  /* Skip fitMap here when split. drawPaths (zooming to a constituency) runs
+     synchronously in the click handler, before showDistrict/showConstituency's
+     async panel fetch resolves — so at this instant the panel still holds the
+     PREVIOUS pick's content (or is mid-fade), and pairing the map box against
+     that stale card is exactly what produced the 1162px flash: a wrong height
+     held for a couple hundred ms until mountCharts' later, correctly-timed
+     fitMap() call (once the real content is in) corrected it to 508. In BROWSE
+     there is no card to pair against and no later call to correct a bad guess,
+     so this is the only place that path gets sized. */
+  const stillSplit = document.querySelector('#page-districts .map-layout.split');
+  if(!stillSplit) fitMap();
+}
+
+/* Pairing the map box's height to the panel's first card cannot be measured the
+   instant fitMap() is asked to — several things can trigger that ask while
+   either side of the pair is still mid-flight:
+     - the box's own width tween (100% -> 32%), during which the panel is
+       narrower than its final width and the SAME card wraps to more rows and
+       measures taller than it will once settled (observed 1229px, then 1162px,
+       true value 508px)
+     - showDistrict/showConstituency rendering twice — a bare pass immediately,
+       an enriched pass once its fetch resolves — each swapping in a
+       differently-sized card
+   Tried gating this on gsap.isTweening(box)/(panel): wrong signal, because
+   innerHTML replacing the panel's children orphans the tween created against
+   the PREVIOUS children, so it reads "not animating" while the box is still
+   moving. Tried box.style.flexBasis (non-empty while GSAP's own inline style
+   is present, cleared by clearProps on completion): usually reliable, but a
+   rapid back-then-reopen click kills the in-flight tween via
+   gsap.killTweensOf(), which stops a tween WITHOUT running its clearProps or
+   onComplete — so flexBasis can be left stuck at its last value forever,
+   wedging the pairing off permanently.
+   Debouncing sidesteps both: don't infer whether anything is mid-flight, just
+   wait until nothing has asked for a while. Every trigger (draw, mount, resize,
+   tween completion) restarts the same short timer; the measurement only runs
+   once calls actually stop, which in practice is after whichever finishes last. */
+let heightPairingTimer = null;
+function cancelHeightPairing(){
+  if(heightPairingTimer){ clearTimeout(heightPairingTimer); heightPairingTimer = null; }
+}
+function scheduleHeightPairing(box, layout){
+  cancelHeightPairing();
+  heightPairingTimer = setTimeout(function(){
+    heightPairingTimer = null;
+    const firstCard = document.querySelector('#districtPanel .d-sec');
+    if(!firstCard || !layout || !box.isConnected){ box.style.minHeight = ''; return; }
+    /* Align the BOTTOM edges, not the heights: the panel insets its first card
+       by its own padding, so equal heights still left the columns finishing
+       ~29px apart.
+       Measure in DOCUMENT coordinates, from the LAYOUT row's top rather than
+       the box's own. The box is position:sticky, so once the reader scrolls its
+       rect.top reports the sticky offset instead of where it sits in the layout
+       — measuring against that grew the box every time fitMap re-ran (observed
+       479px -> 1162px). The layout row is not sticky, and the box is its first
+       flex item at align-items:flex-start, so the row's top IS the box's
+       natural top and does not move under scroll. */
+    const rowTop  = layout.getBoundingClientRect().top + window.scrollY;
+    const cardBot = firstCard.getBoundingClientRect().bottom + window.scrollY;
+    const pairH   = Math.round(cardBot - rowTop);
+    box.style.minHeight = pairH > 200 ? pairH + 'px' : '';
+  }, 180);
 }
 
 /* Size the map to the room it actually has.
@@ -1424,17 +1484,54 @@ function fitMap(){
   const svg = document.getElementById('ap-map');
   if(!box || !svg || !box.offsetParent) return;      // hidden page: nothing to measure
 
-  /* The box's position with the page unscrolled — rect.top is relative to the
-     current scroll, and once the box is stuck that reads as its sticky offset
-     rather than where it actually sits in the layout. Sizing to the stuck offset
-     made the overflow worse (280px past the fold instead of 160). This value does
-     not change as the reader scrolls, so the map does not resize under them. */
-  const docY = box.getBoundingClientRect().top + window.scrollY;
+  /* Which vertical slot the map actually gets differs by state, so measure the
+     right one.
 
-  // everything in the box that is not the map: padding, the state label, the hint
+     BROWSE — nothing picked. The page is short, the reader may never scroll, so
+     the map has to fit where it sits: its unscrolled position down to the fold.
+     rect.top is relative to current scroll, hence + scrollY.
+
+     DETAIL — a district is picked. The box is position:sticky beside a panel
+     that runs several thousand px, so the reader always scrolls and the box
+     always ends up pinned at its sticky offset. Sizing to its unscrolled
+     position there wastes the whole difference: measured 450px of map in a slot
+     that could hold ~690px, leaving the empty band below the map the design
+     brief flagged. Once stuck the usable height is the sticky offset to the
+     fold, so use that. */
+  const layout = box.closest('.map-layout');
+  const split = layout && layout.classList.contains('split');
+  const stickyTop = parseFloat(getComputedStyle(box).top) || 0;
+  const docY = box.getBoundingClientRect().top + window.scrollY;
+  const top = split ? stickyTop : docY;
+
+  // everything in the box that is not the map: padding, back button, hint
   const chrome = box.getBoundingClientRect().height - svg.getBoundingClientRect().height;
-  const avail = window.innerHeight - docY - chrome - 24;   // 24 = breathing room
+  const avail = window.innerHeight - top - chrome - 24;   // 24 = breathing room
   svg.style.setProperty('--map-h', Math.max(260, Math.round(avail)) + 'px');
+
+  /* In DETAIL the map is WIDTH-bound, not height-bound: at a 32% column and a
+     roughly 4:3 viewBox it tops out near 260px tall however much height the cap
+     allows, so the box ended well short of the panel beside it.
+
+     Match the panel's FIRST section rather than the viewport. The two are a
+     visual pair — map on the left, the district's headline card on the right —
+     and they should finish on the same line. Sizing to the viewport instead made
+     the box 786px against a 479px card, which just moved the ragged edge to the
+     other column. Cleared in BROWSE, where there is no card to pair with and the
+     box should stay snug to a map that already fills the width. */
+  /* The 'split' class is set regardless of viewport, but the mobile media query
+     stacks the layout to one column at <=900px — map above the panel, not beside
+     it. Pairing still ran there, since it only checked the class: the box paired
+     its height to the panel's first card even though nothing sits next to it,
+     producing an 1101px map box floating above a normal-width panel. Read the
+     actual layout instead of the state that requested it. */
+  const sideBySide = split && getComputedStyle(layout).flexDirection === 'row';
+  if(sideBySide){
+    scheduleHeightPairing(box, layout);
+  }else{
+    cancelHeightPairing();
+    box.style.minHeight = '';
+  }
 }
 window.addEventListener('resize', fitMap, {passive:true});
 
@@ -1470,14 +1567,17 @@ function setLayoutState(split){
 
   if(split){
     gsap.fromTo(map, {flexBasis:'100%'},
-      {flexBasis:'32%', duration:.62, ease:'power3.inOut', clearProps:'flexBasis'});
+      // onComplete just pokes fitMap -> scheduleHeightPairing again; harmless
+      // extra nudge, not load-bearing (the debounce settles on its own either way)
+      {flexBasis:'32%', duration:.62, ease:'power3.inOut', clearProps:'flexBasis',
+       onComplete: fitMap});
     gsap.fromTo(panel, {opacity:0},
       {opacity:1, duration:.5, delay:.12, ease:'power2.out', clearProps:'opacity'});
     // the panel is what the reader came for; fade its contents in just behind the
     // width change so text is not sliding while it is being read
     gsap.fromTo(panel.children, {opacity:0, y:14},
       {opacity:1, y:0, duration:.42, stagger:.05, delay:.22, ease:'power2.out',
-       clearProps:'opacity,transform'});
+       clearProps:'opacity,transform', onComplete: fitMap});
   }else{
     gsap.fromTo(map, {flexBasis:'32%'},
       {flexBasis:'100%', duration:.5, ease:'power3.inOut', clearProps:'flexBasis'});
@@ -1690,6 +1790,9 @@ function relocateRankBadge(scope){
 
 function mountCharts(scope){
   relocateRankBadge(scope);
+  // the map box pairs its height with the panel's first card, so it can only be
+  // measured once that card exists
+  fitMap();
   if(!scope || !scope.querySelector('[data-mui-chart]')) return;   // nothing to mount
   if(window.MUICharts){ window.MUICharts.mountAll(scope); return; }
   loadMui().then(function(){
