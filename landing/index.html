@@ -451,6 +451,13 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    they belong nearer the nav than a normal section's opening padding puts them.
    80px of empty stage above them read as a mistake rather than as breathing room. */
 #page-districts > .section{padding-top:clamp(18px,2.4vw,32px);}
+/* Rank badge's page-level home. Empty and hidden until a district/constituency/
+   mandal is picked and relocateRankBadge() finds one to move up here; cleared
+   again on the way back to the state-wide map. */
+.sec-head-row{display:flex;align-items:flex-end;justify-content:space-between;
+  gap:20px;flex-wrap:wrap;}
+.rank-slot{flex:0 0 auto;}
+.rank-slot:empty,.rank-slot[hidden]{display:none;}
 /* one line, not two: the 720px cap on .sec-head wrapped this intro and cost the
    map ~30px of height it can use instead. */
 #page-districts .sec-head{max-width:none;}
@@ -1135,8 +1142,20 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
       <button class="dtab" disabled aria-disabled="true">Swarna Andhra 2047 capacity building<span class="dtab-soon">Coming soon</span></button>
       <button class="dtab" disabled aria-disabled="true">Case studies<span class="dtab-soon">Coming soon</span></button>
     </div>
-    <div class="sec-head"><h2>Explore the district map</h2>
-      <p>Select any district for its income, per-capita income and strongest sectors.</p>
+    <div class="sec-head sec-head-row">
+      <div>
+        <h2>Explore the district map</h2>
+        <p>Select any district for its income, per-capita income and strongest sectors.</p>
+      </div>
+      <!-- Every archetype template (C1-C4, D1-D4) emits its own rank badge inline,
+           top-right of its first section, via DASH.rankBadge() passed as that
+           section's `aside`. On the dark stage the badge's light glass background
+           haloed against the card behind it and crowded the district's own name.
+           relocateRankBadge() below moves that same DOM node up here once it
+           renders, rather than duplicating the rank markup at the page level —
+           one badge, two possible parents, so it can never drift out of sync with
+           what the template actually says. -->
+      <div class="rank-slot" id="rankSlot" hidden></div>
     </div>
     <div class="map-layout">
       <div class="map-box" id="mapBox">
@@ -1469,6 +1488,7 @@ function showStateView(){
   setLayoutState(false);
   document.getElementById('districtPanel').innerHTML=
     '<div class="panel-empty"><i class="ti ti-hand-finger"></i><p>Select a district on the map to see its economic snapshot.</p></div>';
+  relocateRankBadge(null);   // no district picked: nothing to show up top either
   drawPaths(districtFeatures, ft=>({
     'data-key':ft.properties.data_key, 'data-name':ft.properties.display
   }));
@@ -1606,7 +1626,20 @@ function loadMui(){
   });
   return muiPending;
 }
+// Every archetype template renders its own rank badge inline (top-right of its
+// first section). Reparenting the real node, rather than re-deriving a copy from
+// node.pci_rank here, means the page-level badge can never say something the
+// template didn't: one source of truth, one DOM node, two possible homes.
+function relocateRankBadge(scope){
+  const slot = document.getElementById('rankSlot');
+  if(!slot) return;
+  const badge = scope && scope.querySelector('.d-rankbadge');
+  if(badge){ slot.replaceChildren(badge); slot.hidden = false; }
+  else { slot.replaceChildren(); slot.hidden = true; }
+}
+
 function mountCharts(scope){
+  relocateRankBadge(scope);
   if(!scope || !scope.querySelector('[data-mui-chart]')) return;   // nothing to mount
   if(window.MUICharts){ window.MUICharts.mountAll(scope); return; }
   loadMui().then(function(){
