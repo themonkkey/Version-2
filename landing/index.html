@@ -475,6 +475,68 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .vstage .dtab{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);
   color:#FFF;box-shadow:0 10px 30px rgba(0,0,0,.18);}
 .vstage .dtab .dtab-soon{color:rgba(255,255,255,.55);}
+/* Live tabs (Documents / map) are clickable and show a pressed state; the two
+   coming-soon tabs keep the not-allowed cursor from the base rule. */
+.dtab-live{cursor:pointer;opacity:1;}
+.dtab-live:hover{opacity:1;transform:translateY(-1px);}
+.dtab-live:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
+.vstage .dtab-live[aria-pressed="true"]{background:rgba(198,236,143,.16);
+  border-color:rgba(198,236,143,.45);box-shadow:0 10px 30px rgba(0,0,0,.20),inset 0 0 0 1px rgba(198,236,143,.25);}
+.vstage .dtab-live[aria-pressed="true"] .dtab-soon{color:rgba(198,236,143,.85);}
+
+/* Documents view — the vision-plan tree. Lives on the same dark stage as the map. */
+.docs-tools{display:flex;align-items:flex-end;}
+.docs-search{width:min(320px,42vw);font:inherit;font-size:14px;color:#FFF;
+  padding:10px 14px;border-radius:var(--r);background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.22);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);}
+.docs-search::placeholder{color:rgba(255,255,255,.5);}
+.docs-search:focus{outline:none;border-color:rgba(198,236,143,.55);background:rgba(255,255,255,.14);}
+.docs-tree{color:#FFF;}
+.docs-loading{color:rgba(255,255,255,.6);padding:30px 4px;font-size:14.5px;}
+.docs-empty{color:rgba(255,255,255,.6);padding:24px 4px;font-size:14px;}
+
+/* State plan — the tree's root, pinned above the districts as a full-width card. */
+.docs-state{display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  font:inherit;cursor:default;margin-bottom:clamp(14px,2vw,20px);
+  padding:clamp(14px,1.8vw,18px) clamp(16px,2vw,22px);border-radius:var(--r-lg);
+  background:rgba(198,236,143,.12);border:1px solid rgba(198,236,143,.32);
+  box-shadow:0 12px 34px rgba(0,0,0,.20);}
+.docs-state .di{font-size:22px;color:#DCF0A8;flex:0 0 auto;}
+.docs-state .dt{font-size:clamp(15px,1.7vw,17px);font-weight:700;letter-spacing:-.01em;}
+.docs-state .dm{font-size:12.5px;color:rgba(255,255,255,.6);margin-top:2px;}
+
+/* Two-column masonry-ish grid of district cards so 28 of them are not one long ribbon. */
+.docs-districts{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.6vw,18px);align-items:start;}
+.docs-node{border-radius:var(--r);background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.16);overflow:hidden;}
+.docs-row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;font:inherit;
+  cursor:pointer;padding:13px 16px;color:#FFF;background:transparent;border:0;
+  transition:background .16s;}
+.docs-row:hover{background:rgba(255,255,255,.06);}
+.docs-row:focus-visible{outline:2px solid var(--lime);outline-offset:-2px;}
+.docs-row .caret{flex:0 0 auto;transition:transform .2s;color:rgba(255,255,255,.55);font-size:15px;}
+.docs-node.open>.docs-row .caret{transform:rotate(90deg);}
+.docs-row .nm{font-weight:650;font-size:14.5px;letter-spacing:-.008em;flex:1 1 auto;}
+.docs-row .ct{flex:0 0 auto;font-size:11.5px;color:rgba(255,255,255,.5);
+  background:rgba(255,255,255,.09);padding:2px 9px;border-radius:999px;}
+/* Nested level — constituencies inside a district, mandals inside a constituency. */
+.docs-kids{display:none;padding:2px 10px 10px clamp(18px,2vw,26px);}
+.docs-node.open>.docs-kids{display:block;}
+.docs-sub{border-left:1px solid rgba(255,255,255,.12);margin-left:6px;}
+
+/* Leaf — one document. Live (has a Drive link) => anchor; catalogued => muted span. */
+.docs-leaf{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;
+  font-size:13.5px;text-decoration:none;color:#FFF;transition:background .15s;}
+a.docs-leaf:hover{background:rgba(198,236,143,.12);}
+.docs-leaf .li{flex:0 0 auto;font-size:16px;color:rgba(220,240,168,.85);}
+.docs-leaf .lt{flex:1 1 auto;line-height:1.3;}
+.docs-leaf .lm{flex:0 0 auto;font-size:11px;color:rgba(255,255,255,.42);}
+.docs-leaf.muted{color:rgba(255,255,255,.5);cursor:default;}
+.docs-leaf.muted .li{color:rgba(255,255,255,.3);}
+.docs-leaf.muted .lt{border-bottom:1px dashed rgba(255,255,255,.18);align-self:flex-start;}
+.docs-leaf .ext{flex:0 0 auto;font-size:13px;color:rgba(198,236,143,.7);opacity:0;transition:opacity .15s;}
+a.docs-leaf:hover .ext{opacity:1;}
+@media(max-width:760px){.docs-districts{grid-template-columns:1fr;}.docs-search{width:100%;}}
 .map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(14px,2vw,22px);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--glass-border);
@@ -1138,14 +1200,16 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 <!-- DISTRICTS -->
 <div class="page" id="page-districts">
   <section class="section vstage" data-vid="longexposure"><div class="wrap">
-    <!-- Placeholders: none of these four destinations is built yet. Rendered as
-         disabled buttons, not links, so they cannot be clicked into a dead end. -->
+    <!-- Documents is live (the vision-plan library, below); the other three
+         destinations are not built yet — disabled buttons, not links, so they
+         cannot be clicked into a dead end. -->
     <div class="dtabs">
-      <button class="dtab" disabled aria-disabled="true">Documents<span class="dtab-soon">Coming soon</span></button>
-      <button class="dtab" disabled aria-disabled="true">How to improve GVA<span class="dtab-soon">Coming soon</span></button>
+      <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plan library</span></button>
+      <button class="dtab dtab-live" data-dtab="map" aria-pressed="true">The district map<span class="dtab-soon">Income &amp; sectors</span></button>
       <button class="dtab" disabled aria-disabled="true">Swarna Andhra 2047 capacity building<span class="dtab-soon">Coming soon</span></button>
       <button class="dtab" disabled aria-disabled="true">Case studies<span class="dtab-soon">Coming soon</span></button>
     </div>
+    <div id="mapView">
     <div class="sec-head sec-head-row">
       <div>
         <h2>Explore the district map</h2>
@@ -1170,6 +1234,22 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
       </div>
       <div class="panel" id="districtPanel">
         <div class="panel-empty"><i class="ti ti-hand-finger"></i><p>Select a district on the map to see its economic snapshot.</p></div>
+      </div>
+    </div>
+    </div><!-- /#mapView -->
+
+    <div id="docsView" hidden>
+      <div class="sec-head sec-head-row">
+        <div>
+          <h2>Vision &amp; Action Plan library</h2>
+          <p>The Swarna Andhra 2047 vision documents, from the state plan down to every constituency and mandal.</p>
+        </div>
+        <div class="docs-tools">
+          <input type="search" id="docsSearch" class="docs-search" placeholder="Search a district, constituency or mandal…" aria-label="Search documents">
+        </div>
+      </div>
+      <div id="docsTree" class="docs-tree" aria-live="polite">
+        <div class="docs-loading">Loading the document library…</div>
       </div>
     </div>
   </div></section>
@@ -2083,6 +2163,201 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   a.target = '_blank';
   a.rel = 'noopener';
 });
+
+// --- Documents tab: vision-plan library tree ------------------------------
+// A state -> district -> constituency -> mandal tree read from docs_tree.json.
+// A leaf becomes a live Drive link only when drive_links.json carries its id
+// (or an ancestor folder key); otherwise it renders muted as a catalogue entry.
+// Children are built lazily on first expand so the DOM stays small even though
+// the catalogue holds ~1100 documents.
+(function(){
+  var mapView = document.getElementById('mapView');
+  var docsView = document.getElementById('docsView');
+  var treeEl = document.getElementById('docsTree');
+  var search = document.getElementById('docsSearch');
+  if(!docsView || !treeEl) return;
+
+  var DATA = null, LINKS = {}, loaded = false, loading = false;
+
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  // Resolve a leaf to a URL: its own id first, then a constituency- or
+  // district-level Drive folder key. Returns null when nothing is mapped.
+  function linkFor(leaf, dist, cons){
+    if(LINKS[leaf.id]) return LINKS[leaf.id];
+    if(cons && LINKS['cons:'+dist+'/'+cons]) return LINKS['cons:'+dist+'/'+cons];
+    if(LINKS['district:'+dist]) return LINKS['district:'+dist];
+    return null;
+  }
+
+  function leafHtml(leaf, dist, cons, icon){
+    var url = linkFor(leaf, dist, cons);
+    var mb = leaf.mb ? '<span class="lm">'+leaf.mb+' MB</span>' : '';
+    var inner = '<i class="ti '+icon+' li"></i><span class="lt">'+esc(leaf.title)+'</span>'+mb;
+    if(url) return '<a class="docs-leaf" href="'+esc(url)+'" target="_blank" rel="noopener">'+
+      inner+'<i class="ti ti-external-link ext"></i></a>';
+    return '<span class="docs-leaf muted" title="Not yet uploaded to Drive">'+inner+'</span>';
+  }
+
+  // Build the leaves for one constituency: its vision plan, profile, then mandals.
+  function consLeaves(c, dist){
+    var h = '';
+    if(c.vision)  h += leafHtml(c.vision,  dist, c.name, 'ti-file-description');
+    if(c.profile) h += leafHtml(c.profile, dist, c.name, 'ti-file-analytics');
+    (c.mandals||[]).forEach(function(m){ h += leafHtml(m, dist, c.name, 'ti-map-pin'); });
+    return h;
+  }
+
+  function consCount(c){
+    return (c.vision?1:0)+(c.profile?1:0)+(c.mandals?c.mandals.length:0);
+  }
+
+  // A district node: its own plan leaves, then a collapsible list of constituencies.
+  function districtNode(d, openQuery){
+    var node = document.createElement('div');
+    node.className = 'docs-node';
+    node.dataset.name = d.name.toLowerCase();
+    var docCount = d.constituencies.reduce(function(n,c){ return n+consCount(c); }, d.plans.length);
+    node.innerHTML =
+      '<button class="docs-row" type="button" aria-expanded="false">'+
+        '<i class="ti ti-chevron-right caret"></i>'+
+        '<span class="nm">'+esc(d.name)+'</span>'+
+        '<span class="ct">'+docCount+' docs</span>'+
+      '</button>'+
+      '<div class="docs-kids"></div>';
+    node._data = d; node._built = false;
+    return node;
+  }
+
+  function buildDistrictKids(node){
+    if(node._built) return;
+    var d = node._data, kids = node.querySelector('.docs-kids'), h = '';
+    d.plans.forEach(function(p){ h += leafHtml(p, d.name, null, 'ti-book-2'); });
+    var sub = h ? '<div class="docs-leaves">'+h+'</div>' : '';
+    var cons = '';
+    d.constituencies.forEach(function(c, i){
+      cons += '<div class="docs-node docs-cnode" data-name="'+esc(c.name.toLowerCase())+'" data-di="'+i+'">'+
+        '<button class="docs-row" type="button" aria-expanded="false">'+
+          '<i class="ti ti-chevron-right caret"></i>'+
+          '<span class="nm">'+esc(c.name)+'</span>'+
+          '<span class="ct">'+consCount(c)+'</span>'+
+        '</button>'+
+        '<div class="docs-kids docs-sub"></div></div>';
+    });
+    kids.innerHTML = sub + cons;
+    node._built = true;
+  }
+
+  function buildConsKids(cnode, d){
+    if(cnode._built) return;
+    var c = d.constituencies[+cnode.dataset.di];
+    cnode.querySelector('.docs-kids').innerHTML = consLeaves(c, d.name);
+    cnode._built = true;
+  }
+
+  function render(){
+    var h = '';
+    if(DATA.state){
+      var url = LINKS[DATA.state.id];
+      var head = '<i class="ti ti-flag-3 di"></i><div><div class="dt">'+esc(DATA.state.title)+'</div>'+
+        '<div class="dm">State vision plan · '+(DATA.state.mb||'')+' MB</div></div>';
+      h += url
+        ? '<a class="docs-state" href="'+esc(url)+'" target="_blank" rel="noopener" style="cursor:pointer">'+head+'<i class="ti ti-external-link ext" style="opacity:.7;margin-left:auto"></i></a>'
+        : '<div class="docs-state">'+head+'</div>';
+    }
+    treeEl.innerHTML = h + '<div class="docs-districts"></div>';
+    var grid = treeEl.querySelector('.docs-districts');
+    DATA.districts.forEach(function(d){ grid.appendChild(districtNode(d)); });
+  }
+
+  // Expand/collapse via delegation. First open of a node builds its children.
+  treeEl.addEventListener('click', function(e){
+    var row = e.target.closest('.docs-row');
+    if(!row) return;
+    var node = row.parentElement;
+    if(node.classList.contains('docs-cnode')){
+      var dnode = node.closest('.docs-districts > .docs-node');
+      buildConsKids(node, dnode._data);
+    } else {
+      buildDistrictKids(node);
+    }
+    var open = node.classList.toggle('open');
+    row.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  // Search: match districts, constituencies and mandals; reveal matching paths.
+  function applySearch(q){
+    q = (q||'').trim().toLowerCase();
+    var districts = treeEl.querySelectorAll('.docs-districts > .docs-node');
+    if(!q){
+      districts.forEach(function(n){ n.hidden = false; n.classList.remove('open');
+        n.querySelectorAll('.docs-cnode').forEach(function(c){ c.hidden=false; c.classList.remove('open'); }); });
+      var emp = treeEl.querySelector('.docs-empty'); if(emp) emp.remove();
+      return;
+    }
+    var any = false;
+    districts.forEach(function(n){
+      var d = n._data;
+      var dMatch = d.name.toLowerCase().indexOf(q) >= 0;
+      var hitCons = d.constituencies.filter(function(c){
+        return c.name.toLowerCase().indexOf(q) >= 0 ||
+          (c.mandals||[]).some(function(m){ return m.title.toLowerCase().indexOf(q) >= 0; });
+      });
+      var show = dMatch || hitCons.length > 0;
+      n.hidden = !show;
+      if(!show) return;
+      any = true;
+      buildDistrictKids(n); n.classList.add('open'); n.querySelector('.docs-row').setAttribute('aria-expanded','true');
+      n.querySelectorAll('.docs-cnode').forEach(function(cn){
+        var cData = d.constituencies[+cn.dataset.di];
+        var cHit = dMatch || cData.name.toLowerCase().indexOf(q) >= 0 ||
+          (cData.mandals||[]).some(function(m){ return m.title.toLowerCase().indexOf(q) >= 0; });
+        cn.hidden = !cHit;
+        if(cHit && !dMatch && cData.name.toLowerCase().indexOf(q) < 0){
+          buildConsKids(cn, d); cn.classList.add('open'); cn.querySelector('.docs-row').setAttribute('aria-expanded','true');
+        }
+      });
+    });
+    var emp = treeEl.querySelector('.docs-empty');
+    if(!any && !emp){ treeEl.insertAdjacentHTML('beforeend','<div class="docs-empty">No document matches “'+esc(q)+'”.</div>'); }
+    else if(any && emp){ emp.remove(); }
+  }
+  if(search){
+    var t; search.addEventListener('input', function(){ clearTimeout(t); t = setTimeout(function(){ applySearch(search.value); }, 140); });
+  }
+
+  function load(){
+    if(loaded || loading) return;
+    loading = true;
+    Promise.all([
+      fetch('assets/docs_tree.json?v=2026-08-11a').then(function(r){ return r.json(); }),
+      fetch('assets/drive_links.json?v=2026-08-11a').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
+    ]).then(function(res){
+      DATA = res[0]; LINKS = res[1] || {};
+      loaded = true; loading = false;
+      render();
+    }).catch(function(err){
+      loading = false;
+      treeEl.innerHTML = '<div class="docs-empty">Could not load the document library.</div>';
+      console.error('docs load failed', err);
+    });
+  }
+
+  // Tab switching between the map and the documents library.
+  function setTab(which){
+    var docs = which === 'docs';
+    docsView.hidden = !docs;
+    mapView.hidden = docs;
+    document.querySelectorAll('.dtab-live').forEach(function(b){
+      b.setAttribute('aria-pressed', b.dataset.dtab === which ? 'true' : 'false');
+    });
+    if(docs) load();
+  }
+  document.querySelectorAll('.dtab-live').forEach(function(b){
+    b.addEventListener('click', function(){ setTab(b.dataset.dtab); });
+  });
+})();
 </script>
 </body>
 </html>
