@@ -228,6 +228,20 @@ def short_label(line):
     return 0 < len(line) <= 46 and not is_prose(line) and not is_section_title(line)
 
 
+def heading_like(line):
+    """A short line that reads as a heading by POSITION, not capitalisation.
+
+    is_heading() demands title-case, so it misses sentence-case section heads the
+    decks use freely ('The raw-nut & loose-husk trap'). This is the looser,
+    structural test the classifier uses to place h2/h3: short, not a paragraph,
+    not a stat value, has letters, and doesn't trail off with sentence/list
+    punctuation.
+    """
+    if not line or len(line) > 72 or line.endswith((".", ",", ":", ";", "!", "?")):
+        return False
+    return not is_prose(line) and not is_value(line) and any(c.isalpha() for c in line)
+
+
 def take_stat(kept, i):
     """Consume a value line + up to two short label lines starting at i.
 
@@ -314,16 +328,29 @@ def parse_deck(path):
             else:
                 blocks.append(("stat", v, lab))
                 i = j
-        elif (len(s) <= 16 and short_label(s)
-              and is_heading(nxt) and (i + 2) < len(kept) and is_prose(kept[i + 2])):
-            # a tight period/label + heading + prose is a timeline row too, even
-            # when the label isn't numeric ('Pre-1980s' / 'Traditional Craft
-            # Origins' / prose) — keeps a timeline visually uniform.
-            blocks.append(("entry", s, nxt, kept[i + 2]))
-            i += 3
-        elif is_heading(s) and nxt and is_prose(nxt):
-            blocks.append(("h3", s))
-            i += 1
+        elif heading_like(s):
+            nxt2 = kept[i + 2] if i + 2 < len(kept) else ""
+            if len(s) <= 16 and heading_like(nxt) and is_prose(nxt2):
+                # a tight period/label + heading + prose is a timeline row, even
+                # when the label isn't numeric ('Pre-1980s' / 'Traditional Craft
+                # Origins' / prose) — keeps a timeline visually uniform.
+                blocks.append(("entry", s, nxt, nxt2))
+                i += 3
+            elif is_prose(nxt):
+                # heading immediately followed by its paragraph = a sub-heading
+                blocks.append(("h3", s))
+                i += 1
+            elif is_heading(s) and heading_like(nxt) and is_prose(nxt2):
+                # a deliberate TITLE-CASE line that introduces a sub-heading+prose
+                # is a SECTION head, e.g. 'The Problem We Are Trying to Solve' →
+                # 'The raw-nut & loose-husk trap' → prose. Gated on is_heading (not
+                # the looser heading_like) so dense 'short / short / prose' lists
+                # don't each mint a false banner.
+                blocks.append(("h2", s))
+                i += 1
+            else:
+                blocks.append(("k", s))
+                i += 1
         elif is_prose(s):
             blocks.append(("p", s))
             i += 1
@@ -346,6 +373,18 @@ PAGE_TMPL = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title} — Swarna Andhra case study</title>
+<script>
+/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
+   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
+   stays fully visible and the GSAP layer below is skipped. */
+(function(){{
+  try{{
+    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
+             && 'IntersectionObserver' in window;
+    if(ok) document.documentElement.className += ' anim';
+  }}catch(e){{}}
+}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -410,6 +449,26 @@ hr{{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 footer{{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}}
 footer b{{color:var(--mut);font-weight:600;}}
+/* ---- motion + interaction polish ---- */
+/* initial hidden states, applied only while .anim is armed (see head script) */
+.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+.anim .hero .cell,.anim .body>*{{opacity:0;}}
+.reading{{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
+  background:linear-gradient(90deg,var(--lime2),var(--lime));
+  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}}
+.hero .cell,.grid .cell{{transition:transform .28s cubic-bezier(.2,.7,.2,1),
+  border-color .28s ease,box-shadow .28s ease;will-change:transform;}}
+.hero .cell:hover{{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}}
+.grid .cell:hover{{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
+  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}}
+.back{{transition:color .2s ease,gap .2s ease;}}
+.back:hover{{gap:11px;}}
+@media (prefers-reduced-motion: reduce){{
+  *{{animation:none!important;transition:none!important;}}
+  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+  .anim .hero .cell,.anim .body>*{{opacity:1;}}
+}}
 </style>
 </head>
 <body>
@@ -430,6 +489,64 @@ footer b{{color:var(--mut);font-weight:600;}}
     Prepared for district &amp; mandal officers.
   </footer>
 </div>
+<div class="reading" aria-hidden="true"></div>
+<script src="../assets/dash/gsap.js"></script>
+<script>
+(function(){{
+  var root = document.documentElement;
+  var armed = root.classList.contains('anim');
+  var g = window.gsap;
+
+  // Reading-progress bar runs regardless of the entrance-animation gate.
+  var bar = document.querySelector('.reading');
+  function onScroll(){{
+    var max = root.scrollHeight - root.clientHeight;
+    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
+  }}
+  addEventListener('scroll', onScroll, {{passive:true}});
+  onScroll();
+
+  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
+  // the .anim class is what hides content, so removing it is the safe fallback.
+  if(!armed || !g){{ root.classList.remove('anim'); return; }}
+
+  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
+  g.config({{nullTargetWarn:false}});
+
+  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
+  // backgrounded tab or some embedded preview panes the frame loop is paused, which
+  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
+  // drop .anim (reveal all, no animation) rather than risk invisible content.
+  var alive = false;
+  requestAnimationFrame(function(){{ alive = true; }});
+  setTimeout(function(){{
+    if(!alive){{ root.classList.remove('anim'); return; }}
+
+    g.timeline({{defaults:{{ease:'power3.out'}}}})
+      .fromTo('.eyebrow',{{opacity:0,y:12}},{{opacity:1,y:0,duration:.5}})
+      .fromTo('h1',{{opacity:0,y:24}},{{opacity:1,y:0,duration:.7}},'-=.28')
+      .fromTo('.summary',{{opacity:0,y:16}},{{opacity:1,y:0,duration:.6}},'-=.46')
+      .fromTo('.meta .tag',{{opacity:0,y:10}},{{opacity:1,y:0,duration:.4,stagger:.06}},'-=.34')
+      .fromTo('.hero .cell',{{opacity:0,y:22}},{{opacity:1,y:0,duration:.55,stagger:.08}},'-=.24');
+
+    // scroll-reveal each body block as it enters; stat grids stagger their cards
+    var io = new IntersectionObserver(function(items){{
+      items.forEach(function(en){{
+        if(!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el);
+        if(el.classList.contains('grid')){{
+          g.set(el,{{opacity:1}});
+          g.fromTo(el.children,{{opacity:0,y:18}},
+            {{opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'}});
+        }} else {{
+          g.fromTo(el,{{opacity:0,y:22}},{{opacity:1,y:0,duration:.6,ease:'power2.out'}});
+        }}
+      }});
+    }},{{rootMargin:'0px 0px -8% 0px',threshold:.12}});
+    document.querySelectorAll('.body > *').forEach(function(el){{ io.observe(el); }});
+  }}, 260);
+}})();
+</script>
 </body>
 </html>
 """

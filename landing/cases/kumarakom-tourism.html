@@ -4,6 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Kumarakom Responsible Tourism Model — Swarna Andhra case study</title>
+<script>
+/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
+   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
+   stays fully visible and the GSAP layer below is skipped. */
+(function(){
+  try{
+    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
+             && 'IntersectionObserver' in window;
+    if(ok) document.documentElement.className += ' anim';
+  }catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,6 +80,26 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
+/* ---- motion + interaction polish ---- */
+/* initial hidden states, applied only while .anim is armed (see head script) */
+.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+.anim .hero .cell,.anim .body>*{opacity:0;}
+.reading{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
+  background:linear-gradient(90deg,var(--lime2),var(--lime));
+  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}
+.hero .cell,.grid .cell{transition:transform .28s cubic-bezier(.2,.7,.2,1),
+  border-color .28s ease,box-shadow .28s ease;will-change:transform;}
+.hero .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}
+.grid .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
+  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}
+.back{transition:color .2s ease,gap .2s ease;}
+.back:hover{gap:11px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important;}
+  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+  .anim .hero .cell,.anim .body>*{opacity:1;}
+}
 </style>
 </head>
 <body>
@@ -81,17 +113,17 @@ footer b{color:var(--mut);font-weight:600;}
   
   <hr>
   <div class="body">
-    <p class="k">Why Kumarakom needed a new approach</p>
+    <h3>Why Kumarakom needed a new approach</h3>
     <p>Tourism growth was strong, but local communities were not fully integrated into benefits and decisions.</p>
     <p class="k">Core challenge</p>
     <p class="k">Top-down tourism planning with limited community voice</p>
     <p class="k">Conflicts over resource use, employment and benefit sharing</p>
     <p class="k">Leakage of tourism spending outside the local economy</p>
-    <p class="k">Need to conserve fragile backwater ecosystems and local culture</p>
+    <h3>Need to conserve fragile backwater ecosystems and local culture</h3>
     <p>Case question for officials: How can mandals convert tourism footfall into local income without damaging natural and cultural assets?</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
-    <p class="k">Institutional model: a destination-level platform</p>
+    <h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2>
+    <h3>Institutional model: a destination-level platform</h3>
     <p>A Responsible Tourism Committee brought local government, industry and community together.</p>
     <p>Who sits at the table?</p>
     <p class="k">Panchayat / local government</p>
@@ -107,12 +139,12 @@ footer b{color:var(--mut);font-weight:600;}
     <p class="k">Local procurement norms</p>
     <p class="k">Price and quality assurance</p>
     <p class="k">Training and livelihood pilots</p>
-    <p class="k">Resource protection measures</p>
+    <h2>Resource protection measures</h2>
     <h3>Visitor experience packages</h3>
     <p>Design principle: put government, industry and community in one recurring forum so decisions on tourism products, benefits and safeguards are made jointly.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
-    <p class="k">Strategy 1: Link hotel demand with local supply</p>
+    <h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2>
+    <h3>Strategy 1: Link hotel demand with local supply</h3>
     <p>Local procurement became the economic engine of the model.</p>
     <p class="k">Demand mapping</p>
     <p class="k">What hotels buy regularly</p>
@@ -122,12 +154,10 @@ footer b{color:var(--mut);font-weight:600;}
     <p class="k">Samrudhi groups / SHGs aggregate produce</p>
     <p class="k">Price + quality</p>
     <p class="k">Committees build transparency</p>
-    <p class="k">Hotel linkage</p>
-    <p class="k">Farm/unit visits and regular orders</p>
-    <p>Key learning: Do not start with tourist packages alone. Start by organizing the local supply chain so community members can reliably serve tourism demand.</p>
+    <div class="entry"><div class="term">Hotel linkage</div><div><p class="eh">Farm/unit visits and regular orders</p><p class="eb">Key learning: Do not start with tourist packages alone. Start by organizing the local supply chain so community members can reliably serve tourism demand.</p></div></div>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
-    <p class="k">Strategy 2: Build community livelihoods around visitor experience</p>
+    <h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2>
+    <h3>Strategy 2: Build community livelihoods around visitor experience</h3>
     <p>The model diversified income by converting local skills, food and culture into tourism services.</p>
     <p class="k">Labour directories</p>
     <p class="k">Map skills and local workers for hotel jobs and services</p>
@@ -140,8 +170,8 @@ footer b{color:var(--mut);font-weight:600;}
     <h3>Replicable insight for AP</h3>
     <p>Build one local experience around each mandal&#x27;s strongest asset: agriculture, crafts, cuisine, temples, coastal livelihoods, tribal culture, nature trails or wetlands.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
-    <p class="k">Strategy 3: Protect the assets that attract tourists</p>
+    <h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2>
+    <h3>Strategy 3: Protect the assets that attract tourists</h3>
     <p>Kumarakom treated conservation, sanitation and cultural mapping as part of tourism management.</p>
     <p class="k">Ecosystem care</p>
     <p class="k">Mangrove regeneration</p>
@@ -161,49 +191,49 @@ footer b{color:var(--mut);font-weight:600;}
     <h3>Handicraft training</h3>
     <p>Key learning: Tourism plans must include environmental safeguards and cultural preservation from day one—not as a later add-on.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
-    <p class="k">Results achieved: measurable economic and social impact</p>
+    <h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2>
+    <h3>Results achieved: measurable economic and social impact</h3>
     <p>The model increased local income, enterprise creation, cultivation and tourist arrivals.</p>
     <p class="k">USD 626k</p>
     <p class="k">Estimated additional revenue</p>
     <div class="grid"><div class="cell"><div class="v">285</div><div class="l">Families benefitted</div></div><div class="cell"><div class="v">646</div><div class="l">Community members trained Local tourism-linked microenterprises</div></div><div class="cell"><div class="v">82%</div><div class="l"></div></div></div>
     <p class="k">Households involved in tourism-related activities</p>
     <div class="grid"><div class="cell"><div class="v">168 acres</div><div class="l">Land reclaimed for cultivation +20% international arrivals</div></div></div>
-    <p class="k">+30% domestic arrivals</p>
+    <h2>+30% domestic arrivals</h2>
     <h3>13 resorts under RT Classification</h3>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
-    <p class="k">Key lessons for district and mandal officials</p>
+    <h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2>
+    <h3>Key lessons for district and mandal officials</h3>
     <p>What made the model work—and what should be replicated carefully.</p>
-    <p class="k">Local government must anchor the platform</p>
+    <h3>Local government must anchor the platform</h3>
     <p>Mandal/district administration gives legitimacy and continuity.</p>
-    <p class="k">Private sector concerns need practical solutions</p>
+    <h3>Private sector concerns need practical solutions</h3>
     <p>Price, quality and reliability committees make procurement possible.</p>
-    <p class="k">Community confidence has to be built</p>
+    <h3>Community confidence has to be built</h3>
     <p>Use regular hotel-community interactions, exposure visits and transparent processes.</p>
-    <p class="k">Capacity building must be demand-led</p>
+    <h3>Capacity building must be demand-led</h3>
     <p>Train people in skills linked to actual hotel/visitor demand.</p>
-    <p class="k">Destination assets must be protected</p>
+    <h3>Destination assets must be protected</h3>
     <p>Tourism income depends on wetlands, beaches, culture, cleanliness and trust.</p>
     <p>Training prompt: Which 2–3 assets in your mandal can be converted into community-led tourism products without overuse?</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
+    <h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2>
     <h3>Replication strategy for Andhra Pradesh</h3>
     <p>A practical sequence district and mandal teams can adapt to local tourism assets.</p>
     <h3>Identify tourism anchors</h3>
     <p>Map beaches, temples, crafts, food, wetlands, hills, tribal circuits and agri-tourism points.</p>
-    <p class="k">Create a destination task force</p>
+    <h3>Create a destination task force</h3>
     <p>Include Mandal Parishad, Gram Panchayat, Tourism, DRDA/SHGs, hotels, transporters, youth and artisans.</p>
-    <p class="k">Map local supply and skills</p>
+    <h3>Map local supply and skills</h3>
     <p>List farmers, fishers, SHGs, artisans, cooks, guides and available facilities.</p>
-    <p class="k">Match supply with demand</p>
+    <h3>Match supply with demand</h3>
     <p>Run structured discussions with hotels/tour operators to define price, quality, quantity and delivery.</p>
     <h3>Pilot and monitor</h3>
     <p>Launch 1–2 low-risk experiences and procurement linkages; track income, participation, cleanliness and visitor feedback.</p>
     <p>Replicate the principles, not the exact product: coastal mandals may focus on fishing/boat experiences; temple towns on local food, crafts and heritage walks; tribal/hill mandals on guided nature and culture routes.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
-    <p class="k">90-day action plan and monitoring metrics</p>
+    <h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2>
+    <h3>90-day action plan and monitoring metrics</h3>
     <p>Use the case study to move from awareness to a small, visible pilot.</p>
     <div class="grid"><div class="cell"><div class="v">0–15 days</div><div class="l">Asset &amp; stakeholder mapping</div></div></div>
     <p class="k">Tourism assets, hotels, SHGs, producers, existing schemes</p>
@@ -229,5 +259,63 @@ footer b{color:var(--mut);font-weight:600;}
     Prepared for district &amp; mandal officers.
   </footer>
 </div>
+<div class="reading" aria-hidden="true"></div>
+<script src="../assets/dash/gsap.js"></script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var armed = root.classList.contains('anim');
+  var g = window.gsap;
+
+  // Reading-progress bar runs regardless of the entrance-animation gate.
+  var bar = document.querySelector('.reading');
+  function onScroll(){
+    var max = root.scrollHeight - root.clientHeight;
+    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
+  // the .anim class is what hides content, so removing it is the safe fallback.
+  if(!armed || !g){ root.classList.remove('anim'); return; }
+
+  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
+  g.config({nullTargetWarn:false});
+
+  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
+  // backgrounded tab or some embedded preview panes the frame loop is paused, which
+  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
+  // drop .anim (reveal all, no animation) rather than risk invisible content.
+  var alive = false;
+  requestAnimationFrame(function(){ alive = true; });
+  setTimeout(function(){
+    if(!alive){ root.classList.remove('anim'); return; }
+
+    g.timeline({defaults:{ease:'power3.out'}})
+      .fromTo('.eyebrow',{opacity:0,y:12},{opacity:1,y:0,duration:.5})
+      .fromTo('h1',{opacity:0,y:24},{opacity:1,y:0,duration:.7},'-=.28')
+      .fromTo('.summary',{opacity:0,y:16},{opacity:1,y:0,duration:.6},'-=.46')
+      .fromTo('.meta .tag',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06},'-=.34')
+      .fromTo('.hero .cell',{opacity:0,y:22},{opacity:1,y:0,duration:.55,stagger:.08},'-=.24');
+
+    // scroll-reveal each body block as it enters; stat grids stagger their cards
+    var io = new IntersectionObserver(function(items){
+      items.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el);
+        if(el.classList.contains('grid')){
+          g.set(el,{opacity:1});
+          g.fromTo(el.children,{opacity:0,y:18},
+            {opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'});
+        } else {
+          g.fromTo(el,{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'});
+        }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    document.querySelectorAll('.body > *').forEach(function(el){ io.observe(el); });
+  }, 260);
+})();
+</script>
 </body>
 </html>

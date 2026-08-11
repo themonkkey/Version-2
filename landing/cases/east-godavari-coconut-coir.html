@@ -4,6 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Unlocking East Godavari&#x27;s Coconut &amp; Coir Potential — Swarna Andhra case study</title>
+<script>
+/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
+   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
+   stays fully visible and the GSAP layer below is skipped. */
+(function(){
+  try{
+    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
+             && 'IntersectionObserver' in window;
+    if(ok) document.documentElement.className += ' anim';
+  }catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,6 +80,26 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
+/* ---- motion + interaction polish ---- */
+/* initial hidden states, applied only while .anim is armed (see head script) */
+.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+.anim .hero .cell,.anim .body>*{opacity:0;}
+.reading{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
+  background:linear-gradient(90deg,var(--lime2),var(--lime));
+  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}
+.hero .cell,.grid .cell{transition:transform .28s cubic-bezier(.2,.7,.2,1),
+  border-color .28s ease,box-shadow .28s ease;will-change:transform;}
+.hero .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}
+.grid .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
+  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}
+.back{transition:color .2s ease,gap .2s ease;}
+.back:hover{gap:11px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important;}
+  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+  .anim .hero .cell,.anim .body>*{opacity:1;}
+}
 </style>
 </head>
 <body>
@@ -81,14 +113,14 @@ footer b{color:var(--mut);font-weight:600;}
   
   <hr>
   <div class="body">
-    <p class="k">The Problem We Are Trying to Solve</p>
-    <p class="k">The raw-nut &amp; loose-husk trap</p>
+    <h2>The Problem We Are Trying to Solve</h2>
+    <h3>The raw-nut &amp; loose-husk trap</h3>
     <p>Most East Godavari coconut leaves the district as raw nuts, copra or unprocessed husk — the lowest-margin forms in the value chain.</p>
     <h3>Value leaks downstream</h3>
     <p>Coir yarn, geotextiles, activated carbon, desiccated coconut and VCO — the profitable steps — happen in Kerala, Tamil Nadu, or overseas.</p>
     <h3>Farm-gate price volatility</h3>
     <p>Copra and coconut oil prices swing with global edible-oil markets, leaving growers as price-takers with thin, unstable margins.</p>
-    <p class="k">Husk &amp; shell go to waste</p>
+    <h3>Husk &amp; shell go to waste</h3>
     <p>Millions of husks and shells are burnt, dumped or sold as low-value fuel instead of becoming coir fibre or activated carbon feedstock.</p>
     <h3>The Answer: Build the Coconut Value Ecosystem</h3>
     <p>Shift East Godavari from a coconut-growing district to a coconut-value district. Anchor coir processing, activated carbon manufacturing, testing and branding inside the district — so the margins that currently leave with the truck stay with local farmers, workers and MSMEs.</p>
@@ -125,13 +157,13 @@ footer b{color:var(--mut);font-weight:600;}
     <p class="k">Activated carbon, coir pith blocks, VCO, biochar</p>
     <p class="k">›</p>
     <p class="k">Market</p>
-    <p class="k">Export (EU/US/Gulf) + growing domestic demand</p>
-    <p class="k">East Godavari captures every link — not just the grove</p>
+    <h2>Export (EU/US/Gulf) + growing domestic demand</h2>
+    <h3>East Godavari captures every link — not just the grove</h3>
     <p>Today, most links after &quot;Aggregate&quot; happen outside the district. Localising even two of them — coir processing and activated carbon manufacturing — meaningfully lifts realised value per nut and creates thousands of downstream jobs.</p>
-    <p class="k">Five Pillars Behind the Results</p>
+    <h2>Five Pillars Behind the Results</h2>
     <h3>Quality planting material</h3>
     <p>High-yield hybrid varieties and nursery networks to replant ageing palms and lift productivity.</p>
-    <p class="k">Modern coir processing units</p>
+    <h3>Modern coir processing units</h3>
     <p>Decortication, spinning and geotextile weaving units — closer to the groves, not hundreds of km away.</p>
     <h3>Activated carbon manufacturing</h3>
     <p>Shell carbonisation and activation plants turning waste shell into a high-value industrial input.</p>
@@ -142,48 +174,48 @@ footer b{color:var(--mut);font-weight:600;}
     <p class="k">Who Benefits — Farmers, Workers and the State</p>
     <p class="k">For Farmers &amp; Workers</p>
     <p class="k">Direct access to processors + export markets, less middleman leakage</p>
-    <p class="k">Fair value for husk &amp; shell — no longer burnt or dumped as waste</p>
+    <h3>Fair value for husk &amp; shell — no longer burnt or dumped as waste</h3>
     <p>Thousands of downstream jobs — especially for women in coir spinning &amp; weaving</p>
     <p>Skill upgrade via training in decortication, quality grading, and activated-carbon operations</p>
     <p>Insurance, credit and quality-input access through FPO / cluster structures</p>
     <h3>For the District &amp; Global Buyers</h3>
     <p>MSME cluster growth — coir products, activated carbon, packaging, logistics</p>
-    <p class="k">Higher GST / export revenue captured within the district and the state</p>
+    <h3>Higher GST / export revenue captured within the district and the state</h3>
     <p>Environmental gains — husk/shell diverted from open burning, effluent treatment built in</p>
     <p>Traceable, certified product for EU / US / Gulf retail and industrial buyers</p>
     <p>A resilient, diversified coconut economy, less exposed to a single crop or price cycle</p>
-    <p class="k">Roadmap for East Godavari District</p>
+    <h2>Roadmap for East Godavari District</h2>
     <h3>Map &amp; mobilise</h3>
     <p>Identify high-density coconut mandals (Konaseema belt) and existing FPOs. Prioritise areas with weak processing and viable land near a highway/port corridor.</p>
-    <p class="k">Anchor the processing zone</p>
+    <h3>Anchor the processing zone</h3>
     <p>Designate a coir &amp; activated-carbon cluster (mini industrial park model). Blend private capex with Coir Board, MSME and state matching support.</p>
     <h3>Build shared infrastructure</h3>
     <p>Common retting yards, decortication units, carbonisation/activation plants, effluent treatment. Shared infra brings small processors above the compliance bar.</p>
-    <p class="k">Certify for premium markets</p>
+    <h3>Certify for premium markets</h3>
     <p>Push BIS, Coir Board and export-quality certification, plus consistent activated-carbon grading. Certification is what unlocks premium buyers.</p>
-    <p class="k">Link to markets &amp; diversify</p>
+    <h3>Link to markets &amp; diversify</h3>
     <p>Anchor buyer contracts (EU/US/Gulf) plus a domestic &quot;East Godavari Coconut&quot; brand play. Diversify into VCO, coir pith, biochar and briquettes.</p>
-    <p class="k">Challenges to Plan For</p>
-    <p class="k">Ageing palms &amp; low yields</p>
+    <h2>Challenges to Plan For</h2>
+    <h3>Ageing palms &amp; low yields</h3>
     <p>Many palms are past peak productivity. Replanting programmes, hybrid varieties, and disease management (e.g. root wilt) are non-negotiable.</p>
-    <p class="k">Fragmented husk &amp; shell collection</p>
+    <h3>Fragmented husk &amp; shell collection</h3>
     <p>Husk and shell are scattered across thousands of small holdings. Aggregation logistics and cluster-level collection points are essential.</p>
     <h3>Effluent &amp; environmental load</h3>
     <p>Retting effluent and carbonisation emissions strain local ecology. Mandatory effluent treatment, water reuse, and emission controls are essential.</p>
     <h3>Market volatility &amp; competition</h3>
     <p>Established coir and carbon players in Kerala, Tamil Nadu and Sri Lanka compete hard. Certification and differentiation are the hedge.</p>
-    <p class="k">Capital intensity of processing</p>
+    <h3>Capital intensity of processing</h3>
     <p>Decortication lines and carbon activation plants are lumpy investments. Phase spend, blend Coir Board/MSME subsidies, use anchor-buyer commitments.</p>
-    <p class="k">What Officers Should Take Away</p>
-    <p class="k">Processing is the multiplier</p>
+    <h2>What Officers Should Take Away</h2>
+    <h3>Processing is the multiplier</h3>
     <p>The same coconut is worth several times more once converted to coir yarn, geotextiles or activated carbon. That gap is captured today by someone else.</p>
     <h3>Cluster, don&#x27;t scatter</h3>
     <p>Processing thrives on density — shared retting yards, ETPs, labs, port access. Concentrate incentives in a few well-chosen zones, not every mandal.</p>
-    <p class="k">Compliance is the moat</p>
+    <h3>Compliance is the moat</h3>
     <p>BIS certification, Coir Board grading and consistent activated-carbon quality are what unlock EU, US and Gulf buyers. Certification is not paperwork — it is the product.</p>
-    <p class="k">Diversify what you sell</p>
+    <h3>Diversify what you sell</h3>
     <p>Move beyond raw copra. Coir pith, geotextiles, activated carbon, VCO and biochar open new margins and hedge price risk.</p>
-    <p class="k">Farmers gain only if integrated</p>
+    <h3>Farmers gain only if integrated</h3>
     <p>Processing without the farmer in the value chain reproduces the middleman problem. Anchor FPOs and cluster contracts from day one.</p>
   </div>
   <footer>
@@ -191,5 +223,63 @@ footer b{color:var(--mut);font-weight:600;}
     Prepared for district &amp; mandal officers.
   </footer>
 </div>
+<div class="reading" aria-hidden="true"></div>
+<script src="../assets/dash/gsap.js"></script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var armed = root.classList.contains('anim');
+  var g = window.gsap;
+
+  // Reading-progress bar runs regardless of the entrance-animation gate.
+  var bar = document.querySelector('.reading');
+  function onScroll(){
+    var max = root.scrollHeight - root.clientHeight;
+    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
+  // the .anim class is what hides content, so removing it is the safe fallback.
+  if(!armed || !g){ root.classList.remove('anim'); return; }
+
+  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
+  g.config({nullTargetWarn:false});
+
+  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
+  // backgrounded tab or some embedded preview panes the frame loop is paused, which
+  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
+  // drop .anim (reveal all, no animation) rather than risk invisible content.
+  var alive = false;
+  requestAnimationFrame(function(){ alive = true; });
+  setTimeout(function(){
+    if(!alive){ root.classList.remove('anim'); return; }
+
+    g.timeline({defaults:{ease:'power3.out'}})
+      .fromTo('.eyebrow',{opacity:0,y:12},{opacity:1,y:0,duration:.5})
+      .fromTo('h1',{opacity:0,y:24},{opacity:1,y:0,duration:.7},'-=.28')
+      .fromTo('.summary',{opacity:0,y:16},{opacity:1,y:0,duration:.6},'-=.46')
+      .fromTo('.meta .tag',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06},'-=.34')
+      .fromTo('.hero .cell',{opacity:0,y:22},{opacity:1,y:0,duration:.55,stagger:.08},'-=.24');
+
+    // scroll-reveal each body block as it enters; stat grids stagger their cards
+    var io = new IntersectionObserver(function(items){
+      items.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el);
+        if(el.classList.contains('grid')){
+          g.set(el,{opacity:1});
+          g.fromTo(el.children,{opacity:0,y:18},
+            {opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'});
+        } else {
+          g.fromTo(el,{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'});
+        }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    document.querySelectorAll('.body > *').forEach(function(el){ io.observe(el); });
+  }, 260);
+})();
+</script>
 </body>
 </html>

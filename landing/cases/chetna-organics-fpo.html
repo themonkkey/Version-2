@@ -4,6 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chetna Organics: Building a Farmer-Owned Supply Chain — Swarna Andhra case study</title>
+<script>
+/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
+   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
+   stays fully visible and the GSAP layer below is skipped. */
+(function(){
+  try{
+    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
+             && 'IntersectionObserver' in window;
+    if(ok) document.documentElement.className += ' anim';
+  }catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,6 +80,26 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
+/* ---- motion + interaction polish ---- */
+/* initial hidden states, applied only while .anim is armed (see head script) */
+.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+.anim .hero .cell,.anim .body>*{opacity:0;}
+.reading{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
+  background:linear-gradient(90deg,var(--lime2),var(--lime));
+  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}
+.hero .cell,.grid .cell{transition:transform .28s cubic-bezier(.2,.7,.2,1),
+  border-color .28s ease,box-shadow .28s ease;will-change:transform;}
+.hero .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}
+.grid .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
+  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}
+.back{transition:color .2s ease,gap .2s ease;}
+.back:hover{gap:11px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important;}
+  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+  .anim .hero .cell,.anim .body>*{opacity:1;}
+}
 </style>
 </head>
 <body>
@@ -85,32 +117,34 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Small and marginal farmers face the same pressures across India — and the same solutions apply to your mandal.</p>
     <h3>Poor returns</h3>
     <p>Input of Rs. 2000 returned only Rs. 1500 — farming became unviable and farmers quit cotton.</p>
-    <p class="k">Exploitation at the mandi</p>
+    <h3>Exploitation at the mandi</h3>
     <p>Middlemen cheated farmers on weight, quality and price; mandi rates often fell below MSP.</p>
     <h3>Degraded land</h3>
     <p>Heavy chemical use ruined soil health, raising costs season after season.</p>
     <h3>No collective strength</h3>
     <p>Acting alone, a small farmer had no bargaining power and no access to credit or markets.</p>
-    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <h2>Chetna Organics | Sustainable Agriculture Supply Chain</h2>
     <h3>What Chetna Organics Did</h3>
     <p>A farmer-owned model combining organic cotton, fair trade and a supply chain fully controlled by farmers.</p>
-    <div class="entry"><div class="term">The journey</div><div><p class="eh">2004</p><p class="eb">Started as a pilot in Telangana (erstwhile AP) &amp; Maharashtra, facilitated by Solidaridad (a Dutch NGO).</p></div></div>
+    <p class="k">The journey</p>
+    <div class="grid"><div class="cell"><div class="v">2004</div><div class="l"></div></div></div>
+    <p>Started as a pilot in Telangana (erstwhile AP) &amp; Maharashtra, facilitated by Solidaridad (a Dutch NGO).</p>
     <div class="grid"><div class="cell"><div class="v">2007</div><div class="l"></div></div></div>
     <p>COFA formed by 8 district cooperatives; expanded into Odisha (Kalahandi, Bolangir).</p>
     <div class="grid"><div class="cell"><div class="v">2009</div><div class="l"></div></div></div>
     <p>COAPCL — a farmer-owned producer company — set up to market produce directly.</p>
     <div class="grid"><div class="cell"><div class="v">24 crore</div><div class="l">Revenue as on March 2025</div></div><div class="cell"><div class="v">35000</div><div class="l">Small and Marginal Farmers</div></div><div class="cell"><div class="v">188</div><div class="l">Self-Help Groups federated under COFA Global</div></div></div>
     <p class="k">buyers — Marks &amp; Spencer, H&amp;M, Japan, Denmark</p>
-    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <h2>Chetna Organics | Sustainable Agriculture Supply Chain</h2>
     <h3>The Three-Tier Farmer Structure</h3>
     <p>Every farmer is simultaneously a member at all levels — ownership and decisions stay with farmers.</p>
     <div class="entry"><div class="term">Village level</div><div><p class="eh">Self-Help Group</p><p class="eb">10–20 farmers. Meet monthly on inputs, finance, standards &amp; marketing. Monitor that organic norms are followed.</p></div></div>
-    <p class="k">Block / District level</p>
+    <h2>Block / District level</h2>
     <h3>Cooperative</h3>
     <p>600–700 farmers. A legal entity that can take loans, aggregate produce and hold sub-licence for certification.</p>
     <div class="entry"><div class="term">National level</div><div><p class="eh">Producer Company (COAPCL)</p><p class="eb">Farmer-owned trading arm. Sells directly to retailers in India and abroad; holds organic &amp; fair-trade certification.</p></div></div>
     <p>Democratic, bottom-up: board members of the producer company are elected from each cooperative.</p>
-    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <h2>Chetna Organics | Sustainable Agriculture Supply Chain</h2>
     <h3>Transforming the Supply Chain</h3>
     <p>Removing middlemen put control — and margins — back in farmers&#x27; hands.</p>
     <p class="k">BEFORE</p>
@@ -121,15 +155,15 @@ footer b{color:var(--mut);font-weight:600;}
     <h2>AFTER (CHETNA MODEL)</h2>
     <p class="k">Farmer / SHG</p>
     <p class="k">Cooperative</p>
-    <p class="k">Co-op Mandi &amp; COAPCL</p>
+    <h2>Co-op Mandi &amp; COAPCL</h2>
     <h3>Buyer (direct)</h3>
     <p>Result: Farmers now earn Rs. 3,950–4,050 per quintal of organic cotton vs Rs. 3,000 market price — and they set the base price.</p>
-    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <h2>Chetna Organics | Sustainable Agriculture Supply Chain</h2>
     <h3>Four Things That Made It Work</h3>
     <p>The pillars behind Chetna&#x27;s success — the elements worth replicating.</p>
-    <p class="k">1. Trust through visible results</p>
+    <h3>1. Trust through visible results</h3>
     <p>First worked with a few farmers for 2–3 years to prove organic farming lowers input cost and stabilises yield before scaling up.</p>
-    <p class="k">2. A systemised supply chain</p>
+    <h3>2. A systemised supply chain</h3>
     <p>Eliminated middlemen; cooperatives lobbied for their own market place and the producer company linked farmers to buyers.</p>
     <div class="grid"><div class="cell"><div class="v">3. A competitive niche</div><div class="l"></div></div></div>
     <p>Organic + fair trade created exclusivity. Organic farming saved ~Rs. 4,000 per acre by cutting chemical inputs.</p>
@@ -138,29 +172,29 @@ footer b{color:var(--mut);font-weight:600;}
     <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
     <p class="k">Lessons for Strengthening Your FPO</p>
     <p class="k">What a mandal officer can act on — Part 1 of 2</p>
-    <p class="k">Start small, build genuine ownership</p>
+    <h3>Start small, build genuine ownership</h3>
     <p>Form tight SHGs of 10–20 farmers that meet monthly. Federate them upward. Let farmers make the decisions, so the FPO truly belongs to them.</p>
-    <p class="k">Demonstrate before you scale</p>
+    <h3>Demonstrate before you scale</h3>
     <p>Run a small demo plot for 2–3 seasons. Visible results convert sceptical farmers far better than a meeting ever will.</p>
-    <p class="k">Aggregate to gain bargaining power</p>
+    <h3>Aggregate to gain bargaining power</h3>
     <p>Pool produce through the FPO so members negotiate as one. Use the APMC reforms to create your own collection point and skip exploitative middlemen.</p>
     <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
     <p class="k">Lessons for Strengthening Your FPO</p>
     <p class="k">What a mandal officer can act on — Part 2 of 2</p>
-    <p class="k">Build a niche &amp; certification</p>
+    <h3>Build a niche &amp; certification</h3>
     <p>Help the FPO move into organic, GI or fair-trade lines where margins are higher. Certification and traceability (e.g. barcoding) command premium prices.</p>
-    <p class="k">Forge direct, lasting buyer links</p>
+    <h3>Forge direct, lasting buyer links</h3>
     <p>Connect the FPO to institutional and export buyers. Direct relationships and assured quality replace one-off, low-price mandi sales.</p>
-    <p class="k">Make it self-sustaining &amp; transparent</p>
+    <h3>Make it self-sustaining &amp; transparent</h3>
     <p>Use trade profits to fund certification and operations. Build internal control systems and bottom-up monitoring so the FPO outlives any subsidy or officer.</p>
-    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <h2>Chetna Organics | Sustainable Agriculture Supply Chain</h2>
     <h3>Your Role as a Mandal Officer</h3>
     <p>A practical checklist to take back to the field.</p>
     <h3>Identify &amp; mobilise</h3>
     <p>Map willing small/marginal farmers; help them form and register SHGs and cooperatives.</p>
     <h3>Enable, don&#x27;t control</h3>
     <p>Facilitate meetings and capacity-building; keep ownership and voting with farmers.</p>
-    <p class="k">Link to schemes &amp; credit</p>
+    <h3>Link to schemes &amp; credit</h3>
     <p>Connect the FPO to institutional credit, insurance, NREGS works and govt. schemes.</p>
     <h3>Open markets</h3>
     <p>Use APMC reforms; help set up collection centres and connect to bulk/export buyers.</p>
@@ -168,7 +202,7 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Push for organic / certified / processed lines that earn a premium over raw produce.</p>
     <h3>Ensure transparency</h3>
     <p>Set up simple internal monitoring so members trust the system and it stays sustainable.</p>
-    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <h2>Chetna Organics | Sustainable Agriculture Supply Chain</h2>
     <h2>THE ONE TAKEAWAY</h2>
     <p>When farmers own the supply chain, they capture the value.</p>
     <p>A strong FPO is not built by an officer issuing orders — it is built by helping farmers organise, prove the model on the ground, and connect directly to markets. That is how Chetna turned abandoned cotton fields into a premium, farmer-owned business.</p>
@@ -180,5 +214,63 @@ footer b{color:var(--mut);font-weight:600;}
     Prepared for district &amp; mandal officers.
   </footer>
 </div>
+<div class="reading" aria-hidden="true"></div>
+<script src="../assets/dash/gsap.js"></script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var armed = root.classList.contains('anim');
+  var g = window.gsap;
+
+  // Reading-progress bar runs regardless of the entrance-animation gate.
+  var bar = document.querySelector('.reading');
+  function onScroll(){
+    var max = root.scrollHeight - root.clientHeight;
+    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
+  // the .anim class is what hides content, so removing it is the safe fallback.
+  if(!armed || !g){ root.classList.remove('anim'); return; }
+
+  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
+  g.config({nullTargetWarn:false});
+
+  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
+  // backgrounded tab or some embedded preview panes the frame loop is paused, which
+  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
+  // drop .anim (reveal all, no animation) rather than risk invisible content.
+  var alive = false;
+  requestAnimationFrame(function(){ alive = true; });
+  setTimeout(function(){
+    if(!alive){ root.classList.remove('anim'); return; }
+
+    g.timeline({defaults:{ease:'power3.out'}})
+      .fromTo('.eyebrow',{opacity:0,y:12},{opacity:1,y:0,duration:.5})
+      .fromTo('h1',{opacity:0,y:24},{opacity:1,y:0,duration:.7},'-=.28')
+      .fromTo('.summary',{opacity:0,y:16},{opacity:1,y:0,duration:.6},'-=.46')
+      .fromTo('.meta .tag',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06},'-=.34')
+      .fromTo('.hero .cell',{opacity:0,y:22},{opacity:1,y:0,duration:.55,stagger:.08},'-=.24');
+
+    // scroll-reveal each body block as it enters; stat grids stagger their cards
+    var io = new IntersectionObserver(function(items){
+      items.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el);
+        if(el.classList.contains('grid')){
+          g.set(el,{opacity:1});
+          g.fromTo(el.children,{opacity:0,y:18},
+            {opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'});
+        } else {
+          g.fromTo(el,{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'});
+        }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    document.querySelectorAll('.body > *').forEach(function(el){ io.observe(el); });
+  }, 260);
+})();
+</script>
 </body>
 </html>

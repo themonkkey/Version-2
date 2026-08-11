@@ -4,6 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biofloc Tilapia Farming — Swarna Andhra case study</title>
+<script>
+/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
+   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
+   stays fully visible and the GSAP layer below is skipped. */
+(function(){
+  try{
+    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
+             && 'IntersectionObserver' in window;
+    if(ok) document.documentElement.className += ' anim';
+  }catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -68,6 +80,26 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
+/* ---- motion + interaction polish ---- */
+/* initial hidden states, applied only while .anim is armed (see head script) */
+.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+.anim .hero .cell,.anim .body>*{opacity:0;}
+.reading{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
+  background:linear-gradient(90deg,var(--lime2),var(--lime));
+  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}
+.hero .cell,.grid .cell{transition:transform .28s cubic-bezier(.2,.7,.2,1),
+  border-color .28s ease,box-shadow .28s ease;will-change:transform;}
+.hero .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}
+.grid .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
+  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}
+.back{transition:color .2s ease,gap .2s ease;}
+.back:hover{gap:11px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important;}
+  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+  .anim .hero .cell,.anim .body>*{opacity:1;}
+}
 </style>
 </head>
 <body>
@@ -82,13 +114,13 @@ footer b{color:var(--mut);font-weight:600;}
   <hr>
   <div class="body">
     <h2>THE CONCEPT</h2>
-    <h3>What is Biofloc Fish Farming?</h3>
+    <p>What is Biofloc Fish Farming?</p>
     <p>Biofloc is a high-density fish farming method carried out in a controlled tank, where naturally occurring microbes convert fish waste into useful protein-rich nutrients — recycled back as feed.</p>
     <h3>Controlled environment</h3>
     <p>Farming happens in a single tank, not an open pond — usable even where no water body exists.</p>
     <h3>Waste becomes feed</h3>
     <p>Microbial &#x27;floc&#x27; converts fish waste into nutrients, cutting feed cost and pollution.</p>
-    <p class="k">High density, small space</p>
+    <h3>High density, small space</h3>
     <p>Large yields from a compact footprint set up beside the household.</p>
     <h2>WHY IT SUITS RURAL HOUSEHOLDS</h2>
     <p class="k">No pond or river required</p>
@@ -105,7 +137,7 @@ footer b{color:var(--mut);font-weight:600;}
     <div class="entry"><div class="term">₹1,35,000</div><div><p class="eh">Income per cycle ≈ $1,800 every 8 months</p><p class="eb">Fish reach 300–500 g in a single 8-month cycle.</p></div></div>
     <p>A previously landless group now runs a viable micro-enterprise — proof that the model creates real, repeatable household income without access to open water.</p>
     <h2>THE MECHANICS</h2>
-    <p class="k">How the CMFRI Model Was Delivered</p>
+    <h2>How the CMFRI Model Was Delivered</h2>
     <h3>Identify &amp; organise</h3>
     <p>Select eligible SC families and form a self-help group (SHG).</p>
     <h3>Build the unit</h3>
@@ -118,7 +150,7 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Harvest at 300–500 g; earn ₹1.35 lakh per 8-month cycle.</p>
     <p>CMFRI provided the tank, fry, feed and continuous technical guidance — the families provided labour and ownership.</p>
     <h2>WHY IT MATTERS</h2>
-    <p class="k">A Tool for Inclusive Rural Development</p>
+    <h2>A Tool for Inclusive Rural Development</h2>
     <h3>Reaches the landless</h3>
     <p>Designed under the Scheduled Caste Sub-Plan to benefit families without access to open water bodies.</p>
     <h3>Builds entrepreneurs</h3>
@@ -150,7 +182,7 @@ footer b{color:var(--mut);font-weight:600;}
     <p class="k">Track growth, costs &amp; sales as a demo unit</p>
     <p class="k">Use success to onboard more groups</p>
     <h2>FOR THE OFFICER</h2>
-    <p class="k">Key Factors for a Successful Replication</p>
+    <h2>Key Factors for a Successful Replication</h2>
     <h3>Convergence</h3>
     <p>Combine SCSP, fishery dept &amp; NRLM schemes for capital and subsidy.</p>
     <h3>Technical hand-holding</h3>
@@ -170,5 +202,63 @@ footer b{color:var(--mut);font-weight:600;}
     Prepared for district &amp; mandal officers.
   </footer>
 </div>
+<div class="reading" aria-hidden="true"></div>
+<script src="../assets/dash/gsap.js"></script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var armed = root.classList.contains('anim');
+  var g = window.gsap;
+
+  // Reading-progress bar runs regardless of the entrance-animation gate.
+  var bar = document.querySelector('.reading');
+  function onScroll(){
+    var max = root.scrollHeight - root.clientHeight;
+    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
+  // the .anim class is what hides content, so removing it is the safe fallback.
+  if(!armed || !g){ root.classList.remove('anim'); return; }
+
+  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
+  g.config({nullTargetWarn:false});
+
+  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
+  // backgrounded tab or some embedded preview panes the frame loop is paused, which
+  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
+  // drop .anim (reveal all, no animation) rather than risk invisible content.
+  var alive = false;
+  requestAnimationFrame(function(){ alive = true; });
+  setTimeout(function(){
+    if(!alive){ root.classList.remove('anim'); return; }
+
+    g.timeline({defaults:{ease:'power3.out'}})
+      .fromTo('.eyebrow',{opacity:0,y:12},{opacity:1,y:0,duration:.5})
+      .fromTo('h1',{opacity:0,y:24},{opacity:1,y:0,duration:.7},'-=.28')
+      .fromTo('.summary',{opacity:0,y:16},{opacity:1,y:0,duration:.6},'-=.46')
+      .fromTo('.meta .tag',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06},'-=.34')
+      .fromTo('.hero .cell',{opacity:0,y:22},{opacity:1,y:0,duration:.55,stagger:.08},'-=.24');
+
+    // scroll-reveal each body block as it enters; stat grids stagger their cards
+    var io = new IntersectionObserver(function(items){
+      items.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el);
+        if(el.classList.contains('grid')){
+          g.set(el,{opacity:1});
+          g.fromTo(el.children,{opacity:0,y:18},
+            {opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'});
+        } else {
+          g.fromTo(el,{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'});
+        }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    document.querySelectorAll('.body > *').forEach(function(el){ io.observe(el); });
+  }, 260);
+})();
+</script>
 </body>
 </html>
