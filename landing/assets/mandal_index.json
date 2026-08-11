@@ -136,6 +136,20 @@
   "nandigamasc__nandigama": {
    "name": "Nandigama",
    "slug": "nandigamasc__nandigama",
+   "kind": "rural",
+   "constituency": "Nandigama (SC)",
+   "constituency_code": 100,
+   "district": "Ntr",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/NTR/Nandigama_SC/Nandigama_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/NTR/Nandigama_SC/Nandigama_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "nandigamasc__nandigama_u": {
+   "name": "Nandigama",
+   "slug": "nandigamasc__nandigama_u",
    "kind": "urban",
    "constituency": "Nandigama (SC)",
    "constituency_code": 100,
@@ -206,6 +220,20 @@
   "pedana__pedana": {
    "name": "Pedana",
    "slug": "pedana__pedana",
+   "kind": "rural",
+   "constituency": "Pedana",
+   "constituency_code": 101,
+   "district": "Krishna",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Krishna/Pedana/Pedana_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Krishna/Pedana/Pedana_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "pedana__pedana_u": {
+   "name": "Pedana",
+   "slug": "pedana__pedana_u",
    "kind": "urban",
    "constituency": "Pedana",
    "constituency_code": 101,
@@ -455,7 +483,6 @@
    "archetype": "M1",
    "why": "portal states no rural/urban marker; shown as rural by default",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Kurnool/Pattikonda/Veldurthy_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Palnadu/Macherla/Veldurthy_Mandal_Vision_Action_Plan-2026.pdf"
    ]
   },
@@ -553,8 +580,7 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Gannavaram_SC/Mamidikuduru_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Gannavaram_SC/Mamidikuduru_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Razole_SC/Mamidikuduru_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Gannavaram_SC/Mamidikuduru_Mandal_Vision_Action_Plan-2026.pdf"
    ]
   },
   "gannavaramsc__pgannavaram": {
@@ -573,6 +599,19 @@
   "peddapuram__peddapuram": {
    "name": "Peddapuram",
    "slug": "peddapuram__peddapuram",
+   "kind": "rural",
+   "constituency": "Peddapuram",
+   "constituency_code": 109,
+   "district": "Kakinada",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kakinada/Peddapuram/Peddapuram_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "peddapuram__peddapuram_u": {
+   "name": "Peddapuram",
+   "slug": "peddapuram__peddapuram_u",
    "kind": "urban",
    "constituency": "Peddapuram",
    "constituency_code": 109,
@@ -586,6 +625,17 @@
   "peddapuram__samalkot": {
    "name": "Samalkot",
    "slug": "peddapuram__samalkot",
+   "kind": "rural",
+   "constituency": "Peddapuram",
+   "constituency_code": 109,
+   "district": "Kakinada",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "peddapuram__samalkot_u": {
+   "name": "Samalkot",
+   "slug": "peddapuram__samalkot_u",
    "kind": "urban",
    "constituency": "Peddapuram",
    "constituency_code": 109,
@@ -597,6 +647,19 @@
   "gurajala__dachepalli": {
    "name": "Dachepalli",
    "slug": "gurajala__dachepalli",
+   "kind": "rural",
+   "constituency": "Gurajala",
+   "constituency_code": 11,
+   "district": "Palnadu",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Palnadu/Gurajala/Dachepalli_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "gurajala__dachepalli_u": {
+   "name": "Dachepalli",
+   "slug": "gurajala__dachepalli_u",
    "kind": "urban",
    "constituency": "Gurajala",
    "constituency_code": 11,
@@ -610,6 +673,20 @@
   "gurajala__gurazala": {
    "name": "Gurazala",
    "slug": "gurajala__gurazala",
+   "kind": "rural",
+   "constituency": "Gurajala",
+   "constituency_code": 11,
+   "district": "Palnadu",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Palnadu/Gurajala/Gurazala_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/Palnadu/Gurajala/Gurazala_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "gurajala__gurazala_u": {
+   "name": "Gurazala",
+   "slug": "gurajala__gurazala_u",
    "kind": "urban",
    "constituency": "Gurajala",
    "constituency_code": 11,
@@ -638,6 +715,20 @@
   "gurajala__piduguralla": {
    "name": "Piduguralla",
    "slug": "gurajala__piduguralla",
+   "kind": "rural",
+   "constituency": "Gurajala",
+   "constituency_code": 11,
+   "district": "Palnadu",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Palnadu/Gurajala/Piduguralla_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Palnadu/Gurajala/Piduguralla_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "gurajala__piduguralla_u": {
+   "name": "Piduguralla",
+   "slug": "gurajala__piduguralla_u",
    "kind": "urban",
    "constituency": "Gurajala",
    "constituency_code": 11,
@@ -685,7 +776,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Parvathipuram_Manyam/Parvathipuram_SC/Seethanagaram_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/East_Godavari/Rajanagaram/Seethanagaram_Mandal_Vision_Action_Plan.pdf"
    ]
   },
@@ -718,6 +808,19 @@
   "tuni__tuni": {
    "name": "Tuni",
    "slug": "tuni__tuni",
+   "kind": "rural",
+   "constituency": "Tuni",
+   "constituency_code": 111,
+   "district": "Kakinada",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kakinada/Tuni/Tuni_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "tuni__tuni_u": {
+   "name": "Tuni",
+   "slug": "tuni__tuni_u",
    "kind": "urban",
    "constituency": "Tuni",
    "constituency_code": 111,
@@ -731,6 +834,19 @@
   "bhimavaram__bhimavaram": {
    "name": "Bhimavaram",
    "slug": "bhimavaram__bhimavaram",
+   "kind": "rural",
+   "constituency": "Bhimavaram",
+   "constituency_code": 112,
+   "district": "West_Godavari",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/West_Godavari/Bhimavaram/Bhimavaram_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "bhimavaram__bhimavaram_u": {
+   "name": "Bhimavaram",
+   "slug": "bhimavaram__bhimavaram_u",
    "kind": "urban",
    "constituency": "Bhimavaram",
    "constituency_code": 112,
@@ -757,6 +873,19 @@
   "nidadavole__nidadavole": {
    "name": "Nidadavole",
    "slug": "nidadavole__nidadavole",
+   "kind": "rural",
+   "constituency": "Nidadavole",
+   "constituency_code": 113,
+   "district": "East_Godavari",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/East_Godavari/Nidadavole/Nidadavole_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "nidadavole__nidadavole_u": {
+   "name": "Nidadavole",
+   "slug": "nidadavole__nidadavole_u",
    "kind": "urban",
    "constituency": "Nidadavole",
    "constituency_code": 113,
@@ -807,6 +936,17 @@
   "palacole__palakol": {
    "name": "Palakol",
    "slug": "palacole__palakol",
+   "kind": "rural",
+   "constituency": "Palacole",
+   "constituency_code": 114,
+   "district": "West_Godavari",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "palacole__palakol_u": {
+   "name": "Palakol",
+   "slug": "palacole__palakol_u",
    "kind": "urban",
    "constituency": "Palacole",
    "constituency_code": 114,
@@ -826,9 +966,7 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/West_Godavari/Palacole/Poduru_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/West_Godavari/Palacole/Poduru_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/West_Godavari/Achanta/Poduru_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/West_Godavari/Achanta/Poduru_Mandal_Vision_Action_Plan-2026.pdf"
+    "corpus_files/vision_documents/mandal/West_Godavari/Palacole/Poduru_Mandal_Vision_Action_Plan-2026.pdf"
    ]
   },
   "tadepalligudem__pentapadu": {
@@ -848,6 +986,20 @@
   "tadepalligudem__tadepalligudem": {
    "name": "Tadepalligudem",
    "slug": "tadepalligudem__tadepalligudem",
+   "kind": "rural",
+   "constituency": "Tadepalligudem",
+   "constituency_code": 116,
+   "district": "West_Godavari",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/West_Godavari/Tadepalligudem/Tadepalligudem_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/West_Godavari/Tadepalligudem/Tadepalligudem_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "tadepalligudem__tadepalligudem_u": {
+   "name": "Tadepalligudem",
+   "slug": "tadepalligudem__tadepalligudem_u",
    "kind": "urban",
    "constituency": "Tadepalligudem",
    "constituency_code": 116,
@@ -875,6 +1027,17 @@
   "kovvursc__kovvur": {
    "name": "Kovvur",
    "slug": "kovvursc__kovvur",
+   "kind": "rural",
+   "constituency": "Kovvur (SC)",
+   "constituency_code": 117,
+   "district": "East_Godavari",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "kovvursc__kovvur_u": {
+   "name": "Kovvur",
+   "slug": "kovvursc__kovvur_u",
    "kind": "urban",
    "constituency": "Kovvur (SC)",
    "constituency_code": 117,
@@ -1027,8 +1190,7 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/Guntur/Prathipadu_SC/Prathipadu_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Guntur/Prathipadu_SC/Prathipadu_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Kakinada/Prathipadu/Prathipadu_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Guntur/Prathipadu_SC/Prathipadu_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "prathipadusc__vatticherukuru": {
@@ -1061,6 +1223,19 @@
   "kandukur__kandukur": {
    "name": "Kandukur",
    "slug": "kandukur__kandukur",
+   "kind": "rural",
+   "constituency": "Kandukur",
+   "constituency_code": 12,
+   "district": "Prakasam",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Prakasam/Kandukur/Kandukur_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "kandukur__kandukur_u": {
+   "name": "Kandukur",
+   "slug": "kandukur__kandukur_u",
    "kind": "urban",
    "constituency": "Kandukur",
    "constituency_code": 12,
@@ -1211,8 +1386,7 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/Palnadu/Sattenapalle/Rajupalem_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Palnadu/Sattenapalle/Rajupalem_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/YSR_Kadapa/Proddatur/Rajupalem_Mandal_Vison_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Palnadu/Sattenapalle/Rajupalem_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "sattenapalle__sattenapalle": {
@@ -1243,6 +1417,20 @@
   "jaggayyapeta__jaggayyapeta": {
    "name": "Jaggayyapeta",
    "slug": "jaggayyapeta__jaggayyapeta",
+   "kind": "rural",
+   "constituency": "Jaggayyapeta",
+   "constituency_code": 122,
+   "district": "Ntr",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/NTR/Jaggayyapeta/Jaggayyapeta_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/NTR/Jaggayyapeta/Jaggayyapeta_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "jaggayyapeta__jaggayyapeta_u": {
+   "name": "Jaggayyapeta",
+   "slug": "jaggayyapeta__jaggayyapeta_u",
    "kind": "urban",
    "constituency": "Jaggayyapeta",
    "constituency_code": 122,
@@ -1367,13 +1555,30 @@
   "ongole__ongole": {
    "name": "Ongole",
    "slug": "ongole__ongole",
+   "kind": "rural",
+   "constituency": "ONGOLE",
+   "constituency_code": 124,
+   "district": "Prakasam",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Prakasam/ONGOLE/Ongole_Urban_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Prakasam/ONGOLE/Ongole_rural_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "ongole__ongole_u": {
+   "name": "Ongole",
+   "slug": "ongole__ongole_u",
    "kind": "urban",
    "constituency": "ONGOLE",
    "constituency_code": 124,
    "district": "Prakasam",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Prakasam/ONGOLE/Ongole_Urban_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Prakasam/ONGOLE/Ongole_rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "parchur__chinaganjam": {
    "name": "Chinaganjam",
@@ -1497,10 +1702,8 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Nandyala/Srisailam/Atmakur_Mandal_Vison_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Spsr_Nellore/Atmakur/Atmakur_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Atmakur/Atmakur_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Ananthapur/Raptadu/Atmakur_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Atmakur/Atmakur_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "atmakur__atmakurnlr": {
@@ -1594,7 +1797,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Gudur_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Spsr_Nellore/Gudur_SC/Gudur_Mandal_Vision_Action_Plan-2026.pdf",
     "corpus_files/vision_documents/mandal/Spsr_Nellore/Gudur_SC/Gudur_Mandal_Vision_Action_Plan.pdf"
    ]
@@ -1811,6 +2013,17 @@
   "markapuram__markapur": {
    "name": "Markapur",
    "slug": "markapuram__markapur",
+   "kind": "rural",
+   "constituency": "Markapuram",
+   "constituency_code": 13,
+   "district": "Markapuram",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "markapuram__markapur_u": {
+   "name": "Markapur",
+   "slug": "markapuram__markapur_u",
    "kind": "urban",
    "constituency": "Markapuram",
    "constituency_code": 13,
@@ -1916,10 +2129,7 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Nandyala/Srisailam/Atmakur_Mandal_Vison_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Atmakur/Atmakur_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Atmakur/Atmakur_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Ananthapur/Raptadu/Atmakur_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Nandyala/Srisailam/Atmakur_Mandal_Vison_Action_Plan.pdf"
    ]
   },
   "srisailam__atmakurknl": {
@@ -2158,9 +2368,7 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Gudur_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Gudur_SC/Gudur_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Gudur_SC/Gudur_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Gudur_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "kodumursc__gudurknl": {
@@ -2190,6 +2398,20 @@
   "kodumursc__kurnool": {
    "name": "Kurnool",
    "slug": "kodumursc__kurnool",
+   "kind": "rural",
+   "constituency": "Kodumur (SC)",
+   "constituency_code": 136,
+   "district": "Kurnool",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Kurnool_Rural_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Kurnool_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "kodumursc__kurnool_u": {
+   "name": "Kurnool",
+   "slug": "kodumursc__kurnool_u",
    "kind": "urban",
    "constituency": "Kodumur (SC)",
    "constituency_code": 136,
@@ -2197,6 +2419,7 @@
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
    "pdfs": [
+    "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Kurnool_Rural_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Kurnool_Mandal_Vision_Action_Plan-2026.pdf"
    ]
   },
@@ -2209,11 +2432,26 @@
    "district": "Tirupati",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Tirupati/Tirupati/Tirupati_Urban_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
   },
   "guntakal__gooty": {
    "name": "Gooty",
    "slug": "guntakal__gooty",
+   "kind": "rural",
+   "constituency": "Guntakal",
+   "constituency_code": 138,
+   "district": "Ananthapuramu",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Ananthapur/Guntakal/Gooty_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "guntakal__gooty_u": {
+   "name": "Gooty",
+   "slug": "guntakal__gooty_u",
    "kind": "urban",
    "constituency": "Guntakal",
    "constituency_code": 138,
@@ -2299,6 +2537,19 @@
   "nandikotkursc__nandikotkur": {
    "name": "Nandikotkur",
    "slug": "nandikotkursc__nandikotkur",
+   "kind": "rural",
+   "constituency": "Nandikotkur (SC)",
+   "constituency_code": 139,
+   "district": "Nandyal",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Nandyala/Nandikotkur_SC/Nandikotkur_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "nandikotkursc__nandikotkur_u": {
+   "name": "Nandikotkur",
+   "slug": "nandikotkursc__nandikotkur_u",
    "kind": "urban",
    "constituency": "Nandikotkur (SC)",
    "constituency_code": 139,
@@ -2377,6 +2628,19 @@
   "giddalur__giddalur": {
    "name": "Giddalur",
    "slug": "giddalur__giddalur",
+   "kind": "rural",
+   "constituency": "GIDDALUR",
+   "constituency_code": 14,
+   "district": "Markapuram",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Marakapuram/GIDDALUR/Giddalur_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "giddalur__giddalur_u": {
+   "name": "Giddalur",
+   "slug": "giddalur__giddalur_u",
    "kind": "urban",
    "constituency": "GIDDALUR",
    "constituency_code": 14,
@@ -2422,7 +2686,9 @@
    "district": "East_Godavari",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/East_Godavari/Rajahmundry_Rural/Rajahmundry_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "kakinadacity__kakinada": {
    "name": "Kakinada",
@@ -2433,7 +2699,9 @@
    "district": "Kakinada",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kakinada/Kakinada_City/Kakinada_urban_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "yemmiganur__gonegandla": {
    "name": "Gonegandla",
@@ -2464,13 +2732,28 @@
   "yemmiganur__yemmiganur": {
    "name": "Yemmiganur",
    "slug": "yemmiganur__yemmiganur",
+   "kind": "rural",
+   "constituency": "Yemmiganur",
+   "constituency_code": 142,
+   "district": "Kurnool",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kurnool/Yemmiganur/Yemmignaur_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "yemmiganur__yemmiganur_u": {
+   "name": "Yemmiganur",
+   "slug": "yemmiganur__yemmiganur_u",
    "kind": "urban",
    "constituency": "Yemmiganur",
    "constituency_code": 142,
    "district": "Kurnool",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kurnool/Yemmiganur/Yemmignaur_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "tanuku__attili": {
    "name": "Attili",
@@ -2503,6 +2786,20 @@
   "tanuku__tanuku": {
    "name": "Tanuku",
    "slug": "tanuku__tanuku",
+   "kind": "rural",
+   "constituency": "Tanuku",
+   "constituency_code": 143,
+   "district": "West_Godavari",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/West_Godavari/Tanuku/Tanuku_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/West_Godavari/Tanuku/Tanuku_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "tanuku__tanuku_u": {
+   "name": "Tanuku",
+   "slug": "tanuku__tanuku_u",
    "kind": "urban",
    "constituency": "Tanuku",
    "constituency_code": 143,
@@ -2576,6 +2873,19 @@
   "proddatur__proddatur": {
    "name": "Proddatur",
    "slug": "proddatur__proddatur",
+   "kind": "rural",
+   "constituency": "Proddatur",
+   "constituency_code": 145,
+   "district": "Ysr_Kadapa",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/YSR_Kadapa/Proddatur/Proddatur_Mandal_Vison_Action_Plan.pdf"
+   ]
+  },
+  "proddatur__proddatur_u": {
+   "name": "Proddatur",
+   "slug": "proddatur__proddatur_u",
    "kind": "urban",
    "constituency": "Proddatur",
    "constituency_code": 145,
@@ -2596,8 +2906,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Palnadu/Sattenapalle/Rajupalem_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Palnadu/Sattenapalle/Rajupalem_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/YSR_Kadapa/Proddatur/Rajupalem_Mandal_Vison_Action_Plan.pdf"
    ]
   },
@@ -2622,9 +2930,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Nandyala/Srisailam/Atmakur_Mandal_Vison_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Atmakur/Atmakur_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Atmakur/Atmakur_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Ananthapur/Raptadu/Atmakur_Mandal_Vision_Action_Plan.pdf"
    ]
   },
@@ -2718,6 +3023,19 @@
   "madakasirasc__madakasira": {
    "name": "Madakasira",
    "slug": "madakasirasc__madakasira",
+   "kind": "rural",
+   "constituency": "Madakasira (SC)",
+   "constituency_code": 148,
+   "district": "Sri_Satya_Sai",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Sri_Satya_Sai/Madakasira_SC/Madakasira_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "madakasirasc__madakasira_u": {
+   "name": "Madakasira",
+   "slug": "madakasirasc__madakasira_u",
    "kind": "urban",
    "constituency": "Madakasira (SC)",
    "constituency_code": 148,
@@ -2792,6 +3110,19 @@
   "mydukur__mydukur": {
    "name": "Mydukur",
    "slug": "mydukur__mydukur",
+   "kind": "rural",
+   "constituency": "Mydukur",
+   "constituency_code": 149,
+   "district": "Ysr_Kadapa",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/YSR_Kadapa/Mydukur/Mydukur_Mandal_Vison_Action_Plan.pdf"
+   ]
+  },
+  "mydukur__mydukur_u": {
+   "name": "Mydukur",
+   "slug": "mydukur__mydukur_u",
    "kind": "urban",
    "constituency": "Mydukur",
    "constituency_code": 149,
@@ -2910,7 +3241,7 @@
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Kurnool_Mandal_Vision_Action_Plan-2026.pdf"
+    "corpus_files/vision_documents/mandal/Kurnool/Kurnool/Kurnool_URBAN_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "nandyal__gospadu": {
@@ -2929,6 +3260,19 @@
   "nandyal__nandyal": {
    "name": "Nandyal",
    "slug": "nandyal__nandyal",
+   "kind": "rural",
+   "constituency": "Nandyal",
+   "constituency_code": 154,
+   "district": "Nandyal",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Nandyala/Nandyal/Nandyal_Mandal_Vison_Action_Plan.pdf"
+   ]
+  },
+  "nandyal__nandyal_u": {
+   "name": "Nandyal",
+   "slug": "nandyal__nandyal_u",
    "kind": "urban",
    "constituency": "Nandyal",
    "constituency_code": 154,
@@ -2959,7 +3303,11 @@
    "district": "Ntr",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Vijayawada_Rural_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Vijayawada_Rural_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Krishna/Gannavaram/VIjayawada_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "visakhapatnameast__gvmcvisakhapatnam": {
    "name": "Gvmc (Visakhapatnam)",
@@ -3017,7 +3365,7 @@
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Kurnool/Kodumur_SC/Kurnool_Mandal_Vision_Action_Plan-2026.pdf"
+    "corpus_files/vision_documents/mandal/Nandyala/Panyam/Kurnool_Urban_Mandal_Plan.pdf"
    ]
   },
   "panyam__orvkal": {
@@ -3289,6 +3637,19 @@
   "rayachoti__rayachoty": {
    "name": "Rayachoty",
    "slug": "rayachoti__rayachoty",
+   "kind": "rural",
+   "constituency": "Rayachoti",
+   "constituency_code": 161,
+   "district": "Annamayya",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Annamayya/Rayachoti/Rayachoty_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "rayachoti__rayachoty_u": {
+   "name": "Rayachoty",
+   "slug": "rayachoti__rayachoty_u",
    "kind": "urban",
    "constituency": "Rayachoti",
    "constituency_code": 161,
@@ -3355,6 +3716,19 @@
   "srikakulam__srikakulam": {
    "name": "Srikakulam",
    "slug": "srikakulam__srikakulam",
+   "kind": "rural",
+   "constituency": "Srikakulam",
+   "constituency_code": 163,
+   "district": "Srikakulam",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Srikakulam/Srikakulam/Srikakulam_Mandal_Vision_Action_plan.pdf"
+   ]
+  },
+  "srikakulam__srikakulam_u": {
+   "name": "Srikakulam",
+   "slug": "srikakulam__srikakulam_u",
    "kind": "urban",
    "constituency": "Srikakulam",
    "constituency_code": 163,
@@ -3368,6 +3742,19 @@
   "allagadda__allagadda": {
    "name": "Allagadda",
    "slug": "allagadda__allagadda",
+   "kind": "rural",
+   "constituency": "Allagadda",
+   "constituency_code": 164,
+   "district": "Nandyal",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Nandyala/Allagadda/Allagadda_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "allagadda__allagadda_u": {
+   "name": "Allagadda",
+   "slug": "allagadda__allagadda_u",
    "kind": "urban",
    "constituency": "Allagadda",
    "constituency_code": 164,
@@ -3450,7 +3837,11 @@
    "district": "Ntr",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Vijayawada_Rural_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Vijayawada_Rural_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Krishna/Gannavaram/VIjayawada_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "vizianagaram__vijayanagaram": {
    "name": "Vijayanagaram",
@@ -3472,7 +3863,9 @@
    "district": "Vizianagaram",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Vizianagaram/Vizianagaram/Vizianagaram_Rural_Mandal_Vision_Action_plan.pdf"
+   ]
   },
   "nellorerural__nellorerural": {
    "name": "Nellore Rural",
@@ -3483,10 +3876,7 @@
    "district": "Sps_Nellore",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": [
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Nellore_Rural/Nellore_Rural_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Nellore_Rural/Nellore_Rural_Mandal_Vision_Action_Plan.pdf"
-   ]
+   "pdfs": []
   },
   "nellorerural__nellore": {
    "name": "Nellore",
@@ -3497,7 +3887,10 @@
    "district": "Sps_Nellore",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Nellore_Rural/Nellore_Rural_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Nellore_Rural/Nellore_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "nellorecity__nellore": {
    "name": "Nellore",
@@ -3508,7 +3901,9 @@
    "district": "Sps_Nellore",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Nellore_City/Nellore_Urban_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
   },
   "parvathipuramsc__balijipeta": {
    "name": "Balijipeta",
@@ -3526,13 +3921,28 @@
   "parvathipuramsc__parvathipuram": {
    "name": "Parvathipuram",
    "slug": "parvathipuramsc__parvathipuram",
+   "kind": "rural",
+   "constituency": "Parvathipuram (SC)",
+   "constituency_code": 169,
+   "district": "Parvathipuram_Manyam",
+   "archetype": "M3",
+   "why": "scheduled/agency mandal",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Parvathipuram_Manyam/Parvathipuram_SC/Parvathipuram_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "parvathipuramsc__parvathipuram_u": {
+   "name": "Parvathipuram",
+   "slug": "parvathipuramsc__parvathipuram_u",
    "kind": "urban",
    "constituency": "Parvathipuram (SC)",
    "constituency_code": 169,
    "district": "Parvathipuram_Manyam",
    "archetype": "M3",
    "why": "scheduled/agency mandal",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Parvathipuram_Manyam/Parvathipuram_SC/Parvathipuram_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "parvathipuramsc__seethanagaram": {
    "name": "Seethanagaram",
@@ -3544,8 +3954,7 @@
    "archetype": "M3",
    "why": "scheduled/agency mandal",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Parvathipuram_Manyam/Parvathipuram_SC/Seethanagaram_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/East_Godavari/Rajanagaram/Seethanagaram_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Parvathipuram_Manyam/Parvathipuram_SC/Seethanagaram_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "santhanuthalapadusc__cheemakurthy": {
@@ -3658,6 +4067,19 @@
   "narsipatnam__narsipatnam": {
    "name": "Narsipatnam",
    "slug": "narsipatnam__narsipatnam",
+   "kind": "rural",
+   "constituency": "Narsipatnam",
+   "constituency_code": 174,
+   "district": "Anakapalle",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Anakapalli/Narsipatnam/Narsipatnam_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "narsipatnam__narsipatnam_u": {
+   "name": "Narsipatnam",
+   "slug": "narsipatnam__narsipatnam_u",
    "kind": "urban",
    "constituency": "Narsipatnam",
    "constituency_code": 174,
@@ -3775,6 +4197,19 @@
   "penukonda__penukonda": {
    "name": "Penukonda",
    "slug": "penukonda__penukonda",
+   "kind": "rural",
+   "constituency": "Penukonda",
+   "constituency_code": 178,
+   "district": "Sri_Satya_Sai",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Sri_Satya_Sai/Penukonda/Penukonda_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "penukonda__penukonda_u": {
+   "name": "Penukonda",
+   "slug": "penukonda__penukonda_u",
    "kind": "urban",
    "constituency": "Penukonda",
    "constituency_code": 178,
@@ -3919,6 +4354,20 @@
   "ramachandrapuram__ramachandrapuram": {
    "name": "Ramachandrapuram",
    "slug": "ramachandrapuram__ramachandrapuram",
+   "kind": "rural",
+   "constituency": "Ramachandrapuram",
+   "constituency_code": 180,
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Ramachandrapuram/Ramachandrapuram_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Ramachandrapuram/Ramachandrapuram_Mandal_Vision_Action_Plan_-2026.pdf"
+   ]
+  },
+  "ramachandrapuram__ramachandrapuram_u": {
+   "name": "Ramachandrapuram",
+   "slug": "ramachandrapuram__ramachandrapuram_u",
    "kind": "urban",
    "constituency": "Ramachandrapuram",
    "constituency_code": 180,
@@ -3926,7 +4375,6 @@
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Tirupati/Chandragiri/Ramachandrapuram_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Ramachandrapuram/Ramachandrapuram_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Ramachandrapuram/Ramachandrapuram_Mandal_Vision_Action_Plan_-2026.pdf"
    ]
@@ -4164,6 +4612,19 @@
   "dharmavaram__dharmavaram": {
    "name": "Dharmavaram",
    "slug": "dharmavaram__dharmavaram",
+   "kind": "rural",
+   "constituency": "Dharmavaram",
+   "constituency_code": 185,
+   "district": "Sri_Satya_Sai",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Sri_Satya_Sai/Dharmavaram/Dharmavaram_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "dharmavaram__dharmavaram_u": {
+   "name": "Dharmavaram",
+   "slug": "dharmavaram__dharmavaram_u",
    "kind": "urban",
    "constituency": "Dharmavaram",
    "constituency_code": 185,
@@ -4214,6 +4675,19 @@
   "kadiri__kadiri": {
    "name": "Kadiri",
    "slug": "kadiri__kadiri",
+   "kind": "rural",
+   "constituency": "Kadiri",
+   "constituency_code": 186,
+   "district": "Sri_Satya_Sai",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Sri_Satya_Sai/Kadiri/Kadiri_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "kadiri__kadiri_u": {
+   "name": "Kadiri",
+   "slug": "kadiri__kadiri_u",
    "kind": "urban",
    "constituency": "Kadiri",
    "constituency_code": 186,
@@ -4323,6 +4797,17 @@
   "rayadurg__rayadurg": {
    "name": "Rayadurg",
    "slug": "rayadurg__rayadurg",
+   "kind": "rural",
+   "constituency": "Rayadurg",
+   "constituency_code": 187,
+   "district": "Ananthapuramu",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "rayadurg__rayadurg_u": {
+   "name": "Rayadurg",
+   "slug": "rayadurg__rayadurg_u",
    "kind": "urban",
    "constituency": "Rayadurg",
    "constituency_code": 187,
@@ -4351,7 +4836,9 @@
    "district": "Srikakulam",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Srikakulam/Ichchapuram/Ichchapuram_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "ichchapuram__kanchili": {
    "name": "Kanchili",
@@ -4395,6 +4882,20 @@
   "chirala__chirala": {
    "name": "Chirala",
    "slug": "chirala__chirala",
+   "kind": "rural",
+   "constituency": "Chirala",
+   "constituency_code": 19,
+   "district": "Bapatla",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Bapatla/Chirala/Chirala_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/Bapatla/Chirala/Chirala_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "chirala__chirala_u": {
+   "name": "Chirala",
+   "slug": "chirala__chirala_u",
    "kind": "urban",
    "constituency": "Chirala",
    "constituency_code": 19,
@@ -4448,6 +4949,20 @@
   "ponnur__ponnur": {
    "name": "Ponnur",
    "slug": "ponnur__ponnur",
+   "kind": "rural",
+   "constituency": "Ponnur",
+   "constituency_code": 2,
+   "district": "Guntur",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Guntur/Ponnur/Ponnur_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/Guntur/Ponnur/Ponnur_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "ponnur__ponnur_u": {
+   "name": "Ponnur",
+   "slug": "ponnur__ponnur_u",
    "kind": "urban",
    "constituency": "Ponnur",
    "constituency_code": 2,
@@ -4462,6 +4977,20 @@
   "kovur__buchireddypalem": {
    "name": "Buchireddypalem",
    "slug": "kovur__buchireddypalem",
+   "kind": "rural",
+   "constituency": "Kovur",
+   "constituency_code": 20,
+   "district": "Sps_Nellore",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Kovur/Buchireddypalem_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Kovur/Buchireddypalem_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "kovur__buchireddypalem_u": {
+   "name": "Buchireddypalem",
+   "slug": "kovur__buchireddypalem_u",
    "kind": "urban",
    "constituency": "Kovur",
    "constituency_code": 20,
@@ -4667,6 +5196,20 @@
   "venkatagiri__venkatagiri": {
    "name": "Venkatagiri",
    "slug": "venkatagiri__venkatagiri",
+   "kind": "rural",
+   "constituency": "Venkatagiri",
+   "constituency_code": 22,
+   "district": "Tirupati",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Tirupati/Venkatagiri/Venkatagiri_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Tirupati/Venkatagiri/Venkatagiri_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "venkatagiri__venkatagiri_u": {
+   "name": "Venkatagiri",
+   "slug": "venkatagiri__venkatagiri_u",
    "kind": "urban",
    "constituency": "Venkatagiri",
    "constituency_code": 22,
@@ -4708,6 +5251,19 @@
   "punganur__punganur": {
    "name": "Punganur",
    "slug": "punganur__punganur",
+   "kind": "rural",
+   "constituency": "Punganur",
+   "constituency_code": 24,
+   "district": "Annamayya",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Annamayya/Punganur/Punganur_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "punganur__punganur_u": {
+   "name": "Punganur",
+   "slug": "punganur__punganur_u",
    "kind": "urban",
    "constituency": "Punganur",
    "constituency_code": 24,
@@ -4729,9 +5285,7 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/Annamayya/Punganur/Rompicherla_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Annamayya/Punganur/ROMPICHERLA_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Palnadu/Narasaraopet/Rompicherla_Mandal_Vision_Action_Plan-_2026.pdf",
-    "corpus_files/vision_documents/mandal/Palnadu/Narasaraopet/Rompicherla_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Annamayya/Punganur/ROMPICHERLA_Mandal_Vision_Action_Plan-2026.pdf"
    ]
   },
   "punganur__sodam": {
@@ -4812,9 +5366,7 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Tirupati/Chandragiri/Ramachandrapuram_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Ramachandrapuram/Ramachandrapuram_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Ramachandrapuram/Ramachandrapuram_Mandal_Vision_Action_Plan_-2026.pdf"
+    "corpus_files/vision_documents/mandal/Tirupati/Chandragiri/Ramachandrapuram_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "chandragiri__tirupatirural": {
@@ -4826,10 +5378,7 @@
    "district": "Tirupati",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": [
-    "corpus_files/vision_documents/mandal/Tirupati/Chandragiri/Tirupati_Rural_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Tirupati/Chandragiri/Tirupati_Rural_Mandal_Vision_Action_Plan_-2026.pdf"
-   ]
+   "pdfs": []
   },
   "chandragiri__yerravaripalem": {
    "name": "Yerravaripalem",
@@ -4848,6 +5397,20 @@
   "nagari__nagari": {
    "name": "Nagari",
    "slug": "nagari__nagari",
+   "kind": "rural",
+   "constituency": "Nagari",
+   "constituency_code": 26,
+   "district": "Chittoor",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Chittoor/Nagari/Nagari_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Chittoor/Nagari/Nagari_Mandal_Vision_Action_Plan_-2026.pdf"
+   ]
+  },
+  "nagari__nagari_u": {
+   "name": "Nagari",
+   "slug": "nagari__nagari_u",
    "kind": "urban",
    "constituency": "Nagari",
    "constituency_code": 26,
@@ -4876,6 +5439,20 @@
   "nagari__puttur": {
    "name": "Puttur",
    "slug": "nagari__puttur",
+   "kind": "rural",
+   "constituency": "Nagari",
+   "constituency_code": 26,
+   "district": "Chittoor",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Chittoor/Nagari/Puttur_Mandal_Vision_Action_Plan_-2026.pdf",
+    "corpus_files/vision_documents/mandal/Chittoor/Nagari/Puttur_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "nagari__puttur_u": {
+   "name": "Puttur",
+   "slug": "nagari__puttur_u",
    "kind": "urban",
    "constituency": "Nagari",
    "constituency_code": 26,
@@ -4959,6 +5536,20 @@
   "kavali__kavali": {
    "name": "Kavali",
    "slug": "kavali__kavali",
+   "kind": "rural",
+   "constituency": "Kavali",
+   "constituency_code": 27,
+   "district": "Sps_Nellore",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Kavali/KAVALI_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Kavali/Kavali_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "kavali__kavali_u": {
+   "name": "Kavali",
+   "slug": "kavali__kavali_u",
    "kind": "urban",
    "constituency": "Kavali",
    "constituency_code": 27,
@@ -5022,8 +5613,7 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/Spsr_Nellore/Udayagiri/Kondapuram_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Udayagiri/Kondapuram_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/YSR_Kadapa/Jammalamadugu/Kondapuram_Mandal_Vison_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Spsr_Nellore/Udayagiri/Kondapuram_Mandal_Vision_Action_Plan-2026.pdf"
    ]
   },
   "udayagiri__seetharamapuram": {
@@ -5134,6 +5724,20 @@
   "bapatla__bapatla": {
    "name": "Bapatla",
    "slug": "bapatla__bapatla",
+   "kind": "rural",
+   "constituency": "Bapatla",
+   "constituency_code": 3,
+   "district": "Bapatla",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Bapatla/Bapatla/Bapatla_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Bapatla/Bapatla/Bapatla_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "bapatla__bapatla_u": {
+   "name": "Bapatla",
+   "slug": "bapatla__bapatla_u",
    "kind": "urban",
    "constituency": "Bapatla",
    "constituency_code": 3,
@@ -5265,6 +5869,20 @@
   "kuppam__kuppam": {
    "name": "Kuppam",
    "slug": "kuppam__kuppam",
+   "kind": "rural",
+   "constituency": "Kuppam",
+   "constituency_code": 31,
+   "district": "Chittoor",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Chittoor/Kuppam/KUPPAM_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/Chittoor/Kuppam/Kuppam_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "kuppam__kuppam_u": {
+   "name": "Kuppam",
+   "slug": "kuppam__kuppam_u",
    "kind": "urban",
    "constituency": "Kuppam",
    "constituency_code": 31,
@@ -5328,15 +5946,26 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/Chittoor/Palamaner/Gangavaram_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Chittoor/Palamaner/Gangavaram_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Polavaram/Rampachodavaram_ST/Gangavaram_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Polavaram/Rampachodavaram_ST/Gangavaram_Mandal_Vision_Action_Plan_-2026.pdf",
-    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Ramachandrapuram/Gangavaram_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Chittoor/Palamaner/Gangavaram_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "palamaner__palamaner": {
    "name": "Palamaner",
    "slug": "palamaner__palamaner",
+   "kind": "rural",
+   "constituency": "Palamaner",
+   "constituency_code": 32,
+   "district": "Chittoor",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Chittoor/Palamaner/Palamaner_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Chittoor/Palamaner/PALAMANER_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "palamaner__palamaner_u": {
+   "name": "Palamaner",
+   "slug": "palamaner__palamaner_u",
    "kind": "urban",
    "constituency": "Palamaner",
    "constituency_code": 32,
@@ -5379,13 +6008,30 @@
   "chittoor__chittoor": {
    "name": "Chittoor",
    "slug": "chittoor__chittoor",
+   "kind": "rural",
+   "constituency": "Chittoor",
+   "constituency_code": 33,
+   "district": "Chittoor",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Chittoor/Chittoor/Chittoor_Urban_Mandal_Vision_Action_Plan_-2026.pdf",
+    "corpus_files/vision_documents/mandal/Chittoor/Chittoor/Chittoor_Rural_Mandal_Vision_Action_Plan_-2026.pdf"
+   ]
+  },
+  "chittoor__chittoor_u": {
+   "name": "Chittoor",
+   "slug": "chittoor__chittoor_u",
    "kind": "urban",
    "constituency": "Chittoor",
    "constituency_code": 33,
    "district": "Chittoor",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Chittoor/Chittoor/Chittoor_Urban_Mandal_Vision_Action_Plan_-2026.pdf",
+    "corpus_files/vision_documents/mandal/Chittoor/Chittoor/Chittoor_Rural_Mandal_Vision_Action_Plan_-2026.pdf"
+   ]
   },
   "chittoor__gudipala": {
    "name": "Gudipala",
@@ -5441,6 +6087,19 @@
   "kamalapuram__kamalapuram": {
    "name": "Kamalapuram",
    "slug": "kamalapuram__kamalapuram",
+   "kind": "rural",
+   "constituency": "Kamalapuram",
+   "constituency_code": 34,
+   "district": "Ysr_Kadapa",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/YSR_Kadapa/Kamalapuram/Kamalapuram_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "kamalapuram__kamalapuram_u": {
+   "name": "Kamalapuram",
+   "slug": "kamalapuram__kamalapuram_u",
    "kind": "urban",
    "constituency": "Kamalapuram",
    "constituency_code": 34,
@@ -5506,6 +6165,19 @@
   "rajampet__rajampet": {
    "name": "Rajampet",
    "slug": "rajampet__rajampet",
+   "kind": "rural",
+   "constituency": "Rajampet",
+   "constituency_code": 35,
+   "district": "Ysr_Kadapa",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/YSR_Kadapa/Rajampet/Rajampet_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "rajampet__rajampet_u": {
+   "name": "Rajampet",
+   "slug": "rajampet__rajampet_u",
    "kind": "urban",
    "constituency": "Rajampet",
    "constituency_code": 35,
@@ -5670,6 +6342,20 @@
   "srikalahasti__srikalahasti": {
    "name": "Srikalahasti",
    "slug": "srikalahasti__srikalahasti",
+   "kind": "rural",
+   "constituency": "Srikalahasti",
+   "constituency_code": 37,
+   "district": "Tirupati",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Tirupati/Srikalahasti/Srikalahasti_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Tirupati/Srikalahasti/Srikalahasti_Mandal_Vision_Action_Plan_-2026.pdf"
+   ]
+  },
+  "srikalahasti__srikalahasti_u": {
+   "name": "Srikalahasti",
+   "slug": "srikalahasti__srikalahasti_u",
    "kind": "urban",
    "constituency": "Srikalahasti",
    "constituency_code": 37,
@@ -5790,6 +6476,19 @@
   "jammalamadugu__jammalamadugu": {
    "name": "Jammalamadugu",
    "slug": "jammalamadugu__jammalamadugu",
+   "kind": "rural",
+   "constituency": "Jammalamadugu",
+   "constituency_code": 39,
+   "district": "Ysr_Kadapa",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/YSR_Kadapa/Jammalamadugu/Jammalamadugu_Mandal_Vison_Action_Plan.pdf"
+   ]
+  },
+  "jammalamadugu__jammalamadugu_u": {
+   "name": "Jammalamadugu",
+   "slug": "jammalamadugu__jammalamadugu_u",
    "kind": "urban",
    "constituency": "Jammalamadugu",
    "constituency_code": 39,
@@ -5810,8 +6509,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Udayagiri/Kondapuram_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Spsr_Nellore/Udayagiri/Kondapuram_Mandal_Vision_Action_Plan-2026.pdf",
     "corpus_files/vision_documents/mandal/YSR_Kadapa/Jammalamadugu/Kondapuram_Mandal_Vison_Action_Plan.pdf"
    ]
   },
@@ -5838,8 +6535,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Mylavaram_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Mylavaram_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/YSR_Kadapa/Jammalamadugu/Mylavaram_Mandal_Vison_Action_Plan.pdf"
    ]
   },
@@ -5859,6 +6554,19 @@
   "jammalamadugu__yerraguntla": {
    "name": "Yerraguntla",
    "slug": "jammalamadugu__yerraguntla",
+   "kind": "rural",
+   "constituency": "Jammalamadugu",
+   "constituency_code": 39,
+   "district": "Ysr_Kadapa",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/YSR_Kadapa/Jammalamadugu/Yerraguntla_Mandal_Vison_Action_Plan.pdf"
+   ]
+  },
+  "jammalamadugu__yerraguntla_u": {
+   "name": "Yerraguntla",
+   "slug": "jammalamadugu__yerraguntla_u",
    "kind": "urban",
    "constituency": "Jammalamadugu",
    "constituency_code": 39,
@@ -5925,6 +6633,20 @@
   "vinukonda__vinukonda": {
    "name": "Vinukonda",
    "slug": "vinukonda__vinukonda",
+   "kind": "rural",
+   "constituency": "Vinukonda",
+   "constituency_code": 4,
+   "district": "Palnadu",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Palnadu/Vinukonda/Vinukonda_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Palnadu/Vinukonda/Vinukonda_Mandal_Vision_Action_Plan-_2026.pdf"
+   ]
+  },
+  "vinukonda__vinukonda_u": {
+   "name": "Vinukonda",
+   "slug": "vinukonda__vinukonda_u",
    "kind": "urban",
    "constituency": "Vinukonda",
    "constituency_code": 4,
@@ -6028,6 +6750,19 @@
   "hindupur__hindupur": {
    "name": "Hindupur",
    "slug": "hindupur__hindupur",
+   "kind": "rural",
+   "constituency": "Hindupur",
+   "constituency_code": 41,
+   "district": "Sri_Satya_Sai",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Sri_Satya_Sai/Hindupur/Hindupur_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "hindupur__hindupur_u": {
+   "name": "Hindupur",
+   "slug": "hindupur__hindupur_u",
    "kind": "urban",
    "constituency": "Hindupur",
    "constituency_code": 41,
@@ -6252,6 +6987,17 @@
   "puttaparthi__puttaparthy": {
    "name": "Puttaparthy",
    "slug": "puttaparthi__puttaparthy",
+   "kind": "rural",
+   "constituency": "Puttaparthi",
+   "constituency_code": 44,
+   "district": "Sri_Satya_Sai",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "puttaparthi__puttaparthy_u": {
+   "name": "Puttaparthy",
+   "slug": "puttaparthi__puttaparthy_u",
    "kind": "urban",
    "constituency": "Puttaparthi",
    "constituency_code": 44,
@@ -6335,13 +7081,25 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Kurnool/Pattikonda/Veldurthy_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Palnadu/Macherla/Veldurthy_Mandal_Vision_Action_Plan-2026.pdf"
+    "corpus_files/vision_documents/mandal/Kurnool/Pattikonda/Veldurthy_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "dhone__bethamcherla": {
    "name": "Bethamcherla",
    "slug": "dhone__bethamcherla",
+   "kind": "rural",
+   "constituency": "Dhone",
+   "constituency_code": 46,
+   "district": "Nandyal",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Nandyala/Dhone/Bethamcherla_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "dhone__bethamcherla_u": {
+   "name": "Bethamcherla",
+   "slug": "dhone__bethamcherla_u",
    "kind": "urban",
    "constituency": "Dhone",
    "constituency_code": 46,
@@ -6355,6 +7113,17 @@
   "dhone__dhone": {
    "name": "Dhone",
    "slug": "dhone__dhone",
+   "kind": "rural",
+   "constituency": "Dhone",
+   "constituency_code": 46,
+   "district": "Nandyal",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "dhone__dhone_u": {
+   "name": "Dhone",
+   "slug": "dhone__dhone_u",
    "kind": "urban",
    "constituency": "Dhone",
    "constituency_code": 46,
@@ -6398,7 +7167,9 @@
    "district": "Srikakulam",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Srikakulam/Palasa/Palasa_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "palasa__palasakasibugga": {
    "name": "Palasakasibugga",
@@ -6529,6 +7300,20 @@
   "narasaraopet__narasaraopet": {
    "name": "Narasaraopet",
    "slug": "narasaraopet__narasaraopet",
+   "kind": "rural",
+   "constituency": "Narasaraopet",
+   "constituency_code": 5,
+   "district": "Palnadu",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Palnadu/Narasaraopet/Narasaraopet_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Palnadu/Narasaraopet/Narasaraopet_Mandal_Vision_Action_Plan-_2026.pdf"
+   ]
+  },
+  "narasaraopet__narasaraopet_u": {
+   "name": "Narasaraopet",
+   "slug": "narasaraopet__narasaraopet_u",
    "kind": "urban",
    "constituency": "Narasaraopet",
    "constituency_code": 5,
@@ -6550,8 +7335,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Annamayya/Punganur/Rompicherla_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Annamayya/Punganur/ROMPICHERLA_Mandal_Vision_Action_Plan-2026.pdf",
     "corpus_files/vision_documents/mandal/Palnadu/Narasaraopet/Rompicherla_Mandal_Vision_Action_Plan-_2026.pdf",
     "corpus_files/vision_documents/mandal/Palnadu/Narasaraopet/Rompicherla_Mandal_Vision_Action_Plan.pdf"
    ]
@@ -6627,7 +7410,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Vizianagaram/Gajapathinagaram/Jami_Mandal_Vision_Action_plan.pdf",
     "corpus_files/vision_documents/mandal/Vizianagaram/Srungavarapukota/Jami_Mandal_Vision_Action_Plan.pdf"
    ]
   },
@@ -6747,6 +7529,19 @@
   "palakondast__palakonda": {
    "name": "Palakonda",
    "slug": "palakondast__palakonda",
+   "kind": "rural",
+   "constituency": "Palakonda (ST)",
+   "constituency_code": 54,
+   "district": "Parvathipuram_Manyam",
+   "archetype": "M3",
+   "why": "scheduled/agency mandal",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Parvathipuram_Manyam/Palakonda_ST/Palakonda_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "palakondast__palakonda_u": {
+   "name": "Palakonda",
+   "slug": "palakondast__palakonda_u",
    "kind": "urban",
    "constituency": "Palakonda (ST)",
    "constituency_code": 54,
@@ -6797,6 +7592,19 @@
   "rajamsc__rajam": {
    "name": "Rajam",
    "slug": "rajamsc__rajam",
+   "kind": "rural",
+   "constituency": "Rajam (SC)",
+   "constituency_code": 55,
+   "district": "Vizianagaram",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Vizianagaram/Rajam_SC/Rajam_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "rajamsc__rajam_u": {
+   "name": "Rajam",
+   "slug": "rajamsc__rajam_u",
    "kind": "urban",
    "constituency": "Rajam (SC)",
    "constituency_code": 55,
@@ -6899,6 +7707,19 @@
   "bobbili__bobbili": {
    "name": "Bobbili",
    "slug": "bobbili__bobbili",
+   "kind": "rural",
+   "constituency": "Bobbili",
+   "constituency_code": 57,
+   "district": "Vizianagaram",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Vizianagaram/Bobbili/Bobbili_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "bobbili__bobbili_u": {
+   "name": "Bobbili",
+   "slug": "bobbili__bobbili_u",
    "kind": "urban",
    "constituency": "Bobbili",
    "constituency_code": 57,
@@ -6981,7 +7802,9 @@
    "district": "Parvathipuram_Manyam",
    "archetype": "M3",
    "why": "scheduled/agency mandal",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Parvathipuram_Manyam/Saluru_ST/Salur_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "salurust__saluru": {
    "name": "Saluru",
@@ -7060,6 +7883,20 @@
   "chilakaluripet__chilakaluripet": {
    "name": "Chilakaluripet",
    "slug": "chilakaluripet__chilakaluripet",
+   "kind": "rural",
+   "constituency": "Chilakaluripet",
+   "constituency_code": 6,
+   "district": "Palnadu",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Palnadu/Chilakaluripet/Chilakaluripet_Mandal_Vision_Action_Plan-_2026.pdf",
+    "corpus_files/vision_documents/mandal/Palnadu/Chilakaluripet/Chilakaluripet_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "chilakaluripet__chilakaluripet_u": {
+   "name": "Chilakaluripet",
+   "slug": "chilakaluripet__chilakaluripet_u",
    "kind": "urban",
    "constituency": "Chilakaluripet",
    "constituency_code": 6,
@@ -7128,6 +7965,19 @@
   "nellimarla__nellimarla": {
    "name": "Nellimarla",
    "slug": "nellimarla__nellimarla",
+   "kind": "rural",
+   "constituency": "Nellimarla",
+   "constituency_code": 60,
+   "district": "Vizianagaram",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Vizianagaram/Nellimarla/Nellimarla_Mandal_Vision_Plan.pdf"
+   ]
+  },
+  "nellimarla__nellimarla_u": {
+   "name": "Nellimarla",
+   "slug": "nellimarla__nellimarla_u",
    "kind": "urban",
    "constituency": "Nellimarla",
    "constituency_code": 60,
@@ -7265,8 +8115,7 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Vizianagaram/Gajapathinagaram/Jami_Mandal_Vision_Action_plan.pdf",
-    "corpus_files/vision_documents/mandal/Vizianagaram/Srungavarapukota/Jami_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Vizianagaram/Gajapathinagaram/Jami_Mandal_Vision_Action_plan.pdf"
    ]
   },
   "chodavaram__butchayyapeta": {
@@ -7364,8 +8213,7 @@
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/West_Godavari/Palacole/Yelamanchili_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/West_Godavari/Palacole/Yelamanchili_Mandal_Vision_Action_Plan-2026.pdf"
+    "corpus_files/vision_documents/mandal/Anakapalli/Yelamanchili/Yelamanchili_Rural_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "yelamanchili__yellamanchili": {
@@ -7438,7 +8286,9 @@
    "district": "Anakapalle",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Anakapalli/Anakapalli/Anakapalli_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "anakapalli__gvmcanakapalli": {
    "name": "Gvmc (Anakapalli)",
@@ -7603,6 +8453,20 @@
   "mummidivaram__mummidivaram": {
    "name": "Mummidivaram",
    "slug": "mummidivaram__mummidivaram",
+   "kind": "rural",
+   "constituency": "Mummidivaram",
+   "constituency_code": 69,
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Mummidivaram/Mummidivaram_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Mummidivaram/Mummidivaram_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "mummidivaram__mummidivaram_u": {
+   "name": "Mummidivaram",
+   "slug": "mummidivaram__mummidivaram_u",
    "kind": "urban",
    "constituency": "Mummidivaram",
    "constituency_code": 69,
@@ -7653,6 +8517,19 @@
   "kanigiri__kanigiri": {
    "name": "Kanigiri",
    "slug": "kanigiri__kanigiri",
+   "kind": "rural",
+   "constituency": "KANIGIRI",
+   "constituency_code": 7,
+   "district": "Markapuram",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Marakapuram/KANIGIRI/Kanigiri_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "kanigiri__kanigiri_u": {
+   "name": "Kanigiri",
+   "slug": "kanigiri__kanigiri_u",
    "kind": "urban",
    "constituency": "KANIGIRI",
    "constituency_code": 7,
@@ -7707,9 +8584,7 @@
    "district": "Kakinada",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": [
-    "corpus_files/vision_documents/mandal/Kakinada/Kakinada_Rural/Kakinada_rural_Mandal_Vision_Action_Plan.pdf"
-   ]
+   "pdfs": []
   },
   "kakinadarural__kakinada": {
    "name": "Kakinada",
@@ -7720,7 +8595,10 @@
    "district": "Kakinada",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kakinada/Kakinada_Rural/Kakinada_urban_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Kakinada/Kakinada_Rural/Kakinada_rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "kakinadarural__karapa": {
    "name": "Karapa",
@@ -7807,7 +8685,9 @@
    "district": "East_Godavari",
    "archetype": "M2",
    "why": "portal marks this mandal urban (-U)",
-   "pdfs": []
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/East_Godavari/Rajahmundry_Rural/Rajahmundry_Rural_Mandal_Vision_Action_Plan.pdf"
+   ]
   },
   "rajahmundryrural__rajamahendravaramrural": {
    "name": "Rajamahendravaram Rural",
@@ -7960,8 +8840,7 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Anakapalli/Madugula/Devarapalli_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/East_Godavari/Gopalapuram_SC/Devarapalli_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Anakapalli/Madugula/Devarapalli_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "madugula__kkotapadu": {
@@ -8335,8 +9214,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Gannavaram_SC/Mamidikuduru_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Gannavaram_SC/Mamidikuduru_Mandal_Vision_Action_Plan-2026.pdf",
     "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Razole_SC/Mamidikuduru_Mandal_Vision_Action_Plan.pdf"
    ]
   },
@@ -8382,6 +9259,20 @@
   "amalapuramsc__amalapuram": {
    "name": "Amalapuram",
    "slug": "amalapuramsc__amalapuram",
+   "kind": "rural",
+   "constituency": "Amalapuram (SC)",
+   "constituency_code": 81,
+   "district": "Dr.B.R.Ambedkar_Konaseema",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Amalapuram_SC/Amalapuram_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Dr._B.R._Ambedkar_Konaseema/Amalapuram_SC/Amalapuram_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "amalapuramsc__amalapuram_u": {
+   "name": "Amalapuram",
+   "slug": "amalapuramsc__amalapuram_u",
    "kind": "urban",
    "constituency": "Amalapuram (SC)",
    "constituency_code": 81,
@@ -8410,6 +9301,19 @@
   "pithapuram__gollaprolu": {
    "name": "Gollaprolu",
    "slug": "pithapuram__gollaprolu",
+   "kind": "rural",
+   "constituency": "Pithapuram",
+   "constituency_code": 82,
+   "district": "Kakinada",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kakinada/Pithapuram/Gollaprolu_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "pithapuram__gollaprolu_u": {
+   "name": "Gollaprolu",
+   "slug": "pithapuram__gollaprolu_u",
    "kind": "urban",
    "constituency": "Pithapuram",
    "constituency_code": 82,
@@ -8423,6 +9327,19 @@
   "pithapuram__pithapuram": {
    "name": "Pithapuram",
    "slug": "pithapuram__pithapuram",
+   "kind": "rural",
+   "constituency": "Pithapuram",
+   "constituency_code": 82,
+   "district": "Kakinada",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kakinada/Pithapuram/Pithapuram_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "pithapuram__pithapuram_u": {
+   "name": "Pithapuram",
+   "slug": "pithapuram__pithapuram_u",
    "kind": "urban",
    "constituency": "Pithapuram",
    "constituency_code": 82,
@@ -8456,8 +9373,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Guntur/Prathipadu_SC/Prathipadu_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Guntur/Prathipadu_SC/Prathipadu_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Kakinada/Prathipadu/Prathipadu_Mandal_Vision_Action_Plan.pdf"
    ]
   },
@@ -8488,6 +9403,19 @@
   "prathipadu__yeleswaram": {
    "name": "Yeleswaram",
    "slug": "prathipadu__yeleswaram",
+   "kind": "rural",
+   "constituency": "Prathipadu",
+   "constituency_code": 84,
+   "district": "Kakinada",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Kakinada/Prathipadu/Yeleswaram_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "prathipadu__yeleswaram_u": {
+   "name": "Yeleswaram",
+   "slug": "prathipadu__yeleswaram_u",
    "kind": "urban",
    "constituency": "Prathipadu",
    "constituency_code": 84,
@@ -8550,8 +9478,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/West_Godavari/Palacole/Poduru_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/West_Godavari/Palacole/Poduru_Mandal_Vision_Action_Plan-2026.pdf",
     "corpus_files/vision_documents/mandal/West_Godavari/Achanta/Poduru_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/West_Godavari/Achanta/Poduru_Mandal_Vision_Action_Plan-2026.pdf"
    ]
@@ -8559,6 +9485,19 @@
   "undi__akiveedu": {
    "name": "Akiveedu",
    "slug": "undi__akiveedu",
+   "kind": "rural",
+   "constituency": "Undi",
+   "constituency_code": 86,
+   "district": "West_Godavari",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/West_Godavari/Undi/Akiveedu_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "undi__akiveedu_u": {
+   "name": "Akiveedu",
+   "slug": "undi__akiveedu_u",
    "kind": "urban",
    "constituency": "Undi",
    "constituency_code": 86,
@@ -8788,6 +9727,20 @@
   "gudivada__gudivada": {
    "name": "Gudivada",
    "slug": "gudivada__gudivada",
+   "kind": "rural",
+   "constituency": "Gudivada",
+   "constituency_code": 90,
+   "district": "Krishna",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/Krishna/Gudivada/Gudivada_Mandal_Vision_Action_Plan.pdf",
+    "corpus_files/vision_documents/mandal/Krishna/Gudivada/Gudivada_Mandal_Vision_Action_Plan-2026.pdf"
+   ]
+  },
+  "gudivada__gudivada_u": {
+   "name": "Gudivada",
+   "slug": "gudivada__gudivada_u",
    "kind": "urban",
    "constituency": "Gudivada",
    "constituency_code": 90,
@@ -8851,6 +9804,17 @@
   "denduluru__eluru": {
    "name": "Eluru",
    "slug": "denduluru__eluru",
+   "kind": "rural",
+   "constituency": "Denduluru",
+   "constituency_code": 92,
+   "district": "Eluru",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "denduluru__eluru_u": {
+   "name": "Eluru",
+   "slug": "denduluru__eluru_u",
    "kind": "urban",
    "constituency": "Denduluru",
    "constituency_code": 92,
@@ -8932,8 +9896,6 @@
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Krishna/Gannavaram/Unguturu_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Krishna/Gannavaram/Unguturu_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/Eluru/Ungutur/Unguturu_Mandal_Vision_Action_Plan.pdf"
    ]
   },
@@ -8947,7 +9909,6 @@
    "archetype": "M1",
    "why": "portal states no rural/urban marker; shown as rural by default",
    "pdfs": [
-    "corpus_files/vision_documents/mandal/Anakapalli/Madugula/Devarapalli_Mandal_Vision_Action_Plan.pdf",
     "corpus_files/vision_documents/mandal/East_Godavari/Gopalapuram_SC/Devarapalli_Mandal_Vision_Action_Plan.pdf"
    ]
   },
@@ -9132,8 +10093,7 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/Krishna/Gannavaram/Unguturu_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/Krishna/Gannavaram/Unguturu_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Eluru/Ungutur/Unguturu_Mandal_Vision_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/Krishna/Gannavaram/Unguturu_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "gannavaram__vijayawadarural": {
@@ -9145,11 +10105,7 @@
    "district": "Krishna",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": [
-    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Vijayawada_Rural_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Vijayawada_Rural_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Krishna/Gannavaram/VIjayawada_Rural_Mandal_Vision_Action_Plan.pdf"
-   ]
+   "pdfs": []
   },
   "mylavaram__gkonduru": {
    "name": "G Konduru",
@@ -9168,6 +10124,20 @@
   "mylavaram__ibrahimpatnam": {
    "name": "Ibrahimpatnam",
    "slug": "mylavaram__ibrahimpatnam",
+   "kind": "rural",
+   "constituency": "Mylavaram",
+   "constituency_code": 98,
+   "district": "Ntr",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": [
+    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Ibrahimpatnam_Mandal_Vision_Action_Plan-2026.pdf",
+    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Ibrahimpatnam_Mandal_Vision_Action_Plan.pdf"
+   ]
+  },
+  "mylavaram__ibrahimpatnam_u": {
+   "name": "Ibrahimpatnam",
+   "slug": "mylavaram__ibrahimpatnam_u",
    "kind": "urban",
    "constituency": "Mylavaram",
    "constituency_code": 98,
@@ -9190,8 +10160,7 @@
    "why": "portal marks this mandal rural (-R)",
    "pdfs": [
     "corpus_files/vision_documents/mandal/NTR/Mylavaram/Mylavaram_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Mylavaram_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/YSR_Kadapa/Jammalamadugu/Mylavaram_Mandal_Vison_Action_Plan.pdf"
+    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Mylavaram_Mandal_Vision_Action_Plan.pdf"
    ]
   },
   "mylavaram__reddigudem": {
@@ -9217,11 +10186,7 @@
    "district": "Ntr",
    "archetype": "M1",
    "why": "portal marks this mandal rural (-R)",
-   "pdfs": [
-    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Vijayawada_Rural_Mandal_Vision_Action_Plan-2026.pdf",
-    "corpus_files/vision_documents/mandal/NTR/Mylavaram/Vijayawada_Rural_Mandal_Vision_Action_Plan.pdf",
-    "corpus_files/vision_documents/mandal/Krishna/Gannavaram/VIjayawada_Rural_Mandal_Vision_Action_Plan.pdf"
-   ]
+   "pdfs": []
   },
   "tiruvurusc__akonduru": {
    "name": "A.Konduru",
@@ -9253,6 +10218,17 @@
   "tiruvurusc__tiruvuru": {
    "name": "Tiruvuru",
    "slug": "tiruvurusc__tiruvuru",
+   "kind": "rural",
+   "constituency": "Tiruvuru (SC)",
+   "constituency_code": 99,
+   "district": "Ntr",
+   "archetype": "M1",
+   "why": "portal marks this mandal rural (-R)",
+   "pdfs": []
+  },
+  "tiruvurusc__tiruvuru_u": {
+   "name": "Tiruvuru",
+   "slug": "tiruvurusc__tiruvuru_u",
    "kind": "urban",
    "constituency": "Tiruvuru (SC)",
    "constituency_code": 99,
@@ -9293,7 +10269,7 @@
    "nandigamasc__chandarlapadu",
    "nandigamasc__kanchikacherla",
    "nandigamasc__nandigama",
-   "nandigamasc__nandigama",
+   "nandigamasc__nandigama_u",
    "nandigamasc__veerullapadu"
   ],
   "Pedana": [
@@ -9301,7 +10277,7 @@
    "pedana__guduru",
    "pedana__kruthivennu",
    "pedana__pedana",
-   "pedana__pedana"
+   "pedana__pedana_u"
   ],
   "Avanigadda": [
    "avanigadda__avanigadda",
@@ -9343,18 +10319,18 @@
   ],
   "Peddapuram": [
    "peddapuram__peddapuram",
-   "peddapuram__peddapuram",
+   "peddapuram__peddapuram_u",
    "peddapuram__samalkot",
-   "peddapuram__samalkot"
+   "peddapuram__samalkot_u"
   ],
   "Gurajala": [
    "gurajala__dachepalli",
-   "gurajala__dachepalli",
+   "gurajala__dachepalli_u",
    "gurajala__gurazala",
-   "gurajala__gurazala",
+   "gurajala__gurazala_u",
    "gurajala__machavaram",
    "gurajala__piduguralla",
-   "gurajala__piduguralla"
+   "gurajala__piduguralla_u"
   ],
   "Rajanagaram": [
    "rajanagaram__korukonda",
@@ -9365,34 +10341,34 @@
    "tuni__kotananduru",
    "tuni__thondangi",
    "tuni__tuni",
-   "tuni__tuni"
+   "tuni__tuni_u"
   ],
   "Bhimavaram": [
    "bhimavaram__bhimavaram",
-   "bhimavaram__bhimavaram",
+   "bhimavaram__bhimavaram_u",
    "bhimavaram__veeravasaram"
   ],
   "Nidadavole": [
    "nidadavole__nidadavole",
-   "nidadavole__nidadavole",
+   "nidadavole__nidadavole_u",
    "nidadavole__peravali",
    "nidadavole__undrajavaram"
   ],
   "Palacole": [
    "palacole__elamanchili",
    "palacole__palakol",
-   "palacole__palakol",
+   "palacole__palakol_u",
    "palacole__poduru"
   ],
   "Tadepalligudem": [
    "tadepalligudem__pentapadu",
    "tadepalligudem__tadepalligudem",
-   "tadepalligudem__tadepalligudem"
+   "tadepalligudem__tadepalligudem_u"
   ],
   "Kovvur (SC)": [
    "kovvursc__chagallu",
    "kovvursc__kovvur",
-   "kovvursc__kovvur",
+   "kovvursc__kovvur_u",
    "kovvursc__tallapudi"
   ],
   "Pamarru (SC)": [
@@ -9413,7 +10389,7 @@
   "Kandukur": [
    "kandukur__gudluru",
    "kandukur__kandukur",
-   "kandukur__kandukur",
+   "kandukur__kandukur_u",
    "kandukur__lingasamudram",
    "kandukur__ulavapadu",
    "kandukur__vvpalem"
@@ -9434,7 +10410,7 @@
   ],
   "Jaggayyapeta": [
    "jaggayyapeta__jaggayyapeta",
-   "jaggayyapeta__jaggayyapeta",
+   "jaggayyapeta__jaggayyapeta_u",
    "jaggayyapeta__nandigama",
    "jaggayyapeta__penuganchiprolu",
    "jaggayyapeta__vatsavai"
@@ -9448,7 +10424,7 @@
   "ONGOLE": [
    "ongole__kothapatnam",
    "ongole__ongole",
-   "ongole__ongole"
+   "ongole__ongole_u"
   ],
   "Parchur": [
    "parchur__chinaganjam",
@@ -9494,7 +10470,7 @@
   "Markapuram": [
    "markapuram__kkmitla",
    "markapuram__markapur",
-   "markapuram__markapur",
+   "markapuram__markapur_u",
    "markapuram__podili",
    "markapuram__tarlupadu"
   ],
@@ -9539,14 +10515,14 @@
    "kodumursc__gudurknl",
    "kodumursc__kodumur",
    "kodumursc__kurnool",
-   "kodumursc__kurnool"
+   "kodumursc__kurnool_u"
   ],
   "Tirupati": [
    "tirupati__tirupati"
   ],
   "Guntakal": [
    "guntakal__gooty",
-   "guntakal__gooty",
+   "guntakal__gooty_u",
    "guntakal__guntakal",
    "guntakal__gunthakal",
    "guntakal__pamidi"
@@ -9556,7 +10532,7 @@
    "nandikotkursc__kothapalli",
    "nandikotkursc__midthur",
    "nandikotkursc__nandikotkur",
-   "nandikotkursc__nandikotkur",
+   "nandikotkursc__nandikotkur_u",
    "nandikotkursc__pagidyala",
    "nandikotkursc__pamulapadu"
   ],
@@ -9565,7 +10541,7 @@
    "giddalur__bestavaripeta",
    "giddalur__cumbum",
    "giddalur__giddalur",
-   "giddalur__giddalur",
+   "giddalur__giddalur_u",
    "giddalur__komarole",
    "giddalur__racherla"
   ],
@@ -9579,13 +10555,13 @@
    "yemmiganur__gonegandla",
    "yemmiganur__nandavaram",
    "yemmiganur__yemmiganur",
-   "yemmiganur__yemmiganur"
+   "yemmiganur__yemmiganur_u"
   ],
   "Tanuku": [
    "tanuku__attili",
    "tanuku__iragavaram",
    "tanuku__tanuku",
-   "tanuku__tanuku"
+   "tanuku__tanuku_u"
   ],
   "Tadipatri": [
    "tadipatri__peddapappur",
@@ -9596,7 +10572,7 @@
   ],
   "Proddatur": [
    "proddatur__proddatur",
-   "proddatur__proddatur",
+   "proddatur__proddatur_u",
    "proddatur__rajupalem"
   ],
   "Raptadu": [
@@ -9612,7 +10588,7 @@
    "madakasirasc__amarapuram",
    "madakasirasc__gudibanda",
    "madakasirasc__madakasira",
-   "madakasirasc__madakasira",
+   "madakasirasc__madakasira_u",
    "madakasirasc__rolla"
   ],
   "Mydukur": [
@@ -9621,7 +10597,7 @@
    "mydukur__duvvur",
    "mydukur__khajipeta",
    "mydukur__mydukur",
-   "mydukur__mydukur"
+   "mydukur__mydukur_u"
   ],
   "DARSI": [
    "darsi__darsi",
@@ -9645,7 +10621,7 @@
   "Nandyal": [
    "nandyal__gospadu",
    "nandyal__nandyal",
-   "nandyal__nandyal"
+   "nandyal__nandyal_u"
   ],
   "Vijayawada West": [
    "vijayawadawest__1"
@@ -9691,7 +10667,7 @@
    "rayachoti__lakkireddypalli",
    "rayachoti__ramapuram",
    "rayachoti__rayachoty",
-   "rayachoti__rayachoty",
+   "rayachoti__rayachoty_u",
    "rayachoti__sambepalle"
   ],
   "Machilipatnam": [
@@ -9701,11 +10677,11 @@
    "srikakulam__etcherla",
    "srikakulam__gara",
    "srikakulam__srikakulam",
-   "srikakulam__srikakulam"
+   "srikakulam__srikakulam_u"
   ],
   "Allagadda": [
    "allagadda__allagadda",
-   "allagadda__allagadda",
+   "allagadda__allagadda_u",
    "allagadda__chagalamarri",
    "allagadda__dornipadu",
    "allagadda__rudravaram",
@@ -9729,7 +10705,7 @@
   "Parvathipuram (SC)": [
    "parvathipuramsc__balijipeta",
    "parvathipuramsc__parvathipuram",
-   "parvathipuramsc__parvathipuram",
+   "parvathipuramsc__parvathipuram_u",
    "parvathipuramsc__seethanagaram"
   ],
   "Santhanuthalapadu (SC)": [
@@ -9749,7 +10725,7 @@
    "narsipatnam__golugonda",
    "narsipatnam__makavarapalem",
    "narsipatnam__narsipatnam",
-   "narsipatnam__narsipatnam",
+   "narsipatnam__narsipatnam_u",
    "narsipatnam__nathavaram"
   ],
   "Railway Kodur (SC)": [
@@ -9763,7 +10739,7 @@
    "penukonda__gorantla",
    "penukonda__parigi",
    "penukonda__penukonda",
-   "penukonda__penukonda",
+   "penukonda__penukonda_u",
    "penukonda__roddam",
    "penukonda__somandepalli"
   ],
@@ -9782,7 +10758,7 @@
    "ramachandrapuram__kgangavaram",
    "ramachandrapuram__kajuluru",
    "ramachandrapuram__ramachandrapuram",
-   "ramachandrapuram__ramachandrapuram"
+   "ramachandrapuram__ramachandrapuram_u"
   ],
   "Kondapi (SC)": [
    "kondapisc__kondapi",
@@ -9810,14 +10786,14 @@
   "Dharmavaram": [
    "dharmavaram__bathalapalli",
    "dharmavaram__dharmavaram",
-   "dharmavaram__dharmavaram",
+   "dharmavaram__dharmavaram_u",
    "dharmavaram__mudigubba",
    "dharmavaram__tadimirri"
   ],
   "Kadiri": [
    "kadiri__gandlapenta",
    "kadiri__kadiri",
-   "kadiri__kadiri",
+   "kadiri__kadiri_u",
    "kadiri__npkunta",
    "kadiri__nallachervu",
    "kadiri__talupula",
@@ -9829,7 +10805,7 @@
    "rayadurg__gummagatta",
    "rayadurg__kanekal",
    "rayadurg__rayadurg",
-   "rayadurg__rayadurg"
+   "rayadurg__rayadurg_u"
   ],
   "Ichchapuram": [
    "ichchapuram__ichapuram",
@@ -9840,18 +10816,18 @@
   ],
   "Chirala": [
    "chirala__chirala",
-   "chirala__chirala",
+   "chirala__chirala_u",
    "chirala__vetapalem"
   ],
   "Ponnur": [
    "ponnur__chebrole",
    "ponnur__pedakakani",
    "ponnur__ponnur",
-   "ponnur__ponnur"
+   "ponnur__ponnur_u"
   ],
   "Kovur": [
    "kovur__buchireddypalem",
-   "kovur__buchireddypalem",
+   "kovur__buchireddypalem_u",
    "kovur__indukurpet",
    "kovur__kodavalur",
    "kovur__kovur",
@@ -9871,13 +10847,13 @@
    "venkatagiri__rapur",
    "venkatagiri__sydapuram",
    "venkatagiri__venkatagiri",
-   "venkatagiri__venkatagiri"
+   "venkatagiri__venkatagiri_u"
   ],
   "Punganur": [
    "punganur__chowdepalle",
    "punganur__pulicherla",
    "punganur__punganur",
-   "punganur__punganur",
+   "punganur__punganur_u",
    "punganur__rompicherla",
    "punganur__sodam",
    "punganur__somala"
@@ -9892,10 +10868,10 @@
   ],
   "Nagari": [
    "nagari__nagari",
-   "nagari__nagari",
+   "nagari__nagari_u",
    "nagari__nindra",
    "nagari__puttur",
-   "nagari__puttur",
+   "nagari__puttur_u",
    "nagari__vadamalapeta",
    "nagari__vijayapuram"
   ],
@@ -9904,7 +10880,7 @@
    "kavali__bogole",
    "kavali__dagadarthi",
    "kavali__kavali",
-   "kavali__kavali"
+   "kavali__kavali_u"
   ],
   "Udayagiri": [
    "udayagiri__duttalur",
@@ -9924,7 +10900,7 @@
   ],
   "Bapatla": [
    "bapatla__bapatla",
-   "bapatla__bapatla",
+   "bapatla__bapatla_u",
    "bapatla__karlapalem",
    "bapatla__pittalavanipalem"
   ],
@@ -9939,7 +10915,7 @@
   "Kuppam": [
    "kuppam__gudipalle",
    "kuppam__kuppam",
-   "kuppam__kuppam",
+   "kuppam__kuppam_u",
    "kuppam__ramakuppam",
    "kuppam__santhipuram"
   ],
@@ -9947,13 +10923,13 @@
    "palamaner__baireddipalle",
    "palamaner__gangavaram",
    "palamaner__palamaner",
-   "palamaner__palamaner",
+   "palamaner__palamaner_u",
    "palamaner__peddapanjani",
    "palamaner__venkatagirikota"
   ],
   "Chittoor": [
    "chittoor__chittoor",
-   "chittoor__chittoor",
+   "chittoor__chittoor_u",
    "chittoor__gudipala"
   ],
   "Kamalapuram": [
@@ -9961,7 +10937,7 @@
    "kamalapuram__chennur",
    "kamalapuram__kadapa",
    "kamalapuram__kamalapuram",
-   "kamalapuram__kamalapuram",
+   "kamalapuram__kamalapuram_u",
    "kamalapuram__pendlimarri",
    "kamalapuram__vallur",
    "kamalapuram__veerapunayunipalle"
@@ -9969,7 +10945,7 @@
   "Rajampet": [
    "rajampet__nandalur",
    "rajampet__rajampet",
-   "rajampet__rajampet",
+   "rajampet__rajampet_u",
    "rajampet__sidhout",
    "rajampet__tsundupalli",
    "rajampet__veeraballi",
@@ -9987,7 +10963,7 @@
   "Srikalahasti": [
    "srikalahasti__renigunta",
    "srikalahasti__srikalahasti",
-   "srikalahasti__srikalahasti",
+   "srikalahasti__srikalahasti_u",
    "srikalahasti__thottambedu",
    "srikalahasti__yerpedu"
   ],
@@ -10001,13 +10977,13 @@
   ],
   "Jammalamadugu": [
    "jammalamadugu__jammalamadugu",
-   "jammalamadugu__jammalamadugu",
+   "jammalamadugu__jammalamadugu_u",
    "jammalamadugu__kondapuram",
    "jammalamadugu__muddanur",
    "jammalamadugu__mylavaram",
    "jammalamadugu__peddamudium",
    "jammalamadugu__yerraguntla",
-   "jammalamadugu__yerraguntla"
+   "jammalamadugu__yerraguntla_u"
   ],
   "Vinukonda": [
    "vinukonda__bollapalli",
@@ -10015,7 +10991,7 @@
    "vinukonda__nuzendla",
    "vinukonda__savalyapuram",
    "vinukonda__vinukonda",
-   "vinukonda__vinukonda"
+   "vinukonda__vinukonda_u"
   ],
   "Singanamala (SC)": [
    "singanamalasc__bukkarayasamudram",
@@ -10028,7 +11004,7 @@
   "Hindupur": [
    "hindupur__chilmathur",
    "hindupur__hindupur",
-   "hindupur__hindupur",
+   "hindupur__hindupur_u",
    "hindupur__lepakshi"
   ],
   "Kalyandurg": [
@@ -10053,7 +11029,7 @@
    "puttaparthi__nallamada",
    "puttaparthi__obuladevaracheruvu",
    "puttaparthi__puttaparthy",
-   "puttaparthi__puttaparthy"
+   "puttaparthi__puttaparthy_u"
   ],
   "Pattikonda": [
    "pattikonda__krishnagiri",
@@ -10065,9 +11041,9 @@
   ],
   "Dhone": [
    "dhone__bethamcherla",
-   "dhone__bethamcherla",
+   "dhone__bethamcherla_u",
    "dhone__dhone",
-   "dhone__dhone",
+   "dhone__dhone_u",
    "dhone__peapully"
   ],
   "Palasa": [
@@ -10090,7 +11066,7 @@
   ],
   "Narasaraopet": [
    "narasaraopet__narasaraopet",
-   "narasaraopet__narasaraopet",
+   "narasaraopet__narasaraopet_u",
    "narasaraopet__rompicherla"
   ],
   "Pathapatnam": [
@@ -10116,14 +11092,14 @@
   "Palakonda (ST)": [
    "palakondast__bhamini",
    "palakondast__palakonda",
-   "palakondast__palakonda",
+   "palakondast__palakonda_u",
    "palakondast__seethampeta",
    "palakondast__veeraghattam"
   ],
   "Rajam (SC)": [
    "rajamsc__ramadalavalasa",
    "rajamsc__rajam",
-   "rajamsc__rajam",
+   "rajamsc__rajam_u",
    "rajamsc__santhakaviti",
    "rajamsc__vangara"
   ],
@@ -10136,7 +11112,7 @@
   "Bobbili": [
    "bobbili__badangi",
    "bobbili__bobbili",
-   "bobbili__bobbili",
+   "bobbili__bobbili_u",
    "bobbili__ramabhadrapuram",
    "bobbili__therlam"
   ],
@@ -10156,7 +11132,7 @@
   ],
   "Chilakaluripet": [
    "chilakaluripet__chilakaluripet",
-   "chilakaluripet__chilakaluripet",
+   "chilakaluripet__chilakaluripet_u",
    "chilakaluripet__edlapadu",
    "chilakaluripet__nadendla"
   ],
@@ -10164,7 +11140,7 @@
    "nellimarla__bhogapuram",
    "nellimarla__denkada",
    "nellimarla__nellimarla",
-   "nellimarla__nellimarla",
+   "nellimarla__nellimarla_u",
    "nellimarla__pusapatirega"
   ],
   "Cheepurupalli": [
@@ -10221,14 +11197,14 @@
    "mummidivaram__ipolavaram",
    "mummidivaram__katrenikona",
    "mummidivaram__mummidivaram",
-   "mummidivaram__mummidivaram",
+   "mummidivaram__mummidivaram_u",
    "mummidivaram__tallarevu"
   ],
   "KANIGIRI": [
    "kanigiri__cspuram",
    "kanigiri__hmpadu",
    "kanigiri__kanigiri",
-   "kanigiri__kanigiri",
+   "kanigiri__kanigiri_u",
    "kanigiri__pamur",
    "kanigiri__pcpalli",
    "kanigiri__veligandla"
@@ -10310,14 +11286,14 @@
   "Amalapuram (SC)": [
    "amalapuramsc__allavaram",
    "amalapuramsc__amalapuram",
-   "amalapuramsc__amalapuram",
+   "amalapuramsc__amalapuram_u",
    "amalapuramsc__uppalaguptam"
   ],
   "Pithapuram": [
    "pithapuram__gollaprolu",
-   "pithapuram__gollaprolu",
+   "pithapuram__gollaprolu_u",
    "pithapuram__pithapuram",
-   "pithapuram__pithapuram",
+   "pithapuram__pithapuram_u",
    "pithapuram__ukothapalli"
   ],
   "Prathipadu": [
@@ -10325,7 +11301,7 @@
    "prathipadu__rowthulapudi",
    "prathipadu__sankhavaram",
    "prathipadu__yeleswaram",
-   "prathipadu__yeleswaram"
+   "prathipadu__yeleswaram_u"
   ],
   "Achanta": [
    "achanta__achanta",
@@ -10335,7 +11311,7 @@
   ],
   "Undi": [
    "undi__akiveedu",
-   "undi__akiveedu",
+   "undi__akiveedu_u",
    "undi__kalla",
    "undi__palakoderu",
    "undi__undi"
@@ -10362,7 +11338,7 @@
   ],
   "Gudivada": [
    "gudivada__gudivada",
-   "gudivada__gudivada",
+   "gudivada__gudivada_u",
    "gudivada__gudlavalleru",
    "gudivada__nandiwada"
   ],
@@ -10372,7 +11348,7 @@
   "Denduluru": [
    "denduluru__denduluru",
    "denduluru__eluru",
-   "denduluru__eluru",
+   "denduluru__eluru_u",
    "denduluru__pedapadu",
    "denduluru__pedavegi"
   ],
@@ -10409,7 +11385,7 @@
   "Mylavaram": [
    "mylavaram__gkonduru",
    "mylavaram__ibrahimpatnam",
-   "mylavaram__ibrahimpatnam",
+   "mylavaram__ibrahimpatnam_u",
    "mylavaram__mylavaram",
    "mylavaram__reddigudem",
    "mylavaram__vijayawadarural"
@@ -10418,7 +11394,7 @@
    "tiruvurusc__akonduru",
    "tiruvurusc__gampalagudem",
    "tiruvurusc__tiruvuru",
-   "tiruvurusc__tiruvuru",
+   "tiruvurusc__tiruvuru_u",
    "tiruvurusc__vissannapeta"
   ]
  },
@@ -10429,7 +11405,7 @@
   "rural": 623,
   "urban": 124,
   "unknown": 47,
-  "with_pdf": 621,
-  "without_pdf": 173
+  "with_pdf": 638,
+  "without_pdf": 156
  }
 }

@@ -55,14 +55,56 @@ def slugify(name, constituency):
     return norm(constituency) + "__" + norm(name)
 
 
+# Filenames that don't norm-match their own portal name. Found by tracing why
+# Kurnool's tree had unresolved mandals: "Yemmignaur_Mandal_Vision_Action_Plan.pdf"
+# is a genuine typo in the source PDF's filename (transposed letters), not
+# something any normalisation can bridge. Add entries here only when confirmed
+# against the actual file on disk — this is not a place to guess.
+STEM_ALIASES = {
+    "yemmignaur": "yemmiganur",
+}
+
+
 def index_pdfs():
-    """{normalised mandal name: [repo-relative pdf paths]}"""
+    """{normalised mandal name: [(repo-relative path, constituency-folder norm)]}
+
+    The constituency-folder norm travels with each path so a lookup can prefer a
+    file that actually sits in the mandal's own constituency folder. Without it,
+    Kurnool's own "Kurnool" mandal (portal: "Kurnool-U") picked up
+    Kodumur_SC/Kurnool_Mandal_Vision_Action_Plan-2026.pdf — a different
+    constituency's file that happened to share a normalised stem — while its own
+    folder's file, Kurnool_URBAN_Mandal_Vision_Action_Plan.pdf, went unmatched
+    because "_URBAN" survives into the stem and norm() doesn't strip it.
+    """
     out = {}
     for path in glob.glob(os.path.join(MANDAL_PDF_DIR, "**", "*.pdf"), recursive=True):
         base = os.path.basename(path)
         stem = base.split("_Mandal_")[0] if "_Mandal_" in base else os.path.splitext(base)[0]
-        out.setdefault(norm(stem), []).append(os.path.relpath(path, ROOT))
+        # the portal's own -R/-U marker has a filename-side counterpart:
+        # trailing _URBAN / _RURAL (with or without the underscore)
+        stem = re.sub(r"[_\s]*(URBAN|RURAL)$", "", stem, flags=re.IGNORECASE)
+        key = norm(stem)
+        key = STEM_ALIASES.get(key, key)
+        rel = os.path.relpath(path, ROOT)
+        # the folder immediately under .../mandal/<District>/<ConstituencyFolder>/file.pdf
+        parts = rel.split(os.sep)
+        const_folder = norm(parts[-2]) if len(parts) >= 2 else ""
+        out.setdefault(key, []).append((rel, const_folder))
     return out
+
+
+def pdfs_for(pdf_index, name, constituency):
+    """Same-constituency matches first; only fall back to a cross-constituency
+    match (the old, unscoped behaviour) if the mandal's own folder has nothing —
+    that fallback is what let Kodumur_SC's file stand in for Kurnool's own
+    before this was scoped, so it stays available rather than turning a working
+    match into a gap, but it no longer wins when a same-folder file exists."""
+    candidates = pdf_index.get(norm(name), [])
+    if not candidates:
+        return []
+    ck = norm(constituency)
+    same = [p for p, cf in candidates if cf == ck]
+    return same if same else [p for p, _ in candidates]
 
 
 def main():
@@ -86,6 +128,7 @@ def main():
 
         entries = [x.strip() for x in raw.split(",") if x.strip()]
         slugs = []
+        used_slugs_here = set()
         for entry in entries:
             m = re.match(r"^(.*?)-([A-Za-z]+)$", entry)
             if m:
@@ -106,8 +149,18 @@ def main():
                 # reason says plainly that it was not stated.
                 archetype, why = "M1", "portal states no rural/urban marker; shown as rural by default"
 
-            found = pdfs.get(norm(name), [])
+            found = pdfs_for(pdfs, name, constituency)
             slug = slugify(name, constituency)
+            if slug in used_slugs_here:
+                # Two portal entries for this constituency reduce to the same slug —
+                # seen with "Yemmiganur-R" and "Yemmiganur-U" in the same
+                # constituency: same base name, different marker. A plain dict
+                # write let the second silently overwrite the first, so
+                # by_constituency listed the mandal twice while mandals{} only
+                # ever kept whichever was written last. Disambiguate by kind so
+                # both survive as distinct, addressable entries.
+                slug = slug + "_" + (kind[:1] if kind != "unknown" else "x")
+            used_slugs_here.add(slug)
             mandals[slug] = {
                 "name": name,
                 "slug": slug,

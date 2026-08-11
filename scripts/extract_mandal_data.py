@@ -378,6 +378,12 @@ def main():
     ap.add_argument("--limit", type=int)
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--report-only", action="store_true")
+    ap.add_argument("--district", help="only process mandals in this district "
+                     "(matches mandal_index.json's district field, e.g. Kurnool) "
+                     "— for a targeted re-run after fixing indexing for one area, "
+                     "without re-touching the other ~770 already-parsed mandals")
+    ap.add_argument("--slugs", help="comma-separated slugs, for re-running a "
+                     "specific handful directly")
     args = ap.parse_args()
 
     if args.report_only:
@@ -391,6 +397,14 @@ def main():
     os.makedirs(OUT_DIR, exist_ok=True)
     pdf_by_slug = build_pdf_index()
     targets = list(pdf_by_slug.items())
+
+    if args.district:
+        mi = json.load(open(MANDAL_INDEX))
+        wanted = {s for s, m in mi["mandals"].items() if m.get("district") == args.district}
+        targets = [(s, p) for s, p in targets if s in wanted]
+    if args.slugs:
+        wanted = set(args.slugs.split(","))
+        targets = [(s, p) for s, p in targets if s in wanted]
     if args.limit:
         targets = targets[: args.limit]
 
