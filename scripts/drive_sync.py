@@ -94,29 +94,42 @@ def cmd_links(remote, root_id, dry):
     ok = fail = skip = 0
     by_id = {}
     # collapse dupes: many doc_ids share one dest (e.g. the state plan); link once per path
-    path_url = {}
     for d in docs:
         p = drivepath(d["dest"])
         by_id.setdefault(p, []).append(d["doc_id"])
 
-    for i, (p, ids) in enumerate(sorted(by_id.items()), 1):
+    # One recursive listing gives every file's Drive ID, so the share URL can be
+    # built locally. `rclone link` was ~1 process + 1 API round-trip PER FILE
+    # (1108 of them, minutes); this is a single call. It relies on the folder
+    # already being shared "anyone with the link" — which it is, since the whole
+    # tree was shared as one folder — so no per-file permission call is needed.
+    print("listing Drive (one call)…")
+    r = rclone(["lsjson", "-R", "--files-only", f"{remote}:"], root_id)
+    if r.returncode != 0:
+        print("rclone lsjson failed:\n" + r.stderr, file=sys.stderr)
+        sys.exit(1)
+    id_by_path = {}
+    for it in json.loads(r.stdout):
+        if it.get("ID"):
+            id_by_path[it["Path"]] = it["ID"]
+    print(f"  got {len(id_by_path)} file IDs")
+
+    for p, ids in sorted(by_id.items()):
         if all(str(x) in links for x in ids):
             skip += 1
             continue
         if dry:
             print(f"[dry] would link {p}  -> ids {ids}")
             continue
-        r = rclone(["link", f"{remote}:{p}"], root_id)
-        url = r.stdout.strip()
-        if r.returncode == 0 and url.startswith("http"):
+        fid = id_by_path.get(p)
+        if fid:
+            url = f"https://drive.google.com/file/d/{fid}/view"
             for x in ids:
                 links[str(x)] = url
             ok += 1
         else:
             fail += 1
-            print(f"  ! {p}: {r.stderr.strip() or 'no url'}", file=sys.stderr)
-        if i % 50 == 0:
-            print(f"  … {i}/{len(by_id)} paths processed")
+            print(f"  ! not found in Drive: {p}", file=sys.stderr)
 
     if not dry:
         # preserve the provider seam; only refresh the links map

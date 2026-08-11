@@ -2339,8 +2339,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(loaded || loading) return;
     loading = true;
     Promise.all([
-      fetch('assets/docs_tree.json?v=2026-08-11b').then(function(r){ return r.json(); }),
-      fetch('assets/doc_links.json?v=2026-08-11b').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
+      fetch('assets/docs_tree.json?v=2026-08-11c').then(function(r){ return r.json(); }),
+      fetch('assets/doc_links.json?v=2026-08-11c').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
     ]).then(function(res){
       DATA = res[0];
       var cfg = res[1] || {};
