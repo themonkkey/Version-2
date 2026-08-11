@@ -1,0 +1,136 @@
+{
+ "ap": [
+  {
+   "slug": "east-godavari-coconut-coir",
+   "title": "Unlocking East Godavari's Coconut & Coir Potential",
+   "eyebrow": "Case for action • Value-chain strategy",
+   "summary": "From a coconut-growing district to a diversified processing hub — coir, activated carbon and beyond.",
+   "theme": "Agri value chain",
+   "place": "East Godavari",
+   "district": "East_Godavari",
+   "sections": 14
+  },
+  {
+   "slug": "nellore-shrimp-processing",
+   "title": "Unlocking Nellore's Shrimp Processing Potential",
+   "eyebrow": "Case for action • Value-chain strategy",
+   "summary": "From aquaculture capital to value-addition hub — why the district must move up the shrimp chain.",
+   "theme": "Aquaculture",
+   "place": "SPSR Nellore",
+   "district": "Sps_Nellore",
+   "sections": 18
+  },
+  {
+   "slug": "nellore-ethanol-potential",
+   "title": "Unlocking Nellore's Ethanol Opportunity",
+   "eyebrow": "Sector brief • Investment potential",
+   "summary": "Feedstock, infrastructure and the road to E20 — what the National Ethanol Blending Programme means for the district.",
+   "theme": "Ethanol / investment",
+   "place": "SPSR Nellore",
+   "district": "Sps_Nellore",
+   "sections": 21
+  },
+  {
+   "slug": "srikakulam-blue-economy",
+   "title": "Unlocking Srikakulam's Blue Economy Potential",
+   "eyebrow": "Case for action • Blue economy strategy",
+   "summary": "From a coastal aquaculture belt to a diversified seafood processing hub — shrimp, fish and marine value-added products.",
+   "theme": "Blue economy",
+   "place": "Srikakulam",
+   "district": "Srikakulam",
+   "sections": 16
+  }
+ ],
+ "model": [
+  {
+   "slug": "shenzhen-growth-model",
+   "title": "Shenzhen's Economic Miracle",
+   "eyebrow": "District administration training",
+   "summary": "A strategic framework for district-level economic planning, drawn from Shenzhen's port-led industrial rise.",
+   "theme": "Port-led manufacturing",
+   "place": "Shenzhen, China",
+   "district": null,
+   "sections": 33
+  },
+  {
+   "slug": "morbi-ceramic-cluster",
+   "title": "The Morbi Ceramic Cluster",
+   "eyebrow": "Industrial cluster case study",
+   "summary": "How a traditional craft town became the world's #2 ceramic tile producer — and what a cluster's collective reinvention takes.",
+   "theme": "Manufacturing cluster",
+   "place": "Morbi, Gujarat",
+   "district": null,
+   "sections": 20
+  },
+  {
+   "slug": "tiruppur-textiles",
+   "title": "Tiruppur: Innovation in Textiles & Garments",
+   "eyebrow": "Industrial cluster case study",
+   "summary": "The rise of South India's “Banian City” — a knitwear cluster that moved from job-work to a global export base.",
+   "theme": "Textiles cluster",
+   "place": "Tiruppur, Tamil Nadu",
+   "district": null,
+   "sections": 29
+  },
+  {
+   "slug": "kumarakom-tourism",
+   "title": "The Kumarakom Responsible Tourism Model",
+   "eyebrow": "Case study • Responsible tourism",
+   "summary": "How a destination-level partnership linked tourism demand with local livelihoods, culture and conservation.",
+   "theme": "Responsible tourism",
+   "place": "Kumarakom, Kerala",
+   "district": null,
+   "sections": 9
+  },
+  {
+   "slug": "sahyadri-farms-fpc",
+   "title": "Sahyadri Farms: Smallholders in an Integrated Supply Chain",
+   "eyebrow": "Case study • Replication playbook",
+   "summary": "What the Sahyadri Farms (FPC) model means for our mandals and districts.",
+   "theme": "FPC / supply chain",
+   "place": "Nashik, Maharashtra",
+   "district": null,
+   "sections": 33
+  },
+  {
+   "slug": "chetna-organics-fpo",
+   "title": "Chetna Organics: Building a Farmer-Owned Supply Chain",
+   "eyebrow": "Case study • Farmer producer organisations",
+   "summary": "What mandal officers can learn from an organic-cotton FPO to strengthen their own producer organisations.",
+   "theme": "FPO strengthening",
+   "place": "Central India",
+   "district": null,
+   "sections": 26
+  },
+  {
+   "slug": "biofloc-tilapia",
+   "title": "Biofloc Tilapia Farming",
+   "eyebrow": "Case study • Rural livelihoods training",
+   "summary": "A replicable model for mandal-level income generation, based on CMFRI's Scheduled Caste Sub-Plan initiative.",
+   "theme": "Aquaculture livelihoods",
+   "place": "CMFRI, Kerala",
+   "district": null,
+   "sections": 19
+  },
+  {
+   "slug": "paddy-fish-farming",
+   "title": "Paddy + Fish Integrated Farming",
+   "eyebrow": "Case study deck",
+   "summary": "Successful models from India and China, and a practical roadmap for paddy-growing districts of Andhra Pradesh.",
+   "theme": "Integrated farming",
+   "place": "India & China models",
+   "district": null,
+   "sections": 25
+  },
+  {
+   "slug": "banana-processing",
+   "title": "Banana Processing & Waste-to-Wealth Models",
+   "eyebrow": "Capacity building case study",
+   "summary": "Two replicable cases — KVK Kanyakumari value-added foods and the Jalgaon pseudo-stem processing cluster.",
+   "theme": "Agro-processing",
+   "place": "Kanyakumari & Jalgaon",
+   "district": null,
+   "sections": 22
+  }
+ ]
+}
