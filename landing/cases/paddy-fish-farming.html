@@ -30,6 +30,18 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,
 .tag.place{color:var(--fg);}
 .src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
 hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
 .body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
 .body h3:first-child{margin-top:0;}
@@ -37,6 +49,22 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}
 .body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
+.entry:first-of-type{border-top:none;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
@@ -50,9 +78,12 @@ footer b{color:var(--mut);font-weight:600;}
   <p class="summary">Successful models from India and China, and a practical roadmap for paddy-growing districts of Andhra Pradesh.</p>
   <div class="meta"><span class="tag place">India &amp; China models</span><span class="tag">Integrated farming</span><span class="tag">Replicable model</span></div>
   
+  
   <hr>
   <div class="body">
-    <p class="k">STRATEGIC CONTEXT · Why paddy + fish integration matters for Andhra Pradesh · Paddy base already exists</p>
+    <h2>STRATEGIC CONTEXT</h2>
+    <p class="k">Why paddy + fish integration matters for Andhra Pradesh</p>
+    <p class="k">Paddy base already exists</p>
     <p>West Godavari, East Godavari and Krishna are among the most important rice-producing districts of Andhra Pradesh and India.</p>
     <p class="k">Need to raise net income</p>
     <p>Rice monoculture often faces cost, price and climate risks. Fish adds a second output from the same field and water.</p>
@@ -62,10 +93,16 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Supports district GVA growth through allied-sector income.</p>
     <p>Works well with natural farming, water-efficiency and nutrition goals.</p>
     <p>Creates a field-level demonstration model that officers can scale through RBKs and mandal teams.</p>
-    <p class="k">Dual output · Rice + fish from same plot · Lower input · Less weeding / pest pressure · Higher resilience</p>
+    <p class="k">Dual output</p>
+    <p class="k">Rice + fish from same plot</p>
+    <p class="k">Lower input</p>
+    <p class="k">Less weeding / pest pressure</p>
+    <p class="k">Higher resilience</p>
     <h3>Diversified farmer income</h3>
     <p>Sources: AP Seeds paddy crop note; CGIAR, 2023; TNAU fishery integration note.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers · BASIC CONCEPT · The model: one paddy field, two harvests</p>
+    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
+    <h2>BASIC CONCEPT</h2>
+    <p class="k">The model: one paddy field, two harvests</p>
     <p class="k">How the symbiosis works</p>
     <h3>Fish help rice</h3>
     <p>Fish manure fertilizes soil; fish movement aerates water and softens soil; fish eat larvae, weeds and insects.</p>
@@ -77,30 +114,39 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Rice calendar must align with stocking; pesticide use must be avoided or carefully controlled.</p>
     <p>Core lesson: this is not &quot;fish added to paddy&quot;; it is a planned field system requiring water control, species choice and farmer training.</p>
     <p>Sources: FAO GIAHS Qingtian Rice-Fish Culture; UNDP/NITI Assam rice-fish case.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers · SUCCESSFUL INDIAN PILOT</p>
-    <p class="k">India case study 1: Climate-resilient rice–fish farming in Assam · Project scale · 431 ha · water bodies covered</p>
-    <p class="k">districts · 867 · beneficiaries</p>
-    <p>Implemented by the Fishery Department, Assam during 2018–19 to 2020–21 as a climate-resilient livelihood model.</p>
-    <p class="k">Field/trench prep · Liming &amp; stocking · Feed &amp; health · Harvest &amp; market</p>
-    <h3>Reported outcomes</h3>
-    <p>Paddy yield increased by 10%–25%.</p>
+    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
+    <h2>SUCCESSFUL INDIAN PILOT</h2>
+    <p class="k">India case study 1: Climate-resilient rice–fish farming in Assam</p>
+    <p class="k">Project scale</p>
+    <div class="grid"><div class="cell"><div class="v">431 ha</div><div class="l">water bodies covered districts</div></div></div>
+    <div class="entry"><div class="term">867</div><div><p class="eh">beneficiaries</p><p class="eb">Implemented by the Fishery Department, Assam during 2018–19 to 2020–21 as a climate-resilient livelihood model.</p></div></div>
+    <p class="k">Field/trench prep</p>
+    <p class="k">Liming &amp; stocking</p>
+    <p class="k">Feed &amp; health</p>
+    <div class="entry"><div class="term">Harvest &amp; market</div><div><p class="eh">Reported outcomes</p><p class="eb">Paddy yield increased by 10%–25%.</p></div></div>
     <p>Average rice production reported around 7 tonnes/ha/year.</p>
     <p>Fish production reported nearly 2 tonnes/ha/crop.</p>
     <p>Reduced weeding labour and improved local fish availability.</p>
     <h3>Learning for AP officials</h3>
     <p>Start with technically suitable fields and invest in handholding. The model succeeds when fisheries and agriculture staff work together through a common mandal plan.</p>
     <p>Source: UNDP SDG Knowledge Hub / NITI for States, &quot;Climate Resilient Rice–Fish Farming in Assam&quot;.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers · INDIGENOUS MODEL · India case study 2: Apatani paddy-cum-fish farming, Arunachal Pradesh</p>
+    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
+    <h2>INDIGENOUS MODEL</h2>
+    <p class="k">India case study 2: Apatani paddy-cum-fish farming, Arunachal Pradesh</p>
     <p class="k">Why this model is important</p>
     <p>Widely practiced in the Apatani plateau and described by the state fisheries department as profitable and sustainable.</p>
     <p>Generates two crops — paddy and fish — from the same cultivable area.</p>
     <p>Uses low-lying fields, raised bunds, irrigation channels and suitable carp species.</p>
-    <p class="k">2–3 ft · recommended bund height in government note · Common / Amur carp · common species in model</p>
+    <div class="grid"><div class="cell"><div class="v">2–3 ft</div><div class="l">recommended bund height in government note Common / Amur carp</div></div></div>
+    <p class="k">common species in model</p>
     <h3>Transferable lesson</h3>
     <p>Rice–fish integration works best when water channels, community rules and farmer skills are designed together — not as isolated input distribution.</p>
     <p>Source: Directorate of Fisheries, Government of Arunachal Pradesh, &quot;Paddy-cum-fish-culture&quot;.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers · GLOBAL HERITAGE MODEL · China case study: Qingtian Rice–Fish Culture System</p>
-    <p class="k">1,300+ yrs · traditional system in Qingtian · 2005 · FAO GIAHS recognition · Eco-brand · rice + fish + tourism</p>
+    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
+    <h2>GLOBAL HERITAGE MODEL</h2>
+    <p class="k">China case study: Qingtian Rice–Fish Culture System</p>
+    <div class="grid"><div class="cell"><div class="v">1,300+ yrs</div><div class="l">traditional system in Qingtian</div></div><div class="cell"><div class="v">2005</div><div class="l">FAO GIAHS recognition Eco-brand</div></div></div>
+    <p class="k">rice + fish + tourism</p>
     <p class="k">What makes it successful</p>
     <p>Fish fertilize rice, disturb water, soften soil, and eat larvae and weeds.</p>
     <p>Rice gives fish shade, food and habitat.</p>
@@ -108,7 +154,9 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Heritage branding supports higher-value products and rural revitalization.</p>
     <p>Learning for AP: protect ecology + build product identity. This can become a &quot;safe rice + local fish&quot; brand, not just a production technique.</p>
     <p>Sources: FAO GIAHS Qingtian Rice-Fish Culture; Frontiers in Sustainable Food Systems, 2024.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers · SUCCESS FACTORS · What the India and China cases have in common</p>
+    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
+    <h2>SUCCESS FACTORS</h2>
+    <p class="k">What the India and China cases have in common</p>
     <h3>Right site</h3>
     <p>Low-lying, water-retentive fields with controlled inlet/outlet.</p>
     <h3>Field design</h3>
@@ -123,7 +171,9 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Farmer groups, aggregators, fish markets and cold chain for better returns.</p>
     <p>Officer takeaway: pilots should be selected for technical feasibility first, then scaled through farmer confidence and demonstrated profitability.</p>
     <p>Sources synthesized from Assam case, Arunachal Pradesh fisheries note and FAO Qingtian GIAHS documentation.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers · WHERE TO APPLY · Relevance for paddy-growing districts of Andhra Pradesh</p>
+    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
+    <h2>WHERE TO APPLY</h2>
+    <p class="k">Relevance for paddy-growing districts of Andhra Pradesh</p>
     <p class="k">Prioritise districts/mandals with:</p>
     <p>Contiguous paddy area and assured water retention.</p>
     <p>Existing canal or tank-based irrigation with manageable drainage.</p>
@@ -141,23 +191,43 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Freshwater fish availability improves household protein while rice yield is protected or improved.</p>
     <p>Do not universalise. Start with feasibility screening and demonstration mandals before district-wide scale-up.</p>
     <p>Sources: AP Seeds; ANGRAU Paddy Outlook 2023–24; CGIAR 2023 note on IRFS in West Godavari.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers · ROLE OF DISTRICT OFFICERS</p>
-    <p class="k">District-level implementation model · 6-step district execution pathway · Map suitable fields</p>
-    <p class="k">Select demo clusters · Converge schemes · Train farmers · Monitor crop cycle · Aggregate &amp; market</p>
-    <h3>1. Feasibility mapping</h3>
+    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
+    <h2>ROLE OF DISTRICT OFFICERS</h2>
+    <p class="k">District-level implementation model</p>
+    <p class="k">6-step district execution pathway</p>
+    <p class="k">Map suitable fields</p>
+    <p class="k">Select demo clusters</p>
+    <p class="k">Converge schemes</p>
+    <p class="k">Train farmers</p>
+    <p class="k">Monitor crop cycle</p>
+    <p class="k">Aggregate &amp; market</p>
+    <div class="grid"><div class="cell"><div class="v">1. Feasibility mapping</div><div class="l"></div></div></div>
     <p>Use paddy area, irrigation, water depth, drainage and pesticide-use pattern to shortlist mandals.</p>
     <h3>2. Demonstration clusters</h3>
     <p>Start with 5–10 fields per mandal through volunteer farmers, FPOs or natural farming groups.</p>
-    <h3>3. Convergence</h3>
+    <div class="grid"><div class="cell"><div class="v">3. Convergence</div><div class="l"></div></div></div>
     <p>Pool agriculture, fisheries, RBK, MGNREGS, PMMSY/NFSM and local training resources.</p>
-    <h3>4. Market planning</h3>
+    <div class="grid"><div class="cell"><div class="v">4. Market planning</div><div class="l"></div></div></div>
     <p>Tie up local fish vendors, ice boxes, collection points and rice branding before harvest.</p>
     <p>Sources: Implementation logic adapted from Assam and Qingtian cases; scheme convergence to be validated by state departments.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers · WHAT OFFICERS SHOULD TRACK</p>
-    <p class="k">Monitoring framework and takeaways · Simple KPI dashboard · Productivity · Paddy yield, fish yield, survival rate</p>
-    <p class="k">Income · Net income/acre vs paddy-only field · Input use · Fertilizer, pesticide and weeding labour</p>
-    <p class="k">Water · Retention days, depth, drainage events · Adoption · Farmers trained, pilots completed, replication demand</p>
-    <p class="k">Market · Fish price, buyer linkage, aggregation volume · Three takeaways for AP officials · 1. Start small, but design properly</p>
+    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
+    <h2>WHAT OFFICERS SHOULD TRACK</h2>
+    <p class="k">Monitoring framework and takeaways</p>
+    <p class="k">Simple KPI dashboard</p>
+    <p class="k">Productivity</p>
+    <p class="k">Paddy yield, fish yield, survival rate</p>
+    <p class="k">Income</p>
+    <p class="k">Net income/acre vs paddy-only field</p>
+    <p class="k">Input use</p>
+    <p class="k">Fertilizer, pesticide and weeding labour</p>
+    <p class="k">Water</p>
+    <p class="k">Retention days, depth, drainage events</p>
+    <p class="k">Adoption</p>
+    <p class="k">Farmers trained, pilots completed, replication demand</p>
+    <p class="k">Market</p>
+    <p class="k">Fish price, buyer linkage, aggregation volume</p>
+    <p class="k">Three takeaways for AP officials</p>
+    <p class="k">1. Start small, but design properly</p>
     <p>Pilot only in technically suitable fields with water control and farmer consent.</p>
     <p class="k">2. Converge agriculture and fisheries teams</p>
     <p>Joint field visits are essential during design, stocking and harvest.</p>
@@ -167,7 +237,7 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Key sources: Assam UNDP/NITI case; Arunachal Pradesh Fisheries note; FAO Qingtian GIAHS; Frontiers 2024; AP Seeds; ANGRAU Paddy Outlook; CGIAR.</p>
     <h3>Rice–Fish Integrated Farming | Capacity Building for AP Officers</h3>
     <p>Key sources: Assam UNDP/NITI case; Arunachal Pradesh Fisheries note; FAO Qingtian GIAHS; Frontiers 2024; AP Seeds; ANGRAU Paddy Outlook; CGIAR.</p>
-    <p class="k">THANK YOU</p>
+    <h2>THANK YOU</h2>
   </div>
   <footer>
     <b>Pahlé India Foundation</b> · Swarna Andhra @2047 capacity-building case study.

@@ -30,6 +30,18 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,
 .tag.place{color:var(--fg);}
 .src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
 hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
 .body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
 .body h3:first-child{margin-top:0;}
@@ -37,6 +49,22 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}
 .body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
+.entry:first-of-type{border-top:none;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
@@ -50,9 +78,11 @@ footer b{color:var(--mut);font-weight:600;}
   <p class="summary">From a coconut-growing district to a diversified processing hub — coir, activated carbon and beyond.</p>
   <div class="meta"><span class="tag place">East Godavari</span><span class="tag">Agri value chain</span><span class="tag">Andhra Pradesh district</span></div>
   
+  
   <hr>
   <div class="body">
-    <p class="k">The Problem We Are Trying to Solve · The raw-nut &amp; loose-husk trap</p>
+    <p class="k">The Problem We Are Trying to Solve</p>
+    <p class="k">The raw-nut &amp; loose-husk trap</p>
     <p>Most East Godavari coconut leaves the district as raw nuts, copra or unprocessed husk — the lowest-margin forms in the value chain.</p>
     <h3>Value leaks downstream</h3>
     <p>Coir yarn, geotextiles, activated carbon, desiccated coconut and VCO — the profitable steps — happen in Kerala, Tamil Nadu, or overseas.</p>
@@ -62,20 +92,40 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Millions of husks and shells are burnt, dumped or sold as low-value fuel instead of becoming coir fibre or activated carbon feedstock.</p>
     <h3>The Answer: Build the Coconut Value Ecosystem</h3>
     <p>Shift East Godavari from a coconut-growing district to a coconut-value district. Anchor coir processing, activated carbon manufacturing, testing and branding inside the district — so the margins that currently leave with the truck stay with local farmers, workers and MSMEs.</p>
-    <p class="k">4th · largest coconut-producing state in India · ~30% · of AP&#x27;s coconut area lies in the East Godavari / Konaseema belt*</p>
-    <p class="k">What local processing delivers · 2–4× higher realisation per nut vs. raw farm-gate sale · Thousands of local jobs — especially for women</p>
-    <p class="k">Access to premium buyers: EU, US, Gulf &amp; domestic infra demand · Quality certification as a competitive moat</p>
+    <div class="grid"><div class="cell"><div class="v">4th</div><div class="l">largest coconut-producing state in India</div></div><div class="cell"><div class="v">~30%</div><div class="l"></div></div></div>
+    <p class="k">of AP&#x27;s coconut area lies in the East Godavari / Konaseema belt*</p>
+    <p class="k">What local processing delivers</p>
+    <p class="k">2–4× higher realisation per nut vs. raw farm-gate sale</p>
+    <p class="k">Thousands of local jobs — especially for women</p>
+    <p class="k">Access to premium buyers: EU, US, Gulf &amp; domestic infra demand</p>
+    <p class="k">Quality certification as a competitive moat</p>
     <p class="k">An &quot;East Godavari Coconut&quot; brand — not an anonymous input</p>
     <h3>East Godavari&#x27;s Coconut Sector at a Glance</h3>
     <p>East Godavari (Konaseema belt), Andhra Pradesh • Delta-irrigated coastal belt • One of AP&#x27;s leading coconut-growing regions</p>
-    <p class="k">~1 lakh+ · hectares under · coconut cultivation* · Konaseema · AP&#x27;s coconut · heartland region</p>
-    <p class="k">~6 Cr+ · coconuts produced · per year, district-wide* · ~90% · of husk &amp; shell · burnt, dumped or sold as fuel*</p>
-    <p class="k">Top 3 · India — among world&#x27;s · largest coconut producers · 2 chains · flagship value chains —</p>
-    <p class="k">coir &amp; activated carbon</p>
-    <p>*Indicative figures based on Coconut Development Board / Coir Board / industry reporting; exact figures vary year to year.</p>
-    <p class="k">How the Model Works: One Integrated Chain · Farm · Coconut groves; husk &amp; shell collected at source</p>
-    <p class="k">› · Aggregate · FPO / cluster procurement, decentralised retting yards · Process · Coir yarn, geotextiles, pith; shell to activated carbon</p>
-    <p class="k">› · Value-add · Activated carbon, coir pith blocks, VCO, biochar · Market · Export (EU/US/Gulf) + growing domestic demand</p>
+    <div class="grid"><div class="cell"><div class="v">~1 lakh+</div><div class="l">hectares under coconut cultivation*</div></div></div>
+    <p class="k">Konaseema</p>
+    <p class="k">AP&#x27;s coconut</p>
+    <p class="k">heartland region</p>
+    <div class="grid"><div class="cell"><div class="v">~6 Cr+</div><div class="l">coconuts produced per year, district-wide*</div></div><div class="cell"><div class="v">~90%</div><div class="l">of husk &amp; shell burnt, dumped or sold as fuel*</div></div></div>
+    <p class="k">Top 3</p>
+    <p class="k">India — among world&#x27;s</p>
+    <p class="k">largest coconut producers</p>
+    <div class="entry"><div class="term">2 chains</div><div><p class="eh">flagship value chains — coir &amp; activated carbon</p><p class="eb">*Indicative figures based on Coconut Development Board / Coir Board / industry reporting; exact figures vary year to year.</p></div></div>
+    <p class="k">How the Model Works: One Integrated Chain</p>
+    <p class="k">Farm</p>
+    <p class="k">Coconut groves; husk &amp; shell collected at source</p>
+    <p class="k">›</p>
+    <p class="k">Aggregate</p>
+    <p class="k">FPO / cluster procurement, decentralised retting yards</p>
+    <p class="k">›</p>
+    <p class="k">Process</p>
+    <p class="k">Coir yarn, geotextiles, pith; shell to activated carbon</p>
+    <p class="k">›</p>
+    <p class="k">Value-add</p>
+    <p class="k">Activated carbon, coir pith blocks, VCO, biochar</p>
+    <p class="k">›</p>
+    <p class="k">Market</p>
+    <p class="k">Export (EU/US/Gulf) + growing domestic demand</p>
     <p class="k">East Godavari captures every link — not just the grove</p>
     <p>Today, most links after &quot;Aggregate&quot; happen outside the district. Localising even two of them — coir processing and activated carbon manufacturing — meaningfully lifts realised value per nut and creates thousands of downstream jobs.</p>
     <p class="k">Five Pillars Behind the Results</p>
@@ -89,7 +139,9 @@ footer b{color:var(--mut);font-weight:600;}
     <p>BIS/export quality labs, Coir Board certification, and consistent activated-carbon grading — the passport to premium markets.</p>
     <h3>Traceability &amp; branding</h3>
     <p>Digital farm-to-product traceability; an &quot;East Godavari Coconut&quot; origin brand for global buyers.</p>
-    <p class="k">Who Benefits — Farmers, Workers and the State · For Farmers &amp; Workers · Direct access to processors + export markets, less middleman leakage</p>
+    <p class="k">Who Benefits — Farmers, Workers and the State</p>
+    <p class="k">For Farmers &amp; Workers</p>
+    <p class="k">Direct access to processors + export markets, less middleman leakage</p>
     <p class="k">Fair value for husk &amp; shell — no longer burnt or dumped as waste</p>
     <p>Thousands of downstream jobs — especially for women in coir spinning &amp; weaving</p>
     <p>Skill upgrade via training in decortication, quality grading, and activated-carbon operations</p>
@@ -111,7 +163,8 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Push BIS, Coir Board and export-quality certification, plus consistent activated-carbon grading. Certification is what unlocks premium buyers.</p>
     <p class="k">Link to markets &amp; diversify</p>
     <p>Anchor buyer contracts (EU/US/Gulf) plus a domestic &quot;East Godavari Coconut&quot; brand play. Diversify into VCO, coir pith, biochar and briquettes.</p>
-    <p class="k">Challenges to Plan For · Ageing palms &amp; low yields</p>
+    <p class="k">Challenges to Plan For</p>
+    <p class="k">Ageing palms &amp; low yields</p>
     <p>Many palms are past peak productivity. Replanting programmes, hybrid varieties, and disease management (e.g. root wilt) are non-negotiable.</p>
     <p class="k">Fragmented husk &amp; shell collection</p>
     <p>Husk and shell are scattered across thousands of small holdings. Aggregation logistics and cluster-level collection points are essential.</p>
@@ -121,7 +174,8 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Established coir and carbon players in Kerala, Tamil Nadu and Sri Lanka compete hard. Certification and differentiation are the hedge.</p>
     <p class="k">Capital intensity of processing</p>
     <p>Decortication lines and carbon activation plants are lumpy investments. Phase spend, blend Coir Board/MSME subsidies, use anchor-buyer commitments.</p>
-    <p class="k">What Officers Should Take Away · Processing is the multiplier</p>
+    <p class="k">What Officers Should Take Away</p>
+    <p class="k">Processing is the multiplier</p>
     <p>The same coconut is worth several times more once converted to coir yarn, geotextiles or activated carbon. That gap is captured today by someone else.</p>
     <h3>Cluster, don&#x27;t scatter</h3>
     <p>Processing thrives on density — shared retting yards, ETPs, labs, port access. Concentrate incentives in a few well-chosen zones, not every mandal.</p>

@@ -8,7 +8,7 @@
    "theme": "Agri value chain",
    "place": "East Godavari",
    "district": "East_Godavari",
-   "sections": 14
+   "sections": 0
   },
   {
    "slug": "nellore-shrimp-processing",
@@ -18,7 +18,7 @@
    "theme": "Aquaculture",
    "place": "SPSR Nellore",
    "district": "Sps_Nellore",
-   "sections": 18
+   "sections": 0
   },
   {
    "slug": "nellore-ethanol-potential",
@@ -28,7 +28,7 @@
    "theme": "Ethanol / investment",
    "place": "SPSR Nellore",
    "district": "Sps_Nellore",
-   "sections": 21
+   "sections": 0
   },
   {
    "slug": "srikakulam-blue-economy",
@@ -38,7 +38,7 @@
    "theme": "Blue economy",
    "place": "Srikakulam",
    "district": "Srikakulam",
-   "sections": 16
+   "sections": 0
   }
  ],
  "model": [
@@ -50,7 +50,7 @@
    "theme": "Port-led manufacturing",
    "place": "Shenzhen, China",
    "district": null,
-   "sections": 33
+   "sections": 0
   },
   {
    "slug": "morbi-ceramic-cluster",
@@ -60,7 +60,7 @@
    "theme": "Manufacturing cluster",
    "place": "Morbi, Gujarat",
    "district": null,
-   "sections": 20
+   "sections": 7
   },
   {
    "slug": "tiruppur-textiles",
@@ -70,7 +70,7 @@
    "theme": "Textiles cluster",
    "place": "Tiruppur, Tamil Nadu",
    "district": null,
-   "sections": 29
+   "sections": 17
   },
   {
    "slug": "kumarakom-tourism",
@@ -80,7 +80,7 @@
    "theme": "Responsible tourism",
    "place": "Kumarakom, Kerala",
    "district": null,
-   "sections": 9
+   "sections": 0
   },
   {
    "slug": "sahyadri-farms-fpc",
@@ -90,7 +90,7 @@
    "theme": "FPC / supply chain",
    "place": "Nashik, Maharashtra",
    "district": null,
-   "sections": 33
+   "sections": 0
   },
   {
    "slug": "chetna-organics-fpo",
@@ -100,7 +100,7 @@
    "theme": "FPO strengthening",
    "place": "Central India",
    "district": null,
-   "sections": 26
+   "sections": 2
   },
   {
    "slug": "biofloc-tilapia",
@@ -110,7 +110,7 @@
    "theme": "Aquaculture livelihoods",
    "place": "CMFRI, Kerala",
    "district": null,
-   "sections": 19
+   "sections": 7
   },
   {
    "slug": "paddy-fish-farming",
@@ -120,7 +120,7 @@
    "theme": "Integrated farming",
    "place": "India & China models",
    "district": null,
-   "sections": 25
+   "sections": 10
   },
   {
    "slug": "banana-processing",
@@ -130,7 +130,7 @@
    "theme": "Agro-processing",
    "place": "Kanyakumari & Jalgaon",
    "district": null,
-   "sections": 22
+   "sections": 16
   }
  ]
 }

@@ -30,6 +30,18 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,
 .tag.place{color:var(--fg);}
 .src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
 hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
 .body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
 .body h3:first-child{margin-top:0;}
@@ -37,6 +49,22 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}
 .body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
+.entry:first-of-type{border-top:none;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
@@ -50,57 +78,102 @@ footer b{color:var(--mut);font-weight:600;}
   <p class="summary">How a destination-level partnership linked tourism demand with local livelihoods, culture and conservation.</p>
   <div class="meta"><span class="tag place">Kumarakom, Kerala</span><span class="tag">Responsible tourism</span><span class="tag">Replicable model</span></div>
   
+  
   <hr>
   <div class="body">
     <p class="k">Why Kumarakom needed a new approach</p>
     <p>Tourism growth was strong, but local communities were not fully integrated into benefits and decisions.</p>
-    <p class="k">Core challenge · Top-down tourism planning with limited community voice · Conflicts over resource use, employment and benefit sharing</p>
-    <p class="k">Leakage of tourism spending outside the local economy · Need to conserve fragile backwater ecosystems and local culture</p>
+    <p class="k">Core challenge</p>
+    <p class="k">Top-down tourism planning with limited community voice</p>
+    <p class="k">Conflicts over resource use, employment and benefit sharing</p>
+    <p class="k">Leakage of tourism spending outside the local economy</p>
+    <p class="k">Need to conserve fragile backwater ecosystems and local culture</p>
     <p>Case question for officials: How can mandals convert tourism footfall into local income without damaging natural and cultural assets?</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials · Institutional model: a destination-level platform</p>
+    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
+    <p class="k">Institutional model: a destination-level platform</p>
     <p>A Responsible Tourism Committee brought local government, industry and community together.</p>
     <p>Who sits at the table?</p>
-    <p class="k">Panchayat / local government · Tourism Dept. / KITTS · Hotels &amp; resorts · SHGs, farmers &amp; artisans</p>
-    <p class="k">NGOs / community reps · Responsible · Tourism · Committee · A shared governance platform at destination level</p>
-    <p class="k">What it decides · Local procurement norms · Price and quality assurance · Training and livelihood pilots</p>
+    <p class="k">Panchayat / local government</p>
+    <p class="k">Tourism Dept. / KITTS</p>
+    <p class="k">Hotels &amp; resorts</p>
+    <p class="k">SHGs, farmers &amp; artisans</p>
+    <p class="k">NGOs / community reps</p>
+    <p class="k">Responsible</p>
+    <p class="k">Tourism</p>
+    <p class="k">Committee</p>
+    <p class="k">A shared governance platform at destination level</p>
+    <p class="k">What it decides</p>
+    <p class="k">Local procurement norms</p>
+    <p class="k">Price and quality assurance</p>
+    <p class="k">Training and livelihood pilots</p>
     <p class="k">Resource protection measures</p>
     <h3>Visitor experience packages</h3>
     <p>Design principle: put government, industry and community in one recurring forum so decisions on tourism products, benefits and safeguards are made jointly.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials · Strategy 1: Link hotel demand with local supply</p>
+    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
+    <p class="k">Strategy 1: Link hotel demand with local supply</p>
     <p>Local procurement became the economic engine of the model.</p>
-    <p class="k">Demand mapping · What hotels buy regularly · Production calendar · When local supply can meet demand</p>
-    <p class="k">Supply groups · Samrudhi groups / SHGs aggregate produce · Price + quality · Committees build transparency</p>
-    <p class="k">Hotel linkage · Farm/unit visits and regular orders</p>
+    <p class="k">Demand mapping</p>
+    <p class="k">What hotels buy regularly</p>
+    <p class="k">Production calendar</p>
+    <p class="k">When local supply can meet demand</p>
+    <p class="k">Supply groups</p>
+    <p class="k">Samrudhi groups / SHGs aggregate produce</p>
+    <p class="k">Price + quality</p>
+    <p class="k">Committees build transparency</p>
+    <p class="k">Hotel linkage</p>
+    <p class="k">Farm/unit visits and regular orders</p>
     <p>Key learning: Do not start with tourist packages alone. Start by organizing the local supply chain so community members can reliably serve tourism demand.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials · Strategy 2: Build community livelihoods around visitor experience</p>
+    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
+    <p class="k">Strategy 2: Build community livelihoods around visitor experience</p>
     <p>The model diversified income by converting local skills, food and culture into tourism services.</p>
-    <p class="k">Labour directories · Map skills and local workers for hotel jobs and services · Training for vulnerable groups</p>
-    <p class="k">Prepare people for tourism-linked microenterprises · Ethnic food &amp; souvenirs · Use local recipes, crafts and SHG production</p>
+    <p class="k">Labour directories</p>
+    <p class="k">Map skills and local workers for hotel jobs and services</p>
+    <p class="k">Training for vulnerable groups</p>
+    <p class="k">Prepare people for tourism-linked microenterprises</p>
+    <p class="k">Ethnic food &amp; souvenirs</p>
+    <p class="k">Use local recipes, crafts and SHG production</p>
     <h3>Village Life Experience</h3>
     <p>Package farming, fishing, crafts and local livelihoods as authentic experiences</p>
     <h3>Replicable insight for AP</h3>
     <p>Build one local experience around each mandal&#x27;s strongest asset: agriculture, crafts, cuisine, temples, coastal livelihoods, tribal culture, nature trails or wetlands.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials · Strategy 3: Protect the assets that attract tourists</p>
+    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
+    <p class="k">Strategy 3: Protect the assets that attract tourists</p>
     <p>Kumarakom treated conservation, sanitation and cultural mapping as part of tourism management.</p>
-    <p class="k">Ecosystem care · Mangrove regeneration · Organic farming · Fish farming / lotus in unused ponds</p>
-    <p class="k">Low-carbon mobility · Rowing boats · Bicycles for village packages · Reduced footprint · Waste systems</p>
-    <p class="k">Hotel sewage treatment plants · Household pipe composts · Periodic bird sanctuary cleaning</p>
-    <p class="k">Culture mapping · Resource mapping · Local art performance groups</p>
+    <p class="k">Ecosystem care</p>
+    <p class="k">Mangrove regeneration</p>
+    <p class="k">Organic farming</p>
+    <p class="k">Fish farming / lotus in unused ponds</p>
+    <p class="k">Low-carbon mobility</p>
+    <p class="k">Rowing boats</p>
+    <p class="k">Bicycles for village packages</p>
+    <p class="k">Reduced footprint</p>
+    <p class="k">Waste systems</p>
+    <p class="k">Hotel sewage treatment plants</p>
+    <p class="k">Household pipe composts</p>
+    <p class="k">Periodic bird sanctuary cleaning</p>
+    <p class="k">Culture mapping</p>
+    <p class="k">Resource mapping</p>
+    <p class="k">Local art performance groups</p>
     <h3>Handicraft training</h3>
     <p>Key learning: Tourism plans must include environmental safeguards and cultural preservation from day one—not as a later add-on.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials · Results achieved: measurable economic and social impact</p>
+    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
+    <p class="k">Results achieved: measurable economic and social impact</p>
     <p>The model increased local income, enterprise creation, cultivation and tourist arrivals.</p>
-    <p class="k">USD 626k · Estimated additional revenue · 285 · Families benefitted · 646 · Community members trained</p>
-    <p class="k">Local tourism-linked microenterprises · 82% · Households involved in tourism-related activities</p>
-    <p class="k">168 acres · Land reclaimed for cultivation · +20% international arrivals · +30% domestic arrivals</p>
+    <p class="k">USD 626k</p>
+    <p class="k">Estimated additional revenue</p>
+    <div class="grid"><div class="cell"><div class="v">285</div><div class="l">Families benefitted</div></div><div class="cell"><div class="v">646</div><div class="l">Community members trained Local tourism-linked microenterprises</div></div><div class="cell"><div class="v">82%</div><div class="l"></div></div></div>
+    <p class="k">Households involved in tourism-related activities</p>
+    <div class="grid"><div class="cell"><div class="v">168 acres</div><div class="l">Land reclaimed for cultivation +20% international arrivals</div></div></div>
+    <p class="k">+30% domestic arrivals</p>
     <h3>13 resorts under RT Classification</h3>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials · Key lessons for district and mandal officials</p>
+    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
+    <p class="k">Key lessons for district and mandal officials</p>
     <p>What made the model work—and what should be replicated carefully.</p>
     <p class="k">Local government must anchor the platform</p>
     <p>Mandal/district administration gives legitimacy and continuity.</p>
@@ -129,14 +202,23 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Launch 1–2 low-risk experiences and procurement linkages; track income, participation, cleanliness and visitor feedback.</p>
     <p>Replicate the principles, not the exact product: coastal mandals may focus on fishing/boat experiences; temple towns on local food, crafts and heritage walks; tribal/hill mandals on guided nature and culture routes.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
-    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials · 90-day action plan and monitoring metrics</p>
+    <p class="k">Kumarakom Responsible Tourism Model | Case study for AP officials</p>
+    <p class="k">90-day action plan and monitoring metrics</p>
     <p>Use the case study to move from awareness to a small, visible pilot.</p>
-    <p class="k">0–15 days · Asset &amp; stakeholder mapping · Tourism assets, hotels, SHGs, producers, existing schemes</p>
-    <p class="k">15–30 days · Task force + MoU structure · Roles, meeting rhythm, price/quality norms, grievance loop</p>
-    <p class="k">30–60 days · Capacity building + supply groups · Guide training, food/craft hygiene, production calendars</p>
-    <p class="k">60–90 days · Pilot product launch · Village/heritage/craft/eco experience + procurement linkage</p>
-    <p class="k">Suggested monitoring metrics · Local income generated · No. of families / SHGs linked · No. of tourists using local experiences</p>
-    <p class="k">Hotel procurement from local groups · Waste management and cleanliness status</p>
+    <div class="grid"><div class="cell"><div class="v">0–15 days</div><div class="l">Asset &amp; stakeholder mapping</div></div></div>
+    <p class="k">Tourism assets, hotels, SHGs, producers, existing schemes</p>
+    <div class="grid"><div class="cell"><div class="v">15–30 days</div><div class="l">Task force + MoU structure</div></div></div>
+    <p class="k">Roles, meeting rhythm, price/quality norms, grievance loop</p>
+    <div class="grid"><div class="cell"><div class="v">30–60 days</div><div class="l">Capacity building + supply groups</div></div></div>
+    <p class="k">Guide training, food/craft hygiene, production calendars</p>
+    <div class="grid"><div class="cell"><div class="v">60–90 days</div><div class="l">Pilot product launch</div></div></div>
+    <p class="k">Village/heritage/craft/eco experience + procurement linkage</p>
+    <p class="k">Suggested monitoring metrics</p>
+    <p class="k">Local income generated</p>
+    <p class="k">No. of families / SHGs linked</p>
+    <p class="k">No. of tourists using local experiences</p>
+    <p class="k">Hotel procurement from local groups</p>
+    <p class="k">Waste management and cleanliness status</p>
     <h3>Visitor satisfaction / complaints</h3>
     <p>Closing activity: Each official identifies one pilot destination, one community group and one private-sector partner to begin with.</p>
     <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>

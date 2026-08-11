@@ -30,6 +30,18 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,
 .tag.place{color:var(--fg);}
 .src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
 hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
 .body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
 .body h3:first-child{margin-top:0;}
@@ -37,6 +49,22 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}
 .body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
+.entry:first-of-type{border-top:none;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
@@ -50,44 +78,35 @@ footer b{color:var(--mut);font-weight:600;}
   <p class="summary">How a traditional craft town became the world&#x27;s #2 ceramic tile producer — and what a cluster&#x27;s collective reinvention takes.</p>
   <div class="meta"><span class="tag place">Morbi, Gujarat</span><span class="tag">Manufacturing cluster</span><span class="tag">Replicable model</span></div>
   
+  <div class="hero"><div class="cell"><div class="v">#2</div><div class="l">Global Producer</div></div><div class="cell"><div class="v">80–90%</div><div class="l">India&#x27;s Output</div></div><div class="cell"><div class="v">~100 yrs</div><div class="l">Industrial Heritage</div></div></div>
   <hr>
   <div class="body">
-    <p class="k">EVOLUTION OF THE INDUSTRY · Pre-1980s</p>
-    <h3>Traditional Craft Origins</h3>
-    <p>Clay roofing tiles (nalia), wall clocks, and local earthenware. A locally-rooted, labour-intensive, informal industry.</p>
-    <p class="k">1980s–90s</p>
-    <h3>First Major Shift</h3>
-    <p>Transition from traditional products to modern ceramic tiles. Mosaic and galicha tiles replaced clay roofing as primary output.</p>
-    <p class="k">Mid-1990s</p>
-    <h3>The Game Changer</h3>
-    <p>Collective adoption of automation, digital printing &amp; spool-roller tunnel firing — the defining technological turning point.</p>
-    <p class="k">2000s–Now</p>
-    <h3>Global Standing</h3>
-    <p>High-end vitrified tiles, sanitaryware, and large-format slabs. India becomes the world&#x27;s #2 ceramic tile producer.</p>
-    <p class="k">GLOBAL STANDING · #2</p>
-    <h3>Globally</h3>
-    <p>World&#x27;s second-largest producer &amp; consumer of ceramic tiles, trailing only China.</p>
-    <p class="k">80–90%</p>
-    <h3>of India</h3>
-    <p>Morbi cluster alone produces 80–90% of India&#x27;s total ceramic tile output.</p>
-    <p class="k">~100</p>
-    <h3>Years Old</h3>
-    <p>A century of ceramic industrial heritage underpins Morbi&#x27;s global reputation.</p>
-    <p class="k">Trailing only China in global production scale · THE SUPPORT ECOSYSTEM · INDUSTRY INITIATIVES</p>
+    <h2>EVOLUTION OF THE INDUSTRY</h2>
+    <div class="entry"><div class="term">Pre-1980s</div><div><p class="eh">Traditional Craft Origins</p><p class="eb">Clay roofing tiles (nalia), wall clocks, and local earthenware. A locally-rooted, labour-intensive, informal industry.</p></div></div>
+    <div class="entry"><div class="term">1980s–90s</div><div><p class="eh">First Major Shift</p><p class="eb">Transition from traditional products to modern ceramic tiles. Mosaic and galicha tiles replaced clay roofing as primary output.</p></div></div>
+    <div class="entry"><div class="term">Mid-1990s</div><div><p class="eh">The Game Changer</p><p class="eb">Collective adoption of automation, digital printing &amp; spool-roller tunnel firing — the defining technological turning point.</p></div></div>
+    <div class="entry"><div class="term">2000s–Now</div><div><p class="eh">Global Standing</p><p class="eb">High-end vitrified tiles, sanitaryware, and large-format slabs. India becomes the world&#x27;s #2 ceramic tile producer.</p></div></div>
+    <h2>GLOBAL STANDING</h2>
+    <div class="entry"><div class="term">#2</div><div><p class="eh">Globally</p><p class="eb">World&#x27;s second-largest producer &amp; consumer of ceramic tiles, trailing only China.</p></div></div>
+    <div class="entry"><div class="term">80–90%</div><div><p class="eh">of India</p><p class="eb">Morbi cluster alone produces 80–90% of India&#x27;s total ceramic tile output.</p></div></div>
+    <div class="entry"><div class="term">~100</div><div><p class="eh">Years Old</p><p class="eb">A century of ceramic industrial heritage underpins Morbi&#x27;s global reputation.</p></div></div>
+    <p class="k">Trailing only China in global production scale</p>
+    <h2>THE SUPPORT ECOSYSTEM</h2>
+    <h2>INDUSTRY INITIATIVES</h2>
     <h3>Morbi Ceramic Association (MCA)</h3>
     <p>Umbrella body enabling cooperation — fraud prevention, order-sharing via subcontracting, and unified representation to state authorities.</p>
     <h3>Community Cohesion</h3>
     <p>Patel-Prajapati networks foster mutual support during financial stress, enabling informal credit and minimising conflict.</p>
     <h3>Collective Lobbying</h3>
     <p>Unified voice successfully secured GST cuts, anti-dumping duties, and infrastructure investments.</p>
-    <p class="k">GOVERNMENT SUPPORT</p>
+    <h2>GOVERNMENT SUPPORT</h2>
     <h3>Critical Infrastructure</h3>
     <p>Dedicated gas pipelines, reliable power supply, road network linking to Kandla &amp; Mundra ports for seamless export logistics.</p>
     <h3>Anti-Dumping Duties</h3>
     <p>Central government tariffs shield domestic manufacturers from low-cost Chinese imports and price undercutting.</p>
     <h3>GST Rate Reduction</h3>
     <p>Tax rate cut from 28% to 18% after industry protests, significantly boosting domestic consumption.</p>
-    <p class="k">CHALLENGES FACING THE CLUSTER</p>
+    <h2>CHALLENGES FACING THE CLUSTER</h2>
     <h3>Global Competition</h3>
     <p>Chinese manufacturers with massive scale &amp; lower costs pressure both domestic and export markets persistently.</p>
     <h3>Environmental Regulation</h3>
@@ -96,9 +115,9 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Reliance on migrant &amp; casual workers — dust hazards, no social security, no permanent employment status.</p>
     <h3>Urban Sprawl &amp; Finance</h3>
     <p>Cash crunches + ribbon development, water scarcity, and unplanned land growth along highways.</p>
-    <p class="k">KEY TAKEAWAYS · What makes · Morbi remarkable</p>
-    <h3>Collective Reinvention</h3>
-    <p>Technology adopted cluster-wide and across all the firms simultaneously.</p>
+    <h2>KEY TAKEAWAYS</h2>
+    <p class="k">What makes</p>
+    <div class="entry"><div class="term">Morbi remarkable</div><div><p class="eh">Collective Reinvention</p><p class="eb">Technology adopted cluster-wide and across all the firms simultaneously.</p></div></div>
     <h3>Social Capital</h3>
     <p>Community trust networks enabled non-competitive cooperation — replicable only with deep social embeddedness.</p>
     <h3>Unresolved Tensions</h3>

@@ -30,6 +30,18 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,
 .tag.place{color:var(--fg);}
 .src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
 hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
 .body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
 .body h3:first-child{margin-top:0;}
@@ -37,6 +49,22 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}
 .body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
+.entry:first-of-type{border-top:none;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
@@ -49,6 +77,7 @@ footer b{color:var(--mut);font-weight:600;}
   <h1>Unlocking Nellore&#x27;s Shrimp Processing Potential</h1>
   <p class="summary">From aquaculture capital to value-addition hub — why the district must move up the shrimp chain.</p>
   <div class="meta"><span class="tag place">SPSR Nellore</span><span class="tag">Aquaculture</span><span class="tag">Andhra Pradesh district</span></div>
+  
   
   <hr>
   <div class="body">
@@ -63,20 +92,42 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Near-total dependence on Vannamei and a few export markets. One disease outbreak or tariff decision hits the whole district.</p>
     <h3>The Answer: Build the Processing Ecosystem</h3>
     <p>Shift Nellore from a shrimp-production district to a shrimp-value district. Anchor processing, cold chain, testing and branding inside the district — so the margins that currently leave with the truck stay with local farmers, workers and MSMEs.</p>
-    <p class="k">~70% · of India&#x27;s cultured shrimp comes from Andhra Pradesh · ~40% · of that AP volume from Nellore &amp; neighbouring districts</p>
-    <p class="k">What local processing delivers · 2–4× higher realisation per kg vs. raw farm-gate · Thousands of local jobs — especially for women</p>
-    <p class="k">Access to premium buyers: US, EU, Japan retail · Compliance &amp; traceability as a competitive moat</p>
+    <div class="grid"><div class="cell"><div class="v">~70%</div><div class="l"></div></div></div>
+    <p class="k">of India&#x27;s cultured shrimp comes from Andhra Pradesh</p>
+    <div class="grid"><div class="cell"><div class="v">~40%</div><div class="l"></div></div></div>
+    <p class="k">of that AP volume from Nellore &amp; neighbouring districts</p>
+    <p class="k">What local processing delivers</p>
+    <p class="k">2–4× higher realisation per kg vs. raw farm-gate</p>
+    <p class="k">Thousands of local jobs — especially for women</p>
+    <p class="k">Access to premium buyers: US, EU, Japan retail</p>
+    <p class="k">Compliance &amp; traceability as a competitive moat</p>
     <p class="k">A Nellore brand — not an anonymous ingredient</p>
     <h3>Nellore&#x27;s Shrimp Sector at a Glance</h3>
     <p>SPSR Nellore, Andhra Pradesh • ~169 km of coastline • One of India&#x27;s densest shrimp-farming districts</p>
-    <p class="k">~50,000+ · hectares under · shrimp cultivation · ~1 in 3 · coastal AP shrimp · farms lie in Nellore</p>
-    <p class="k">L. vannamei · dominant species — · over 90% of ponds · ~₹8,900 Cr · value of India&#x27;s frozen</p>
-    <p class="k">shrimp exports/month* · #1 · India — world&#x27;s largest · shrimp exporter · ~15% · of India&#x27;s shrimp</p>
-    <p class="k">processing capacity in AP</p>
-    <p>*Approximate ranges based on MPEDA / industry reporting; exact figures vary year to year.</p>
-    <p class="k">How the Model Works: One Integrated Chain · Farm · Hatchery-linked ponds; SPF seed, BMP protocols</p>
-    <p class="k">› · Aggregate · FPO / cluster procurement, ice at pond-side · Process · Peeling, IQF, value-add: breaded, ready-to-cook</p>
-    <p class="k">› · Cold chain · Reefer trucks, cold storage, port linkage · Market · Export (US/EU/Japan) + growing domestic retail</p>
+    <div class="grid"><div class="cell"><div class="v">~50,000+</div><div class="l">hectares under shrimp cultivation</div></div><div class="cell"><div class="v">~1 in 3</div><div class="l">coastal AP shrimp farms lie in Nellore</div></div></div>
+    <p class="k">L. vannamei</p>
+    <p class="k">dominant species —</p>
+    <p class="k">over 90% of ponds</p>
+    <p class="k">~₹8,900 Cr</p>
+    <p class="k">value of India&#x27;s frozen</p>
+    <p class="k">shrimp exports/month*</p>
+    <div class="grid"><div class="cell"><div class="v">#1</div><div class="l">India — world&#x27;s largest shrimp exporter</div></div></div>
+    <div class="entry"><div class="term">~15%</div><div><p class="eh">of India&#x27;s shrimp processing capacity in AP</p><p class="eb">*Approximate ranges based on MPEDA / industry reporting; exact figures vary year to year.</p></div></div>
+    <p class="k">How the Model Works: One Integrated Chain</p>
+    <p class="k">Farm</p>
+    <p class="k">Hatchery-linked ponds; SPF seed, BMP protocols</p>
+    <p class="k">›</p>
+    <p class="k">Aggregate</p>
+    <p class="k">FPO / cluster procurement, ice at pond-side</p>
+    <p class="k">›</p>
+    <p class="k">Process</p>
+    <p class="k">Peeling, IQF, value-add: breaded, ready-to-cook</p>
+    <p class="k">›</p>
+    <p class="k">Cold chain</p>
+    <p class="k">Reefer trucks, cold storage, port linkage</p>
+    <p class="k">›</p>
+    <p class="k">Market</p>
+    <p class="k">Export (US/EU/Japan) + growing domestic retail</p>
     <p class="k">Nellore captures every link — not just the pond</p>
     <p>Today, most links after &quot;Aggregate&quot; happen outside the district. Localising even two of them — processing and cold chain — meaningfully lifts realised price per kg and creates thousands of downstream jobs.</p>
     <p class="k">Five Pillars Behind the Results</p>
@@ -90,11 +141,15 @@ footer b{color:var(--mut);font-weight:600;}
     <p>NABL labs, antibiotic-residue testing, BAP/ASC certification — the passport to premium markets.</p>
     <h3>Traceability &amp; branding</h3>
     <p>Blockchain-linked pond-to-pack traceability; a &quot;Nellore Shrimp&quot; origin brand for global buyers.</p>
-    <p class="k">Who Benefits — Farmers, Workers and the State · For Farmers &amp; Workers · Direct access to processors + export markets, less middleman leakage</p>
-    <p class="k">Fairer, more stable farm-gate prices tied to processed-product value · Thousands of downstream jobs — especially for women in peeling &amp; packing</p>
+    <p class="k">Who Benefits — Farmers, Workers and the State</p>
+    <p class="k">For Farmers &amp; Workers</p>
+    <p class="k">Direct access to processors + export markets, less middleman leakage</p>
+    <p class="k">Fairer, more stable farm-gate prices tied to processed-product value</p>
+    <p class="k">Thousands of downstream jobs — especially for women in peeling &amp; packing</p>
     <p>Skill upgrade via training in HACCP, food safety, and cold-chain handling</p>
     <p>Insurance, credit and quality-input access through FPO / cluster structures</p>
-    <p class="k">For the District &amp; Global Buyers · MSME cluster growth — packaging, ice, transport, testing, engineering</p>
+    <p class="k">For the District &amp; Global Buyers</p>
+    <p class="k">MSME cluster growth — packaging, ice, transport, testing, engineering</p>
     <p class="k">Higher GST / export revenue captured within the district and the state</p>
     <p>Environmental compliance built in — ETPs, waste-water reuse, mangrove buffers</p>
     <h3>Traceable, certified product for US / EU / Japan retail chains</h3>
@@ -121,7 +176,8 @@ footer b{color:var(--mut);font-weight:600;}
     <p>US CVD/AD duties can swing quickly. Certified, traceable supply + diversified geographies is the hedge.</p>
     <p class="k">Capital intensity of cold chain</p>
     <p>IQF and reefer infra are lumpy investments. Phase spend, blend PMMSY/NABARD subsidies, use anchor-buyer commitments.</p>
-    <p class="k">What Officers Should Take Away · Processing is the multiplier</p>
+    <p class="k">What Officers Should Take Away</p>
+    <p class="k">Processing is the multiplier</p>
     <p>The same kilo of Nellore shrimp is worth 2–4× more once peeled, IQF-frozen and value-added. That gap is captured today by someone else.</p>
     <h3>Cluster, don&#x27;t scatter</h3>
     <p>Processing thrives on density — shared ice, ETPs, labs, port access. Concentrate incentives in a few well-chosen zones, not every mandal.</p>
@@ -131,7 +187,8 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Move beyond frozen HOSO. Ready-to-cook, sushi-grade, breaded, chitosan and marine-collagen open new margins and hedge tariff risk.</p>
     <p class="k">Farmers gain only if integrated</p>
     <p>Processing without the farmer in the value chain reproduces the middleman problem. Anchor FPOs and cluster contracts from day one.</p>
-    <p class="k">From Case for Action to Action · Your task before you leave today:</p>
+    <p class="k">From Case for Action to Action</p>
+    <p class="k">Your task before you leave today:</p>
     <p>Name one high-density shrimp-farming cluster in your mandal fit for a processing pilot.</p>
     <p>Identify one existing FPO / MSME processor to strengthen — or partners to bring together.</p>
     <p>List the partners (MPEDA, NABARD, banks, exporters) you can bring to the table.</p>

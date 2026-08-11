@@ -30,6 +30,18 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,
 .tag.place{color:var(--fg);}
 .src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
 hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
 .body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
 .body h3:first-child{margin-top:0;}
@@ -37,6 +49,22 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}
 .body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
+.entry:first-of-type{border-top:none;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
@@ -49,6 +77,7 @@ footer b{color:var(--mut);font-weight:600;}
   <h1>Chetna Organics: Building a Farmer-Owned Supply Chain</h1>
   <p class="summary">What mandal officers can learn from an organic-cotton FPO to strengthen their own producer organisations.</p>
   <div class="meta"><span class="tag place">Central India</span><span class="tag">FPO strengthening</span><span class="tag">Replicable model</span></div>
+  
   
   <hr>
   <div class="body">
@@ -65,34 +94,34 @@ footer b{color:var(--mut);font-weight:600;}
     <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
     <h3>What Chetna Organics Did</h3>
     <p>A farmer-owned model combining organic cotton, fair trade and a supply chain fully controlled by farmers.</p>
-    <p class="k">The journey</p>
-    <h3>2004</h3>
-    <p>Started as a pilot in Telangana (erstwhile AP) &amp; Maharashtra, facilitated by Solidaridad (a Dutch NGO).</p>
-    <h3>2007</h3>
+    <div class="entry"><div class="term">The journey</div><div><p class="eh">2004</p><p class="eb">Started as a pilot in Telangana (erstwhile AP) &amp; Maharashtra, facilitated by Solidaridad (a Dutch NGO).</p></div></div>
+    <div class="grid"><div class="cell"><div class="v">2007</div><div class="l"></div></div></div>
     <p>COFA formed by 8 district cooperatives; expanded into Odisha (Kalahandi, Bolangir).</p>
-    <h3>2009</h3>
+    <div class="grid"><div class="cell"><div class="v">2009</div><div class="l"></div></div></div>
     <p>COAPCL — a farmer-owned producer company — set up to market produce directly.</p>
-    <p class="k">24 crore · Revenue as on March 2025 · 35000 · Small and Marginal Farmers · 188 · Self-Help Groups federated under COFA</p>
-    <p class="k">Global · buyers — Marks &amp; Spencer, H&amp;M, Japan, Denmark · Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <div class="grid"><div class="cell"><div class="v">24 crore</div><div class="l">Revenue as on March 2025</div></div><div class="cell"><div class="v">35000</div><div class="l">Small and Marginal Farmers</div></div><div class="cell"><div class="v">188</div><div class="l">Self-Help Groups federated under COFA Global</div></div></div>
+    <p class="k">buyers — Marks &amp; Spencer, H&amp;M, Japan, Denmark</p>
+    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
     <h3>The Three-Tier Farmer Structure</h3>
     <p>Every farmer is simultaneously a member at all levels — ownership and decisions stay with farmers.</p>
-    <p class="k">Village level</p>
-    <h3>Self-Help Group</h3>
-    <p>10–20 farmers. Meet monthly on inputs, finance, standards &amp; marketing. Monitor that organic norms are followed.</p>
+    <div class="entry"><div class="term">Village level</div><div><p class="eh">Self-Help Group</p><p class="eb">10–20 farmers. Meet monthly on inputs, finance, standards &amp; marketing. Monitor that organic norms are followed.</p></div></div>
     <p class="k">Block / District level</p>
     <h3>Cooperative</h3>
     <p>600–700 farmers. A legal entity that can take loans, aggregate produce and hold sub-licence for certification.</p>
-    <p class="k">National level</p>
-    <h3>Producer Company (COAPCL)</h3>
-    <p>Farmer-owned trading arm. Sells directly to retailers in India and abroad; holds organic &amp; fair-trade certification.</p>
+    <div class="entry"><div class="term">National level</div><div><p class="eh">Producer Company (COAPCL)</p><p class="eb">Farmer-owned trading arm. Sells directly to retailers in India and abroad; holds organic &amp; fair-trade certification.</p></div></div>
     <p>Democratic, bottom-up: board members of the producer company are elected from each cooperative.</p>
     <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
     <h3>Transforming the Supply Chain</h3>
     <p>Removing middlemen put control — and margins — back in farmers&#x27; hands.</p>
-    <p class="k">BEFORE · Farmer · Govt. Mandi · Middlemen · Trader</p>
-    <h3>Retailer</h3>
-    <p>Farmer loses margin at every hand-off; cheated on weight, quality, price.</p>
-    <p class="k">AFTER (CHETNA MODEL) · Farmer / SHG · Cooperative · Co-op Mandi &amp; COAPCL</p>
+    <p class="k">BEFORE</p>
+    <p class="k">Farmer</p>
+    <p class="k">Govt. Mandi</p>
+    <p class="k">Middlemen</p>
+    <div class="entry"><div class="term">Trader</div><div><p class="eh">Retailer</p><p class="eb">Farmer loses margin at every hand-off; cheated on weight, quality, price.</p></div></div>
+    <h2>AFTER (CHETNA MODEL)</h2>
+    <p class="k">Farmer / SHG</p>
+    <p class="k">Cooperative</p>
+    <p class="k">Co-op Mandi &amp; COAPCL</p>
     <h3>Buyer (direct)</h3>
     <p>Result: Farmers now earn Rs. 3,950–4,050 per quintal of organic cotton vs Rs. 3,000 market price — and they set the base price.</p>
     <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
@@ -102,19 +131,23 @@ footer b{color:var(--mut);font-weight:600;}
     <p>First worked with a few farmers for 2–3 years to prove organic farming lowers input cost and stabilises yield before scaling up.</p>
     <p class="k">2. A systemised supply chain</p>
     <p>Eliminated middlemen; cooperatives lobbied for their own market place and the producer company linked farmers to buyers.</p>
-    <h3>3. A competitive niche</h3>
+    <div class="grid"><div class="cell"><div class="v">3. A competitive niche</div><div class="l"></div></div></div>
     <p>Organic + fair trade created exclusivity. Organic farming saved ~Rs. 4,000 per acre by cutting chemical inputs.</p>
     <h3>4. Long-term buyer relationships</h3>
     <p>Direct ties with retailers, quality assurance, sample sharing, and barcode traceability of every batch.</p>
-    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain · Lessons for Strengthening Your FPO</p>
-    <p class="k">What a mandal officer can act on — Part 1 of 2 · Start small, build genuine ownership</p>
+    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <p class="k">Lessons for Strengthening Your FPO</p>
+    <p class="k">What a mandal officer can act on — Part 1 of 2</p>
+    <p class="k">Start small, build genuine ownership</p>
     <p>Form tight SHGs of 10–20 farmers that meet monthly. Federate them upward. Let farmers make the decisions, so the FPO truly belongs to them.</p>
     <p class="k">Demonstrate before you scale</p>
     <p>Run a small demo plot for 2–3 seasons. Visible results convert sceptical farmers far better than a meeting ever will.</p>
     <p class="k">Aggregate to gain bargaining power</p>
     <p>Pool produce through the FPO so members negotiate as one. Use the APMC reforms to create your own collection point and skip exploitative middlemen.</p>
-    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain · Lessons for Strengthening Your FPO</p>
-    <p class="k">What a mandal officer can act on — Part 2 of 2 · Build a niche &amp; certification</p>
+    <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
+    <p class="k">Lessons for Strengthening Your FPO</p>
+    <p class="k">What a mandal officer can act on — Part 2 of 2</p>
+    <p class="k">Build a niche &amp; certification</p>
     <p>Help the FPO move into organic, GI or fair-trade lines where margins are higher. Certification and traceability (e.g. barcoding) command premium prices.</p>
     <p class="k">Forge direct, lasting buyer links</p>
     <p>Connect the FPO to institutional and export buyers. Direct relationships and assured quality replace one-off, low-price mandi sales.</p>
@@ -136,12 +169,11 @@ footer b{color:var(--mut);font-weight:600;}
     <h3>Ensure transparency</h3>
     <p>Set up simple internal monitoring so members trust the system and it stays sustainable.</p>
     <p class="k">Chetna Organics | Sustainable Agriculture Supply Chain</p>
-    <h3>THE ONE TAKEAWAY</h3>
+    <h2>THE ONE TAKEAWAY</h2>
     <p>When farmers own the supply chain, they capture the value.</p>
     <p>A strong FPO is not built by an officer issuing orders — it is built by helping farmers organise, prove the model on the ground, and connect directly to markets. That is how Chetna turned abandoned cotton fields into a premium, farmer-owned business.</p>
-    <p class="k">Organise · Demonstrate</p>
-    <h3>Connect to markets</h3>
-    <p>Adapted from Governance Knowledge Centre / OneWorld Foundation India — Chetna Organics Case Study (Feb 2011)</p>
+    <p class="k">Organise</p>
+    <div class="entry"><div class="term">Demonstrate</div><div><p class="eh">Connect to markets</p><p class="eb">Adapted from Governance Knowledge Centre / OneWorld Foundation India — Chetna Organics Case Study (Feb 2011)</p></div></div>
   </div>
   <footer>
     <b>Pahlé India Foundation</b> · Swarna Andhra @2047 capacity-building case study.

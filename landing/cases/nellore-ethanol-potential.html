@@ -30,6 +30,18 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,
 .tag.place{color:var(--fg);}
 .src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
 hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
 .body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
 .body h3:first-child{margin-top:0;}
@@ -37,6 +49,22 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}
 .body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
+.entry:first-of-type{border-top:none;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
@@ -50,6 +78,7 @@ footer b{color:var(--mut);font-weight:600;}
   <p class="summary">Feedstock, infrastructure and the road to E20 — what the National Ethanol Blending Programme means for the district.</p>
   <div class="meta"><span class="tag place">SPSR Nellore</span><span class="tag">Ethanol / investment</span><span class="tag">Andhra Pradesh district</span></div>
   
+  
   <hr>
   <div class="body">
     <p class="k">The Case for Ethanol — Why Now</p>
@@ -61,27 +90,42 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Single-crop dependence and price swings leave paddy and cane growers exposed to weak, unpredictable seasonal returns.</p>
     <h3>Rising national demand</h3>
     <p>The push toward 20% blending (E20) is opening assured, long-term offtake for new distillery capacity across India.</p>
-    <p>Nellore Ethanol Opportunity • Capacity building programme | Government of Andhra Pradesh</p>
     <h3>The Answer: National Ethanol Blending Programme</h3>
     <p>Under the EBP, Oil Marketing Companies purchase ethanol from molasses- and grain-based distilleries at pre-fixed prices for blending into petrol. It lets districts like Nellore convert surplus grain and cane into a guaranteed second market.</p>
-    <p class="k">20% · national blending target · set for ESY 2025-26 (E20) · What the EBP delivers · Assured, price-linked offtake by OMCs</p>
-    <p class="k">A new demand stream for surplus paddy, maize &amp; molasses · Investment in distillery &amp; storage infrastructure</p>
-    <p class="k">Valuable by-products — DDGS cattle feed, bio-CNG · Reduced crude import bill &amp; vehicular emissions</p>
-    <p>Nellore Ethanol Opportunity • Capacity building programme | Government of Andhra Pradesh</p>
+    <div class="grid"><div class="cell"><div class="v">20%</div><div class="l">national blending target set for ESY 2025-26 (E20)</div></div></div>
+    <p class="k">What the EBP delivers</p>
+    <p class="k">Assured, price-linked offtake by OMCs</p>
+    <p class="k">A new demand stream for surplus paddy, maize &amp; molasses</p>
+    <p class="k">Investment in distillery &amp; storage infrastructure</p>
+    <p class="k">Valuable by-products — DDGS cattle feed, bio-CNG</p>
+    <p class="k">Reduced crude import bill &amp; vehicular emissions</p>
     <h3>Nellore District at a Glance</h3>
     <p>Coastal Andhra Pradesh • Part of the state&#x27;s paddy heartland • Anchored by Krishnapatnam Port</p>
-    <p class="k">2.5 lakh+ ha · Paddy area under cultivation · Existing sugar mills / distilleries in the region</p>
-    <p class="k">Major deep-water port — Krishnapatnam · NH16 · National highway &amp; rail corridor access · ~40 km</p>
-    <p class="k">Feedstock catchment to the port-linked industrial belt · 12 Mandals · With sizeable paddy &amp; maize surplus</p>
-    <p>Anchored by an existing sugar and grain-processing base — positioned to scale into a full ethanol hub.</p>
+    <div class="grid"><div class="cell"><div class="v">2.5 lakh+ ha</div><div class="l">Paddy area under cultivation</div></div></div>
+    <p class="k">Existing sugar mills / distilleries in the region</p>
+    <p class="k">Major deep-water port — Krishnapatnam</p>
+    <p class="k">NH16</p>
+    <p class="k">National highway &amp; rail corridor access</p>
+    <div class="grid"><div class="cell"><div class="v">~40 km</div><div class="l"></div></div></div>
+    <p class="k">Feedstock catchment to the port-linked industrial belt</p>
+    <div class="entry"><div class="term">12 Mandals</div><div><p class="eh">With sizeable paddy &amp; maize surplus</p><p class="eb">Anchored by an existing sugar and grain-processing base — positioned to scale into a full ethanol hub.</p></div></div>
     <p>Figures are indicative, based on the district&#x27;s cropping pattern and existing agro-industrial base.</p>
-    <p>Nellore Ethanol Opportunity • Capacity building programme | Government of Andhra Pradesh</p>
-    <p class="k">How an Ethanol Value Chain Would Work · Feedstock · Paddy, maize &amp; cane surplus aggregated from farmers and mandi networks</p>
-    <p class="k">› · Distillery · Grain- and molasses-based distillation into fuel-grade ethanol · Blending</p>
-    <p class="k">Ethanol supplied to OMC depots for blending into petrol (E20) · › · Distribution · Blended fuel moves via road &amp; Krishnapatnam Port to retail pumps</p>
-    <p class="k">› · End Use · Cleaner-burning fuel for vehicles across Andhra Pradesh and beyond</p>
+    <p class="k">How an Ethanol Value Chain Would Work</p>
+    <p class="k">Feedstock</p>
+    <p class="k">Paddy, maize &amp; cane surplus aggregated from farmers and mandi networks</p>
+    <p class="k">›</p>
+    <p class="k">Distillery</p>
+    <p class="k">Grain- and molasses-based distillation into fuel-grade ethanol</p>
+    <p class="k">›</p>
+    <p class="k">Blending</p>
+    <p class="k">Ethanol supplied to OMC depots for blending into petrol (E20)</p>
+    <p class="k">›</p>
+    <p class="k">Distribution</p>
+    <p class="k">Blended fuel moves via road &amp; Krishnapatnam Port to retail pumps</p>
+    <p class="k">›</p>
+    <p class="k">End Use</p>
+    <p class="k">Cleaner-burning fuel for vehicles across Andhra Pradesh and beyond</p>
     <p>A district-anchored distillery keeps processing margins local — while by-products like DDGS and bio-CNG open a second revenue line.</p>
-    <p>Nellore Ethanol Opportunity • Capacity building programme | Government of Andhra Pradesh</p>
     <p class="k">Five Pillars for Building Nellore&#x27;s Ethanol Capacity</p>
     <h3>Feedstock aggregation &amp; FPCs</h3>
     <p>Organise paddy, maize and cane growers so distilleries get consistent, quality-graded volumes.</p>
@@ -93,13 +137,19 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Krishnapatnam Port and NH16 connectivity support feedstock movement and by-product export.</p>
     <h3>By-product utilisation</h3>
     <p>DDGS as cattle feed and bio-CNG from spent wash add income and cut waste.</p>
-    <p>Nellore Ethanol Opportunity • Capacity building programme | Government of Andhra Pradesh</p>
-    <p class="k">Who Benefits — Farmers and the State · For Farmers · Assured market for surplus &amp; damaged grain</p>
-    <p class="k">Additional income stream beyond food-grain sales · Reduced price volatility &amp; storage losses</p>
-    <p class="k">Demand for maize as a rotation crop · New rural jobs in distilleries &amp; logistics · For the State &amp; Nation</p>
-    <p class="k">Progress toward the national E20 blending target · Reduced crude oil import bill · Cleaner-burning fuel &amp; lower emissions</p>
-    <p class="k">Industrial investment &amp; employment in Nellore · A replicable model for other AP grain belts</p>
-    <p>Nellore Ethanol Opportunity • Capacity building programme | Government of Andhra Pradesh</p>
+    <p class="k">Who Benefits — Farmers and the State</p>
+    <p class="k">For Farmers</p>
+    <p class="k">Assured market for surplus &amp; damaged grain</p>
+    <p class="k">Additional income stream beyond food-grain sales</p>
+    <p class="k">Reduced price volatility &amp; storage losses</p>
+    <p class="k">Demand for maize as a rotation crop</p>
+    <p class="k">New rural jobs in distilleries &amp; logistics</p>
+    <p class="k">For the State &amp; Nation</p>
+    <p class="k">Progress toward the national E20 blending target</p>
+    <p class="k">Reduced crude oil import bill</p>
+    <p class="k">Cleaner-burning fuel &amp; lower emissions</p>
+    <p class="k">Industrial investment &amp; employment in Nellore</p>
+    <p class="k">A replicable model for other AP grain belts</p>
     <p class="k">Development Roadmap for Nellore</p>
     <h3>Assess feedstock surplus</h3>
     <p>Map paddy, maize and molasses surplus by mandal; identify volumes viable for a distillery-ready supply chain.</p>
@@ -111,7 +161,6 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Strengthen FPCs/FPOs so growers can supply consistent, graded feedstock volumes.</p>
     <p class="k">Scale via by-products &amp; logistics</p>
     <p>Add DDGS and bio-CNG lines; route exports and inputs through Krishnapatnam Port.</p>
-    <p>Nellore Ethanol Opportunity • Capacity building programme | Government of Andhra Pradesh</p>
     <p class="k">Challenges to Plan For</p>
     <h3>Feedstock price volatility</h3>
     <p>Grain and cane prices can swing with the food market, affecting distillery economics.</p>
@@ -123,8 +172,8 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Diverting grain to ethanol must be balanced against local food and fodder needs.</p>
     <h3>Logistics bottlenecks</h3>
     <p>Moving feedstock and by-products smoothly needs coordinated road, rail and port capacity.</p>
-    <p>Nellore Ethanol Opportunity • Capacity building programme | Government of Andhra Pradesh</p>
-    <p class="k">Take Away · Ethanol is a new demand stream</p>
+    <p class="k">Take Away</p>
+    <p class="k">Ethanol is a new demand stream</p>
     <p>It turns surplus and damaged grain into an assured, price-linked market.</p>
     <h3>Offtake de-risks investment</h3>
     <p>OMC agreements guarantee buyers before a rupee of distillery capital is spent.</p>
@@ -134,7 +183,8 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Krishnapatnam Port and NH16 give Nellore logistics few districts can match.</p>
     <p class="k">Start with pilots, scale with policy</p>
     <p>Anchor around one distillery and one crop belt, then expand as volumes and offtake grow.</p>
-    <p class="k">From Opportunity to Action · Your task before you leave today:</p>
+    <p class="k">From Opportunity to Action</p>
+    <p class="k">Your task before you leave today:</p>
     <p>Identify one distillery-ready site or existing sugar mill for ethanol expansion.</p>
     <p>Map surplus paddy, maize and molasses feedstock by mandal.</p>
     <p>List the financing and OMC partners you can bring to the table.</p>

@@ -156,7 +156,11 @@ META = [
 ]
 
 BOILERPLATE = re.compile(
-    r"^(#\s*index\.html|Capacity building programme \| Government of Andhra Pradesh)\s*$",
+    # the "# index.html" flatten marker, and the per-slide running footer in all
+    # its forms — bare, or prefixed with the deck name and a bullet, e.g.
+    # "Nellore Ethanol Opportunity • Capacity building programme | Government…"
+    r"^(#\s*index\.html\s*"
+    r"|.*Capacity building programme \| Government of Andhra Pradesh)\s*$",
     re.IGNORECASE,
 )
 
@@ -189,59 +193,151 @@ def is_prose(text):
     return len(text) > 72 or text.endswith((".", "!", "?"))
 
 
-def parse_body(path):
-    """Clean the deck text into ('h3'|'k'|'p', text) blocks.
+def is_section_title(line):
+    """A deck's big section header — an ALL-CAPS multi-word banner line.
 
-    The cover slide (title / eyebrow / summary / hero stats) is dropped — every
-    deck marks the end of it with a bare '1' section line, and the curated header
-    already carries that content. After that:
-      h3  — a section heading: a short title-ish line FOLLOWED BY prose.
-      k   — a keyline: a short title-ish line followed by more short lines. These
-            are the deck's stat values and timeline labels; flattened text can't
-            tell a "stat card" from a "sub-heading", so they render as emphasis,
-            not as section titles, and adjacent short ones are joined with ' · '
-            so a stat reads "42% · of AP output" rather than stacking.
-      p   — everything else.
+    'EVOLUTION OF THE INDUSTRY', 'GLOBAL STANDING', 'THE GLOBAL & POLICY CONTEXT'.
+    Kept strict (all upper, >=2 words, not a stat) so ordinary Title-Case
+    sub-headings stay h3 and stat values like '45M+' never promote.
+    """
+    if len(line) > 60 or not line.isupper():
+        return False
+    words = [w for w in line.split() if any(c.isalpha() for c in w)]
+    return len(words) >= 2
+
+
+def is_value(line):
+    """A stat's headline value: '#2', '80–90%', 'Rs 46,000 Cr', '4th', '45M+'.
+
+    Short, and leads with a number or a currency/rank marker. This is what lets a
+    flattened deck tell a stat card from a sub-heading — the thing the old
+    ' · '-joined keyline hack could not do.
+    """
+    if len(line) > 22:
+        return False
+    if re.match(r"^[#~<>≈]?\s*[\d]", line):          # #2, ~100 yrs, 80–90%, 20,000
+        return True
+    if re.match(r"^(rs\.?|₹|\$|€)\s*[\d]", line, re.IGNORECASE):  # Rs 46,000 Cr
+        return True
+    if re.match(r"^\d+\s*(st|nd|rd|th)\b", line, re.IGNORECASE):  # 4th
+        return True
+    return False
+
+
+def short_label(line):
+    return 0 < len(line) <= 46 and not is_prose(line) and not is_section_title(line)
+
+
+def take_stat(kept, i):
+    """Consume a value line + up to two short label lines starting at i.
+
+    Returns (value, label, j) where j is the index past what was consumed. Used
+    for both the hero band and in-body stat runs.
+    """
+    labels = []
+    j = i + 1
+    while (j < len(kept) and len(labels) < 2 and short_label(kept[j])
+           and not is_value(kept[j])):
+        labels.append(kept[j])
+        j += 1
+    return kept[i], " ".join(labels), j
+
+
+def clean_lines(raw):
+    out = []
+    for ln in raw:
+        s = unescape(ln).strip()
+        if not s or BOILERPLATE.match(s) or re.fullmatch(r"\d{1,2}", s):
+            continue
+        out.append(s)
+    return out
+
+
+def parse_deck(path):
+    """Parse the deck into structured blocks that a real template can render.
+
+    The decks are HTML slide decks flattened to text, so their structure survives
+    as line rhythm rather than markup. Reconstructed conservatively — anything not
+    confidently a stat/entry/heading falls back to prose, so the worst case ties
+    the old flat render, never invents structure that is not in the file.
+
+    Returns (hero_stats, blocks):
+      hero_stats — [(value, label)] pulled from the cover slide, e.g.
+                   ('#2', 'Global Producer'). These were thrown away before.
+      blocks — ordered, each one of:
+        ('h2', title)                  section banner (ALL-CAPS deck header)
+        ('h3', title)                  sub-heading (Title-Case + following prose)
+        ('stat', value, label)         a big-number card (grouped into a grid at render)
+        ('entry', term, heading, body) a timeline / definition row: period + head + prose
+        ('p', text)                    paragraph
+        ('k', text)                    leftover short line (rare; emphasis)
     """
     with open(path, encoding="utf-8") as f:
         raw = [ln.rstrip() for ln in f]
 
-    # body starts after the first bare '1' — the cover-slide boundary
-    start = 0
+    # the cover slide ends at the first bare '1'. Its stats were dropped before;
+    # keep them for the hero band. The title/eyebrow/summary stay curated.
+    cut = len(raw)
     for i, ln in enumerate(raw):
         if re.fullmatch(r"\s*1\s*", ln):
-            start = i + 1
+            cut = i
             break
 
-    kept = []
-    for ln in raw[start:]:
-        s = unescape(ln).strip()
-        if not s or BOILERPLATE.match(s) or re.fullmatch(r"\d{1,2}", s):
-            continue
-        kept.append(s)
-
-    # classify with one-line lookahead
-    blocks = []
-    for i, s in enumerate(kept):
-        nxt = kept[i + 1] if i + 1 < len(kept) else ""
-        if is_prose(s):
-            blocks.append(["p", s])
-        elif is_heading(s) and nxt and is_prose(nxt):
-            blocks.append(["h3", s])
+    cover = clean_lines(raw[:cut])
+    hero = []
+    i = 0
+    while i < len(cover):
+        if is_value(cover[i]):
+            v, lab, j = take_stat(cover, i)
+            hero.append((v, lab))
+            i = j
         else:
-            blocks.append(["k", s])
+            i += 1
 
-    # join runs of adjacent short keylines into one, and drop exact dupes
+    kept = clean_lines(raw[cut + 1:])
+    blocks = []
+    i = 0
+    while i < len(kept):
+        s = kept[i]
+        nxt = kept[i + 1] if i + 1 < len(kept) else ""
+        if is_section_title(s):
+            blocks.append(("h2", s))
+            i += 1
+        elif is_value(s):
+            v, lab, j = take_stat(kept, i)
+            after = kept[j] if j < len(kept) else ""
+            if lab and is_prose(after):
+                # value + short head + prose = a timeline / definition entry,
+                # e.g. '1980s–90s' / 'First Major Shift' / 'Transition from…'
+                blocks.append(("entry", v, lab, after))
+                i = j + 1
+            else:
+                blocks.append(("stat", v, lab))
+                i = j
+        elif (len(s) <= 16 and short_label(s)
+              and is_heading(nxt) and (i + 2) < len(kept) and is_prose(kept[i + 2])):
+            # a tight period/label + heading + prose is a timeline row too, even
+            # when the label isn't numeric ('Pre-1980s' / 'Traditional Craft
+            # Origins' / prose) — keeps a timeline visually uniform.
+            blocks.append(("entry", s, nxt, kept[i + 2]))
+            i += 3
+        elif is_heading(s) and nxt and is_prose(nxt):
+            blocks.append(("h3", s))
+            i += 1
+        elif is_prose(s):
+            blocks.append(("p", s))
+            i += 1
+        else:
+            blocks.append(("k", s))
+            i += 1
+
+    # drop adjacent exact dupes (repeated banners across slides)
     out = []
-    for kind, text in blocks:
-        if kind == "k" and out and out[-1][0] == "k" and len(out[-1][1]) < 90:
-            if text not in out[-1][1].split(" · "):
-                out[-1][1] += " · " + text
+    for b in blocks:
+        if out and out[-1] == b:
             continue
-        if out and out[-1][0] == kind and out[-1][1] == text:
-            continue
-        out.append([kind, text])
-    return [(k, t) for k, t in out]
+        out.append(b)
+    return hero, out
 
 
 PAGE_TMPL = """<!doctype html>
@@ -276,6 +372,18 @@ h1{{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px
 .tag.place{{color:var(--fg);}}
 .src{{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}}
 hr{{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}}
+.hero .cell{{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}}
+.hero .v{{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}}
+.hero .l{{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}}
+.body h2{{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}}
+.body h2:first-child{{margin-top:4px;}}
 .body h3{{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}}
 .body h3:first-child{{margin-top:0;}}
@@ -283,6 +391,22 @@ hr{{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}}
 .body .k + h3{{margin-top:2px;}}
+/* in-body stat grid */
+.grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}}
+.grid .cell{{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}}
+.grid .v{{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}}
+.grid .l{{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}}
+/* timeline / definition entry */
+.entry{{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}}
+.entry:first-of-type{{border-top:none;}}
+.entry .term{{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}}
+.entry .eh{{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}}
+.entry .eb{{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}}
+@media(max-width:520px){{.entry{{grid-template-columns:1fr;gap:4px;}}}}
 footer{{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}}
 footer b{{color:var(--mut);font-weight:600;}}
@@ -296,6 +420,7 @@ footer b{{color:var(--mut);font-weight:600;}}
   <p class="summary">{summary}</p>
   <div class="meta">{tags}</div>
   {source}
+  {hero}
   <hr>
   <div class="body">
 {body}
@@ -314,7 +439,48 @@ def e(s):
     return html.escape(s, quote=True)
 
 
-def render_page(m, body_blocks):
+def render_hero(hero_stats):
+    if not hero_stats:
+        return ""
+    cells = "".join(
+        '<div class="cell"><div class="v">{v}</div><div class="l">{l}</div></div>'.format(
+            v=e(v), l=e(l))
+        for v, l in hero_stats)
+    return '<div class="hero">' + cells + "</div>"
+
+
+def render_body(blocks):
+    """Emit HTML, grouping consecutive ('stat',…) blocks into one card grid."""
+    out = []
+    i = 0
+    while i < len(blocks):
+        b = blocks[i]
+        if b[0] == "stat":
+            run = []
+            while i < len(blocks) and blocks[i][0] == "stat":
+                run.append(blocks[i])
+                i += 1
+            cells = "".join(
+                '<div class="cell"><div class="v">{v}</div><div class="l">{l}</div></div>'.format(
+                    v=e(v), l=e(l))
+                for _, v, l in run)
+            out.append('    <div class="grid">' + cells + "</div>")
+            continue
+        if b[0] == "entry":
+            _, term, head, body = b
+            out.append(
+                '    <div class="entry"><div class="term">{t}</div>'
+                '<div><p class="eh">{h}</p><p class="eb">{b}</p></div></div>'.format(
+                    t=e(term), h=e(head), b=e(body)))
+        elif b[0] == "k":
+            out.append('    <p class="k">' + e(b[1]) + "</p>")
+        else:  # h2, h3, p
+            out.append("    <{k}>{t}</{k}>".format(k=b[0], t=e(b[1])))
+        i += 1
+    return "\n".join(out)
+
+
+def render_page(m, hero_stats, body_blocks):
     tags = ['<span class="tag place">' + e(m["place"]) + "</span>"] if m.get("place") else []
     if m.get("theme"):
         tags.append('<span class="tag">' + e(m["theme"]) + "</span>")
@@ -322,15 +488,10 @@ def render_page(m, body_blocks):
                 + ("Andhra Pradesh district" if m["group"] == "ap" else "Replicable model")
                 + "</span>")
     src = '<p class="src">' + e(m["source"]) + "</p>" if m.get("source") else ""
-    def block_html(kind, text):
-        if kind == "k":
-            return '    <p class="k">' + e(text) + "</p>"
-        return "    <{k}>{t}</{k}>".format(k=kind, t=e(text))
-
-    body = "\n".join(block_html(k, t) for k, t in body_blocks)
     return PAGE_TMPL.format(
         title=e(m["title"]), eyebrow=e(m["eyebrow"]), summary=e(m["summary"]),
-        tags="".join(tags), source=src, body=body,
+        tags="".join(tags), source=src, hero=render_hero(hero_stats),
+        body=render_body(body_blocks),
     )
 
 
@@ -346,17 +507,21 @@ def main():
         if not os.path.exists(path):
             print("MISSING:", m["file"])
             continue
-        body = parse_body(path)
-        page = render_page(m, body)
+        hero, body = parse_deck(path)
+        page = render_page(m, hero, body)
         with open(os.path.join(PAGES_DIR, m["slug"] + ".html"), "w", encoding="utf-8") as f:
             f.write(page)
         manifest[m["group"]].append({
             "slug": m["slug"], "title": m["title"], "eyebrow": m["eyebrow"],
             "summary": m["summary"], "theme": m["theme"], "place": m["place"],
-            "district": m.get("district"), "sections": sum(1 for k, _ in body if k == "h3"),
+            "district": m.get("district"),
+            "sections": sum(1 for b in body if b[0] == "h2"),
         })
         written += 1
-        print(f"  {m['slug']:28s} {len(body):3d} blocks -> cases/{m['slug']}.html")
+        stats = sum(1 for b in body if b[0] == "stat")
+        entries = sum(1 for b in body if b[0] == "entry")
+        print(f"  {m['slug']:28s} {len(body):3d} blk  "
+              f"hero:{len(hero)} stat:{stats} entry:{entries} -> cases/{m['slug']}.html")
 
     with open(MANIFEST, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=1, ensure_ascii=False)

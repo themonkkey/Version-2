@@ -30,6 +30,18 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,
 .tag.place{color:var(--fg);}
 .src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
 hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
 .body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
   letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
 .body h3:first-child{margin-top:0;}
@@ -37,6 +49,22 @@ hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
 .body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
   color:var(--lime2);}
 .body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
+.entry:first-of-type{border-top:none;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
 footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
   font-size:12.5px;color:var(--mut2);}
 footer b{color:var(--mut);font-weight:600;}
@@ -49,6 +77,7 @@ footer b{color:var(--mut);font-weight:600;}
   <h1>Unlocking Srikakulam&#x27;s Blue Economy Potential</h1>
   <p class="summary">From a coastal aquaculture belt to a diversified seafood processing hub — shrimp, fish and marine value-added products.</p>
   <div class="meta"><span class="tag place">Srikakulam</span><span class="tag">Blue economy</span><span class="tag">Andhra Pradesh district</span></div>
+  
   
   <hr>
   <div class="body">
@@ -63,20 +92,42 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Tonnes of shrimp shell, heads and low-value fish are discarded instead of becoming fishmeal, fish oil or chitosan feedstock.</p>
     <h3>The Answer: Build the Blue Economy Ecosystem</h3>
     <p>Shift Srikakulam from a raw-catch aquaculture district to a seafood-value district. Anchor shrimp &amp; fish processing, fishmeal manufacturing, testing and branding inside the district — so the margins that currently leave with the truck stay with local farmers, workers and MSMEs.</p>
-    <p class="k">1st · shrimp-exporting state in India (Andhra Pradesh) · ~15% · of AP&#x27;s aquaculture area lies along the Srikakulam coastal belt*</p>
-    <p class="k">What local processing delivers · 2–3× higher realisation per kg vs. raw/frozen whole export</p>
-    <p class="k">Thousands of local jobs — especially for women · Access to premium buyers: US, EU, Japan &amp; South-East Asia</p>
-    <p class="k">Quality certification as a competitive moat · A &quot;Srikakulam Seafood&quot; brand — not an anonymous input</p>
+    <div class="grid"><div class="cell"><div class="v">1st</div><div class="l"></div></div></div>
+    <p class="k">shrimp-exporting state in India (Andhra Pradesh)</p>
+    <div class="grid"><div class="cell"><div class="v">~15%</div><div class="l"></div></div></div>
+    <p class="k">of AP&#x27;s aquaculture area lies along the Srikakulam coastal belt*</p>
+    <p class="k">What local processing delivers</p>
+    <p class="k">2–3× higher realisation per kg vs. raw/frozen whole export</p>
+    <p class="k">Thousands of local jobs — especially for women</p>
+    <p class="k">Access to premium buyers: US, EU, Japan &amp; South-East Asia</p>
+    <p class="k">Quality certification as a competitive moat</p>
+    <p class="k">A &quot;Srikakulam Seafood&quot; brand — not an anonymous input</p>
     <h3>Srikakulam&#x27;s Blue Economy Sector at a Glance</h3>
     <p>Srikakulam, Andhra Pradesh • Coastal aquaculture belt • One of AP&#x27;s leading shrimp &amp; fish farming districts</p>
-    <p class="k">~50,000+ · hectares under · shrimp &amp; fish aquaculture* · Naupada · AP&#x27;s aquaculture · heartland region</p>
-    <p class="k">~2 lakh+ · tonnes of shrimp &amp; fish · produced per year, district-wide* · ~70% · exported raw or frozen</p>
-    <p class="k">with little value addition* · Top 3 · AP districts — among India&#x27;s · leading shrimp-producing belts</p>
-    <p class="k">2 chains · flagship value chains — · shrimp processing &amp; fishmeal</p>
-    <p>*Indicative figures based on MPEDA / Dept. of Fisheries, Andhra Pradesh / industry reporting; exact figures vary year to year.</p>
-    <p class="k">How the Model Works: One Integrated Chain · Farm · Shrimp ponds &amp; fish cages along the coast</p>
-    <p class="k">› · Aggregate · FPO / cluster procurement, village collection centres · Process · Peeling, deveining, IQF freezing; fish filleting</p>
-    <p class="k">› · Value-add · Fishmeal, fish oil, chitosan, ready-to-cook lines · Market · Export (US/EU/Japan/SE Asia) + growing domestic demand</p>
+    <div class="grid"><div class="cell"><div class="v">~50,000+</div><div class="l">hectares under shrimp &amp; fish aquaculture*</div></div></div>
+    <p class="k">Naupada</p>
+    <p class="k">AP&#x27;s aquaculture</p>
+    <p class="k">heartland region</p>
+    <div class="grid"><div class="cell"><div class="v">~2 lakh+</div><div class="l">tonnes of shrimp &amp; fish produced per year, district-wide*</div></div><div class="cell"><div class="v">~70%</div><div class="l">exported raw or frozen with little value addition*</div></div></div>
+    <p class="k">Top 3</p>
+    <p class="k">AP districts — among India&#x27;s</p>
+    <p class="k">leading shrimp-producing belts</p>
+    <div class="entry"><div class="term">2 chains</div><div><p class="eh">flagship value chains — shrimp processing &amp; fishmeal</p><p class="eb">*Indicative figures based on MPEDA / Dept. of Fisheries, Andhra Pradesh / industry reporting; exact figures vary year to year.</p></div></div>
+    <p class="k">How the Model Works: One Integrated Chain</p>
+    <p class="k">Farm</p>
+    <p class="k">Shrimp ponds &amp; fish cages along the coast</p>
+    <p class="k">›</p>
+    <p class="k">Aggregate</p>
+    <p class="k">FPO / cluster procurement, village collection centres</p>
+    <p class="k">›</p>
+    <p class="k">Process</p>
+    <p class="k">Peeling, deveining, IQF freezing; fish filleting</p>
+    <p class="k">›</p>
+    <p class="k">Value-add</p>
+    <p class="k">Fishmeal, fish oil, chitosan, ready-to-cook lines</p>
+    <p class="k">›</p>
+    <p class="k">Market</p>
+    <p class="k">Export (US/EU/Japan/SE Asia) + growing domestic demand</p>
     <p class="k">Srikakulam captures every link — not just the pond</p>
     <p>Today, most links after &quot;Aggregate&quot; happen outside the district. Localising even two of them — shrimp processing and fishmeal/by-product manufacturing — meaningfully lifts realised value per kg and creates thousands of downstream jobs.</p>
     <p class="k">Five Pillars Behind the Results</p>
@@ -90,7 +141,9 @@ footer b{color:var(--mut);font-weight:600;}
     <p>EIC/HACCP/BAP export quality labs, residue-testing certification and consistent grading — the passport to premium markets.</p>
     <h3>Traceability &amp; branding</h3>
     <p>Digital farm-to-fork traceability; a &quot;Srikakulam Seafood&quot; origin brand for global buyers.</p>
-    <p class="k">Who Benefits — Farmers, Workers and the State · For Farmers &amp; Workers · Direct access to processors + export markets, less middleman leakage</p>
+    <p class="k">Who Benefits — Farmers, Workers and the State</p>
+    <p class="k">For Farmers &amp; Workers</p>
+    <p class="k">Direct access to processors + export markets, less middleman leakage</p>
     <p class="k">Fair value for shrimp shell &amp; by-catch — no longer discarded as waste</p>
     <p>Thousands of downstream jobs — especially for women in peeling &amp; processing units</p>
     <p>Skill upgrade via training in grading, IQF operations, and quality-control practices</p>
@@ -112,7 +165,8 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Push HACCP, BAP/ASC and EIC export-quality certification, plus consistent residue-testing grading. Certification is what unlocks premium buyers.</p>
     <p class="k">Link to markets &amp; diversify</p>
     <p>Anchor buyer contracts (US/EU/Japan/SE Asia) plus a domestic &quot;Srikakulam Seafood&quot; brand play. Diversify into fishmeal, fish oil, chitosan and ready-to-eat products.</p>
-    <p class="k">Challenges to Plan For · Disease outbreaks &amp; seed quality</p>
+    <p class="k">Challenges to Plan For</p>
+    <p class="k">Disease outbreaks &amp; seed quality</p>
     <p>Shrimp diseases (e.g. white-spot) can wipe out ponds overnight. Disease-free seed, biosecurity protocols, and farmer training are non-negotiable.</p>
     <h3>Fragmented small-holder ponds</h3>
     <p>Ponds are scattered across thousands of small holdings along the coast. Aggregation logistics and cluster-level collection points are essential.</p>
@@ -122,7 +176,8 @@ footer b{color:var(--mut);font-weight:600;}
     <p>Established players in Vietnam, Ecuador and other AP districts (Visakhapatnam, West Godavari) compete hard. Certification and differentiation are the hedge.</p>
     <p class="k">Capital intensity of processing</p>
     <p>IQF freezing lines and processing plants are lumpy investments. Phase spend, blend MPEDA/MSME subsidies, use anchor-buyer commitments.</p>
-    <p class="k">What Officers Should Take Away · Processing is the multiplier</p>
+    <p class="k">What Officers Should Take Away</p>
+    <p class="k">Processing is the multiplier</p>
     <p>The same shrimp is worth several times more once peeled, deveined and IQF frozen or converted to value-added products. That gap is captured today by someone else.</p>
     <h3>Cluster, don&#x27;t scatter</h3>
     <p>Processing thrives on density — shared cold storage, ETPs, labs, port access. Concentrate incentives in a few well-chosen zones, not every mandal.</p>
