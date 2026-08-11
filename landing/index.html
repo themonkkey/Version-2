@@ -513,8 +513,12 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 
 .map-hint{font-size:12px;color:var(--label-3);text-align:center;margin-top:12px;letter-spacing:-.006em;}
 
-/* back out of the constituency view — only exists while zoomed in */
-.map-back{position:absolute;top:clamp(14px,2.2vw,20px);left:clamp(14px,2.2vw,20px);z-index:2;
+/* Back out of the constituency view — only exists while zoomed in.
+   In flow, not absolute: floated over the map it sat on top of the northern
+   districts and the glass pill's own glow washed out the boundaries underneath.
+   The map box is a flex column, so order:-1 puts this above the map without
+   depending on where it appears in the markup. */
+.map-back{order:-1;align-self:flex-start;margin-bottom:10px;
   display:none;align-items:center;gap:6px;font:inherit;font-size:12.5px;font-weight:600;
   letter-spacing:-.01em;cursor:pointer;padding:7px 13px;border-radius:980px;
   background:rgba(255,255,255,.5);border:1px solid var(--glass-border);
@@ -1482,6 +1486,17 @@ function setLayoutState(split){
   }
 }
 
+/* The hint under the map has to say what clicking will actually do. Zoomed into
+   a district it still read "Click any district to explore" while every shape on
+   screen was a constituency. */
+function setMapHint(level, districtName){
+  const el = document.querySelector('#mapBox .map-hint');
+  if(!el) return;
+  el.textContent = level === 'constituency'
+    ? 'Click any constituency in ' + (districtName || 'this district') + ' to explore'
+    : 'Click any district to explore';
+}
+
 function showStateView(){
   mapLevel='state'; currentDistrict=null;
   document.getElementById('mapBox').classList.remove('picked','zoomed');
@@ -1489,6 +1504,7 @@ function showStateView(){
   document.getElementById('districtPanel').innerHTML=
     '<div class="panel-empty"><i class="ti ti-hand-finger"></i><p>Select a district on the map to see its economic snapshot.</p></div>';
   relocateRankBadge(null);   // no district picked: nothing to show up top either
+  setMapHint('district');
   drawPaths(districtFeatures, ft=>({
     'data-key':ft.properties.data_key, 'data-name':ft.properties.display
   }));
@@ -1499,6 +1515,7 @@ function showConstituencyView(districtKey, districtName){
   if(!feats.length) return false;      // no boundaries for this district — stay on state view
   mapLevel='constituency'; currentDistrict=districtKey;
   document.getElementById('mapBox').classList.add('zoomed');
+  setMapHint('constituency', districtName);
   drawPaths(feats, ft=>({
     'data-ac':ft.properties.ac_name, 'data-name':ft.properties.display
   }));
