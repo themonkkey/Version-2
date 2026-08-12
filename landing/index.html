@@ -654,18 +654,76 @@ a.docs-leaf:hover .ext{opacity:1;}
 .gva-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,20px);align-items:start;
   margin-bottom:clamp(18px,2.4vw,26px);}
 
-/* Sector group — Primary / Secondary / Tertiary */
-.gva-group{margin-bottom:clamp(20px,2.6vw,30px);}
-.gva-ghead{display:flex;align-items:baseline;gap:11px;margin-bottom:4px;}
-/* carries the same hue this group's slice uses on the district dashboards */
-.gva-dot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:var(--gh,#6FA817);
-  box-shadow:0 0 0 3px color-mix(in srgb, var(--gh,#6FA817) 26%, transparent);align-self:center;}
-.gva-group .gva-card{border-top:2px solid color-mix(in srgb, var(--gh,#6FA817) 55%, transparent);}
-.gva-ghead h3{font-size:clamp(18px,2.2vw,23px);font-weight:700;color:#FFF;margin:0;letter-spacing:-.015em;}
-.gva-ghead .cnt{font-size:11.5px;color:rgba(255,255,255,.82);background:rgba(255,255,255,.14);
-  padding:2px 9px;border-radius:999px;}
-.gva-gblurb{font-size:13.4px;color:rgba(255,255,255,.78);margin:0 0 13px;max-width:74ch;line-height:1.5;}
-.gva-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.6vw,16px);align-items:start;}
+/* Sector groups as a horizontal accordion (after NITI's ICED dashboard):
+   the three state sectors sit side by side, collapsed to a spine carrying a
+   rotated label, and the one in focus expands to fill the row. Only one is open
+   at a time, so the reader is always looking at exactly one sector's playbook
+   and can see the other two waiting. */
+.gva-accwrap{border-radius:var(--r-lg);overflow:hidden;margin-bottom:clamp(18px,2.4vw,26px);
+  border:1px solid rgba(255,255,255,.20);box-shadow:0 12px 34px rgba(0,0,0,.20);}
+.gva-acchead{padding:11px 18px;background:rgba(255,255,255,.10);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  border-bottom:1px solid rgba(255,255,255,.16);
+  font-size:13.5px;font-weight:700;color:#FFF;letter-spacing:-.01em;text-align:center;}
+.gva-acc{display:flex;align-items:stretch;gap:0;background:rgba(9,40,27,.78);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);}
+.gva-pane{position:relative;display:flex;align-items:stretch;overflow:hidden;
+  flex-grow:0;flex-shrink:1;flex-basis:78px;min-width:0;
+  border-right:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg,
+    color-mix(in srgb, var(--gh,#6FA817) 24%, transparent),
+    color-mix(in srgb, var(--gh,#6FA817) 9%, transparent));
+  transition:flex-grow .55s cubic-bezier(.4,0,.2,1), flex-basis .55s cubic-bezier(.4,0,.2,1),
+             background .4s ease;}
+.gva-pane:last-child{border-right:0;}
+.gva-pane.open{flex-grow:1;flex-basis:62%;background:rgba(9,40,27,.34);}
+
+/* the spine — always visible, rotated so it reads bottom-to-top when collapsed */
+.gva-spine{flex:0 0 78px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  gap:14px;padding:16px 0;font:inherit;cursor:pointer;border:0;background:transparent;color:#FFF;
+  transition:background .18s;}
+.gva-spine:hover{background:rgba(255,255,255,.07);}
+.gva-spine:focus-visible{outline:2px solid var(--lime);outline-offset:-3px;}
+.gva-spine .sp-num{font-size:11px;font-weight:700;letter-spacing:.08em;
+  color:color-mix(in srgb, var(--gh,#6FA817) 70%, #FFF);}
+.gva-spine .sp-name{writing-mode:vertical-rl;transform:rotate(180deg);
+  font-size:clamp(14px,1.5vw,16.5px);font-weight:700;letter-spacing:.01em;white-space:nowrap;
+  flex:1 1 auto;display:flex;align-items:center;}
+.gva-spine .sp-cnt{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+  font-size:11px;font-weight:700;background:color-mix(in srgb, var(--gh,#6FA817) 40%, transparent);
+  border:1px solid color-mix(in srgb, var(--gh,#6FA817) 60%, transparent);}
+.gva-spine .sp-go{font-size:15px;color:rgba(255,255,255,.75);transition:transform .35s ease;}
+.gva-pane.open .gva-spine .sp-go{transform:rotate(90deg);}
+
+/* The body of a CLOSED pane must not contribute height. Left merely
+   transparent, its content still laid out — and because the panes stretch to
+   the tallest sibling, the whole row grew to fit the biggest hidden body
+   (measured 781px for three visible cards). Collapsing max-height to 0 keeps
+   the row sized by whichever pane is actually open. */
+.gva-pane-body{flex:1 1 auto;min-width:0;opacity:0;pointer-events:none;
+  padding:0;max-height:0;overflow:hidden;transition:opacity .3s ease .05s;}
+.gva-pane.open .gva-pane-body{opacity:1;pointer-events:auto;
+  padding:18px clamp(16px,2vw,22px) 20px 4px;overflow-y:auto;max-height:min(72vh,720px);}
+/* enough room for the rotated spine labels even when the open pane is short */
+.gva-acc{min-height:392px;}
+.gva-gblurb{font-size:13.4px;color:rgba(255,255,255,.82);margin:0 0 14px;max-width:74ch;line-height:1.5;}
+.gva-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.4vw,14px);align-items:start;}
+.gva-pane .gva-card{border-top:2px solid color-mix(in srgb, var(--gh,#6FA817) 55%, transparent);
+  background:rgba(9,40,27,.62);}
+@media(max-width:1100px){.gva-cards{grid-template-columns:1fr;}}
+/* stack the accordion on narrow screens — a 78px spine plus content cannot
+   share a phone's width, so panes become full-width rows instead */
+@media(max-width:820px){
+  .gva-acc{flex-direction:column;}
+  .gva-pane{flex-basis:auto;border-right:0;border-bottom:1px solid rgba(255,255,255,.14);}
+  .gva-pane.open{flex-basis:auto;}
+  .gva-spine{flex:0 0 auto;flex-direction:row;justify-content:flex-start;gap:12px;
+    width:100%;padding:14px 16px;}
+  .gva-spine .sp-name{writing-mode:horizontal-tb;transform:none;flex:1 1 auto;}
+  .gva-pane-body{display:none;}
+  .gva-pane.open .gva-pane-body{display:block;padding:0 16px 18px;max-height:none;}
+  .gva-pane{display:block;}
+}
 .gva-card{border-radius:var(--r);background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
   backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
   overflow:hidden;}
@@ -2674,22 +2732,33 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
          }).join('')+'</ol></div>';
     h += '</div>';
 
-    p.groups.forEach(function(g){
-      // the group's hue is the same one its slice carries on every district
-      // dashboard, so the playbook and the charts read as one system
+    // the three state sectors as a horizontal accordion; each group's hue is the
+    // one its slice carries on every district dashboard, so the playbook and the
+    // charts read as one system
+    h += '<div class="gva-accwrap"><div class="gva-acchead">'+
+         'The three sectors of the district economy — Andhra Pradesh classification</div>'+
+         '<div class="gva-acc">';
+    p.groups.forEach(function(g, gi){
       var hue = g.hue || '#6FA817';
-      h += '<div class="gva-group" style="--gh:'+esc2(hue)+'"><div class="gva-ghead">'+
-           '<span class="gva-dot"></span><h3>'+esc2(g.name)+'</h3>'+
-           '<span class="cnt">'+g.sectors.length+' sectors</span></div>'+
-           '<p class="gva-gblurb">'+esc2(g.blurb)+'</p><div class="gva-cards">';
+      var open = gi === 0 ? ' open' : '';
+      h += '<div class="gva-pane'+open+'" style="--gh:'+esc2(hue)+'" data-g="'+esc2(g.key)+'">'+
+             '<button class="gva-spine" type="button" aria-expanded="'+(gi===0?'true':'false')+'">'+
+               '<span class="sp-num">0'+(gi+1)+'</span>'+
+               '<span class="sp-name">'+esc2(g.name)+'</span>'+
+               '<span class="sp-cnt">'+g.sectors.length+'</span>'+
+               '<i class="ti ti-chevron-right sp-go"></i>'+
+             '</button>'+
+             '<div class="gva-pane-body"><p class="gva-gblurb">'+esc2(g.blurb)+'</p>'+
+               '<div class="gva-cards">';
       g.sectors.forEach(function(s){
         h += '<div class="gva-card" data-sec="'+esc2(s.key)+'">'+
                '<button class="gva-row" type="button" aria-expanded="false">'+
                  '<i class="ti ti-chevron-right caret"></i><span class="nm">'+esc2(s.title)+'</span>'+
                '</button><div class="gva-body"></div></div>';
       });
-      h += '</div></div>';
+      h += '</div></div></div>';
     });
+    h += '</div></div>';
 
     // toolbox: AI tools + NITI prompts
     if(p.ai_tools && p.ai_tools.length){
@@ -2709,6 +2778,18 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
   // expand/collapse, building each sector body once
   if(gvaBody) gvaBody.addEventListener('click', function(e){
+    // accordion: one sector group open at a time
+    var spine = e.target.closest('.gva-spine');
+    if(spine){
+      var pane = spine.parentElement;
+      if(pane.classList.contains('open')) return;   // clicking the open pane keeps it open
+      gvaBody.querySelectorAll('.gva-pane').forEach(function(p){
+        var on = p === pane;
+        p.classList.toggle('open', on);
+        p.querySelector('.gva-spine').setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+      return;
+    }
     var row = e.target.closest('.gva-row');
     if(!row) return;
     var card = row.parentElement;
@@ -2725,7 +2806,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadGva(){
     if(gvaLoaded || gvaLoading) return;
     gvaLoading = true;
-    fetch('assets/gva_playbook.json?v=2026-08-12c')
+    fetch('assets/gva_playbook.json?v=2026-08-12d')
       .then(function(r){ return r.json(); })
       .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); })
       .catch(function(err){
