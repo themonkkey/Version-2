@@ -677,14 +677,20 @@ a.docs-leaf:hover .ext{opacity:1;}
   background-image:var(--img,none);background-size:cover;background-position:center;
   transition:flex-grow .55s cubic-bezier(.4,0,.2,1), flex-basis .55s cubic-bezier(.4,0,.2,1);}
 .gva-pane:last-child{border-right:0;}
+/* An optional loop per sector, dropped in at assets/sectors/<key>.mp4. It is
+   removed from the DOM if the file 404s, so the gradient below is the default
+   and nothing has to change in code when artwork arrives. */
+.gva-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:0;opacity:0;transition:opacity .9s ease;pointer-events:none;}
+.gva-vid.ready{opacity:1;}
 /* the tint rides ABOVE any photo, so text keeps its contrast either way */
-.gva-pane::before{content:"";position:absolute;inset:0;pointer-events:none;
+.gva-pane::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
   background:linear-gradient(180deg,
     color-mix(in srgb, var(--gh,#6FA817) 30%, rgba(9,40,27,.62)),
     color-mix(in srgb, var(--gh,#6FA817) 12%, rgba(9,40,27,.80)));
   transition:opacity .45s ease, background .45s ease;}
 .gva-pane.open::before{background:rgba(9,40,27,.86);}
-.gva-pane > *{position:relative;z-index:1;}
+.gva-pane > .gva-spine,.gva-pane > .gva-pane-body{position:relative;z-index:2;}
 .gva-pane:hover::before{background:linear-gradient(180deg,
     color-mix(in srgb, var(--gh,#6FA817) 40%, rgba(9,40,27,.58)),
     color-mix(in srgb, var(--gh,#6FA817) 18%, rgba(9,40,27,.76)));}
@@ -2784,6 +2790,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       var hue = g.hue || '#6FA817';
       // no pane opens by default — the three sit as equal thirds until one is picked
       h += '<div class="gva-pane" style="--gh:'+esc2(hue)+'" data-g="'+esc2(g.key)+'">'+
+             '<video class="gva-vid" muted loop playsinline preload="none" '+
+               'src="assets/sectors/'+esc2(g.key)+'.mp4"></video>'+
              '<button class="gva-spine" type="button" aria-expanded="false">'+
                // the resting face: a full-width panel, as on the ICED dashboard
                '<span class="sp-rest">'+
@@ -2831,6 +2839,18 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
            '<h3>NITI for States — questions worth asking</h3>'+gvaList(p.niti)+'</div>';
     }
     gvaBody.innerHTML = h;
+
+    // Each pane asks for its loop; a missing file just drops the element and the
+    // gradient stays. Play only once it can actually run, so a half-loaded clip
+    // never flashes a black frame over the tint.
+    gvaBody.querySelectorAll('.gva-vid').forEach(function(v){
+      v.addEventListener('error', function(){ v.remove(); });
+      v.addEventListener('canplay', function(){
+        v.classList.add('ready');
+        var go = v.play(); if(go && go.catch) go.catch(function(){});
+      });
+      v.load();
+    });
   }
 
   // expand/collapse, building each sector body once
