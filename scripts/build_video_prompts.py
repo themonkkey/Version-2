@@ -56,7 +56,7 @@ STEP 2 — animate that still (Runway / Kling / Luma, image-to-video):
 
 ################################################################################
 #  FULL SPEC below — the contract behind the short prompt. Use it to judge a
-#  result, to brief a human pixel artist, or to hand to a long-context model.
+#  result, to brief a human cinematographer, or to hand to a long-context model.
 ################################################################################
 """
 
@@ -112,14 +112,14 @@ live on the right edge or in that corner.
 {comp}
 
 --- LIGHT ---
-One single {temp} light source, {direction}, with a long dithered falloff into
+One single {temp} light source, {direction}, with a long soft falloff into
 deep shadow. Everything else unlit. Low-key throughout. Gentle vignette on all
 four edges. Mid-dark overall — the interface darkens this footage a further 35%
 at the top and 68% at the bottom, so do NOT deliver it already black; deliver it
 readable and let the interface crush it.
 
 --- MOTION (the hard constraint) ---
-Seamless, perfectly tileable loop. 10 seconds, 12 fps, 120 frames. The last frame
+Seamless, perfectly tileable loop. 10 seconds at 24 fps. The last frame
 must flow into the first with no jump, no fade, no cut.
 AMBIENT MOTION ONLY: {motion}. Amplitude tiny — a barely-perceptible amount of travel across the
 whole loop. Slow, large-scale, low-frequency. Everything else in the frame is
@@ -135,7 +135,7 @@ calming and almost subliminal. If a viewer notices the motion, it is too much.
 No text, letters, numbers, glyphs, signage, logos, watermarks, UI or HUD.
 No recognisable human faces, no identifiable individuals, no crowds.
 No brand marks, no flags, no religious or political symbols.
-No photorealism, no 3D render look, no cinematic lens flare, no bokeh.
+No 3D-render or CGI look, no lens flare, no glossy stock-footage sheen.
 No bright washed-out regions, no high-contrast centre, no fast motion.
 
 --- DELIVERY ---
@@ -146,7 +146,7 @@ STILL VERSION: for a .jpg instead, use everything above except the MOTION block,
 and render a single frame. Same file name with .jpg — the deck falls back to it.
 
 METHOD: most video models ignore long negatives. Generate the STILL first
-(Retro Diffusion / PixelLab / Midjourney), then animate that exact frame
+(Gemini/Veo, Midjourney or Flux), then animate that exact frame
 image-to-video (Runway / Kling / Luma) feeding ONLY the MOTION block as the
 instruction. Far more reliable, and the palette and safe zone survive.
 """
@@ -230,7 +230,7 @@ COMMON = [
      "closing in from beyond. Friction and resistance rendered as texture, with no "
      "clear way through yet.",
      "cool", "diffuse, from behind the gap, silhouetting the rock",
-     "fog rolling slowly through the gap, its dithered edges shifting",
+     "fog rolling slowly through the gap, its soft edges shifting",
      "the rock walls, the tangled forms and the ground do not move at all"),
 
     ("takeaways", "Shared role — TAKEAWAYS (lessons / roadmap / the way forward)",
@@ -372,7 +372,7 @@ PAL_WORDS = {
 }
 
 
-def condense(text, limit=190):
+def condense(text, limit=260):
     """First clause of a long description — the bit a short prompt can carry."""
     t = " ".join(text.split())
     for sep in (" — ", ". "):
@@ -384,9 +384,9 @@ def condense(text, limit=190):
 
 def write(n, stem, label, dest, usage, palette, scene, comp, temp, direction, motion, still):
     short_still = SHORT_STILL.format(
-        scene_short=condense(scene), palname=PAL_WORDS[palette],
+        scene_short=condense(scene, 260), palname=PAL_WORDS[palette],
         temp=temp, direction=condense(direction, 60))
-    short_motion = SHORT_MOTION.format(motion_short=condense(motion, 110))
+    short_motion = SHORT_MOTION.format(motion_short=" ".join(motion.split()))
     body = TMPL.format(
         label=label, dest=dest, usage=usage,
         short_still=short_still, short_motion=short_motion) + FULL.format(
