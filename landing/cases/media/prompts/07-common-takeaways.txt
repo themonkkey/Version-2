@@ -10,11 +10,11 @@ Used by every slide about lessons, takeaways, roadmaps, recommendations or the w
 
 STEP 1 — make the still (Gemini · Veo, Midjourney, Flux):
 
-An empty road running out of deep shadow toward a low sunrise. Cinematic 35mm film still, anamorphic, shallow depth of field, desaturated cool slate-grey grade, close to monochrome, low-key natural lighting, single warm source from the vanishing point at the end of the road, deep shadows, atmospheric haze, fine film grain, dim low-contrast empty centre with all detail at the edges, nothing important in the bottom-right corner, no text, no logos, no faces, 16:9
+A district planning table at night. Cinematic 35mm film still, anamorphic, shallow depth of field, desaturated cool slate-grey grade, close to monochrome, low-key natural lighting, single warm source one low working lamp just outside the frame to the left, deep shadows, atmospheric haze, fine film grain, dim low-contrast empty centre with all detail at the edges, nothing important in the bottom-right corner, no text, no logos, no faces, 16:9
 
 STEP 2 — animate that still (Runway / Kling / Luma, image-to-video):
 
-Animate this image as a seamless 10-second loop. ONLY the sun's dithered glow at the vanishing point expanding and contracting by a few pixels moves. Everything else is perfectly still. Camera completely locked — no pan, no zoom, no drift, no shake. Extremely subtle, slow, calm. No cuts, no flicker.
+Animate this image as a seamless 10-second loop. ONLY the lamp light wavering almost imperceptibly as if from a slight draught, and one corner of the map lifting ve moves. Everything else is perfectly still. Camera completely locked — no pan, no zoom, no drift, no shake. Extremely subtle, slow, calm. No cuts, no flicker.
 
 ################################################################################
 #  FULL SPEC below — the contract behind the short prompt. Use it to judge a
@@ -26,7 +26,7 @@ website. It sits BEHIND a frosted-glass panel of white text, so it must read as 
 quiet, dignified backdrop — never as the subject.
 
 --- SCENE ---
-An empty road running out of deep shadow toward a low sunrise — clean receding perspective, the verges dark and simple, the frame opening up ahead into a pale dithered sky. Calm and resolved.
+A district planning table at night — a large survey map and a site plan spread across dark wood under one low working lamp, with a scale rule, a pair of dividers and a closed notebook resting on top, shot at a low oblique angle so the linework reads as texture and no lettering or place name is legible. The quiet, unglamorous moment where a lesson becomes somebody's plan.
 
 --- ART DIRECTION (locked) ---
 Cinematic 35mm film photography — anamorphic lens, shallow depth of field, fine
@@ -60,7 +60,7 @@ live on the right edge or in that corner.
 This background is reused across many case studies, so keep the scene generic and symbolic rather than tied to one place or industry.
 
 --- LIGHT ---
-One single warm light source, from the vanishing point at the end of the road, with a long dithered falloff into
+One single warm light source, one low working lamp just outside the frame to the left, with a long dithered falloff into
 deep shadow. Everything else unlit. Low-key throughout. Gentle vignette on all
 four edges. Mid-dark overall — the interface darkens this footage a further 35%
 at the top and 68% at the bottom, so do NOT deliver it already black; deliver it
@@ -69,9 +69,9 @@ readable and let the interface crush it.
 --- MOTION (the hard constraint) ---
 Seamless, perfectly tileable loop. 10 seconds, 12 fps, 120 frames. The last frame
 must flow into the first with no jump, no fade, no cut.
-AMBIENT MOTION ONLY: the sun's dithered glow at the vanishing point expanding and contracting by a few pixels. Amplitude tiny — a barely-perceptible amount of travel across the
+AMBIENT MOTION ONLY: the lamp light wavering almost imperceptibly as if from a slight draught, and one corner of the map lifting very slightly and settling back. Amplitude tiny — a barely-perceptible amount of travel across the
 whole loop. Slow, large-scale, low-frequency. Everything else in the frame is
-PERFECTLY STILL: the road, the verges, the horizon line and all shadows do not move at all.
+PERFECTLY STILL: the table, the instruments, the notebook and the shadows do not move at all.
 NO camera movement of any kind: no pan, no zoom, no dolly, no parallax drift, no
 handheld shake, no rotation. The camera is locked on a tripod and never moves.
 NO cuts, no scene changes, no transitions, no flashing, no strobing, no rapid

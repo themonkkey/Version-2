@@ -212,13 +212,14 @@ COMMON = [
      "common/policy.mp4",
      "Used by every slide about government support, schemes, incentives, policy or institutions.",
      "neutral",
-     "Civic architecture in shadow — a heavy stone colonnade beside a grand flight of "
-     "steps, strong parallel lines receding, and one soft pool of light resting on the "
-     "stair. Weighty and institutional, with no signage of any kind.",
-     "cool", "from high above, falling between the columns",
-     "the pool of light on the steps shifting slightly, as if cloud passes "
-     "overhead",
-     "the columns, the steps, the stonework and the architecture do not move at all"),
+     "The physical apparatus of state support for industry at dusk — a line of "
+     "high-tension transmission pylons marching into the distance, a raised pipeline "
+     "corridor running beside an empty industrial road, and the faint silhouette of "
+     "port gantries on the far horizon. Public infrastructure as it actually looks: "
+     "unglamorous, deliberate, built to carry an economy.",
+     "cool", "the last flat light of dusk from behind the pylon line",
+     "faint ground-level haze drifting slowly along the corridor",
+     "the pylons, the pipeline, the road and the horizon do not move at all"),
 
     ("challenges", "Shared role — CHALLENGES (risks / barriers / bottlenecks)",
      "common/challenges.mp4",
@@ -236,13 +237,15 @@ COMMON = [
      "common/takeaways.mp4",
      "Used by every slide about lessons, takeaways, roadmaps, recommendations or the way forward.",
      "neutral",
-     "An empty road running out of deep shadow toward a low sunrise — clean receding "
-     "perspective, the verges dark and simple, the frame opening up ahead into a pale "
-     "dithered sky. Calm and resolved.",
-     "warm", "from the vanishing point at the end of the road",
-     "the sun's dithered glow at the vanishing point expanding and contracting by a "
-     "few pixels",
-     "the road, the verges, the horizon line and all shadows do not move at all"),
+     "A district planning table at night — a large survey map and a site plan spread "
+     "across dark wood under one low working lamp, with a scale rule, a pair of "
+     "dividers and a closed notebook resting on top, shot at a low oblique angle so "
+     "the linework reads as texture and no lettering or place name is legible. The "
+     "quiet, unglamorous moment where a lesson becomes somebody's plan.",
+     "warm", "one low working lamp just outside the frame to the left",
+     "the lamp light wavering almost imperceptibly as if from a slight draught, and "
+     "one corner of the map lifting very slightly and settling back",
+     "the table, the instruments, the notebook and the shadows do not move at all"),
 ]
 
 # (slug, palette, place-label, scene, temp, direction, motion, still)
