@@ -20,13 +20,48 @@ SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.expanduser(
     "~/Downloads/AP_GDDP_Training_Dashboard (1).html")
 OUT = os.path.join(ROOT, "landing", "assets", "gva_playbook.json")
 
-GROUP_BLURB = {
-    "Primary": "Land, water and what grows on it — the sectors where acreage, yield "
-               "and price realisation are the levers a district can actually move.",
-    "Secondary": "Making and building — where formalisation, power reliability and "
-                 "capital works convert into measurable value added.",
-    "Tertiary": "Services — trade, movement, finance and human capital, the fastest "
-                "growing share of most district economies.",
+# Andhra Pradesh reports domestic product on the STATE classification
+# (Agriculture / Industry / Services), not the GoI one (Primary / Secondary /
+# Tertiary). The two differ in exactly one place: Mining & Quarrying sits in the
+# Primary sector for GoI but in the Industry sector for the State. The site's
+# district dashboards already use the state grouping (see sectorHue() in
+# components.js), so the playbook follows it too — same three names, same
+# colourblind-validated hue per group.
+STATE_GROUP = {
+    "crops": "Agriculture",
+    "livestock_fisheries": "Agriculture",
+    "forestry": "Agriculture",
+    "mining": "Industry",           # <- Primary under GoI, Industry under State
+    "manufacturing": "Industry",
+    "electricity_utilities": "Industry",
+    "construction": "Industry",
+    "trade_hotels": "Services",
+    "transport_comm": "Services",
+    "financial": "Services",
+    "real_estate": "Services",
+    "public_admin": "Services",
+    "other_services": "Services",
+}
+
+GROUP_ORDER = ["Agriculture", "Industry", "Services"]
+
+GROUP_META = {
+    "Agriculture": (
+        "#6FA817",
+        "Land, water and what grows on it — where acreage, yield and price "
+        "realisation are the levers a district can actually move.",
+    ),
+    "Industry": (
+        "#2B93BF",
+        "Extracting, making and building — where formalisation, power reliability "
+        "and capital works convert into measurable value added. Includes mining, "
+        "which the state classification counts here rather than with agriculture.",
+    ),
+    "Services": (
+        "#BF8A2B",
+        "Trade, movement, finance and human capital — the fastest growing share of "
+        "most district economies.",
+    ),
 }
 
 
@@ -57,11 +92,15 @@ def main():
         if s.get("type") == "sub" and s.get("fw"):
             covers.setdefault(s["fw"], []).append(s["name"])
 
+    unmapped = [k for k in fw if k not in STATE_GROUP]
+    if unmapped:
+        raise SystemExit("framework(s) missing a state-sector mapping: " + ", ".join(unmapped))
+
     groups = []
-    for gkey in ("Primary", "Secondary", "Tertiary"):
+    for gkey in GROUP_ORDER:
         items = []
         for k, f in fw.items():
-            if f.get("group") != gkey:
+            if STATE_GROUP[k] != gkey:
                 continue
             items.append({
                 "key": k,
@@ -73,8 +112,9 @@ def main():
                 "policies": f.get("policies", []),
                 "indicators": f.get("indicators", []),
             })
+        hue, blurb = GROUP_META[gkey]
         groups.append({"key": gkey.lower(), "name": gkey + " sector",
-                       "blurb": GROUP_BLURB[gkey], "sectors": items})
+                       "hue": hue, "blurb": blurb, "sectors": items})
 
     out = {
         "groups": groups,

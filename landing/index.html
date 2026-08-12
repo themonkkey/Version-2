@@ -656,7 +656,11 @@ a.docs-leaf:hover .ext{opacity:1;}
 
 /* Sector group — Primary / Secondary / Tertiary */
 .gva-group{margin-bottom:clamp(20px,2.6vw,30px);}
-.gva-ghead{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;}
+.gva-ghead{display:flex;align-items:baseline;gap:11px;margin-bottom:4px;}
+/* carries the same hue this group's slice uses on the district dashboards */
+.gva-dot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:var(--gh,#6FA817);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--gh,#6FA817) 26%, transparent);align-self:center;}
+.gva-group .gva-card{border-top:2px solid color-mix(in srgb, var(--gh,#6FA817) 55%, transparent);}
 .gva-ghead h3{font-size:clamp(18px,2.2vw,23px);font-weight:700;color:#FFF;margin:0;letter-spacing:-.015em;}
 .gva-ghead .cnt{font-size:11.5px;color:rgba(255,255,255,.82);background:rgba(255,255,255,.14);
   padding:2px 9px;border-radius:999px;}
@@ -2671,7 +2675,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     h += '</div>';
 
     p.groups.forEach(function(g){
-      h += '<div class="gva-group"><div class="gva-ghead"><h3>'+esc2(g.name)+'</h3>'+
+      // the group's hue is the same one its slice carries on every district
+      // dashboard, so the playbook and the charts read as one system
+      var hue = g.hue || '#6FA817';
+      h += '<div class="gva-group" style="--gh:'+esc2(hue)+'"><div class="gva-ghead">'+
+           '<span class="gva-dot"></span><h3>'+esc2(g.name)+'</h3>'+
            '<span class="cnt">'+g.sectors.length+' sectors</span></div>'+
            '<p class="gva-gblurb">'+esc2(g.blurb)+'</p><div class="gva-cards">';
       g.sectors.forEach(function(s){
@@ -2717,7 +2725,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadGva(){
     if(gvaLoaded || gvaLoading) return;
     gvaLoading = true;
-    fetch('assets/gva_playbook.json?v=2026-08-12b')
+    fetch('assets/gva_playbook.json?v=2026-08-12c')
       .then(function(r){ return r.json(); })
       .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); })
       .catch(function(err){
