@@ -443,6 +443,14 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    measured 64px above the map against 230px below. Centring splits that slack,
    which is the empty-band problem the design brief flagged. */
 .map-layout.split .map-box{flex:0 0 32%;justify-content:center;}
+/* Detail only: pin the hint to the bottom of the box. Simply adding margin left
+   it in flow, which grew the centred group and pushed the map back up (measured
+   23/78) — the opposite of the centring above. Taking it out of flow lets the map
+   centre against the full height while the hint sits low. Scoped to .split: in
+   the browse view the box is height-constrained and the map fills it, so the hint
+   stays in flow there and cannot overlap the drawing. */
+.map-layout.split .map-hint{position:absolute;left:0;right:0;
+  bottom:clamp(10px,1.2vw,14px);margin-top:0;}
 .map-layout.split #districtPanel{opacity:1;overflow:visible;
   padding-left:clamp(20px,2.8vw,28px);padding-right:clamp(20px,2.8vw,28px);
   margin-left:clamp(18px,2.6vw,30px);}
