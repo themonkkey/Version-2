@@ -700,22 +700,39 @@ a.docs-leaf:hover .ext{opacity:1;}
 .gva-acc:not(.has-open) .gva-spine{flex:1 1 auto;}
 .gva-acc:not(.has-open) .gva-pane-body{display:none;}
 
-/* the spine — always visible, rotated so it reads bottom-to-top when collapsed */
-.gva-spine{flex:0 0 78px;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
-  gap:14px;padding:16px 0;font:inherit;cursor:pointer;border:0;background:transparent;color:#FFF;
-  transition:background .18s;}
-.gva-spine:hover{background:rgba(255,255,255,.07);}
+/* The spine has two faces. AT REST it is the whole panel: a horizontal title,
+   the sectors it holds, and a call to action pinned bottom-right. Once any panel
+   opens, every spine narrows to 78px and swaps to the rotated label. */
+.gva-spine{flex:0 0 78px;display:flex;font:inherit;cursor:pointer;border:0;
+  background:transparent;color:#FFF;padding:0;text-align:left;transition:background .18s;}
 .gva-spine:focus-visible{outline:2px solid var(--lime);outline-offset:-3px;}
-.gva-spine .sp-num{font-size:11px;font-weight:700;letter-spacing:.08em;
-  color:color-mix(in srgb, var(--gh,#6FA817) 70%, #FFF);}
-.gva-spine .sp-name{writing-mode:vertical-rl;transform:rotate(180deg);
+.sp-num{font-size:11px;font-weight:700;letter-spacing:.08em;
+  color:color-mix(in srgb, var(--gh,#6FA817) 62%, #FFF);}
+
+/* face 1 — resting panel */
+.sp-rest{display:none;flex-direction:column;align-items:flex-start;gap:9px;
+  width:100%;padding:clamp(18px,2.2vw,26px);}
+.gva-acc:not(.has-open) .sp-rest{display:flex;}
+.sp-title{font-size:clamp(19px,2.3vw,27px);font-weight:700;letter-spacing:-.02em;line-height:1.12;
+  text-shadow:0 2px 14px rgba(0,0,0,.45);}
+.sp-sub{font-size:13px;line-height:1.5;color:rgba(255,255,255,.88);max-width:30ch;
+  text-shadow:0 1px 10px rgba(0,0,0,.4);}
+.sp-cta{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;
+  font-size:12.4px;font-weight:650;color:#0C2A1B;background:rgba(255,255,255,.92);
+  padding:7px 14px;border-radius:999px;transition:transform .18s, background .18s;}
+.gva-spine:hover .sp-cta{transform:translateX(3px);background:#FFF;}
+
+/* face 2 — rotated strip, reads bottom-to-top */
+.sp-vert{display:none;flex-direction:column;align-items:center;justify-content:space-between;
+  gap:14px;width:100%;padding:16px 0;}
+.gva-acc.has-open .sp-vert{display:flex;}
+.gva-acc.has-open .gva-spine:hover{background:rgba(255,255,255,.07);}
+.sp-name{writing-mode:vertical-rl;transform:rotate(180deg);
   font-size:clamp(14px,1.5vw,16.5px);font-weight:700;letter-spacing:.01em;white-space:nowrap;
   flex:1 1 auto;display:flex;align-items:center;}
-.gva-spine .sp-cnt{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
+.sp-cnt{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;
   font-size:11px;font-weight:700;background:color-mix(in srgb, var(--gh,#6FA817) 40%, transparent);
   border:1px solid color-mix(in srgb, var(--gh,#6FA817) 60%, transparent);}
-.gva-spine .sp-go{font-size:15px;color:rgba(255,255,255,.75);transition:transform .35s ease;}
-.gva-pane.open .gva-spine .sp-go{transform:rotate(90deg);}
 
 /* The body of a CLOSED pane must not contribute height. Left merely
    transparent, its content still laid out — and because the panes stretch to
@@ -726,8 +743,9 @@ a.docs-leaf:hover .ext{opacity:1;}
   padding:0;max-height:0;overflow:hidden;transition:opacity .3s ease .05s;}
 .gva-pane.open .gva-pane-body{opacity:1;pointer-events:auto;
   padding:18px clamp(16px,2vw,22px) 20px 4px;overflow-y:auto;max-height:min(72vh,720px);}
-/* enough room for the rotated spine labels even when the open pane is short */
-.gva-acc{min-height:392px;}
+/* tall enough for the resting panels to read as cards, and for the rotated
+   labels to have room once one is opened */
+.gva-acc{min-height:clamp(392px,44vh,470px);}
 .gva-gblurb{font-size:13.4px;color:rgba(255,255,255,.82);margin:0 0 14px;max-width:74ch;line-height:1.5;}
 .gva-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.4vw,14px);align-items:start;}
 .gva-pane .gva-card{border-top:2px solid color-mix(in srgb, var(--gh,#6FA817) 55%, transparent);
@@ -2767,10 +2785,22 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       // no pane opens by default — the three sit as equal thirds until one is picked
       h += '<div class="gva-pane" style="--gh:'+esc2(hue)+'" data-g="'+esc2(g.key)+'">'+
              '<button class="gva-spine" type="button" aria-expanded="false">'+
-               '<span class="sp-num">0'+(gi+1)+'</span>'+
-               '<span class="sp-name">'+esc2(g.name)+'</span>'+
-               '<span class="sp-cnt">'+g.sectors.length+'</span>'+
-               '<i class="ti ti-chevron-right sp-go"></i>'+
+               // the resting face: a full-width panel, as on the ICED dashboard
+               '<span class="sp-rest">'+
+                 '<span class="sp-num">0'+(gi+1)+'</span>'+
+                 '<span class="sp-title">'+esc2(g.name)+'</span>'+
+                 '<span class="sp-sub">'+esc2(g.sectors.map(function(s){
+                     return s.title.replace(/\s*\(.*?\)\s*/g,'');
+                   }).join(' · '))+'</span>'+
+                 '<span class="sp-cta">'+g.sectors.length+' playbooks '+
+                   '<i class="ti ti-chevron-right"></i></span>'+
+               '</span>'+
+               // and the rotated spine it folds down to once another opens
+               '<span class="sp-vert">'+
+                 '<span class="sp-num">0'+(gi+1)+'</span>'+
+                 '<span class="sp-name">'+esc2(g.name)+'</span>'+
+                 '<span class="sp-cnt">'+g.sectors.length+'</span>'+
+               '</span>'+
              '</button>'+
              '<div class="gva-pane-body"><p class="gva-gblurb">'+esc2(g.blurb)+'</p>'+
                '<div class="gva-cards">';
@@ -2836,7 +2866,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadGva(){
     if(gvaLoaded || gvaLoading) return;
     gvaLoading = true;
-    fetch('assets/gva_playbook.json?v=2026-08-12f')
+    fetch('assets/gva_playbook.json?v=2026-08-12g')
       .then(function(r){ return r.json(); })
       .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); })
       .catch(function(err){
