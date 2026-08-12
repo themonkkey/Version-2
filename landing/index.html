@@ -462,16 +462,21 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    front so the map below does not shift either. */
 .sec-head-row{display:flex;align-items:flex-start;justify-content:space-between;
   gap:20px;flex-wrap:wrap;}
-.sec-head-row>:first-child{flex:1 1 22rem;min-width:0;min-height:5.4rem;}
+.sec-head-row>:first-child{flex:1 1 22rem;min-width:0;min-height:4.8rem;}
 .rank-slot{flex:0 0 auto;}
 .rank-slot:empty,.rank-slot[hidden]{display:none;}
 /* one line, not two: the 720px cap on .sec-head wrapped this intro and cost the
    map ~30px of height it can use instead. */
-#page-districts .sec-head{max-width:none;}
+#page-districts .sec-head{max-width:none;margin-bottom:clamp(15px,2vw,23px);}
+/* fitMap() sizes the map as viewport - boxTop - chrome, so every pixel trimmed
+   above the box becomes map. The districts heading is the biggest single
+   contributor, so it gets a tighter scale than the shared .sec-head default. */
+#page-districts .sec-head h2{font-size:clamp(22px,2.9vw,31px);margin-top:6px;}
+#page-districts .sec-head p{font-size:clamp(13.5px,1.45vw,15.5px);margin-top:5px;}
 .dtabs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,16px);
-  margin-bottom:clamp(18px,2.4vw,28px);}
+  margin-bottom:clamp(12px,1.6vw,18px);}
 .dtab{position:relative;text-align:left;font:inherit;cursor:not-allowed;
-  padding:clamp(13px,1.7vw,18px) clamp(14px,1.8vw,20px);border-radius:var(--r);
+  padding:clamp(11px,1.4vw,14px) clamp(14px,1.8vw,20px);border-radius:var(--r);
   background:var(--glass);border:1px solid var(--glass-border);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   box-shadow:var(--neu-out);
@@ -624,7 +629,7 @@ a.docs-leaf:hover .ext{opacity:1;}
   #docsView .docs-tools{width:100%;}
   .docs-search{width:100%;}
 }
-.map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(14px,2vw,22px);
+.map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(12px,1.6vw,17px);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--glass-border);
   box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);
@@ -1685,7 +1690,7 @@ function fitMap(){
 
   // everything in the box that is not the map: padding, back button, hint
   const chrome = box.getBoundingClientRect().height - svg.getBoundingClientRect().height;
-  const avail = window.innerHeight - top - chrome - 24;   // 24 = breathing room
+  const avail = window.innerHeight - top - chrome - 16;   // 16 = breathing room
   svg.style.setProperty('--map-h', Math.max(260, Math.round(avail)) + 'px');
 
   /* In DETAIL the map is WIDTH-bound, not height-bound: at a 32% column and a
