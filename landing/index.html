@@ -482,12 +482,34 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .vstage .dtab{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22);
   color:#FFF;box-shadow:0 10px 30px rgba(0,0,0,.18);}
 .vstage .dtab .dtab-soon{color:rgba(255,255,255,.55);}
+/* Each tab carries a motif anchored to its right edge.
+   The source art is a lit subject on black. Compositing that with
+   background-blend-mode against the card's TRANSLUCENT fill turned every card
+   into a solid black rectangle — an opaque JPEG blended with a 10%-white layer
+   is still opaque, so it covered the frosted green behind it. Instead the
+   transparency is baked into the asset: each PNG carries its own luminance as
+   its alpha channel and is tinted to the theme's pale green, so the dark parts
+   are genuinely see-through and the card keeps its glass. No blend mode needed.
+   The left two-thirds of every image is dark by design — that is where the title
+   and kicker sit, so they resolve to fully transparent and text never lands on
+   picture detail. */
+.vstage .dtab{background-repeat:no-repeat;background-position:right center;
+  background-size:auto 118%;}
+.vstage .dtab[data-dtab="docs"]{background-image:url(assets/tabs/tab-documents.png?v=2026-08-12a);}
+.vstage .dtab[data-dtab="map"]{background-image:url(assets/tabs/tab-map.png?v=2026-08-12a);}
+.vstage .dtab[data-dtab="cases"]{background-image:url(assets/tabs/tab-cases.png?v=2026-08-12a);}
+.vstage .dtab.dtab-capacity{background-image:url(assets/tabs/tab-capacity.png?v=2026-08-12a);
+  /* the coming-soon tab must not read as active, so its motif stays quieter */
+  opacity:.72;}
 /* Live tabs (Documents / map) are clickable and show a pressed state; the two
    coming-soon tabs keep the not-allowed cursor from the base rule. */
 .dtab-live{cursor:pointer;opacity:1;}
 .dtab-live:hover{opacity:1;transform:translateY(-1px);}
 .dtab-live:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
-.vstage .dtab-live[aria-pressed="true"]{background:rgba(198,236,143,.16);
+/* background-COLOR, not the `background` shorthand: the shorthand resets
+   background-image, which silently blanked the motif on whichever tab was
+   currently selected. */
+.vstage .dtab-live[aria-pressed="true"]{background-color:rgba(198,236,143,.16);
   border-color:rgba(198,236,143,.45);box-shadow:0 10px 30px rgba(0,0,0,.20),inset 0 0 0 1px rgba(198,236,143,.25);}
 .vstage .dtab-live[aria-pressed="true"] .dtab-soon{color:rgba(198,236,143,.85);}
 
@@ -1267,7 +1289,7 @@ a.docs-leaf:hover .ext{opacity:1;}
     <div class="dtabs">
       <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plan library</span></button>
       <button class="dtab dtab-live" data-dtab="map" aria-pressed="true">The district map<span class="dtab-soon">Income &amp; sectors</span></button>
-      <button class="dtab" disabled aria-disabled="true">Swarna Andhra 2047 capacity building<span class="dtab-soon">Coming soon</span></button>
+      <button class="dtab dtab-capacity" disabled aria-disabled="true">Swarna Andhra 2047 capacity building<span class="dtab-soon">Coming soon</span></button>
       <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">Capacity-building library</span></button>
     </div>
     <div id="mapView">
