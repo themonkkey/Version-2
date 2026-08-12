@@ -2,7 +2,24 @@ PROMPT — Cover: Kumarakom — responsible tourism
 FILE  -> landing/cases/media/kumarakom-tourism/0.mp4
 The opening title slide of the Kumarakom — responsible tourism case study.
 
-================================================================================
+################################################################################
+#  PASTE THIS.  Everything below the second line is reference, not input.
+#  Real tools ignore long prompts — Midjourney degrades past ~40 words, and
+#  image-to-video models want one short instruction. So:
+################################################################################
+
+STEP 1 — make the still (Midjourney / Retro Diffusion / PixelLab):
+
+Kerala backwaters before dawn. 16-bit pixel art, heavy Bayer dithering, hard pixel edges, no anti-aliasing, strict dark teal palette of 12 dark muted colours, low-key and dark, single warm light a single small lantern on the houseboat, dim empty low-contrast centre with all detail pushed to the edges, no text, no logos, no faces, 16:9
+
+STEP 2 — animate that still (Runway / Kling / Luma, image-to-video):
+
+Animate this image as a seamless 10-second loop. ONLY the lantern's reflection wavering gently on the water surface moves. Everything else is perfectly still. Camera completely locked — no pan, no zoom, no drift, no shake. Extremely subtle, slow, calm. No cuts, no flicker.
+
+################################################################################
+#  FULL SPEC below — the contract behind the short prompt. Use it to judge a
+#  result, to brief a human pixel artist, or to hand to a long-context model.
+################################################################################
 
 Seamless looping ambient background video for a government economic case-study
 website. It sits BEHIND a frosted-glass panel of white text, so it must read as a

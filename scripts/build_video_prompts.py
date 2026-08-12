@@ -40,8 +40,39 @@ TMPL = """PROMPT — {label}
 FILE  -> landing/cases/media/{dest}
 {usage}
 
-================================================================================
+################################################################################
+#  PASTE THIS.  Everything below the second line is reference, not input.
+#  Real tools ignore long prompts — Midjourney degrades past ~40 words, and
+#  image-to-video models want one short instruction. So:
+################################################################################
 
+STEP 1 — make the still (Midjourney / Retro Diffusion / PixelLab):
+
+{short_still}
+
+STEP 2 — animate that still (Runway / Kling / Luma, image-to-video):
+
+{short_motion}
+
+################################################################################
+#  FULL SPEC below — the contract behind the short prompt. Use it to judge a
+#  result, to brief a human pixel artist, or to hand to a long-context model.
+################################################################################
+"""
+
+
+SHORT_STILL = ("{scene_short}. 16-bit pixel art, heavy Bayer dithering, hard pixel edges, "
+               "no anti-aliasing, strict {palname} palette of 12 dark muted colours, "
+               "low-key and dark, single {temp} light {direction}, dim empty low-contrast "
+               "centre with all detail pushed to the edges, no text, no logos, no faces, "
+               "16:9")
+
+SHORT_MOTION = ("Animate this image as a seamless 10-second loop. ONLY {motion_short} moves. "
+                "Everything else is perfectly still. Camera completely locked — no pan, no "
+                "zoom, no drift, no shake. Extremely subtle, slow, calm. No cuts, no flicker.")
+
+
+FULL = """
 Seamless looping ambient background video for a government economic case-study
 website. It sits BEHIND a frosted-glass panel of white text, so it must read as a
 quiet, dignified backdrop — never as the subject.
@@ -325,9 +356,30 @@ COVERS = [
 ]
 
 
+PAL_WORDS = {"neutral": "dark slate-grey", "green": "dark muted green",
+             "aqua": "dark teal-blue", "amber": "dark amber-brown",
+             "teal": "dark teal"}
+
+
+def condense(text, limit=190):
+    """First clause of a long description — the bit a short prompt can carry."""
+    t = " ".join(text.split())
+    for sep in (" — ", ". "):
+        if sep in t:
+            t = t.split(sep)[0]
+            break
+    return t[:limit].rstrip(" ,.")
+
+
 def write(n, stem, label, dest, usage, palette, scene, comp, temp, direction, motion, still):
+    short_still = SHORT_STILL.format(
+        scene_short=condense(scene), palname=PAL_WORDS[palette],
+        temp=temp, direction=condense(direction, 60))
+    short_motion = SHORT_MOTION.format(motion_short=condense(motion, 110))
     body = TMPL.format(
-        label=label, dest=dest, usage=usage, palette=PALETTES[palette], scene=scene,
+        label=label, dest=dest, usage=usage,
+        short_still=short_still, short_motion=short_motion) + FULL.format(
+        palette=PALETTES[palette], scene=scene,
         comp=comp, temp=temp, direction=direction, motion=motion, still=still)
     name = f"{n:02d}-{stem}.txt"
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
