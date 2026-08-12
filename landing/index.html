@@ -493,8 +493,12 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    The left two-thirds of every image is dark by design — that is where the title
    and kicker sit, so they resolve to fully transparent and text never lands on
    picture detail. */
+/* auto 100% maps the 488px art 1:1 onto the card width, so the alpha ramp baked
+   into the PNG lands exactly where it was authored. The earlier `auto 118%`
+   upscaled the art to ~287px on a 244px card, which dragged the ramp ~10% further
+   left than intended and let the motif reach the kicker. */
 .vstage .dtab{background-repeat:no-repeat;background-position:right center;
-  background-size:auto 118%;}
+  background-size:auto 100%;}
 .vstage .dtab[data-dtab="docs"]{background-image:url(assets/tabs/tab-documents.png?v=2026-08-12a);}
 .vstage .dtab[data-dtab="map"]{background-image:url(assets/tabs/tab-map.png?v=2026-08-12a);}
 .vstage .dtab[data-dtab="cases"]{background-image:url(assets/tabs/tab-cases.png?v=2026-08-12a);}
@@ -1287,10 +1291,10 @@ a.docs-leaf:hover .ext{opacity:1;}
          destinations are not built yet — disabled buttons, not links, so they
          cannot be clicked into a dead end. -->
     <div class="dtabs">
-      <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plan library</span></button>
+      <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plans</span></button>
       <button class="dtab dtab-live" data-dtab="map" aria-pressed="true">The district map<span class="dtab-soon">Income &amp; sectors</span></button>
-      <button class="dtab dtab-capacity" disabled aria-disabled="true">Swarna Andhra 2047 capacity building<span class="dtab-soon">Coming soon</span></button>
-      <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">Capacity-building library</span></button>
+      <button class="dtab dtab-capacity" disabled aria-disabled="true">Capacity building<span class="dtab-soon">Coming soon</span></button>
+      <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">13 studies</span></button>
     </div>
     <div id="mapView">
     <div class="sec-head sec-head-row">
