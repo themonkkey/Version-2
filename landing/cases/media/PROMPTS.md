@@ -61,15 +61,20 @@ answer/strategy/opportunity → `solution`; pillars/drivers/initiatives/model �
 
 ## 3. Universal style suffix — paste at the END of every prompt below
 
-> cinematic editorial photograph, low-key moody lighting, deep shadows, dark
-> muted desaturated palette, atmospheric haze, generous negative space, calm
-> uncluttered centre, fine grain, shallow depth of field, no text, no logos, no
-> watermark, no people's faces, 16:9, ultra-detailed, shot on 35mm — dark enough
-> that white text overlays it cleanly
+Style is **pixel art**, not photography — dark and limited-palette so white text
+still reads over it. Swap `[PALETTE]` per prompt (see §4/§5).
 
-For Midjourney add: `--ar 16:9 --style raw --stylize 150`
-For video tools (Runway / Sora / Pika / Kling): add "slow subtle camera drift,
-seamless 8-second loop, no cuts" and keep the same darkness.
+> detailed 16-bit pixel art, limited cohesive [PALETTE] palette, soft dithering
+> and gentle gradients, dark low-key atmospheric mood, calm dim uncluttered
+> centre, generous negative space, no text, no logos, no readable faces, 16:9 —
+> kept dark enough that white text overlays it cleanly
+
+For Midjourney add: `pixel art --ar 16:9 --stylize 120` (or use a pixel model —
+Retro Diffusion, PixelLab.ai).
+For **animated** pixel (recommended for water/fire/fog): add "seamless looping
+pixel animation, subtle ambient motion only (drifting fog / shimmering water /
+flickering embers), retro game loop". Export as a small **.gif** or **.mp4** —
+either auto-wins over the .jpg. Keep loops short and under ~4 MB.
 
 ---
 

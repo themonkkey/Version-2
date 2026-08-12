@@ -209,7 +209,8 @@ a{color:var(--t2);}
 .media::after{content:"";position:absolute;inset:0;
   background:radial-gradient(120% 80% at 50% 120%, rgba(0,0,0,.5), transparent 60%);}
 .media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity .8s ease;}
+  opacity:0;transition:opacity .8s ease;
+  image-rendering:pixelated;image-rendering:crisp-edges;} /* keep pixel art crisp when upscaled */
 .media.has-asset img,.media.has-asset video{opacity:1;}
 .media.has-asset::before{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg, rgba(4,12,9,.35), rgba(4,12,9,.68));}
@@ -363,8 +364,8 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
     var m=sl.querySelector('.media'); if(!m) return;
     var i=m.getAttribute('data-media'), role=m.getAttribute('data-role');
     tryAsset(m, [
-      'media/'+SLUG+'/'+i+'.mp4', 'media/'+SLUG+'/'+i+'.jpg',
-      'media/common/'+role+'.mp4', 'media/common/'+role+'.jpg'
+      'media/'+SLUG+'/'+i+'.mp4', 'media/'+SLUG+'/'+i+'.gif', 'media/'+SLUG+'/'+i+'.jpg',
+      'media/common/'+role+'.mp4', 'media/common/'+role+'.gif', 'media/common/'+role+'.jpg'
     ]);
   });
 
