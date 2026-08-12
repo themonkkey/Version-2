@@ -209,8 +209,10 @@ a{color:var(--t2);}
 .media::after{content:"";position:absolute;inset:0;
   background:radial-gradient(120% 80% at 50% 120%, rgba(0,0,0,.5), transparent 60%);}
 .media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity .8s ease;
-  image-rendering:pixelated;image-rendering:crisp-edges;} /* keep pixel art crisp when upscaled */
+  opacity:0;transition:opacity .8s ease;}
+/* Pixel-art assets opt in per-file via a .pixel class; cinematic footage must NOT
+   be nearest-neighbour scaled or it aliases badly. */
+.media.pixel img,.media.pixel video{image-rendering:pixelated;}
 .media.has-asset img,.media.has-asset video{opacity:1;}
 .media.has-asset::before{content:"";position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg, rgba(4,12,9,.35), rgba(4,12,9,.68));}
