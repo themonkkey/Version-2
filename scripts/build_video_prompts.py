@@ -46,7 +46,7 @@ FILE  -> landing/cases/media/{dest}
 #  image-to-video models want one short instruction. So:
 ################################################################################
 
-STEP 1 — make the still (Midjourney / Retro Diffusion / PixelLab):
+STEP 1 — make the still (Gemini · Veo, Midjourney, Flux):
 
 {short_still}
 
@@ -61,11 +61,11 @@ STEP 2 — animate that still (Runway / Kling / Luma, image-to-video):
 """
 
 
-SHORT_STILL = ("{scene_short}. 16-bit pixel art, heavy Bayer dithering, hard pixel edges, "
-               "no anti-aliasing, strict {palname} palette of 12 dark muted colours, "
-               "low-key and dark, single {temp} light {direction}, dim empty low-contrast "
-               "centre with all detail pushed to the edges, no text, no logos, no faces, "
-               "16:9")
+SHORT_STILL = ("{scene_short}. Cinematic 35mm film still, anamorphic, shallow depth of "
+               "field, {palname}, low-key natural lighting, single {temp} source "
+               "{direction}, deep shadows, atmospheric haze, fine film grain, dim "
+               "low-contrast empty centre with all detail at the edges, nothing important "
+               "in the bottom-right corner, no text, no logos, no faces, 16:9")
 
 SHORT_MOTION = ("Animate this image as a seamless 10-second loop. ONLY {motion_short} moves. "
                 "Everything else is perfectly still. Camera completely locked — no pan, no "
@@ -81,33 +81,34 @@ quiet, dignified backdrop — never as the subject.
 {scene}
 
 --- ART DIRECTION (locked) ---
-Hand-crafted 16-bit pixel art in the tradition of SNES/Amiga atmospheric
-backdrops and modern Lospec palette work. Serious, editorial, architectural —
-NOT cute, NOT retro-gamey, NOT chiptune-whimsical. This illustrates public
-economic policy: dignified and restrained.
-Native render 480x270, 1:1 square pixels, NO anti-aliasing, hard pixel edges,
-upscaled x4 with nearest-neighbour to 1920x1080. Ordered Bayer/checkerboard
-dithering for every gradient — sky, haze, glow falloff, water. Visible dither
-texture. No smooth blends, no gaussian softness, no photographic realism.
+Cinematic 35mm film photography — anamorphic lens, shallow depth of field, fine
+organic film grain, natural light only. The register of a serious documentary or
+a restrained feature title sequence. NOT stock-footage glossy, NOT advertising,
+NOT drone-reel spectacle, NOT HDR. This illustrates public economic policy:
+dignified, observational, quiet.
+Real materials and real texture. Slight anamorphic falloff at the edges is
+welcome. No CGI sheen, no plastic surfaces, no over-sharpening.
 
---- PALETTE (strict) ---
+--- COLOUR GRADE ---
 {palette}
-Use these twelve values and nothing else. Anchor black is #06140F (the page
-background) so the frame melts into the site. Maximum 3 shades per material.
-DESATURATED throughout: the interface applies a +30% saturation boost over this
-footage, so anything vivid at source turns garish. Mute it at source.
-The brightest pixel in the frame must not exceed ~65% luminance. No white, no
-blown highlights, no neon.
+Deep crushed shadows, muted midtones, no vivid saturation anywhere. The interface
+applies a +30% saturation boost over this footage, so anything punchy at source
+turns garish — grade it flatter and duller than feels right.
+No blown highlights, no white clipping, no neon, no orange-and-teal blockbuster
+look. Overall exposure low: this is a night, dusk, dawn or interior-shadow scene.
 
 --- COMPOSITION (safe zone is non-negotiable) ---
-16:9. Three depth layers: hard silhouette foreground, hazy dithered midground,
-faded background.
+16:9. Three depth layers: a dark silhouetted foreground, a hazy midground, and a
+faded, atmospheric background.
 The CENTRE of the frame — the middle 65% of width and 85% of height — must stay
-DIM, CALM, LOW-CONTRAST and nearly static. A glass text panel covers it. No focal
-point, no bright object, no busy detail, no motion there.
-Push all structure, silhouette and interest to the LEFT edge, RIGHT edge and TOP
-third. Horizon on the lower third. The bottom of the frame is darkened further by
-the interface, so keep meaningful detail out of the lowest 15%.
+DIM, CALM, LOW-CONTRAST and nearly static. A frosted glass text panel sits over
+it. No focal point, no bright object, no busy detail and no motion there.
+Push all structure, silhouette and interest to the LEFT edge and the TOP third.
+Horizon on the lower third. The bottom of the frame is darkened further by the
+interface, so keep meaningful detail out of the lowest 15%.
+KEEP THE BOTTOM-RIGHT CORNER UNIMPORTANT — roughly the last 12% of the width is
+cropped off in post to strip the generator's watermark, so nothing essential may
+live on the right edge or in that corner.
 {comp}
 
 --- LIGHT ---
@@ -120,7 +121,7 @@ readable and let the interface crush it.
 --- MOTION (the hard constraint) ---
 Seamless, perfectly tileable loop. 10 seconds, 12 fps, 120 frames. The last frame
 must flow into the first with no jump, no fade, no cut.
-AMBIENT MOTION ONLY: {motion}. Amplitude tiny — a few pixels of travel across the
+AMBIENT MOTION ONLY: {motion}. Amplitude tiny — a barely-perceptible amount of travel across the
 whole loop. Slow, large-scale, low-frequency. Everything else in the frame is
 PERFECTLY STILL: {still}.
 NO camera movement of any kind: no pan, no zoom, no dolly, no parallax drift, no
@@ -215,7 +216,7 @@ COMMON = [
      "steps, strong parallel lines receding, and one soft pool of light resting on the "
      "stair. Weighty and institutional, with no signage of any kind.",
      "cool", "from high above, falling between the columns",
-     "the pool of light on the steps shifting a pixel or two, as if cloud passes "
+     "the pool of light on the steps shifting slightly, as if cloud passes "
      "overhead",
      "the columns, the steps, the stonework and the architecture do not move at all"),
 
@@ -276,7 +277,7 @@ COVERS = [
      "nets hanging from simple frames, a calm slate sea meeting a dim sky, and a low "
      "stone jetty running out to the right.",
      "cool", "low from the sea horizon, pre-dawn",
-     "a gentle swell rocking the moored hulls by a pixel or two",
+     "a gentle swell rocking the moored hulls very slightly",
      "the jetty, the nets, the frames and the sky do not move at all"),
 
     ("shenzhen-growth-model", "amber", "Shenzhen — port-led manufacturing",
@@ -356,9 +357,16 @@ COVERS = [
 ]
 
 
-PAL_WORDS = {"neutral": "dark slate-grey", "green": "dark muted green",
-             "aqua": "dark teal-blue", "amber": "dark amber-brown",
-             "teal": "dark teal"}
+# Colour GRADES, not hex lists — video models respond to grade language, not
+# palette codes. Each is the muted cousin of the slide's UI tint so the interface
+# accent still reads on top.
+PAL_WORDS = {
+    "neutral": "desaturated cool slate-grey grade, close to monochrome",
+    "green":   "muted olive and moss-green grade with earthy browns",
+    "aqua":    "desaturated teal and steel-blue grade",
+    "amber":   "warm amber and ember grade against deep shadow",
+    "teal":    "deep teal-green grade with one warm accent",
+}
 
 
 def condense(text, limit=190):

@@ -8,9 +8,9 @@ The opening title slide of the Tiruppur — textiles & garments case study.
 #  image-to-video models want one short instruction. So:
 ################################################################################
 
-STEP 1 — make the still (Midjourney / Retro Diffusion / PixelLab):
+STEP 1 — make the still (Gemini · Veo, Midjourney, Flux):
 
-A dim knitwear mill. 16-bit pixel art, heavy Bayer dithering, hard pixel edges, no anti-aliasing, strict dark amber-brown palette of 12 dark muted colours, low-key and dark, single warm light a single low lamp hanging over the machines on the left, dim empty low-contrast centre with all detail pushed to the edges, no text, no logos, no faces, 16:9
+A dim knitwear mill. Cinematic 35mm film still, anamorphic, shallow depth of field, warm amber and ember grade against deep shadow, low-key natural lighting, single warm source a single low lamp hanging over the machines on the left, deep shadows, atmospheric haze, fine film grain, dim low-contrast empty centre with all detail at the edges, nothing important in the bottom-right corner, no text, no logos, no faces, 16:9
 
 STEP 2 — animate that still (Runway / Kling / Luma, image-to-video):
 
@@ -29,33 +29,34 @@ quiet, dignified backdrop — never as the subject.
 A dim knitwear mill — rows of circular knitting machines receding into shadow, fine threads running up to the ceiling and catching the light of a single low lamp, and bolts of finished fabric stacked heavily along the left wall.
 
 --- ART DIRECTION (locked) ---
-Hand-crafted 16-bit pixel art in the tradition of SNES/Amiga atmospheric
-backdrops and modern Lospec palette work. Serious, editorial, architectural —
-NOT cute, NOT retro-gamey, NOT chiptune-whimsical. This illustrates public
-economic policy: dignified and restrained.
-Native render 480x270, 1:1 square pixels, NO anti-aliasing, hard pixel edges,
-upscaled x4 with nearest-neighbour to 1920x1080. Ordered Bayer/checkerboard
-dithering for every gradient — sky, haze, glow falloff, water. Visible dither
-texture. No smooth blends, no gaussian softness, no photographic realism.
+Cinematic 35mm film photography — anamorphic lens, shallow depth of field, fine
+organic film grain, natural light only. The register of a serious documentary or
+a restrained feature title sequence. NOT stock-footage glossy, NOT advertising,
+NOT drone-reel spectacle, NOT HDR. This illustrates public economic policy:
+dignified, observational, quiet.
+Real materials and real texture. Slight anamorphic falloff at the edges is
+welcome. No CGI sheen, no plastic surfaces, no over-sharpening.
 
---- PALETTE (strict) ---
+--- COLOUR GRADE ---
 #06140F #150E08 #241610 #3A2213 #55321A #74461F #925A26 #AE7233 #C68F49 #262019 #40372B #635646
-Use these twelve values and nothing else. Anchor black is #06140F (the page
-background) so the frame melts into the site. Maximum 3 shades per material.
-DESATURATED throughout: the interface applies a +30% saturation boost over this
-footage, so anything vivid at source turns garish. Mute it at source.
-The brightest pixel in the frame must not exceed ~65% luminance. No white, no
-blown highlights, no neon.
+Deep crushed shadows, muted midtones, no vivid saturation anywhere. The interface
+applies a +30% saturation boost over this footage, so anything punchy at source
+turns garish — grade it flatter and duller than feels right.
+No blown highlights, no white clipping, no neon, no orange-and-teal blockbuster
+look. Overall exposure low: this is a night, dusk, dawn or interior-shadow scene.
 
 --- COMPOSITION (safe zone is non-negotiable) ---
-16:9. Three depth layers: hard silhouette foreground, hazy dithered midground,
-faded background.
+16:9. Three depth layers: a dark silhouetted foreground, a hazy midground, and a
+faded, atmospheric background.
 The CENTRE of the frame — the middle 65% of width and 85% of height — must stay
-DIM, CALM, LOW-CONTRAST and nearly static. A glass text panel covers it. No focal
-point, no bright object, no busy detail, no motion there.
-Push all structure, silhouette and interest to the LEFT edge, RIGHT edge and TOP
-third. Horizon on the lower third. The bottom of the frame is darkened further by
-the interface, so keep meaningful detail out of the lowest 15%.
+DIM, CALM, LOW-CONTRAST and nearly static. A frosted glass text panel sits over
+it. No focal point, no bright object, no busy detail and no motion there.
+Push all structure, silhouette and interest to the LEFT edge and the TOP third.
+Horizon on the lower third. The bottom of the frame is darkened further by the
+interface, so keep meaningful detail out of the lowest 15%.
+KEEP THE BOTTOM-RIGHT CORNER UNIMPORTANT — roughly the last 12% of the width is
+cropped off in post to strip the generator's watermark, so nothing essential may
+live on the right edge or in that corner.
 This is the opening title frame and carries the largest text panel of the deck, so protect the centre even more strictly than usual.
 
 --- LIGHT ---
@@ -68,7 +69,7 @@ readable and let the interface crush it.
 --- MOTION (the hard constraint) ---
 Seamless, perfectly tileable loop. 10 seconds, 12 fps, 120 frames. The last frame
 must flow into the first with no jump, no fade, no cut.
-AMBIENT MOTION ONLY: one yarn spool rotating slowly on its spindle. Amplitude tiny — a few pixels of travel across the
+AMBIENT MOTION ONLY: one yarn spool rotating slowly on its spindle. Amplitude tiny — a barely-perceptible amount of travel across the
 whole loop. Slow, large-scale, low-frequency. Everything else in the frame is
 PERFECTLY STILL: the machines, the fabric bolts, the threads and the walls do not move at all.
 NO camera movement of any kind: no pan, no zoom, no dolly, no parallax drift, no
