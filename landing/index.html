@@ -486,7 +486,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    contributor, so it gets a tighter scale than the shared .sec-head default. */
 #page-districts .sec-head h2{font-size:clamp(22px,2.9vw,31px);margin-top:6px;}
 #page-districts .sec-head p{font-size:clamp(13.5px,1.45vw,15.5px);margin-top:5px;}
-.dtabs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,16px);
+.dtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,16px);
   margin-bottom:clamp(12px,1.6vw,18px);}
 .dtab{position:relative;text-align:left;font:inherit;cursor:not-allowed;
   padding:clamp(11px,1.4vw,14px) clamp(14px,1.8vw,20px);border-radius:var(--r);
@@ -518,7 +518,6 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .vstage .dtab{background-repeat:no-repeat;background-position:right center;
   background-size:auto 100%;}
 .vstage .dtab[data-dtab="docs"]{background-image:url(assets/tabs/tab-documents.png?v=2026-08-12a);}
-.vstage .dtab[data-dtab="map"]{background-image:url(assets/tabs/tab-map.png?v=2026-08-12a);}
 .vstage .dtab[data-dtab="cases"]{background-image:url(assets/tabs/tab-cases.png?v=2026-08-12a);}
 .vstage .dtab.dtab-capacity{background-image:url(assets/tabs/tab-capacity.png?v=2026-08-12a);
   /* the coming-soon tab must not read as active, so its motif stays quieter */
@@ -1511,8 +1510,7 @@ a.docs-leaf:hover .ext{opacity:1;}
          cannot be clicked into a dead end. -->
     <div class="dtabs">
       <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plans</span></button>
-      <button class="dtab dtab-live" data-dtab="map" aria-pressed="true">The district map<span class="dtab-soon">Income &amp; sectors</span></button>
-      <button class="dtab dtab-live dtab-capacity" data-dtab="gva" aria-pressed="false">Improving GVA<span class="dtab-soon">Sector playbooks</span></button>
+            <button class="dtab dtab-live dtab-capacity" data-dtab="gva" aria-pressed="false">Improving GVA<span class="dtab-soon">Sector playbooks</span></button>
       <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">13 studies</span></button>
     </div>
     <div id="mapView">
@@ -2911,6 +2909,14 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   document.querySelectorAll('.dtab-live').forEach(function(b){
     b.addEventListener('click', function(){ setTab(b.dataset.dtab); });
   });
+  /* The map has no tab of its own any more: it is the default view. That leaves
+     no control to return to it once another tab is open, so the site's own
+     Districts nav item becomes that route — clicking it while already on the
+     districts page resets the panel back to the map. */
+  document.querySelectorAll('.nl[data-page="districts"]').forEach(function(b){
+    b.addEventListener('click', function(){ setTab('map'); });
+  });
+  setTab('map');   // explicit default rather than relying on markup hidden flags
 })();
 </script>
 </body>
