@@ -799,6 +799,28 @@ a.docs-leaf:hover .ext{opacity:1;}
 .gva-row .nm{flex:1 1 auto;font-weight:650;font-size:14.4px;letter-spacing:-.008em;line-height:1.25;}
 .gva-body{display:none;padding:0 16px 16px;}
 .gva-card.open>.gva-body{display:block;}
+/* the row that is currently showing in the detail box below */
+.gva-card.active{background:rgba(9,40,27,.9);
+  box-shadow:0 0 0 1px color-mix(in srgb, var(--gh,#6FA817) 60%, transparent);}
+.gva-card.active>.gva-row .caret{transform:rotate(90deg);}
+.gva-card.active>.gva-row .nm{color:var(--lime,#C6EC8F);}
+/* the shared playbook box, directly under the accordion */
+.gva-detail{margin-top:clamp(12px,1.6vw,18px);border-radius:var(--r-lg,20px);
+  background:rgba(9,40,27,.72);border:1px solid rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  box-shadow:0 18px 50px -28px rgba(0,0,0,.7);overflow:hidden;}
+.gva-detail[hidden]{display:none;}
+.gva-detail-h{display:flex;align-items:center;gap:14px;
+  padding:clamp(14px,1.8vw,18px) clamp(16px,2vw,22px);
+  border-bottom:1px solid rgba(255,255,255,.14);}
+.gva-detail-t{flex:1 1 auto;font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
+  font-size:clamp(17px,2.1vw,22px);color:#FFF;letter-spacing:-.01em;}
+.gva-detail-x{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:50%;cursor:pointer;font:inherit;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.2);color:#FFF;
+  transition:background .18s;}
+.gva-detail-x:hover{background:rgba(255,255,255,.2);}
+.gva-detail-b{padding:clamp(14px,1.8vw,20px) clamp(16px,2vw,22px) clamp(18px,2.2vw,24px);}
 .gva-est{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.78);
   padding:11px 13px;border-radius:10px;background:rgba(255,255,255,.06);
   border-left:2px solid rgba(198,236,143,.5);margin-bottom:14px;}
@@ -2838,6 +2860,18 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       h += '</div></div></div>';
     });
     h += '</div></div>';
+    /* One shared detail box under the accordion. The playbook used to expand
+       inside its own card, which pushed the sector list around and buried the
+       content in a 2-column grid cell. Rendering into a single full-width box
+       below keeps the list stable and gives the playbook room to breathe. */
+    h += '<div class="gva-detail" id="gvaDetail" hidden>'+
+           '<div class="gva-detail-h">'+
+             '<span class="gva-detail-t"></span>'+
+             '<button class="gva-detail-x" type="button" aria-label="Close">'+
+               '<i class="ti ti-x"></i></button>'+
+           '</div>'+
+           '<div class="gva-detail-b"></div>'+
+         '</div>';
 
     // method + leverage sit below the accordion they explain
     h += two;
@@ -2885,20 +2919,54 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         p.querySelector('.gva-spine').setAttribute('aria-expanded', on ? 'true' : 'false');
       });
       acc.classList.toggle('has-open', reopen);
+      gvaCloseDetail();   // a playbook from the previous group would be orphaned
       return;
     }
+    var closeBtn = e.target.closest('.gva-detail-x');
+    if(closeBtn){ gvaCloseDetail(); return; }
+
     var row = e.target.closest('.gva-row');
     if(!row) return;
     var card = row.parentElement;
-    if(!card._built){
-      var key = card.dataset.sec, found = null;
-      GVA.groups.forEach(function(g){ g.sectors.forEach(function(s){ if(s.key===key) found=s; }); });
-      if(found) card.querySelector('.gva-body').innerHTML = gvaSectorBody(found);
-      card._built = true;
+    var key  = card.dataset.sec;
+    var box  = document.getElementById('gvaDetail');
+    if(!box) return;
+
+    // clicking the sector that is already showing closes the box
+    if(card.classList.contains('active')){ gvaCloseDetail(); return; }
+
+    var found = null;
+    GVA.groups.forEach(function(g){ g.sectors.forEach(function(x){ if(x.key===key) found=x; }); });
+    if(!found) return;
+
+    gvaBody.querySelectorAll('.gva-card').forEach(function(c){
+      c.classList.remove('active');
+      var r=c.querySelector('.gva-row'); if(r) r.setAttribute('aria-expanded','false');
+    });
+    card.classList.add('active');
+    row.setAttribute('aria-expanded','true');
+
+    box.querySelector('.gva-detail-t').textContent = found.title;
+    box.querySelector('.gva-detail-b').innerHTML   = gvaSectorBody(found);
+    box.hidden = false;
+    /* Nudge into view ONLY when the box actually opens below the fold.
+       scrollIntoView() scrolled unconditionally, and because the box is ~740px
+       tall it overshot past the end of the dark stage into the body's light
+       background. Scroll by the minimum needed instead. */
+    var br = box.getBoundingClientRect();
+    if(br.top > window.innerHeight - 140){
+      window.scrollBy({top: br.top - 140, behavior:'smooth'});
     }
-    var open = card.classList.toggle('open');
-    row.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
+
+  function gvaCloseDetail(){
+    var box = document.getElementById('gvaDetail');
+    if(box){ box.hidden = true; box.querySelector('.gva-detail-b').innerHTML=''; }
+    if(gvaBody) gvaBody.querySelectorAll('.gva-card.active').forEach(function(c){
+      c.classList.remove('active');
+      var r=c.querySelector('.gva-row'); if(r) r.setAttribute('aria-expanded','false');
+    });
+  }
 
   function loadGva(){
     if(gvaLoaded || gvaLoading) return;
