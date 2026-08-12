@@ -454,6 +454,16 @@
 .d-rb-of{font-size:.62em;font-weight:600;color:var(--label-3);margin-left:5px;}
 .d-rb-basis{font-size:.64rem;font-weight:600;letter-spacing:.02em;color:var(--label-2);
   text-transform:uppercase;}
+/* On the dark stage the badge kept its light-theme shell — --glass-strong is 78%
+   white and --neu-out carries a 75% white outer glow — so it burned a halo into
+   the green. Restate the shell for the dark stage instead of inheriting it.
+   min-width holds the box steady across "#7 of 28" and "#24 of 28" so the badge
+   does not resize as the user moves between places. */
+.vstage .d-rankbadge{min-width:11.5rem;
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.16);
+  box-shadow:0 8px 24px -14px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.07);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
 .vstage .d-rb-pos{color:#FFF;}
 .vstage .d-rb-hash{color:var(--lime,#8FC93A);}
 .vstage .d-rb-of{color:rgba(255,255,255,.5);}

@@ -454,8 +454,15 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* Rank badge's page-level home. Empty and hidden until a district/constituency/
    mandal is picked and relocateRankBadge() finds one to move up here; cleared
    again on the way back to the state-wide map. */
-.sec-head-row{display:flex;align-items:flex-end;justify-content:space-between;
+/* align-items was flex-end, which bottom-pinned the badge: the moment the heading
+   grew a second line — "You are currently exploring <mandal> of <constituency> of
+   Kurnool district" — the row got taller and the badge slid down with it. Pin it
+   to the top so the badge holds one position at every level, and let the heading
+   column absorb the growth on its own. min-height reserves the two-line case up
+   front so the map below does not shift either. */
+.sec-head-row{display:flex;align-items:flex-start;justify-content:space-between;
   gap:20px;flex-wrap:wrap;}
+.sec-head-row>:first-child{flex:1 1 22rem;min-width:0;min-height:5.4rem;}
 .rank-slot{flex:0 0 auto;}
 .rank-slot:empty,.rank-slot[hidden]{display:none;}
 /* one line, not two: the 720px cap on .sec-head wrapped this intro and cost the
@@ -919,21 +926,21 @@ a.docs-leaf:hover .ext{opacity:1;}
      See docs/DASHBOARD_ARCHITECTURE.md. -->
 <!-- GSAP, vendored locally (charts-src: npm run build:gsap) rather than a CDN,
      to keep the no-third-party-runtime rule for a government-facing page. -->
-<script src="assets/dash/gsap.js?v=2026-08-11e" defer></script>
-<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-11e">
-<script src="assets/dash/components.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/enrich.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-c1.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-c2.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-c3.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-c4.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-d1.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-d2.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-d3.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-d4.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-m1.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-m2.js?v=2026-08-11e" defer></script>
-<script src="assets/dash/tpl-m3.js?v=2026-08-11e" defer></script>
+<script src="assets/dash/gsap.js?v=2026-08-12a" defer></script>
+<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-12a">
+<script src="assets/dash/components.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/enrich.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-c1.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-c2.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-c3.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-c4.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-d1.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-d2.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-d3.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-d4.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-m1.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-m2.js?v=2026-08-12a" defer></script>
+<script src="assets/dash/tpl-m3.js?v=2026-08-12a" defer></script>
 <!-- React + MUI X Charts, bundled to one file by charts-src/. Loaded LAST and
      deferred: every chart is progressive, so if this never arrives the panel
      still renders with its hand-rolled SVG. 214 KB gzipped. -->
@@ -2405,8 +2412,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(loaded || loading) return;
     loading = true;
     Promise.all([
-      fetch('assets/docs_tree.json?v=2026-08-11d').then(function(r){ return r.json(); }),
-      fetch('assets/doc_links.json?v=2026-08-11d').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
+      fetch('assets/docs_tree.json?v=2026-08-12a').then(function(r){ return r.json(); }),
+      fetch('assets/doc_links.json?v=2026-08-12a').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
     ]).then(function(res){
       DATA = res[0];
       var cfg = res[1] || {};
