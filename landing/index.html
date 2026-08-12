@@ -437,7 +437,12 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .map-layout .map-box{flex:0 0 100%;min-width:0;}
 .map-layout #districtPanel{flex:1 1 0%;min-width:0;opacity:0;overflow:hidden;
   padding-left:0;padding-right:0;margin-left:0;}
-.map-layout.split .map-box{flex:0 0 32%;justify-content:flex-start;}
+/* The box is sized to match the panel beside it, but the zoomed map is
+   WIDTH-bound, so it only fills part of that height. flex-start pinned the
+   drawing to the top and left the remainder as one dead band underneath —
+   measured 64px above the map against 230px below. Centring splits that slack,
+   which is the empty-band problem the design brief flagged. */
+.map-layout.split .map-box{flex:0 0 32%;justify-content:center;}
 .map-layout.split #districtPanel{opacity:1;overflow:visible;
   padding-left:clamp(20px,2.8vw,28px);padding-right:clamp(20px,2.8vw,28px);
   margin-left:clamp(18px,2.6vw,30px);}
