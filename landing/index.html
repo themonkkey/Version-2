@@ -682,16 +682,17 @@ a.docs-leaf:hover .ext{opacity:1;}
    and nothing has to change in code when artwork arrives. */
 .gva-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   z-index:0;opacity:0;transition:opacity .9s ease;pointer-events:none;
-  /* The footage is scenery, not subject: blur it so the label always wins.
-     scale(1.06) covers the soft transparent edge a blur filter leaves, which
-     would otherwise read as a light rim inside the pane. */
-  filter:blur(4px) saturate(.85);transform:scale(1.06);}
+  /* Left sharp on purpose: the artwork is the point. Contrast for the label
+     comes from the scrim below, not from softening the picture. */
+  }
 .gva-vid.ready{opacity:1;}
 /* the tint rides ABOVE any photo, so text keeps its contrast either way */
 .gva-pane::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
   background:linear-gradient(180deg,
-    color-mix(in srgb, var(--gh,#6FA817) 16%, rgba(9,40,27,.72)),
-    color-mix(in srgb, var(--gh,#6FA817) 7%, rgba(9,40,27,.88)));
+    rgba(9,40,27,.84) 0%,
+    color-mix(in srgb, var(--gh,#6FA817) 10%, rgba(9,40,27,.44)) 40%,
+    color-mix(in srgb, var(--gh,#6FA817) 8%, rgba(9,40,27,.32)) 70%,
+    rgba(9,40,27,.74) 100%);
   transition:opacity .45s ease, background .45s ease;}
 .gva-pane.open::before{background:rgba(9,40,27,.86);}
 .gva-pane > .gva-spine,.gva-pane > .gva-pane-body{position:relative;z-index:2;}
