@@ -2718,19 +2718,21 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
   function renderGva(){
     var p = GVA, h = '';
-    // the method + why-it-matters, side by side above the sectors
-    h += '<div class="gva-two">';
-    h += '<div class="gva-panel"><div class="gva-kicker">'+esc2(p.method.kicker)+'</div>'+
+    // The sector accordion leads the page — it is what the reader came for, so
+    // it sits directly under the heading. The method and the officer's-leverage
+    // panels are context for it and follow underneath.
+    var two = '<div class="gva-two">';
+    two += '<div class="gva-panel"><div class="gva-kicker">'+esc2(p.method.kicker)+'</div>'+
          '<h3>'+esc2(p.method.title)+'</h3><ol class="gva-steps">'+
          p.method.steps.map(function(s,i){
            return '<li><span class="n">'+(i+1)+'</span><span><b>'+esc2(s[0])+'</b> '+esc2(s[1])+'</span></li>';
          }).join('')+'</ol></div>';
-    h += '<div class="gva-panel"><div class="gva-kicker">'+esc2(p.leverage.kicker)+'</div>'+
+    two += '<div class="gva-panel"><div class="gva-kicker">'+esc2(p.leverage.kicker)+'</div>'+
          '<h3>'+esc2(p.leverage.title)+'</h3><ol class="gva-steps">'+
          p.leverage.points.map(function(s,i){
            return '<li><span class="n">'+(i+1)+'</span><span><b>'+esc2(s[0])+'</b> '+esc2(s[1])+'</span></li>';
          }).join('')+'</ol></div>';
-    h += '</div>';
+    two += '</div>';
 
     // the three state sectors as a horizontal accordion; each group's hue is the
     // one its slice carries on every district dashboard, so the playbook and the
@@ -2759,6 +2761,9 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       h += '</div></div></div>';
     });
     h += '</div></div>';
+
+    // method + leverage sit below the accordion they explain
+    h += two;
 
     // toolbox: AI tools + NITI prompts
     if(p.ai_tools && p.ai_tools.length){
@@ -2806,7 +2811,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadGva(){
     if(gvaLoaded || gvaLoading) return;
     gvaLoading = true;
-    fetch('assets/gva_playbook.json?v=2026-08-12d')
+    fetch('assets/gva_playbook.json?v=2026-08-12e')
       .then(function(r){ return r.json(); })
       .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); })
       .catch(function(err){
