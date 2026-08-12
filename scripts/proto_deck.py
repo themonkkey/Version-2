@@ -398,8 +398,12 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
     else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){ step(-1); }
     else if(ev.key==='Home'){ go(0); } else if(ev.key==='End'){ go(N-1); }
   });
-  // wheel: horizontal intent, or vertical when the panel isn't scrollable
-  var wlock=false;
+  // Wheel: horizontal intent, or vertical when the panel isn't scrollable.
+  // A trackpad swipe is not one event — macOS momentum fires dozens over ~1s. A
+  // plain time lock still let 2-3 of them through per swipe, so instead the
+  // gesture must fully SETTLE (no wheel events for 240ms) before another advance
+  // is armed. One physical swipe therefore moves exactly one slide.
+  var wheelArmed=true, wheelTimer=null;
   addEventListener('wheel',function(ev){
     if(mobile()) return;
     var g=slides[cur].querySelector('.glass');
@@ -409,10 +413,11 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
       var atTop=g.scrollTop<=0, atBot=g.scrollTop+g.clientHeight>=g.scrollHeight-1;
       if(!(atTop&&dom<0)&&!(atBot&&dom>0)) return; // let the panel scroll
     }
-    if(wlock) return;
-    if(Math.abs(dom)<18) return;
-    wlock=true; step(dom>0?1:-1);
-    setTimeout(function(){ wlock=false; }, 760);
+    clearTimeout(wheelTimer);
+    wheelTimer=setTimeout(function(){ wheelArmed=true; }, 240);
+    if(!wheelArmed || Math.abs(dom)<28) return;
+    wheelArmed=false;
+    step(dom>0?1:-1);
   },{passive:true});
   // touch swipe
   var sx=0,sy=0;
@@ -442,11 +447,8 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
 """
 
 
-def main():
-    fname = sys.argv[1] if len(sys.argv) > 1 else "Morbi_Ceramics_Industry.txt"
-    m = next(x for x in B.META if x["file"] == fname)
-    path = os.path.join(B.SRC, fname)
-    hero, blocks = B.parse_deck(path)
+def render(m):
+    hero, blocks = B.parse_deck(os.path.join(B.SRC, m["file"]))
     secs = sections_of(blocks)
     slides = slides_html(m, hero, secs)
     t1, t2 = tint_for(m)
@@ -458,10 +460,29 @@ def main():
             .replace("%%SLUG%%", m["slug"])
             .replace("%%SOURCE%%", src)
             .replace("%%SLIDES%%", "\n".join(slides)))
-    out = os.path.join(ROOT, "landing", "cases", "_proto-" + m["slug"] + ".html")
-    with open(out, "w", encoding="utf-8") as f:
-        f.write(html)
-    print("wrote", os.path.relpath(out, ROOT), "-", len(slides), "slides")
+    return html, len(slides), secs
+
+
+def main():
+    args = [a for a in sys.argv[1:] if not a.startswith("-")]
+    proto = "--proto" in sys.argv
+
+    if args:                                   # one named deck
+        targets = [next(x for x in B.META if x["file"] == args[0])]
+    else:                                      # all 13
+        targets = list(B.META)
+
+    total = 0
+    for m in targets:
+        html, n, secs = render(m)
+        name = ("_proto-" + m["slug"] if proto else m["slug"]) + ".html"
+        out = os.path.join(ROOT, "landing", "cases", name)
+        with open(out, "w", encoding="utf-8") as f:
+            f.write(html)
+        roles = ",".join(sorted({role_for(s["title"]) for s in secs}))
+        print(f"  {m['slug']:30s} {n:2d} slides  [{roles}]")
+        total += 1
+    print(f"\nwrote {total} deck page(s) -> landing/cases/")
 
 
 if __name__ == "__main__":

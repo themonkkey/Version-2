@@ -5,259 +5,349 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Biofloc Tilapia Farming — Swarna Andhra case study</title>
 <script>
-/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
-   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
-   stays fully visible and the GSAP layer below is skipped. */
-(function(){
-  try{
-    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
-             && 'IntersectionObserver' in window;
-    if(ok) document.documentElement.className += ' anim';
-  }catch(e){}
-})();
+(function(){try{var ok=!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window;if(ok)document.documentElement.className+=' anim';}catch(e){}})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0B2E20;--ink2:#09281B;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.14);
-  --fg:#EAF2EC;--mut:rgba(234,242,236,.72);--mut2:rgba(234,242,236,.5);--lime:#C6EC8F;--lime2:#8FC93A;}
+:root{
+  --ink:#06140F;--fg:#EEF5EF;--mut:rgba(238,245,239,.74);--mut2:rgba(238,245,239,.5);
+  --t1:#6FA817;--t2:#B7D66B;
+  --glass:rgba(8,22,16,.52);--glass2:rgba(8,22,16,.34);--line:rgba(255,255,255,.16);
+}
 *{box-sizing:border-box;}
-body{margin:0;background:var(--ink);color:var(--fg);
+html,body{margin:0;height:100%;}
+body{background:var(--ink);color:var(--fg);overflow:hidden;
   font-family:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   line-height:1.6;-webkit-font-smoothing:antialiased;}
-a{color:var(--lime);}
-.wrap{max-width:760px;margin:0 auto;padding:clamp(20px,5vw,44px) clamp(18px,5vw,28px) 80px;}
-.back{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
-  color:var(--mut);text-decoration:none;margin-bottom:clamp(22px,4vw,34px);}
-.back:hover{color:var(--lime);}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--lime2);margin:0 0 14px;}
-h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,5.5vw,46px);
-  line-height:1.08;letter-spacing:-.01em;margin:0 0 16px;}
-.summary{font-size:clamp(16px,2vw,19px);color:var(--mut);margin:0 0 22px;max-width:60ch;}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;}
-.tag{font-size:12px;font-weight:600;letter-spacing:.01em;padding:5px 11px;border-radius:999px;
-  background:var(--panel);border:1px solid var(--line);color:var(--mut);}
+a{color:var(--t2);}
+
+/* ---------- horizontal deck ---------- */
+.stage{position:fixed;inset:0;overflow:hidden;}
+.track{display:flex;height:100%;width:100%;
+  transition:transform .72s cubic-bezier(.76,0,.24,1);will-change:transform;}
+.slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;padding:clamp(20px,5vw,64px);}
+
+/* full-bleed background: animated mesh, tinted; photo/video overlays it if present */
+.media{position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(60% 70% at 18% 22%, color-mix(in srgb, var(--t1) 42%, transparent), transparent 70%),
+    radial-gradient(55% 65% at 82% 78%, color-mix(in srgb, var(--t2) 34%, transparent), transparent 70%),
+    radial-gradient(90% 90% at 50% 50%, #0A241A, #05100C 80%);
+  background-size:180% 180%,180% 180%,100% 100%;
+  animation:drift 26s ease-in-out infinite alternate;}
+@keyframes drift{
+  0%{background-position:0% 0%,100% 100%,50% 50%;}
+  100%{background-position:60% 40%,40% 60%,50% 50%;}}
+.media::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 80% at 50% 120%, rgba(0,0,0,.5), transparent 60%);}
+.media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .8s ease;}
+/* Pixel-art assets opt in per-file via a .pixel class; cinematic footage must NOT
+   be nearest-neighbour scaled or it aliases badly. */
+.media.pixel img,.media.pixel video{image-rendering:pixelated;}
+.media.has-asset img,.media.has-asset video{opacity:1;}
+.media.has-asset::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg, rgba(4,12,9,.35), rgba(4,12,9,.68));}
+
+/* ---------- glass panel ---------- */
+.glass{position:relative;z-index:2;width:min(760px,100%);max-height:84vh;overflow:auto;
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(30px) saturate(1.3);backdrop-filter:blur(30px) saturate(1.3);
+  border:1px solid var(--line);border-radius:24px;
+  padding:clamp(24px,4vw,44px);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.08);
+  scrollbar-width:thin;scrollbar-color:var(--t2) transparent;}
+.glass::-webkit-scrollbar{width:8px;}
+.glass::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--t2) 50%,transparent);border-radius:8px;}
+.cover-glass{width:min(680px,100%);}
+
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--t2);margin:0 0 16px;}
+h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,5.2vw,52px);
+  line-height:1.05;letter-spacing:-.01em;margin:0 0 18px;}
+.summary{font-size:clamp(16px,2vw,20px);color:var(--mut);margin:0 0 22px;max-width:56ch;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;
+  background:var(--glass2);border:1px solid var(--line);color:var(--mut);}
 .tag.place{color:var(--fg);}
-.src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
-hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
-/* hero stat band — the cover-slide numbers, restored */
-.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
-  margin:26px 0 4px;}
-.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
-  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
-.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
-  line-height:1;color:var(--lime);letter-spacing:-.01em;}
-.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
-.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
-  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
-  border-bottom:1px solid var(--line);}
-.body h2:first-child{margin-top:4px;}
-.body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
-  letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
-.body h3:first-child{margin-top:0;}
-.body p{margin:0 0 14px;color:var(--mut);}
-.body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
-  color:var(--lime2);}
-.body .k + h3{margin-top:2px;}
-/* in-body stat grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
-  margin:16px 0 22px;}
-.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
-  padding:15px 15px 13px;}
-.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
-  line-height:1;color:var(--lime);}
-.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
-/* timeline / definition entry */
-.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
-  padding:15px 0;border-top:1px solid var(--line);}
+.hint{font-size:12.5px;color:var(--mut2);margin:22px 0 0;letter-spacing:.02em;}
+
+.sechead{display:flex;align-items:baseline;gap:14px;margin:0 0 20px;
+  padding-bottom:14px;border-bottom:1px solid var(--line);}
+.secnum{font-family:'Bodoni Moda',serif;font-weight:600;font-size:16px;color:var(--t2);
+  letter-spacing:.04em;}
+.sechead h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
+  font-size:clamp(22px,3.2vw,32px);letter-spacing:-.01em;color:#fff;margin:0;line-height:1.1;}
+.secbody h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(16px,2vw,20px);
+  color:#fff;margin:22px 0 6px;}
+.secbody h3:first-child{margin-top:0;}
+.secbody p{margin:0 0 13px;color:var(--mut);}
+.secbody .k{margin:16px 0 4px;font-weight:700;font-size:13.5px;color:var(--t2);letter-spacing:.02em;}
+
+/* hero + stat grids as inner glass chips */
+.hero,.grid{display:grid;gap:12px;margin:18px 0 4px;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}
+.grid{margin:14px 0 20px;}
+.scell,.cell{background:var(--glass2);border:1px solid var(--line);border-radius:14px;
+  padding:15px 16px 13px;transition:transform .26s cubic-bezier(.2,.7,.2,1),border-color .26s ease;}
+.scell:hover,.cell:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--t2) 50%,var(--line));}
+.scell .v,.cell .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
+  font-size:clamp(22px,3vw,30px);line-height:1;color:var(--t2);}
+.scell .l,.cell .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);font-weight:600;}
+
+/* timeline entry */
+.entry{display:grid;grid-template-columns:minmax(90px,124px) 1fr;gap:16px;
+  padding:14px 0;border-top:1px solid var(--line);}
 .entry:first-of-type{border-top:none;}
-.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
-.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
-.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
-@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
-footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
-  font-size:12.5px;color:var(--mut2);}
-footer b{color:var(--mut);font-weight:600;}
-/* ---- motion + interaction polish ---- */
-/* initial hidden states, applied only while .anim is armed (see head script) */
-.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
-.anim .hero .cell,.anim .body>*{opacity:0;}
-.reading{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
-  background:linear-gradient(90deg,var(--lime2),var(--lime));
-  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}
-.hero .cell,.grid .cell{transition:transform .28s cubic-bezier(.2,.7,.2,1),
-  border-color .28s ease,box-shadow .28s ease;will-change:transform;}
-.hero .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
-  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}
-.grid .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
-  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}
-.back{transition:color .2s ease,gap .2s ease;}
-.back:hover{gap:11px;}
-@media (prefers-reduced-motion: reduce){
-  *{animation:none!important;transition:none!important;}
-  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
-  .anim .hero .cell,.anim .body>*{opacity:1;}
+.entry .term{font-weight:700;font-size:13px;color:var(--t2);}
+.entry .eh{font-weight:700;font-size:15px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14px;color:var(--mut);line-height:1.55;}
+
+/* ---------- chrome: arrows, dots, progress, back ---------- */
+.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:30;
+  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:var(--glass);border:1px solid var(--line);color:var(--fg);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  transition:transform .2s ease,background .2s ease,opacity .2s ease;user-select:none;}
+.nav:hover{background:color-mix(in srgb,var(--t1) 30%,var(--glass));transform:translateY(-50%) scale(1.07);}
+.nav.prev{left:clamp(12px,2.5vw,30px);}
+.nav.next{right:clamp(12px,2.5vw,30px);}
+.nav[disabled]{opacity:.3;pointer-events:none;}
+.nav svg{width:20px;height:20px;}
+.dots{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:30;
+  display:flex;gap:10px;align-items:center;
+  background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:9px 14px;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;
+  transition:all .3s ease;}
+.dot.on{width:26px;border-radius:6px;background:linear-gradient(90deg,var(--t1),var(--t2));}
+.count{position:fixed;top:22px;right:clamp(16px,3vw,30px);z-index:30;font-size:13px;
+  color:var(--mut);font-variant-numeric:tabular-nums;}
+.count b{color:var(--fg);font-family:'Bodoni Moda',serif;font-size:17px;}
+.back{position:fixed;top:20px;left:clamp(16px,3vw,30px);z-index:30;
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
+  color:var(--mut);text-decoration:none;background:var(--glass);border:1px solid var(--line);
+  padding:8px 13px;border-radius:999px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  transition:gap .2s ease,color .2s ease;}
+.back:hover{gap:11px;color:var(--fg);}
+
+/* entrance reveals (gsap sets these when .anim survives the rAF probe) */
+.anim .slide.active .r{opacity:0;}
+
+/* ---------- mobile: degrade to a vertical stack ---------- */
+@media (max-width:760px){
+  body{overflow:auto;}
+  .stage{position:static;}
+  .track{display:block;height:auto;transform:none!important;transition:none;}
+  .slide{flex:none;height:auto;min-height:88vh;padding:64px 16px;}
+  .glass{max-height:none;overflow:visible;width:100%;}
+  .nav,.dots,.count{display:none;}
+  .anim .slide .r{opacity:1!important;}
+}
+@media (prefers-reduced-motion:reduce){
+  .track{transition:none;} .media{animation:none;}
+  .anim .r{opacity:1!important;}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <a class="back" href="../index.html#districts">← Back to the case study library</a>
-  <p class="eyebrow">Case study • Rural livelihoods training</p>
-  <h1>Biofloc Tilapia Farming</h1>
-  <p class="summary">A replicable model for mandal-level income generation, based on CMFRI&#x27;s Scheduled Caste Sub-Plan initiative.</p>
-  <div class="meta"><span class="tag place">CMFRI, Kerala</span><span class="tag">Aquaculture livelihoods</span><span class="tag">Replicable model</span></div>
-  
-  
-  <hr>
-  <div class="body">
-    <h2>THE CONCEPT</h2>
-    <p>What is Biofloc Fish Farming?</p>
-    <p>Biofloc is a high-density fish farming method carried out in a controlled tank, where naturally occurring microbes convert fish waste into useful protein-rich nutrients — recycled back as feed.</p>
-    <h3>Controlled environment</h3>
-    <p>Farming happens in a single tank, not an open pond — usable even where no water body exists.</p>
-    <h3>Waste becomes feed</h3>
-    <p>Microbial &#x27;floc&#x27; converts fish waste into nutrients, cutting feed cost and pollution.</p>
-    <h3>High density, small space</h3>
-    <p>Large yields from a compact footprint set up beside the household.</p>
-    <h2>WHY IT SUITS RURAL HOUSEHOLDS</h2>
-    <p class="k">No pond or river required</p>
-    <p class="k">Set up next to the home</p>
-    <p class="k">Low land requirement</p>
-    <p class="k">Family-run, low labour</p>
-    <p class="k">Steady 8-month income cycle</p>
-    <p class="k">Reuses water &amp; feed efficiently</p>
-    <h2>THE CASE STUDY</h2>
-    <p class="k">Cheranellur, Ernakulam — The Numbers</p>
-    <p class="k">Scheduled Caste families</p>
-    <p class="k">formed one self-help group</p>
-    <div class="grid"><div class="cell"><div class="v">1,800</div><div class="l">GIFT tilapia fry stocked in a single tank</div></div><div class="cell"><div class="v">23,500 L</div><div class="l">Biofloc tank built beside their homes</div></div></div>
-    <div class="entry"><div class="term">₹1,35,000</div><div><p class="eh">Income per cycle ≈ $1,800 every 8 months</p><p class="eb">Fish reach 300–500 g in a single 8-month cycle.</p></div></div>
-    <p>A previously landless group now runs a viable micro-enterprise — proof that the model creates real, repeatable household income without access to open water.</p>
-    <h2>THE MECHANICS</h2>
-    <h2>How the CMFRI Model Was Delivered</h2>
-    <h3>Identify &amp; organise</h3>
-    <p>Select eligible SC families and form a self-help group (SHG).</p>
-    <h3>Build the unit</h3>
-    <p>Install a 23,500 L biofloc tank next to households.</p>
-    <h3>Stock the fry</h3>
-    <p>Source GIFT tilapia fry from a certified hatchery (MPEDA).</p>
-    <h3>Manage &amp; monitor</h3>
-    <p>Use a water-quality kit; CMFRI guides every growth phase.</p>
-    <h3>Harvest &amp; sell</h3>
-    <p>Harvest at 300–500 g; earn ₹1.35 lakh per 8-month cycle.</p>
-    <p>CMFRI provided the tank, fry, feed and continuous technical guidance — the families provided labour and ownership.</p>
-    <h2>WHY IT MATTERS</h2>
-    <h2>A Tool for Inclusive Rural Development</h2>
-    <h3>Reaches the landless</h3>
-    <p>Designed under the Scheduled Caste Sub-Plan to benefit families without access to open water bodies.</p>
-    <h3>Builds entrepreneurs</h3>
-    <p>Families become small-scale business owners, not just beneficiaries — income stays in the community.</p>
-    <h3>Environmentally sound</h3>
-    <p>Closed, water-efficient system that recycles waste and avoids polluting local water sources.</p>
-    <h3>Already proven &amp; scaling</h3>
-    <p>Running across Palakkad, Thrissur, Idukki, Kottayam &amp; Kollam under CMFRI guidance.</p>
-    <h2>ACTION PLAN</h2>
-    <p class="k">Replication Roadmap for Your Mandal</p>
-    <p class="k">PHASE 1</p>
-    <p class="k">Survey &amp; Select</p>
-    <p class="k">Map SC/landless households lacking water-body access</p>
-    <p class="k">Identify motivated families willing to form an SHG</p>
-    <p class="k">Confirm space (~40 m²) and power/water near homes</p>
-    <p class="k">PHASE 2</p>
-    <p class="k">Mobilise &amp; Fund</p>
-    <p class="k">Form &amp; register the self-help group</p>
-    <p class="k">Tap SCSP / state fishery &amp; NRLM convergence funds</p>
-    <p class="k">Link group to a bank account for the cycle</p>
-    <p class="k">PHASE 3</p>
-    <p class="k">Set Up &amp; Train</p>
-    <p class="k">Install biofloc tank; supply fry, feed &amp; test kit</p>
-    <p class="k">Hands-on training on water quality &amp; feeding</p>
-    <p class="k">Source GIFT fry from a certified hatchery</p>
-    <p class="k">PHASE 4</p>
-    <p class="k">Run &amp; Scale</p>
-    <p class="k">Mentor through the first 8-month cycle</p>
-    <p class="k">Track growth, costs &amp; sales as a demo unit</p>
-    <p class="k">Use success to onboard more groups</p>
-    <h2>FOR THE OFFICER</h2>
-    <h2>Key Factors for a Successful Replication</h2>
-    <h3>Convergence</h3>
-    <p>Combine SCSP, fishery dept &amp; NRLM schemes for capital and subsidy.</p>
-    <h3>Technical hand-holding</h3>
-    <p>Tie up with a research/KVK partner for continuous guidance like CMFRI.</p>
-    <h3>Quality inputs</h3>
-    <p>Use certified GIFT fry and reliable feed — the single biggest yield driver.</p>
-    <h3>Water discipline</h3>
-    <p>Daily water-quality monitoring decides survival and growth rates.</p>
-    <h3>Group ownership</h3>
-    <p>A genuine SHG with shared stake sustains the unit beyond officials.</p>
-    <h3>Demo-led scaling</h3>
-    <p>Run one model unit well, then let visible income recruit the next groups.</p>
-    <p>Pick one ward. Form one group. Build one tank. Prove the income — then replicate.</p>
+<a class="back" href="../index.html#districts">&#8592; Library</a>
+<div class="count"><b id="cnum">01</b> / 08</div>
+<div class="stage">
+  <div class="track" id="track">
+<section class="slide cover" data-i="0"><div class="media" data-media="0" data-role="cover"></div><div class="glass cover-glass reveal-root"><p class="eyebrow r">Case study • Rural livelihoods training</p><h1 class="r">Biofloc Tilapia Farming</h1><p class="summary r">A replicable model for mandal-level income generation, based on CMFRI&#x27;s Scheduled Caste Sub-Plan initiative.</p><div class="meta r"><span class="tag place">CMFRI, Kerala</span><span class="tag">Aquaculture livelihoods</span><span class="tag">Replicable model</span></div><p class="hint r">Use ← → or the arrows to move through the story</p></div></section>
+<section class="slide" data-i="1"><div class="media" data-media="1" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">01</span><h2>THE CONCEPT</h2></div><div class="secbody r"><p>What is Biofloc Fish Farming?</p>
+<p>Biofloc is a high-density fish farming method carried out in a controlled tank, where naturally occurring microbes convert fish waste into useful protein-rich nutrients — recycled back as feed.</p>
+<h3>Controlled environment</h3>
+<p>Farming happens in a single tank, not an open pond — usable even where no water body exists.</p>
+<h3>Waste becomes feed</h3>
+<p>Microbial &#x27;floc&#x27; converts fish waste into nutrients, cutting feed cost and pollution.</p>
+<h3>High density, small space</h3>
+<p>Large yields from a compact footprint set up beside the household.</p></div></div></section>
+<section class="slide" data-i="2"><div class="media" data-media="2" data-role="action"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">02</span><h2>WHY IT SUITS RURAL HOUSEHOLDS</h2></div><div class="secbody r"><p class="k">No pond or river required</p>
+<p class="k">Set up next to the home</p>
+<p class="k">Low land requirement</p>
+<p class="k">Family-run, low labour</p>
+<p class="k">Steady 8-month income cycle</p>
+<p class="k">Reuses water &amp; feed efficiently</p></div></div></section>
+<section class="slide" data-i="3"><div class="media" data-media="3" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">03</span><h2>THE CASE STUDY</h2></div><div class="secbody r"><p class="k">Cheranellur, Ernakulam — The Numbers</p>
+<p class="k">Scheduled Caste families</p>
+<p class="k">formed one self-help group</p>
+<div class="grid"><div class="cell"><div class="v">1,800</div><div class="l">GIFT tilapia fry stocked in a single tank</div></div><div class="cell"><div class="v">23,500 L</div><div class="l">Biofloc tank built beside their homes</div></div></div>
+<div class="entry"><div class="term">₹1,35,000</div><div><p class="eh">Income per cycle ≈ $1,800 every 8 months</p><p class="eb">Fish reach 300–500 g in a single 8-month cycle.</p></div></div>
+<p>A previously landless group now runs a viable micro-enterprise — proof that the model creates real, repeatable household income without access to open water.</p></div></div></section>
+<section class="slide" data-i="4"><div class="media" data-media="4" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">04</span><h2>How the CMFRI Model Was Delivered</h2></div><div class="secbody r"><h3>Identify &amp; organise</h3>
+<p>Select eligible SC families and form a self-help group (SHG).</p>
+<h3>Build the unit</h3>
+<p>Install a 23,500 L biofloc tank next to households.</p>
+<h3>Stock the fry</h3>
+<p>Source GIFT tilapia fry from a certified hatchery (MPEDA).</p>
+<h3>Manage &amp; monitor</h3>
+<p>Use a water-quality kit; CMFRI guides every growth phase.</p>
+<h3>Harvest &amp; sell</h3>
+<p>Harvest at 300–500 g; earn ₹1.35 lakh per 8-month cycle.</p>
+<p>CMFRI provided the tank, fry, feed and continuous technical guidance — the families provided labour and ownership.</p></div></div></section>
+<section class="slide" data-i="5"><div class="media" data-media="5" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">05</span><h2>A Tool for Inclusive Rural Development</h2></div><div class="secbody r"><h3>Reaches the landless</h3>
+<p>Designed under the Scheduled Caste Sub-Plan to benefit families without access to open water bodies.</p>
+<h3>Builds entrepreneurs</h3>
+<p>Families become small-scale business owners, not just beneficiaries — income stays in the community.</p>
+<h3>Environmentally sound</h3>
+<p>Closed, water-efficient system that recycles waste and avoids polluting local water sources.</p>
+<h3>Already proven &amp; scaling</h3>
+<p>Running across Palakkad, Thrissur, Idukki, Kottayam &amp; Kollam under CMFRI guidance.</p></div></div></section>
+<section class="slide" data-i="6"><div class="media" data-media="6" data-role="takeaways"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">06</span><h2>ACTION PLAN</h2></div><div class="secbody r"><p class="k">Replication Roadmap for Your Mandal</p>
+<p class="k">PHASE 1</p>
+<p class="k">Survey &amp; Select</p>
+<p class="k">Map SC/landless households lacking water-body access</p>
+<p class="k">Identify motivated families willing to form an SHG</p>
+<p class="k">Confirm space (~40 m²) and power/water near homes</p>
+<p class="k">PHASE 2</p>
+<p class="k">Mobilise &amp; Fund</p>
+<p class="k">Form &amp; register the self-help group</p>
+<p class="k">Tap SCSP / state fishery &amp; NRLM convergence funds</p>
+<p class="k">Link group to a bank account for the cycle</p>
+<p class="k">PHASE 3</p>
+<p class="k">Set Up &amp; Train</p>
+<p class="k">Install biofloc tank; supply fry, feed &amp; test kit</p>
+<p class="k">Hands-on training on water quality &amp; feeding</p>
+<p class="k">Source GIFT fry from a certified hatchery</p>
+<p class="k">PHASE 4</p>
+<p class="k">Run &amp; Scale</p>
+<p class="k">Mentor through the first 8-month cycle</p>
+<p class="k">Track growth, costs &amp; sales as a demo unit</p>
+<p class="k">Use success to onboard more groups</p></div></div></section>
+<section class="slide" data-i="7"><div class="media" data-media="7" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">07</span><h2>Key Factors for a Successful Replication</h2></div><div class="secbody r"><h3>Convergence</h3>
+<p>Combine SCSP, fishery dept &amp; NRLM schemes for capital and subsidy.</p>
+<h3>Technical hand-holding</h3>
+<p>Tie up with a research/KVK partner for continuous guidance like CMFRI.</p>
+<h3>Quality inputs</h3>
+<p>Use certified GIFT fry and reliable feed — the single biggest yield driver.</p>
+<h3>Water discipline</h3>
+<p>Daily water-quality monitoring decides survival and growth rates.</p>
+<h3>Group ownership</h3>
+<p>A genuine SHG with shared stake sustains the unit beyond officials.</p>
+<h3>Demo-led scaling</h3>
+<p>Run one model unit well, then let visible income recruit the next groups.</p>
+<p>Pick one ward. Form one group. Build one tank. Prove the income — then replicate.</p></div></div></section>
   </div>
-  <footer>
-    <b>Pahlé India Foundation</b> · Swarna Andhra @2047 capacity-building case study.
-    Prepared for district &amp; mandal officers.
-  </footer>
 </div>
-<div class="reading" aria-hidden="true"></div>
+<div class="nav prev" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+<div class="nav next" id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
+<div class="dots" id="dots"></div>
+
 <script src="../assets/dash/gsap.js"></script>
 <script>
 (function(){
-  var root = document.documentElement;
-  var armed = root.classList.contains('anim');
-  var g = window.gsap;
+  var root=document.documentElement;
+  var track=document.getElementById('track');
+  var slides=[].slice.call(track.querySelectorAll('.slide'));
+  var N=slides.length, cur=0;
+  var prev=document.getElementById('prev'), next=document.getElementById('next');
+  var dotsWrap=document.getElementById('dots'), cnum=document.getElementById('cnum');
+  var mobile=function(){return matchMedia('(max-width:760px)').matches;};
 
-  // Reading-progress bar runs regardless of the entrance-animation gate.
-  var bar = document.querySelector('.reading');
-  function onScroll(){
-    var max = root.scrollHeight - root.clientHeight;
-    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
+  // Background asset resolution, most-specific first, gradient if none exist:
+  //   1. per-case  media/<slug>/<i>.(mp4|jpg)        e.g. media/morbi-.../2.jpg
+  //   2. common    media/common/<role>.(mp4|jpg)     reused across all cases
+  //   3. mesh gradient already painted in CSS (do nothing)
+  var SLUG='biofloc-tilapia';
+  function tryAsset(m, cands){
+    if(!cands.length) return;
+    var url=cands.shift();
+    if(/\.mp4$/.test(url)){
+      var v=document.createElement('video');
+      v.muted=true;v.loop=true;v.playsInline=true;v.autoplay=true;v.preload='auto';
+      v.onloadeddata=function(){ m.classList.add('has-asset'); m.appendChild(v); v.play&&v.play(); };
+      v.onerror=function(){ tryAsset(m,cands); };
+      v.src=url;
+    } else {
+      var img=new Image();
+      img.onload=function(){ m.classList.add('has-asset'); m.appendChild(img); };
+      img.onerror=function(){ tryAsset(m,cands); };
+      img.src=url;
+    }
   }
-  addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  slides.forEach(function(sl){
+    var m=sl.querySelector('.media'); if(!m) return;
+    var i=m.getAttribute('data-media'), role=m.getAttribute('data-role');
+    tryAsset(m, [
+      'media/'+SLUG+'/'+i+'.mp4', 'media/'+SLUG+'/'+i+'.gif', 'media/'+SLUG+'/'+i+'.jpg',
+      'media/common/'+role+'.mp4', 'media/common/'+role+'.gif', 'media/common/'+role+'.jpg'
+    ]);
+  });
 
-  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
-  // the .anim class is what hides content, so removing it is the safe fallback.
-  if(!armed || !g){ root.classList.remove('anim'); return; }
+  // dots
+  slides.forEach(function(_,i){
+    var d=document.createElement('div'); d.className='dot'+(i?'':' on');
+    d.addEventListener('click',function(){ go(i); });
+    dotsWrap.appendChild(d);
+  });
+  var dots=[].slice.call(dotsWrap.children);
 
-  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
-  g.config({nullTargetWarn:false});
+  function paint(){
+    if(!mobile()) track.style.transform='translateX(-'+(cur*100)+'%)';
+    dots.forEach(function(d,i){ d.classList.toggle('on', i===cur); });
+    cnum.textContent=('0'+(cur+1)).slice(-2);
+    prev.toggleAttribute('disabled', cur===0);
+    next.toggleAttribute('disabled', cur===N-1);
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===cur); });
+    reveal(slides[cur]);
+  }
+  function go(i){ cur=Math.max(0,Math.min(N-1,i)); paint(); }
+  function step(d){ go(cur+d); }
 
-  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
-  // backgrounded tab or some embedded preview panes the frame loop is paused, which
-  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
-  // drop .anim (reveal all, no animation) rather than risk invisible content.
-  var alive = false;
-  requestAnimationFrame(function(){ alive = true; });
-  setTimeout(function(){
-    if(!alive){ root.classList.remove('anim'); return; }
+  prev.addEventListener('click',function(){ step(-1); });
+  next.addEventListener('click',function(){ step(1); });
+  addEventListener('keydown',function(ev){
+    if(ev.key==='ArrowRight'||ev.key==='PageDown'){ step(1); }
+    else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){ step(-1); }
+    else if(ev.key==='Home'){ go(0); } else if(ev.key==='End'){ go(N-1); }
+  });
+  // Wheel: horizontal intent, or vertical when the panel isn't scrollable.
+  // A trackpad swipe is not one event — macOS momentum fires dozens over ~1s. A
+  // plain time lock still let 2-3 of them through per swipe, so instead the
+  // gesture must fully SETTLE (no wheel events for 240ms) before another advance
+  // is armed. One physical swipe therefore moves exactly one slide.
+  var wheelArmed=true, wheelTimer=null;
+  addEventListener('wheel',function(ev){
+    if(mobile()) return;
+    var g=slides[cur].querySelector('.glass');
+    var canScroll=g && g.scrollHeight>g.clientHeight+2;
+    var dom=Math.abs(ev.deltaX)>Math.abs(ev.deltaY)?ev.deltaX:ev.deltaY;
+    if(canScroll && Math.abs(ev.deltaY)>Math.abs(ev.deltaX)){
+      var atTop=g.scrollTop<=0, atBot=g.scrollTop+g.clientHeight>=g.scrollHeight-1;
+      if(!(atTop&&dom<0)&&!(atBot&&dom>0)) return; // let the panel scroll
+    }
+    clearTimeout(wheelTimer);
+    wheelTimer=setTimeout(function(){ wheelArmed=true; }, 240);
+    if(!wheelArmed || Math.abs(dom)<28) return;
+    wheelArmed=false;
+    step(dom>0?1:-1);
+  },{passive:true});
+  // touch swipe
+  var sx=0,sy=0;
+  addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+  addEventListener('touchend',function(e){
+    if(mobile()) return;
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)) step(dx<0?1:-1);
+  },{passive:true});
 
-    g.timeline({defaults:{ease:'power3.out'}})
-      .fromTo('.eyebrow',{opacity:0,y:12},{opacity:1,y:0,duration:.5})
-      .fromTo('h1',{opacity:0,y:24},{opacity:1,y:0,duration:.7},'-=.28')
-      .fromTo('.summary',{opacity:0,y:16},{opacity:1,y:0,duration:.6},'-=.46')
-      .fromTo('.meta .tag',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06},'-=.34')
-      .fromTo('.hero .cell',{opacity:0,y:22},{opacity:1,y:0,duration:.55,stagger:.08},'-=.24');
-
-    // scroll-reveal each body block as it enters; stat grids stagger their cards
-    var io = new IntersectionObserver(function(items){
-      items.forEach(function(en){
-        if(!en.isIntersecting) return;
-        var el = en.target; io.unobserve(el);
-        if(el.classList.contains('grid')){
-          g.set(el,{opacity:1});
-          g.fromTo(el.children,{opacity:0,y:18},
-            {opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'});
-        } else {
-          g.fromTo(el,{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'});
-        }
-      });
-    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
-    document.querySelectorAll('.body > *').forEach(function(el){ io.observe(el); });
-  }, 260);
+  // content reveal per active slide (rAF-gated; content never left hidden)
+  var g=window.gsap, armed=root.classList.contains('anim'), alive=false, ready=false;
+  if(g&&armed){ g.ticker.lagSmoothing(0); requestAnimationFrame(function(){alive=true;});
+    setTimeout(function(){ if(!alive){ root.classList.remove('anim'); } ready=true; paint(); }, 260); }
+  else { root.classList.remove('anim'); ready=true; paint(); }
+  function reveal(slide){
+    if(!ready||!alive||!g||!armed||mobile()) return;
+    var els=slide.querySelectorAll('.r');
+    g.killTweensOf(els);
+    g.fromTo(els,{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.08,ease:'power3.out'});
+  }
+  // first paint happens after the probe above; if gsap absent it already ran
 })();
 </script>
 </body>
