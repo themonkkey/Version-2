@@ -450,7 +450,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* The tabs are a navigation strip, not the start of the section's content, so
    they belong nearer the nav than a normal section's opening padding puts them.
    80px of empty stage above them read as a mistake rather than as breathing room. */
-#page-districts > .section{padding-top:clamp(18px,2.4vw,32px);}
+#page-districts > .section{padding-top:clamp(14px,1.6vw,20px);}
 /* Rank badge's page-level home. Empty and hidden until a district/constituency/
    mandal is picked and relocateRankBadge() finds one to move up here; cleared
    again on the way back to the state-wide map. */
@@ -629,7 +629,7 @@ a.docs-leaf:hover .ext{opacity:1;}
   #docsView .docs-tools{width:100%;}
   .docs-search{width:100%;}
 }
-.map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(12px,1.6vw,17px);
+.map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(10px,1.2vw,13px);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--glass-border);
   box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);
@@ -665,7 +665,7 @@ a.docs-leaf:hover .ext{opacity:1;}
 .map-box.picked .map-label{opacity:0;}
 .vstage .map-label .t,.vstage .map-label .c{color:rgba(255,255,255,.55);}
 
-.map-hint{font-size:12px;color:var(--label-3);text-align:center;margin-top:12px;letter-spacing:-.006em;}
+.map-hint{font-size:12px;color:var(--label-3);text-align:center;margin-top:7px;letter-spacing:-.006em;}
 
 /* Back out of the constituency view — only exists while zoomed in.
    In flow, not absolute: floated over the map it sat on top of the northern
@@ -1690,7 +1690,7 @@ function fitMap(){
 
   // everything in the box that is not the map: padding, back button, hint
   const chrome = box.getBoundingClientRect().height - svg.getBoundingClientRect().height;
-  const avail = window.innerHeight - top - chrome - 16;   // 16 = breathing room
+  const avail = window.innerHeight - top - chrome - 6;    // 6 = breathing room
   svg.style.setProperty('--map-h', Math.max(260, Math.round(avail)) + 'px');
 
   /* In DETAIL the map is WIDTH-bound, not height-bound: at a 32% column and a
