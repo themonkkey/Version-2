@@ -633,6 +633,89 @@ a.docs-leaf:hover .ext{opacity:1;}
 .case-foot .cgo{margin-left:auto;font-size:13px;color:rgba(198,236,143,.75);
   opacity:0;transition:opacity .15s;}
 .case-card:hover .cgo{opacity:1;}
+/* ── Improving GVA — sector playbooks ────────────────────────────────────
+   Same dark-stage rules as the document library: anything sitting on the
+   video needs its own frost, or the moving footage reads straight through and
+   contrast changes frame to frame. */
+.gva-intro{margin-bottom:clamp(18px,2.4vw,26px);}
+.gva-panel{border-radius:var(--r-lg);padding:clamp(16px,2vw,22px) clamp(18px,2.2vw,26px);
+  background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:0 12px 34px rgba(0,0,0,.20);}
+.gva-kicker{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--lime);margin-bottom:6px;}
+.gva-panel h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;margin:0 0 14px;color:#FFF;}
+.gva-steps{list-style:none;margin:0;padding:0;display:grid;gap:11px;}
+.gva-steps li{display:flex;gap:12px;align-items:flex-start;font-size:13.8px;line-height:1.5;
+  color:rgba(255,255,255,.86);}
+.gva-steps .n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(198,236,143,.20);color:#DCF0A8;font-size:11.5px;font-weight:700;margin-top:1px;}
+.gva-steps b{color:#FFF;font-weight:650;}
+.gva-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,20px);align-items:start;
+  margin-bottom:clamp(18px,2.4vw,26px);}
+
+/* Sector group — Primary / Secondary / Tertiary */
+.gva-group{margin-bottom:clamp(20px,2.6vw,30px);}
+.gva-ghead{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;}
+.gva-ghead h3{font-size:clamp(18px,2.2vw,23px);font-weight:700;color:#FFF;margin:0;letter-spacing:-.015em;}
+.gva-ghead .cnt{font-size:11.5px;color:rgba(255,255,255,.82);background:rgba(255,255,255,.14);
+  padding:2px 9px;border-radius:999px;}
+.gva-gblurb{font-size:13.4px;color:rgba(255,255,255,.78);margin:0 0 13px;max-width:74ch;line-height:1.5;}
+.gva-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.6vw,16px);align-items:start;}
+.gva-card{border-radius:var(--r);background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  overflow:hidden;}
+.gva-row{display:flex;align-items:center;gap:11px;width:100%;text-align:left;font:inherit;
+  cursor:pointer;padding:14px 16px;color:#FFF;background:transparent;border:0;transition:background .16s;}
+.gva-row:hover{background:rgba(255,255,255,.06);}
+.gva-row:focus-visible{outline:2px solid var(--lime);outline-offset:-2px;}
+.gva-row .caret{flex:0 0 auto;transition:transform .2s;color:rgba(255,255,255,.78);font-size:15px;}
+.gva-card.open>.gva-row .caret{transform:rotate(90deg);}
+.gva-row .nm{flex:1 1 auto;font-weight:650;font-size:14.4px;letter-spacing:-.008em;line-height:1.25;}
+.gva-body{display:none;padding:0 16px 16px;}
+.gva-card.open>.gva-body{display:block;}
+.gva-est{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.78);
+  padding:11px 13px;border-radius:10px;background:rgba(255,255,255,.06);
+  border-left:2px solid rgba(198,236,143,.5);margin-bottom:14px;}
+.gva-blk{margin-bottom:14px;}
+.gva-blk:last-child{margin-bottom:0;}
+.gva-blk h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(198,236,143,.9);margin:0 0 7px;}
+.gva-blk ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.gva-blk li{font-size:13.2px;line-height:1.48;color:rgba(255,255,255,.86);
+  display:flex;gap:9px;align-items:flex-start;}
+.gva-blk li::before{content:"";flex:0 0 auto;width:5px;height:5px;border-radius:50%;
+  background:rgba(198,236,143,.75);margin-top:7px;}
+/* pathways read as the headline levers, so they get chips rather than bullets */
+.gva-paths{display:flex;flex-wrap:wrap;gap:7px;}
+.gva-paths span{font-size:12.4px;color:#E9F5CE;background:rgba(198,236,143,.16);
+  border:1px solid rgba(198,236,143,.30);padding:4px 11px;border-radius:999px;}
+.gva-pol{display:flex;flex-wrap:wrap;gap:7px;}
+.gva-pol span{font-size:12.2px;color:rgba(255,255,255,.86);background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.18);padding:4px 10px;border-radius:8px;}
+/* the indicator/tool tables carry 4-5 columns and cannot compress to a phone
+   width — give them their own scroller so the page body never scrolls sideways */
+.gva-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.gva-scroll table{min-width:460px;}
+.gva-ind{width:100%;border-collapse:collapse;font-size:12.2px;}
+.gva-ind th{text-align:left;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(255,255,255,.68);font-weight:600;padding:0 8px 6px 0;border-bottom:1px solid rgba(255,255,255,.16);}
+.gva-ind td{padding:7px 8px 7px 0;color:rgba(255,255,255,.84);border-bottom:1px solid rgba(255,255,255,.08);
+  vertical-align:top;line-height:1.35;}
+.gva-ind tr:last-child td{border-bottom:0;}
+.gva-ind td:first-child{color:#FFF;font-weight:600;}
+.gva-tool{width:100%;border-collapse:collapse;font-size:12.6px;}
+.gva-tool th{text-align:left;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(255,255,255,.68);font-weight:600;padding:0 10px 7px 0;border-bottom:1px solid rgba(255,255,255,.16);}
+.gva-tool td{padding:9px 10px 9px 0;color:rgba(255,255,255,.84);border-bottom:1px solid rgba(255,255,255,.08);
+  vertical-align:top;line-height:1.45;}
+.gva-tool td:first-child{color:#FFF;font-weight:600;white-space:nowrap;}
+.gva-tool em{color:rgba(233,245,206,.92);font-style:italic;}
+@media(max-width:900px){
+  .gva-two{grid-template-columns:1fr;}
+  .gva-cards{grid-template-columns:1fr;}
+}
+
 /* Stack the library header on narrow screens — left as a flex row, the search
    field only got what was left beside the heading (measured 195px of a 375px
    viewport), which is too tight to read a placeholder in. */
@@ -1320,8 +1403,8 @@ a.docs-leaf:hover .ext{opacity:1;}
          cannot be clicked into a dead end. -->
     <div class="dtabs">
       <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plans</span></button>
-      <button class="dtab dtab-live" data-dtab="map" aria-pressed="true">Improving GVA<span class="dtab-soon">Income &amp; sectors</span></button>
-      <button class="dtab dtab-capacity" disabled aria-disabled="true">Capacity building<span class="dtab-soon">Coming soon</span></button>
+      <button class="dtab dtab-live" data-dtab="map" aria-pressed="true">The district map<span class="dtab-soon">Income &amp; sectors</span></button>
+      <button class="dtab dtab-live dtab-capacity" data-dtab="gva" aria-pressed="false">Improving GVA<span class="dtab-soon">Sector playbooks</span></button>
       <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">13 studies</span></button>
     </div>
     <div id="mapView">
@@ -1377,6 +1460,18 @@ a.docs-leaf:hover .ext{opacity:1;}
       </div>
       <div id="casesBody" aria-live="polite">
         <div class="docs-loading">Loading the case study library…</div>
+      </div>
+    </div>
+
+    <div id="gvaView" hidden>
+      <div class="sec-head sec-head-row">
+        <div>
+          <h2>Improving GVA</h2>
+          <p>What each sector's value added is made of, and the pathways, levers and indicators a district can actually move. Adapted from the DDP Toolbox for District Magistrates.</p>
+        </div>
+      </div>
+      <div id="gvaBody" aria-live="polite">
+        <div class="docs-loading">Loading the sector playbooks…</div>
       </div>
     </div>
   </div></section>
@@ -2520,15 +2615,129 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   }
 
   // Tab switching across the three live views: map, documents, case studies.
+  /* ── Improving GVA: the sector playbooks ──────────────────────────────
+     Content is the DDP Toolbox frameworks, grouped Primary / Secondary /
+     Tertiary. Each sector card carries how its GVA is estimated, the pathways
+     that raise it, the administrative actions a district controls, the schemes
+     to attach, and the indicators to monitor. Cards render collapsed and their
+     bodies are built once on first open, so 13 sectors' worth of tables are not
+     all in the DOM up front. */
+  var gvaView = document.getElementById('gvaView');
+  var gvaBody = document.getElementById('gvaBody');
+  var GVA = null, gvaLoaded = false, gvaLoading = false;
+
+  function esc2(s){ return String(s).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  function gvaList(items){
+    return '<ul>' + items.map(function(x){ return '<li>'+esc2(x)+'</li>'; }).join('') + '</ul>';
+  }
+
+  function gvaSectorBody(s){
+    var h = '';
+    if(s.estimation) h += '<div class="gva-est"><b>How it is estimated.</b> '+esc2(s.estimation)+'</div>';
+    if(s.pathways && s.pathways.length)
+      h += '<div class="gva-blk"><h4>Pathways that raise it</h4><div class="gva-paths">'+
+           s.pathways.map(function(p){return '<span>'+esc2(p)+'</span>';}).join('')+'</div></div>';
+    if(s.actions && s.actions.length)
+      h += '<div class="gva-blk"><h4>What a district can do</h4>'+gvaList(s.actions)+'</div>';
+    if(s.policies && s.policies.length)
+      h += '<div class="gva-blk"><h4>Schemes to attach</h4><div class="gva-pol">'+
+           s.policies.map(function(p){return '<span>'+esc2(p)+'</span>';}).join('')+'</div></div>';
+    if(s.indicators && s.indicators.length){
+      h += '<div class="gva-blk"><h4>Indicators to monitor</h4><div class="gva-scroll"><table class="gva-ind">'+
+           '<thead><tr><th>Indicator</th><th>Level</th><th>Lag</th><th>Frequency</th><th>Source</th></tr></thead><tbody>'+
+           s.indicators.map(function(r){
+             return '<tr>'+r.map(function(c){return '<td>'+esc2(c)+'</td>';}).join('')+'</tr>';
+           }).join('')+'</tbody></table></div></div>';
+    }
+    return h;
+  }
+
+  function renderGva(){
+    var p = GVA, h = '';
+    // the method + why-it-matters, side by side above the sectors
+    h += '<div class="gva-two">';
+    h += '<div class="gva-panel"><div class="gva-kicker">'+esc2(p.method.kicker)+'</div>'+
+         '<h3>'+esc2(p.method.title)+'</h3><ol class="gva-steps">'+
+         p.method.steps.map(function(s,i){
+           return '<li><span class="n">'+(i+1)+'</span><span><b>'+esc2(s[0])+'</b> '+esc2(s[1])+'</span></li>';
+         }).join('')+'</ol></div>';
+    h += '<div class="gva-panel"><div class="gva-kicker">'+esc2(p.leverage.kicker)+'</div>'+
+         '<h3>'+esc2(p.leverage.title)+'</h3><ol class="gva-steps">'+
+         p.leverage.points.map(function(s,i){
+           return '<li><span class="n">'+(i+1)+'</span><span><b>'+esc2(s[0])+'</b> '+esc2(s[1])+'</span></li>';
+         }).join('')+'</ol></div>';
+    h += '</div>';
+
+    p.groups.forEach(function(g){
+      h += '<div class="gva-group"><div class="gva-ghead"><h3>'+esc2(g.name)+'</h3>'+
+           '<span class="cnt">'+g.sectors.length+' sectors</span></div>'+
+           '<p class="gva-gblurb">'+esc2(g.blurb)+'</p><div class="gva-cards">';
+      g.sectors.forEach(function(s){
+        h += '<div class="gva-card" data-sec="'+esc2(s.key)+'">'+
+               '<button class="gva-row" type="button" aria-expanded="false">'+
+                 '<i class="ti ti-chevron-right caret"></i><span class="nm">'+esc2(s.title)+'</span>'+
+               '</button><div class="gva-body"></div></div>';
+      });
+      h += '</div></div>';
+    });
+
+    // toolbox: AI tools + NITI prompts
+    if(p.ai_tools && p.ai_tools.length){
+      h += '<div class="gva-panel gva-intro"><div class="gva-kicker">Toolbox</div>'+
+           '<h3>Tools for finding what worked elsewhere</h3><div class="gva-scroll"><table class="gva-tool">'+
+           '<thead><tr><th>Tool</th><th>Use it for</th><th>Example prompt</th><th>Cost</th></tr></thead><tbody>'+
+           p.ai_tools.map(function(r){
+             return '<tr><td>'+esc2(r[0])+'</td><td>'+esc2(r[1])+'</td><td><em>'+esc2(r[2])+'</em></td><td>'+esc2(r[3])+'</td></tr>';
+           }).join('')+'</tbody></table></div></div>';
+    }
+    if(p.niti && p.niti.length){
+      h += '<div class="gva-panel"><div class="gva-kicker">Learn from peers</div>'+
+           '<h3>NITI for States — questions worth asking</h3>'+gvaList(p.niti)+'</div>';
+    }
+    gvaBody.innerHTML = h;
+  }
+
+  // expand/collapse, building each sector body once
+  if(gvaBody) gvaBody.addEventListener('click', function(e){
+    var row = e.target.closest('.gva-row');
+    if(!row) return;
+    var card = row.parentElement;
+    if(!card._built){
+      var key = card.dataset.sec, found = null;
+      GVA.groups.forEach(function(g){ g.sectors.forEach(function(s){ if(s.key===key) found=s; }); });
+      if(found) card.querySelector('.gva-body').innerHTML = gvaSectorBody(found);
+      card._built = true;
+    }
+    var open = card.classList.toggle('open');
+    row.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  function loadGva(){
+    if(gvaLoaded || gvaLoading) return;
+    gvaLoading = true;
+    fetch('assets/gva_playbook.json?v=2026-08-12b')
+      .then(function(r){ return r.json(); })
+      .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); })
+      .catch(function(err){
+        gvaLoading=false;
+        gvaBody.innerHTML='<div class="docs-empty">Could not load the sector playbooks.</div>';
+        console.error('gva load failed', err);
+      });
+  }
+
   function setTab(which){
     mapView.hidden   = which !== 'map';
     docsView.hidden  = which !== 'docs';
     casesView.hidden = which !== 'cases';
+    if(gvaView) gvaView.hidden = which !== 'gva';
     document.querySelectorAll('.dtab-live').forEach(function(b){
       b.setAttribute('aria-pressed', b.dataset.dtab === which ? 'true' : 'false');
     });
     if(which === 'docs')  load();
     if(which === 'cases') loadCases();
+    if(which === 'gva')   loadGva();
   }
   document.querySelectorAll('.dtab-live').forEach(function(b){
     b.addEventListener('click', function(){ setTab(b.dataset.dtab); });
