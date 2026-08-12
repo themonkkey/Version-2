@@ -1,0 +1,81 @@
+PROMPT — Shared role — SOLUTION (the answer / strategy / building the ecosystem)
+FILE  -> landing/cases/media/common/solution.mp4
+Used by every slide about the answer, the strategy, the opportunity or building an ecosystem.
+
+================================================================================
+
+Seamless looping ambient background video for a government economic case-study
+website. It sits BEHIND a frosted-glass panel of white text, so it must read as a
+quiet, dignified backdrop — never as the subject.
+
+--- SCENE ---
+The skeletal frame of something half-built at first light — scaffolding poles and converging structural beams taking shape, a dark foreground of stacked material rising toward a brightening pre-dawn edge. Quiet, ordered optimism.
+
+--- ART DIRECTION (locked) ---
+Hand-crafted 16-bit pixel art in the tradition of SNES/Amiga atmospheric
+backdrops and modern Lospec palette work. Serious, editorial, architectural —
+NOT cute, NOT retro-gamey, NOT chiptune-whimsical. This illustrates public
+economic policy: dignified and restrained.
+Native render 480x270, 1:1 square pixels, NO anti-aliasing, hard pixel edges,
+upscaled x4 with nearest-neighbour to 1920x1080. Ordered Bayer/checkerboard
+dithering for every gradient — sky, haze, glow falloff, water. Visible dither
+texture. No smooth blends, no gaussian softness, no photographic realism.
+
+--- PALETTE (strict) ---
+#06140F #0A1310 #121A18 #1C2422 #28322E #3A4440 #4E5854 #646E68 #7C857E #241F19 #3A3228 #564A3C
+Use these twelve values and nothing else. Anchor black is #06140F (the page
+background) so the frame melts into the site. Maximum 3 shades per material.
+DESATURATED throughout: the interface applies a +30% saturation boost over this
+footage, so anything vivid at source turns garish. Mute it at source.
+The brightest pixel in the frame must not exceed ~65% luminance. No white, no
+blown highlights, no neon.
+
+--- COMPOSITION (safe zone is non-negotiable) ---
+16:9. Three depth layers: hard silhouette foreground, hazy dithered midground,
+faded background.
+The CENTRE of the frame — the middle 65% of width and 85% of height — must stay
+DIM, CALM, LOW-CONTRAST and nearly static. A glass text panel covers it. No focal
+point, no bright object, no busy detail, no motion there.
+Push all structure, silhouette and interest to the LEFT edge, RIGHT edge and TOP
+third. Horizon on the lower third. The bottom of the frame is darkened further by
+the interface, so keep meaningful detail out of the lowest 15%.
+This background is reused across many case studies, so keep the scene generic and symbolic rather than tied to one place or industry.
+
+--- LIGHT ---
+One single warm light source, from the right, just above the horizon, with a long dithered falloff into
+deep shadow. Everything else unlit. Low-key throughout. Gentle vignette on all
+four edges. Mid-dark overall — the interface darkens this footage a further 35%
+at the top and 68% at the bottom, so do NOT deliver it already black; deliver it
+readable and let the interface crush it.
+
+--- MOTION (the hard constraint) ---
+Seamless, perfectly tileable loop. 10 seconds, 12 fps, 120 frames. The last frame
+must flow into the first with no jump, no fade, no cut.
+AMBIENT MOTION ONLY: the dawn glow at the horizon breathing almost imperceptibly brighter and back again once across the loop. Amplitude tiny — a few pixels of travel across the
+whole loop. Slow, large-scale, low-frequency. Everything else in the frame is
+PERFECTLY STILL: the scaffolding, beams, material and foreground silhouettes do not move at all.
+NO camera movement of any kind: no pan, no zoom, no dolly, no parallax drift, no
+handheld shake, no rotation. The camera is locked on a tripod and never moves.
+NO cuts, no scene changes, no transitions, no flashing, no strobing, no rapid
+flicker. Nothing that pulses faster than roughly once per two seconds.
+This plays silently on loop behind text for minutes at a time — it must be
+calming and almost subliminal. If a viewer notices the motion, it is too much.
+
+--- ABSOLUTELY NOT ---
+No text, letters, numbers, glyphs, signage, logos, watermarks, UI or HUD.
+No recognisable human faces, no identifiable individuals, no crowds.
+No brand marks, no flags, no religious or political symbols.
+No photorealism, no 3D render look, no cinematic lens flare, no bokeh.
+No bright washed-out regions, no high-contrast centre, no fast motion.
+
+--- DELIVERY ---
+1920x1080, H.264 .mp4, no audio, <=6 MB, exactly 10 s, loop-safe.
+
+================================================================================
+STILL VERSION: for a .jpg instead, use everything above except the MOTION block,
+and render a single frame. Same file name with .jpg — the deck falls back to it.
+
+METHOD: most video models ignore long negatives. Generate the STILL first
+(Retro Diffusion / PixelLab / Midjourney), then animate that exact frame
+image-to-video (Runway / Kling / Luma) feeding ONLY the MOTION block as the
+instruction. Far more reliable, and the palette and safe zone survive.
