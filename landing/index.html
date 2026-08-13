@@ -639,9 +639,13 @@ a.docs-leaf:hover .ext{opacity:1;}
    that brightened page as a pale strip along the edge. A covered card needs no
    backdrop filter (the art is opaque and covers everything), so drop it and give
    the card a solid dark ground; the ring then reads dark, not white. */
+/* overflow:hidden clips children to the PADDING box, so the art can never cover
+   the 1px border ring — anything light there shows as a hairline down the card
+   edge. Match the border to the card's own ground so the ring disappears, and let
+   hover supply the only visible outline. */
 .case-card.has-cover{position:relative;overflow:hidden;
   background-color:#0A2016;backdrop-filter:none;-webkit-backdrop-filter:none;
-  border-color:rgba(255,255,255,.16);}
+  border-color:#0A2016;}
 .case-card.has-cover::before{content:"";position:absolute;inset:0;z-index:0;
   background-image:var(--cover);background-size:cover;background-position:center;
   background-repeat:no-repeat;
