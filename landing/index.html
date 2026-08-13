@@ -634,8 +634,14 @@ a.docs-leaf:hover .ext{opacity:1;}
    rides on its own ::before layer and is brightness-filtered there, lifting the
    artwork without touching the card's text. ::after carries the scrim; content
    sits above both. */
+/* The card's backdrop-filter brightens whatever sits behind it, and inset:0 on the
+   art layers resolves to the PADDING box — so the 1px border ring was left showing
+   that brightened page as a pale strip along the edge. A covered card needs no
+   backdrop filter (the art is opaque and covers everything), so drop it and give
+   the card a solid dark ground; the ring then reads dark, not white. */
 .case-card.has-cover{position:relative;overflow:hidden;
-  border-color:rgba(255,255,255,.22);}
+  background-color:#0A2016;backdrop-filter:none;-webkit-backdrop-filter:none;
+  border-color:rgba(255,255,255,.16);}
 .case-card.has-cover::before{content:"";position:absolute;inset:0;z-index:0;
   background-image:var(--cover);background-size:cover;background-position:center;
   background-repeat:no-repeat;
@@ -657,7 +663,7 @@ a.docs-leaf:hover .ext{opacity:1;}
 .case-card.has-cover > *{position:relative;z-index:2;}
 /* rail keeps its own ground so the art never washes the label out */
 .case-card.has-cover .cbar,.case-card.has-cover .case-foot{background:rgba(7,30,20,.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
-.case-card.has-cover:hover{border-color:rgba(198,236,143,.6);}
+.case-card.has-cover:hover{border-color:rgba(198,236,143,.6);background-color:#0A2016;}
 .case-card.has-cover:hover::before{transform:scale(1.04);filter:brightness(2.25) saturate(1.18);}
 .case-card:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .case-main{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;}
