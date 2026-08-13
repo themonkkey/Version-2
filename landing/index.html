@@ -2771,7 +2771,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadCases(){
     if(casesLoaded) return;
     casesLoaded = true;
-    fetch('assets/case_studies.json?v=2026-08-13b').then(function(r){ return r.json(); }).then(function(d){
+    fetch('assets/case_studies.json?v=2026-08-13c').then(function(r){ return r.json(); }).then(function(d){
       casesBody.innerHTML =
         group('Andhra Pradesh districts', 'Case-for-action briefs tied to a specific district.', d.ap)+
         group('Replicable models', 'Clusters and models from elsewhere, framed for district and mandal officers.', d.model);

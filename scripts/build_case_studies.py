@@ -86,7 +86,7 @@ META = [
         "file": "Morbi_Ceramics_Industry.txt", "slug": "morbi-ceramic-cluster",
         "group": "model", "district": None, "place": "Morbi, Gujarat",
         "theme": "Manufacturing cluster",
-        "eyebrow": "Industrial cluster case study",
+        "eyebrow": "Industrial cluster",
         "title": "The Morbi Ceramic Cluster",
         "summary": "How a traditional craft town became the world's #2 ceramic tile producer — "
                    "and what a cluster's collective reinvention takes.",
@@ -95,7 +95,7 @@ META = [
         "file": "Tiruppur_Case_Study_Updated.txt", "slug": "tiruppur-textiles",
         "group": "model", "district": None, "place": "Tiruppur, Tamil Nadu",
         "theme": "Textiles cluster",
-        "eyebrow": "Industrial cluster case study",
+        "eyebrow": "Industrial cluster",
         "title": "Tiruppur: Innovation in Textiles & Garments",
         "summary": "The rise of South India's “Banian City” — a knitwear cluster that "
                    "moved from job-work to a global export base.",
@@ -104,7 +104,7 @@ META = [
         "file": "Kumarakom_Responsible_Tourism_Case_Study.txt", "slug": "kumarakom-tourism",
         "group": "model", "district": None, "place": "Kumarakom, Kerala",
         "theme": "Responsible tourism",
-        "eyebrow": "Case study • Responsible tourism",
+        "eyebrow": "Responsible tourism",
         "title": "The Kumarakom Responsible Tourism Model",
         "summary": "How a destination-level partnership linked tourism demand with local "
                    "livelihoods, culture and conservation.",
@@ -113,7 +113,7 @@ META = [
         "file": "Sahyadri_Replication_Playbook.txt", "slug": "sahyadri-farms-fpc",
         "group": "model", "district": None, "place": "Nashik, Maharashtra",
         "theme": "FPC / supply chain",
-        "eyebrow": "Case study • Replication playbook",
+        "eyebrow": "Replication playbook",
         "title": "Sahyadri Farms: Smallholders in an Integrated Supply Chain",
         "summary": "What the Sahyadri Farms (FPC) model means for our mandals and districts.",
     },
@@ -121,7 +121,7 @@ META = [
         "file": "Chetna_FPO_Lessons.txt", "slug": "chetna-organics-fpo",
         "group": "model", "district": None, "place": "Central India",
         "theme": "FPO strengthening",
-        "eyebrow": "Case study • Farmer producer organisations",
+        "eyebrow": "Farmer producer organisations",
         "title": "Chetna Organics: Building a Farmer-Owned Supply Chain",
         "summary": "What mandal officers can learn from an organic-cotton FPO to strengthen "
                    "their own producer organisations.",
@@ -130,7 +130,7 @@ META = [
         "file": "Biofloc_Tilapia_CaseStudy.txt", "slug": "biofloc-tilapia",
         "group": "model", "district": None, "place": "CMFRI, Kerala",
         "theme": "Aquaculture livelihoods",
-        "eyebrow": "Case study • Rural livelihoods training",
+        "eyebrow": "Rural livelihoods training",
         "title": "Biofloc Tilapia Farming",
         "summary": "A replicable model for mandal-level income generation, based on CMFRI's "
                    "Scheduled Caste Sub-Plan initiative.",
@@ -139,7 +139,7 @@ META = [
         "file": "Paddy_Fish_Integrated_Farming_Case_Study_AP.txt", "slug": "paddy-fish-farming",
         "group": "model", "district": None, "place": "India & China models",
         "theme": "Integrated farming",
-        "eyebrow": "Case study deck",
+        "eyebrow": "Models & roadmap",
         "title": "Paddy + Fish Integrated Farming",
         "summary": "Successful models from India and China, and a practical roadmap for "
                    "paddy-growing districts of Andhra Pradesh.",
@@ -148,7 +148,7 @@ META = [
         "file": "Banana_Processing_Case_Study.txt", "slug": "banana-processing",
         "group": "model", "district": None, "place": "Kanyakumari & Jalgaon",
         "theme": "Agro-processing",
-        "eyebrow": "Capacity building case study",
+        "eyebrow": "Two replicable cases",
         "title": "Banana Processing & Waste-to-Wealth Models",
         "summary": "Two replicable cases — KVK Kanyakumari value-added foods and the Jalgaon "
                    "pseudo-stem processing cluster.",
