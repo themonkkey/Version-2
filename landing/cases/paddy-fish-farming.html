@@ -5,333 +5,426 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Paddy + Fish Integrated Farming — Swarna Andhra case study</title>
 <script>
-/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
-   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
-   stays fully visible and the GSAP layer below is skipped. */
-(function(){
-  try{
-    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
-             && 'IntersectionObserver' in window;
-    if(ok) document.documentElement.className += ' anim';
-  }catch(e){}
-})();
+(function(){try{var ok=!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window;if(ok)document.documentElement.className+=' anim';}catch(e){}})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0B2E20;--ink2:#09281B;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.14);
-  --fg:#EAF2EC;--mut:rgba(234,242,236,.72);--mut2:rgba(234,242,236,.5);--lime:#C6EC8F;--lime2:#8FC93A;}
+:root{
+  --ink:#06140F;--fg:#EEF5EF;--mut:rgba(238,245,239,.74);--mut2:rgba(238,245,239,.5);
+  --t1:#6FA817;--t2:#B7D66B;
+  --glass:rgba(8,22,16,.52);--glass2:rgba(8,22,16,.34);--line:rgba(255,255,255,.16);
+}
 *{box-sizing:border-box;}
-body{margin:0;background:var(--ink);color:var(--fg);
+html,body{margin:0;height:100%;}
+body{background:var(--ink);color:var(--fg);overflow:hidden;
   font-family:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   line-height:1.6;-webkit-font-smoothing:antialiased;}
-a{color:var(--lime);}
-.wrap{max-width:760px;margin:0 auto;padding:clamp(20px,5vw,44px) clamp(18px,5vw,28px) 80px;}
-.back{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
-  color:var(--mut);text-decoration:none;margin-bottom:clamp(22px,4vw,34px);}
-.back:hover{color:var(--lime);}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--lime2);margin:0 0 14px;}
-h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,5.5vw,46px);
-  line-height:1.08;letter-spacing:-.01em;margin:0 0 16px;}
-.summary{font-size:clamp(16px,2vw,19px);color:var(--mut);margin:0 0 22px;max-width:60ch;}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;}
-.tag{font-size:12px;font-weight:600;letter-spacing:.01em;padding:5px 11px;border-radius:999px;
-  background:var(--panel);border:1px solid var(--line);color:var(--mut);}
+a{color:var(--t2);}
+
+/* ---------- horizontal deck ---------- */
+.stage{position:fixed;inset:0;overflow:hidden;}
+.track{display:flex;height:100%;width:100%;
+  transition:transform .72s cubic-bezier(.76,0,.24,1);will-change:transform;}
+.slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;padding:clamp(20px,5vw,64px);}
+
+/* full-bleed background: animated mesh, tinted; photo/video overlays it if present */
+.media{position:absolute;inset:0;z-index:0;
+  /* The tint used to sit at 42%/34% of the theme hue. For the agri cases that hue
+     is #6FA817 — a yellow-green — so the whole stage read olive rather than the
+     site's deep forest green. Dropped to a whisper: enough to tell the themes
+     apart, not enough to cast. The deep-green base now dominates. */
+  background:
+    radial-gradient(62% 72% at 18% 22%, color-mix(in srgb, var(--t1) 13%, transparent), transparent 72%),
+    radial-gradient(58% 66% at 82% 78%, color-mix(in srgb, var(--t2) 9%, transparent), transparent 72%),
+    radial-gradient(95% 95% at 50% 45%, #0B241B, #050F0B 78%);
+  background-size:180% 180%,180% 180%,100% 100%;
+  animation:drift 26s ease-in-out infinite alternate;}
+@keyframes drift{
+  0%{background-position:0% 0%,100% 100%,50% 50%;}
+  100%{background-position:60% 40%,40% 60%,50% 50%;}}
+.media::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 80% at 50% 120%, rgba(0,0,0,.5), transparent 60%);}
+.media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .8s ease;}
+/* Pixel-art assets opt in per-file via a .pixel class; cinematic footage must NOT
+   be nearest-neighbour scaled or it aliases badly. */
+.media.pixel img,.media.pixel video{image-rendering:pixelated;}
+.media.has-asset img,.media.has-asset video{opacity:1;}
+.media.has-asset::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg, rgba(4,12,9,.35), rgba(4,12,9,.68));}
+
+/* ---------- glass panel ---------- */
+.glass{position:relative;z-index:2;width:min(760px,100%);height:min(76vh,660px);overflow:auto;
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(30px) saturate(1.3);backdrop-filter:blur(30px) saturate(1.3);
+  border:1px solid var(--line);border-radius:24px;
+  padding:clamp(24px,4vw,44px);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.08);
+  scrollbar-width:thin;scrollbar-color:var(--t2) transparent;}
+.glass::-webkit-scrollbar{width:8px;}
+.glass::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--t2) 50%,transparent);border-radius:8px;}
+.cover-glass{width:min(680px,100%);}
+/* cover content sits centred in the same fixed box rather than hugging the top */
+.cover-glass{display:flex;flex-direction:column;justify-content:center;}
+
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--t2);margin:0 0 16px;}
+h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,5.2vw,52px);
+  line-height:1.05;letter-spacing:-.01em;margin:0 0 18px;}
+.summary{font-size:clamp(16px,2vw,20px);color:var(--mut);margin:0 0 22px;max-width:56ch;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
+.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;
+  background:var(--glass2);border:1px solid var(--line);color:var(--mut);}
 .tag.place{color:var(--fg);}
-.src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
-hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
-/* hero stat band — the cover-slide numbers, restored */
-.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
-  margin:26px 0 4px;}
-.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
-  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
-.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
-  line-height:1;color:var(--lime);letter-spacing:-.01em;}
-.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
-.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
-  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
-  border-bottom:1px solid var(--line);}
-.body h2:first-child{margin-top:4px;}
-.body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
-  letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
-.body h3:first-child{margin-top:0;}
-.body p{margin:0 0 14px;color:var(--mut);}
-.body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
-  color:var(--lime2);}
-.body .k + h3{margin-top:2px;}
-/* in-body stat grid */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
-  margin:16px 0 22px;}
-.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
-  padding:15px 15px 13px;}
-.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
-  line-height:1;color:var(--lime);}
-.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
-/* timeline / definition entry */
-.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
-  padding:15px 0;border-top:1px solid var(--line);}
+.hint{font-size:12.5px;color:var(--mut2);margin:22px 0 0;letter-spacing:.02em;}
+
+.sechead{display:flex;align-items:baseline;gap:14px;margin:0 0 20px;
+  padding-bottom:14px;border-bottom:1px solid var(--line);}
+.secnum{font-family:'Bodoni Moda',serif;font-weight:600;font-size:16px;color:var(--t2);
+  letter-spacing:.04em;}
+.sechead h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
+  font-size:clamp(22px,3.2vw,32px);letter-spacing:-.01em;color:#fff;margin:0;line-height:1.1;}
+.secbody h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(16px,2vw,20px);
+  color:#fff;margin:22px 0 6px;}
+.secbody h3:first-child{margin-top:0;}
+.secbody p{margin:0 0 13px;color:var(--mut);}
+.secbody .k{margin:16px 0 4px;font-weight:700;font-size:13.5px;color:var(--t2);letter-spacing:.02em;}
+
+/* hero + stat grids as inner glass chips */
+.hero,.grid{display:grid;gap:12px;margin:18px 0 4px;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}
+.grid{margin:14px 0 20px;}
+.scell,.cell{background:var(--glass2);border:1px solid var(--line);border-radius:14px;
+  padding:15px 16px 13px;transition:transform .26s cubic-bezier(.2,.7,.2,1),border-color .26s ease;}
+.scell:hover,.cell:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--t2) 50%,var(--line));}
+.scell .v,.cell .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
+  font-size:clamp(22px,3vw,30px);line-height:1;color:var(--t2);}
+.scell .l,.cell .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);font-weight:600;}
+
+/* timeline entry */
+.entry{display:grid;grid-template-columns:minmax(90px,124px) 1fr;gap:16px;
+  padding:14px 0;border-top:1px solid var(--line);}
 .entry:first-of-type{border-top:none;}
-.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
-.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
-.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
-@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
-footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
-  font-size:12.5px;color:var(--mut2);}
-footer b{color:var(--mut);font-weight:600;}
-/* ---- motion + interaction polish ---- */
-/* initial hidden states, applied only while .anim is armed (see head script) */
-.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
-.anim .hero .cell,.anim .body>*{opacity:0;}
-.reading{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
-  background:linear-gradient(90deg,var(--lime2),var(--lime));
-  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}
-.hero .cell,.grid .cell{transition:transform .28s cubic-bezier(.2,.7,.2,1),
-  border-color .28s ease,box-shadow .28s ease;will-change:transform;}
-.hero .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
-  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}
-.grid .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
-  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}
-.back{transition:color .2s ease,gap .2s ease;}
-.back:hover{gap:11px;}
-@media (prefers-reduced-motion: reduce){
-  *{animation:none!important;transition:none!important;}
-  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
-  .anim .hero .cell,.anim .body>*{opacity:1;}
+.entry .term{font-weight:700;font-size:13px;color:var(--t2);}
+.entry .eh{font-weight:700;font-size:15px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14px;color:var(--mut);line-height:1.55;}
+
+/* ---------- chrome: arrows, dots, progress, back ---------- */
+.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:30;
+  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:var(--glass);border:1px solid var(--line);color:var(--fg);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  transition:transform .2s ease,background .2s ease,opacity .2s ease;user-select:none;}
+.nav:hover{background:color-mix(in srgb,var(--t1) 30%,var(--glass));transform:translateY(-50%) scale(1.07);}
+.nav.prev{left:clamp(12px,2.5vw,30px);}
+.nav.next{right:clamp(12px,2.5vw,30px);}
+.nav[disabled]{opacity:.3;pointer-events:none;}
+.nav svg{width:20px;height:20px;}
+.dots{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:30;
+  display:flex;gap:10px;align-items:center;
+  background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:9px 14px;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;
+  transition:all .3s ease;}
+.dot.on{width:26px;border-radius:6px;background:linear-gradient(90deg,var(--t1),var(--t2));}
+.count{position:fixed;top:22px;right:clamp(16px,3vw,30px);z-index:30;font-size:13px;
+  color:var(--mut);font-variant-numeric:tabular-nums;}
+.count b{color:var(--fg);font-family:'Bodoni Moda',serif;font-size:17px;}
+.back{position:fixed;top:20px;left:clamp(16px,3vw,30px);z-index:30;
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
+  color:var(--mut);text-decoration:none;background:var(--glass);border:1px solid var(--line);
+  padding:8px 13px;border-radius:999px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  transition:gap .2s ease,color .2s ease;}
+.back:hover{gap:11px;color:var(--fg);}
+
+/* entrance reveals (gsap sets these when .anim survives the rAF probe) */
+.anim .slide.active .r{opacity:0;}
+
+/* ---------- mobile: degrade to a vertical stack ---------- */
+@media (max-width:760px){
+  body{overflow:auto;}
+  .stage{position:static;}
+  .track{display:block;height:auto;transform:none!important;transition:none;}
+  .slide{flex:none;height:auto;min-height:88vh;padding:64px 16px;}
+  .glass{height:auto;max-height:none;overflow:visible;width:100%;}
+  .nav,.dots,.count{display:none;}
+  .anim .slide .r{opacity:1!important;}
+}
+@media (prefers-reduced-motion:reduce){
+  .track{transition:none;} .media{animation:none;}
+  .anim .r{opacity:1!important;}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <a class="back" href="../index.html#districts">← Back to the case study library</a>
-  <p class="eyebrow">Case study deck</p>
-  <h1>Paddy + Fish Integrated Farming</h1>
-  <p class="summary">Successful models from India and China, and a practical roadmap for paddy-growing districts of Andhra Pradesh.</p>
-  <div class="meta"><span class="tag place">India &amp; China models</span><span class="tag">Integrated farming</span><span class="tag">Replicable model</span></div>
-  
-  
-  <hr>
-  <div class="body">
-    <h2>STRATEGIC CONTEXT</h2>
-    <p class="k">Why paddy + fish integration matters for Andhra Pradesh</p>
-    <h3>Paddy base already exists</h3>
-    <p>West Godavari, East Godavari and Krishna are among the most important rice-producing districts of Andhra Pradesh and India.</p>
-    <h3>Need to raise net income</h3>
-    <p>Rice monoculture often faces cost, price and climate risks. Fish adds a second output from the same field and water.</p>
-    <h3>AP has fisheries capability</h3>
-    <p>Coastal and delta districts already have farmers, markets and departments familiar with fish seed, stocking and marketing.</p>
-    <h3>Policy fit for AP</h3>
-    <p>Supports district GVA growth through allied-sector income.</p>
-    <p>Works well with natural farming, water-efficiency and nutrition goals.</p>
-    <p>Creates a field-level demonstration model that officers can scale through RBKs and mandal teams.</p>
-    <p class="k">Dual output</p>
-    <p class="k">Rice + fish from same plot</p>
-    <p class="k">Lower input</p>
-    <p class="k">Less weeding / pest pressure</p>
-    <h2>Higher resilience</h2>
-    <h3>Diversified farmer income</h3>
-    <p>Sources: AP Seeds paddy crop note; CGIAR, 2023; TNAU fishery integration note.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
-    <h2>BASIC CONCEPT</h2>
-    <p class="k">The model: one paddy field, two harvests</p>
-    <p class="k">How the symbiosis works</p>
-    <h3>Fish help rice</h3>
-    <p>Fish manure fertilizes soil; fish movement aerates water and softens soil; fish eat larvae, weeds and insects.</p>
-    <h3>Rice helps fish</h3>
-    <p>Rice canopy provides shade; the flooded field gives habitat; plankton and organic matter support fish growth.</p>
-    <h3>Field modification</h3>
-    <p>Raised bunds, fish refuge trench/pond, screened inlet/outlet, controlled water depth and safe harvest channel.</p>
-    <h3>Management shift</h3>
-    <p>Rice calendar must align with stocking; pesticide use must be avoided or carefully controlled.</p>
-    <p>Core lesson: this is not &quot;fish added to paddy&quot;; it is a planned field system requiring water control, species choice and farmer training.</p>
-    <p>Sources: FAO GIAHS Qingtian Rice-Fish Culture; UNDP/NITI Assam rice-fish case.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
-    <h2>SUCCESSFUL INDIAN PILOT</h2>
-    <p class="k">India case study 1: Climate-resilient rice–fish farming in Assam</p>
-    <p class="k">Project scale</p>
-    <div class="grid"><div class="cell"><div class="v">431 ha</div><div class="l">water bodies covered districts</div></div></div>
-    <div class="entry"><div class="term">867</div><div><p class="eh">beneficiaries</p><p class="eb">Implemented by the Fishery Department, Assam during 2018–19 to 2020–21 as a climate-resilient livelihood model.</p></div></div>
-    <p class="k">Field/trench prep</p>
-    <p class="k">Liming &amp; stocking</p>
-    <p class="k">Feed &amp; health</p>
-    <div class="entry"><div class="term">Harvest &amp; market</div><div><p class="eh">Reported outcomes</p><p class="eb">Paddy yield increased by 10%–25%.</p></div></div>
-    <p>Average rice production reported around 7 tonnes/ha/year.</p>
-    <p>Fish production reported nearly 2 tonnes/ha/crop.</p>
-    <p>Reduced weeding labour and improved local fish availability.</p>
-    <h3>Learning for AP officials</h3>
-    <p>Start with technically suitable fields and invest in handholding. The model succeeds when fisheries and agriculture staff work together through a common mandal plan.</p>
-    <p>Source: UNDP SDG Knowledge Hub / NITI for States, &quot;Climate Resilient Rice–Fish Farming in Assam&quot;.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
-    <h2>INDIGENOUS MODEL</h2>
-    <h2>India case study 2: Apatani paddy-cum-fish farming, Arunachal Pradesh</h2>
-    <h3>Why this model is important</h3>
-    <p>Widely practiced in the Apatani plateau and described by the state fisheries department as profitable and sustainable.</p>
-    <p>Generates two crops — paddy and fish — from the same cultivable area.</p>
-    <p>Uses low-lying fields, raised bunds, irrigation channels and suitable carp species.</p>
-    <div class="grid"><div class="cell"><div class="v">2–3 ft</div><div class="l">recommended bund height in government note Common / Amur carp</div></div></div>
-    <p class="k">common species in model</p>
-    <h3>Transferable lesson</h3>
-    <p>Rice–fish integration works best when water channels, community rules and farmer skills are designed together — not as isolated input distribution.</p>
-    <p>Source: Directorate of Fisheries, Government of Arunachal Pradesh, &quot;Paddy-cum-fish-culture&quot;.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
-    <h2>GLOBAL HERITAGE MODEL</h2>
-    <p class="k">China case study: Qingtian Rice–Fish Culture System</p>
-    <div class="grid"><div class="cell"><div class="v">1,300+ yrs</div><div class="l">traditional system in Qingtian</div></div><div class="cell"><div class="v">2005</div><div class="l">FAO GIAHS recognition Eco-brand</div></div></div>
-    <p class="k">rice + fish + tourism</p>
-    <h3>What makes it successful</h3>
-    <p>Fish fertilize rice, disturb water, soften soil, and eat larvae and weeds.</p>
-    <p>Rice gives fish shade, food and habitat.</p>
-    <p>Lower-cost inputs reduce use of chemical fertilizers, pesticides and herbicides.</p>
-    <p>Heritage branding supports higher-value products and rural revitalization.</p>
-    <p>Learning for AP: protect ecology + build product identity. This can become a &quot;safe rice + local fish&quot; brand, not just a production technique.</p>
-    <p>Sources: FAO GIAHS Qingtian Rice-Fish Culture; Frontiers in Sustainable Food Systems, 2024.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
-    <h2>SUCCESS FACTORS</h2>
-    <p class="k">What the India and China cases have in common</p>
-    <h3>Right site</h3>
-    <p>Low-lying, water-retentive fields with controlled inlet/outlet.</p>
-    <h3>Field design</h3>
-    <p>Strong bunds, trenches/refuge pond, screened flow points and harvest channel.</p>
-    <h3>Species choice</h3>
-    <p>Carp or locally suited species matched to water depth, salinity and crop calendar.</p>
-    <h3>Input discipline</h3>
-    <p>Avoid harmful pesticides; shift to natural/safer pest management.</p>
-    <h3>Technical handholding</h3>
-    <p>Regular visits by agriculture + fisheries teams during first crop cycle.</p>
-    <h3>Market linkage</h3>
-    <p>Farmer groups, aggregators, fish markets and cold chain for better returns.</p>
-    <p>Officer takeaway: pilots should be selected for technical feasibility first, then scaled through farmer confidence and demonstrated profitability.</p>
-    <p>Sources synthesized from Assam case, Arunachal Pradesh fisheries note and FAO Qingtian GIAHS documentation.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
-    <h2>WHERE TO APPLY</h2>
-    <p class="k">Relevance for paddy-growing districts of Andhra Pradesh</p>
-    <p class="k">Prioritise districts/mandals with:</p>
-    <p>Contiguous paddy area and assured water retention.</p>
-    <p>Existing canal or tank-based irrigation with manageable drainage.</p>
-    <p>Farmer interest in natural farming / lower chemical input practices.</p>
-    <p>Access to fish seed, local markets and fisheries extension.</p>
-    <p>Low-lying paddy patches where waterlogging is common.</p>
-    <h2>Potential AP focus areas</h2>
-    <h3>Delta paddy belts</h3>
-    <p>Krishna, East/West Godavari and adjoining delta mandals can test field-refuge models.</p>
-    <h3>High paddy districts</h3>
-    <p>ANGRAU paddy outlook identifies West Godavari, Krishna, Srikakulam and Kakinada as major paddy-growing districts.</p>
-    <h3>APCNF alignment</h3>
-    <p>Integrated model can reduce chemical dependence and support biodiversity if field protocols are followed.</p>
-    <h3>Nutrition &amp; income</h3>
-    <p>Freshwater fish availability improves household protein while rice yield is protected or improved.</p>
-    <p>Do not universalise. Start with feasibility screening and demonstration mandals before district-wide scale-up.</p>
-    <p>Sources: AP Seeds; ANGRAU Paddy Outlook 2023–24; CGIAR 2023 note on IRFS in West Godavari.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
-    <h2>ROLE OF DISTRICT OFFICERS</h2>
-    <p class="k">District-level implementation model</p>
-    <p class="k">6-step district execution pathway</p>
-    <p class="k">Map suitable fields</p>
-    <p class="k">Select demo clusters</p>
-    <p class="k">Converge schemes</p>
-    <p class="k">Train farmers</p>
-    <p class="k">Monitor crop cycle</p>
-    <p class="k">Aggregate &amp; market</p>
-    <div class="grid"><div class="cell"><div class="v">1. Feasibility mapping</div><div class="l"></div></div></div>
-    <p>Use paddy area, irrigation, water depth, drainage and pesticide-use pattern to shortlist mandals.</p>
-    <h3>2. Demonstration clusters</h3>
-    <p>Start with 5–10 fields per mandal through volunteer farmers, FPOs or natural farming groups.</p>
-    <div class="grid"><div class="cell"><div class="v">3. Convergence</div><div class="l"></div></div></div>
-    <p>Pool agriculture, fisheries, RBK, MGNREGS, PMMSY/NFSM and local training resources.</p>
-    <div class="grid"><div class="cell"><div class="v">4. Market planning</div><div class="l"></div></div></div>
-    <p>Tie up local fish vendors, ice boxes, collection points and rice branding before harvest.</p>
-    <p>Sources: Implementation logic adapted from Assam and Qingtian cases; scheme convergence to be validated by state departments.</p>
-    <p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p>
-    <h2>WHAT OFFICERS SHOULD TRACK</h2>
-    <p class="k">Monitoring framework and takeaways</p>
-    <p class="k">Simple KPI dashboard</p>
-    <p class="k">Productivity</p>
-    <p class="k">Paddy yield, fish yield, survival rate</p>
-    <p class="k">Income</p>
-    <p class="k">Net income/acre vs paddy-only field</p>
-    <p class="k">Input use</p>
-    <p class="k">Fertilizer, pesticide and weeding labour</p>
-    <p class="k">Water</p>
-    <p class="k">Retention days, depth, drainage events</p>
-    <p class="k">Adoption</p>
-    <p class="k">Farmers trained, pilots completed, replication demand</p>
-    <p class="k">Market</p>
-    <p class="k">Fish price, buyer linkage, aggregation volume</p>
-    <p class="k">Three takeaways for AP officials</p>
-    <h3>1. Start small, but design properly</h3>
-    <p>Pilot only in technically suitable fields with water control and farmer consent.</p>
-    <h3>2. Converge agriculture and fisheries teams</h3>
-    <p>Joint field visits are essential during design, stocking and harvest.</p>
-    <h3>3. Show income evidence</h3>
-    <p>Compare with paddy-only plots; scale only when pilots show net returns and risk control.</p>
-    <p>Final message: rice–fish farming is a district productivity strategy, not just a farm technique.</p>
-    <p>Key sources: Assam UNDP/NITI case; Arunachal Pradesh Fisheries note; FAO Qingtian GIAHS; Frontiers 2024; AP Seeds; ANGRAU Paddy Outlook; CGIAR.</p>
-    <h3>Rice–Fish Integrated Farming | Capacity Building for AP Officers</h3>
-    <p>Key sources: Assam UNDP/NITI case; Arunachal Pradesh Fisheries note; FAO Qingtian GIAHS; Frontiers 2024; AP Seeds; ANGRAU Paddy Outlook; CGIAR.</p>
-    <h2>THANK YOU</h2>
+<a class="back" href="../index.html#districts">&#8592; Library</a>
+<div class="count"><b id="cnum">01</b> / 12</div>
+<div class="stage">
+  <div class="track" id="track">
+<section class="slide cover" data-i="0"><div class="media" data-media="0" data-role="cover"></div><div class="glass cover-glass reveal-root"><p class="eyebrow r">Case study deck</p><h1 class="r">Paddy + Fish Integrated Farming</h1><p class="summary r">Successful models from India and China, and a practical roadmap for paddy-growing districts of Andhra Pradesh.</p><div class="meta r"><span class="tag place">India &amp; China models</span><span class="tag">Integrated farming</span><span class="tag">Replicable model</span></div><p class="hint r">Use ← → or the arrows to move through the story</p></div></section>
+<section class="slide" data-i="1"><div class="media" data-media="1" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">01</span><h2>STRATEGIC CONTEXT</h2></div><div class="secbody r"><p class="k">Why paddy + fish integration matters for Andhra Pradesh</p>
+<h3>Paddy base already exists</h3>
+<p>West Godavari, East Godavari and Krishna are among the most important rice-producing districts of Andhra Pradesh and India.</p>
+<h3>Need to raise net income</h3>
+<p>Rice monoculture often faces cost, price and climate risks. Fish adds a second output from the same field and water.</p>
+<h3>AP has fisheries capability</h3>
+<p>Coastal and delta districts already have farmers, markets and departments familiar with fish seed, stocking and marketing.</p>
+<h3>Policy fit for AP</h3>
+<p>Supports district GVA growth through allied-sector income.</p>
+<p>Works well with natural farming, water-efficiency and nutrition goals.</p>
+<p>Creates a field-level demonstration model that officers can scale through RBKs and mandal teams.</p>
+<p class="k">Dual output</p>
+<p class="k">Rice + fish from same plot</p>
+<p class="k">Lower input</p>
+<p class="k">Less weeding / pest pressure</p></div></div></section>
+<section class="slide" data-i="2"><div class="media" data-media="2" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">02</span><h2>Higher resilience</h2></div><div class="secbody r"><h3>Diversified farmer income</h3>
+<p>Sources: AP Seeds paddy crop note; CGIAR, 2023; TNAU fishery integration note.</p>
+<p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p></div></div></section>
+<section class="slide" data-i="3"><div class="media" data-media="3" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">03</span><h2>BASIC CONCEPT</h2></div><div class="secbody r"><p class="k">The model: one paddy field, two harvests</p>
+<p class="k">How the symbiosis works</p>
+<h3>Fish help rice</h3>
+<p>Fish manure fertilizes soil; fish movement aerates water and softens soil; fish eat larvae, weeds and insects.</p>
+<h3>Rice helps fish</h3>
+<p>Rice canopy provides shade; the flooded field gives habitat; plankton and organic matter support fish growth.</p>
+<h3>Field modification</h3>
+<p>Raised bunds, fish refuge trench/pond, screened inlet/outlet, controlled water depth and safe harvest channel.</p>
+<h3>Management shift</h3>
+<p>Rice calendar must align with stocking; pesticide use must be avoided or carefully controlled.</p>
+<p>Core lesson: this is not &quot;fish added to paddy&quot;; it is a planned field system requiring water control, species choice and farmer training.</p>
+<p>Sources: FAO GIAHS Qingtian Rice-Fish Culture; UNDP/NITI Assam rice-fish case.</p>
+<p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p></div></div></section>
+<section class="slide" data-i="4"><div class="media" data-media="4" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">04</span><h2>SUCCESSFUL INDIAN PILOT</h2></div><div class="secbody r"><p class="k">India case study 1: Climate-resilient rice–fish farming in Assam</p>
+<p class="k">Project scale</p>
+<div class="grid"><div class="cell"><div class="v">431 ha</div><div class="l">water bodies covered districts</div></div></div>
+<div class="entry"><div class="term">867</div><div><p class="eh">beneficiaries</p><p class="eb">Implemented by the Fishery Department, Assam during 2018–19 to 2020–21 as a climate-resilient livelihood model.</p></div></div>
+<p class="k">Field/trench prep</p>
+<p class="k">Liming &amp; stocking</p>
+<p class="k">Feed &amp; health</p>
+<div class="entry"><div class="term">Harvest &amp; market</div><div><p class="eh">Reported outcomes</p><p class="eb">Paddy yield increased by 10%–25%.</p></div></div>
+<p>Average rice production reported around 7 tonnes/ha/year.</p>
+<p>Fish production reported nearly 2 tonnes/ha/crop.</p>
+<p>Reduced weeding labour and improved local fish availability.</p>
+<h3>Learning for AP officials</h3>
+<p>Start with technically suitable fields and invest in handholding. The model succeeds when fisheries and agriculture staff work together through a common mandal plan.</p>
+<p>Source: UNDP SDG Knowledge Hub / NITI for States, &quot;Climate Resilient Rice–Fish Farming in Assam&quot;.</p>
+<p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p></div></div></section>
+<section class="slide" data-i="5"><div class="media" data-media="5" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">05</span><h2>India case study 2: Apatani paddy-cum-fish farming, Arunachal Pradesh</h2></div><div class="secbody r"><h3>Why this model is important</h3>
+<p>Widely practiced in the Apatani plateau and described by the state fisheries department as profitable and sustainable.</p>
+<p>Generates two crops — paddy and fish — from the same cultivable area.</p>
+<p>Uses low-lying fields, raised bunds, irrigation channels and suitable carp species.</p>
+<div class="grid"><div class="cell"><div class="v">2–3 ft</div><div class="l">recommended bund height in government note Common / Amur carp</div></div></div>
+<p class="k">common species in model</p>
+<h3>Transferable lesson</h3>
+<p>Rice–fish integration works best when water channels, community rules and farmer skills are designed together — not as isolated input distribution.</p>
+<p>Source: Directorate of Fisheries, Government of Arunachal Pradesh, &quot;Paddy-cum-fish-culture&quot;.</p>
+<p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p></div></div></section>
+<section class="slide" data-i="6"><div class="media" data-media="6" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">06</span><h2>GLOBAL HERITAGE MODEL</h2></div><div class="secbody r"><p class="k">China case study: Qingtian Rice–Fish Culture System</p>
+<div class="grid"><div class="cell"><div class="v">1,300+ yrs</div><div class="l">traditional system in Qingtian</div></div><div class="cell"><div class="v">2005</div><div class="l">FAO GIAHS recognition Eco-brand</div></div></div>
+<p class="k">rice + fish + tourism</p>
+<h3>What makes it successful</h3>
+<p>Fish fertilize rice, disturb water, soften soil, and eat larvae and weeds.</p>
+<p>Rice gives fish shade, food and habitat.</p>
+<p>Lower-cost inputs reduce use of chemical fertilizers, pesticides and herbicides.</p>
+<p>Heritage branding supports higher-value products and rural revitalization.</p>
+<p>Learning for AP: protect ecology + build product identity. This can become a &quot;safe rice + local fish&quot; brand, not just a production technique.</p>
+<p>Sources: FAO GIAHS Qingtian Rice-Fish Culture; Frontiers in Sustainable Food Systems, 2024.</p>
+<p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p></div></div></section>
+<section class="slide" data-i="7"><div class="media" data-media="7" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">07</span><h2>SUCCESS FACTORS</h2></div><div class="secbody r"><p class="k">What the India and China cases have in common</p>
+<h3>Right site</h3>
+<p>Low-lying, water-retentive fields with controlled inlet/outlet.</p>
+<h3>Field design</h3>
+<p>Strong bunds, trenches/refuge pond, screened flow points and harvest channel.</p>
+<h3>Species choice</h3>
+<p>Carp or locally suited species matched to water depth, salinity and crop calendar.</p>
+<h3>Input discipline</h3>
+<p>Avoid harmful pesticides; shift to natural/safer pest management.</p>
+<h3>Technical handholding</h3>
+<p>Regular visits by agriculture + fisheries teams during first crop cycle.</p>
+<h3>Market linkage</h3>
+<p>Farmer groups, aggregators, fish markets and cold chain for better returns.</p>
+<p>Officer takeaway: pilots should be selected for technical feasibility first, then scaled through farmer confidence and demonstrated profitability.</p>
+<p>Sources synthesized from Assam case, Arunachal Pradesh fisheries note and FAO Qingtian GIAHS documentation.</p>
+<p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p></div></div></section>
+<section class="slide" data-i="8"><div class="media" data-media="8" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">08</span><h2>WHERE TO APPLY</h2></div><div class="secbody r"><p class="k">Relevance for paddy-growing districts of Andhra Pradesh</p>
+<p class="k">Prioritise districts/mandals with:</p>
+<p>Contiguous paddy area and assured water retention.</p>
+<p>Existing canal or tank-based irrigation with manageable drainage.</p>
+<p>Farmer interest in natural farming / lower chemical input practices.</p>
+<p>Access to fish seed, local markets and fisheries extension.</p>
+<p>Low-lying paddy patches where waterlogging is common.</p></div></div></section>
+<section class="slide" data-i="9"><div class="media" data-media="9" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">09</span><h2>Potential AP focus areas</h2></div><div class="secbody r"><h3>Delta paddy belts</h3>
+<p>Krishna, East/West Godavari and adjoining delta mandals can test field-refuge models.</p>
+<h3>High paddy districts</h3>
+<p>ANGRAU paddy outlook identifies West Godavari, Krishna, Srikakulam and Kakinada as major paddy-growing districts.</p>
+<h3>APCNF alignment</h3>
+<p>Integrated model can reduce chemical dependence and support biodiversity if field protocols are followed.</p>
+<h3>Nutrition &amp; income</h3>
+<p>Freshwater fish availability improves household protein while rice yield is protected or improved.</p>
+<p>Do not universalise. Start with feasibility screening and demonstration mandals before district-wide scale-up.</p>
+<p>Sources: AP Seeds; ANGRAU Paddy Outlook 2023–24; CGIAR 2023 note on IRFS in West Godavari.</p>
+<p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p></div></div></section>
+<section class="slide" data-i="10"><div class="media" data-media="10" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">10</span><h2>ROLE OF DISTRICT OFFICERS</h2></div><div class="secbody r"><p class="k">District-level implementation model</p>
+<p class="k">6-step district execution pathway</p>
+<p class="k">Map suitable fields</p>
+<p class="k">Select demo clusters</p>
+<p class="k">Converge schemes</p>
+<p class="k">Train farmers</p>
+<p class="k">Monitor crop cycle</p>
+<p class="k">Aggregate &amp; market</p>
+<div class="grid"><div class="cell"><div class="v">1. Feasibility mapping</div><div class="l"></div></div></div>
+<p>Use paddy area, irrigation, water depth, drainage and pesticide-use pattern to shortlist mandals.</p>
+<h3>2. Demonstration clusters</h3>
+<p>Start with 5–10 fields per mandal through volunteer farmers, FPOs or natural farming groups.</p>
+<div class="grid"><div class="cell"><div class="v">3. Convergence</div><div class="l"></div></div></div>
+<p>Pool agriculture, fisheries, RBK, MGNREGS, PMMSY/NFSM and local training resources.</p>
+<div class="grid"><div class="cell"><div class="v">4. Market planning</div><div class="l"></div></div></div>
+<p>Tie up local fish vendors, ice boxes, collection points and rice branding before harvest.</p>
+<p>Sources: Implementation logic adapted from Assam and Qingtian cases; scheme convergence to be validated by state departments.</p>
+<p class="k">Rice–Fish Integrated Farming | Capacity Building for AP Officers</p></div></div></section>
+<section class="slide" data-i="11"><div class="media" data-media="11" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">11</span><h2>WHAT OFFICERS SHOULD TRACK</h2></div><div class="secbody r"><p class="k">Monitoring framework and takeaways</p>
+<p class="k">Simple KPI dashboard</p>
+<p class="k">Productivity</p>
+<p class="k">Paddy yield, fish yield, survival rate</p>
+<p class="k">Income</p>
+<p class="k">Net income/acre vs paddy-only field</p>
+<p class="k">Input use</p>
+<p class="k">Fertilizer, pesticide and weeding labour</p>
+<p class="k">Water</p>
+<p class="k">Retention days, depth, drainage events</p>
+<p class="k">Adoption</p>
+<p class="k">Farmers trained, pilots completed, replication demand</p>
+<p class="k">Market</p>
+<p class="k">Fish price, buyer linkage, aggregation volume</p>
+<p class="k">Three takeaways for AP officials</p>
+<h3>1. Start small, but design properly</h3>
+<p>Pilot only in technically suitable fields with water control and farmer consent.</p>
+<h3>2. Converge agriculture and fisheries teams</h3>
+<p>Joint field visits are essential during design, stocking and harvest.</p>
+<h3>3. Show income evidence</h3>
+<p>Compare with paddy-only plots; scale only when pilots show net returns and risk control.</p>
+<p>Final message: rice–fish farming is a district productivity strategy, not just a farm technique.</p>
+<p>Key sources: Assam UNDP/NITI case; Arunachal Pradesh Fisheries note; FAO Qingtian GIAHS; Frontiers 2024; AP Seeds; ANGRAU Paddy Outlook; CGIAR.</p>
+<h3>Rice–Fish Integrated Farming | Capacity Building for AP Officers</h3>
+<p>Key sources: Assam UNDP/NITI case; Arunachal Pradesh Fisheries note; FAO Qingtian GIAHS; Frontiers 2024; AP Seeds; ANGRAU Paddy Outlook; CGIAR.</p></div></div></section>
   </div>
-  <footer>
-    <b>Pahlé India Foundation</b> · Swarna Andhra @2047 capacity-building case study.
-    Prepared for district &amp; mandal officers.
-  </footer>
 </div>
-<div class="reading" aria-hidden="true"></div>
+<div class="nav prev" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
+<div class="nav next" id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
+<div class="dots" id="dots"></div>
+
 <script src="../assets/dash/gsap.js"></script>
 <script>
 (function(){
-  var root = document.documentElement;
-  var armed = root.classList.contains('anim');
-  var g = window.gsap;
+  var root=document.documentElement;
+  var track=document.getElementById('track');
+  var slides=[].slice.call(track.querySelectorAll('.slide'));
+  var N=slides.length, cur=0;
+  var prev=document.getElementById('prev'), next=document.getElementById('next');
+  var dotsWrap=document.getElementById('dots'), cnum=document.getElementById('cnum');
+  var mobile=function(){return matchMedia('(max-width:760px)').matches;};
 
-  // Reading-progress bar runs regardless of the entrance-animation gate.
-  var bar = document.querySelector('.reading');
-  function onScroll(){
-    var max = root.scrollHeight - root.clientHeight;
-    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
+  // Background asset resolution, most-specific first, gradient if none exist:
+  //   1. per-case  media/<slug>/<i>.(mp4|jpg)        e.g. media/morbi-.../2.jpg
+  //   2. common    media/common/<role>.(mp4|jpg)     reused across all cases
+  //   3. mesh gradient already painted in CSS (do nothing)
+  var SLUG='paddy-fish-farming';
+  function tryAsset(m, cands){
+    if(!cands.length) return;
+    var url=cands.shift();
+    if(/\.mp4$/.test(url)){
+      var v=document.createElement('video');
+      v.muted=true;v.loop=true;v.playsInline=true;v.autoplay=true;v.preload='auto';
+      v.onloadeddata=function(){ m.classList.add('has-asset'); m.appendChild(v); v.play&&v.play(); };
+      v.onerror=function(){ tryAsset(m,cands); };
+      v.src=url;
+    } else {
+      var img=new Image();
+      img.onload=function(){ m.classList.add('has-asset'); m.appendChild(img); };
+      img.onerror=function(){ tryAsset(m,cands); };
+      img.src=url;
+    }
   }
-  addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  slides.forEach(function(sl){
+    var m=sl.querySelector('.media'); if(!m) return;
+    var i=m.getAttribute('data-media'), role=m.getAttribute('data-role');
+    tryAsset(m, [
+      'media/'+SLUG+'/'+i+'.mp4', 'media/'+SLUG+'/'+i+'.gif', 'media/'+SLUG+'/'+i+'.jpg',
+      'media/common/'+role+'.mp4', 'media/common/'+role+'.gif', 'media/common/'+role+'.jpg'
+    ]);
+  });
 
-  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
-  // the .anim class is what hides content, so removing it is the safe fallback.
-  if(!armed || !g){ root.classList.remove('anim'); return; }
+  // dots
+  slides.forEach(function(_,i){
+    var d=document.createElement('div'); d.className='dot'+(i?'':' on');
+    d.addEventListener('click',function(){ go(i); });
+    dotsWrap.appendChild(d);
+  });
+  var dots=[].slice.call(dotsWrap.children);
 
-  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
-  g.config({nullTargetWarn:false});
+  function paint(){
+    if(!mobile()) track.style.transform='translateX(-'+(cur*100)+'%)';
+    dots.forEach(function(d,i){ d.classList.toggle('on', i===cur); });
+    cnum.textContent=('0'+(cur+1)).slice(-2);
+    prev.toggleAttribute('disabled', cur===0);
+    next.toggleAttribute('disabled', cur===N-1);
+    slides.forEach(function(s,i){ s.classList.toggle('active', i===cur); });
+    reveal(slides[cur]);
+  }
+  function go(i){ cur=Math.max(0,Math.min(N-1,i)); paint(); }
+  function step(d){ go(cur+d); }
 
-  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
-  // backgrounded tab or some embedded preview panes the frame loop is paused, which
-  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
-  // drop .anim (reveal all, no animation) rather than risk invisible content.
-  var alive = false;
-  requestAnimationFrame(function(){ alive = true; });
-  setTimeout(function(){
-    if(!alive){ root.classList.remove('anim'); return; }
+  prev.addEventListener('click',function(){ step(-1); });
+  next.addEventListener('click',function(){ step(1); });
+  addEventListener('keydown',function(ev){
+    if(ev.key==='ArrowRight'||ev.key==='PageDown'){ step(1); }
+    else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){ step(-1); }
+    else if(ev.key==='Home'){ go(0); } else if(ev.key==='End'){ go(N-1); }
+  });
+  // Wheel: horizontal intent, or vertical when the panel isn't scrollable.
+  // A trackpad swipe is not one event — macOS momentum fires dozens over ~1s. A
+  // plain time lock still let 2-3 of them through per swipe, so instead the
+  // gesture must fully SETTLE (no wheel events for 240ms) before another advance
+  // is armed. One physical swipe therefore moves exactly one slide.
+  var wheelArmed=true, wheelTimer=null;
+  addEventListener('wheel',function(ev){
+    if(mobile()) return;
+    var g=slides[cur].querySelector('.glass');
+    var canScroll=g && g.scrollHeight>g.clientHeight+2;
+    var dom=Math.abs(ev.deltaX)>Math.abs(ev.deltaY)?ev.deltaX:ev.deltaY;
+    if(canScroll && Math.abs(ev.deltaY)>Math.abs(ev.deltaX)){
+      var atTop=g.scrollTop<=0, atBot=g.scrollTop+g.clientHeight>=g.scrollHeight-1;
+      if(!(atTop&&dom<0)&&!(atBot&&dom>0)) return; // let the panel scroll
+    }
+    clearTimeout(wheelTimer);
+    wheelTimer=setTimeout(function(){ wheelArmed=true; }, 240);
+    if(!wheelArmed || Math.abs(dom)<28) return;
+    wheelArmed=false;
+    step(dom>0?1:-1);
+  },{passive:true});
+  // touch swipe
+  var sx=0,sy=0;
+  addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+  addEventListener('touchend',function(e){
+    if(mobile()) return;
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)) step(dx<0?1:-1);
+  },{passive:true});
 
-    g.timeline({defaults:{ease:'power3.out'}})
-      .fromTo('.eyebrow',{opacity:0,y:12},{opacity:1,y:0,duration:.5})
-      .fromTo('h1',{opacity:0,y:24},{opacity:1,y:0,duration:.7},'-=.28')
-      .fromTo('.summary',{opacity:0,y:16},{opacity:1,y:0,duration:.6},'-=.46')
-      .fromTo('.meta .tag',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06},'-=.34')
-      .fromTo('.hero .cell',{opacity:0,y:22},{opacity:1,y:0,duration:.55,stagger:.08},'-=.24');
-
-    // scroll-reveal each body block as it enters; stat grids stagger their cards
-    var io = new IntersectionObserver(function(items){
-      items.forEach(function(en){
-        if(!en.isIntersecting) return;
-        var el = en.target; io.unobserve(el);
-        if(el.classList.contains('grid')){
-          g.set(el,{opacity:1});
-          g.fromTo(el.children,{opacity:0,y:18},
-            {opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'});
-        } else {
-          g.fromTo(el,{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'});
-        }
-      });
-    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
-    document.querySelectorAll('.body > *').forEach(function(el){ io.observe(el); });
-  }, 260);
+  // content reveal per active slide (rAF-gated; content never left hidden)
+  var g=window.gsap, armed=root.classList.contains('anim'), alive=false, ready=false;
+  if(g&&armed){ g.ticker.lagSmoothing(0); requestAnimationFrame(function(){alive=true;});
+    setTimeout(function(){ if(!alive){ root.classList.remove('anim'); } ready=true; paint(); }, 260); }
+  else { root.classList.remove('anim'); ready=true; paint(); }
+  function reveal(slide){
+    if(!ready||!alive||!g||!armed||mobile()) return;
+    var els=slide.querySelectorAll('.r');
+    g.killTweensOf(els);
+    g.fromTo(els,{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.08,ease:'power3.out'});
+  }
+  // first paint happens after the probe above; if gsap absent it already ran
 })();
 </script>
 </body>

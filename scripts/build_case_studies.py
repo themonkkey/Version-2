@@ -39,7 +39,7 @@ META = [
         "file": "East_Godavari_Coconut_Coir.txt", "slug": "east-godavari-coconut-coir",
         "group": "ap", "district": "East_Godavari", "place": "East Godavari",
         "theme": "Agri value chain",
-        "eyebrow": "Case for action • Value-chain strategy",
+        "eyebrow": "Value-chain strategy",
         "title": "Unlocking East Godavari's Coconut & Coir Potential",
         "summary": "From a coconut-growing district to a diversified processing hub — coir, "
                    "activated carbon and beyond.",
@@ -48,7 +48,7 @@ META = [
         "file": "Nellore_Shrimp_Processing.txt", "slug": "nellore-shrimp-processing",
         "group": "ap", "district": "Sps_Nellore", "place": "SPSR Nellore",
         "theme": "Aquaculture",
-        "eyebrow": "Case for action • Value-chain strategy",
+        "eyebrow": "Value-chain strategy",
         "title": "Unlocking Nellore's Shrimp Processing Potential",
         "summary": "From aquaculture capital to value-addition hub — why the district must "
                    "move up the shrimp chain.",
@@ -57,7 +57,7 @@ META = [
         "file": "Nellore_Ethanol_Potential.txt", "slug": "nellore-ethanol-potential",
         "group": "ap", "district": "Sps_Nellore", "place": "SPSR Nellore",
         "theme": "Ethanol / investment",
-        "eyebrow": "Sector brief • Investment potential",
+        "eyebrow": "Investment potential",
         "title": "Unlocking Nellore's Ethanol Opportunity",
         "summary": "Feedstock, infrastructure and the road to E20 — what the National Ethanol "
                    "Blending Programme means for the district.",
@@ -66,7 +66,7 @@ META = [
         "file": "Srikakulam_Blue_Economy.txt", "slug": "srikakulam-blue-economy",
         "group": "ap", "district": "Srikakulam", "place": "Srikakulam",
         "theme": "Blue economy",
-        "eyebrow": "Case for action • Blue economy strategy",
+        "eyebrow": "Blue economy strategy",
         "title": "Unlocking Srikakulam's Blue Economy Potential",
         "summary": "From a coastal aquaculture belt to a diversified seafood processing hub — "
                    "shrimp, fish and marine value-added products.",
