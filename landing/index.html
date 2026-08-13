@@ -638,6 +638,11 @@ a.docs-leaf:hover .ext{opacity:1;}
    video needs its own frost, or the moving footage reads straight through and
    contrast changes frame to frame. */
 .gva-intro{margin-bottom:clamp(18px,2.4vw,26px);}
+/* Direct children of #gvaBody only. Unscoped, `.gva-panel + .gva-panel` also
+   matched the RIGHT-hand panel inside the two-column .gva-two grid and pushed it
+   down, which is what broke the equal-height stretch. */
+#gvaBody > .gva-two + .gva-panel,
+#gvaBody > .gva-panel + .gva-panel{margin-top:clamp(18px,2.4vw,28px);}
 .gva-panel{border-radius:var(--r-lg);padding:clamp(16px,2vw,22px) clamp(18px,2.2vw,26px);
   background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
   backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
@@ -651,7 +656,12 @@ a.docs-leaf:hover .ext{opacity:1;}
 .gva-steps .n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
   background:rgba(198,236,143,.20);color:#DCF0A8;font-size:11.5px;font-weight:700;margin-top:1px;}
 .gva-steps b{color:#FFF;font-weight:650;}
-.gva-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,20px);align-items:start;
+/* Breathing space above: this row had a margin-bottom but no margin-top, so it sat
+   flush against whatever came before it — most visibly the open playbook box,
+   which has no bottom margin of its own. Adjacent sibling margins collapse, so
+   setting it here spaces the row correctly whether the playbook is open or not. */
+.gva-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,20px);align-items:stretch;
+  margin-top:clamp(26px,3.4vw,46px);
   margin-bottom:clamp(18px,2.4vw,26px);}
 
 /* Sector groups as a horizontal accordion (after NITI's ICED dashboard):
@@ -2823,7 +2833,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     // one its slice carries on every district dashboard, so the playbook and the
     // charts read as one system
     h += '<div class="gva-accwrap"><div class="gva-acchead">'+
-         'The three sectors of the district economy — Andhra Pradesh classification</div>'+
+         'Sector classification</div>'+
          '<div class="gva-acc">';
     p.groups.forEach(function(g, gi){
       var hue = g.hue || '#6FA817';

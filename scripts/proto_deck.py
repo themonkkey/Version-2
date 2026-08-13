@@ -218,7 +218,7 @@ a{color:var(--t2);}
   background:linear-gradient(180deg, rgba(4,12,9,.35), rgba(4,12,9,.68));}
 
 /* ---------- glass panel ---------- */
-.glass{position:relative;z-index:2;width:min(760px,100%);max-height:84vh;overflow:auto;
+.glass{position:relative;z-index:2;width:min(760px,100%);height:min(76vh,660px);overflow:auto;
   background:var(--glass);
   -webkit-backdrop-filter:blur(30px) saturate(1.3);backdrop-filter:blur(30px) saturate(1.3);
   border:1px solid var(--line);border-radius:24px;
@@ -228,6 +228,8 @@ a{color:var(--t2);}
 .glass::-webkit-scrollbar{width:8px;}
 .glass::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--t2) 50%,transparent);border-radius:8px;}
 .cover-glass{width:min(680px,100%);}
+/* cover content sits centred in the same fixed box rather than hugging the top */
+.cover-glass{display:flex;flex-direction:column;justify-content:center;}
 
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
   color:var(--t2);margin:0 0 16px;}
@@ -308,7 +310,7 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
   .stage{position:static;}
   .track{display:block;height:auto;transform:none!important;transition:none;}
   .slide{flex:none;height:auto;min-height:88vh;padding:64px 16px;}
-  .glass{max-height:none;overflow:visible;width:100%;}
+  .glass{height:auto;max-height:none;overflow:visible;width:100%;}
   .nav,.dots,.count{display:none;}
   .anim .slide .r{opacity:1!important;}
 }
