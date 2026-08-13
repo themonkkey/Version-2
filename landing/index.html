@@ -624,10 +624,36 @@ a.docs-leaf:hover .ext{opacity:1;}
    is baked into the inline background shorthand ahead of the image, so the
    eyebrow/title/summary keep their contrast over any artwork. background-size is
    set here rather than inline so hover can push it without touching the layers. */
-.case-card.has-cover{background-size:cover;background-position:center;
-  background-repeat:no-repeat;border-color:rgba(255,255,255,.20);}
-.case-card.has-cover:hover{background-size:104% auto;background-position:center;
-  border-color:rgba(198,236,143,.6);}
+/* Cards that have a deck cover use it as their face. The art is authored to sit
+   UNDER a glass panel on a full slide, so it is deliberately dark — measured mean
+   luminance 50/255. Dropped straight into a 282x221 card it reads as black, and
+   thinning the scrim barely helps (it was only suppressing 22%). So the image
+   rides on its own ::before layer and is brightness-filtered there, lifting the
+   artwork without touching the card's text. ::after carries the scrim; content
+   sits above both. */
+.case-card.has-cover{position:relative;overflow:hidden;
+  border-color:rgba(255,255,255,.22);}
+.case-card.has-cover::before{content:"";position:absolute;inset:0;z-index:0;
+  background-image:var(--cover);background-size:cover;background-position:center;
+  background-repeat:no-repeat;
+  filter:brightness(2.05) saturate(1.12) contrast(.94);
+  transition:transform .3s ease,filter .3s ease;}
+/* Four stops, not two: brightening the art lifted the backdrop behind the title
+   to a white-text contrast of 4.38, under the 4.5 AA floor. Keep the top band
+   light so the sky and palms still read, then ramp harder through the text block.
+   The text-shadow below is the second half of that recovery. */
+.case-card.has-cover::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,
+    rgba(9,40,27,.18) 0%,
+    rgba(9,40,27,.50) 26%,
+    rgba(9,40,27,.68) 58%,
+    rgba(9,40,27,.84) 100%);}
+.case-card.has-cover .ctitle,.case-card.has-cover .csum,
+.case-card.has-cover .ceyebrow,.case-card.has-cover .case-foot{
+  text-shadow:0 1px 3px rgba(0,0,0,.55);}
+.case-card.has-cover > *{position:relative;z-index:2;}
+.case-card.has-cover:hover{border-color:rgba(198,236,143,.6);}
+.case-card.has-cover:hover::before{transform:scale(1.04);filter:brightness(2.25) saturate(1.18);}
 .case-card:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .case-card .ceyebrow{font-size:10.5px;font-weight:700;letter-spacing:.08em;
   text-transform:uppercase;color:#8FC93A;}
@@ -2750,9 +2776,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     var foot = '<span class="cplace">'+esc(c.place||'')+'</span>'+
       (c.theme ? '<span class="cdot">·</span><span class="ctheme">'+esc(c.theme)+'</span>' : '')+
       '<span class="cgo"><i class="ti ti-arrow-up-right"></i></span>';
-    var cover = c.cover
-      ? ' style="background-image:linear-gradient(180deg,rgba(9,40,27,.42),rgba(9,40,27,.86)),url('+esc(c.cover)+')"'
-      : '';
+    var cover = c.cover ? ' style="--cover:url('+esc(c.cover)+')"' : '';
     return '<a class="case-card'+(c.cover?' has-cover':'')+'" href="cases/'+esc(c.slug)+'.html"'+cover+' target="_blank" rel="noopener">'+
       (c.eyebrow ? '<span class="ceyebrow">'+esc(c.eyebrow)+'</span>' : '')+
       '<span class="ctitle">'+esc(c.title)+'</span>'+
