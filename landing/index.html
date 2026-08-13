@@ -616,7 +616,7 @@ a.docs-leaf:hover .ext{opacity:1;}
 /* Row layout: content column on the left, the eyebrow turned on its side as a
    rail down the right edge. The rail carries its own solid ground so it reads as
    a tab regardless of whether the card has cover art behind it. */
-.case-card{display:flex;flex-direction:row;gap:0;text-decoration:none;
+.case-card{display:flex;flex-direction:column;gap:0;text-decoration:none;
   border-radius:var(--r);padding:0;overflow:hidden;
   background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.14);
   backdrop-filter:blur(28px) saturate(150%);-webkit-backdrop-filter:blur(28px) saturate(150%);
@@ -662,34 +662,34 @@ a.docs-leaf:hover .ext{opacity:1;}
   text-shadow:0 1px 3px rgba(0,0,0,.55);}
 .case-card.has-cover > *{position:relative;z-index:2;}
 /* rail keeps its own ground so the art never washes the label out */
-.case-card.has-cover .cbar,.case-card.has-cover .case-foot{background:rgba(7,30,20,.84);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+.case-card.has-cover .cbar{background:rgba(7,30,20,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
 .case-card.has-cover:hover{border-color:rgba(198,236,143,.6);background-color:#0A2016;}
 .case-card.has-cover:hover::before{transform:scale(1.04);filter:brightness(2.25) saturate(1.18);}
 .case-card:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .case-main{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;}
+/* Place + theme sit directly on the artwork as the last line of the content
+   column — no ground of their own, so the image runs unbroken behind them. The
+   eyebrow strip below is the only banded element. */
+.case-foot{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  writing-mode:horizontal-tb;transform:none;background:none;border:0;
+  padding:0 clamp(15px,1.8vw,20px) clamp(13px,1.6vw,16px);margin-top:auto;}
+.case-foot .cgo{margin-left:auto;font-size:13px;color:rgba(198,236,143,.85);
+  opacity:0;transition:opacity .15s;}
+.case-card:hover .cgo{opacity:1;}
 .case-card .ctitle{font-size:16.5px;font-weight:700;letter-spacing:-.012em;color:#fff;
   line-height:1.25;padding:clamp(15px,1.8vw,20px) clamp(15px,1.8vw,20px) 0;}
 .case-card .csum{font-size:13px;color:rgba(255,255,255,.74);line-height:1.5;
   flex:1 1 auto;padding:9px clamp(15px,1.8vw,20px) clamp(13px,1.6vw,17px);}
 /* The eyebrow rides a full-width bar along the bottom of the content column, with
    the open-affordance arrow pushed to its far end. */
-.cbar{display:flex;align-items:center;gap:10px;
+.case-foot .cplace{font-size:11.5px;font-weight:600;color:rgba(255,255,255,.92);}
+.case-foot .cdot{color:rgba(255,255,255,.45);}
+.case-foot .ctheme{font-size:11.5px;color:rgba(255,255,255,.66);}
+.cbar{flex:0 0 auto;display:flex;align-items:center;
   padding:11px clamp(15px,1.8vw,20px);
-  background:rgba(7,30,20,.80);border-top:1px solid rgba(255,255,255,.11);}
+  background:rgba(7,30,20,.86);border-top:1px solid rgba(255,255,255,.11);}
 .case-card .ceyebrow{font-size:10.5px;font-weight:700;letter-spacing:.11em;
   text-transform:uppercase;color:#8FC93A;line-height:1;}
-.cbar .cgo{margin-left:auto;font-size:13px;color:rgba(198,236,143,.75);
-  opacity:0;transition:opacity .15s;line-height:1;}
-.case-card:hover .cgo{opacity:1;}
-/* Place + theme become the rail. writing-mode + rotate(180deg) reads bottom-to-top,
-   keeping the baseline against the card edge. */
-.case-foot{flex:0 0 auto;display:flex;align-items:center;justify-content:center;gap:7px;
-  writing-mode:vertical-rl;transform:rotate(180deg);
-  padding:16px 9px;background:rgba(7,30,20,.72);
-  border-left:1px solid rgba(255,255,255,.13);white-space:nowrap;}
-.case-foot .cplace{font-size:11.5px;font-weight:600;color:rgba(255,255,255,.9);}
-.case-foot .cdot{color:rgba(255,255,255,.4);}
-.case-foot .ctheme{font-size:11.5px;color:rgba(255,255,255,.6);}
 /* ── Improving GVA — sector playbooks ────────────────────────────────────
    Same dark-stage rules as the document library: anything sitting on the
    video needs its own frost, or the moving footage reads straight through and
@@ -2803,12 +2803,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       '<span class="case-main">'+
         '<span class="ctitle">'+esc(c.title)+'</span>'+
         '<span class="csum">'+esc(c.summary)+'</span>'+
-        '<span class="cbar">'+
-          (c.eyebrow ? '<span class="ceyebrow">'+esc(c.eyebrow)+'</span>' : '')+
+        '<span class="case-foot">'+foot+
           '<span class="cgo"><i class="ti ti-arrow-up-right"></i></span>'+
         '</span>'+
       '</span>'+
-      '<span class="case-foot">'+foot+'</span>'+
+      (c.eyebrow ? '<span class="cbar"><span class="ceyebrow">'+esc(c.eyebrow)+'</span></span>' : '')+
     '</a>';
   }
 
