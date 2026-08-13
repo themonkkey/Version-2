@@ -32,10 +32,14 @@ a{color:var(--t2);}
 
 /* full-bleed background: animated mesh, tinted; photo/video overlays it if present */
 .media{position:absolute;inset:0;z-index:0;
+  /* The tint used to sit at 42%/34% of the theme hue. For the agri cases that hue
+     is #6FA817 — a yellow-green — so the whole stage read olive rather than the
+     site's deep forest green. Dropped to a whisper: enough to tell the themes
+     apart, not enough to cast. The deep-green base now dominates. */
   background:
-    radial-gradient(60% 70% at 18% 22%, color-mix(in srgb, var(--t1) 42%, transparent), transparent 70%),
-    radial-gradient(55% 65% at 82% 78%, color-mix(in srgb, var(--t2) 34%, transparent), transparent 70%),
-    radial-gradient(90% 90% at 50% 50%, #0A241A, #05100C 80%);
+    radial-gradient(62% 72% at 18% 22%, color-mix(in srgb, var(--t1) 13%, transparent), transparent 72%),
+    radial-gradient(58% 66% at 82% 78%, color-mix(in srgb, var(--t2) 9%, transparent), transparent 72%),
+    radial-gradient(95% 95% at 50% 45%, #0B241B, #050F0B 78%);
   background-size:180% 180%,180% 180%,100% 100%;
   animation:drift 26s ease-in-out infinite alternate;}
 @keyframes drift{
