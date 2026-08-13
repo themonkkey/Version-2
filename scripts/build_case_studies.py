@@ -628,11 +628,17 @@ def main():
         page = render_page(m, hero, body)
         with open(os.path.join(PAGES_DIR, m["slug"] + ".html"), "w", encoding="utf-8") as f:
             f.write(page)
+        # If this case has a deck cover image, the library card reuses it as its
+        # own background. Detected rather than declared, so any case that later
+        # gains a 0.jpg picks it up on the next build with no edit here.
+        cover_rel = os.path.join("cases", "media", m["slug"], "0.jpg")
+        has_cover = os.path.exists(os.path.join(ROOT, "landing", cover_rel))
         manifest[m["group"]].append({
             "slug": m["slug"], "title": m["title"], "eyebrow": m["eyebrow"],
             "summary": m["summary"], "theme": m["theme"], "place": m["place"],
             "district": m.get("district"),
             "sections": sum(1 for b in body if b[0] == "h2"),
+            "cover": cover_rel if has_cover else None,
         })
         written += 1
         stats = sum(1 for b in body if b[0] == "stat")

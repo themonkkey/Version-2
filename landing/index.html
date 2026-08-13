@@ -620,6 +620,14 @@ a.docs-leaf:hover .ext{opacity:1;}
   transition:transform .16s,border-color .16s,background .16s;}
 .case-card:hover{transform:translateY(-2px);border-color:rgba(198,236,143,.5);
   background:rgba(12,52,35,.85);}
+/* Cards that have a deck cover use it as their own face. The darkening gradient
+   is baked into the inline background shorthand ahead of the image, so the
+   eyebrow/title/summary keep their contrast over any artwork. background-size is
+   set here rather than inline so hover can push it without touching the layers. */
+.case-card.has-cover{background-size:cover;background-position:center;
+  background-repeat:no-repeat;border-color:rgba(255,255,255,.20);}
+.case-card.has-cover:hover{background-size:104% auto;background-position:center;
+  border-color:rgba(198,236,143,.6);}
 .case-card:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .case-card .ceyebrow{font-size:10.5px;font-weight:700;letter-spacing:.08em;
   text-transform:uppercase;color:#8FC93A;}
@@ -2742,7 +2750,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     var foot = '<span class="cplace">'+esc(c.place||'')+'</span>'+
       (c.theme ? '<span class="cdot">·</span><span class="ctheme">'+esc(c.theme)+'</span>' : '')+
       '<span class="cgo"><i class="ti ti-arrow-up-right"></i></span>';
-    return '<a class="case-card" href="cases/'+esc(c.slug)+'.html" target="_blank" rel="noopener">'+
+    var cover = c.cover
+      ? ' style="background-image:linear-gradient(180deg,rgba(9,40,27,.42),rgba(9,40,27,.86)),url('+esc(c.cover)+')"'
+      : '';
+    return '<a class="case-card'+(c.cover?' has-cover':'')+'" href="cases/'+esc(c.slug)+'.html"'+cover+' target="_blank" rel="noopener">'+
       (c.eyebrow ? '<span class="ceyebrow">'+esc(c.eyebrow)+'</span>' : '')+
       '<span class="ctitle">'+esc(c.title)+'</span>'+
       '<span class="csum">'+esc(c.summary)+'</span>'+
@@ -2760,7 +2771,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadCases(){
     if(casesLoaded) return;
     casesLoaded = true;
-    fetch('assets/case_studies.json').then(function(r){ return r.json(); }).then(function(d){
+    fetch('assets/case_studies.json?v=2026-08-13a').then(function(r){ return r.json(); }).then(function(d){
       casesBody.innerHTML =
         group('Andhra Pradesh districts', 'Case-for-action briefs tied to a specific district.', d.ap)+
         group('Replicable models', 'Clusters and models from elsewhere, framed for district and mandal officers.', d.model);

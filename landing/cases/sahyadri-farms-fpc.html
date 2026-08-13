@@ -5,397 +5,296 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sahyadri Farms: Smallholders in an Integrated Supply Chain — Swarna Andhra case study</title>
 <script>
-(function(){try{var ok=!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window;if(ok)document.documentElement.className+=' anim';}catch(e){}})();
+/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
+   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
+   stays fully visible and the GSAP layer below is skipped. */
+(function(){
+  try{
+    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
+             && 'IntersectionObserver' in window;
+    if(ok) document.documentElement.className += ' anim';
+  }catch(e){}
+})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#06140F;--fg:#EEF5EF;--mut:rgba(238,245,239,.74);--mut2:rgba(238,245,239,.5);
-  --t1:#6FA817;--t2:#B7D66B;
-  --glass:rgba(8,22,16,.52);--glass2:rgba(8,22,16,.34);--line:rgba(255,255,255,.16);
-}
+:root{--ink:#0B2E20;--ink2:#09281B;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.14);
+  --fg:#EAF2EC;--mut:rgba(234,242,236,.72);--mut2:rgba(234,242,236,.5);--lime:#C6EC8F;--lime2:#8FC93A;}
 *{box-sizing:border-box;}
-html,body{margin:0;height:100%;}
-body{background:var(--ink);color:var(--fg);overflow:hidden;
+body{margin:0;background:var(--ink);color:var(--fg);
   font-family:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   line-height:1.6;-webkit-font-smoothing:antialiased;}
-a{color:var(--t2);}
-
-/* ---------- horizontal deck ---------- */
-.stage{position:fixed;inset:0;overflow:hidden;}
-.track{display:flex;height:100%;width:100%;
-  transition:transform .72s cubic-bezier(.76,0,.24,1);will-change:transform;}
-.slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;padding:clamp(20px,5vw,64px);}
-
-/* full-bleed background: animated mesh, tinted; photo/video overlays it if present */
-.media{position:absolute;inset:0;z-index:0;
-  /* The tint used to sit at 42%/34% of the theme hue. For the agri cases that hue
-     is #6FA817 — a yellow-green — so the whole stage read olive rather than the
-     site's deep forest green. Dropped to a whisper: enough to tell the themes
-     apart, not enough to cast. The deep-green base now dominates. */
-  background:
-    radial-gradient(62% 72% at 18% 22%, color-mix(in srgb, var(--t1) 13%, transparent), transparent 72%),
-    radial-gradient(58% 66% at 82% 78%, color-mix(in srgb, var(--t2) 9%, transparent), transparent 72%),
-    radial-gradient(95% 95% at 50% 45%, #0B241B, #050F0B 78%);
-  background-size:180% 180%,180% 180%,100% 100%;
-  animation:drift 26s ease-in-out infinite alternate;}
-@keyframes drift{
-  0%{background-position:0% 0%,100% 100%,50% 50%;}
-  100%{background-position:60% 40%,40% 60%,50% 50%;}}
-.media::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(120% 80% at 50% 120%, rgba(0,0,0,.5), transparent 60%);}
-.media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity .8s ease;}
-/* Pixel-art assets opt in per-file via a .pixel class; cinematic footage must NOT
-   be nearest-neighbour scaled or it aliases badly. */
-.media.pixel img,.media.pixel video{image-rendering:pixelated;}
-.media.has-asset img,.media.has-asset video{opacity:1;}
-.media.has-asset::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg, rgba(4,12,9,.35), rgba(4,12,9,.68));}
-
-/* ---------- glass panel ---------- */
-.glass{position:relative;z-index:2;width:min(760px,100%);height:min(76vh,660px);overflow:auto;
-  background:var(--glass);
-  -webkit-backdrop-filter:blur(30px) saturate(1.3);backdrop-filter:blur(30px) saturate(1.3);
-  border:1px solid var(--line);border-radius:24px;
-  padding:clamp(24px,4vw,44px);
-  box-shadow:0 30px 80px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.08);
-  scrollbar-width:thin;scrollbar-color:var(--t2) transparent;}
-.glass::-webkit-scrollbar{width:8px;}
-.glass::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--t2) 50%,transparent);border-radius:8px;}
-.cover-glass{width:min(680px,100%);}
-/* cover content sits centred in the same fixed box rather than hugging the top */
-.cover-glass{display:flex;flex-direction:column;justify-content:center;}
-
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--t2);margin:0 0 16px;}
-h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,5.2vw,52px);
-  line-height:1.05;letter-spacing:-.01em;margin:0 0 18px;}
-.summary{font-size:clamp(16px,2vw,20px);color:var(--mut);margin:0 0 22px;max-width:56ch;}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
-.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;
-  background:var(--glass2);border:1px solid var(--line);color:var(--mut);}
+a{color:var(--lime);}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(20px,5vw,44px) clamp(18px,5vw,28px) 80px;}
+.back{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
+  color:var(--mut);text-decoration:none;margin-bottom:clamp(22px,4vw,34px);}
+.back:hover{color:var(--lime);}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--lime2);margin:0 0 14px;}
+h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,5.5vw,46px);
+  line-height:1.08;letter-spacing:-.01em;margin:0 0 16px;}
+.summary{font-size:clamp(16px,2vw,19px);color:var(--mut);margin:0 0 22px;max-width:60ch;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;}
+.tag{font-size:12px;font-weight:600;letter-spacing:.01em;padding:5px 11px;border-radius:999px;
+  background:var(--panel);border:1px solid var(--line);color:var(--mut);}
 .tag.place{color:var(--fg);}
-.hint{font-size:12.5px;color:var(--mut2);margin:22px 0 0;letter-spacing:.02em;}
-
-.sechead{display:flex;align-items:baseline;gap:14px;margin:0 0 20px;
-  padding-bottom:14px;border-bottom:1px solid var(--line);}
-.secnum{font-family:'Bodoni Moda',serif;font-weight:600;font-size:16px;color:var(--t2);
-  letter-spacing:.04em;}
-.sechead h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
-  font-size:clamp(22px,3.2vw,32px);letter-spacing:-.01em;color:#fff;margin:0;line-height:1.1;}
-.secbody h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(16px,2vw,20px);
-  color:#fff;margin:22px 0 6px;}
-.secbody h3:first-child{margin-top:0;}
-.secbody p{margin:0 0 13px;color:var(--mut);}
-.secbody .k{margin:16px 0 4px;font-weight:700;font-size:13.5px;color:var(--t2);letter-spacing:.02em;}
-
-/* hero + stat grids as inner glass chips */
-.hero,.grid{display:grid;gap:12px;margin:18px 0 4px;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}
-.grid{margin:14px 0 20px;}
-.scell,.cell{background:var(--glass2);border:1px solid var(--line);border-radius:14px;
-  padding:15px 16px 13px;transition:transform .26s cubic-bezier(.2,.7,.2,1),border-color .26s ease;}
-.scell:hover,.cell:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--t2) 50%,var(--line));}
-.scell .v,.cell .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
-  font-size:clamp(22px,3vw,30px);line-height:1;color:var(--t2);}
-.scell .l,.cell .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);font-weight:600;}
-
-/* timeline entry */
-.entry{display:grid;grid-template-columns:minmax(90px,124px) 1fr;gap:16px;
-  padding:14px 0;border-top:1px solid var(--line);}
+.src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
+hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
+.body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
+  letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
+.body h3:first-child{margin-top:0;}
+.body p{margin:0 0 14px;color:var(--mut);}
+.body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
+  color:var(--lime2);}
+.body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
 .entry:first-of-type{border-top:none;}
-.entry .term{font-weight:700;font-size:13px;color:var(--t2);}
-.entry .eh{font-weight:700;font-size:15px;color:#fff;margin:0 0 5px;}
-.entry .eb{margin:0;font-size:14px;color:var(--mut);line-height:1.55;}
-
-/* ---------- chrome: arrows, dots, progress, back ---------- */
-.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:30;
-  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
-  background:var(--glass);border:1px solid var(--line);color:var(--fg);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  transition:transform .2s ease,background .2s ease,opacity .2s ease;user-select:none;}
-.nav:hover{background:color-mix(in srgb,var(--t1) 30%,var(--glass));transform:translateY(-50%) scale(1.07);}
-.nav.prev{left:clamp(12px,2.5vw,30px);}
-.nav.next{right:clamp(12px,2.5vw,30px);}
-.nav[disabled]{opacity:.3;pointer-events:none;}
-.nav svg{width:20px;height:20px;}
-.dots{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:30;
-  display:flex;gap:10px;align-items:center;
-  background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:9px 14px;
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
-.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;
-  transition:all .3s ease;}
-.dot.on{width:26px;border-radius:6px;background:linear-gradient(90deg,var(--t1),var(--t2));}
-.count{position:fixed;top:22px;right:clamp(16px,3vw,30px);z-index:30;font-size:13px;
-  color:var(--mut);font-variant-numeric:tabular-nums;}
-.count b{color:var(--fg);font-family:'Bodoni Moda',serif;font-size:17px;}
-.back{position:fixed;top:20px;left:clamp(16px,3vw,30px);z-index:30;
-  display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
-  color:var(--mut);text-decoration:none;background:var(--glass);border:1px solid var(--line);
-  padding:8px 13px;border-radius:999px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  transition:gap .2s ease,color .2s ease;}
-.back:hover{gap:11px;color:var(--fg);}
-
-/* entrance reveals (gsap sets these when .anim survives the rAF probe) */
-.anim .slide.active .r{opacity:0;}
-
-/* ---------- mobile: degrade to a vertical stack ---------- */
-@media (max-width:760px){
-  body{overflow:auto;}
-  .stage{position:static;}
-  .track{display:block;height:auto;transform:none!important;transition:none;}
-  .slide{flex:none;height:auto;min-height:88vh;padding:64px 16px;}
-  .glass{height:auto;max-height:none;overflow:visible;width:100%;}
-  .nav,.dots,.count{display:none;}
-  .anim .slide .r{opacity:1!important;}
-}
-@media (prefers-reduced-motion:reduce){
-  .track{transition:none;} .media{animation:none;}
-  .anim .r{opacity:1!important;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
+footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--mut2);}
+footer b{color:var(--mut);font-weight:600;}
+/* ---- motion + interaction polish ---- */
+/* initial hidden states, applied only while .anim is armed (see head script) */
+.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+.anim .hero .cell,.anim .body>*{opacity:0;}
+.reading{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
+  background:linear-gradient(90deg,var(--lime2),var(--lime));
+  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}
+.hero .cell,.grid .cell{transition:transform .28s cubic-bezier(.2,.7,.2,1),
+  border-color .28s ease,box-shadow .28s ease;will-change:transform;}
+.hero .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}
+.grid .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
+  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}
+.back{transition:color .2s ease,gap .2s ease;}
+.back:hover{gap:11px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important;}
+  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+  .anim .hero .cell,.anim .body>*{opacity:1;}
 }
 </style>
 </head>
 <body>
-<a class="back" href="../index.html#districts">&#8592; Library</a>
-<div class="count"><b id="cnum">01</b> / 06</div>
-<div class="stage">
-  <div class="track" id="track">
-<section class="slide cover" data-i="0"><div class="media" data-media="0" data-role="cover"></div><div class="glass cover-glass reveal-root"><p class="eyebrow r">Case study • Replication playbook</p><h1 class="r">Sahyadri Farms: Smallholders in an Integrated Supply Chain</h1><p class="summary r">What the Sahyadri Farms (FPC) model means for our mandals and districts.</p><div class="meta r"><span class="tag place">Nashik, Maharashtra</span><span class="tag">FPC / supply chain</span><span class="tag">Replicable model</span></div><p class="hint r">Use ← → or the arrows to move through the story</p></div></section>
-<section class="slide" data-i="1"><div class="media" data-media="1" data-role="action"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">01</span><h2>The Problem We Are Trying to Solve</h2></div><div class="secbody r"><h3>Climate stress</h3>
-<p>Erratic weather, unpredictable water, and pests put fragile smallholder incomes at constant risk.</p>
-<h3>Fragmented supply chains</h3>
-<p>Poor coordination among players raises cost and blocks access to markets, quality inputs and timely information.</p>
-<h3>Post-harvest losses</h3>
-<p>Around 40% of produce never reaches the market due to weak storage, processing and logistics.</p>
-<h3>Tiny, scattered holdings</h3>
-<p>Small &amp; marginal farmers cannot reach economies of scale alone; past co-operatives largely under-delivered.</p>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>These four pressures compound each other. Ask officers which of these is the single biggest pain point in their own mandal — keep their answers in mind for the replication discussion later.</p>
-<h3>The Answer: Aggregate Farmers into an FPC</h3>
-<p>A Farmer Producer Company (FPC) is registered under the Companies Act, owned and democratically run by farmer-members, with professional managers handling day-to-day operations.</p>
-<p>It lets small farmers act at scale — managing the whole chain from input to market.</p>
-<div class="grid"><div class="cell"><div class="v">~9,500</div><div class="l">FPCs registered in India since 2002</div></div><div class="cell"><div class="v">~40%</div><div class="l">produce lost without aggregation</div></div></div>
-<p class="k">What an FPC delivers</p>
-<p class="k">Pooled resources &amp; shared knowledge</p>
-<p class="k">Collective bargaining for better prices</p>
-<p class="k">Access to finance, inputs &amp; technology</p>
-<p class="k">Higher production, productivity &amp; profit</p>
-<p class="k">Professional management, farmer ownership</p>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>Stress that the FPC structure is the legal vehicle that makes everything else possible. AP officers can identify existing FPOs/FPCs in their districts and assess which are dormant vs active. ~9,500 figure and 40% loss figure are from the paper.</p>
-<h3>Sahyadri Farms at a Glance</h3>
-<p>Nashik, Maharashtra • Founded 27 Dec 2010 by farmer Vilas Shinde • India&#x27;s largest grape producer</p>
-<div class="grid"><div class="cell"><div class="v">26,000</div><div class="l">Registered farmers</div></div><div class="cell"><div class="v">252+</div><div class="l">Villages covered</div></div><div class="cell"><div class="v">40,000</div><div class="l">Acres aggregated</div></div><div class="cell"><div class="v">42+</div><div class="l">Countries served</div></div><div class="cell"><div class="v">110+</div><div class="l">Corporate customers</div></div></div>
-<div class="entry"><div class="term">₹1,482 Cr</div><div><p class="eh">Annual turnover</p><p class="eb">Started as just 4 smallholder farmers with a shared vision.</p></div></div>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>The contrast to land on: from 4 farmers to 18,000 in roughly a decade. This is the scalability proof. Numbers are from Table 1 and the text of the paper; note the paper itself shows minor internal variation (30,000 vs 31,000 acres) — use 30,000+.</p>
-<p class="k">How the Model Works: One Integrated Chain</p>
-<p class="k">Farmer</p>
-<p class="k">Transparent procurement from member-farmers</p>
-<p class="k">›</p>
-<p class="k">Processing</p>
-<p class="k">Central pack-house, grading, processing</p>
-<p class="k">›</p>
-<p class="k">Distribution</p>
-<p class="k">Cold chain &amp; logistics to buyers</p>
-<p class="k">›</p>
-<p class="k">Retail</p>
-<p class="k">Domestic retail, e-commerce, wholesale</p>
-<p class="k">›</p>
-<div class="entry"><div class="term">Consumer</div><div><p class="eh">Traceable produce, India &amp; 42+ countries</p><p class="eb">The FPC owns every link — so margins that once leaked to middlemen stay with farmers, and quality is controlled end-to-end.</p></div></div>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>This is the core mental model. The single biggest shift vs. a normal mandi sale: the collective owns the chain rather than selling at the first gate. Walk left-to-right and emphasise that traceability runs the full length (blockchain — next slide).</p></div></div></section>
-<section class="slide" data-i="2"><div class="media" data-media="2" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">02</span><h2>Five Pillars Behind the Results</h2></div><div class="secbody r"><h3>Agro-advisory teams</h3>
-<p>Experts guide crop choice, cultivation, pest &amp; soil management — building farmer skills.</p>
-<h3>Pack-house &amp; processing</h3>
-<p>Sorting, grading, packaging plus dehydration/pulping/canning add value &amp; consistency.</p>
-<h3>Cold storage &amp; logistics</h3>
-<p>Optimal temperature/humidity extends shelf life and slashes post-harvest loss.</p>
-<h3>Modern tech</h3>
-<p>Precision agriculture, GPS, drones and drip irrigation cut input waste, raise yields.</p>
-<h3>Blockchain &amp; ERP</h3>
-<p>Full traceability and transparent, fair-trade pricing — a first among Indian FPCs.</p>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>Frame these as the investment shopping-list. Pillars 1 and 5 (advisory + traceability) are relatively low-capital and can start early; pillars 2-4 (pack-house, cold chain, precision tech) are heavier infrastructure built over time as turnover grows.</p>
-<p class="k">Who Benefits — Farmers and Consumers</p>
-<p class="k">For Farmers</p>
-<p class="k">Direct access to domestic &amp; export markets</p>
-<p class="k">Fair prices — no exploitative middlemen</p>
-<p class="k">Capacity building: training &amp; workshops</p>
-<p class="k">Financial inclusion: credit, insurance, inputs</p>
-<p class="k">Higher, more stable &amp; dignified incomes</p>
-<p class="k">For Consumers</p>
-<p class="k">Consistently high quality, fresh produce</p>
-<p class="k">Strict quality assurance to global standards</p>
-<p class="k">Lower post-harvest loss → better availability</p>
-<p class="k">Full traceability of origin &amp; safety</p>
-<p class="k">Greater trust, confidence and loyalty</p>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>Both sides win — that mutual benefit is what makes the model politically and commercially durable. For officers: farmer income gains build trust in the FPC, which drives membership, which builds scale. It is a virtuous loop.</p></div></div></section>
-<section class="slide" data-i="3"><div class="media" data-media="3" data-role="takeaways"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">03</span><h2>Replication Roadmap for Your Mandal</h2></div><div class="secbody r"><h3>Identify &amp; mobilise</h3>
-<p>Map crops with surplus/loss; convene smallholders around one or two high-value crops. Start small — Sahyadri began with 4 farmers.</p>
-<h3>Form / revive the FPC</h3>
-<p>Register or re-activate an FPC. Lock in farmer ownership + professional management from day one.</p>
-<h3>Build shared infrastructure</h3>
-<p>Phase pack-house, grading and cold storage as volumes grow. Pool member capital + leverage govt &amp; FI partnerships.</p>
-<h3>Adopt technology &amp; traceability</h3>
-<p>Introduce agro-advisory, precision inputs, drip irrigation, and ERP/traceability for transparent pricing.</p>
-<h3>Link to markets &amp; scale</h3>
-<p>Secure direct buyers, retail, e-commerce and exports. Reinvest surplus; expand crops and villages.</p>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>This is the heart of the session — the do-this-next list. Emphasise sequencing: you do not need a pack-house on day one. Start with aggregation + advisory; infrastructure follows revenue. Tie each step back to what Sahyadri actually did.</p></div></div></section>
-<section class="slide" data-i="4"><div class="media" data-media="4" data-role="challenges"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">04</span><h2>Challenges to Plan For</h2></div><div class="secbody r"><h3>Climate &amp; water risk</h3>
-<p>Drought-resistant varieties, precision/drip irrigation, climate-smart practices.</p>
-<h3>Soil &amp; resource overuse</h3>
-<p>Organic fertilisers, crop rotation, integrated pest management to protect long-term fertility.</p>
-<h3>Heavy capital needs</h3>
-<p>Phase infrastructure investment; blend member capital with FI and government partnerships.</p>
-<h3>Coordination across stakeholders</h3>
-<p>Engage farmers, govt, research bodies &amp; private partners; share knowledge and risk.</p>
-<h3>Staying competitive</h3>
-<p>Embed continuous improvement — feedback, evaluation and innovation at every level.</p>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>Be honest that these are real obstacles, not afterthoughts. The left column is the risk, the right is Sahyadri&#x27;s actual response. Officers should pre-empt these in any pilot design rather than discover them later.</p></div></div></section>
-<section class="slide" data-i="5"><div class="media" data-media="5" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">05</span><h2>What Officers Should Take Away</h2></div><div class="secbody r"><h3>Aggregation is the unlock</h3>
-<p>An FPC turns scattered small farmers into a market force. Without scale, none of the rest works.</p>
-<h3>Own the chain, not just the farm</h3>
-<p>Value leaks at every handoff. Capturing processing, storage and sales keeps margins with farmers.</p>
-<h3>Sequence the investment</h3>
-<p>Start with people &amp; advisory; build pack-house, cold chain and tech as revenue grows.</p>
-<h3>Technology builds trust</h3>
-<p>ERP, blockchain and traceability convert quality into premium prices and loyal buyers.</p>
-<h3>Start small, think long</h3>
-<p>From 4 farmers to ₹1,000 Cr — patient, compounding growth, not a one-off scheme.</p>
-<h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
-<p>Recap slide. Read each takeaway, then ask the room: which one is the easiest to act on in your district within 6 months? Leads straight into the closing slide.</p>
-<p class="k">From Case Study to Action</p>
-<p class="k">Your task before you leave today:</p>
-<p>Name 1 high-value crop in your mandal suited to an FPC pilot.</p>
-<p>Identify an existing FPO/FPC to revive — or farmers to mobilise.</p>
-<p>List the partners (banks, govt schemes) you can bring to the table.</p>
-<h3>&quot;A model of best practice — inspiring others to emulate its success.&quot;</h3>
-<p>Source: Sancheti, Sanghavi, Sanghavi &amp; Sancheti (2024), Journal of Postharvest Technology, 12(3): 37-49.</p>
-<p>Close with the three action prompts — make officers commit verbally if possible. The quote is a light paraphrase of the paper&#x27;s conclusion. End on the idea that AP can be the next replication site.</p></div></div></section>
+<div class="wrap">
+  <a class="back" href="../index.html#districts">← Back to the case study library</a>
+  <p class="eyebrow">Case study • Replication playbook</p>
+  <h1>Sahyadri Farms: Smallholders in an Integrated Supply Chain</h1>
+  <p class="summary">What the Sahyadri Farms (FPC) model means for our mandals and districts.</p>
+  <div class="meta"><span class="tag place">Nashik, Maharashtra</span><span class="tag">FPC / supply chain</span><span class="tag">Replicable model</span></div>
+  
+  
+  <hr>
+  <div class="body">
+    <h2>The Problem We Are Trying to Solve</h2>
+    <h3>Climate stress</h3>
+    <p>Erratic weather, unpredictable water, and pests put fragile smallholder incomes at constant risk.</p>
+    <h3>Fragmented supply chains</h3>
+    <p>Poor coordination among players raises cost and blocks access to markets, quality inputs and timely information.</p>
+    <h3>Post-harvest losses</h3>
+    <p>Around 40% of produce never reaches the market due to weak storage, processing and logistics.</p>
+    <h3>Tiny, scattered holdings</h3>
+    <p>Small &amp; marginal farmers cannot reach economies of scale alone; past co-operatives largely under-delivered.</p>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>These four pressures compound each other. Ask officers which of these is the single biggest pain point in their own mandal — keep their answers in mind for the replication discussion later.</p>
+    <h3>The Answer: Aggregate Farmers into an FPC</h3>
+    <p>A Farmer Producer Company (FPC) is registered under the Companies Act, owned and democratically run by farmer-members, with professional managers handling day-to-day operations.</p>
+    <p>It lets small farmers act at scale — managing the whole chain from input to market.</p>
+    <div class="grid"><div class="cell"><div class="v">~9,500</div><div class="l">FPCs registered in India since 2002</div></div><div class="cell"><div class="v">~40%</div><div class="l">produce lost without aggregation</div></div></div>
+    <p class="k">What an FPC delivers</p>
+    <p class="k">Pooled resources &amp; shared knowledge</p>
+    <p class="k">Collective bargaining for better prices</p>
+    <p class="k">Access to finance, inputs &amp; technology</p>
+    <p class="k">Higher production, productivity &amp; profit</p>
+    <p class="k">Professional management, farmer ownership</p>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>Stress that the FPC structure is the legal vehicle that makes everything else possible. AP officers can identify existing FPOs/FPCs in their districts and assess which are dormant vs active. ~9,500 figure and 40% loss figure are from the paper.</p>
+    <h3>Sahyadri Farms at a Glance</h3>
+    <p>Nashik, Maharashtra • Founded 27 Dec 2010 by farmer Vilas Shinde • India&#x27;s largest grape producer</p>
+    <div class="grid"><div class="cell"><div class="v">26,000</div><div class="l">Registered farmers</div></div><div class="cell"><div class="v">252+</div><div class="l">Villages covered</div></div><div class="cell"><div class="v">40,000</div><div class="l">Acres aggregated</div></div><div class="cell"><div class="v">42+</div><div class="l">Countries served</div></div><div class="cell"><div class="v">110+</div><div class="l">Corporate customers</div></div></div>
+    <div class="entry"><div class="term">₹1,482 Cr</div><div><p class="eh">Annual turnover</p><p class="eb">Started as just 4 smallholder farmers with a shared vision.</p></div></div>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>The contrast to land on: from 4 farmers to 18,000 in roughly a decade. This is the scalability proof. Numbers are from Table 1 and the text of the paper; note the paper itself shows minor internal variation (30,000 vs 31,000 acres) — use 30,000+.</p>
+    <p class="k">How the Model Works: One Integrated Chain</p>
+    <p class="k">Farmer</p>
+    <p class="k">Transparent procurement from member-farmers</p>
+    <p class="k">›</p>
+    <p class="k">Processing</p>
+    <p class="k">Central pack-house, grading, processing</p>
+    <p class="k">›</p>
+    <p class="k">Distribution</p>
+    <p class="k">Cold chain &amp; logistics to buyers</p>
+    <p class="k">›</p>
+    <p class="k">Retail</p>
+    <p class="k">Domestic retail, e-commerce, wholesale</p>
+    <p class="k">›</p>
+    <div class="entry"><div class="term">Consumer</div><div><p class="eh">Traceable produce, India &amp; 42+ countries</p><p class="eb">The FPC owns every link — so margins that once leaked to middlemen stay with farmers, and quality is controlled end-to-end.</p></div></div>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>This is the core mental model. The single biggest shift vs. a normal mandi sale: the collective owns the chain rather than selling at the first gate. Walk left-to-right and emphasise that traceability runs the full length (blockchain — next slide).</p>
+    <h2>Five Pillars Behind the Results</h2>
+    <h3>Agro-advisory teams</h3>
+    <p>Experts guide crop choice, cultivation, pest &amp; soil management — building farmer skills.</p>
+    <h3>Pack-house &amp; processing</h3>
+    <p>Sorting, grading, packaging plus dehydration/pulping/canning add value &amp; consistency.</p>
+    <h3>Cold storage &amp; logistics</h3>
+    <p>Optimal temperature/humidity extends shelf life and slashes post-harvest loss.</p>
+    <h3>Modern tech</h3>
+    <p>Precision agriculture, GPS, drones and drip irrigation cut input waste, raise yields.</p>
+    <h3>Blockchain &amp; ERP</h3>
+    <p>Full traceability and transparent, fair-trade pricing — a first among Indian FPCs.</p>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>Frame these as the investment shopping-list. Pillars 1 and 5 (advisory + traceability) are relatively low-capital and can start early; pillars 2-4 (pack-house, cold chain, precision tech) are heavier infrastructure built over time as turnover grows.</p>
+    <p class="k">Who Benefits — Farmers and Consumers</p>
+    <p class="k">For Farmers</p>
+    <p class="k">Direct access to domestic &amp; export markets</p>
+    <p class="k">Fair prices — no exploitative middlemen</p>
+    <p class="k">Capacity building: training &amp; workshops</p>
+    <p class="k">Financial inclusion: credit, insurance, inputs</p>
+    <p class="k">Higher, more stable &amp; dignified incomes</p>
+    <p class="k">For Consumers</p>
+    <p class="k">Consistently high quality, fresh produce</p>
+    <p class="k">Strict quality assurance to global standards</p>
+    <p class="k">Lower post-harvest loss → better availability</p>
+    <p class="k">Full traceability of origin &amp; safety</p>
+    <p class="k">Greater trust, confidence and loyalty</p>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>Both sides win — that mutual benefit is what makes the model politically and commercially durable. For officers: farmer income gains build trust in the FPC, which drives membership, which builds scale. It is a virtuous loop.</p>
+    <h2>Replication Roadmap for Your Mandal</h2>
+    <h3>Identify &amp; mobilise</h3>
+    <p>Map crops with surplus/loss; convene smallholders around one or two high-value crops. Start small — Sahyadri began with 4 farmers.</p>
+    <h3>Form / revive the FPC</h3>
+    <p>Register or re-activate an FPC. Lock in farmer ownership + professional management from day one.</p>
+    <h3>Build shared infrastructure</h3>
+    <p>Phase pack-house, grading and cold storage as volumes grow. Pool member capital + leverage govt &amp; FI partnerships.</p>
+    <h3>Adopt technology &amp; traceability</h3>
+    <p>Introduce agro-advisory, precision inputs, drip irrigation, and ERP/traceability for transparent pricing.</p>
+    <h3>Link to markets &amp; scale</h3>
+    <p>Secure direct buyers, retail, e-commerce and exports. Reinvest surplus; expand crops and villages.</p>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>This is the heart of the session — the do-this-next list. Emphasise sequencing: you do not need a pack-house on day one. Start with aggregation + advisory; infrastructure follows revenue. Tie each step back to what Sahyadri actually did.</p>
+    <h2>Challenges to Plan For</h2>
+    <h3>Climate &amp; water risk</h3>
+    <p>Drought-resistant varieties, precision/drip irrigation, climate-smart practices.</p>
+    <h3>Soil &amp; resource overuse</h3>
+    <p>Organic fertilisers, crop rotation, integrated pest management to protect long-term fertility.</p>
+    <h3>Heavy capital needs</h3>
+    <p>Phase infrastructure investment; blend member capital with FI and government partnerships.</p>
+    <h3>Coordination across stakeholders</h3>
+    <p>Engage farmers, govt, research bodies &amp; private partners; share knowledge and risk.</p>
+    <h3>Staying competitive</h3>
+    <p>Embed continuous improvement — feedback, evaluation and innovation at every level.</p>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>Be honest that these are real obstacles, not afterthoughts. The left column is the risk, the right is Sahyadri&#x27;s actual response. Officers should pre-empt these in any pilot design rather than discover them later.</p>
+    <h2>What Officers Should Take Away</h2>
+    <h3>Aggregation is the unlock</h3>
+    <p>An FPC turns scattered small farmers into a market force. Without scale, none of the rest works.</p>
+    <h3>Own the chain, not just the farm</h3>
+    <p>Value leaks at every handoff. Capturing processing, storage and sales keeps margins with farmers.</p>
+    <h3>Sequence the investment</h3>
+    <p>Start with people &amp; advisory; build pack-house, cold chain and tech as revenue grows.</p>
+    <h3>Technology builds trust</h3>
+    <p>ERP, blockchain and traceability convert quality into premium prices and loyal buyers.</p>
+    <h3>Start small, think long</h3>
+    <p>From 4 farmers to ₹1,000 Cr — patient, compounding growth, not a one-off scheme.</p>
+    <h3>Sahyadri Farms Case Study • Officer Training, Andhra Pradesh</h3>
+    <p>Recap slide. Read each takeaway, then ask the room: which one is the easiest to act on in your district within 6 months? Leads straight into the closing slide.</p>
+    <p class="k">From Case Study to Action</p>
+    <p class="k">Your task before you leave today:</p>
+    <p>Name 1 high-value crop in your mandal suited to an FPC pilot.</p>
+    <p>Identify an existing FPO/FPC to revive — or farmers to mobilise.</p>
+    <p>List the partners (banks, govt schemes) you can bring to the table.</p>
+    <h3>&quot;A model of best practice — inspiring others to emulate its success.&quot;</h3>
+    <p>Source: Sancheti, Sanghavi, Sanghavi &amp; Sancheti (2024), Journal of Postharvest Technology, 12(3): 37-49.</p>
+    <p>Close with the three action prompts — make officers commit verbally if possible. The quote is a light paraphrase of the paper&#x27;s conclusion. End on the idea that AP can be the next replication site.</p>
   </div>
+  <footer>
+    <b>Pahlé India Foundation</b> · Swarna Andhra @2047 capacity-building case study.
+    Prepared for district &amp; mandal officers.
+  </footer>
 </div>
-<div class="nav prev" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
-<div class="nav next" id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
-<div class="dots" id="dots"></div>
-
+<div class="reading" aria-hidden="true"></div>
 <script src="../assets/dash/gsap.js"></script>
 <script>
 (function(){
-  var root=document.documentElement;
-  var track=document.getElementById('track');
-  var slides=[].slice.call(track.querySelectorAll('.slide'));
-  var N=slides.length, cur=0;
-  var prev=document.getElementById('prev'), next=document.getElementById('next');
-  var dotsWrap=document.getElementById('dots'), cnum=document.getElementById('cnum');
-  var mobile=function(){return matchMedia('(max-width:760px)').matches;};
+  var root = document.documentElement;
+  var armed = root.classList.contains('anim');
+  var g = window.gsap;
 
-  // Background asset resolution, most-specific first, gradient if none exist:
-  //   1. per-case  media/<slug>/<i>.(mp4|jpg)        e.g. media/morbi-.../2.jpg
-  //   2. common    media/common/<role>.(mp4|jpg)     reused across all cases
-  //   3. mesh gradient already painted in CSS (do nothing)
-  var SLUG='sahyadri-farms-fpc';
-  function tryAsset(m, cands){
-    if(!cands.length) return;
-    var url=cands.shift();
-    if(/\.mp4$/.test(url)){
-      var v=document.createElement('video');
-      v.muted=true;v.loop=true;v.playsInline=true;v.autoplay=true;v.preload='auto';
-      v.onloadeddata=function(){ m.classList.add('has-asset'); m.appendChild(v); v.play&&v.play(); };
-      v.onerror=function(){ tryAsset(m,cands); };
-      v.src=url;
-    } else {
-      var img=new Image();
-      img.onload=function(){ m.classList.add('has-asset'); m.appendChild(img); };
-      img.onerror=function(){ tryAsset(m,cands); };
-      img.src=url;
-    }
+  // Reading-progress bar runs regardless of the entrance-animation gate.
+  var bar = document.querySelector('.reading');
+  function onScroll(){
+    var max = root.scrollHeight - root.clientHeight;
+    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
   }
-  slides.forEach(function(sl){
-    var m=sl.querySelector('.media'); if(!m) return;
-    var i=m.getAttribute('data-media'), role=m.getAttribute('data-role');
-    tryAsset(m, [
-      'media/'+SLUG+'/'+i+'.mp4', 'media/'+SLUG+'/'+i+'.gif', 'media/'+SLUG+'/'+i+'.jpg',
-      'media/common/'+role+'.mp4', 'media/common/'+role+'.gif', 'media/common/'+role+'.jpg'
-    ]);
-  });
+  addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 
-  // dots
-  slides.forEach(function(_,i){
-    var d=document.createElement('div'); d.className='dot'+(i?'':' on');
-    d.addEventListener('click',function(){ go(i); });
-    dotsWrap.appendChild(d);
-  });
-  var dots=[].slice.call(dotsWrap.children);
+  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
+  // the .anim class is what hides content, so removing it is the safe fallback.
+  if(!armed || !g){ root.classList.remove('anim'); return; }
 
-  function paint(){
-    if(!mobile()) track.style.transform='translateX(-'+(cur*100)+'%)';
-    dots.forEach(function(d,i){ d.classList.toggle('on', i===cur); });
-    cnum.textContent=('0'+(cur+1)).slice(-2);
-    prev.toggleAttribute('disabled', cur===0);
-    next.toggleAttribute('disabled', cur===N-1);
-    slides.forEach(function(s,i){ s.classList.toggle('active', i===cur); });
-    reveal(slides[cur]);
-  }
-  function go(i){ cur=Math.max(0,Math.min(N-1,i)); paint(); }
-  function step(d){ go(cur+d); }
+  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
+  g.config({nullTargetWarn:false});
 
-  prev.addEventListener('click',function(){ step(-1); });
-  next.addEventListener('click',function(){ step(1); });
-  addEventListener('keydown',function(ev){
-    if(ev.key==='ArrowRight'||ev.key==='PageDown'){ step(1); }
-    else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){ step(-1); }
-    else if(ev.key==='Home'){ go(0); } else if(ev.key==='End'){ go(N-1); }
-  });
-  // Wheel: horizontal intent, or vertical when the panel isn't scrollable.
-  // A trackpad swipe is not one event — macOS momentum fires dozens over ~1s. A
-  // plain time lock still let 2-3 of them through per swipe, so instead the
-  // gesture must fully SETTLE (no wheel events for 240ms) before another advance
-  // is armed. One physical swipe therefore moves exactly one slide.
-  var wheelArmed=true, wheelTimer=null;
-  addEventListener('wheel',function(ev){
-    if(mobile()) return;
-    var g=slides[cur].querySelector('.glass');
-    var canScroll=g && g.scrollHeight>g.clientHeight+2;
-    var dom=Math.abs(ev.deltaX)>Math.abs(ev.deltaY)?ev.deltaX:ev.deltaY;
-    if(canScroll && Math.abs(ev.deltaY)>Math.abs(ev.deltaX)){
-      var atTop=g.scrollTop<=0, atBot=g.scrollTop+g.clientHeight>=g.scrollHeight-1;
-      if(!(atTop&&dom<0)&&!(atBot&&dom>0)) return; // let the panel scroll
-    }
-    clearTimeout(wheelTimer);
-    wheelTimer=setTimeout(function(){ wheelArmed=true; }, 240);
-    if(!wheelArmed || Math.abs(dom)<28) return;
-    wheelArmed=false;
-    step(dom>0?1:-1);
-  },{passive:true});
-  // touch swipe
-  var sx=0,sy=0;
-  addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
-  addEventListener('touchend',function(e){
-    if(mobile()) return;
-    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
-    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)) step(dx<0?1:-1);
-  },{passive:true});
+  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
+  // backgrounded tab or some embedded preview panes the frame loop is paused, which
+  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
+  // drop .anim (reveal all, no animation) rather than risk invisible content.
+  var alive = false;
+  requestAnimationFrame(function(){ alive = true; });
+  setTimeout(function(){
+    if(!alive){ root.classList.remove('anim'); return; }
 
-  // content reveal per active slide (rAF-gated; content never left hidden)
-  var g=window.gsap, armed=root.classList.contains('anim'), alive=false, ready=false;
-  if(g&&armed){ g.ticker.lagSmoothing(0); requestAnimationFrame(function(){alive=true;});
-    setTimeout(function(){ if(!alive){ root.classList.remove('anim'); } ready=true; paint(); }, 260); }
-  else { root.classList.remove('anim'); ready=true; paint(); }
-  function reveal(slide){
-    if(!ready||!alive||!g||!armed||mobile()) return;
-    var els=slide.querySelectorAll('.r');
-    g.killTweensOf(els);
-    g.fromTo(els,{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.08,ease:'power3.out'});
-  }
-  // first paint happens after the probe above; if gsap absent it already ran
+    g.timeline({defaults:{ease:'power3.out'}})
+      .fromTo('.eyebrow',{opacity:0,y:12},{opacity:1,y:0,duration:.5})
+      .fromTo('h1',{opacity:0,y:24},{opacity:1,y:0,duration:.7},'-=.28')
+      .fromTo('.summary',{opacity:0,y:16},{opacity:1,y:0,duration:.6},'-=.46')
+      .fromTo('.meta .tag',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06},'-=.34')
+      .fromTo('.hero .cell',{opacity:0,y:22},{opacity:1,y:0,duration:.55,stagger:.08},'-=.24');
+
+    // scroll-reveal each body block as it enters; stat grids stagger their cards
+    var io = new IntersectionObserver(function(items){
+      items.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el);
+        if(el.classList.contains('grid')){
+          g.set(el,{opacity:1});
+          g.fromTo(el.children,{opacity:0,y:18},
+            {opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'});
+        } else {
+          g.fromTo(el,{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'});
+        }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    document.querySelectorAll('.body > *').forEach(function(el){ io.observe(el); });
+  }, 260);
 })();
 </script>
 </body>

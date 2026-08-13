@@ -8,7 +8,8 @@
    "theme": "Agri value chain",
    "place": "East Godavari",
    "district": "East_Godavari",
-   "sections": 6
+   "sections": 6,
+   "cover": "cases/media/east-godavari-coconut-coir/0.jpg"
   },
   {
    "slug": "nellore-shrimp-processing",
@@ -18,7 +19,8 @@
    "theme": "Aquaculture",
    "place": "SPSR Nellore",
    "district": "Sps_Nellore",
-   "sections": 6
+   "sections": 6,
+   "cover": null
   },
   {
    "slug": "nellore-ethanol-potential",
@@ -28,7 +30,8 @@
    "theme": "Ethanol / investment",
    "place": "SPSR Nellore",
    "district": "Sps_Nellore",
-   "sections": 4
+   "sections": 4,
+   "cover": null
   },
   {
    "slug": "srikakulam-blue-economy",
@@ -38,7 +41,8 @@
    "theme": "Blue economy",
    "place": "Srikakulam",
    "district": "Srikakulam",
-   "sections": 6
+   "sections": 6,
+   "cover": null
   }
  ],
  "model": [
@@ -50,7 +54,8 @@
    "theme": "Port-led manufacturing",
    "place": "Shenzhen, China",
    "district": null,
-   "sections": 10
+   "sections": 10,
+   "cover": null
   },
   {
    "slug": "morbi-ceramic-cluster",
@@ -60,7 +65,8 @@
    "theme": "Manufacturing cluster",
    "place": "Morbi, Gujarat",
    "district": null,
-   "sections": 7
+   "sections": 7,
+   "cover": null
   },
   {
    "slug": "tiruppur-textiles",
@@ -70,7 +76,8 @@
    "theme": "Textiles cluster",
    "place": "Tiruppur, Tamil Nadu",
    "district": null,
-   "sections": 18
+   "sections": 18,
+   "cover": null
   },
   {
    "slug": "kumarakom-tourism",
@@ -80,7 +87,8 @@
    "theme": "Responsible tourism",
    "place": "Kumarakom, Kerala",
    "district": null,
-   "sections": 10
+   "sections": 10,
+   "cover": null
   },
   {
    "slug": "sahyadri-farms-fpc",
@@ -90,7 +98,8 @@
    "theme": "FPC / supply chain",
    "place": "Nashik, Maharashtra",
    "district": null,
-   "sections": 5
+   "sections": 5,
+   "cover": null
   },
   {
    "slug": "chetna-organics-fpo",
@@ -100,7 +109,8 @@
    "theme": "FPO strengthening",
    "place": "Central India",
    "district": null,
-   "sections": 10
+   "sections": 10,
+   "cover": null
   },
   {
    "slug": "biofloc-tilapia",
@@ -110,7 +120,8 @@
    "theme": "Aquaculture livelihoods",
    "place": "CMFRI, Kerala",
    "district": null,
-   "sections": 10
+   "sections": 10,
+   "cover": null
   },
   {
    "slug": "paddy-fish-farming",
@@ -120,7 +131,8 @@
    "theme": "Integrated farming",
    "place": "India & China models",
    "district": null,
-   "sections": 13
+   "sections": 13,
+   "cover": null
   },
   {
    "slug": "banana-processing",
@@ -130,7 +142,8 @@
    "theme": "Agro-processing",
    "place": "Kanyakumari & Jalgaon",
    "district": null,
-   "sections": 19
+   "sections": 19,
+   "cover": null
   }
  ]
 }

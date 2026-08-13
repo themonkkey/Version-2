@@ -5,383 +5,281 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Unlocking Nellore&#x27;s Ethanol Opportunity — Swarna Andhra case study</title>
 <script>
-(function(){try{var ok=!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window;if(ok)document.documentElement.className+=' anim';}catch(e){}})();
+/* Arm entrance animations before first paint so hidden-then-reveal never flashes.
+   Only when motion is welcome AND IntersectionObserver exists; otherwise the page
+   stays fully visible and the GSAP layer below is skipped. */
+(function(){
+  try{
+    var ok = !matchMedia('(prefers-reduced-motion: reduce)').matches
+             && 'IntersectionObserver' in window;
+    if(ok) document.documentElement.className += ' anim';
+  }catch(e){}
+})();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ink:#06140F;--fg:#EEF5EF;--mut:rgba(238,245,239,.74);--mut2:rgba(238,245,239,.5);
-  --t1:#2B93BF;--t2:#7FD4E8;
-  --glass:rgba(8,22,16,.52);--glass2:rgba(8,22,16,.34);--line:rgba(255,255,255,.16);
-}
+:root{--ink:#0B2E20;--ink2:#09281B;--panel:rgba(255,255,255,.05);--line:rgba(255,255,255,.14);
+  --fg:#EAF2EC;--mut:rgba(234,242,236,.72);--mut2:rgba(234,242,236,.5);--lime:#C6EC8F;--lime2:#8FC93A;}
 *{box-sizing:border-box;}
-html,body{margin:0;height:100%;}
-body{background:var(--ink);color:var(--fg);overflow:hidden;
+body{margin:0;background:var(--ink);color:var(--fg);
   font-family:'Public Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   line-height:1.6;-webkit-font-smoothing:antialiased;}
-a{color:var(--t2);}
-
-/* ---------- horizontal deck ---------- */
-.stage{position:fixed;inset:0;overflow:hidden;}
-.track{display:flex;height:100%;width:100%;
-  transition:transform .72s cubic-bezier(.76,0,.24,1);will-change:transform;}
-.slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;padding:clamp(20px,5vw,64px);}
-
-/* full-bleed background: animated mesh, tinted; photo/video overlays it if present */
-.media{position:absolute;inset:0;z-index:0;
-  /* The tint used to sit at 42%/34% of the theme hue. For the agri cases that hue
-     is #6FA817 — a yellow-green — so the whole stage read olive rather than the
-     site's deep forest green. Dropped to a whisper: enough to tell the themes
-     apart, not enough to cast. The deep-green base now dominates. */
-  background:
-    radial-gradient(62% 72% at 18% 22%, color-mix(in srgb, var(--t1) 13%, transparent), transparent 72%),
-    radial-gradient(58% 66% at 82% 78%, color-mix(in srgb, var(--t2) 9%, transparent), transparent 72%),
-    radial-gradient(95% 95% at 50% 45%, #0B241B, #050F0B 78%);
-  background-size:180% 180%,180% 180%,100% 100%;
-  animation:drift 26s ease-in-out infinite alternate;}
-@keyframes drift{
-  0%{background-position:0% 0%,100% 100%,50% 50%;}
-  100%{background-position:60% 40%,40% 60%,50% 50%;}}
-.media::after{content:"";position:absolute;inset:0;
-  background:radial-gradient(120% 80% at 50% 120%, rgba(0,0,0,.5), transparent 60%);}
-.media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity .8s ease;}
-/* Pixel-art assets opt in per-file via a .pixel class; cinematic footage must NOT
-   be nearest-neighbour scaled or it aliases badly. */
-.media.pixel img,.media.pixel video{image-rendering:pixelated;}
-.media.has-asset img,.media.has-asset video{opacity:1;}
-.media.has-asset::before{content:"";position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg, rgba(4,12,9,.35), rgba(4,12,9,.68));}
-
-/* ---------- glass panel ---------- */
-.glass{position:relative;z-index:2;width:min(760px,100%);height:min(76vh,660px);overflow:auto;
-  background:var(--glass);
-  -webkit-backdrop-filter:blur(30px) saturate(1.3);backdrop-filter:blur(30px) saturate(1.3);
-  border:1px solid var(--line);border-radius:24px;
-  padding:clamp(24px,4vw,44px);
-  box-shadow:0 30px 80px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.08);
-  scrollbar-width:thin;scrollbar-color:var(--t2) transparent;}
-.glass::-webkit-scrollbar{width:8px;}
-.glass::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--t2) 50%,transparent);border-radius:8px;}
-.cover-glass{width:min(680px,100%);}
-/* cover content sits centred in the same fixed box rather than hugging the top */
-.cover-glass{display:flex;flex-direction:column;justify-content:center;}
-
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--t2);margin:0 0 16px;}
-h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,5.2vw,52px);
-  line-height:1.05;letter-spacing:-.01em;margin:0 0 18px;}
-.summary{font-size:clamp(16px,2vw,20px);color:var(--mut);margin:0 0 22px;max-width:56ch;}
-.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
-.tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;
-  background:var(--glass2);border:1px solid var(--line);color:var(--mut);}
+a{color:var(--lime);}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(20px,5vw,44px) clamp(18px,5vw,28px) 80px;}
+.back{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
+  color:var(--mut);text-decoration:none;margin-bottom:clamp(22px,4vw,34px);}
+.back:hover{color:var(--lime);}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--lime2);margin:0 0 14px;}
+h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,5.5vw,46px);
+  line-height:1.08;letter-spacing:-.01em;margin:0 0 16px;}
+.summary{font-size:clamp(16px,2vw,19px);color:var(--mut);margin:0 0 22px;max-width:60ch;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;}
+.tag{font-size:12px;font-weight:600;letter-spacing:.01em;padding:5px 11px;border-radius:999px;
+  background:var(--panel);border:1px solid var(--line);color:var(--mut);}
 .tag.place{color:var(--fg);}
-.hint{font-size:12.5px;color:var(--mut2);margin:22px 0 0;letter-spacing:.02em;}
-
-.sechead{display:flex;align-items:baseline;gap:14px;margin:0 0 20px;
-  padding-bottom:14px;border-bottom:1px solid var(--line);}
-.secnum{font-family:'Bodoni Moda',serif;font-weight:600;font-size:16px;color:var(--t2);
-  letter-spacing:.04em;}
-.sechead h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
-  font-size:clamp(22px,3.2vw,32px);letter-spacing:-.01em;color:#fff;margin:0;line-height:1.1;}
-.secbody h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(16px,2vw,20px);
-  color:#fff;margin:22px 0 6px;}
-.secbody h3:first-child{margin-top:0;}
-.secbody p{margin:0 0 13px;color:var(--mut);}
-.secbody .k{margin:16px 0 4px;font-weight:700;font-size:13.5px;color:var(--t2);letter-spacing:.02em;}
-
-/* hero + stat grids as inner glass chips */
-.hero,.grid{display:grid;gap:12px;margin:18px 0 4px;
-  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));}
-.grid{margin:14px 0 20px;}
-.scell,.cell{background:var(--glass2);border:1px solid var(--line);border-radius:14px;
-  padding:15px 16px 13px;transition:transform .26s cubic-bezier(.2,.7,.2,1),border-color .26s ease;}
-.scell:hover,.cell:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--t2) 50%,var(--line));}
-.scell .v,.cell .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
-  font-size:clamp(22px,3vw,30px);line-height:1;color:var(--t2);}
-.scell .l,.cell .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);font-weight:600;}
-
-/* timeline entry */
-.entry{display:grid;grid-template-columns:minmax(90px,124px) 1fr;gap:16px;
-  padding:14px 0;border-top:1px solid var(--line);}
+.src{font-size:12.5px;color:var(--mut2);margin:14px 0 0;}
+hr{border:none;border-top:1px solid var(--line);margin:clamp(26px,4vw,38px) 0;}
+/* hero stat band — the cover-slide numbers, restored */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
+  margin:26px 0 4px;}
+.hero .cell{background:linear-gradient(180deg,rgba(198,236,143,.10),rgba(198,236,143,.03));
+  border:1px solid rgba(198,236,143,.22);border-radius:14px;padding:16px 16px 14px;}
+.hero .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);
+  line-height:1;color:var(--lime);letter-spacing:-.01em;}
+.hero .l{margin-top:8px;font-size:12.5px;font-weight:600;line-height:1.35;color:var(--mut);}
+.body h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(21px,3vw,27px);
+  letter-spacing:-.01em;color:#fff;margin:40px 0 14px;padding-bottom:11px;
+  border-bottom:1px solid var(--line);}
+.body h2:first-child{margin-top:4px;}
+.body h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(17px,2.2vw,21px);
+  letter-spacing:-.008em;color:#fff;margin:30px 0 6px;}
+.body h3:first-child{margin-top:0;}
+.body p{margin:0 0 14px;color:var(--mut);}
+.body .k{margin:18px 0 4px;font-weight:700;font-size:14px;letter-spacing:.005em;
+  color:var(--lime2);}
+.body .k + h3{margin-top:2px;}
+/* in-body stat grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  margin:16px 0 22px;}
+.grid .cell{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+  padding:15px 15px 13px;}
+.grid .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(23px,3.4vw,30px);
+  line-height:1;color:var(--lime);}
+.grid .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);}
+/* timeline / definition entry */
+.entry{display:grid;grid-template-columns:minmax(94px,132px) 1fr;gap:16px;
+  padding:15px 0;border-top:1px solid var(--line);}
 .entry:first-of-type{border-top:none;}
-.entry .term{font-weight:700;font-size:13px;color:var(--t2);}
-.entry .eh{font-weight:700;font-size:15px;color:#fff;margin:0 0 5px;}
-.entry .eb{margin:0;font-size:14px;color:var(--mut);line-height:1.55;}
-
-/* ---------- chrome: arrows, dots, progress, back ---------- */
-.nav{position:fixed;top:50%;transform:translateY(-50%);z-index:30;
-  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
-  background:var(--glass);border:1px solid var(--line);color:var(--fg);
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  transition:transform .2s ease,background .2s ease,opacity .2s ease;user-select:none;}
-.nav:hover{background:color-mix(in srgb,var(--t1) 30%,var(--glass));transform:translateY(-50%) scale(1.07);}
-.nav.prev{left:clamp(12px,2.5vw,30px);}
-.nav.next{right:clamp(12px,2.5vw,30px);}
-.nav[disabled]{opacity:.3;pointer-events:none;}
-.nav svg{width:20px;height:20px;}
-.dots{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:30;
-  display:flex;gap:10px;align-items:center;
-  background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:9px 14px;
-  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
-.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.28);cursor:pointer;
-  transition:all .3s ease;}
-.dot.on{width:26px;border-radius:6px;background:linear-gradient(90deg,var(--t1),var(--t2));}
-.count{position:fixed;top:22px;right:clamp(16px,3vw,30px);z-index:30;font-size:13px;
-  color:var(--mut);font-variant-numeric:tabular-nums;}
-.count b{color:var(--fg);font-family:'Bodoni Moda',serif;font-size:17px;}
-.back{position:fixed;top:20px;left:clamp(16px,3vw,30px);z-index:30;
-  display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
-  color:var(--mut);text-decoration:none;background:var(--glass);border:1px solid var(--line);
-  padding:8px 13px;border-radius:999px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  transition:gap .2s ease,color .2s ease;}
-.back:hover{gap:11px;color:var(--fg);}
-
-/* entrance reveals (gsap sets these when .anim survives the rAF probe) */
-.anim .slide.active .r{opacity:0;}
-
-/* ---------- mobile: degrade to a vertical stack ---------- */
-@media (max-width:760px){
-  body{overflow:auto;}
-  .stage{position:static;}
-  .track{display:block;height:auto;transform:none!important;transition:none;}
-  .slide{flex:none;height:auto;min-height:88vh;padding:64px 16px;}
-  .glass{height:auto;max-height:none;overflow:visible;width:100%;}
-  .nav,.dots,.count{display:none;}
-  .anim .slide .r{opacity:1!important;}
-}
-@media (prefers-reduced-motion:reduce){
-  .track{transition:none;} .media{animation:none;}
-  .anim .r{opacity:1!important;}
+.entry .term{font-weight:700;font-size:13.5px;color:var(--lime2);line-height:1.4;}
+.entry .eh{font-weight:700;font-size:15.5px;color:#fff;margin:0 0 5px;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
+@media(max-width:520px){.entry{grid-template-columns:1fr;gap:4px;}}
+footer{margin-top:52px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--mut2);}
+footer b{color:var(--mut);font-weight:600;}
+/* ---- motion + interaction polish ---- */
+/* initial hidden states, applied only while .anim is armed (see head script) */
+.anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+.anim .hero .cell,.anim .body>*{opacity:0;}
+.reading{position:fixed;top:0;left:0;height:3px;width:0;z-index:20;
+  background:linear-gradient(90deg,var(--lime2),var(--lime));
+  box-shadow:0 0 12px rgba(198,236,143,.5);transition:width .12s linear;}
+.hero .cell,.grid .cell{transition:transform .28s cubic-bezier(.2,.7,.2,1),
+  border-color .28s ease,box-shadow .28s ease;will-change:transform;}
+.hero .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.5);
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.6);}
+.grid .cell:hover{transform:translateY(-3px);border-color:rgba(198,236,143,.38);
+  box-shadow:0 10px 26px -16px rgba(0,0,0,.6);}
+.back{transition:color .2s ease,gap .2s ease;}
+.back:hover{gap:11px;}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important;}
+  .anim .eyebrow,.anim h1,.anim .summary,.anim .meta .tag,
+  .anim .hero .cell,.anim .body>*{opacity:1;}
 }
 </style>
 </head>
 <body>
-<a class="back" href="../index.html#districts">&#8592; Library</a>
-<div class="count"><b id="cnum">01</b> / 05</div>
-<div class="stage">
-  <div class="track" id="track">
-<section class="slide cover" data-i="0"><div class="media" data-media="0" data-role="cover"></div><div class="glass cover-glass reveal-root"><p class="eyebrow r">Sector brief • Investment potential</p><h1 class="r">Unlocking Nellore&#x27;s Ethanol Opportunity</h1><p class="summary r">Feedstock, infrastructure and the road to E20 — what the National Ethanol Blending Programme means for the district.</p><div class="meta r"><span class="tag place">SPSR Nellore</span><span class="tag">Ethanol / investment</span><span class="tag">Andhra Pradesh district</span></div><p class="hint r">Use ← → or the arrows to move through the story</p></div></section>
-<section class="slide" data-i="1"><div class="media" data-media="1" data-role="action"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">01</span><h2>The Case for Ethanol — Why Now</h2></div><div class="secbody r"><h3>Import dependence</h3>
-<p>India imports over 85% of its crude oil; every litre of blended ethanol displaces imported fuel and saves foreign exchange.</p>
-<h3>Untapped feedstock surplus</h3>
-<p>Nellore&#x27;s paddy, maize and sugarcane belts generate surplus and damaged grain that fetch limited value beyond the food-grain market.</p>
-<h3>Volatile farm incomes</h3>
-<p>Single-crop dependence and price swings leave paddy and cane growers exposed to weak, unpredictable seasonal returns.</p>
-<h3>Rising national demand</h3>
-<p>The push toward 20% blending (E20) is opening assured, long-term offtake for new distillery capacity across India.</p>
-<h3>The Answer: National Ethanol Blending Programme</h3>
-<p>Under the EBP, Oil Marketing Companies purchase ethanol from molasses- and grain-based distilleries at pre-fixed prices for blending into petrol. It lets districts like Nellore convert surplus grain and cane into a guaranteed second market.</p>
-<div class="grid"><div class="cell"><div class="v">20%</div><div class="l">national blending target set for ESY 2025-26 (E20)</div></div></div>
-<p class="k">What the EBP delivers</p>
-<p class="k">Assured, price-linked offtake by OMCs</p>
-<p class="k">A new demand stream for surplus paddy, maize &amp; molasses</p>
-<p class="k">Investment in distillery &amp; storage infrastructure</p>
-<p class="k">Valuable by-products — DDGS cattle feed, bio-CNG</p>
-<p class="k">Reduced crude import bill &amp; vehicular emissions</p>
-<h3>Nellore District at a Glance</h3>
-<p>Coastal Andhra Pradesh • Part of the state&#x27;s paddy heartland • Anchored by Krishnapatnam Port</p>
-<div class="grid"><div class="cell"><div class="v">2.5 lakh+ ha</div><div class="l">Paddy area under cultivation</div></div></div>
-<p class="k">Existing sugar mills / distilleries in the region</p>
-<p class="k">Major deep-water port — Krishnapatnam</p>
-<p class="k">NH16</p>
-<p class="k">National highway &amp; rail corridor access</p>
-<div class="grid"><div class="cell"><div class="v">~40 km</div><div class="l"></div></div></div>
-<p class="k">Feedstock catchment to the port-linked industrial belt</p>
-<div class="entry"><div class="term">12 Mandals</div><div><p class="eh">With sizeable paddy &amp; maize surplus</p><p class="eb">Anchored by an existing sugar and grain-processing base — positioned to scale into a full ethanol hub.</p></div></div>
-<p>Figures are indicative, based on the district&#x27;s cropping pattern and existing agro-industrial base.</p>
-<p class="k">How an Ethanol Value Chain Would Work</p>
-<p class="k">Feedstock</p>
-<p class="k">Paddy, maize &amp; cane surplus aggregated from farmers and mandi networks</p>
-<p class="k">›</p>
-<p class="k">Distillery</p>
-<p class="k">Grain- and molasses-based distillation into fuel-grade ethanol</p>
-<p class="k">›</p>
-<p class="k">Blending</p>
-<p class="k">Ethanol supplied to OMC depots for blending into petrol (E20)</p>
-<p class="k">›</p>
-<p class="k">Distribution</p>
-<p class="k">Blended fuel moves via road &amp; Krishnapatnam Port to retail pumps</p>
-<p class="k">›</p>
-<div class="entry"><div class="term">End Use</div><div><p class="eh">Cleaner-burning fuel for vehicles across Andhra Pradesh and beyond</p><p class="eb">A district-anchored distillery keeps processing margins local — while by-products like DDGS and bio-CNG open a second revenue line.</p></div></div></div></div></section>
-<section class="slide" data-i="2"><div class="media" data-media="2" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">02</span><h2>Five Pillars for Building Nellore&#x27;s Ethanol Capacity</h2></div><div class="secbody r"><h3>Feedstock aggregation &amp; FPCs</h3>
-<p>Organise paddy, maize and cane growers so distilleries get consistent, quality-graded volumes.</p>
-<h3>Distillery capacity</h3>
-<p>Attract new dual-feed (grain + molasses) distilleries, or expand existing sugar-mill capacity.</p>
-<h3>Assured OMC offtake</h3>
-<p>Long-term supply agreements with Oil Marketing Companies de-risk investment and lock in prices.</p>
-<h3>Port &amp; logistics</h3>
-<p>Krishnapatnam Port and NH16 connectivity support feedstock movement and by-product export.</p>
-<h3>By-product utilisation</h3>
-<p>DDGS as cattle feed and bio-CNG from spent wash add income and cut waste.</p>
-<p class="k">Who Benefits — Farmers and the State</p>
-<p class="k">For Farmers</p>
-<p class="k">Assured market for surplus &amp; damaged grain</p>
-<p class="k">Additional income stream beyond food-grain sales</p>
-<p class="k">Reduced price volatility &amp; storage losses</p>
-<p class="k">Demand for maize as a rotation crop</p>
-<p class="k">New rural jobs in distilleries &amp; logistics</p>
-<p class="k">For the State &amp; Nation</p>
-<p class="k">Progress toward the national E20 blending target</p>
-<p class="k">Reduced crude oil import bill</p>
-<p class="k">Cleaner-burning fuel &amp; lower emissions</p>
-<p class="k">Industrial investment &amp; employment in Nellore</p>
-<p class="k">A replicable model for other AP grain belts</p></div></div></section>
-<section class="slide" data-i="3"><div class="media" data-media="3" data-role="takeaways"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">03</span><h2>Development Roadmap for Nellore</h2></div><div class="secbody r"><h3>Assess feedstock surplus</h3>
-<p>Map paddy, maize and molasses surplus by mandal; identify volumes viable for a distillery-ready supply chain.</p>
-<h3>Attract distillery investment</h3>
-<p>Court dual-feed (grain + molasses) distillery investment, or support expansion of existing sugar mills.</p>
-<h3>Secure OMC offtake agreements</h3>
-<p>Tie up long-term ethanol supply contracts with Oil Marketing Companies before capacity is built.</p>
-<h3>Build farmer aggregation</h3>
-<p>Strengthen FPCs/FPOs so growers can supply consistent, graded feedstock volumes.</p>
-<h3>Scale via by-products &amp; logistics</h3>
-<p>Add DDGS and bio-CNG lines; route exports and inputs through Krishnapatnam Port.</p></div></div></section>
-<section class="slide" data-i="4"><div class="media" data-media="4" data-role="challenges"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">04</span><h2>Challenges to Plan For</h2></div><div class="secbody r"><h3>Feedstock price volatility</h3>
-<p>Grain and cane prices can swing with the food market, affecting distillery economics.</p>
-<h3>Water stress</h3>
-<p>Cane cultivation is water-intensive; distilleries also need managed effluent and water use.</p>
-<h3>Capital intensity</h3>
-<p>New distillery and storage infrastructure requires significant upfront investment.</p>
-<h3>Food-versus-fuel concerns</h3>
-<p>Diverting grain to ethanol must be balanced against local food and fodder needs.</p>
-<h3>Logistics bottlenecks</h3>
-<p>Moving feedstock and by-products smoothly needs coordinated road, rail and port capacity.</p>
-<div class="entry"><div class="term">Take Away</div><div><p class="eh">Ethanol is a new demand stream</p><p class="eb">It turns surplus and damaged grain into an assured, price-linked market.</p></div></div>
-<h3>Offtake de-risks investment</h3>
-<p>OMC agreements guarantee buyers before a rupee of distillery capital is spent.</p>
-<h3>By-products add a second revenue layer</h3>
-<p>DDGS and bio-CNG turn waste streams into additional income.</p>
-<h3>Infrastructure is a natural advantage</h3>
-<p>Krishnapatnam Port and NH16 give Nellore logistics few districts can match.</p>
-<h3>Start with pilots, scale with policy</h3>
-<p>Anchor around one distillery and one crop belt, then expand as volumes and offtake grow.</p>
-<p class="k">From Opportunity to Action</p>
-<p class="k">Your task before you leave today:</p>
-<p>Identify one distillery-ready site or existing sugar mill for ethanol expansion.</p>
-<p>Map surplus paddy, maize and molasses feedstock by mandal.</p>
-<p>List the financing and OMC partners you can bring to the table.</p>
-<p>&quot;Every litre of local ethanol is a litre of imported fuel we no longer need.&quot;</p>
-<p>Source: Ministry of Petroleum &amp; Natural Gas, Ethanol Blending Programme roadmap; Andhra Pradesh district agricultural profile (illustrative estimates).</p></div></div></section>
+<div class="wrap">
+  <a class="back" href="../index.html#districts">← Back to the case study library</a>
+  <p class="eyebrow">Sector brief • Investment potential</p>
+  <h1>Unlocking Nellore&#x27;s Ethanol Opportunity</h1>
+  <p class="summary">Feedstock, infrastructure and the road to E20 — what the National Ethanol Blending Programme means for the district.</p>
+  <div class="meta"><span class="tag place">SPSR Nellore</span><span class="tag">Ethanol / investment</span><span class="tag">Andhra Pradesh district</span></div>
+  
+  
+  <hr>
+  <div class="body">
+    <h2>The Case for Ethanol — Why Now</h2>
+    <h3>Import dependence</h3>
+    <p>India imports over 85% of its crude oil; every litre of blended ethanol displaces imported fuel and saves foreign exchange.</p>
+    <h3>Untapped feedstock surplus</h3>
+    <p>Nellore&#x27;s paddy, maize and sugarcane belts generate surplus and damaged grain that fetch limited value beyond the food-grain market.</p>
+    <h3>Volatile farm incomes</h3>
+    <p>Single-crop dependence and price swings leave paddy and cane growers exposed to weak, unpredictable seasonal returns.</p>
+    <h3>Rising national demand</h3>
+    <p>The push toward 20% blending (E20) is opening assured, long-term offtake for new distillery capacity across India.</p>
+    <h3>The Answer: National Ethanol Blending Programme</h3>
+    <p>Under the EBP, Oil Marketing Companies purchase ethanol from molasses- and grain-based distilleries at pre-fixed prices for blending into petrol. It lets districts like Nellore convert surplus grain and cane into a guaranteed second market.</p>
+    <div class="grid"><div class="cell"><div class="v">20%</div><div class="l">national blending target set for ESY 2025-26 (E20)</div></div></div>
+    <p class="k">What the EBP delivers</p>
+    <p class="k">Assured, price-linked offtake by OMCs</p>
+    <p class="k">A new demand stream for surplus paddy, maize &amp; molasses</p>
+    <p class="k">Investment in distillery &amp; storage infrastructure</p>
+    <p class="k">Valuable by-products — DDGS cattle feed, bio-CNG</p>
+    <p class="k">Reduced crude import bill &amp; vehicular emissions</p>
+    <h3>Nellore District at a Glance</h3>
+    <p>Coastal Andhra Pradesh • Part of the state&#x27;s paddy heartland • Anchored by Krishnapatnam Port</p>
+    <div class="grid"><div class="cell"><div class="v">2.5 lakh+ ha</div><div class="l">Paddy area under cultivation</div></div></div>
+    <p class="k">Existing sugar mills / distilleries in the region</p>
+    <p class="k">Major deep-water port — Krishnapatnam</p>
+    <p class="k">NH16</p>
+    <p class="k">National highway &amp; rail corridor access</p>
+    <div class="grid"><div class="cell"><div class="v">~40 km</div><div class="l"></div></div></div>
+    <p class="k">Feedstock catchment to the port-linked industrial belt</p>
+    <div class="entry"><div class="term">12 Mandals</div><div><p class="eh">With sizeable paddy &amp; maize surplus</p><p class="eb">Anchored by an existing sugar and grain-processing base — positioned to scale into a full ethanol hub.</p></div></div>
+    <p>Figures are indicative, based on the district&#x27;s cropping pattern and existing agro-industrial base.</p>
+    <p class="k">How an Ethanol Value Chain Would Work</p>
+    <p class="k">Feedstock</p>
+    <p class="k">Paddy, maize &amp; cane surplus aggregated from farmers and mandi networks</p>
+    <p class="k">›</p>
+    <p class="k">Distillery</p>
+    <p class="k">Grain- and molasses-based distillation into fuel-grade ethanol</p>
+    <p class="k">›</p>
+    <p class="k">Blending</p>
+    <p class="k">Ethanol supplied to OMC depots for blending into petrol (E20)</p>
+    <p class="k">›</p>
+    <p class="k">Distribution</p>
+    <p class="k">Blended fuel moves via road &amp; Krishnapatnam Port to retail pumps</p>
+    <p class="k">›</p>
+    <div class="entry"><div class="term">End Use</div><div><p class="eh">Cleaner-burning fuel for vehicles across Andhra Pradesh and beyond</p><p class="eb">A district-anchored distillery keeps processing margins local — while by-products like DDGS and bio-CNG open a second revenue line.</p></div></div>
+    <h2>Five Pillars for Building Nellore&#x27;s Ethanol Capacity</h2>
+    <h3>Feedstock aggregation &amp; FPCs</h3>
+    <p>Organise paddy, maize and cane growers so distilleries get consistent, quality-graded volumes.</p>
+    <h3>Distillery capacity</h3>
+    <p>Attract new dual-feed (grain + molasses) distilleries, or expand existing sugar-mill capacity.</p>
+    <h3>Assured OMC offtake</h3>
+    <p>Long-term supply agreements with Oil Marketing Companies de-risk investment and lock in prices.</p>
+    <h3>Port &amp; logistics</h3>
+    <p>Krishnapatnam Port and NH16 connectivity support feedstock movement and by-product export.</p>
+    <h3>By-product utilisation</h3>
+    <p>DDGS as cattle feed and bio-CNG from spent wash add income and cut waste.</p>
+    <p class="k">Who Benefits — Farmers and the State</p>
+    <p class="k">For Farmers</p>
+    <p class="k">Assured market for surplus &amp; damaged grain</p>
+    <p class="k">Additional income stream beyond food-grain sales</p>
+    <p class="k">Reduced price volatility &amp; storage losses</p>
+    <p class="k">Demand for maize as a rotation crop</p>
+    <p class="k">New rural jobs in distilleries &amp; logistics</p>
+    <p class="k">For the State &amp; Nation</p>
+    <p class="k">Progress toward the national E20 blending target</p>
+    <p class="k">Reduced crude oil import bill</p>
+    <p class="k">Cleaner-burning fuel &amp; lower emissions</p>
+    <p class="k">Industrial investment &amp; employment in Nellore</p>
+    <p class="k">A replicable model for other AP grain belts</p>
+    <h2>Development Roadmap for Nellore</h2>
+    <h3>Assess feedstock surplus</h3>
+    <p>Map paddy, maize and molasses surplus by mandal; identify volumes viable for a distillery-ready supply chain.</p>
+    <h3>Attract distillery investment</h3>
+    <p>Court dual-feed (grain + molasses) distillery investment, or support expansion of existing sugar mills.</p>
+    <h3>Secure OMC offtake agreements</h3>
+    <p>Tie up long-term ethanol supply contracts with Oil Marketing Companies before capacity is built.</p>
+    <h3>Build farmer aggregation</h3>
+    <p>Strengthen FPCs/FPOs so growers can supply consistent, graded feedstock volumes.</p>
+    <h3>Scale via by-products &amp; logistics</h3>
+    <p>Add DDGS and bio-CNG lines; route exports and inputs through Krishnapatnam Port.</p>
+    <h2>Challenges to Plan For</h2>
+    <h3>Feedstock price volatility</h3>
+    <p>Grain and cane prices can swing with the food market, affecting distillery economics.</p>
+    <h3>Water stress</h3>
+    <p>Cane cultivation is water-intensive; distilleries also need managed effluent and water use.</p>
+    <h3>Capital intensity</h3>
+    <p>New distillery and storage infrastructure requires significant upfront investment.</p>
+    <h3>Food-versus-fuel concerns</h3>
+    <p>Diverting grain to ethanol must be balanced against local food and fodder needs.</p>
+    <h3>Logistics bottlenecks</h3>
+    <p>Moving feedstock and by-products smoothly needs coordinated road, rail and port capacity.</p>
+    <div class="entry"><div class="term">Take Away</div><div><p class="eh">Ethanol is a new demand stream</p><p class="eb">It turns surplus and damaged grain into an assured, price-linked market.</p></div></div>
+    <h3>Offtake de-risks investment</h3>
+    <p>OMC agreements guarantee buyers before a rupee of distillery capital is spent.</p>
+    <h3>By-products add a second revenue layer</h3>
+    <p>DDGS and bio-CNG turn waste streams into additional income.</p>
+    <h3>Infrastructure is a natural advantage</h3>
+    <p>Krishnapatnam Port and NH16 give Nellore logistics few districts can match.</p>
+    <h3>Start with pilots, scale with policy</h3>
+    <p>Anchor around one distillery and one crop belt, then expand as volumes and offtake grow.</p>
+    <p class="k">From Opportunity to Action</p>
+    <p class="k">Your task before you leave today:</p>
+    <p>Identify one distillery-ready site or existing sugar mill for ethanol expansion.</p>
+    <p>Map surplus paddy, maize and molasses feedstock by mandal.</p>
+    <p>List the financing and OMC partners you can bring to the table.</p>
+    <p>&quot;Every litre of local ethanol is a litre of imported fuel we no longer need.&quot;</p>
+    <p>Source: Ministry of Petroleum &amp; Natural Gas, Ethanol Blending Programme roadmap; Andhra Pradesh district agricultural profile (illustrative estimates).</p>
   </div>
+  <footer>
+    <b>Pahlé India Foundation</b> · Swarna Andhra @2047 capacity-building case study.
+    Prepared for district &amp; mandal officers.
+  </footer>
 </div>
-<div class="nav prev" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
-<div class="nav next" id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
-<div class="dots" id="dots"></div>
-
+<div class="reading" aria-hidden="true"></div>
 <script src="../assets/dash/gsap.js"></script>
 <script>
 (function(){
-  var root=document.documentElement;
-  var track=document.getElementById('track');
-  var slides=[].slice.call(track.querySelectorAll('.slide'));
-  var N=slides.length, cur=0;
-  var prev=document.getElementById('prev'), next=document.getElementById('next');
-  var dotsWrap=document.getElementById('dots'), cnum=document.getElementById('cnum');
-  var mobile=function(){return matchMedia('(max-width:760px)').matches;};
+  var root = document.documentElement;
+  var armed = root.classList.contains('anim');
+  var g = window.gsap;
 
-  // Background asset resolution, most-specific first, gradient if none exist:
-  //   1. per-case  media/<slug>/<i>.(mp4|jpg)        e.g. media/morbi-.../2.jpg
-  //   2. common    media/common/<role>.(mp4|jpg)     reused across all cases
-  //   3. mesh gradient already painted in CSS (do nothing)
-  var SLUG='nellore-ethanol-potential';
-  function tryAsset(m, cands){
-    if(!cands.length) return;
-    var url=cands.shift();
-    if(/\.mp4$/.test(url)){
-      var v=document.createElement('video');
-      v.muted=true;v.loop=true;v.playsInline=true;v.autoplay=true;v.preload='auto';
-      v.onloadeddata=function(){ m.classList.add('has-asset'); m.appendChild(v); v.play&&v.play(); };
-      v.onerror=function(){ tryAsset(m,cands); };
-      v.src=url;
-    } else {
-      var img=new Image();
-      img.onload=function(){ m.classList.add('has-asset'); m.appendChild(img); };
-      img.onerror=function(){ tryAsset(m,cands); };
-      img.src=url;
-    }
+  // Reading-progress bar runs regardless of the entrance-animation gate.
+  var bar = document.querySelector('.reading');
+  function onScroll(){
+    var max = root.scrollHeight - root.clientHeight;
+    bar.style.width = (max > 0 ? (root.scrollTop / max) * 100 : 0) + '%';
   }
-  slides.forEach(function(sl){
-    var m=sl.querySelector('.media'); if(!m) return;
-    var i=m.getAttribute('data-media'), role=m.getAttribute('data-role');
-    tryAsset(m, [
-      'media/'+SLUG+'/'+i+'.mp4', 'media/'+SLUG+'/'+i+'.gif', 'media/'+SLUG+'/'+i+'.jpg',
-      'media/common/'+role+'.mp4', 'media/common/'+role+'.gif', 'media/common/'+role+'.jpg'
-    ]);
-  });
+  addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 
-  // dots
-  slides.forEach(function(_,i){
-    var d=document.createElement('div'); d.className='dot'+(i?'':' on');
-    d.addEventListener('click',function(){ go(i); });
-    dotsWrap.appendChild(d);
-  });
-  var dots=[].slice.call(dotsWrap.children);
+  // If motion wasn't armed, or GSAP failed to load, reveal everything and stop —
+  // the .anim class is what hides content, so removing it is the safe fallback.
+  if(!armed || !g){ root.classList.remove('anim'); return; }
 
-  function paint(){
-    if(!mobile()) track.style.transform='translateX(-'+(cur*100)+'%)';
-    dots.forEach(function(d,i){ d.classList.toggle('on', i===cur); });
-    cnum.textContent=('0'+(cur+1)).slice(-2);
-    prev.toggleAttribute('disabled', cur===0);
-    next.toggleAttribute('disabled', cur===N-1);
-    slides.forEach(function(s,i){ s.classList.toggle('active', i===cur); });
-    reveal(slides[cur]);
-  }
-  function go(i){ cur=Math.max(0,Math.min(N-1,i)); paint(); }
-  function step(d){ go(cur+d); }
+  g.ticker.lagSmoothing(0);         // don't let a throttled frame loop stall tweens
+  g.config({nullTargetWarn:false});
 
-  prev.addEventListener('click',function(){ step(-1); });
-  next.addEventListener('click',function(){ step(1); });
-  addEventListener('keydown',function(ev){
-    if(ev.key==='ArrowRight'||ev.key==='PageDown'){ step(1); }
-    else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){ step(-1); }
-    else if(ev.key==='Home'){ go(0); } else if(ev.key==='End'){ go(N-1); }
-  });
-  // Wheel: horizontal intent, or vertical when the panel isn't scrollable.
-  // A trackpad swipe is not one event — macOS momentum fires dozens over ~1s. A
-  // plain time lock still let 2-3 of them through per swipe, so instead the
-  // gesture must fully SETTLE (no wheel events for 240ms) before another advance
-  // is armed. One physical swipe therefore moves exactly one slide.
-  var wheelArmed=true, wheelTimer=null;
-  addEventListener('wheel',function(ev){
-    if(mobile()) return;
-    var g=slides[cur].querySelector('.glass');
-    var canScroll=g && g.scrollHeight>g.clientHeight+2;
-    var dom=Math.abs(ev.deltaX)>Math.abs(ev.deltaY)?ev.deltaX:ev.deltaY;
-    if(canScroll && Math.abs(ev.deltaY)>Math.abs(ev.deltaX)){
-      var atTop=g.scrollTop<=0, atBot=g.scrollTop+g.clientHeight>=g.scrollHeight-1;
-      if(!(atTop&&dom<0)&&!(atBot&&dom>0)) return; // let the panel scroll
-    }
-    clearTimeout(wheelTimer);
-    wheelTimer=setTimeout(function(){ wheelArmed=true; }, 240);
-    if(!wheelArmed || Math.abs(dom)<28) return;
-    wheelArmed=false;
-    step(dom>0?1:-1);
-  },{passive:true});
-  // touch swipe
-  var sx=0,sy=0;
-  addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
-  addEventListener('touchend',function(e){
-    if(mobile()) return;
-    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
-    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)) step(dx<0?1:-1);
-  },{passive:true});
+  // rAF-health gate: entrance animations are driven by requestAnimationFrame. In a
+  // backgrounded tab or some embedded preview panes the frame loop is paused, which
+  // would leave .anim content hidden forever. Probe one frame; if it never ticks,
+  // drop .anim (reveal all, no animation) rather than risk invisible content.
+  var alive = false;
+  requestAnimationFrame(function(){ alive = true; });
+  setTimeout(function(){
+    if(!alive){ root.classList.remove('anim'); return; }
 
-  // content reveal per active slide (rAF-gated; content never left hidden)
-  var g=window.gsap, armed=root.classList.contains('anim'), alive=false, ready=false;
-  if(g&&armed){ g.ticker.lagSmoothing(0); requestAnimationFrame(function(){alive=true;});
-    setTimeout(function(){ if(!alive){ root.classList.remove('anim'); } ready=true; paint(); }, 260); }
-  else { root.classList.remove('anim'); ready=true; paint(); }
-  function reveal(slide){
-    if(!ready||!alive||!g||!armed||mobile()) return;
-    var els=slide.querySelectorAll('.r');
-    g.killTweensOf(els);
-    g.fromTo(els,{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.08,ease:'power3.out'});
-  }
-  // first paint happens after the probe above; if gsap absent it already ran
+    g.timeline({defaults:{ease:'power3.out'}})
+      .fromTo('.eyebrow',{opacity:0,y:12},{opacity:1,y:0,duration:.5})
+      .fromTo('h1',{opacity:0,y:24},{opacity:1,y:0,duration:.7},'-=.28')
+      .fromTo('.summary',{opacity:0,y:16},{opacity:1,y:0,duration:.6},'-=.46')
+      .fromTo('.meta .tag',{opacity:0,y:10},{opacity:1,y:0,duration:.4,stagger:.06},'-=.34')
+      .fromTo('.hero .cell',{opacity:0,y:22},{opacity:1,y:0,duration:.55,stagger:.08},'-=.24');
+
+    // scroll-reveal each body block as it enters; stat grids stagger their cards
+    var io = new IntersectionObserver(function(items){
+      items.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el = en.target; io.unobserve(el);
+        if(el.classList.contains('grid')){
+          g.set(el,{opacity:1});
+          g.fromTo(el.children,{opacity:0,y:18},
+            {opacity:1,y:0,duration:.5,stagger:.06,ease:'power2.out'});
+        } else {
+          g.fromTo(el,{opacity:0,y:22},{opacity:1,y:0,duration:.6,ease:'power2.out'});
+        }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    document.querySelectorAll('.body > *').forEach(function(el){ io.observe(el); });
+  }, 260);
 })();
 </script>
 </body>
