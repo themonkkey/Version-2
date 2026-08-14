@@ -3456,8 +3456,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(capLoaded || capLoading) return;
     capLoading = true;
     Promise.all([
-      fetch('assets/capacity.json?v=2026-08-13d').then(function(r){ return r.json(); }),
-      fetch('assets/capacity_assessment.json?v=2026-08-13d').then(function(r){ return r.json(); })
+      fetch('assets/capacity.json?v=2026-08-14a').then(function(r){ return r.json(); }),
+      fetch('assets/capacity_assessment.json?v=2026-08-14a').then(function(r){ return r.json(); })
         .catch(function(){ return null; })
     ]).then(function(res){
       CAP = res[0]; CAPA = res[1];

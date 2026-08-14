@@ -139,7 +139,7 @@ RE_PARTICIPANT_COUNT = re.compile(
 FIELD_LABELS = [
     "Session Format", "Training Format", "Training Level", "Training coverage",
     "Constituency", "Constituencies", "Participants", "Key Officials", "Sector Focus", "Method",
-    "Activity", "District", "Date", "Number of participants", "Focus",
+    "Activity", "District", "Date", "Number of participants", "Focus", "Key Findings",
 ]
 RE_FIELD = re.compile(
     r"^\s*(" + "|".join(re.escape(f) for f in FIELD_LABELS) + r")\s*$", re.I)
@@ -321,6 +321,19 @@ def split_reports(pages):
             fmt = "B"
         if fmt:
             starts.append((i, fmt))
+    # Some PDFs open part-way through a report — the Srikakulam file begins on the
+    # tail of the previous district's page, so its own "District 4 SRIKAKULAM"
+    # block (2-4 July profiling) sat ahead of the first detected banner and was
+    # dropped entirely, taking date_from with it. Leading pages that carry a
+    # district block are recovered as a format-B report.
+    if starts and starts[0][0] > 0:
+        lead = "\n".join(pages[:starts[0][0]])
+        # re.M matters here: RE_DISTRICT_ROW is anchored, and it is compiled
+        # without it for line-by-line use, so searching a multi-page blob with it
+        # never matched and the recovery silently did nothing.
+        if re.search(RE_DISTRICT_ROW.pattern, lead, re.M) and re.search(
+                r"^\s*(Activity|Method|Sector Focus|Key Findings)\s{2,}\S", lead, re.M):
+            starts.insert(0, (0, "B"))
     if not starts:
         return []
     reports = []
@@ -446,6 +459,51 @@ def split_region_a(lines, display_name):
     return " ".join(blob[:cut]), " ".join(blob[cut:]), " ".join(consty)
 
 
+# "<label>- <n>" repeated behind a "No of Participants:" lead-in. Two or more of
+# these means the day was counted per constituency or per half, and the session
+# total is their sum.
+RE_SUB_COUNT = re.compile(
+    r"([A-Za-z][A-Za-z .()/&'\-]{2,40}?)\s*[-–—:]\s*(\d{1,4})\b")
+
+
+def sum_sub_counts(tail):
+    """Sum a labelled participant series, or None when there isn't one.
+
+    Only fires on two or more labelled counts, so an ordinary "No of
+    Participants: 37" is left to the single-value path.
+
+    The series is bounded by ADJACENCY rather than by a trailing separator. The
+    designation list runs on from the last count on the same line, so a lookahead
+    for ";" / "," / end-of-string silently dropped whichever count came last
+    ("…Nellimarla- 26 and Vizianagaram- 12" summed to 140, not 152). Instead the
+    run stops at the first gap wider than a separator, which is exactly where the
+    counts stop and the job titles begin.
+    """
+    tail = tail.split("\n")[0]
+    tail = re.split(r"(?i)\bParticipants?\s*[:\-]", tail, maxsplit=1)[-1]
+
+    vals, end = [], None
+    for m in RE_SUB_COUNT.finditer(tail):
+        if end is not None:
+            gap = tail[end:m.start()]
+            # " , " / " ; " / " and ", optionally with a mid-series sub-heading:
+            # "Tertiary Sector Profiling- 7 ; Constituencies Covered: Rajam- 30"
+            # keeps counting after "Constituencies Covered:". Anything else has
+            # left the series and the designation list has begun.
+            if not re.fullmatch(r"[\s,;]*(and\b)?[\s,;]*([A-Za-z][A-Za-z ]{2,28}:)?[\s,;]*",
+                                gap):
+                break
+        n = int(m.group(2))
+        if not (1 <= n <= 2000):
+            break
+        vals.append(n)
+        end = m.end()
+    if len(vals) < 2:
+        return None
+    total = sum(vals)
+    return total if 1 <= total <= 5000 else None
+
+
 def parse_participants(fields, text):
     """(count, roles). Count is only reported when the source states one."""
     roles = fields.get("Participants") or fields.get("Key Officials") or ""
@@ -454,6 +512,16 @@ def parse_participants(fields, text):
                   fields.get("Key Officials", ""), text):
         m = RE_PARTICIPANT_COUNT.search(chunk or "")
         if m:
+            # A single day is often filed as several labelled sub-counts —
+            # "No of Participants: Bobbili- 37, Chipurupalli- 38, Srungavarupukota-
+            # 39, Nellimarla- 26 and Vizianagaram- 12", or "Morning Session - 10;
+            # Afternoon Session -16". Taking the first number alone reported 37
+            # attendees for a day that had 152, so the labelled series is summed
+            # when there is one. A lone number keeps the old behaviour.
+            total = sum_sub_counts(chunk[m.start():])
+            if total is not None:
+                count = total
+                break
             val = next((g for g in m.groups() if g), None)
             if val and 1 <= int(val) <= 2000:
                 count = int(val)
@@ -584,11 +652,17 @@ def parse_report_b(rep, display_name):
     head = "\n".join(rep["text"].split("\n")[:8])
     m = RE_SUBHDR_B.search(head)
     day = int(m.group("day")) if m else None
-    rest = m.group("rest") if m else head
-    iso, pretty = parse_date(rest)
+    iso, pretty = parse_date(m.group("rest") if m else head)
     if not iso:
         iso, pretty = parse_date(head)
-    focus = re.sub(r"[-–—]?\s*\d{1,2}\s+\w+\s+\d{4}\s*$", "", rest or "").strip(" -–—")
+    # A report recovered from the PDF's leading orphan pages has no sub-header at
+    # all. Falling back to the raw page text made the report's whole first
+    # paragraph its title; the Activity field, or a plain default, is the title.
+    if m:
+        focus = re.sub(r"[-–—]?\s*\d{1,2}\s+\w+\s+\d{4}\s*$", "",
+                       m.group("rest") or "").strip(" -–—")
+    else:
+        focus = ""
 
     aliases = [display_name.upper()] + NAME_ALIASES.get(display_name, [])
     # Slice out the "District N <NAME>" block belonging to this district.
@@ -610,8 +684,10 @@ def parse_report_b(rep, display_name):
     # bullets are read from the whole block rather than from a labelled section.
     highlights = parse_highlights(block)
     coverage = []
+    kind = focus or fields.get("Activity") or "District Profiling"
+    kind = clean(re.sub(r"\s+", " ", kind))[:70].strip(" -–—:")
     return {
-        "kind": (focus or "District Profiling").title(),
+        "kind": kind.title() if kind.isupper() or kind.islower() else kind,
         "level": level_for(focus + " " + (fields.get("Activity") or "")),
         "day": day, "date": iso, "date_pretty": pretty,
         "format": clean(fields.get("Method") or fields.get("Activity") or ""),
@@ -707,6 +783,15 @@ def parse_report_c(rep, display_name):
     fmt_out = cov_txt
     if not coverage and len(cov_txt) > 200:
         coverage, fmt_out = [cov_txt], ""
+    # Several of these reports repeat the Training coverage sentence verbatim as
+    # the opening of the brief. Rendered, that put the same paragraph on the page
+    # twice — once as the grey format line and again as the body. When the brief
+    # already opens with it, the format line is the redundant copy.
+    elif coverage and cov_txt and len(cov_txt) > 60:
+        opener = re.sub(r"\W+", " ", coverage[0][:120]).strip().lower()
+        head_txt = re.sub(r"\W+", " ", cov_txt[:120]).strip().lower()
+        if opener.startswith(head_txt[:80]) or head_txt.startswith(opener[:80]):
+            fmt_out = ""
 
     return {
         "kind": "Consolidated Status Report",
