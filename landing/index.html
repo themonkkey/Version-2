@@ -735,16 +735,16 @@ a.docs-leaf:hover .ext{opacity:1;}
 .cap-brief > h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;color:#FFF;margin:0 0 4px;}
 .cap-brief > .lede{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.55;
   margin:0 0 clamp(16px,2vw,22px);max-width:78ch;}
-.cap-sess{padding:clamp(15px,1.9vw,20px) 0;border-top:1px solid rgba(255,255,255,.13);
-  /* .nav is position:sticky, so a plain scrollIntoView lands the session's top
-     edge exactly under it. scroll-margin-top reserves that space instead. */
-  scroll-margin-top:clamp(96px,12vh,120px);}
-.cap-sess:first-of-type{border-top:0;padding-top:0;}
+.cap-sess{padding:clamp(4px,0.6vw,8px) 0 0;}
+/* .nav is position:sticky; #capActiveSess carries the reserved space so the
+   single visible session never lands tucked under the nav bar when a chip
+   click scrolls it to the top. */
+#capActiveSess{scroll-margin-top:clamp(96px,12vh,120px);}
 
-/* Date chips: a day-of-month jump bar so "the 8th" is one click, not a scroll
-   past every other date to find it. Horizontally scrollable rather than
-   wrapping — a wrapped row of 15+ chips ate as much vertical space as the
-   sessions it was meant to save scrolling through. */
+/* Date chips: a PAGER, not a jump bar — exactly one session is on the page at
+   a time, chosen here; the rest are out of the DOM's visible flow entirely.
+   Horizontally scrollable rather than wrapping — a wrapped row of 15+ chips
+   ate as much vertical space as the single session it was meant to replace. */
 .cap-datebar{display:flex;align-items:center;gap:11px;margin-bottom:clamp(14px,1.8vw,20px);}
 .cap-datebar-label{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:rgba(198,236,143,.75);}
@@ -3363,24 +3363,32 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     return '<div class="cap-sess" id="'+s._domId+'">'+head+fmt+main+roles+'</div>';
   }
 
-  /* A day-of-month chip per session, so a reader who wants "the 8th" can jump
-     straight there instead of scrolling past every date to find it. Sessions
-     with no date (the few reports recovered without one — see build_capacity.py)
-     get no chip; there is nothing to jump to. */
-  function dateChips(sessions){
-    var withDate = sessions.filter(function(s){ return !!s.date; });
-    if(withDate.length < 2) return '';
-    var chips = withDate.map(function(s){
-      var d = new Date(s.date + 'T00:00:00');
-      return '<button type="button" class="cap-datechip" data-target="'+esc(s._domId)+'" ' +
-        'title="'+esc(prettyDate(s.date))+'">' +
-        '<span class="dd">'+d.getDate()+'</span>' +
-        '<span class="mo">'+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+'</span>' +
-      '</button>';
+  /* A chip per session, day-of-month for a dated one, its kind for the rare
+     recovered report that carries no date. This is a PAGER, not a jump link:
+     exactly one session is in the DOM's visible flow at a time, chosen here,
+     and the rest sit out of the reader's way entirely rather than being
+     scrolled past. Sessions are already in chronological order (build_capacity.py
+     sorts by date, undated ones last), so index 0 is day one. */
+  function dateChips(sessions, activeIdx){
+    if(sessions.length < 2) return '';
+    var chips = sessions.map(function(s, i){
+      var inner;
+      if(s.date){
+        var d = new Date(s.date + 'T00:00:00');
+        inner = '<span class="dd">'+d.getDate()+'</span>' +
+          '<span class="mo">'+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+'</span>';
+      } else {
+        inner = '<span class="dd">—</span><span class="mo">'+esc((s.kind||'Report').split(' ')[0].slice(0,7))+'</span>';
+      }
+      return '<button type="button" class="cap-datechip'+(i===activeIdx?' on':'')+'" data-idx="'+i+'" ' +
+        'role="tab" aria-selected="'+(i===activeIdx?'true':'false')+'" ' +
+        'title="'+esc(s.date ? prettyDate(s.date) : (s.kind||'Report'))+'">' + inner + '</button>';
     }).join('');
-    return '<div class="cap-datebar"><span class="cap-datebar-label">Jump to</span>' +
-      '<div class="cap-datechips" role="tablist" aria-label="Jump to a session date">' + chips + '</div></div>';
+    return '<div class="cap-datebar"><span class="cap-datebar-label">Day '+(activeIdx+1)+' of '+sessions.length+'</span>' +
+      '<div class="cap-datechips" role="tablist" aria-label="Choose a session">' + chips + '</div></div>';
   }
+
+  var capActiveIdx = 0;
 
   function renderBrief(d){
     capShots = [];
@@ -3388,48 +3396,39 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       ? prettyDate(d.date_from) + ' – ' + prettyDate(d.date_to) : '';
     var lede = 'The programme ran ' + d.sessions_delivered + ' session' +
       (d.sessions_delivered === 1 ? '' : 's') + ' in ' + d.name +
-      (span ? ', ' + span : '') + '. Each entry below is one filed status report: ' +
-      'the format it was held in, what it covered, what officers reported, and the ' +
-      'photographs filed with it.';
+      (span ? ', ' + span : '') + '. One entry is shown at a time below: pick a ' +
+      'day above to see that report — the format it was held in, what it covered, ' +
+      'what officers reported, and the photographs filed with it.';
 
     d.sessions.forEach(function(s, i){ s._domId = 'cap-sess-' + i; });
-    var blocks = d.sessions.map(function(s){ return sessionBlock(s, d.name); }).join('');
-    var html = '<div class="cap-brief">' +
-      '<h3>Brief of the training — ' + esc(d.name) + '</h3>' +
-      '<p class="lede">' + esc(lede) + '</p>' +
-      dateChips(d.sessions) + blocks + '</div>';
+    capActiveIdx = 0;   // day one, every time a district is opened
 
     var brief = document.getElementById('capBrief');
-    brief.innerHTML = html;
-    /* Rebind after every re-render: the buttons are new nodes each time, so a
-       listener attached to the old ones would be pointing at detached DOM. */
-    document.querySelectorAll('#capBrief .cap-shot').forEach(function(b){
-      b.addEventListener('click', function(){ openShot(parseInt(b.dataset.shot,10)); });
-    });
+    brief.innerHTML = '<div class="cap-brief">' +
+      '<h3>Brief of the training — ' + esc(d.name) + '</h3>' +
+      '<p class="lede">' + esc(lede) + '</p>' +
+      '<div id="capPager"></div>' +
+      '<div id="capActiveSess"></div>' +
+    '</div>';
 
-    var chipEls = brief.querySelectorAll('.cap-datechip');
-    function setActiveChip(id){
-      chipEls.forEach(function(c){ c.classList.toggle('on', c.dataset.target === id); });
-    }
-    chipEls.forEach(function(c){
-      c.addEventListener('click', function(){
-        var el = document.getElementById(c.dataset.target);
-        if(!el) return;
-        el.scrollIntoView({behavior:'smooth', block:'start'});
-        setActiveChip(c.dataset.target);
+    function showSession(i){
+      capActiveIdx = i;
+      // Only one session's photos are ever on screen, so the shot index resets
+      // per session rather than growing across every chip click in the visit.
+      capShots = [];
+      document.getElementById('capPager').innerHTML = dateChips(d.sessions, i);
+      var pager = document.getElementById('capPager');
+      pager.querySelectorAll('.cap-datechip').forEach(function(c){
+        c.addEventListener('click', function(){ showSession(parseInt(c.dataset.idx, 10)); });
       });
-    });
-    /* Highlight whichever session is actually in view as the reader scrolls,
-       so the chip row stays a position indicator, not just a launcher. */
-    if(chipEls.length && 'IntersectionObserver' in window){
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){ if(e.isIntersecting) setActiveChip(e.target.id); });
-      }, {root:null, rootMargin:'-10% 0px -75% 0px', threshold:0});
-      d.sessions.forEach(function(s){
-        if(s.date){ var el = document.getElementById(s._domId); if(el) io.observe(el); }
+      var mount = document.getElementById('capActiveSess');
+      mount.innerHTML = sessionBlock(d.sessions[i], d.name);
+      mount.querySelectorAll('.cap-shot').forEach(function(b){
+        b.addEventListener('click', function(){ openShot(parseInt(b.dataset.shot,10)); });
       });
+      mount.scrollIntoView({behavior:'auto', block:'start'});
     }
-    if(chipEls.length) setActiveChip(chipEls[0].dataset.target);
+    showSession(0);
 
     var meta = document.getElementById('capMeta');
     if(meta){
