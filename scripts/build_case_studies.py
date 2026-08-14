@@ -7,23 +7,30 @@ an eyebrow / title / summary header block, then numbered sections, and repeat a
 "Capacity building programme | Government of Andhra Pradesh" footer plus bare
 slide-number lines on every slide.
 
-Two outputs, mirroring how the Documents tab is fed:
+Output:
   landing/assets/case_studies.json   — the card manifest the Case studies tab renders
-  landing/cases/<slug>.html          — one standalone, self-contained reader page
-                                       per study, opened in a new tab
+
+The READER PAGES are no longer written from here. The live design is the
+horizontal deck emitted by scripts/proto_deck.py, which imports META and
+parse_deck() from this module and supplies its own template. PAGE_TMPL below is
+the retired vertical design, kept only behind --write-pages; running this script
+with that flag overwrites every shipped deck with the old layout.
+
+  python3 scripts/build_case_studies.py             # manifest (safe)
+  python3 scripts/proto_deck.py <Source_File.txt>   # one reader page
+  python3 scripts/proto_deck.py                     # all reader pages
 
 CARD METADATA IS CURATED, NOT SCRAPED. The eyebrow/title/summary/theme/group for
-each of the 13 is written by hand in META below and verified against the file,
+each of the 15 is written by hand in META below and verified against the file,
 because the card face is government-facing and the flattened decks are too
 inconsistent to parse a clean title from reliably. The BODY is cleaned
 automatically (boilerplate and slide numbers dropped, backslash-escapes undone,
 headings detected) — faithful to what's in the file, just legible.
-
-    python3 scripts/build_case_studies.py
 """
 import html
 import json
 import os
+import sys
 import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -641,6 +648,15 @@ def render_page(m, hero_stats, body_blocks):
 
 
 def main():
+    # The live case pages are the horizontal deck design emitted by
+    # scripts/proto_deck.py, which imports META and the parser from here. The
+    # vertical PAGE_TMPL below is the RETIRED design: running this script
+    # unguarded overwrites all shipped decks with it. So pages are opt-in.
+    write_pages = "--write-pages" in sys.argv
+    if not write_pages:
+        print("manifest only — pages come from proto_deck.py "
+              "(pass --write-pages to emit the retired vertical template)\n")
+
     os.makedirs(PAGES_DIR, exist_ok=True)
     manifest = {"ap": [], "model": []}
     written = 0
@@ -653,9 +669,10 @@ def main():
             print("MISSING:", m["file"])
             continue
         hero, body = parse_deck(path)
-        page = render_page(m, hero, body)
-        with open(os.path.join(PAGES_DIR, m["slug"] + ".html"), "w", encoding="utf-8") as f:
-            f.write(page)
+        if write_pages:
+            page = render_page(m, hero, body)
+            with open(os.path.join(PAGES_DIR, m["slug"] + ".html"), "w", encoding="utf-8") as f:
+                f.write(page)
         # If this case has a deck cover image, the library card reuses it as its
         # own background. Detected rather than declared, so any case that later
         # gains a 0.jpg picks it up on the next build with no edit here.
@@ -676,12 +693,14 @@ def main():
         stats = sum(1 for b in body if b[0] == "stat")
         entries = sum(1 for b in body if b[0] == "entry")
         print(f"  {m['slug']:28s} {len(body):3d} blk  "
-              f"hero:{len(hero)} stat:{stats} entry:{entries} -> cases/{m['slug']}.html")
+              f"hero:{len(hero)} stat:{stats} entry:{entries}"
+              + (f" -> cases/{m['slug']}.html" if write_pages else ""))
 
     with open(MANIFEST, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=1, ensure_ascii=False)
-    print(f"\nwrote {written} pages + {os.path.relpath(MANIFEST, ROOT)} "
-          f"({len(manifest['ap'])} AP, {len(manifest['model'])} models)")
+    print(f"\nwrote {os.path.relpath(MANIFEST, ROOT)} from {written} cases "
+          f"({len(manifest['ap'])} AP, {len(manifest['model'])} models)"
+          + (f" + {written} pages" if write_pages else ""))
 
 
 if __name__ == "__main__":
