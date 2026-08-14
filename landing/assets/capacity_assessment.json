@@ -1,0 +1,850 @@
+{
+ "papers": [
+  {
+   "stage": "baseline",
+   "level": "district",
+   "audience": "District-level senior officers",
+   "title": "Baseline Knowledge Assessment",
+   "source": "Pre_Training_Assessment_District.txt",
+   "sections": [
+    {
+     "letter": "A",
+     "title": "AP & Swarna Andhra — General Awareness",
+     "kind": "mcq",
+     "scale": null,
+     "items": [
+      {
+       "type": "mcq",
+       "n": 1,
+       "text": "What is the name of Andhra Pradesh's long-term development vision launched by CM Chandrababu Naidu?",
+       "options": [
+        "Vision AP 2030",
+        "Swarna Andhra @2047",
+        "Sunrise Andhra Plan",
+        "Nava Andhra Mission 2050"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 2,
+       "text": "Andhra Pradesh's Swarna Andhra @2047 vision aims to transform the state into a ₹308 lakh crore economy. What is this approximately in USD?",
+       "options": [
+        "USD 500 billion",
+        "USD 1.2 trillion",
+        "USD 2.4 trillion",
+        "USD 4 trillion"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 3,
+       "text": "The Swarna Andhra @2047 vision targets what per capita income for AP citizens by 2047 (currently ~₹2.66 lakh)?",
+       "options": [
+        "₹15 lakh (~$12,000)",
+        "₹30 lakh (~$23,000)",
+        "₹55 lakh (~$42,000)",
+        "₹75 lakh (~$57,000)"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 4,
+       "text": "Which of the following is NOT one of the core pillars of the Swarna Andhra @2047 Vision?",
+       "options": [
+        "Zero Poverty and Inclusive Growth",
+        "Valley of Innovation and Speed of Business",
+        "Centralised Public Sector-led Industrial Growth",
+        "Tech-enabled Universal Healthcare"
+       ]
+      }
+     ],
+     "count": 4
+    },
+    {
+     "letter": "B",
+     "title": "KPI Framework & Monitoring",
+     "kind": "mcq",
+     "scale": null,
+     "items": [
+      {
+       "type": "mcq",
+       "n": 5,
+       "text": "The Swarna Andhra @2047 KPI Portal monitors performance at which administrative levels?",
+       "options": [
+        "State level only",
+        "District and state levels only",
+        "Mandal, district, constituency and state levels",
+        "Mandal and district levels only — state is monitored separately"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 6,
+       "text": "The KPI framework under Swarna Andhra @2047 is primarily aligned with which global framework?",
+       "options": [
+        "BRICS Sustainable Growth Indicators",
+        "UN Sustainable Development Goals (SDGs)",
+        "World Bank Human Capital Index",
+        "NITI Aayog's Aspirational Districts Programme"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 7,
+       "text": "What annual growth rate does the Swarna Andhra @2047 vision document target for the AP economy?",
+       "options": [
+        "8% — in line with India's national average",
+        "10% — matching the fastest-growing large states",
+        "12% — as recommended by NITI Aayog",
+        "15% — to reach USD 2.4 trillion by 2047"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 8,
+       "text": "As a district officer, what is your PRIMARY role in the Swarna Andhra KPI system?",
+       "options": [
+        "Entering mandal-level data and forwarding it to the state without review",
+        "Entering, verifying and approving district/mandal level KPI achievement data",
+        "Setting district KPI targets independently based on local priorities",
+        "Reviewing KPI data only when a state-level audit is initiated"
+       ]
+      }
+     ],
+     "count": 4
+    },
+    {
+     "letter": "C",
+     "title": "Economic Concepts — Quick Check",
+     "kind": "mcq",
+     "scale": null,
+     "items": [
+      {
+       "type": "mcq",
+       "n": 9,
+       "text": "What is the correct relationship between GVA and GDP?",
+       "options": [
+        "GDP = GVA + Total Government Expenditure",
+        "GDP = GVA + Net Taxes on Products (Taxes minus Subsidies)",
+        "GDP = GVA adjusted for inflation using the Price Deflator",
+        "GDP = GVA minus Depreciation of fixed assets"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 10,
+       "text": "Which approach measures GDP by summing value added at each stage of production across all sectors?",
+       "options": [
+        "Expenditure Approach — adds up all spending in the economy",
+        "Income Approach — sums wages, profits and rents",
+        "Production (Output) Approach — sums GVA across all sectors",
+        "Base Year Approach — fixes prices at a reference year"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 11,
+       "text": "The 'bottom-up approach' to estimating District Domestic Product means:",
+       "options": [
+        "National GDP is calculated first and then disaggregated to districts using population or area shares",
+        "Economic data is collected and aggregated upward from district and mandal level",
+        "Only the lowest-income sectors in a district are measured to set a baseline",
+        "District-level GVA is estimated using state-level averages applied uniformly"
+       ]
+      },
+      {
+       "type": "mcq",
+       "n": 12,
+       "text": "Which of the following economic activities belongs to the TERTIARY sector?",
+       "options": [
+        "Aquaculture and prawn farming",
+        "Food processing in a registered factory",
+        "Wholesale and retail trade",
+        "Electricity generation from a thermal power plant"
+       ]
+      }
+     ],
+     "count": 4
+    },
+    {
+     "letter": "D",
+     "title": "GDP / GVA / GDDP — Self-Rating",
+     "kind": "rating",
+     "scale": [
+      "Strongly Disagree (1)",
+      "Disagree (2)",
+      "Neutral (3)",
+      "Agree (4)",
+      "Strongly Agree (5)"
+     ],
+     "items": [
+      {
+       "type": "rating",
+       "text": "I clearly understand the difference between Gross Value Added (GVA) and Gross Domestic Product (GDP)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand how GVA is converted to GDP by adding net taxes on products (taxes minus subsidies)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the difference between nominal GDP and real GDP."
+      },
+      {
+       "type": "rating",
+       "text": "I am familiar with the concept of base year and why it is revised periodically."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the difference between the production, expenditure, and income approaches to estimating GDP."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of the difference between the bottom-up and top-down approaches in estimating District Domestic Product."
+      },
+      {
+       "type": "rating",
+       "text": "I can correctly classify economic activities into primary, secondary, and tertiary sectors."
+      },
+      {
+       "type": "rating",
+       "text": "I am clear about how the primary sector's contribution to GVA is estimated."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the broad methodology used to estimate GVA from the secondary sector (manufacturing, construction, utilities)."
+      },
+      {
+       "type": "rating",
+       "text": "I am familiar with how the tertiary (services) sector's contribution to GVA is estimated."
+      },
+      {
+       "type": "rating",
+       "text": "I have a broad understanding of the purpose of surveys like ASI and LFS in the estimation of GVA."
+      },
+      {
+       "type": "rating",
+       "text": "I broadly understand the method of estimating District Domestic Product and Mandal Domestic Products, including the indicators used for allocation."
+      }
+     ],
+     "count": 12
+    }
+   ],
+   "questions": 24,
+   "has_feedback": false,
+   "feedback_statements": []
+  },
+  {
+   "stage": "endline",
+   "level": "district",
+   "audience": "District-level senior officers",
+   "title": "| :-: | :-: |",
+   "source": "Post_Training_Assessment_District.txt",
+   "sections": [
+    {
+     "letter": "A",
+     "title": "GDP / GVA / GDDP",
+     "kind": "rating",
+     "scale": [
+      "Strongly Disagree (1)",
+      "Disagree (2)",
+      "Neutral (3)",
+      "Agree (4)",
+      "Strongly Agree (5)"
+     ],
+     "items": [
+      {
+       "type": "rating",
+       "text": "I clearly understand the difference between Gross Value Added (GVA) and Gross Domestic Product (GDP)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand how GVA is converted to GDP by adding net taxes on products (taxes minus subsidies)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the difference between nominal GDP and real GDP."
+      },
+      {
+       "type": "rating",
+       "text": "I am familiar with the concept of base year and why it is revised periodically."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the difference between the production, expenditure, and income approaches to estimating GDP."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of the difference between the bottom-up and top-down approaches in estimating District Domestic Product."
+      },
+      {
+       "type": "rating",
+       "text": "I can correctly classify economic activities into primary, secondary, and tertiary sectors."
+      },
+      {
+       "type": "rating",
+       "text": "I am clear about how the primary sector's contribution to GVA is estimated."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the broad methodology used to estimate GVA from the secondary sector (manufacturing, construction, utilities)."
+      },
+      {
+       "type": "rating",
+       "text": "I am familiar with how the tertiary (services) sector's contribution to GVA is estimated."
+      },
+      {
+       "type": "rating",
+       "text": "I have a broad understanding of the purpose of surveys like ASI and LFS in the estimation of GVA."
+      },
+      {
+       "type": "rating",
+       "text": "I broadly understand the method of estimating District Domestic Product and Mandal Domestic Products, including the indicators used for allocation."
+      }
+     ],
+     "count": 12
+    }
+   ],
+   "questions": 12,
+   "has_feedback": true,
+   "feedback_statements": [
+    "The objectives of the training session were clearly explained.",
+    "The training content was relevant to my role as a district official.",
+    "The session helped me understand the importance of GVA/GDDP in district planning.",
+    "The trainer explained the concepts in a clear and simple manner.",
+    "The examples and case studies used in the session were useful and practical",
+    "The training helped me identify sector-specific opportunities for improving district GVA.",
+    "The training encouraged active participation and discussion among participants",
+    "The duration and pace of the training session were appropriate.",
+    "Overall, the training was useful for improving my understanding of district economic growth and planning."
+   ]
+  },
+  {
+   "stage": "baseline",
+   "level": "constituency",
+   "audience": "Constituency and mandal officers",
+   "title": "| :-: | :-: |",
+   "source": "Pre_Training_Assessment_Constituency.txt",
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Swarna Andhra Vision 2047 | GDP / GVA / GDDP",
+     "kind": "rating",
+     "scale": [
+      "Strongly Disagree (1)",
+      "Disagree (2)",
+      "Neutral (3)",
+      "Agree (4)",
+      "Strongly Agree (5)"
+     ],
+     "items": [
+      {
+       "type": "rating",
+       "text": "I am familiar with the economic profile of my constituency/mandal and key sectors contituency"
+      },
+      {
+       "type": "rating",
+       "text": "I know latest figures of GVA of my mandals across primary, secondary and tertiary sector"
+      },
+      {
+       "type": "rating",
+       "text": "I understand how constituency and mandal-level economic activities contribute to overall state growth."
+      },
+      {
+       "type": "rating",
+       "text": "I can identify major livelihood and income-generating activities in my jurisdiction."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of interventions that can improve primary sector (crop, horticulture, fishery etc)"
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of interventions that can improve manufacturing"
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of interventions that can improve services sector"
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of ways to improve farmer incomes through value addition and market linkages."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of opportunities for promoting local industries, MSMEs, and food processing units."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of interventions that can support entrepreneurship and employment generation at the mandal level."
+      },
+      {
+       "type": "rating",
+       "text": "I can identify service-sector opportunities in my constituency/mandal."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of best practices from other regions that can be adapted to improve local productivity."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the importance of data-based planning for identifying sector-wise growth opportunities."
+      },
+      {
+       "type": "rating",
+       "text": "I am confident in using local data to prioritize economic interventions."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the role of convergence among departments in improving GVA outcomes."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the importance of using scheme convergence to address gaps in infrastructure, credit, market access, and livelihoods."
+      },
+      {
+       "type": "rating",
+       "text": "I am able to identify potential best practices from other mandals, districts, or states that may be replicated locally."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the need to monitor outcomes such as productivity, income, employment, enterprise growth, and market access over time."
+      }
+     ],
+     "count": 18
+    }
+   ],
+   "questions": 18,
+   "has_feedback": false,
+   "feedback_statements": []
+  },
+  {
+   "stage": "endline",
+   "level": "constituency",
+   "audience": "Constituency and mandal officers",
+   "title": "| :-: | :-: |",
+   "source": "Post_Training_Assessment_Constituency.txt",
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Improving GVA at Constituency and Mandal Level",
+     "kind": "rating",
+     "scale": [
+      "Strongly Disagree (1)",
+      "Disagree (2)",
+      "Neutral (3)",
+      "Agree (4)",
+      "Strongly Agree (5)"
+     ],
+     "items": [
+      {
+       "type": "rating",
+       "text": "I am familiar with the economic profile of my constituency/mandal and key sectors constituency"
+      },
+      {
+       "type": "rating",
+       "text": "I know latest figures of GVA of my mandals across primary, secondary and tertiary sector"
+      },
+      {
+       "type": "rating",
+       "text": "I understand how constituency and mandal-level economic activities contribute to overall state growth."
+      },
+      {
+       "type": "rating",
+       "text": "I can identify major livelihood and income-generating activities in my jurisdiction."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of interventions that can improve primary sector (crop, horticulture, fishery etc)"
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of interventions that can improve manufacturing"
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of interventions that can improve services sector"
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of ways to improve farmer incomes through value addition and market linkages."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of opportunities for promoting local industries, MSMEs, and food processing units."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of interventions that can support entrepreneurship and employment generation at the mandal level."
+      },
+      {
+       "type": "rating",
+       "text": "I can identify service-sector opportunities in my constituency/mandal."
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of best practices from other regions that can be adapted to improve local productivity."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the importance of data-based planning for identifying sector-wise growth opportunities."
+      },
+      {
+       "type": "rating",
+       "text": "I am confident in using local data to prioritize economic interventions."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the role of convergence among departments in improving GVA outcomes."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the importance of using scheme convergence to address gaps in infrastructure, credit, market access, and livelihoods."
+      },
+      {
+       "type": "rating",
+       "text": "I am able to identify potential best practices from other mandals, districts, or states that may be replicated locally."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the need to monitor outcomes such as productivity, income, employment, enterprise growth, and market access over time."
+      }
+     ],
+     "count": 18
+    }
+   ],
+   "questions": 18,
+   "has_feedback": true,
+   "feedback_statements": [
+    "The objectives of the training session were clearly explained.",
+    "The training content was relevant to my role as a district official.",
+    "The session helped me understand the importance of GVA/GDDP in district planning.",
+    "The trainer explained the concepts in a clear and simple manner.",
+    "The examples and case studies used in the session were useful and practical",
+    "The training helped me identify sector-specific opportunities for improving district GVA.",
+    "The training encouraged active participation and discussion among participants",
+    "The duration and pace of the training session were appropriate.",
+    "Overall, the training was useful for improving my understanding of district economic growth and planning."
+   ]
+  },
+  {
+   "stage": "baseline",
+   "level": "master",
+   "audience": "Master trainers",
+   "title": "| :-: | :-: |",
+   "source": "Pre_Training_Assessment_Master_Trainer.txt",
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Conceptual Understanding on Estimation of GDP/GSDP/GDDP etc",
+     "kind": "rating",
+     "scale": [
+      "StronglyDisagree",
+      "Disagree",
+      "Neutral",
+      "Agree",
+      "StronglyAgree"
+     ],
+     "items": [
+      {
+       "type": "rating",
+       "text": "I clearly understand the difference between Gross Value Added (GVA) and Gross Domestic Product (GDP)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand how GVA is converted to GDP by adding net taxes on products (taxes minus subsidies)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand difference between nominal and real GDP"
+      },
+      {
+       "type": "rating",
+       "text": "I am familiar with the concept of base year and why it is revised periodically."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the difference between the production approach, expenditure and the income approach to estimating GDP"
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of difference between bottomed and top down approach in estimating District Domestic Product"
+      },
+      {
+       "type": "rating",
+       "text": "I can correctly classify economic activities into primary, secondary, and tertiary sectors."
+      },
+      {
+       "type": "rating",
+       "text": "I understand which activities (e.g., agriculture, mining, manufacturing, services) fall under each of the three sectors."
+      },
+      {
+       "type": "rating",
+       "text": "I am clear about how the primary sector's contribution to GVA is estimated."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the broad methodology used to estimate GVA from the secondary sector (manufacturing, construction, utilities)."
+      },
+      {
+       "type": "rating",
+       "text": "I am familiar with how the tertiary (services) sector's contribution to GVA is estimated."
+      },
+      {
+       "type": "rating",
+       "text": "I have broad understanding of purpose of surveys like ASI, LFS in estimation of GVA"
+      },
+      {
+       "type": "rating",
+       "text": "I broadly understand method of estimating District Domestic Product and Mandal Domestic Products especially indicators used for allocation"
+      },
+      {
+       "type": "rating",
+       "text": "I understand how GVA is converted to GDP by adding net taxes on products (taxes minus subsidies)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the difference between nominal growth and real growth in domestic product estimates."
+      },
+      {
+       "type": "rating",
+       "text": "I clearly understand the difference between Gross Value Added (GVA) and Gross Domestic Product (GDP)."
+      },
+      {
+       "type": "rating",
+       "text": "I have a clear understanding of how the Swarna Andhra @2047 mission and the ten Padi Sutralu connect to the targets my district is expected to deliver."
+      },
+      {
+       "type": "rating",
+       "text": "I understand how the three strategic themes, the twelve sectors, and the two enablers (governance and financing)"
+      },
+      {
+       "type": "rating",
+       "text": "I understand how the P4 model encourages citizens to become active partners in development, not just beneficiaries"
+      },
+      {
+       "type": "rating",
+       "text": "I understand why two mandals with different endowments (should pursue different strategies rather than a uniform plan"
+      },
+      {
+       "type": "rating",
+       "text": "I clearly understand the overall purpose and vision behind Swarna Andhra 2047 and how KPIs support it."
+      },
+      {
+       "type": "rating",
+       "text": "I understand my own role and responsibilities in tracking, reporting, and improving KPIs in my jurisdiction."
+      },
+      {
+       "type": "rating",
+       "text": "I can identify which KPIs are most relevant to my department and how my work influences them."
+      },
+      {
+       "type": "rating",
+       "text": "I understand how progress on these KPIs is monitored, reviewed, and used for decision making"
+      },
+      {
+       "type": "rating",
+       "text": "I feel equipped to use KPI data to make decisions and prioritize actions, rather than just reporting numbers."
+      },
+      {
+       "type": "rating",
+       "text": "I am confident I can explain the relevance of these KPIs to my team and motivate them around the 2047 vision."
+      }
+     ],
+     "count": 26
+    }
+   ],
+   "questions": 26,
+   "has_feedback": false,
+   "feedback_statements": []
+  },
+  {
+   "stage": "endline",
+   "level": "master",
+   "audience": "Master trainers",
+   "title": "| :-: | :-: |",
+   "source": "Post_Training_Assessment_Master_Trainer.txt",
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Conceptual Understanding on Estimation of GDP/GSDP/GDDP etc",
+     "kind": "rating",
+     "scale": [
+      "StronglyDisagree(1)",
+      "Disagree(2)",
+      "Neutral(3)",
+      "Agree(4)",
+      "StronglyAgree(5)"
+     ],
+     "items": [
+      {
+       "type": "rating",
+       "text": "I clearly understand the difference between Gross Value Added (GVA) and Gross Domestic Product (GDP)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand how GVA is converted to GDP by adding net taxes on products (taxes minus subsidies)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand difference between nominal and real GDP"
+      },
+      {
+       "type": "rating",
+       "text": "I am familiar with the concept of base year and why it is revised periodically."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the difference between the production approach, expenditure and the income approach to estimating GDP"
+      },
+      {
+       "type": "rating",
+       "text": "I am aware of difference between bottomed and top down approach in estimating District Domestic Product"
+      },
+      {
+       "type": "rating",
+       "text": "I can correctly classify economic activities into primary, secondary, and tertiary sectors."
+      },
+      {
+       "type": "rating",
+       "text": "I understand which activities (e.g., agriculture, mining, manufacturing, services) fall under each of the three sectors."
+      },
+      {
+       "type": "rating",
+       "text": "I am clear about how the primary sector's contribution to GVA is estimated."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the broad methodology used to estimate GVA from the secondary sector (manufacturing, construction, utilities)."
+      },
+      {
+       "type": "rating",
+       "text": "I am familiar with how the tertiary (services) sector's contribution to GVA is estimated."
+      },
+      {
+       "type": "rating",
+       "text": "I have broad understanding of purpose of surveys like ASI, LFS in estimation of GVA"
+      },
+      {
+       "type": "rating",
+       "text": "I broadly understand method of estimating District Domestic Product and Mandal Domestic Products especially indicators used for allocation"
+      },
+      {
+       "type": "rating",
+       "text": "I understand how GVA is converted to GDP by adding net taxes on products (taxes minus subsidies)."
+      },
+      {
+       "type": "rating",
+       "text": "I understand the difference between nominal growth and real growth in domestic product estimates."
+      },
+      {
+       "type": "rating",
+       "text": "I clearly understand the difference between Gross Value Added (GVA) and Gross Domestic Product (GDP)."
+      }
+     ],
+     "count": 16
+    },
+    {
+     "letter": "B",
+     "title": "Understanding on HCM Vision of Swarnandhra 2047, KPIs and Boosting GVA",
+     "kind": "rating",
+     "scale": [
+      "StronglyDisagree(1)",
+      "Disagree(2)",
+      "Neutral(3)",
+      "Agree(4)",
+      "StronglyAgree(5)"
+     ],
+     "items": [
+      {
+       "type": "rating",
+       "text": "I have a clear understanding of how the Swarna Andhra @2047 mission and the ten Padi Sutralu connect to the targets my district is expected to deliver."
+      },
+      {
+       "type": "rating",
+       "text": "I understand how the three strategic themes, the twelve sectors, and the two enablers (governance and financing)"
+      },
+      {
+       "type": "rating",
+       "text": "I understand how the P4 model encourages citizens to become active partners in development, not just beneficiaries"
+      },
+      {
+       "type": "rating",
+       "text": "I understand why two mandals with different endowments (should pursue different strategies rather than a uniform plan"
+      },
+      {
+       "type": "rating",
+       "text": "I clearly understand the overall purpose and vision behind Swarna Andhra 2047 and how KPIs support it."
+      },
+      {
+       "type": "rating",
+       "text": "I understand my own role and responsibilities in tracking, reporting, and improving KPIs in my jurisdiction."
+      },
+      {
+       "type": "rating",
+       "text": "I can identify which KPIs are most relevant to my department and how my work influences them."
+      },
+      {
+       "type": "rating",
+       "text": "I understand how progress on these KPIs is monitored, reviewed, and used for decision making"
+      },
+      {
+       "type": "rating",
+       "text": "I feel equipped to use KPI data to make decisions and prioritize actions, rather than just reporting numbers."
+      },
+      {
+       "type": "rating",
+       "text": "I am confident I can explain the relevance of these KPIs to my team and motivate them around the 2047 vision."
+      }
+     ],
+     "count": 10
+    }
+   ],
+   "questions": 26,
+   "has_feedback": true,
+   "feedback_statements": [
+    "The objectives of the training session were clearly explained.",
+    "The training content was relevant to my role as a district official.",
+    "The session helped me understand the importance of GVA/GDDP in district planning.",
+    "The trainer explained the concepts in a clear and simple manner.",
+    "The examples and case studies used in the session were useful and practical",
+    "The training helped me identify sector-specific opportunities for improving GVA.",
+    "The training encouraged active participation and discussion among participants",
+    "The duration and pace of the training session were appropriate.",
+    "Overall, the training was useful for improving my understanding of district economic growth and planning."
+   ]
+  }
+ ],
+ "feedback": {
+  "source": "Post_Training_Assessment_District.txt",
+  "level": "district",
+  "scale": [
+   "Strongly Disagree (1)",
+   "Disagree (2)",
+   "Neutral (3)",
+   "Agree (4)",
+   "Strongly Agree (5)"
+  ],
+  "statements": [
+   "The objectives of the training session were clearly explained.",
+   "The training content was relevant to my role as a district official.",
+   "The session helped me understand the importance of GVA/GDDP in district planning.",
+   "The trainer explained the concepts in a clear and simple manner.",
+   "The examples and case studies used in the session were useful and practical",
+   "The training helped me identify sector-specific opportunities for improving district GVA.",
+   "The training encouraged active participation and discussion among participants",
+   "The duration and pace of the training session were appropriate.",
+   "Overall, the training was useful for improving my understanding of district economic growth and planning."
+  ]
+ },
+ "totals": {
+  "papers": 6,
+  "levels": [
+   "constituency",
+   "district",
+   "master"
+  ],
+  "questions": 124
+ },
+ "responses_available": false
+}

@@ -520,9 +520,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .vstage .dtab[data-dtab="docs"]{background-image:url(assets/tabs/tab-documents.png?v=2026-08-12a);}
 .vstage .dtab[data-dtab="cases"]{background-image:url(assets/tabs/tab-cases.png?v=2026-08-12a);}
 .vstage .dtab.dtab-gva{background-image:url(assets/tabs/tab-map.png?v=2026-08-12a);}
-.vstage .dtab.dtab-capacity{background-image:url(assets/tabs/tab-capacity.png?v=2026-08-12a);
-  /* the coming-soon tab must not read as active, so its motif stays quieter */
-  opacity:.72;}
+.vstage .dtab.dtab-capacity{background-image:url(assets/tabs/tab-capacity.png?v=2026-08-12a);}
 /* Live tabs (Documents / map) are clickable and show a pressed state; the two
    coming-soon tabs keep the not-allowed cursor from the base rule. */
 .dtab-live{cursor:pointer;opacity:1;}
@@ -694,6 +692,151 @@ a.docs-leaf:hover .ext{opacity:1;}
   background:rgba(7,30,20,.86);border-top:1px solid rgba(255,255,255,.11);}
 .case-card .ceyebrow{font-size:10.5px;font-weight:700;letter-spacing:.11em;
   text-transform:uppercase;color:#8FC93A;line-height:1;}
+
+/* ── Capacity building — the training record ─────────────────────────────
+   Three bands, in the order the programme is read: what was run (the counters),
+   what happened (the brief, district by district, with that district's own
+   session photographs), and what was measured (feedback, and the baseline /
+   endline pair). Same dark-stage rules as every other tab — anything over the
+   video carries its own frost or the footage reads through the text. */
+.cap-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
+  gap:clamp(10px,1.4vw,14px);margin-bottom:clamp(18px,2.4vw,26px);}
+.cap-stat{border-radius:var(--r);padding:14px clamp(14px,1.6vw,18px);
+  background:rgba(9,40,27,.72);border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);}
+.cap-stat .v{font-size:clamp(20px,2.6vw,27px);font-weight:750;color:#FFF;
+  letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums;}
+.cap-stat .k{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(198,236,143,.86);margin-top:5px;}
+.cap-stat .s{font-size:11.5px;color:rgba(255,255,255,.6);margin-top:3px;}
+
+/* District picker. A select rather than 18 chips: the chip rail wrapped to three
+   rows at tablet width and pushed the brief itself below the fold. */
+.cap-pick{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-bottom:clamp(14px,1.8vw,18px);}
+.cap-pick label{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);}
+.cap-select{font:inherit;font-size:14px;font-weight:600;color:#FFF;cursor:pointer;
+  padding:9px 34px 9px 14px;border-radius:var(--r);appearance:none;
+  background-color:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23C6EC8F' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 13px center;
+  backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);}
+.cap-select:focus{outline:none;border-color:rgba(198,236,143,.6);}
+.cap-select option{background:#0B2E20;color:#FFF;}
+.cap-meta{font-size:12.5px;color:rgba(255,255,255,.66);}
+.cap-meta b{color:rgba(255,255,255,.9);font-weight:650;}
+
+/* The brief. One panel per session, read top to bottom. */
+.cap-brief{border-radius:var(--r-lg);padding:clamp(18px,2.2vw,26px) clamp(18px,2.4vw,28px);
+  background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:0 12px 34px rgba(0,0,0,.20);margin-bottom:clamp(18px,2.4vw,26px);}
+.cap-brief > h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;color:#FFF;margin:0 0 4px;}
+.cap-brief > .lede{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.55;
+  margin:0 0 clamp(16px,2vw,22px);max-width:78ch;}
+.cap-sess{padding:clamp(15px,1.9vw,20px) 0;border-top:1px solid rgba(255,255,255,.13);}
+.cap-sess:first-of-type{border-top:0;padding-top:0;}
+.cap-shead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:9px;}
+.cap-day{flex:0 0 auto;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;
+  color:#0B2E20;background:var(--lime);border-radius:999px;padding:3px 9px;line-height:1.35;}
+.cap-date{font-size:13.5px;font-weight:700;color:#FFF;}
+.cap-lvl{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(198,236,143,.9);border:1px solid rgba(198,236,143,.35);border-radius:999px;
+  padding:2px 8px;line-height:1.4;}
+.cap-kind{font-size:12px;color:rgba(255,255,255,.6);}
+.cap-n{margin-left:auto;font-size:12px;color:rgba(255,255,255,.78);white-space:nowrap;}
+.cap-n b{color:#FFF;font-weight:700;font-variant-numeric:tabular-nums;}
+.cap-fmt{font-size:12.5px;color:rgba(255,255,255,.66);line-height:1.5;margin-bottom:10px;}
+.cap-body p{font-size:13.8px;line-height:1.62;color:rgba(255,255,255,.86);margin:0 0 9px;
+  max-width:78ch;}
+.cap-note{font-size:13.2px;font-style:italic;color:rgba(255,255,255,.66);}
+.cap-hl{margin-top:12px;display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.cap-hgroup{border-radius:var(--r);padding:12px 15px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);}
+.cap-hgroup > h5{font-size:11.5px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--lime);margin:0 0 8px;}
+.cap-hgroup ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;}
+.cap-hgroup li{position:relative;padding-left:14px;font-size:13px;line-height:1.52;
+  color:rgba(255,255,255,.83);}
+.cap-hgroup li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;
+  border-radius:50%;background:rgba(198,236,143,.75);}
+.cap-roles{margin-top:11px;font-size:12.2px;line-height:1.55;color:rgba(255,255,255,.58);}
+.cap-roles b{color:rgba(255,255,255,.8);font-weight:650;}
+
+/* Session photographs. These are lifted from the reports at their authored size
+   — roughly 160-240px wide — so they are shown as a thumbnail rail and never
+   upscaled past it; a 210px tile is about as large as the source supports before
+   it goes soft. */
+.cap-shots{margin-top:13px;display:flex;gap:9px;flex-wrap:wrap;}
+.cap-shot{width:clamp(104px,13vw,146px);aspect-ratio:4/3;border-radius:11px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.3);cursor:zoom-in;
+  padding:0;display:block;transition:transform .16s,border-color .16s;}
+.cap-shot img{width:100%;height:100%;object-fit:cover;display:block;}
+.cap-shot:hover{transform:translateY(-2px);border-color:rgba(198,236,143,.55);}
+.cap-shot:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+.cap-shots-none{margin-top:11px;font-size:12px;color:rgba(255,255,255,.45);}
+
+/* Lightbox. Photos are small, so the viewer caps at the source's own pixels
+   rather than stretching a 212px JPEG across a 1400px screen. */
+.cap-lb{position:fixed;inset:0;z-index:120;display:none;place-items:center;
+  background:rgba(4,14,10,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:clamp(16px,4vw,48px);}
+.cap-lb.on{display:grid;}
+.cap-lb figure{max-width:min(92vw,760px);text-align:center;}
+.cap-lb img{max-width:100%;max-height:72vh;border-radius:14px;display:block;margin:0 auto;
+  border:1px solid rgba(255,255,255,.2);box-shadow:0 30px 80px rgba(0,0,0,.5);
+  image-rendering:auto;}
+.cap-lb figcaption{margin-top:12px;font-size:13px;color:rgba(255,255,255,.82);line-height:1.5;}
+.cap-lb .cap-lb-x{position:absolute;top:clamp(12px,2vw,22px);right:clamp(12px,2vw,22px);
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#FFF;font-size:18px;}
+.cap-lb .cap-lb-nav{position:absolute;top:50%;transform:translateY(-50%);
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.26);color:#FFF;font-size:17px;}
+.cap-lb .cap-lb-prev{left:clamp(8px,2vw,22px);}
+.cap-lb .cap-lb-next{right:clamp(8px,2vw,22px);}
+
+/* The measurement pair, as sketched: two equal cards below the brief. Stretch,
+   not auto height — otherwise the shorter card's footer floats and the two read
+   as unrelated blocks rather than a pair. */
+.cap-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,20px);
+  align-items:stretch;}
+.cap-card{display:flex;flex-direction:column;text-decoration:none;
+  border-radius:var(--r-lg);padding:clamp(17px,2.1vw,24px) clamp(18px,2.3vw,26px);
+  background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:0 12px 34px rgba(0,0,0,.20);
+  transition:transform .16s,border-color .16s,background-color .16s;}
+.cap-card:hover{transform:translateY(-2px);border-color:rgba(198,236,143,.5);
+  background-color:rgba(12,52,35,.86);}
+.cap-card:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
+.cap-card h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;color:#FFF;margin:0 0 6px;}
+.cap-card > p{font-size:13.5px;line-height:1.58;color:rgba(255,255,255,.78);margin:0 0 14px;}
+.cap-mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:10px;
+  margin-bottom:14px;}
+.cap-mini div{border-radius:12px;padding:9px 11px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.11);}
+.cap-mini .v{font-size:17px;font-weight:750;color:#FFF;line-height:1.1;
+  font-variant-numeric:tabular-nums;}
+.cap-mini .k{font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(198,236,143,.82);margin-top:4px;}
+.cap-card .cap-go{margin-top:auto;display:flex;align-items:center;gap:7px;
+  font-size:12.5px;font-weight:700;letter-spacing:.03em;color:var(--lime);}
+.cap-card:hover .cap-go i{transform:translateX(3px);}
+.cap-card .cap-go i{transition:transform .16s;}
+/* Status line for the two cards. The endline instruments exist but the responses
+   are not digitised yet, and the page must say so rather than imply a result. */
+.cap-flag{font-size:11.5px;line-height:1.5;color:rgba(255,255,255,.55);
+  margin:0 0 12px;padding-left:16px;position:relative;}
+.cap-flag::before{content:"";position:absolute;left:0;top:6px;width:6px;height:6px;
+  border-radius:50%;background:rgba(255,214,102,.8);}
+@media(max-width:860px){
+  .cap-two{grid-template-columns:1fr;}
+  .cap-n{margin-left:0;width:100%;}
+}
+
 /* ── Improving GVA — sector playbooks ────────────────────────────────────
    Same dark-stage rules as the document library: anything sitting on the
    video needs its own frost, or the moving footage reads straight through and
@@ -1622,7 +1765,7 @@ a.docs-leaf:hover .ext{opacity:1;}
     <div class="dtabs">
       <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plans</span></button>
             <button class="dtab dtab-live dtab-gva" data-dtab="gva" aria-pressed="false">Improving GVA<span class="dtab-soon">Sector playbooks</span></button>
-            <button class="dtab dtab-capacity" disabled aria-disabled="true">Capacity building<span class="dtab-soon">Coming soon</span></button>
+            <button class="dtab dtab-live dtab-capacity" data-dtab="capacity" aria-pressed="false">Capacity building<span class="dtab-soon">18 districts</span></button>
       <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">13 studies</span></button>
     </div>
     <div id="mapView">
@@ -1678,6 +1821,18 @@ a.docs-leaf:hover .ext{opacity:1;}
       </div>
       <div id="casesBody" aria-live="polite">
         <div class="docs-loading">Loading the case study library…</div>
+      </div>
+    </div>
+
+    <div id="capacityView" hidden>
+      <div class="sec-head sec-head-row">
+        <div>
+          <h2>Capacity building programme</h2>
+          <p>What was run in each district — the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
+        </div>
+      </div>
+      <div id="capacityBody" aria-live="polite">
+        <div class="docs-loading">Loading the training record…</div>
       </div>
     </div>
 
@@ -3056,17 +3211,247 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       });
   }
 
+  /* ── Capacity building: the training record ──────────────────────────
+     Built from the district status-report PDFs by scripts/build_capacity.py,
+     and from the six baseline/endline papers by scripts/build_assessment.py.
+     One district's brief is rendered at a time — 126 sessions with their photo
+     rails is far too much DOM to hold at once, and the reader only ever wants
+     one district anyway. */
+  var capView = document.getElementById('capacityView');
+  var capBody = document.getElementById('capacityBody');
+  var CAP = null, CAPA = null, capLoaded = false, capLoading = false;
+
+  function nfmt(n){ return (n==null) ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+
+  function prettyDate(iso){
+    if(!iso) return '';
+    var M = ['January','February','March','April','May','June',
+             'July','August','September','October','November','December'];
+    var p = iso.split('-');
+    return parseInt(p[2],10) + ' ' + M[parseInt(p[1],10)-1] + ' ' + p[0];
+  }
+  function shortDate(iso){
+    if(!iso) return '';
+    var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var p = iso.split('-');
+    return parseInt(p[2],10) + ' ' + M[parseInt(p[1],10)-1];
+  }
+  var LVL = { district:'District level', constituency:'Constituency &amp; mandal',
+              master:'Master trainers' };
+
+  /* The photo rail. Every shot on the page shares one lightbox and one flat
+     index, so the arrows walk the whole district rather than stopping at the
+     end of a session. */
+  var capShots = [];
+  function shotRail(session, dname){
+    if(!session.photos || !session.photos.length){ return ''; }
+    return '<div class="cap-shots">' + session.photos.map(function(src){
+      var cap = dname + ' · ' + (session.date ? prettyDate(session.date) : session.kind);
+      var i = capShots.push({ src:src, cap:cap }) - 1;
+      return '<button class="cap-shot" data-shot="'+i+'" type="button" ' +
+             'aria-label="Enlarge photograph from '+esc(cap)+'">' +
+             '<img src="'+esc(src)+'" alt="Training session, '+esc(cap)+'" loading="lazy" decoding="async">' +
+             '</button>';
+    }).join('') + '</div>';
+  }
+
+  function sessionBlock(s, dname){
+    var head = '<div class="cap-shead">' +
+      (s.day ? '<span class="cap-day">Day '+s.day+'</span>' : '') +
+      (s.date ? '<span class="cap-date">'+esc(prettyDate(s.date))+'</span>' : '') +
+      '<span class="cap-lvl">'+(LVL[s.level]||'District level')+'</span>' +
+      (s.kind ? '<span class="cap-kind">'+esc(s.kind)+'</span>' : '') +
+      (s.participants ? '<span class="cap-n"><b>'+nfmt(s.participants)+'</b> officers</span>' : '') +
+      '</div>';
+
+    var fmt = s.format ? '<div class="cap-fmt">'+esc(s.format)+'</div>' : '';
+    var body = '';
+    if(s.coverage && s.coverage.length){
+      body = '<div class="cap-body">' +
+        s.coverage.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('') + '</div>';
+    } else if(s.note){
+      body = '<div class="cap-body"><p class="cap-note">'+esc(s.note)+'</p></div>';
+    }
+
+    var hl = '';
+    if(s.highlights && s.highlights.length){
+      hl = '<div class="cap-hl">' + s.highlights.map(function(g){
+        return '<div class="cap-hgroup">' +
+          (g.head ? '<h5>'+esc(g.head)+'</h5>' : '') +
+          '<ul>' + g.points.map(function(p){ return '<li>'+esc(p)+'</li>'; }).join('') + '</ul>' +
+        '</div>';
+      }).join('') + '</div>';
+    }
+
+    var roles = s.roles ? '<div class="cap-roles"><b>Who attended:</b> '+esc(s.roles)+'</div>' : '';
+    return '<div class="cap-sess">'+head+fmt+body+hl+shotRail(s, dname)+roles+'</div>';
+  }
+
+  function renderBrief(d){
+    capShots = [];
+    var span = (d.date_from && d.date_to)
+      ? prettyDate(d.date_from) + ' – ' + prettyDate(d.date_to) : '';
+    var lede = 'The programme ran ' + d.sessions_delivered + ' session' +
+      (d.sessions_delivered === 1 ? '' : 's') + ' in ' + d.name +
+      (span ? ', ' + span : '') + '. Each entry below is one filed status report: ' +
+      'the format it was held in, what it covered, what officers reported, and the ' +
+      'photographs filed with it.';
+
+    var blocks = d.sessions.map(function(s){ return sessionBlock(s, d.name); }).join('');
+    var html = '<div class="cap-brief">' +
+      '<h3>Brief of the training — ' + esc(d.name) + '</h3>' +
+      '<p class="lede">' + esc(lede) + '</p>' + blocks + '</div>';
+
+    document.getElementById('capBrief').innerHTML = html;
+    /* Rebind after every re-render: the buttons are new nodes each time, so a
+       listener attached to the old ones would be pointing at detached DOM. */
+    document.querySelectorAll('#capBrief .cap-shot').forEach(function(b){
+      b.addEventListener('click', function(){ openShot(parseInt(b.dataset.shot,10)); });
+    });
+    var meta = document.getElementById('capMeta');
+    if(meta){
+      meta.innerHTML = '<b>' + d.sessions_delivered + '</b> sessions · <b>' +
+        nfmt(d.photos_total) + '</b> photographs' +
+        (d.participants_total ? ' · <b>' + nfmt(d.participants_total) + '</b> officer attendances recorded' : '');
+    }
+  }
+
+  /* Lightbox */
+  var lbAt = 0;
+  function openShot(i){
+    if(!capShots.length) return;
+    lbAt = (i + capShots.length) % capShots.length;
+    var lb = document.getElementById('capLb');
+    lb.querySelector('img').src = capShots[lbAt].src;
+    lb.querySelector('figcaption').textContent =
+      capShots[lbAt].cap + '  ·  ' + (lbAt+1) + ' of ' + capShots.length;
+    lb.classList.add('on');
+    lb.querySelector('.cap-lb-x').focus();
+  }
+  function closeShot(){ document.getElementById('capLb').classList.remove('on'); }
+
+  function renderCapacity(){
+    var t = CAP.totals;
+    var a = CAPA || { totals:{papers:0,questions:0}, feedback:null, responses_available:false };
+    var fb = a.feedback || { statements: [] };
+    var papers = a.papers || [];
+    var endline = papers.filter(function(p){ return p.stage === 'endline'; });
+    var baseline = papers.filter(function(p){ return p.stage === 'baseline'; });
+
+    var strip =
+      '<div class="cap-strip">' +
+        '<div class="cap-stat"><div class="v">' + t.districts + '</div><div class="k">Districts</div>' +
+          '<div class="s">' + shortDate(t.date_from) + ' – ' + shortDate(t.date_to) + '</div></div>' +
+        '<div class="cap-stat"><div class="v">' + t.sessions_delivered + '</div><div class="k">Sessions</div>' +
+          '<div class="s">across ' + t.sessions + ' filed reports</div></div>' +
+        '<div class="cap-stat"><div class="v">' + nfmt(t.participants) + '</div><div class="k">Attendances</div>' +
+          '<div class="s">where a count was reported</div></div>' +
+        '<div class="cap-stat"><div class="v">' + nfmt(t.photos) + '</div><div class="k">Photographs</div>' +
+          '<div class="s">filed with the reports</div></div>' +
+        '<div class="cap-stat"><div class="v">3</div><div class="k">Levels</div>' +
+          '<div class="s">district · constituency · master</div></div>' +
+      '</div>';
+
+    var opts = CAP.districts.map(function(d, i){
+      return '<option value="'+i+'">' + esc(d.name) + '</option>';
+    }).join('');
+    var pick =
+      '<div class="cap-pick">' +
+        '<label for="capDistrict">Brief of the training</label>' +
+        '<select id="capDistrict" class="cap-select" aria-label="Choose a district">'+opts+'</select>' +
+        '<span class="cap-meta" id="capMeta"></span>' +
+      '</div>';
+
+    var pending = a.responses_available ? '' :
+      '<p class="cap-flag">Instruments administered in the field; the completed ' +
+      'response sheets are not yet digitised, so no scores are reported here.</p>';
+
+    var two =
+      '<div class="cap-two">' +
+        '<a class="cap-card" href="capacity/feedback.html">' +
+          '<h3>Training feedback</h3>' +
+          '<p>How officers rated each session — objectives, relevance to their role, ' +
+          'clarity of the concepts, the case studies, pace, and overall usefulness.</p>' +
+          pending +
+          '<div class="cap-mini">' +
+            '<div><div class="v">' + fb.statements.length + '</div><div class="k">Statements</div></div>' +
+            '<div><div class="v">1–5</div><div class="k">Agreement scale</div></div>' +
+            '<div><div class="v">' + endline.length + '</div><div class="k">Endline papers</div></div>' +
+          '</div>' +
+          '<span class="cap-go">Open the feedback detail <i class="ti ti-arrow-right"></i></span>' +
+        '</a>' +
+        '<a class="cap-card" href="capacity/assessment.html">' +
+          '<h3>Baseline &amp; endline</h3>' +
+          '<p>The knowledge assessment run before and after training at all three ' +
+          'levels — Swarna Andhra awareness, the KPI framework, and GDP / GVA / GDDP.</p>' +
+          pending +
+          '<div class="cap-mini">' +
+            '<div><div class="v">' + baseline.length + '</div><div class="k">Baseline</div></div>' +
+            '<div><div class="v">' + endline.length + '</div><div class="k">Endline</div></div>' +
+            '<div><div class="v">' + (a.totals.questions||0) + '</div><div class="k">Items</div></div>' +
+          '</div>' +
+          '<span class="cap-go">Open the assessment detail <i class="ti ti-arrow-right"></i></span>' +
+        '</a>' +
+      '</div>';
+
+    var lightbox =
+      '<div class="cap-lb" id="capLb" role="dialog" aria-modal="true" aria-label="Training photograph">' +
+        '<button class="cap-lb-x" type="button" aria-label="Close">&times;</button>' +
+        '<button class="cap-lb-nav cap-lb-prev" type="button" aria-label="Previous photograph"><i class="ti ti-chevron-left"></i></button>' +
+        '<button class="cap-lb-nav cap-lb-next" type="button" aria-label="Next photograph"><i class="ti ti-chevron-right"></i></button>' +
+        '<figure><img src="" alt=""><figcaption></figcaption></figure>' +
+      '</div>';
+
+    capBody.innerHTML = strip + pick + '<div id="capBrief"></div>' + two + lightbox;
+
+    var sel = document.getElementById('capDistrict');
+    sel.addEventListener('change', function(){ renderBrief(CAP.districts[+sel.value]); });
+    renderBrief(CAP.districts[0]);
+
+    var lb = document.getElementById('capLb');
+    lb.querySelector('.cap-lb-x').addEventListener('click', closeShot);
+    lb.querySelector('.cap-lb-prev').addEventListener('click', function(){ openShot(lbAt-1); });
+    lb.querySelector('.cap-lb-next').addEventListener('click', function(){ openShot(lbAt+1); });
+    lb.addEventListener('click', function(e){ if(e.target === lb) closeShot(); });
+    document.addEventListener('keydown', function(e){
+      if(!lb.classList.contains('on')) return;
+      if(e.key === 'Escape') closeShot();
+      if(e.key === 'ArrowLeft') openShot(lbAt-1);
+      if(e.key === 'ArrowRight') openShot(lbAt+1);
+    });
+  }
+
+  function loadCapacity(){
+    if(capLoaded || capLoading) return;
+    capLoading = true;
+    Promise.all([
+      fetch('assets/capacity.json?v=2026-08-13d').then(function(r){ return r.json(); }),
+      fetch('assets/capacity_assessment.json?v=2026-08-13d').then(function(r){ return r.json(); })
+        .catch(function(){ return null; })
+    ]).then(function(res){
+      CAP = res[0]; CAPA = res[1];
+      capLoaded = true; capLoading = false;
+      renderCapacity();
+    }).catch(function(err){
+      capLoading = false;
+      capBody.innerHTML = '<div class="docs-empty">Could not load the training record.</div>';
+      console.error('capacity load failed', err);
+    });
+  }
+
   function setTab(which){
     mapView.hidden   = which !== 'map';
     docsView.hidden  = which !== 'docs';
     casesView.hidden = which !== 'cases';
     if(gvaView) gvaView.hidden = which !== 'gva';
+    if(capView) capView.hidden = which !== 'capacity';
     document.querySelectorAll('.dtab-live').forEach(function(b){
       b.setAttribute('aria-pressed', b.dataset.dtab === which ? 'true' : 'false');
     });
     if(which === 'docs')  load();
     if(which === 'cases') loadCases();
     if(which === 'gva')   loadGva();
+    if(which === 'capacity') loadCapacity();
   }
   document.querySelectorAll('.dtab-live').forEach(function(b){
     b.addEventListener('click', function(){ setTab(b.dataset.dtab); });
