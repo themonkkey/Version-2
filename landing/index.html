@@ -895,6 +895,162 @@ a.docs-leaf:hover .ext{opacity:1;}
   .cap-n{margin-left:0;width:100%;}
 }
 
+/* ── GVA calculator ──────────────────────────────────────────────────────
+   Three tools, one per calculation the programme teaches. Same dark-stage
+   rules as every other view: anything over the footage carries its own frost,
+   or the moving video reads through the numbers. */
+.calc-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:clamp(10px,1.4vw,14px);margin-bottom:clamp(18px,2.4vw,26px);}
+.calc-tab{display:flex;flex-direction:column;align-items:flex-start;gap:2px;
+  text-align:left;font:inherit;cursor:pointer;padding:14px clamp(14px,1.8vw,18px);
+  border-radius:var(--r);background:rgba(9,40,27,.62);
+  border:1px solid rgba(255,255,255,.18);color:#FFF;
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  transition:transform .16s,border-color .16s,background-color .16s;}
+.calc-tab:hover{transform:translateY(-1px);border-color:rgba(198,236,143,.42);}
+.calc-tab .ct-n{font-size:10.5px;font-weight:750;letter-spacing:.14em;color:rgba(198,236,143,.72);}
+.calc-tab .ct-t{font-size:15px;font-weight:700;letter-spacing:-.01em;}
+.calc-tab .ct-s{font-size:11.5px;color:rgba(255,255,255,.6);}
+/* background-COLOR, not the shorthand — the shorthand would reset any motif. */
+.calc-tab.on{background-color:rgba(198,236,143,.16);border-color:rgba(198,236,143,.5);
+  box-shadow:inset 0 0 0 1px rgba(198,236,143,.22);}
+.calc-tab.on .ct-s{color:rgba(198,236,143,.85);}
+.calc-tab:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
+
+.calc-panel{border-radius:var(--r-lg);padding:clamp(18px,2.3vw,26px) clamp(18px,2.4vw,28px);
+  background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:0 12px 34px rgba(0,0,0,.20);color:#FFF;}
+.calc-formula{font-family:'Newsreader',Georgia,serif;font-size:clamp(15px,2vw,20px);
+  color:#FFF;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:12px;}
+.calc-formula b{color:var(--lime);font-weight:700;}
+.calc-lede{font-size:13.5px;line-height:1.58;color:rgba(255,255,255,.72);
+  max-width:78ch;margin-bottom:clamp(16px,2vw,22px);}
+.calc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(16px,2.2vw,26px);align-items:start;}
+.calc-fieldset{border-radius:var(--r);padding:14px clamp(14px,1.7vw,17px);
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);
+  margin-bottom:12px;}
+.calc-fieldset.tight{margin:14px 0 0;}
+.calc-fieldset h4{font-size:11.5px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--lime);margin-bottom:11px;}
+
+/* Flex, not grid: a row carries anywhere from two to four children (label, ₹
+   prefix, input, unit suffix, or a select), and a fixed 2-column grid wrapped
+   the longer rows onto a second line with the prefix stranded on the right. */
+.cf{display:flex;align-items:center;gap:8px;
+  font-size:13px;color:rgba(255,255,255,.82);margin-bottom:9px;}
+.cf > span:first-child{flex:1 1 auto;min-width:0;}
+.cf input{flex:0 0 auto;width:112px;font:inherit;font-size:13.5px;font-weight:650;color:#FFF;
+  text-align:right;padding:7px 10px;border-radius:10px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
+  font-variant-numeric:tabular-nums;}
+.cf input.cf-text{width:190px;text-align:left;font-weight:500;}
+.cf input:focus{outline:none;border-color:rgba(198,236,143,.6);background:rgba(255,255,255,.15);}
+.cf select{font:inherit;font-size:12.5px;color:#FFF;padding:6px 8px;border-radius:9px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);cursor:pointer;}
+.cf select option{background:#0B2E20;color:#FFF;}
+.cf-pre,.cf-suf{flex:0 0 auto;font-size:12px;color:rgba(255,255,255,.6);white-space:nowrap;}
+/* The unit suffix is reserved a fixed width so the input boxes line up in a
+   column even where one row reads "cr" and the next "% of output". */
+.cf-suf{min-width:22px;}
+.calc-hint{font-size:11.8px;line-height:1.5;color:rgba(255,255,255,.55);margin-top:8px;}
+
+.calc-seg{display:inline-flex;gap:3px;padding:3px;border-radius:999px;margin-bottom:11px;
+  background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.13);}
+.cseg{font:inherit;font-size:11.5px;font-weight:650;cursor:pointer;padding:5px 12px;
+  border-radius:999px;background:transparent;border:0;color:rgba(255,255,255,.68);}
+.cseg.on{background:rgba(198,236,143,.22);color:#DFF5B4;}
+
+.calc-out{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-size:12.8px;color:rgba(255,255,255,.7);padding:9px 0 0;margin-top:8px;
+  border-top:1px solid rgba(255,255,255,.12);}
+.calc-out b{font-size:15px;font-weight:750;color:#FFF;font-variant-numeric:tabular-nums;}
+.calc-out.sub b{font-size:14px;}
+.calc-out.strong b{color:var(--lime);font-size:17px;}
+
+.calc-result{border-radius:var(--r);padding:clamp(15px,1.9vw,20px);
+  background:rgba(0,0,0,.20);border:1px solid rgba(255,255,255,.14);}
+.calc-steps{display:grid;gap:7px;margin-bottom:14px;}
+.calc-steps .cs{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  font-size:12.8px;color:rgba(255,255,255,.74);}
+.calc-steps .cs b{font-weight:700;color:#FFF;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.calc-steps .cs.minus{color:rgba(255,190,190,.82);}
+.calc-steps .cs.minus b{color:#FFC9C9;}
+.calc-answer{padding:13px 0 12px;border-top:1px solid rgba(255,255,255,.18);
+  border-bottom:1px solid rgba(255,255,255,.18);}
+.ca-k{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(198,236,143,.82);}
+.ca-v{font-size:clamp(24px,3.6vw,34px);font-weight:750;letter-spacing:-.025em;color:#FFF;
+  line-height:1.1;margin-top:4px;font-variant-numeric:tabular-nums;}
+.ca-s{font-size:11.8px;color:rgba(255,255,255,.55);margin-top:3px;}
+/* Output split into what was consumed vs what was added — the whole point of
+   the production approach, shown rather than only stated. */
+.calc-bar{display:flex;height:9px;border-radius:999px;overflow:hidden;margin:13px 0 4px;
+  background:rgba(255,255,255,.08);}
+.calc-bar i{display:block;height:100%;}
+.calc-bar .b-ic{background:rgba(255,255,255,.26);}
+.calc-bar .b-va{background:linear-gradient(90deg,#8FC93A,#C6FF6A);}
+.calc-barkey{display:flex;gap:14px;font-size:11px;color:rgba(255,255,255,.6);margin-bottom:2px;}
+.calc-barkey s{text-decoration:none;display:inline-flex;align-items:center;gap:5px;}
+.calc-barkey i{width:8px;height:8px;border-radius:2px;display:inline-block;}
+.calc-note{font-size:11.8px;line-height:1.55;color:rgba(255,255,255,.58);margin-top:12px;}
+.calc-note b{color:rgba(255,255,255,.82);font-weight:650;}
+
+.calc-split3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+.calc-split3 div{border-radius:11px;padding:9px 11px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.11);}
+.calc-split3 .v{font-size:15px;font-weight:750;color:#FFF;font-variant-numeric:tabular-nums;}
+.calc-split3 .k{font-size:10px;font-weight:650;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(198,236,143,.8);margin-top:3px;}
+.calc-split3 .s{font-size:10.5px;color:rgba(255,255,255,.5);margin-top:1px;}
+
+.r-group{margin-bottom:10px;}
+.r-group > h5{font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(198,236,143,.8);margin:0 0 7px;display:flex;justify-content:space-between;}
+.r-group > h5 b{color:#FFF;font-variant-numeric:tabular-nums;}
+
+.a-row{display:grid;grid-template-columns:1fr 96px auto;gap:7px;align-items:center;margin-bottom:7px;}
+.a-row input{font:inherit;font-size:13px;color:#FFF;padding:7px 10px;border-radius:10px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);min-width:0;}
+.a-row input[type=number]{text-align:right;font-variant-numeric:tabular-nums;font-weight:650;}
+.a-row input:focus{outline:none;border-color:rgba(198,236,143,.6);}
+.a-del{font:inherit;cursor:pointer;width:30px;height:30px;border-radius:9px;display:grid;
+  place-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  color:rgba(255,255,255,.6);}
+.a-del:hover{background:rgba(255,120,120,.18);border-color:rgba(255,140,140,.4);color:#FFC9C9;}
+.calc-add{font:inherit;font-size:12.5px;font-weight:650;cursor:pointer;margin-top:4px;
+  padding:8px 14px;border-radius:999px;color:rgba(198,236,143,.92);
+  background:rgba(255,255,255,.08);border:1px solid rgba(198,236,143,.3);
+  display:inline-flex;align-items:center;gap:6px;}
+.calc-add:hover{background:rgba(198,236,143,.16);}
+
+.calc-alloc table{width:100%;border-collapse:collapse;font-size:12.6px;}
+.calc-alloc th{text-align:right;font-size:10px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:rgba(198,236,143,.78);padding:0 0 8px;
+  border-bottom:1px solid rgba(255,255,255,.18);}
+.calc-alloc th:first-child{text-align:left;}
+.calc-alloc td{text-align:right;padding:8px 0;color:rgba(255,255,255,.84);
+  border-bottom:1px solid rgba(255,255,255,.08);font-variant-numeric:tabular-nums;}
+.calc-alloc td:first-child{text-align:left;color:#FFF;font-weight:600;}
+.calc-alloc tr.tot td{border-bottom:0;border-top:1px solid rgba(255,255,255,.22);
+  font-weight:750;color:#FFF;padding-top:10px;}
+.calc-alloc .warn{color:#FFC9C9;}
+
+@media(max-width:900px){
+  .calc-grid{grid-template-columns:1fr;}
+}
+@media(max-width:520px){
+  .calc-split3{grid-template-columns:1fr;}
+  /* Let the row wrap on a narrow screen: the label takes the first line and the
+     ₹ / input / unit sit together on the second, rather than the input being
+     squeezed to a few characters wide. */
+  .cf{flex-wrap:wrap;}
+  .cf > span:first-child{flex:1 0 100%;}
+  .cf input{flex:1 1 auto;width:auto;}
+  .cf input.cf-text{width:100%;}
+}
+
 /* ── Improving GVA — sector playbooks ────────────────────────────────────
    Same dark-stage rules as the document library: anything sitting on the
    video needs its own frost, or the moving footage reads straight through and
@@ -1517,6 +1673,7 @@ a.docs-leaf:hover .ext{opacity:1;}
       <button class="nl active" data-page="home">Home</button>
       <button class="nl" data-page="about">About</button>
       <button class="nl" data-page="methodology">Methodology</button>
+      <button class="nl" data-page="calculator">Calculator</button>
       <button class="nl" data-page="districts">Districts</button>
       <a href="https://andhrachatbot.streamlit.app" class="btn-wrap"><button class="btn-primary btn-nav">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
@@ -1526,6 +1683,7 @@ a.docs-leaf:hover .ext{opacity:1;}
     <button class="nl" data-page="home">Home</button>
     <button class="nl" data-page="about">About</button>
     <button class="nl" data-page="methodology">Methodology</button>
+    <button class="nl" data-page="calculator">Calculator</button>
     <button class="nl" data-page="districts">Districts</button>
     <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary" style="width:100%;justify-content:center;margin-top:12px">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
   </div>
@@ -1815,6 +1973,128 @@ a.docs-leaf:hover .ext{opacity:1;}
 </div>
 
 <!-- DISTRICTS -->
+<!-- CALCULATOR -->
+<div class="page" id="page-calculator">
+  <section class="section vstage" data-vid="ledger"><div class="wrap">
+    <div class="sec-head">
+      <div class="kick">Calculator</div>
+      <h2>Work out a GVA figure</h2>
+      <p>The three calculations the capacity-building programme teaches, as working tools. Every figure below is one you enter — nothing is pre-filled from official estimates, because a number carried in here without its year and revision status would be a number misquoted.</p>
+    </div>
+
+    <div class="calc-tabs" role="tablist" aria-label="Choose a calculation">
+      <button class="calc-tab on" data-calc="production" role="tab" aria-selected="true">
+        <span class="ct-n">01</span><span class="ct-t">Output to GVA</span>
+        <span class="ct-s">Production approach</span></button>
+      <button class="calc-tab" data-calc="rollup" role="tab" aria-selected="false">
+        <span class="ct-n">02</span><span class="ct-t">Sectors to GDDP</span>
+        <span class="ct-s">Roll-up &amp; per capita</span></button>
+      <button class="calc-tab" data-calc="allocate" role="tab" aria-selected="false">
+        <span class="ct-n">03</span><span class="ct-t">District to mandal</span>
+        <span class="ct-s">Top-down allocation</span></button>
+    </div>
+
+    <!-- 01 — production approach -->
+    <div class="calc-panel" id="calc-production">
+      <div class="calc-formula">Output (GVO) &minus; Intermediate Consumption = <b>GVA</b></div>
+      <p class="calc-lede">The most intuitive route for linking sector data to GVA. Build output from quantity and price, then take off what was consumed producing it.</p>
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div class="calc-fieldset">
+            <h4>Gross Value of Output</h4>
+            <label class="cf"><span>Quantity produced</span>
+              <input type="number" id="p_qty" value="40000" min="0" step="any">
+              <select id="p_qunit"><option value="tonne">tonnes</option><option value="quintal">quintals</option><option value="kg">kg</option><option value="unit">units</option></select></label>
+            <label class="cf"><span>Price realised</span>
+              <span class="cf-pre">₹</span>
+              <input type="number" id="p_price" value="2300" min="0" step="any">
+              <span class="cf-suf" id="p_priceunit">per tonne</span></label>
+            <div class="calc-out sub"><span>Gross Value of Output</span><b id="p_gvo">—</b></div>
+          </div>
+          <div class="calc-fieldset">
+            <h4>Intermediate Consumption</h4>
+            <div class="calc-seg" role="group" aria-label="How to enter intermediate consumption">
+              <button class="cseg on" data-icmode="ratio" type="button">As a % of output</button>
+              <button class="cseg" data-icmode="value" type="button">As a value</button>
+            </div>
+            <label class="cf" id="p_icratio_row"><span>Input cost ratio</span>
+              <input type="number" id="p_icratio" value="42" min="0" max="100" step="any">
+              <span class="cf-suf">% of output</span></label>
+            <label class="cf" id="p_icvalue_row" hidden><span>Intermediate consumption</span>
+              <span class="cf-pre">₹</span>
+              <input type="number" id="p_icvalue" value="0" min="0" step="any">
+              <span class="cf-suf">lakh</span></label>
+            <p class="calc-hint">Seed, fertiliser, feed, fuel, power, repairs, contract services — everything used up in production. Not wages, rent or profit: those are the value added.</p>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-steps" id="p_steps"></div>
+          <div class="calc-answer">
+            <div class="ca-k">Gross Value Added</div>
+            <div class="ca-v" id="p_gva">—</div>
+            <div class="ca-s" id="p_gvasub">at basic prices</div>
+          </div>
+          <div class="calc-bar" id="p_bar" aria-hidden="true"></div>
+          <p class="calc-note">GVA is measured at <b>basic prices</b> — before product taxes and subsidies enter. Adding those comes next, in the roll-up.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 — sector roll-up -->
+    <div class="calc-panel" id="calc-rollup" hidden>
+      <div class="calc-formula">&Sigma; sector GVA = GDVA &nbsp;&rarr;&nbsp; + taxes &minus; subsidies = <b>GDDP</b></div>
+      <p class="calc-lede">Add the GVA of every industry to get Gross District Value Added, then move from basic prices to market prices. Enter figures in ₹ crore.</p>
+      <div class="calc-grid">
+        <div class="calc-inputs" id="r_sectors"></div>
+        <div class="calc-result">
+          <div class="calc-steps" id="r_steps"></div>
+          <div class="calc-answer">
+            <div class="ca-k">Gross District Domestic Product</div>
+            <div class="ca-v" id="r_gddp">—</div>
+            <div class="ca-s">at market prices</div>
+          </div>
+          <div class="calc-split3" id="r_mix"></div>
+          <div class="calc-fieldset tight">
+            <h4>Per capita income</h4>
+            <label class="cf"><span>Consumption of fixed capital</span>
+              <span class="cf-pre">₹</span><input type="number" id="r_cfc" value="0" min="0" step="any"><span class="cf-suf">cr</span></label>
+            <label class="cf"><span>Mid-year population</span>
+              <input type="number" id="r_pop" value="0" min="0" step="any"><span class="cf-suf">persons</span></label>
+            <div class="calc-out"><span>Net District Domestic Product</span><b id="r_nddp">—</b></div>
+            <div class="calc-out strong"><span>Per capita district income</span><b id="r_pci">—</b></div>
+          </div>
+          <p class="calc-note">Per capita income is the figure most often quoted, and the one most often quoted without its base year. Label yours with the year and estimate class — TRE, SRE, FRE or FAE.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 — top-down allocation -->
+    <div class="calc-panel" id="calc-allocate" hidden>
+      <div class="calc-formula">Mandal GVA = District sector GVA &times; <b>mandal share of the district indicator</b></div>
+      <p class="calc-lede">Where a mandal figure is not separately estimated, the district's sector GVA is apportioned on a physical indicator — paddy tonnage, livestock count, workers. Add a row per mandal.</p>
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div class="calc-fieldset">
+            <label class="cf"><span>District sector GVA</span>
+              <span class="cf-pre">₹</span><input type="number" id="a_total" value="4000" min="0" step="any"><span class="cf-suf">lakh</span></label>
+            <label class="cf"><span>Allocation indicator</span>
+              <input type="text" id="a_ind" value="Paddy production (tonnes)" class="cf-text"></label>
+          </div>
+          <div class="calc-fieldset">
+            <h4>Mandals</h4>
+            <div id="a_rows"></div>
+            <button class="calc-add" id="a_add" type="button"><i class="ti ti-plus"></i> Add a mandal</button>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-alloc" id="a_table"></div>
+          <p class="calc-note"><b>Read the share carefully.</b> This is a mandal's share of <i>its own district's</i> sector total — not the district's share of the state sector. The two are routinely confused and differ by roughly seven times. A higher share means more of the district's output sits here; it does not by itself mean higher productivity, which needs yield, prices and input costs examined separately.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
 <div class="page" id="page-districts">
   <section class="section vstage" data-vid="longexposure"><div class="wrap">
     <!-- Documents is live (the vision-plan library, below); the other three
@@ -2058,7 +2338,7 @@ const LOOP_SCRIM = {
 })();
 
 // ---------- router ----------
-const pages = ['home','about','methodology','districts'];
+const pages = ['home','about','methodology','calculator','districts'];
 function go(page){
   if(!pages.includes(page)) page='home';
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -3627,6 +3907,238 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       console.error('capacity load failed', err);
     });
   }
+
+  /* ── GVA calculator ────────────────────────────────────────────────────
+     Three tools, matching the production approach, the sector roll-up and the
+     top-down allocation the training deck teaches. Everything is computed from
+     what the user types: no official estimate is pre-loaded, because a figure
+     sitting in a field without its year and revision status is a figure waiting
+     to be misquoted. */
+  (function(){
+    var root = document.getElementById('page-calculator');
+    if(!root) return;
+
+    var num = function(id){
+      var el = document.getElementById(id);
+      var v = el ? parseFloat(el.value) : NaN;
+      return isFinite(v) ? v : 0;
+    };
+    /* Indian digit grouping (##,##,###) — a district figure written 1,234,567
+       instead of 12,34,567 reads as the wrong magnitude to the officers using
+       this. */
+    function inr(n, dp){
+      if(!isFinite(n)) return '—';
+      dp = dp == null ? 2 : dp;
+      var neg = n < 0; n = Math.abs(n);
+      var s = n.toFixed(dp);
+      var parts = s.split('.');
+      var i = parts[0];
+      var last3 = i.slice(-3), rest = i.slice(0, -3);
+      if(rest) last3 = ',' + last3;
+      rest = rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',');
+      var out = rest + last3 + (parts[1] ? '.' + parts[1] : '');
+      return (neg ? '−' : '') + out;
+    }
+    var money = function(n, unit, dp){ return '₹' + inr(n, dp) + (unit ? ' ' + unit : ''); };
+
+    // ---- tab switching
+    var tabs = root.querySelectorAll('.calc-tab');
+    tabs.forEach(function(t){
+      t.addEventListener('click', function(){
+        tabs.forEach(function(o){
+          var on = o === t;
+          o.classList.toggle('on', on);
+          o.setAttribute('aria-selected', on ? 'true' : 'false');
+          document.getElementById('calc-' + o.dataset.calc).hidden = !on;
+        });
+      });
+    });
+
+    // ---- 01 production approach -----------------------------------------
+    var UNIT_LABEL = {tonne:'per tonne', quintal:'per quintal', kg:'per kg', unit:'per unit'};
+    var icMode = 'ratio';
+    root.querySelectorAll('.cseg').forEach(function(b){
+      b.addEventListener('click', function(){
+        icMode = b.dataset.icmode;
+        root.querySelectorAll('.cseg').forEach(function(o){ o.classList.toggle('on', o === b); });
+        document.getElementById('p_icratio_row').hidden = icMode !== 'ratio';
+        document.getElementById('p_icvalue_row').hidden = icMode !== 'value';
+        production();
+      });
+    });
+
+    function production(){
+      var qty = num('p_qty'), price = num('p_price');
+      var unit = document.getElementById('p_qunit').value;
+      document.getElementById('p_priceunit').textContent = UNIT_LABEL[unit] || 'per unit';
+
+      // Quantity x price gives rupees; the form reports in lakh throughout.
+      var gvoRs = qty * price;
+      var gvo = gvoRs / 1e5;
+      var ic = icMode === 'ratio' ? gvo * (num('p_icratio') / 100) : num('p_icvalue');
+      if(ic > gvo) ic = gvo;                       // value added cannot be negative
+      var gva = gvo - ic;
+
+      document.getElementById('p_gvo').textContent = money(gvo, 'lakh');
+      document.getElementById('p_steps').innerHTML =
+        '<div class="cs"><span>Quantity × price</span><b>' + money(gvo, 'lakh') + '</b></div>' +
+        '<div class="cs minus"><span>less intermediate consumption' +
+          (icMode === 'ratio' && gvo > 0 ? ' (' + inr(ic / gvo * 100, 1) + '%)' : '') +
+          '</span><b>− ' + money(ic, 'lakh') + '</b></div>';
+      document.getElementById('p_gva').textContent = money(gva, 'lakh');
+      document.getElementById('p_gvasub').textContent = 'at basic prices · ' +
+        (gvo > 0 ? inr(gva / gvo * 100, 1) + '% of output is value added' : 'enter an output above');
+
+      var pct = gvo > 0 ? (ic / gvo * 100) : 0;
+      document.getElementById('p_bar').innerHTML =
+        '<i class="b-ic" style="width:' + pct.toFixed(2) + '%"></i>' +
+        '<i class="b-va" style="width:' + (100 - pct).toFixed(2) + '%"></i>';
+    }
+
+    // ---- 02 sector roll-up ----------------------------------------------
+    /* The eleven-industry classification the DDP method uses, grouped the way
+       the sector playbooks group them. Ids are stable so the roll-up can read
+       them back without depending on DOM order. */
+    var SECTORS = [
+      {g:'Primary', items:[
+        {id:'agri', n:'Crops (Agriculture)'},
+        {id:'live', n:'Livestock &amp; Fisheries'},
+        {id:'fore', n:'Forestry &amp; Logging'}]},
+      {g:'Secondary', items:[
+        {id:'mine', n:'Mining &amp; Quarrying'},
+        {id:'manu', n:'Manufacturing'},
+        {id:'elec', n:'Electricity, Gas &amp; Utilities'},
+        {id:'cons', n:'Construction'}]},
+      {g:'Tertiary', items:[
+        {id:'trad', n:'Trade, Hotels &amp; Restaurants'},
+        {id:'tran', n:'Transport, Storage &amp; Communication'},
+        {id:'fina', n:'Financial Services'},
+        {id:'real', n:'Real Estate &amp; Professional Services'},
+        {id:'publ', n:'Public Administration &amp; Defence'},
+        {id:'othr', n:'Other Services (Education &amp; Health)'}]}
+    ];
+
+    (function buildRollup(){
+      var host = document.getElementById('r_sectors');
+      if(!host) return;
+      host.innerHTML = SECTORS.map(function(g){
+        return '<div class="calc-fieldset r-group"><h5>' + g.g +
+          ' sector <b id="rg_' + g.g.toLowerCase() + '">—</b></h5>' +
+          g.items.map(function(s){
+            return '<label class="cf"><span>' + s.n + '</span>' +
+              '<span class="cf-pre">₹</span>' +
+              '<input type="number" id="rs_' + s.id + '" value="0" min="0" step="any">' +
+              '<span class="cf-suf">cr</span></label>';
+          }).join('') + '</div>';
+      }).join('') +
+      '<div class="calc-fieldset"><h4>Basic prices to market prices</h4>' +
+        '<label class="cf"><span>Taxes on products</span><span class="cf-pre">₹</span>' +
+          '<input type="number" id="r_tax" value="0" min="0" step="any"><span class="cf-suf">cr</span></label>' +
+        '<label class="cf"><span>Subsidies on products</span><span class="cf-pre">₹</span>' +
+          '<input type="number" id="r_sub" value="0" min="0" step="any"><span class="cf-suf">cr</span></label>' +
+        '<p class="calc-hint">Taxes are added and subsidies subtracted. That shift is exactly what separates value added from domestic product.</p>' +
+      '</div>';
+    })();
+
+    function rollup(){
+      var groupTotals = {}, gdva = 0;
+      SECTORS.forEach(function(g){
+        var t = 0;
+        g.items.forEach(function(s){ t += num('rs_' + s.id); });
+        groupTotals[g.g] = t; gdva += t;
+        var el = document.getElementById('rg_' + g.g.toLowerCase());
+        if(el) el.textContent = money(t, 'cr', 0);
+      });
+
+      var tax = num('r_tax'), sub = num('r_sub');
+      var gddp = gdva + tax - sub;
+
+      document.getElementById('r_steps').innerHTML =
+        '<div class="cs"><span>Gross District Value Added</span><b>' + money(gdva, 'cr', 0) + '</b></div>' +
+        '<div class="cs"><span>plus taxes on products</span><b>+ ' + money(tax, 'cr', 0) + '</b></div>' +
+        '<div class="cs minus"><span>less subsidies on products</span><b>− ' + money(sub, 'cr', 0) + '</b></div>';
+      document.getElementById('r_gddp').textContent = money(gddp, 'cr', 0);
+
+      document.getElementById('r_mix').innerHTML = SECTORS.map(function(g){
+        var t = groupTotals[g.g];
+        var share = gdva > 0 ? (t / gdva * 100) : 0;
+        return '<div><div class="v">' + inr(share, 1) + '%</div>' +
+          '<div class="k">' + g.g + '</div>' +
+          '<div class="s">' + money(t, 'cr', 0) + '</div></div>';
+      }).join('');
+
+      var cfc = num('r_cfc');
+      var nddp = gddp - cfc;
+      document.getElementById('r_nddp').textContent = money(nddp, 'cr', 0);
+      var pop = num('r_pop');
+      // NDDP is in crore, population in persons -> rupees per person.
+      document.getElementById('r_pci').textContent =
+        pop > 0 ? money(nddp * 1e7 / pop, '', 0) : '—';
+    }
+
+    // ---- 03 top-down allocation -----------------------------------------
+    var allocRows = [
+      {n:'Mandal A', v:10000}, {n:'Mandal B', v:15000},
+      {n:'Mandal C', v:5000},  {n:'Mandal D', v:10000}
+    ];
+    function drawAllocRows(){
+      document.getElementById('a_rows').innerHTML = allocRows.map(function(r, i){
+        return '<div class="a-row">' +
+          '<input type="text" data-ai="' + i + '" data-af="n" value="' + esc(r.n) + '" aria-label="Mandal name">' +
+          '<input type="number" data-ai="' + i + '" data-af="v" value="' + r.v + '" min="0" step="any" aria-label="Indicator value">' +
+          '<button class="a-del" data-adel="' + i + '" type="button" aria-label="Remove ' + esc(r.n) + '">&times;</button>' +
+        '</div>';
+      }).join('');
+    }
+    function allocate(){
+      var total = num('a_total');
+      var sum = allocRows.reduce(function(a, r){ return a + (isFinite(r.v) ? r.v : 0); }, 0);
+      var ind = document.getElementById('a_ind').value || 'Indicator';
+      var body = allocRows.map(function(r){
+        var share = sum > 0 ? (r.v / sum) : 0;
+        return '<tr><td>' + esc(r.n) + '</td>' +
+          '<td>' + inr(r.v, 0) + '</td>' +
+          '<td>' + inr(share * 100, 1) + '%</td>' +
+          '<td>' + money(total * share, '', 2) + '</td></tr>';
+      }).join('');
+      document.getElementById('a_table').innerHTML =
+        '<table><thead><tr><th>Mandal</th><th>' + esc(ind) + '</th>' +
+        '<th>Share</th><th>Allocated GVA (₹ lakh)</th></tr></thead>' +
+        '<tbody>' + body +
+        '<tr class="tot"><td>District total</td><td>' + inr(sum, 0) + '</td>' +
+        '<td>' + (sum > 0 ? '100.0%' : '—') + '</td><td>' + money(sum > 0 ? total : 0, '', 2) + '</td></tr>' +
+        '</tbody></table>' +
+        (sum <= 0 ? '<p class="calc-note warn">Enter at least one indicator value above — with nothing to apportion on, no share can be computed.</p>' : '');
+    }
+    document.getElementById('a_add').addEventListener('click', function(){
+      allocRows.push({n:'Mandal ' + String.fromCharCode(65 + allocRows.length % 26), v:0});
+      drawAllocRows(); allocate();
+    });
+    document.getElementById('a_rows').addEventListener('input', function(e){
+      var t = e.target, i = t.dataset.ai;
+      if(i == null) return;
+      if(t.dataset.af === 'n') allocRows[i].n = t.value;
+      else allocRows[i].v = parseFloat(t.value);
+      allocate();
+    });
+    document.getElementById('a_rows').addEventListener('click', function(e){
+      var b = e.target.closest('[data-adel]');
+      if(!b) return;
+      if(allocRows.length <= 1) return;      // always leave one row to work from
+      allocRows.splice(parseInt(b.dataset.adel, 10), 1);
+      drawAllocRows(); allocate();
+    });
+
+    // ---- recompute on any input --------------------------------------
+    function recalc(){ production(); rollup(); allocate(); }
+    root.addEventListener('input', function(e){
+      if(e.target.closest('#a_rows')) return;   // handled above, keeps focus
+      recalc();
+    });
+    root.addEventListener('change', recalc);
+    drawAllocRows();
+    recalc();
+  })();
 
   function setTab(which){
     mapView.hidden   = which !== 'map';
