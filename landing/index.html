@@ -1040,6 +1040,64 @@ a.docs-leaf:hover .ext{opacity:1;}
 @media(max-width:900px){
   .calc-grid{grid-template-columns:1fr;}
 }
+
+/* ── Fisheries sector calculator ──────────────────────────────────────── */
+.sector-tabs{grid-template-columns:repeat(auto-fit,minmax(220px,320px));}
+.fc-dl{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding-bottom:clamp(16px,2vw,20px);margin-bottom:clamp(16px,2vw,20px);
+  border-bottom:1px solid rgba(255,255,255,.14);}
+.fc-dl-note{font-size:12px;color:rgba(255,255,255,.55);}
+
+/* One row per species: qty + price, laid out as a small table so six rows of
+   two numbers stay scannable rather than reading as six separate forms. */
+.fc-srow{display:grid;grid-template-columns:1fr 108px 108px;gap:10px;align-items:center;
+  padding:8px 0;border-top:1px solid rgba(255,255,255,.09);}
+.fc-srow:first-of-type{border-top:0;}
+.fc-srow .fc-slabel{font-size:13px;color:rgba(255,255,255,.85);font-weight:600;}
+.fc-srow .fc-sunit{display:block;font-size:10.5px;font-weight:500;color:rgba(255,255,255,.5);}
+.fc-srow input{width:100%;font:inherit;font-size:13px;font-weight:650;color:#FFF;
+  text-align:right;padding:7px 9px;border-radius:9px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);
+  font-variant-numeric:tabular-nums;}
+.fc-srow input:focus{outline:none;border-color:rgba(198,236,143,.6);}
+.fc-shead{display:grid;grid-template-columns:1fr 108px 108px;gap:10px;
+  font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(198,236,143,.7);padding-bottom:6px;}
+
+/* Processed-product price fields, grouped per species so it's clear which raw
+   line each optional price is riding on. */
+.fc-pgroup{margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.09);}
+.fc-pgroup:last-child{margin-bottom:0;padding-bottom:0;border-bottom:0;}
+.fc-pgroup > .pg-h{font-size:11.5px;font-weight:700;color:rgba(255,255,255,.78);margin-bottom:7px;}
+.fc-pgroup .cf{margin-bottom:6px;}
+.fc-pgroup .cf:last-child{margin-bottom:0;}
+.fc-pnone{font-size:12px;color:rgba(255,255,255,.4);font-style:italic;}
+
+details.fc-assump{margin:clamp(14px,1.8vw,18px) 0;border-radius:var(--r);
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);
+  padding:12px clamp(14px,1.7vw,17px);}
+details.fc-assump summary{cursor:pointer;font-size:12.5px;font-weight:650;color:rgba(198,236,143,.9);
+  list-style:none;display:flex;align-items:baseline;gap:4px;flex-wrap:wrap;}
+details.fc-assump summary::-webkit-details-marker{display:none;}
+details.fc-assump summary::before{content:'▸';margin-right:2px;transition:transform .14s;}
+details.fc-assump[open] summary::before{transform:rotate(90deg);}
+.fc-assump-hint{font-weight:500;color:rgba(255,255,255,.5);font-size:11.8px;}
+.fc-rgroup{margin-top:12px;}
+.fc-rgroup:first-of-type{margin-top:14px;}
+.fc-rgroup > h6{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-bottom:7px;}
+.fc-rgroup .cf{margin-bottom:6px;}
+.fc-rgroup .cf input{width:78px;}
+
+.fc-results{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,18px);
+  margin-top:clamp(16px,2vw,20px);}
+.fc-rh{font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(198,236,143,.82);margin-bottom:10px;}
+.fc-final{margin-top:clamp(14px,1.8vw,18px);}
+@media(max-width:760px){
+  .fc-results{grid-template-columns:1fr;}
+  .fc-srow,.fc-shead{grid-template-columns:1fr 84px 84px;gap:6px;}
+}
 @media(max-width:520px){
   .calc-split3{grid-template-columns:1fr;}
   /* Let the row wrap on a narrow screen: the label takes the first line and the
@@ -2091,6 +2149,78 @@ a.docs-leaf:hover .ext{opacity:1;}
           <p class="calc-note"><b>Read the share carefully.</b> This is a mandal's share of <i>its own district's</i> sector total — not the district's share of the state sector. The two are routinely confused and differ by roughly seven times. A higher share means more of the district's output sits here; it does not by itself mean higher productivity, which needs yield, prices and input costs examined separately.</p>
         </div>
       </div>
+    </div>
+
+    <!-- Sector calculators — built from the department's own estimator workbooks
+         rather than the general identity above. Fisheries is the first; the
+         picker is built to take more primary-sector tools without restructuring
+         when they arrive. -->
+    <div class="sec-head" style="margin-top:clamp(34px,4.4vw,50px)">
+      <div class="kick">Sector calculators</div>
+      <h2 style="font-size:clamp(19px,2.4vw,25px)">Built from the department's own estimator</h2>
+      <p>More granular than the identity above — species and product form for fisheries, following the district fishery GVA workbook line for line.</p>
+    </div>
+    <div class="calc-tabs sector-tabs">
+      <button class="calc-tab on" data-sector="fisheries" role="tab" aria-selected="true">
+        <span class="ct-n">PRIMARY</span><span class="ct-t">Fisheries</span>
+        <span class="ct-s">Marine, inland &amp; prawn</span></button>
+    </div>
+
+    <div class="calc-panel" id="sector-fisheries">
+      <div class="calc-formula">Output &minus; Intermediate Consumption = <b>GVA</b>, by species and product form</div>
+      <p class="calc-lede">Follows the District Fishery GVA Estimator workbook: production and price by species, the share of each that is sold raw versus salted, sun-dried, frozen or kept for subsistence, and an intermediate-consumption ratio applied at the point each is actually incurred.</p>
+
+      <div class="fc-dl">
+        <a class="calc-add" href="assets/tools/Fishery_GVA_Estimator.xlsx" download>
+          <i class="ti ti-download"></i> Download the Excel version</a>
+        <span class="fc-dl-note">Same workbook, same formulas — for working offline or for a version your team can hand around.</span>
+      </div>
+
+      <div class="calc-fieldset">
+        <h4>A · Production &amp; average price</h4>
+        <p class="calc-hint" style="margin:-2px 0 10px">Enter what the district actually landed this year. Leave a species at zero if it does not apply.</p>
+        <div id="fc_species"></div>
+      </div>
+
+      <div class="calc-fieldset">
+        <h4>B · Processed-product prices</h4>
+        <p class="calc-hint" style="margin:-2px 0 10px">Only needed where that species is actually processed that way — the raw-form price above already covers what is sold fresh. Left blank, that stream contributes nothing rather than blocking the rest.</p>
+        <div id="fc_proc"></div>
+      </div>
+
+      <div class="calc-fieldset">
+        <label class="cf"><span>Less: FISIM</span>
+          <span class="cf-pre">₹</span><input type="number" id="fc_fisim" value="0" min="0" step="any"><span class="cf-suf">lakh</span></label>
+        <p class="calc-hint">Financial Intermediation Services Indirectly Measured — the imputed banking-service charge national accounting nets out of every sector's GVA.</p>
+      </div>
+
+      <details class="fc-assump">
+        <summary>Assumptions used <span class="fc-assump-hint">— the workbook's own ratios; edit only if your district's are known to differ</span></summary>
+        <div id="fc_ratios"></div>
+        <button class="calc-add" id="fc_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook's defaults</button>
+      </details>
+
+      <div class="fc-results">
+        <div class="calc-result">
+          <h5 class="fc-rh">Gross Value of Output</h5>
+          <div class="calc-steps" id="fc_gvo_steps"></div>
+          <div class="calc-out strong"><span>GROSS VALUE OF OUTPUT</span><b id="fc_gvo">—</b></div>
+        </div>
+        <div class="calc-result">
+          <h5 class="fc-rh">Intermediate consumption</h5>
+          <div class="calc-steps" id="fc_ic_steps"></div>
+          <div class="calc-out strong"><span>TOTAL INTERMEDIATE CONSUMPTION</span><b id="fc_ic">—</b></div>
+        </div>
+      </div>
+      <div class="calc-result fc-final">
+        <div class="calc-steps" id="fc_final_steps"></div>
+        <div class="calc-answer">
+          <div class="ca-k">Gross Value Added — adjusted</div>
+          <div class="ca-v" id="fc_gva">—</div>
+          <div class="ca-s">at basic prices, net of FISIM</div>
+        </div>
+      </div>
+      <p class="calc-note" id="fc_flag"></p>
     </div>
   </div></section>
 </div>
@@ -4129,8 +4259,224 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       drawAllocRows(); allocate();
     });
 
+    // ---- sector calculators: fisheries -----------------------------------
+    /* Traced line-for-line from the district's own "Fishery_GVA_Estimator"
+       workbook (Estimation Sheet + Ratios sheet), not re-derived from a generic
+       formula — the ratio BASES differ (marine/inland IC is charged on total
+       production value; prawn IC on total prawn value across all four species;
+       salting carries its own separate IC on top; subsistence IC is charged on
+       the subsistence VALUE, not a quantity) and the six species do not share
+       one processing menu (only marine gets all three of salting/sundrying/
+       freezing; brackish prawn gets only freezing; the other three prawns get
+       none). Reproducing the identity from the general calculator above would
+       have silently dropped every one of those distinctions.
+
+       One thing the workbook itself does NOT compute: its own B48
+       "GROSS VALUE ADDED — UNADJUSTED" cell carries no formula (confirmed by
+       opening the file — B48 is genuinely blank, not a formula that failed to
+       evaluate). GVO − Total IC is the identity the workbook's every other
+       sheet in this programme uses for exactly that step, including tab 01
+       above, so that is what fills it here — flagged, not silently assumed. */
+    var FISH_SPECIES = [
+      {id:'marine', label:'Marine fish', raw:'marine_raw', ic:'ic_marine',
+        proc:[
+          {id:'salt',   label:'Salting',    share:'marine_salt',   recovery:'salt_recovery'},
+          {id:'sundry', label:'Sun-drying', share:'marine_sundry', recovery:'sundry_recovery'},
+          {id:'freeze', label:'Freezing',   share:'marine_freeze'}
+        ]},
+      {id:'inland', label:'Inland fish', raw:'inland_raw', ic:'ic_inland', subsistence:'subsistence_share',
+        proc:[
+          {id:'salt',   label:'Salting',    share:'inland_salt',   recovery:'salt_recovery'},
+          {id:'sundry', label:'Sun-drying', share:'inland_sundry', recovery:'sundry_recovery'}
+        ]},
+      {id:'penaeid',    label:'Penaeid marine prawn',     raw:'penaeid_raw',    prawn:true},
+      {id:'nonpenaeid', label:'Non-penaeid marine prawn', raw:'nonpenaeid_raw', prawn:true},
+      {id:'freshprawn', label:'Fresh-water prawn',        raw:'freshprawn_raw', prawn:true},
+      {id:'brackprawn', label:'Brackish-water prawn',     raw:'brackprawn_raw', prawn:true,
+        proc:[{id:'freeze', label:'Freezing', share:'brackprawn_freeze'}]}
+    ];
+    var FISH_DEFAULTS = {
+      marine_raw:0.81, marine_salt:0.15, marine_sundry:0.01, marine_freeze:0.03,
+      inland_raw:0.90, inland_salt:0.05, inland_sundry:0.05,
+      penaeid_raw:1, nonpenaeid_raw:1, freshprawn_raw:1,
+      brackprawn_raw:0.2393, brackprawn_freeze:0.7607,
+      salt_recovery:0.55, sundry_recovery:0.55, subsistence_share:0.125,
+      ic_marine:0.225, ic_inland:0.10, ic_subsistence:0.01, ic_prawn:0.225, ic_salting:0.01
+    };
+    var RATIO_META = {
+      marine_raw:['Marine fish','Raw form share'], marine_salt:['Marine fish','Salting share'],
+      marine_sundry:['Marine fish','Sun-drying share'], marine_freeze:['Marine fish','Freezing share'],
+      inland_raw:['Inland fish','Raw form share'], inland_salt:['Inland fish','Salting share'],
+      inland_sundry:['Inland fish','Sun-drying share'],
+      penaeid_raw:['Prawns','Penaeid — raw share'], nonpenaeid_raw:['Prawns','Non-penaeid — raw share'],
+      freshprawn_raw:['Prawns','Fresh-water — raw share'],
+      brackprawn_raw:['Prawns','Brackish-water — raw share'], brackprawn_freeze:['Prawns','Brackish-water — frozen share'],
+      salt_recovery:['Processing recovery','Salting recovery'], sundry_recovery:['Processing recovery','Sun-drying recovery'],
+      subsistence_share:['Subsistence','Share of inland production'],
+      ic_marine:['Intermediate consumption','Marine (of production value)'],
+      ic_inland:['Intermediate consumption','Inland (of production value)'],
+      ic_subsistence:['Intermediate consumption','Subsistence (of subsistence value)'],
+      ic_prawn:['Intermediate consumption','Prawns (of production value)'],
+      ic_salting:['Intermediate consumption','Salting process (of salted output value)']
+    };
+    var fishRatios = {}, fishHost = document.getElementById('sector-fisheries');
+    if(fishHost){
+      Object.keys(FISH_DEFAULTS).forEach(function(k){ fishRatios[k] = FISH_DEFAULTS[k]; });
+
+      document.getElementById('fc_species').innerHTML =
+        '<div class="fc-shead"><span>Species</span><span>Tonnes</span><span>₹ / tonne</span></div>' +
+        FISH_SPECIES.map(function(s){
+          return '<div class="fc-srow"><span class="fc-slabel">' + s.label + '</span>' +
+            '<input type="number" id="fq_' + s.id + '" value="0" min="0" step="any" aria-label="' + s.label + ' production, tonnes">' +
+            '<input type="number" id="fp_' + s.id + '" value="0" min="0" step="any" aria-label="' + s.label + ' average price per tonne">' +
+          '</div>';
+        }).join('');
+
+      document.getElementById('fc_proc').innerHTML = FISH_SPECIES.filter(function(s){ return s.proc; }).map(function(s){
+        return '<div class="fc-pgroup"><div class="pg-h">' + s.label + '</div>' +
+          s.proc.map(function(p){
+            return '<label class="cf"><span>' + p.label + ' price</span>' +
+              '<span class="cf-pre">₹</span>' +
+              '<input type="number" id="fpp_' + s.id + '_' + p.id + '" value="" min="0" step="any" placeholder="optional">' +
+              '<span class="cf-suf">/t</span></label>';
+          }).join('') + '</div>';
+      }).join('');
+
+      (function buildRatioPanel(){
+        var groups = {};
+        Object.keys(RATIO_META).forEach(function(k){
+          var g = RATIO_META[k][0];
+          (groups[g] = groups[g] || []).push(k);
+        });
+        document.getElementById('fc_ratios').innerHTML = Object.keys(groups).map(function(g){
+          return '<div class="fc-rgroup"><h6>' + g + '</h6>' + groups[g].map(function(k){
+            return '<label class="cf"><span>' + RATIO_META[k][1] + '</span>' +
+              '<input type="number" id="fr_' + k + '" value="' + FISH_DEFAULTS[k] + '" min="0" step="any">' +
+              '<span class="cf-suf">ratio</span></label>';
+          }).join('') + '</div>';
+        }).join('');
+      })();
+
+      document.getElementById('fc_reset').addEventListener('click', function(){
+        Object.keys(FISH_DEFAULTS).forEach(function(k){
+          var el = document.getElementById('fr_' + k);
+          if(el) el.value = FISH_DEFAULTS[k];
+        });
+        fisheries();
+      });
+    }
+
+    function fq(id){ return num('fq_' + id); }
+    function fpr(id){ return num('fp_' + id); }
+    function fratio(k){
+      var el = document.getElementById('fr_' + k);
+      var v = el ? parseFloat(el.value) : NaN;
+      return isFinite(v) ? v : FISH_DEFAULTS[k];
+    }
+    function fppPrice(sid, pid){
+      var el = document.getElementById('fpp_' + sid + '_' + pid);
+      var v = el ? parseFloat(el.value) : NaN;
+      return isFinite(v) ? v : null;   // blank = not processed this way, not zero
+    }
+
+    // Every ₹-denominated figure the workbook produces is in LAKH — B10:C15 are
+    // tonnes and ₹/tonne, so their product is raw rupees, and it must be
+    // divided by 1e5 at the point it is created. Doing that anywhere later
+    // (after summing several species, or after the ratio multiplications) is
+    // just as correct arithmetically, but doing it here — once, at the single
+    // place rupees are born — is the one spot a future edit can't skip by
+    // adding a new species and forgetting the conversion.
+    function toLakh(rupees){ return rupees / 1e5; }
+
+    function fisheries(){
+      if(!fishHost) return;
+      var rawTotal = 0, prawnValue = 0, saltingValue = 0, sundryValue = 0, frozenValue = 0;
+      var subsistenceValue = 0, marineValue = 0, inlandValue = 0;
+      var gvoRows = [], missingPrices = [];
+
+      FISH_SPECIES.forEach(function(s){
+        var qty = fq(s.id), price = fpr(s.id);
+        var rawShare = fratio(s.raw);
+        var rawQty = qty * rawShare;
+        var rawVal = toLakh(rawQty * price);
+        rawTotal += rawVal;
+        if(s.prawn) prawnValue += toLakh(qty * price);
+        if(s.id === 'marine') marineValue = toLakh(qty * price);
+        if(s.id === 'inland') inlandValue = toLakh(qty * price);
+        if(qty > 0){
+          gvoRows.push({label:s.label + ' — raw form', value:rawVal});
+          if(price <= 0) missingPrices.push(s.label + ' price');
+        }
+        (s.proc || []).forEach(function(p){
+          var pprice = fppPrice(s.id, p.id);
+          var share = fratio(p.share);
+          var procQty = qty * share;
+          if(procQty <= 0) return;
+          if(pprice == null){
+            missingPrices.push(s.label + ' ' + p.label.toLowerCase() + ' price (assumed 0)');
+            return;
+          }
+          var recovered = p.recovery ? procQty * fratio(p.recovery) : procQty;
+          var val = toLakh(recovered * pprice);
+          if(p.id === 'salt') saltingValue += val;
+          else if(p.id === 'sundry') sundryValue += val;
+          else if(p.id === 'freeze') frozenValue += val;
+        });
+      });
+
+      var inland = FISH_SPECIES.filter(function(s){ return s.subsistence; })[0];
+      if(inland) subsistenceValue = fratio(inland.subsistence) * toLakh(fq('inland') * fpr('inland'));
+
+      var gvo = rawTotal + saltingValue + sundryValue + frozenValue + subsistenceValue;
+
+      var icMarine = fratio('ic_marine') * marineValue;
+      var icInland = fratio('ic_inland') * inlandValue;
+      var icSubsistence = fratio('ic_subsistence') * subsistenceValue;
+      var icPrawn = fratio('ic_prawn') * prawnValue;
+      var icSalting = fratio('ic_salting') * saltingValue;
+      var icTotal = icMarine + icInland + icSubsistence + icPrawn + icSalting;
+
+      var gvaUnadjusted = gvo - icTotal;
+      var fisim = num('fc_fisim');
+      var gvaAdjusted = gvaUnadjusted - fisim;
+
+      document.getElementById('fc_gvo_steps').innerHTML =
+        ['Raw form output', 'Salting output', 'Sun-drying output', 'Frozen output', 'Subsistence fish']
+        .map(function(lbl, i){
+          var v = [rawTotal, saltingValue, sundryValue, frozenValue, subsistenceValue][i];
+          return '<div class="cs"><span>' + lbl + '</span><b>' + money(v, 'lakh') + '</b></div>';
+        }).join('');
+      document.getElementById('fc_gvo').textContent = money(gvo, 'lakh');
+
+      document.getElementById('fc_ic_steps').innerHTML =
+        ['Marine', 'Inland', 'Subsistence', 'Prawns', 'Salting process']
+        .map(function(lbl, i){
+          var v = [icMarine, icInland, icSubsistence, icPrawn, icSalting][i];
+          return '<div class="cs minus"><span>' + lbl + '</span><b>− ' + money(v, 'lakh') + '</b></div>';
+        }).join('');
+      document.getElementById('fc_ic').textContent = money(icTotal, 'lakh');
+
+      document.getElementById('fc_final_steps').innerHTML =
+        '<div class="cs"><span>Gross Value of Output</span><b>' + money(gvo, 'lakh') + '</b></div>' +
+        '<div class="cs minus"><span>less total intermediate consumption</span><b>− ' + money(icTotal, 'lakh') + '</b></div>' +
+        '<div class="cs"><span>Gross Value Added — unadjusted</span><b>' + money(gvaUnadjusted, 'lakh') + '</b></div>' +
+        '<div class="cs minus"><span>less FISIM</span><b>− ' + money(fisim, 'lakh') + '</b></div>';
+      document.getElementById('fc_gva').textContent = money(gvaAdjusted, 'lakh');
+
+      var flag = document.getElementById('fc_flag');
+      if(missingPrices.length){
+        flag.innerHTML = '<b>Not counted yet:</b> ' + missingPrices.join('; ') +
+          '. Add a price above once you have it — everything else here still holds.';
+      } else if(gvo === 0){
+        flag.textContent = 'Enter at least one species’ production and price to begin.';
+      } else {
+        flag.innerHTML = '<b>Note:</b> the source workbook’s own "GVA — unadjusted" cell carries no formula; ' +
+          'this uses the same Output − Intermediate Consumption identity as the general calculator above.';
+      }
+    }
+
     // ---- recompute on any input --------------------------------------
-    function recalc(){ production(); rollup(); allocate(); }
+    function recalc(){ production(); rollup(); allocate(); fisheries(); }
     root.addEventListener('input', function(e){
       if(e.target.closest('#a_rows')) return;   // handled above, keeps focus
       recalc();
