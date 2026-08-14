@@ -778,6 +778,24 @@ a.docs-leaf:hover .ext{opacity:1;}
 .cap-shot:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
 .cap-shots-none{margin-top:11px;font-size:12px;color:rgba(255,255,255,.45);}
 
+/* A filed report is one record — the photographs belong beside the account of
+   the session, not stacked under it. */
+.cap-split{display:grid;grid-template-columns:minmax(0,clamp(240px,30%,360px)) minmax(0,1fr);
+  gap:clamp(14px,2.2vw,24px);align-items:start;margin-top:13px;}
+.cap-split-text > *:first-child{margin-top:0;}
+/* auto-FIT, not auto-fill: a report with a single photograph should give it the
+   whole column rather than leaving an empty track beside it, while two or more
+   fall into a tidy pair of columns. */
+.cap-split-media .cap-shots{margin-top:0;display:grid;gap:8px;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));}
+.cap-split-media .cap-shot{width:100%;}
+@media(max-width:820px){
+  /* below this the photo column is too narrow to read a face in, and the prose
+     column too narrow to read a sentence in — stack them */
+  .cap-split{grid-template-columns:1fr;gap:14px;}
+  .cap-split-media .cap-shots{grid-template-columns:repeat(auto-fit,minmax(104px,1fr));}
+}
+
 /* Lightbox. Photos are small, so the viewer caps at the source's own pixels
    rather than stretching a 212px JPEG across a 1400px screen. */
 .cap-lb{position:fixed;inset:0;z-index:120;display:none;place-items:center;
@@ -3284,7 +3302,20 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     }
 
     var roles = s.roles ? '<div class="cap-roles"><b>Who attended:</b> '+esc(s.roles)+'</div>' : '';
-    return '<div class="cap-sess">'+head+fmt+body+hl+shotRail(s, dname)+roles+'</div>';
+
+    /* Photographs beside the account of the session rather than under it: the
+       two are one record, and stacking them made the reader scroll past a wall
+       of text to reach the pictures of what it described. Falls back to a single
+       column when a report has no photos, so the prose still uses the full
+       width instead of leaving a hole where the rail would have been. */
+    var shots = shotRail(s, dname);
+    var text = body + hl;
+    var main = shots
+      ? '<div class="cap-split"><div class="cap-split-media">'+shots+'</div>' +
+        '<div class="cap-split-text">'+text+'</div></div>'
+      : text;
+
+    return '<div class="cap-sess">'+head+fmt+main+roles+'</div>';
   }
 
   function renderBrief(d){
