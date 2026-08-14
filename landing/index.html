@@ -815,6 +815,13 @@ a.docs-leaf:hover .ext{opacity:1;}
    and it stops the low-res frame looking like the finished article. */
 .cap-lb img.lb-soft{filter:blur(1.5px) saturate(.96);opacity:.9;}
 .cap-lb figcaption{margin-top:12px;font-size:13px;color:rgba(255,255,255,.82);line-height:1.5;}
+.cap-lb img{cursor:zoom-in;}
+.cap-lb.zoomed img{cursor:zoom-out;}
+.cap-lb-zoom{margin-top:9px;font:inherit;font-size:11.5px;font-weight:650;letter-spacing:.04em;
+  cursor:pointer;padding:6px 13px;border-radius:999px;color:rgba(198,236,143,.92);
+  background:rgba(255,255,255,.10);border:1px solid rgba(198,236,143,.32);}
+.cap-lb-zoom:hover{background:rgba(198,236,143,.18);color:#DFF5B4;}
+.cap-lb-zoom[hidden]{display:none;}
 .cap-lb .cap-lb-x{position:absolute;top:clamp(12px,2vw,22px);right:clamp(12px,2vw,22px);
   width:38px;height:38px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
   background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#FFF;font-size:18px;}
@@ -3361,7 +3368,34 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   }
 
   /* Lightbox */
-  var lbAt = 0, lbToken = 0;
+  var lbAt = 0, lbToken = 0, lbZoomed = false;
+
+  /* Size the photo to the pixels it actually has.
+     These sources hold ~230x129 of real detail. Painting that across the
+     viewer's full 760 CSS px means 1520 DEVICE px on a retina screen — a 6x
+     blow-up, which is why it read as blurry however hard the file was sharpened.
+     Nothing recovers detail that was never captured, so the honest move is to
+     let the source decide the size: cap the CSS width at file-width ÷ DPR, and
+     one image pixel lands on one device pixel. Smaller, but genuinely crisp.
+     Zoom is there for anyone who would rather have it big and accept the mush. */
+  function fitShot(img){
+    var lb = document.getElementById('capLb');
+    var dpr = window.devicePixelRatio || 1;
+    var nat = img.naturalWidth || 0;
+    if(!nat){ img.style.width = ''; return; }
+    if(lbZoomed){
+      img.style.width = '';           // fall back to the CSS max — big and soft
+      img.style.maxWidth = '';
+    } else {
+      var crisp = Math.round(nat / dpr);
+      img.style.width = Math.min(crisp, Math.round(window.innerWidth * 0.92)) + 'px';
+      img.style.maxWidth = '100%';
+    }
+    var note = lb.querySelector('.cap-lb-zoom');
+    if(note) note.textContent = lbZoomed ? 'Fit to detail' : 'Zoom in';
+    if(note) note.hidden = (nat / dpr) >= Math.min(760, window.innerWidth * 0.92);
+  }
+
   function openShot(i){
     if(!capShots.length) return;
     lbAt = (i + capShots.length) % capShots.length;
@@ -3383,9 +3417,15 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         if(mine !== lbToken) return;
         img.src = shot.full;
         img.classList.remove('lb-soft');
+        fitShot(img);
       };
       big.src = shot.full;
+    } else {
+      img.onload = function(){ if(mine === lbToken) fitShot(img); };
     }
+    lbZoomed = false;
+    lb.classList.remove('zoomed');
+    fitShot(img);
 
     lb.querySelector('figcaption').textContent =
       shot.cap + '  ·  ' + (lbAt+1) + ' of ' + capShots.length;
@@ -3463,7 +3503,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         '<button class="cap-lb-x" type="button" aria-label="Close">&times;</button>' +
         '<button class="cap-lb-nav cap-lb-prev" type="button" aria-label="Previous photograph"><i class="ti ti-chevron-left"></i></button>' +
         '<button class="cap-lb-nav cap-lb-next" type="button" aria-label="Next photograph"><i class="ti ti-chevron-right"></i></button>' +
-        '<figure><img src="" alt=""><figcaption></figcaption></figure>' +
+        '<figure><img src="" alt="">' +
+          '<figcaption></figcaption>' +
+          '<button class="cap-lb-zoom" type="button">Zoom in</button>' +
+        '</figure>' +
       '</div>';
 
     capBody.innerHTML = strip + pick + '<div id="capBrief"></div>' + two + lightbox;
@@ -3474,6 +3517,17 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
     var lb = document.getElementById('capLb');
     lb.querySelector('.cap-lb-x').addEventListener('click', closeShot);
+    var zoomBtn = lb.querySelector('.cap-lb-zoom');
+    function toggleZoom(){
+      lbZoomed = !lbZoomed;
+      lb.classList.toggle('zoomed', lbZoomed);
+      fitShot(lb.querySelector('img'));
+    }
+    if(zoomBtn) zoomBtn.addEventListener('click', function(e){ e.stopPropagation(); toggleZoom(); });
+    lb.querySelector('img').addEventListener('click', function(e){ e.stopPropagation(); toggleZoom(); });
+    window.addEventListener('resize', function(){
+      if(lb.classList.contains('on')) fitShot(lb.querySelector('img'));
+    });
     lb.querySelector('.cap-lb-prev').addEventListener('click', function(){ openShot(lbAt-1); });
     lb.querySelector('.cap-lb-next').addEventListener('click', function(){ openShot(lbAt+1); });
     lb.addEventListener('click', function(e){ if(e.target === lb) closeShot(); });
