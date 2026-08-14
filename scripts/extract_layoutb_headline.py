@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-"""Recover the headline GMDP block for Layout B mandals.
+"""Recover and repair the headline GMDP block in mandal vision PDFs.
+
+Reads the PDF text layer directly, as a second opinion on the table parser in
+extract_mandal_data.py. Three modes, each narrowly targeted — a healthy file is
+never opened:
+
+    (default)     files whose headline is empty
+    --recheck     + Layout B files already written, so a parser fix reaches them
+    --repair-a    + Layout A files whose stored headline is demonstrably broken
+
+Layout B originally supplied NO headline at all.
 
 WHY THIS IS SEPARATE FROM extract_mandal_data.py
 That script parses PDF *tables* with pdfplumber, and for Layout B it only ever
@@ -36,8 +46,16 @@ THREE TRAPS THIS HANDLES
 NOTHING IS WRITTEN UNLESS IT PROVES ITSELF. Two identities are checked:
       GMDP == MGVA + taxes - subsidies      (within 1%)
       PCI  == NMDP / population * 100000    (within 1%)
-A file is only patched if every identity that CAN be computed holds. Anything
-that fails is reported and left alone — a gap is better than a wrong figure.
+
+Arithmetic alone is not enough, because a document can be internally consistent
+and still wrong. Dachepalli's PDF prints product taxes at 262% of its own GMVA
+and an NMDP nine times its GMDP; both identities balance, and the implied
+per-capita income is about 46 lakh. So two structural relations are enforced as
+well — net product cannot exceed gross, and taxes cannot be half of value added
+— and figures failing them are dropped rather than published.
+
+Anything unproven is reported and left alone. A gap is better than a wrong
+figure, especially one that would also distort a constituency ranking.
 
 Units match the existing contract: GMVA/GMDP/NMDP in LAKHS (enrich.js divides
 by 100 for crore), PCI already in RUPEES, POPULATION a headcount.
@@ -282,6 +300,25 @@ def check(h, sub_total=None, sub_rows=None):
         if abs(want - pci) > max(1.0, abs(pci) * 0.01):
             h.pop("PCI")
             notes.append(f"PCI dropped: printed {pci:,.0f}, formula gives {want:,.0f}")
+
+    # STRUCTURAL SANITY — a document can be internally consistent and still wrong.
+    # Dachepalli's PDF prints taxes at 262% of its own GMVA and an NMDP nine times
+    # its GMDP; both stated identities balance, so arithmetic alone accepts it, and
+    # it yields a per-capita income of ~46 lakh. Net product is by definition below
+    # gross, so these relations catch what the identities cannot.
+    n, g = h.get("NMDP"), h.get("GMDP")
+    if None not in (n, g) and n > g * 1.001:
+        h.pop("NMDP", None)
+        dropped_pci = h.pop("PCI", None)
+        notes.append(f"NMDP {n:,.0f} exceeds GMDP {g:,.0f} — impossible, NMDP"
+                     + (" and PCI" if dropped_pci else "") + " dropped")
+    tx, mg = h.get("PRODUCT TAXES"), h.get("GMVA")
+    if None not in (tx, mg) and mg and tx > mg * 0.5:
+        h.pop("PRODUCT TAXES", None)
+        h.pop("PRODUCT SUBSIDIES", None)
+        h.pop("GMDP", None)
+        notes.append(f"product taxes {tx:,.0f} are {tx/mg*100:.0f}% of GMVA {mg:,.0f}"
+                     " — implausible, taxes/subsidies/GMDP dropped")
     return False, notes
 
 
@@ -290,13 +327,31 @@ def main():
     # --recheck also re-parses Layout B files that already have a headline, so a
     # parser fix reaches them. Layout A is never touched under any flag.
     recheck = "--recheck" in sys.argv
+    # --repair-a additionally re-reads Layout A files whose stored headline is
+    # already broken (missing GMDP, or a failing/implausible identity). Healthy
+    # Layout A files are still never opened: the table parser handles those
+    # correctly for 485 of 487, and there is nothing to gain by touching them.
+    repair_a = "--repair-a" in sys.argv
     targets = []
     for f in sorted(glob.glob(os.path.join(DATA, "*.json"))):
         if os.path.basename(f).startswith("_"):
             continue
         d = json.load(open(f))
         empty = not any((d.get("headline") or {}).values())
-        if empty or (recheck and d.get("layout") == "B"):
+        take = empty or (recheck and d.get("layout") == "B")
+        if repair_a and d.get("layout") == "A" and not take:
+            h = d.get("headline") or {}
+            broken = not h.get("GMDP")
+            mg, tx, sb = h.get("GMVA"), h.get("PRODUCT TAXES"), h.get("PRODUCT SUBSIDIES")
+            if None not in (h.get("GMDP"), mg, tx, sb):
+                if abs((mg + tx - sb) - h["GMDP"]) > max(1.0, h["GMDP"] * 0.01):
+                    broken = True
+            if mg and tx and tx > mg * 0.5:
+                broken = True
+            if h.get("NMDP") and h.get("GMDP") and h["NMDP"] > h["GMDP"] * 1.001:
+                broken = True
+            take = broken
+        if take:
             targets.append((f, d))
 
     print(f"{len(targets)} mandal files to parse"
