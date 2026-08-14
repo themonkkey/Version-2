@@ -533,6 +533,22 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   border-color:rgba(198,236,143,.45);box-shadow:0 10px 30px rgba(0,0,0,.20),inset 0 0 0 1px rgba(198,236,143,.25);}
 .vstage .dtab-live[aria-pressed="true"] .dtab-soon{color:rgba(198,236,143,.85);}
 
+/* District filter chip — appears once a district is picked on the map, and
+   announces that every tab is scoped to it. Clearing it routes through
+   showStateView() so the map selection and the tabs can never disagree. */
+.dtab-filterbar{display:flex;align-items:center;gap:14px;width:fit-content;
+  margin:-2px 0 clamp(12px,1.6vw,18px);padding:8px 10px 8px 16px;border-radius:999px;
+  background:rgba(198,236,143,.13);border:1px solid rgba(198,236,143,.42);
+  color:rgba(255,255,255,.88);font-size:13.5px;line-height:1;}
+.dtab-filterbar .dtf-label{display:inline-flex;align-items:center;gap:8px;}
+.dtab-filterbar .dtf-label i{color:var(--lime);font-size:15px;}
+.dtab-filterbar b{font-weight:700;color:#E4F6C8;}
+.dtf-clear{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font:inherit;
+  font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85);
+  padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.10);transition:background .15s;}
+.dtf-clear:hover{background:rgba(255,255,255,.18);}
+
 /* Documents view — the vision-plan tree. Lives on the same dark stage as the map. */
 .docs-tools{display:flex;align-items:flex-end;}
 .docs-search{width:min(320px,42vw);font:inherit;font-size:14px;color:#FFF;
@@ -1132,6 +1148,24 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 .gva-steps .n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
   background:rgba(198,236,143,.20);color:#DCF0A8;font-size:11.5px;font-weight:700;margin-top:1px;}
 .gva-steps b{color:#FFF;font-weight:650;}
+/* District context card — injected above the toolbox when a district filter is
+   active. Same glass as .gva-panel; the lime edge marks it as filtered content. */
+.gva-distcard{border-color:rgba(198,236,143,.45);margin-bottom:clamp(18px,2.4vw,28px);}
+.gva-distcard p{font-size:13.8px;line-height:1.55;color:rgba(255,255,255,.82);margin:0 0 14px;}
+.gva-distcard .gd-links{display:flex;flex-wrap:wrap;gap:10px;}
+.gva-distcard .gd-links a{display:inline-flex;align-items:center;gap:8px;
+  font-size:13.5px;font-weight:600;color:#E4F6C8;text-decoration:none;
+  padding:9px 14px;border-radius:999px;border:1px solid rgba(198,236,143,.45);
+  background:rgba(198,236,143,.14);transition:background .15s;}
+.gva-distcard .gd-links a:hover{background:rgba(198,236,143,.24);}
+.gva-distcard .gd-links .muted{display:inline-flex;align-items:center;gap:8px;
+  font-size:13.5px;color:rgba(255,255,255,.55);padding:9px 14px;border-radius:999px;
+  border:1px dashed rgba(255,255,255,.25);}
+/* Capacity tab: notice when the filtered district has no filed training report. */
+.cap-absent{display:flex;align-items:center;gap:9px;font-size:13.5px;line-height:1.5;
+  color:rgba(255,255,255,.80);margin:0 0 14px;padding:11px 16px;border-radius:var(--r);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.20);}
+.cap-absent i{color:var(--lime);font-size:16px;}
 /* Breathing space above: this row had a margin-bottom but no margin-top, so it sat
    flush against whatever came before it — most visibly the open playbook box,
    which has no bottom margin of its own. Adjacent sibling margins collapse, so
@@ -2236,6 +2270,15 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
             <button class="dtab dtab-live dtab-capacity" data-dtab="capacity" aria-pressed="false">Capacity building<span class="dtab-soon">18 districts</span></button>
       <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">13 studies</span></button>
     </div>
+    <!-- Set by the map: picking a district scopes every tab to it. Hidden until
+         a district is chosen; the clear button routes through showStateView()
+         so the map and the tabs always agree on what is selected. -->
+    <div class="dtab-filterbar" id="dtabFilterBar" hidden>
+      <span class="dtf-label"><i class="ti ti-map-pin-filled"></i>
+        <span>Showing <b id="dtabFilterName"></b> in every tab</span></span>
+      <button class="dtf-clear" id="dtabFilterClear" type="button">
+        All districts <i class="ti ti-x"></i></button>
+    </div>
     <div id="mapView">
     <div class="sec-head sec-head-row">
       <div>
@@ -2773,6 +2816,7 @@ function setMapHint(level, districtName){
 
 function showStateView(){
   mapLevel='state'; currentDistrict=null;
+  if(window.DTABS_DISTRICT) window.DTABS_DISTRICT(null);   // no district, no tab filter
   document.getElementById('mapBox').classList.remove('picked','zoomed');
   setLayoutState(false);
   document.getElementById('districtPanel').innerHTML=
@@ -2865,6 +2909,8 @@ const distCache = {};
 // degrades the page rather than blanking it.
 async function showDistrict(key, name){
   currentDistrictKey = key; currentDistrictName = name;
+  // the map is the single source of the district filter that scopes every tab
+  if(window.DTABS_DISTRICT) window.DTABS_DISTRICT(name);
   setExploreHeading('district', name);
   const panel = document.getElementById('districtPanel');
   if(!panel) return;
@@ -3398,10 +3444,15 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     var t; search.addEventListener('input', function(){ clearTimeout(t); t = setTimeout(function(){ applySearch(search.value); }, 140); });
   }
 
+  // Returns a promise so other tabs (the GVA district card) can wait on the
+  // catalogue without owning the fetch. A failed load resets the promise so the
+  // next visit retries, exactly as the loaded/loading flags used to.
+  var docsPromise = null;
   function load(){
-    if(loaded || loading) return;
+    if(loaded) return Promise.resolve();
+    if(docsPromise) return docsPromise;
     loading = true;
-    Promise.all([
+    docsPromise = Promise.all([
       fetch('assets/docs_tree.json?v=2026-08-12a').then(function(r){ return r.json(); }),
       fetch('assets/doc_links.json?v=2026-08-12a').then(function(r){ return r.ok ? r.json() : {}; }).catch(function(){ return {}; })
     ]).then(function(res){
@@ -3410,11 +3461,13 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       CFG = {provider: cfg.provider || 'drive', cloudBase: cfg.cloudBase || '', links: cfg.links || {}};
       loaded = true; loading = false;
       render();
+      applyDocsFilter();
     }).catch(function(err){
-      loading = false;
+      loading = false; docsPromise = null;
       treeEl.innerHTML = '<div class="docs-empty">Could not load the document library.</div>';
       console.error('docs load failed', err);
     });
+    return docsPromise;
   }
 
   // --- Case studies library: grouped cards linking to standalone reader pages.
@@ -3671,7 +3724,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     gvaLoading = true;
     fetch('assets/gva_playbook.json?v=2026-08-12g')
       .then(function(r){ return r.json(); })
-      .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); })
+      .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); applyGvaFilter(); })
       .catch(function(err){
         gvaLoading=false;
         gvaBody.innerHTML='<div class="docs-empty">Could not load the sector playbooks.</div>';
@@ -4031,12 +4084,133 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       CAP = res[0]; CAPA = res[1];
       capLoaded = true; capLoading = false;
       renderCapacity();
+      applyCapFilter();
     }).catch(function(err){
       capLoading = false;
       capBody.innerHTML = '<div class="docs-empty">Could not load the training record.</div>';
       console.error('capacity load failed', err);
     });
   }
+
+  /* ── District filter across tabs ─────────────────────────────────────
+     Picking a district on the map scopes every tab to it: Documents narrows
+     the tree, Capacity building opens that district's brief, Improving GVA
+     leads with the district's own Vision & Action Plan above the DDP Toolbox.
+     Case studies is deliberately left unfiltered for now.
+
+     The three sources spell district names differently (Nandyal / Nandyala,
+     SPSR / Spsr / Sps Nellore, Ananthapur / Ananthapuramu), so matching is by
+     a normalised key with an alias table — never by raw string equality. */
+  var DISTF = null;                       // the active filter: a display name from the map
+  function normName(s){
+    s = String(s).toLowerCase().replace(/[^a-z]/g, '');
+    var alias = {
+      anantapur:'ananthapur', ananthapuramu:'ananthapur',
+      nandyala:'nandyal', anakapalle:'anakapalli',
+      alluriseetharamaraju:'asr', allurisitharamaraju:'asr', allurisithararamaraju:'asr',
+      markapuram:'marakapuram',
+      spsnellore:'spsrnellore', sripottisriramulunellore:'spsrnellore'
+    };
+    return alias[s] || s;
+  }
+
+  // Documents: show exactly one district's node, open. Not applySearch — a
+  // substring query for "Kurnool" also surfaces Nandyala, whose mandal titles
+  // contain the word. The search box still shows the district name, so typing
+  // over it hands control straight back to the ordinary search.
+  var docsApplied = null;
+  function filterDocsTree(dn){
+    treeEl.querySelectorAll('.docs-districts > .docs-node').forEach(function(n){
+      var hit = normName(n._data.name) === normName(dn);
+      n.hidden = !hit;
+      if(hit){
+        buildDistrictKids(n); n.classList.add('open');
+        n.querySelector('.docs-row').setAttribute('aria-expanded','true');
+        n.querySelectorAll('.docs-cnode').forEach(function(c){ c.hidden = false; });
+      }
+    });
+    var emp = treeEl.querySelector('.docs-empty'); if(emp) emp.remove();
+  }
+  function applyDocsFilter(){
+    if(!loaded || !search) return;
+    if(DISTF){
+      var hit = (DATA.districts || []).find(function(d){ return normName(d.name) === normName(DISTF); });
+      var dn = hit ? hit.name : DISTF;
+      docsApplied = dn; search.value = dn; filterDocsTree(dn);
+    } else if(docsApplied !== null){
+      if(search.value === docsApplied){ search.value = ''; applySearch(''); }
+      docsApplied = null;
+    }
+  }
+
+  // Capacity building: land on the district's brief instead of the first in the
+  // list. Ten map districts have no filed status report — say so rather than
+  // silently showing someone else's training record.
+  function applyCapFilter(){
+    if(!capLoaded) return;
+    var sel = document.getElementById('capDistrict');
+    if(!sel) return;
+    var note = document.getElementById('capAbsent');
+    if(note) note.remove();
+    if(!DISTF) return;
+    var i = CAP.districts.findIndex(function(d){ return normName(d.name) === normName(DISTF); });
+    if(i >= 0){
+      if(+sel.value !== i){ sel.value = String(i); renderBrief(CAP.districts[i]); }
+    } else {
+      sel.closest('.cap-pick').insertAdjacentHTML('beforebegin',
+        '<p class="cap-absent" id="capAbsent"><i class="ti ti-info-circle"></i><span>' +
+        esc(DISTF) + ' is not among the ' + CAP.totals.districts +
+        ' districts with a filed training status report. The briefs below cover the districts that have one.</span></p>');
+    }
+  }
+
+  // Improving GVA: the playbooks are the DDP Toolbox — state-wide by design —
+  // so the district scope comes from leading with the district's own Vision &
+  // Action Plan, pulled from the document catalogue.
+  function applyGvaFilter(){
+    if(!gvaLoaded || !gvaBody) return;
+    var old = document.getElementById('gvaDistCard');
+    if(old) old.remove();
+    if(!DISTF) return;
+    var want = DISTF;                     // guard against a filter change mid-fetch
+    load().then(function(){
+      if(!loaded || DISTF !== want) return;
+      var d = (DATA.districts || []).find(function(x){ return normName(x.name) === normName(want); });
+      if(!d || !d.plans || !d.plans.length) return;
+      var cur = document.getElementById('gvaDistCard');
+      if(cur) cur.remove();
+      var links = d.plans.map(function(p){
+        var url = linkFor(p, d.name, null);
+        if(url) return '<a href="' + esc(url) + '" target="_blank" rel="noopener">' +
+          '<i class="ti ti-book-2"></i>' + esc(p.title) + ' <i class="ti ti-external-link"></i></a>';
+        return '<span class="muted" title="Not yet linked"><i class="ti ti-book-2"></i>' + esc(p.title) + '</span>';
+      }).join('');
+      gvaBody.insertAdjacentHTML('afterbegin',
+        '<div class="gva-panel gva-distcard" id="gvaDistCard">' +
+          '<div class="gva-kicker">Start from the district’s own plan</div>' +
+          '<h3>' + esc(d.name) + ' — Vision &amp; Action Plan</h3>' +
+          '<p>The sector playbooks below are the DDP Toolbox — the same frameworks for every district. ' +
+          'Read them against the priorities in ' + esc(d.name) + '’s own plan.</p>' +
+          '<div class="gd-links">' + links + '</div>' +
+        '</div>');
+    });
+  }
+
+  // The single entry point the map calls. Applies to whatever is already
+  // rendered; tabs that load later apply the filter themselves on arrival.
+  window.DTABS_DISTRICT = function(name){
+    DISTF = name || null;
+    var bar = document.getElementById('dtabFilterBar');
+    if(bar){
+      bar.hidden = !DISTF;
+      if(DISTF) document.getElementById('dtabFilterName').textContent = DISTF;
+    }
+    applyDocsFilter(); applyCapFilter(); applyGvaFilter();
+  };
+  var dtfClear = document.getElementById('dtabFilterClear');
+  if(dtfClear) dtfClear.addEventListener('click', function(){
+    showStateView();   // resets the map too; its hook clears the filter everywhere
+  });
 
   /* ── GVA calculator ────────────────────────────────────────────────────
      Three tools, matching the production approach, the sector roll-up and the
