@@ -2637,7 +2637,7 @@ async function loadMandalIndex(){
 let mandalRanks = null;
 async function loadMandalRanks(){
   if(mandalRanks) return mandalRanks;
-  try{ mandalRanks = await fetch('assets/mandal_ranks.json').then(r=>r.ok?r.json():{}); }
+  try{ mandalRanks = await fetch('assets/mandal_ranks.json?v=2026-08-12h').then(r=>r.ok?r.json():{}); }
   catch(e){ mandalRanks = {}; }
   return mandalRanks;
 }
@@ -2646,7 +2646,7 @@ const mandalDataCache = {};
 async function loadMandalData(slug){
   if(slug in mandalDataCache) return mandalDataCache[slug];
   let d = null;
-  try{ d = await fetch('assets/mandal_data/'+slug+'.json').then(r=>r.ok?r.json():null); }
+  try{ d = await fetch('assets/mandal_data/'+slug+'.json?v=2026-08-12h').then(r=>r.ok?r.json():null); }
   catch(e){ d = null; }
   mandalDataCache[slug] = d;
   return d;
