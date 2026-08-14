@@ -805,7 +805,15 @@ a.docs-leaf:hover .ext{opacity:1;}
 .cap-lb figure{max-width:min(92vw,760px);text-align:center;}
 .cap-lb img{max-width:100%;max-height:72vh;border-radius:14px;display:block;margin:0 auto;
   border:1px solid rgba(255,255,255,.2);box-shadow:0 30px 80px rgba(0,0,0,.5);
-  image-rendering:auto;}
+  image-rendering:auto;
+  /* The viewer opens on the thumbnail and swaps to the enhanced copy a moment
+     later. Without a transition the substitution reads as a flicker; with one it
+     reads as the photo coming into focus, which is what is actually happening. */
+  transition:filter .28s ease, opacity .28s ease;}
+/* Held on the thumbnail only until its enhanced copy decodes. The slight blur is
+   honest — a 220px source shown at 760px genuinely has no detail at that size —
+   and it stops the low-res frame looking like the finished article. */
+.cap-lb img.lb-soft{filter:blur(1.5px) saturate(.96);opacity:.9;}
 .cap-lb figcaption{margin-top:12px;font-size:13px;color:rgba(255,255,255,.82);line-height:1.5;}
 .cap-lb .cap-lb-x{position:absolute;top:clamp(12px,2vw,22px);right:clamp(12px,2vw,22px);
   width:38px;height:38px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
@@ -3263,12 +3271,17 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   var capShots = [];
   function shotRail(session, dname){
     if(!session.photos || !session.photos.length){ return ''; }
-    return '<div class="cap-shots">' + session.photos.map(function(src){
+    return '<div class="cap-shots">' + session.photos.map(function(p){
+      /* Each entry is [thumbnail, enhanced]; `enhanced` is null where the source
+         was already big enough to open as-is. Older cached manifests stored a
+         bare string, so both shapes are accepted. */
+      var thumb = (typeof p === 'string') ? p : p[0];
+      var full  = (typeof p === 'string') ? null : p[1];
       var cap = dname + ' · ' + (session.date ? prettyDate(session.date) : session.kind);
-      var i = capShots.push({ src:src, cap:cap }) - 1;
+      var i = capShots.push({ src:thumb, full:full || thumb, cap:cap }) - 1;
       return '<button class="cap-shot" data-shot="'+i+'" type="button" ' +
              'aria-label="Enlarge photograph from '+esc(cap)+'">' +
-             '<img src="'+esc(src)+'" alt="Training session, '+esc(cap)+'" loading="lazy" decoding="async">' +
+             '<img src="'+esc(thumb)+'" alt="Training session, '+esc(cap)+'" loading="lazy" decoding="async">' +
              '</button>';
     }).join('') + '</div>';
   }
@@ -3348,14 +3361,34 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   }
 
   /* Lightbox */
-  var lbAt = 0;
+  var lbAt = 0, lbToken = 0;
   function openShot(i){
     if(!capShots.length) return;
     lbAt = (i + capShots.length) % capShots.length;
+    var shot = capShots[lbAt];
     var lb = document.getElementById('capLb');
-    lb.querySelector('img').src = capShots[lbAt].src;
+    var img = lb.querySelector('img');
+
+    /* Show the thumbnail immediately, then swap in the enhanced copy once it has
+       decoded. Pointing straight at the enhanced file left the viewer empty for
+       as long as the fetch took; this way the photo is always on screen and just
+       sharpens. The token guards against a slow load from a photo the reader has
+       already arrowed past landing on top of the current one. */
+    var mine = ++lbToken;
+    img.src = shot.src;
+    img.classList.toggle('lb-soft', shot.full !== shot.src);
+    if(shot.full !== shot.src){
+      var big = new Image();
+      big.onload = function(){
+        if(mine !== lbToken) return;
+        img.src = shot.full;
+        img.classList.remove('lb-soft');
+      };
+      big.src = shot.full;
+    }
+
     lb.querySelector('figcaption').textContent =
-      capShots[lbAt].cap + '  ·  ' + (lbAt+1) + ' of ' + capShots.length;
+      shot.cap + '  ·  ' + (lbAt+1) + ' of ' + capShots.length;
     lb.classList.add('on');
     lb.querySelector('.cap-lb-x').focus();
   }
@@ -3456,7 +3489,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(capLoaded || capLoading) return;
     capLoading = true;
     Promise.all([
-      fetch('assets/capacity.json?v=2026-08-14a').then(function(r){ return r.json(); }),
+      fetch('assets/capacity.json?v=2026-08-14b').then(function(r){ return r.json(); }),
       fetch('assets/capacity_assessment.json?v=2026-08-14a').then(function(r){ return r.json(); })
         .catch(function(){ return null; })
     ]).then(function(res){

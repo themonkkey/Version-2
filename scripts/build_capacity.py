@@ -808,6 +808,55 @@ def parse_report_c(rep, display_name):
 # images
 # -------------------------------------------------------------------------
 
+# The lightbox opens a photo at up to ~760px wide, but the embedded source is
+# a median 220px, so the browser was bilinear-stretching it ~3x and it went soft.
+# A build-time upscale can't invent detail that was never captured — what it can
+# do is replace that stretch with a better-reconstructed one, and put back the
+# edge acutance interpolation removes. Enhanced copies live in <slug>/lg/ and are
+# loaded ONLY by the lightbox; the thumbnail rail keeps the small originals so the
+# grid stays cheap.
+LG_TARGET_W = 760          # the lightbox's own max width
+LG_MAX_SCALE = 3.2         # past this, upscaling only makes the mush bigger
+LG_SKIP_ABOVE = 700        # already big enough to open as-is
+
+
+def enhance_for_lightbox(src, dst):
+    """Write an upscaled, de-blocked, re-sharpened copy. False if not worth it."""
+    try:
+        import cv2
+        import numpy as np  # noqa: F401  (cv2 needs it present)
+    except ImportError:
+        return False
+    im = cv2.imread(src)
+    if im is None:
+        return False
+    h, w = im.shape[:2]
+    if w >= LG_SKIP_ABOVE:
+        return False
+    scale = min(LG_MAX_SCALE, float(LG_TARGET_W) / w)
+    if scale <= 1.05:
+        return False
+
+    # De-block BEFORE sharpening. These JPEGs are compressed hard enough that an
+    # unsharp mask applied straight to them amplifies the 8x8 blocking into a
+    # visible lattice — the artefact ends up crisper than the subject.
+    den = cv2.bilateralFilter(im, d=5, sigmaColor=28, sigmaSpace=5)
+    up = cv2.resize(den, (int(w * scale), int(h * scale)),
+                    interpolation=cv2.INTER_LANCZOS4)
+    blur = cv2.GaussianBlur(up, (0, 0), 1.4)
+    sharp = cv2.addWeighted(up, 1.55, blur, -0.55, 0)
+
+    # Dim indoor phone frames: mild LOCAL contrast on luminance only, so the
+    # colour of a sari or a lanyard is not pushed around with it.
+    lab = cv2.cvtColor(sharp, cv2.COLOR_BGR2LAB)
+    ch = list(cv2.split(lab))
+    ch[0] = cv2.createCLAHE(clipLimit=1.6, tileGridSize=(8, 8)).apply(ch[0])
+    out = cv2.cvtColor(cv2.merge(ch), cv2.COLOR_LAB2BGR)
+
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    return bool(cv2.imwrite(dst, out, [int(cv2.IMWRITE_JPEG_QUALITY), 86]))
+
+
 def extract_images(pdf_path, slug, display_name, reports, write=True):
     """Lift the embedded JPEGs and tie each to the report whose pages it sits on."""
     outdir = os.path.join(IMG_ROOT, slug)
@@ -864,8 +913,12 @@ def extract_images(pdf_path, slug, display_name, reports, write=True):
             else:
                 shutil.move(src, os.path.join(outdir, name))
         ri = report_for(page)
-        photos.append({"file": "assets/capacity/%s/%s" % (slug, name),
-                       "w": w, "h": h, "page": page, "report": ri})
+        rec = {"file": "assets/capacity/%s/%s" % (slug, name),
+               "w": w, "h": h, "page": page, "report": ri}
+        if write and enhance_for_lightbox(os.path.join(outdir, name),
+                                          os.path.join(outdir, "lg", name)):
+            rec["lg"] = "assets/capacity/%s/lg/%s" % (slug, name)
+        photos.append(rec)
     if write and tmp and os.path.isdir(tmp):
         shutil.rmtree(tmp)
     return photos
@@ -897,7 +950,9 @@ def build_district(stem, display_name, dkey, write_images=True):
             s = parse_report_c(rep, display_name)
         if s is None:
             continue
-        s["photos"] = [p["file"] for p in photos if p["report"] == i]
+        # [thumbnail, enhanced-or-null] per photo: the rail loads the first, the
+        # lightbox prefers the second and falls back to the first.
+        s["photos"] = [[p["file"], p.get("lg")] for p in photos if p["report"] == i]
         s["fmt"] = rep["fmt"]
         sessions.append(s)
 

@@ -32,8 +32,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-04.jpg",
-      "assets/capacity/srikakulam/srikakulam-05.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-04.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-04.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-05.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-05.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -53,8 +59,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-06.jpg",
-      "assets/capacity/srikakulam/srikakulam-07.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-06.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-06.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-07.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-07.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -74,8 +86,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-08.jpg",
-      "assets/capacity/srikakulam/srikakulam-09.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-08.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-08.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-09.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-09.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -95,8 +113,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-10.jpg",
-      "assets/capacity/srikakulam/srikakulam-11.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-10.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-10.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-11.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-11.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -116,8 +140,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-12.jpg",
-      "assets/capacity/srikakulam/srikakulam-13.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-12.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-12.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-13.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-13.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -153,8 +183,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-14.jpg",
-      "assets/capacity/srikakulam/srikakulam-15.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-14.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-14.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-15.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-15.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -195,8 +231,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-16.jpg",
-      "assets/capacity/srikakulam/srikakulam-17.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-16.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-16.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-17.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-17.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -226,8 +268,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-18.jpg",
-      "assets/capacity/srikakulam/srikakulam-19.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-18.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-18.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-19.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-19.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -266,9 +314,18 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/srikakulam/srikakulam-01.jpg",
-      "assets/capacity/srikakulam/srikakulam-02.jpg",
-      "assets/capacity/srikakulam/srikakulam-03.jpg"
+      [
+       "assets/capacity/srikakulam/srikakulam-01.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-01.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-02.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-02.jpg"
+      ],
+      [
+       "assets/capacity/srikakulam/srikakulam-03.jpg",
+       "assets/capacity/srikakulam/lg/srikakulam-03.jpg"
+      ]
      ],
      "fmt": "B"
     }
@@ -350,10 +407,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/vizianagaram/vizianagaram-06.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-07.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-08.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-09.jpg"
+      [
+       "assets/capacity/vizianagaram/vizianagaram-06.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-06.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-07.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-07.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-08.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-08.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-09.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-09.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -389,8 +458,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/vizianagaram/vizianagaram-01.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-02.jpg"
+      [
+       "assets/capacity/vizianagaram/vizianagaram-01.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-01.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-02.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-02.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -435,9 +510,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/vizianagaram/vizianagaram-03.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-04.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-05.jpg"
+      [
+       "assets/capacity/vizianagaram/vizianagaram-03.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-03.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-04.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-04.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-05.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-05.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -481,10 +565,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/vizianagaram/vizianagaram-10.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-11.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-12.jpg",
-      "assets/capacity/vizianagaram/vizianagaram-13.jpg"
+      [
+       "assets/capacity/vizianagaram/vizianagaram-10.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-10.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-11.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-11.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-12.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-12.jpg"
+      ],
+      [
+       "assets/capacity/vizianagaram/vizianagaram-13.jpg",
+       "assets/capacity/vizianagaram/lg/vizianagaram-13.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -533,10 +629,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-01.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-02.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-03.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-04.jpg"
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-01.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-01.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-02.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-02.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-03.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-03.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-04.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-04.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -579,9 +687,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-05.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-06.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-07.jpg"
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-05.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-05.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-06.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-06.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-07.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-07.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -608,8 +725,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-08.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-09.jpg"
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-08.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-08.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-09.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-09.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -636,10 +759,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-10.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-11.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-12.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-13.jpg"
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-10.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-10.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-11.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-11.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-12.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-12.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-13.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-13.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -666,10 +801,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-14.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-15.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-16.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-17.jpg"
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-14.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-14.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-15.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-15.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-16.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-16.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-17.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-17.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -700,10 +847,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-18.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-19.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-20.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-21.jpg"
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-18.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-18.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-19.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-19.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-20.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-20.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-21.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-21.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -738,10 +897,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-22.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-23.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-24.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-25.jpg"
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-22.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-22.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-23.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-23.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-24.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-24.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-25.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-25.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -772,10 +943,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-26.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-27.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-28.jpg",
-      "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-29.jpg"
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-26.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-26.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-27.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-27.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-28.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-28.jpg"
+      ],
+      [
+       "assets/capacity/parvathipuram-manyam/parvathipuram-manyam-29.jpg",
+       "assets/capacity/parvathipuram-manyam/lg/parvathipuram-manyam-29.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -865,22 +1048,70 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/visakhapatnam/visakhapatnam-01.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-02.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-03.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-04.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-05.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-06.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-07.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-08.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-09.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-10.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-11.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-12.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-13.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-14.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-15.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-16.jpg"
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-01.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-01.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-02.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-02.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-03.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-03.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-04.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-04.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-05.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-05.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-06.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-06.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-07.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-07.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-08.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-08.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-09.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-09.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-10.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-10.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-11.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-11.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-12.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-12.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-13.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-13.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-14.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-14.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-15.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-15.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-16.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-16.jpg"
+      ]
      ],
      "fmt": "B"
     },
@@ -918,8 +1149,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/visakhapatnam/visakhapatnam-17.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-18.jpg"
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-17.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-17.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-18.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-18.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -939,8 +1176,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/visakhapatnam/visakhapatnam-19.jpg",
-      "assets/capacity/visakhapatnam/visakhapatnam-20.jpg"
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-19.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-19.jpg"
+      ],
+      [
+       "assets/capacity/visakhapatnam/visakhapatnam-20.jpg",
+       "assets/capacity/visakhapatnam/lg/visakhapatnam-20.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -1071,9 +1314,18 @@
      "note": null,
      "sector_focus": "Primary Sector",
      "photos": [
-      "assets/capacity/kakinada/kakinada-01.jpg",
-      "assets/capacity/kakinada/kakinada-02.jpg",
-      "assets/capacity/kakinada/kakinada-03.jpg"
+      [
+       "assets/capacity/kakinada/kakinada-01.jpg",
+       "assets/capacity/kakinada/lg/kakinada-01.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-02.jpg",
+       "assets/capacity/kakinada/lg/kakinada-02.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-03.jpg",
+       "assets/capacity/kakinada/lg/kakinada-03.jpg"
+      ]
      ],
      "fmt": "B"
     },
@@ -1115,10 +1367,22 @@
      "note": null,
      "sector_focus": "Secondary and Tertiary Sectors",
      "photos": [
-      "assets/capacity/kakinada/kakinada-04.jpg",
-      "assets/capacity/kakinada/kakinada-05.jpg",
-      "assets/capacity/kakinada/kakinada-06.jpg",
-      "assets/capacity/kakinada/kakinada-07.jpg"
+      [
+       "assets/capacity/kakinada/kakinada-04.jpg",
+       "assets/capacity/kakinada/lg/kakinada-04.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-05.jpg",
+       "assets/capacity/kakinada/lg/kakinada-05.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-06.jpg",
+       "assets/capacity/kakinada/lg/kakinada-06.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-07.jpg",
+       "assets/capacity/kakinada/lg/kakinada-07.jpg"
+      ]
      ],
      "fmt": "B"
     },
@@ -1149,12 +1413,30 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/kakinada/kakinada-08.jpg",
-      "assets/capacity/kakinada/kakinada-09.jpg",
-      "assets/capacity/kakinada/kakinada-10.jpg",
-      "assets/capacity/kakinada/kakinada-11.jpg",
-      "assets/capacity/kakinada/kakinada-12.jpg",
-      "assets/capacity/kakinada/kakinada-13.jpg"
+      [
+       "assets/capacity/kakinada/kakinada-08.jpg",
+       "assets/capacity/kakinada/lg/kakinada-08.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-09.jpg",
+       "assets/capacity/kakinada/lg/kakinada-09.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-10.jpg",
+       "assets/capacity/kakinada/lg/kakinada-10.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-11.jpg",
+       "assets/capacity/kakinada/lg/kakinada-11.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-12.jpg",
+       "assets/capacity/kakinada/lg/kakinada-12.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-13.jpg",
+       "assets/capacity/kakinada/lg/kakinada-13.jpg"
+      ]
      ],
      "fmt": "B"
     },
@@ -1195,15 +1477,42 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/kakinada/kakinada-14.jpg",
-      "assets/capacity/kakinada/kakinada-15.jpg",
-      "assets/capacity/kakinada/kakinada-16.jpg",
-      "assets/capacity/kakinada/kakinada-17.jpg",
-      "assets/capacity/kakinada/kakinada-18.jpg",
-      "assets/capacity/kakinada/kakinada-19.jpg",
-      "assets/capacity/kakinada/kakinada-20.jpg",
-      "assets/capacity/kakinada/kakinada-21.jpg",
-      "assets/capacity/kakinada/kakinada-22.jpg"
+      [
+       "assets/capacity/kakinada/kakinada-14.jpg",
+       "assets/capacity/kakinada/lg/kakinada-14.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-15.jpg",
+       "assets/capacity/kakinada/lg/kakinada-15.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-16.jpg",
+       "assets/capacity/kakinada/lg/kakinada-16.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-17.jpg",
+       "assets/capacity/kakinada/lg/kakinada-17.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-18.jpg",
+       "assets/capacity/kakinada/lg/kakinada-18.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-19.jpg",
+       "assets/capacity/kakinada/lg/kakinada-19.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-20.jpg",
+       "assets/capacity/kakinada/lg/kakinada-20.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-21.jpg",
+       "assets/capacity/kakinada/lg/kakinada-21.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-22.jpg",
+       "assets/capacity/kakinada/lg/kakinada-22.jpg"
+      ]
      ],
      "fmt": "B"
     },
@@ -1223,8 +1532,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/kakinada/kakinada-23.jpg",
-      "assets/capacity/kakinada/kakinada-24.jpg"
+      [
+       "assets/capacity/kakinada/kakinada-23.jpg",
+       "assets/capacity/kakinada/lg/kakinada-23.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-24.jpg",
+       "assets/capacity/kakinada/lg/kakinada-24.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -1244,8 +1559,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/kakinada/kakinada-25.jpg",
-      "assets/capacity/kakinada/kakinada-26.jpg"
+      [
+       "assets/capacity/kakinada/kakinada-25.jpg",
+       "assets/capacity/kakinada/lg/kakinada-25.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-26.jpg",
+       "assets/capacity/kakinada/lg/kakinada-26.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -1265,8 +1586,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/kakinada/kakinada-27.jpg",
-      "assets/capacity/kakinada/kakinada-28.jpg"
+      [
+       "assets/capacity/kakinada/kakinada-27.jpg",
+       "assets/capacity/kakinada/lg/kakinada-27.jpg"
+      ],
+      [
+       "assets/capacity/kakinada/kakinada-28.jpg",
+       "assets/capacity/kakinada/lg/kakinada-28.jpg"
+      ]
      ],
      "fmt": "C"
     }
@@ -1338,9 +1665,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-01.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-02.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-03.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-01.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-01.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-02.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-02.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-03.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-03.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1367,10 +1703,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-04.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-05.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-06.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-07.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-04.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-04.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-05.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-05.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-06.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-06.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-07.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-07.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1421,10 +1769,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-08.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-09.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-10.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-11.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-08.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-08.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-09.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-09.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-10.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-10.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-11.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-11.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1465,10 +1825,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-12.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-13.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-14.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-15.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-12.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-12.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-13.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-13.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-14.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-14.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-15.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-15.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1499,10 +1871,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-16.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-17.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-18.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-19.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-16.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-16.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-17.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-17.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-18.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-18.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-19.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-19.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1550,9 +1934,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-20.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-21.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-22.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-20.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-20.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-21.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-21.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-22.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-22.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1596,10 +1989,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-23.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-24.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-25.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-26.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-23.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-23.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-24.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-24.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-25.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-25.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-26.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-26.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1642,10 +2047,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-27.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-28.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-29.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-30.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-27.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-27.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-28.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-28.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-29.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-29.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-30.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-30.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1691,10 +2108,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-31.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-32.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-33.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-34.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-31.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-31.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-32.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-32.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-33.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-33.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-34.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-34.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1726,9 +2155,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-35.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-36.jpg",
-      "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-37.jpg"
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-35.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-35.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-36.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-36.jpg"
+      ],
+      [
+       "assets/capacity/dr-b-r-ambedkar-konaseema/dr-b-r-ambedkar-konaseema-37.jpg",
+       "assets/capacity/dr-b-r-ambedkar-konaseema/lg/dr-b-r-ambedkar-konaseema-37.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -1784,8 +2222,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/east-godavari/east-godavari-04.jpg",
-      "assets/capacity/east-godavari/east-godavari-05.jpg"
+      [
+       "assets/capacity/east-godavari/east-godavari-04.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-04.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-05.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-05.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -1805,8 +2249,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/east-godavari/east-godavari-06.jpg",
-      "assets/capacity/east-godavari/east-godavari-07.jpg"
+      [
+       "assets/capacity/east-godavari/east-godavari-06.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-06.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-07.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-07.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -1844,8 +2294,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/east-godavari/east-godavari-08.jpg",
-      "assets/capacity/east-godavari/east-godavari-09.jpg"
+      [
+       "assets/capacity/east-godavari/east-godavari-08.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-08.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-09.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-09.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -1875,9 +2331,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/east-godavari/east-godavari-10.jpg",
-      "assets/capacity/east-godavari/east-godavari-11.jpg",
-      "assets/capacity/east-godavari/east-godavari-12.jpg"
+      [
+       "assets/capacity/east-godavari/east-godavari-10.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-10.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-11.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-11.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-12.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-12.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1909,9 +2374,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/east-godavari/east-godavari-13.jpg",
-      "assets/capacity/east-godavari/east-godavari-14.jpg",
-      "assets/capacity/east-godavari/east-godavari-15.jpg"
+      [
+       "assets/capacity/east-godavari/east-godavari-13.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-13.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-14.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-14.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-15.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-15.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1938,9 +2412,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/east-godavari/east-godavari-16.jpg",
-      "assets/capacity/east-godavari/east-godavari-17.jpg",
-      "assets/capacity/east-godavari/east-godavari-18.jpg"
+      [
+       "assets/capacity/east-godavari/east-godavari-16.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-16.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-17.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-17.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-18.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-18.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -1978,9 +2461,18 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/east-godavari/east-godavari-01.jpg",
-      "assets/capacity/east-godavari/east-godavari-02.jpg",
-      "assets/capacity/east-godavari/east-godavari-03.jpg"
+      [
+       "assets/capacity/east-godavari/east-godavari-01.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-01.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-02.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-02.jpg"
+      ],
+      [
+       "assets/capacity/east-godavari/east-godavari-03.jpg",
+       "assets/capacity/east-godavari/lg/east-godavari-03.jpg"
+      ]
      ],
      "fmt": "B"
     }
@@ -2028,9 +2520,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/eluru/eluru-01.jpg",
-      "assets/capacity/eluru/eluru-02.jpg",
-      "assets/capacity/eluru/eluru-03.jpg"
+      [
+       "assets/capacity/eluru/eluru-01.jpg",
+       "assets/capacity/eluru/lg/eluru-01.jpg"
+      ],
+      [
+       "assets/capacity/eluru/eluru-02.jpg",
+       "assets/capacity/eluru/lg/eluru-02.jpg"
+      ],
+      [
+       "assets/capacity/eluru/eluru-03.jpg",
+       "assets/capacity/eluru/lg/eluru-03.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2073,9 +2574,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/eluru/eluru-04.jpg",
-      "assets/capacity/eluru/eluru-05.jpg",
-      "assets/capacity/eluru/eluru-06.jpg"
+      [
+       "assets/capacity/eluru/eluru-04.jpg",
+       "assets/capacity/eluru/lg/eluru-04.jpg"
+      ],
+      [
+       "assets/capacity/eluru/eluru-05.jpg",
+       "assets/capacity/eluru/lg/eluru-05.jpg"
+      ],
+      [
+       "assets/capacity/eluru/eluru-06.jpg",
+       "assets/capacity/eluru/lg/eluru-06.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2204,9 +2714,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/eluru/eluru-07.jpg",
-      "assets/capacity/eluru/eluru-08.jpg",
-      "assets/capacity/eluru/eluru-09.jpg"
+      [
+       "assets/capacity/eluru/eluru-07.jpg",
+       "assets/capacity/eluru/lg/eluru-07.jpg"
+      ],
+      [
+       "assets/capacity/eluru/eluru-08.jpg",
+       "assets/capacity/eluru/lg/eluru-08.jpg"
+      ],
+      [
+       "assets/capacity/eluru/eluru-09.jpg",
+       "assets/capacity/eluru/lg/eluru-09.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2236,9 +2755,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/eluru/eluru-10.jpg",
-      "assets/capacity/eluru/eluru-11.jpg",
-      "assets/capacity/eluru/eluru-12.jpg"
+      [
+       "assets/capacity/eluru/eluru-10.jpg",
+       "assets/capacity/eluru/lg/eluru-10.jpg"
+      ],
+      [
+       "assets/capacity/eluru/eluru-11.jpg",
+       "assets/capacity/eluru/lg/eluru-11.jpg"
+      ],
+      [
+       "assets/capacity/eluru/eluru-12.jpg",
+       "assets/capacity/eluru/lg/eluru-12.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -2276,8 +2804,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/krishna/krishna-07.jpg",
-      "assets/capacity/krishna/krishna-08.jpg"
+      [
+       "assets/capacity/krishna/krishna-07.jpg",
+       "assets/capacity/krishna/lg/krishna-07.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-08.jpg",
+       "assets/capacity/krishna/lg/krishna-08.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -2297,8 +2831,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/krishna/krishna-09.jpg",
-      "assets/capacity/krishna/krishna-10.jpg"
+      [
+       "assets/capacity/krishna/krishna-09.jpg",
+       "assets/capacity/krishna/lg/krishna-09.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-10.jpg",
+       "assets/capacity/krishna/lg/krishna-10.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -2318,8 +2858,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/krishna/krishna-11.jpg",
-      "assets/capacity/krishna/krishna-12.jpg"
+      [
+       "assets/capacity/krishna/krishna-11.jpg",
+       "assets/capacity/krishna/lg/krishna-11.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-12.jpg",
+       "assets/capacity/krishna/lg/krishna-12.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -2339,8 +2885,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/krishna/krishna-13.jpg",
-      "assets/capacity/krishna/krishna-14.jpg"
+      [
+       "assets/capacity/krishna/krishna-13.jpg",
+       "assets/capacity/krishna/lg/krishna-13.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-14.jpg",
+       "assets/capacity/krishna/lg/krishna-14.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -2390,11 +2942,26 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/krishna/krishna-15.jpg",
-      "assets/capacity/krishna/krishna-16.jpg",
-      "assets/capacity/krishna/krishna-17.jpg",
-      "assets/capacity/krishna/krishna-18.jpg",
-      "assets/capacity/krishna/krishna-19.jpg"
+      [
+       "assets/capacity/krishna/krishna-15.jpg",
+       "assets/capacity/krishna/lg/krishna-15.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-16.jpg",
+       "assets/capacity/krishna/lg/krishna-16.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-17.jpg",
+       "assets/capacity/krishna/lg/krishna-17.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-18.jpg",
+       "assets/capacity/krishna/lg/krishna-18.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-19.jpg",
+       "assets/capacity/krishna/lg/krishna-19.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2445,9 +3012,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/krishna/krishna-20.jpg",
-      "assets/capacity/krishna/krishna-21.jpg",
-      "assets/capacity/krishna/krishna-22.jpg"
+      [
+       "assets/capacity/krishna/krishna-20.jpg",
+       "assets/capacity/krishna/lg/krishna-20.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-21.jpg",
+       "assets/capacity/krishna/lg/krishna-21.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-22.jpg",
+       "assets/capacity/krishna/lg/krishna-22.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2485,12 +3061,30 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/krishna/krishna-01.jpg",
-      "assets/capacity/krishna/krishna-02.jpg",
-      "assets/capacity/krishna/krishna-03.jpg",
-      "assets/capacity/krishna/krishna-04.jpg",
-      "assets/capacity/krishna/krishna-05.jpg",
-      "assets/capacity/krishna/krishna-06.jpg"
+      [
+       "assets/capacity/krishna/krishna-01.jpg",
+       "assets/capacity/krishna/lg/krishna-01.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-02.jpg",
+       "assets/capacity/krishna/lg/krishna-02.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-03.jpg",
+       "assets/capacity/krishna/lg/krishna-03.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-04.jpg",
+       "assets/capacity/krishna/lg/krishna-04.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-05.jpg",
+       "assets/capacity/krishna/lg/krishna-05.jpg"
+      ],
+      [
+       "assets/capacity/krishna/krishna-06.jpg",
+       "assets/capacity/krishna/lg/krishna-06.jpg"
+      ]
      ],
      "fmt": "B"
     }
@@ -2534,9 +3128,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-01.jpg",
-      "assets/capacity/ntr/ntr-02.jpg",
-      "assets/capacity/ntr/ntr-03.jpg"
+      [
+       "assets/capacity/ntr/ntr-01.jpg",
+       "assets/capacity/ntr/lg/ntr-01.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-02.jpg",
+       "assets/capacity/ntr/lg/ntr-02.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-03.jpg",
+       "assets/capacity/ntr/lg/ntr-03.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2563,8 +3166,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-04.jpg",
-      "assets/capacity/ntr/ntr-05.jpg"
+      [
+       "assets/capacity/ntr/ntr-04.jpg",
+       "assets/capacity/ntr/lg/ntr-04.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-05.jpg",
+       "assets/capacity/ntr/lg/ntr-05.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2608,8 +3217,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-06.jpg",
-      "assets/capacity/ntr/ntr-07.jpg"
+      [
+       "assets/capacity/ntr/ntr-06.jpg",
+       "assets/capacity/ntr/lg/ntr-06.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-07.jpg",
+       "assets/capacity/ntr/lg/ntr-07.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2646,9 +3261,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-08.jpg",
-      "assets/capacity/ntr/ntr-09.jpg",
-      "assets/capacity/ntr/ntr-10.jpg"
+      [
+       "assets/capacity/ntr/ntr-08.jpg",
+       "assets/capacity/ntr/lg/ntr-08.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-09.jpg",
+       "assets/capacity/ntr/lg/ntr-09.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-10.jpg",
+       "assets/capacity/ntr/lg/ntr-10.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2678,9 +3302,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-11.jpg",
-      "assets/capacity/ntr/ntr-12.jpg",
-      "assets/capacity/ntr/ntr-13.jpg"
+      [
+       "assets/capacity/ntr/ntr-11.jpg",
+       "assets/capacity/ntr/lg/ntr-11.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-12.jpg",
+       "assets/capacity/ntr/lg/ntr-12.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-13.jpg",
+       "assets/capacity/ntr/lg/ntr-13.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2707,8 +3340,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-14.jpg",
-      "assets/capacity/ntr/ntr-15.jpg"
+      [
+       "assets/capacity/ntr/ntr-14.jpg",
+       "assets/capacity/ntr/lg/ntr-14.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-15.jpg",
+       "assets/capacity/ntr/lg/ntr-15.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2736,9 +3375,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-16.jpg",
-      "assets/capacity/ntr/ntr-17.jpg",
-      "assets/capacity/ntr/ntr-18.jpg"
+      [
+       "assets/capacity/ntr/ntr-16.jpg",
+       null
+      ],
+      [
+       "assets/capacity/ntr/ntr-17.jpg",
+       "assets/capacity/ntr/lg/ntr-17.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-18.jpg",
+       "assets/capacity/ntr/lg/ntr-18.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2775,8 +3423,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-19.jpg",
-      "assets/capacity/ntr/ntr-20.jpg"
+      [
+       "assets/capacity/ntr/ntr-19.jpg",
+       "assets/capacity/ntr/lg/ntr-19.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-20.jpg",
+       "assets/capacity/ntr/lg/ntr-20.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2806,9 +3460,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-21.jpg",
-      "assets/capacity/ntr/ntr-22.jpg",
-      "assets/capacity/ntr/ntr-23.jpg"
+      [
+       "assets/capacity/ntr/ntr-21.jpg",
+       "assets/capacity/ntr/lg/ntr-21.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-22.jpg",
+       "assets/capacity/ntr/lg/ntr-22.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-23.jpg",
+       "assets/capacity/ntr/lg/ntr-23.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2828,8 +3491,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/ntr/ntr-24.jpg",
-      "assets/capacity/ntr/ntr-25.jpg"
+      [
+       "assets/capacity/ntr/ntr-24.jpg",
+       "assets/capacity/ntr/lg/ntr-24.jpg"
+      ],
+      [
+       "assets/capacity/ntr/ntr-25.jpg",
+       "assets/capacity/ntr/lg/ntr-25.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -2880,9 +3549,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/guntur/guntur-01.jpg",
-      "assets/capacity/guntur/guntur-02.jpg",
-      "assets/capacity/guntur/guntur-03.jpg"
+      [
+       "assets/capacity/guntur/guntur-01.jpg",
+       "assets/capacity/guntur/lg/guntur-01.jpg"
+      ],
+      [
+       "assets/capacity/guntur/guntur-02.jpg",
+       "assets/capacity/guntur/lg/guntur-02.jpg"
+      ],
+      [
+       "assets/capacity/guntur/guntur-03.jpg",
+       "assets/capacity/guntur/lg/guntur-03.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2909,9 +3587,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/guntur/guntur-04.jpg",
-      "assets/capacity/guntur/guntur-05.jpg",
-      "assets/capacity/guntur/guntur-06.jpg"
+      [
+       "assets/capacity/guntur/guntur-04.jpg",
+       "assets/capacity/guntur/lg/guntur-04.jpg"
+      ],
+      [
+       "assets/capacity/guntur/guntur-05.jpg",
+       "assets/capacity/guntur/lg/guntur-05.jpg"
+      ],
+      [
+       "assets/capacity/guntur/guntur-06.jpg",
+       "assets/capacity/guntur/lg/guntur-06.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2939,9 +3626,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/guntur/guntur-07.jpg",
-      "assets/capacity/guntur/guntur-08.jpg",
-      "assets/capacity/guntur/guntur-09.jpg"
+      [
+       "assets/capacity/guntur/guntur-07.jpg",
+       "assets/capacity/guntur/lg/guntur-07.jpg"
+      ],
+      [
+       "assets/capacity/guntur/guntur-08.jpg",
+       "assets/capacity/guntur/lg/guntur-08.jpg"
+      ],
+      [
+       "assets/capacity/guntur/guntur-09.jpg",
+       "assets/capacity/guntur/lg/guntur-09.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -2978,7 +3674,10 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/guntur/guntur-10.jpg"
+      [
+       "assets/capacity/guntur/guntur-10.jpg",
+       "assets/capacity/guntur/lg/guntur-10.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3008,9 +3707,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/guntur/guntur-11.jpg",
-      "assets/capacity/guntur/guntur-12.jpg",
-      "assets/capacity/guntur/guntur-13.jpg"
+      [
+       "assets/capacity/guntur/guntur-11.jpg",
+       "assets/capacity/guntur/lg/guntur-11.jpg"
+      ],
+      [
+       "assets/capacity/guntur/guntur-12.jpg",
+       "assets/capacity/guntur/lg/guntur-12.jpg"
+      ],
+      [
+       "assets/capacity/guntur/guntur-13.jpg",
+       "assets/capacity/guntur/lg/guntur-13.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -3086,19 +3794,58 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/prakasam/prakasam-01.jpg",
-      "assets/capacity/prakasam/prakasam-02.jpg",
-      "assets/capacity/prakasam/prakasam-03.jpg",
-      "assets/capacity/prakasam/prakasam-04.jpg",
-      "assets/capacity/prakasam/prakasam-05.jpg",
-      "assets/capacity/prakasam/prakasam-06.jpg",
-      "assets/capacity/prakasam/prakasam-07.jpg",
-      "assets/capacity/prakasam/prakasam-08.jpg",
-      "assets/capacity/prakasam/prakasam-09.jpg",
-      "assets/capacity/prakasam/prakasam-10.jpg",
-      "assets/capacity/prakasam/prakasam-11.jpg",
-      "assets/capacity/prakasam/prakasam-12.jpg",
-      "assets/capacity/prakasam/prakasam-13.jpg"
+      [
+       "assets/capacity/prakasam/prakasam-01.jpg",
+       "assets/capacity/prakasam/lg/prakasam-01.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-02.jpg",
+       "assets/capacity/prakasam/lg/prakasam-02.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-03.jpg",
+       "assets/capacity/prakasam/lg/prakasam-03.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-04.jpg",
+       "assets/capacity/prakasam/lg/prakasam-04.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-05.jpg",
+       "assets/capacity/prakasam/lg/prakasam-05.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-06.jpg",
+       "assets/capacity/prakasam/lg/prakasam-06.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-07.jpg",
+       "assets/capacity/prakasam/lg/prakasam-07.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-08.jpg",
+       "assets/capacity/prakasam/lg/prakasam-08.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-09.jpg",
+       "assets/capacity/prakasam/lg/prakasam-09.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-10.jpg",
+       "assets/capacity/prakasam/lg/prakasam-10.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-11.jpg",
+       "assets/capacity/prakasam/lg/prakasam-11.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-12.jpg",
+       "assets/capacity/prakasam/lg/prakasam-12.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-13.jpg",
+       "assets/capacity/prakasam/lg/prakasam-13.jpg"
+      ]
      ],
      "fmt": "B"
     },
@@ -3132,9 +3879,18 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/prakasam/prakasam-14.jpg",
-      "assets/capacity/prakasam/prakasam-15.jpg",
-      "assets/capacity/prakasam/prakasam-16.jpg"
+      [
+       "assets/capacity/prakasam/prakasam-14.jpg",
+       "assets/capacity/prakasam/lg/prakasam-14.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-15.jpg",
+       "assets/capacity/prakasam/lg/prakasam-15.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-16.jpg",
+       "assets/capacity/prakasam/lg/prakasam-16.jpg"
+      ]
      ],
      "fmt": "B"
     },
@@ -3154,8 +3910,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/prakasam/prakasam-17.jpg",
-      "assets/capacity/prakasam/prakasam-18.jpg"
+      [
+       "assets/capacity/prakasam/prakasam-17.jpg",
+       "assets/capacity/prakasam/lg/prakasam-17.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-18.jpg",
+       "assets/capacity/prakasam/lg/prakasam-18.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -3175,8 +3937,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/prakasam/prakasam-19.jpg",
-      "assets/capacity/prakasam/prakasam-20.jpg"
+      [
+       "assets/capacity/prakasam/prakasam-19.jpg",
+       "assets/capacity/prakasam/lg/prakasam-19.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-20.jpg",
+       "assets/capacity/prakasam/lg/prakasam-20.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -3196,8 +3964,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/prakasam/prakasam-21.jpg",
-      "assets/capacity/prakasam/prakasam-22.jpg"
+      [
+       "assets/capacity/prakasam/prakasam-21.jpg",
+       "assets/capacity/prakasam/lg/prakasam-21.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-22.jpg",
+       "assets/capacity/prakasam/lg/prakasam-22.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -3217,8 +3991,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/prakasam/prakasam-23.jpg",
-      "assets/capacity/prakasam/prakasam-24.jpg"
+      [
+       "assets/capacity/prakasam/prakasam-23.jpg",
+       "assets/capacity/prakasam/lg/prakasam-23.jpg"
+      ],
+      [
+       "assets/capacity/prakasam/prakasam-24.jpg",
+       "assets/capacity/prakasam/lg/prakasam-24.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -3317,12 +4097,30 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/spsr-nellore/spsr-nellore-01.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-02.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-03.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-04.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-05.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-06.jpg"
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-01.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-01.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-02.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-02.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-03.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-03.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-04.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-04.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-05.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-05.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-06.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-06.jpg"
+      ]
      ],
      "fmt": "B"
     },
@@ -3342,7 +4140,10 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/spsr-nellore/spsr-nellore-07.jpg"
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-07.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-07.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -3362,8 +4163,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/spsr-nellore/spsr-nellore-08.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-09.jpg"
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-08.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-08.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-09.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-09.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -3383,8 +4190,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/spsr-nellore/spsr-nellore-10.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-11.jpg"
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-10.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-10.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-11.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-11.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -3404,8 +4217,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/spsr-nellore/spsr-nellore-12.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-13.jpg"
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-12.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-12.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-13.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-13.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -3437,8 +4256,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/spsr-nellore/spsr-nellore-14.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-15.jpg"
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-14.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-14.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-15.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-15.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3478,9 +4303,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/spsr-nellore/spsr-nellore-16.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-17.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-18.jpg"
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-16.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-16.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-17.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-17.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-18.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-18.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3512,9 +4346,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/spsr-nellore/spsr-nellore-19.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-20.jpg",
-      "assets/capacity/spsr-nellore/spsr-nellore-21.jpg"
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-19.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-19.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-20.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-20.jpg"
+      ],
+      [
+       "assets/capacity/spsr-nellore/spsr-nellore-21.jpg",
+       "assets/capacity/spsr-nellore/lg/spsr-nellore-21.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -3589,9 +4432,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-01.jpg",
-      "assets/capacity/kurnool/kurnool-02.jpg",
-      "assets/capacity/kurnool/kurnool-03.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-01.jpg",
+       "assets/capacity/kurnool/lg/kurnool-01.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-02.jpg",
+       "assets/capacity/kurnool/lg/kurnool-02.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-03.jpg",
+       "assets/capacity/kurnool/lg/kurnool-03.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3622,10 +4474,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-04.jpg",
-      "assets/capacity/kurnool/kurnool-05.jpg",
-      "assets/capacity/kurnool/kurnool-06.jpg",
-      "assets/capacity/kurnool/kurnool-07.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-04.jpg",
+       "assets/capacity/kurnool/lg/kurnool-04.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-05.jpg",
+       "assets/capacity/kurnool/lg/kurnool-05.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-06.jpg",
+       "assets/capacity/kurnool/lg/kurnool-06.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-07.jpg",
+       "assets/capacity/kurnool/lg/kurnool-07.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3668,9 +4532,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-08.jpg",
-      "assets/capacity/kurnool/kurnool-09.jpg",
-      "assets/capacity/kurnool/kurnool-10.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-08.jpg",
+       "assets/capacity/kurnool/lg/kurnool-08.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-09.jpg",
+       "assets/capacity/kurnool/lg/kurnool-09.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-10.jpg",
+       "assets/capacity/kurnool/lg/kurnool-10.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3708,9 +4581,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-11.jpg",
-      "assets/capacity/kurnool/kurnool-12.jpg",
-      "assets/capacity/kurnool/kurnool-13.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-11.jpg",
+       "assets/capacity/kurnool/lg/kurnool-11.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-12.jpg",
+       "assets/capacity/kurnool/lg/kurnool-12.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-13.jpg",
+       "assets/capacity/kurnool/lg/kurnool-13.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3746,10 +4628,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-14.jpg",
-      "assets/capacity/kurnool/kurnool-15.jpg",
-      "assets/capacity/kurnool/kurnool-16.jpg",
-      "assets/capacity/kurnool/kurnool-17.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-14.jpg",
+       "assets/capacity/kurnool/lg/kurnool-14.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-15.jpg",
+       "assets/capacity/kurnool/lg/kurnool-15.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-16.jpg",
+       "assets/capacity/kurnool/lg/kurnool-16.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-17.jpg",
+       "assets/capacity/kurnool/lg/kurnool-17.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3781,9 +4675,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-18.jpg",
-      "assets/capacity/kurnool/kurnool-19.jpg",
-      "assets/capacity/kurnool/kurnool-20.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-18.jpg",
+       "assets/capacity/kurnool/lg/kurnool-18.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-19.jpg",
+       "assets/capacity/kurnool/lg/kurnool-19.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-20.jpg",
+       "assets/capacity/kurnool/lg/kurnool-20.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3831,10 +4734,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-21.jpg",
-      "assets/capacity/kurnool/kurnool-22.jpg",
-      "assets/capacity/kurnool/kurnool-23.jpg",
-      "assets/capacity/kurnool/kurnool-24.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-21.jpg",
+       "assets/capacity/kurnool/lg/kurnool-21.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-22.jpg",
+       "assets/capacity/kurnool/lg/kurnool-22.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-23.jpg",
+       "assets/capacity/kurnool/lg/kurnool-23.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-24.jpg",
+       "assets/capacity/kurnool/lg/kurnool-24.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3866,10 +4781,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-25.jpg",
-      "assets/capacity/kurnool/kurnool-26.jpg",
-      "assets/capacity/kurnool/kurnool-27.jpg",
-      "assets/capacity/kurnool/kurnool-28.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-25.jpg",
+       "assets/capacity/kurnool/lg/kurnool-25.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-26.jpg",
+       "assets/capacity/kurnool/lg/kurnool-26.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-27.jpg",
+       "assets/capacity/kurnool/lg/kurnool-27.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-28.jpg",
+       "assets/capacity/kurnool/lg/kurnool-28.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3900,9 +4827,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-29.jpg",
-      "assets/capacity/kurnool/kurnool-30.jpg",
-      "assets/capacity/kurnool/kurnool-31.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-29.jpg",
+       "assets/capacity/kurnool/lg/kurnool-29.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-30.jpg",
+       "assets/capacity/kurnool/lg/kurnool-30.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-31.jpg",
+       "assets/capacity/kurnool/lg/kurnool-31.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -3931,9 +4867,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/kurnool/kurnool-32.jpg",
-      "assets/capacity/kurnool/kurnool-33.jpg",
-      "assets/capacity/kurnool/kurnool-34.jpg"
+      [
+       "assets/capacity/kurnool/kurnool-32.jpg",
+       "assets/capacity/kurnool/lg/kurnool-32.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-33.jpg",
+       "assets/capacity/kurnool/lg/kurnool-33.jpg"
+      ],
+      [
+       "assets/capacity/kurnool/kurnool-34.jpg",
+       "assets/capacity/kurnool/lg/kurnool-34.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -3986,9 +4931,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/nandyal/nandyal-01.jpg",
-      "assets/capacity/nandyal/nandyal-02.jpg",
-      "assets/capacity/nandyal/nandyal-03.jpg"
+      [
+       "assets/capacity/nandyal/nandyal-01.jpg",
+       "assets/capacity/nandyal/lg/nandyal-01.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-02.jpg",
+       "assets/capacity/nandyal/lg/nandyal-02.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-03.jpg",
+       "assets/capacity/nandyal/lg/nandyal-03.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4023,9 +4977,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/nandyal/nandyal-04.jpg",
-      "assets/capacity/nandyal/nandyal-05.jpg",
-      "assets/capacity/nandyal/nandyal-06.jpg"
+      [
+       "assets/capacity/nandyal/nandyal-04.jpg",
+       "assets/capacity/nandyal/lg/nandyal-04.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-05.jpg",
+       "assets/capacity/nandyal/lg/nandyal-05.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-06.jpg",
+       "assets/capacity/nandyal/lg/nandyal-06.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4060,9 +5023,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/nandyal/nandyal-07.jpg",
-      "assets/capacity/nandyal/nandyal-08.jpg",
-      "assets/capacity/nandyal/nandyal-09.jpg"
+      [
+       "assets/capacity/nandyal/nandyal-07.jpg",
+       "assets/capacity/nandyal/lg/nandyal-07.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-08.jpg",
+       "assets/capacity/nandyal/lg/nandyal-08.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-09.jpg",
+       "assets/capacity/nandyal/lg/nandyal-09.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4095,10 +5067,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/nandyal/nandyal-10.jpg",
-      "assets/capacity/nandyal/nandyal-11.jpg",
-      "assets/capacity/nandyal/nandyal-12.jpg",
-      "assets/capacity/nandyal/nandyal-13.jpg"
+      [
+       "assets/capacity/nandyal/nandyal-10.jpg",
+       "assets/capacity/nandyal/lg/nandyal-10.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-11.jpg",
+       "assets/capacity/nandyal/lg/nandyal-11.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-12.jpg",
+       "assets/capacity/nandyal/lg/nandyal-12.jpg"
+      ],
+      [
+       "assets/capacity/nandyal/nandyal-13.jpg",
+       "assets/capacity/nandyal/lg/nandyal-13.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -4136,8 +5120,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-04.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-05.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-04.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-04.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-05.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-05.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -4157,8 +5147,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-06.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-07.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-06.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-06.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-07.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-07.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -4178,8 +5174,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-08.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-09.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-08.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-08.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-09.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-09.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -4199,8 +5201,14 @@
      "highlights": [],
      "note": null,
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-10.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-11.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-10.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-10.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-11.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-11.jpg"
+      ]
      ],
      "fmt": "C"
     },
@@ -4229,8 +5237,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-12.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-13.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-12.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-12.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-13.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-13.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4262,8 +5276,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-14.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-15.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-14.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-14.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-15.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-15.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4295,8 +5315,14 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-16.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-17.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-16.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-16.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-17.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-17.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4323,9 +5349,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-18.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-19.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-20.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-18.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-18.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-19.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-19.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-20.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-20.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4357,9 +5392,18 @@
      "note": null,
      "sector_focus": "",
      "photos": [
-      "assets/capacity/ysr-kadapa/ysr-kadapa-01.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-02.jpg",
-      "assets/capacity/ysr-kadapa/ysr-kadapa-03.jpg"
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-01.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-01.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-02.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-02.jpg"
+      ],
+      [
+       "assets/capacity/ysr-kadapa/ysr-kadapa-03.jpg",
+       "assets/capacity/ysr-kadapa/lg/ysr-kadapa-03.jpg"
+      ]
      ],
      "fmt": "B"
     }
@@ -4408,9 +5452,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-01.jpg",
-      "assets/capacity/chittoor/chittoor-02.jpg",
-      "assets/capacity/chittoor/chittoor-03.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-01.jpg",
+       "assets/capacity/chittoor/lg/chittoor-01.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-02.jpg",
+       "assets/capacity/chittoor/lg/chittoor-02.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-03.jpg",
+       "assets/capacity/chittoor/lg/chittoor-03.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4451,9 +5504,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-04.jpg",
-      "assets/capacity/chittoor/chittoor-05.jpg",
-      "assets/capacity/chittoor/chittoor-06.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-04.jpg",
+       "assets/capacity/chittoor/lg/chittoor-04.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-05.jpg",
+       "assets/capacity/chittoor/lg/chittoor-05.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-06.jpg",
+       "assets/capacity/chittoor/lg/chittoor-06.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4500,9 +5562,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-07.jpg",
-      "assets/capacity/chittoor/chittoor-08.jpg",
-      "assets/capacity/chittoor/chittoor-09.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-07.jpg",
+       "assets/capacity/chittoor/lg/chittoor-07.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-08.jpg",
+       "assets/capacity/chittoor/lg/chittoor-08.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-09.jpg",
+       "assets/capacity/chittoor/lg/chittoor-09.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4547,9 +5618,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-10.jpg",
-      "assets/capacity/chittoor/chittoor-11.jpg",
-      "assets/capacity/chittoor/chittoor-12.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-10.jpg",
+       "assets/capacity/chittoor/lg/chittoor-10.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-11.jpg",
+       "assets/capacity/chittoor/lg/chittoor-11.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-12.jpg",
+       "assets/capacity/chittoor/lg/chittoor-12.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4582,9 +5662,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-13.jpg",
-      "assets/capacity/chittoor/chittoor-14.jpg",
-      "assets/capacity/chittoor/chittoor-15.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-13.jpg",
+       "assets/capacity/chittoor/lg/chittoor-13.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-14.jpg",
+       "assets/capacity/chittoor/lg/chittoor-14.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-15.jpg",
+       "assets/capacity/chittoor/lg/chittoor-15.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4620,9 +5709,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-16.jpg",
-      "assets/capacity/chittoor/chittoor-17.jpg",
-      "assets/capacity/chittoor/chittoor-18.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-16.jpg",
+       "assets/capacity/chittoor/lg/chittoor-16.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-17.jpg",
+       "assets/capacity/chittoor/lg/chittoor-17.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-18.jpg",
+       "assets/capacity/chittoor/lg/chittoor-18.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4663,9 +5761,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-19.jpg",
-      "assets/capacity/chittoor/chittoor-20.jpg",
-      "assets/capacity/chittoor/chittoor-21.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-19.jpg",
+       "assets/capacity/chittoor/lg/chittoor-19.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-20.jpg",
+       "assets/capacity/chittoor/lg/chittoor-20.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-21.jpg",
+       "assets/capacity/chittoor/lg/chittoor-21.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4703,10 +5810,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-22.jpg",
-      "assets/capacity/chittoor/chittoor-23.jpg",
-      "assets/capacity/chittoor/chittoor-24.jpg",
-      "assets/capacity/chittoor/chittoor-25.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-22.jpg",
+       "assets/capacity/chittoor/lg/chittoor-22.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-23.jpg",
+       "assets/capacity/chittoor/lg/chittoor-23.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-24.jpg",
+       "assets/capacity/chittoor/lg/chittoor-24.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-25.jpg",
+       "assets/capacity/chittoor/lg/chittoor-25.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4736,9 +5855,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/chittoor/chittoor-26.jpg",
-      "assets/capacity/chittoor/chittoor-27.jpg",
-      "assets/capacity/chittoor/chittoor-28.jpg"
+      [
+       "assets/capacity/chittoor/chittoor-26.jpg",
+       "assets/capacity/chittoor/lg/chittoor-26.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-27.jpg",
+       "assets/capacity/chittoor/lg/chittoor-27.jpg"
+      ],
+      [
+       "assets/capacity/chittoor/chittoor-28.jpg",
+       "assets/capacity/chittoor/lg/chittoor-28.jpg"
+      ]
      ],
      "fmt": "A"
     }
@@ -4792,10 +5920,22 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/tirupati/tirupati-01.jpg",
-      "assets/capacity/tirupati/tirupati-02.jpg",
-      "assets/capacity/tirupati/tirupati-03.jpg",
-      "assets/capacity/tirupati/tirupati-04.jpg"
+      [
+       "assets/capacity/tirupati/tirupati-01.jpg",
+       "assets/capacity/tirupati/lg/tirupati-01.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-02.jpg",
+       "assets/capacity/tirupati/lg/tirupati-02.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-03.jpg",
+       "assets/capacity/tirupati/lg/tirupati-03.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-04.jpg",
+       "assets/capacity/tirupati/lg/tirupati-04.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4838,9 +5978,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/tirupati/tirupati-08.jpg",
-      "assets/capacity/tirupati/tirupati-09.jpg",
-      "assets/capacity/tirupati/tirupati-10.jpg"
+      [
+       "assets/capacity/tirupati/tirupati-08.jpg",
+       "assets/capacity/tirupati/lg/tirupati-08.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-09.jpg",
+       "assets/capacity/tirupati/lg/tirupati-09.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-10.jpg",
+       "assets/capacity/tirupati/lg/tirupati-10.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4877,9 +6026,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/tirupati/tirupati-11.jpg",
-      "assets/capacity/tirupati/tirupati-12.jpg",
-      "assets/capacity/tirupati/tirupati-13.jpg"
+      [
+       "assets/capacity/tirupati/tirupati-11.jpg",
+       "assets/capacity/tirupati/lg/tirupati-11.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-12.jpg",
+       "assets/capacity/tirupati/lg/tirupati-12.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-13.jpg",
+       "assets/capacity/tirupati/lg/tirupati-13.jpg"
+      ]
      ],
      "fmt": "A"
     },
@@ -4923,9 +6081,18 @@
      ],
      "note": null,
      "photos": [
-      "assets/capacity/tirupati/tirupati-05.jpg",
-      "assets/capacity/tirupati/tirupati-06.jpg",
-      "assets/capacity/tirupati/tirupati-07.jpg"
+      [
+       "assets/capacity/tirupati/tirupati-05.jpg",
+       "assets/capacity/tirupati/lg/tirupati-05.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-06.jpg",
+       "assets/capacity/tirupati/lg/tirupati-06.jpg"
+      ],
+      [
+       "assets/capacity/tirupati/tirupati-07.jpg",
+       "assets/capacity/tirupati/lg/tirupati-07.jpg"
+      ]
      ],
      "fmt": "A"
     }
