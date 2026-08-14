@@ -1161,6 +1161,11 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 .gva-distcard .gd-links .muted{display:inline-flex;align-items:center;gap:8px;
   font-size:13.5px;color:rgba(255,255,255,.55);padding:9px 14px;border-radius:999px;
   border:1px dashed rgba(255,255,255,.25);}
+/* Case studies tab: soft note when the filtered district has no tagged studies. */
+.cases-note{display:flex;align-items:center;gap:9px;font-size:13.5px;line-height:1.5;
+  color:rgba(255,255,255,.80);margin:0 0 18px;padding:11px 16px;border-radius:var(--r);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.20);}
+.cases-note i{color:var(--lime);font-size:16px;}
 /* Capacity tab: notice when the filtered district has no filed training report. */
 .cap-absent{display:flex;align-items:center;gap:9px;font-size:13.5px;line-height:1.5;
   color:rgba(255,255,255,.80);margin:0 0 14px;padding:11px 16px;border-radius:var(--r);
@@ -2268,7 +2273,7 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
       <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plans</span></button>
             <button class="dtab dtab-live dtab-gva" data-dtab="gva" aria-pressed="false">Improving GVA<span class="dtab-soon">Sector playbooks</span></button>
             <button class="dtab dtab-live dtab-capacity" data-dtab="capacity" aria-pressed="false">Capacity building<span class="dtab-soon">18 districts</span></button>
-      <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">13 studies</span></button>
+      <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">15 studies</span></button>
     </div>
     <!-- Set by the map: picking a district scopes every tab to it. Hidden until
          a district is chosen; the clear button routes through showStateView()
@@ -3498,13 +3503,48 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       '<div class="cases-grid">'+list.map(caseCard).join('')+'</div></div>';
   }
 
+  var CASES = null;
+  // A card belongs to the filtered district when its home district matches
+  // (the `district` dashboard key on AP briefs) or when it is tagged relevant
+  // (`districts` list — models chosen for a district, per the programme team).
+  function caseMatchesDistrict(c){
+    var n = normName(DISTF);
+    if(c.district && normName(c.district) === n) return true;
+    return (c.districts || []).some(function(x){ return normName(x) === n; });
+  }
+  function renderCases(){
+    if(!CASES) return;
+    var apSub = 'Case-for-action briefs tied to a specific district.';
+    var moSub = 'Clusters and models from elsewhere, framed for district and mandal officers.';
+    if(DISTF){
+      var mine = [], restAp = [], restModel = [];
+      CASES.ap.forEach(function(c){ (caseMatchesDistrict(c) ? mine : restAp).push(c); });
+      CASES.model.forEach(function(c){ (caseMatchesDistrict(c) ? mine : restModel).push(c); });
+      if(mine.length){
+        casesBody.innerHTML =
+          group('Case studies for ' + DISTF,
+                'Selected for this district by the capacity-building programme.', mine)+
+          group('Other Andhra Pradesh districts', apSub, restAp)+
+          group('Replicable models', moSub, restModel);
+        return;
+      }
+      casesBody.innerHTML =
+        '<p class="cases-note"><i class="ti ti-info-circle"></i> No case studies are tagged to ' +
+        esc(DISTF) + ' yet — the full library follows.</p>' +
+        group('Andhra Pradesh districts', apSub, CASES.ap)+
+        group('Replicable models', moSub, CASES.model);
+      return;
+    }
+    casesBody.innerHTML =
+      group('Andhra Pradesh districts', apSub, CASES.ap)+
+      group('Replicable models', moSub, CASES.model);
+  }
   function loadCases(){
     if(casesLoaded) return;
     casesLoaded = true;
-    fetch('assets/case_studies.json?v=2026-08-13c').then(function(r){ return r.json(); }).then(function(d){
-      casesBody.innerHTML =
-        group('Andhra Pradesh districts', 'Case-for-action briefs tied to a specific district.', d.ap)+
-        group('Replicable models', 'Clusters and models from elsewhere, framed for district and mandal officers.', d.model);
+    fetch('assets/case_studies.json?v=2026-08-14a').then(function(r){ return r.json(); }).then(function(d){
+      CASES = d;
+      renderCases();
     }).catch(function(err){
       casesLoaded = false;
       casesBody.innerHTML = '<div class="docs-empty">Could not load the case study library.</div>';
@@ -4196,6 +4236,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     });
   }
 
+  // Case studies: re-render from the cached manifest — the district's tagged
+  // studies lead, everything else keeps its usual grouping below.
+  function applyCasesFilter(){ if(CASES) renderCases(); }
+
   // The single entry point the map calls. Applies to whatever is already
   // rendered; tabs that load later apply the filter themselves on arrival.
   window.DTABS_DISTRICT = function(name){
@@ -4205,7 +4249,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       bar.hidden = !DISTF;
       if(DISTF) document.getElementById('dtabFilterName').textContent = DISTF;
     }
-    applyDocsFilter(); applyCapFilter(); applyGvaFilter();
+    applyDocsFilter(); applyCapFilter(); applyGvaFilter(); applyCasesFilter();
   };
   var dtfClear = document.getElementById('dtabFilterClear');
   if(dtfClear) dtfClear.addEventListener('click', function(){

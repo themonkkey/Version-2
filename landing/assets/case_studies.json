@@ -8,6 +8,7 @@
    "theme": "Agri value chain",
    "place": "East Godavari",
    "district": "East_Godavari",
+   "districts": [],
    "sections": 6,
    "cover": "cases/media/east-godavari-coconut-coir/0.jpg"
   },
@@ -19,6 +20,7 @@
    "theme": "Aquaculture",
    "place": "SPSR Nellore",
    "district": "Sps_Nellore",
+   "districts": [],
    "sections": 6,
    "cover": null
   },
@@ -30,6 +32,7 @@
    "theme": "Ethanol / investment",
    "place": "SPSR Nellore",
    "district": "Sps_Nellore",
+   "districts": [],
    "sections": 4,
    "cover": null
   },
@@ -41,8 +44,21 @@
    "theme": "Blue economy",
    "place": "Srikakulam",
    "district": "Srikakulam",
+   "districts": [],
    "sections": 6,
    "cover": null
+  },
+  {
+   "slug": "kurnool-agritourism",
+   "title": "Agritourism for Kurnool District",
+   "eyebrow": "Agritourism strategy",
+   "summary": "A farmer-owned model to convert Kurnool's horticulture, heritage and rural culture into supplementary income, learning from ATDC Baramati.",
+   "theme": "Agritourism",
+   "place": "Kurnool",
+   "district": "Kurnool",
+   "districts": [],
+   "sections": 3,
+   "cover": "cases/media/kurnool-agritourism/0.jpg"
   }
  ],
  "model": [
@@ -54,6 +70,7 @@
    "theme": "Port-led manufacturing",
    "place": "Shenzhen, China",
    "district": null,
+   "districts": [],
    "sections": 10,
    "cover": null
   },
@@ -65,6 +82,7 @@
    "theme": "Manufacturing cluster",
    "place": "Morbi, Gujarat",
    "district": null,
+   "districts": [],
    "sections": 7,
    "cover": null
   },
@@ -76,6 +94,7 @@
    "theme": "Textiles cluster",
    "place": "Tiruppur, Tamil Nadu",
    "district": null,
+   "districts": [],
    "sections": 18,
    "cover": null
   },
@@ -87,6 +106,7 @@
    "theme": "Responsible tourism",
    "place": "Kumarakom, Kerala",
    "district": null,
+   "districts": [],
    "sections": 10,
    "cover": null
   },
@@ -98,6 +118,9 @@
    "theme": "FPC / supply chain",
    "place": "Nashik, Maharashtra",
    "district": null,
+   "districts": [
+    "Kurnool"
+   ],
    "sections": 5,
    "cover": null
   },
@@ -109,6 +132,9 @@
    "theme": "FPO strengthening",
    "place": "Central India",
    "district": null,
+   "districts": [
+    "Kurnool"
+   ],
    "sections": 10,
    "cover": null
   },
@@ -120,6 +146,7 @@
    "theme": "Aquaculture livelihoods",
    "place": "CMFRI, Kerala",
    "district": null,
+   "districts": [],
    "sections": 10,
    "cover": null
   },
@@ -131,8 +158,23 @@
    "theme": "Integrated farming",
    "place": "India & China models",
    "district": null,
+   "districts": [],
    "sections": 13,
    "cover": null
+  },
+  {
+   "slug": "cotton-stalk-pellets",
+   "title": "Cotton Stalk to Pellets",
+   "eyebrow": "Waste-to-wealth model",
+   "summary": "How the URJA project in Yavatmal turns cotton stalks into pellets, biochar and carbon income — and a 90-day pilot pathway for AP's cotton districts.",
+   "theme": "Crop-residue bioenergy",
+   "place": "Yavatmal, Maharashtra",
+   "district": null,
+   "districts": [
+    "Kurnool"
+   ],
+   "sections": 5,
+   "cover": "cases/media/cotton-stalk-pellets/0.jpg"
   },
   {
    "slug": "banana-processing",
@@ -142,6 +184,7 @@
    "theme": "Agro-processing",
    "place": "Kanyakumari & Jalgaon",
    "district": null,
+   "districts": [],
    "sections": 19,
    "cover": null
   }

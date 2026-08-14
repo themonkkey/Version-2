@@ -1,0 +1,469 @@
+# index.html
+
+Cotton Stalk to Pellets
+
+Replicable case study & district implementation roadmap for Andhra Pradesh
+
+For cotton-major districts: Kurnool/Nandyal, Guntur/Palnadu/NTR, Anantapur, Prakasam and adjoining clusters
+
+₹1,500–2,000/t
+
+farmer income opportunity
+
+from chipped stalk supply
+
+50 km
+
+viable collection radius suggested
+
+by CIRCOT logistics model
+
+Field residue → clean fuel → soil carbon → income
+
+Sources: CAI/Cottonguru URJA Project case study; ICAR-CIRCOT logistics model; ANGRAU cotton outlook.
+
+1
+
+1. Why this matters in Andhra Pradesh
+
+Cotton stalk is not just waste — it is a district-level feedstock for energy, soil improvement and incomes.
+
+13.0 lakh bales
+
+AP cotton pressing estimate
+
+for 2023–24 in CAI table
+
+5 old districts
+
+Kurnool, Guntur, Anantapur, Krishna and Prakasam covered most AP cotton acreage in ANGRAU outlook
+
+Residue → value
+
+stalks can become pellets, briquettes, biochar and carbon credits
+
+The usual end-of-season problem: stalks occupy fields, removal is laborious, burning causes local air pollution, and farmers receive no value.
+
+The opportunity: organize post-harvest collection through FPOs/SHGs, chip within villages, and link to nearby pellet/briquette units or industrial users.
+
+District lens
+
+Cotton clusters have concentrated, seasonal feedstock.
+
+Ginning/power/brick/thermal users create local demand.
+
+District administration can reduce open burning while adding farm income.
+
+Sources: CAI issue No. 25, p.4; ANGRAU Cotton Outlook 2022.
+
+2
+
+2. Case study: URJA Project in Yavatmal
+
+Cottonguru MahaFPO Federation model converts cotton stalks into pellets, biochar and carbon-credit-linked value.
+
+Case study outcomes mentioned in the document
+
+Pellet-based cooking systems reduce indoor smoke exposure by about 90%.
+
+Pellets are reported as about 50% cheaper than LPG for participating communities.
+
+Biochar use: 20% cotton yield improvement, 10% lower fertilizer use and 15% lower water consumption.
+
+About 1,000 tribal women engaged in production/distribution in the Yavatmal region.
+
+₹14,300/year
+
+average annual income increase for farmers
+
+reported in URJA case study
+
+₹1,500/year
+
+additional income for tribal women
+
+reported through participation
+
+3 hours/week
+
+time saved from reduced biomass collection
+
+in the case study
+
+Multi-revenue
+
+pellets + biochar + carbon credits
+
+Source: Cotton Association of India, Cotton Statistics & News, 17 Sept 2024, pp.1–3.
+
+3
+
+3. Technology pathway: stalk → pellets + biochar + credits
+
+Simple field logistics plus local processing creates multiple outputs from the same biomass stream.
+
+Uproot
+
+tractor V-type uprooter / manual support
+
+Dry
+
+sun drying near field / collection point
+
+Chip/Shred
+
+tractor operated shredder
+
+Densify
+
+pellets / briquettes at local plant
+
+Use & certify
+
+clean fuel, biochar, carbon credits
+
+Key technology choices for districts
+
+Mobile pelletizer units can reach distant farms where transport is difficult.
+
+Biochar is produced through carbon-stabilizing processing and can be applied back to cotton soils.
+
+Industrial buyers can use pellets/briquettes as renewable process heat fuel.
+
+What district officials should standardize
+
+Residue collection protocol
+
+Moisture and chip-size specifications
+
+Factory-gate weighing and digital payments
+
+Fire-safety and storage norms
+
+Sources: ICAR-CIRCOT logistics model; CAI/Cottonguru URJA case study.
+
+4
+
+4. Logistics model: the missing link solved
+
+CIRCOT identifies logistics—not pellet technology alone—as the key barrier to cotton stalk utilization.
+
+CIRCOT model
+
+Uproot stalks from field with tractor-operated V-type uprooter.
+
+Sun dry the uprooted stalks near the field.
+
+Shred/chip with tractor-operated shredder.
+
+Transport chipped stalks to pellet/briquette plant within a 50 km radius.
+
+Why it fits AP: existing tractors, custom-hiring centres, FPO networks and ginning clusters can be used to organize the seasonal collection window.
+
+₹1,000/t
+
+operation cost: uprooting + collection
+
++ chipping + transport
+
+₹2,500–3,000/t
+
+factory-gate value for chipped cotton stalk
+
+≈50 plants
+
+cotton-stalk briquetting/pelleting plants
+
+around Nagpur reported by CIRCOT
+
+Source: ICAR-CIRCOT, “Logistics Model for Cotton Stalk Supply for Preparation of Briquettes and Pellets”, pp.1–3.
+
+5
+
+5. Business case: value is created at several points
+
+A district program should keep value local: farmers earn, rural youth operate logistics, women SHGs manage distribution and plants get feedstock.
+
+Illustrative value from CIRCOT logistics model
+
+₹1,000/t
+
+operating cost
+
+₹2,500–3,000/t
+
+factory-gate price
+
+Potential farmer margin: about ₹1,500–2,000 per tonne before local arrangements for service providers.
+
+Revenue streams from URJA model
+
+Pellets
+
+Fuel for cooking or process heat
+
+Biochar
+
+Soil amendment and industrial applications
+
+Carbon credits
+
+Voluntary carbon removal revenue
+
+Services
+
+Uprooting, chipping and transport jobs
+
+For AP, pilot contracts should specify: price to farmers, service fee for machine owners, plant off-take commitment and quality deductions.
+
+Districts can use the first season to establish reliable tonnage data for later carbon or CSR-linked scaling.
+
+Sources: ICAR-CIRCOT logistics model; CAI/Cottonguru URJA case study.
+
+6
+
+6. Priority AP districts and cluster logic
+
+Start where feedstock is concentrated and nearby demand/off-take can be anchored.
+
+Priority cluster
+
+District focus
+
+Pilot rationale
+
+Rayalaseema cotton belt
+
+Kurnool + Nandyal, Anantapur
+
+Large cotton concentration; tractors and CHCs can support collection.
+
+Guntur–Palnadu belt
+
+Guntur + Palnadu + Bapatla/NTR
+
+Cotton markets/ginning ecosystem and accessible industrial buyers.
+
+Coastal-adjoining belt
+
+Prakasam + Krishna legacy area
+
+Seasonal residue aggregation potential near transport corridors.
+
+Replication phase
+
+Any mandal with ≥2,000–3,000 ha cotton cluster
+
+Use 50 km radius to link villages to one plant or mobile pelletizer.
+
+Selection criteria for each district
+
+Cotton acreage within contiguous mandals
+
+Distance to pellet/briquette/industrial heat user
+
+FPO/SHG readiness to aggregate biomass
+
+Availability of tractors, uprooters and shredders
+
+Safe storage yards and road access
+
+Recommendation: begin with 2–3 clusters per priority district, each designed around one 50 km collection radius and one anchor buyer.
+
+Source basis: ANGRAU Cotton Outlook 2022; ICAR-CIRCOT logistics model; recent AP cotton reporting. District names reflect current AP district structure where relevant.
+
+7
+
+7. Benefits for district administration
+
+The program can align environment, agriculture, livelihoods and local industry priorities.
+
+Cleaner villages
+
+Reduced open burning and smoke during post-harvest season
+
+Farm income
+
+Extra value from stalks that are otherwise a disposal cost
+
+Women & youth jobs
+
+Aggregation, quality checks, packaging, distribution and machine operation
+
+Soil resilience
+
+Biochar can help improve soil fertility and reduce water/fertilizer need
+
+Industrial fuel
+
+Pellets/briquettes can replace part of fossil fuel or firewood demand
+
+Climate finance
+
+Biochar carbon removal pathway can attract CSR/carbon-credit partners
+
+District KPI suggestion: tonnes collected, farmer payments, acres covered, women/youth enterprises created, emissions avoided, pellets sold, biochar applied.
+
+Source basis: benefits adapted from CAI/Cottonguru URJA case study and ICAR-CIRCOT logistics model.
+
+8
+
+8. District implementation model
+
+Create a reliable biomass supply chain before scaling pellet or biochar capacity.
+
+Farmers
+
+sell stalks after harvest
+
+FPO/SHG
+
+aggregate and pay digitally
+
+Machine group
+
+uproot, dry, chip, transport
+
+Plant/Buyer
+
+pelletize or briquette
+
+End users
+
+clean fuel / heat / biochar
+
+District administration role
+
+Notify pilot mandals and create residue aggregation calendar.
+
+Converge Agriculture, DRDA/SHG, Pollution Control, Industries and Energy departments.
+
+Facilitate buyer MoUs and common weighing/quality protocol.
+
+Operating safeguards
+
+Storage yards away from houses and power lines.
+
+Moisture specification to prevent fungal/fire risk.
+
+Transparent grade deductions and payment timelines.
+
+No diversion of essential fodder where relevant.
+
+Use one nodal officer and one district dashboard. Without tonnage, payment and buyer data, scaling will fail.
+
+Source basis: ICAR-CIRCOT logistics model and URJA community/FPO model.
+
+9
+
+9. Governance and partnerships
+
+A district mission structure can convert a pilot into a bankable, replicable program.
+
+District Collector / JC
+
+approve pilot, convene departments, monitor KPIs
+
+Agriculture Dept. + ATMA/KVK
+
+training, crop cluster mapping, farmer mobilization
+
+FPOs + SHGs
+
+procurement, digital payments, field supervision
+
+Custom Hiring Centres
+
+uprooter, shredder and tractor services
+
+Pellet/Briquette units
+
+off-take, quality specs, storage and processing
+
+CIRCOT / technical partner
+
+machine protocol, training, quality standards
+
+Industries / institutions
+
+fuel buyers: boilers, hostels, kitchens, brick kilns
+
+CSR / carbon partners
+
+biochar MRV, carbon credit readiness, buyer financing
+
+Recommended structure: District Cotton Stalk Utilization Cell with a weekly 30-minute review during the harvest/residue collection window.
+
+Source basis: institutional suggestions adapted for Andhra Pradesh from CIRCOT and URJA case study models.
+
+10
+
+10. 90-day pilot plan for one district
+
+Aim: prove tonnage, payments, quality and buyer acceptance in one collection season.
+
+Days 0–15
+
+Preparation
+
+Select mandals, map cotton acreage, identify FPO/SHG aggregators and buyer/off-taker.
+
+Days 16–30
+
+Readiness
+
+Finalize prices, service charges, storage yards, machines and safety protocol.
+
+Days 31–60
+
+Field operations
+
+Uproot, dry, chip and transport stalks; digital weighment and farmer payment.
+
+Days 61–75
+
+Processing
+
+Pellet/briquette trial production; test moisture, bulk density and combustion use.
+
+Days 76–90
+
+Scale decision
+
+Publish pilot report; approve next-season scale-up and financing needs.
+
+Pilot target suggestion: 2–3 mandal clusters, 1 anchor buyer, 1 machine-service group per cluster and daily tonnage/payment tracking.
+
+Source basis: implementation plan adapted from CIRCOT logistics steps and URJA social-enterprise model.
+
+11
+
+11. Ask from district officials
+
+A small, well-governed pilot can unlock a statewide cotton-stalk bioenergy program.
+
+Approve district pilot
+
+Identify 2–3 mandal clusters and one nodal officer for the 90-day pilot.
+
+Convene partners
+
+Bring FPOs, SHGs, CHCs, pellet units, ginners, industrial users and KVK/technical experts to one table.
+
+Enable market signal
+
+Issue transparent price, quality, storage and payment protocol; sign buyer MoUs before collection starts.
+
+Next step
+
+Prepare a one-page district cotton-stalk resource map.
+
+Select pilot villages and machine owners before harvest end.
+
+Collect data from day one: tonnes, moisture, payments, costs and buyers.
+
+Use the pilot report to propose district/state budget, CSR and carbon finance support.
+
+Prepared from provided case studies: CAI/Cottonguru URJA Project and ICAR-CIRCOT Logistics Model.
+
+12

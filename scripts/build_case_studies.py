@@ -111,7 +111,8 @@ META = [
     },
     {
         "file": "Sahyadri_Replication_Playbook.txt", "slug": "sahyadri-farms-fpc",
-        "group": "model", "district": None, "place": "Nashik, Maharashtra",
+        "group": "model", "district": None, "districts": ["Kurnool"],
+        "place": "Nashik, Maharashtra",
         "theme": "FPC / supply chain",
         "eyebrow": "Replication playbook",
         "title": "Sahyadri Farms: Smallholders in an Integrated Supply Chain",
@@ -119,7 +120,8 @@ META = [
     },
     {
         "file": "Chetna_FPO_Lessons.txt", "slug": "chetna-organics-fpo",
-        "group": "model", "district": None, "place": "Central India",
+        "group": "model", "district": None, "districts": ["Kurnool"],
+        "place": "Central India",
         "theme": "FPO strengthening",
         "eyebrow": "Farmer producer organisations",
         "title": "Chetna Organics: Building a Farmer-Owned Supply Chain",
@@ -143,6 +145,32 @@ META = [
         "title": "Paddy + Fish Integrated Farming",
         "summary": "Successful models from India and China, and a practical roadmap for "
                    "paddy-growing districts of Andhra Pradesh.",
+    },
+    # --- Kurnool reading list, added on the programme team's instruction
+    # (email, 14 Aug 2026: Sahayadri FPO, Chetna FPO, Agritourism, Cotton
+    # pellet). The two FPO decks were already in the library and are tagged
+    # via "districts"; these two are new.
+    {
+        "file": "Kurnool_ATDC_Agritourism.txt", "slug": "kurnool-agritourism",
+        "group": "ap", "district": "Kurnool", "place": "Kurnool",
+        "theme": "Agritourism",
+        "eyebrow": "Agritourism strategy",
+        "title": "Agritourism for Kurnool District",
+        "summary": "A farmer-owned model to convert Kurnool's horticulture, heritage and rural "
+                   "culture into supplementary income, learning from ATDC Baramati.",
+        "source": "Based on: the ATDC Baramati agritourism model, Maharashtra.",
+    },
+    {
+        "file": "AP_Cotton_Stalk_Pellets.txt", "slug": "cotton-stalk-pellets",
+        "group": "model", "district": None, "districts": ["Kurnool"],
+        "place": "Yavatmal, Maharashtra",
+        "theme": "Crop-residue bioenergy",
+        "eyebrow": "Waste-to-wealth model",
+        "title": "Cotton Stalk to Pellets",
+        "summary": "How the URJA project in Yavatmal turns cotton stalks into pellets, biochar "
+                   "and carbon income — and a 90-day pilot pathway for AP's cotton districts.",
+        "source": "Based on: the CAI / Cottonguru URJA Project case study and the "
+                  "ICAR-CIRCOT cotton-stalk logistics model.",
     },
     {
         "file": "Banana_Processing_Case_Study.txt", "slug": "banana-processing",
@@ -637,6 +665,10 @@ def main():
             "slug": m["slug"], "title": m["title"], "eyebrow": m["eyebrow"],
             "summary": m["summary"], "theme": m["theme"], "place": m["place"],
             "district": m.get("district"),
+            # relevance tags: models the programme team assigned to a district's
+            # reading list (an email, not the deck, decides these) — the cases
+            # tab lifts matching cards to the top when that district is filtered
+            "districts": m.get("districts") or [],
             "sections": sum(1 for b in body if b[0] == "h2"),
             "cover": cover_rel if has_cover else None,
         })
