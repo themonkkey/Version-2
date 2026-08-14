@@ -735,8 +735,33 @@ a.docs-leaf:hover .ext{opacity:1;}
 .cap-brief > h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;color:#FFF;margin:0 0 4px;}
 .cap-brief > .lede{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.55;
   margin:0 0 clamp(16px,2vw,22px);max-width:78ch;}
-.cap-sess{padding:clamp(15px,1.9vw,20px) 0;border-top:1px solid rgba(255,255,255,.13);}
+.cap-sess{padding:clamp(15px,1.9vw,20px) 0;border-top:1px solid rgba(255,255,255,.13);
+  /* .nav is position:sticky, so a plain scrollIntoView lands the session's top
+     edge exactly under it. scroll-margin-top reserves that space instead. */
+  scroll-margin-top:clamp(96px,12vh,120px);}
 .cap-sess:first-of-type{border-top:0;padding-top:0;}
+
+/* Date chips: a day-of-month jump bar so "the 8th" is one click, not a scroll
+   past every other date to find it. Horizontally scrollable rather than
+   wrapping — a wrapped row of 15+ chips ate as much vertical space as the
+   sessions it was meant to save scrolling through. */
+.cap-datebar{display:flex;align-items:center;gap:11px;margin-bottom:clamp(14px,1.8vw,20px);}
+.cap-datebar-label{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(198,236,143,.75);}
+.cap-datechips{display:flex;gap:7px;overflow-x:auto;padding:2px 2px 6px;
+  scrollbar-width:thin;scrollbar-color:rgba(198,236,143,.35) transparent;}
+.cap-datechips::-webkit-scrollbar{height:5px;}
+.cap-datechips::-webkit-scrollbar-thumb{background:rgba(198,236,143,.35);border-radius:99px;}
+.cap-datechip{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;
+  gap:1px;min-width:40px;padding:6px 4px 5px;border-radius:11px;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  color:rgba(255,255,255,.7);transition:background .14s,border-color .14s,color .14s;}
+.cap-datechip .dd{font-size:14px;font-weight:750;line-height:1.1;color:#FFF;}
+.cap-datechip .mo{font-size:9px;font-weight:650;letter-spacing:.04em;text-transform:uppercase;}
+.cap-datechip:hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.26);}
+.cap-datechip.on{background:rgba(198,236,143,.20);border-color:rgba(198,236,143,.55);color:rgba(198,236,143,.92);}
+.cap-datechip.on .dd{color:#DFF5B4;}
+.cap-datechip:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
 .cap-shead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:9px;}
 .cap-day{flex:0 0 auto;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;
   color:#0B2E20;background:var(--lime);border-radius:999px;padding:3px 9px;line-height:1.35;}
@@ -3335,7 +3360,26 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         '<div class="cap-split-text">'+text+'</div></div>'
       : text;
 
-    return '<div class="cap-sess">'+head+fmt+main+roles+'</div>';
+    return '<div class="cap-sess" id="'+s._domId+'">'+head+fmt+main+roles+'</div>';
+  }
+
+  /* A day-of-month chip per session, so a reader who wants "the 8th" can jump
+     straight there instead of scrolling past every date to find it. Sessions
+     with no date (the few reports recovered without one — see build_capacity.py)
+     get no chip; there is nothing to jump to. */
+  function dateChips(sessions){
+    var withDate = sessions.filter(function(s){ return !!s.date; });
+    if(withDate.length < 2) return '';
+    var chips = withDate.map(function(s){
+      var d = new Date(s.date + 'T00:00:00');
+      return '<button type="button" class="cap-datechip" data-target="'+esc(s._domId)+'" ' +
+        'title="'+esc(prettyDate(s.date))+'">' +
+        '<span class="dd">'+d.getDate()+'</span>' +
+        '<span class="mo">'+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+'</span>' +
+      '</button>';
+    }).join('');
+    return '<div class="cap-datebar"><span class="cap-datebar-label">Jump to</span>' +
+      '<div class="cap-datechips" role="tablist" aria-label="Jump to a session date">' + chips + '</div></div>';
   }
 
   function renderBrief(d){
@@ -3348,17 +3392,45 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       'the format it was held in, what it covered, what officers reported, and the ' +
       'photographs filed with it.';
 
+    d.sessions.forEach(function(s, i){ s._domId = 'cap-sess-' + i; });
     var blocks = d.sessions.map(function(s){ return sessionBlock(s, d.name); }).join('');
     var html = '<div class="cap-brief">' +
       '<h3>Brief of the training — ' + esc(d.name) + '</h3>' +
-      '<p class="lede">' + esc(lede) + '</p>' + blocks + '</div>';
+      '<p class="lede">' + esc(lede) + '</p>' +
+      dateChips(d.sessions) + blocks + '</div>';
 
-    document.getElementById('capBrief').innerHTML = html;
+    var brief = document.getElementById('capBrief');
+    brief.innerHTML = html;
     /* Rebind after every re-render: the buttons are new nodes each time, so a
        listener attached to the old ones would be pointing at detached DOM. */
     document.querySelectorAll('#capBrief .cap-shot').forEach(function(b){
       b.addEventListener('click', function(){ openShot(parseInt(b.dataset.shot,10)); });
     });
+
+    var chipEls = brief.querySelectorAll('.cap-datechip');
+    function setActiveChip(id){
+      chipEls.forEach(function(c){ c.classList.toggle('on', c.dataset.target === id); });
+    }
+    chipEls.forEach(function(c){
+      c.addEventListener('click', function(){
+        var el = document.getElementById(c.dataset.target);
+        if(!el) return;
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+        setActiveChip(c.dataset.target);
+      });
+    });
+    /* Highlight whichever session is actually in view as the reader scrolls,
+       so the chip row stays a position indicator, not just a launcher. */
+    if(chipEls.length && 'IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting) setActiveChip(e.target.id); });
+      }, {root:null, rootMargin:'-10% 0px -75% 0px', threshold:0});
+      d.sessions.forEach(function(s){
+        if(s.date){ var el = document.getElementById(s._domId); if(el) io.observe(el); }
+      });
+    }
+    if(chipEls.length) setActiveChip(chipEls[0].dataset.target);
+
     var meta = document.getElementById('capMeta');
     if(meta){
       meta.innerHTML = '<b>' + d.sessions_delivered + '</b> sessions · <b>' +
