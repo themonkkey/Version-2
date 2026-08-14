@@ -55,9 +55,14 @@ PDFROOT = os.path.join(ROOT, "corpus_files", "vision_documents", "mandal")
 FORMULA = re.compile(
     r"\(\s*NMDP\s*/\s*Projected\s*Pop[a-z ]*\)|\*\s*100000|"
     r"\(\s*MGVA\s*\+\s*Product\s*Taxes?\s*-?\s*Product\s*Subsidies?\s*\)|"
-    r"=\s*\(?MGVA[^)]*\)?", re.I)
+    # NOT [^)]* — when the closing paren wraps to the next line that eats the
+    # value too ("GMDP=(MGVA+Product Taxes -   1,34,076"), losing the figure
+    # entirely. Stop at the first digit instead.
+    r"=\s*\(?\s*MGVA[^\d)]*\)?", re.I)
 
 NUM = re.compile(r"\d[\d,]*\.?\d*")
+
+MGVA_PAT = r"^\s*(?:\d{1,2}\s+)?(?:Total\s*)?(?:MGVA|GMVA)\b"
 
 # label -> regex. Order matters: MGVA must be tried after GMDP so that the
 # "GMDP=(MGVA+..." formula line is not mistaken for the MGVA row.
@@ -68,7 +73,10 @@ LABELS = [
     ("PRODUCT SUBSIDIES", re.compile(r"^\s*(?:\d{1,2}\s+)?Product\s*subsidies\b", re.I)),
     ("POPULATION",        re.compile(r"^\s*(?:\d{1,2}\s+)?Projected\s*Popula", re.I)),
     ("PCI",               re.compile(r"^\s*(?:\d{1,2}\s+)?(?:PER[-\s]?CAPITA|Per\s*capita)\s*INCOME", re.I)),
-    ("GMVA",              re.compile(r"^\s*(?:\d{1,2}\s+)?(?:Total\s*)?[GM]MVA\b|^\s*(?:\d{1,2}\s+)?Total\s*MGVA\b", re.I)),
+    # "MGVA" and "GMVA" both occur, with or without a "Total" prefix. An earlier
+    # [GM]MVA class silently failed on MGVA (M then GVA, not MVA) and sent the
+    # block finder down its fallback path, which swept in sub-sector rows.
+    ("GMVA",              re.compile(MGVA_PAT, re.I)),
 ]
 
 
@@ -140,6 +148,36 @@ def find_pdf(slug):
     return best
 
 
+def find_block(lines):
+    """The headline block's line range.
+
+    Anchoring matters: "Per Capita Income" and similar phrases also occur in the
+    narrative text, and matching the first one anywhere in the document pulled a
+    stray year (2022) in as the PCI. A real anchor is an MGVA/GMVA label that has
+    both a product-tax line and an NMDP line within the next 20 lines.
+    """
+    for i, ln in enumerate(lines):
+        if not re.search(MGVA_PAT, ln, re.I):
+            continue
+        window = "\n".join(lines[i:i + 20])
+        if re.search(r"Product\s*tax", window, re.I) and re.search(r"\bNMDP\b", window):
+            end = min(len(lines), i + 20)
+            # the sectoral-breakup table follows immediately, and its rows are
+            # bare numbers that pass-2 will happily claim — stop before it
+            for j in range(i + 1, end):
+                if re.search(r"SECTORAL\s+BREAKUP|OVERALL\s+GVA", lines[j], re.I):
+                    end = j
+                    break
+            return i, end
+    # some files put no MGVA label at all — fall back to the taxes line
+    for i, ln in enumerate(lines):
+        if re.search(r"^\s*(?:\d{1,2}\s+)?Product\s*tax", ln, re.I):
+            window = "\n".join(lines[i:i + 18])
+            if re.search(r"\bNMDP\b", window):
+                return max(0, i - 1), min(len(lines), i + 18)
+    return None, None
+
+
 def parse_headline(pdf):
     try:
         txt = subprocess.run(["pdftotext", "-layout", pdf, "-"],
@@ -149,48 +187,123 @@ def parse_headline(pdf):
     if not txt.strip():
         return None, "no text layer"
     lines = txt.splitlines()
-    out = {}
-    for i, ln in enumerate(lines):
+    a, b = find_block(lines)
+    if a is None:
+        return None, "no headline block found in text layer"
+    block = lines[a:b]
+
+    # Pass 1 — labels with their value on the same line.
+    out, slots, claimed = {}, [], set()
+    for i, ln in enumerate(block):
         for key, rx in LABELS:
-            if key in out:
+            if key in out or any(s[0] == key for s in slots):
                 continue
             if rx.search(ln):
-                v = value_near(lines, i, FLOOR[key])
-                if v is not None:
-                    out[key] = v
+                vals = [n for n in numbers(ln) if n >= FLOOR[key]]
+                if vals:
+                    out[key] = vals[0]
+                    claimed.add(i)                  # this line's figure is spoken for
+                else:
+                    slots.append((key, i))          # label present, value elsewhere
+                break
+
+    # Pass 2 — bare number lines, assigned to the NEAREST label still waiting.
+    # A value can print above its label as easily as below it (the karapa file
+    # staggers NMDP and Population one row up), so distance decides, not
+    # direction. Anything else mis-assigns and cascades a shift down the block.
+    if slots:
+        pending = {k for k, _ in slots if k not in out}
+        free = []
+        for i, ln in enumerate(block):
+            if i in claimed:
+                continue
+            # Only a label still WAITING for its value blocks a line. The closing
+            # half of a wrapped formula reads as a label — "Product Subsidies)
+            # 197033" — and skipping it lost the GMDP figure sitting on it, even
+            # though Product Subsidies had already been read from its own row.
+            if any(rx.search(ln) for k, rx in LABELS if k in pending):
+                continue
+            for n in numbers(ln):
+                free.append((i, n))
+        for i, n in free:
+            cand = [(abs(i - li), k, li) for k, li in slots
+                    if k not in out and n >= FLOOR[k]]
+            if not cand:
+                continue
+            cand.sort()
+            _, key, _ = cand[0]
+            out[key] = n
+
+    # MGVA is sometimes simply not printed (nidadavole). It is not a guess to
+    # recover it from the document's own stated identity, and it is cross-checked
+    # against the sub-sector rows by the caller.
+    if "GMVA" not in out and all(k in out for k in ("GMDP", "PRODUCT TAXES", "PRODUCT SUBSIDIES")):
+        out["GMVA"] = out["GMDP"] - out["PRODUCT TAXES"] + out["PRODUCT SUBSIDIES"]
+        out["_gmva_derived"] = True
+
     return (out or None), (None if out else "no headline labels found")
 
 
-def check(h):
-    """Both identities, where computable. Returns (ok, notes)."""
+def check(h, sub_total=None, sub_rows=None):
+    """Validate the block. Returns (fatal, notes).
+
+    A failure is FATAL only if it means the block cannot be trusted. A PCI that
+    contradicts its own printed formula is a defect in that one figure — the
+    rajanagaram PDF prints 21,684 where NMDP/population gives 218,686 — so PCI
+    is dropped and the four figures that do verify are kept. Discarding all of
+    them over one bad cell would lose good data.
+    """
     notes = []
     g, mg = h.get("GMDP"), h.get("GMVA")
     tx, sb = h.get("PRODUCT TAXES"), h.get("PRODUCT SUBSIDIES")
     if None not in (g, mg, tx, sb):
         want = mg + tx - sb
         if abs(want - g) > max(1.0, abs(g) * 0.01):
-            notes.append(f"GMDP {g:,.0f} != MGVA+taxes-subsidies {want:,.0f}")
+            return True, [f"GMDP {g:,.0f} != MGVA+taxes-subsidies {want:,.0f}"]
+
+    # A derived MGVA has to be corroborated independently. SUMMING the sub-sector
+    # rows is the wrong test — the table parser does not always recover every row
+    # (nidadavole stores only 138,633 of a real 216,008), so a correct derivation
+    # gets rejected. Each row's own percentage gives the implied total instead:
+    # value / pct * 100. That needs no completeness, only one usable row.
+    if h.pop("_gmva_derived", False):
+        implied = sorted(r["value"] / r["pct"] * 100
+                         for r in (sub_rows or [])
+                         if r.get("pct") and r.get("value"))
+        ref = implied[len(implied) // 2] if implied else sub_total
+        if ref and abs(ref - mg) > max(1.0, abs(mg) * 0.02):
+            return True, [f"derived MGVA {mg:,.0f} != {ref:,.0f} implied by sub-sector shares"]
+        notes.append(f"MGVA not printed; derived {mg:,.0f} from GMDP-taxes+subsidies"
+                     + (f", corroborated by sub-sector shares ({ref:,.0f})" if ref else ""))
+
     n, p, pci = h.get("NMDP"), h.get("POPULATION"), h.get("PCI")
     if None not in (n, p, pci) and p:
         want = n / p * 100000
         if abs(want - pci) > max(1.0, abs(pci) * 0.01):
-            notes.append(f"PCI {pci:,.0f} != NMDP/pop*1e5 {want:,.0f}")
-    return (not notes), notes
+            h.pop("PCI")
+            notes.append(f"PCI dropped: printed {pci:,.0f}, formula gives {want:,.0f}")
+    return False, notes
 
 
 def main():
     write = "--write" in sys.argv
+    # --recheck also re-parses Layout B files that already have a headline, so a
+    # parser fix reaches them. Layout A is never touched under any flag.
+    recheck = "--recheck" in sys.argv
     targets = []
     for f in sorted(glob.glob(os.path.join(DATA, "*.json"))):
         if os.path.basename(f).startswith("_"):
             continue
         d = json.load(open(f))
-        if not any((d.get("headline") or {}).values()):
+        empty = not any((d.get("headline") or {}).values())
+        if empty or (recheck and d.get("layout") == "B"):
             targets.append((f, d))
 
-    print(f"{len(targets)} mandal files with an empty headline\n")
+    print(f"{len(targets)} mandal files to parse"
+          f"{' (empty + Layout B recheck)' if recheck else ' with an empty headline'}\n")
     filled = skipped = nopdf = failed = 0
     problems = []
+    caveats = []
 
     for f, d in targets:
         slug = os.path.basename(f)[:-5]
@@ -204,11 +317,14 @@ def main():
             failed += 1
             problems.append((slug, err))
             continue
-        ok, notes = check(h)
-        if not ok:
+        sub_total = sum(r.get("value") or 0 for r in (d.get("sub_rows") or [])) or None
+        fatal, notes = check(h, sub_total, d.get('sub_rows'))
+        if fatal:
             skipped += 1
             problems.append((slug, "; ".join(notes)))
             continue
+        if notes:
+            caveats.append((slug, "; ".join(notes)))
         got = [k for k in ("GMVA", "GMDP", "NMDP", "POPULATION", "PCI") if k in h]
         if "GMDP" not in h and "GMVA" not in h:
             skipped += 1
@@ -221,10 +337,14 @@ def main():
         print(f"  {'WROTE' if write else 'would fill'} {slug:44} {' '.join(got)}")
 
     print(f"\nfilled={filled}  rejected={skipped}  no-pdf={nopdf}  parse-failed={failed}")
+    if caveats:
+        print("\n-- accepted with a caveat --")
+        for sl, why in caveats:
+            print(f"  {sl:44} {why}")
     if problems:
         print("\n-- left alone (reported, never guessed) --")
-        for s, why in problems:
-            print(f"  {s:44} {why}")
+        for sl, why in problems:
+            print(f"  {sl:44} {why}")
     if not write:
         print("\ndry run — re-run with --write to apply")
 
