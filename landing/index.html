@@ -1523,6 +1523,11 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 .vstage .drill-field select option{color:#111;}
 .vstage .drill-note{color:rgba(255,255,255,.6);}
 
+/* drill bar: the same two selects, but leading the panel so a reader can jump
+   between constituency and mandal without scrolling past the whole dashboard. */
+.pdrill{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:0 0 14px;}
+@media(max-width:640px){.pdrill{grid-template-columns:1fr;}}
+
 /* ==========================================================================
    METHODOLOGY — scroll narrative
    Each chapter pins a visual while its steps scroll past. An
@@ -2809,6 +2814,7 @@ const distCache = {};
 // degrades the page rather than blanking it.
 async function showDistrict(key, name){
   currentDistrictKey = key; currentDistrictName = name;
+  currentConstituency = null; currentMandal = null;   // district level: no deeper pick
   // the map is the single source of the district filter that scopes every tab
   if(window.DTABS_DISTRICT) window.DTABS_DISTRICT(name);
   setExploreHeading('district', name);
@@ -2823,7 +2829,8 @@ async function showDistrict(key, name){
     // paint from the index immediately, then upgrade once the workbook lands.
     // The brief leads: a written summary of the highlights above the dashboard.
     const node0 = window.DASH.enrichDistrict(rec, key, null, idx);
-    panel.innerHTML = (window.DASH.brief ? window.DASH.brief(node0, 'district') : '') + tpl(node0);
+    panel.innerHTML = (window.DASH.brief ? window.DASH.brief(node0, 'district') : '') + drillBarHtml(null, null) + tpl(node0);
+    wireDrillBar();
     mountCharts(panel);
 
     let dist = distCache[key];
@@ -2832,10 +2839,12 @@ async function showDistrict(key, name){
       catch(e){ dist = null; }
       distCache[key] = dist;
     }
-    // a later click may have already moved the panel on — do not overwrite it
-    if(dist && currentDistrictKey === key){
+    // a later click may have already moved the panel on — do not overwrite it,
+    // and a drill into a constituency counts as moving on too
+    if(dist && currentDistrictKey === key && !currentConstituency){
       const node1 = window.DASH.enrichDistrict(rec, key, dist, idx);
-      panel.innerHTML = (window.DASH.brief ? window.DASH.brief(node1, 'district') : '') + tpl(node1);
+      panel.innerHTML = (window.DASH.brief ? window.DASH.brief(node1, 'district') : '') + drillBarHtml(null, null) + tpl(node1);
+      wireDrillBar();
     }
     mountCharts(panel);
     return;
@@ -2899,6 +2908,62 @@ window.DASH_PICK_CONSTITUENCY = function(name){
   selectAcOnMap(key);
   showConstituency(key, currentDistrictName);
 };
+
+// ---------- drill bar ----------
+// The constituency/mandal pickers used to live only at the tail of each
+// template, below the whole dashboard. This bar carries the same two selects at
+// the TOP of the panel, right under the brief, at every level. It reuses the
+// #constSelect/#mandalSelect ids so the map-click sync and the legacy handlers
+// keep working unchanged.
+function drillBarHtml(constKey, mandalName){
+  const d = districtData[currentDistrictKey] || {};
+  const consts = d.constituencies || {};
+  const keys = Object.keys(consts).sort();
+  if(!keys.length) return '';
+
+  const cOpts = '<option value="">All constituencies</option>' +
+    keys.map(k => '<option value="'+k+'"'+(k===constKey?' selected':'')+'>'+
+      k.replace(/_/g,' ')+'</option>').join('');
+
+  // the mandal pick may arrive under its portal spelling ("Alur-R") while the
+  // tree stores "Alur" — compare through the same normaliser findMandal uses
+  const want = mandalName ? slugify(stripMandalMarker(mandalName)) : '';
+  let mOpts, mDis = '';
+  if(constKey && consts[constKey]){
+    const mandals = (consts[constKey].mandals||[]).slice().sort();
+    mOpts = '<option value="">All mandals</option>' +
+      mandals.map(m => '<option value="'+m+'"'+
+        (want && slugify(stripMandalMarker(m))===want ? ' selected' : '')+'>'+
+        m.replace(/_/g,' ')+'</option>').join('');
+    if(!mandals.length) mDis = ' disabled';
+  }else{
+    mOpts = '<option value="">Select a constituency first</option>';
+    mDis = ' disabled';
+  }
+
+  return '<div class="pdrill">'+
+    '<div class="drill-field"><label>Constituency</label><select id="constSelect">'+cOpts+'</select></div>'+
+    '<div class="drill-field"><label>Mandal</label><select id="mandalSelect"'+mDis+'>'+mOpts+'</select></div>'+
+  '</div>';
+}
+
+function wireDrillBar(){
+  const cs = document.getElementById('constSelect');
+  const ms = document.getElementById('mandalSelect');
+  if(!cs) return;
+  cs.addEventListener('change', ()=>{
+    const c = cs.value;
+    selectAcOnMap(c || null);
+    if(!c){ showDistrict(currentDistrictKey, currentDistrictName); return; }
+    showConstituency(c, currentDistrictName);
+  });
+  if(ms) ms.addEventListener('change', ()=>{
+    const c = cs.value, m = ms.value;
+    if(!m){ if(c) showConstituency(c, currentDistrictName); return; }
+    currentMandal = m;
+    showMandal(m, c, currentDistrictName);
+  });
+}
 
 function showDistrictLegacy(key, name){
   const d = districtData[key];
@@ -3016,7 +3081,8 @@ async function showConstituency(name, districtName){
   // render the bare record immediately, then upgrade in place once the portal
   // payload arrives — the panel is never blank and never blocks on the network
   const cNode0 = window.DASH.enrich(rec, label, null, idx);
-  panel.innerHTML = (window.DASH.brief ? window.DASH.brief(cNode0, 'constituency') : '') + tpl(cNode0);
+  panel.innerHTML = (window.DASH.brief ? window.DASH.brief(cNode0, 'constituency') : '') + drillBarHtml(name, null) + tpl(cNode0);
+  wireDrillBar();
   mountCharts(panel);
 
   if(rec.code == null) return;
@@ -3026,11 +3092,12 @@ async function showConstituency(name, districtName){
     catch(e){ apc = null; }
     dashCache[rec.code] = apc;
   }
-  // a later pick may have landed while this was in flight
-  const stillCurrent = document.getElementById('constSelect');
-  if(apc && (!stillCurrent || stillCurrent.value === name)){
+  // a later pick may have landed while this was in flight — a different
+  // constituency, or a drill down into a mandal
+  if(apc && currentConstituency === name && !currentMandal){
     const cNode1 = window.DASH.enrich(rec, label, apc, idx);
-    panel.innerHTML = (window.DASH.brief ? window.DASH.brief(cNode1, 'constituency') : '') + tpl(cNode1);
+    panel.innerHTML = (window.DASH.brief ? window.DASH.brief(cNode1, 'constituency') : '') + drillBarHtml(name, null) + tpl(cNode1);
+    wireDrillBar();
     mountCharts(panel);
   }
 }
@@ -3149,7 +3216,8 @@ async function showMandal(mandalName, constituencyKey, districtName){
   if(currentMandal && slugify(currentMandal) !== slugify(mandalName)) return;
 
   const mNode = window.DASH.enrichMandal(m, cNode, sibs, ownData, rankInfo);
-  panel.innerHTML = (window.DASH.brief ? window.DASH.brief(mNode, 'mandal') : '') + tpl(mNode);
+  panel.innerHTML = (window.DASH.brief ? window.DASH.brief(mNode, 'mandal') : '') + drillBarHtml(constituencyKey, mandalName) + tpl(mNode);
+  wireDrillBar();
   mountCharts(panel);
   panel.scrollIntoView({behavior:'smooth', block:'start'});
 }
