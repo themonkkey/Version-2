@@ -1165,12 +1165,12 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   color:rgba(255,255,255,.80);margin:0 0 14px;padding:11px 16px;border-radius:var(--r);
   background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.20);}
 .cap-absent i{color:var(--lime);font-size:16px;}
-/* Breathing space above: this row had a margin-bottom but no margin-top, so it sat
-   flush against whatever came before it — most visibly the open playbook box,
-   which has no bottom margin of its own. Adjacent sibling margins collapse, so
-   setting it here spaces the row correctly whether the playbook is open or not. */
+/* This row now LEADS the tab — method and leverage before the accordion they
+   explain — so it carries no top margin of its own. It used to sit below the
+   open playbook box and needed ~46px to clear it; that gap would read as dead
+   space at the top of the section. When a district filter is active the card
+   above supplies the separation with its own margin-bottom. */
 .gva-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,20px);align-items:stretch;
-  margin-top:clamp(26px,3.4vw,46px);
   margin-bottom:clamp(18px,2.4vw,26px);}
 
 /* Sector groups as a horizontal accordion (after NITI's ICED dashboard):
@@ -3470,9 +3470,9 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
   function renderGva(){
     var p = GVA, h = '';
-    // The sector accordion leads the page — it is what the reader came for, so
-    // it sits directly under the heading. The method and the officer's-leverage
-    // panels are context for it and follow underneath.
+    // The method and the officer's-leverage panels lead: they frame how to read
+    // a district before the reader opens any sector playbook. The accordion —
+    // the thing they point at — follows directly underneath.
     var two = '<div class="gva-two">';
     two += '<div class="gva-panel"><div class="gva-kicker">'+esc2(p.method.kicker)+'</div>'+
          '<h3>'+esc2(p.method.title)+'</h3><ol class="gva-steps">'+
@@ -3485,6 +3485,9 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
            return '<li><span class="n">'+(i+1)+'</span><span><b>'+esc2(s[0])+'</b> '+esc2(s[1])+'</span></li>';
          }).join('')+'</ol></div>';
     two += '</div>';
+
+    // method + leverage first — they explain what the accordion below is for
+    h += two;
 
     // the three state sectors as a horizontal accordion; each group's hue is the
     // one its slice carries on every district dashboard, so the playbook and the
@@ -3539,9 +3542,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
            '</div>'+
            '<div class="gva-detail-b"></div>'+
          '</div>';
-
-    // method + leverage sit below the accordion they explain
-    h += two;
 
     // toolbox: AI tools + NITI prompts
     if(p.ai_tools && p.ai_tools.length){
