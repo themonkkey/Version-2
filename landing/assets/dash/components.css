@@ -479,3 +479,22 @@
 .vstage .d-rb-hash{color:var(--lime,#8FC93A);}
 .vstage .d-rb-of{color:rgba(255,255,255,.5);}
 .vstage .d-rb-basis{color:rgba(255,255,255,.62);}
+
+/* ===========================================================================
+   Brief — the written highlights card that leads every panel. Reuses the .d-sec
+   card shell; this only styles the kicker and the sentence list.
+   =========================================================================== */
+.d-brief{margin-bottom:clamp(12px,1.6vw,16px);}
+.d-brief-k{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:#5c7a1e;margin-bottom:9px;}
+.d-brief-l{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.d-brief-l li{position:relative;padding-left:16px;font-size:13.8px;line-height:1.55;
+  color:rgba(20,40,30,.82);}
+.d-brief-l li::before{content:"";position:absolute;left:1px;top:.58em;width:6px;height:6px;
+  border-radius:50%;background:#8FC93A;}
+.d-brief-l b{font-weight:700;color:#0B2E20;}
+
+.vstage .d-brief-k{color:var(--lime,#C6EC8F);}
+.vstage .d-brief-l li{color:rgba(255,255,255,.82);}
+.vstage .d-brief-l li::before{background:var(--lime,#8FC93A);}
+.vstage .d-brief-l b{color:#FFF;}

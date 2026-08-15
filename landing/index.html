@@ -1743,8 +1743,8 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 <!-- GSAP, vendored locally (charts-src: npm run build:gsap) rather than a CDN,
      to keep the no-third-party-runtime rule for a government-facing page. -->
 <script src="assets/dash/gsap.js?v=2026-08-12a" defer></script>
-<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-12a">
-<script src="assets/dash/components.js?v=2026-08-12a" defer></script>
+<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-15a">
+<script src="assets/dash/components.js?v=2026-08-15a" defer></script>
 <script src="assets/dash/enrich.js?v=2026-08-12a" defer></script>
 <script src="assets/dash/tpl-c1.js?v=2026-08-12a" defer></script>
 <script src="assets/dash/tpl-c2.js?v=2026-08-12a" defer></script>
@@ -2820,8 +2820,10 @@ async function showDistrict(key, name){
 
   if(rec && window.DASH && window.DASH_TPL && window.DASH.enrichDistrict){
     const tpl = window.DASH_TPL[rec.archetype] || window.DASH_TPL.D2;
-    // paint from the index immediately, then upgrade once the workbook lands
-    panel.innerHTML = tpl(window.DASH.enrichDistrict(rec, key, null, idx));
+    // paint from the index immediately, then upgrade once the workbook lands.
+    // The brief leads: a written summary of the highlights above the dashboard.
+    const node0 = window.DASH.enrichDistrict(rec, key, null, idx);
+    panel.innerHTML = (window.DASH.brief ? window.DASH.brief(node0, 'district') : '') + tpl(node0);
     mountCharts(panel);
 
     let dist = distCache[key];
@@ -2832,7 +2834,8 @@ async function showDistrict(key, name){
     }
     // a later click may have already moved the panel on — do not overwrite it
     if(dist && currentDistrictKey === key){
-      panel.innerHTML = tpl(window.DASH.enrichDistrict(rec, key, dist, idx));
+      const node1 = window.DASH.enrichDistrict(rec, key, dist, idx);
+      panel.innerHTML = (window.DASH.brief ? window.DASH.brief(node1, 'district') : '') + tpl(node1);
     }
     mountCharts(panel);
     return;
@@ -3012,7 +3015,8 @@ async function showConstituency(name, districtName){
 
   // render the bare record immediately, then upgrade in place once the portal
   // payload arrives — the panel is never blank and never blocks on the network
-  panel.innerHTML = tpl(window.DASH.enrich(rec, label, null, idx));
+  const cNode0 = window.DASH.enrich(rec, label, null, idx);
+  panel.innerHTML = (window.DASH.brief ? window.DASH.brief(cNode0, 'constituency') : '') + tpl(cNode0);
   mountCharts(panel);
 
   if(rec.code == null) return;
@@ -3025,7 +3029,8 @@ async function showConstituency(name, districtName){
   // a later pick may have landed while this was in flight
   const stillCurrent = document.getElementById('constSelect');
   if(apc && (!stillCurrent || stillCurrent.value === name)){
-    panel.innerHTML = tpl(window.DASH.enrich(rec, label, apc, idx));
+    const cNode1 = window.DASH.enrich(rec, label, apc, idx);
+    panel.innerHTML = (window.DASH.brief ? window.DASH.brief(cNode1, 'constituency') : '') + tpl(cNode1);
     mountCharts(panel);
   }
 }
@@ -3143,7 +3148,8 @@ async function showMandal(mandalName, constituencyKey, districtName){
   // a later pick may have landed while the payloads were in flight
   if(currentMandal && slugify(currentMandal) !== slugify(mandalName)) return;
 
-  panel.innerHTML = tpl(window.DASH.enrichMandal(m, cNode, sibs, ownData, rankInfo));
+  const mNode = window.DASH.enrichMandal(m, cNode, sibs, ownData, rankInfo);
+  panel.innerHTML = (window.DASH.brief ? window.DASH.brief(mNode, 'mandal') : '') + tpl(mNode);
   mountCharts(panel);
   panel.scrollIntoView({behavior:'smooth', block:'start'});
 }

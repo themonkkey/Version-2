@@ -964,7 +964,146 @@
 
   /* ------------------------------------------------------------------ export */
 
+  /* ------------------------------------------------------------- brief ----
+     A short written summary — the important highlights of the selected place,
+     rendered above the archetype template at every level. Sentences are built
+     only from fields that are actually present, each figure carries its year
+     and estimate class, and the two share semantics are never conflated:
+     pct_of_district is a sector's slice of THIS economy; pct_of_state_sector is
+     this district's slice of AP's total FOR THAT SECTOR (~7x apart). A target
+     is always named as a plan, never as a measurement. */
+  var SECTOR_WORD = { agri: 'agriculture', industry: 'industry', services: 'services' };
+
+  function briefCard(kicker, lines) {
+    lines = (lines || []).filter(Boolean);
+    if (!lines.length) return '';
+    return '<div class="d-sec d-brief"><div class="d-brief-k">' + esc(kicker) + '</div>' +
+      '<ul class="d-brief-l">' + lines.map(function (l) { return '<li>' + l + '</li>'; }).join('') + '</ul></div>';
+  }
+
+  function shareSentence(shares, of) {
+    if (!shares) return '';
+    var ord = ['agri', 'industry', 'services'].filter(function (k) { return num(shares[k]) !== null; })
+      .sort(function (a, b) { return shares[b] - shares[a]; });
+    if (ord.length < 3) return '';
+    return cap(SECTOR_WORD[ord[0]]) + ' carries the largest share of ' + of +
+      ' at <b>' + fmtPct(shares[ord[0]]) + '</b>, ahead of ' +
+      SECTOR_WORD[ord[1]] + ' (' + fmtPct(shares[ord[1]]) + ') and ' +
+      SECTOR_WORD[ord[2]] + ' (' + fmtPct(shares[ord[2]]) + ').';
+  }
+
+  function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
+
+  function briefDistrict(n) {
+    var L = [];
+    if (n.gddp !== null) {
+      var lastPt = null, firstPt = null, i;
+      for (i = n.gddp_series.length - 1; i >= 0; i--) if (n.gddp_series[i].value !== null) { lastPt = n.gddp_series[i]; break; }
+      for (i = 0; i < n.gddp_series.length; i++) if (n.gddp_series[i].value !== null) { firstPt = n.gddp_series[i]; break; }
+      var s = 'The district economy stands at <b>' + fmtCr(n.gddp) + '</b> GDDP' +
+        (lastPt && lastPt.year ? ' for ' + esc(lastPt.year) : '');
+      if (n.gddp_growth !== null) s += ', <b>' + fmtPct(n.gddp_growth) + '</b> over the previous year';
+      if (firstPt && firstPt !== lastPt && firstPt.value !== null)
+        s += ' — up from ' + fmtCr(firstPt.value) + ' in ' + esc(firstPt.year);
+      L.push(s + '.');
+    }
+    if (n.pci !== null) {
+      var p = 'Per-capita income is <b>' + fmtRs(n.pci) + '</b>' +
+        (n.pci_growth !== null ? ', ' + fmtPct(n.pci_growth) + ' over the previous year' : '');
+      if (n.pci_rank !== null) p += '; the district ranks <b>#' + n.pci_rank + '</b> of ' +
+        (n.district_count || 28) + ' by per-capita income';
+      L.push(p + '.');
+    }
+    L.push(shareSentence(n.shares, 'the district economy'));
+    if (n.sectors && n.sectors.length) {
+      var best = null;
+      n.sectors.forEach(function (sec) {
+        if (sec.pct_of_state_sector === null) return;
+        if (!best || sec.pct_of_state_sector > best.pct_of_state_sector) best = sec;
+      });
+      if (best) L.push('Statewide, its strongest position is <b>' + esc(best.name) + '</b> — <b>' +
+        fmtPct(best.pct_of_state_sector) + '</b> of AP’s total for that sector' +
+        (best.rank !== null ? ' (rank ' + best.rank + ' of ' + (n.district_count || 28) + ' districts)' : '') + '.');
+    }
+    return briefCard('District highlights', L);
+  }
+
+  function briefConstituency(n) {
+    var L = [];
+    if (n.gcdp_baseline !== null) {
+      var s = 'GCDP was <b>' + fmtCr(n.gcdp_baseline) + '</b> in ' + esc(n.year_baseline);
+      if (n.gcdp_target !== null) {
+        s += '; the Swarna Andhra plan targets <b>' + fmtCr(n.gcdp_target) + '</b> by ' +
+          esc(n.year_target) + ' — a plan, not a measurement' +
+          (n.cagr !== null ? ' — implying <b>' + fmtPct(n.cagr) + '</b> a year' : '');
+      }
+      L.push(s + '.');
+    }
+    if (n.population !== null) {
+      var d = 'Population <b>' + grp(n.population) + '</b>' +
+        (n.population_note ? ' (' + esc(n.population_note) + ')' : '');
+      if (n.area_sqkm !== null) d += ' across ' + grp(n.area_sqkm) + ' sq km';
+      if (n.mandals && n.mandals.length) d += ', spread over <b>' + n.mandals.length + '</b> mandals';
+      L.push(d + '.');
+    }
+    L.push(shareSentence(n.shares, 'GCDP (' + esc(n.year_baseline) + ')'));
+    if (n.thrust && n.thrust.length) {
+      var t = n.thrust.slice(0, 3).map(function (x) { return esc(x); });
+      L.push('Planned thrust: <b>' + t.join('</b> · <b>') + '</b>' +
+        (n.thrust.length > 3 ? ' and ' + (n.thrust.length - 3) + ' more' : '') + '.');
+    }
+    return briefCard('Constituency highlights', L);
+  }
+
+  function briefMandal(n) {
+    var L = [];
+    if (n.own) {
+      if (n.own.gmdp !== null) {
+        var s = 'The mandal’s own GVA statement puts GMDP at <b>' + fmtCr(n.own.gmdp) + '</b>';
+        if (n.own.rank !== null && n.own.rank_total !== null)
+          s += ' — <b>#' + n.own.rank + '</b> of ' + n.own.rank_total + ' mandals in ' +
+            esc(n.constituency) + ' by GMDP';
+        L.push(s + '.');
+      }
+      if (n.own.pci !== null || n.own.population !== null) {
+        var bits = [];
+        if (n.own.pci !== null) bits.push('per-capita income <b>' + fmtRs(n.own.pci) + '</b>');
+        if (n.own.population !== null) bits.push('population <b>' + grp(n.own.population) + '</b>');
+        L.push(cap(bits.join('; ')) + '.');
+      }
+      if (n.own.sectors && n.own.sectors.length) {
+        var top = n.own.sectors.slice().sort(function (a, b) { return b.pct - a.pct; })[0];
+        if (top && top.pct !== null) L.push('<b>' + esc(top.name) + '</b> is the largest slice of the mandal economy at <b>' +
+          fmtPct(top.pct) + '</b>.');
+      }
+    } else {
+      L.push('No mandal-level GVA statement could be extracted for ' + esc(n.name) +
+        '; the figures below are the context it sits in.');
+      if (n.inherited && n.inherited.gcdp_baseline !== null) {
+        var c = esc(n.constituency) + ' constituency’s GCDP was <b>' + fmtCr(n.inherited.gcdp_baseline) +
+          '</b> in ' + esc(n.inherited.year_baseline);
+        if (n.inherited.gcdp_target !== null)
+          c += ', with a ' + esc(n.inherited.year_target) + ' plan of ' + fmtCr(n.inherited.gcdp_target);
+        L.push(c + '.');
+      }
+      if (n.inherited && n.inherited.thrust && n.inherited.thrust.length)
+        L.push('Constituency thrust: <b>' + n.inherited.thrust.slice(0, 3).map(esc).join('</b> · <b>') + '</b>.');
+    }
+    return briefCard('Mandal highlights', L);
+  }
+
+  function brief(node, level) {
+    if (!node) return '';
+    try {
+      if (level === 'district') return briefDistrict(node);
+      if (level === 'constituency') return briefConstituency(node);
+      if (level === 'mandal') return briefMandal(node);
+    } catch (e) { /* a brief must never take the panel down with it */ }
+    return '';
+  }
+
   var DASH = {
+    brief: brief,
     statCard: statCard,
     sectorDonut: sectorDonut,
     growthBullet: growthBullet,
