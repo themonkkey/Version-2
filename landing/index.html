@@ -260,8 +260,10 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    there, and width still governs on a narrow phone. */
 .hero{position:relative;overflow:hidden;background:var(--ink);
   padding:clamp(24px,min(6vw,5vh),68px) var(--pad-x);
-  min-height:calc(100vh - var(--navh,56px));
-  min-height:calc(100svh - var(--navh,56px));
+  /* divided by --pgz: viewport units ignore the page's zoom factor, so without
+     this a zoomed page gets a hero taller than the screen it must fit */
+  min-height:calc(100vh / var(--pgz,1) - var(--navh,56px));
+  min-height:calc(100svh / var(--pgz,1) - var(--navh,56px));
   display:flex;flex-direction:column;justify-content:center;}
 .hero .eyebrow{margin-bottom:clamp(11px,min(2.4vw,2.1vh),22px);}
 /* These blocks centre themselves with `margin:0 auto`. Once their parent became a
@@ -284,8 +286,8 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   /* +1px absorbs sub-pixel rounding: scrollHeight is an integer while the layout
      is fractional, and without it the page can end one pixel short of clearing
      the hero (measured at 768x1024) */
-  min-height:calc(100vh - var(--footh,61px) + 1px);
-  min-height:calc(100svh - var(--footh,61px) + 1px);
+  min-height:calc(100vh / var(--pgz,1) - var(--footh,61px) + 1px);
+  min-height:calc(100svh / var(--pgz,1) - var(--footh,61px) + 1px);
   display:flex;flex-direction:column;justify-content:center;
   padding-top:calc(clamp(28px,min(6vw,5vh),80px) + var(--navh,56px));
   padding-bottom:clamp(28px,min(6vw,5vh),80px);}
@@ -1788,24 +1790,12 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   .hero-cta .btn-primary,.hero-cta .btn-ghost{width:100%;justify-content:center;}
 }
 /* ---------- large screens ----------
-   Above a laptop the content stops growing with the window and starts floating in
-   the middle of it. The measure widens in steps and the hero type is allowed a
-   higher ceiling, still capped by min(vw,vh) so a wide-but-short window (a
-   half-height 4K window, a projector) never gets 76px headlines it cannot fit. */
+   Above a laptop the whole page scales up continuously instead of floating small
+   in the middle of the window: JS sets a zoom factor from the window width (see
+   the auto-scale block), so every px in the design grows in proportion on any
+   screen — no per-breakpoint font surgery. The measure still widens a step so
+   very wide screens use more of their width. */
 @media (min-width:1600px){:root{--maxw:1280px;}}
-@media (min-width:2000px){
-  :root{--maxw:1440px;}
-  .hero-content{max-width:960px;}
-  .hero h1{font-size:clamp(48px,min(4.2vw,8vh),72px);}
-  .hero p{font-size:clamp(16px,min(1.3vw,2.2vh),20px);max-width:680px;}
-  .gstat .n{font-size:clamp(30px,min(2.4vw,4vh),42px);}
-  .gstat .lbl{font-size:clamp(13px,min(.9vw,1.5vh),15px);}
-  .gstat .sub{font-size:clamp(11.5px,min(.75vw,1.35vh),13px);}
-}
-@media (min-width:2560px){
-  :root{--maxw:1660px;}
-  .hero-content{max-width:1080px;}
-}
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;}
   html{scroll-behavior:auto;}
@@ -2420,6 +2410,29 @@ document.querySelectorAll('.gstat.ask').forEach(function(b){
   window.addEventListener('hashchange', ()=>setTimeout(sync,0));
   sync();
   window.__syncNarr = sync;   // lets the page be driven in tests
+})();
+
+// ---------- auto-scale ----------
+// The design is authored at ~1450px wide. On bigger windows every fixed px
+// (13px card text, 22px paddings) stays laptop-sized and the page reads small,
+// no matter how the measure grows. One continuous zoom factor scales the whole
+// page in proportion — 1.0 up to the design width, then window/1450 capped at
+// 1.35 so a 4K screen gets bigger content, not poster type. Layout stays
+// self-consistent: the viewport the CSS sees shrinks by the same factor the
+// visual grows, so the one-screen hero math keeps holding.
+(function(){
+  var cur = 0;
+  function fitScale(){
+    var z = Math.min(1.35, Math.max(1, window.innerWidth / 1450));
+    if (Math.abs(z - cur) < 0.01) return;
+    cur = z;
+    var s = document.documentElement.style;
+    s.zoom = z === 1 ? '' : z;
+    // viewport units ignore zoom, so the one-screen heights divide by this
+    s.setProperty('--pgz', z);
+  }
+  fitScale();
+  window.addEventListener('resize', fitScale, {passive:true});
 })();
 
 // ---------- chrome heights ----------
