@@ -1008,7 +1008,7 @@
         (lastPt && lastPt.year ? ' for ' + esc(lastPt.year) : '');
       if (n.gddp_growth !== null) s += ', <b>' + fmtPct(n.gddp_growth) + '</b> over the previous year';
       if (firstPt && firstPt !== lastPt && firstPt.value !== null)
-        s += ' — up from ' + fmtCr(firstPt.value) + ' in ' + esc(firstPt.year);
+        s += ', up from ' + fmtCr(firstPt.value) + ' in ' + esc(firstPt.year);
       L.push(s + '.');
     }
     if (n.pci !== null) {
@@ -1022,7 +1022,7 @@
     if (n.sectors && n.sectors.length) {
       var ranked = n.sectors.filter(function (sec) { return sec.pct_of_state_sector !== null; })
         .sort(function (a, b) { return b.pct_of_state_sector - a.pct_of_state_sector; });
-      if (ranked[0]) L.push('Statewide, its strongest position is <b>' + esc(ranked[0].name) + '</b> — <b>' +
+      if (ranked[0]) L.push('Statewide, its strongest position is <b>' + esc(ranked[0].name) + '</b>, <b>' +
         fmtPct(ranked[0].pct_of_state_sector) + '</b> of AP’s total for that sector' +
         (ranked[0].rank !== null ? ' (rank ' + ranked[0].rank + ' of ' + (n.district_count || 28) + ' districts)' : '') + '.');
       if (ranked[1]) L.push('It also holds ground in <b>' + esc(ranked[1].name) + '</b>, with ' +
@@ -1038,8 +1038,8 @@
       var s = 'GCDP was <b>' + fmtCr(n.gcdp_baseline) + '</b> in ' + esc(n.year_baseline);
       if (n.gcdp_target !== null) {
         s += '; the Swarna Andhra plan targets <b>' + fmtCr(n.gcdp_target) + '</b> by ' +
-          esc(n.year_target) + ' — a plan, not a measurement' +
-          (n.cagr !== null ? ' — implying <b>' + fmtPct(n.cagr) + '</b> a year' : '');
+          esc(n.year_target) + ' (a plan, not a measurement)' +
+          (n.cagr !== null ? ', implying <b>' + fmtPct(n.cagr) + '</b> a year' : '');
       }
       L.push(s + '.');
     }
@@ -1065,7 +1065,7 @@
       if (n.own.gmdp !== null) {
         var s = 'The mandal’s own GVA statement puts GMDP at <b>' + fmtCr(n.own.gmdp) + '</b>';
         if (n.own.rank !== null && n.own.rank_total !== null)
-          s += ' — <b>#' + n.own.rank + '</b> of ' + n.own.rank_total + ' mandals in ' +
+          s += ', <b>#' + n.own.rank + '</b> of ' + n.own.rank_total + ' mandals in ' +
             esc(n.constituency) + ' by GMDP';
         L.push(s + '.');
       }
