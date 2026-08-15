@@ -2978,7 +2978,10 @@ async function initMap(){
 
     document.getElementById('mapBack').addEventListener('click', showStateView);
   }catch(err){
-    document.getElementById('districtPanel').innerHTML='<div class="panel-empty"><i class="ti ti-alert-triangle"></i><p>Could not load the map data.</p></div>';
+    // one flaky load must not kill the map for the whole visit — clearing the
+    // flag lets the next visit to Districts retry the fetches
+    mapReady=false;
+    document.getElementById('districtPanel').innerHTML='<div class="panel-empty"><i class="ti ti-alert-triangle"></i><p>Could not load the map data. Open this tab again to retry.</p></div>';
   }
 }
 
@@ -3002,6 +3005,8 @@ async function showDistrict(key, name){
   if(!panel) return;
 
   const idx = await loadDashIndex();
+  // a later click may have landed while the index was in flight
+  if(currentDistrictKey !== key) return;
   const rec = idx && idx.districts ? idx.districts[key] : null;
 
   if(rec && window.DASH && window.DASH_TPL && window.DASH.enrichDistrict){
@@ -3225,19 +3230,28 @@ function wireDrill(d, districtName){
 // apc/<code>.json (the rich portal payload, fetched on demand). DASH.enrich
 // joins them; the templates only ever see the joined record. If the payload
 // fails to load the bare record still renders — degraded, never broken.
-let dashIndex = null, dashCache = {};
+let dashCache = {};
 
-async function loadDashIndex(){
-  if(dashIndex) return dashIndex;
-  try{ dashIndex = await fetch('assets/dashboard_index.json').then(r=>r.json()); }
-  catch(e){ dashIndex = null; }
-  return dashIndex;
+// Caches the in-flight promise, not just the resolved value: two rapid district
+// clicks before the index landed used to issue two independent fetches, and
+// whichever resolved LAST painted the panel — network timing, not click order,
+// decided what the reader saw.
+let dashIndexPromise = null;
+function loadDashIndex(){
+  if(!dashIndexPromise){
+    dashIndexPromise = fetch('assets/dashboard_index.json').then(r=>r.json()).catch(()=>null);
+  }
+  return dashIndexPromise;
 }
 
 // Which constituency the panel is showing. The mandal drill-down is a button
 // list inside the rendered template, and its handler is only given a mandal
 // name, so the parent has to be remembered here.
 let currentConstituency = null, currentMandal = null;
+// The mandal name alone is not a unique key — two constituencies in one district
+// can share a mandal name, and a stale fetch for the other one would slip the
+// guard. The claimed parent rides alongside.
+let currentMandalCK = null;
 
 async function showConstituency(name, districtName){
   const panel = document.getElementById('districtPanel');
@@ -3247,6 +3261,8 @@ async function showConstituency(name, districtName){
   setExploreHeading('constituency', name, [{ name: districtName, kind: 'district' }]);
 
   const idx = await loadDashIndex();
+  // a later pick may have landed while the index was in flight
+  if(currentConstituency !== name) return;
   const rec = idx && idx.constituencies ? idx.constituencies[name] : null;
   if(!rec){
     panel.innerHTML = window.DASH.empty
@@ -3357,6 +3373,7 @@ async function showMandal(mandalName, constituencyKey, districtName){
   const panel = document.getElementById('districtPanel');
   if(!panel || !window.DASH || !window.DASH_TPL) return;
   currentMandal = mandalName;   // claim the pick on entry; late responses check it still holds
+  currentMandalCK = constituencyKey;
 
   const [idx, mi] = await Promise.all([loadDashIndex(), loadMandalIndex()]);
   const m = findMandal(mi, constituencyKey, mandalName);
@@ -3391,7 +3408,7 @@ async function showMandal(mandalName, constituencyKey, districtName){
   // a later pick may have landed while the payloads were in flight — including
   // "All mandals"/"All constituencies", which reset currentMandal to null, so
   // the comparison must run even when nothing is currently picked
-  if(slugify(currentMandal || '') !== slugify(mandalName)) return;
+  if(slugify(currentMandal || '') !== slugify(mandalName) || currentMandalCK !== constituencyKey) return;
 
   // heading only after the guard: a superseded call must not relabel the page
   setExploreHeading('mandal', m.name, [
