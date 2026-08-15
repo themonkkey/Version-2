@@ -486,7 +486,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    contributor, so it gets a tighter scale than the shared .sec-head default. */
 #page-districts .sec-head h2{font-size:clamp(22px,2.9vw,31px);margin-top:6px;}
 #page-districts .sec-head p{font-size:clamp(13.5px,1.45vw,15.5px);margin-top:5px;}
-.dtabs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,16px);
+.dtabs{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(10px,1.4vw,16px);
   margin-bottom:clamp(12px,1.6vw,18px);}
 .dtab{position:relative;text-align:left;font:inherit;cursor:not-allowed;
   padding:clamp(11px,1.4vw,14px) clamp(14px,1.8vw,20px);border-radius:var(--r);
@@ -519,7 +519,12 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   background-size:auto 100%;}
 .vstage .dtab[data-dtab="docs"]{background-image:url(assets/tabs/tab-documents.png?v=2026-08-12a);}
 .vstage .dtab[data-dtab="cases"]{background-image:url(assets/tabs/tab-cases.png?v=2026-08-12a);}
-.vstage .dtab.dtab-gva{background-image:url(assets/tabs/tab-map.png?v=2026-08-12a);}
+/* tab-map.png is district boundary line-work — it belongs to the map tab. It sat
+   on Improving GVA only because that tab existed first; GVA now carries its own
+   motif (port cranes and pylons from the industry sector loop, same
+   luminance-as-alpha treatment). */
+.vstage .dtab.dtab-map{background-image:url(assets/tabs/tab-map.png?v=2026-08-12a);}
+.vstage .dtab.dtab-gva{background-image:url(assets/tabs/tab-gva.png?v=2026-08-15a);}
 .vstage .dtab.dtab-capacity{background-image:url(assets/tabs/tab-capacity.png?v=2026-08-12a);}
 /* Live tabs (Documents / map) are clickable and show a pressed state; the two
    coming-soon tabs keep the not-allowed cursor from the base rule. */
@@ -536,6 +541,10 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* District filter chip — appears once a district is picked on the map, and
    announces that every tab is scoped to it. Clearing it routes through
    showStateView() so the map selection and the tabs can never disagree. */
+/* display:flex on the class beats the UA stylesheet's [hidden]{display:none},
+   so the bar has to opt back out explicitly — without this it sits there with an
+   empty district name whenever nothing is selected. */
+.dtab-filterbar[hidden]{display:none;}
 .dtab-filterbar{display:flex;align-items:center;gap:14px;width:fit-content;
   margin:-2px 0 clamp(12px,1.6vw,18px);padding:8px 10px 8px 16px;border-radius:999px;
   background:rgba(198,236,143,.13);border:1px solid rgba(198,236,143,.42);
@@ -1690,6 +1699,10 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   /* Four across is unreadable here — at 375px each tab gets ~78px, and the longest
      label ("Swarna Andhra 2047 capacity building") wraps to five lines. */
   .dtabs{grid-template-columns:1fr 1fr;}
+  /* Five into two columns would leave the last tab orphaned on its own row.
+     The map tab spans the pair instead — it is the default view, so reading as
+     a header above the other four is right rather than merely tidy. */
+  .dtabs .dtab-map{grid-column:1 / -1;}
   /* Stacked: there is no room for a side-by-side split, so both states are one
      column and the panel simply appears below the map once a district is picked.
      The flex-basis animation is meaningless here and is overridden away. */
@@ -2147,6 +2160,11 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
          destinations are not built yet — disabled buttons, not links, so they
          cannot be clicked into a dead end. -->
     <div class="dtabs">
+      <!-- The map is this page's default view but had no control of its own:
+           once another tab was open the only route back was the site's own
+           Districts nav item, which reads as leaving the page rather than
+           returning to the map. It gets a real tab, first in the row. -->
+      <button class="dtab dtab-live dtab-map" data-dtab="map" aria-pressed="true">District profile<span class="dtab-soon">The map</span></button>
       <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plans</span></button>
             <button class="dtab dtab-live dtab-gva" data-dtab="gva" aria-pressed="false">Improving GVA<span class="dtab-soon">Sector playbooks</span></button>
             <button class="dtab dtab-live dtab-capacity" data-dtab="capacity" aria-pressed="false">Capacity building<span class="dtab-soon">18 districts</span></button>
