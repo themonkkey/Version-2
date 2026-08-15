@@ -1598,7 +1598,11 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   mix-blend-mode:multiply;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");}
 
-.narr{background:var(--ink);color:#FFF;position:relative;overflow:hidden;}
+/* overflow:clip, NOT hidden — hidden makes .narr the sticky containing block
+   (a scroll container that never scrolls), so every chapter's pinned visual
+   silently stopped sticking. clip crops the ambient video the same way without
+   creating a scroll container, and the visuals pin again. */
+.narr{background:var(--ink);color:#FFF;position:relative;overflow:clip;}
 .narr .serif{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,"Times New Roman",serif;
   font-weight:400;letter-spacing:-.018em;}
 
@@ -1717,6 +1721,18 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 [data-step="4"] #sc4 .t1,[data-step="4"] #sc4 .t2,[data-step="4"] #sc4 .t3,[data-step="4"] #sc4 .t4{opacity:1;}
 [data-step="1"] #sc4 .t1 > rect,[data-step="2"] #sc4 .t2 > rect,
 [data-step="3"] #sc4 .t3 > rect,[data-step="4"] #sc4 .t4 > rect{
+  fill:var(--lime);fill-opacity:.18;stroke:var(--lime);stroke-opacity:1;}
+
+/* scene 5 — estimate classes maturing, top to bottom */
+#sc5 .est{opacity:.16;transition:opacity .5s ease;}
+[data-step="1"] #sc5 .e1,
+[data-step="2"] #sc5 .e1,[data-step="2"] #sc5 .e2,[data-step="2"] #sc5 .e3,
+[data-step="3"] #sc5 .e1,[data-step="3"] #sc5 .e2,[data-step="3"] #sc5 .e3,[data-step="3"] #sc5 .e4,
+[data-step="4"] #sc5 .e1,[data-step="4"] #sc5 .e2,[data-step="4"] #sc5 .e3,[data-step="4"] #sc5 .e4{opacity:1;}
+[data-step="1"] #sc5 .e1 > rect,
+[data-step="2"] #sc5 .e2 > rect,[data-step="2"] #sc5 .e3 > rect,
+[data-step="3"] #sc5 .e4 > rect,
+[data-step="4"] #sc5 .est > rect{
   fill:var(--lime);fill-opacity:.18;stroke:var(--lime);stroke-opacity:1;}
 
 /* closing */
@@ -1956,7 +1972,7 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   <section class="narr-open vstage" data-vid="ledger">
     <div class="kick">Methodology</div>
     <h2 class="serif">How a district's<br><em>income</em> is estimated</h2>
-    <p>The official method, from state total to rupees per person. Four chapters, following the National Statistics Office guideline for District Domestic Product.</p>
+    <p>The official method, from state total to rupees per person. Five chapters, following the National Statistics Office guideline for District Domestic Product.</p>
     <div class="narr-scrollcue"><span></span>Scroll</div>
   </section>
 
@@ -2131,10 +2147,55 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 </g>
 </svg></div>
   <div class="chap-steps">
-<div class="step" data-chap="3"><div class="no">11</div><h3 class="serif">Gross Value Added</h3><p>Each industry's contribution, measured at basic prices: the value it produces, less the cost of what it consumed producing it.</p><div class='pull'>GVA is measured at <b>basic prices</b> — before product taxes and subsidies enter.</div></div>
+<div class="step" data-chap="3"><div class="no">11</div><h3 class="serif">Gross Value Added</h3><p>Each industry's contribution, measured at basic prices: the value it produces, less the cost of what it consumed producing it.</p><div class='pull'>GVA is measured at <b>basic prices</b>, before product taxes and subsidies enter.</div></div>
 <div class="step" data-chap="3"><div class="no">12</div><h3 class="serif">Summed across sectors</h3><p>Add the adjusted GVA of all eleven industries and you have Gross District Value Added.</p><div class='pull'>GDVA = sum of adjusted GVA across all sectors</div></div>
 <div class="step" data-chap="3"><div class="no">13</div><h3 class="serif">To district product</h3><p>Add taxes on products, subtract subsidies on products. That shift from basic prices to market prices is what separates value added from domestic product.</p><div class='pull'>GDDP = GDVA + Taxes on Products &minus; Subsidies on Products</div></div>
-<div class="step" data-chap="3"><div class="no">14</div><h3 class="serif">To income per person</h3><p>Subtract consumption of fixed capital for the net figure, then divide by mid-year projected population.</p><div class='pull'>Per capita district income, in rupees per person &mdash; the number most often quoted, and the one most often quoted without its base year.</div></div>
+<div class="step" data-chap="3"><div class="no">14</div><h3 class="serif">To income per person</h3><p>Subtract consumption of fixed capital for the net figure, then divide by mid-year projected population.</p><div class='pull'>Per capita district income, in rupees per person: the number most often quoted, and most often quoted without its base year.</div></div>
+  </div>
+</div>
+
+<div class="chap-mark"><div class="big serif">05</div><div class="ttl serif">How final is the figure</div></div>
+<div class="chap" data-chap-i="4" data-step="1">
+  <div class="chap-vis"><svg id="sc5" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<g>
+<g class="sc est e1">
+<rect x="80" y="52" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="52.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle class="sc dot" cx="230" cy="117" r="3" fill="white" fill-opacity="0.3"/>
+<g class="sc est e2">
+<rect x="80" y="128" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="128.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle class="sc dot" cx="230" cy="193" r="3" fill="white" fill-opacity="0.3"/>
+<g class="sc est e3">
+<rect x="80" y="204" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="204.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<circle class="sc dot" cx="230" cy="269" r="3" fill="white" fill-opacity="0.3"/>
+<g class="sc est e4">
+<rect x="80" y="280" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
+<rect x="80.5" y="280.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
+</g>
+<text class="est e1" x="98" y="85" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">FAE</text>
+<text class="est e1" x="380" y="78" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">First Advance Estimate</text>
+<text class="est e1" x="380" y="94" font-family="Public Sans" font-size="10.5" fill="white" fill-opacity="0.38" text-anchor="end">2025-26 on this site</text>
+<text class="est e2" x="98" y="161" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">FRE</text>
+<text class="est e2" x="380" y="154" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">First Revised Estimate</text>
+<text class="est e2" x="380" y="170" font-family="Public Sans" font-size="10.5" fill="white" fill-opacity="0.38" text-anchor="end">2024-25 on this site</text>
+<text class="est e3" x="98" y="237" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">SRE</text>
+<text class="est e3" x="380" y="230" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Second Revised Estimate</text>
+<text class="est e3" x="380" y="246" font-family="Public Sans" font-size="10.5" fill="white" fill-opacity="0.38" text-anchor="end">2023-24 on this site</text>
+<text class="est e4" x="98" y="313" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">TRE</text>
+<text class="est e4" x="380" y="306" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Third Revised Estimate</text>
+<text class="est e4" x="380" y="322" font-family="Public Sans" font-size="10.5" fill="white" fill-opacity="0.38" text-anchor="end">2022-23 on this site</text>
+</g>
+</svg></div>
+  <div class="chap-steps">
+<div class="step" data-chap="4"><div class="no">15</div><h3 class="serif">Published early</h3><p>A year's first figure arrives before the year's records are complete. The First Advance Estimate is built from part-year indicators, so planning does not have to wait for the accounts to close.</p><div class='pull'>2025-26 carries <b>FAE</b> wherever it appears on this site.</div></div>
+<div class="step" data-chap="4"><div class="no">16</div><h3 class="serif">Revised as records arrive</h3><p>As crop surveys, tax records and filings come in, projection is replaced with measurement and the figure is re-issued. First Revised, then Second Revised.</p><div class='pull'>2024-25 stands at <b>FRE</b>, and 2023-24 at <b>SRE</b>.</div></div>
+<div class="step" data-chap="4"><div class="no">17</div><h3 class="serif">Settled</h3><p>By the third revision nearly all source records are in. The Third Revised Estimate is the closest the series comes to a final figure.</p><div class='pull'>2022-23 carries <b>TRE</b>, the firmest year in the four-year window.</div></div>
+<div class="step" data-chap="4"><div class="no">18</div><h3 class="serif">Read the label</h3><p>The same year can be quoted at different stages, and the stages differ. That is why every figure in this assistant names its year and its estimate class together.</p><div class='pull'>A growth rate that mixes an <b>FAE</b> with a <b>TRE</b> compares a forecast with a measurement.</div></div>
   </div>
 </div>
   <section class="narr-close vstage" data-vid="glass">
