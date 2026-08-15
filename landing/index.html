@@ -3517,15 +3517,14 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     var apSub = 'Case-for-action briefs tied to a specific district.';
     var moSub = 'Clusters and models from elsewhere, framed for district and mandal officers.';
     if(DISTF){
-      var mine = [], restAp = [], restModel = [];
-      CASES.ap.forEach(function(c){ (caseMatchesDistrict(c) ? mine : restAp).push(c); });
-      CASES.model.forEach(function(c){ (caseMatchesDistrict(c) ? mine : restModel).push(c); });
+      // the district's tagged studies ONLY — the rest of the library stays
+      // behind the chip's "All districts" reset, not below the fold
+      var mine = CASES.ap.filter(caseMatchesDistrict)
+                 .concat(CASES.model.filter(caseMatchesDistrict));
       if(mine.length){
         casesBody.innerHTML =
           group('Case studies for ' + DISTF,
-                'Selected for this district by the capacity-building programme.', mine)+
-          group('Other Andhra Pradesh districts', apSub, restAp)+
-          group('Replicable models', moSub, restModel);
+                'Selected for this district by the capacity-building programme.', mine);
         return;
       }
       casesBody.innerHTML =
