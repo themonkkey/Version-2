@@ -253,11 +253,47 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    minus what the nav actually measures (--navh, set in JS — the brand logo is
    clamped, so the height moves with the viewport and cannot be hardcoded).
    min-height, not height: a narrow window that needs more room still gets it. */
+/* Sizing is dual-axis: every vertical rhythm below is min(<width>, <height>), so
+   the governing dimension is whichever is scarcer. A 1024x768 tablet in landscape
+   and a 1366x768 laptop are wide but SHORT — width-only clamps would keep the
+   58px headline and overflow the one-screen hero. min() lets height take over
+   there, and width still governs on a narrow phone. */
 .hero{position:relative;overflow:hidden;background:var(--ink);
-  padding:clamp(40px,6vw,68px) var(--pad-x) clamp(40px,6vw,68px);
+  padding:clamp(24px,min(6vw,5vh),68px) var(--pad-x);
   min-height:calc(100vh - var(--navh,56px));
   min-height:calc(100svh - var(--navh,56px));
   display:flex;flex-direction:column;justify-content:center;}
+.hero .eyebrow{margin-bottom:clamp(11px,min(2.4vw,2.1vh),22px);}
+/* These blocks centre themselves with `margin:0 auto`. Once their parent became a
+   flex column, that auto cross-axis margin overrode the default stretch and they
+   shrank to content — on a 2560px screen the wrap measured 790px, which squeezed
+   the four feature cards into three-plus-an-orphan. width:100% restores the
+   full-width box; max-width and the auto margins still do the centring. */
+.hero > .wrap,.hero > .hero-stats{width:100%;}
+
+/* The section under the hero has to be tall enough that scrolling to the end of
+   the page actually clears the hero. It was 676px against an 837px viewport, so
+   with the 61px footer the page ran out of scroll while the hero's last band was
+   still on screen. Sizing it to the viewport minus the footer makes the two
+   together exactly one screen, so the bottom of the page is the second screen and
+   nothing of the first survives into it. The extra top padding is the sticky nav's
+   own height: it overlays this section, and without it the centred content reads
+   as sitting high. */
+#page-home .hero + .section > .wrap{width:100%;}   /* see the note on .hero > .wrap */
+#page-home .hero + .section{
+  /* +1px absorbs sub-pixel rounding: scrollHeight is an integer while the layout
+     is fractional, and without it the page can end one pixel short of clearing
+     the hero (measured at 768x1024) */
+  min-height:calc(100vh - var(--footh,61px) + 1px);
+  min-height:calc(100svh - var(--footh,61px) + 1px);
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:calc(clamp(28px,min(6vw,5vh),80px) + var(--navh,56px));
+  padding-bottom:clamp(28px,min(6vw,5vh),80px);}
+/* same dual-axis rhythm as the hero, so the second screen holds its shape on a
+   short laptop instead of pushing the call to action off the fold */
+#page-home .hero + .section .sec-head{margin-bottom:clamp(16px,min(3.5vw,3vh),38px);}
+#page-home .hero + .section .sec-cta{margin-top:clamp(20px,min(5.5vw,4.2vh),60px);}
+#page-home .hero + .section .sec-cta-h{margin-bottom:clamp(12px,min(2.2vw,2vh),20px);}
 .hero-content{position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center;}
 .hero .hero-mark{background:rgba(255,255,255,.14);
   backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
@@ -281,20 +317,24 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 .hero .btn-primary:hover{box-shadow:0 14px 38px rgba(198,255,106,.4), inset 0 1px 0 rgba(255,255,255,.5);}
 
 /* glass stat tiles floating on the dark stage */
-.hero-stats{position:relative;z-index:1;max-width:var(--maxw);margin:clamp(24px,4vw,36px) auto 0;
-  display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:13px;}
-.gstat{background:rgba(255,255,255,.11);border-radius:20px;padding:clamp(16px,2vw,22px);
+.hero-stats{position:relative;z-index:1;max-width:var(--maxw);
+  margin:clamp(16px,min(4vw,3.2vh),36px) auto 0;
+  display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;
+  gap:clamp(9px,min(1.1vw,1.3vh),13px);}
+.gstat{background:rgba(255,255,255,.11);border-radius:20px;padding:clamp(12px,min(2vw,2.3vh),22px);
   backdrop-filter:blur(30px) saturate(170%);-webkit-backdrop-filter:blur(30px) saturate(170%);
   border:1px solid rgba(255,255,255,.24);
   box-shadow:0 14px 40px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.30);
   transition:transform .22s cubic-bezier(.4,0,.2,1),background .22s;}
 .gstat:hover{transform:translateY(-3px);background:rgba(255,255,255,.16);}
-.gstat .n{font-size:clamp(26px,3vw,36px);font-weight:700;color:#FFF;line-height:1;
+.gstat .n{font-size:clamp(21px,min(3vw,3.9vh),36px);font-weight:700;color:#FFF;line-height:1;
   letter-spacing:-.032em;font-variant-numeric:tabular-nums;}
 .gstat .n em{font-style:normal;font-size:.55em;font-weight:600;
   color:var(--lime);margin-left:2px;letter-spacing:-.01em;}
-.gstat .lbl{font-size:13px;color:#FFF;margin-top:9px;font-weight:600;letter-spacing:-.012em;}
-.gstat .sub{font-size:11.5px;color:rgba(255,255,255,.58);margin-top:4px;line-height:1.4;}
+.gstat .lbl{font-size:clamp(11.5px,min(1.05vw,1.5vh),13px);color:#FFF;
+  margin-top:clamp(5px,min(.75vw,1vh),9px);font-weight:600;letter-spacing:-.012em;}
+.gstat .sub{font-size:clamp(10.5px,min(.95vw,1.35vh),11.5px);color:rgba(255,255,255,.58);
+  margin-top:4px;line-height:1.4;}
 
 /* the tiles are questions — make that legible without shouting */
 button.gstat{font-family:inherit;text-align:left;cursor:pointer;
@@ -313,10 +353,10 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   letter-spacing:-.006em;background:rgba(52,199,89,.12);
   padding:6px 14px;border-radius:980px;margin-bottom:22px;}
 /* sizing only — colour for the dark stage is set in the hero block above */
-.hero h1{font-size:clamp(32px,5.6vw,58px);line-height:1.08;letter-spacing:-.028em;font-weight:600;}
-.hero p{font-size:clamp(15px,1.7vw,18px);line-height:1.55;
-  max-width:600px;margin:20px auto 0;font-weight:400;}
-.hero-cta{display:flex;gap:12px;margin-top:clamp(26px,4vw,36px);flex-wrap:wrap;justify-content:center;}
+.hero h1{font-size:clamp(28px,min(5.6vw,7.4vh),58px);line-height:1.08;letter-spacing:-.028em;font-weight:600;}
+.hero p{font-size:clamp(14px,min(1.7vw,2.2vh),18px);line-height:1.55;
+  max-width:600px;margin:clamp(12px,min(2.2vw,1.9vh),20px) auto 0;font-weight:400;}
+.hero-cta{display:flex;gap:12px;margin-top:clamp(16px,min(4vw,3.4vh),36px);flex-wrap:wrap;justify-content:center;}
 
 /* ---------- STATS ---------- */
 .stats{padding:clamp(8px,2vw,20px) var(--pad-x) clamp(20px,3vw,32px);}
@@ -349,7 +389,11 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .sec-head h2{font-size:clamp(24px,3.6vw,38px);margin-top:11px;letter-spacing:-.026em;}
 .sec-head p{font-size:clamp(14.5px,1.6vw,17px);color:var(--label-2);line-height:1.6;margin-top:14px;font-weight:400;}
 
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;}
+/* Four cards only tile symmetrically as 4, 2x2 or 1 — auto-fit could settle on
+   three columns and strand the fourth card alone on its own row. */
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+@media(max-width:1100px){.feature-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.feature-grid{grid-template-columns:1fr;}}
 
 /* centred invitation under the cards */
 .sec-cta{display:flex;flex-direction:column;align-items:center;text-align:center;
@@ -1743,7 +1787,25 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   .metric-row{grid-template-columns:1fr;}
   .hero-cta .btn-primary,.hero-cta .btn-ghost{width:100%;justify-content:center;}
 }
+/* ---------- large screens ----------
+   Above a laptop the content stops growing with the window and starts floating in
+   the middle of it. The measure widens in steps and the hero type is allowed a
+   higher ceiling, still capped by min(vw,vh) so a wide-but-short window (a
+   half-height 4K window, a projector) never gets 76px headlines it cannot fit. */
 @media (min-width:1600px){:root{--maxw:1280px;}}
+@media (min-width:2000px){
+  :root{--maxw:1440px;}
+  .hero-content{max-width:960px;}
+  .hero h1{font-size:clamp(48px,min(4.2vw,8vh),72px);}
+  .hero p{font-size:clamp(16px,min(1.3vw,2.2vh),20px);max-width:680px;}
+  .gstat .n{font-size:clamp(30px,min(2.4vw,4vh),42px);}
+  .gstat .lbl{font-size:clamp(13px,min(.9vw,1.5vh),15px);}
+  .gstat .sub{font-size:clamp(11.5px,min(.75vw,1.35vh),13px);}
+}
+@media (min-width:2560px){
+  :root{--maxw:1660px;}
+  .hero-content{max-width:1080px;}
+}
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;}
   html{scroll-behavior:auto;}
@@ -2360,19 +2422,28 @@ document.querySelectorAll('.gstat.ask').forEach(function(b){
   window.__syncNarr = sync;   // lets the page be driven in tests
 })();
 
-// ---------- nav height ----------
-// The hero sizes itself to the viewport minus the nav. The nav's height is not a
-// constant — its brand logo is clamp()ed against viewport width — so it is
-// measured and published as --navh rather than guessed in the stylesheet.
+// ---------- chrome heights ----------
+// The home page is laid out in screens: the hero is the viewport minus the nav,
+// and the section under it is the viewport minus the footer, so the two together
+// leave nothing of the first screen showing on the second. Neither height is a
+// constant — the nav's brand logo is clamp()ed against viewport width, and the
+// footer wraps on narrow screens — so both are measured and published rather than
+// guessed in the stylesheet.
 (function(){
   var nav = document.querySelector('.nav');
-  if(!nav) return;
-  function setNavH(){
-    document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px');
+  var foot = document.querySelector('footer.footer');
+  function publish(){
+    var s = document.documentElement.style;
+    if(nav)  s.setProperty('--navh',  nav.offsetHeight  + 'px');
+    if(foot) s.setProperty('--footh', foot.offsetHeight + 'px');
   }
-  setNavH();
-  window.addEventListener('resize', setNavH, {passive:true});
-  if(window.ResizeObserver) new ResizeObserver(setNavH).observe(nav);
+  publish();
+  window.addEventListener('resize', publish, {passive:true});
+  if(window.ResizeObserver){
+    var ro = new ResizeObserver(publish);
+    if(nav) ro.observe(nav);
+    if(foot) ro.observe(foot);
+  }
 })();
 
 // ---------- ambient video ----------
