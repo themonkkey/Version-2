@@ -3022,7 +3022,8 @@ async function showDistrict(key, name){
     if(dist === undefined){
       try{ dist = await fetch('assets/dist/'+key+'.json').then(r=>r.ok?r.json():null); }
       catch(e){ dist = null; }
-      distCache[key] = dist;
+      // cache successes only — a transient failure retries on the next click
+      if(dist != null) distCache[key] = dist;
     }
     // a later click may have already moved the panel on — do not overwrite it,
     // and a drill into a constituency counts as moving on too
@@ -3289,7 +3290,8 @@ async function showConstituency(name, districtName){
   if(apc === undefined){
     try{ apc = await fetch('assets/apc/'+rec.code+'.json').then(r=>r.ok?r.json():null); }
     catch(e){ apc = null; }
-    dashCache[rec.code] = apc;
+    // cache successes only — a transient failure retries on the next pick
+    if(apc != null) dashCache[rec.code] = apc;
   }
   // a later pick may have landed while this was in flight — a different
   // constituency, or a drill down into a mandal
@@ -3322,18 +3324,25 @@ async function loadMandalIndex(){
 let mandalRanks = null;
 async function loadMandalRanks(){
   if(mandalRanks) return mandalRanks;
-  try{ mandalRanks = await fetch('assets/mandal_ranks.json?v=2026-08-12h').then(r=>r.ok?r.json():{}); }
-  catch(e){ mandalRanks = {}; }
-  return mandalRanks;
+  // failures resolve to null (falsy) so the next call retries — a cached {}
+  // would silently drop every rank badge for the rest of the visit
+  let r = null;
+  try{ r = await fetch('assets/mandal_ranks.json?v=2026-08-12h').then(r=>r.ok?r.json():null); }
+  catch(e){ r = null; }
+  if(r) mandalRanks = r;
+  return r || {};
 }
-// per-mandal GVA files are small; cache so re-opening a mandal doesn't refetch
+// per-mandal GVA files are small; cache so re-opening a mandal doesn't refetch.
+// Only successes are cached: a transient failure must not pin the mandal to the
+// no-own-figures view for the whole visit. Mandals with genuinely no file
+// re-404 on each open, which is cheap.
 const mandalDataCache = {};
 async function loadMandalData(slug){
   if(slug in mandalDataCache) return mandalDataCache[slug];
   let d = null;
   try{ d = await fetch('assets/mandal_data/'+slug+'.json?v=2026-08-12h').then(r=>r.ok?r.json():null); }
   catch(e){ d = null; }
-  mandalDataCache[slug] = d;
+  if(d != null) mandalDataCache[slug] = d;
   return d;
 }
 
@@ -3395,7 +3404,8 @@ async function showMandal(mandalName, constituencyKey, districtName){
     if(apc === undefined && cRec.code != null){
       try{ apc = await fetch('assets/apc/'+cRec.code+'.json').then(r=>r.ok?r.json():null); }
       catch(e){ apc = null; }
-      dashCache[cRec.code] = apc;
+      // cache successes only — a transient failure retries on the next pick
+      if(apc != null) dashCache[cRec.code] = apc;
     }
     cNode = window.DASH.enrich(cRec, constituencyKey.replace(/_/g,' '), apc || null, idx);
   }
