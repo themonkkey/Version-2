@@ -1603,11 +1603,15 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
    silently stopped sticking. clip crops the ambient video the same way without
    creating a scroll container, and the visuals pin again. */
 .narr{background:var(--ink);color:#FFF;position:relative;overflow:clip;}
+/* Safari before 16 drops overflow:clip entirely, leaving the ambient layers to
+   bleed past the section seams. Fall back to hidden there: chapter pinning
+   degrades (visuals scroll with their steps), but nothing spills. */
+@supports not (overflow:clip){.narr{overflow:hidden;}}
 .narr .serif{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,"Times New Roman",serif;
   font-weight:400;letter-spacing:-.018em;}
 
 /* opening title card */
-.narr-open{min-height:88vh;display:flex;flex-direction:column;align-items:center;
+.narr-open{min-height:calc(88vh / var(--pgz,1));display:flex;flex-direction:column;align-items:center;
   justify-content:center;text-align:center;padding:clamp(40px,8vw,90px) var(--pad-x);}
 .narr-open .kick{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
   color:var(--lime);margin-bottom:26px;}
@@ -1637,10 +1641,14 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 /* chapter shell */
 .chap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x);
   display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);align-items:start;}
-.chap-vis{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;}
+/* every vh here divides by --pgz: viewport units ignore the page's zoom factor,
+   and an un-divided 100vh box is 35% taller than the real screen at full zoom,
+   pushing the pinned scene off-centre */
+.chap-vis{position:sticky;top:0;height:calc(100vh / var(--pgz,1));
+  display:flex;align-items:center;justify-content:center;}
 .chap-vis svg{width:100%;max-width:460px;height:auto;overflow:visible;}
-.chap-steps{padding:22vh 0;}
-.step{min-height:74vh;display:flex;flex-direction:column;justify-content:center;
+.chap-steps{padding:calc(22vh / var(--pgz,1)) 0;}
+.step{min-height:calc(74vh / var(--pgz,1));display:flex;flex-direction:column;justify-content:center;
   opacity:.22;transition:opacity .5s ease;}
 .step.on{opacity:1;}
 .step .no{font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--lime);
@@ -1830,7 +1838,7 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
      to keep the no-third-party-runtime rule for a government-facing page. -->
 <script src="assets/dash/gsap.js?v=2026-08-12a" defer></script>
 <link rel="stylesheet" href="assets/dash/components.css?v=2026-08-15b">
-<script src="assets/dash/components.js?v=2026-08-15c" defer></script>
+<script src="assets/dash/components.js?v=2026-08-15d" defer></script>
 <script src="assets/dash/enrich.js?v=2026-08-12a" defer></script>
 <script src="assets/dash/tpl-c1.js?v=2026-08-12a" defer></script>
 <script src="assets/dash/tpl-c2.js?v=2026-08-12a" defer></script>
@@ -3348,6 +3356,7 @@ function findMandal(mi, constituencyKey, mandalName){
 async function showMandal(mandalName, constituencyKey, districtName){
   const panel = document.getElementById('districtPanel');
   if(!panel || !window.DASH || !window.DASH_TPL) return;
+  currentMandal = mandalName;   // claim the pick on entry; late responses check it still holds
 
   const [idx, mi] = await Promise.all([loadDashIndex(), loadMandalIndex()]);
   const m = findMandal(mi, constituencyKey, mandalName);
@@ -3371,11 +3380,6 @@ async function showMandal(mandalName, constituencyKey, districtName){
     cNode = window.DASH.enrich(cRec, constituencyKey.replace(/_/g,' '), apc || null, idx);
   }
 
-  setExploreHeading('mandal', m.name, [
-    { name: m.constituency, kind: 'constituency' },
-    { name: districtName || m.district, kind: 'district' }
-  ]);
-
   const sibs = (mi.by_constituency[m.constituency]||[]).map(s=>mi.mandals[s].name);
   const tpl = window.DASH_TPL[m.archetype] || window.DASH_TPL.M1;
 
@@ -3384,8 +3388,16 @@ async function showMandal(mandalName, constituencyKey, districtName){
   const [ownData, ranks] = await Promise.all([loadMandalData(m.slug), loadMandalRanks()]);
   const rankInfo = ranks && ranks[m.slug] ? ranks[m.slug] : null;
 
-  // a later pick may have landed while the payloads were in flight
-  if(currentMandal && slugify(currentMandal) !== slugify(mandalName)) return;
+  // a later pick may have landed while the payloads were in flight — including
+  // "All mandals"/"All constituencies", which reset currentMandal to null, so
+  // the comparison must run even when nothing is currently picked
+  if(slugify(currentMandal || '') !== slugify(mandalName)) return;
+
+  // heading only after the guard: a superseded call must not relabel the page
+  setExploreHeading('mandal', m.name, [
+    { name: m.constituency, kind: 'constituency' },
+    { name: districtName || m.district, kind: 'district' }
+  ]);
 
   const mNode = window.DASH.enrichMandal(m, cNode, sibs, ownData, rankInfo);
   panel.innerHTML = (window.DASH.brief ? window.DASH.brief(mNode, 'mandal') : '') + drillBarHtml(constituencyKey, mandalName) + tpl(mNode);

@@ -882,6 +882,9 @@
     if (!rows.length) return empty('No sector figures are published for this district.');
 
     var max = rows.reduce(function (a, r) { return Math.max(a, r.pct); }, 0);
+    // all-zero shares would make every x() divide by zero and litter the SVG
+    // with cx="NaN" — same guard compositionBars already carries
+    if (max <= 0) return empty('Sector figures are zero or unpublished.');
     // round the axis up to a sensible ceiling so the top dot isn't jammed at the edge
     var ceil = max <= 10 ? Math.ceil(max / 2) * 2 : max <= 30 ? Math.ceil(max / 5) * 5
       : Math.ceil(max / 10) * 10;
@@ -1001,9 +1004,12 @@
   function briefDistrict(n) {
     var L = [];
     if (n.gddp !== null) {
+      // the contract says gddp_series is always at least []; guard anyway, so a
+      // malformed record costs one sentence, not the whole card via the catch
+      var series = Array.isArray(n.gddp_series) ? n.gddp_series : [];
       var lastPt = null, firstPt = null, i;
-      for (i = n.gddp_series.length - 1; i >= 0; i--) if (n.gddp_series[i].value !== null) { lastPt = n.gddp_series[i]; break; }
-      for (i = 0; i < n.gddp_series.length; i++) if (n.gddp_series[i].value !== null) { firstPt = n.gddp_series[i]; break; }
+      for (i = series.length - 1; i >= 0; i--) if (series[i].value !== null) { lastPt = series[i]; break; }
+      for (i = 0; i < series.length; i++) if (series[i].value !== null) { firstPt = series[i]; break; }
       var s = 'The district economy stands at <b>' + fmtCr(n.gddp) + '</b> GDDP' +
         (lastPt && lastPt.year ? ' for ' + esc(lastPt.year) : '');
       if (n.gddp_growth !== null) s += ', <b>' + fmtPct(n.gddp_growth) + '</b> over the previous year';
