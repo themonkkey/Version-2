@@ -205,6 +205,11 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   -webkit-backdrop-filter:blur(30px) saturate(170%);
   border:1px solid rgba(255,255,255,.22);
   box-shadow:0 16px 44px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.28);}
+/* the base .fcard carries the light theme's white neumorphic shadow; on the dark
+   stage it reads as a white glow around every card, so swap it for the same soft
+   dark drop the other vstage glass uses */
+.vstage .fcard,.vstage .acard{border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 16px 44px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.28);}
 .vstage .fcard:hover{transform:translateY(-3px);background:rgba(255,255,255,.15);
   box-shadow:0 22px 54px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.32);}
 .vstage .fcard p,.vstage .acard p{color:rgba(255,255,255,.72);}
