@@ -248,8 +248,16 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 .vstage .sa-foot,.vstage .f-note{color:rgba(255,255,255,.45);}
 
 /* ---------- HERO (dark video stage) ---------- */
+/* The hero owns the whole first screen: the section below it must not peek above
+   the fold. The nav is sticky and in flow, so the fill height is the viewport
+   minus what the nav actually measures (--navh, set in JS — the brand logo is
+   clamped, so the height moves with the viewport and cannot be hardcoded).
+   min-height, not height: a narrow window that needs more room still gets it. */
 .hero{position:relative;overflow:hidden;background:var(--ink);
-  padding:clamp(40px,6vw,68px) var(--pad-x) clamp(40px,6vw,68px);}
+  padding:clamp(40px,6vw,68px) var(--pad-x) clamp(40px,6vw,68px);
+  min-height:calc(100vh - var(--navh,56px));
+  min-height:calc(100svh - var(--navh,56px));
+  display:flex;flex-direction:column;justify-content:center;}
 .hero-content{position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center;}
 .hero .hero-mark{background:rgba(255,255,255,.14);
   backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
@@ -2350,6 +2358,21 @@ document.querySelectorAll('.gstat.ask').forEach(function(b){
   window.addEventListener('hashchange', ()=>setTimeout(sync,0));
   sync();
   window.__syncNarr = sync;   // lets the page be driven in tests
+})();
+
+// ---------- nav height ----------
+// The hero sizes itself to the viewport minus the nav. The nav's height is not a
+// constant — its brand logo is clamp()ed against viewport width — so it is
+// measured and published as --navh rather than guessed in the stylesheet.
+(function(){
+  var nav = document.querySelector('.nav');
+  if(!nav) return;
+  function setNavH(){
+    document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px');
+  }
+  setNavH();
+  window.addEventListener('resize', setNavH, {passive:true});
+  if(window.ResizeObserver) new ResizeObserver(setNavH).observe(nav);
 })();
 
 // ---------- ambient video ----------
