@@ -974,11 +974,15 @@
      is always named as a plan, never as a measurement. */
   var SECTOR_WORD = { agri: 'agriculture', industry: 'industry', services: 'services' };
 
+  /* The highlights read as one woven paragraph, not a bullet list. Each
+     builder contributes standalone sentences; joined with spaces they flow as
+     prose. Everything else — only render what exists, label every figure —
+     is unchanged. */
   function briefCard(kicker, lines) {
     lines = (lines || []).filter(Boolean);
     if (!lines.length) return '';
     return '<div class="d-sec d-brief"><div class="d-brief-k">' + esc(kicker) + '</div>' +
-      '<ul class="d-brief-l">' + lines.map(function (l) { return '<li>' + l + '</li>'; }).join('') + '</ul></div>';
+      '<p class="d-brief-p">' + lines.join(' ') + '</p></div>';
   }
 
   function shareSentence(shares, of) {
@@ -1016,14 +1020,14 @@
     }
     L.push(shareSentence(n.shares, 'the district economy'));
     if (n.sectors && n.sectors.length) {
-      var best = null;
-      n.sectors.forEach(function (sec) {
-        if (sec.pct_of_state_sector === null) return;
-        if (!best || sec.pct_of_state_sector > best.pct_of_state_sector) best = sec;
-      });
-      if (best) L.push('Statewide, its strongest position is <b>' + esc(best.name) + '</b> — <b>' +
-        fmtPct(best.pct_of_state_sector) + '</b> of AP’s total for that sector' +
-        (best.rank !== null ? ' (rank ' + best.rank + ' of ' + (n.district_count || 28) + ' districts)' : '') + '.');
+      var ranked = n.sectors.filter(function (sec) { return sec.pct_of_state_sector !== null; })
+        .sort(function (a, b) { return b.pct_of_state_sector - a.pct_of_state_sector; });
+      if (ranked[0]) L.push('Statewide, its strongest position is <b>' + esc(ranked[0].name) + '</b> — <b>' +
+        fmtPct(ranked[0].pct_of_state_sector) + '</b> of AP’s total for that sector' +
+        (ranked[0].rank !== null ? ' (rank ' + ranked[0].rank + ' of ' + (n.district_count || 28) + ' districts)' : '') + '.');
+      if (ranked[1]) L.push('It also holds ground in <b>' + esc(ranked[1].name) + '</b>, with ' +
+        fmtPct(ranked[1].pct_of_state_sector) + ' of the state total' +
+        (ranked[1].rank !== null ? ' (rank ' + ranked[1].rank + ')' : '') + '.');
     }
     return briefCard('District highlights', L);
   }
@@ -1072,9 +1076,20 @@
         L.push(cap(bits.join('; ')) + '.');
       }
       if (n.own.sectors && n.own.sectors.length) {
-        var top = n.own.sectors.slice().sort(function (a, b) { return b.pct - a.pct; })[0];
-        if (top && top.pct !== null) L.push('<b>' + esc(top.name) + '</b> is the largest slice of the mandal economy at <b>' +
-          fmtPct(top.pct) + '</b>.');
+        var srt = n.own.sectors.slice().sort(function (a, b) { return b.pct - a.pct; });
+        if (srt[0] && srt[0].pct !== null) {
+          var sec = '<b>' + esc(srt[0].name) + '</b> is the largest slice of the mandal economy at <b>' +
+            fmtPct(srt[0].pct) + '</b>';
+          if (srt[1] && srt[1].pct !== null) sec += ', followed by ' + esc(srt[1].name) +
+            ' at ' + fmtPct(srt[1].pct);
+          L.push(sec + '.');
+        }
+      }
+      var dem = n.own.demographics || {};
+      if (num(dem.literacy_total) !== null) {
+        L.push('Literacy stands at <b>' + fmtPct(dem.literacy_total) + '</b>' +
+          (num(dem.literacy_female) !== null && num(dem.literacy_male) !== null
+            ? ' (female ' + fmtPct(dem.literacy_female) + ', male ' + fmtPct(dem.literacy_male) + ')' : '') + '.');
       }
     } else {
       L.push('No mandal-level GVA statement could be extracted for ' + esc(n.name) +

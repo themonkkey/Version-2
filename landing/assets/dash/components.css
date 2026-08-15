@@ -498,3 +498,10 @@
 .vstage .d-brief-l li{color:rgba(255,255,255,.82);}
 .vstage .d-brief-l li::before{background:var(--lime,#8FC93A);}
 .vstage .d-brief-l b{color:#FFF;}
+
+/* the woven-paragraph form of the brief — one flowing block of prose */
+.d-brief-p{margin:0;font-size:14px;line-height:1.72;letter-spacing:-.004em;
+  color:rgba(20,40,30,.82);max-width:72ch;}
+.d-brief-p b{font-weight:700;color:#0B2E20;}
+.vstage .d-brief-p{color:rgba(255,255,255,.84);}
+.vstage .d-brief-p b{color:#FFF;}
