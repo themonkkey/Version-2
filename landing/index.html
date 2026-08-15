@@ -3239,7 +3239,10 @@ let dashCache = {};
 let dashIndexPromise = null;
 function loadDashIndex(){
   if(!dashIndexPromise){
-    dashIndexPromise = fetch('assets/dashboard_index.json').then(r=>r.json()).catch(()=>null);
+    dashIndexPromise = fetch('assets/dashboard_index.json').then(r=>r.json())
+      // a failed fetch clears the cache so the next click retries, instead of
+      // pinning the whole visit to the legacy panel off one transient hiccup
+      .catch(function(){ dashIndexPromise = null; return null; });
   }
   return dashIndexPromise;
 }
