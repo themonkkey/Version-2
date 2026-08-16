@@ -985,6 +985,20 @@ a.docs-leaf:hover .ext{opacity:1;}
 /* The measurement pair, as sketched: two equal cards below the brief. Stretch,
    not auto height — otherwise the shorter card's footer floats and the two read
    as unrelated blocks rather than a pair. */
+/* assessment card: link body by default; scores per training when a report exists */
+.cap-card-inner{display:flex;flex-direction:column;flex:1;text-decoration:none;color:inherit;min-width:0;}
+.cap-card.has-results{cursor:default;}
+.cap-card.has-results:hover{transform:none;}
+.cap-mini.cap-mini-rows{grid-template-columns:1fr;gap:6px;}
+.cap-mini-rows .row{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:baseline;padding:9px 12px;}
+.cap-mini-rows .row .k{grid-column:1;grid-row:1;text-transform:none;letter-spacing:0;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85);}
+.cap-mini-rows .row .v{grid-column:2;grid-row:1 / span 2;font-size:15px;white-space:nowrap;display:flex;align-items:baseline;gap:6px;}
+.cap-mini-rows .row .v i{font-size:13px;color:rgba(255,255,255,.5);}
+.cap-mini-rows .row .v em{font-style:normal;font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);}
+.cap-mini-rows .row .v em.up{background:rgba(198,236,143,.16);color:var(--lime);}
+.cap-mini-rows .row .v em.down{background:rgba(255,120,110,.16);color:#FFB4A8;}
+.cap-mini-rows .row .s{grid-column:1;grid-row:2;font-size:10.5px;color:rgba(255,255,255,.45);}
+.cap-go-btn{background:none;border:0;padding:0;font:inherit;cursor:pointer;text-align:left;}
 /* Baseline & endline results (renderResults) */
 .ar-wrap{border-radius:var(--r-lg);padding:clamp(18px,2.2vw,26px) clamp(18px,2.4vw,28px);
   background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
@@ -4774,28 +4788,58 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       '</div>' +
       bars +
       '<div class="ar-sw">' +
-        (r.strongest ? '<p><em>Strongest</em> '+esc(r.strongest)+'</p>' : '') +
-        (r.weakest ? '<p><em>Weakest</em> '+esc(r.weakest)+'</p>' : '') +
+        (r.strongest ? '<p><em>Best answered</em> '+esc(r.strongest)+'</p>' : '') +
+        (r.weakest ? '<p><em>Least answered</em> '+esc(r.weakest)+'</p>' : '') +
         (r.item_range ? '<p><em>Item accuracy</em> '+esc(r.item_range)+'</p>' : '') +
       '</div>' +
     '</div>';
   }
 
+  var capAssessDefault = null, capResultsOpen = false;
+
   function renderResults(d){
     var mount = document.getElementById('capResults');
-    var two = capBody.querySelector('.cap-two');
-    if(!mount) return;
+    var card = document.getElementById('capAssessCard');
+    if(!mount || !card) return;
+    if(capAssessDefault == null) capAssessDefault = card.innerHTML;
     var rec = CAPR && CAPR.districts && CAPR.districts[d.slug];
+    capResultsOpen = false;
+    mount.hidden = true;
     if(!rec){
       mount.innerHTML = '';
-      if(two) two.hidden = false;
+      card.innerHTML = capAssessDefault;
+      card.classList.remove('has-results');
       return;
     }
-    if(two) two.hidden = true;
+    /* the card itself carries the scores per type of training; the detail
+       expands beneath the two cards on request */
+    card.classList.add('has-results');
+    card.innerHTML =
+      '<h3>Baseline &amp; endline</h3>' +
+      '<p>Scores before and after training in '+esc(rec.name)+', from the consolidated assessment report.</p>' +
+      '<div class="cap-mini cap-mini-rows">' + rec.levels.map(function(L){
+        var b = L.baseline, e = L.endline;
+        var d = (L.change && L.change.pct_pp != null)
+          ? '<em class="'+(L.change.pct_pp >= 0 ? 'up' : 'down')+'">'+(L.change.pct_pp > 0 ? '+' : '')+numf(L.change.pct_pp)+' pp</em>'
+          : '<em class="na">not comparable</em>';
+        return '<div class="row"><span class="k">'+esc(L.label)+'</span>' +
+          '<span class="v">'+pctf(b && b.pct)+' <i class="ti ti-arrow-narrow-right"></i> '+pctf(e && e.pct)+' '+d+'</span>' +
+          '<span class="s">n = '+(b ? b.n : '—')+' → '+(e ? e.n : '—')+'</span></div>';
+      }).join('') + '</div>' +
+      '<button type="button" class="cap-go cap-go-btn" id="capResultsBtn">See the full results <i class="ti ti-arrow-down"></i></button>';
+    card.querySelector('#capResultsBtn').addEventListener('click', function(){
+      capResultsOpen = !capResultsOpen;
+      mount.hidden = !capResultsOpen;
+      this.innerHTML = capResultsOpen
+        ? 'Hide the results <i class="ti ti-arrow-up"></i>'
+        : 'See the full results <i class="ti ti-arrow-down"></i>';
+      if(capResultsOpen) mount.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
     var html = '<div class="ar-wrap">' +
       '<div class="ar-head"><h3>Baseline &amp; endline — '+esc(rec.name)+'</h3>' +
-      '<p class="lede">What officers knew before each training and after it, from the consolidated assessment report. ' +
-      'One panel per type of training; the two rounds are compared only where the report says the papers were the same.</p></div>';
+      '<p class="lede">One panel per type of training. Each round shows the score, how officers were spread, ' +
+      'and the best and least answered topics; the two rounds are compared only where the report says the papers were the same.</p></div>';
     html += rec.levels.map(function(L){
       var b = L.baseline, e = L.endline;
       var delta = '';
@@ -4883,7 +4927,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
           '</div>' +
           '<span class="cap-go">Open the feedback detail <i class="ti ti-arrow-right"></i></span>' +
         '</a>' +
-        '<a class="cap-card" href="capacity/assessment.html">' +
+        '<div class="cap-card cap-card-assess" id="capAssessCard">' +
+          '<a class="cap-card-inner" href="capacity/assessment.html">' +
           '<h3>Baseline &amp; endline</h3>' +
           '<p>The knowledge assessment run before and after training at all three ' +
           'levels: Swarna Andhra awareness, the KPI framework, and GDP / GVA / GDDP.</p>' +
@@ -4894,8 +4939,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
             '<div><div class="v">' + (a.totals.questions||0) + '</div><div class="k">Items</div></div>' +
           '</div>' +
           '<span class="cap-go">Open the assessment detail <i class="ti ti-arrow-right"></i></span>' +
-        '</a>' +
+          '</a>' +
+        '</div>' +
       '</div>';
+    capAssessDefault = null;   // captured from the DOM after paint
 
     var lightbox =
       '<div class="cap-lb" id="capLb" role="dialog" aria-modal="true" aria-label="Training photograph">' +
@@ -4908,8 +4955,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         '</figure>' +
       '</div>';
 
-    capBody.innerHTML = strip + pick + '<div id="capBrief"></div>' +
-      '<div id="capResults"></div>' + two + lightbox;
+    capBody.innerHTML = strip + pick + '<div id="capBrief"></div>' + two +
+      '<div id="capResults" hidden></div>' + lightbox;
 
     var sel = document.getElementById('capDistrict');
     sel.addEventListener('change', function(){ renderBrief(CAP.districts[+sel.value]); });
