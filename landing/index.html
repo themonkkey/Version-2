@@ -884,6 +884,10 @@ a.docs-leaf:hover .ext{opacity:1;}
   text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px;}
 .cap-hpts li.cap-hhead::before{display:none;}
 .cap-hpts li.cap-hhead:first-child{margin-top:0;}
+/* fitted beside the photographs: two lines a point, see fitHighlights() */
+.cap-hl.fit .cap-hpts li:not(.cap-hhead){display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;}
+.cap-hl.fit .cap-hpts li[hidden]{display:none;}
 .cap-note{font-size:13.2px;font-style:italic;color:rgba(255,255,255,.66);margin:0;}
 .cap-more{margin-top:9px;font:inherit;font-size:12px;font-weight:650;color:var(--lime);
   background:none;border:1px solid rgba(198,236,143,.4);border-radius:999px;padding:4px 12px;
@@ -4299,6 +4303,9 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         p = (p || '').replace(/\s+/g, ' ').trim();
         if(!p) return;
         if(/^(Method|Activity|Field|Key Findings|Key Officials|Participants list|Sector Focus)\b/.test(p)) return;
+        /* filler openers carry no content: "The following were the highlights:" */
+        if(/:$/.test(p) && p.length < 90) return;
+        if(/^(the following|highlights of|key highlights|the highlights)\b/i.test(p) && p.length < 120) return;
         pts.push({ head: head, text: p });
       });
     });
@@ -4350,6 +4357,93 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
   var HL_SHOW = 6, ROLE_SHOW = 14;
 
+  /* Highlights sized to the photographs. When the two sit side by side, the
+     text column shows only as many points as fit the height of the photo
+     grid, each clamped to two lines, so the card reads as one block instead
+     of a short rail beside a long essay. The photo grid's height is known
+     before the images load (aspect-ratio is fixed in CSS), so this can run
+     straight after mount. Stacked layouts (narrow screens) keep HL_SHOW.
+     "Show all" undoes it. */
+  function fitHighlights(mount){
+    var split = mount.querySelector('.cap-split');
+    var box = mount.querySelector('.cap-hl');
+    if(!box || box.classList.contains('unfit')) return;
+    var media = split && split.querySelector('.cap-split-media');
+    var text = split && split.querySelector('.cap-split-text');
+    var items = [].slice.call(box.querySelectorAll('.cap-hpts li'));
+    var more = box.querySelector('.cap-more');
+    var sideBySide = media && text &&
+      Math.abs(media.getBoundingClientRect().top - text.getBoundingClientRect().top) < 4 &&
+      media.getBoundingClientRect().left !== text.getBoundingClientRect().left;
+    if(!sideBySide){
+      box.classList.remove('fit');
+      var nPts = 0;
+      items.forEach(function(li){
+        if(li.classList.contains('cap-hhead')){ li.hidden = nPts >= HL_SHOW; return; }
+        li.hidden = nPts >= HL_SHOW; nPts++;
+      });
+      if(more) more.hidden = nPts <= HL_SHOW;
+      var w = mount.querySelector('.cap-who:not(.unfit)');
+      if(w){
+        var cs = [].slice.call(w.querySelectorAll('.cap-chip'));
+        cs.forEach(function(c, i){ c.hidden = i >= ROLE_SHOW; });
+        var wm = w.querySelector('.cap-more-inline');
+        if(wm){ wm.hidden = cs.length <= ROLE_SHOW; wm.textContent = '+' + (cs.length - ROLE_SHOW) + ' more'; }
+      }
+      return;
+    }
+    box.classList.add('fit');
+    var target = media.getBoundingClientRect().height;
+    var over = function(){ return text.getBoundingClientRect().height > target; };
+
+    /* The room list shares the column. Highlights take priority, so the chips
+       start at a floor of four and only grow back once the points are placed. */
+    var who = mount.querySelector('.cap-who');
+    if(who && who.classList.contains('unfit')) who = null;   // reader opened it; leave it
+    var chips = who ? [].slice.call(who.querySelectorAll('.cap-chip')) : [];
+    var whoMore = who && who.querySelector('.cap-more-inline');
+    var CHIP_FLOOR = 4;
+    chips.forEach(function(c, i){ c.hidden = i >= CHIP_FLOOR; });
+    var setWhoMore = function(vis){
+      if(!whoMore) return;
+      whoMore.hidden = vis >= chips.length;
+      whoMore.textContent = '+' + (chips.length - vis) + ' more';
+    };
+    setWhoMore(Math.min(CHIP_FLOOR, chips.length));
+
+    items.forEach(function(li){ li.hidden = true; });
+    var shown = 0;
+    for(var i = 0; i < items.length; i++){
+      items[i].hidden = false;
+      if(!items[i].classList.contains('cap-hhead')) shown++;
+      if(over() && shown > 1){
+        items[i].hidden = true;
+        if(!items[i].classList.contains('cap-hhead')) shown--;
+        /* an orphaned group head just above the cut goes too */
+        if(i > 0 && items[i-1].classList.contains('cap-hhead') && !items[i-1].hidden) items[i-1].hidden = true;
+        break;
+      }
+    }
+    var total = parseInt(box.getAttribute('data-n') || '0', 10);
+    if(more) more.hidden = shown >= total;
+
+    /* spare height, if any, goes back to the chips */
+    var vis = Math.min(CHIP_FLOOR, chips.length);
+    for(var j = CHIP_FLOOR; j < chips.length; j++){
+      chips[j].hidden = false; vis++;
+      setWhoMore(vis);
+      if(over()){ chips[j].hidden = true; vis--; setWhoMore(vis); break; }
+    }
+  }
+  var capFitT = null;
+  window.addEventListener('resize', function(){
+    clearTimeout(capFitT);
+    capFitT = setTimeout(function(){
+      var m = document.getElementById('capActiveSess');
+      if(m && !m.hidden) fitHighlights(m);
+    }, 120);
+  });
+
   function sessionBlock(s, dname){
     var head = '<div class="cap-shead">' +
       (s.day ? '<span class="cap-day">Day '+s.day+'</span>' : '') +
@@ -4388,12 +4482,12 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         lastHead = p.head || lastHead;
         items.push('<li'+hid+'>'+esc(p.text)+'</li>');
       });
-      hl = '<div class="cap-block cap-hl">' +
+      /* the "Show all" button is always emitted; fitHighlights() removes it
+         when every point ended up visible */
+      hl = '<div class="cap-block cap-hl" data-n="'+hp.points.length+'">' +
         '<h5>'+(hp.src === 'report' ? 'From the report' : 'Highlights')+'</h5>' +
         '<ul class="cap-hpts">'+items.join('')+'</ul>' +
-        (hp.points.length > HL_SHOW
-          ? '<button type="button" class="cap-more" data-more="hl">Show all '+hp.points.length+' points</button>'
-          : '') +
+        '<button type="button" class="cap-more" data-more="hl">Show all '+hp.points.length+' points</button>' +
       '</div>';
     } else if(s.note){
       hl = '<div class="cap-block cap-hl"><h5>Note</h5><p class="cap-note">'+esc(s.note)+'</p></div>';
@@ -4503,10 +4597,14 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       mount.querySelectorAll('.cap-more').forEach(function(b){
         b.addEventListener('click', function(){
           var box = b.closest('.cap-block');
-          if(box) box.querySelectorAll('[hidden]').forEach(function(el){ el.hidden = false; });
+          if(box){
+            box.querySelectorAll('[hidden]').forEach(function(el){ el.hidden = false; });
+            box.classList.add('unfit');       // release the two-line clamp
+          }
           b.remove();
         });
       });
+      fitHighlights(mount);
       mount.scrollIntoView({behavior:'auto', block:'start'});
     }
     showSession(0);
