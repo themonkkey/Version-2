@@ -1745,17 +1745,56 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 [data-step="4"] #sc2 .g3 .tile{fill:rgba(143,227,255,.15);stroke:#8FE3FF;}
 
 /* scene 3 — three estimation approaches.
-   The same five curves serve both directions: dash travel runs one way for
-   top-down and the other for bottom-up, so no second set of paths is needed. */
-#sc3 .flow{opacity:0;}
-[data-step="1"] #sc3 .flow{opacity:1;animation:dashDown 1.5s linear infinite;}
-[data-step="2"] #sc3 .flow{opacity:1;animation:dashUp 1.5s linear infinite;}
-[data-step="3"] #sc3 .flow.down{opacity:.9;animation:dashDown 1.5s linear infinite;}
-[data-step="3"] #sc3 .flow.up{opacity:.9;animation:dashUp 1.5s linear infinite;}
-[data-step="1"] #sc3 .top > rect{fill:var(--lime);fill-opacity:1;}
-[data-step="2"] #sc3 .bot > rect{fill:var(--lime);fill-opacity:1;}
-[data-step="3"] #sc3 .top > rect:first-child,
-[data-step="3"] #sc3 .bot > rect:first-child{fill:var(--lime);fill-opacity:.45;}
+   Each district carries two rails six units apart, one pointing down and one
+   pointing up. Which rails exist IS the choreography: top-down shows the down
+   rails, bottom-up the up rails, and mixed shows both at once. Direction was
+   previously carried only by which way the dashes travelled, which is a detail
+   most readers scroll straight past. Colour doubles the signal: blue arrives
+   from the state, lime rises from the districts. */
+#sc3 .box{fill:rgba(255,255,255,.10);stroke:rgba(255,255,255,.28);
+  transition:fill .5s ease,stroke .5s ease;}
+#sc3 .node{transition:opacity .5s ease;}
+#sc3 .nlbl{fill:#FFF;font-size:12px;font-weight:600;letter-spacing:.13em;}
+#sc3 .nnum{fill:rgba(255,255,255,.8);font-size:12px;font-weight:600;
+  font-variant-numeric:tabular-nums;}
+#sc3 .ell{fill:rgba(255,255,255,.4);font-size:13px;letter-spacing:.1em;}
+#sc3 .foot{fill:rgba(255,255,255,.45);font-size:9px;font-weight:600;letter-spacing:.14em;}
+#sc3 .nlbl,#sc3 .nnum,#sc3 .ell,#sc3 .foot,#sc3 .clbl,#sc3 .cap{
+  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
+#sc3 .bus{stroke:rgba(255,255,255,.3);stroke-width:1.5;fill:none;}
+
+/* "flowrail", not "rail": the page already has a .rail component (the fixed
+   chapter progress dots), and its position:fixed + translateY(-50%) applied to
+   these SVG groups too, sliding every rail up by half the viewBox. Scene class
+   names share a global namespace with the page's components. */
+#sc3 .flowrail{opacity:0;transition:opacity .5s ease;}
+#sc3 .flowrail .line{stroke-width:2;stroke-linecap:round;fill:none;stroke-dasharray:6 5;}
+#sc3 .flowrail.down .line{stroke:#8FE3FF;animation:dashDown 1.5s linear infinite;}
+#sc3 .flowrail.up .line{stroke:var(--lime);animation:dashUp 1.5s linear infinite;}
+#sc3 .flowrail.down .head{fill:#8FE3FF;}
+#sc3 .flowrail.up .head{fill:var(--lime);}
+[data-step="1"] #sc3 .flowrail.down,
+[data-step="2"] #sc3 .flowrail.up,
+[data-step="3"] #sc3 .flowrail{opacity:1;}
+
+#sc3 .chips{opacity:0;transition:opacity .5s ease;}
+[data-step="1"] #sc3 .chips{opacity:1;}
+#sc3 .chip{fill:rgba(143,227,255,.14);stroke:rgba(143,227,255,.45);}
+#sc3 .clbl{fill:#8FE3FF;font-size:7.5px;font-weight:600;letter-spacing:.1em;}
+
+/* the node the figure is coming FROM is the lit one */
+[data-step="1"] #sc3 .state .box{fill:rgba(143,227,255,.18);stroke:#8FE3FF;}
+[data-step="2"] #sc3 .dist .box{fill:rgba(198,255,106,.18);stroke:var(--lime);}
+[data-step="1"] #sc3 .dist,[data-step="2"] #sc3 .state{opacity:.45;}
+
+#sc3 .cap{opacity:0;fill:rgba(255,255,255,.62);font-size:9px;font-weight:600;
+  letter-spacing:.1em;transition:opacity .45s ease;}
+[data-step="1"] #sc3 .cap-td,
+[data-step="2"] #sc3 .cap-bu,
+[data-step="3"] #sc3 .cap-mx{opacity:1;}
+[data-step="1"] #sc3 .cap-td{fill:#8FE3FF;}
+[data-step="2"] #sc3 .cap-bu{fill:var(--lime);}
+
 @keyframes dashDown{to{stroke-dashoffset:-22;}}
 @keyframes dashUp{to{stroke-dashoffset:22;}}
 
@@ -2192,39 +2231,85 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 <div class="chap-mark"><div class="big serif">03</div><div class="ttl serif">How the numbers are built</div></div>
 <div class="chap" data-chap-i="2" data-step="1">
   <div class="chap-vis"><svg id="sc3" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g >
-<g class="sc node top">
-<rect x="140" y="44" width="180" height="54" rx="13" fill="white" fill-opacity="0.14"/>
-<rect x="140.5" y="44.5" width="179" height="53" rx="12.5" stroke="white" stroke-opacity="0.32"/>
+<g class="node state">
+<rect class="box" x="130" y="28" width="200" height="48" rx="13"/>
+<text class="nlbl" x="230" y="58" text-anchor="middle">STATE TOTAL</text>
 </g>
-<g class="sc node bot">
-<rect x="42" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
-<rect x="42.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+<path class="bus" d="M230,76 V100"/>
+<path class="bus" d="M74,100 H386"/>
+<g class="flowrail down" style="transition-delay:0.10s">
+<path class="line" d="M71.0,100 V246"/>
+<path class="head" d="M66.0,231 L76.0,231 L71.0,241 Z"/>
 </g>
-<g class="sc node bot">
-<rect x="120" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
-<rect x="120.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+<g class="flowrail up" style="transition-delay:0.10s">
+<path class="line" d="M77.0,246 V100"/>
+<path class="head" d="M72.0,119 L82.0,119 L77.0,109 Z"/>
 </g>
-<g class="sc node bot">
-<rect x="198" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
-<rect x="198.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+<g class="flowrail down" style="transition-delay:0.05s">
+<path class="line" d="M149.0,100 V246"/>
+<path class="head" d="M144.0,231 L154.0,231 L149.0,241 Z"/>
 </g>
-<g class="sc node bot">
-<rect x="276" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
-<rect x="276.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+<g class="flowrail up" style="transition-delay:0.05s">
+<path class="line" d="M155.0,246 V100"/>
+<path class="head" d="M150.0,119 L160.0,119 L155.0,109 Z"/>
 </g>
-<g class="sc node bot">
-<rect x="354" y="244" width="64" height="54" rx="11" fill="white" fill-opacity="0.14"/>
-<rect x="354.5" y="244.5" width="63" height="53" rx="10.5" stroke="white" stroke-opacity="0.32"/>
+<g class="flowrail down" style="transition-delay:0.00s">
+<path class="line" d="M227.0,100 V246"/>
+<path class="head" d="M222.0,231 L232.0,231 L227.0,241 Z"/>
 </g>
-<path class="sc flow down" d="M230 104C230 171 74 171 74 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
-<path class="sc flow down" d="M230 104C230 171 152 171 152 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
-<path class="sc flow up" d="M230 104C230 171 230 171 230 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
-<path class="sc flow up" d="M230 104C230 171 308 171 308 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
-<path class="sc flow up" d="M230 104C230 171 386 171 386 238" stroke="#C6FF6A" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 5"/>
-<text  x="230" y="76" font-family="Public Sans" font-weight="600" font-size="13" letter-spacing="1.3" fill="white" fill-opacity="0.85" text-anchor="middle">STATE</text>
-<text  x="230" y="320" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.55" text-anchor="middle">DISTRICTS</text>
+<g class="flowrail up" style="transition-delay:0.00s">
+<path class="line" d="M233.0,246 V100"/>
+<path class="head" d="M228.0,119 L238.0,119 L233.0,109 Z"/>
 </g>
+<g class="flowrail down" style="transition-delay:0.05s">
+<path class="line" d="M305.0,100 V246"/>
+<path class="head" d="M300.0,231 L310.0,231 L305.0,241 Z"/>
+</g>
+<g class="flowrail up" style="transition-delay:0.05s">
+<path class="line" d="M311.0,246 V100"/>
+<path class="head" d="M306.0,119 L316.0,119 L311.0,109 Z"/>
+</g>
+<g class="flowrail down" style="transition-delay:0.10s">
+<path class="line" d="M383.0,100 V246"/>
+<path class="head" d="M378.0,231 L388.0,231 L383.0,241 Z"/>
+</g>
+<g class="flowrail up" style="transition-delay:0.10s">
+<path class="line" d="M389.0,246 V100"/>
+<path class="head" d="M384.0,119 L394.0,119 L389.0,109 Z"/>
+</g>
+<g class="chips">
+<rect class="chip" x="140" y="156" width="66" height="22" rx="11"/>
+<text class="clbl" x="173" y="171" text-anchor="middle">WORKFORCE</text>
+<rect class="chip" x="216" y="156" width="50" height="22" rx="11"/>
+<text class="clbl" x="241" y="171" text-anchor="middle">OUTPUT</text>
+<rect class="chip" x="276" y="156" width="46" height="22" rx="11"/>
+<text class="clbl" x="299" y="171" text-anchor="middle">UNITS</text>
+</g>
+<g class="node dist" style="transition-delay:0.10s">
+<rect class="box" x="42" y="252" width="64" height="48" rx="12"/>
+<text class="nnum" x="74" y="282" text-anchor="middle">1</text>
+</g>
+<g class="node dist" style="transition-delay:0.05s">
+<rect class="box" x="120" y="252" width="64" height="48" rx="12"/>
+<text class="nnum" x="152" y="282" text-anchor="middle">2</text>
+</g>
+<g class="node dist" style="transition-delay:0.00s">
+<rect class="box" x="198" y="252" width="64" height="48" rx="12"/>
+<text class="nnum" x="230" y="282" text-anchor="middle">3</text>
+</g>
+<g class="node dist" style="transition-delay:0.05s">
+<rect class="box" x="276" y="252" width="64" height="48" rx="12"/>
+<text class="nnum" x="308" y="282" text-anchor="middle">4</text>
+</g>
+<g class="node dist" style="transition-delay:0.10s">
+<rect class="box" x="354" y="252" width="64" height="48" rx="12"/>
+<text class="nnum" x="386" y="282" text-anchor="middle">28</text>
+</g>
+<text class="ell" x="347" y="282" text-anchor="middle">···</text>
+<text class="foot" x="230" y="318" text-anchor="middle">28 DISTRICTS</text>
+<text class="cap cap-td" x="230" y="336" text-anchor="middle">TOP-DOWN · THE STATE TOTAL, SHARED OUT</text>
+<text class="cap cap-bu" x="230" y="336" text-anchor="middle">BOTTOM-UP · DISTRICTS MEASURED, THEN SUMMED</text>
+<text class="cap cap-mx" x="230" y="336" text-anchor="middle">MIXED · BY INDUSTRY, NOT BY DISTRICT</text>
 </svg></div>
   <div class="chap-steps">
 <div class="step" data-chap="2"><div class="no">08</div><h3 class="serif">Top-down</h3><p>Start with the state total, then share it out across districts using an indicator that tracks where the activity actually happened: workforce, output, or registered units.</p><p>Used wherever direct district data does not exist.</p></div>
