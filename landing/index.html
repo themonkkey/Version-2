@@ -515,7 +515,9 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    the browse view the box is height-constrained and the map fills it, so the hint
    stays in flow there and cannot overlap the drawing. */
 .map-layout.split .map-hint{position:absolute;left:0;right:0;
-  bottom:clamp(10px,1.2vw,14px);margin-top:0;}
+  bottom:var(--map-pad,14px);margin-top:0;}
+/* and the same reserve at the foot, for the out-of-flow hint line */
+.map-layout.split .map-box{padding-bottom:calc(var(--map-pad) + 26px);}
 /* DETAIL lays out as bricks, not one tall right-hand column.
    The panel used to be a single glass box holding brief, drill and dashboard, so
    everything downstream inherited the 68% column and the left half of the page
@@ -1553,7 +1555,14 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   #docsView .docs-tools{width:100%;}
   .docs-search{width:100%;}
 }
-.map-box{background:var(--glass);border-radius:var(--r-lg);padding:clamp(10px,1.2vw,13px);
+/* --map-pad is the box's own inset; the back pill and the hint are both absolutely
+   positioned against it, so they are pinned to the same value and the drawing is
+   given extra room to clear them (see .map-box.zoomed / .map-layout.split below).
+   Without that reserve the state outline ran under the "All districts" pill in the
+   top-left and under the hint line along the bottom, which is what made the box
+   read as cramped. */
+.map-box{--map-pad:clamp(15px,1.7vw,21px);
+  background:var(--glass);border-radius:var(--r-lg);padding:var(--map-pad);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--glass-border);
   box-shadow:var(--neu-out), inset 0 1px 0 rgba(255,255,255,.9);
@@ -1604,13 +1613,16 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
    centred however the box was justified. Absolute keeps it pinned to the box's
    top-left while the map centres against the full height. .map-box is
    position:sticky, so it is already the containing block. */
-.map-back{position:absolute;top:clamp(10px,1.2vw,13px);left:clamp(10px,1.2vw,13px);z-index:3;
+.map-back{position:absolute;top:var(--map-pad,13px);left:var(--map-pad,13px);z-index:3;
   display:none;align-items:center;gap:6px;font:inherit;font-size:12.5px;font-weight:600;
   letter-spacing:-.01em;cursor:pointer;padding:7px 13px;border-radius:980px;
   background:rgba(255,255,255,.5);border:1px solid var(--glass-border);
   color:var(--label);box-shadow:var(--neu-out);transition:background .18s;}
 .map-back:hover{background:rgba(255,255,255,.72);}
 .map-box.zoomed .map-back{display:inline-flex;}
+/* The pill is ~33px tall; add it plus a gap so the drawing starts below it
+   rather than under it. */
+.map-box.zoomed{padding-top:calc(var(--map-pad) + 41px);}
 .vstage .map-back{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22);
   color:#FFF;box-shadow:0 6px 18px -10px rgba(0,0,0,.55);
   -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);}
