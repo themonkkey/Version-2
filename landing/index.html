@@ -532,7 +532,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    pinned to 100%, which forces the wrap on its own. The glass wrapper is dropped
    with the box — every brick already carries its own .d-sec surface, so the page
    reads as a set of cards rather than one slab. */
-.map-layout.split{flex-wrap:wrap;}
+.map-layout.split{flex-wrap:wrap;align-items:stretch;}
 /* opacity/overflow are inert against display:contents, but they are the browse
    state's hiding mechanism — leave them reset here so a browser that ignores
    display:contents still shows the panel rather than a blank column. */
@@ -543,11 +543,21 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    child a full-width default and let .d-topcol opt back out below. Without this
    a lone .d-empty became a shrink-to-fit flex item pinned beside the map. */
 .map-layout.split #districtPanel > *{flex:0 0 100%;min-width:0;
-  margin-left:clamp(18px,2.6vw,30px);
-  margin-right:clamp(18px,2.6vw,30px);}
+  margin-left:0;margin-right:0;}
 /* Both of these have to out-specify the `#districtPanel > *` default above, so
    they are written through the id as well. */
+/* Stretch to the row, and push the drill selects to the foot of it.
+   The map box is padding plus a WIDTH-bound drawing, so once it carried enough
+   padding to clear the back pill and the hint it stood taller than the brief
+   beside it, and the surplus read as a dead band between the selects and the
+   dashboard below (measured 70px at district, 95px at constituency). Capping the
+   map's height cannot fix that — it is width-bound, so a height cap only
+   letterboxes the drawing. Filling the column does: the brief stays at the top,
+   the selects sit on the map's bottom edge, and the band is gone. The opposite
+   case, a top column taller than the map, is still handled by the JS height
+   pairing, which grows the box to match. */
 .map-layout.split #districtPanel > .d-topcol{flex:1 1 0%;min-width:0;
+  align-self:stretch;justify-content:space-between;
   margin-left:clamp(18px,2.6vw,30px);margin-right:0;}
 /* Three of the twelve archetypes (c3, c4, d3) root their markup in .d-tpl rather
    than .dash. Nothing keys off that distinction, so both names are carried
@@ -1991,7 +2001,7 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   .map-layout.split #districtPanel{display:contents;}
   .map-layout.split #districtPanel > *{margin-left:0;margin-right:0;}
   .map-layout.split #districtPanel > .d-topcol{flex:0 0 100%;width:100%;margin-left:0;
-    margin-top:clamp(14px,3vw,20px);}
+    align-self:auto;justify-content:flex-start;margin-top:clamp(14px,3vw,20px);}
   .map-layout.split #districtPanel > .dash,
   .map-layout.split #districtPanel > .d-tpl{flex:0 0 100%;width:100%;}
   /* single column: the map sits above the dashboard, so pinning it would eat
@@ -3005,57 +3015,26 @@ function drawPaths(features, attrsFor){
   if(!stillSplit) fitMap();
 }
 
-/* Pairing the map box's height to the panel's first card cannot be measured the
-   instant fitMap() is asked to — several things can trigger that ask while
-   either side of the pair is still mid-flight:
-     - the box's own width tween (100% -> 32%), during which the panel is
-       narrower than its final width and the SAME card wraps to more rows and
-       measures taller than it will once settled (observed 1229px, then 1162px,
-       true value 508px)
-     - showDistrict/showConstituency rendering twice — a bare pass immediately,
-       an enriched pass once its fetch resolves — each swapping in a
-       differently-sized card
-   Tried gating this on gsap.isTweening(box)/(panel): wrong signal, because
-   innerHTML replacing the panel's children orphans the tween created against
-   the PREVIOUS children, so it reads "not animating" while the box is still
-   moving. Tried box.style.flexBasis (non-empty while GSAP's own inline style
-   is present, cleared by clearProps on completion): usually reliable, but a
-   rapid back-then-reopen click kills the in-flight tween via
-   gsap.killTweensOf(), which stops a tween WITHOUT running its clearProps or
-   onComplete — so flexBasis can be left stuck at its last value forever,
-   wedging the pairing off permanently.
-   Debouncing sidesteps both: don't infer whether anything is mid-flight, just
-   wait until nothing has asked for a while. Every trigger (draw, mount, resize,
-   tween completion) restarts the same short timer; the measurement only runs
-   once calls actually stop, which in practice is after whichever finishes last. */
-let heightPairingTimer = null;
+/* Bottom-aligning the map with the column beside it used to be measured in JS: a
+   debounced pass set box.style.minHeight to the card's bottom. That only ever
+   worked in one direction — minHeight can grow the box when the map is the
+   shorter of the pair, never shrink it when the map is the taller — and once the
+   box carried enough padding to clear the back pill and the hint, the map WAS
+   the taller, so the surplus showed up as a dead band between the drill selects
+   and the dashboard below it.
+
+   The bricks layout does the whole job in CSS instead. Both items stretch to the
+   flex line, so the line is the taller of the two natural heights and the two
+   bottoms always agree: a tall top column grows the map box (the drawing centres
+   inside it), a tall map stretches the top column (space-between drops the drill
+   selects onto the map's bottom edge).
+
+   Do not put the JS version back on top of the stretch. It would measure the
+   stretched height, which is an output of the very line it is trying to set, so
+   it feeds back on itself — measured 2793px after a single pass. */
 function cancelHeightPairing(){
-  if(heightPairingTimer){ clearTimeout(heightPairingTimer); heightPairingTimer = null; }
-}
-function scheduleHeightPairing(box, layout){
-  cancelHeightPairing();
-  heightPairingTimer = setTimeout(function(){
-    heightPairingTimer = null;
-    /* Pair to the whole top column (brief + drill selects), which is what now
-       sits beside the map; the dashboard below spans the full width. */
-    const firstCard = document.querySelector('#districtPanel .d-topcol') ||
-                      document.querySelector('#districtPanel .d-sec');
-    if(!firstCard || !layout || !box.isConnected){ box.style.minHeight = ''; return; }
-    /* Align the BOTTOM edges, not the heights: the panel insets its first card
-       by its own padding, so equal heights still left the columns finishing
-       ~29px apart.
-       Measure in DOCUMENT coordinates, from the LAYOUT row's top rather than
-       the box's own. The box is position:sticky, so once the reader scrolls its
-       rect.top reports the sticky offset instead of where it sits in the layout
-       — measuring against that grew the box every time fitMap re-ran (observed
-       479px -> 1162px). The layout row is not sticky, and the box is its first
-       flex item at align-items:flex-start, so the row's top IS the box's
-       natural top and does not move under scroll. */
-    const rowTop  = layout.getBoundingClientRect().top + window.scrollY;
-    const cardBot = firstCard.getBoundingClientRect().bottom + window.scrollY;
-    const pairH   = Math.round(cardBot - rowTop);
-    box.style.minHeight = pairH > 200 ? pairH + 'px' : '';
-  }, 180);
+  const box = document.getElementById('mapBox');
+  if(box) box.style.minHeight = '';
 }
 
 /* Size the map to the room it actually has.
@@ -3112,13 +3091,7 @@ function fitMap(){
      its height to the panel's first card even though nothing sits next to it,
      producing an 1101px map box floating above a normal-width panel. Read the
      actual layout instead of the state that requested it. */
-  const sideBySide = split && getComputedStyle(layout).flexDirection === 'row';
-  if(sideBySide){
-    scheduleHeightPairing(box, layout);
-  }else{
-    cancelHeightPairing();
-    box.style.minHeight = '';
-  }
+  cancelHeightPairing();   // heights are paired by flex stretch now, see above
 }
 window.addEventListener('resize', fitMap, {passive:true});
 
@@ -3154,8 +3127,7 @@ function setLayoutState(split){
 
   if(split){
     gsap.fromTo(map, {flexBasis:'100%'},
-      // onComplete just pokes fitMap -> scheduleHeightPairing again; harmless
-      // extra nudge, not load-bearing (the debounce settles on its own either way)
+      // onComplete just re-measures the map's slot once the width has settled
       {flexBasis:'32%', duration:.62, ease:'power3.inOut', clearProps:'flexBasis',
        onComplete: fitMap});
     // display:contents in this state, so the panel has no box of its own to fade;
