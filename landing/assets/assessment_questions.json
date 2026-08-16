@@ -1,0 +1,552 @@
+{
+ "_source": "corpus_files/training/*Assessment*.txt — the objective questions as administered. No answer key and no per-question accuracy are asserted here; the reports name only the best- and least-answered topics.",
+ "papers": {
+  "district_baseline": [
+   {
+    "section": "AP & Swarna Andhra: general awareness",
+    "text": "What is the name of Andhra Pradesh's long-term development vision launched by CM Chandrababu Naidu?",
+    "options": [
+     "Vision AP 2030",
+     "Swarna Andhra @2047",
+     "Sunrise Andhra Plan",
+     "Nava Andhra Mission 2050"
+    ],
+    "n": 1
+   },
+   {
+    "section": "AP & Swarna Andhra: general awareness",
+    "text": "Andhra Pradesh's Swarna Andhra @2047 vision aims to transform the state into a ₹308 lakh crore economy. What is this approximately in USD?",
+    "options": [
+     "USD 500 billion",
+     "USD 1.2 trillion",
+     "USD 2.4 trillion",
+     "USD 4 trillion"
+    ],
+    "n": 2
+   },
+   {
+    "section": "AP & Swarna Andhra: general awareness",
+    "text": "The Swarna Andhra @2047 vision targets what per capita income for AP citizens by 2047 (currently ~₹2.66 lakh)?",
+    "options": [
+     "₹15 lakh (~$12,000)",
+     "₹30 lakh (~$23,000)",
+     "₹55 lakh (~$42,000)",
+     "₹75 lakh (~$57,000)"
+    ],
+    "n": 3
+   },
+   {
+    "section": "AP & Swarna Andhra: general awareness",
+    "text": "Which of the following is NOT one of the core pillars of the Swarna Andhra @2047 Vision?",
+    "options": [
+     "Zero Poverty and Inclusive Growth",
+     "Valley of Innovation and Speed of Business",
+     "Centralised Public Sector-led Industrial Growth",
+     "Tech-enabled Universal Healthcare"
+    ],
+    "n": 4
+   },
+   {
+    "section": "KPI framework & monitoring",
+    "text": "The Swarna Andhra @2047 KPI Portal monitors performance at which administrative levels?",
+    "options": [
+     "State level only",
+     "District and state levels only",
+     "Mandal, district, constituency and state levels",
+     "Mandal and district levels only — state is monitored separately"
+    ],
+    "n": 5
+   },
+   {
+    "section": "KPI framework & monitoring",
+    "text": "The KPI framework under Swarna Andhra @2047 is primarily aligned with which global framework?",
+    "options": [
+     "BRICS Sustainable Growth Indicators",
+     "UN Sustainable Development Goals (SDGs)",
+     "World Bank Human Capital Index",
+     "NITI Aayog's Aspirational Districts Programme"
+    ],
+    "n": 6
+   },
+   {
+    "section": "KPI framework & monitoring",
+    "text": "What annual growth rate does the Swarna Andhra @2047 vision document target for the AP economy?",
+    "options": [
+     "8% — in line with India's national average",
+     "10% — matching the fastest-growing large states",
+     "12% — as recommended by NITI Aayog",
+     "15% — to reach USD 2.4 trillion by 2047"
+    ],
+    "n": 7
+   },
+   {
+    "section": "KPI framework & monitoring",
+    "text": "As a district officer, what is your PRIMARY role in the Swarna Andhra KPI system?",
+    "options": [
+     "Entering mandal-level data and forwarding it to the state without review",
+     "Entering, verifying and approving district/mandal level KPI achievement data",
+     "Setting district KPI targets independently based on local priorities",
+     "Reviewing KPI data only when a state-level audit is initiated"
+    ],
+    "n": 8
+   },
+   {
+    "section": "Economic concepts",
+    "text": "What is the correct relationship between GVA and GDP?",
+    "options": [
+     "GDP = GVA + Total Government Expenditure",
+     "GDP = GVA + Net Taxes on Products (Taxes minus Subsidies)",
+     "GDP = GVA adjusted for inflation using the Price Deflator",
+     "GDP = GVA minus Depreciation of fixed assets"
+    ],
+    "n": 9
+   },
+   {
+    "section": "Economic concepts",
+    "text": "Which approach measures GDP by summing value added at each stage of production across all sectors?",
+    "options": [
+     "Expenditure Approach — adds up all spending in the economy",
+     "Income Approach — sums wages, profits and rents",
+     "Production (Output) Approach — sums GVA across all sectors",
+     "Base Year Approach — fixes prices at a reference year"
+    ],
+    "n": 10
+   },
+   {
+    "section": "Economic concepts",
+    "text": "The 'bottom-up approach' to estimating District Domestic Product means:",
+    "options": [
+     "National GDP is calculated first and then disaggregated to districts using population or area shares",
+     "Economic data is collected and aggregated upward from district and mandal level",
+     "Only the lowest-income sectors in a district are measured to set a baseline",
+     "District-level GVA is estimated using state-level averages applied uniformly"
+    ],
+    "n": 11
+   },
+   {
+    "section": "Economic concepts",
+    "text": "Which of the following economic activities belongs to the TERTIARY sector?",
+    "options": [
+     "Aquaculture and prawn farming",
+     "Food processing in a registered factory",
+     "Wholesale and retail trade",
+     "Electricity generation from a thermal power plant"
+    ],
+    "n": 12
+   }
+  ],
+  "district_endline": [
+   {
+    "section": "GDP / GVA / GDDP",
+    "text": "What does GVA measure?",
+    "options": [
+     "Total population of a district",
+     "Value added after deducting intermediate inputs from output",
+     "Total government expenditure",
+     "Total exports of a state"
+    ],
+    "n": 1
+   },
+   {
+    "section": "GDP / GVA / GDDP",
+    "text": "Which formula correctly represents GVA?",
+    "options": [
+     "Output + Intermediate Consumption",
+     "Output − Intermediate Consumption",
+     "Taxes − Subsidies",
+     "Consumption + Investment"
+    ],
+    "n": 2
+   },
+   {
+    "section": "GDP / GVA / GDDP",
+    "text": "Agriculture, livestock, forestry, fishing and mining are part of which broad sector?",
+    "options": [
+     "Primary sector",
+     "Secondary sector",
+     "Tertiary sector",
+     "Financial sector"
+    ],
+    "n": 3
+   },
+   {
+    "section": "GDP / GVA / GDDP",
+    "text": "At constant prices, estimates generally use",
+    "options": [
+     "Current year production with current year prices",
+     "Base year production with current year prices",
+     "Current year production with base year prices or deflators",
+     "Only population data"
+    ],
+    "n": 4
+   },
+   {
+    "section": "GDP / GVA / GDDP",
+    "text": "When direct district-level GVA data is not available, district estimates are usually prepared by",
+    "options": [
+     "Ignoring the sector",
+     "Apportioning state estimates using suitable district indicators",
+     "Using only national averages",
+     "Taking equal share for all districts"
+    ],
+    "n": 5
+   },
+   {
+    "section": "GDP / GVA / GDDP",
+    "text": "Which is a key limitation in estimating district domestic product?",
+    "options": [
+     "Too much direct district data is available",
+     "Districts have identical economic structures",
+     "Many activities require proxy indicators or allocation keys",
+     "GVA is not sector-specific"
+    ],
+    "n": 6
+   },
+   {
+    "section": "GDP / GVA / GDDP",
+    "text": "For district-level banking and insurance estimates, state GVA is apportioned using",
+    "options": [
+     "Forest area",
+     "Tourist arrivals",
+     "Bank credits and deposits",
+     "Paddy production"
+    ],
+    "n": 7
+   },
+   {
+    "section": "GDP / GVA / GDDP",
+    "text": "In Mandal Domestic Product allocation, production/output indicators are considered useful because they are",
+    "options": [
+     "Closest to direct economic activity",
+     "Always available from Census",
+     "Unrelated to GVA",
+     "Used only for services sector"
+    ],
+    "n": 8
+   },
+   {
+    "section": "Strategies for boosting district GVA",
+    "text": "Which of the following is the correct four-step economic engine cycle discussed in the presentation?",
+    "options": [
+     "Plan - Spend - Report - Close",
+     "Identify - Understand - Strategise - Monitor",
+     "Survey - Budget - Approve - Audit",
+     "Collect - Compile - Publish - File"
+    ],
+    "n": 9
+   },
+   {
+    "section": "Strategies for boosting district GVA",
+    "text": "How should a district identify its priority sectors for GVA growth?",
+    "options": [
+     "Select only sectors with the highest population share",
+     "Compare district sector share with AP average and identify comparative advantage",
+     "Choose sectors randomly to ensure balance",
+     "Focus only on sectors that declined in the previous year"
+    ],
+    "n": 10
+   },
+   {
+    "section": "Strategies for boosting district GVA",
+    "text": "Which indicator is most directly linked to manufacturing formalisation and MSME GVA improvement?",
+    "options": [
+     "Number of tourist arrivals",
+     "Udyam registrations and industrial electricity consumption",
+     "Forest area and rural population",
+     "Bank deposits alone"
+    ],
+    "n": 11
+   },
+   {
+    "section": "Strategies for boosting district GVA",
+    "text": "In the tourism and trade growth equation, GVA improves mainly through:",
+    "options": [
+     "Number of tourists, spend per tourist and length of stay",
+     "Only the number of government employees",
+     "Only agricultural production",
+     "Only road length in the district"
+    ],
+    "n": 12
+   },
+   {
+    "section": "Strategies for boosting district GVA",
+    "text": "Why should district officers monitor high-frequency proxy indicators instead of relying only on annual DDP publication?",
+    "options": [
+     "Because annual DDP is enough for all operational decisions",
+     "Because monthly signals help identify gaps and correct course before year-end",
+     "Because proxy indicators are unrelated to GVA",
+     "Because monitoring should be avoided at district level"
+    ],
+    "n": 13
+   },
+   {
+    "section": "Strategies for boosting district GVA",
+    "text": "For improving banking and insurance GVA, which set of variables should district officials review regularly?",
+    "options": [
+     "Credit, deposits, CD ratio, bank branches and financial inclusion",
+     "number of tourist guides",
+     "crop area under paddy",
+     "number of government buildings"
+    ],
+    "n": 14
+   }
+  ],
+  "constituency": [
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "Which of the following is most directly linked to improving primary sector GVA?",
+    "options": [
+     "Setting up agro-processing units for local produce",
+     "Increasing crop productivity, livestock output and irrigation efficiency",
+     "Developing rural tourism and hospitality facilities",
+     "Expanding market yards and financial service access"
+    ],
+    "n": 1
+   },
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "Value addition improves local GVA mainly because it:",
+    "options": [
+     "Increases the economic value of raw produce through processing or branding",
+     "Increases cultivated area without changing production practices",
+     "Reduces the need for market linkage by focusing only on production",
+     "Shifts all agricultural workers into non-farm employment"
+    ],
+    "n": 2
+   },
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "Which intervention is most appropriate for improving secondary sector GVA?",
+    "options": [
+     "Establishing food processing, packaging and manufacturing units",
+     "Promoting crop diversification and micro-irrigation",
+     "Developing tourism circuits and local hospitality services",
+     "Expanding access to banking and digital payments"
+    ],
+    "n": 3
+   },
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "Which of the following best represents a tertiary sector activity?",
+    "options": [
+     "Milk production and poultry rearing",
+     "Mango cultivation and oil palm farming",
+     "Tourism, logistics, trade and financial services",
+     "Rice milling and cashew processing"
+    ],
+    "n": 4
+   },
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "The main purpose of analyzing sector-wise GVA contribution is to:",
+    "options": [
+     "Identify key growth drivers and prioritize sector-specific interventions",
+     "Calculate only the total number of workers in each sector",
+     "Estimate only scheme-wise expenditure across departments",
+     "Compare population growth across mandals or blocks"
+    ],
+    "n": 5
+   },
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "Which is the most suitable outcome indicator for agriculture-led GVA improvement?",
+    "options": [
+     "Number of farmer meetings conducted during the year",
+     "Number of agriculture-related circulars issued by departments",
+     "Increase in area under high-value crops and micro-irrigation",
+     "Number of officials trained on agriculture schemes"
+    ],
+    "n": 6
+   },
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "Post-harvest infrastructure contributes to higher GVA by:",
+    "options": [
+     "Improving storage, grading, processing and price realization",
+     "Increasing the number of farmers registered under schemes",
+     "Expanding irrigation coverage for traditional crops",
+     "Reducing the need for private sector participation"
+    ],
+    "n": 7
+   },
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "Departmental convergence is important for improving local economic growth because:",
+    "options": [
+     "GVA growth requires coordinated action across production, infrastructure, skills, finance and markets",
+     "Each department can independently achieve GVA growth without coordination",
+     "It mainly helps in preparing more detailed administrative reports",
+     "It ensures that only one department is responsible for all economic outcomes"
+    ],
+    "n": 8
+   },
+   {
+    "section": "Improving GVA at constituency and mandal level",
+    "text": "A strong review and accountability system for GVA improvement should focus on:",
+    "options": [
+     "Tracking meetings, expenditure and number of instructions issued",
+     "Tracking baseline, targets, progress, bottlenecks and corrective action",
+     "Tracking only physical assets created under different schemes",
+     "Tracking beneficiary coverage without linking it to economic outcomes"
+    ],
+    "n": 9
+   }
+  ],
+  "master": [
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "Which statement best explains Gross Value Added (GVA)?",
+    "options": [
+     "Total expenditure by government in a district",
+     "Value of output after deducting intermediate consumption",
+     "Total tax collected from all sectors",
+     "Total exports minus imports"
+    ],
+    "n": 1
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "Why is the production approach important for district-level economic analysis?",
+    "options": [
+     "It uses only population data",
+     "It directly links sector activity, output and input use with value added",
+     "It avoids the need for sector-wise data",
+     "It is used only for national income estimation"
+    ],
+    "n": 2
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "What is the main difference between GSDP and GDDP?",
+    "options": [
+     "GSDP is for districts and GDDP is for the state",
+     "GSDP is state-level income, while GDDP is district-level income",
+     "GSDP includes only agriculture, while GDDP includes all sectors",
+     "GDDP is estimated quarterly, while GSDP is estimated monthly"
+    ],
+    "n": 3
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "Which of the following is a key caution while interpreting district estimates?",
+    "options": [
+     "District estimates are always based on complete direct data",
+     "District estimates should be read with methodology, data source and validation trail",
+     "District estimates do not require revision",
+     "Proxy indicators are never used in district estimation"
+    ],
+    "n": 4
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "If output increases but input costs rise faster, what may happen to GVA?",
+    "options": [
+     "GVA will always increase",
+     "GVA may decline or grow slowly",
+     "GVA becomes equal to taxes",
+     "GVA is not affected by input costs"
+    ],
+    "n": 5
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "When direct district-level data is unavailable, how is district sector GVA generally estimated?",
+    "options": [
+     "By dividing state GVA equally among all districts",
+     "By using suitable district-level allocation keys or proxy indicators",
+     "By ignoring that sector in district estimates",
+     "By using only national population share"
+    ],
+    "n": 6
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "Which of the following is an example of a primary sector activity?",
+    "options": [
+     "Banking",
+     "Construction",
+     "Fishing",
+     "Public administration"
+    ],
+    "n": 7
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "In Mandal Domestic Product estimation, what does a mandal's share of an indicator determine?",
+    "options": [
+     "Its tax rate",
+     "Its share of allocated district GVA for that activity",
+     "Its population growth rate",
+     "Its administrative ranking only"
+    ],
+    "n": 8
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "Why do proxy indicators need validation?",
+    "options": [
+     "Because they are always wrong",
+     "Because they may only indirectly represent actual economic activity",
+     "Because they replace all official statistics",
+     "Because they are used only for agriculture"
+    ],
+    "n": 9
+   },
+   {
+    "section": "Estimation of GDP / GSDP / GDDP",
+    "text": "What is the main administrative message of the presentation?",
+    "options": [
+     "Data should stop at reporting",
+     "District officials should use economic data for diagnosis, prioritisation and follow-up action",
+     "GDDP estimates are not useful for planning",
+     "Only state-level officers can influence economic management"
+    ],
+    "n": 10
+   },
+   {
+    "section": "Swarna Andhra 2047, KPIs and boosting GVA",
+    "text": "How to identify priority sectors for GVA growth?",
+    "options": [
+     "Select only sectors with the highest population share",
+     "Compare district sector share with district average and identify comparative advantage",
+     "Choose sectors randomly to ensure balance",
+     "Focus only on sectors that declined in the previous year"
+    ],
+    "n": 11
+   },
+   {
+    "section": "Swarna Andhra 2047, KPIs and boosting GVA",
+    "text": "Which indicator is most directly linked to manufacturing formalisation and MSME GVA improvement?",
+    "options": [
+     "Number of tourist arrivals",
+     "Udyam registrations and industrial electricity consumption",
+     "Forest area and rural population",
+     "Bank deposits alone"
+    ],
+    "n": 12
+   },
+   {
+    "section": "Swarna Andhra 2047, KPIs and boosting GVA",
+    "text": "Why should mandal officers monitor high-frequency proxy indicators instead of relying only on annual MDP publication?",
+    "options": [
+     "Because annual MDP is enough for all operational decisions",
+     "Because monthly signals help identify gaps and correct course before year-end",
+     "Because proxy indicators are unrelated to GVA",
+     "Because monitoring should be avoided at mandal level"
+    ],
+    "n": 13
+   },
+   {
+    "section": "Swarna Andhra 2047, KPIs and boosting GVA",
+    "text": "For improving banking and insurance GVA, which set of variables should district officials review regularly?",
+    "options": [
+     "Credit, deposits, CD ratio, bank branches and financial inclusion",
+     "number of tourist guides",
+     "crop area under paddy",
+     "number of government buildings"
+    ],
+    "n": 14
+   }
+  ]
+ }
+}

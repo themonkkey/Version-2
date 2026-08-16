@@ -16,14 +16,40 @@
             "topic": "Swarna Andhra @2047 vision and foundational GVA/GDP concepts",
             "mean": 9.71,
             "pct": 81.0,
-            "high": {"score": 12, "n": 6, "pct": 100.0},
-            "low": {"score": 5, "pct": 41.7},
-            "top_q": {"n": 24, "pct": 57.1},
-            "below50": {"n": 2, "pct": 4.8},
-            "quartiles": [0, 2, 16, 24],
+            "high": {
+              "score": 12,
+              "n": 6,
+              "pct": 100.0
+            },
+            "low": {
+              "score": 5,
+              "pct": 41.7
+            },
+            "top_q": {
+              "n": 24,
+              "pct": 57.1
+            },
+            "below50": {
+              "n": 2,
+              "pct": 4.8
+            },
+            "quartiles": [
+              0,
+              2,
+              16,
+              24
+            ],
             "strongest": "Identifying the name of the Swarna Andhra @2047 vision (100% correct)",
             "weakest": "Which option is not a core pillar of the vision, and the meaning of the bottom-up approach to District Domestic Product (57 to 69% accuracy)",
-            "read": "Strong command of the vision and foundational GVA/GDP concepts."
+            "read": "Strong command of the vision and foundational GVA/GDP concepts.",
+            "paper": "district_baseline",
+            "best_q": [
+              1
+            ],
+            "least_q": [
+              4,
+              11
+            ]
           },
           "endline": {
             "date": "20 July 2026",
@@ -32,15 +58,41 @@
             "topic": "GVA/DDP concepts and district-level economic estimation methodology",
             "mean": 11.2,
             "pct": 80.0,
-            "high": {"score": 13, "n": 2, "pct": 92.9},
-            "low": {"score": 9, "pct": 64.3},
-            "top_q": {"n": 3, "pct": 60.0},
-            "below50": {"n": 0, "pct": 0.0},
-            "quartiles": [0, 0, 2, 3],
+            "high": {
+              "score": 13,
+              "n": 2,
+              "pct": 92.9
+            },
+            "low": {
+              "score": 9,
+              "pct": 64.3
+            },
+            "top_q": {
+              "n": 3,
+              "pct": 60.0
+            },
+            "below50": {
+              "n": 0,
+              "pct": 0.0
+            },
+            "quartiles": [
+              0,
+              0,
+              2,
+              3
+            ],
             "strongest": "The broad sector covering agriculture, livestock, forestry, fishing and mining (100% correct)",
             "weakest": "The key limitation in estimating district domestic product, and constant-price estimation methodology (both around 40% accuracy)",
             "caveat": "n=5 for this round; percentages are indicative only.",
-            "read": "Strong command of GVA/DDP concepts and estimation methodology."
+            "read": "Strong command of GVA/DDP concepts and estimation methodology.",
+            "paper": "district_endline",
+            "best_q": [
+              3
+            ],
+            "least_q": [
+              4,
+              6
+            ]
           },
           "comparison": "The baseline (12 questions on the vision and foundational concepts) and the endline (14 questions on GVA/DDP and estimation methodology) tested different, though related, content, so a direct percentage-point comparison would not be meaningful. Read independently, 81.0% at baseline and 80.0% at endline both indicate that officers engaged substantively with the material at each stage."
         },
@@ -58,15 +110,42 @@
             "pct": 69.7,
             "median": 7,
             "sd": 2.46,
-            "high": {"score": 9, "n": 45, "pct": 100.0},
-            "low": {"score": 0, "n": 4, "pct": 0.0},
-            "top_q": {"n": 114, "pct": 56.2},
-            "below50": {"n": 50, "pct": 24.6},
-            "perfect": {"n": 45, "pct": 22.2},
-            "quartiles": [20, 30, 39, 114],
+            "high": {
+              "score": 9,
+              "n": 45,
+              "pct": 100.0
+            },
+            "low": {
+              "score": 0,
+              "n": 4,
+              "pct": 0.0
+            },
+            "top_q": {
+              "n": 114,
+              "pct": 56.2
+            },
+            "below50": {
+              "n": 50,
+              "pct": 24.6
+            },
+            "perfect": {
+              "n": 45,
+              "pct": 22.2
+            },
+            "quartiles": [
+              20,
+              30,
+              39,
+              114
+            ],
             "item_range": "58.1% to 79.8%",
             "weakest": "Secondary sector intervention",
-            "read": "Moderate-to-strong prior understanding of GVA and convergence concepts."
+            "read": "Moderate-to-strong prior understanding of GVA and convergence concepts.",
+            "paper": "constituency",
+            "best_q": [],
+            "least_q": [
+              3
+            ]
           },
           "endline": {
             "date": "23 to 28 July 2026",
@@ -77,16 +156,45 @@
             "pct": 73.6,
             "median": 7,
             "sd": 2.25,
-            "high": {"score": 9, "n": 55, "pct": 100.0},
-            "low": {"score": 1, "n": 3, "pct": 11.1},
-            "top_q": {"n": 115, "pct": 59.6},
-            "below50": {"n": 38, "pct": 19.7},
-            "perfect": {"n": 55, "pct": 28.5},
-            "quartiles": [12, 26, 40, 115],
+            "high": {
+              "score": 9,
+              "n": 55,
+              "pct": 100.0
+            },
+            "low": {
+              "score": 1,
+              "n": 3,
+              "pct": 11.1
+            },
+            "top_q": {
+              "n": 115,
+              "pct": 59.6
+            },
+            "below50": {
+              "n": 38,
+              "pct": 19.7
+            },
+            "perfect": {
+              "n": 55,
+              "pct": 28.5
+            },
+            "quartiles": [
+              12,
+              26,
+              40,
+              115
+            ],
             "item_range": "64.8% to 82.9%",
             "strongest": "Departmental convergence (82.9%)",
             "weakest": "Secondary sector intervention (64.8%)",
-            "read": "Moderate-to-strong post-training understanding of GVA and convergence concepts."
+            "read": "Moderate-to-strong post-training understanding of GVA and convergence concepts.",
+            "paper": "constituency",
+            "best_q": [
+              8
+            ],
+            "least_q": [
+              3
+            ]
           },
           "change": {
             "respondents": -10,
@@ -111,14 +219,40 @@
             "topic": "GVA/GDDP concepts and district-level economic estimation methodology",
             "mean": 11.93,
             "pct": 85.2,
-            "high": {"score": 14, "n": 25, "pct": 100.0},
-            "low": {"score": 1, "pct": 7.1},
-            "top_q": {"n": 46, "pct": 78.0},
-            "below50": {"n": 5, "pct": 8.5},
-            "quartiles": [2, 3, 8, 46],
+            "high": {
+              "score": 14,
+              "n": 25,
+              "pct": 100.0
+            },
+            "low": {
+              "score": 1,
+              "pct": 7.1
+            },
+            "top_q": {
+              "n": 46,
+              "pct": 78.0
+            },
+            "below50": {
+              "n": 5,
+              "pct": 8.5
+            },
+            "quartiles": [
+              2,
+              3,
+              8,
+              46
+            ],
             "strongest": "Why the production approach matters for district-level economic analysis (94.9% correct)",
             "weakest": "Why officers should monitor high-frequency proxy indicators rather than rely only on the annual MDP publication, and the effect on GVA when input costs rise faster than output (71 to 75% accuracy)",
-            "read": "Strong command of GVA/GDDP concepts and estimation methodology."
+            "read": "Strong command of GVA/GDDP concepts and estimation methodology.",
+            "paper": "master",
+            "best_q": [
+              2
+            ],
+            "least_q": [
+              5,
+              13
+            ]
           },
           "endline": {
             "date": "30 July 2026",
@@ -127,19 +261,48 @@
             "topic": "GVA/GDDP concepts and district-level economic estimation methodology",
             "mean": 12.71,
             "pct": 90.8,
-            "high": {"score": 14, "n": 24, "pct": 100.0},
-            "low": {"score": 6, "pct": 42.9},
-            "top_q": {"n": 46, "pct": 90.2},
-            "below50": {"n": 1, "pct": 2.0},
-            "quartiles": [0, 1, 4, 46],
+            "high": {
+              "score": 14,
+              "n": 24,
+              "pct": 100.0
+            },
+            "low": {
+              "score": 6,
+              "pct": 42.9
+            },
+            "top_q": {
+              "n": 46,
+              "pct": 90.2
+            },
+            "below50": {
+              "n": 1,
+              "pct": 2.0
+            },
+            "quartiles": [
+              0,
+              1,
+              4,
+              46
+            ],
             "strongest": "The main administrative message of the presentation (100% correct)",
             "weakest": "The effect on GVA when input costs rise faster than output, and how district sector GVA is estimated when direct data is unavailable (76 to 78% accuracy)",
-            "read": "Strong command of GVA/GDDP concepts and estimation methodology."
+            "read": "Strong command of GVA/GDDP concepts and estimation methodology.",
+            "paper": "master",
+            "best_q": [
+              10
+            ],
+            "least_q": [
+              5,
+              6
+            ]
           },
-          "change": {"pct_pp": 5.6},
+          "change": {
+            "pct_pp": 5.6
+          },
           "comparison": "The mean score rose from 85.2% at baseline to 90.8% at endline, a change of +5.6 percentage points, indicating the programme improved participants' command of GVA/GDDP concepts and estimation methodology between the two rounds."
         }
       ]
     }
-  }
+  },
+  "_questions_note": "best_q / least_q are the question numbers matching the topics the report names as best and least answered. The reports give no per-question accuracy table, so no percentage is attached to individual questions."
 }

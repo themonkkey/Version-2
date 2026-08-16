@@ -92,6 +92,35 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
 .ar-src{margin:14px 0 0;font-size:11.5px;color:rgba(255,255,255,.45);}
 @media (max-width:760px){.ar-two{grid-template-columns:1fr;}.ar-delta{width:100%;}}
 
+
+/* the paper, expanded on request */
+.qwrap{margin-top:14px;border-top:1px solid rgba(255,255,255,.14);padding-top:12px;}
+.qwrap summary{cursor:pointer;list-style:none;font-size:12.5px;font-weight:700;letter-spacing:.02em;
+  color:rgba(198,236,143,.9);display:inline-flex;align-items:center;gap:7px;}
+.qwrap summary::-webkit-details-marker{display:none;}
+.qwrap summary::before{content:"";width:0;height:0;border-left:5px solid currentColor;
+  border-top:4px solid transparent;border-bottom:4px solid transparent;transition:transform .16s;}
+.qwrap[open] summary::before{transform:rotate(90deg);}
+.qwrap summary:hover{color:var(--lime);}
+.qnote{font-size:11.5px;color:rgba(255,255,255,.5);margin:9px 0 12px;max-width:80ch;}
+.qlist{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.qsec{font-size:10.5px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(198,236,143,.75);margin-top:8px;}
+.qsec:first-child{margin-top:0;}
+.qq{border-radius:14px;padding:11px 14px;background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.11);}
+.qq[data-flag]{border-color:rgba(198,236,143,.34);background:rgba(198,236,143,.06);}
+.qt{display:grid;grid-template-columns:19px 1fr;gap:2px 8px;font-size:13.5px;line-height:1.5;color:#FFF;}
+.qt > span:nth-child(2){grid-column:2;}
+.qt .qb{grid-column:2;justify-self:start;margin-top:3px;}
+.qn{grid-column:1;grid-row:1;font-size:11px;font-weight:750;color:rgba(255,255,255,.5);
+  font-variant-numeric:tabular-nums;padding-top:3px;}
+.qb{font-size:10px;font-weight:750;letter-spacing:.05em;padding:2px 8px;border-radius:999px;white-space:nowrap;}
+.qb.best{background:rgba(198,236,143,.18);color:var(--lime);}
+.qb.least{background:rgba(240,179,106,.18);color:#F5C98A;}
+.qo{margin:8px 0 0 27px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:4px 16px;list-style:upper-alpha;}
+.qo li{font-size:12.5px;line-height:1.45;color:rgba(255,255,255,.68);padding-left:2px;}
 </style>
 </head>
 <body>
@@ -147,6 +176,59 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
   var capAssessDefault = null, capResultsOpen = false;
 
 
+
+  var QP = null;   // assessment_questions.json, papers keyed by paper id
+
+  /* The paper as it was administered. The reports give no per-question
+     accuracy table, so a question carries a badge only where the report
+     names its topic as the best or least answered, and never a percentage. */
+  function paperHtml(paperId, rounds){
+    var qs = QP && QP.papers && QP.papers[paperId];
+    if(!qs || !qs.length) return '';
+    var tag = {};
+    rounds.forEach(function(r){
+      if(!r || !r.round) return;
+      (r.best_q || []).forEach(function(n){ (tag[n] = tag[n] || []).push({k:'best', r:r.round}); });
+      (r.least_q || []).forEach(function(n){ (tag[n] = tag[n] || []).push({k:'least', r:r.round}); });
+    });
+    var lastSec = null;
+    var items = qs.map(function(q){
+      var head = '';
+      if(q.section && q.section !== lastSec){
+        lastSec = q.section;
+        head = '<li class="qsec">'+esc(q.section)+'</li>';
+      }
+      var badges = (tag[q.n] || []).map(function(t){
+        return '<span class="qb '+t.k+'">'+(t.k === 'best' ? 'Best answered' : 'Least answered') +
+          (rounds.length > 1 ? ' · '+t.r : '')+'</span>';
+      }).join('');
+      return head + '<li class="qq"'+(badges ? ' data-flag="1"' : '')+'>' +
+        '<div class="qt"><span class="qn">'+q.n+'</span><span>'+esc(q.text)+'</span>'+badges+'</div>' +
+        '<ol class="qo">' + q.options.map(function(o){ return '<li>'+esc(o)+'</li>'; }).join('') + '</ol>' +
+      '</li>';
+    }).join('');
+    var label = rounds.length > 1
+      ? 'the '+qs.length+' questions, put to both rounds'
+      : 'the '+qs.length+' questions in the '+rounds[0].round.toLowerCase()+' paper';
+    return '<details class="qwrap"><summary>Show '+label+'</summary>' +
+      '<p class="qnote">The paper as administered. No answer key is shown, and the report gives no ' +
+      'accuracy figure per question: a badge marks only the topics it names as best and least answered.</p>' +
+      '<ul class="qlist">'+items+'</ul></details>';
+  }
+
+  function papersFor(L){
+    var b = L.baseline, e = L.endline, out = [];
+    if(b && e && b.paper && b.paper === e.paper){
+      out.push(paperHtml(b.paper, [
+        {round:'Baseline', best_q:b.best_q, least_q:b.least_q},
+        {round:'Endline',  best_q:e.best_q, least_q:e.least_q}]));
+    } else {
+      if(b && b.paper) out.push(paperHtml(b.paper, [{round:'Baseline', best_q:b.best_q, least_q:b.least_q}]));
+      if(e && e.paper) out.push(paperHtml(e.paper, [{round:'Endline',  best_q:e.best_q, least_q:e.least_q}]));
+    }
+    return out.join('');
+  }
+
   function build(rec){
     var html = '<div class="ar-wrap">' +
       '<div class="ar-head"><h3>Baseline &amp; endline: '+esc(rec.name)+'</h3>' +
@@ -183,13 +265,19 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
         '<div class="ar-two">' + roundCol(b, 'Baseline') + roundCol(e, 'Endline') + '</div>' +
         change +
         (L.comparison ? '<p class="ar-cmp">'+esc(L.comparison)+'</p>' : '') +
+        papersFor(L) +
       '</section>';
     }).join('');
     html += '<p class="ar-src">Source: '+esc(rec.name)+' Consolidated Assessment Report, Pahlé India Foundation. Figures as printed in the report.</p></div>';
     return html;
   }
   var mount = document.getElementById('mount'), sel = document.getElementById('dsel');
-  fetch('../assets/assessment_results.json?v=2026-08-16a').then(function(r){ return r.json(); }).then(function(R){
+  Promise.all([
+    fetch('../assets/assessment_results.json?v=2026-08-16b').then(function(r){ return r.json(); }),
+    fetch('../assets/assessment_questions.json?v=2026-08-16a').then(function(r){ return r.json(); })
+      .catch(function(){ return null; })
+  ]).then(function(all){
+    var R = all[0]; QP = all[1];
     var slugs = Object.keys(R.districts || {});
     var want = new URLSearchParams(location.search).get('d') || slugs[0];
     sel.innerHTML = slugs.map(function(k){ return '<option value="'+k+'"'+(k===want?' selected':'')+'>'+esc(R.districts[k].name)+'</option>'; }).join('');
