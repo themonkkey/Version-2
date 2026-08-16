@@ -846,33 +846,71 @@ a.docs-leaf:hover .ext{opacity:1;}
 .cap-datechip.on{background:rgba(198,236,143,.20);border-color:rgba(198,236,143,.55);color:rgba(198,236,143,.92);}
 .cap-datechip.on .dd{color:#DFF5B4;}
 .cap-datechip:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
-.cap-shead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:9px;}
+/* One day, one card. Same template every time: a header line, three fact
+   tiles, then the highlights and the room, with the full report folded away. */
+.cap-shead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
 .cap-day{flex:0 0 auto;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;
   color:#0B2E20;background:var(--lime);border-radius:999px;padding:3px 9px;line-height:1.35;}
-.cap-date{font-size:13.5px;font-weight:700;color:#FFF;}
-.cap-lvl{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(198,236,143,.9);border:1px solid rgba(198,236,143,.35);border-radius:999px;
-  padding:2px 8px;line-height:1.4;}
-.cap-kind{font-size:12px;color:rgba(255,255,255,.6);}
-.cap-n{margin-left:auto;font-size:12px;color:rgba(255,255,255,.78);white-space:nowrap;}
-.cap-n b{color:#FFF;font-weight:700;font-variant-numeric:tabular-nums;}
-.cap-fmt{font-size:12.5px;color:rgba(255,255,255,.66);line-height:1.5;margin-bottom:10px;}
-.cap-body p{font-size:13.8px;line-height:1.62;color:rgba(255,255,255,.86);margin:0 0 9px;
-  max-width:78ch;}
-.cap-note{font-size:13.2px;font-style:italic;color:rgba(255,255,255,.66);}
-.cap-hl{margin-top:12px;display:grid;gap:12px;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
-.cap-hgroup{border-radius:var(--r);padding:12px 15px;
-  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);}
-.cap-hgroup > h5{font-size:11.5px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;
+.cap-date{font-size:clamp(15px,1.7vw,18px);font-weight:700;color:#FFF;letter-spacing:-.01em;}
+.cap-kind{font-size:12px;color:rgba(255,255,255,.55);margin-left:auto;}
+
+.cap-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.2vw,12px);
+  margin-bottom:clamp(14px,1.8vw,18px);}
+.cap-fact{border-radius:var(--r);padding:12px 14px 11px;min-width:0;
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);
+  display:flex;flex-direction:column;gap:3px;}
+.cap-fact .k{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(198,236,143,.85);}
+.cap-fact .v{font-size:clamp(16px,1.9vw,21px);font-weight:750;color:#FFF;line-height:1.15;
+  letter-spacing:-.015em;font-variant-numeric:tabular-nums;}
+.cap-fact .v small{font-size:.62em;font-weight:600;color:rgba(255,255,255,.7);letter-spacing:0;}
+.cap-fact .v.muted{color:rgba(255,255,255,.4);}
+.cap-fact .s{font-size:11.5px;color:rgba(255,255,255,.58);line-height:1.4;
+  overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.cap-fact-type{border-color:rgba(198,236,143,.35);background:rgba(198,236,143,.08);}
+@media(max-width:560px){.cap-facts{grid-template-columns:1fr;}
+  .cap-fact{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:4px 10px;}
+  .cap-fact .k{flex:0 0 100%;}}
+
+.cap-block + .cap-block{margin-top:14px;}
+.cap-block > h5{font-size:11px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;
   color:var(--lime);margin:0 0 8px;}
-.cap-hgroup ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;}
-.cap-hgroup li{position:relative;padding-left:14px;font-size:13px;line-height:1.52;
-  color:rgba(255,255,255,.83);}
-.cap-hgroup li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;
-  border-radius:50%;background:rgba(198,236,143,.75);}
-.cap-roles{margin-top:11px;font-size:12.2px;line-height:1.55;color:rgba(255,255,255,.58);}
-.cap-roles b{color:rgba(255,255,255,.8);font-weight:650;}
+.cap-hpts{list-style:none;margin:0;padding:0;display:grid;gap:7px;}
+.cap-hpts li{position:relative;padding-left:15px;font-size:13.4px;line-height:1.55;
+  color:rgba(255,255,255,.86);max-width:78ch;}
+.cap-hpts li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;
+  border-radius:50%;background:rgba(198,236,143,.8);}
+.cap-hpts li.cap-hhead{padding-left:0;font-size:11px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:4px;}
+.cap-hpts li.cap-hhead::before{display:none;}
+.cap-hpts li.cap-hhead:first-child{margin-top:0;}
+.cap-note{font-size:13.2px;font-style:italic;color:rgba(255,255,255,.66);margin:0;}
+.cap-more{margin-top:9px;font:inherit;font-size:12px;font-weight:650;color:var(--lime);
+  background:none;border:1px solid rgba(198,236,143,.4);border-radius:999px;padding:4px 12px;
+  cursor:pointer;transition:background .14s,border-color .14s;}
+.cap-more:hover{background:rgba(198,236,143,.14);border-color:rgba(198,236,143,.65);}
+.cap-more:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+.cap-more-inline{margin-top:0;padding:3px 10px;font-size:11.5px;}
+
+.cap-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.cap-chip{font-size:12px;line-height:1.35;color:rgba(255,255,255,.86);
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;
+  padding:4px 10px;max-width:100%;}
+.cap-roles{margin:0;font-size:12.6px;line-height:1.58;color:rgba(255,255,255,.72);max-width:78ch;}
+
+.cap-full{margin-top:16px;border-top:1px solid rgba(255,255,255,.12);padding-top:10px;}
+.cap-full > summary{cursor:pointer;list-style:none;font-size:12.5px;font-weight:650;
+  color:rgba(198,236,143,.85);display:inline-flex;align-items:center;gap:7px;user-select:none;}
+.cap-full > summary::-webkit-details-marker{display:none;}
+.cap-full > summary::before{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .16s;}
+.cap-full[open] > summary::before{transform:rotate(45deg);}
+.cap-full > summary:hover{color:var(--lime);}
+.cap-full .cap-body{margin-top:10px;}
+.cap-fmt{color:rgba(255,255,255,.66);}
+.cap-fmt b{color:rgba(255,255,255,.8);font-weight:650;}
+.cap-body p{font-size:13.6px;line-height:1.62;color:rgba(255,255,255,.84);margin:0 0 9px;
+  max-width:78ch;}
 
 /* Session photographs. These are lifted from the reports at their authored size
    — roughly 160-240px wide — so they are shown as a thumbnail rail and never
@@ -2574,7 +2612,7 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
       <div class="sec-head sec-head-row">
         <div>
           <h2>Capacity building programme</h2>
-          <p>What was run in each district — the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
+          <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
         </div>
       </div>
       <div id="capacityBody" aria-live="polite">
@@ -4200,49 +4238,202 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     }).join('') + '</div>';
   }
 
+  /* ── One day, one card ────────────────────────────────────────────────
+     Every session is shown in the same template so a reader can compare
+     days at a glance: three fact tiles (type of training, how many attended,
+     how it was held), then the highlights, then who was in the room, with the
+     photographs beside them and the full filed report folded away underneath.
+     Everything here is derived from the report text; nothing is invented, and
+     where the report did not record a count the tile says so. */
+
+  var TYPE_LBL = { district:'District level', constituency:'Constituency &amp; mandal',
+                   master:'Master trainers' };
+  var TYPE_SUB = { district:'District officers', constituency:'Constituency and mandal officers',
+                   master:'Trainers for the district' };
+
+  /* How the day was held, read out of the free-text "format" line. The line is
+     PDF-extracted and varies from "In person Profiling (10 AM to 5 PM)" to a
+     paragraph, so only the mode and the clock times are pulled out; the rest
+     stays in the full report. */
+  function sessionMode(fmt, coverage){
+    var t = (fmt || '').replace(/\s+/g, ' ').trim();
+    /* No format line filed: read the mode off the report's opening sentence
+       instead ("...was conducted virtually today from 2:30 PM to 5:30 PM").
+       Only a regex hit counts here; the narrative itself is never quoted as
+       the sub-line. */
+    var strict = false;
+    if(!t && coverage && coverage.length){
+      t = String(coverage[0] || '').replace(/\s+/g, ' ').slice(0, 320);
+      strict = true;
+    }
+    if(!t) return { v:'', s:'' };
+    var virt = /virtual|online|video.?conference|zoom|google meet|webex/i.test(t);
+    var phys = /in.?person|collectorate|office|hall|venue/i.test(t);
+    var mode = /hybrid/i.test(t) || (virt && phys) ? 'Hybrid'
+             : virt ? 'Virtual'
+             : phys ? 'In person'
+             : /one.?to.?one/i.test(t) ? 'One-to-one'
+             : '';
+    var re = /(\d{1,2}(?:[:.]\d{2})?)\s*(a\.?m\.?|p\.?m\.?)?\s*(?:to|till|–|—|-)\s*(\d{1,2}(?:[:.]\d{2})?)\s*(a\.?m\.?|p\.?m\.?)/gi;
+    var m, times = [];
+    while((m = re.exec(t)) && times.length < 2){
+      var ap = function(x){ return x ? ' ' + x.replace(/\./g,'').toUpperCase() : ''; };
+      times.push(m[1].replace('.',':') + ap(m[2]) + ' to ' + m[3].replace('.',':') + ap(m[4]));
+    }
+    var sub = times.length ? times.join(' · ')
+            : strict ? ''
+            : (t.length > 72 ? t.slice(0, 70).replace(/\s+\S*$/, '') + '…' : t);
+    return { v: mode, s: sub, full: strict ? '' : t };
+  }
+
+  /* The highlights list. Preferred source is the report's own bullet groups;
+     a report that filed only a narrative paragraph is split into sentences so
+     the card still carries something to read. Table-header artefacts from the
+     PDF ("Field   Details", "Method   In-person") are dropped. */
+  function sessionPoints(s){
+    var pts = [], src = 'highlights';
+    (s.highlights || []).forEach(function(g){
+      var head = (g.head || '').replace(/\s+/g, ' ').trim();
+      if(/\s{2,}/.test(g.head || '') || /^field\s+details$/i.test(head)) head = '';
+      (g.points || []).forEach(function(p){
+        p = (p || '').replace(/\s+/g, ' ').trim();
+        if(!p) return;
+        if(/^(Method|Activity|Field|Key Findings|Key Officials|Participants list|Sector Focus)\b/.test(p)) return;
+        pts.push({ head: head, text: p });
+      });
+    });
+    /* a "point" under 45 characters in a list of several is a section title
+       that leaked from the PDF ("District Profiling-Secondary Sector"), not a
+       finding; keep it only when the report has almost nothing else */
+    if(pts.length > 3){
+      pts = pts.filter(function(p){ return p.text.length >= 45 || /\d/.test(p.text); });
+    }
+    if(!pts.length && s.coverage && s.coverage.length){
+      src = 'report';
+      var sent = s.coverage.join(' ').replace(/\s+/g, ' ').match(/[^.!?]+(?:[.!?]+|$)/g) || [];
+      sent.forEach(function(x){
+        x = x.trim();
+        if(x.length >= 40) pts.push({ head:'', text:x });
+      });
+    }
+    return { src: src, points: pts };
+  }
+
+  /* Who attended, as chips where the report listed roles cleanly and as prose
+     where it did not. About a quarter of the reports run designations into a
+     paragraph, and forcing those into chips produced nonsense. */
+  function sessionRoles(roles){
+    var t = (roles || '').replace(/\s+/g, ' ').trim();
+    var cut = t.indexOf('›');            // a leaked highlight line follows the marker
+    if(cut > 0) t = t.slice(0, cut).trim();
+    t = t.replace(/\b(participants list|list of participants)\s*:?\s*/ig, ' ').replace(/\s+/g, ' ').trim();
+    if(!t) return null;
+    /* split on ; and , but never inside brackets, so "Officer (Planning, Stats)"
+       stays one chip */
+    var parts = [], buf = '', depth = 0;
+    for(var i = 0; i < t.length; i++){
+      var ch = t[i];
+      if(ch === '(') depth++;
+      else if(ch === ')') depth = Math.max(0, depth - 1);
+      if((ch === ';' || ch === ',') && depth === 0){ parts.push(buf); buf = ''; }
+      else buf += ch;
+    }
+    parts.push(buf);
+    parts = parts.map(function(p){ return p.replace(/^[\s.;,]+|[\s.;,]+$/g, ''); })
+                 .filter(function(p){ return p.length >= 2; });
+    var seen = {}, chips = [];
+    parts.forEach(function(p){ var k = p.toLowerCase(); if(!seen[k]){ seen[k] = 1; chips.push(p); } });
+    var long = chips.filter(function(p){ return p.length > 45; }).length;
+    var clean = chips.length >= 3 && long <= Math.max(1, Math.floor(chips.length / 5));
+    return clean ? { chips: chips } : { prose: t };
+  }
+
+  var HL_SHOW = 6, ROLE_SHOW = 14;
+
   function sessionBlock(s, dname){
     var head = '<div class="cap-shead">' +
       (s.day ? '<span class="cap-day">Day '+s.day+'</span>' : '') +
       (s.date ? '<span class="cap-date">'+esc(prettyDate(s.date))+'</span>' : '') +
-      '<span class="cap-lvl">'+(LVL[s.level]||'District level')+'</span>' +
       (s.kind ? '<span class="cap-kind">'+esc(s.kind)+'</span>' : '') +
-      (s.participants ? '<span class="cap-n"><b>'+nfmt(s.participants)+'</b> officers</span>' : '') +
       '</div>';
 
-    var fmt = s.format ? '<div class="cap-fmt">'+esc(s.format)+'</div>' : '';
-    var body = '';
-    if(s.coverage && s.coverage.length){
-      body = '<div class="cap-body">' +
-        s.coverage.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('') + '</div>';
+    /* the three facts */
+    var mode = sessionMode(s.format, s.coverage);
+    var facts = '<div class="cap-facts">' +
+      '<div class="cap-fact cap-fact-type"><span class="k">Type of training</span>' +
+        '<span class="v">'+(TYPE_LBL[s.level]||'District level')+'</span>' +
+        '<span class="s">'+(TYPE_SUB[s.level]||'District officers')+'</span></div>' +
+      '<div class="cap-fact cap-fact-n"><span class="k">Attended</span>' +
+        (s.participants
+          ? '<span class="v">'+nfmt(s.participants)+' <small>officers</small></span><span class="s">as recorded in the report</span>'
+          : '<span class="v muted">—</span><span class="s">count not recorded</span>') +
+      '</div>' +
+      '<div class="cap-fact cap-fact-mode"><span class="k">How it was held</span>' +
+        (mode.v || mode.s
+          ? '<span class="v">'+esc(mode.v || 'See report')+'</span>' +
+            (mode.s ? '<span class="s" title="'+esc(mode.full||'')+'">'+esc(mode.s)+'</span>' : '')
+          : '<span class="v muted">—</span><span class="s">format not stated</span>') +
+      '</div>' +
+    '</div>';
+
+    /* highlights */
+    var hp = sessionPoints(s), hl = '';
+    if(hp.points.length){
+      var lastHead = null, items = [];
+      hp.points.forEach(function(p, i){
+        var hid = i >= HL_SHOW ? ' hidden' : '';
+        if(p.head && p.head !== lastHead){
+          items.push('<li class="cap-hhead"'+hid+'>'+esc(p.head)+'</li>');
+        }
+        lastHead = p.head || lastHead;
+        items.push('<li'+hid+'>'+esc(p.text)+'</li>');
+      });
+      hl = '<div class="cap-block cap-hl">' +
+        '<h5>'+(hp.src === 'report' ? 'From the report' : 'Highlights')+'</h5>' +
+        '<ul class="cap-hpts">'+items.join('')+'</ul>' +
+        (hp.points.length > HL_SHOW
+          ? '<button type="button" class="cap-more" data-more="hl">Show all '+hp.points.length+' points</button>'
+          : '') +
+      '</div>';
     } else if(s.note){
-      body = '<div class="cap-body"><p class="cap-note">'+esc(s.note)+'</p></div>';
+      hl = '<div class="cap-block cap-hl"><h5>Note</h5><p class="cap-note">'+esc(s.note)+'</p></div>';
     }
 
-    var hl = '';
-    if(s.highlights && s.highlights.length){
-      hl = '<div class="cap-hl">' + s.highlights.map(function(g){
-        return '<div class="cap-hgroup">' +
-          (g.head ? '<h5>'+esc(g.head)+'</h5>' : '') +
-          '<ul>' + g.points.map(function(p){ return '<li>'+esc(p)+'</li>'; }).join('') + '</ul>' +
-        '</div>';
-      }).join('') + '</div>';
+    /* who attended */
+    var rl = sessionRoles(s.roles), roles = '';
+    if(rl && rl.chips){
+      roles = '<div class="cap-block cap-who"><h5>Who attended</h5><div class="cap-chips">' +
+        rl.chips.map(function(c, i){
+          return '<span class="cap-chip"'+(i >= ROLE_SHOW ? ' hidden' : '')+'>'+esc(c)+'</span>';
+        }).join('') +
+        (rl.chips.length > ROLE_SHOW
+          ? '<button type="button" class="cap-more cap-more-inline" data-more="who">+'+(rl.chips.length - ROLE_SHOW)+' more</button>'
+          : '') +
+      '</div></div>';
+    } else if(rl && rl.prose){
+      roles = '<div class="cap-block cap-who"><h5>Who attended</h5><p class="cap-roles">'+esc(rl.prose)+'</p></div>';
     }
 
-    var roles = s.roles ? '<div class="cap-roles"><b>Who attended:</b> '+esc(s.roles)+'</div>' : '';
+    /* the full filed report, folded away */
+    var full = '';
+    if((s.coverage && s.coverage.length) || (s.format && s.format.length > 80)){
+      full = '<details class="cap-full"><summary>Read the full report</summary><div class="cap-body">' +
+        (s.format ? '<p class="cap-fmt"><b>Format:</b> '+esc(s.format)+'</p>' : '') +
+        (s.coverage || []).map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('') +
+      '</div></details>';
+    }
 
-    /* Photographs beside the account of the session rather than under it: the
-       two are one record, and stacking them made the reader scroll past a wall
-       of text to reach the pictures of what it described. Falls back to a single
-       column when a report has no photos, so the prose still uses the full
-       width instead of leaving a hole where the rail would have been. */
+    /* Photographs beside the account rather than under it: the two are one
+       record. Single column when a report has no photos, so the text uses the
+       full width instead of leaving a hole where the rail would have been. */
     var shots = shotRail(s, dname);
-    var text = body + hl;
+    var text = hl + roles;
     var main = shots
       ? '<div class="cap-split"><div class="cap-split-media">'+shots+'</div>' +
         '<div class="cap-split-text">'+text+'</div></div>'
       : text;
 
-    return '<div class="cap-sess" id="'+s._domId+'">'+head+fmt+main+roles+'</div>';
+    return '<div class="cap-sess" id="'+s._domId+'">'+head+facts+main+full+'</div>';
   }
 
   /* A chip per session, day-of-month for a dated one, its kind for the rare
@@ -4278,16 +4469,16 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       ? prettyDate(d.date_from) + ' – ' + prettyDate(d.date_to) : '';
     var lede = 'The programme ran ' + d.sessions_delivered + ' session' +
       (d.sessions_delivered === 1 ? '' : 's') + ' in ' + d.name +
-      (span ? ', ' + span : '') + '. One entry is shown at a time below: pick a ' +
-      'day above to see that report — the format it was held in, what it covered, ' +
-      'what officers reported, and the photographs filed with it.';
+      (span ? ', ' + span : '') + '. Each day is summarised in the same card: ' +
+      'the type of training, how many officers attended, how it was held, the ' +
+      'highlights, and who was in the room. Pick a day to read that report.';
 
     d.sessions.forEach(function(s, i){ s._domId = 'cap-sess-' + i; });
     capActiveIdx = 0;   // day one, every time a district is opened
 
     var brief = document.getElementById('capBrief');
     brief.innerHTML = '<div class="cap-brief">' +
-      '<h3>Brief of the training — ' + esc(d.name) + '</h3>' +
+      '<h3>Brief of the training: ' + esc(d.name) + '</h3>' +
       '<p class="lede">' + esc(lede) + '</p>' +
       '<div id="capPager"></div>' +
       '<div id="capActiveSess"></div>' +
@@ -4307,6 +4498,14 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       mount.innerHTML = sessionBlock(d.sessions[i], d.name);
       mount.querySelectorAll('.cap-shot').forEach(function(b){
         b.addEventListener('click', function(){ openShot(parseInt(b.dataset.shot,10)); });
+      });
+      /* "Show all" reveals the rest of the list in place, no re-render */
+      mount.querySelectorAll('.cap-more').forEach(function(b){
+        b.addEventListener('click', function(){
+          var box = b.closest('.cap-block');
+          if(box) box.querySelectorAll('[hidden]').forEach(function(el){ el.hidden = false; });
+          b.remove();
+        });
       });
       mount.scrollIntoView({behavior:'auto', block:'start'});
     }
@@ -4427,7 +4626,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       '<div class="cap-two">' +
         '<a class="cap-card" href="capacity/feedback.html">' +
           '<h3>Training feedback</h3>' +
-          '<p>How officers rated each session — objectives, relevance to their role, ' +
+          '<p>How officers rated each session: objectives, relevance to their role, ' +
           'clarity of the concepts, the case studies, pace, and overall usefulness.</p>' +
           pending +
           '<div class="cap-mini">' +
@@ -4440,7 +4639,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         '<a class="cap-card" href="capacity/assessment.html">' +
           '<h3>Baseline &amp; endline</h3>' +
           '<p>The knowledge assessment run before and after training at all three ' +
-          'levels — Swarna Andhra awareness, the KPI framework, and GDP / GVA / GDDP.</p>' +
+          'levels: Swarna Andhra awareness, the KPI framework, and GDP / GVA / GDDP.</p>' +
           pending +
           '<div class="cap-mini">' +
             '<div><div class="v">' + baseline.length + '</div><div class="k">Baseline</div></div>' +
