@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Baseline &amp; endline results · Swarna Andhra @2047</title>
+<meta name="description" content="Scores before and after training, by type of training, from the district's consolidated assessment report.">
+<link rel="icon" href="../favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;750&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--ink:#0E4A3C;--ink-2:#0B2E20;--lime:#C6FF6A;--lime-2:#C6EC8F;--r:18px;--r-lg:24px;--maxw:1040px;
+  --serif:'Playfair Display',Georgia,serif;}
+html{scroll-behavior:smooth;}
+body{font-family:'Public Sans',-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  color:#fff;-webkit-font-smoothing:antialiased;background:#072117;
+  background-image:radial-gradient(60% 50% at 12% 8%, rgba(18,124,103,.30) 0%, rgba(18,124,103,0) 62%),
+    radial-gradient(52% 44% at 88% 0%, rgba(198,255,106,.13) 0%, rgba(198,255,106,0) 60%),
+    radial-gradient(70% 60% at 50% 108%, rgba(11,46,32,.85) 0%, rgba(11,46,32,0) 70%);
+  background-attachment:fixed;line-height:1.55;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,44px);}
+.top{padding:clamp(26px,4vw,44px) 0 clamp(18px,2.4vw,26px);}
+.back{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:12.5px;font-weight:650;
+  letter-spacing:.03em;color:rgba(198,236,143,.9);margin-bottom:clamp(16px,2.4vw,24px);}
+.back:hover{color:var(--lime);}
+.eyebrow{font-size:11px;font-weight:750;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,236,143,.8);margin-bottom:9px;}
+h1{font-size:clamp(26px,4.4vw,42px);font-weight:750;letter-spacing:-.025em;line-height:1.12;margin-bottom:12px;}
+.lede{font-size:clamp(14.5px,1.7vw,16.5px);line-height:1.6;color:rgba(255,255,255,.76);max-width:70ch;}
+.pick{display:flex;align-items:center;gap:12px;margin:18px 0 0;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.pick select{font:inherit;font-size:14px;font-weight:600;letter-spacing:0;text-transform:none;color:#FFF;cursor:pointer;
+  padding:9px 38px 9px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.08);
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C6EC8F' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;}
+.pick select option{background:#0B2E20;}
+main{padding-bottom:clamp(40px,6vw,72px);}
+.empty{border-radius:var(--r-lg);padding:26px;background:rgba(9,40,27,.72);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.75);}
+footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:12px;color:rgba(255,255,255,.5);}
+/* Baseline & endline results (renderResults) */
+.ar-wrap{border-radius:var(--r-lg);padding:clamp(18px,2.2vw,26px) clamp(18px,2.4vw,28px);
+  background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:0 12px 34px rgba(0,0,0,.20);margin-bottom:clamp(18px,2.4vw,26px);}
+.ar-head h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;color:#FFF;margin:0 0 4px;}
+.ar-head .lede{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.55;margin:0 0 clamp(16px,2vw,22px);max-width:78ch;}
+.ar-panel{border-top:1px solid rgba(255,255,255,.14);padding:clamp(16px,2vw,22px) 0 clamp(14px,1.8vw,20px);}
+.ar-panel:last-of-type{padding-bottom:6px;}
+.ar-ptop{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.ar-lvl{display:block;font-family:var(--serif);font-size:clamp(17px,2vw,21px);font-weight:600;color:#FFF;line-height:1.2;}
+.ar-aud{display:block;font-size:12.5px;color:rgba(255,255,255,.62);margin-top:3px;}
+.ar-delta{border-radius:var(--r);padding:8px 13px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.055);display:flex;flex-direction:column;gap:1px;min-width:150px;}
+.ar-delta .ar-dv{font-size:clamp(17px,2vw,22px);font-weight:750;color:#FFF;letter-spacing:-.015em;font-variant-numeric:tabular-nums;line-height:1.1;}
+.ar-delta.up .ar-dv{color:var(--lime);}
+.ar-delta.down .ar-dv{color:#FFB4A8;}
+.ar-delta.na .ar-dv{font-size:14px;color:rgba(255,255,255,.75);}
+.ar-delta .ar-dk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600;}
+.ar-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,18px);}
+.ar-round{border-radius:var(--r);padding:14px 16px 13px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.13);min-width:0;}
+.ar-round.ar-empty{display:grid;place-items:center;color:rgba(255,255,255,.45);font-size:13px;}
+.ar-stage{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(198,236,143,.85);
+  display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
+.ar-date{font-weight:600;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.55);font-size:11.5px;}
+.ar-big{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:6px 0 10px;}
+.ar-pct{font-size:clamp(28px,3.4vw,40px);font-weight:750;color:#FFF;line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums;}
+.ar-sub{font-size:12.5px;color:rgba(255,255,255,.62);}
+.ar-cav{font-size:12px;color:#FFD9A8;margin:-4px 0 10px;}
+.ar-kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px 12px;margin-bottom:12px;}
+.ar-kv > div{display:flex;flex-direction:column;gap:1px;min-width:0;}
+.ar-kv b{font-size:15px;font-weight:750;color:#FFF;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+.ar-kv span{font-size:11px;color:rgba(255,255,255,.55);}
+.ar-q{display:flex;height:9px;border-radius:5px;overflow:hidden;gap:2px;background:rgba(255,255,255,.08);}
+.ar-qs{display:block;min-width:0;}
+.ar-qs.q1,.ar-ql i.q1{background:#E8837A;}
+.ar-qs.q2,.ar-ql i.q2{background:#F0B36A;}
+.ar-qs.q3,.ar-ql i.q3{background:#8FE3FF;}
+.ar-qs.q4,.ar-ql i.q4{background:var(--lime);}
+.ar-ql{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 10px;font-size:11px;color:rgba(255,255,255,.62);}
+.ar-ql i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;vertical-align:-0.5px;}
+.ar-ql b{color:#FFF;font-weight:700;}
+.ar-sw p{margin:0 0 5px;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.78);}
+.ar-sw em{font-style:normal;font-weight:700;color:rgba(198,236,143,.9);margin-right:5px;}
+.ar-chg{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px 12px;margin:14px 0 0;
+  padding:12px 14px;border-radius:var(--r);border:1px dashed rgba(255,255,255,.22);}
+.ar-chg > div{display:flex;flex-direction:column;gap:1px;}
+.ar-chg b{font-size:15px;font-weight:750;color:#FFF;font-variant-numeric:tabular-nums;}
+.ar-chg span{font-size:11px;color:rgba(255,255,255,.55);}
+.ar-cmp{margin:12px 0 0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.74);max-width:86ch;}
+.ar-src{margin:14px 0 0;font-size:11.5px;color:rgba(255,255,255,.45);}
+@media (max-width:760px){.ar-two{grid-template-columns:1fr;}.ar-delta{width:100%;}}
+
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="back" href="../index.html#districts">&larr; Back to the capacity building record</a>
+  <div class="eyebrow">Capacity building · Assessment</div>
+  <h1>Baseline &amp; endline results</h1>
+  <p class="lede">What officers knew before each training and after it, from the district's consolidated assessment report. One panel per type of training; the two rounds are compared only where the report says the papers were the same.</p>
+  <div class="pick"><label for="dsel">District</label><select id="dsel"></select></div>
+</div></div>
+<main><div class="wrap" id="mount"></div></main>
+<footer><div class="wrap">Pahlé India Foundation · Aligned with Swarna Andhra @2047 · Planning Department</div></footer>
+<script>
+(function(){
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function pctf(x){ return (x == null) ? '—' : (Math.round(x * 10) / 10).toFixed(1).replace(/\.0$/, '') + '%'; }
+  function numf(x){ return (x == null) ? '—' : String(Math.round(x * 100) / 100); }
+
+  function roundCol(r, stage, items){
+    if(!r) return '<div class="ar-round ar-empty">Not administered</div>';
+    var q = r.quartiles || [];
+    var qt = q.reduce(function(a, b){ return a + b; }, 0) || 1;
+    var bars = q.length ? '<div class="ar-q" aria-label="Score distribution by quartile">' +
+      q.map(function(n, i){
+        return '<span class="ar-qs q'+(i+1)+'" style="flex-grow:'+n+'" title="Q'+(i+1)+': '+n+' of '+qt+'"></span>';
+      }).join('') + '</div>' +
+      '<div class="ar-ql">' + q.map(function(n, i){
+        return '<span><i class="q'+(i+1)+'"></i>Q'+(i+1)+' <b>'+n+'</b></span>';
+      }).join('') + '</div>' : '';
+    return '<div class="ar-round">' +
+      '<div class="ar-stage">'+stage+'<span class="ar-date">'+esc(r.date||'')+'</span></div>' +
+      '<div class="ar-big"><span class="ar-pct">'+pctf(r.pct)+'</span>' +
+        '<span class="ar-sub">mean '+numf(r.mean)+' of '+r.items+' · n = '+r.n+'</span></div>' +
+      (r.caveat ? '<div class="ar-cav">'+esc(r.caveat)+'</div>' : '') +
+      '<div class="ar-kv">' +
+        '<div><b>'+pctf(r.top_q && r.top_q.pct)+'</b><span>top quartile'+(r.top_q ? ' ('+r.top_q.n+')' : '')+'</span></div>' +
+        '<div><b>'+pctf(r.below50 && r.below50.pct)+'</b><span>below 50%'+(r.below50 ? ' ('+r.below50.n+')' : '')+'</span></div>' +
+        '<div><b>'+(r.high ? r.high.score+'/'+r.items : '—')+'</b><span>highest'+(r.high && r.high.n ? ' ('+r.high.n+')' : '')+'</span></div>' +
+        '<div><b>'+(r.low ? r.low.score+'/'+r.items : '—')+'</b><span>lowest'+(r.low && r.low.n ? ' ('+r.low.n+')' : '')+'</span></div>' +
+        (r.median != null ? '<div><b>'+r.median+'</b><span>median</span></div>' : '') +
+        (r.sd != null ? '<div><b>'+r.sd+'</b><span>SD</span></div>' : '') +
+      '</div>' +
+      bars +
+      '<div class="ar-sw">' +
+        (r.strongest ? '<p><em>Best answered</em> '+esc(r.strongest)+'</p>' : '') +
+        (r.weakest ? '<p><em>Least answered</em> '+esc(r.weakest)+'</p>' : '') +
+        (r.item_range ? '<p><em>Item accuracy</em> '+esc(r.item_range)+'</p>' : '') +
+      '</div>' +
+    '</div>';
+  }
+
+  var capAssessDefault = null, capResultsOpen = false;
+
+
+  function build(rec){
+    var html = '<div class="ar-wrap">' +
+      '<div class="ar-head"><h3>Baseline &amp; endline: '+esc(rec.name)+'</h3>' +
+      '<p class="lede">One panel per type of training. Each round shows the score, how officers were spread, ' +
+      'and the best and least answered topics; the two rounds are compared only where the report says the papers were the same.</p></div>';
+    html += rec.levels.map(function(L){
+      var b = L.baseline, e = L.endline;
+      var delta = '';
+      if(L.change && L.change.pct_pp != null){
+        var v = L.change.pct_pp;
+        delta = '<div class="ar-delta '+(v > 0 ? 'up' : v < 0 ? 'down' : '')+'">' +
+          '<span class="ar-dv">'+(v > 0 ? '+' : '')+numf(v)+' pp</span><span class="ar-dk">endline vs baseline, mean score</span></div>';
+      } else if(!L.comparable){
+        delta = '<div class="ar-delta na"><span class="ar-dv">Not comparable</span><span class="ar-dk">different papers in the two rounds</span></div>';
+      }
+      var change = '';
+      if(L.change && L.comparable && L.change.top_q_pp != null){
+        var c = L.change;
+        var sg = function(x, unit){ return (x > 0 ? '+' : '') + numf(x) + (unit||''); };
+        change = '<div class="ar-chg">' +
+          '<div><b>'+sg(c.mean)+'</b><span>mean score</span></div>' +
+          '<div><b>'+sg(c.top_q_pp,' pp')+'</b><span>top quartile</span></div>' +
+          '<div><b>'+sg(c.below50_pp,' pp')+'</b><span>below 50%</span></div>' +
+          '<div><b>'+sg(c.perfect_pp,' pp')+'</b><span>perfect score</span></div>' +
+          '<div><b>'+sg(c.respondents)+'</b><span>respondents</span></div>' +
+        '</div>';
+      }
+      return '<section class="ar-panel">' +
+        '<div class="ar-ptop">' +
+          '<div><span class="ar-lvl">'+esc(L.label)+'</span>' +
+          '<span class="ar-aud">'+esc(L.audience)+' · '+ (b ? b.items : e.items) +'-question paper</span></div>' +
+          delta +
+        '</div>' +
+        '<div class="ar-two">' + roundCol(b, 'Baseline') + roundCol(e, 'Endline') + '</div>' +
+        change +
+        (L.comparison ? '<p class="ar-cmp">'+esc(L.comparison)+'</p>' : '') +
+      '</section>';
+    }).join('');
+    html += '<p class="ar-src">Source: '+esc(rec.name)+' Consolidated Assessment Report, Pahlé India Foundation. Figures as printed in the report.</p></div>';
+    return html;
+  }
+  var mount = document.getElementById('mount'), sel = document.getElementById('dsel');
+  fetch('../assets/assessment_results.json?v=2026-08-16a').then(function(r){ return r.json(); }).then(function(R){
+    var slugs = Object.keys(R.districts || {});
+    var want = new URLSearchParams(location.search).get('d') || slugs[0];
+    sel.innerHTML = slugs.map(function(k){ return '<option value="'+k+'"'+(k===want?' selected':'')+'>'+esc(R.districts[k].name)+'</option>'; }).join('');
+    function show(k){
+      var rec = R.districts[k];
+      if(!rec){ mount.innerHTML = '<div class="empty">No assessment report has been filed for this district yet.</div>'; return; }
+      document.title = 'Baseline & endline · ' + rec.name + ' · Swarna Andhra @2047';
+      mount.innerHTML = build(rec);
+      history.replaceState(null, '', '?d=' + k);
+    }
+    sel.addEventListener('change', function(){ show(sel.value); });
+    show(want);
+  }).catch(function(){ mount.innerHTML = '<div class="empty">Could not load the assessment results.</div>'; });
+})();
+</script>
+</body>
+</html>
