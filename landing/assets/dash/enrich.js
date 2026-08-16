@@ -344,7 +344,7 @@
       district_count: indexAll && indexAll.districts ? Object.keys(indexAll.districts).length : 28,
 
       gddp: null, gddp_growth: null, gddp_rank: null,
-      pci: null, pci_growth: null, population: null,
+      pci: null, pci_growth: null, population: null, population_rank: null,
       gddp_series: [], pci_series: [],
       aggregates: null,
       shares: rec.shares && typeof rec.shares === 'object' ? {
@@ -388,6 +388,10 @@
        never has to know the unit, and can never render "5,915 people" */
     var popPt = last(pointsOf(dist.population));
     if (popPt && popPt.value !== null) node.population = Math.round(popPt.value * 1000);
+    /* Carried because it is what explains a district placing far apart on total
+       income and on per-capita income: the gap between those two ranks is a
+       population story, and without this the brief could only state the gap. */
+    if (popPt) node.population_rank = popPt.rank;
 
     if (dist.aggregates) {
       node.aggregates = {};

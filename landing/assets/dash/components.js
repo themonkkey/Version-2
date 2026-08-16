@@ -1001,6 +1001,15 @@
 
   function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
 
+  /** 1 -> "1st". Used for a rank read out inside a sentence. */
+  function ordinal(n) {
+    var v = num(n);
+    if (v === null) return '';
+    v = Math.round(v);
+    var sfx = ['th', 'st', 'nd', 'rd'], m = v % 100;
+    return v + (sfx[(m - 20) % 10] || sfx[m] || sfx[0]);
+  }
+
   function briefDistrict(n) {
     var L = [];
     if (n.gddp !== null) {
@@ -1017,12 +1026,60 @@
         s += ', up from ' + fmtCr(firstPt.value) + ' in ' + esc(firstPt.year);
       L.push(s + '.');
     }
+    /* The rank sentence below reads both ranks together when they disagree, so
+       the per-capita rank is only stated here when that sentence will not run —
+       otherwise the same "#24 of 28" is printed twice, a line apart. */
+    var ranksDiffer = n.gddp_rank !== null && n.pci_rank !== null &&
+                      Math.abs(n.gddp_rank - n.pci_rank) >= 3;
     if (n.pci !== null) {
       var p = 'Per-capita income is <b>' + fmtRs(n.pci) + '</b>' +
         (n.pci_growth !== null ? ', ' + fmtPct(n.pci_growth) + ' over the previous year' : '');
-      if (n.pci_rank !== null) p += '; the district ranks <b>#' + n.pci_rank + '</b> of ' +
+      if (n.pci_rank !== null && !ranksDiffer) p += '; the district ranks <b>#' + n.pci_rank + '</b> of ' +
         (n.district_count || 28) + ' by per-capita income';
       L.push(p + '.');
+    }
+    /* Size and standing are different questions, and a district can sit far apart
+       on the two: Kurnool is 15th of 28 by total income but 24th by per-capita.
+       That gap is a population fact, so state it as one rather than leaving the
+       reader to reconcile two ranks. Only written when both ranks exist and
+       actually disagree. */
+    if (n.gddp_rank !== null) {
+      var tot = n.district_count || 28;
+      var r = 'By total district income it stands <b>#' + n.gddp_rank + '</b> of ' + tot;
+      if (ranksDiffer) {
+        r += ', ' + (n.gddp_rank < n.pci_rank ? 'ahead of' : 'behind') + ' its #' +
+             n.pci_rank + ' on per-capita income';
+        if (n.population !== null) {
+          r += ': ' + (n.population_rank !== null && n.population_rank <= 5
+                ? 'this is the state\u2019s ' + ordinal(n.population_rank) + ' most populous district, '
+                : 'the district holds ') +
+               grp(Math.round(n.population / 100000 * 10) / 10) + ' lakh people';
+        }
+      } else if (n.population !== null) {
+        // ranks agree, so there is no gap to explain; the head count still
+        // belongs here rather than leaving a four-word sentence on its own
+        r += ', with ' + grp(Math.round(n.population / 100000 * 10) / 10) + ' lakh people' +
+             (n.population_rank !== null && n.population_rank <= 5
+               ? ', the ' + ordinal(n.population_rank) + ' largest population in the state' : '');
+      }
+      L.push(r + '.');
+    }
+
+    /* How the growth got here. A single year-on-year figure hides a lot when the
+       four published years are different vintages, and this page's whole
+       discipline is that an estimate is only as firm as its class. Each figure is
+       quoted with the year it belongs to, so nothing implies the series is one
+       consistent measurement. */
+    var gs = (Array.isArray(n.gddp_series) ? n.gddp_series : [])
+      .filter(function (pt) { return pt.growth !== null && pt.label; });
+    if (gs.length >= 3) {
+      var gv = gs.map(function (pt) { return pt.growth; });
+      var spread = Math.max.apply(null, gv) - Math.min.apply(null, gv);
+      var runs = gs.map(function (pt) { return fmtPct(pt.growth) + ' in ' + esc(pt.label); });
+      L.push((spread >= 8 ? 'Growth has been uneven across the published years: '
+                          : 'Growth across the published years has run ') +
+             runs.slice(0, -1).join(', ') + ' and ' + runs[runs.length - 1] +
+             ', each year on its own estimate vintage.');
     }
     L.push(shareSentence(n.shares, 'the district economy'));
     if (n.sectors && n.sectors.length) {
@@ -1034,6 +1091,26 @@
       if (ranked[1]) L.push('It also holds ground in <b>' + esc(ranked[1].name) + '</b>, with ' +
         fmtPct(ranked[1].pct_of_state_sector) + ' of the state total' +
         (ranked[1].rank !== null ? ' (rank ' + ranked[1].rank + ')' : '') + '.');
+
+      /* Which way the individual sectors moved in the latest year. The shares
+         above say what the economy is made of; this says what is changing, and
+         a share can hold steady while the sector behind it swings hard.
+         `growth` is the published year-on-year figure, so no arithmetic here. */
+      var moved = n.sectors.filter(function (sec) { return sec.growth !== null; })
+        .sort(function (a, b) { return b.growth - a.growth; });
+      if (moved.length >= 2) {
+        var up = moved[0], down = moved[moved.length - 1], mv = '';
+        if (up.growth > 0) {
+          mv = 'Across the ' + moved.length + ' sectors with a published movement, <b>' +
+               esc(up.name) + '</b> grew fastest at <b>' + fmtPct(up.growth) + '</b>';
+          if (down.growth < 0) mv += ', while <b>' + esc(down.name) + '</b> fell ' +
+               fmtPct(Math.abs(down.growth));
+          L.push(mv + '.');
+        } else if (down.growth < 0) {
+          L.push('No sector grew in the latest year; the steepest fall was <b>' +
+                 esc(down.name) + '</b>, down ' + fmtPct(Math.abs(down.growth)) + '.');
+        }
+      }
     }
     return briefCard('District highlights', L);
   }
@@ -1055,6 +1132,22 @@
       if (n.area_sqkm !== null) d += ' across ' + grp(n.area_sqkm) + ' sq km';
       if (n.mandals && n.mandals.length) d += ', spread over <b>' + n.mandals.length + '</b> mandals';
       L.push(d + '.');
+    }
+    /* Standing among its siblings, and how densely it is settled. Both are in
+       the contract already and neither was being written: the rank tells a
+       reader whether this constituency carries the district or trails it, and
+       density separates an urban seat from a spread-out rural one far better
+       than a head count on its own. peerRank returns null unless the self entry
+       and at least two peers actually carry the key, so nothing is guessed. */
+    var pr = peerRank(n.peers, n.name, 'gcdp_baseline');
+    if (pr) {
+      L.push('That places it <b>#' + pr.rank + '</b> of ' + pr.total +
+             ' constituencies in ' + esc(n.district || 'the district') + ' by GCDP.');
+    }
+    if (n.density !== null) {
+      L.push('Settlement runs at <b>' + grp(n.density) + '</b> people per sq km' +
+             (n.density >= 1500 ? ', an urban density' :
+              n.density <= 300 ? ', sparse by state standards' : '') + '.');
     }
     L.push(shareSentence(n.shares, 'GCDP (' + esc(n.year_baseline) + ')'));
     if (n.thrust && n.thrust.length) {
