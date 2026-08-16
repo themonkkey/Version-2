@@ -1712,19 +1712,37 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 [data-step="2"] #sc1 .cap-parts,
 [data-step="3"] #sc1 .cap-pick{opacity:1;}
 
-/* scene 2 — eleven industries in three groups */
-#sc2 .bar{fill:rgba(255,255,255,.18);transform-origin:bottom;transform-box:fill-box;
-  transform:scaleY(.25);}
-[data-step="1"] #sc2 .bar{transform:scaleY(1);}
-[data-step="2"] #sc2 .bar{transform:scaleY(1);}
-[data-step="2"] #sc2 .bar.g1{fill:var(--lime);}
-[data-step="2"] #sc2 .bar:not(.g1){opacity:.3;}
-[data-step="3"] #sc2 .bar{transform:scaleY(1);}
-[data-step="3"] #sc2 .bar.g2{fill:#5CD6A0;}
-[data-step="3"] #sc2 .bar:not(.g2){opacity:.3;}
-[data-step="4"] #sc2 .bar{transform:scaleY(1);}
-[data-step="4"] #sc2 .bar.g3{fill:#8FE3FF;}
-[data-step="4"] #sc2 .bar:not(.g3){opacity:.3;}
+/* scene 2 — the eleven industry groups, drawn.
+   Rows of 1 / 4 / 6 carry the same fact the step text states, so the shape of
+   the layout is the argument. Glyph strokes take currentColor, which lets one
+   `color` change on the tile recolour the whole illustration; the per-tile
+   transition-delay in the markup makes each row light up as a cascade rather
+   than a block. */
+#sc2 .ind{color:rgba(255,255,255,.62);
+  transition:opacity .5s ease,color .5s ease;}
+#sc2 .tile{fill:rgba(255,255,255,.09);stroke:rgba(255,255,255,.20);
+  transition:fill .5s ease,stroke .5s ease;}
+#sc2 .gl{fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;}
+#sc2 .sym{fill:currentColor;stroke:none;font-size:15px;font-weight:600;
+  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
+#sc2 .lbl{fill:currentColor;stroke:none;font-size:9px;font-weight:600;
+  letter-spacing:.01em;
+  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
+#sc2 .tier{fill:rgba(255,255,255,.42);font-size:9px;font-weight:600;
+  letter-spacing:.14em;
+  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
+
+[data-step="2"] #sc2 .ind:not(.g1),
+[data-step="3"] #sc2 .ind:not(.g2),
+[data-step="4"] #sc2 .ind:not(.g3){opacity:.2;}
+
+[data-step="2"] #sc2 .g1{color:var(--lime);}
+[data-step="2"] #sc2 .g1 .tile{fill:rgba(198,255,106,.15);stroke:var(--lime);}
+[data-step="3"] #sc2 .g2{color:#5CD6A0;}
+[data-step="3"] #sc2 .g2 .tile{fill:rgba(92,214,160,.15);stroke:#5CD6A0;}
+[data-step="4"] #sc2 .g3{color:#8FE3FF;}
+[data-step="4"] #sc2 .g3 .tile{fill:rgba(143,227,255,.15);stroke:#8FE3FF;}
 
 /* scene 3 — three estimation approaches.
    The same five curves serve both directions: dash travel runs one way for
@@ -1778,6 +1796,8 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   .chap-vis{height:52vh;top:0;background:linear-gradient(180deg,var(--ink) 78%,transparent);
     z-index:2;margin:0 calc(var(--pad-x) * -1);padding:0 var(--pad-x);}
   .chap-vis svg{max-width:300px;}
+  /* six tiles across with labels needs more room than the other scenes */
+  .chap-vis svg#sc2{max-width:360px;}
   .chap-steps{padding:4vh 0 14vh;}
   .step{min-height:62vh;}
   .rail{display:none;}
@@ -2051,22 +2071,114 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 <div class="chap-mark"><div class="big serif">02</div><div class="ttl serif">The eleven industries</div></div>
 <div class="chap" data-chap-i="1" data-step="1">
   <div class="chap-vis"><svg id="sc2" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g >
-<rect class="sc bar g1" x="52" y="114" width="26" height="168" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g2" x="88" y="218" width="26" height="64" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g2" x="124" y="162" width="26" height="120" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g2" x="160" y="228" width="26" height="54" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g2" x="196" y="186" width="26" height="96" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g3" x="232" y="142" width="26" height="140" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g3" x="268" y="194" width="26" height="88" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g3" x="304" y="172" width="26" height="110" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g3" x="340" y="206" width="26" height="76" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g3" x="376" y="150" width="26" height="132" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc bar g3" x="412" y="222" width="26" height="60" rx="6" fill="white" fill-opacity="0.18"/>
-<rect class="sc base" x="52" y="288" width="356" height="1" fill="white" fill-opacity="0.22"/>
-<text  x="65" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">PRIMARY</text>
-<text  x="155" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">SECONDARY</text>
-<text  x="335" y="312" font-family="Public Sans" font-weight="600" font-size="11" letter-spacing="0.88" fill="white" fill-opacity="0.62" text-anchor="middle">TERTIARY</text>
+<text class="tier" x="30" y="20">PRIMARY · 1</text>
+<g class="ind g1" style="transition-delay:0.00s">
+<rect class="tile" x="30" y="28" width="60" height="60" rx="14"/>
+<g transform="translate(43,41)">
+<path class="gl" d="M17,31 V14"/>
+<path class="gl" d="M17,21 C11,21 8,18 8,13 C14,13 17,16 17,21 Z"/>
+<path class="gl" d="M17,17 C23,17 26,14 26,9 C20,9 17,12 17,17 Z"/>
+<path class="gl" d="M7,31 H27"/>
+</g>
+<text class="lbl" x="60" y="100" text-anchor="middle">Agriculture</text>
+</g>
+<text class="tier" x="30" y="122">SECONDARY · 4</text>
+<g class="ind g2" style="transition-delay:0.00s">
+<rect class="tile" x="30" y="130" width="60" height="60" rx="14"/>
+<g transform="translate(43,143)">
+<path class="gl" d="M9,31 L22,9"/>
+<path class="gl" d="M14,6 Q22,2 29,10"/>
+</g>
+<text class="lbl" x="60" y="202" text-anchor="middle">Mining</text>
+</g>
+<g class="ind g2" style="transition-delay:0.04s">
+<rect class="tile" x="98" y="130" width="60" height="60" rx="14"/>
+<g transform="translate(111,143)">
+<path class="gl" d="M5,31 V17 L12,22 V17 L19,22 V17 L26,22 V9 H30 V31 Z"/>
+<path class="gl" d="M13,31 V26 H18 V31"/>
+</g>
+<text class="lbl" x="128" y="202" text-anchor="middle">Manufacturing</text>
+</g>
+<g class="ind g2" style="transition-delay:0.09s">
+<rect class="tile" x="166" y="130" width="60" height="60" rx="14"/>
+<g transform="translate(179,143)">
+<path class="gl" d="M20,3 L10,19 H17 L15,31 L26,14 H19 Z"/>
+</g>
+<text class="lbl" x="196" y="202" text-anchor="middle">Utilities</text>
+</g>
+<g class="ind g2" style="transition-delay:0.14s">
+<rect class="tile" x="234" y="130" width="60" height="60" rx="14"/>
+<g transform="translate(247,143)">
+<path class="gl" d="M12,31 V6"/>
+<path class="gl" d="M5,6 H30"/>
+<path class="gl" d="M8,31 H17"/>
+<path class="gl" d="M12,12 L20,6"/>
+<path class="gl" d="M26,6 V13"/>
+<path class="gl" d="M23,13 H29 V17 H23 Z"/>
+</g>
+<text class="lbl" x="264" y="202" text-anchor="middle">Construction</text>
+</g>
+<text class="tier" x="30" y="224">TERTIARY · 6</text>
+<g class="ind g3" style="transition-delay:0.00s">
+<rect class="tile" x="30" y="232" width="60" height="60" rx="14"/>
+<g transform="translate(43,245)">
+<path class="gl" d="M5,12 H29 L26,6 H8 Z"/>
+<path class="gl" d="M5,12 L9,17 L13,12 L17,17 L21,12 L25,17 L29,12"/>
+<path class="gl" d="M7,17 V31 H27 V17"/>
+<path class="gl" d="M14,31 V23 H20 V31"/>
+</g>
+<text class="lbl" x="60" y="304" text-anchor="middle">Trade</text>
+</g>
+<g class="ind g3" style="transition-delay:0.04s">
+<rect class="tile" x="98" y="232" width="60" height="60" rx="14"/>
+<g transform="translate(111,245)">
+<path class="gl" d="M3,10 H19 V24 H3 Z"/>
+<path class="gl" d="M19,15 H25 L29,19 V24 H19"/>
+<circle class="gl" cx="9" cy="27" r="3"/>
+<circle class="gl" cx="24" cy="27" r="3"/>
+</g>
+<text class="lbl" x="128" y="304" text-anchor="middle">Transport</text>
+</g>
+<g class="ind g3" style="transition-delay:0.09s">
+<rect class="tile" x="166" y="232" width="60" height="60" rx="14"/>
+<g transform="translate(179,245)">
+<circle class="gl" cx="17" cy="17" r="12"/>
+<text class="sym" x="17" y="23" text-anchor="middle">₹</text>
+</g>
+<text class="lbl" x="196" y="304" text-anchor="middle">Finance</text>
+</g>
+<g class="ind g3" style="transition-delay:0.14s">
+<rect class="tile" x="234" y="232" width="60" height="60" rx="14"/>
+<g transform="translate(247,245)">
+<path class="gl" d="M5,31 V12 H15 V31"/>
+<path class="gl" d="M8,17 H12"/>
+<path class="gl" d="M8,22 H12"/>
+<path class="gl" d="M8,27 H12"/>
+<path class="gl" d="M17,31 V19 L24,13 L31,19 V31"/>
+<path class="gl" d="M22,31 V25 H26 V31"/>
+</g>
+<text class="lbl" x="264" y="304" text-anchor="middle">Real estate</text>
+</g>
+<g class="ind g3" style="transition-delay:0.18s">
+<rect class="tile" x="302" y="232" width="60" height="60" rx="14"/>
+<g transform="translate(315,245)">
+<path class="gl" d="M4,13 L17,5 L30,13 Z"/>
+<path class="gl" d="M5,27 H29"/>
+<path class="gl" d="M3,31 H31"/>
+<path class="gl" d="M9,13 V27"/>
+<path class="gl" d="M14,13 V27"/>
+<path class="gl" d="M20,13 V27"/>
+<path class="gl" d="M25,13 V27"/>
+</g>
+<text class="lbl" x="332" y="304" text-anchor="middle">Public admin</text>
+</g>
+<g class="ind g3" style="transition-delay:0.22s">
+<rect class="tile" x="370" y="232" width="60" height="60" rx="14"/>
+<g transform="translate(383,245)">
+<path class="gl" d="M17,11 C13,8 8,8 4,9 V28 C8,27 13,27 17,30 C21,27 26,27 30,28 V9 C26,8 21,8 17,11 Z"/>
+<path class="gl" d="M17,11 V30"/>
+</g>
+<text class="lbl" x="400" y="304" text-anchor="middle">Other</text>
 </g>
 </svg></div>
   <div class="chap-steps">
