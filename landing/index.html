@@ -557,8 +557,18 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    case, a top column taller than the map, is still handled by the JS height
    pairing, which grows the box to match. */
 .map-layout.split #districtPanel > .d-topcol{flex:1 1 0%;min-width:0;
-  align-self:stretch;justify-content:space-between;
+  align-self:stretch;justify-content:flex-start;
   margin-left:clamp(18px,2.6vw,30px);margin-right:0;}
+/* Whatever height the map has over the brief and the selects is absorbed by the
+   BRIEF CARD, not left as a gap. Pushing the selects to the foot of the column
+   (space-between) closes the gap below them but opens the same gap above, and
+   leaving the column top-aligned puts it back under the selects. Growing the
+   card instead keeps both joins tight — the surplus becomes card, which reads as
+   a deliberately sized panel rather than empty space. */
+.map-layout.split #districtPanel > .d-topcol > .d-brief{flex:1 1 auto;}
+/* last thing in the column: its own bottom margin would only add to the gap
+   before the dashboard block below */
+.map-layout.split #districtPanel > .d-topcol > .pdrill{margin-bottom:0;}
 /* Three of the twelve archetypes (c3, c4, d3) root their markup in .d-tpl rather
    than .dash. Nothing keys off that distinction, so both names are carried
    everywhere the dashboard block is addressed. */
@@ -2002,6 +2012,8 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   .map-layout.split #districtPanel > *{margin-left:0;margin-right:0;}
   .map-layout.split #districtPanel > .d-topcol{flex:0 0 100%;width:100%;margin-left:0;
     align-self:auto;justify-content:flex-start;margin-top:clamp(14px,3vw,20px);}
+  /* stacked, the column is content-height, so there is no slack to absorb */
+  .map-layout.split #districtPanel > .d-topcol > .d-brief{flex:0 0 auto;}
   .map-layout.split #districtPanel > .dash,
   .map-layout.split #districtPanel > .d-tpl{flex:0 0 100%;width:100%;}
   /* single column: the map sits above the dashboard, so pinning it would eat
