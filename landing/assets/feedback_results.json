@@ -1,0 +1,1221 @@
+{
+ "_source": "District_Training_Feedback_Report.docx (PIF). Nine Likert statements, 1 to 5. Figures transcribed as printed; nothing recomputed. Where a row's response shares do not sum to 100%, sum_flag carries the printed total rather than a corrected one.",
+ "_scale": [
+  "Strongly agree",
+  "Agree",
+  "Neutral",
+  "Disagree",
+  "Strongly disagree"
+ ],
+ "_statements": [
+  "Objectives clearly explained",
+  "Content relevant to district role",
+  "Understanding of GVA/GDDP importance",
+  "Trainer explained concepts clearly",
+  "Examples and case studies useful",
+  "Identified sector-specific GVA opportunities",
+  "Encouraged participation and discussion",
+  "Duration and pace appropriate",
+  "Overall usefulness"
+ ],
+ "districts": {
+  "visakhapatnam": {
+   "name": "Visakhapatnam",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 4.5,
+     "dist": [
+      50.0,
+      50.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 4.43,
+     "dist": [
+      50.0,
+      42.9,
+      7.1,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 4.36,
+     "dist": [
+      42.9,
+      50.0,
+      7.1,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 4.36,
+     "dist": [
+      50.0,
+      35.7,
+      14.3,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 4.14,
+     "dist": [
+      35.7,
+      50.0,
+      7.1,
+      7.1,
+      0.0
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 4.29,
+     "dist": [
+      42.9,
+      42.9,
+      14.3,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 4.29,
+     "dist": [
+      35.7,
+      57.1,
+      7.1,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 4.43,
+     "dist": [
+      50.0,
+      42.9,
+      7.1,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 4.43,
+     "dist": [
+      50.0,
+      42.9,
+      7.1,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "avg": 4.36,
+   "n": 14,
+   "favorable": 91.3,
+   "best": {
+    "label": "Objectives clearly explained",
+    "avg": 4.5
+   },
+   "worst": {
+    "label": "Examples and case studies useful",
+    "avg": 4.14
+   }
+  },
+  "kakinada": {
+   "name": "Kakinada",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 3.79,
+     "dist": [
+      21.4,
+      35.7,
+      42.9,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 4.0,
+     "dist": [
+      35.7,
+      28.6,
+      35.7,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 4.0,
+     "dist": [
+      35.7,
+      28.6,
+      35.7,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 3.64,
+     "dist": [
+      14.3,
+      35.7,
+      50.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 3.79,
+     "dist": [
+      21.4,
+      35.7,
+      42.9,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 3.79,
+     "dist": [
+      28.6,
+      21.4,
+      50.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 3.71,
+     "dist": [
+      21.4,
+      28.6,
+      50.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 3.79,
+     "dist": [
+      28.6,
+      21.4,
+      50.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 3.93,
+     "dist": [
+      35.7,
+      21.4,
+      42.9,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "avg": 3.83,
+   "n": 14,
+   "favorable": 55.6,
+   "best": {
+    "label": "Content relevant to district role",
+    "avg": 4.0
+   },
+   "worst": {
+    "label": "Trainer explained concepts clearly",
+    "avg": 3.64
+   }
+  },
+  "krishna": {
+   "name": "Krishna",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 3.95,
+     "dist": [
+      36.4,
+      36.4,
+      18.2,
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 4.05,
+     "dist": [
+      31.8,
+      46.0,
+      17.8,
+      0.0,
+      4.5
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 4.05,
+     "dist": [
+      36.4,
+      40.9,
+      18.2,
+      0.0,
+      4.5
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 4.05,
+     "dist": [
+      31.8,
+      45.5,
+      18.2,
+      0.0,
+      4.5
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 3.95,
+     "dist": [
+      40.9,
+      31.8,
+      18.2,
+      0.0,
+      9.1
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 4.0,
+     "dist": [
+      36.4,
+      40.9,
+      13.6,
+      4.5,
+      4.5
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 4.0,
+     "dist": [
+      33.3,
+      52.0,
+      14.7,
+      0.0,
+      4.5
+     ],
+     "sum_flag": 104.5
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 3.82,
+     "dist": [
+      31.8,
+      36.4,
+      22.7,
+      0.0,
+      9.1
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 4.05,
+     "dist": [
+      40.9,
+      36.4,
+      13.6,
+      4.5,
+      4.5
+     ]
+    }
+   ],
+   "avg": 4.0,
+   "n": 22,
+   "favorable": 77.0,
+   "best": {
+    "label": "Understanding of GVA/GDDP importance",
+    "avg": 4.05
+   },
+   "worst": {
+    "label": "Duration and pace appropriate",
+    "avg": 3.82
+   }
+  },
+  "srikakulam": {
+   "name": "Srikakulam",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 3.63,
+     "dist": [
+      21.1,
+      36.8,
+      31.6,
+      5.3,
+      5.3
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 3.53,
+     "dist": [
+      31.6,
+      21.1,
+      26.3,
+      10.5,
+      10.5
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 3.53,
+     "dist": [
+      15.8,
+      47.4,
+      21.1,
+      5.3,
+      10.5
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 3.47,
+     "dist": [
+      15.8,
+      42.1,
+      26.3,
+      5.3,
+      10.5
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 3.37,
+     "dist": [
+      10.5,
+      47.4,
+      26.3,
+      0.0,
+      15.8
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 3.26,
+     "dist": [
+      10.5,
+      42.1,
+      26.3,
+      5.3,
+      15.8
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 3.26,
+     "dist": [
+      0.0,
+      52.6,
+      31.6,
+      5.3,
+      10.5
+     ]
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 3.47,
+     "dist": [
+      21.1,
+      36.8,
+      21.1,
+      10.5,
+      10.5
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 3.63,
+     "dist": [
+      26.3,
+      36.8,
+      21.1,
+      5.3,
+      10.5
+     ]
+    }
+   ],
+   "avg": 3.46,
+   "n": 19,
+   "favorable": 57.3,
+   "best": {
+    "label": "Objectives clearly explained",
+    "avg": 3.63
+   },
+   "worst": {
+    "label": "Identified sector-specific GVA opportunities",
+    "avg": 3.26
+   }
+  },
+  "ntr": {
+   "name": "NTR",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 4.67,
+     "dist": [
+      66.7,
+      33.3,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 4.44,
+     "dist": [
+      55.6,
+      33.3,
+      11.1,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 4.67,
+     "dist": [
+      66.7,
+      33.3,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 4.61,
+     "dist": [
+      61.1,
+      38.9,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 4.5,
+     "dist": [
+      50.0,
+      50.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 4.5,
+     "dist": [
+      55.6,
+      38.9,
+      5.6,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 4.56,
+     "dist": [
+      61.1,
+      33.3,
+      5.6,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 4.33,
+     "dist": [
+      44.4,
+      44.4,
+      11.1,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 4.67,
+     "dist": [
+      72.2,
+      22.2,
+      5.6,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "avg": 4.55,
+   "n": 18,
+   "favorable": 95.7,
+   "best": {
+    "label": "Objectives clearly explained",
+    "avg": 4.67
+   },
+   "worst": {
+    "label": "Duration and pace appropriate",
+    "avg": 4.33
+   }
+  },
+  "ysr-kadapa": {
+   "name": "YSR Kadapa",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 3.73,
+     "dist": [
+      20.0,
+      46.7,
+      26.7,
+      0.0,
+      6.7
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 3.67,
+     "dist": [
+      13.3,
+      53.3,
+      26.7,
+      0.0,
+      6.7
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 3.6,
+     "dist": [
+      13.3,
+      53.3,
+      20.0,
+      6.7,
+      6.7
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 3.6,
+     "dist": [
+      13.3,
+      53.3,
+      20.0,
+      6.7,
+      6.7
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 3.73,
+     "dist": [
+      20.0,
+      46.7,
+      26.7,
+      0.0,
+      6.7
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 3.67,
+     "dist": [
+      13.3,
+      53.3,
+      26.7,
+      0.0,
+      6.7
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 3.53,
+     "dist": [
+      6.7,
+      60.0,
+      20.0,
+      6.7,
+      6.7
+     ]
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 3.4,
+     "dist": [
+      6.7,
+      46.7,
+      33.3,
+      6.7,
+      6.7
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 3.6,
+     "dist": [
+      20.0,
+      40.0,
+      26.7,
+      6.7,
+      6.7
+     ]
+    }
+   ],
+   "avg": 3.61,
+   "n": 15,
+   "favorable": 64.4,
+   "best": {
+    "label": "Objectives clearly explained",
+    "avg": 3.73
+   },
+   "worst": {
+    "label": "Duration and pace appropriate",
+    "avg": 3.4
+   }
+  },
+  "kurnool": {
+   "name": "Kurnool",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 4.4,
+     "dist": [
+      40.0,
+      60.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 4.0,
+     "dist": [
+      20.0,
+      60.0,
+      20.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 4.4,
+     "dist": [
+      40.0,
+      60.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 4.4,
+     "dist": [
+      40.0,
+      60.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 4.4,
+     "dist": [
+      40.0,
+      60.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 4.2,
+     "dist": [
+      20.0,
+      80.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 4.4,
+     "dist": [
+      40.0,
+      60.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 4.4,
+     "dist": [
+      40.0,
+      60.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 4.4,
+     "dist": [
+      40.0,
+      60.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "avg": 4.33,
+   "n": 5,
+   "favorable": 97.8,
+   "best": {
+    "label": "Objectives clearly explained",
+    "avg": 4.4
+   },
+   "worst": {
+    "label": "Content relevant to district role",
+    "avg": 4.0
+   }
+  },
+  "parvathipuram-manyam": {
+   "name": "Parvathipuram Manyam",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 4.5,
+     "dist": [
+      58.3,
+      33.3,
+      8.3,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 4.25,
+     "dist": [
+      25.0,
+      75.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 4.75,
+     "dist": [
+      75.0,
+      25.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 4.25,
+     "dist": [
+      33.3,
+      58.3,
+      8.3,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 4.17,
+     "dist": [
+      25.0,
+      66.7,
+      8.3,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 4.42,
+     "dist": [
+      41.7,
+      58.3,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 4.25,
+     "dist": [
+      33.3,
+      58.3,
+      8.3,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 4.25,
+     "dist": [
+      33.3,
+      58.3,
+      8.3,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 4.5,
+     "dist": [
+      50.0,
+      50.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "avg": 4.37,
+   "n": 12,
+   "favorable": 95.4,
+   "best": {
+    "label": "Understanding of GVA/GDDP importance",
+    "avg": 4.75
+   },
+   "worst": {
+    "label": "Examples and case studies useful",
+    "avg": 4.17
+   }
+  },
+  "chittoor": {
+   "name": "Chittoor",
+   "questions": [
+    {
+     "n": 1,
+     "short": "Objectives clearly explained",
+     "text": "The objectives of the training session were clearly explained.",
+     "avg": 4.43,
+     "dist": [
+      43.5,
+      56.5,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 2,
+     "short": "Content relevant to district role",
+     "text": "The training content was relevant to my role as a district official.",
+     "avg": 4.43,
+     "dist": [
+      52.2,
+      39.1,
+      8.7,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 3,
+     "short": "Understanding of GVA/GDDP importance",
+     "text": "The session helped me understand the importance of GVA/GDDP in district planning.",
+     "avg": 4.48,
+     "dist": [
+      47.8,
+      52.2,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 4,
+     "short": "Trainer explained concepts clearly",
+     "text": "The trainer explained the concepts in a clear and simple manner.",
+     "avg": 4.65,
+     "dist": [
+      65.2,
+      34.8,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 5,
+     "short": "Examples and case studies useful",
+     "text": "The examples and case studies used in the session were useful and practical.",
+     "avg": 4.7,
+     "dist": [
+      69.6,
+      30.4,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 6,
+     "short": "Identified sector-specific GVA opportunities",
+     "text": "The training helped me identify sector-specific opportunities for improving district GVA.",
+     "avg": 4.48,
+     "dist": [
+      47.8,
+      52.2,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 7,
+     "short": "Encouraged participation and discussion",
+     "text": "The training encouraged active participation and discussion among participants.",
+     "avg": 4.43,
+     "dist": [
+      47.8,
+      47.8,
+      4.3,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 8,
+     "short": "Duration and pace appropriate",
+     "text": "The duration and pace of the training session were appropriate.",
+     "avg": 4.52,
+     "dist": [
+      52.2,
+      47.8,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    {
+     "n": 9,
+     "short": "Overall usefulness",
+     "text": "Overall, the training was useful for improving my understanding of district economic growth and planning.",
+     "avg": 4.52,
+     "dist": [
+      52.2,
+      47.8,
+      0.0,
+      0.0,
+      0.0
+     ]
+    }
+   ],
+   "avg": 4.52,
+   "n": 23,
+   "favorable": 98.6,
+   "best": {
+    "label": "Examples and case studies useful",
+    "avg": 4.7
+   },
+   "worst": {
+    "label": "Objectives clearly explained",
+    "avg": 4.43
+   }
+  }
+ }
+}

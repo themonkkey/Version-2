@@ -4213,7 +4213,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
      one district anyway. */
   var capView = document.getElementById('capacityView');
   var capBody = document.getElementById('capacityBody');
-  var CAP = null, CAPA = null, CAPR = null, capLoaded = false, capLoading = false;
+  var CAP = null, CAPA = null, CAPR = null, CAPF = null, capLoaded = false, capLoading = false;
 
   function nfmt(n){ return (n==null) ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
@@ -4622,6 +4622,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     showSession(0);
 
     renderResults(d);
+    renderFeedback(d);
 
     var meta = document.getElementById('capMeta');
     if(meta){
@@ -4707,6 +4708,39 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function pctf(x){ return (x == null) ? '—' : (Math.round(x * 10) / 10).toFixed(1).replace(/\.0$/, '') + '%'; }
   function numf(x){ return (x == null) ? '—' : String(Math.round(x * 100) / 100); }
 
+
+  /* Training feedback, where the district has filed one. Same shape as the
+     assessment card: the headline numbers here, the full table on its own page. */
+  var capFbDefault = null;
+
+  function renderFeedback(d){
+    var card = document.getElementById('capFbCard');
+    if(!card) return;
+    if(capFbDefault == null) capFbDefault = card.innerHTML;
+    var rec = CAPF && CAPF.districts && CAPF.districts[d.slug];
+    if(!rec){ card.innerHTML = capFbDefault; return; }
+    var qs = rec.questions || [];
+    var best = qs.length ? qs.reduce(function(a,b){ return b.avg > a.avg ? b : a; }) : null;
+    var worst = qs.length ? qs.reduce(function(a,b){ return b.avg < a.avg ? b : a; }) : null;
+    card.innerHTML =
+      '<a class="cap-card-inner" href="capacity/feedback-results.html?d='+encodeURIComponent(d.slug)+'">' +
+      '<h3>Training feedback</h3>' +
+      '<p>How officers in '+esc(rec.name)+' rated the session, on nine statements scored 1 to 5.</p>' +
+      '<div class="cap-mini">' +
+        '<div><div class="v">'+rec.avg.toFixed(2)+'<small>/5</small></div><div class="k">Average</div></div>' +
+        '<div><div class="v">'+rec.n+'</div><div class="k">Responses</div></div>' +
+        '<div><div class="v">'+rec.favorable.toFixed(1)+'<small>%</small></div><div class="k">Favourable</div></div>' +
+      '</div>' +
+      (best && worst ? '<div class="cap-mini cap-mini-rows">' +
+        '<div class="row"><span class="k">Rated highest</span>' +
+          '<span class="v">'+best.avg.toFixed(2)+'</span><span class="s">'+esc(best.short)+'</span></div>' +
+        '<div class="row"><span class="k">Rated lowest</span>' +
+          '<span class="v">'+worst.avg.toFixed(2)+'</span><span class="s">'+esc(worst.short)+'</span></div>' +
+      '</div>' : '') +
+      '<span class="cap-go">Open the full feedback <i class="ti ti-arrow-right"></i></span>' +
+      '</a>';
+  }
+
   var capAssessDefault = null;
 
   function renderResults(d){
@@ -4778,7 +4812,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
     var two =
       '<div class="cap-two">' +
-        '<a class="cap-card" href="capacity/feedback.html">' +
+        '<div class="cap-card" id="capFbCard">' +
+          '<a class="cap-card-inner" href="capacity/feedback.html">' +
           '<h3>Training feedback</h3>' +
           '<p>How officers rated each session: objectives, relevance to their role, ' +
           'clarity of the concepts, the case studies, pace, and overall usefulness.</p>' +
@@ -4789,7 +4824,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
             '<div><div class="v">' + endline.length + '</div><div class="k">Endline papers</div></div>' +
           '</div>' +
           '<span class="cap-go">Open the feedback detail <i class="ti ti-arrow-right"></i></span>' +
-        '</a>' +
+          '</a>' +
+        '</div>' +
         '<div class="cap-card cap-card-assess" id="capAssessCard">' +
           '<a class="cap-card-inner" href="capacity/assessment.html">' +
           '<h3>Baseline &amp; endline</h3>' +
@@ -4856,9 +4892,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       fetch('assets/capacity_assessment.json?v=2026-08-14a').then(function(r){ return r.json(); })
         .catch(function(){ return null; }),
       fetch('assets/assessment_results.json?v=2026-08-16b').then(function(r){ return r.json(); })
+        .catch(function(){ return null; }),
+      fetch('assets/feedback_results.json?v=2026-08-16a').then(function(r){ return r.json(); })
         .catch(function(){ return null; })
     ]).then(function(res){
-      CAP = res[0]; CAPA = res[1]; CAPR = res[2];
+      CAP = res[0]; CAPA = res[1]; CAPR = res[2]; CAPF = res[3];
       capLoaded = true; capLoading = false;
       renderCapacity();
       applyCapFilter();
