@@ -6,12 +6,13 @@
    sector colours supplied inline by the AP portal data itself.
    =========================================================================== */
 
-/* The container must be the PANEL, not .dash: a container query styles the
-   container's descendants, never the container element itself. Declaring
-   container-type on .dash and then querying .dash silently does nothing. */
-#districtPanel{container-type:inline-size; container-name:dash;}
-
-.dash{
+/* A container query styles the container's DESCENDANTS, never the container
+   element itself — so the two-up rule below, which sets grid-template-columns on
+   .dash, cannot be carried by a container declared on .dash. It is declared on
+   .map-layout instead (see index.html); .dash spans that row's full width in the
+   split state, so the two measure the same thing. It used to sit on
+   #districtPanel, which is display:contents now and cannot be a container. */
+.dash,.d-tpl{
   display:grid; grid-template-columns:1fr; gap:22px;
   max-width:100%;
 }
@@ -24,7 +25,28 @@
    panel itself (the map column went 602px -> 342px), not from splitting it.
    `d-sec--wide` is kept on the sections that would need it, so the idea is one CSS
    rule away if the panel ever gets genuinely wide. */
-.dash *,.dash *::before,.dash *::after{box-sizing:border-box;}
+.dash *,.dash *::before,.dash *::after,
+.d-tpl *,.d-tpl *::before,.d-tpl *::after{box-sizing:border-box;}
+
+/* Two-up, but only once the dashboard genuinely has the room.
+   The note above is still true at panel widths: halving a card there grew its
+   height by more than the second column saved. It stops being true once .dash
+   spans the whole layout instead of a 68% column — at 1100px each column is
+   still ~530px, about what the old panel gave a card at full width, so nothing
+   is being squeezed.
+   The headline card (stats and sparklines) and the drill list of child places
+   stay full width: the first is a row of figures that should read across, the
+   second is a name grid that reflows to fill whatever width it is given. Both
+   are matched structurally rather than by template, so all twelve archetypes
+   get the same shape without per-template edits. */
+@container dash (min-width:1040px){
+  .dash,.d-tpl{grid-template-columns:1fr 1fr;}
+  .d-sec:first-child,
+  .d-sec:last-child,
+  .d-sec--wide,
+  .d-sec:has(.d-drill-lbl),
+  .d-sec:has(.d-stats){grid-column:1 / -1;}
+}
 
 /* ---------- section wrapper ---------- */
 .d-sec{

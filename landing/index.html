@@ -487,7 +487,13 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    grid-template-columns in fr units does not tween reliably. The widths below are
    the animation's start/end points — GSAP drives the transition in
    setLayoutState(), and these rules are also the no-JS/reduced-motion fallback. */
-.map-layout{display:flex;gap:0;align-items:flex-start;}
+/* container-name:dash is declared here, not on .dash, because a container query
+   styles a container's descendants and never the container itself — and the
+   two-up rule in components.css sets grid-template-columns ON .dash. In the
+   split state .dash spans this row edge to edge, so querying the row measures
+   exactly the width .dash gets. */
+.map-layout{display:flex;gap:0;align-items:flex-start;
+  container-type:inline-size; container-name:dash;}
 /* Only the MAP's basis is ever animated. The panel is flex:1 1 0 and simply takes
    whatever is left, so no width needs a calc() that subtracts the gap — GSAP
    silently refuses to tween to a calc()/clamp() target, which is what broke the
@@ -510,9 +516,43 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    stays in flow there and cannot overlap the drawing. */
 .map-layout.split .map-hint{position:absolute;left:0;right:0;
   bottom:clamp(10px,1.2vw,14px);margin-top:0;}
-.map-layout.split #districtPanel{opacity:1;overflow:visible;
-  padding-left:clamp(20px,2.8vw,28px);padding-right:clamp(20px,2.8vw,28px);
-  margin-left:clamp(18px,2.6vw,30px);}
+/* DETAIL lays out as bricks, not one tall right-hand column.
+   The panel used to be a single glass box holding brief, drill and dashboard, so
+   everything downstream inherited the 68% column and the left half of the page
+   below the map sat empty. Here the panel becomes display:contents and its two
+   children become flex items of the row itself:
+
+     row 1   [ map 32% ][ .d-topcol — brief + drill selects ]
+     row 2   [ .dash, full width ]
+
+   The map's flex-basis is still the only animated property (GSAP tweens it), so
+   the wrap costs nothing: .d-topcol takes the remainder of row 1 and .dash is
+   pinned to 100%, which forces the wrap on its own. The glass wrapper is dropped
+   with the box — every brick already carries its own .d-sec surface, so the page
+   reads as a set of cards rather than one slab. */
+.map-layout.split{flex-wrap:wrap;}
+/* opacity/overflow are inert against display:contents, but they are the browse
+   state's hiding mechanism — leave them reset here so a browser that ignores
+   display:contents still shows the panel rather than a blank column. */
+.map-layout.split #districtPanel{display:contents;opacity:1;overflow:visible;}
+/* Not every paint produces the two bricks: the empty states and the legacy
+   panel put a single node in here instead. Selectors still see through
+   display:contents (it changes the box tree, not the DOM), so give every panel
+   child a full-width default and let .d-topcol opt back out below. Without this
+   a lone .d-empty became a shrink-to-fit flex item pinned beside the map. */
+.map-layout.split #districtPanel > *{flex:0 0 100%;min-width:0;
+  margin-left:clamp(18px,2.6vw,30px);
+  margin-right:clamp(18px,2.6vw,30px);}
+/* Both of these have to out-specify the `#districtPanel > *` default above, so
+   they are written through the id as well. */
+.map-layout.split #districtPanel > .d-topcol{flex:1 1 0%;min-width:0;
+  margin-left:clamp(18px,2.6vw,30px);margin-right:0;}
+/* Three of the twelve archetypes (c3, c4, d3) root their markup in .d-tpl rather
+   than .dash. Nothing keys off that distinction, so both names are carried
+   everywhere the dashboard block is addressed. */
+.map-layout.split #districtPanel > .dash,
+.map-layout.split #districtPanel > .d-tpl{flex:0 0 100%;min-width:0;
+  margin-left:0;margin-right:0;margin-top:clamp(18px,2.4vw,26px);}
 
 /* Section entry points above the map. These are PLACEHOLDERS — the four
    destinations do not exist yet. They are rendered as disabled controls with
@@ -1638,6 +1678,8 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 
 /* drill bar: the same two selects, but leading the panel so a reader can jump
    between constituency and mandal without scrolling past the whole dashboard. */
+.d-topcol{display:flex;flex-direction:column;min-width:0;}
+.d-topcol > .d-brief{margin-bottom:14px;}
 .pdrill{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:0 0 14px;}
 @media(max-width:640px){.pdrill{grid-template-columns:1fr;}}
 
@@ -1931,7 +1973,15 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   .map-layout .map-box,
   .map-layout.split .map-box{flex:0 0 auto;width:100%;}
   .map-layout #districtPanel{flex:0 0 auto;width:100%;display:none;}
-  .map-layout.split #districtPanel{display:block;flex:0 0 auto;opacity:1;overflow:visible;}
+  /* Stacked, the bricks are simply three full-width rows in order: map, top
+     column, dashboard. display:contents still applies, so no margins to undo
+     beyond the side inset the wide layout adds. */
+  .map-layout.split #districtPanel{display:contents;}
+  .map-layout.split #districtPanel > *{margin-left:0;margin-right:0;}
+  .map-layout.split #districtPanel > .d-topcol{flex:0 0 100%;width:100%;margin-left:0;
+    margin-top:clamp(14px,3vw,20px);}
+  .map-layout.split #districtPanel > .dash,
+  .map-layout.split #districtPanel > .d-tpl{flex:0 0 100%;width:100%;}
   /* single column: the map sits above the dashboard, so pinning it would eat
      the viewport for the whole scroll. Let it scroll away normally. */
   .map-box{position:relative;top:auto;}
@@ -1970,7 +2020,7 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 <!-- GSAP, vendored locally (charts-src: npm run build:gsap) rather than a CDN,
      to keep the no-third-party-runtime rule for a government-facing page. -->
 <script src="assets/dash/gsap.js?v=2026-08-12a" defer></script>
-<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-15b">
+<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-16c">
 <script src="assets/dash/components.js?v=2026-08-15d" defer></script>
 <script src="assets/dash/enrich.js?v=2026-08-12a" defer></script>
 <script src="assets/dash/tpl-c1.js?v=2026-08-12a" defer></script>
@@ -2974,7 +3024,10 @@ function scheduleHeightPairing(box, layout){
   cancelHeightPairing();
   heightPairingTimer = setTimeout(function(){
     heightPairingTimer = null;
-    const firstCard = document.querySelector('#districtPanel .d-sec');
+    /* Pair to the whole top column (brief + drill selects), which is what now
+       sits beside the map; the dashboard below spans the full width. */
+    const firstCard = document.querySelector('#districtPanel .d-topcol') ||
+                      document.querySelector('#districtPanel .d-sec');
     if(!firstCard || !layout || !box.isConnected){ box.style.minHeight = ''; return; }
     /* Align the BOTTOM edges, not the heights: the panel insets its first card
        by its own padding, so equal heights still left the columns finishing
@@ -3093,8 +3146,8 @@ function setLayoutState(split){
       // extra nudge, not load-bearing (the debounce settles on its own either way)
       {flexBasis:'32%', duration:.62, ease:'power3.inOut', clearProps:'flexBasis',
        onComplete: fitMap});
-    gsap.fromTo(panel, {opacity:0},
-      {opacity:1, duration:.5, delay:.12, ease:'power2.out', clearProps:'opacity'});
+    // display:contents in this state, so the panel has no box of its own to fade;
+    // its two bricks below carry the whole transition
     // the panel is what the reader came for; fade its contents in just behind the
     // width change so text is not sliding while it is being read
     gsap.fromTo(panel.children, {opacity:0, y:14},
@@ -3265,7 +3318,7 @@ async function showDistrict(key, name){
     // paint from the index immediately, then upgrade once the workbook lands.
     // The brief leads: a written summary of the highlights above the dashboard.
     const node0 = window.DASH.enrichDistrict(rec, key, null, idx);
-    panel.innerHTML = (window.DASH.brief ? window.DASH.brief(node0, 'district') : '') + drillBarHtml(null, null) + tpl(node0);
+    panel.innerHTML = panelHtml(window.DASH.brief ? window.DASH.brief(node0, 'district') : '', drillBarHtml(null, null), tpl(node0));
     wireDrillBar();
     mountCharts(panel);
 
@@ -3280,7 +3333,7 @@ async function showDistrict(key, name){
     // and a drill into a constituency counts as moving on too
     if(dist && currentDistrictKey === key && !currentConstituency){
       const node1 = window.DASH.enrichDistrict(rec, key, dist, idx);
-      panel.innerHTML = (window.DASH.brief ? window.DASH.brief(node1, 'district') : '') + drillBarHtml(null, null) + tpl(node1);
+      panel.innerHTML = panelHtml(window.DASH.brief ? window.DASH.brief(node1, 'district') : '', drillBarHtml(null, null), tpl(node1));
       wireDrillBar();
     }
     mountCharts(panel);
@@ -3352,6 +3405,14 @@ window.DASH_PICK_CONSTITUENCY = function(name){
 // the TOP of the panel, right under the brief, at every level. It reuses the
 // #constSelect/#mandalSelect ids so the map-click sync and the legacy handlers
 // keep working unchanged.
+/* The panel paints as two bricks, not one column: `.d-topcol` (the written brief
+   plus the drill selects) sits beside the map, and `.dash` below spans the full
+   width of the layout. #districtPanel is display:contents in the split state, so
+   these two become flex items of .map-layout directly. See the .map-layout rules. */
+function panelHtml(brief, drill, dash){
+  return '<div class="d-topcol">' + brief + drill + '</div>' + dash;
+}
+
 function drillBarHtml(constKey, mandalName){
   const d = districtData[currentDistrictKey] || {};
   const consts = d.constituencies || {};
@@ -3532,7 +3593,7 @@ async function showConstituency(name, districtName){
   // render the bare record immediately, then upgrade in place once the portal
   // payload arrives — the panel is never blank and never blocks on the network
   const cNode0 = window.DASH.enrich(rec, label, null, idx);
-  panel.innerHTML = (window.DASH.brief ? window.DASH.brief(cNode0, 'constituency') : '') + drillBarHtml(name, null) + tpl(cNode0);
+  panel.innerHTML = panelHtml(window.DASH.brief ? window.DASH.brief(cNode0, 'constituency') : '', drillBarHtml(name, null), tpl(cNode0));
   wireDrillBar();
   mountCharts(panel);
 
@@ -3548,7 +3609,7 @@ async function showConstituency(name, districtName){
   // constituency, or a drill down into a mandal
   if(apc && currentConstituency === name && !currentMandal){
     const cNode1 = window.DASH.enrich(rec, label, apc, idx);
-    panel.innerHTML = (window.DASH.brief ? window.DASH.brief(cNode1, 'constituency') : '') + drillBarHtml(name, null) + tpl(cNode1);
+    panel.innerHTML = panelHtml(window.DASH.brief ? window.DASH.brief(cNode1, 'constituency') : '', drillBarHtml(name, null), tpl(cNode1));
     wireDrillBar();
     mountCharts(panel);
   }
@@ -3681,7 +3742,7 @@ async function showMandal(mandalName, constituencyKey, districtName){
   ]);
 
   const mNode = window.DASH.enrichMandal(m, cNode, sibs, ownData, rankInfo);
-  panel.innerHTML = (window.DASH.brief ? window.DASH.brief(mNode, 'mandal') : '') + drillBarHtml(constituencyKey, mandalName) + tpl(mNode);
+  panel.innerHTML = panelHtml(window.DASH.brief ? window.DASH.brief(mNode, 'mandal') : '', drillBarHtml(constituencyKey, mandalName), tpl(mNode));
   wireDrillBar();
   mountCharts(panel);
   panel.scrollIntoView({behavior:'smooth', block:'start'});
