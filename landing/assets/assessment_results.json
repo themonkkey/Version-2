@@ -1,0 +1,145 @@
+{
+  "_source": "Kurnool_Consolidated_Assessment_Report.docx (PIF, August 2026). Figures transcribed as printed; nothing computed here.",
+  "districts": {
+    "kurnool": {
+      "name": "Kurnool",
+      "levels": [
+        {
+          "level": "district",
+          "label": "District training",
+          "audience": "District-level officers",
+          "comparable": false,
+          "baseline": {
+            "date": "20 July 2026",
+            "n": 42,
+            "items": 12,
+            "topic": "Swarna Andhra @2047 vision and foundational GVA/GDP concepts",
+            "mean": 9.71,
+            "pct": 81.0,
+            "high": {"score": 12, "n": 6, "pct": 100.0},
+            "low": {"score": 5, "pct": 41.7},
+            "top_q": {"n": 24, "pct": 57.1},
+            "below50": {"n": 2, "pct": 4.8},
+            "quartiles": [0, 2, 16, 24],
+            "strongest": "Identifying the name of the Swarna Andhra @2047 vision (100% correct)",
+            "weakest": "Which option is not a core pillar of the vision, and the meaning of the bottom-up approach to District Domestic Product (57 to 69% accuracy)",
+            "read": "Strong command of the vision and foundational GVA/GDP concepts."
+          },
+          "endline": {
+            "date": "20 July 2026",
+            "n": 5,
+            "items": 14,
+            "topic": "GVA/DDP concepts and district-level economic estimation methodology",
+            "mean": 11.2,
+            "pct": 80.0,
+            "high": {"score": 13, "n": 2, "pct": 92.9},
+            "low": {"score": 9, "pct": 64.3},
+            "top_q": {"n": 3, "pct": 60.0},
+            "below50": {"n": 0, "pct": 0.0},
+            "quartiles": [0, 0, 2, 3],
+            "strongest": "The broad sector covering agriculture, livestock, forestry, fishing and mining (100% correct)",
+            "weakest": "The key limitation in estimating district domestic product, and constant-price estimation methodology (both around 40% accuracy)",
+            "caveat": "n=5 for this round; percentages are indicative only.",
+            "read": "Strong command of GVA/DDP concepts and estimation methodology."
+          },
+          "comparison": "The baseline (12 questions on the vision and foundational concepts) and the endline (14 questions on GVA/DDP and estimation methodology) tested different, though related, content, so a direct percentage-point comparison would not be meaningful. Read independently, 81.0% at baseline and 80.0% at endline both indicate that officers engaged substantively with the material at each stage."
+        },
+        {
+          "level": "constituency",
+          "label": "Constituency and mandal training",
+          "audience": "Constituency and mandal officers",
+          "comparable": true,
+          "baseline": {
+            "date": "23 to 28 July 2026",
+            "n": 203,
+            "items": 9,
+            "topic": "Sector-wise GVA growth drivers, value addition, outcome indicators and departmental convergence",
+            "mean": 6.28,
+            "pct": 69.7,
+            "median": 7,
+            "sd": 2.46,
+            "high": {"score": 9, "n": 45, "pct": 100.0},
+            "low": {"score": 0, "n": 4, "pct": 0.0},
+            "top_q": {"n": 114, "pct": 56.2},
+            "below50": {"n": 50, "pct": 24.6},
+            "perfect": {"n": 45, "pct": 22.2},
+            "quartiles": [20, 30, 39, 114],
+            "item_range": "58.1% to 79.8%",
+            "weakest": "Secondary sector intervention",
+            "read": "Moderate-to-strong prior understanding of GVA and convergence concepts."
+          },
+          "endline": {
+            "date": "23 to 28 July 2026",
+            "n": 193,
+            "items": 9,
+            "topic": "Same nine questions and answer key, plus a nine-statement training feedback block",
+            "mean": 6.62,
+            "pct": 73.6,
+            "median": 7,
+            "sd": 2.25,
+            "high": {"score": 9, "n": 55, "pct": 100.0},
+            "low": {"score": 1, "n": 3, "pct": 11.1},
+            "top_q": {"n": 115, "pct": 59.6},
+            "below50": {"n": 38, "pct": 19.7},
+            "perfect": {"n": 55, "pct": 28.5},
+            "quartiles": [12, 26, 40, 115],
+            "item_range": "64.8% to 82.9%",
+            "strongest": "Departmental convergence (82.9%)",
+            "weakest": "Secondary sector intervention (64.8%)",
+            "read": "Moderate-to-strong post-training understanding of GVA and convergence concepts."
+          },
+          "change": {
+            "respondents": -10,
+            "mean": 0.35,
+            "pct_pp": 3.8,
+            "median": 0,
+            "top_q_pp": 3.4,
+            "below50_pp": -4.9,
+            "perfect_pp": 6.3
+          },
+          "comparison": "Both waves used the same nine questions and answer key, so the comparison is meaningful. The endline mean is 0.35 marks higher (+3.8 pp); on a Welch two-sample t-test t = 1.46, not significant at the 5% level (p = 0.144). The two waves are independent cross-sections, not a matched panel: the mobile-number field is blank throughout, so respondents cannot be linked. The change reflects both learning and differences in who responded."
+        },
+        {
+          "level": "master",
+          "label": "Master trainer programme",
+          "audience": "Master trainers",
+          "comparable": true,
+          "baseline": {
+            "date": "29 July 2026",
+            "n": 59,
+            "items": 14,
+            "topic": "GVA/GDDP concepts and district-level economic estimation methodology",
+            "mean": 11.93,
+            "pct": 85.2,
+            "high": {"score": 14, "n": 25, "pct": 100.0},
+            "low": {"score": 1, "pct": 7.1},
+            "top_q": {"n": 46, "pct": 78.0},
+            "below50": {"n": 5, "pct": 8.5},
+            "quartiles": [2, 3, 8, 46],
+            "strongest": "Why the production approach matters for district-level economic analysis (94.9% correct)",
+            "weakest": "Why officers should monitor high-frequency proxy indicators rather than rely only on the annual MDP publication, and the effect on GVA when input costs rise faster than output (71 to 75% accuracy)",
+            "read": "Strong command of GVA/GDDP concepts and estimation methodology."
+          },
+          "endline": {
+            "date": "30 July 2026",
+            "n": 51,
+            "items": 14,
+            "topic": "GVA/GDDP concepts and district-level economic estimation methodology",
+            "mean": 12.71,
+            "pct": 90.8,
+            "high": {"score": 14, "n": 24, "pct": 100.0},
+            "low": {"score": 6, "pct": 42.9},
+            "top_q": {"n": 46, "pct": 90.2},
+            "below50": {"n": 1, "pct": 2.0},
+            "quartiles": [0, 1, 4, 46],
+            "strongest": "The main administrative message of the presentation (100% correct)",
+            "weakest": "The effect on GVA when input costs rise faster than output, and how district sector GVA is estimated when direct data is unavailable (76 to 78% accuracy)",
+            "read": "Strong command of GVA/GDDP concepts and estimation methodology."
+          },
+          "change": {"pct_pp": 5.6},
+          "comparison": "The mean score rose from 85.2% at baseline to 90.8% at endline, a change of +5.6 percentage points, indicating the programme improved participants' command of GVA/GDDP concepts and estimation methodology between the two rounds."
+        }
+      ]
+    }
+  }
+}

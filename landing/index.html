@@ -985,6 +985,59 @@ a.docs-leaf:hover .ext{opacity:1;}
 /* The measurement pair, as sketched: two equal cards below the brief. Stretch,
    not auto height — otherwise the shorter card's footer floats and the two read
    as unrelated blocks rather than a pair. */
+/* Baseline & endline results (renderResults) */
+.ar-wrap{border-radius:var(--r-lg);padding:clamp(18px,2.2vw,26px) clamp(18px,2.4vw,28px);
+  background:rgba(9,40,27,.78);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%);
+  box-shadow:0 12px 34px rgba(0,0,0,.20);margin-bottom:clamp(18px,2.4vw,26px);}
+.ar-head h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;color:#FFF;margin:0 0 4px;}
+.ar-head .lede{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.55;margin:0 0 clamp(16px,2vw,22px);max-width:78ch;}
+.ar-panel{border-top:1px solid rgba(255,255,255,.14);padding:clamp(16px,2vw,22px) 0 clamp(14px,1.8vw,20px);}
+.ar-panel:last-of-type{padding-bottom:6px;}
+.ar-ptop{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.ar-lvl{display:block;font-family:var(--serif);font-size:clamp(17px,2vw,21px);font-weight:600;color:#FFF;line-height:1.2;}
+.ar-aud{display:block;font-size:12.5px;color:rgba(255,255,255,.62);margin-top:3px;}
+.ar-delta{border-radius:var(--r);padding:8px 13px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.055);display:flex;flex-direction:column;gap:1px;min-width:150px;}
+.ar-delta .ar-dv{font-size:clamp(17px,2vw,22px);font-weight:750;color:#FFF;letter-spacing:-.015em;font-variant-numeric:tabular-nums;line-height:1.1;}
+.ar-delta.up .ar-dv{color:var(--lime);}
+.ar-delta.down .ar-dv{color:#FFB4A8;}
+.ar-delta.na .ar-dv{font-size:14px;color:rgba(255,255,255,.75);}
+.ar-delta .ar-dk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600;}
+.ar-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,18px);}
+.ar-round{border-radius:var(--r);padding:14px 16px 13px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.13);min-width:0;}
+.ar-round.ar-empty{display:grid;place-items:center;color:rgba(255,255,255,.45);font-size:13px;}
+.ar-stage{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(198,236,143,.85);
+  display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
+.ar-date{font-weight:600;letter-spacing:0;text-transform:none;color:rgba(255,255,255,.55);font-size:11.5px;}
+.ar-big{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:6px 0 10px;}
+.ar-pct{font-size:clamp(28px,3.4vw,40px);font-weight:750;color:#FFF;line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums;}
+.ar-sub{font-size:12.5px;color:rgba(255,255,255,.62);}
+.ar-cav{font-size:12px;color:#FFD9A8;margin:-4px 0 10px;}
+.ar-kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px 12px;margin-bottom:12px;}
+.ar-kv > div{display:flex;flex-direction:column;gap:1px;min-width:0;}
+.ar-kv b{font-size:15px;font-weight:750;color:#FFF;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
+.ar-kv span{font-size:11px;color:rgba(255,255,255,.55);}
+.ar-q{display:flex;height:9px;border-radius:5px;overflow:hidden;gap:2px;background:rgba(255,255,255,.08);}
+.ar-qs{display:block;min-width:0;}
+.ar-qs.q1,.ar-ql i.q1{background:#E8837A;}
+.ar-qs.q2,.ar-ql i.q2{background:#F0B36A;}
+.ar-qs.q3,.ar-ql i.q3{background:#8FE3FF;}
+.ar-qs.q4,.ar-ql i.q4{background:var(--lime);}
+.ar-ql{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 10px;font-size:11px;color:rgba(255,255,255,.62);}
+.ar-ql i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;vertical-align:-0.5px;}
+.ar-ql b{color:#FFF;font-weight:700;}
+.ar-sw p{margin:0 0 5px;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.78);}
+.ar-sw em{font-style:normal;font-weight:700;color:rgba(198,236,143,.9);margin-right:5px;}
+.ar-chg{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px 12px;margin:14px 0 0;
+  padding:12px 14px;border-radius:var(--r);border:1px dashed rgba(255,255,255,.22);}
+.ar-chg > div{display:flex;flex-direction:column;gap:1px;}
+.ar-chg b{font-size:15px;font-weight:750;color:#FFF;font-variant-numeric:tabular-nums;}
+.ar-chg span{font-size:11px;color:rgba(255,255,255,.55);}
+.ar-cmp{margin:12px 0 0;font-size:13px;line-height:1.6;color:rgba(255,255,255,.74);max-width:86ch;}
+.ar-src{margin:14px 0 0;font-size:11.5px;color:rgba(255,255,255,.45);}
+@media (max-width:760px){.ar-two{grid-template-columns:1fr;}.ar-delta{width:100%;}}
 .cap-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,20px);
   align-items:stretch;}
 .cap-card{display:flex;flex-direction:column;text-decoration:none;
@@ -4201,7 +4254,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
      one district anyway. */
   var capView = document.getElementById('capacityView');
   var capBody = document.getElementById('capacityBody');
-  var CAP = null, CAPA = null, capLoaded = false, capLoading = false;
+  var CAP = null, CAPA = null, CAPR = null, capLoaded = false, capLoading = false;
 
   function nfmt(n){ return (n==null) ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
@@ -4609,6 +4662,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     }
     showSession(0);
 
+    renderResults(d);
+
     var meta = document.getElementById('capMeta');
     if(meta){
       meta.innerHTML = '<b>' + d.sessions_delivered + '</b> sessions · <b>' +
@@ -4683,6 +4738,100 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     lb.querySelector('.cap-lb-x').focus();
   }
   function closeShot(){ document.getElementById('capLb').classList.remove('on'); }
+
+  /* ── Baseline and endline results ─────────────────────────────────────
+     Per district, from the consolidated assessment report where one has been
+     filed (assets/assessment_results.json). One panel per training type, the
+     two rounds side by side, then the comparison in the report's own words.
+     Every figure is transcribed from the report; nothing is computed here.
+     Districts without a report keep the two instrument cards instead. */
+  function pctf(x){ return (x == null) ? '—' : (Math.round(x * 10) / 10).toFixed(1).replace(/\.0$/, '') + '%'; }
+  function numf(x){ return (x == null) ? '—' : String(Math.round(x * 100) / 100); }
+
+  function roundCol(r, stage, items){
+    if(!r) return '<div class="ar-round ar-empty">Not administered</div>';
+    var q = r.quartiles || [];
+    var qt = q.reduce(function(a, b){ return a + b; }, 0) || 1;
+    var bars = q.length ? '<div class="ar-q" aria-label="Score distribution by quartile">' +
+      q.map(function(n, i){
+        return '<span class="ar-qs q'+(i+1)+'" style="flex-grow:'+n+'" title="Q'+(i+1)+': '+n+' of '+qt+'"></span>';
+      }).join('') + '</div>' +
+      '<div class="ar-ql">' + q.map(function(n, i){
+        return '<span><i class="q'+(i+1)+'"></i>Q'+(i+1)+' <b>'+n+'</b></span>';
+      }).join('') + '</div>' : '';
+    return '<div class="ar-round">' +
+      '<div class="ar-stage">'+stage+'<span class="ar-date">'+esc(r.date||'')+'</span></div>' +
+      '<div class="ar-big"><span class="ar-pct">'+pctf(r.pct)+'</span>' +
+        '<span class="ar-sub">mean '+numf(r.mean)+' of '+r.items+' · n = '+r.n+'</span></div>' +
+      (r.caveat ? '<div class="ar-cav">'+esc(r.caveat)+'</div>' : '') +
+      '<div class="ar-kv">' +
+        '<div><b>'+pctf(r.top_q && r.top_q.pct)+'</b><span>top quartile'+(r.top_q ? ' ('+r.top_q.n+')' : '')+'</span></div>' +
+        '<div><b>'+pctf(r.below50 && r.below50.pct)+'</b><span>below 50%'+(r.below50 ? ' ('+r.below50.n+')' : '')+'</span></div>' +
+        '<div><b>'+(r.high ? r.high.score+'/'+r.items : '—')+'</b><span>highest'+(r.high && r.high.n ? ' ('+r.high.n+')' : '')+'</span></div>' +
+        '<div><b>'+(r.low ? r.low.score+'/'+r.items : '—')+'</b><span>lowest'+(r.low && r.low.n ? ' ('+r.low.n+')' : '')+'</span></div>' +
+        (r.median != null ? '<div><b>'+r.median+'</b><span>median</span></div>' : '') +
+        (r.sd != null ? '<div><b>'+r.sd+'</b><span>SD</span></div>' : '') +
+      '</div>' +
+      bars +
+      '<div class="ar-sw">' +
+        (r.strongest ? '<p><em>Strongest</em> '+esc(r.strongest)+'</p>' : '') +
+        (r.weakest ? '<p><em>Weakest</em> '+esc(r.weakest)+'</p>' : '') +
+        (r.item_range ? '<p><em>Item accuracy</em> '+esc(r.item_range)+'</p>' : '') +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderResults(d){
+    var mount = document.getElementById('capResults');
+    var two = capBody.querySelector('.cap-two');
+    if(!mount) return;
+    var rec = CAPR && CAPR.districts && CAPR.districts[d.slug];
+    if(!rec){
+      mount.innerHTML = '';
+      if(two) two.hidden = false;
+      return;
+    }
+    if(two) two.hidden = true;
+    var html = '<div class="ar-wrap">' +
+      '<div class="ar-head"><h3>Baseline &amp; endline — '+esc(rec.name)+'</h3>' +
+      '<p class="lede">What officers knew before each training and after it, from the consolidated assessment report. ' +
+      'One panel per type of training; the two rounds are compared only where the report says the papers were the same.</p></div>';
+    html += rec.levels.map(function(L){
+      var b = L.baseline, e = L.endline;
+      var delta = '';
+      if(L.change && L.change.pct_pp != null){
+        var v = L.change.pct_pp;
+        delta = '<div class="ar-delta '+(v > 0 ? 'up' : v < 0 ? 'down' : '')+'">' +
+          '<span class="ar-dv">'+(v > 0 ? '+' : '')+numf(v)+' pp</span><span class="ar-dk">endline vs baseline, mean score</span></div>';
+      } else if(!L.comparable){
+        delta = '<div class="ar-delta na"><span class="ar-dv">Not comparable</span><span class="ar-dk">different papers in the two rounds</span></div>';
+      }
+      var change = '';
+      if(L.change && L.comparable && L.change.top_q_pp != null){
+        var c = L.change;
+        var sg = function(x, unit){ return (x > 0 ? '+' : '') + numf(x) + (unit||''); };
+        change = '<div class="ar-chg">' +
+          '<div><b>'+sg(c.mean)+'</b><span>mean score</span></div>' +
+          '<div><b>'+sg(c.top_q_pp,' pp')+'</b><span>top quartile</span></div>' +
+          '<div><b>'+sg(c.below50_pp,' pp')+'</b><span>below 50%</span></div>' +
+          '<div><b>'+sg(c.perfect_pp,' pp')+'</b><span>perfect score</span></div>' +
+          '<div><b>'+sg(c.respondents)+'</b><span>respondents</span></div>' +
+        '</div>';
+      }
+      return '<section class="ar-panel">' +
+        '<div class="ar-ptop">' +
+          '<div><span class="ar-lvl">'+esc(L.label)+'</span>' +
+          '<span class="ar-aud">'+esc(L.audience)+' · '+ (b ? b.items : e.items) +'-question paper</span></div>' +
+          delta +
+        '</div>' +
+        '<div class="ar-two">' + roundCol(b, 'Baseline') + roundCol(e, 'Endline') + '</div>' +
+        change +
+        (L.comparison ? '<p class="ar-cmp">'+esc(L.comparison)+'</p>' : '') +
+      '</section>';
+    }).join('');
+    html += '<p class="ar-src">Source: '+esc(rec.name)+' Consolidated Assessment Report, Pahlé India Foundation. Figures as printed in the report.</p></div>';
+    mount.innerHTML = html;
+  }
 
   function renderCapacity(){
     var t = CAP.totals;
@@ -4759,7 +4908,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         '</figure>' +
       '</div>';
 
-    capBody.innerHTML = strip + pick + '<div id="capBrief"></div>' + two + lightbox;
+    capBody.innerHTML = strip + pick + '<div id="capBrief"></div>' +
+      '<div id="capResults"></div>' + two + lightbox;
 
     var sel = document.getElementById('capDistrict');
     sel.addEventListener('change', function(){ renderBrief(CAP.districts[+sel.value]); });
@@ -4795,9 +4945,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     Promise.all([
       fetch('assets/capacity.json?v=2026-08-14b').then(function(r){ return r.json(); }),
       fetch('assets/capacity_assessment.json?v=2026-08-14a').then(function(r){ return r.json(); })
+        .catch(function(){ return null; }),
+      fetch('assets/assessment_results.json?v=2026-08-16a').then(function(r){ return r.json(); })
         .catch(function(){ return null; })
     ]).then(function(res){
-      CAP = res[0]; CAPA = res[1];
+      CAP = res[0]; CAPA = res[1]; CAPR = res[2];
       capLoaded = true; capLoading = false;
       renderCapacity();
       applyCapFilter();
