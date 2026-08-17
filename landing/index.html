@@ -1413,8 +1413,6 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   font-size:9.5px;font-weight:750;color:#0B2E20;margin-top:0;
   width:14px;height:14px;line-height:14px;text-align:center;border-radius:4px;
   background:rgba(198,236,143,.85);font-variant-numeric:tabular-nums;}
-.rec-cite{font-size:10.5px;color:rgba(255,255,255,.4);letter-spacing:.02em;
-  margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.07);}
 .rec-none{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.55);margin:0;font-style:italic;}
 .rec-count{font-size:12.6px;line-height:1.5;color:rgba(198,236,143,.85);margin:0;font-weight:600;}
 /* The district layer renders in the full-width detail box under the accordion,
@@ -4170,18 +4168,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     return '<ul>' + items.map(function(x){ return '<li>'+esc2(x)+'</li>'; }).join('') + '</ul>';
   }
 
-  /* The source document behind a set of recs. Scans for the FIRST rec that
-     actually carries a prescription: the highest ranked one often has none,
-     and reading its empty list would fall back to a generic label on quotes
-     that do have a named source. */
-  function srcOf(recs){
-    var id = null;
-    (recs || []).forEach(function(r){
-      if(!id && (r.prescription || []).length) id = r.prescription[0].source;
-    });
-    return id ? (RECS.sources || {})[id] : null;
-  }
-
   /* Look up the recommendations for the district currently filtered, if any.
      Returns null when nothing is selected or the district has no entry yet. */
   function recsUnit(){
@@ -4205,7 +4191,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
        classification, so Crops comes before Horticulture as the sector title
        reads. The rank badge still carries the priority. */
     mine = mine.slice().sort(function(a, b){ return (a.order || 0) - (b.order || 0); });
-    var src = srcOf(mine);
 
     var blocks = mine.map(function(r){
       var d = r.diagnosis, g = d.growth_pct;
@@ -4245,9 +4230,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
                    figs +
                  '</div>' +
                  ivs +
-                 '<footer class="rec-cite">'+esc2(p.department)+' · ' +
-                   esc2(src ? src.title : 'District plan') +
-                   (p.folio ? ', page '+p.folio : '') + '</footer>' +
                '</article>';
       }).join('');
 
