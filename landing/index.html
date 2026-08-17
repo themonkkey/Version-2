@@ -4341,7 +4341,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     }
     if(!t) return { v:'', s:'' };
     var virt = /virtual|online|video.?conference|zoom|google meet|webex/i.test(t);
-    var phys = /in.?person|collectorate|office|hall|venue/i.test(t);
+    // whole words: "office" as a substring matched every "Officer" in a roles
+    // list, so a virtual session whose format text carried a designation list
+    // read as Hybrid (Kurnool 21 and 22 July)
+    var phys = /in.?person|collectorate|\boffice\b|\bhall\b|\bvenue\b|\bbhawan\b/i.test(t);
     var mode = /hybrid/i.test(t) || (virt && phys) ? 'Hybrid'
              : virt ? 'Virtual'
              : phys ? 'In person'
@@ -4945,7 +4948,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(capLoaded || capLoading) return;
     capLoading = true;
     Promise.all([
-      fetch('assets/capacity.json?v=2026-08-14b').then(function(r){ return r.json(); }),
+      fetch('assets/capacity.json?v=2026-08-17a').then(function(r){ return r.json(); }),
       fetch('assets/capacity_assessment.json?v=2026-08-14a').then(function(r){ return r.json(); })
         .catch(function(){ return null; }),
       fetch('assets/assessment_results.json?v=2026-08-16b').then(function(r){ return r.json(); })

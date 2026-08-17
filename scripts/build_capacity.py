@@ -935,7 +935,13 @@ def parse_participants(fields, text, label_stream=None):
                    "", roles, flags=re.I)
     roles = re.sub(r"^\s*(?:\([^)]{0,30}\)\s*)?(?:\+\s*\d+\s*(?:\([^)]{0,30}\))?\s*)+", "", roles)
     roles = re.sub(r"^\s*\(?\d{1,4}\s*Participants?\)?\s*", "", roles, flags=re.I)
-    roles = re.sub(r"^\s*(Approximately\s+)?\d+\s+(officers?|officials?)\b.*?(?:including|drawn from)\s*[;:,]?\s*",
+    # "Approximately 72 officers drawn from mandals across X district, including
+    # Younger Professionals..." — cut through to "including" when it is there,
+    # otherwise to "drawn from"; the non-greedy form stopped at the first of the
+    # two and left "mandals across YSR Kadapa district, including" dangling.
+    roles = re.sub(r"^\s*(Approximately\s+)?\d+\s+(officers?|officials?)\b[^.]{0,200}?\bincluding\s*[;:,]?\s*",
+                   "", roles, flags=re.I)
+    roles = re.sub(r"^\s*(Approximately\s+)?\d+\s+(officers?|officials?)\b.*?drawn from\s*[;:,]?\s*",
                    "", roles, flags=re.I)
     # Column wrapping leaves doubled and dangling separators behind.
     roles = re.sub(r"\s*,\s*(,\s*)+", ", ", roles)
