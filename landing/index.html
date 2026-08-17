@@ -4157,19 +4157,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
            '<div class="gva-detail-b"></div>'+
          '</div>';
 
-    // toolbox: AI tools + NITI prompts
-    if(p.ai_tools && p.ai_tools.length){
-      h += '<div class="gva-panel gva-intro"><div class="gva-kicker">Toolbox</div>'+
-           '<h3>Tools for finding what worked elsewhere</h3><div class="gva-scroll"><table class="gva-tool">'+
-           '<thead><tr><th>Tool</th><th>Use it for</th><th>Example prompt</th><th>Cost</th></tr></thead><tbody>'+
-           p.ai_tools.map(function(r){
-             return '<tr><td>'+esc2(r[0])+'</td><td>'+esc2(r[1])+'</td><td><em>'+esc2(r[2])+'</em></td><td>'+esc2(r[3])+'</td></tr>';
-           }).join('')+'</tbody></table></div></div>';
-    }
-    if(p.niti && p.niti.length){
-      h += '<div class="gva-panel"><div class="gva-kicker">Learn from peers</div>'+
-           '<h3>NITI for States — questions worth asking</h3>'+gvaList(p.niti)+'</div>';
-    }
     gvaBody.innerHTML = h;
 
     // Each pane asks for its loop; a missing file just drops the element and the
@@ -4646,6 +4633,24 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
   var capActiveIdx = 0;
 
+  // Shown until a district is chosen, either by picking it on the map (which
+  // drives DISTF via DTABS_DISTRICT) or directly from the dropdown here.
+  function renderBriefPlaceholder(){
+    capShots = [];
+    var brief = document.getElementById('capBrief');
+    if(brief) brief.innerHTML =
+      '<div class="cap-brief cap-brief-empty">' +
+        '<h3>Select a district</h3>' +
+        '<p class="lede">Pick a district on the map above, or choose one from the ' +
+        'dropdown, to see its training sessions, attendance, and highlights.</p>' +
+      '</div>';
+    var meta = document.getElementById('capMeta');
+    if(meta) meta.innerHTML = '';
+    // The teaser cards already carry their generic default copy from the
+    // markup renderCapacity() writes; nothing to reset there until a district
+    // is actually chosen and renderFeedback/renderResults overwrite them.
+  }
+
   function renderBrief(d){
     capShots = [];
     var span = (d.date_from && d.date_to)
@@ -4902,7 +4907,9 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     var pick =
       '<div class="cap-pick">' +
         '<label for="capDistrict">Brief of the training</label>' +
-        '<select id="capDistrict" class="cap-select" aria-label="Choose a district">'+opts+'</select>' +
+        '<select id="capDistrict" class="cap-select" aria-label="Choose a district">' +
+          '<option value="" disabled selected hidden>Select a district&hellip;</option>' + opts +
+        '</select>' +
         '<span class="cap-meta" id="capMeta"></span>' +
       '</div>';
 
@@ -4958,7 +4965,9 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
     var sel = document.getElementById('capDistrict');
     sel.addEventListener('change', function(){ renderBrief(CAP.districts[+sel.value]); });
-    renderBrief(CAP.districts[0]);
+    var startIdx = DISTF ? CAP.districts.findIndex(function(d){ return normName(d.name) === normName(DISTF); }) : -1;
+    if(startIdx >= 0){ sel.value = String(startIdx); renderBrief(CAP.districts[startIdx]); }
+    else renderBriefPlaceholder();
 
     var lb = document.getElementById('capLb');
     lb.querySelector('.cap-lb-x').addEventListener('click', closeShot);
@@ -5067,7 +5076,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(!sel) return;
     var note = document.getElementById('capAbsent');
     if(note) note.remove();
-    if(!DISTF) return;
+    if(!DISTF){
+      if(sel.value !== ''){ sel.value = ''; renderBriefPlaceholder(); }
+      return;
+    }
     var i = CAP.districts.findIndex(function(d){ return normName(d.name) === normName(DISTF); });
     if(i >= 0){
       if(+sel.value !== i){ sel.value = String(i); renderBrief(CAP.districts[i]); }
