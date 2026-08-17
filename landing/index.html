@@ -1417,10 +1417,10 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.07);}
 .rec-none{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.55);margin:0;font-style:italic;}
 .rec-count{font-size:12.6px;line-height:1.5;color:rgba(198,236,143,.85);margin:0;font-weight:600;}
-/* Inside a pane the column is narrower than the page, so the cards stack in one
-   column below a wider breakpoint than the standalone grid would use. */
+/* The district layer renders in the full-width detail box under the accordion,
+   so it gets the same two-up grid the rest of the page uses. */
 .rec-list-inline{grid-template-columns:1fr;}
-@media (min-width:1400px){ .rec-list-inline{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (min-width:1000px){ .rec-list-inline{grid-template-columns:repeat(2,minmax(0,1fr));} }
 .rec-list-inline .rec-item{background:rgba(255,255,255,.045);}
 .rec-jump{font:inherit;font-size:12.5px;font-weight:650;cursor:pointer;align-self:flex-start;
   margin-top:auto;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
@@ -4361,7 +4361,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
                  '<span class="sp-sub">'+esc2(g.sectors.map(function(s){
                      return s.title.replace(/\s*\(.*?\)\s*/g,'');
                    }).join(' · '))+'</span>'+
-                 '<span class="sp-cta">'+g.sectors.length+' playbooks '+
+                 '<span class="sp-cta">'+g.sectors.length+
+                   (g.sectors.length === 1 ? ' playbook ' : ' playbooks ')+
                    '<i class="ti ti-chevron-right"></i></span>'+
                '</span>'+
                // and the rotated spine it folds down to once another opens
@@ -4372,11 +4373,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
                '</span>'+
              '</button>'+
              '<div class="gva-pane-body"><p class="gva-gblurb">'+esc2(g.blurb)+'</p>'+
-               /* The district's own diagnosis and named interventions for this
-                  group. Filled by renderGroupRecs() whenever the district
-                  filter changes; empty when no district is selected, so the
-                  classification reads exactly as it always did. */
-               '<div class="gva-grecs" data-grecs="'+esc2(g.key)+'"></div>'+
                '<div class="gva-cards">';
       g.sectors.forEach(function(s){
         h += '<div class="gva-card" data-sec="'+esc2(s.key)+'">'+
@@ -4446,6 +4442,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       });
       acc.classList.toggle('has-open', reopen);
       gvaCloseDetail();   // a playbook from the previous group would be orphaned
+      /* Opening a group leads with the district's own position across that
+         group's sectors, in the box below. Picking an individual sector then
+         replaces it with the state-wide playbook. */
+      if(reopen) showGroupDetail(pane.getAttribute('data-g'));
       return;
     }
     var closeBtn = e.target.closest('.gva-detail-x');
@@ -4507,24 +4507,32 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
            '</div>';
   }
 
-  /* Fill every group pane's district slot. One pass, called whenever the
-     district filter changes, so all three panes agree on what is showing. */
-  function renderGroupRecs(){
-    if(!gvaBody) return;
+  /* Open the shared detail box below the accordion on the district layer for a
+     group. The pane itself is a fixed-height scroller, far too small for seven
+     sectors of quotes, so this content goes where the sector playbooks already
+     go: the full-width box underneath. Returns false when there is nothing to
+     show, so the caller can just close the box instead. */
+  function showGroupDetail(gkey){
+    var box = document.getElementById('gvaDetail');
+    if(!box || !gkey) return false;
     var unit = recsUnit();
-    gvaBody.querySelectorAll('[data-grecs]').forEach(function(slot){
-      var gkey = slot.getAttribute('data-grecs');
-      if(!DISTF){ slot.innerHTML = ''; return; }
-      if(!unit){
-        // A district we have no plan extract for yet. Say so once, inside the
-        // pane, rather than leaving a silent gap.
-        slot.innerHTML = '<p class="gva-dbstub">Interventions specific to ' + esc2(DISTF) +
-          ' are not built yet. They come from each district’s own Vision and Action ' +
-          'Plan, and Kurnool is the first. The playbooks below apply to every district.</p>';
-        return;
-      }
-      slot.innerHTML = recsForGroup(gkey);
-    });
+    if(!unit) return false;
+    var html = recsForGroup(gkey);
+    if(!html) return false;
+    var g = null;
+    (GVA.groups || []).forEach(function(x){ if(x.key === gkey) g = x; });
+    box.querySelector('.gva-detail-t').textContent =
+      (g ? g.name : 'Sector') + ' in ' + unit.name;
+    box.querySelector('.gva-detail-b').innerHTML = html;
+    box.hidden = false;
+    return true;
+  }
+
+  /* The currently open group, so the district layer can be refreshed in place
+     when the map selection changes under an already-open pane. */
+  function openGroupKey(){
+    var pane = gvaBody && gvaBody.querySelector('.gva-pane.open');
+    return pane ? pane.getAttribute('data-g') : null;
   }
 
   function loadRecs(){
@@ -5401,9 +5409,12 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(!gvaLoaded || !gvaBody) return;
     var old = document.getElementById('gvaDistCard');
     if(old) old.remove();
-    /* The district block now lives inside the group panes, so refill them on
-       every filter change. This also clears them when DISTF goes null. */
-    renderGroupRecs();
+    /* A detail box left open belongs to the district we just navigated away
+       from. Close it, then re-open the group layer for whichever pane is still
+       expanded so the reader keeps their place under the new district. */
+    var openG = openGroupKey();
+    gvaCloseDetail();
+    if(openG) showGroupDetail(openG);
     if(!DISTF) return;
     var want = DISTF;                     // guard against a filter change mid-fetch
     load().then(function(){
