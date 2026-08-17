@@ -1428,7 +1428,13 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
    the floor: a quote plus a numbered list of interventions is unreadable below
    it, and min(100%,...) keeps a single constraint from overflowing a narrow
    card rather than forcing a track wider than the space available. */
-.rec-presw{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:start;}
+/* No align-items:start here. Letting each card shrink to its own content left
+   every row with ragged bottoms — one constraint carrying figure chips and a
+   long quote towered over the two beside it. Grid's default stretch squares the
+   cards off against the tallest in their row. Rows stay independent on purpose:
+   forcing one height across ALL rows (grid-auto-rows:1fr) would pad the short
+   row out to the tallest card on the page and trade ragged edges for dead space. */
+.rec-presw{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));}
 /* The state-wide playbook, one button below the district layer. */
 .gva-pbwrap{margin-top:clamp(14px,1.8vw,20px);}
 .gva-pb{font:inherit;font-size:13.5px;font-weight:650;cursor:pointer;width:100%;
