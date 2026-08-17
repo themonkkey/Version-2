@@ -4796,24 +4796,38 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(capFbDefault == null) capFbDefault = card.innerHTML;
     var rec = CAPF && CAPF.districts && CAPF.districts[d.slug];
     if(!rec){ card.innerHTML = capFbDefault; return; }
-    var qs = rec.questions || [];
+    /* The four statements the feedback page reports, by their number on the
+       nine-statement instrument. Kept in step with SHOW_Q in
+       capacity/feedback-results.html: the card names the highest and lowest
+       rated statement, and naming one the page behind it does not list would
+       send the reader looking for a row that is not there. */
+    var SHOW_Q = [3, 4, 5, 9];
+    var all = rec.questions || [];
+    var qs = all.filter(function(q){ return SHOW_Q.indexOf(q.n) !== -1; });
+    if(!qs.length) qs = all;
     var best = qs.length ? qs.reduce(function(a,b){ return b.avg > a.avg ? b : a; }) : null;
     var worst = qs.length ? qs.reduce(function(a,b){ return b.avg < a.avg ? b : a; }) : null;
     card.innerHTML =
       '<a class="cap-card-inner" href="capacity/feedback-results.html?d='+encodeURIComponent(d.slug)+'">' +
       '<h3>Training feedback</h3>' +
-      '<p>How officers in '+esc(rec.name)+' rated the session, on nine statements scored 1 to 5.</p>' +
+      '<p>How officers in '+esc(rec.name)+' rated the session, scored 1 to 5.</p>' +
       '<div class="cap-mini">' +
         '<div><div class="v">'+rec.avg.toFixed(2)+'<small>/5</small></div><div class="k">Average</div></div>' +
         '<div><div class="v">'+rec.n+'</div><div class="k">Responses</div></div>' +
         '<div><div class="v">'+rec.favorable.toFixed(1)+'<small>%</small></div><div class="k">Favourable</div></div>' +
       '</div>' +
-      (best && worst ? '<div class="cap-mini cap-mini-rows">' +
-        '<div class="row"><span class="k">Rated highest</span>' +
-          '<span class="v">'+best.avg.toFixed(2)+'</span><span class="s">'+esc(best.short)+'</span></div>' +
-        '<div class="row"><span class="k">Rated lowest</span>' +
-          '<span class="v">'+worst.avg.toFixed(2)+'</span><span class="s">'+esc(worst.short)+'</span></div>' +
-      '</div>' : '') +
+      /* a flat four-statement result names the same row twice otherwise */
+      (best && worst && best.avg !== worst.avg
+        ? '<div class="cap-mini cap-mini-rows">' +
+            '<div class="row"><span class="k">Rated highest</span>' +
+              '<span class="v">'+best.avg.toFixed(2)+'</span><span class="s">'+esc(best.short)+'</span></div>' +
+            '<div class="row"><span class="k">Rated lowest</span>' +
+              '<span class="v">'+worst.avg.toFixed(2)+'</span><span class="s">'+esc(worst.short)+'</span></div>' +
+          '</div>'
+        : best ? '<div class="cap-mini cap-mini-rows">' +
+            '<div class="row"><span class="k">All four rated alike</span>' +
+              '<span class="v">'+best.avg.toFixed(2)+'</span><span class="s">no statement stood apart</span></div>' +
+          '</div>' : '') +
       '<span class="cap-go">Open the full feedback <i class="ti ti-arrow-right"></i></span>' +
       '</a>';
   }
