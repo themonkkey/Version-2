@@ -1298,7 +1298,47 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   margin-top:clamp(16px,2vw,20px);}
 .fc-rh{font-size:11px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;
   color:rgba(198,236,143,.82);margin-bottom:10px;}
+/* Sections A and B pair up once there is room for both to keep a readable row.
+   align-items:start so a short B does not stretch to A's height. */
+.fc-inputs{display:grid;gap:clamp(14px,1.8vw,18px);align-items:start;}
+@media(min-width:1040px){ .fc-inputs{grid-template-columns:1fr 1fr;} }
 .fc-final{margin-top:clamp(14px,1.8vw,18px);}
+/* Benchmark against the published estimate. Kept visually distinct from the
+   working above it: everything above is what the officer entered, this is the
+   one place an official figure appears. */
+.fc-bench{margin-top:clamp(16px,2vw,22px);padding:clamp(14px,1.8vw,18px);
+  border-radius:var(--r);background:rgba(11,46,32,.42);
+  border:1px solid rgba(198,236,143,.24);}
+.fc-bench-head{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-start;
+  justify-content:space-between;}
+.fc-bench-k{font-size:12.5px;font-weight:750;letter-spacing:.05em;text-transform:uppercase;
+  color:#C6EC8F;margin-bottom:5px;}
+.fc-bench-p{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.66);margin:0;max-width:62ch;}
+.fc-bench-pick{display:flex;align-items:center;gap:9px;flex:0 0 auto;}
+.fc-bench-pick > span{font-size:10.5px;font-weight:750;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);}
+.fc-bench-pick select{font:inherit;font-size:13.5px;font-weight:600;color:#FFF;cursor:pointer;
+  padding:8px 32px 8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.08);appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C6EC8F' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;}
+.fc-bench-pick select option{background:#0B2E20;}
+.fc-bench-body{margin-top:clamp(13px,1.6vw,16px);}
+.fb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;margin-bottom:12px;}
+.fb-cell{background:rgba(0,0,0,.18);border-radius:10px;padding:11px 13px;}
+.fb-v{font-size:clamp(18px,2.1vw,23px);font-weight:750;color:#FFF;line-height:1.1;
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.fb-k{font-size:9.5px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-top:4px;}
+.fb-s{font-size:10.5px;color:rgba(255,255,255,.42);margin-top:3px;font-variant-numeric:tabular-nums;}
+.fb-verdict{font-size:13px;line-height:1.55;margin:0 0 8px;}
+.fb-ok{color:#C6EC8F;font-weight:600;}
+.fb-under{color:#F5C98A;}
+.fb-over{color:#F0A091;}
+.fb-neutral{color:rgba(255,255,255,.6);}
+.fb-src{font-size:10.5px;line-height:1.5;color:rgba(255,255,255,.42);margin:0;}
+@media(max-width:600px){ .fc-bench-pick{width:100%;} .fc-bench-pick select{flex:1 1 auto;} }
 @media(max-width:760px){
   .fc-results{grid-template-columns:1fr;}
   .fc-srow,.fc-shead{grid-template-columns:1fr 84px 84px;gap:6px;}
@@ -2708,16 +2748,22 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
         <span class="fc-dl-note">Same workbook, same formulas — for working offline or for a version your team can hand around.</span>
       </div>
 
-      <div class="calc-fieldset">
-        <h4>A · Production &amp; average price</h4>
-        <p class="calc-hint" style="margin:-2px 0 10px">Enter what the district actually landed this year. Leave a species at zero if it does not apply.</p>
-        <div id="fc_species"></div>
-      </div>
+      <!-- A and B sit side by side on a wide screen. Stacked, each row put its
+           two small inputs ~700px away from the label they belong to; paired,
+           the label and its fields stay together and the panel is not half
+           empty. Each keeps its own heading, so the split stays legible. -->
+      <div class="fc-inputs">
+        <div class="calc-fieldset">
+          <h4>A · Production &amp; average price</h4>
+          <p class="calc-hint" style="margin:-2px 0 10px">Enter what the district actually landed this year. Leave a species at zero if it does not apply.</p>
+          <div id="fc_species"></div>
+        </div>
 
-      <div class="calc-fieldset">
-        <h4>B · Processed-product prices</h4>
-        <p class="calc-hint" style="margin:-2px 0 10px">Only needed where that species is actually processed that way — the raw-form price above already covers what is sold fresh. Left blank, that stream contributes nothing rather than blocking the rest.</p>
-        <div id="fc_proc"></div>
+        <div class="calc-fieldset">
+          <h4>B · Processed-product prices</h4>
+          <p class="calc-hint" style="margin:-2px 0 10px">Only needed where that species is actually processed that way — the raw-form price above already covers what is sold fresh. Left blank, that stream contributes nothing rather than blocking the rest.</p>
+          <div id="fc_proc"></div>
+        </div>
       </div>
 
       <div class="calc-fieldset">
@@ -2753,6 +2799,27 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
         </div>
       </div>
       <p class="calc-note" id="fc_flag"></p>
+
+      <!-- Benchmark: the published estimate for the same sector and district,
+           so the officer can see whether what they entered lands anywhere near
+           the official figure. Opt-in via the picker; nothing is pre-selected,
+           so no official number appears until it is asked for. -->
+      <div class="fc-bench" id="fc_bench">
+        <div class="fc-bench-head">
+          <div>
+            <div class="fc-bench-k">Check it against the published estimate</div>
+            <p class="fc-bench-p">Pick a district to compare your working against the
+              official Fishing &amp; Aquaculture figure. Your numbers are never replaced.</p>
+          </div>
+          <label class="fc-bench-pick">
+            <span>District</span>
+            <select id="fc_bench_d" aria-label="District to compare against">
+              <option value="" selected>Not compared</option>
+            </select>
+          </label>
+        </div>
+        <div class="fc-bench-body" id="fc_bench_body" hidden></div>
+      </div>
     </div>
   </div></section>
 </div>
@@ -5732,10 +5799,104 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         flag.innerHTML = '<b>Note:</b> the source workbook’s own "GVA — unadjusted" cell carries no formula; ' +
           'this fills it with the standard Output − Intermediate Consumption identity.';
       }
+      return gvaAdjusted;   // the benchmark compares against this
     }
 
+    /* ---- benchmark against the published estimate ---------------------
+       The calculator answers "what does my working come to". On its own it
+       cannot say whether that answer is plausible. This puts the official
+       figure for the same sector and district beside it.
+
+       UNIT: fisheries_benchmark.json is in RUPEES CRORE (it says so in its own
+       `unit` field); this calculator works in RUPEES LAKH. The conversion
+       happens here and only here. Getting this backwards is a 100x error, so
+       the factor is named rather than written inline. */
+    var LAKH_PER_CRORE = 100;
+    /* Local, because esc/esc2 live inside other IIFEs and are not in scope
+       here. The values escaped below come from our own JSON, but the helper
+       keeps that from being a thing anyone has to verify. */
+    function ce(s){
+      return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+      });
+    }
+    var BENCH = null;
+    var benchSel = document.getElementById('fc_bench_d');
+    var benchBody = document.getElementById('fc_bench_body');
+
+    function benchRender(gvaLakh){
+      if(!BENCH || !benchSel || !benchBody) return;
+      var key = benchSel.value;
+      var rec = key ? BENCH.districts[key] : null;
+      if(!rec){ benchBody.hidden = true; benchBody.innerHTML = ''; return; }
+
+      var officialLakh = rec.value_cr * LAKH_PER_CRORE;
+      var haveEntry = gvaLakh > 0;
+      var diff = gvaLakh - officialLakh;
+      /* Percent of the official figure, not of the entry: "you are at 60% of
+         the published estimate" is the question being asked. Guarded because a
+         district could in principle publish zero for this sector. */
+      var pct = officialLakh > 0 ? (gvaLakh / officialLakh) * 100 : null;
+
+      var verdict;
+      if(!haveEntry){
+        verdict = '<span class="fb-neutral">Enter production and price above to compare.</span>';
+      } else if(pct == null){
+        verdict = '<span class="fb-neutral">The published figure for this district is zero, so there is nothing to compare against.</span>';
+      } else if(pct >= 90 && pct <= 110){
+        verdict = '<span class="fb-ok">Within 10% of the published estimate.</span>';
+      } else if(pct < 90) {
+        /* Below 1% would round to "0% of the published estimate", which reads
+           as a broken calculator rather than as a very small entry. */
+        var shown = pct < 1 ? 'under 1%' : inr(pct, 0) + '%';
+        verdict = '<span class="fb-under">Your working comes to ' + shown +
+          ' of the published estimate. Species left at zero, or a price entered per kilogram where the field asks per tonne, are the usual causes.</span>';
+      } else {
+        verdict = '<span class="fb-over">Your working comes to ' + inr(pct, 0) +
+          '% of the published estimate. Worth checking the production figures and the intermediate-consumption ratios.</span>';
+      }
+
+      benchBody.hidden = false;
+      benchBody.innerHTML =
+        '<div class="fb-grid">' +
+          '<div class="fb-cell"><div class="fb-v">' + money(gvaLakh, 'lakh') + '</div>' +
+            '<div class="fb-k">Your working</div></div>' +
+          '<div class="fb-cell"><div class="fb-v">' + money(officialLakh, 'lakh') + '</div>' +
+            '<div class="fb-k">Published, ' + ce(BENCH.year) + '</div>' +
+            '<div class="fb-s">' + money(rec.value_cr, 'crore') + ' as printed</div></div>' +
+          (haveEntry ? '<div class="fb-cell"><div class="fb-v">' +
+            (diff >= 0 ? '+' : '−') + money(Math.abs(diff), 'lakh').replace('₹','₹') + '</div>' +
+            '<div class="fb-k">Difference</div></div>' : '') +
+        '</div>' +
+        '<p class="fb-verdict">' + verdict + '</p>' +
+        '<p class="fb-src">' + ce(BENCH.sector) + ', ' + ce(key) + ' · ' +
+          ce(BENCH.source) + ' · the published figure is a district total; your ' +
+          'working matches it only if you entered the whole district.</p>';
+    }
+
+    function benchLoad(){
+      fetch('assets/fisheries_benchmark.json?v=2026-08-17a')
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          BENCH = j;
+          Object.keys(j.districts).sort().forEach(function(k){
+            var o = document.createElement('option');
+            o.value = k; o.textContent = k;
+            benchSel.appendChild(o);
+          });
+        })
+        .catch(function(err){
+          /* The calculator must keep working without this: it is a check on the
+             answer, not part of producing it. */
+          var wrap = document.getElementById('fc_bench');
+          if(wrap) wrap.hidden = true;
+          console.warn('fisheries benchmark unavailable', err);
+        });
+    }
+    if(benchSel){ benchLoad(); benchSel.addEventListener('change', function(){ recalc(); }); }
+
     // ---- recompute on any input --------------------------------------
-    function recalc(){ fisheries(); }
+    function recalc(){ benchRender(fisheries()); }
     root.addEventListener('input', recalc);
     root.addEventListener('change', recalc);
     recalc();

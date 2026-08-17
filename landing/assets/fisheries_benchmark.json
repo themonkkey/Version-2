@@ -1,0 +1,177 @@
+{
+  "_note": "Official Fishing & Aquaculture GVA per district, copied verbatim from landing/assets/dist/*.json. Nothing computed here.",
+  "sector": "Fishing & Aquaculture",
+  "unit": "rupees crore",
+  "year": "2025-26 (FAE)",
+  "source": "AP district-wise GVA/GDDP workbook",
+  "districts": {
+    "Alluri Seetha Rama Raju": {
+      "value_cr": 75.16124280886476,
+      "rank": 26.0,
+      "growth_pct": 5.63,
+      "pct_of_district": 0.45
+    },
+    "Anakapalle": {
+      "value_cr": 2080.180774273623,
+      "rank": 12.0,
+      "growth_pct": 6.94,
+      "pct_of_district": 3.75
+    },
+    "Ananthapuramu": {
+      "value_cr": 124.52118059017889,
+      "rank": 23.0,
+      "growth_pct": 22.55,
+      "pct_of_district": 0.18
+    },
+    "Annamayya": {
+      "value_cr": 31.771970691795367,
+      "rank": 27.0,
+      "growth_pct": -52.24,
+      "pct_of_district": 0.1
+    },
+    "Bapatla": {
+      "value_cr": 14053.898859820412,
+      "rank": 4.0,
+      "growth_pct": 24.03,
+      "pct_of_district": 32.83
+    },
+    "Chittoor": {
+      "value_cr": 21.740316537470708,
+      "rank": 28.0,
+      "growth_pct": -40.54,
+      "pct_of_district": 0.05
+    },
+    "Dr.B.R.Ambedkar Konaseema": {
+      "value_cr": 8780.718509324179,
+      "rank": 6.0,
+      "growth_pct": 0.56,
+      "pct_of_district": 21.26
+    },
+    "East Godavari": {
+      "value_cr": 2348.0853376133127,
+      "rank": 10.0,
+      "growth_pct": 10.96,
+      "pct_of_district": 3.61
+    },
+    "Eluru": {
+      "value_cr": 31287.737393528754,
+      "rank": 2.0,
+      "growth_pct": 13.82,
+      "pct_of_district": 38.36
+    },
+    "Guntur": {
+      "value_cr": 976.1354813165909,
+      "rank": 15.0,
+      "growth_pct": 21.39,
+      "pct_of_district": 1.26
+    },
+    "Kakinada": {
+      "value_cr": 7435.3802168152415,
+      "rank": 7.0,
+      "growth_pct": 25.46,
+      "pct_of_district": 10.72
+    },
+    "Krishna": {
+      "value_cr": 36393.31379767424,
+      "rank": 1.0,
+      "growth_pct": 36.25,
+      "pct_of_district": 39.97
+    },
+    "Kurnool": {
+      "value_cr": 590.3869445371938,
+      "rank": 18.0,
+      "growth_pct": 37.85,
+      "pct_of_district": 1.17
+    },
+    "Markapuram": {
+      "value_cr": 142.37149949437804,
+      "rank": 21.0,
+      "growth_pct": -21.11,
+      "pct_of_district": 0.53
+    },
+    "Nandyal": {
+      "value_cr": 817.4169652727126,
+      "rank": 16.0,
+      "growth_pct": 5.69,
+      "pct_of_district": 1.83
+    },
+    "Ntr": {
+      "value_cr": 381.55675325893867,
+      "rank": 19.0,
+      "growth_pct": 5.82,
+      "pct_of_district": 0.39
+    },
+    "Palnadu": {
+      "value_cr": 1874.1114040036334,
+      "rank": 13.0,
+      "growth_pct": 20.67,
+      "pct_of_district": 4.1
+    },
+    "Parvathipuram Manyam": {
+      "value_cr": 271.69521209495485,
+      "rank": 20.0,
+      "growth_pct": -9.93,
+      "pct_of_district": 1.71
+    },
+    "Polavaram": {
+      "value_cr": 110.44646749181668,
+      "rank": 24.0,
+      "growth_pct": 11.11,
+      "pct_of_district": 1.75
+    },
+    "Prakasam": {
+      "value_cr": 3213.5499126972863,
+      "rank": 8.0,
+      "growth_pct": 6.81,
+      "pct_of_district": 7.21
+    },
+    "Sps Nellore": {
+      "value_cr": 10184.378751135653,
+      "rank": 5.0,
+      "growth_pct": 13.22,
+      "pct_of_district": 12.91
+    },
+    "Sri Satya Sai": {
+      "value_cr": 108.96486047438287,
+      "rank": 25.0,
+      "growth_pct": 41.56,
+      "pct_of_district": 0.19
+    },
+    "Srikakulam": {
+      "value_cr": 3133.268261230415,
+      "rank": 9.0,
+      "growth_pct": 13.76,
+      "pct_of_district": 7.07
+    },
+    "Tirupati": {
+      "value_cr": 1677.4812239127705,
+      "rank": 14.0,
+      "growth_pct": -26.54,
+      "pct_of_district": 1.85
+    },
+    "Visakhapatnam": {
+      "value_cr": 2315.3678092441355,
+      "rank": 11.0,
+      "growth_pct": 7.67,
+      "pct_of_district": 1.56
+    },
+    "Vizianagaram": {
+      "value_cr": 602.4417016092143,
+      "rank": 17.0,
+      "growth_pct": 106.16,
+      "pct_of_district": 1.45
+    },
+    "West Godavari": {
+      "value_cr": 23825.983113249684,
+      "rank": 3.0,
+      "growth_pct": 20.37,
+      "pct_of_district": 34.92
+    },
+    "Ysr Kadapa": {
+      "value_cr": 125.63798904513044,
+      "rank": 22.0,
+      "growth_pct": 23.53,
+      "pct_of_district": 0.17
+    }
+  }
+}
