@@ -41,7 +41,13 @@ CSS = """
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --ink:#0E4A3C; --ink-2:#0B2E20; --lime:#C6FF6A; --lime-2:#C6EC8F;
-  --r:18px; --r-lg:24px; --maxw:960px;
+  /* Tracks the viewport instead of pinning to a fixed width. A flat 960px left
+     ~240px of dead margin either side on a normal desktop and squeezed the
+     two-up baseline/endline panels for no reason; a flat 1280 would just move
+     that problem to a different screen size. 94vw keeps a thin gutter at every
+     width, and the 1680px ceiling stops the panels sprawling on an ultrawide,
+     where a very long row becomes hard to read across. */
+  --r:18px; --r-lg:24px; --maxw:min(1680px, 94vw);
 }
 html{scroll-behavior:smooth;}
 body{
@@ -55,7 +61,10 @@ body{
   background-attachment:fixed;
   line-height:1.55;
 }
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,44px);}
+/* Side padding was clamp(20px,5vw,44px) — the 5vw term grew the gutter as the
+   screen got wider, so the content narrowed exactly when there was most room
+   for it. Now it holds a small fixed gutter instead. */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,2.2vw,28px);}
 .top{padding:clamp(26px,4vw,44px) 0 clamp(18px,2.4vw,26px);}
 .back{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:12.5px;
   font-weight:650;letter-spacing:.03em;color:rgba(198,236,143,.9);margin-bottom:clamp(16px,2.4vw,24px);}
