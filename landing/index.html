@@ -1415,11 +1415,20 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   background:rgba(198,236,143,.85);font-variant-numeric:tabular-nums;}
 .rec-none{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.55);margin:0;font-style:italic;}
 .rec-count{font-size:12.6px;line-height:1.5;color:rgba(198,236,143,.85);margin:0;font-weight:600;}
-/* The district layer renders in the full-width detail box under the accordion,
-   so it gets the same two-up grid the rest of the page uses. */
+/* The district layer renders in the full-width detail box under the accordion.
+   One sector card per row, using the whole width. Sharing the row between two
+   sectors looked tidier but left each card only ~500px inside, which is under
+   the width two constraints need — so every constraint stacked, and a sector
+   naming six of them ran 1,563px down the page. Giving the card the full width
+   lets the constraints run ACROSS instead, which is the shape the reader wants:
+   the tall column was the thing to fix, not the number of cards per row. */
 .rec-list-inline{grid-template-columns:1fr;}
-@media (min-width:1000px){ .rec-list-inline{grid-template-columns:repeat(2,minmax(0,1fr));} }
 .rec-list-inline .rec-item{background:rgba(255,255,255,.045);}
+/* Constraints run across the card, as many as fit at a readable width. 300px is
+   the floor: a quote plus a numbered list of interventions is unreadable below
+   it, and min(100%,...) keeps a single constraint from overflowing a narrow
+   card rather than forcing a track wider than the space available. */
+.rec-presw{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));align-items:start;}
 /* The state-wide playbook, one button below the district layer. */
 .gva-pbwrap{margin-top:clamp(14px,1.8vw,20px);}
 .gva-pb{font:inherit;font-size:13.5px;font-weight:650;cursor:pointer;width:100%;
