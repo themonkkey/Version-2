@@ -82,6 +82,17 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 /* Every page opens straight into a dark vstage (hero / handloom / ledger /
    isometric), so the nav sits permanently on the dark system too — same
    fix as the footer, no light-glass seam at the top of any page. */
+/* TEMP:WIP — remove this block together with the .wip-ribbon div in
+   #page-methodology. Sits below the nav (z-index 50) so it never covers the
+   menu, and is pointer-events:none so it cannot swallow a click. */
+.wip-ribbon{position:fixed;top:var(--navh,56px);right:0;z-index:45;
+  pointer-events:none;overflow:hidden;width:190px;height:190px;}
+.wip-ribbon span{position:absolute;top:38px;right:-52px;width:230px;
+  transform:rotate(45deg);text-align:center;padding:7px 0;
+  background:#C0392B;color:#FFF;font-size:12px;font-weight:750;
+  letter-spacing:.08em;text-transform:uppercase;
+  box-shadow:0 3px 12px rgba(0,0,0,.35);}
+@media (max-width:700px){.wip-ribbon{display:none;}}
 .nav{position:sticky;top:0;z-index:50;
   background:rgba(11,46,32,.62);
   backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);
@@ -2229,7 +2240,7 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
     <div class="wrap"><div class="hero-content">
     <div class="eyebrow">Pahlé India Foundation · Capacity Building</div>
     <h1>Every district's economy,<br><span>one question away</span></h1>
-    <p>Ask how district income is measured, or what is actually happening in Bapatla, Annamayya or Visakhapatnam. Answers come from the official DDP and GDVA estimates, and every one names its source.</p>
+    <p>Ask how district income is measured, or what is actually happening in Bapatla, Annamayya or Visakhapatnam. Answers come from the official DDP and GDVA estimates, and every answer tells you which document it came from.</p>
     <div class="hero-cta">
       <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary"><i class="ti ti-message-2"></i> Start asking questions</button></a>
       <button class="btn-ghost nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
@@ -2309,6 +2320,9 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 
 <!-- METHODOLOGY -->
 <div class="page" id="page-methodology">
+ <!-- TEMP:WIP — corner ribbon while this page is being reworked.
+      To remove: delete this div and the .wip-ribbon block in the stylesheet. -->
+ <div class="wip-ribbon" role="note"><span>Work in progress</span></div>
  <div class="narr vstage" data-vid="gridwork">
   <section class="narr-open vstage" data-vid="ledger">
     <div class="kick">Methodology</div>
