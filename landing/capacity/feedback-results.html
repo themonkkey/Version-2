@@ -238,7 +238,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
           ' aria-selected="'+(l===level)+'"'+(has?'':' disabled')+
           ' title="'+esc(has ? LABEL[l] : LABEL[l]+' — no feedback filed')+'">' +
           esc(LABEL[l] || l) +
-          (has ? '<span class="ln">n = '+rec.levels[l].n+'</span>' : '<span class="ln">none</span>') +
+          (has ? '' : '<span class="ln">none</span>') +
         '</button>';
       }).join('');
       tabs.querySelectorAll('.ltab:not([disabled])').forEach(function(b){

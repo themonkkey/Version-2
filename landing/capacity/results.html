@@ -312,14 +312,11 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
 
       tabs.innerHTML = LEVEL_ORDER.map(function(l){
         var L = byLevel[l], has = !!L;
-        /* n comes off whichever round the report actually carries: a level can
-           have a baseline and no endline. */
-        var n = has ? ((L.baseline && L.baseline.n) || (L.endline && L.endline.n)) : null;
         return '<button type="button" class="ltab" role="tab" data-lv="'+l+'"' +
           ' aria-selected="'+(l === level)+'"'+(has ? '' : ' disabled') +
           ' title="'+esc(has ? (L.label || l) : (l + ' — no assessment filed'))+'">' +
           esc(has ? (L.label || l) : (l.charAt(0).toUpperCase() + l.slice(1) + ' training')) +
-          (has && n != null ? '<span class="ln">n = '+n+'</span>' : '<span class="ln">none</span>') +
+          (has ? '' : '<span class="ln">none</span>') +
         '</button>';
       }).join('');
       tabs.querySelectorAll('.ltab:not([disabled])').forEach(function(b){
