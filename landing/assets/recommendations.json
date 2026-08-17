@@ -15,6 +15,7 @@
         "coverage": "prototype",
         "data_year": "2025-26 (FAE)",
         "data_source": "AP district-wise GVA/GDDP workbook",
+        "districts_total": 28,
         "state_basis": {
           "method": "state_sector_total = value / (pct_of_state_sector/100); state_total = sum(state_sector_total); state_share_pct = state_sector_total / state_total * 100; lq = pct_of_district / state_share_pct",
           "state_total_rs_cr": 1623882.0,

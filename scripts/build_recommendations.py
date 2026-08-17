@@ -488,6 +488,12 @@ def main():
 
     with open(DIST, encoding="utf-8") as fh:
         dist = json.load(fh)
+
+    # How many districts a sector rank is out of. Counted from the dist/ files
+    # that produce those ranks rather than written down, because the number has
+    # changed with state reorganisation and a hardcoded one silently goes stale.
+    districts_total = len([f for f in os.listdir(os.path.dirname(DIST))
+                           if f.endswith(".json")])
     with open(PLAYBOOK, encoding="utf-8") as fh:
         playbook = json.load(fh)
     valid_keys = {s["key"] for g in playbook["groups"] for s in g["sectors"]}
@@ -615,6 +621,7 @@ def main():
                     "coverage": "prototype",
                     "data_year": dist.get("latest_year"),
                     "data_source": dist.get("source"),
+                    "districts_total": districts_total,
                     "state_basis": {
                         "method": "state_sector_total = value / (pct_of_state_sector/100); "
                                   "state_total = sum(state_sector_total); "

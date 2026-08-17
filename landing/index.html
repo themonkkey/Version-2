@@ -4225,7 +4225,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
                 '% divided by share of state ' + d.state_share_pct.toFixed(2) + '%') +
         recStat((g >= 0 ? '+' : '') + g.toFixed(2), '%', 'Growth',
                 'growth in the latest year, as reported') +
-        recStat(d.rank_among_districts, '', 'Rank of 26',
+        /* The total comes from the data, not a literal: the district count has
+           changed with state reorganisation and a number typed in here goes
+           stale silently. */
+        recStat(d.rank_among_districts, '',
+                unit.districts_total ? 'Rank of ' + unit.districts_total : 'Rank',
                 'this district’s rank among districts for this sector');
 
       /* Each constraint reads as a numbered problem-and-response pair, which is
@@ -4562,7 +4566,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadRecs(){
     /* A missing or broken recommendations file must never take the generic
        playbook down with it, so failure resolves to an empty set. */
-    return fetch('assets/recommendations.json?v=2026-08-17a')
+    return fetch('assets/recommendations.json?v=2026-08-17b')
       .then(function(r){ return r.json(); })
       .then(function(j){ RECS = j; })
       .catch(function(err){ RECS = {}; console.warn('recommendations unavailable', err); });
