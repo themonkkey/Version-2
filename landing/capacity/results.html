@@ -78,20 +78,23 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
 .ar-big{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:6px 0 10px;}
 .ar-pct{font-size:clamp(28px,3.4vw,40px);font-weight:750;color:#FFF;line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums;}
 .ar-sub{font-size:12.5px;color:rgba(255,255,255,.62);}
-.ar-cav{font-size:12px;color:#FFD9A8;margin:-4px 0 10px;}
-.ar-kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:8px 12px;margin-bottom:12px;}
-.ar-kv > div{display:flex;flex-direction:column;gap:1px;min-width:0;}
-.ar-kv b{font-size:15px;font-weight:750;color:#FFF;font-variant-numeric:tabular-nums;letter-spacing:-.01em;}
-.ar-kv span{font-size:11px;color:rgba(255,255,255,.55);}
+.ar-cav{font-size:12px;color:#FFD9A8;margin:-2px 0 10px;}
+.ar-who{font-size:12.5px;color:rgba(255,255,255,.62);margin:-4px 0 12px;}
+.ar-bandhd{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-bottom:7px;}
+.ar-foot{font-size:12px;line-height:1.55;color:rgba(255,255,255,.6);margin:0 0 11px;}
 .ar-q{display:flex;height:9px;border-radius:5px;overflow:hidden;gap:2px;background:rgba(255,255,255,.08);}
 .ar-qs{display:block;min-width:0;}
 .ar-qs.q1,.ar-ql i.q1{background:#E8837A;}
 .ar-qs.q2,.ar-ql i.q2{background:#F0B36A;}
 .ar-qs.q3,.ar-ql i.q3{background:#8FE3FF;}
 .ar-qs.q4,.ar-ql i.q4{background:var(--lime);}
-.ar-ql{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 10px;font-size:11px;color:rgba(255,255,255,.62);}
-.ar-ql i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;vertical-align:-0.5px;}
-.ar-ql b{color:#FFF;font-weight:700;}
+.ar-ql{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:5px 12px;
+  margin:8px 0 11px;font-size:11.5px;color:rgba(255,255,255,.66);}
+.ar-ql i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:6px;vertical-align:-0.5px;}
+.ar-ql b{color:#FFF;font-weight:700;font-variant-numeric:tabular-nums;margin-left:2px;}
+/* an empty band still earns its row — it says "nobody scored here" */
+.ar-ql .z{opacity:.42;}
 .ar-sw p{margin:0 0 5px;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.78);}
 .ar-sw em{font-style:normal;font-weight:700;color:rgba(198,236,143,.9);margin-right:5px;}
 .ar-chg{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px 12px;margin:14px 0 0;
@@ -154,29 +157,42 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
 
   function roundCol(r, stage, items){
     if(!r) return '<div class="ar-round ar-empty">Not administered</div>';
+    /* `quartiles` are score BANDS, not rank quartiles — they sum to n, and
+       top_q / below50 are the same numbers restated (band 4, and bands 1+2).
+       So the band strip is the whole distribution; the old key-value row that
+       repeated it has gone. */
+    var BAND = ['0-25%', '25-50%', '50-75%', '75-100%'];
     var q = r.quartiles || [];
     var qt = q.reduce(function(a, b){ return a + b; }, 0) || 1;
-    var bars = q.length ? '<div class="ar-q" aria-label="Score distribution by quartile">' +
+    var bars = q.length ? '<div class="ar-q" aria-label="How scores were spread">' +
       q.map(function(n, i){
-        return '<span class="ar-qs q'+(i+1)+'" style="flex-grow:'+n+'" title="Q'+(i+1)+': '+n+' of '+qt+'"></span>';
+        return '<span class="ar-qs q'+(i+1)+'" style="flex-grow:'+n+'" title="'+
+          BAND[i]+': '+n+' of '+qt+'"></span>';
       }).join('') + '</div>' +
       '<div class="ar-ql">' + q.map(function(n, i){
-        return '<span><i class="q'+(i+1)+'"></i>Q'+(i+1)+' <b>'+n+'</b></span>';
-      }).join('') + '</div>' : '';
+        /* highest band first — people read the strip left to right but read a
+           result best-first, and a zero band should not lead. */
+        return '<span'+(n ? '' : ' class="z"')+'><i class="q'+(i+1)+'"></i>'+
+          BAND[i]+' <b>'+n+'</b></span>';
+      }).reverse().join('') + '</div>' : '';
+    /* the tail facts, in one plain sentence rather than four stat tiles */
+    var foot = [];
+    if(r.low && r.high) foot.push('Scores ran '+r.low.score+' to '+r.high.score+' out of '+r.items);
+    else if(r.high) foot.push('Highest '+r.high.score+' out of '+r.items);
+    if(r.high && r.high.n && r.high.score === r.items)
+      foot.push(r.high.n + (r.high.n === 1 ? ' officer got' : ' officers got') + ' full marks');
+    if(r.median != null) foot.push('median '+r.median);
+    if(r.sd != null) foot.push('spread (SD) '+r.sd);
     return '<div class="ar-round">' +
       '<div class="ar-stage">'+stage+'<span class="ar-date">'+esc(r.date||'')+'</span></div>' +
       '<div class="ar-big"><span class="ar-pct">'+pctf(r.pct)+'</span>' +
-        '<span class="ar-sub">mean '+numf(r.mean)+' of '+r.items+' · n = '+r.n+'</span></div>' +
+        '<span class="ar-sub">average '+(r.mean == null ? '—' :
+          String(Math.round(r.mean * 10) / 10))+' out of '+r.items+'</span></div>' +
+      '<div class="ar-who">'+r.n+(r.n === 1 ? ' officer sat' : ' officers sat')+' this paper</div>' +
       (r.caveat ? '<div class="ar-cav">'+esc(r.caveat)+'</div>' : '') +
-      '<div class="ar-kv">' +
-        '<div><b>'+pctf(r.top_q && r.top_q.pct)+'</b><span>top quartile'+(r.top_q ? ' ('+r.top_q.n+')' : '')+'</span></div>' +
-        '<div><b>'+pctf(r.below50 && r.below50.pct)+'</b><span>below 50%'+(r.below50 ? ' ('+r.below50.n+')' : '')+'</span></div>' +
-        '<div><b>'+(r.high ? r.high.score+'/'+r.items : '—')+'</b><span>highest'+(r.high && r.high.n ? ' ('+r.high.n+')' : '')+'</span></div>' +
-        '<div><b>'+(r.low ? r.low.score+'/'+r.items : '—')+'</b><span>lowest'+(r.low && r.low.n ? ' ('+r.low.n+')' : '')+'</span></div>' +
-        (r.median != null ? '<div><b>'+r.median+'</b><span>median</span></div>' : '') +
-        (r.sd != null ? '<div><b>'+r.sd+'</b><span>SD</span></div>' : '') +
-      '</div>' +
+      (q.length ? '<div class="ar-bandhd">How they scored</div>' : '') +
       bars +
+      (foot.length ? '<div class="ar-foot">'+esc(foot.join(' · '))+'</div>' : '') +
       '<div class="ar-sw">' +
         (r.strongest ? '<p><em>Best answered</em> '+esc(r.strongest)+'</p>' : '') +
         (r.weakest ? '<p><em>Least answered</em> '+esc(r.weakest)+'</p>' : '') +
