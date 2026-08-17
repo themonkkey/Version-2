@@ -105,8 +105,20 @@ RE_COVERAGE = re.compile(r"^\s*(PROGRAMME COVERAGE|BRIEF OF [A-Za-z ]{3,40})\s*$
 RE_HIGHLIGHTS = re.compile(r"^\s*[A-Z][A-Z\-& ]{4,}HIGHLIGHTS\s*$", re.I)
 RE_PARTICIPANTS_HEAD = re.compile(r"^\s*PARTICIPANTS\s*$", re.I)
 RE_PAGEFOOT = re.compile(r"^\s*Page \d+ of \d+\s*$", re.I)
-RE_BULLET = re.compile(r"^\s*[•›▪◦\-•›]\s+(.*)$")
+# The three Word outline glyphs plus the "o" of a second-level list. ● is the one
+# that actually costs points: NTR's 29 July master-training report sets every
+# bullet with it, so without it that report parsed to zero highlights, and the
+# Guntur and Tirupati constituency pages lost all but their first point. The "o"
+# needs the uppercase lookahead so the word "o" can never open a bullet.
+RE_BULLET = re.compile(r"^\s*(?:[•›▪◦●○‣\-]|o(?=\s{1,3}[A-Z]))\s+(.*)$")
 RE_NUMBULLET = re.compile(r"^\s*\d{1,2}[.)]\s+(.+)$")
+# A run-in label — "Agriculture-Based Economy: Paddy, groundnut, …". Several
+# report writers set their points this way instead of with a bullet glyph, and
+# because nothing marks the line as a new item the whole list collapsed into one
+# paragraph (Tirupati 3 August shipped 1 point per constituency against 5-6 in
+# the PDF). The label has to be short, title-ish and carry text after the colon,
+# which is what separates it from an ordinary sentence containing a colon.
+RE_RUNIN = re.compile(r"^\s*([A-Z][A-Za-z0-9&()/'’\-, ]{2,58}):\s+(\S.*)$")
 
 # --- report-start detection ----------------------------------------------
 RE_HDR_A = re.compile(r"CAPACITY BUILDING PROGRAMME\s*[-–—]\s*ANDHRA PRADESH", re.I)
@@ -118,10 +130,27 @@ RE_SUBHDR_A = re.compile(
 RE_SUBHDR_B = re.compile(
     r"Day[:\s]*(?P<day>\d+)\s*Status Report\s*[-–—]\s*(?P<rest>[^\n]+)", re.I)
 
+# The comma is not optional decoration: "1 August, 2026" is how Tirupati's Day 2
+# banner is written, and requiring a bare space between month and year shipped
+# that whole session as a dateless card at the end of the district.
+MONTH_ALT = ("January|February|March|April|May|June|July|August|September"
+             "|October|November|December")
 RE_DATE = re.compile(
     r"(\d{1,2})\s*(?:st|nd|rd|th)?\s+"
-    r"(January|February|March|April|May|June|July|August|September|October|November|December)"
-    r"\s+(\d{4})", re.I)
+    r"(" + MONTH_ALT + r")"
+    r"\s*,?\s*(\d{4})", re.I)
+# A dated SECTION LABEL on the multi-district profiling cover cards, which carry
+# no full date anywhere: "2nd – 3rd July – District Profiling", "4th July –
+# Constituency Profiling (4 Constituencies)". The trailing dash-and-title is what
+# makes this safe to read as the card's own date — Visakhapatnam's card also says
+# "Constituency Profiling for Kakinada was pre-scheduled for 19th and 20th June",
+# a forward note about ANOTHER district, and that phrasing has no dash-title
+# behind it, so it is not mistaken for this card's date.
+RE_DATE_LABEL = re.compile(
+    r"(\d{1,2})\s*(?:st|nd|rd|th)"
+    r"(?:\s*[-–—]\s*\d{1,2}\s*(?:st|nd|rd|th))?"
+    r"\s+(" + MONTH_ALT + r")"
+    r"\s*[-–—]\s*[A-Z]", re.I)
 RE_DAY = re.compile(r"Day[:\s]*0?(\d{1,2})\b", re.I)
 # Ordered most-explicit first: a bare "Participants 72" is only trusted once the
 # stated-count phrasings have all failed, because loose digits near the word turn
@@ -152,8 +181,63 @@ RE_DISTRICT_ROW = re.compile(r"^\s*District\s+(\d+)\s+([A-Z][A-Z .&'\-]{2,})\s*$
 # one of these three, and the page groups sessions by them.
 LEVEL_RULES = [
     (re.compile(r"master", re.I), "master"),
-    (re.compile(r"constituency|mandal", re.I), "constituency"),
+    # "constituenc", not "constituency": the plural is "Constituencies", which
+    # does not contain the singular, and Srikakulam's 8 July coverage cell —
+    # "The profiling for the Amadalavalasa and Tekkali Assembly Constituencies" —
+    # matched nothing at all and defaulted to district.
+    (re.compile(r"constituenc|mandal", re.I), "constituency"),
     (re.compile(r"district", re.I), "district"),
+]
+
+# THE BANNER LIES, THE BODY DOESN'T. Most districts filed every day of their run
+# under one boilerplate report type — "Consolidated District Status Report" —
+# whatever the day actually was, so the banner alone marked Srikakulam's master
+# training and all of Konaseema's constituency days as district sessions. Once,
+# it lies the other way: Vizianagaram's 6 August banner says "Constituency
+# Profiling Status Report" over a body that says "Training Format: District Level
+# Training". So the body is read first and the banner is only the fallback.
+#
+# Cues are matched two ways. The ROW/HEADING cues are anchored to a laid-out
+# line, because that is what makes them structural rather than a passing mention.
+# The PHRASE cues are matched against the text with its line breaks collapsed:
+# Krishna's 10 July coverage cell wraps as "Format: Constituency Training\n
+# Program (In-person)", and a phrase that spans the wrap never matches otherwise.
+#
+# Order is master, then constituency, then district. A master day is described in
+# constituency and district words throughout (it trains mandal officers about the
+# district), and a constituency day almost always names the district too, so the
+# most specific claim has to win or every day collapses back to "district".
+LEVEL_CUES = [
+    ("master", [
+        # "MASTER TRAINING HIGHLIGHTS", "DISTRICT MASTER TRAINING HIGHLIGHTS".
+        re.compile(r"^[ \t]*(?:[A-Z][A-Z&' \-]*\s)?MASTER[A-Z&' \-]*HIGHLIGHTS[ \t]*$", re.M),
+     ], [
+        re.compile(r"Master Level (?:Capacity Building|Training)", re.I),
+        re.compile(r"District Master Training", re.I),
+        re.compile(r"Master Trainers?['’]?\s*Training", re.I),
+     ]),
+    ("constituency", [
+        # The "Constituency"/"Constituencies (Covered)" row of the field table.
+        re.compile(r"^[ \t]*Constituenc(?:y|ies)(?:[ \t]+Covered)?[ \t]*(?:[ \t]{2}\S.*)?$", re.M),
+        # "CONSTITUENCY-LEVEL HIGHLIGHTS", "CONSTITUENCY PROFILE HIGHLIGHTS",
+        # and Vizianagaram's "TERTIARY SECTOR AND CONSTITUENCY PROFILING
+        # HIGHLIGHTS", which is why words are allowed in front.
+        re.compile(r"^[ \t]*(?:[A-Z][A-Z&' \-]*\s)?CONSTITUENCY[A-Z&' \-]*HIGHLIGHTS[ \t]*$", re.M),
+        # A title line naming the constituency: "PENAMALURU CONSTITUENCY".
+        re.compile(r"^[ \t]*[A-Z][A-Z .&'\-]{2,}\s+CONSTITUENCY[ \t]*$", re.M),
+     ], [
+        re.compile(r"Constituency Training Program", re.I),
+     ]),
+    ("district", [
+        # Only the structural forms. "District training" turns up in the prose of
+        # constituency days too ("as covered in the district training"), and
+        # taking that at face value pushed Parvathipuram Manyam's 24 July
+        # constituency report back to district.
+        re.compile(r"^[ \t]*DISTRICT[A-Z&' \-]*(?:TRAINING|PROFILING)[A-Z&' \-]*"
+                   r"(?:HIGHLIGHTS|COVERAGE|GLIMPSES)[ \t]*$", re.M),
+        re.compile(r"^[ \t]*(?:Training|Session)\s+Format[ \t]{2,}.{0,40}?"
+                   r"District[ \-]?(?:Level Training|Profiling|Training)", re.M | re.I),
+     ], []),
 ]
 
 
@@ -180,15 +264,36 @@ def run(cmd, **kw):
     return subprocess.run(cmd, capture_output=True, text=True, check=False, **kw)
 
 
-def parse_date(text):
-    """First real date in `text`, as (iso, pretty). None when there isn't one."""
+def parse_date(text, default_year=None):
+    """First real date in `text`, as (iso, pretty). None when there isn't one.
+
+    `default_year` opens the second pass over dated section labels, which state
+    a day and a month but never a year. It is only ever passed a year read off
+    the same PDF: with no year in evidence the card stays undated rather than
+    being dated by guesswork.
+    """
     m = RE_DATE.search(text or "")
+    if m:
+        d, mon, y = int(m.group(1)), MONTHS[m.group(2).lower()], int(m.group(3))
+        if not (1 <= d <= 31) or not (2024 <= y <= 2030):
+            return None, None
+        return "%04d-%02d-%02d" % (y, mon, d), m.group(0)
+    if default_year is None:
+        return None, None
+    # Runs of spaces are collapsed first: the label sits in a layout-mode table
+    # cell, so "4th July – District Profiling" arrives padded, and a range can be
+    # split across the padding.
+    m = RE_DATE_LABEL.search(re.sub(r"[ \t]+", " ", text or ""))
     if not m:
         return None, None
-    d, mon, y = int(m.group(1)), MONTHS[m.group(2).lower()], int(m.group(3))
-    if not (1 <= d <= 31) or not (2024 <= y <= 2030):
+    # The FIRST day of a range: "2nd – 3rd July – District Profiling" is a card
+    # covering both days, and the session list is ordered by the day work began.
+    d, mon = int(m.group(1)), MONTHS[m.group(2).lower()]
+    if not (1 <= d <= 31):
         return None, None
-    return "%04d-%02d-%02d" % (y, mon, d), m.group(0)
+    pretty = m.group(0).rstrip()
+    pretty = re.sub(r"\s*[-–—]\s*[A-Z]$", "", pretty) + " %d" % default_year
+    return "%04d-%02d-%02d" % (default_year, mon, d), pretty
 
 
 def clean(line):
@@ -222,9 +327,14 @@ def join_wrapped(lines):
     The consultations focused on…") — the opening words stayed with the previous
     paragraph and the remainder became a fragment of its own.
 
-    A heading is only recognised with an empty buffer, i.e. straight after a
-    blank line. Inside a wrapped run, a short title-case line is far more likely
-    to be the tail of a sentence than a new sub-heading.
+    A heading is recognised with an empty buffer, i.e. straight after a blank
+    line, or behind a line that closed a sentence. Inside a wrapped run, a short
+    title-case line is far more likely to be the tail of a sentence than a new
+    sub-heading — but only mid-sentence. Several reports run their sub-headings
+    straight on from the previous paragraph with no blank line at all, and the
+    empty-buffer rule alone lost every one of them (Guntur 3 August kept only
+    "Ponnur Constituency" and swallowed "Guntur East" and "Guntur West"; the ten
+    department headings of Konaseema 18 July collapsed to one).
     """
     paras, buf, bulleted = [], [], False
 
@@ -232,6 +342,9 @@ def join_wrapped(lines):
         if buf:
             paras.append(("• " if bulleted else "") + " ".join(buf))
         return [], False
+
+    def sentence_closed():
+        return bool(buf) and buf[-1].rstrip().endswith((".", "!", "?"))
 
     for l in lines:
         s = l.strip()
@@ -243,12 +356,34 @@ def join_wrapped(lines):
             buf, bulleted = flush()
             buf, bulleted = [clean(m.group(1))], True
             continue
-        if not buf and heading_like(s):
-            paras.append(s)
+        if heading_like(s) and (not buf or sentence_closed()):
+            buf, bulleted = flush()
+            paras.append(clean(s).rstrip(":"))
+            continue
+        # A run-in label opens its own point. It is only honoured behind a closed
+        # sentence or a blank line, so a colon inside a wrapped sentence cannot
+        # chop the sentence in half.
+        if runin_label(l) and (not buf or sentence_closed()):
+            buf, bulleted = flush()
+            buf, bulleted = [clean(s)], False
             continue
         buf.append(s)
     flush()
     return stitch(paras)
+
+
+def runin_label(line):
+    """The label of a "Label: text" point, or None. Not a sentence with a colon."""
+    m = RE_RUNIN.match(line)
+    if not m:
+        return None
+    lab = m.group(1).strip()
+    # A label is a name, not a clause: a handful of words. "Infrastructure Gaps"
+    # and "Growth Opportunities" pass; a long wrapped line that happens to carry a
+    # colon does not, so a sentence is never chopped at its own punctuation.
+    if not (1 <= len(lab.split()) <= 7):
+        return None
+    return lab
 
 
 def stitch(paras):
@@ -270,12 +405,33 @@ def stitch(paras):
     return out
 
 
+# Column headings of the Field/Details table, and the label column's own words.
+# They are short and title-case, so they read exactly like a sub-heading, and
+# they were being filed as one — Prakasam's 18 June card shipped its bullets
+# under a heading called "Field Details". They are never a real heading.
+RE_TABLE_HEAD = re.compile(
+    r"^\s*(?:Field\s+Details|Field|Details|Sector\s+Focus|Method|Activity"
+    r"|Key\s+Findings|Key\s+Officials|Constituenc(?:y|ies)\s+Covered|Covered)\b"
+    # The label's own value trails it on the same line as often as not, because
+    # the two columns collapse into one line in a layout-mode extract
+    # ("Sector Focus     Primary Sector"). Heading or heading-plus-value, it is
+    # the table talking, not the report.
+    r"\s*:?(?:\s.*)?$", re.I)
+
+
 def heading_like(s):
     """A short, title-ish line with no terminal punctuation — a sub-heading."""
     if len(s) > 60 or not s:
         return False
-    if s.endswith((".", ",", ";", ":")):
+    if s.endswith((".", ",", ";")):
         return False
+    # A trailing colon is how the sector sub-headings are set in the Tirupati
+    # 31 July report ("Sericulture:", "Fisheries:", …). Rejecting it merged all
+    # six sectors into one blank-headed group. The colon is dropped by the caller.
+    if s.endswith(":"):
+        s = s[:-1].rstrip()
+        if not s:
+            return False
     if RE_BULLET.match(s) or RE_NUMBULLET.match(s):
         return False
     words = s.split()
@@ -595,8 +751,23 @@ def parse_highlights(lines):
         # Drop the connective stubs the template leaves behind.
         pts = [x for x in pts
                if not re.match(r"^The following interactions were conducted", x, re.I)]
-        if pts:
-            out.append({"head": g["head"], "points": pts})
+        if not pts:
+            continue
+        head = g["head"]
+        # This is a standalone status page appended behind the highlights, about
+        # OTHER districts entirely — NTR's 27 July report ends with a page on
+        # Parvathipuram Manyam and Konaseema. Reported as an NTR highlight group
+        # it credited NTR with another district's day.
+        if re.match(r"^Status of (?:the\s+)?Remaining\b.*Districts?$", head, re.I):
+            continue
+        if RE_TABLE_HEAD.match(head):
+            head = ""
+        # Two unheaded runs in a row are one run: the table header that used to
+        # separate them was furniture, not a heading.
+        if not head and out and not out[-1]["head"]:
+            out[-1]["points"].extend(pts)
+            continue
+        out.append({"head": head, "points": pts})
     return out
 
 
@@ -604,7 +775,28 @@ def parse_highlights(lines):
 # per-format report parsers
 # -------------------------------------------------------------------------
 
-def level_for(kind):
+def level_from_body(text):
+    """The level the report's own body states, or None when it states none."""
+    if not text:
+        return None
+    # The label column is vertically centred in its cell, so a label line
+    # surfaces part-way DOWN its own wrapped value: Krishna's 10 July coverage
+    # reads "…Format: Constituency Training / Training coverage / Program
+    # (In-person)…". Dropping the label lines before the text is flattened is
+    # what lets the phrase cue see "Constituency Training Program" at all.
+    flat = re.sub(r"\s+", " ",
+                  "\n".join(l for l in text.split("\n") if not RE_LABEL_ONLY.match(l)))
+    for lvl, line_rx, phrase_rx in LEVEL_CUES:
+        if any(rx.search(text) for rx in line_rx) or any(rx.search(flat) for rx in phrase_rx):
+            return lvl
+    return None
+
+
+def level_for(kind, body=""):
+    """Delivery level: what the body says, else what the report type says."""
+    lvl = level_from_body(body)
+    if lvl:
+        return lvl
     for rx, lvl in LEVEL_RULES:
         if rx.search(kind or ""):
             return lvl
@@ -639,7 +831,7 @@ def parse_report_a(rep, display_name):
                 break
     return {
         "kind": re.sub(r"\s+", " ", kind).strip(),
-        "level": level_for(kind),
+        "level": level_for(kind, rep["text"]),
         "day": day, "date": iso, "date_pretty": pretty,
         "format": clean(fmt_txt), "participants": count, "roles": roles,
         "constituencies": clean(consty),
@@ -688,7 +880,11 @@ def parse_report_b(rep, display_name):
     kind = clean(re.sub(r"\s+", " ", kind))[:70].strip(" -–—:")
     return {
         "kind": kind.title() if kind.isupper() or kind.islower() else kind,
-        "level": level_for(focus + " " + (fields.get("Activity") or "")),
+        # The body cues are read from this district's OWN block: a format-B report
+        # carries several districts, and the neighbouring block is a different
+        # day's work at a different level.
+        "level": level_for(focus + " " + (fields.get("Activity") or ""),
+                           "\n".join(block)),
         "day": day, "date": iso, "date_pretty": pretty,
         "format": clean(fields.get("Method") or fields.get("Activity") or ""),
         "participants": count, "roles": roles or clean(fields.get("Key Officials", "")),
@@ -795,7 +991,7 @@ def parse_report_c(rep, display_name):
 
     return {
         "kind": "Consolidated Status Report",
-        "level": level_for(cov_txt),
+        "level": level_for(cov_txt, rep["text"]),
         "day": None, "date": iso, "date_pretty": pretty,
         "format": fmt_out, "participants": count, "roles": roles,
         "constituencies": consty_c,
@@ -954,7 +1150,21 @@ def build_district(stem, display_name, dkey, write_images=True):
         # lightbox prefers the second and falls back to the first.
         s["photos"] = [[p["file"], p.get("lg")] for p in photos if p["report"] == i]
         s["fmt"] = rep["fmt"]
-        sessions.append(s)
+        sessions.append((s, rep))
+
+    # Second pass for the cards that state a day and a month but no year: the
+    # profiling cover card at the front of Srikakulam, East Godavari, Krishna and
+    # YSR Kadapa is labelled "2nd – 3rd July – District Profiling" and nothing
+    # else. The year is taken from the rest of THIS PDF, and only when every
+    # dated report in it agrees on one — a file spanning a year boundary would
+    # otherwise have its undated card dated by guesswork.
+    years = {s["date"][:4] for s, _ in sessions if s["date"]}
+    if len(years) == 1:
+        year = int(next(iter(years)))
+        for s, rep in sessions:
+            if not s["date"]:
+                s["date"], s["date_pretty"] = parse_date(rep["text"], default_year=year)
+    sessions = [s for s, _ in sessions]
 
     # Order by the date on the report; undated ones keep their file order at the end.
     sessions.sort(key=lambda s: (s["date"] or "9999", s["day"] or 99))
