@@ -4795,26 +4795,35 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(!card) return;
     if(capFbDefault == null) capFbDefault = card.innerHTML;
     var rec = CAPF && CAPF.districts && CAPF.districts[d.slug];
-    if(!rec){ card.innerHTML = capFbDefault; return; }
+    if(!rec || !rec.levels){ card.innerHTML = capFbDefault; return; }
+    /* Feedback is filed per level and the three rounds can differ sharply, so
+       the card leads with the district round and names which one it is showing
+       rather than blending them. The page behind it opens on the same level. */
+    var ORDER = ['district', 'constituency', 'master'];
+    var lvKey = ORDER.filter(function(k){ return rec.levels[k]; })[0];
+    if(!lvKey){ card.innerHTML = capFbDefault; return; }
+    var lv = rec.levels[lvKey];
+    var filed = ORDER.filter(function(k){ return rec.levels[k]; }).length;
     /* The four statements the feedback page reports, by their number on the
        nine-statement instrument. Kept in step with SHOW_Q in
        capacity/feedback-results.html: the card names the highest and lowest
        rated statement, and naming one the page behind it does not list would
        send the reader looking for a row that is not there. */
     var SHOW_Q = [3, 4, 5, 9];
-    var all = rec.questions || [];
+    var all = lv.questions || [];
     var qs = all.filter(function(q){ return SHOW_Q.indexOf(q.n) !== -1; });
     if(!qs.length) qs = all;
     var best = qs.length ? qs.reduce(function(a,b){ return b.avg > a.avg ? b : a; }) : null;
     var worst = qs.length ? qs.reduce(function(a,b){ return b.avg < a.avg ? b : a; }) : null;
     card.innerHTML =
-      '<a class="cap-card-inner" href="capacity/feedback-results.html?d='+encodeURIComponent(d.slug)+'">' +
+      '<a class="cap-card-inner" href="capacity/feedback-results.html?d='+encodeURIComponent(d.slug)+'&lv='+lvKey+'">' +
       '<h3>Training feedback</h3>' +
-      '<p>How officers in '+esc(rec.name)+' rated the session, scored 1 to 5.</p>' +
+      '<p>How officers in '+esc(rec.name)+' rated the '+esc(lv.label.toLowerCase())+', scored 1 to 5' +
+        (filed > 1 ? '. '+filed+' rounds filed feedback' : '') + '.</p>' +
       '<div class="cap-mini">' +
-        '<div><div class="v">'+rec.avg.toFixed(2)+'<small>/5</small></div><div class="k">Average</div></div>' +
-        '<div><div class="v">'+rec.n+'</div><div class="k">Responses</div></div>' +
-        '<div><div class="v">'+rec.favorable.toFixed(1)+'<small>%</small></div><div class="k">Favourable</div></div>' +
+        '<div><div class="v">'+lv.avg.toFixed(2)+'<small>/5</small></div><div class="k">Average</div></div>' +
+        '<div><div class="v">'+lv.n+'</div><div class="k">Responses</div></div>' +
+        '<div><div class="v">'+lv.favorable.toFixed(1)+'<small>%</small></div><div class="k">Favourable</div></div>' +
       '</div>' +
       /* a flat four-statement result names the same row twice otherwise */
       (best && worst && best.avg !== worst.avg
@@ -4984,7 +4993,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         .catch(function(){ return null; }),
       fetch('assets/assessment_results.json?v=2026-08-16b').then(function(r){ return r.json(); })
         .catch(function(){ return null; }),
-      fetch('assets/feedback_results.json?v=2026-08-16a').then(function(r){ return r.json(); })
+      fetch('assets/feedback_results.json?v=2026-08-17a').then(function(r){ return r.json(); })
         .catch(function(){ return null; })
     ]).then(function(res){
       CAP = res[0]; CAPA = res[1]; CAPR = res[2]; CAPF = res[3];

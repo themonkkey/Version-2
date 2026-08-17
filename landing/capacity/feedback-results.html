@@ -36,6 +36,17 @@ h1{font-size:clamp(26px,4.4vw,42px);font-weight:750;letter-spacing:-.025em;line-
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23C6EC8F' stroke-width='2'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:right 14px center;}
 .pick select option{background:#0B2E20;}
+/* level tabs */
+.ltabs{display:flex;gap:8px;flex-wrap:wrap;margin:clamp(14px,2vw,20px) 0 0;}
+.ltab{font:inherit;font-size:13px;font-weight:650;letter-spacing:-.005em;cursor:pointer;
+  padding:9px 16px;border-radius:999px;color:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  display:inline-flex;align-items:baseline;gap:8px;transition:background .16s,border-color .16s,color .16s;}
+.ltab:hover:not([disabled]){background:rgba(255,255,255,.11);color:#FFF;}
+.ltab .ln{font-size:11px;font-weight:600;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums;}
+.ltab[aria-selected="true"]{background:var(--lime);border-color:var(--lime);color:#0B2E20;}
+.ltab[aria-selected="true"] .ln{color:rgba(11,46,32,.62);}
+.ltab[disabled]{opacity:.36;cursor:not-allowed;}
 main{padding-bottom:clamp(40px,6vw,72px);}
 .empty{border-radius:var(--r-lg);padding:26px;background:rgba(9,40,27,.72);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.75);}
 footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:12px;color:rgba(255,255,255,.5);}
@@ -88,6 +99,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
   <h1>Training feedback</h1>
   <p class="lede">How officers rated the district training at the end of the session. Each statement was marked from 1 (strongly disagree) to 5 (strongly agree).</p>
   <div class="pick"><label for="dsel">District</label><select id="dsel"></select></div>
+  <div class="ltabs" id="ltabs" role="tablist" aria-label="Type of training"></div>
 </div></div>
 <main><div class="wrap" id="mount"></div></main>
 <footer><div class="wrap">Pahlé India Foundation · Aligned with Swarna Andhra @2047 · Planning Department</div></footer>
@@ -111,8 +123,8 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
      it and the choice of four is one line to revisit. */
   var SHOW_Q = [3, 4, 5, 9];
 
-  function build(rec, rank, total){
-    var all = rec.questions.slice();
+  function build(rec, lv, rank, total){
+    var all = lv.questions.slice();
     var qs = all.filter(function(q){ return SHOW_Q.indexOf(q.n) !== -1; });
     if(!qs.length) qs = all;
     /* Highest and lowest are computed across the statements SHOWN, not across
@@ -124,15 +136,15 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
     var worst = qs.reduce(function(a,b){ return b.avg < a.avg ? b : a; });
     var html = '<div class="ar-wrap">' +
       '<div class="ar-head"><h3>Training feedback: '+esc(rec.name)+'</h3>' +
-      '<p class="lede">Four of the nine statements officers rated at the end of the ' +
-      'session, each marked 1 to 5. The bar on each row shows how the ratings were ' +
-      'spread, not just the average.</p></div>' +
+      '<p class="lede">'+esc(lv.label)+'. Four of the nine statements officers rated ' +
+      'at the end of the session, each marked 1 to 5. The bar on each row shows how ' +
+      'the ratings were spread, not just the average.</p></div>' +
       '<div class="fsum">' +
-        '<div class="ftile"><div class="v">'+f2(rec.avg)+'<small>/ 5</small></div>' +
+        '<div class="ftile"><div class="v">'+f2(lv.avg)+'<small>/ 5</small></div>' +
           '<div class="k">Average score</div><div class="s">all nine statements, as reported</div></div>' +
-        '<div class="ftile"><div class="v">'+rec.n+'</div>' +
+        '<div class="ftile"><div class="v">'+lv.n+'</div>' +
           '<div class="k">Responses</div><div class="s">complete responses included</div></div>' +
-        '<div class="ftile"><div class="v">'+f1(rec.favorable)+'<small>%</small></div>' +
+        '<div class="ftile"><div class="v">'+f1(lv.favorable)+'<small>%</small></div>' +
           '<div class="k">Favourable</div><div class="s">agree or strongly agree, all nine</div></div>' +
       '</div>' +
       /* With only four statements a flat result is common — Kurnool's four all
@@ -167,8 +179,8 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
       }).join('') + '</tbody></table>' +
       '<div class="flegend">' + SCALE.map(function(l, i){
         return '<span><i class="s'+(5-i)+'"></i>'+l+'</span>'; }).join('') + '</div>' +
-      '<p class="frank">'+esc(rec.name)+' is '+ordinal(rank)+' of the '+total+' districts with feedback filed, ' +
-        'by average score.</p>' +
+      (rank ? '<p class="frank">'+esc(rec.name)+' is '+ordinal(rank)+' of the '+total+' districts ' +
+        'with '+esc(lv.label.toLowerCase())+' feedback filed, by average score.</p>' : '') +
       '<p class="fnote">Source: District Training Feedback Report, Pahlé India Foundation. ' +
       'Figures as printed in the report. The table lists four of the nine statements; ' +
       'the average and favourable figures above are the report\'s own, across all nine.</p>' +
@@ -176,24 +188,64 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
     return html;
   }
 
-  var mount = document.getElementById('mount'), sel = document.getElementById('dsel');
-  fetch('../assets/feedback_results.json?v=2026-08-16a').then(function(r){ return r.json(); }).then(function(R){
+  var mount = document.getElementById('mount'), sel = document.getElementById('dsel'),
+      tabs = document.getElementById('ltabs');
+  /* District level leads: it is the round every district ran first, and the one
+     the capacity card links from. A district that filed no district-level
+     feedback falls through to whichever of its levels did. */
+  var LEVEL_ORDER = ['district', 'constituency', 'master'];
+
+  fetch('../assets/feedback_results.json?v=2026-08-17a').then(function(r){ return r.json(); }).then(function(R){
     var slugs = Object.keys(R.districts || {});
-    var ranked = slugs.slice().sort(function(a, b){ return R.districts[b].avg - R.districts[a].avg; });
+    var LABEL = {};
+    (R._levels || []).forEach(function(l){ LABEL[l.key] = l.label; });
     slugs.sort(function(a, b){ return R.districts[a].name.localeCompare(R.districts[b].name); });
-    var want = new URLSearchParams(location.search).get('d');
+    var q = new URLSearchParams(location.search);
+    var want = q.get('d');
     if(!R.districts[want]) want = slugs[0];
+    var wantLv = q.get('lv');
     sel.innerHTML = slugs.map(function(k){
       return '<option value="'+k+'"'+(k===want?' selected':'')+'>'+esc(R.districts[k].name)+'</option>'; }).join('');
-    function show(k){
-      var rec = R.districts[k];
-      if(!rec){ mount.innerHTML = '<div class="empty">No feedback has been filed for this district yet.</div>'; return; }
-      document.title = 'Training feedback · ' + rec.name + ' · Swarna Andhra @2047';
-      mount.innerHTML = build(rec, ranked.indexOf(k) + 1, ranked.length);
-      history.replaceState(null, '', '?d=' + k);
+
+    /* Rank is within a level: comparing a district's master score against
+       another's constituency score would be comparing two different rooms. */
+    function rankIn(level, slug){
+      var have = slugs.filter(function(s){ return R.districts[s].levels[level]; });
+      have.sort(function(a, b){ return R.districts[b].levels[level].avg - R.districts[a].levels[level].avg; });
+      return [have.indexOf(slug) + 1, have.length];
     }
-    sel.addEventListener('change', function(){ show(sel.value); });
-    show(want);
+
+    function levelsFor(slug){
+      return LEVEL_ORDER.filter(function(l){ return R.districts[slug].levels[l]; });
+    }
+
+    function show(slug, level){
+      var rec = R.districts[slug];
+      if(!rec){ mount.innerHTML = '<div class="empty">No feedback has been filed for this district yet.</div>'; tabs.innerHTML=''; return; }
+      var avail = levelsFor(slug);
+      if(avail.indexOf(level) === -1) level = avail[0];
+      // Every level is shown, so a reader can see WHICH rounds a district filed
+      // feedback for; the ones it did not are visible but disabled rather than
+      // missing, which would read as an oversight.
+      tabs.innerHTML = LEVEL_ORDER.map(function(l){
+        var has = avail.indexOf(l) !== -1;
+        return '<button type="button" class="ltab" role="tab" data-lv="'+l+'"' +
+          ' aria-selected="'+(l===level)+'"'+(has?'':' disabled')+
+          ' title="'+esc(has ? LABEL[l] : LABEL[l]+' — no feedback filed')+'">' +
+          esc(LABEL[l] || l) +
+          (has ? '<span class="ln">n = '+rec.levels[l].n+'</span>' : '<span class="ln">none</span>') +
+        '</button>';
+      }).join('');
+      tabs.querySelectorAll('.ltab:not([disabled])').forEach(function(b){
+        b.addEventListener('click', function(){ show(slug, b.dataset.lv); });
+      });
+      var r = rankIn(level, slug);
+      document.title = 'Training feedback · ' + rec.name + ' · Swarna Andhra @2047';
+      mount.innerHTML = build(rec, rec.levels[level], r[0], r[1]);
+      history.replaceState(null, '', '?d=' + slug + '&lv=' + level);
+    }
+    sel.addEventListener('change', function(){ show(sel.value, wantLv || LEVEL_ORDER[0]); });
+    show(want, wantLv || LEVEL_ORDER[0]);
   }).catch(function(){ mount.innerHTML = '<div class="empty">Could not load the feedback results.</div>'; });
 })();
 </script>
