@@ -46,7 +46,13 @@ import sys
 from collections import OrderedDict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PDF_DIR = os.path.expanduser("~/Downloads/District_Wise_Consolidated_Status_Reports")
+# The drop location has moved once already. Try the known places in order and
+# use the first that exists, so a rebuild does not silently run on a stale set.
+PDF_DIRS = [
+    os.path.expanduser("~/Downloads/andhra material/District_Wise_Consolidated_Status_Reports"),
+    os.path.expanduser("~/Downloads/District_Wise_Consolidated_Status_Reports"),
+]
+PDF_DIR = next((d for d in PDF_DIRS if os.path.isdir(d)), PDF_DIRS[0])
 OUT_JSON = os.path.join(ROOT, "landing", "assets", "capacity.json")
 IMG_ROOT = os.path.join(ROOT, "landing", "assets", "capacity")
 
@@ -101,7 +107,15 @@ MONTHS = {m: i + 1 for i, m in enumerate(
 RE_GLIMPSES = re.compile(r"^\s*[A-Za-z ]{0,28}GLIMPSES\s*$", re.I)
 # "Brief of the Training", "Brief of Constituency Profiling", "Brief of the
 # Session" — the wording drifts report to report, so match the stem.
-RE_COVERAGE = re.compile(r"^\s*(PROGRAMME COVERAGE|BRIEF OF [A-Za-z ]{3,40})\s*$", re.I)
+# "PROGRAMME COVERAGE" is the common heading, but Chittoor files every day as
+# "SESSION COVERAGE", Krishna's master day as "PROGRAM COVERAGE", Vizianagaram
+# as "DISTRICT LEVEL TRAINING COVERAGE". Only the first was matched, so all
+# nine Chittoor sessions shipped with no coverage prose at all.
+# Case-SENSITIVE on the COVERAGE part: the section heading is always set in
+# capitals, and format C has a mixed-case table LABEL "Training coverage" that
+# a case-blind match took for the heading, cutting the header table off
+# before its participant count (YSR Kadapa 7 July lost its 32 that way).
+RE_COVERAGE = re.compile(r"^\s*(?:(?:[A-Z][A-Z ]{0,30}\s)?COVERAGE|(?i:BRIEF OF [A-Za-z ]{3,40}))\s*$")
 RE_HIGHLIGHTS = re.compile(r"^\s*[A-Z][A-Z\-& ]{4,}HIGHLIGHTS\s*$", re.I)
 RE_PARTICIPANTS_HEAD = re.compile(r"^\s*PARTICIPANTS\s*$", re.I)
 RE_PAGEFOOT = re.compile(r"^\s*Page \d+ of \d+\s*$", re.I)
@@ -109,7 +123,20 @@ RE_BULLET = re.compile(r"^\s*[•›▪◦\-•›]\s+(.*)$")
 RE_NUMBULLET = re.compile(r"^\s*\d{1,2}[.)]\s+(.+)$")
 
 # --- report-start detection ----------------------------------------------
-RE_HDR_A = re.compile(r"CAPACITY BUILDING PROGRAMME\s*[-–—]\s*ANDHRA PRADESH", re.I)
+# The A-format banner has been typed three ways across the 18 files:
+#   "CAPACITY BUILDING PROGRAMME - ANDHRA PRADESH"   (87 reports)
+#   "CAPACITY BUILDING TRAINING PROGRAMME"           (Krishna 14 July)
+#   "CAPACITY BUILDING PROGRAMME – PHASE II"
+# All three sit on their own line in ALL CAPS directly above the
+# "Swarna Andhra @ 2047 | ..." sub-header, which is what actually marks a report
+# start (see split_reports). Only the first spelling was matched, so Krishna's
+# 14 July report was glued onto the tail of 13 July: the day vanished from the
+# pager, and its "No of Participants : 51" was read as 13 July's headcount.
+# Anchored to a whole line so prose mentions ("Capacity Building Programme was
+# conducted at...") cannot start a report.
+RE_HDR_A = re.compile(
+    r"^\s*CAPACITY BUILDING(?: TRAINING)? PROGRAMME"
+    r"(?:\s*[-–—]\s*(?:ANDHRA PRADESH|PHASE\s+[IVX]+))?\s*$", re.I | re.M)
 RE_HDR_B = re.compile(r"^\s*CAPACITY BUILDING PROGRAMME\s*$", re.I | re.M)
 RE_HDR_C = re.compile(r"SWARNA ANDHRA @\s*2047\s*\|\s*CONSOLIDATED STATUS REPORT", re.I)
 
@@ -126,10 +153,21 @@ RE_DAY = re.compile(r"Day[:\s]*0?(\d{1,2})\b", re.I)
 # Ordered most-explicit first: a bare "Participants 72" is only trusted once the
 # stated-count phrasings have all failed, because loose digits near the word turn
 # up inside designation lists ("Participants (7 Deputy Director Agriculture…)").
+# pdftotext -layout interleaves a table's LEFT label column with its RIGHT value
+# column line by line, so a two-line label such as
+#     Participants (40
+#     Participants)
+# comes out with a whole line of the roles list between "(40" and
+# "Participants)". A pattern that reads the label as one run can never match
+# it, which is why every district that filed its count in the label column
+# (Konaseema, Eluru, NTR, Guntur, ...) came out with no headcount at all.
+# The bracket form therefore allows one intervening line, and the "No of"
+# forms allow the abbreviations actually used ("No.of.", "Participant :").
 RE_PARTICIPANT_COUNT = re.compile(
-    r"No\.?\s*of\s*Participants[^0-9]{0,30}(\d{1,4})"
-    r"|Number\s+of\s+participants[^0-9]{0,30}(\d{1,4})"
-    r"|\(\s*(\d{1,4})\s*Participants?\s*\)"
+    r"No\.?\s*of\.?\s*Participants?\b[^0-9\n]{0,30}(\d{1,4})"
+    r"|Number\s+of\s+participants?\b[^0-9\n]{0,30}(\d{1,4})"
+    r"|\(\s*(\d{1,4})\s*(?:[^\n()]*\n)?[^\n()]*?Participants?\s*\)"
+    r"|Participants?\s*\(\s*(\d{1,4})\s*\)"
     r"|Total\s+(\d{1,4})\s+Officials?"
     r"|Approximately\s+(\d{1,4})\s+(?:officers?|officials?)"
     r"|(\d{1,4})\s+Officials?\s+were\s+present"
@@ -244,6 +282,20 @@ def join_wrapped(lines):
             buf, bulleted = [clean(m.group(1))], True
             continue
         if not buf and heading_like(s):
+            paras.append(s)
+            continue
+        # A heading that follows a bullet with NO blank line between them. The
+        # source template sets constituency sub-headings flush against the last
+        # bullet of the previous constituency, and pdftotext keeps them that way,
+        # so the empty-buffer test above never fires and "Alur" was appended as
+        # the closing word of Pattikonda's third bullet — its own three bullets
+        # then filed under Pattikonda. Kurnool 21 July lost Alur and Panyam this
+        # way. It is safe to close the bullet here only because a bullet's true
+        # continuation is never a lone one-or-two-word title-case line whose
+        # predecessor already ends in a full stop.
+        if (bulleted and heading_like(s) and len(s.split()) <= 3
+                and buf and buf[-1].rstrip().endswith((".", "!", "?"))):
+            buf, bulleted = flush()
             paras.append(s)
             continue
         buf.append(s)
@@ -402,6 +454,215 @@ RE_LABEL_ONLY = re.compile(
     r"^\s*(" + "|".join(re.escape(f) for f in FIELD_LABELS) + r")\s*$", re.I)
 
 
+# Primary row labels of the format-A header table. Anything else at column 0 is
+# either a continuation fragment of the current row's label ("Kodumuru",
+# "(65 Participants)", "Gopalapuram (80") or an unlabelled title row.
+HEADER_ROW_LABELS = [
+    "Session Format", "Training Format", "Training Level", "Training coverage", "Format",
+    "Constituency", "Constituencies", "Constituencies Covered",
+    "Participants", "Key Officials", "Key Officers Present", "Key Officers", "Participants from",
+    "Number of participants", "No of Participants", "No. of Participants",
+    "Sector Focus", "Method", "Activity", "Date", "Focus", "Key Findings",
+]
+RE_HEADER_ROW = re.compile(
+    r"^\s*(" + "|".join(re.escape(x) for x in sorted(HEADER_ROW_LABELS, key=len, reverse=True))
+    + r")\b", re.I)
+FORMAT_ROWS = ("session format", "training format", "training coverage", "training level", "format")
+CONSTY_ROWS = ("constituency", "constituencies", "constituencies covered")
+PEOPLE_ROWS = ("participants", "key officials", "key officers present", "key officers",
+               "participants from", "number of participants", "no of participants",
+               "no. of participants")
+
+
+def parse_header_table(lines, display_name):
+    """Column-aware read of the format-A header table.
+
+    pdftotext -layout emits the table as two interleaved columns: the LABEL
+    column at x=0 and the VALUE column at a fixed indent (22-27). A tall cell
+    centres its label vertically inside its own value lines, and a label that
+    wraps ("Participants (53" / "Participants)") lands on two non-adjacent lines
+    with a whole line of the value column between them. Reading line by line
+    therefore mixed labels into values (the roles list bled into "format", the
+    district title bled into "format") and split counts across lines so no
+    regex could see them ("(53 Participants)" was never one string).
+
+    Split each line at the value column instead. The left fragments joined in
+    order rebuild every label exactly as printed — "Participants (53
+    Participants)", "Participants (40 + 22 Participants)", "Participants
+    Gopalapuram (80 Participants) Kovvur (45 Participants)" — and the right
+    fragments are the values. Value lines that precede a row's label line
+    (a centred label) are given to that row when the row is at least as long
+    below the label as above it, which is what vertical centring produces;
+    otherwise they stay with the previous row.
+
+    Returns {format, consty, people_blob, label_stream, rows} or None when no
+    value column can be established (caller falls back to split_region_a).
+    """
+    body = []
+    for l in lines:
+        if RE_GLIMPSES.match(l) or RE_COVERAGE.match(l) or RE_HIGHLIGHTS.match(l):
+            break
+        body.append(l)
+    body = strip_chrome(body)
+    titles = title_forms(display_name)
+
+    # Value column. Prefer the start of the value on a line that carries a label
+    # inline ("Training Format   Master Training: ..."). But a centred label is
+    # often ALONE on its line with every value line indented above and below it
+    # (NTR 22 July, Kurnool 18 July), so fall back to the dominant indent of the
+    # indented lines that sit between column-0 labels: that indent IS the value
+    # column. Nothing is guessed — the table has to have at least one column-0
+    # label and at least two indented lines for this to be trusted.
+    label_rx = re.compile(r"^\s*(" + "|".join(re.escape(x) for x in HEADER_ROW_LABELS) + r")\b", re.I)
+    cols = []
+    for l in body:
+        m = re.match(r"^\s*(" + "|".join(re.escape(x) for x in HEADER_ROW_LABELS) + r")[^\S\n]{2,}(\S)", l, re.I)
+        if m:
+            cols.append(m.start(2))
+    if not cols:
+        has_label = any(label_rx.match(l) and len(l) - len(l.lstrip()) < 4 for l in body)
+        indents = [len(l) - len(l.lstrip()) for l in body
+                   if l.strip() and 12 <= len(l) - len(l.lstrip()) <= 40]
+        if has_label and len(indents) >= 2:
+            # the mode of the indents
+            cols = [max(set(indents), key=indents.count)]
+    if not cols:
+        return None
+    vcol = min(cols)
+    if vcol < 12:
+        return None
+
+    rows = []          # [{label, frags:[..], vals:[..]}]
+    pending = []       # value lines seen before any row / between rows
+    cur = None
+
+    def start_row(label_text):
+        nonlocal cur
+        # above/below: value lines received before / after the label line. A
+        # centred label has as many below as above, which is how the pending
+        # lines between two rows are shared out (see below).
+        cur = {"label": label_text, "frags": [], "vals": [], "above": 0, "below": 0}
+        rows.append(cur)
+
+    for l in body:
+        raw = l.rstrip("\n")
+        if not raw.strip():
+            continue
+        s = clean(raw)
+        if s.upper() in titles:
+            continue
+        # An all-caps place title is never a value: "DR. B R AMBEDKAR KONASEEMA
+        # DISTRICT" (a spelling title_forms does not carry) and even a WRONG
+        # district title in the source ("EAST GODAVARI DISTRICT" printed on a
+        # Krishna page) both landed at the front of that day's format text.
+        # Constituency title lines ("PENAMALURU CONSTITUENCY (Focus: ...)") are
+        # kept aside as the report's title, not as a format value.
+        if re.match(r"^[A-Z0-9 .,&'()\-]+$", s) and re.search(r"\bDISTRICT\b", s):
+            continue
+        indent = len(raw) - len(raw.lstrip())
+        left = raw[:vcol].strip() if indent < vcol - 3 else ""
+        right = raw[vcol:].strip() if len(raw) > vcol else ""
+        # a line whose text runs continuously across the column boundary is one
+        # full-width cell (a title such as "PENAMALURU CONSTITUENCY (...)"), not
+        # a label beside a value
+        if left and right and len(raw) > vcol and raw[vcol - 2:vcol].strip():
+            start_row("")
+            cur["vals"].append(s)
+            continue
+        if left:
+            m = RE_HEADER_ROW.match(left)
+            if m:
+                # decide who owns the pending value lines: count how many value
+                # lines follow this label before the next label; a centred
+                # label has at least as many below as above
+                start_row(m.group(1))
+                if right:
+                    cur["vals"].append(right)
+                # Share the pending value lines between the previous row and
+                # this one. A label is vertically centred in its cell, so the
+                # previous row is still owed as many lines BELOW its label as it
+                # received ABOVE it; it takes that many, and the rest belong to
+                # this row (as its own lines above a centred label). NTR 25 July:
+                # "Training Format" had one line above and one line so far below
+                # — the pending line was already the balance, and giving it to
+                # "Key Officers" instead put "(18 participants)" into the roles
+                # blob and read the day as 108, not 90.
+                if pending:
+                    prev = rows[-2] if len(rows) >= 2 else None
+                    if prev is not None:
+                        owed = max(0, prev["above"] - prev["below"])
+                        take = pending[:owed]
+                        prev["vals"].extend(take)
+                        prev["below"] += len(take)
+                        pending = pending[owed:]
+                    if pending:
+                        cur["vals"] = pending + cur["vals"]
+                        cur["above"] += len(pending)
+                    pending = []
+                # any leftover after the label on the same line that is not the
+                # value (e.g. "Participants (53") is part of the label
+                rest = left[m.end():].strip()
+                if rest:
+                    cur["frags"].append(rest)
+                continue
+            # not a primary label: a fragment of the current row's label, or an
+            # unlabelled title row when there is no current row
+            if cur is not None and (len(left.split()) <= 5 or "(" in left or "articipant" in left):
+                # a fragment line settles anything pending onto this row first
+                if pending:
+                    cur["vals"].extend(pending); cur["below"] += len(pending); pending = []
+                cur["frags"].append(left)
+                if right:
+                    cur["vals"].append(right); cur["below"] += 1
+                continue
+            start_row("")
+            cur["frags"].append(left)
+            if right:
+                cur["vals"].append(right)
+            continue
+        # value-only line
+        if right:
+            if cur is None:
+                pending.append(right)
+            else:
+                # could belong to the NEXT row's centred label; hold it
+                pending.append(right)
+    if pending and cur is not None:
+        cur["vals"].extend(pending)
+        cur["below"] += len(pending)
+
+    def flat(vals):
+        out = ""
+        for v in vals:
+            if out.endswith("-") and v[:1].islower():
+                out = out[:-1] + v          # "in-per-" + "son" -> "in-person"
+            else:
+                out = (out + " " + v).strip()
+        return out
+
+    fmt, consty, people, label_stream = [], [], [], []
+    for r in rows:
+        lab = r["label"].lower()
+        label_text = " ".join([r["label"]] + r["frags"]).strip()
+        label_stream.append(label_text)
+        val = flat(r["vals"])
+        if lab in FORMAT_ROWS:
+            fmt.append(val)
+        elif lab in CONSTY_ROWS:
+            consty.append(val)
+        elif lab in PEOPLE_ROWS or "articipant" in label_text.lower():
+            # values only: the label text is already in label_stream, and
+            # carrying it here too made every bracketed count read twice
+            people.append(val)
+    return {
+        "format": " ".join(x for x in fmt if x),
+        "consty": " ".join(x for x in consty if x),
+        "people_blob": " ".join(people),
+        "label_stream": " ".join(label_stream),
+        "rows": rows,
+    }
+
+
 def split_region_a(lines, display_name):
     """(format, participants_blob, constituency) for a format-A header block."""
     body = []
@@ -484,6 +745,13 @@ def sum_sub_counts(tail):
 
     vals, end = [], None
     for m in RE_SUB_COUNT.finditer(tail):
+        # The series has to START at the lead-in. Without this the scan wandered
+        # into the roles list and read designations that happen to end in a
+        # number — "Village Surveyors (VS-1 to VS-4" gave Krishna 14 July a
+        # headcount of 5 (1 + 4) in place of the "No of Participants : 51" it
+        # had just walked past.
+        if end is None and m.start() > 6:
+            break
         if end is not None:
             gap = tail[end:m.start()]
             # " , " / " ; " / " and ", optionally with a mid-series sub-heading:
@@ -504,11 +772,143 @@ def sum_sub_counts(tail):
     return total if 1 <= total <= 5000 else None
 
 
-def parse_participants(fields, text):
-    """(count, roles). Count is only reported when the source states one."""
+# One report, several participant blocks — a table row per constituency or per
+# half-day:
+#     Participants - Kodumuru    (65 Participants)  <roles...>
+#     Participants - Pattikonda  (79 Participants)  <roles...>
+# These are separate blocks, not a series on one line, so sum_sub_counts (which
+# reads a single line) cannot see them, and the first-match-wins loop below
+# reported only the first: Kurnool 28 July went in as 65 of 144, Nellore 14 July
+# as 52 of 115, Nandyal 3 August as 15 of 50.
+#
+# Matching each count back to its own row label is not reliable — pdftotext wraps
+# a table cell across several lines, so "Participants -", "Kodumuru" and
+# "(65 Participants)" each land on a different line with roles text beside them.
+# So collect the EXPLICIT count forms instead and read their arithmetic. Only
+# these two forms count: the bracketed "(N Participants)" and an explicit
+# "No of Participants: N". Prose like "Approximately 72 officers" is deliberately
+# excluded, because it usually restates a figure the table already gave and would
+# double it (Kurnool 29 and 30 July both do exactly that).
+RE_COUNT_FORMS = [
+    # "(40 Participants)", allowing one interleaved roles line inside the bracket
+    re.compile(r"\(\s*(\d{1,4})\s*(?:[^\n()]*\n)?[^\n()]*?Participants?\s*\)", re.I),
+    # "Participants (48)" — bare number in the label
+    re.compile(r"Participants?\s*\(\s*(\d{1,4})\s*\)", re.I),
+    # "No of Participants : 51", "No. of Participant: 57", "No.of. Participant:79"
+    re.compile(r"No\.?\s*of\.?\s*Participants?\b[^0-9\n]{0,60}?(\d{1,4})", re.I),
+]
+
+# ADDITIVE counts, written as one expression: "No of Participants: 100+62",
+# "60(Palamaneru) + 72(Chittoor)", "(40 + 22 Participants)",
+# "(21 from Saluru +52 from Parvathipuram)". These are the day's parts and the
+# day is their sum. Read as a whole so the "+" is never mistaken for the end of
+# the number (Chittoor 24 July went in as 100, the "+62" left dangling at the
+# start of the roles text).
+RE_ADDITIVE = re.compile(
+    r"(?:No\.?\s*of\.?\s*Participants?\b[^0-9\n]{0,30}|Participants?\s*\(\s*|\(\s*)"
+    r"(\d{1,4})\s*(?:\([^)]{0,30}\)|from\s+[A-Za-z .]{2,30})?"
+    r"(?:\s*\+\s*(\d{1,4})\s*(?:\([^)]{0,30}\)|from\s+[A-Za-z .]{2,30})?){1,6}", re.I)
+
+
+def sum_additive(text):
+    """Total of an explicit 'a + b [+ c]' participant expression, else None."""
+    best = None
+    for m in RE_ADDITIVE.finditer(text or ""):
+        nums = [int(x) for x in re.findall(r"\d{1,4}", m.group(0))
+                if 1 <= int(x) <= 2000]
+        # the leading token may itself be a bracketed sub-label number, e.g.
+        # "60(Palamaneru)"; re.findall keeps every integer, which is what we want
+        # only when the expression really is a sum: require a "+" in the match
+        if "+" not in m.group(0) or len(nums) < 2:
+            continue
+        tot = sum(nums)
+        if 1 <= tot <= 5000:
+            best = tot if best is None else max(best, tot)
+    return best
+
+
+def sum_labelled_blocks(text):
+    """Total for a report that states several participant counts, else None.
+
+    When one of the figures equals the sum of the others it is the day's stated
+    TOTAL and its parts are a breakdown, so the total wins: NTR 25 July files
+    "(90 participants)" for the day beside "(72 participants)" and
+    "(18 participants)" for the two constituencies, and summing all three would
+    report 180 for a 90-officer day. Otherwise the figures are separate blocks
+    and the day is their sum.
+    """
+    hits = []
+    for rx in RE_COUNT_FORMS:
+        for m in rx.finditer(text or ""):
+            n = int(m.group(1))
+            if 1 <= n <= 2000:
+                hits.append((m.start(), n))
+    # the two patterns can match the same figure; keep one per position
+    vals, seen = [], []
+    for pos, n in sorted(hits):
+        if any(abs(pos - q) < 8 for q in seen):
+            continue
+        seen.append(pos)
+        vals.append(n)
+    if len(vals) < 2:
+        return None
+    for i, v in enumerate(vals):
+        if v == sum(vals[:i] + vals[i + 1:]):
+            return v
+    total = sum(vals)
+    return total if 1 <= total <= 5000 else None
+
+
+def count_from(text):
+    """The most deliberate count statement in one text, or None: an explicit
+    a + b expression, then several separate blocks, then a single figure."""
+    if not text:
+        return None
+    v = sum_additive(text)
+    if v is not None:
+        return v
+    v = sum_labelled_blocks(text)
+    if v is not None:
+        return v
+    m = RE_PARTICIPANT_COUNT.search(text)
+    if m:
+        v = sum_sub_counts(text[m.start():])
+        if v is not None:
+            return v
+        val = next((g for g in m.groups() if g), None)
+        if val and 1 <= int(val) <= 2000:
+            return int(val)
+    return None
+
+
+def parse_participants(fields, text, label_stream=None):
+    """(count, roles). Count is only reported when the source states one.
+
+    `label_stream` is the header table's rebuilt label column (see
+    parse_header_table). It is read ON ITS OWN before the report text: the
+    same "(80 Participants)" appears in both, and reading them together
+    counted every block twice (East Godavari 14 July came out at 215 for a
+    125-officer day)."""
     roles = fields.get("Participants") or fields.get("Key Officials") or ""
-    count = None
-    for chunk in (fields.get("Participants", ""), fields.get("Number Of Participants", ""),
+    count = count_from(label_stream) if label_stream else None
+    # Read the WHOLE report, not just the participants cell. The parts of a day
+    # and its stated total often sit in different cells — NTR 25 July puts the
+    # two constituency figures in "Training Format" and the day's total in
+    # "Key Officers Present" — so looking at one cell alone sees the total and
+    # one part, and sums them into a number the day never had (108 for a
+    # 90-officer day).
+    # Order: an explicit "a + b" expression is the most deliberate statement a
+    # report can make, so it wins; then several separate blocks; then one figure.
+    if count is None:
+        add = sum_additive(text)
+        if add is not None:
+            count = add
+        else:
+            blocks = sum_labelled_blocks(text) or sum_labelled_blocks(fields.get("Participants", ""))
+            if blocks is not None:
+                count = blocks
+    for chunk in () if count is not None else (
+                  fields.get("Participants", ""), fields.get("Number Of Participants", ""),
                   fields.get("Key Officials", ""), text):
         m = RE_PARTICIPANT_COUNT.search(chunk or "")
         if m:
@@ -527,8 +927,14 @@ def parse_participants(fields, text):
                 count = int(val)
                 break
     # Strip the count phrase out of the roles blob so it does not read twice.
-    roles = re.sub(r"(No\.?\s*of\s*Participants|Number of participants)\s*[:\-]?\s*\d+\s*[:,.]?",
+    # Covers the abbreviated spellings and an additive tail: "No. of Participant
+    # : 57", "No of Participants: 100+62", a leading "+62" or "(Palamaneru) +
+    # 72(Chittoor)" left over from an expression that started in the label.
+    roles = re.sub(r"(No\.?\s*of\.?\s*Participants?|Number of participants?)\s*[:\-]?\s*\d+"
+                   r"(?:\s*(?:\([^)]{0,30}\)|from\s+[A-Za-z .]{2,30}))?(?:\s*\+\s*\d+(?:\s*(?:\([^)]{0,30}\)|from\s+[A-Za-z .]{2,30}))?)*\s*[:,.]?",
                    "", roles, flags=re.I)
+    roles = re.sub(r"^\s*(?:\([^)]{0,30}\)\s*)?(?:\+\s*\d+\s*(?:\([^)]{0,30}\))?\s*)+", "", roles)
+    roles = re.sub(r"^\s*\(?\d{1,4}\s*Participants?\)?\s*", "", roles, flags=re.I)
     roles = re.sub(r"^\s*(Approximately\s+)?\d+\s+(officers?|officials?)\b.*?(?:including|drawn from)\s*[;:,]?\s*",
                    "", roles, flags=re.I)
     # Column wrapping leaves doubled and dangling separators behind.
@@ -624,8 +1030,21 @@ def parse_report_a(rep, display_name):
     day = int(md.group(1)) if md else None
 
     secs = section_slices(rep["lines"])
-    fmt_txt, pblob, consty = split_region_a(rep["lines"], display_name)
-    count, roles = parse_participants({"Participants": pblob}, pblob or rep["text"])
+    ht = parse_header_table(rep["lines"], display_name)
+    if ht:
+        fmt_txt, pblob, consty = ht["format"], ht["people_blob"], ht["consty"]
+        # the rebuilt label column is where a wrapped count lives; it is read on
+        # its own first (see parse_participants)
+        label_stream = ht["label_stream"] + "\n" + ht["people_blob"]
+    else:
+        fmt_txt, pblob, consty = split_region_a(rep["lines"], display_name)
+        label_stream = None
+    # Always hand over the WHOLE report as `text`. Passing pblob in its place
+    # (the old `pblob or rep["text"]`) meant the total-vs-parts check could only
+    # see the participants cell, and NTR 25 July, whose two constituency figures
+    # sit in the Training Format cell and whose day total sits in Key Officers
+    # Present, summed a part with the total and reported 108 for a 90-officer day.
+    count, roles = parse_participants({"Participants": pblob}, rep["text"], label_stream)
 
     coverage = parse_coverage(secs.get("coverage", []))
     highlights = parse_highlights(secs.get("highlights", []))
@@ -739,6 +1158,19 @@ def split_region_c(lines, display_name):
         m = re.match(r"^Number\s+of\s+participants\s+(\d{1,4})\s*$", s, re.I)
         if m:
             count = int(m.group(1))
+            continue
+        # a centred label whose value sits on its OWN lines above and below it
+        # (YSR Kadapa 7 July: "32 (reported constituency-wise: Jammalamadugu: 12;
+        # ..." on the line above "Number of participants", "Rajampet: 6)" on the
+        # line below). The stated day total is the leading figure; the bracket
+        # is its breakdown and is not added.
+        if re.match(r"^Number\s+of\s+participants\s*$", s, re.I):
+            i = head.index(l)
+            for l2 in head[max(0, i - 2):i]:
+                m2 = re.match(r"^\s*(\d{1,4})\b", l2.strip())
+                if m2:
+                    count = int(m2.group(1))
+                    break
             continue
         if re.match(r"^District\s+\S", s, re.I) or re.match(r"^(District|Date)$", s, re.I):
             continue
@@ -958,6 +1390,30 @@ def build_district(stem, display_name, dkey, write_images=True):
 
     # Order by the date on the report; undated ones keep their file order at the end.
     sessions.sort(key=lambda s: (s["date"] or "9999", s["day"] or 99))
+
+    # A few PDFs carry the same report twice, once with a "Day: N" label and once
+    # without (Nandyal's 3 August profiling round is filed twice, 99.5% identical
+    # text). Counting both doubled that day's attendance and put two identical
+    # cards in the pager. Same date + same account of the day is the same report,
+    # so keep the richer copy: photos are attached per report instance, and the
+    # duplicate can be the one that carries them.
+    deduped, seen = [], {}
+    for s in sessions:
+        fingerprint = (s["date"], s["level"],
+                       " ".join(s.get("coverage") or [])[:400],
+                       str(s.get("highlights"))[:400])
+        prev = seen.get(fingerprint)
+        if prev is None:
+            seen[fingerprint] = len(deduped)
+            deduped.append(s)
+            continue
+        keep = deduped[prev]
+        if len(s.get("photos") or []) > len(keep.get("photos") or []):
+            merged = dict(s)
+            merged["day"] = keep.get("day") if keep.get("day") is not None else s.get("day")
+            deduped[prev] = merged
+        print("      duplicate report merged: %s %s" % (s["date"], s["kind"][:44]))
+    sessions = deduped
 
     dated = [s["date"] for s in sessions if s["date"]]
     counts = [s["participants"] for s in sessions if s["participants"]]
