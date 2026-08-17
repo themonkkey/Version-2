@@ -69,8 +69,12 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
 .ar-delta.na .ar-dv{font-size:14px;color:rgba(255,255,255,.75);}
 .ar-delta .ar-dk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:600;}
 .ar-two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,18px);}
+/* Column flex so the note can be pinned to the foot of the card: the two
+   rounds carry different amounts of text (only one has a caveat, weakest/
+   strongest run to different lengths), so without this the two notes sit at
+   different heights and the pair reads as lopsided. */
 .ar-round{border-radius:var(--r);padding:14px 16px 13px;background:rgba(255,255,255,.055);
-  border:1px solid rgba(255,255,255,.13);min-width:0;}
+  border:1px solid rgba(255,255,255,.13);min-width:0;display:flex;flex-direction:column;}
 .ar-round.ar-empty{display:grid;place-items:center;color:rgba(255,255,255,.45);font-size:13px;}
 .ar-stage{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(198,236,143,.85);
   display:flex;justify-content:space-between;gap:10px;align-items:baseline;}
@@ -95,9 +99,12 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
 .ar-ql b{color:#FFF;font-weight:700;font-variant-numeric:tabular-nums;margin-left:2px;}
 /* an empty band still earns its row — it says "nobody scored here" */
 .ar-ql .z{opacity:.42;}
+/* margin-bottom here, not margin-top on .ar-mean — that one is `auto` so it
+   can push the note down, and auto cannot also carry a gap. */
+.ar-sw{margin-bottom:11px;}
 .ar-sw p{margin:0 0 5px;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.78);}
 .ar-sw em{font-style:normal;font-weight:700;color:rgba(198,236,143,.9);margin-right:5px;}
-.ar-mean{margin-top:11px;padding:10px 12px;border-radius:14px;
+.ar-mean{margin-top:auto;padding:10px 12px;border-radius:14px;
   background:rgba(198,236,143,.075);border:1px solid rgba(198,236,143,.26);}
 .ar-mean b{display:block;font-size:10.5px;font-weight:750;letter-spacing:.08em;
   text-transform:uppercase;color:rgba(198,236,143,.92);margin-bottom:5px;}
