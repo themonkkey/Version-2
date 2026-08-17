@@ -4617,7 +4617,24 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         inner = '<span class="dd">'+d.getDate()+'</span>' +
           '<span class="mo">'+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]+'</span>';
       } else {
-        inner = '<span class="dd">—</span><span class="mo">'+esc((s.kind||'Report').split(' ')[0].slice(0,7))+'</span>';
+        /* Undated cards. The source dates most reports but not all: the early
+           multi-district files carry cards lifted from a later day whose own
+           banner page is not in that PDF, so nothing on the page says when they
+           ran, and inventing a date would be worse than admitting none.
+           The chip has to tell them apart all the same. Taking the first word of
+           the kind gave four chips reading "DAY" and two reading "DISTRIC" in
+           the same pager, so build the label from what actually differs: the
+           "Day N" if the report states one, then the level, then the sector the
+           day covered (which is what separates the two District Profiling
+           cards, Primary from Secondary and Tertiary). */
+        var k = s.kind || 'Report';
+        var dm = k.match(/Day\s*(\d+)/i);
+        var lvl = /constituency/i.test(k) ? 'CON' : /master/i.test(k) ? 'MTR'
+                : /district/i.test(k) ? 'DIS' : '';
+        var sec = (s.sector_focus || '').match(/primary|secondary|tertiary/i);
+        var tag = (dm ? 'D' + dm[1] + ' ' : '') + lvl;
+        if(!dm && sec) tag = lvl + ' ' + sec[0].slice(0,4).toUpperCase();
+        inner = '<span class="dd">—</span><span class="mo">'+esc((tag || k.split(' ')[0]).slice(0,8))+'</span>';
       }
       return '<button type="button" class="cap-datechip'+(i===activeIdx?' on':'')+'" data-idx="'+i+'" ' +
         'role="tab" aria-selected="'+(i===activeIdx?'true':'false')+'" ' +
