@@ -1422,12 +1422,19 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 .rec-list-inline{grid-template-columns:1fr;}
 @media (min-width:1000px){ .rec-list-inline{grid-template-columns:repeat(2,minmax(0,1fr));} }
 .rec-list-inline .rec-item{background:rgba(255,255,255,.045);}
-.rec-jump{font:inherit;font-size:12.5px;font-weight:650;cursor:pointer;align-self:flex-start;
-  margin-top:auto;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
-  border-radius:999px;border:1px solid rgba(198,236,143,.4);
+/* The state-wide playbook, one button below the district layer. */
+.gva-pbwrap{margin-top:clamp(14px,1.8vw,20px);}
+.gva-pb{font:inherit;font-size:13.5px;font-weight:650;cursor:pointer;width:100%;
+  display:flex;align-items:center;gap:10px;padding:12px 16px;
+  border-radius:var(--r);border:1px solid rgba(198,236,143,.4);
   background:rgba(198,236,143,.12);color:#E4F6C8;transition:background .15s;}
-.rec-jump:hover{background:rgba(198,236,143,.24);}
-.rec-nojump{font-size:11.5px;color:rgba(255,255,255,.4);margin-top:auto;font-style:italic;}
+.gva-pb:hover{background:rgba(198,236,143,.22);}
+.gva-pb span{flex:1 1 auto;text-align:left;}
+.gva-pb .caret{transition:transform .18s;font-size:15px;}
+.gva-pbwrap.open .gva-pb .caret{transform:rotate(180deg);}
+.gva-pbwrap.open .gva-pb{border-bottom-left-radius:0;border-bottom-right-radius:0;}
+.gva-pbbody{padding:clamp(14px,1.8vw,20px);border:1px solid rgba(198,236,143,.4);
+  border-top:0;border-radius:0 0 var(--r) var(--r);background:rgba(0,0,0,.14);}
 @media (max-width:560px){ .rec-stats{grid-template-columns:repeat(2,minmax(0,1fr));} }
 
 .gva-distcard{border-color:rgba(198,236,143,.45);margin-bottom:clamp(18px,2.4vw,28px);}
@@ -4186,16 +4193,13 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     return hit;
   }
 
-  /* The district layer for one sector GROUP, rendered inside that group's pane
-     in the sector classification. Grouping here rather than per sector keeps it
-     in one place: opening Agriculture shows Crops, Horticulture, Livestock,
-     Fisheries and Forestry together, and it also gives Construction and
-     Electricity somewhere to live now that Industry carries no playbook for
-     them. */
-  function recsForGroup(gkey){
+  /* The district layer for ONE playbook sector, shown in the drop box when that
+     sector is picked. Several buckets can map to one key: Crops and
+     Horticulture both frame as `crops`, every services line as `services`. */
+  function recsForSector(key){
     var unit = recsUnit();
-    if(!unit || !gkey) return '';
-    var mine = (unit.recs || []).filter(function(r){ return r.playbook_group === gkey; });
+    if(!unit || !key) return '';
+    var mine = (unit.recs || []).filter(function(r){ return r.playbook_sector === key; });
     if(!mine.length) return '';
     /* Classification order, not priority order: the reader is looking at a
        classification, so Crops comes before Horticulture as the sector title
@@ -4252,13 +4256,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       var summary = nCon + (nCon === 1 ? ' constraint' : ' constraints') + ' named' +
                     (nIv ? ' · ' + nIv + (nIv === 1 ? ' intervention' : ' interventions') : '');
 
-      /* The priority rank travels with the card, so the classification order
-         below does not hide which of these the district should take first. */
-      var jump = r.playbook_sector
-        ? '<button class="rec-jump" type="button" data-recjump="'+esc2(r.playbook_sector)+'">' +
-            'Open the ' + esc2(r.label) + ' playbook <i class="ti ti-arrow-right"></i></button>'
-        : '<span class="rec-nojump">No sector playbook for this one</span>';
-
+      /* No per-card playbook button here: the playbook is one button for the
+         whole box, below, because every card in this box shares it. */
       return '<section class="rec-item rec-' + esc2(r.pattern) + '">' +
                '<div class="rec-head">' +
                  '<span class="rec-rank" title="priority rank across all of ' +
@@ -4277,23 +4276,38 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
                          '<div class="rec-presw">'+pres+'</div></details>'
                      : '<p class="rec-none">The district plan does not name interventions ' +
                        'for this one. The sector playbook still applies.</p>') +
-               jump +
              '</section>';
     }).join('');
 
     var top = mine.slice().sort(function(a, b){ return a.rank - b.rank; })[0];
     return '<div class="gva-districtblk">' +
              '<div class="gva-dbhead">' +
-               '<h4>In ' + esc2(unit.name) + '</h4>' +
+               '<h4>Where ' + esc2(unit.name) + ' stands</h4>' +
                '<span class="gva-dbtag">' + mine.length +
                  (mine.length === 1 ? ' sector' : ' sectors') + '</span>' +
              '</div>' +
-             '<p class="gva-dblede">Where ' + esc2(unit.name) + ' stands in each of these, and ' +
-             'the interventions its own Vision and Action Plan names. ' +
-             (top ? esc2(top.label) + ' ranks #' + top.rank + ' across the district. ' : '') +
+             '<p class="gva-dblede">The district’s position here, and the interventions its own ' +
+             'Vision and Action Plan names against it. ' +
+             (top ? esc2(top.label) + ' ranks #' + top.rank + ' across all of ' +
+                    esc2(unit.name) + '’s sectors. ' : '') +
              'Figures are from ' + esc2(unit.data_year || 'the latest year') + '.</p>' +
              '<div class="rec-list rec-list-inline">' + blocks + '</div>' +
            '</div>';
+  }
+
+  /* What the drop box shows when a sector is picked. The district layer leads,
+     with the state-wide playbook one button away rather than pushed in front of
+     it; with no district selected the playbook IS the content, as before. */
+  function sectorDetailHtml(s){
+    var dist = recsForSector(s.key);
+    if(!dist) return gvaSectorBody(s);
+    return dist +
+      '<div class="gva-pbwrap">' +
+        '<button class="gva-pb" type="button" data-playbook="'+esc2(s.key)+'">' +
+          '<i class="ti ti-book-2"></i><span>Refer to the ' + esc2(s.title) + ' playbook</span>' +
+          '<i class="ti ti-chevron-down caret"></i></button>' +
+        '<div class="gva-pbbody" hidden></div>' +
+      '</div>';
   }
 
   /* The district layer deliberately does NOT appear here. It lives once, in the
@@ -4413,17 +4427,30 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
   // expand/collapse, building each sector body once
   if(gvaBody) gvaBody.addEventListener('click', function(e){
-    /* Jump from a district recommendation to the state-wide playbook that
-       frames it. The pane is already open (the button lives inside it), so this
-       just opens the row and lets the existing branch render the detail. */
-    var jump = e.target.closest('[data-recjump]');
-    if(jump){
-      var want = jump.getAttribute('data-recjump');
-      var target = gvaBody.querySelector('.gva-card[data-sec="'+want+'"]');
-      if(target){
-        var trow = target.querySelector('.gva-row');
-        if(trow && !target.classList.contains('active')) trow.click();
-        target.scrollIntoView({behavior:'smooth', block:'center'});
+    /* "Refer to the playbook" under the district layer. Built on demand and
+       kept in the same box, so the reader can hold the district's own position
+       and the state-wide frame side by side instead of losing one to see the
+       other. */
+    var pb = e.target.closest('[data-playbook]');
+    if(pb){
+      var wrap = pb.parentElement;
+      var body = wrap.querySelector('.gva-pbbody');
+      var pkey = pb.getAttribute('data-playbook');
+      if(body.hidden){
+        if(!body.innerHTML){
+          var sec = null;
+          GVA.groups.forEach(function(g){ g.sectors.forEach(function(x){ if(x.key===pkey) sec=x; }); });
+          if(sec) body.innerHTML = gvaSectorBody(sec);
+        }
+        body.hidden = false;
+        wrap.classList.add('open');
+        pb.querySelector('span').textContent = 'Hide the playbook';
+      } else {
+        body.hidden = true;
+        wrap.classList.remove('open');
+        var t = null;
+        GVA.groups.forEach(function(g){ g.sectors.forEach(function(x){ if(x.key===pkey) t=x; }); });
+        pb.querySelector('span').textContent = 'Refer to the ' + (t ? t.title : 'sector') + ' playbook';
       }
       return;
     }
@@ -4442,10 +4469,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       });
       acc.classList.toggle('has-open', reopen);
       gvaCloseDetail();   // a playbook from the previous group would be orphaned
-      /* Opening a group leads with the district's own position across that
-         group's sectors, in the box below. Picking an individual sector then
-         replaces it with the state-wide playbook. */
-      if(reopen) showGroupDetail(pane.getAttribute('data-g'));
       return;
     }
     var closeBtn = e.target.closest('.gva-detail-x');
@@ -4473,7 +4496,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     row.setAttribute('aria-expanded','true');
 
     box.querySelector('.gva-detail-t').textContent = found.title;
-    box.querySelector('.gva-detail-b').innerHTML   = gvaSectorBody(found);
+    box.querySelector('.gva-detail-b').innerHTML   = sectorDetailHtml(found);
     box.hidden = false;
     /* Nudge into view ONLY when the box actually opens below the fold.
        scrollIntoView() scrolled unconditionally, and because the box is ~740px
@@ -4507,32 +4530,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
            '</div>';
   }
 
-  /* Open the shared detail box below the accordion on the district layer for a
-     group. The pane itself is a fixed-height scroller, far too small for seven
-     sectors of quotes, so this content goes where the sector playbooks already
-     go: the full-width box underneath. Returns false when there is nothing to
-     show, so the caller can just close the box instead. */
-  function showGroupDetail(gkey){
-    var box = document.getElementById('gvaDetail');
-    if(!box || !gkey) return false;
-    var unit = recsUnit();
-    if(!unit) return false;
-    var html = recsForGroup(gkey);
-    if(!html) return false;
-    var g = null;
-    (GVA.groups || []).forEach(function(x){ if(x.key === gkey) g = x; });
-    box.querySelector('.gva-detail-t').textContent =
-      (g ? g.name : 'Sector') + ' in ' + unit.name;
-    box.querySelector('.gva-detail-b').innerHTML = html;
-    box.hidden = false;
-    return true;
-  }
-
-  /* The currently open group, so the district layer can be refreshed in place
-     when the map selection changes under an already-open pane. */
-  function openGroupKey(){
-    var pane = gvaBody && gvaBody.querySelector('.gva-pane.open');
-    return pane ? pane.getAttribute('data-g') : null;
+  /* The sector whose playbook is currently showing, so the box can be rebuilt
+     under a new district selection without the reader losing their place. */
+  function openSectorKey(){
+    var card = gvaBody && gvaBody.querySelector('.gva-card.active');
+    return card ? card.getAttribute('data-sec') : null;
   }
 
   function loadRecs(){
@@ -5410,11 +5412,15 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     var old = document.getElementById('gvaDistCard');
     if(old) old.remove();
     /* A detail box left open belongs to the district we just navigated away
-       from. Close it, then re-open the group layer for whichever pane is still
-       expanded so the reader keeps their place under the new district. */
-    var openG = openGroupKey();
+       from. Rebuild it for the sector that was showing, so the reader keeps
+       their place instead of the box vanishing under them. */
+    var openS = openSectorKey();
     gvaCloseDetail();
-    if(openG) showGroupDetail(openG);
+    if(openS){
+      var card = gvaBody.querySelector('.gva-card[data-sec="'+openS+'"]');
+      var r = card && card.querySelector('.gva-row');
+      if(r) r.click();
+    }
     if(!DISTF) return;
     var want = DISTF;                     // guard against a filter change mid-fetch
     load().then(function(){
