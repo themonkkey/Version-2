@@ -1328,6 +1328,66 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 .gva-steps b{color:#FFF;font-weight:650;}
 /* District context card — injected above the toolbox when a district filter is
    active. Same glass as .gva-panel; the lime edge marks it as filtered content. */
+/* District recommendations: diagnosis + the district's own named interventions.
+   Sits between the plan card and the state-wide sector accordion. */
+.gva-recs{border-color:rgba(198,236,143,.32);margin-bottom:clamp(18px,2.4vw,28px);}
+.gva-recs .rec-lede{font-size:13.6px;line-height:1.6;color:rgba(255,255,255,.74);
+  margin:0 0 clamp(14px,1.8vw,20px);max-width:78ch;}
+.gva-recs-stub p{font-size:13.8px;line-height:1.6;color:rgba(255,255,255,.72);margin:0;max-width:74ch;}
+.rec-list{display:grid;gap:clamp(12px,1.5vw,16px);}
+@media (min-width:1000px){ .rec-list{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.rec-item{border-radius:var(--r);padding:clamp(14px,1.7vw,18px);
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);
+  display:flex;flex-direction:column;gap:11px;}
+.rec-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.rec-head h4{font-size:16.5px;font-weight:700;letter-spacing:-.015em;margin:0;color:#FFF;}
+.rec-badge{font-size:10px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);}
+/* Colour carries the diagnosis: amber for a strength slipping, red for an
+   outright contraction, blue for a structural gap, green for momentum. */
+.rec-edge_declining .rec-badge{background:rgba(240,179,106,.22);color:#F5C98A;}
+.rec-declining .rec-badge{background:rgba(232,116,97,.22);color:#F0A091;}
+.rec-structural_gap .rec-badge{background:rgba(107,168,216,.22);color:#9CC8E8;}
+.rec-edge_growing .rec-badge,.rec-emerging .rec-badge{background:rgba(198,236,143,.2);color:#C6EC8F;}
+.rec-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
+.rec-stat{background:rgba(0,0,0,.16);border-radius:10px;padding:9px 10px;}
+.rec-stat .v{font-size:17px;font-weight:750;color:#FFF;line-height:1.1;font-variant-numeric:tabular-nums;}
+.rec-stat .v small{font-size:11px;font-weight:600;color:rgba(255,255,255,.6);margin-left:2px;}
+.rec-stat .k{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-top:3px;line-height:1.25;}
+.rec-sentence{font-size:13.3px;line-height:1.6;color:rgba(255,255,255,.8);margin:0;}
+.rec-presw{display:grid;gap:11px;}
+.rec-pres{border-left:2px solid rgba(198,236,143,.35);padding-left:12px;}
+.rec-con{font-size:12.6px;font-weight:700;color:#C6EC8F;margin-bottom:5px;}
+.rec-quote{font-family:var(--serif,Georgia,serif);font-size:13.2px;line-height:1.55;
+  color:rgba(255,255,255,.78);margin:0 0 7px;font-style:italic;}
+.rec-figs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:7px;}
+.rec-figs span{font-size:11.5px;padding:3px 8px;border-radius:999px;
+  background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);}
+.rec-figs b{color:#FFF;font-weight:700;font-variant-numeric:tabular-nums;}
+.rec-ivs{margin:0 0 7px;padding-left:17px;}
+.rec-ivs li{font-size:12.8px;line-height:1.5;color:rgba(255,255,255,.76);margin-bottom:3px;}
+.rec-cite{font-size:10.5px;color:rgba(255,255,255,.45);letter-spacing:.02em;}
+.rec-none{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.55);margin:0;font-style:italic;}
+.rec-count{font-size:12.6px;line-height:1.5;color:rgba(198,236,143,.85);margin:0;font-weight:600;}
+/* The district block inside a sector playbook. One column: the detail box is
+   narrower than the panel above, so the two-up grid would crush the quotes. */
+.gva-districtblk{border-left:2px solid rgba(198,236,143,.4);padding-left:clamp(12px,1.4vw,16px);}
+.gva-dblede{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.62);margin:0 0 12px;max-width:76ch;}
+.rec-list-inline{grid-template-columns:1fr !important;}
+.rec-list-inline .rec-item{background:rgba(255,255,255,.035);}
+.rec-jump{font:inherit;font-size:12.5px;font-weight:650;cursor:pointer;align-self:flex-start;
+  margin-top:auto;display:inline-flex;align-items:center;gap:6px;padding:8px 14px;
+  border-radius:999px;border:1px solid rgba(198,236,143,.4);
+  background:rgba(198,236,143,.12);color:#E4F6C8;transition:background .15s;}
+.rec-jump:hover{background:rgba(198,236,143,.24);}
+.rec-nojump{font-size:11.5px;color:rgba(255,255,255,.4);margin-top:auto;font-style:italic;}
+.rec-more{font:inherit;font-size:12.5px;font-weight:650;cursor:pointer;margin-top:14px;
+  padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.82);}
+.rec-more:hover{background:rgba(255,255,255,.12);color:#FFF;}
+@media (max-width:560px){ .rec-stats{grid-template-columns:repeat(2,minmax(0,1fr));} }
+
 .gva-distcard{border-color:rgba(198,236,143,.45);margin-bottom:clamp(18px,2.4vw,28px);}
 .gva-distcard p{font-size:13.8px;line-height:1.55;color:rgba(255,255,255,.82);margin:0 0 14px;}
 .gva-distcard .gd-links{display:flex;flex-wrap:wrap;gap:10px;}
@@ -4061,8 +4121,100 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     return '<ul>' + items.map(function(x){ return '<li>'+esc2(x)+'</li>'; }).join('') + '</ul>';
   }
 
+  /* The source document behind a set of recs. Scans for the FIRST rec that
+     actually carries a prescription: the highest ranked one often has none,
+     and reading its empty list would fall back to a generic label on quotes
+     that do have a named source. */
+  function srcOf(recs){
+    var id = null;
+    (recs || []).forEach(function(r){
+      if(!id && (r.prescription || []).length) id = r.prescription[0].source;
+    });
+    return id ? (RECS.sources || {})[id] : null;
+  }
+
+  /* Look up the recommendations for the district currently filtered, if any.
+     Returns null when nothing is selected or the district has no entry yet. */
+  function recsUnit(){
+    if(!DISTF || !RECS || !RECS.levels || !RECS.levels.district) return null;
+    var by = RECS.levels.district, hit = null;
+    Object.keys(by).forEach(function(k){
+      if(normName(k) === normName(DISTF)) hit = by[k];
+    });
+    return hit;
+  }
+
+  /* The district layer for one playbook sector, rendered inside that sector's
+     own detail box. Several buckets can map to one playbook key (Horticulture
+     and Crops both frame as `crops`; every services line frames as `services`),
+     so this collects all of them and keeps them in priority order. */
+  function recsForSector(key){
+    var unit = recsUnit();
+    if(!unit || !key) return '';
+    var mine = (unit.recs || []).filter(function(r){ return r.playbook_sector === key; });
+    if(!mine.length) return '';
+    var src = srcOf(mine);
+
+    var blocks = mine.map(function(r){
+      var d = r.diagnosis, g = d.growth_pct;
+      var stats =
+        recStat(d.share_of_district_pct.toFixed(2), '%', 'Share of district',
+                'pct_of_district: this sector as a share of the district’s own GDVA') +
+        recStat(d.lq.toFixed(2), '', 'Location quotient',
+                'share of district ' + d.share_of_district_pct.toFixed(2) +
+                '% divided by share of state ' + d.state_share_pct.toFixed(2) + '%') +
+        recStat((g >= 0 ? '+' : '') + g.toFixed(2), '%', 'Growth',
+                'growth in the latest year, as reported') +
+        recStat(d.rank_among_districts, '', 'Rank of 26',
+                'this district’s rank among districts for this sector');
+
+      var pres = (r.prescription || []).map(function(p){
+        var ivs = p.interventions.length
+          ? '<ul class="rec-ivs">' + p.interventions.map(function(i){
+              return '<li>'+esc2(i)+'</li>'; }).join('') + '</ul>' : '';
+        var figs = p.figures.length
+          ? '<div class="rec-figs">' + p.figures.map(function(f){
+              return '<span><b>'+esc2(f.value)+'</b> '+esc2(f.label)+'</span>'; }).join('') + '</div>' : '';
+        return '<div class="rec-pres">' +
+                 '<div class="rec-con">'+esc2(p.constraint)+'</div>' +
+                 '<blockquote class="rec-quote">'+esc2(p.quote)+'</blockquote>' +
+                 figs + ivs +
+                 '<div class="rec-cite">'+esc2(p.department)+' · ' +
+                   esc2(src ? src.title : 'District plan') +
+                   (p.folio ? ', page '+p.folio : '') + '</div>' +
+               '</div>';
+      }).join('');
+
+      return '<div class="rec-item rec-' + esc2(r.pattern) + '">' +
+               '<div class="rec-head">' +
+                 '<span class="rec-badge">'+esc2(r.pattern_label)+'</span>' +
+                 '<h4>'+esc2(r.label)+'</h4>' +
+               '</div>' +
+               '<div class="rec-stats">'+stats+'</div>' +
+               '<p class="rec-sentence">'+esc2(d.sentence)+'</p>' +
+               (pres ? '<div class="rec-presw">'+pres+'</div>'
+                     : '<p class="rec-none">The district plan does not set out named ' +
+                       'interventions for this one. The state-wide frame below still applies.</p>') +
+             '</div>';
+    }).join('');
+
+    return '<div class="gva-blk gva-districtblk">' +
+             '<h4>In ' + esc2(unit.name) + '</h4>' +
+             '<p class="gva-dblede">The district’s own position in this sector, and the ' +
+             'interventions its Vision and Action Plan already names. Figures are from ' +
+             esc2(unit.data_year || 'the latest year') + '.</p>' +
+             '<div class="rec-list rec-list-inline">' + blocks + '</div>' +
+           '</div>';
+  }
+
   function gvaSectorBody(s){
     var h = '';
+    /* The district's own diagnosis and its own named interventions lead, above
+       the state-wide frame. A reader who opened this sector wants to know what
+       it means for the district they picked before they read the generic
+       pathways; when no district is selected this returns nothing and the
+       playbook reads exactly as it always did. */
+    h += recsForSector(s.key);
     if(s.estimation) h += '<div class="gva-est"><b>How it is estimated.</b> '+esc2(s.estimation)+'</div>';
     if(s.pathways && s.pathways.length)
       h += '<div class="gva-blk"><h4>Pathways that raise it</h4><div class="gva-paths">'+
@@ -4174,6 +4326,31 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
 
   // expand/collapse, building each sector body once
   if(gvaBody) gvaBody.addEventListener('click', function(e){
+    /* "Show all sectors" on the recommendations panel. Re-renders in place;
+       the panel re-anchors itself under the district plan card. */
+    var more = e.target.closest('.rec-more');
+    if(more){ recsShowAll = !recsShowAll; renderRecs(DISTF); return; }
+
+    /* Jump from a recommendation to the sector playbook that frames it. Opens
+       the group then clicks the row, so the detail rendering stays in exactly
+       one place rather than being duplicated here. */
+    var jump = e.target.closest('[data-recjump]');
+    if(jump){
+      var want = jump.getAttribute('data-recjump');
+      var target = gvaBody.querySelector('.gva-card[data-sec="'+want+'"]');
+      if(target){
+        var tp = target.closest('.gva-pane');
+        if(tp && !tp.classList.contains('open')){
+          var sp = tp.querySelector('.gva-spine');
+          if(sp) sp.click();          // reuse the accordion branch below
+        }
+        var trow = target.querySelector('.gva-row');
+        if(trow && !target.classList.contains('active')) trow.click();
+        target.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+      return;
+    }
+
     // accordion: one sector group open at a time
     var spine = e.target.closest('.gva-spine');
     if(spine){
@@ -4236,11 +4413,131 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     });
   }
 
+  /* District recommendations. Diagnosis is computed from the district's own
+     GDDP figures and prescriptions are verbatim quotes from its Vision & Action
+     Plan, both baked by scripts/build_recommendations.py. Kurnool only for now;
+     every other district falls through to the stub in renderRecs(). */
+  var RECS = null;
+
+  function recStat(v, unit, label, why){
+    return '<div class="rec-stat" title="'+esc2(why)+'">' +
+             '<div class="v">'+esc2(v)+(unit?'<small>'+esc2(unit)+'</small>':'')+'</div>' +
+             '<div class="k">'+esc2(label)+'</div>' +
+           '</div>';
+  }
+
+  function recCard(r, src){
+    var d = r.diagnosis;
+    var g = d.growth_pct;
+    var stats =
+      recStat(d.share_of_district_pct.toFixed(2), '%', 'Share of district',
+              'pct_of_district: this sector as a share of Kurnool’s own GDVA') +
+      recStat(d.lq.toFixed(2), '', 'Location quotient',
+              'share of district ' + d.share_of_district_pct.toFixed(2) +
+              '% divided by share of state ' + d.state_share_pct.toFixed(2) + '%') +
+      recStat((g >= 0 ? '+' : '') + g.toFixed(2), '%', 'Growth',
+              'growth in the latest year, as reported') +
+      recStat(d.rank_among_districts, '', 'Rank of 26',
+              'this district’s rank among districts for this sector');
+
+    /* This card is the ranked summary only. The quotes and named interventions
+       live inside the sector playbook itself (recsForSector), so the reader
+       meets them at the point of use instead of reading them twice. The count
+       here is the promise the jump button pays off. */
+    var n = (r.prescription || []).length;
+    var note = n
+      ? '<p class="rec-count">' + n + (n === 1 ? ' intervention' : ' interventions') +
+        ' named in the district plan for this sector.</p>'
+      : '<p class="rec-none">The district plan does not name interventions for this sector.</p>';
+
+    var jump = r.playbook_sector
+      ? '<button class="rec-jump" type="button" data-recjump="'+esc2(r.playbook_sector)+'">' +
+          (n ? 'Read them in the sector playbook' : 'Open the sector playbook') +
+          ' <i class="ti ti-arrow-right"></i></button>'
+      : '<span class="rec-nojump">No sector playbook for this one yet</span>';
+
+    return '<div class="rec-item rec-' + esc2(r.pattern) + '">' +
+             '<div class="rec-head">' +
+               '<span class="rec-badge">'+esc2(r.pattern_label)+'</span>' +
+               '<h4>'+esc2(r.label)+'</h4>' +
+             '</div>' +
+             '<div class="rec-stats">'+stats+'</div>' +
+             '<p class="rec-sentence">'+esc2(d.sentence)+'</p>' +
+             note + jump +
+           '</div>';
+  }
+
+  var recsShowAll = false;
+  var REC_FOLD = 4;   // how many cards before the fold
+
+  function renderRecs(name){
+    var old = document.getElementById('gvaRecs');
+    if(old) old.remove();
+    if(!name || !RECS || !RECS.levels) return;
+
+    var byDist = RECS.levels.district || {};
+    // Match through normName so the alias table applies, exactly as the other
+    // district filters do; a raw index would miss Ananthapuramu/Anantapur.
+    var hit = null;
+    Object.keys(byDist).forEach(function(k){
+      if(normName(k) === normName(name)) hit = byDist[k];
+    });
+
+    var html;
+    if(!hit){
+      html = '<div class="gva-panel gva-recs gva-recs-stub" id="gvaRecs">' +
+               '<div class="gva-kicker">Priority interventions</div>' +
+               '<h3>Not yet available for ' + esc2(name) + '</h3>' +
+               '<p>District specific interventions are built from each district’s own ' +
+               'Vision and Action Plan. Kurnool is the first. The sector playbooks below ' +
+               'apply to every district, so read them against ' + esc2(name) +
+               '’s own plan above.</p>' +
+             '</div>';
+    } else {
+      var src = srcOf(hit.recs);
+      var shown = recsShowAll ? hit.recs : hit.recs.slice(0, REC_FOLD);
+      html = '<div class="gva-panel gva-recs" id="gvaRecs">' +
+               '<div class="gva-kicker">Priority interventions</div>' +
+               '<h3>' + esc2(hit.name) + ': what to work on</h3>' +
+               '<p class="rec-lede">Ranked by how much of the district’s own economy the ' +
+               'sector accounts for, weighted by whether it is a strength slipping or a gap, ' +
+               'and lifted where ' + esc2(hit.name) + '’s own plan already names the sector. ' +
+               'Figures are from ' + esc2(hit.data_year || 'the latest year') + '. Open a sector ' +
+               'below to read the interventions the plan names, each citing its page.</p>' +
+               '<div class="rec-list">' +
+                 shown.map(function(r){ return recCard(r, src); }).join('') +
+               '</div>' +
+               (hit.recs.length > REC_FOLD
+                 ? '<button class="rec-more" type="button">' +
+                     (recsShowAll ? 'Show the top ' + REC_FOLD + ' only'
+                                  : 'Show all ' + hit.recs.length + ' sectors') +
+                   '</button>'
+                 : '') +
+             '</div>';
+    }
+
+    var card = document.getElementById('gvaDistCard');
+    if(card) card.insertAdjacentHTML('afterend', html);
+    else gvaBody.insertAdjacentHTML('afterbegin', html);
+  }
+
+  function loadRecs(){
+    /* A missing or broken recommendations file must never take the generic
+       playbook down with it, so failure resolves to an empty set. */
+    return fetch('assets/recommendations.json?v=2026-08-17a')
+      .then(function(r){ return r.json(); })
+      .then(function(j){ RECS = j; })
+      .catch(function(err){ RECS = {}; console.warn('recommendations unavailable', err); });
+  }
+
   function loadGva(){
     if(gvaLoaded || gvaLoading) return;
     gvaLoading = true;
-    fetch('assets/gva_playbook.json?v=2026-08-12g')
-      .then(function(r){ return r.json(); })
+    Promise.all([
+      fetch('assets/gva_playbook.json?v=2026-08-17a').then(function(r){ return r.json(); }),
+      loadRecs()
+    ]).then(function(res){ var j = res[0];
+      return j; })
       .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); applyGvaFilter(); })
       .catch(function(err){
         gvaLoading=false;
@@ -5098,7 +5395,19 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(!gvaLoaded || !gvaBody) return;
     var old = document.getElementById('gvaDistCard');
     if(old) old.remove();
+    var oldRecs = document.getElementById('gvaRecs');
+    if(oldRecs) oldRecs.remove();
+    /* An open playbook carries the previous district's block inside it, so it
+       is closed rather than left showing figures for a district the user has
+       just navigated away from. */
+    gvaCloseDetail();
     if(!DISTF) return;
+    recsShowAll = false;                  // a new district starts folded
+    /* Render the recommendations first so they are present even when the
+       document catalogue has no plan for this district and the block below
+       bails out early. renderRecs() re-anchors itself under the plan card
+       once that card exists. */
+    renderRecs(DISTF);
     var want = DISTF;                     // guard against a filter change mid-fetch
     load().then(function(){
       if(!loaded || DISTF !== want) return;

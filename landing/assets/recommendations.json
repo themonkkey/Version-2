@@ -1,0 +1,879 @@
+{
+  "_note": "Diagnosis is computed from landing/assets/dist/<District>.json. Prescriptions are verbatim quotes from the district's own Vision & Action Plan, each verified against the cited PDF page at build time. Nothing here is authored.",
+  "version": "2026-08-17",
+  "sources": {
+    "kurnool_vap": {
+      "title": "Kurnool District Vision & Action Plan",
+      "path": "corpus_files/vision_documents/district/Kurnool/Kurnool_District_Vision_Action_Plan.pdf",
+      "pages": 183
+    }
+  },
+  "levels": {
+    "district": {
+      "Kurnool": {
+        "name": "Kurnool",
+        "coverage": "prototype",
+        "data_year": "2025-26 (FAE)",
+        "data_source": "AP district-wise GVA/GDDP workbook",
+        "state_basis": {
+          "method": "state_sector_total = value / (pct_of_state_sector/100); state_total = sum(state_sector_total); state_share_pct = state_sector_total / state_total * 100; lq = pct_of_district / state_share_pct",
+          "state_total_rs_cr": 1623882.0,
+          "caution": "pct_of_district is a sector's share of the district's own GDVA. pct_of_state_sector is the district's share of the state total for that sector. They are not interchangeable."
+        },
+        "recs": [
+          {
+            "id": "kurnool-horticulture",
+            "bucket": "horticulture",
+            "label": "Horticulture",
+            "sub_sectors": [
+              "Horticulture"
+            ],
+            "pattern": "edge_declining",
+            "pattern_label": "Strength slipping",
+            "playbook_sector": "crops",
+            "playbook_group": "agriculture",
+            "priority": 61.605,
+            "diagnosis": {
+              "value_rs_cr": 6890.11,
+              "share_of_district_pct": 13.69,
+              "state_share_pct": 8.78,
+              "lq": 1.56,
+              "growth_pct": -19.75,
+              "rank_among_districts": 7.0,
+              "per_sub_sector": [
+                {
+                  "name": "Horticulture",
+                  "growth": -19.75,
+                  "rank": 7.0
+                }
+              ],
+              "sentence": "Horticulture is 13.69 percent of Kurnool's own GDVA against 8.78 percent for the state, a location quotient of 1.56, above the state. It contracted 19.75 percent in the latest year."
+            },
+            "prescription": [
+              {
+                "source": "kurnool_vap",
+                "page": 48,
+                "folio": 41,
+                "department": "Horticulture",
+                "constraint": "Crop clusters and major interventions to 2029 and 2047",
+                "quote": "Horticulture Crop Clusters & Major Interventions for Viksit AP for 2029 & 2047",
+                "interventions": [
+                  "Promotion of varieties suitable for storage",
+                  "Storage Structures/Solar dehydration units.",
+                  "Primary Collection Centres.",
+                  "Cold Storages.",
+                  "Ripening Chambers."
+                ],
+                "figures": [
+                  {
+                    "label": "Onion production now",
+                    "value": "2,14,815"
+                  },
+                  {
+                    "label": "Onion production by 2029",
+                    "value": "3,35,818"
+                  },
+                  {
+                    "label": "Chilli production now",
+                    "value": "2,69,910"
+                  },
+                  {
+                    "label": "Tomato production by 2029",
+                    "value": "1,68,420"
+                  }
+                ],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 53,
+                "folio": 46,
+                "department": "Micro Irrigation (APMIP)",
+                "constraint": "Micro irrigation coverage",
+                "quote": "All crops which are cultivated under Bore wells/Open well irrigation invariably brought under Micro Irrigation.",
+                "interventions": [
+                  "Integration of Lift Irrigation schemes with community Drip.",
+                  "Micro Irrigation should be made mandatory for water intensive crops",
+                  "Low cost automation system for small holdings.",
+                  "Training to local unemployment youth as micro irrigation technician"
+                ],
+                "figures": [
+                  {
+                    "label": "Micro irrigation area now",
+                    "value": "34,137"
+                  },
+                  {
+                    "label": "Micro irrigation target 2028-29",
+                    "value": "1,13,503"
+                  }
+                ],
+                "extraction": "anchored"
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "id": "kurnool-crops",
+            "bucket": "crops",
+            "label": "Crops",
+            "sub_sectors": [
+              "Agriculture"
+            ],
+            "pattern": "edge_declining",
+            "pattern_label": "Strength slipping",
+            "playbook_sector": "crops",
+            "playbook_group": "agriculture",
+            "priority": 34.605,
+            "diagnosis": {
+              "value_rs_cr": 3872.04,
+              "share_of_district_pct": 7.69,
+              "state_share_pct": 3.53,
+              "lq": 2.18,
+              "growth_pct": -3.87,
+              "rank_among_districts": 3.0,
+              "per_sub_sector": [
+                {
+                  "name": "Agriculture",
+                  "growth": -3.87,
+                  "rank": 3.0
+                }
+              ],
+              "sentence": "Crops is 7.69 percent of Kurnool's own GDVA against 3.53 percent for the state, a location quotient of 2.18, above the state. It contracted 3.87 percent in the latest year."
+            },
+            "prescription": [
+              {
+                "source": "kurnool_vap",
+                "page": 40,
+                "folio": 33,
+                "department": "Agriculture",
+                "constraint": "Erratic rainfall",
+                "quote": "The volume and distribution of rainfall during the cropping period is very uncertain and also unevenly distributed.",
+                "interventions": [
+                  "Avoid mono-cropping and encourage inter-cropping to escape from the risk.",
+                  "Proper crop planning with respect to prevailing Market prices, Incidences of pests & diseases, water releases etc.",
+                  "Adoption of low cost technologies",
+                  "Promotion of Micro irrigation in field crops"
+                ],
+                "figures": [],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 40,
+                "folio": 33,
+                "department": "Agriculture",
+                "constraint": "Small and marginal farm holdings",
+                "quote": "In Kurnool District majority of the farmers are small and marginal farmers with small holdings below 5 acres.",
+                "interventions": [
+                  "Formation of Clusters / GAP Polam badi",
+                  "Formation of Crop wise Farmer Producer Organizations(FPO).",
+                  "Promoting Integrated Farming system by providing small livestock units under subsidy",
+                  "Promotion of Natural farming like A Grade models, ATM Models, 365 days"
+                ],
+                "figures": [],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 40,
+                "folio": 33,
+                "department": "Agriculture",
+                "constraint": "Barren and fallow lands",
+                "quote": "In Kurnool District, nearly 1,53,650 ha of Barren and Fallow lands (Current fallow- 90,000 Ha, Other than current fallow (1-5 years) - 40,793Ha, cultivable waste (>5 years) - 22,857 ha.) are available which has to be brought under cultivation.",
+                "interventions": [
+                  "Natural farming: palletization with PMDS",
+                  "Drought Prone models",
+                  "365 days"
+                ],
+                "figures": [
+                  {
+                    "label": "Barren and fallow land",
+                    "value": "1,53,650 ha"
+                  },
+                  {
+                    "label": "Current fallow",
+                    "value": "90,000 Ha"
+                  },
+                  {
+                    "label": "Cultivable waste, over 5 years",
+                    "value": "22,857 ha"
+                  }
+                ],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 41,
+                "folio": 34,
+                "department": "Agriculture",
+                "constraint": "Indiscriminate use of chemical fertilizers",
+                "quote": "Farmers are heavily using Chemical Fertilizer rather it is Indiscriminate usage of Fertilizer which will degrade the soil thus effecting the Soil fertility.",
+                "interventions": [
+                  "Soil Testing and Issue of Soil Health Cards (SHC)",
+                  "Soil Test based Fertilizer usage",
+                  "Establishment of Vermi compost units",
+                  "Drone technology for spraying liquid fertilizer."
+                ],
+                "figures": [],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 41,
+                "folio": 34,
+                "department": "Agriculture",
+                "constraint": "Mono cropping",
+                "quote": "In Kurnool District, Majority of farmers cultivate Single crop, particularly Long Duration Crop like Cotton, Redgram etc.",
+                "interventions": [
+                  "Intercropping with Pulses & Oil seeds. Ex: Groundnut - Red gram",
+                  "Cotton Crop diversification to Millets & Maize",
+                  "To get remunerative price to millets, include Millets in midday meal in Schools, Hostels"
+                ],
+                "figures": [],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 42,
+                "folio": 35,
+                "department": "Agriculture",
+                "constraint": "Low market price at harvest",
+                "quote": "Farmers are getting low market price at the time of harvest and the farmers are left with no choice but to sell as the agriculture produce is perishable.",
+                "interventions": [
+                  "Construction of Cold storages",
+                  "Value addition of Agricultural Produce by encouraging Millet Processing units Dal Mills, Oil extractors, flour mills",
+                  "Split Bengal gram or Redgram dal, Rice markets through FPO"
+                ],
+                "figures": [],
+                "extraction": "anchored"
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "id": "kurnool-other_services",
+            "bucket": "other_services",
+            "label": "Other Services",
+            "sub_sectors": [
+              "Other Services"
+            ],
+            "pattern": "edge_growing",
+            "pattern_label": "Strength to build on",
+            "playbook_sector": "services",
+            "playbook_group": "services",
+            "priority": 15.3,
+            "diagnosis": {
+              "value_rs_cr": 6420.12,
+              "share_of_district_pct": 12.75,
+              "state_share_pct": 8.81,
+              "lq": 1.45,
+              "growth_pct": 16.9,
+              "rank_among_districts": 7.0,
+              "per_sub_sector": [
+                {
+                  "name": "Other Services",
+                  "growth": 16.9,
+                  "rank": 7.0
+                }
+              ],
+              "sentence": "Other Services is 12.75 percent of Kurnool's own GDVA against 8.81 percent for the state, a location quotient of 1.45, above the state. It grew 16.90 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 3
+          },
+          {
+            "id": "kurnool-construction",
+            "bucket": "construction",
+            "label": "Construction",
+            "sub_sectors": [
+              "Construction"
+            ],
+            "pattern": "edge_growing",
+            "pattern_label": "Strength to build on",
+            "playbook_sector": null,
+            "playbook_group": "industry",
+            "priority": 13.392,
+            "diagnosis": {
+              "value_rs_cr": 5619.88,
+              "share_of_district_pct": 11.16,
+              "state_share_pct": 8.01,
+              "lq": 1.39,
+              "growth_pct": 13.28,
+              "rank_among_districts": 10.0,
+              "per_sub_sector": [
+                {
+                  "name": "Construction",
+                  "growth": 13.28,
+                  "rank": 10.0
+                }
+              ],
+              "sentence": "Construction is 11.16 percent of Kurnool's own GDVA against 8.01 percent for the state, a location quotient of 1.39, above the state. It grew 13.28 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 4
+          },
+          {
+            "id": "kurnool-transport",
+            "bucket": "transport",
+            "label": "Transport & Storage",
+            "sub_sectors": [
+              "Transport by Other means & Storage",
+              "Railways"
+            ],
+            "pattern": "edge_growing",
+            "pattern_label": "Strength to build on",
+            "playbook_sector": "services",
+            "playbook_group": "services",
+            "priority": 11.172,
+            "diagnosis": {
+              "value_rs_cr": 4688.71,
+              "share_of_district_pct": 9.31,
+              "state_share_pct": 7.24,
+              "lq": 1.29,
+              "growth_pct": 12.82,
+              "rank_among_districts": 8.0,
+              "per_sub_sector": [
+                {
+                  "name": "Transport by Other means & Storage",
+                  "growth": 12.82,
+                  "rank": 8.0
+                },
+                {
+                  "name": "Railways",
+                  "growth": 7.81,
+                  "rank": 16.0
+                }
+              ],
+              "sentence": "Transport & Storage is 9.31 percent of Kurnool's own GDVA against 7.24 percent for the state, a location quotient of 1.29, above the state. It grew 12.82 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 5
+          },
+          {
+            "id": "kurnool-trade_hotels",
+            "bucket": "trade_hotels",
+            "label": "Trade, Hotels & Restaurants",
+            "sub_sectors": [
+              "Trade,Hotel & Restaurants"
+            ],
+            "pattern": "structural_gap",
+            "pattern_label": "Structural gap",
+            "playbook_sector": "services",
+            "playbook_group": "services",
+            "priority": 11.07,
+            "diagnosis": {
+              "value_rs_cr": 1856.86,
+              "share_of_district_pct": 3.69,
+              "state_share_pct": 7.57,
+              "lq": 0.49,
+              "growth_pct": 3.74,
+              "rank_among_districts": 17.0,
+              "per_sub_sector": [
+                {
+                  "name": "Trade,Hotel & Restaurants",
+                  "growth": 3.74,
+                  "rank": 17.0
+                }
+              ],
+              "sentence": "Trade, Hotels & Restaurants is 3.69 percent of Kurnool's own GDVA against 7.57 percent for the state, a location quotient of 0.49, below the state. It grew 3.74 percent in the latest year."
+            },
+            "prescription": [
+              {
+                "source": "kurnool_vap",
+                "page": 141,
+                "folio": 134,
+                "department": "Tourism & Culture",
+                "constraint": "Tourism value is not converted into local economic linkage",
+                "quote": "Encourage participative tourism where local communities participate and gain",
+                "interventions": [
+                  "Bring in awareness of the industry about potential for employment and economic development.",
+                  "Encourage participative tourism where local communities participate and gain",
+                  "Generate responsible tourism due to which industry will be responsible, to its environment",
+                  "Involve the local communities near by the attractions and develop the meaningful economic linkages."
+                ],
+                "figures": [],
+                "extraction": "anchored"
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "id": "kurnool-manufacturing",
+            "bucket": "manufacturing",
+            "label": "Manufacturing",
+            "sub_sectors": [
+              "Manufacturing"
+            ],
+            "pattern": "structural_gap",
+            "pattern_label": "Structural gap",
+            "playbook_sector": "manufacturing",
+            "playbook_group": "industry",
+            "priority": 10.44,
+            "diagnosis": {
+              "value_rs_cr": 1749.85,
+              "share_of_district_pct": 3.48,
+              "state_share_pct": 10.88,
+              "lq": 0.32,
+              "growth_pct": 9.24,
+              "rank_among_districts": 21.0,
+              "per_sub_sector": [
+                {
+                  "name": "Manufacturing",
+                  "growth": 9.24,
+                  "rank": 21.0
+                }
+              ],
+              "sentence": "Manufacturing is 3.48 percent of Kurnool's own GDVA against 10.88 percent for the state, a location quotient of 0.32, below the state. It grew 9.24 percent in the latest year."
+            },
+            "prescription": [
+              {
+                "source": "kurnool_vap",
+                "page": 90,
+                "folio": 83,
+                "department": "Food Processing",
+                "constraint": "Perishable produce is lost to price swings at harvest",
+                "quote": "Processing of vegetables and Spices has huge scope in the district, it increases the shelf-life of the produce",
+                "interventions": [
+                  "these vegetables can be processed through proven dehydration technology and well preserved.",
+                  "there is a need to establish small to medium scale integrated processing unit for vegetable/spices potential clusters in the district."
+                ],
+                "figures": [
+                  {
+                    "label": "Processing units now",
+                    "value": "177"
+                  },
+                  {
+                    "label": "Processing units target 2028-29",
+                    "value": "1787"
+                  }
+                ],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 68,
+                "folio": 61,
+                "department": "Industry",
+                "constraint": "MSME and large industry targets to 2028-29",
+                "quote": "INDUSTRY",
+                "interventions": [],
+                "figures": [
+                  {
+                    "label": "MSME units, 2024-25 target",
+                    "value": "6000"
+                  },
+                  {
+                    "label": "MSME units, 2028-29 target",
+                    "value": "12540"
+                  },
+                  {
+                    "label": "MSME employment, 2028-29 target",
+                    "value": "16705"
+                  }
+                ],
+                "extraction": "anchored"
+              }
+            ],
+            "rank": 7
+          },
+          {
+            "id": "kurnool-public_admin",
+            "bucket": "public_admin",
+            "label": "Public Administration",
+            "sub_sectors": [
+              "Public Admn."
+            ],
+            "pattern": "edge_growing",
+            "pattern_label": "Strength to build on",
+            "playbook_sector": "services",
+            "playbook_group": "services",
+            "priority": 6.06,
+            "diagnosis": {
+              "value_rs_cr": 2542.37,
+              "share_of_district_pct": 5.05,
+              "state_share_pct": 3.69,
+              "lq": 1.37,
+              "growth_pct": 4.74,
+              "rank_among_districts": 8.0,
+              "per_sub_sector": [
+                {
+                  "name": "Public Admn.",
+                  "growth": 4.74,
+                  "rank": 8.0
+                }
+              ],
+              "sentence": "Public Administration is 5.05 percent of Kurnool's own GDVA against 3.69 percent for the state, a location quotient of 1.37, above the state. It grew 4.74 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 8
+          },
+          {
+            "id": "kurnool-electricity",
+            "bucket": "electricity",
+            "label": "Electricity, Gas & Water",
+            "sub_sectors": [
+              "Electricity, Gas, Water Supply"
+            ],
+            "pattern": "edge_growing",
+            "pattern_label": "Strength to build on",
+            "playbook_sector": null,
+            "playbook_group": "industry",
+            "priority": 4.956,
+            "diagnosis": {
+              "value_rs_cr": 2080.82,
+              "share_of_district_pct": 4.13,
+              "state_share_pct": 2.73,
+              "lq": 1.51,
+              "growth_pct": 3.95,
+              "rank_among_districts": 8.0,
+              "per_sub_sector": [
+                {
+                  "name": "Electricity, Gas, Water Supply",
+                  "growth": 3.95,
+                  "rank": 8.0
+                }
+              ],
+              "sentence": "Electricity, Gas & Water is 4.13 percent of Kurnool's own GDVA against 2.73 percent for the state, a location quotient of 1.51, above the state. It grew 3.95 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 9
+          },
+          {
+            "id": "kurnool-livestock",
+            "bucket": "livestock",
+            "label": "Livestock",
+            "sub_sectors": [
+              "Live stock"
+            ],
+            "pattern": "steady",
+            "pattern_label": "Steady",
+            "playbook_sector": "livestock_fisheries",
+            "playbook_group": "agriculture",
+            "priority": 4.85,
+            "diagnosis": {
+              "value_rs_cr": 4881.0,
+              "share_of_district_pct": 9.7,
+              "state_share_pct": 10.85,
+              "lq": 0.89,
+              "growth_pct": -0.18,
+              "rank_among_districts": 20.0,
+              "per_sub_sector": [
+                {
+                  "name": "Live stock",
+                  "growth": -0.18,
+                  "rank": 20.0
+                }
+              ],
+              "sentence": "Livestock is 9.70 percent of Kurnool's own GDVA against 10.85 percent for the state, a location quotient of 0.89, below the state. It contracted 0.18 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 10
+          },
+          {
+            "id": "kurnool-real_estate",
+            "bucket": "real_estate",
+            "label": "Real Estate & Dwellings",
+            "sub_sectors": [
+              "Real est., Ownership of Dwellings"
+            ],
+            "pattern": "steady",
+            "pattern_label": "Steady",
+            "playbook_sector": "services",
+            "playbook_group": "services",
+            "priority": 4.375,
+            "diagnosis": {
+              "value_rs_cr": 4402.95,
+              "share_of_district_pct": 8.75,
+              "state_share_pct": 8.5,
+              "lq": 1.03,
+              "growth_pct": 12.72,
+              "rank_among_districts": 16.0,
+              "per_sub_sector": [
+                {
+                  "name": "Real est., Ownership of Dwellings",
+                  "growth": 12.72,
+                  "rank": 16.0
+                }
+              ],
+              "sentence": "Real Estate & Dwellings is 8.75 percent of Kurnool's own GDVA against 8.50 percent for the state, a location quotient of 1.03, above the state. It grew 12.72 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 11
+          },
+          {
+            "id": "kurnool-communications",
+            "bucket": "communications",
+            "label": "Communications",
+            "sub_sectors": [
+              "Communications"
+            ],
+            "pattern": "edge_growing",
+            "pattern_label": "Strength to build on",
+            "playbook_sector": "services",
+            "playbook_group": "services",
+            "priority": 3.156,
+            "diagnosis": {
+              "value_rs_cr": 1326.0,
+              "share_of_district_pct": 2.63,
+              "state_share_pct": 2.06,
+              "lq": 1.28,
+              "growth_pct": 16.73,
+              "rank_among_districts": 10.0,
+              "per_sub_sector": [
+                {
+                  "name": "Communications",
+                  "growth": 16.73,
+                  "rank": 10.0
+                }
+              ],
+              "sentence": "Communications is 2.63 percent of Kurnool's own GDVA against 2.06 percent for the state, a location quotient of 1.28, above the state. It grew 16.73 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 12
+          },
+          {
+            "id": "kurnool-mining",
+            "bucket": "mining",
+            "label": "Mining & Quarrying",
+            "sub_sectors": [
+              "Mining & Quarrying"
+            ],
+            "pattern": "declining",
+            "pattern_label": "Contracting",
+            "playbook_sector": "mining",
+            "playbook_group": "industry",
+            "priority": 2.97,
+            "diagnosis": {
+              "value_rs_cr": 498.0,
+              "share_of_district_pct": 0.99,
+              "state_share_pct": 2.09,
+              "lq": 0.47,
+              "growth_pct": -41.13,
+              "rank_among_districts": 17.0,
+              "per_sub_sector": [
+                {
+                  "name": "Mining & Quarrying",
+                  "growth": -41.13,
+                  "rank": 17.0
+                }
+              ],
+              "sentence": "Mining & Quarrying is 0.99 percent of Kurnool's own GDVA against 2.09 percent for the state, a location quotient of 0.47, below the state. It contracted 41.13 percent in the latest year."
+            },
+            "prescription": [
+              {
+                "source": "kurnool_vap",
+                "page": 89,
+                "folio": 82,
+                "department": "Mines",
+                "constraint": "Low grade iron ore at Veldurthy goes unbeneficiated",
+                "quote": "There is a scope for establishment of Iron ore beneficiation plant along with crushing unit",
+                "interventions": [
+                  "Mineral Beneficiation Industry and setting up of fresher",
+                  "establishment of Iron ore beneficiation plant along with crushing unit"
+                ],
+                "figures": [
+                  {
+                    "label": "Estimated investment",
+                    "value": "Rs.100.00 cores"
+                  },
+                  {
+                    "label": "Employment, direct",
+                    "value": "100"
+                  },
+                  {
+                    "label": "Employment, indirect",
+                    "value": "250"
+                  }
+                ],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 89,
+                "folio": 82,
+                "department": "Mines",
+                "constraint": "Granite cutting and polishing units lie closed",
+                "quote": "There were 25 Granite cutting and Polishing units existing in Adoni surroundings which are not working at present",
+                "interventions": [
+                  "If the Government provided incentives (Viz., reduction of royalty)",
+                  "resumption of Granite cutting and polishing units existing in Kurnool District resulting Employment generation"
+                ],
+                "figures": [
+                  {
+                    "label": "Units closed",
+                    "value": "25"
+                  },
+                  {
+                    "label": "Estimated reinvestment",
+                    "value": "Rs.25.00 cores"
+                  }
+                ],
+                "extraction": "anchored"
+              }
+            ],
+            "rank": 13
+          },
+          {
+            "id": "kurnool-fisheries",
+            "bucket": "fisheries",
+            "label": "Fishing & Aquaculture",
+            "sub_sectors": [
+              "Fishing & Aquaculture"
+            ],
+            "pattern": "emerging",
+            "pattern_label": "Emerging",
+            "playbook_sector": "livestock_fisheries",
+            "playbook_group": "agriculture",
+            "priority": 2.632,
+            "diagnosis": {
+              "value_rs_cr": 590.39,
+              "share_of_district_pct": 1.17,
+              "state_share_pct": 9.32,
+              "lq": 0.13,
+              "growth_pct": 37.85,
+              "rank_among_districts": 18.0,
+              "per_sub_sector": [
+                {
+                  "name": "Fishing & Aquaculture",
+                  "growth": 37.85,
+                  "rank": 18.0
+                }
+              ],
+              "sentence": "Fishing & Aquaculture is 1.17 percent of Kurnool's own GDVA against 9.32 percent for the state, a location quotient of 0.13, below the state. It grew 37.85 percent in the latest year."
+            },
+            "prescription": [
+              {
+                "source": "kurnool_vap",
+                "page": 62,
+                "folio": 55,
+                "department": "Fisheries",
+                "constraint": "Raising inland fish production",
+                "quote": "STRATEGIS FOR IMPROVEMENT OF FISH PRODUCTION",
+                "interventions": [
+                  "Enhancing of fish production and Prawn Production by expansion of aquaculture area",
+                  "By Adoption of Advance technologies like cage culture, Re- Circulatory Aquaculture System and Bio-Flock.",
+                  "Implementation of Ban period in Reservoirs for the month of July and August for every year",
+                  "Construction Captive nurseries nearby water bodies for rearing of spawn"
+                ],
+                "figures": [
+                  {
+                    "label": "Fish and prawn production 2023-24",
+                    "value": "24914 MTs"
+                  },
+                  {
+                    "label": "Inland fish production target 2028-29",
+                    "value": "54008"
+                  }
+                ],
+                "extraction": "anchored"
+              },
+              {
+                "source": "kurnool_vap",
+                "page": 62,
+                "folio": 55,
+                "department": "Fisheries",
+                "constraint": "Expanding aquaculture area",
+                "quote": "There is 631.79 Acres of Aquaculture area is existing in Adoni division of Kurnool District",
+                "interventions": [
+                  "Creating of awareness to the aqua farmers for conversion of non agriculture lands to fish ponds.",
+                  "Issue of license to the un registered aquaculture ponds as per APSADA act in the District."
+                ],
+                "figures": [
+                  {
+                    "label": "Existing aquaculture area, Adoni division",
+                    "value": "631.79 Acres"
+                  },
+                  {
+                    "label": "Extent still to be licensed",
+                    "value": "194.82 Acres"
+                  }
+                ],
+                "extraction": "anchored"
+              }
+            ],
+            "rank": 14
+          },
+          {
+            "id": "kurnool-financial",
+            "bucket": "financial",
+            "label": "Banking & Insurance",
+            "sub_sectors": [
+              "Banking & Insurance"
+            ],
+            "pattern": "steady",
+            "pattern_label": "Steady",
+            "playbook_sector": "services",
+            "playbook_group": "services",
+            "priority": 2.54,
+            "diagnosis": {
+              "value_rs_cr": 2559.0,
+              "share_of_district_pct": 5.08,
+              "state_share_pct": 5.29,
+              "lq": 0.96,
+              "growth_pct": 10.73,
+              "rank_among_districts": 13.0,
+              "per_sub_sector": [
+                {
+                  "name": "Banking & Insurance",
+                  "growth": 10.73,
+                  "rank": 13.0
+                }
+              ],
+              "sentence": "Banking & Insurance is 5.08 percent of Kurnool's own GDVA against 5.29 percent for the state, a location quotient of 0.96, below the state. It grew 10.73 percent in the latest year."
+            },
+            "prescription": [],
+            "rank": 15
+          },
+          {
+            "id": "kurnool-forestry",
+            "bucket": "forestry",
+            "label": "Forestry & Logging",
+            "sub_sectors": [
+              "Forestry & Logging"
+            ],
+            "pattern": "emerging",
+            "pattern_label": "Emerging",
+            "playbook_sector": "forestry",
+            "playbook_group": "agriculture",
+            "priority": 1.62,
+            "diagnosis": {
+              "value_rs_cr": 362.77,
+              "share_of_district_pct": 0.72,
+              "state_share_pct": 0.63,
+              "lq": 1.13,
+              "growth_pct": 55.79,
+              "rank_among_districts": 14.0,
+              "per_sub_sector": [
+                {
+                  "name": "Forestry & Logging",
+                  "growth": 55.79,
+                  "rank": 14.0
+                }
+              ],
+              "sentence": "Forestry & Logging is 0.72 percent of Kurnool's own GDVA against 0.63 percent for the state, a location quotient of 1.13, above the state. It grew 55.79 percent in the latest year."
+            },
+            "prescription": [
+              {
+                "source": "kurnool_vap",
+                "page": 65,
+                "folio": 58,
+                "department": "Forest",
+                "constraint": "Raising green cover outside reserved forest",
+                "quote": "Raising nurseries based on the availability of the budget for distribution to the Public and other line departments.",
+                "interventions": [
+                  "Raising nurseries based on the availability of the budget for distribution to the Public and other line departments.",
+                  "Providing technical guidance for planting and maintenance to all the stakeholders.",
+                  "Raising seedlings by other line departments like DWMA, Horticulture, Sericulture, Agricultures etc.",
+                  "Ensuring the survival of seedlings planted."
+                ],
+                "figures": [],
+                "extraction": "anchored"
+              }
+            ],
+            "rank": 16
+          }
+        ]
+      }
+    }
+  }
+}

@@ -12,6 +12,13 @@ Emits landing/assets/gva_playbook.json:
     method / leverage / ai_tools / niti  — the narrative blocks
 
 Usage: python3 scripts/build_gva_playbook.py [path/to/dashboard.html]
+
+STALE AS OF 2026-08-17: the source dashboard HTML is no longer on disk, so this
+script cannot be re-run end to end, and the sector classification it emits below
+is no longer the one the site ships. landing/assets/gva_playbook.json is now the
+authoritative artifact and scripts/restructure_gva_playbook.py reshapes it in
+place (Agriculture 3, Industry 2, Services 1 merged). If the source HTML is ever
+recovered, run this script and then the restructure script, in that order.
 """
 import json, os, re, sys
 
