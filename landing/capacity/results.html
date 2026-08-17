@@ -45,7 +45,18 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
   box-shadow:0 12px 34px rgba(0,0,0,.20);margin-bottom:clamp(18px,2.4vw,26px);}
 .ar-head h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;color:#FFF;margin:0 0 4px;}
 .ar-head .lede{font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.55;margin:0 0 clamp(16px,2vw,22px);max-width:78ch;}
-.ar-panel{border-top:1px solid rgba(255,255,255,.14);padding:clamp(16px,2vw,22px) 0 clamp(14px,1.8vw,20px);}
+.ltabs{display:flex;gap:8px;flex-wrap:wrap;margin:clamp(14px,2vw,20px) 0 0;}
+.ltab{font:inherit;font-size:13px;font-weight:650;letter-spacing:-.005em;cursor:pointer;
+  padding:9px 16px;border-radius:999px;color:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  display:inline-flex;align-items:baseline;gap:8px;transition:background .16s,border-color .16s,color .16s;}
+.ltab:hover:not([disabled]){background:rgba(255,255,255,.11);color:#FFF;}
+.ltab .ln{font-size:11px;font-weight:600;color:rgba(255,255,255,.45);font-variant-numeric:tabular-nums;}
+.ltab[aria-selected="true"]{background:var(--lime);border-color:var(--lime);color:#0B2E20;}
+.ltab[aria-selected="true"] .ln{color:rgba(11,46,32,.62);}
+.ltab[disabled]{opacity:.36;cursor:not-allowed;}
+/* One panel at a time now (tabs), so no divider between stacked panels. */
+.ar-panel{padding:clamp(16px,2vw,22px) 0 clamp(14px,1.8vw,20px);}
 .ar-panel:last-of-type{padding-bottom:6px;}
 .ar-ptop{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
 .ar-lvl{display:block;font-family:var(--serif);font-size:clamp(17px,2vw,21px);font-weight:600;color:#FFF;line-height:1.2;}
@@ -130,6 +141,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
   <h1>Baseline &amp; endline results</h1>
   <p class="lede">What officers knew before each training and after it, from the district's consolidated assessment report. One panel per type of training; the two rounds are compared only where the report says the papers were the same.</p>
   <div class="pick"><label for="dsel">District</label><select id="dsel"></select></div>
+  <div class="ltabs" id="ltabs" role="tablist" aria-label="Type of training"></div>
 </div></div>
 <main><div class="wrap" id="mount"></div></main>
 <footer><div class="wrap">Pahlé India Foundation · Aligned with Swarna Andhra @2047 · Planning Department</div></footer>
@@ -229,12 +241,12 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
     return out.join('');
   }
 
-  function build(rec){
+  function build(rec, lvl){
     var html = '<div class="ar-wrap">' +
       '<div class="ar-head"><h3>Baseline &amp; endline: '+esc(rec.name)+'</h3>' +
       '<p class="lede">One panel per type of training. Each round shows the score, how officers were spread, ' +
       'and the best and least answered topics; the two rounds are compared only where the report says the papers were the same.</p></div>';
-    html += rec.levels.map(function(L){
+    html += [lvl].map(function(L){
       var b = L.baseline, e = L.endline;
       var delta = '';
       if(L.change && L.change.pct_pp != null){
@@ -281,15 +293,45 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
     var slugs = Object.keys(R.districts || {});
     var want = new URLSearchParams(location.search).get('d') || slugs[0];
     sel.innerHTML = slugs.map(function(k){ return '<option value="'+k+'"'+(k===want?' selected':'')+'>'+esc(R.districts[k].name)+'</option>'; }).join('');
-    function show(k){
+    /* Same three tabs, same order and same default as the training-feedback
+       page, so the two read as one pair rather than two conventions. Every
+       level is listed even when a district filed nothing for it: shown but
+       disabled says "not filed", where omitting it reads as an oversight. */
+    var LEVEL_ORDER = ['district', 'constituency', 'master'];
+    var tabs = document.getElementById('ltabs');
+    var wantLv = new URLSearchParams(location.search).get('lv');
+
+    function show(k, level){
       var rec = R.districts[k];
-      if(!rec){ mount.innerHTML = '<div class="empty">No assessment report has been filed for this district yet.</div>'; return; }
+      if(!rec){ mount.innerHTML = '<div class="empty">No assessment report has been filed for this district yet.</div>'; tabs.innerHTML = ''; return; }
+      var byLevel = {};
+      (rec.levels || []).forEach(function(L){ byLevel[L.level] = L; });
+      var avail = LEVEL_ORDER.filter(function(l){ return byLevel[l]; });
+      if(!avail.length){ mount.innerHTML = '<div class="empty">No assessment rounds are recorded for this district.</div>'; tabs.innerHTML = ''; return; }
+      if(!byLevel[level]) level = avail[0];
+
+      tabs.innerHTML = LEVEL_ORDER.map(function(l){
+        var L = byLevel[l], has = !!L;
+        /* n comes off whichever round the report actually carries: a level can
+           have a baseline and no endline. */
+        var n = has ? ((L.baseline && L.baseline.n) || (L.endline && L.endline.n)) : null;
+        return '<button type="button" class="ltab" role="tab" data-lv="'+l+'"' +
+          ' aria-selected="'+(l === level)+'"'+(has ? '' : ' disabled') +
+          ' title="'+esc(has ? (L.label || l) : (l + ' — no assessment filed'))+'">' +
+          esc(has ? (L.label || l) : (l.charAt(0).toUpperCase() + l.slice(1) + ' training')) +
+          (has && n != null ? '<span class="ln">n = '+n+'</span>' : '<span class="ln">none</span>') +
+        '</button>';
+      }).join('');
+      tabs.querySelectorAll('.ltab:not([disabled])').forEach(function(b){
+        b.addEventListener('click', function(){ show(k, b.dataset.lv); });
+      });
+
       document.title = 'Baseline & endline · ' + rec.name + ' · Swarna Andhra @2047';
-      mount.innerHTML = build(rec);
-      history.replaceState(null, '', '?d=' + k);
+      mount.innerHTML = build(rec, byLevel[level]);
+      history.replaceState(null, '', '?d=' + k + '&lv=' + level);
     }
-    sel.addEventListener('change', function(){ show(sel.value); });
-    show(want);
+    sel.addEventListener('change', function(){ show(sel.value, wantLv || LEVEL_ORDER[0]); });
+    show(want, wantLv || LEVEL_ORDER[0]);
   }).catch(function(){ mount.innerHTML = '<div class="empty">Could not load the assessment results.</div>'; });
 })();
 </script>
