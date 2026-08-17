@@ -1356,18 +1356,45 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 .rec-stat .k{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
   color:rgba(255,255,255,.5);margin-top:3px;line-height:1.25;}
 .rec-sentence{font-size:13.3px;line-height:1.6;color:rgba(255,255,255,.8);margin:0;}
-.rec-presw{display:grid;gap:11px;}
-.rec-pres{border-left:2px solid rgba(198,236,143,.35);padding-left:12px;}
-.rec-con{font-size:12.6px;font-weight:700;color:#C6EC8F;margin-bottom:5px;}
-.rec-quote{font-family:var(--serif,Georgia,serif);font-size:13.2px;line-height:1.55;
-  color:rgba(255,255,255,.78);margin:0 0 7px;font-style:italic;}
-.rec-figs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:7px;}
-.rec-figs span{font-size:11.5px;padding:3px 8px;border-radius:999px;
-  background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);}
-.rec-figs b{color:#FFF;font-weight:700;font-variant-numeric:tabular-nums;}
-.rec-ivs{margin:0 0 7px;padding-left:17px;}
-.rec-ivs li{font-size:12.8px;line-height:1.5;color:rgba(255,255,255,.76);margin-bottom:3px;}
-.rec-cite{font-size:10.5px;color:rgba(255,255,255,.45);letter-spacing:.02em;}
+.rec-meta{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:rgba(198,236,143,.7);padding-top:2px;}
+.rec-presw{display:grid;gap:10px;}
+/* Each constraint is its own card: numbered, problem above, response below. */
+.rec-pres{border-radius:10px;padding:12px 13px;
+  background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.08);}
+.rec-pres-h{display:flex;align-items:flex-start;gap:9px;margin-bottom:9px;}
+.rec-num{flex:0 0 auto;width:20px;height:20px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:750;background:rgba(198,236,143,.9);color:#0B2E20;
+  font-variant-numeric:tabular-nums;margin-top:1px;}
+.rec-con{font-size:13.4px;font-weight:700;color:#FFF;margin:0;line-height:1.35;letter-spacing:-.01em;}
+.rec-tag{font-size:9.5px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin-bottom:5px;}
+.rec-prob{margin-bottom:10px;}
+.rec-quote{font-family:var(--serif,Georgia,serif);font-size:13px;line-height:1.55;
+  color:rgba(255,255,255,.8);margin:0;font-style:italic;
+  border-left:2px solid rgba(255,255,255,.16);padding-left:10px;}
+.rec-figs{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;}
+.rec-figs span{font-size:11px;padding:4px 9px;border-radius:8px;display:inline-flex;
+  align-items:baseline;gap:5px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.62);}
+.rec-figs b{color:#FFF;font-weight:750;font-size:12.5px;font-variant-numeric:tabular-nums;}
+.rec-act{padding-top:2px;}
+/* Numbered so an officer can refer to "intervention 3" off the page. Scoped
+   under .gva-districtblk to outrank the generic .gva-blk li dot-bullet rule
+   further down, which also forces display:flex and would break the marker. */
+.rec-ivs{margin:0;padding:0;list-style:none;counter-reset:iv;}
+.gva-districtblk .rec-ivs li,
+.rec-ivs li{display:block;position:relative;padding-left:22px;font-size:12.7px;
+  line-height:1.5;color:rgba(255,255,255,.8);margin-bottom:6px;counter-increment:iv;}
+.rec-ivs li:last-child{margin-bottom:0;}
+.gva-districtblk .rec-ivs li::before,
+.rec-ivs li::before{content:counter(iv);position:absolute;left:0;top:2px;
+  font-size:9.5px;font-weight:750;color:#0B2E20;margin-top:0;
+  width:14px;height:14px;line-height:14px;text-align:center;border-radius:4px;
+  background:rgba(198,236,143,.85);font-variant-numeric:tabular-nums;}
+.rec-cite{font-size:10.5px;color:rgba(255,255,255,.4);letter-spacing:.02em;
+  margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,.07);}
 .rec-none{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.55);margin:0;font-style:italic;}
 .rec-count{font-size:12.6px;line-height:1.5;color:rgba(198,236,143,.85);margin:0;font-weight:600;}
 /* The district block inside a sector playbook. One column: the detail box is
@@ -4153,6 +4180,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(!unit || !key) return '';
     var mine = (unit.recs || []).filter(function(r){ return r.playbook_sector === key; });
     if(!mine.length) return '';
+    /* Classification order, not priority order: inside "Crops / Horticulture"
+       the reader expects Crops then Horticulture, in the same sequence as the
+       sector title. The summary panel above is the priority-ordered view. */
+    mine = mine.slice().sort(function(a, b){ return (a.order || 0) - (b.order || 0); });
     var src = srcOf(mine);
 
     var blocks = mine.map(function(r){
@@ -4168,34 +4199,57 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         recStat(d.rank_among_districts, '', 'Rank of 26',
                 'this district’s rank among districts for this sector');
 
-      var pres = (r.prescription || []).map(function(p){
+      /* Each constraint reads as a numbered problem-and-response pair, which is
+         how the plan itself sets them out: the constraint the district named,
+         the scale of it where the plan gives figures, then the interventions
+         it proposes against that constraint. */
+      var pres = (r.prescription || []).map(function(p, pi){
         var ivs = p.interventions.length
-          ? '<ul class="rec-ivs">' + p.interventions.map(function(i){
-              return '<li>'+esc2(i)+'</li>'; }).join('') + '</ul>' : '';
+          ? '<div class="rec-act">' +
+              '<div class="rec-tag">What the plan proposes</div>' +
+              '<ol class="rec-ivs">' + p.interventions.map(function(i){
+                return '<li>'+esc2(i)+'</li>'; }).join('') + '</ol>' +
+            '</div>' : '';
         var figs = p.figures.length
           ? '<div class="rec-figs">' + p.figures.map(function(f){
-              return '<span><b>'+esc2(f.value)+'</b> '+esc2(f.label)+'</span>'; }).join('') + '</div>' : '';
-        return '<div class="rec-pres">' +
-                 '<div class="rec-con">'+esc2(p.constraint)+'</div>' +
-                 '<blockquote class="rec-quote">'+esc2(p.quote)+'</blockquote>' +
-                 figs + ivs +
-                 '<div class="rec-cite">'+esc2(p.department)+' · ' +
+              return '<span><b>'+esc2(f.value)+'</b>'+esc2(f.label)+'</span>'; }).join('') + '</div>' : '';
+        return '<article class="rec-pres">' +
+                 '<header class="rec-pres-h">' +
+                   '<span class="rec-num">'+(pi+1)+'</span>' +
+                   '<h5 class="rec-con">'+esc2(p.constraint)+'</h5>' +
+                 '</header>' +
+                 '<div class="rec-prob">' +
+                   '<div class="rec-tag">The constraint</div>' +
+                   '<blockquote class="rec-quote">'+esc2(p.quote)+'</blockquote>' +
+                   figs +
+                 '</div>' +
+                 ivs +
+                 '<footer class="rec-cite">'+esc2(p.department)+' · ' +
                    esc2(src ? src.title : 'District plan') +
-                   (p.folio ? ', page '+p.folio : '') + '</div>' +
-               '</div>';
+                   (p.folio ? ', page '+p.folio : '') + '</footer>' +
+               '</article>';
       }).join('');
 
-      return '<div class="rec-item rec-' + esc2(r.pattern) + '">' +
+      var nIv = (r.prescription || []).reduce(function(a, p){ return a + p.interventions.length; }, 0);
+      var meta = r.prescription.length
+        ? '<div class="rec-meta">' + r.prescription.length +
+          (r.prescription.length === 1 ? ' constraint' : ' constraints') + ' named' +
+          (nIv ? ' · ' + nIv + (nIv === 1 ? ' intervention' : ' interventions') : '') +
+          ' · from the district plan</div>'
+        : '';
+
+      return '<section class="rec-item rec-' + esc2(r.pattern) + '">' +
                '<div class="rec-head">' +
                  '<span class="rec-badge">'+esc2(r.pattern_label)+'</span>' +
                  '<h4>'+esc2(r.label)+'</h4>' +
                '</div>' +
                '<div class="rec-stats">'+stats+'</div>' +
                '<p class="rec-sentence">'+esc2(d.sentence)+'</p>' +
+               meta +
                (pres ? '<div class="rec-presw">'+pres+'</div>'
                      : '<p class="rec-none">The district plan does not set out named ' +
                        'interventions for this one. The state-wide frame below still applies.</p>') +
-             '</div>';
+             '</section>';
     }).join('');
 
     return '<div class="gva-blk gva-districtblk">' +

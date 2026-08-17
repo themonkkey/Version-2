@@ -103,9 +103,13 @@ SUBSECTOR_TO_PLAYBOOK = {
 # and Horticulture apart from each other (rather than rolling both into `crops`)
 # would hide that Horticulture alone is Kurnool's single largest sector, so the
 # bucket is the unit a reader can act on, not the playbook key.
+# Order here is the CLASSIFICATION order, and it is carried onto each rec as
+# `order`. The summary panel sorts by priority, but inside a sector playbook the
+# reader is reading a classification ("Crops / Horticulture"), so the blocks
+# follow the same sequence as the sector title rather than jumping about.
 BUCKETS = [
-    ("horticulture",  "Horticulture",              ["Horticulture"]),
     ("crops",         "Crops",                     ["Agriculture"]),
+    ("horticulture",  "Horticulture",              ["Horticulture"]),
     ("livestock",     "Livestock",                 ["Live stock"]),
     ("fisheries",     "Fishing & Aquaculture",     ["Fishing & Aquaculture"]),
     ("forestry",      "Forestry & Logging",        ["Forestry & Logging"]),
@@ -523,7 +527,7 @@ def main():
 
     # --- assemble one rec per bucket --------------------------------------
     recs = []
-    for bkey, label, names in BUCKETS:
+    for border, (bkey, label, names) in enumerate(BUCKETS):
         parts = [rows[n] for n in names if n in rows]
         if not parts:
             continue
@@ -551,6 +555,7 @@ def main():
         recs.append({
             "id": "kurnool-" + bkey,
             "bucket": bkey,
+            "order": border,          # classification order, see BUCKETS
             "label": label,
             "sub_sectors": names,
             "pattern": pattern,
