@@ -1302,6 +1302,40 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
    align-items:start so a short B does not stretch to A's height. */
 .fc-inputs{display:grid;gap:clamp(14px,1.8vw,18px);align-items:start;}
 @media(min-width:1040px){ .fc-inputs{grid-template-columns:1fr 1fr;} }
+/* Calculate bar. The primary action is deliberately heavy: it is the one
+   control on this page that produces an answer. */
+.fc-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+  margin-top:clamp(16px,2vw,22px);padding-top:clamp(14px,1.8vw,18px);
+  border-top:1px solid rgba(255,255,255,.12);}
+.fc-go{font:inherit;font-size:14.5px;font-weight:750;letter-spacing:-.01em;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:999px;
+  border:1px solid var(--lime);background:var(--lime);color:#0B2E20;
+  transition:filter .15s,transform .06s;}
+.fc-go:hover{filter:brightness(1.08);}
+.fc-go:active{transform:translateY(1px);}
+.fc-go i{font-size:17px;}
+.fc-clear{font:inherit;font-size:13px;font-weight:650;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;padding:11px 18px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.8);transition:background .15s;}
+.fc-clear:hover{background:rgba(255,255,255,.12);color:#FFF;}
+.fc-state{font-size:12px;font-weight:650;letter-spacing:.02em;}
+.fc-state.ok{color:rgba(198,236,143,.85);}
+.fc-state.stale{color:#F5C98A;}
+/* Empty: results markup exists but is not an answer yet, so it is replaced by
+   the placeholder rather than shown as a row of zeros. */
+.fc-placeholder{display:none;align-items:center;gap:13px;
+  margin-top:clamp(16px,2vw,20px);padding:clamp(18px,2.4vw,26px);
+  border-radius:var(--r);border:1px dashed rgba(255,255,255,.2);
+  background:rgba(0,0,0,.12);color:rgba(255,255,255,.6);font-size:13.5px;line-height:1.55;}
+.fc-placeholder i{font-size:26px;color:rgba(198,236,143,.5);flex:0 0 auto;}
+.fc-placeholder b{color:rgba(255,255,255,.85);font-weight:700;}
+.fc-out.is-empty .fc-placeholder{display:flex;}
+.fc-out.is-empty .fc-outbody{display:none;}
+/* Stale: the numbers no longer match the fields above them. Dimmed and
+   desaturated so they cannot be misread as the current answer. */
+.fc-out.is-stale .fc-outbody{opacity:.42;filter:saturate(.5);
+  transition:opacity .15s,filter .15s;}
 .fc-final{margin-top:clamp(14px,1.8vw,18px);}
 /* Benchmark against the published estimate. Kept visually distinct from the
    working above it: everything above is what the officer entered, this is the
@@ -2778,6 +2812,26 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
         <button class="calc-add" id="fc_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook's defaults</button>
       </details>
 
+      <!-- Press to calculate. The panel used to recompute on every keystroke,
+           which meant a half-typed "1" in a price field briefly showed a real
+           looking answer. Now nothing is claimed until it is asked for, and if
+           an input changes afterwards the result is marked stale rather than
+           silently drifting out of step with the fields above it. -->
+      <div class="fc-actions">
+        <button class="fc-go" id="fc_calc" type="button">
+          <i class="ti ti-equal"></i> Calculate GVA</button>
+        <button class="fc-clear" id="fc_clearall" type="button">
+          <i class="ti ti-eraser"></i> Clear entries</button>
+        <span class="fc-state" id="fc_state" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="fc-out is-empty" id="fc_out">
+      <div class="fc-placeholder">
+        <i class="ti ti-calculator"></i>
+        <div><b>No result yet.</b> Fill in production and price above, then press
+          Calculate GVA.</div>
+      </div>
+      <div class="fc-outbody">
       <div class="fc-results">
         <div class="calc-result">
           <h5 class="fc-rh">Gross Value of Output</h5>
@@ -2820,6 +2874,8 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
         </div>
         <div class="fc-bench-body" id="fc_bench_body" hidden></div>
       </div>
+      </div><!-- /.fc-outbody -->
+      </div><!-- /.fc-out -->
     </div>
   </div></section>
 </div>
@@ -5688,7 +5744,12 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
           var el = document.getElementById('fr_' + k);
           if(el) el.value = FISH_DEFAULTS[k];
         });
-        fisheries();
+        /* Restoring the defaults changes an input to the calculation, so it
+           goes through the same stale path as any other edit rather than
+           quietly recomputing behind a result the user has not re-asked for.
+           The root 'input' listener does not fire for a programmatic value
+           change, so it is marked here. */
+        if(window.__fcMarkStale) window.__fcMarkStale();
       });
     }
 
@@ -5893,12 +5954,87 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
           console.warn('fisheries benchmark unavailable', err);
         });
     }
-    if(benchSel){ benchLoad(); benchSel.addEventListener('change', function(){ recalc(); }); }
+    if(benchSel){
+      benchLoad();
+      // Changing the comparison district only re-renders the comparison; it is
+      // not an input to the calculation, so it must not clear a result.
+      benchSel.addEventListener('change', function(){
+        if(calculated) benchRender(lastGva);
+      });
+    }
 
-    // ---- recompute on any input --------------------------------------
-    function recalc(){ benchRender(fisheries()); }
-    root.addEventListener('input', recalc);
-    root.addEventListener('change', recalc);
+    /* ---- press to calculate -------------------------------------------
+       `calculated` gates everything: before the first press there is no result
+       to show, and after an input changes the result on screen no longer
+       matches the fields, so it is dimmed and labelled rather than left to be
+       read as current. */
+    var outWrap = document.getElementById('fc_out');
+    var stateEl = document.getElementById('fc_state');
+    var calcBtn = document.getElementById('fc_calc');
+    var clearBtn = document.getElementById('fc_clearall');
+    var calculated = false, lastGva = 0;
+
+    function recalc(){
+      lastGva = fisheries();
+      benchRender(lastGva);
+    }
+
+    function doCalculate(){
+      recalc();
+      calculated = true;
+      if(outWrap) outWrap.classList.remove('is-empty', 'is-stale');
+      if(stateEl){ stateEl.textContent = 'Calculated'; stateEl.className = 'fc-state ok'; }
+      /* Bring the answer into view when it is below the fold, without the
+         overshoot a bare scrollIntoView causes on this page. */
+      var ans = document.querySelector('#fc_out .fc-final');
+      if(ans){
+        var r = ans.getBoundingClientRect();
+        if(r.top > window.innerHeight - 120 || r.bottom < 0){
+          window.scrollBy({top: r.top - 160, behavior: 'smooth'});
+        }
+      }
+    }
+
+    function markStale(){
+      if(!calculated) return;
+      if(outWrap) outWrap.classList.add('is-stale');
+      if(stateEl){
+        stateEl.textContent = 'Inputs changed since this was calculated';
+        stateEl.className = 'fc-state stale';
+      }
+    }
+
+    if(calcBtn) calcBtn.addEventListener('click', doCalculate);
+    /* The ratios reset runs earlier in this IIFE, before markStale exists, so
+       it reaches it through here rather than by reordering the setup. */
+    window.__fcMarkStale = markStale;
+
+    if(clearBtn) clearBtn.addEventListener('click', function(){
+      // Entries only. The assumption ratios have their own reset, because they
+      // are the workbook's defaults rather than something the officer typed.
+      root.querySelectorAll('#fc_species input, #fc_proc input').forEach(function(el){
+        el.value = el.id.indexOf('fpp_') === 0 ? '' : 0;
+      });
+      var fisim = document.getElementById('fc_fisim');
+      if(fisim) fisim.value = 0;
+      calculated = false; lastGva = 0;
+      if(outWrap) outWrap.classList.add('is-empty');
+      if(outWrap) outWrap.classList.remove('is-stale');
+      if(stateEl){ stateEl.textContent = ''; stateEl.className = 'fc-state'; }
+    });
+
+    root.addEventListener('input', markStale);
+    root.addEventListener('change', markStale);
+    // Enter anywhere in the form calculates, as it would in a spreadsheet.
+    root.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' && e.target.tagName === 'INPUT'){
+        e.preventDefault();
+        doCalculate();
+      }
+    });
+
+    // Populate the result nodes once so the markup is never empty behind the
+    // placeholder, but leave the panel in its empty state.
     recalc();
   })();
 
