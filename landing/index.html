@@ -1435,10 +1435,16 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   border-top:0;border-radius:0 0 var(--r) var(--r);background:rgba(0,0,0,.14);}
 @media (max-width:560px){ .rec-stats{grid-template-columns:repeat(2,minmax(0,1fr));} }
 
-/* Orientation ahead of the method and leverage panels. */
+/* Orientation ahead of the method and leverage panels. The copy fills the full
+   width of the panel rather than stopping at a measure and leaving the right
+   third empty; past 1100px it splits into two columns so filling the box does
+   not also stretch the lines past a readable length. */
 .gva-lead{border-color:rgba(198,236,143,.32);margin-bottom:clamp(18px,2.4vw,28px);}
-.gva-lead p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.8);margin:0;max-width:88ch;}
+.gva-lead p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.8);margin:0;}
 .gva-lead p b{color:#C6EC8F;font-weight:700;}
+@media (min-width:1100px){
+  .gva-lead p{column-count:2;column-gap:clamp(26px,3vw,46px);}
+}
 /* Case studies tab: soft note when the filtered district has no tagged studies. */
 .cases-note{display:flex;align-items:center;gap:9px;font-size:13.5px;line-height:1.5;
   color:rgba(255,255,255,.80);margin:0 0 18px;padding:11px 16px;border-radius:var(--r);
