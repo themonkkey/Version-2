@@ -1435,17 +1435,10 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   border-top:0;border-radius:0 0 var(--r) var(--r);background:rgba(0,0,0,.14);}
 @media (max-width:560px){ .rec-stats{grid-template-columns:repeat(2,minmax(0,1fr));} }
 
-.gva-distcard{border-color:rgba(198,236,143,.45);margin-bottom:clamp(18px,2.4vw,28px);}
-.gva-distcard p{font-size:13.8px;line-height:1.55;color:rgba(255,255,255,.82);margin:0 0 14px;}
-.gva-distcard .gd-links{display:flex;flex-wrap:wrap;gap:10px;}
-.gva-distcard .gd-links a{display:inline-flex;align-items:center;gap:8px;
-  font-size:13.5px;font-weight:600;color:#E4F6C8;text-decoration:none;
-  padding:9px 14px;border-radius:999px;border:1px solid rgba(198,236,143,.45);
-  background:rgba(198,236,143,.14);transition:background .15s;}
-.gva-distcard .gd-links a:hover{background:rgba(198,236,143,.24);}
-.gva-distcard .gd-links .muted{display:inline-flex;align-items:center;gap:8px;
-  font-size:13.5px;color:rgba(255,255,255,.55);padding:9px 14px;border-radius:999px;
-  border:1px dashed rgba(255,255,255,.25);}
+/* Orientation ahead of the method and leverage panels. */
+.gva-lead{border-color:rgba(198,236,143,.32);margin-bottom:clamp(18px,2.4vw,28px);}
+.gva-lead p{font-size:14px;line-height:1.65;color:rgba(255,255,255,.8);margin:0;max-width:88ch;}
+.gva-lead p b{color:#C6EC8F;font-weight:700;}
 /* Case studies tab: soft note when the filtered district has no tagged studies. */
 .cases-note{display:flex;align-items:center;gap:9px;font-size:13.5px;line-height:1.5;
   color:rgba(255,255,255,.80);margin:0 0 18px;padding:11px 16px;border-radius:var(--r);
@@ -4334,6 +4327,23 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
          }).join('')+'</ol></div>';
     two += '</div>';
 
+    /* A short orientation ahead of the two panels. It replaced a card that
+       linked out to the district's plan PDF: sending a reader off the page
+       before they had read anything was the wrong first move, and the plan's
+       contents already surface inside each sector. */
+    h += '<div class="gva-panel gva-lead">' +
+           '<div class="gva-kicker">Improving GVA</div>' +
+           '<h3>Where to start</h3>' +
+           '<p>Gross Value Added is the part of a district economy an administration can ' +
+           'actually move. The two panels below set out how to go about it. ' +
+           '<b>' + esc2(p.method.kicker) + '</b> walks through reading a district in four ' +
+           'steps, from its headline numbers to the sectors where it holds an edge over the ' +
+           'state. <b>' + esc2(p.leverage.kicker) + '</b> makes the case for why small, timely ' +
+           'levers compound into measurable growth. Read both, then open a sector in the ' +
+           'classification underneath: with a district selected it opens on where that ' +
+           'district stands and the interventions its own plan names.</p>' +
+         '</div>';
+
     // method + leverage first — they explain what the accordion below is for
     h += two;
 
@@ -5386,13 +5396,12 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     }
   }
 
-  // Improving GVA: the playbooks are the DDP Toolbox — state-wide by design —
-  // so the district scope comes from leading with the district's own Vision &
-  // Action Plan, pulled from the document catalogue.
+  /* Improving GVA: the playbooks are the DDP Toolbox, state-wide by design, so
+     the district scope lives inside the sector detail rather than in a card at
+     the top. This now only has to keep an open detail box in step with the
+     district selection. */
   function applyGvaFilter(){
     if(!gvaLoaded || !gvaBody) return;
-    var old = document.getElementById('gvaDistCard');
-    if(old) old.remove();
     /* A detail box left open belongs to the district we just navigated away
        from. Rebuild it for the sector that was showing, so the reader keeps
        their place instead of the box vanishing under them. */
@@ -5403,29 +5412,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       var r = card && card.querySelector('.gva-row');
       if(r) r.click();
     }
-    if(!DISTF) return;
-    var want = DISTF;                     // guard against a filter change mid-fetch
-    load().then(function(){
-      if(!loaded || DISTF !== want) return;
-      var d = (DATA.districts || []).find(function(x){ return normName(x.name) === normName(want); });
-      if(!d || !d.plans || !d.plans.length) return;
-      var cur = document.getElementById('gvaDistCard');
-      if(cur) cur.remove();
-      var links = d.plans.map(function(p){
-        var url = linkFor(p, d.name, null);
-        if(url) return '<a href="' + esc(url) + '" target="_blank" rel="noopener">' +
-          '<i class="ti ti-book-2"></i>' + esc(p.title) + ' <i class="ti ti-external-link"></i></a>';
-        return '<span class="muted" title="Not yet linked"><i class="ti ti-book-2"></i>' + esc(p.title) + '</span>';
-      }).join('');
-      gvaBody.insertAdjacentHTML('afterbegin',
-        '<div class="gva-panel gva-distcard" id="gvaDistCard">' +
-          '<div class="gva-kicker">Start from the district’s own plan</div>' +
-          '<h3>' + esc(d.name) + ' — Vision &amp; Action Plan</h3>' +
-          '<p>The sector playbooks below are the DDP Toolbox — the same frameworks for every district. ' +
-          'Read them against the priorities in ' + esc(d.name) + '’s own plan.</p>' +
-          '<div class="gd-links">' + links + '</div>' +
-        '</div>');
-    });
   }
 
   // Case studies: re-render from the cached manifest — the district's tagged
