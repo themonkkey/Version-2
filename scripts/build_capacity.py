@@ -339,14 +339,114 @@ def split_reports(pages):
     reports = []
     for n, (i, fmt) in enumerate(starts):
         end = starts[n + 1][0] if n + 1 < len(starts) else len(pages)
-        reports.append({
+        rep = {
             "fmt": fmt,
             "page_from": i + 1,        # 1-indexed, matches pdfimages -p
             "page_to": end,
             "text": "\n".join(pages[i:end]),
             "lines": [l for p in pages[i:end] for l in p.split("\n")],
-        })
+        }
+        # A format-B report is a stack of independent district CARDS, not one
+        # session: "Day 1 of District Level Training", "Day 2 of District Level
+        # Training" and "Day 1 of Constituency Level Training at Visakhapatnam
+        # East" all sit under the same banner. Read as one report they produced a
+        # single card carrying 16 photos, four merged titles and one card's
+        # participant count spread over all four, so the report is split here.
+        reports.extend(split_b_cards(rep, pages) if fmt == "B" else [rep])
     return reports
+
+
+# A card's own title row. "Summary" and "Key Findings" are the two names the
+# template gives the narrative cell; everything else is a one-or-two-line cell.
+B_LABELS = ["Constituencies Covered", "Number of participants", "Sector Focus",
+            "Key Officials", "Key Findings", "Constituencies", "Activity",
+            "Method", "Summary", "Covered", "Field", "Details"]
+RE_B_LABEL_INLINE = re.compile(
+    r"^(\s{0,8})(" + "|".join(re.escape(f) for f in B_LABELS) + r")\s{2,}(\S.*)$", re.I)
+RE_B_LABEL_BARE = re.compile(
+    r"^(\s{0,8})(" + "|".join(re.escape(f) for f in B_LABELS) + r")\s*$", re.I)
+# Cells that hold one or two lines. Anything longer that is not a bullet belongs
+# to Key Officials, whose designation list is what actually runs on.
+B_SHORT_FIELDS = {"activity", "method", "sector focus", "constituencies covered",
+                  "number of participants"}
+B_FINDING_FIELDS = {"key findings", "summary"}
+# "Note 2: Day 7 (23/06/2026) will cover ..." closes a daily report. The pages
+# behind it were lifted from the NEXT day's report, whose banner page did not
+# name this district and so is not in this PDF — dating those cards from the
+# banner above them is what stamped Visakhapatnam's 22-24 June training 20 June.
+RE_B_FWD_NOTE = re.compile(r"^\s*Note\s*\d*\s*:\s*Day\s*\d+\s*\([\d/]+\)\s*will cover", re.I)
+
+
+def b_districts_covered(head):
+    """The "N Districts Covered" figure off a format-B banner, or None.
+
+    The banner sets the count beside a stack of caption lines, so the digit lands
+    on its own line a few rows above the caption rather than next to it.
+    """
+    lines = head.split("\n")
+    for i, l in enumerate(lines):
+        if re.match(r"^\s*Districts Covered\s*$", l, re.I):
+            for j in range(i - 1, max(-1, i - 7), -1):
+                m = re.match(r"^\s{0,40}(\d{1,2})(?:\s{2,}\S|\s*$)", lines[j])
+                if m:
+                    return int(m.group(1))
+            return None
+    return None
+
+
+def split_b_cards(rep, pages):
+    """One report per district card inside a format-B report.
+
+    A card opens at its "District N <NAME>" row and runs to the next one. Each
+    keeps the page and the position of that row, which is what lets the photo
+    strip printed inside the card be tied to it rather than to the whole day.
+
+    The banner's date and day only carry as far as the report the banner opens.
+    Three things say the pages behind have been lifted from a LATER daily report
+    whose own banner page is absent from this PDF: a block number that does not
+    advance, a block number past the banner's own "N Districts Covered", or a
+    "Day N (dd/mm/yyyy) will cover" note closing the day. Past any of those the
+    card is left undated rather than stamped with the banner's date.
+    """
+    head = "\n".join(pages[rep["page_from"] - 1].split("\n")[:14])
+    covered = b_districts_covered(head)
+    cards, cur = [], None
+    scope, prev_no, note_seen = True, 0, False
+    for pno in range(rep["page_from"], rep["page_to"] + 1):
+        for line in pages[pno - 1].split("\n"):
+            m = RE_DISTRICT_ROW.match(line)
+            if m:
+                block_no = int(m.group(1))
+                if note_seen or block_no <= prev_no or (covered and block_no > covered):
+                    scope = False
+                prev_no, note_seen = block_no, False
+                cur = {
+                    "fmt": "B",
+                    "page_from": pno, "page_to": rep["page_to"],
+                    "seg_from": rep["page_from"],
+                    "district": m.group(2).strip(),
+                    # (page, nth district row on that page) — the same key the
+                    # image pass derives from the rendered page geometry.
+                    "card_key": (pno, sum(1 for c in cards if c["card_key"][0] == pno)),
+                    "banner": head if scope else "",
+                    "lines": [],
+                }
+                if cards:
+                    cards[-1]["page_to"] = pno
+                cards.append(cur)
+                continue
+            if RE_B_FWD_NOTE.match(line):
+                note_seen = True
+            if cur is not None:
+                cur["lines"].append(line)
+    if not cards:
+        return [rep]
+    # The banner page ahead of the first card stays with it so no page of the
+    # report falls outside every report's range.
+    cards[0]["page_from"] = rep["page_from"]
+    for c in cards:
+        c["text"] = "\n".join(c["lines"])
+    return cards
 
 
 # -------------------------------------------------------------------------
@@ -647,9 +747,230 @@ def parse_report_a(rep, display_name):
     }
 
 
+def b_split_line(raw):
+    """(label, value, line-with-the-label-blanked) for one line of a card table.
+
+    Blanking rather than dropping the label keeps every value line at its
+    original column, which is what the bullet and paragraph logic reads. It is
+    also what stops a row label from surfacing as prose: the labels are printed
+    VERTICALLY CENTRED in their cell, so "Key Findings" lands beside the middle
+    bullet and "Field Details" beside the first one — read as text they became
+    highlight headings ("Field Details", "Method One-to-one in").
+    """
+    if not raw.strip():
+        return None, "", raw
+    m = RE_B_LABEL_INLINE.match(raw)
+    if m:
+        return m.group(2).lower(), clean(m.group(3)), " " * m.end(2) + raw[m.end(2):]
+    m = RE_B_LABEL_BARE.match(raw)
+    if m:
+        return m.group(2).lower(), "", " " * len(raw)
+    return None, clean(raw), raw
+
+
+def b_findings_start(parsed):
+    """Index where the card's narrative cell begins.
+
+    The cell is not found by its label — the label is centred among the bullets,
+    so it sits well inside the text it names. The first bullet is the anchor; the
+    run it belongs to is walked back to its start, and the paragraph above it is
+    taken too when that paragraph is prose rather than the tail of the officials
+    list (the lead sentence of Key Findings is regularly unbulleted).
+    """
+    # A bare label line comes back blanked, so emptiness alone cannot say whether
+    # a line was blank in the source — and a chunk walk that stopped at a blanked
+    # "Key Officials" line read the second half of the officials list as prose and
+    # filed it as a highlight ("Coordinators and others were present.").
+    def filled(p):
+        return p[0] is not None or bool(p[2].strip())
+
+    start = None
+    for i, (lab, val, blank) in enumerate(parsed):
+        if RE_BULLET.match(blank) or RE_NUMBULLET.match(blank):
+            start = i
+            break
+    if start is None:
+        return len(parsed)
+    while start > 0 and filled(parsed[start - 1]) and parsed[start - 1][0] is None:
+        start -= 1
+    while True:
+        j = start - 1
+        while j >= 0 and not filled(parsed[j]):
+            j -= 1
+        if j < 0:
+            return start
+        k, chunk, labels = j, [], []
+        while k >= 0 and filled(parsed[k]):
+            if parsed[k][0] is not None:
+                labels.append(parsed[k][0])
+            chunk.insert(0, parsed[k][1])
+            k -= 1
+        if labels and not set(labels) <= B_FINDING_FIELDS:
+            return start           # Key Officials or a short row, not narrative
+        txt = " ".join(x for x in chunk if x).strip()
+        # A designation list runs on comma after comma and never closes a
+        # sentence; narrative does. Anything else short and comma-free is a
+        # sub-heading of the cell ("Day 1 of district presentation").
+        if not labels and not (txt and (txt.endswith(".") or ". " in txt
+                                        or (len(txt) < 60 and "," not in txt))):
+            return start
+        start = k + 1
+
+
+def b_card_fields(lines):
+    """({label: value}, narrative lines) for one format-B district card.
+
+    Values are matched to labels by the CENTRING of the label in its cell rather
+    than by reading order: a bare label claims as many lines below it as stand
+    unclaimed above it. Reading top-to-bottom instead put the officials list
+    under "Method" and left the method sentence dangling.
+    """
+    parsed = [b_split_line(l) for l in lines]
+    cut = b_findings_start(parsed)
+    fields, pending, cur, need = OrderedDict(), [], None, 0
+    for lab, val, blank in parsed[:cut]:
+        if not blank.strip() and lab is None:
+            continue
+        if lab in ("field", "details"):
+            pending, cur, need = [], None, 0
+            continue
+        if lab is None:
+            if cur and need > 0:
+                fields[cur].append(val)
+                need -= 1
+            else:
+                pending.append(val)
+            continue
+        # "Constituencies" wraps onto a second label line reading "Covered"; on
+        # its own it is not a field, it is the rest of the one above it.
+        if lab == "covered":
+            lab = "constituencies covered"
+        elif lab == "constituencies":
+            lab = "constituencies covered"
+        if lab in B_FINDING_FIELDS:
+            continue
+        n = len(pending)
+        fields.setdefault(lab, [])
+        had = bool(fields[lab])
+        fields[lab].extend(pending)
+        pending = []
+        if val:
+            fields[lab].append(val)
+        cur = lab
+        if lab not in B_SHORT_FIELDS:
+            need = 999                     # the officials list takes the rest
+        elif had and not val:
+            need = 0                       # a continuation label ("Covered")
+        else:
+            need = n if n else (0 if val else 2)
+    if pending and cur:
+        fields[cur].extend(pending)
+    return ({k: clean(" ".join(v)) for k, v in fields.items() if " ".join(v).strip()},
+            [p[2] for p in parsed[cut:]])
+
+
+# Row labels are not sub-headings. They reach the highlight builder whenever a
+# centred label shares a line with the text it names, and rendered they read as
+# section titles the report never wrote ("Covered", "Sector Focus").
+RE_B_NOT_HEAD = re.compile(
+    r"^\s*(" + "|".join(re.escape(f) for f in B_LABELS) + r")\b", re.I)
+# "2nd – 3rd July – District Profiling" / "4th July – Constituency Profiling
+# (4 Constituencies)" — the profiling cards date their two halves this way, and a
+# heading test built for title-case names drops anything opening with a digit.
+RE_B_DATE_HEAD = re.compile(
+    r"^\d{1,2}(?:st|nd|rd|th)?\s*[–—-]?\s*(?:\d{1,2}(?:st|nd|rd|th)?)?\s*"
+    r"(January|February|March|April|May|June|July|August|September|October|November|December)"
+    r"\b.*[–—-]\s*\S", re.I)
+
+
+def b_head_like(s):
+    if RE_B_NOT_HEAD.match(s):
+        return False
+    return bool(RE_B_DATE_HEAD.match(s)) or heading_like(s)
+
+
+def parse_highlights_b(lines):
+    """[{head, points}] for a card's narrative cell.
+
+    Same shape as the format-A/C reader, but the heading test also admits the
+    dated sub-sections these cards use, and a heading is only opened at the start
+    of a paragraph so a wrapped sentence cannot split into a fake one.
+    """
+    paras, buf, bulleted, marker = [], [], False, 0
+
+    def flush():
+        if buf:
+            paras.append(("• " if bulleted else "") + " ".join(buf))
+        return [], False
+
+    for l in lines:
+        s = l.strip()
+        if not s:
+            buf, bulleted = flush()
+            continue
+        m = RE_BULLET.match(l) or RE_NUMBULLET.match(l)
+        if m:
+            buf, bulleted = flush()
+            buf, bulleted = [clean(m.group(1))], True
+            marker = len(l) - len(l.lstrip())
+            continue
+        indent = len(l) - len(l.lstrip())
+        # These cards set a constituency's or a sector's name between two bullets
+        # with no blank line around it, so waiting for a paragraph break never
+        # sees it: "Vishakapatnam South", "Gajuwaka" and "Seethammadara" were all
+        # swallowed into the bullet above them. A line OUTDENTED past the bullet
+        # marker is not that bullet's continuation, it is a new sub-heading.
+        if (not buf or (bulleted and indent < marker)) and b_head_like(s):
+            buf, bulleted = flush()
+            paras.append(s)
+            continue
+        buf.append(s)
+    flush()
+
+    groups, cur = [], None
+    for p in stitch(paras):
+        mb = RE_BULLET.match(p) or RE_NUMBULLET.match(p)
+        txt = clean(mb.group(1)) if mb else clean(p)
+        if not mb and b_head_like(txt):
+            # Two heading lines in a row are one heading split over two lines —
+            # "4th July – Constituency Profiling (4 Constituencies)" names the
+            # day and "Gannavaram, Gudivada, Pedana and Machilipatnam" names the
+            # constituencies. Opening a second group threw the first one away,
+            # because a group with no bullets under it is dropped.
+            if cur is not None and cur["head"] and not cur["points"]:
+                cur["head"] = cur["head"] + ": " + txt
+                continue
+            cur = {"head": txt, "points": []}
+            groups.append(cur)
+            continue
+        if len(txt) <= 15:
+            continue
+        if cur is None:
+            cur = {"head": "", "points": []}
+            groups.append(cur)
+        cur["points"].append(txt)
+    return [g for g in groups if g["points"]]
+
+
+def b_own_card(rep, display_name):
+    """Does this format-B card's "District N <NAME>" row name this district?"""
+    aliases = [display_name.upper()] + [a.upper() for a in NAME_ALIASES.get(display_name, [])]
+    name = (rep.get("district") or "").upper()
+    return bool(name) and any(name.startswith(a) or a.startswith(name) for a in aliases)
+
+
 def parse_report_b(rep, display_name):
-    """Format B carries several districts; keep only this PDF's own block."""
-    head = "\n".join(rep["text"].split("\n")[:8])
+    """One session for ONE format-B card, when the card is this district's.
+
+    Every card in the file becomes a report; the ones naming another district
+    return None here. Participants, photos, level, title and date are all read
+    from the card itself, so a count stated by the district-training card can no
+    longer attach to the constituency-training card filed beneath it.
+    """
+    if not b_own_card(rep, display_name):
+        return None
+
+    head = rep.get("banner") or ""
     m = RE_SUBHDR_B.search(head)
     day = int(m.group("day")) if m else None
     iso, pretty = parse_date(m.group("rest") if m else head)
@@ -664,37 +985,39 @@ def parse_report_b(rep, display_name):
     else:
         focus = ""
 
-    aliases = [display_name.upper()] + NAME_ALIASES.get(display_name, [])
-    # Slice out the "District N <NAME>" block belonging to this district.
-    block, taking = [], False
-    for l in rep["lines"]:
-        dm = RE_DISTRICT_ROW.match(l)
-        if dm:
-            name = dm.group(2).strip().upper()
-            taking = any(name.startswith(a) or a.startswith(name) for a in aliases)
-            continue
-        if taking:
-            block.append(l)
-    if not block:
+    fields, body = b_card_fields(rep["lines"])
+    if not fields and not body:
         return None
+    count, roles = parse_participants(
+        {"Key Officials": fields.get("key officials", ""),
+         "Number Of Participants": fields.get("number of participants", "")},
+        "\n".join(rep["lines"]))
+    highlights = parse_highlights_b(body)
 
-    fields = parse_fields(block)
-    count, roles = parse_participants(fields, "\n".join(block))
-    # The value column of the last field row runs on into the bullets, so the
-    # bullets are read from the whole block rather than from a labelled section.
-    highlights = parse_highlights(block)
-    coverage = []
-    kind = focus or fields.get("Activity") or "District Profiling"
+    activity = fields.get("activity", "")
+    # A card with no Activity row is a profiling card, and its own table says
+    # which kind: a "Constituencies Covered" row means the day was spent on
+    # constituencies, so it is not filed under the district-profiling title.
+    default_kind = ("Constituency Profiling" if fields.get("constituencies covered")
+                    else "District Profiling")
+    kind = activity or focus or default_kind
     kind = clean(re.sub(r"\s+", " ", kind))[:70].strip(" -–—:")
+    # The banner names everything the DAY covered ("Constituency Profiling and
+    # District-Level Training"), so reading the level off it filed the district
+    # training under constituency. The card's own Activity decides; only a card
+    # that states none falls back to what the banner and its table rows say.
+    lvl_src = activity or (
+        "Constituency Profiling" if fields.get("constituencies covered") else
+        focus + " " + fields.get("sector focus", ""))
     return {
         "kind": kind.title() if kind.isupper() or kind.islower() else kind,
-        "level": level_for(focus + " " + (fields.get("Activity") or "")),
+        "level": level_for(lvl_src),
         "day": day, "date": iso, "date_pretty": pretty,
-        "format": clean(fields.get("Method") or fields.get("Activity") or ""),
-        "participants": count, "roles": roles or clean(fields.get("Key Officials", "")),
-        "constituencies": "",
-        "coverage": coverage, "highlights": highlights, "note": None,
-        "sector_focus": clean(fields.get("Sector Focus", "")),
+        "format": clean(fields.get("method") or activity or ""),
+        "participants": count, "roles": roles or clean(fields.get("key officials", "")),
+        "constituencies": clean(fields.get("constituencies covered", "")),
+        "coverage": [], "highlights": highlights, "note": None,
+        "sector_focus": clean(fields.get("sector focus", "")),
     }
 
 
@@ -857,6 +1180,46 @@ def enhance_for_lightbox(src, dst):
     return bool(cv2.imwrite(dst, out, [int(cv2.IMWRITE_JPEG_QUALITY), 86]))
 
 
+def b_page_geometry(pdf_path):
+    """{page: {"headers": [y], "images": [y]}} in page order, or None.
+
+    pdftotext knows WHICH page a photo is on and nothing more, and a format-B
+    page routinely carries two districts' cards, so a page range attributed every
+    photo on the page to the first card on it. The photo strip is printed INSIDE
+    a card, directly under its "District N <NAME>" bar, so the vertical position
+    of each is what actually says whose photo it is.
+
+    The reader is pdftohtml because it reports both in one pass and in the same
+    coordinate space; it writes the images out beside its XML, so it runs into a
+    scratch directory that is thrown away.
+    """
+    tmp = os.path.join(IMG_ROOT, "_geom")
+    shutil.rmtree(tmp, ignore_errors=True)
+    os.makedirs(tmp, exist_ok=True)
+    try:
+        r = run(["pdftohtml", "-xml", "-q", pdf_path, os.path.join(tmp, "p")])
+        xml_path = os.path.join(tmp, "p.xml")
+        if r.returncode != 0 or not os.path.exists(xml_path):
+            return None
+        with open(xml_path, encoding="utf-8", errors="replace") as f:
+            xml = f.read()
+    except OSError:
+        return None
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    out = {}
+    for pm in re.finditer(r'<page number="(\d+)"[^>]*>(.*?)</page>', xml, re.S):
+        body = pm.group(2)
+        heads = [int(t.group(1)) for t in
+                 re.finditer(r'<text top="(-?\d+)"[^>]*>\s*(?:<[^>]+>)?\s*District\s+\d+\b',
+                             body)]
+        imgs = [int(i.group(1)) for i in
+                re.finditer(r'<image top="(-?\d+)"', body)]
+        out[int(pm.group(1))] = {"headers": sorted(heads), "images": imgs}
+    return out
+
+
 def extract_images(pdf_path, slug, display_name, reports, write=True):
     """Lift the embedded JPEGs and tie each to the report whose pages it sits on."""
     outdir = os.path.join(IMG_ROOT, slug)
@@ -890,13 +1253,71 @@ def extract_images(pdf_path, slug, display_name, reports, write=True):
                 return i
         return None
 
-    photos, seq = [], 0
+    # Format-B cards are placed by geometry; every other report keeps the page
+    # range, because its photos sit under a "TRAINING GLIMPSES" heading that owns
+    # the whole page and there is nothing on the page to confuse them with.
+    cards = {r["card_key"]: i for i, r in enumerate(reports) if r.get("card_key")}
+    card_pages = {}
+    for k in cards:
+        card_pages[k[0]] = card_pages.get(k[0], 0) + 1
+    seg_starts = {r["seg_from"] for r in reports if r.get("seg_from")}
+    geom = b_page_geometry(pdf_path) if cards else None
+    # Position within its page, over the UNFILTERED listing: the geometry reader
+    # and pdfimages both walk the page in drawing order, so the nth image of a
+    # page in one is the nth in the other — but only if the small logos are still
+    # in the count on both sides.
+    nth_on_page, per_page = [], {}
     for page, num, w, h in rows:
+        nth_on_page.append(per_page.get(page, 0))
+        per_page[page] = per_page.get(page, 0) + 1
+
+    def b_report_for(page, y):
+        """The card whose header bar the photo sits under, or None if masked."""
+        heads = geom[page]["headers"]
+        above = [h for h in heads if h < y]
+        if above:
+            return cards.get((page, len(above) - 1))
+        # Nothing above it on this page. On a page that OPENS a report that means
+        # the photo is in the band the compiler covered over when it lifted the
+        # page — Kakinada's 16 and 17 June pages carry a hidden strip that is not
+        # printed at all, and counting it gave undated cards three photos each.
+        # Anywhere else the card simply started on the page before.
+        if page in seg_starts:
+            return None
+        prior = [k for k in cards if k[0] < page]
+        return cards[max(prior)] if prior else None
+
+    def photo_report(page, idx):
+        """Which report owns the image that is `idx`-th on `page`."""
+        if geom and card_pages.get(page) and page in geom:
+            g = geom[page]
+            # The two readers disagree on how many images the page holds only
+            # when one of them counts a mask or a stencil the other does not; a
+            # guessed pairing would move a photo to the wrong card, so the page
+            # falls back to the range in that case.
+            if (len(g["images"]) == per_page[page]
+                    and len(g["headers"]) == card_pages[page]):
+                return b_report_for(page, g["images"][idx])
+        return report_for(page)
+
+    # A format-B page carries the cards of two or three districts side by side, so
+    # most of the strips in one district's PDF are another district's photos, and
+    # a report page can carry a covered-over strip that is not printed at all.
+    # Neither is this district's, and lifting them made the district's photo count
+    # nearly twice what its sessions could show.
+    foreign = {i for i, r in enumerate(reports)
+               if r.get("card_key") and not b_own_card(r, display_name)}
+
+    photos, seq = [], 0
+    for row_i, (page, num, w, h) in enumerate(rows):
         # Logos, rules and spacer slivers are not session photographs.
         if w < 90 or h < 70 or (w * h) < 12000:
             continue
         ar = w / float(h)
         if ar > 4.0 or ar < 0.35:
+            continue
+        ri = photo_report(page, nth_on_page[row_i])
+        if cards and (ri is None or ri in foreign):
             continue
         seq += 1
         name = "%s-%02d.jpg" % (slug, seq)
@@ -912,7 +1333,6 @@ def extract_images(pdf_path, slug, display_name, reports, write=True):
                     continue
             else:
                 shutil.move(src, os.path.join(outdir, name))
-        ri = report_for(page)
         rec = {"file": "assets/capacity/%s/%s" % (slug, name),
                "w": w, "h": h, "page": page, "report": ri}
         if write and enhance_for_lightbox(os.path.join(outdir, name),
