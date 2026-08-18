@@ -409,7 +409,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 
 /* Four cards only tile symmetrically as 4, 2x2 or 1 — auto-fit could settle on
    three columns and strand the fourth card alone on its own row. */
-.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 @media(max-width:1100px){.feature-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.feature-grid{grid-template-columns:1fr;}}
 
@@ -429,6 +429,66 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .vstage .sec-cta .btn-primary:hover{
   box-shadow:0 16px 46px rgba(198,255,106,.44), 0 0 0 9px rgba(198,255,106,.13),
              inset 0 1px 0 rgba(255,255,255,.5);}
+/* The cards route into the six surfaces now, so they are buttons. Reset the
+   UA button styling before the card styling lands on top. Sized down from the
+   four-card row they replaced: six of these at the old scale filled a screen. */
+/* ---------- About: one screen, no scroll ---------- */
+/* Section padding and heading gap are sized off the viewport HEIGHT here, not
+   just its width, because the whole point of this page is that it does not
+   scroll. At 1400x880 it lands at 880 exactly. */
+#page-about .section{padding-top:clamp(24px,min(6vw,5vh),56px);
+  padding-bottom:clamp(24px,min(6vw,5vh),56px);}
+#page-about .sec-head{margin-bottom:clamp(10px,min(3.5vw,2.2vh),30px);}
+#page-about .sec-head h2{margin-bottom:0;font-size:clamp(26px,min(4vw,5.2vh),44px);}
+#page-about .sec-head .kick{margin-bottom:clamp(4px,.8vh,10px);}
+.ab-grid{display:grid;gap:clamp(8px,1.3vh,12px);grid-template-columns:1fr;}
+@media(min-width:1000px){
+  .ab-grid{grid-template-columns:repeat(3,1fr);}
+  .ab-lead{grid-column:1/-1;display:flex;align-items:center;gap:clamp(20px,3vw,40px);}
+  .ab-lead p{flex:1 1 auto;margin:0;}
+  .ab-wide{grid-column:span 2;}
+  .ab-two{columns:2;column-gap:26px;}
+  .ab-two li{break-inside:avoid;}
+}
+.ab-lead p{font-size:clamp(12.5px,1.7vh,14.5px);line-height:1.55;
+  color:rgba(255,255,255,.88);margin:0 0 12px;}
+.ab-cta{display:flex;flex-wrap:wrap;gap:10px;flex:0 0 auto;}
+ /* --glass and --glass-border are the LIGHT theme's tokens; used raw here they
+   rendered as pale panels on the dark video stage. These are the same values
+   .vstage .fcard uses, written out rather than inherited. */
+.ab-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);
+  border-radius:var(--r);padding:clamp(11px,1.7vh,15px) clamp(13px,1.5vw,17px);
+  box-shadow:0 16px 44px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.28);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);}
+.ab-box h3{display:flex;align-items:center;gap:8px;margin:0 0 9px;
+  font-family:inherit;font-size:clamp(10.5px,1.5vh,12px);font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--lime);}
+.ab-box h3 i{font-size:clamp(14px,1.9vh,16px);}
+.ab-box p{margin:0;font-size:clamp(11.6px,1.55vh,12.8px);line-height:1.5;color:rgba(255,255,255,.84);}
+.ab-box ul{margin:0;padding:0;list-style:none;}
+.ab-box li{position:relative;padding-left:13px;margin-bottom:clamp(4px,.8vh,7px);
+  font-size:clamp(11.6px,1.55vh,12.8px);line-height:1.48;color:rgba(255,255,255,.84);}
+.ab-box li:last-child{margin-bottom:0;}
+.ab-box li::before{content:"";position:absolute;left:0;top:7px;width:5px;height:5px;
+  border-radius:50%;background:var(--lime);}
+.ab-box li b{color:#fff;font-weight:700;}
+/* the one box that carries a caveat, marked by tint rather than by shouting */
+.ab-caution{background:rgba(198,255,106,.09);border-color:rgba(198,255,106,.34);}
+.fcard-go{font:inherit;text-align:left;cursor:pointer;width:100%;display:flex;
+  flex-direction:column;color:inherit;
+  padding:clamp(15px,1.7vw,19px) clamp(16px,1.8vw,20px);}
+.fcard-go .ficon{width:30px;height:30px;border-radius:9px;margin-bottom:11px;}
+.fcard-go .ficon i{font-size:16px;}
+.fcard-go h4{font-size:14.5px;margin-bottom:5px;}
+.fcard-go p{font-size:13px;line-height:1.5;}
+.fgo{margin-top:auto;padding-top:11px;display:inline-flex;align-items:center;gap:6px;
+  font-size:11.5px;font-weight:700;color:var(--lime);}
+.fcard-go .fgo i{transition:transform .18s ease;}
+.fcard-go:hover .fgo i{transform:translateX(3px);}
+.fcard-go:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
+.sec-head.center > p{max-width:62ch;margin:10px auto 0;font-size:14px;line-height:1.6;}
+.sec-cta-p{max-width:56ch;margin:6px 0 16px;font-size:14px;line-height:1.6;text-align:center;}
 .fcard{background:var(--glass);border-radius:var(--r);padding:clamp(20px,2.6vw,28px);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
   border:1px solid var(--glass-border);
@@ -2394,11 +2454,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   <header class="hero vstage" data-vid="aerial">
     <div class="wrap"><div class="hero-content">
     <div class="eyebrow">Pahlé India Foundation · Capacity Building</div>
-    <h1>Every district's economy,<br><span>one question away</span></h1>
-    <p>Ask how district income is measured, or what is actually happening in Bapatla, Annamayya or Visakhapatnam. Answers come from the official DDP and GDVA estimates, and every answer tells you which document it came from.</p>
+    <h1>Every district,<br><span>in one place</span></h1>
+    <p>District profiles, vision plans, playbooks, calculators, and an assistant that names its source. All 28 districts, all on the official DDP and GDVA estimates.</p>
     <div class="hero-cta">
-      <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary"><i class="ti ti-message-2"></i> Start asking questions</button></a>
-      <button class="btn-ghost nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
+      <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
+      <a href="https://andhrachatbot.streamlit.app"><button class="btn-ghost"><i class="ti ti-message-2"></i> Ask the assistant</button></a>
     </div>
     </div></div>
 
@@ -2429,17 +2489,52 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   </header>
 
   <section class="section vstage" data-vid="ink"><div class="wrap">
-    <div class="sec-head center"><div class="kick">What you can ask</div><h2>Grounded in official material</h2></div>
+    <div class="sec-head center"><div class="kick">What is inside</div><h2>Six ways into the same numbers</h2>
+      <p>Every surface below runs on the same official estimates, so a figure you
+        meet in one place is the figure you meet in the next.</p></div>
     <div class="feature-grid">
-      <div class="fcard"><div class="ficon"><i class="ti ti-chart-histogram"></i></div><h4>GDP and GSDP methodology</h4><p>Production, income, and expenditure approaches. Top-down versus bottom-up, and which sector uses which method.</p></div>
-      <div class="fcard"><div class="ficon"><i class="ti ti-calculator"></i></div><h4>GVA calculation</h4><p>How Gross Value Added is measured across the agriculture, industry, and services sectors.</p></div>
-      <div class="fcard"><div class="ficon"><i class="ti ti-map-pin"></i></div><h4>District profiles</h4><p>Comparative-advantage sectors, fastest-growing industries, and interventions to raise GVA in each district.</p></div>
-      <div class="fcard"><div class="ficon"><i class="ti ti-file-text"></i></div><h4>Vision plans</h4><p>Every constituency and mandal vision plan, plus GSDP, GDDP, and per-capita figures across four years.</p></div>
+      <button class="fcard fcard-go" data-page="districts" data-goto-tab="map">
+        <div class="ficon"><i class="ti ti-map-pin"></i></div>
+        <h4>District profiles</h4>
+        <p>All 28 districts, down to constituency and mandal. Shares, growth, rank and per-capita income.</p>
+        <span class="fgo">Open the map <i class="ti ti-arrow-right"></i></span></button>
+
+      <button class="fcard fcard-go" data-page="districts" data-goto-tab="docs">
+        <div class="ficon"><i class="ti ti-file-text"></i></div>
+        <h4>Vision plan library</h4>
+        <p>Every district, constituency and mandal plan, searchable, with the source named on each result.</p>
+        <span class="fgo">Search the documents <i class="ti ti-arrow-right"></i></span></button>
+
+      <button class="fcard fcard-go" data-page="districts" data-goto-tab="gva">
+        <div class="ficon"><i class="ti ti-trending-up"></i></div>
+        <h4>Improving GVA</h4>
+        <p>State sector playbooks, plus a Kurnool priority list built from its own plan and GVA table.</p>
+        <span class="fgo">See the playbooks <i class="ti ti-arrow-right"></i></span></button>
+
+      <button class="fcard fcard-go" data-page="calculator">
+        <div class="ficon"><i class="ti ti-calculator"></i></div>
+        <h4>Sector calculators</h4>
+        <p>Work fisheries GVA through the department's own estimator, then check it against the published figure.</p>
+        <span class="fgo">Open the calculator <i class="ti ti-arrow-right"></i></span></button>
+
+      <button class="fcard fcard-go" data-page="districts" data-goto-tab="cases">
+        <div class="ficon"><i class="ti ti-books"></i></div>
+        <h4>Case studies</h4>
+        <p>Fifteen worked examples, in Andhra Pradesh and beyond, on what moved a sector and what it took.</p>
+        <span class="fgo">Read the studies <i class="ti ti-arrow-right"></i></span></button>
+
+      <button class="fcard fcard-go" data-page="districts" data-goto-tab="capacity">
+        <div class="ficon"><i class="ti ti-school"></i></div>
+        <h4>Capacity building</h4>
+        <p>What officers were assessed on, how each cohort scored, and what they said afterwards.</p>
+        <span class="fgo">See the record <i class="ti ti-arrow-right"></i></span></button>
     </div>
     <div class="sec-cta">
-      <h3 class="sec-cta-h">Try it on a district you know.</h3>
+      <h3 class="sec-cta-h">Or just ask, in plain words.</h3>
+      <p class="sec-cta-p">The assistant holds every figure behind these pages, for all 28
+        districts, and tells you which document each answer came from.</p>
       <a href="https://andhrachatbot.streamlit.app">
-        <button class="btn-primary btn-lg"><i class="ti ti-message-2"></i> Explore the chatbot</button>
+        <button class="btn-primary btn-lg"><i class="ti ti-message-2"></i> Open the assistant</button>
       </a>
       <div class="sec-cta-note">Free to use · every answer cites its source</div>
     </div>
@@ -2450,26 +2545,63 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 <!-- ABOUT -->
 <div class="page" id="page-about">
   <section class="section vstage" data-vid="handloom"><div class="wrap">
-    <div class="sec-head"><div class="kick">About</div><h2>What this assistant is</h2></div>
-    <div class="prose">
-      <p>The Swarna Andhra GVA Assistant is a question-and-answer tool built by Pahlé India Foundation for the state capacity-building programme. It helps district, constituency, and mandal officers find clear answers about how state and district income is measured, and how to raise it.</p>
-      <h3>Who it is for</h3>
-      <ul>
-        <li><strong>District and constituency officers</strong> who need quick, reliable answers grounded in official material.</li>
-        <li><strong>Master trainers</strong> preparing sessions on estimation methodology.</li>
-        <li><strong>Planning teams</strong> looking at where a district has comparative advantage and what to do about it.</li>
-      </ul>
-      <h3>How it works</h3>
-      <p>Every question runs a semantic search across the full corpus, the official DDP and GDVA source documents, the district data, and all 1,378 vision plans. Answers are generated from that material and always cite the source, so every claim can be traced back.</p>
-      <h3>Where the answers come from</h3>
-      <ul>
-        <li>The official Guideline for Compilation of DDP Estimates from the National Statistics Office.</li>
-        <li>The Compilation of GSVA Estimates with base year 2022-23, which the district GDVA estimates are built on.</li>
-        <li>District GSDP, GDDP, and per-capita data for all 28 districts.</li>
-        <li>Vision and action plans for every constituency and mandal, plus sector case studies.</li>
-      </ul>
+    <div class="sec-head"><div class="kick">About</div><h2>What this is</h2></div>
+    <!-- Laid out as boxes rather than a column of prose: the page is a summary
+         of what the platform holds, and a summary you have to scroll through is
+         not doing its job. Everything below fits one screen at desktop size. -->
+    <div class="ab-grid">
+
+      <div class="ab-lead">
+        <p>Built by Pahlé India Foundation for the state capacity-building programme. It brings what a district officer needs into one place: what district income is, how it is measured, where a district stands, and what its own plans say about raising it.</p>
+        <div class="ab-cta">
+          <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
+          <a href="https://andhrachatbot.streamlit.app"><button class="btn-ghost"><i class="ti ti-message-2"></i> Ask the assistant</button></a>
+        </div>
+      </div>
+
+      <div class="ab-box">
+        <h3><i class="ti ti-users"></i> Who it is for</h3>
+        <ul>
+          <li><b>District and constituency officers</b> who need reliable answers from official material.</li>
+          <li><b>Master trainers</b> preparing sessions on estimation methodology.</li>
+          <li><b>Planning teams</b> weighing where a district has comparative advantage.</li>
+        </ul>
+      </div>
+
+      <div class="ab-box ab-wide">
+        <h3><i class="ti ti-layout-grid"></i> What is in it</h3>
+        <ul class="ab-two">
+          <li><b>District profiles.</b> All 28 districts, to constituency and mandal.</li>
+          <li><b>Vision plan library.</b> Every plan, searchable, each result sourced.</li>
+          <li><b>Improving GVA.</b> State playbooks, plus a Kurnool priority list.</li>
+          <li><b>Sector calculators.</b> The department's workbooks, worked line by line.</li>
+          <li><b>Case studies.</b> Fifteen worked examples, in the state and beyond.</li>
+          <li><b>Capacity building.</b> What officers were assessed on and how they scored.</li>
+          <li><b>The assistant.</b> Ask in plain words; every answer names its document.</li>
+        </ul>
+      </div>
+
+      <div class="ab-box">
+        <h3><i class="ti ti-search"></i> How it works</h3>
+        <p>Questions run a semantic search across the corpus, the source documents, the district data and the vision plans, and answers cite what they came from. The pages work the same way: each figure is taken from a published estimate or derived from one by a stated formula.</p>
+      </div>
+
+      <div class="ab-box">
+        <h3><i class="ti ti-file-check"></i> Where it comes from</h3>
+        <ul>
+          <li>The NSO Guideline for Compilation of DDP Estimates.</li>
+          <li>The Compilation of GSVA Estimates, base year 2022-23.</li>
+          <li>District GSDP, GDDP and per-capita data for all 28 districts.</li>
+          <li>Vision and action plans for every constituency and mandal.</li>
+        </ul>
+      </div>
+
+      <div class="ab-box ab-caution">
+        <h3><i class="ti ti-alert-triangle"></i> What it is not</h3>
+        <p>It does not replace the official estimate. The calculators show how a figure is built and check one you already have; the department's workbook stays the reference. Priority recommendations cover Kurnool only, because each is checked by hand against that district's plan first. Samples and working figures are labelled as such.</p>
+      </div>
+
     </div>
-    <div style="margin-top:30px"><a href="https://andhrachatbot.streamlit.app"><button class="btn-primary"><i class="ti ti-message-2"></i> Try the assistant</button></a></div>
   </div></section>
 </div>
 
@@ -3309,7 +3441,19 @@ function go(page){
 }
 document.addEventListener('click', e=>{
   const b = e.target.closest('[data-page]');
-  if(b){ e.preventDefault(); go(b.dataset.page); }
+  if(b){
+    e.preventDefault();
+    go(b.dataset.page);
+    /* Home's cards route to a specific tab inside Districts, not just to the
+       page. The tab handler lives in another IIFE, so the tab's own button is
+       clicked rather than reaching across for setTab. Deferred a frame: the
+       page has to be visible before the map tab will size itself. */
+    const t = b.dataset.gotoTab;
+    if(t) requestAnimationFrame(()=>{
+      const tab = document.querySelector('.dtab-live[data-dtab="'+t+'"]');
+      if(tab) tab.click();
+    });
+  }
 });
 document.getElementById('hamburger').addEventListener('click', ()=>{
   document.getElementById('mobileMenu').classList.toggle('open');
