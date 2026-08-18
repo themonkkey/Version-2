@@ -571,6 +571,18 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    first version of this. The gap lives on the panel's margin instead, and is zero
    while collapsed so the two states add up to exactly 100%. */
 .map-layout .map-box{flex:0 0 100%;min-width:0;}
+/* footnote block: research-paper style, one line per abbreviation */
+.d-abbr{flex:0 0 100%;width:100%;margin-top:16px;padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.16);}
+.d-abbr-h{margin:0 0 9px;font-size:11.5px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:rgba(255,255,255,.6);}
+.d-abbr-h .ast{color:var(--lime);font-weight:700;margin-right:4px;}
+.d-abbr-l{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:5px 22px;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));}
+.d-abbr-l li{font-size:12px;line-height:1.45;color:rgba(255,255,255,.62);}
+.d-abbr-l b{color:rgba(255,255,255,.88);font-weight:700;margin-right:5px;
+  font-variant-numeric:tabular-nums;}
+.d-abbr-n{margin:0;font-size:11.5px;line-height:1.5;color:rgba(255,255,255,.5);max-width:96ch;}
 .map-layout #districtPanel{flex:1 1 0%;min-width:0;opacity:0;overflow:hidden;
   padding-left:0;padding-right:0;margin-left:0;}
 /* The box is sized to match the panel beside it, but the zoomed map is
@@ -3174,6 +3186,26 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </div>
       <div class="panel" id="districtPanel">
         <div class="panel-empty"><i class="ti ti-hand-finger"></i><p>Select a district on the map to see its economic snapshot.</p></div>
+      </div>
+      <!-- Abbreviations, as a paper prints them: once, at the foot of the page,
+           not spelled out at every mention. Kept OUTSIDE #districtPanel on
+           purpose - the panel's innerHTML is replaced on every pick, and a note
+           inside it would have to be re-emitted by each of the templates. -->
+      <div class="d-abbr" id="dAbbr">
+        <p class="d-abbr-h"><span class="ast">*</span> Abbreviations used above</p>
+        <ul class="d-abbr-l">
+          <li><b>GDDP</b> Gross District Domestic Product</li>
+          <li><b>GDVA</b> Gross District Value Added</li>
+          <li><b>NDDP</b> Net District Domestic Product</li>
+          <li><b>PCI</b> Per Capita Income</li>
+          <li><b>GSDP</b> Gross State Domestic Product</li>
+          <li><b>GSVA</b> Gross State Value Added</li>
+          <li><b>TRE</b> Third Revised Estimate</li>
+          <li><b>SRE</b> Second Revised Estimate</li>
+          <li><b>FRE</b> First Revised Estimate</li>
+          <li><b>FAE</b> First Advance Estimate</li>
+        </ul>
+        <p class="d-abbr-n">Estimate vintages run from firmest to least firm: TRE, SRE, FRE, then FAE. A First Advance Estimate is a projection, not an outturn, and each year in the four-year series carries its own vintage.</p>
       </div>
     </div>
     </div><!-- /#mapView -->
