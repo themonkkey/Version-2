@@ -9,7 +9,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#06140F;--fg:#EEF5EF;--mut:rgba(238,245,239,.74);--mut2:rgba(238,245,239,.5);
@@ -28,7 +28,8 @@ a{color:var(--t2);}
 .track{display:flex;height:100%;width:100%;
   transition:transform .72s cubic-bezier(.76,0,.24,1);will-change:transform;}
 .slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;padding:clamp(20px,5vw,64px);}
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(10px,1.6vw,20px) clamp(16px,5.5vw,88px);}
 
 /* full-bleed background: animated mesh, tinted; photo/video overlays it if present */
 .media{position:absolute;inset:0;z-index:0;
@@ -57,24 +58,36 @@ a{color:var(--t2);}
   background:linear-gradient(180deg, rgba(4,12,9,.35), rgba(4,12,9,.68));}
 
 /* ---------- glass panel ---------- */
-.glass{position:relative;z-index:2;width:min(760px,100%);height:min(76vh,660px);overflow:auto;
+.glass{position:relative;z-index:2;width:min(1500px,100%);
+  height:auto;max-height:min(94vh,940px);overflow:auto;
   background:var(--glass);
   -webkit-backdrop-filter:blur(30px) saturate(1.3);backdrop-filter:blur(30px) saturate(1.3);
   border:1px solid var(--line);border-radius:24px;
-  padding:clamp(24px,4vw,44px);
+  padding:clamp(22px,2.6vw,40px);
   box-shadow:0 30px 80px -30px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.08);
   scrollbar-width:thin;scrollbar-color:var(--t2) transparent;}
 .glass::-webkit-scrollbar{width:8px;}
 .glass::-webkit-scrollbar-thumb{background:color-mix(in srgb,var(--t2) 50%,transparent);border-radius:8px;}
-.cover-glass{width:min(680px,100%);}
+.cover-glass{width:min(1500px,100%);}
 /* cover content sits centred in the same fixed box rather than hugging the top */
 .cover-glass{display:flex;flex-direction:column;justify-content:center;}
+/* At the widened panel size a single centred column stranded the whole right
+   half. Split it: identity left, the hero figures as a column on the right.
+   Collapses back to one column below 900px, where the stack is correct. */
+@media (min-width:900px){
+  .cover-glass{display:grid;grid-template-columns:1.35fr .85fr;
+    align-items:center;align-content:center;gap:clamp(28px,4vw,64px);}
+  .cover-glass .cover-l,.cover-glass .cover-r{min-width:0;}
+  .cover-glass .cover-r .hero{grid-template-columns:1fr;margin:0;}
+  .cover-glass .cover-r .scell{padding:18px 20px 16px;}
+  .cover-glass .hint{grid-column:1/-1;margin:4px 0 0;}
+}
 
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
   color:var(--t2);margin:0 0 16px;}
-h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,5.2vw,52px);
+h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;font-size:clamp(30px,5.2vw,52px);
   line-height:1.05;letter-spacing:-.01em;margin:0 0 18px;}
-.summary{font-size:clamp(16px,2vw,20px);color:var(--mut);margin:0 0 22px;max-width:56ch;}
+.summary{font-size:clamp(16px,2vw,20px);color:var(--mut);margin:0 0 22px;max-width:60ch;}
 .meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px;}
 .tag{font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;
   background:var(--glass2);border:1px solid var(--line);color:var(--mut);}
@@ -83,14 +96,17 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
 
 .sechead{display:flex;align-items:baseline;gap:14px;margin:0 0 20px;
   padding-bottom:14px;border-bottom:1px solid var(--line);}
-.secnum{font-family:'Bodoni Moda',serif;font-weight:600;font-size:16px;color:var(--t2);
+.sechead h2 .cont{font-size:.5em;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--mut2);vertical-align:middle;margin-left:6px;}
+.secnum{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;font-size:16px;color:var(--t2);
   letter-spacing:.04em;}
-.sechead h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
+.sechead h2{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;
   font-size:clamp(22px,3.2vw,32px);letter-spacing:-.01em;color:#fff;margin:0;line-height:1.1;}
+.secbody{counter-reset:cardno;}
 .secbody h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:clamp(16px,2vw,20px);
   color:#fff;margin:22px 0 6px;}
 .secbody h3:first-child{margin-top:0;}
-.secbody p{margin:0 0 13px;color:var(--mut);}
+.secbody p{margin:0 0 13px;color:var(--mut);max-width:78ch;}
 .secbody .k{margin:16px 0 4px;font-weight:700;font-size:13.5px;color:var(--t2);letter-spacing:.02em;}
 
 /* hero + stat grids as inner glass chips */
@@ -100,14 +116,100 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
 .scell,.cell{background:var(--glass2);border:1px solid var(--line);border-radius:14px;
   padding:15px 16px 13px;transition:transform .26s cubic-bezier(.2,.7,.2,1),border-color .26s ease;}
 .scell:hover,.cell:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--t2) 50%,var(--line));}
-.scell .v,.cell .v{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
+.scell .v,.cell .v{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;
   font-size:clamp(22px,3vw,30px);line-height:1;color:var(--t2);}
 .scell .l,.cell .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);font-weight:600;}
+
+/* icons: inline sprite, tinted by the slide accent, in a soft disc so they read
+   against both the mesh gradient and a photo background */
+.sprite{display:none;}
+.ic{flex:0 0 auto;display:inline-grid;place-items:center;width:30px;height:30px;
+  border-radius:9px;background:color-mix(in srgb,var(--t2) 15%,transparent);
+  border:1px solid color-mix(in srgb,var(--t2) 28%,transparent);color:var(--t2);}
+.ic svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;}
+.ic.sm{width:22px;height:22px;border-radius:7px;}
+.ic.sm svg{width:13px;height:13px;}
+.ic.lg{width:38px;height:38px;border-radius:11px;}
+.ic.lg svg{width:21px;height:21px;}
+.card>.ic{margin-bottom:10px;}
+.chip{display:flex;align-items:center;gap:10px;}
+
+/* card grid - peer sub-sections, from the deck template's SWOT/objectives layout */
+.cards{display:grid;gap:14px;margin:18px 0 20px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.card{position:relative;background:var(--glass2);border:1px solid var(--line);
+  border-radius:16px;padding:18px 20px 16px;
+  transition:transform .26s cubic-bezier(.2,.7,.2,1),border-color .26s ease;}
+.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--t2) 50%,var(--line));}
+.card::before{counter-increment:cardno;content:counter(cardno,decimal-leading-zero);
+  position:absolute;top:18px;right:18px;
+  font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;font-size:13px;
+  color:var(--t2);letter-spacing:.04em;display:block;margin-bottom:8px;}
+/* .secbody h3 carries list spacing; inside a card it is the card's own title */
+.card h3{margin:0 0 8px;font-size:clamp(15px,1.5vw,17.5px);line-height:1.3;}
+.card p{margin:0 0 8px;font-size:14px;line-height:1.55;max-width:none;}
+.card p:last-child{margin-bottom:0;}
+
+/* chips - the parser's leftover emphasis lines, laid out as peers not a column */
+.chips{display:grid;gap:10px;margin:14px 0 18px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.chip{background:var(--glass2);border:1px solid var(--line);border-left:3px solid var(--t2);
+  border-radius:10px;padding:11px 14px;font-size:13.5px;font-weight:600;
+  color:var(--fg);line-height:1.45;}
+
+/* column chart, recovered from a flattened value/period table */
+.chart{margin:18px 0 22px;}
+.chartunit{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mut2);margin:0 0 12px;}
+.cols{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:clamp(8px,1.2vw,18px);
+  align-items:end;min-height:210px;padding-bottom:2px;
+  border-bottom:1px solid var(--line);}
+.col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+  height:100%;gap:8px;min-width:0;}
+.colv{font-weight:700;font-size:13px;color:var(--fg);font-variant-numeric:tabular-nums;
+  white-space:nowrap;}
+.colbar{width:100%;max-width:64px;border-radius:7px 7px 2px 2px;
+  background:linear-gradient(180deg,var(--t2),color-mix(in srgb,var(--t1) 70%,transparent));
+  border:1px solid color-mix(in srgb,var(--t2) 45%,transparent);border-bottom:none;
+  transition:filter .25s ease;}
+.col:hover .colbar{filter:brightness(1.18);}
+.coll{font-size:11.5px;color:var(--mut);white-space:nowrap;margin-top:2px;}
+@media (max-width:900px){ .coll{font-size:10px;writing-mode:vertical-rl;} }
+
+/* milestone band - the deck template's timeline layout. The rail is drawn on the
+   row rather than per cell so it reads as one continuous sequence. */
+.steps{position:relative;display:grid;gap:18px;margin:20px 0 22px;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));}
+.step{position:relative;padding-top:66px;}
+.step::after{content:"";position:absolute;left:0;right:-18px;top:6px;height:1px;
+  background:var(--line);}
+.step:last-child::after{right:0;
+  background:linear-gradient(90deg,var(--line),transparent);}
+.step::before{content:"";position:absolute;left:0;top:1px;width:11px;height:11px;
+  border-radius:50%;background:var(--t2);box-shadow:0 0 0 4px var(--ink);}
+.step-v{position:absolute;top:26px;left:0;font-weight:700;font-size:clamp(20px,2.6vw,27px);
+  line-height:1;color:var(--t2);letter-spacing:-.01em;}
+.step-b p{margin:0 0 7px;font-size:13.5px;line-height:1.55;color:var(--mut);max-width:none;}
+.step-b p:last-child{margin-bottom:0;}
+
+/* a lone milestone is not a sequence: figure beside its text, not a band across
+   the slide with an orphan line under it */
+.statnote{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:clamp(18px,2.4vw,34px);
+  align-items:start;background:var(--glass2);border:1px solid var(--line);
+  border-radius:16px;padding:20px 22px;margin:18px 0 20px;}
+.statnote-v{font-weight:700;font-size:clamp(30px,4.4vw,52px);line-height:.95;
+  color:var(--t2);letter-spacing:-.02em;}
+.statnote-b p{margin:0 0 9px;font-size:14.5px;line-height:1.6;color:var(--mut);max-width:70ch;}
+.statnote-b p:last-child{margin-bottom:0;}
+@media (max-width:700px){ .statnote{grid-template-columns:1fr;gap:10px;} }
 
 /* timeline entry */
 .entry{display:grid;grid-template-columns:minmax(90px,124px) 1fr;gap:16px;
   padding:14px 0;border-top:1px solid var(--line);}
 .entry:first-of-type{border-top:none;}
+.entry.noterm{grid-template-columns:1fr;}
+.entry.noterm .term{display:none;}
 .entry .term{font-weight:700;font-size:13px;color:var(--t2);}
 .entry .eh{font-weight:700;font-size:15px;color:#fff;margin:0 0 5px;}
 .entry .eb{margin:0;font-size:14px;color:var(--mut);line-height:1.55;}
@@ -132,7 +234,7 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
 .dot.on{width:26px;border-radius:6px;background:linear-gradient(90deg,var(--t1),var(--t2));}
 .count{position:fixed;top:22px;right:clamp(16px,3vw,30px);z-index:30;font-size:13px;
   color:var(--mut);font-variant-numeric:tabular-nums;}
-.count b{color:var(--fg);font-family:'Bodoni Moda',serif;font-size:17px;}
+.count b{color:var(--fg);font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-size:17px;}
 .back{position:fixed;top:20px;left:clamp(16px,3vw,30px);z-index:30;
   display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;
   color:var(--mut);text-decoration:none;background:var(--glass);border:1px solid var(--line);
@@ -161,121 +263,50 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
 </head>
 <body>
 <a class="back" href="../index.html#districts">&#8592; Library</a>
-<div class="count"><b id="cnum">01</b> / 12</div>
+<div class="count"><b id="cnum">01</b> / <span id="ctot">12</span></div>
+<svg class="sprite" aria-hidden="true"><defs><g id="i-leaf"><path d="M5 21c.5-4.5 2.5-8 7-10"/><path d="M9 18c6.2 0 10-3.4 10-9V5h-4.5C9 5 6 8 6 12.5 6 15.5 7.5 18 9 18z"/></g><g id="i-drop"><path d="M12 3l4.6 6.1a6 6 0 1 1-9.2 0z"/></g><g id="i-fish"><path d="M16.7 9.3a7.5 7.5 0 0 1 0 5.4M2 12c3-4 6.5-6 10-6s6.5 2 10 6c-3.5 4-6.5 6-10 6s-7-2-10-6z"/><circle cx="8" cy="11" r="1"/></g><g id="i-pin"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></g><g id="i-rupee"><path d="M7 4h10M7 9h10M7 4c5 0 7 1.8 7 4.5S12 13 7 13l8 7"/></g><g id="i-users"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5M17 20a5.8 5.8 0 0 0-2-4.2"/></g><g id="i-school"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V17c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-5.5"/></g><g id="i-cart"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h3l2.4 11.2a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L21 7H6"/></g><g id="i-factory"><path d="M3 21V10l6 4V10l6 4V7l6 3v11z"/><path d="M7 21v-3M13 21v-3M18 21v-3"/></g><g id="i-trend"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></g><g id="i-calendar"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></g><g id="i-target"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></g><g id="i-truck"><path d="M3 16V6h11v10M14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></g><g id="i-bolt"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></g><g id="i-doc"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></g><g id="i-alert"><path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17.5v.5"/></g><g id="i-gov"><path d="M3 10l9-6 9 6M5 10v9M19 10v9M9 19v-6M15 19v-6M3 21h18"/></g><g id="i-gear"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></g><g id="i-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></g><g id="i-spark"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></g></defs></svg>
 <div class="stage">
   <div class="track" id="track">
-<section class="slide cover" data-i="0"><div class="media" data-media="0" data-role="cover"></div><div class="glass cover-glass reveal-root"><p class="eyebrow r">Responsible tourism</p><h1 class="r">The Kumarakom Responsible Tourism Model</h1><p class="summary r">How a destination-level partnership linked tourism demand with local livelihoods, culture and conservation.</p><div class="meta r"><span class="tag place">Kumarakom, Kerala</span><span class="tag">Responsible tourism</span><span class="tag">Replicable model</span></div><p class="hint r">Use ← → or the arrows to move through the story</p></div></section>
-<section class="slide" data-i="1"><div class="media" data-media="1" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">01</span><h2>Overview</h2></div><div class="secbody r"><h3>Why Kumarakom needed a new approach</h3>
+<section class="slide cover" data-i="0"><div class="media" data-media="0" data-role="cover"></div><div class="glass cover-glass reveal-root"><div class="cover-l"><p class="eyebrow r">Responsible tourism</p><h1 class="r">The Kumarakom Responsible Tourism Model</h1><p class="summary r">How a destination-level partnership linked tourism demand with local livelihoods, culture and conservation.</p><div class="meta r"><span class="tag place">Kumarakom, Kerala</span><span class="tag">Responsible tourism</span><span class="tag">Replicable model</span></div></div><div class="cover-r r"></div><p class="hint r">Use ← → or the arrows to move through the story</p></div></section>
+<section class="slide" data-i="1"><div class="media" data-media="1" data-role="action"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">01</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><h2>Overview</h2></div><div class="secbody r"><h3>Why Kumarakom needed a new approach</h3>
 <p>Tourism growth was strong, but local communities were not fully integrated into benefits and decisions.</p>
-<p class="k">Core challenge</p>
-<p class="k">Top-down tourism planning with limited community voice</p>
-<p class="k">Conflicts over resource use, employment and benefit sharing</p>
-<p class="k">Leakage of tourism spending outside the local economy</p>
+<div class="chips"><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-alert"/></svg></span><span>Core challenge</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><span>Top-down tourism planning with limited community voice</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><span>Conflicts over resource use, employment and benefit sharing</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><span>Leakage of tourism spending outside the local economy</span></div></div>
 <h3>Need to conserve fragile backwater ecosystems and local culture</h3>
 <p>Case question for officials: How can mandals convert tourism footfall into local income without damaging natural and cultural assets?</p>
 <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></section>
-<section class="slide" data-i="2"><div class="media" data-media="2" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">02</span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Institutional model: a destination-level platform</h3>
+<section class="slide" data-i="2"><div class="media" data-media="2" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">02</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Institutional model: a destination-level platform</h3>
 <p>A Responsible Tourism Committee brought local government, industry and community together.</p>
 <p>Who sits at the table?</p>
-<p class="k">Panchayat / local government</p>
-<p class="k">Tourism Dept. / KITTS</p>
-<p class="k">Hotels &amp; resorts</p>
-<p class="k">SHGs, farmers &amp; artisans</p>
-<p class="k">NGOs / community reps</p>
-<p class="k">Responsible</p>
-<p class="k">Tourism</p>
-<p class="k">Committee</p>
-<p class="k">A shared governance platform at destination level</p>
-<p class="k">What it decides</p>
-<p class="k">Local procurement norms</p>
-<p class="k">Price and quality assurance</p>
-<p class="k">Training and livelihood pilots</p></div></div></section>
-<section class="slide" data-i="3"><div class="media" data-media="3" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">03</span><h2>Resource protection measures</h2></div><div class="secbody r"><h3>Visitor experience packages</h3>
+<div class="chips"><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-gov"/></svg></span><span>Panchayat / local government</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><span>Tourism Dept. / KITTS</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Hotels &amp; resorts</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-leaf"/></svg></span><span>SHGs, farmers &amp; artisans</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><span>NGOs / community reps</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Responsible</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><span>Tourism</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Committee</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><span>A shared governance platform at destination level</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>What it decides</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Local procurement norms</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><span>Price and quality assurance</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-school"/></svg></span><span>Training and livelihood pilots</span></div></div></div></div></section>
+<section class="slide" data-i="3"><div class="media" data-media="3" data-role="policy"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">03</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><h2>Resource protection measures</h2></div><div class="secbody r"><h3>Visitor experience packages</h3>
 <p>Design principle: put government, industry and community in one recurring forum so decisions on tourism products, benefits and safeguards are made jointly.</p>
 <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></section>
-<section class="slide" data-i="4"><div class="media" data-media="4" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">04</span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Strategy 1: Link hotel demand with local supply</h3>
+<section class="slide" data-i="4"><div class="media" data-media="4" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">04</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Strategy 1: Link hotel demand with local supply</h3>
 <p>Local procurement became the economic engine of the model.</p>
-<p class="k">Demand mapping</p>
-<p class="k">What hotels buy regularly</p>
-<p class="k">Production calendar</p>
-<p class="k">When local supply can meet demand</p>
-<p class="k">Supply groups</p>
-<p class="k">Samrudhi groups / SHGs aggregate produce</p>
-<p class="k">Price + quality</p>
-<p class="k">Committees build transparency</p>
+<div class="chips"><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-cart"/></svg></span><span>Demand mapping</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>What hotels buy regularly</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-cart"/></svg></span><span>Production calendar</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-cart"/></svg></span><span>When local supply can meet demand</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-truck"/></svg></span><span>Supply groups</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><span>Samrudhi groups / SHGs aggregate produce</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><span>Price + quality</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Committees build transparency</span></div></div>
 <div class="entry"><div class="term">Hotel linkage</div><div><p class="eh">Farm/unit visits and regular orders</p><p class="eb">Key learning: Do not start with tourist packages alone. Start by organizing the local supply chain so community members can reliably serve tourism demand.</p></div></div>
 <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></section>
-<section class="slide" data-i="5"><div class="media" data-media="5" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">05</span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Strategy 2: Build community livelihoods around visitor experience</h3>
+<section class="slide" data-i="5"><div class="media" data-media="5" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">05</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Strategy 2: Build community livelihoods around visitor experience</h3>
 <p>The model diversified income by converting local skills, food and culture into tourism services.</p>
-<p class="k">Labour directories</p>
-<p class="k">Map skills and local workers for hotel jobs and services</p>
-<p class="k">Training for vulnerable groups</p>
-<p class="k">Prepare people for tourism-linked microenterprises</p>
-<p class="k">Ethnic food &amp; souvenirs</p>
-<p class="k">Use local recipes, crafts and SHG production</p>
-<h3>Village Life Experience</h3>
-<p>Package farming, fishing, crafts and local livelihoods as authentic experiences</p>
-<h3>Replicable insight for AP</h3>
-<p>Build one local experience around each mandal&#x27;s strongest asset: agriculture, crafts, cuisine, temples, coastal livelihoods, tribal culture, nature trails or wetlands.</p>
-<p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></section>
-<section class="slide" data-i="6"><div class="media" data-media="6" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">06</span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Strategy 3: Protect the assets that attract tourists</h3>
+<div class="chips"><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Labour directories</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-school"/></svg></span><span>Map skills and local workers for hotel jobs and services</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-school"/></svg></span><span>Training for vulnerable groups</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><span>Prepare people for tourism-linked microenterprises</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Ethnic food &amp; souvenirs</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><span>Use local recipes, crafts and SHG production</span></div></div>
+<div class="cards"><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Village Life Experience</h3><p>Package farming, fishing, crafts and local livelihoods as authentic experiences</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-leaf"/></svg></span><h3>Replicable insight for AP</h3><p>Build one local experience around each mandal&#x27;s strongest asset: agriculture, crafts, cuisine, temples, coastal livelihoods, tribal culture, nature trails or wetlands.</p><p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></div></div></section>
+<section class="slide" data-i="6"><div class="media" data-media="6" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">06</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Strategy 3: Protect the assets that attract tourists</h3>
 <p>Kumarakom treated conservation, sanitation and cultural mapping as part of tourism management.</p>
-<p class="k">Ecosystem care</p>
-<p class="k">Mangrove regeneration</p>
-<p class="k">Organic farming</p>
-<p class="k">Fish farming / lotus in unused ponds</p>
-<p class="k">Low-carbon mobility</p>
-<p class="k">Rowing boats</p>
-<p class="k">Bicycles for village packages</p>
-<p class="k">Reduced footprint</p>
-<p class="k">Waste systems</p>
-<p class="k">Hotel sewage treatment plants</p>
-<p class="k">Household pipe composts</p>
-<p class="k">Periodic bird sanctuary cleaning</p>
-<p class="k">Culture mapping</p>
-<p class="k">Resource mapping</p>
-<p class="k">Local art performance groups</p>
+<div class="chips"><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Ecosystem care</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Mangrove regeneration</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-leaf"/></svg></span><span>Organic farming</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-fish"/></svg></span><span>Fish farming / lotus in unused ponds</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Low-carbon mobility</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Rowing boats</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><span>Bicycles for village packages</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Reduced footprint</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-alert"/></svg></span><span>Waste systems</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-factory"/></svg></span><span>Hotel sewage treatment plants</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Household pipe composts</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Periodic bird sanctuary cleaning</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Culture mapping</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Resource mapping</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Local art performance groups</span></div></div>
 <h3>Handicraft training</h3>
 <p>Key learning: Tourism plans must include environmental safeguards and cultural preservation from day one—not as a later add-on.</p>
 <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></section>
-<section class="slide" data-i="7"><div class="media" data-media="7" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">07</span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Results achieved: measurable economic and social impact</h3>
+<section class="slide" data-i="7"><div class="media" data-media="7" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">07</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Results achieved: measurable economic and social impact</h3>
 <p>The model increased local income, enterprise creation, cultivation and tourist arrivals.</p>
-<p class="k">USD 626k</p>
-<p class="k">Estimated additional revenue</p>
+<div class="chips"><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>USD 626k</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><span>Estimated additional revenue</span></div></div>
 <div class="grid"><div class="cell"><div class="v">285</div><div class="l">Families benefitted</div></div><div class="cell"><div class="v">646</div><div class="l">Community members trained Local tourism-linked microenterprises</div></div><div class="cell"><div class="v">82%</div><div class="l"></div></div></div>
 <p class="k">Households involved in tourism-related activities</p>
 <div class="grid"><div class="cell"><div class="v">168 acres</div><div class="l">Land reclaimed for cultivation +20% international arrivals</div></div></div></div></div></section>
-<section class="slide" data-i="8"><div class="media" data-media="8" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">08</span><h2>+30% domestic arrivals</h2></div><div class="secbody r"><h3>13 resorts under RT Classification</h3>
+<section class="slide" data-i="8"><div class="media" data-media="8" data-role="context"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">08</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><h2>+30% domestic arrivals</h2></div><div class="secbody r"><h3>13 resorts under RT Classification</h3>
 <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></section>
-<section class="slide" data-i="9"><div class="media" data-media="9" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">09</span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Key lessons for district and mandal officials</h3>
-<p>What made the model work—and what should be replicated carefully.</p>
-<h3>Local government must anchor the platform</h3>
-<p>Mandal/district administration gives legitimacy and continuity.</p>
-<h3>Private sector concerns need practical solutions</h3>
-<p>Price, quality and reliability committees make procurement possible.</p>
-<h3>Community confidence has to be built</h3>
-<p>Use regular hotel-community interactions, exposure visits and transparent processes.</p>
-<h3>Capacity building must be demand-led</h3>
-<p>Train people in skills linked to actual hotel/visitor demand.</p>
-<h3>Destination assets must be protected</h3>
-<p>Tourism income depends on wetlands, beaches, culture, cleanliness and trust.</p>
-<p>Training prompt: Which 2–3 assets in your mandal can be converted into community-led tourism products without overuse?</p>
-<p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></section>
-<section class="slide" data-i="10"><div class="media" data-media="10" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">10</span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>Replication strategy for Andhra Pradesh</h3>
-<p>A practical sequence district and mandal teams can adapt to local tourism assets.</p>
-<h3>Identify tourism anchors</h3>
-<p>Map beaches, temples, crafts, food, wetlands, hills, tribal circuits and agri-tourism points.</p>
-<h3>Create a destination task force</h3>
-<p>Include Mandal Parishad, Gram Panchayat, Tourism, DRDA/SHGs, hotels, transporters, youth and artisans.</p>
-<h3>Map local supply and skills</h3>
-<p>List farmers, fishers, SHGs, artisans, cooks, guides and available facilities.</p>
-<h3>Match supply with demand</h3>
-<p>Run structured discussions with hotels/tour operators to define price, quality, quantity and delivery.</p>
-<h3>Pilot and monitor</h3>
-<p>Launch 1–2 low-risk experiences and procurement linkages; track income, participation, cleanliness and visitor feedback.</p>
-<p>Replicate the principles, not the exact product: coastal mandals may focus on fishing/boat experiences; temple towns on local food, crafts and heritage walks; tribal/hill mandals on guided nature and culture routes.</p>
-<p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></section>
-<section class="slide" data-i="11"><div class="media" data-media="11" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">11</span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>90-day action plan and monitoring metrics</h3>
+<section class="slide" data-i="9"><div class="media" data-media="9" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">09</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><div class="cards"><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Key lessons for district and mandal officials</h3><p>What made the model work—and what should be replicated carefully.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-gov"/></svg></span><h3>Local government must anchor the platform</h3><p>Mandal/district administration gives legitimacy and continuity.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><h3>Private sector concerns need practical solutions</h3><p>Price, quality and reliability committees make procurement possible.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h3>Community confidence has to be built</h3><p>Use regular hotel-community interactions, exposure visits and transparent processes.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-school"/></svg></span><h3>Capacity building must be demand-led</h3><p>Train people in skills linked to actual hotel/visitor demand.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Destination assets must be protected</h3><p>Tourism income depends on wetlands, beaches, culture, cleanliness and trust.</p><p>Training prompt: Which 2–3 assets in your mandal can be converted into community-led tourism products without overuse?</p><p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></div></div></section>
+<section class="slide" data-i="10"><div class="media" data-media="10" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">10</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><div class="cards"><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Replication strategy for Andhra Pradesh</h3><p>A practical sequence district and mandal teams can adapt to local tourism assets.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Identify tourism anchors</h3><p>Map beaches, temples, crafts, food, wetlands, hills, tribal circuits and agri-tourism points.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Create a destination task force</h3><p>Include Mandal Parishad, Gram Panchayat, Tourism, DRDA/SHGs, hotels, transporters, youth and artisans.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-school"/></svg></span><h3>Map local supply and skills</h3><p>List farmers, fishers, SHGs, artisans, cooks, guides and available facilities.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-cart"/></svg></span><h3>Match supply with demand</h3><p>Run structured discussions with hotels/tour operators to define price, quality, quantity and delivery.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-calendar"/></svg></span><h3>Pilot and monitor</h3><p>Launch 1–2 low-risk experiences and procurement linkages; track income, participation, cleanliness and visitor feedback.</p><p>Replicate the principles, not the exact product: coastal mandals may focus on fishing/boat experiences; temple towns on local food, crafts and heritage walks; tribal/hill mandals on guided nature and culture routes.</p><p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p></div></div></div></div></section>
+<section class="slide" data-i="11"><div class="media" data-media="11" data-role="key-factors"></div><div class="glass reveal-root"><div class="sechead r"><span class="secnum">11</span><span class="ic lg" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h2>Kumarakom Responsible Tourism Model | Case study for AP officials</h2></div><div class="secbody r"><h3>90-day action plan and monitoring metrics</h3>
 <p>Use the case study to move from awareness to a small, visible pilot.</p>
 <div class="grid"><div class="cell"><div class="v">0–15 days</div><div class="l">Asset &amp; stakeholder mapping</div></div></div>
 <p class="k">Tourism assets, hotels, SHGs, producers, existing schemes</p>
@@ -284,13 +315,7 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
 <div class="grid"><div class="cell"><div class="v">30–60 days</div><div class="l">Capacity building + supply groups</div></div></div>
 <p class="k">Guide training, food/craft hygiene, production calendars</p>
 <div class="grid"><div class="cell"><div class="v">60–90 days</div><div class="l">Pilot product launch</div></div></div>
-<p class="k">Village/heritage/craft/eco experience + procurement linkage</p>
-<p class="k">Suggested monitoring metrics</p>
-<p class="k">Local income generated</p>
-<p class="k">No. of families / SHGs linked</p>
-<p class="k">No. of tourists using local experiences</p>
-<p class="k">Hotel procurement from local groups</p>
-<p class="k">Waste management and cleanliness status</p>
+<div class="chips"><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><span>Village/heritage/craft/eco experience + procurement linkage</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Suggested monitoring metrics</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><span>Local income generated</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><span>No. of families / SHGs linked</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><span>No. of tourists using local experiences</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span>Hotel procurement from local groups</span></div><div class="chip"><span class="ic sm" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-alert"/></svg></span><span>Waste management and cleanliness status</span></div></div>
 <h3>Visitor satisfaction / complaints</h3>
 <p>Closing activity: Each official identifies one pilot destination, one community group and one private-sector partner to begin with.</p>
 <p>Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.</p>
@@ -310,7 +335,72 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
   var N=slides.length, cur=0;
   var prev=document.getElementById('prev'), next=document.getElementById('next');
   var dotsWrap=document.getElementById('dots'), cnum=document.getElementById('cnum');
+  var ctot=document.getElementById('ctot');
+  var dots=null;
   var mobile=function(){return matchMedia('(max-width:760px)').matches;};
+
+  // ---------- pagination: a slide never scrolls, it overflows into another slide
+  // The panel used to scroll internally, which broke the deck illusion - a slide
+  // that scrolls is a web page. So each section's body is filled block by block
+  // and cut the moment it would exceed the panel, with the remainder continuing
+  // on a fresh slide that keeps the same number, title and background role.
+  // This is measured in the browser rather than estimated at build time, because
+  // the break point depends on the viewport and on the actual rendered font.
+  function paginate(){
+    if(mobile()) return;   // mobile stacks vertically; there are no slides to fill
+    var out=[];
+    slides.forEach(function(sl){
+      var glass=sl.querySelector('.glass');
+      var body=glass && glass.querySelector('.secbody');
+      if(!body || glass.scrollHeight<=glass.clientHeight+2){ out.push(sl); return; }
+
+      var kids=[].slice.call(body.children);
+      kids.forEach(function(k){ body.removeChild(k); });
+
+      var page=sl, pbody=body;
+      out.push(page);
+      kids.forEach(function(k){
+        pbody.appendChild(k);
+        var g=page.querySelector('.glass');
+        if(g.scrollHeight<=g.clientHeight+2) return;
+        // A single block taller than the panel cannot be broken further. Leave it
+        // where it is and let that one page scroll, rather than loop forever.
+        if(pbody.children.length===1) return;
+        pbody.removeChild(k);
+        page=newPage(sl);
+        out.push(page);
+        pbody=page.querySelector('.secbody');
+        pbody.appendChild(k);
+      });
+    });
+    // newPage appends to the track, so continuation slides land at the end while
+    // the reading order lives in `out`. The track is a translateX strip driven by
+    // DOM order, so re-append in `out` order or navigation jumps around.
+    out.forEach(function(sl,i){
+      sl.setAttribute('data-i', i);
+      track.appendChild(sl);
+    });
+    slides=out; N=out.length;
+    if(ctot) ctot.textContent=('0'+N).slice(-2);
+  }
+
+  function newPage(src){
+    var sl=document.createElement('section');
+    sl.className='slide';
+    var m=src.querySelector('.media');
+    var head=src.querySelector('.sechead');
+    // Same data-media index on purpose: a continuation keeps the background of
+    // the section it continues, so one section reads as one place.
+    sl.innerHTML='<div class="media"'
+      + (m ? ' data-media="'+m.getAttribute('data-media')+'" data-role="'+m.getAttribute('data-role')+'"' : '')
+      + '></div><div class="glass reveal-root">'
+      + (head ? '<div class="sechead r">'+head.innerHTML+'</div>' : '')
+      + '<div class="secbody r"></div></div>';
+    var h2=sl.querySelector('.sechead h2');
+    if(h2) h2.innerHTML=h2.innerHTML+' <span class="cont">cont.</span>';
+    track.appendChild(sl);
+    return sl;
+  }
 
   // Background asset resolution, most-specific first, gradient if none exist:
   //   1. per-case  media/<slug>/<i>.(mp4|jpg)        e.g. media/morbi-.../2.jpg
@@ -333,6 +423,9 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
       img.src=url;
     }
   }
+  function layout(){
+  try{ paginate(); }catch(err){ /* never let layout maths kill the deck */ }
+
   slides.forEach(function(sl){
     var m=sl.querySelector('.media'); if(!m) return;
     var i=m.getAttribute('data-media'), role=m.getAttribute('data-role');
@@ -348,9 +441,16 @@ h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(30px,
     d.addEventListener('click',function(){ go(i); });
     dotsWrap.appendChild(d);
   });
-  var dots=[].slice.call(dotsWrap.children);
+  dots=[].slice.call(dotsWrap.children);
+  paint();
+  }
+  // Measure only once the webfont is in: against the fallback face the line
+  // count is wrong and the deck breaks pages in the wrong places.
+  if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(layout); }
+  else { layout(); }
 
   function paint(){
+    if(!dots) return;
     if(!mobile()) track.style.transform='translateX(-'+(cur*100)+'%)';
     dots.forEach(function(d,i){ d.classList.toggle('on', i===cur); });
     cnum.textContent=('0'+(cur+1)).slice(-2);
