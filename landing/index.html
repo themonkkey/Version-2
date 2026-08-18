@@ -1136,7 +1136,26 @@ a.docs-leaf:hover .ext{opacity:1;}
   color:#FFF;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.14);margin-bottom:12px;}
 .calc-formula b{color:var(--lime);font-weight:700;}
 .calc-lede{font-size:13.5px;line-height:1.58;color:rgba(255,255,255,.72);
-  max-width:78ch;margin-bottom:clamp(16px,2vw,22px);}
+  max-width:70ch;margin-bottom:clamp(16px,2vw,22px);}
+.fc-intro{display:grid;gap:clamp(16px,2.2vw,28px);align-items:stretch;
+  padding-bottom:clamp(18px,2.2vw,24px);margin-bottom:clamp(18px,2.2vw,24px);
+  border-bottom:1px solid rgba(255,255,255,.14);}
+.fc-intro-l{display:flex;flex-direction:column;min-width:0;}
+/* margin-top:auto sits the CTA at the foot of its column, so it lines up with
+   the bottom of the note beside it however the prose wraps */
+.fc-intro-l .fc-dlbtn{margin-top:auto;}
+@media(min-width:1040px){
+  .fc-intro{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);}
+}
+.fc-intro .calc-lede{margin-bottom:clamp(14px,1.8vw,18px);}
+.fc-scope{border-radius:var(--r);padding:16px clamp(16px,1.8vw,20px);height:100%;
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);}
+.fc-scope-h{display:flex;align-items:center;gap:9px;margin-bottom:9px;
+  font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--lime);}
+.fc-scope-h i{font-size:17px;}
+.fc-scope p{margin:0 0 9px;font-size:13px;line-height:1.6;color:rgba(255,255,255,.7);}
+.fc-scope p:last-child{margin-bottom:0;}
 .calc-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   gap:clamp(16px,2.2vw,26px);align-items:start;}
 .calc-fieldset{border-radius:var(--r);padding:14px clamp(14px,1.7vw,17px);
@@ -1248,10 +1267,22 @@ a.docs-leaf:hover .ext{opacity:1;}
 
 /* ── Fisheries sector calculator ──────────────────────────────────────── */
 .sector-tabs{grid-template-columns:repeat(auto-fit,minmax(220px,320px));}
-.fc-dl{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  padding-bottom:clamp(16px,2vw,20px);margin-bottom:clamp(16px,2vw,20px);
-  border-bottom:1px solid rgba(255,255,255,.14);}
-.fc-dl-note{font-size:12px;color:rgba(255,255,255,.55);}
+/* The workbook is the deeper reference, so it gets a real call to action rather
+   than the quiet secondary link it used to be. */
+.fc-dlbtn{display:flex;align-items:center;gap:13px;text-decoration:none;
+  padding:14px 18px;border-radius:16px;max-width:520px;
+  background:linear-gradient(135deg, rgba(198,236,143,.20), rgba(198,236,143,.09));
+  border:1px solid rgba(198,236,143,.48);
+  box-shadow:0 10px 26px -18px rgba(0,0,0,.9);
+  transition:border-color .18s ease,background .18s ease,transform .08s ease;}
+.fc-dlbtn:hover{border-color:var(--lime);
+  background:linear-gradient(135deg, rgba(198,236,143,.30), rgba(198,236,143,.14));}
+.fc-dlbtn:active{transform:translateY(1px);}
+.fc-dlbtn>i:first-child{font-size:24px;color:var(--lime);flex:0 0 auto;}
+.fc-dlbtn span{display:block;min-width:0;}
+.fc-dlbtn b{display:block;font-size:14.5px;font-weight:750;color:#fff;letter-spacing:-.01em;}
+.fc-dlbtn small{display:block;margin-top:2px;font-size:12px;color:rgba(255,255,255,.62);}
+.fc-dlbtn-go{font-size:17px;color:var(--lime);flex:0 0 auto;margin-left:4px;}
 
 /* One row per species: qty + price, laid out as a small table so six rows of
    two numbers stay scannable rather than reading as six separate forms. */
@@ -1281,18 +1312,46 @@ a.docs-leaf:hover .ext{opacity:1;}
 details.fc-assump{margin:clamp(14px,1.8vw,18px) 0;border-radius:var(--r);
   background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);
   padding:12px clamp(14px,1.7vw,17px);}
-details.fc-assump summary{cursor:pointer;font-size:12.5px;font-weight:650;color:rgba(198,236,143,.9);
-  list-style:none;display:flex;align-items:baseline;gap:4px;flex-wrap:wrap;}
+/* The summary read as a heading, so nobody knew it opened. It is now shaped
+   like a control: hover and focus states, a right-hand Show/Hide word, and a
+   chevron that turns. */
+details.fc-assump summary{cursor:pointer;font-size:13px;font-weight:700;color:#fff;
+  list-style:none;display:flex;align-items:center;gap:10px;
+  margin:-4px -6px;padding:8px 10px;border-radius:11px;
+  transition:background .15s ease;}
+details.fc-assump summary:hover{background:rgba(255,255,255,.06);}
+details.fc-assump summary:focus-visible{outline:2px solid rgba(198,236,143,.7);outline-offset:2px;}
 details.fc-assump summary::-webkit-details-marker{display:none;}
-details.fc-assump summary::before{content:'▸';margin-right:2px;transition:transform .14s;}
-details.fc-assump[open] summary::before{transform:rotate(90deg);}
-.fc-assump-hint{font-weight:500;color:rgba(255,255,255,.5);font-size:11.8px;}
-.fc-rgroup{margin-top:12px;}
-.fc-rgroup:first-of-type{margin-top:14px;}
-.fc-rgroup > h6{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(255,255,255,.55);margin-bottom:7px;}
-.fc-rgroup .cf{margin-bottom:6px;}
-.fc-rgroup .cf input{width:78px;}
+.fc-assump-ic{flex:0 0 auto;display:grid;place-items:center;width:26px;height:26px;
+  border-radius:8px;color:var(--lime);
+  background:rgba(198,236,143,.13);border:1px solid rgba(198,236,143,.3);}
+.fc-assump-ic i{font-size:15px;}
+.fc-assump-t{flex:1 1 auto;min-width:0;}
+.fc-assump-hint{display:block;font-weight:500;color:rgba(255,255,255,.55);
+  font-size:11.8px;margin-top:2px;}
+.fc-assump-act{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+  font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--lime);}
+.fc-assump-act .chev{transition:transform .18s ease;font-size:15px;}
+details.fc-assump[open] .fc-assump-act .chev{transform:rotate(180deg);}
+.fc-assump-act .lbl-open{display:inline;}
+.fc-assump-act .lbl-close{display:none;}
+details.fc-assump[open] .fc-assump-act .lbl-open{display:none;}
+details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
+
+/* Ratios: a plain stack put a 78px box a full panel-width from its label. In
+   columns the two stay together and the whole set is visible without scrolling. */
+#fc_ratios{margin-top:14px;display:grid;gap:clamp(12px,1.6vw,18px);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+.fc-rgroup{min-width:0;padding:12px 14px;border-radius:12px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);}
+.fc-rgroup > h6{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--lime);margin:0 0 9px;padding-bottom:7px;
+  border-bottom:1px solid rgba(255,255,255,.12);}
+.fc-rgroup .cf{margin-bottom:7px;gap:7px;}
+.fc-rgroup .cf:last-child{margin-bottom:0;}
+.fc-rgroup .cf > span:first-child{font-size:12.5px;color:rgba(255,255,255,.74);}
+.fc-rgroup .cf input{width:94px;}   /* fits the longest ratio, 0.2393; 74px clipped it */
 
 .fc-results{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,18px);
   margin-top:clamp(16px,2vw,20px);}
@@ -1300,6 +1359,28 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
   color:rgba(198,236,143,.82);margin-bottom:10px;}
 /* Sections A and B pair up once there is room for both to keep a readable row.
    align-items:start so a short B does not stretch to A's height. */
+/* Staged reveal. The result is a chain of reasoning - output, then what is
+   consumed producing it, then the subtraction - and showing all three at once
+   asks the reader to find that order for themselves. Each stage is held back
+   and released in sequence, so the panel reads in the order the method runs.
+   Only ever a presentation layer: every figure is already computed and in the
+   DOM before the first stage shows, so nothing here can change an answer. */
+.fc-out.is-staging [data-stage]{opacity:0;transform:translateY(12px);}
+.fc-out.is-staging [data-stage].shown{opacity:1;transform:none;
+  transition:opacity .42s ease,transform .42s cubic-bezier(.2,.7,.2,1);}
+.fc-out [data-stage="4"].shown .ca-v{animation:ca-pop .5s cubic-bezier(.2,.8,.2,1);}
+@keyframes ca-pop{ from{opacity:.35;transform:scale(.96);} to{opacity:1;transform:none;} }
+@media (prefers-reduced-motion: reduce){
+  .fc-out.is-staging [data-stage]{opacity:1;transform:none;}
+  .fc-out [data-stage="4"].shown .ca-v{animation:none;}
+}
+.fc-samplenote{display:flex;gap:11px;align-items:flex-start;margin:0 0 16px;
+  padding:12px 14px;border-radius:12px;font-size:13.5px;line-height:1.55;
+  color:rgba(255,255,255,.78);
+  background:rgba(198,236,143,.07);border:1px solid rgba(198,236,143,.24);}
+.fc-samplenote i{font-size:18px;color:rgba(198,236,143,.75);flex:0 0 auto;margin-top:1px;}
+.fc-samplenote b{color:#fff;font-weight:700;}
+.fc-samplenote.is-off{display:none;}
 .fc-inputs{display:grid;gap:clamp(14px,1.8vw,18px);align-items:start;}
 @media(min-width:1040px){ .fc-inputs{grid-template-columns:1fr 1fr;} }
 /* Calculate bar. The primary action is deliberately heavy: it is the one
@@ -2774,18 +2855,40 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
 
     <div class="calc-panel" id="sector-fisheries">
       <div class="calc-formula">Output &minus; Intermediate Consumption = <b>GVA</b>, by species and product form</div>
-      <p class="calc-lede">Follows the District Fishery GVA Estimator workbook: production and price by species, the share of each that is sold raw versus salted, sun-dried, frozen or kept for subsistence, and an intermediate-consumption ratio applied at the point each is actually incurred.</p>
-
-      <div class="fc-dl">
-        <a class="calc-add" href="assets/tools/Fishery_GVA_Estimator.xlsx" download>
-          <i class="ti ti-download"></i> Download the Excel version</a>
-        <span class="fc-dl-note">Same workbook, same formulas — for working offline or for a version your team can hand around.</span>
+      <!-- The lede alone left most of a wide panel empty, so it now shares the
+           row with the note about what this tool is and is not. -->
+      <!-- Header block. Prose and the workbook link belong together, so the
+           left column carries both and the scope note holds the right; the CTA
+           is pushed to the foot of its column so the two bottom-align instead of
+           the button floating in a band of its own. -->
+      <div class="fc-intro">
+        <div class="fc-intro-l">
+          <p class="calc-lede">Follows the District Fishery GVA Estimator workbook: production and price by species, the share of each that is sold raw versus salted, sun-dried, frozen or kept for subsistence, and an intermediate-consumption ratio applied at the point each is actually incurred.</p>
+          <a class="fc-dlbtn" href="assets/tools/Fishery_GVA_Estimator.xlsx" download>
+            <i class="ti ti-file-spreadsheet"></i>
+            <span><b>Download the Excel workbook</b>
+              <small>Same formulas, every intermediate sheet.</small></span>
+            <i class="ti ti-download fc-dlbtn-go"></i></a>
+        </div>
+        <aside class="fc-scope">
+          <div class="fc-scope-h"><i class="ti ti-bulb"></i><span>What this calculator is for</span></div>
+          <p>A way to understand how the estimate is built, not to produce the
+            official one. For the ratio tables and every intermediate sheet, work
+            in the Excel workbook.</p>
+        </aside>
       </div>
 
       <!-- A and B sit side by side on a wide screen. Stacked, each row put its
            two small inputs ~700px away from the label they belong to; paired,
            the label and its fields stay together and the panel is not half
            empty. Each keeps its own heading, so the split stays legible. -->
+      <p class="fc-samplenote" id="fc_samplenote">
+        <i class="ti ti-flask"></i>
+        <span><b>Sample figures are loaded.</b> They are illustrative only, not any
+        district's landings. Press Calculate GVA to see the method run end to end,
+        then clear them and enter your own.</span>
+      </p>
+
       <div class="fc-inputs">
         <div class="calc-fieldset">
           <h4>A · Production &amp; average price</h4>
@@ -2807,7 +2910,14 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
       </div>
 
       <details class="fc-assump">
-        <summary>Assumptions used <span class="fc-assump-hint">— the workbook's own ratios; edit only if your district's are known to differ</span></summary>
+        <summary>
+          <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
+          <span class="fc-assump-t">Assumptions used
+            <span class="fc-assump-hint">The workbook's own ratios. Edit only if your district's are known to differ.</span></span>
+          <span class="fc-assump-act">
+            <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
+            <i class="ti ti-chevron-down chev"></i></span>
+        </summary>
         <div id="fc_ratios"></div>
         <button class="calc-add" id="fc_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook's defaults</button>
       </details>
@@ -2820,6 +2930,8 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
       <div class="fc-actions">
         <button class="fc-go" id="fc_calc" type="button">
           <i class="ti ti-equal"></i> Calculate GVA</button>
+        <button class="fc-clear" id="fc_sample" type="button">
+          <i class="ti ti-flask"></i> Load sample figures</button>
         <button class="fc-clear" id="fc_clearall" type="button">
           <i class="ti ti-eraser"></i> Clear entries</button>
         <span class="fc-state" id="fc_state" role="status" aria-live="polite"></span>
@@ -2833,20 +2945,20 @@ details.fc-assump[open] summary::before{transform:rotate(90deg);}
       </div>
       <div class="fc-outbody">
       <div class="fc-results">
-        <div class="calc-result">
+        <div class="calc-result" data-stage="1">
           <h5 class="fc-rh">Gross Value of Output</h5>
           <div class="calc-steps" id="fc_gvo_steps"></div>
           <div class="calc-out strong"><span>GROSS VALUE OF OUTPUT</span><b id="fc_gvo">—</b></div>
         </div>
-        <div class="calc-result">
+        <div class="calc-result" data-stage="2">
           <h5 class="fc-rh">Intermediate consumption</h5>
           <div class="calc-steps" id="fc_ic_steps"></div>
           <div class="calc-out strong"><span>TOTAL INTERMEDIATE CONSUMPTION</span><b id="fc_ic">—</b></div>
         </div>
       </div>
-      <div class="calc-result fc-final">
+      <div class="calc-result fc-final" data-stage="3">
         <div class="calc-steps" id="fc_final_steps"></div>
-        <div class="calc-answer">
+        <div class="calc-answer" data-stage="4">
           <div class="ca-k">Gross Value Added — adjusted</div>
           <div class="ca-v" id="fc_gva">—</div>
           <div class="ca-s">at basic prices, net of FISIM</div>
@@ -5677,6 +5789,21 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       {id:'brackprawn', label:'Brackish-water prawn',     raw:'brackprawn_raw', prawn:true,
         proc:[{id:'freeze', label:'Freezing', share:'brackprawn_freeze'}]}
     ];
+    /* A worked example, so the page arrives with something to press Calculate
+       on instead of a grid of zeros. These are ILLUSTRATIVE round figures, not
+       any district's landings and not sourced from the workbook - the shipped
+       Fishery_GVA_Estimator.xlsx has every input cell blank apart from a 1000 t
+       marine stub, which is where that one number comes from. They are labelled
+       as a sample in the UI and one button clears them, because an officer must
+       never mistake them for their own district's data. */
+    var FISH_SAMPLE = {
+      q:{marine:1000, inland:800, penaeid:120, nonpenaeid:80, freshprawn:60, brackprawn:400},
+      p:{marine:120000, inland:100000, penaeid:450000, nonpenaeid:250000,
+         freshprawn:300000, brackprawn:400000},
+      pp:{marine_salt:140000, marine_sundry:130000, marine_freeze:180000,
+          inland_salt:120000, inland_sundry:110000, brackprawn_freeze:500000},
+      fisim:0
+    };
     var FISH_DEFAULTS = {
       marine_raw:0.81, marine_salt:0.15, marine_sundry:0.01, marine_freeze:0.03,
       inland_raw:0.90, inland_salt:0.05, inland_sundry:0.05,
@@ -5709,17 +5836,18 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         '<div class="fc-shead"><span>Species</span><span>Tonnes</span><span>₹ / tonne</span></div>' +
         FISH_SPECIES.map(function(s){
           return '<div class="fc-srow"><span class="fc-slabel">' + s.label + '</span>' +
-            '<input type="number" id="fq_' + s.id + '" value="0" min="0" step="any" aria-label="' + s.label + ' production, tonnes">' +
-            '<input type="number" id="fp_' + s.id + '" value="0" min="0" step="any" aria-label="' + s.label + ' average price per tonne">' +
+            '<input type="number" id="fq_' + s.id + '" value="' + (FISH_SAMPLE.q[s.id] || 0) + '" min="0" step="any" aria-label="' + s.label + ' production, tonnes">' +
+            '<input type="number" id="fp_' + s.id + '" value="' + (FISH_SAMPLE.p[s.id] || 0) + '" min="0" step="any" aria-label="' + s.label + ' average price per tonne">' +
           '</div>';
         }).join('');
 
       document.getElementById('fc_proc').innerHTML = FISH_SPECIES.filter(function(s){ return s.proc; }).map(function(s){
         return '<div class="fc-pgroup"><div class="pg-h">' + s.label + '</div>' +
           s.proc.map(function(p){
+            var sv = FISH_SAMPLE.pp[s.id + '_' + p.id];
             return '<label class="cf"><span>' + p.label + ' price</span>' +
               '<span class="cf-pre">₹</span>' +
-              '<input type="number" id="fpp_' + s.id + '_' + p.id + '" value="" min="0" step="any" placeholder="optional">' +
+              '<input type="number" id="fpp_' + s.id + '_' + p.id + '" value="' + (sv == null ? '' : sv) + '" min="0" step="any" placeholder="optional">' +
               '<span class="cf-suf">/t</span></label>';
           }).join('') + '</div>';
       }).join('');
@@ -5979,10 +6107,34 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       benchRender(lastGva);
     }
 
+    var stageTimers = [];
+    var slowOK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Releases the result one stage at a time: output, intermediate consumption,
+       the subtraction, then the answer. Any earlier run is cancelled first, so
+       pressing Calculate twice in quick succession cannot leave two sequences
+       interleaving. */
+    function runStages(){
+      stageTimers.forEach(clearTimeout);
+      stageTimers = [];
+      var stages = outWrap ? outWrap.querySelectorAll('[data-stage]') : [];
+      if(!stages.length) return;
+      outWrap.classList.add('is-staging');
+      stages.forEach(function(el){ el.classList.remove('shown'); });
+      // read back a layout value so the class removal is committed before the
+      // first stage is re-added, or the browser coalesces both and nothing moves
+      void outWrap.offsetHeight;
+      stages.forEach(function(el, i){
+        var wait = slowOK ? i * 380 : 0;
+        stageTimers.push(setTimeout(function(){ el.classList.add('shown'); }, wait));
+      });
+    }
+
     function doCalculate(){
       recalc();
       calculated = true;
       if(outWrap) outWrap.classList.remove('is-empty', 'is-stale');
+      runStages();
       if(stateEl){ stateEl.textContent = 'Calculated'; stateEl.className = 'fc-state ok'; }
       /* Bring the answer into view when it is below the fold, without the
          overshoot a bare scrollIntoView causes on this page. */
@@ -6009,18 +6161,51 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
        it reaches it through here rather than by reordering the setup. */
     window.__fcMarkStale = markStale;
 
+    var sampleNote = document.getElementById('fc_samplenote');
+    var sampleBtn  = document.getElementById('fc_sample');
+
+    function resetOutput(){
+      stageTimers.forEach(clearTimeout); stageTimers = [];
+      if(outWrap){
+        outWrap.classList.remove('is-staging');
+        outWrap.querySelectorAll('[data-stage]').forEach(function(el){ el.classList.remove('shown'); });
+      }
+      calculated = false; lastGva = 0;
+      if(outWrap){ outWrap.classList.add('is-empty'); outWrap.classList.remove('is-stale'); }
+      if(stateEl){ stateEl.textContent = ''; stateEl.className = 'fc-state'; }
+    }
+
     if(clearBtn) clearBtn.addEventListener('click', function(){
-      // Entries only. The assumption ratios have their own reset, because they
-      // are the workbook's defaults rather than something the officer typed.
+      // Every figure the officer could have typed: production, price, processed
+      // price, FISIM. The assumption ratios keep their own reset, because they
+      // are the workbook's defaults rather than an entry.
       root.querySelectorAll('#fc_species input, #fc_proc input').forEach(function(el){
         el.value = el.id.indexOf('fpp_') === 0 ? '' : 0;
       });
       var fisim = document.getElementById('fc_fisim');
       if(fisim) fisim.value = 0;
-      calculated = false; lastGva = 0;
-      if(outWrap) outWrap.classList.add('is-empty');
-      if(outWrap) outWrap.classList.remove('is-stale');
-      if(stateEl){ stateEl.textContent = ''; stateEl.className = 'fc-state'; }
+      if(sampleNote) sampleNote.classList.add('is-off');
+      resetOutput();
+    });
+
+    // Puts the worked example back, so clearing it is not a one-way door.
+    if(sampleBtn) sampleBtn.addEventListener('click', function(){
+      FISH_SPECIES.forEach(function(sp){
+        var q = document.getElementById('fq_' + sp.id);
+        var pr = document.getElementById('fp_' + sp.id);
+        if(q)  q.value  = FISH_SAMPLE.q[sp.id] || 0;
+        if(pr) pr.value = FISH_SAMPLE.p[sp.id] || 0;
+        (sp.proc || []).forEach(function(pc){
+          var el = document.getElementById('fpp_' + sp.id + '_' + pc.id);
+          if(!el) return;
+          var v = FISH_SAMPLE.pp[sp.id + '_' + pc.id];
+          el.value = (v == null ? '' : v);
+        });
+      });
+      var fs = document.getElementById('fc_fisim');
+      if(fs) fs.value = FISH_SAMPLE.fisim;
+      if(sampleNote) sampleNote.classList.remove('is-off');
+      resetOutput();
     });
 
     root.addEventListener('input', markStale);
