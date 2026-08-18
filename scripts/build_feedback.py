@@ -59,7 +59,7 @@ NAME = {'kakinada':'Kakinada','ysr-kadapa':'YSR Kadapa','ntr':'NTR','spsr-nellor
 
 LEVELS = [
  ("district",     "District_Training_Feedback_Report.docx",       "District training"),
- ("constituency", "District_Constituency Training Feedback.docx", "Constituency and mandal training"),
+ ("constituency", "District_Constituency Training Feedback.docx", "Constituency training"),
  ("master",       "Master Training_Feedback_Analysis.docx",       "Master trainer programme"),
 ]
 

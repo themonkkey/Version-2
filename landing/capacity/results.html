@@ -335,7 +335,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
   }
   var mount = document.getElementById('mount'), sel = document.getElementById('dsel');
   Promise.all([
-    fetch('../assets/assessment_results.json?v=2026-08-16b').then(function(r){ return r.json(); }),
+    fetch('../assets/assessment_results.json?v=2026-08-18a').then(function(r){ return r.json(); }),
     fetch('../assets/assessment_questions.json?v=2026-08-16a').then(function(r){ return r.json(); })
       .catch(function(){ return null; })
   ]).then(function(all){

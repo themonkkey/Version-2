@@ -98,7 +98,7 @@
         },
         {
           "level": "constituency",
-          "label": "Constituency and mandal training",
+          "label": "Constituency training",
           "audience": "Constituency and mandal officers",
           "comparable": true,
           "baseline": {

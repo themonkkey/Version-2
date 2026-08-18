@@ -200,7 +200,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
      feedback falls through to whichever of its levels did. */
   var LEVEL_ORDER = ['district', 'constituency', 'master'];
 
-  fetch('../assets/feedback_results.json?v=2026-08-17a').then(function(r){ return r.json(); }).then(function(R){
+  fetch('../assets/feedback_results.json?v=2026-08-18a').then(function(r){ return r.json(); }).then(function(R){
     var slugs = Object.keys(R.districts || {});
     var LABEL = {};
     (R._levels || []).forEach(function(l){ LABEL[l.key] = l.label; });

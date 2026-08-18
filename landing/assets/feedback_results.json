@@ -25,7 +25,7 @@
   },
   {
    "key": "constituency",
-   "label": "Constituency and mandal training"
+   "label": "Constituency training"
   },
   {
    "key": "master",
@@ -164,7 +164,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 38,
      "avg": 3.9,
      "favorable": 69.6,
@@ -423,7 +423,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 56,
      "avg": 4.02,
      "favorable": 81.5,
@@ -810,7 +810,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 189,
      "avg": 3.75,
      "favorable": 70.6,
@@ -1196,7 +1196,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 180,
      "avg": 3.7,
      "favorable": 66.3,
@@ -1455,7 +1455,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 95,
      "avg": 4.51,
      "favorable": 97.2,
@@ -1714,7 +1714,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 136,
      "avg": 3.84,
      "favorable": 73.4,
@@ -2100,7 +2100,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 201,
      "avg": 4.38,
      "favorable": 94.4,
@@ -2486,7 +2486,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 72,
      "avg": 4.37,
      "favorable": 94.4,
@@ -2872,7 +2872,7 @@
      ]
     },
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 114,
      "avg": 4.25,
      "favorable": 91.0,
@@ -3131,7 +3131,7 @@
    "name": "Dr. B.R. Ambedkar Konaseema",
    "levels": {
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 94,
      "avg": 4.38,
      "favorable": 92.1,
@@ -3390,7 +3390,7 @@
    "name": "East Godavari",
    "levels": {
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 24,
      "avg": 3.6,
      "favorable": 69.9,
@@ -3649,7 +3649,7 @@
    "name": "Prakasam",
    "levels": {
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 19,
      "avg": 4.12,
      "favorable": 88.9,
@@ -3781,7 +3781,7 @@
    "name": "SPSR Nellore",
    "levels": {
     "constituency": {
-     "label": "Constituency and mandal training",
+     "label": "Constituency training",
      "n": 121,
      "avg": 3.79,
      "favorable": 73.0,
