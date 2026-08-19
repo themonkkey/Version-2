@@ -3529,6 +3529,7 @@ setTimeout(()=>{
     };
     tryRestore(40);          // ~5s of grace while the geojson lands
   }
+  navReady = true;
 }, 0);
 
 // ---------- map ----------
@@ -3803,11 +3804,16 @@ document.addEventListener('click', function(e){
    pushed onto history, so Back walks back up and the link is shareable.
 
    `navLock` guards the replay: restoring a state must not push a new one. */
-let navLock = false;
+let navLock = false, navReady = false;
 
+/* #districts/<tab>[/<district>[/<constituency>[/<mandal>]]]
+   The tab comes first because it is the coarser choice: every deeper segment is
+   scoped by the district, which every tab shares. */
 function navPath(){
-  return ['districts', currentDistrictName, currentConstituency, currentMandal]
-    .filter(Boolean).map(encodeURIComponent).join('/');
+  const tab = window.__dtab || 'map';
+  const parts = ['districts', tab, currentDistrictName];
+  if(tab === 'map'){ parts.push(currentConstituency, currentMandal); }
+  return parts.filter(Boolean).map(encodeURIComponent).join('/');
 }
 /* The abbreviations footnote only earns its place once something above it uses
    the terms. */
@@ -3829,9 +3835,13 @@ async function navRestore(rawPath){
   const src = rawPath != null ? rawPath : location.hash.replace(/^#/,'');
   const parts = decodeURIComponent(src).split('/').map(function(x){return x.trim();});
   if(parts[0] !== 'districts') return;
-  const dName = parts[1] || null, cName = parts[2] || null, mName = parts[3] || null;
+  const TABS = ['map','docs','gva','capacity','cases'];
+  let i = 1, tab = 'map';
+  if(TABS.indexOf(parts[1]) > -1){ tab = parts[1]; i = 2; }
+  const dName = parts[i] || null, cName = parts[i+1] || null, mName = parts[i+2] || null;
   navLock = true;
   try{
+    if(window.__setTab && window.__dtab !== tab) window.__setTab(tab, true);
     if(!dName){ showStateView(); return; }
 
     // district: re-enter only when it actually changed
@@ -3876,7 +3886,10 @@ function showStateView(){
   mapLevel='state'; currentDistrict=null;
   currentDistrictKey = null; currentDistrictName = null;
   currentConstituency = null; currentMandal = null;
-  navPush();
+  /* initMap calls this during boot, before the requested path has been
+     replayed; pushing then would overwrite it. navReady is set once the boot
+     routine has captured what it needs. */
+  if(navReady) navPush(); else syncAbbr();
   if(window.DTABS_DISTRICT) window.DTABS_DISTRICT(null);   // no district, no tab filter
   document.getElementById('mapBox').classList.remove('picked','zoomed');
   setLayoutState(false);
@@ -6540,7 +6553,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     recalc();
   })();
 
-  function setTab(which){
+  function setTab(which, fromNav){
+    window.__dtab = which;
     mapView.hidden   = which !== 'map';
     docsView.hidden  = which !== 'docs';
     casesView.hidden = which !== 'cases';
@@ -6553,7 +6567,12 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(which === 'cases') loadCases();
     if(which === 'gva')   loadGva();
     if(which === 'capacity') loadCapacity();
+    /* The tab is part of where you are, so it belongs in the address. Without
+       it, Back could not step between tabs and a tab could not be linked to.
+       fromNav means the nav layer is replaying a URL, so it must not push. */
+    if(!fromNav && typeof navPush === 'function') navPush();
   }
+  window.__setTab = setTab;
   document.querySelectorAll('.dtab-live').forEach(function(b){
     b.addEventListener('click', function(){ setTab(b.dataset.dtab); });
   });
@@ -6564,7 +6583,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   document.querySelectorAll('.nl[data-page="districts"]').forEach(function(b){
     b.addEventListener('click', function(){ setTab('map'); });
   });
-  setTab('map');   // explicit default rather than relying on markup hidden flags
+  /* fromNav=true: this runs synchronously while the script is still parsing,
+     BEFORE the boot routine has read location.hash. Letting it push would
+     rewrite the address to "#districts/map" and destroy the very path a shared
+     link was asking for. */
+  setTab('map', true);   // explicit default rather than relying on markup hidden flags
 })();
 </script>
 </body>

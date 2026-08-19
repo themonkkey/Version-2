@@ -26,6 +26,14 @@ body{font-family:'Public Sans',-apple-system,BlinkMacSystemFont,"Helvetica Neue"
 .back{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-size:12.5px;font-weight:650;
   letter-spacing:.03em;color:rgba(198,236,143,.9);margin-bottom:clamp(16px,2.4vw,24px);}
 .back:hover{color:var(--lime);}
+.sib{display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+  font-size:12.5px;font-weight:650;color:rgba(198,236,143,.9);
+  padding:8px 14px;border-radius:999px;border:1px solid rgba(198,236,143,.32);
+  background:rgba(198,236,143,.08);margin-left:14px;vertical-align:middle;
+  transition:border-color .15s ease,background .15s ease;}
+.sib:hover{border-color:var(--lime);background:rgba(198,236,143,.16);}
+@media(max-width:640px){ .sib{margin:10px 0 0;display:inline-flex;} }
+
 .eyebrow{font-size:11px;font-weight:750;letter-spacing:.14em;text-transform:uppercase;color:rgba(198,236,143,.8);margin-bottom:9px;}
 h1{font-size:clamp(26px,4.4vw,42px);font-weight:750;letter-spacing:-.025em;line-height:1.12;margin-bottom:12px;}
 .lede{font-size:clamp(14.5px,1.7vw,16.5px);line-height:1.6;color:rgba(255,255,255,.76);max-width:70ch;}
@@ -99,11 +107,12 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
 </head>
 <body>
 <div class="top"><div class="wrap">
-  <a class="back" href="../index.html#districts">&larr; Back to the capacity building record</a>
+  <a class="back" id="backLink" href="../index.html#districts/capacity">&larr; Back to the capacity building record</a>
   <div class="eyebrow">Capacity building · Feedback</div>
   <h1>Training feedback</h1>
   <p class="lede">How officers rated the district training at the end of the session. Each statement was marked from 1 (strongly disagree) to 5 (strongly agree).</p>
   <div class="pick"><label for="dsel">District</label><select id="dsel"></select></div>
+  <a class="sib" id="sibLink" href="results.html">Baseline &amp; endline results for this district &rarr;</a>
   <div class="ltabs" id="ltabs" role="tablist" aria-label="Type of training"></div>
 </div></div>
 <main><div class="wrap" id="mount"></div></main>
@@ -247,8 +256,27 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
       var r = rankIn(level, slug);
       document.title = 'Training feedback · ' + rec.name + ' · Swarna Andhra @2047';
       mount.innerHTML = build(rec, rec.levels[level], r[0], r[1]);
-      history.replaceState(null, '', '?d=' + slug + '&lv=' + level);
+
+      /* Back used to point at plain #districts, which dropped the reader on the
+         whole state map: they then had to re-pick the district and re-open the
+         tab they had just come from. It now returns to this district's capacity
+         tab. */
+      var back = document.getElementById('backLink');
+      if(back) back.href = '../index.html#districts/capacity/' + encodeURIComponent(rec.name);
+      var sib = document.getElementById('sibLink');
+      if(sib) sib.href = 'results.html?d=' + encodeURIComponent(slug);
+
+      /* pushState, not replaceState: the level tabs are real steps, and
+         replacing meant Back skipped every one of them and left the page. */
+      var url = '?d=' + slug + '&lv=' + level;
+      if(location.search !== url) history.pushState({d:slug, lv:level}, '', url);
     }
+    window.addEventListener('popstate', function(){
+      var q = new URLSearchParams(location.search);
+      var d = q.get('d') || want, l = q.get('lv') || LEVEL_ORDER[0];
+      if(sel) sel.value = d;
+      show(d, l);
+    });
     sel.addEventListener('change', function(){ show(sel.value, wantLv || LEVEL_ORDER[0]); });
     show(want, wantLv || LEVEL_ORDER[0]);
   }).catch(function(){ mount.innerHTML = '<div class="empty">Could not load the feedback results.</div>'; });
