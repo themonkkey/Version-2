@@ -4020,6 +4020,14 @@ const distCache = {};
 async function showDistrict(key, name){
   currentDistrictKey = key; currentDistrictName = name;
   currentConstituency = null; currentMandal = null;   // district level: no deeper pick
+  /* The BROWSE -> DETAIL switch used to live only in the map's click handler,
+     so every other route into a district - a deep link, browser Back, the
+     breadcrumb - left the layout in its browse state: full-width map, panel
+     hidden, under a heading announcing the district. It belongs here, where
+     every one of those routes passes. setLayoutState no-ops if already split. */
+  const mb = document.getElementById('mapBox');
+  if(mb) mb.classList.add('picked');
+  setLayoutState(true);
   navPush();
   // the map is the single source of the district filter that scopes every tab
   if(window.DTABS_DISTRICT) window.DTABS_DISTRICT(name);
