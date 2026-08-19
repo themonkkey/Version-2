@@ -98,7 +98,10 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);
   border-bottom:1px solid rgba(255,255,255,.14);
   box-shadow:0 1px 24px rgba(0,0,0,.18);}
-.nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:11px var(--pad-x);}
+/* The bar was capped at --maxw and centred, so on a wide screen the links sat
+   in from the right edge and read as floating mid-bar rather than aligned to
+   anything. The nav spans the viewport now: brand hard left, tabs hard right. */
+.nav-inner{max-width:none;margin:0;display:flex;align-items:center;justify-content:space-between;padding:11px clamp(16px,3vw,34px);}
 .brand{display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;}
 .brand-logo-wrap{background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);
   border-radius:11px;padding:5px 8px;display:flex;align-items:center;
@@ -108,7 +111,15 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 .navlinks{display:flex;gap:clamp(4px,1vw,10px);align-items:center;}
 .navlinks .nl{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.68);cursor:pointer;
   background:none;border:none;padding:7px 12px;border-radius:10px;letter-spacing:-.01em;
+  /* two-word items ("Capacity building", "Case studies") broke onto a second
+     line once the row got tight, which made the bar look ragged. They stay on
+     one line and the row tightens instead. */
+  white-space:nowrap;
   transition:color .18s,background .18s;}
+@media(max-width:1180px){
+  .navlinks .nl{font-size:12.5px;padding:7px 8px;}
+  .navlinks{gap:2px;}
+}
 .navlinks .nl:hover{color:#FFF;background:rgba(255,255,255,.12);}
 .navlinks .nl.active{color:var(--lime);background:rgba(198,255,106,.14);font-weight:700;}
 .hamburger{display:none;background:none;border:none;font-size:23px;color:#FFF;cursor:pointer;padding:4px 6px;}
@@ -2449,6 +2460,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <button class="nl" data-page="methodology">Methodology</button>
       <button class="nl" data-page="calculator">Calculator</button>
       <button class="nl" data-page="districts">Districts</button>
+      <button class="nl" data-page="districts" data-goto-tab="capacity">Capacity building</button>
+      <button class="nl" data-page="districts" data-goto-tab="cases">Case studies</button>
       <a href="https://andhrachatbot.streamlit.app" class="btn-wrap"><button class="btn-primary btn-nav">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
     </div>
@@ -2459,6 +2472,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <button class="nl" data-page="methodology">Methodology</button>
     <button class="nl" data-page="calculator">Calculator</button>
     <button class="nl" data-page="districts">Districts</button>
+    <button class="nl" data-page="districts" data-goto-tab="capacity">Capacity building</button>
+    <button class="nl" data-page="districts" data-goto-tab="cases">Case studies</button>
     <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary" style="width:100%;justify-content:center;margin-top:12px">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
   </div>
 </nav>
@@ -3466,11 +3481,29 @@ const LOOP_SCRIM = {
 
 // ---------- router ----------
 const pages = ['home','about','methodology','calculator','districts'];
+/* Capacity building and Case studies are nav items that open a tab inside the
+   Districts page, so three nav buttons share data-page="districts" and the old
+   "highlight anything matching the page" rule lit all three at once. An item
+   that names a tab is active only for that tab; plain Districts covers the tabs
+   that have no nav item of their own. */
+function syncNav(page){
+  const tab = window.__dtab || 'map';
+  document.querySelectorAll('.navlinks .nl, .mobile-menu .nl').forEach(b=>{
+    const wants = b.dataset.gotoTab;
+    const on = wants
+      ? (page === 'districts' && tab === wants)
+      : (b.dataset.page === page &&
+         (page !== 'districts' || !['capacity','cases'].includes(tab)));
+    b.classList.toggle('active', on);
+  });
+}
+window.__syncNav = syncNav;
+
 function go(page){
   if(!pages.includes(page)) page='home';
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
-  document.querySelectorAll('.navlinks .nl, .mobile-menu .nl').forEach(b=>b.classList.toggle('active', b.dataset.page===page));
+  syncNav(page);
   document.getElementById('mobileMenu').classList.remove('open');
   window.scrollTo(0,0);
   /* Only rewrite the hash when it is not already pointing into this page: the
@@ -6617,6 +6650,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
        it, Back could not step between tabs and a tab could not be linked to.
        fromNav means the nav layer is replaying a URL, so it must not push. */
     if(!fromNav && typeof navPush === 'function') navPush();
+    /* the nav highlight depends on the tab, not only the page */
+    if(typeof window.__syncNav === 'function'){
+      const active = document.querySelector('.page.active');
+      window.__syncNav(active ? active.id.replace('page-','') : 'districts');
+    }
   }
   window.__setTab = setTab;
   document.querySelectorAll('.dtab-live').forEach(function(b){
