@@ -97,7 +97,13 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   background:rgba(11,46,32,.62);
   backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);
   border-bottom:1px solid rgba(255,255,255,.14);
-  box-shadow:0 1px 24px rgba(0,0,0,.18);}
+  /* No box-shadow, and the render surface is hard-clipped to the box. Hovering
+     any link repainted the bar, and Chrome re-composited the blur+saturate over
+     the layer's full bounds - which the 24px shadow had pushed below the bar -
+     so a bright band flashed across the top of the district tabs on every nav
+     hover. clip-path pins the backdrop output to the border box; the bar keeps
+     its own compositing layer so a child repaint never re-rasterises the blur. */
+  clip-path:inset(0);isolation:isolate;transform:translateZ(0);}
 /* The bar was capped at --maxw and centred, so on a wide screen the links sat
    in from the right edge and read as floating mid-bar rather than aligned to
    anything. The nav spans the viewport now: brand hard left, tabs hard right. */
@@ -120,6 +126,9 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   .navlinks .nl{font-size:12.5px;padding:7px 8px;}
   .navlinks{gap:2px;}
 }
+/* Each link composites on its own so its hover fill repaints the button, not
+   the frosted bar behind it. */
+.navlinks .nl{transform:translateZ(0);}
 .navlinks .nl:hover{color:#FFF;background:rgba(255,255,255,.12);}
 .navlinks .nl.active{color:var(--lime);background:rgba(198,255,106,.14);font-weight:700;}
 .hamburger{display:none;background:none;border:none;font-size:23px;color:#FFF;cursor:pointer;padding:4px 6px;}
