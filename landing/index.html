@@ -759,10 +759,13 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    which the compositor handles without resampling.
    background-COLOR, not the shorthand: the shorthand would wipe the motif. */
 .dtab-live:hover{opacity:1;}
-.vstage .dtab-live:hover{background-color:rgba(255,255,255,.17);
-  border-color:rgba(255,255,255,.36);}
-.vstage .dtab-live[aria-pressed="true"]:hover{background-color:rgba(198,236,143,.22);
-  border-color:rgba(198,236,143,.55);}
+/* The hover cue does NOT touch the fill. Brightening it to white washed the
+   whole card pale - most obvious across the dark upper area above the label,
+   which is exactly the "white light" this was meant to remove. The border alone
+   carries the state: it reads immediately, costs no repaint of the frosted
+   fill, and cannot look like a light leak. */
+.vstage .dtab-live:hover{border-color:rgba(198,236,143,.62);}
+.vstage .dtab-live[aria-pressed="true"]:hover{border-color:rgba(198,236,143,.75);}
 .dtab-live:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* background-COLOR, not the `background` shorthand: the shorthand resets
    background-image, which silently blanked the motif on whichever tab was
