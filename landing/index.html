@@ -5976,7 +5976,14 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       nandyala:'nandyal', anakapalle:'anakapalli',
       alluriseetharamaraju:'asr', allurisitharamaraju:'asr', allurisithararamaraju:'asr',
       markapuram:'marakapuram',
-      spsnellore:'spsrnellore', sripottisriramulunellore:'spsrnellore'
+      spsnellore:'spsrnellore', sripottisriramulunellore:'spsrnellore',
+      /* The MAP labels these three with their short names while the document
+         tree carries the full official ones, so they matched nothing and their
+         tabs came up empty - Nellore 54 documents, Sri Sathya Sai 42 and
+         Konaseema 36, all present in the data and none of them reachable. */
+      nellore:'spsrnellore',
+      srisathyasai:'srisatyasai',
+      konaseema:'drbrambedkarkonaseema'
     };
     return alias[s] || s;
   }
