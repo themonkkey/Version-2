@@ -3905,7 +3905,29 @@ function showStateView(){
 
 function showConstituencyView(districtKey, districtName){
   const feats=acFeatures.filter(f=>f.properties.district_key===districtKey);
-  if(!feats.length) return false;      // no boundaries for this district — stay on state view
+  if(!feats.length){
+    /* Leaving the state map up while the heading reads "You are currently
+       exploring Kurnool district" is a contradiction the reader cannot resolve.
+       The constituency geojson is 600KB and its fetch has a catch that yields
+       an empty set, so this can happen on a slow or failed load rather than
+       only when a district genuinely has no boundaries. Retry while the file is
+       still in flight; give up quietly once it has clearly landed. */
+    if(!acFeatures.length && !showConstituencyView._waiting){
+      showConstituencyView._waiting = true;
+      let tries = 40;
+      const wait = () => {
+        if(acFeatures.length){
+          showConstituencyView._waiting = false;
+          if(currentDistrictKey === districtKey) showConstituencyView(districtKey, districtName);
+          return;
+        }
+        if(--tries > 0) setTimeout(wait, 150);
+        else showConstituencyView._waiting = false;
+      };
+      setTimeout(wait, 150);
+    }
+    return false;      // no boundaries for this district — stay on state view
+  }
   mapLevel='constituency'; currentDistrict=districtKey;
   document.getElementById('mapBox').classList.add('zoomed');
   setMapHint('constituency', districtName);
