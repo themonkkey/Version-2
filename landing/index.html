@@ -572,8 +572,13 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    while collapsed so the two states add up to exactly 100%. */
 .map-layout .map-box{flex:0 0 100%;min-width:0;}
 /* footnote block: research-paper style, one line per abbreviation */
+/* Only shown once a place is actually selected: on the bare state map nothing
+   above it uses these terms, and it was rendering as a stray column beside the
+   map. Driven by syncAbbr() off the current pick rather than off a layout
+   class, because the deep-link restore path does not always set that class. */
 .d-abbr{flex:0 0 100%;width:100%;margin-top:16px;padding-top:14px;
   border-top:1px solid rgba(255,255,255,.16);}
+.d-abbr[hidden]{display:none;}
 .d-abbr-h{margin:0 0 9px;font-size:11.5px;font-weight:700;letter-spacing:.06em;
   text-transform:uppercase;color:rgba(255,255,255,.6);}
 .d-abbr-h .ast{color:var(--lime);font-weight:700;margin-right:4px;}
@@ -2408,8 +2413,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 <!-- GSAP, vendored locally (charts-src: npm run build:gsap) rather than a CDN,
      to keep the no-third-party-runtime rule for a government-facing page. -->
 <script src="assets/dash/gsap.js?v=2026-08-12a" defer></script>
-<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-16c">
-<script src="assets/dash/components.js?v=2026-08-16a" defer></script>
+<link rel="stylesheet" href="assets/dash/components.css?v=2026-08-19a">
+<script src="assets/dash/components.js?v=2026-08-19a" defer></script>
 <script src="assets/dash/enrich.js?v=2026-08-16a" defer></script>
 <script src="assets/dash/tpl-c1.js?v=2026-08-12a" defer></script>
 <script src="assets/dash/tpl-c2.js?v=2026-08-12a" defer></script>
@@ -3191,7 +3196,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
            not spelled out at every mention. Kept OUTSIDE #districtPanel on
            purpose - the panel's innerHTML is replaced on every pick, and a note
            inside it would have to be re-emitted by each of the templates. -->
-      <div class="d-abbr" id="dAbbr">
+      <div class="d-abbr" id="dAbbr" hidden>
         <p class="d-abbr-h"><span class="ast">*</span> Abbreviations used above</p>
         <ul class="d-abbr-l">
           <li><b>GDDP</b> Gross District Domestic Product</li>
@@ -3468,7 +3473,12 @@ function go(page){
   document.querySelectorAll('.navlinks .nl, .mobile-menu .nl').forEach(b=>b.classList.toggle('active', b.dataset.page===page));
   document.getElementById('mobileMenu').classList.remove('open');
   window.scrollTo(0,0);
-  if(location.hash!=='#'+page) history.replaceState(null,'','#'+page);
+  /* Only rewrite the hash when it is not already pointing into this page: the
+     districts hash carries the drill-down path (#districts/Kurnool/Adoni) and a
+     blanket replaceState would throw that away on every re-render. */
+  if(location.hash.replace(/^#/,'').split('/')[0] !== page){
+    history.replaceState(null,'','#'+page);
+  }
   if(page==='districts') initMap();
 }
 document.addEventListener('click', e=>{
@@ -3490,12 +3500,36 @@ document.addEventListener('click', e=>{
 document.getElementById('hamburger').addEventListener('click', ()=>{
   document.getElementById('mobileMenu').classList.toggle('open');
 });
-window.addEventListener('hashchange', ()=>go(location.hash.replace('#','')));
+/* The districts hash carries a drill path (#districts/Kurnool/Adoni). Passing
+   the whole thing to go() matched no page, so it fell back to 'home' and
+   rewrote the URL - which is what made browser Back land on the home page
+   instead of stepping up a level. Route on the FIRST segment only, and let
+   navRestore handle the rest of the path. */
+window.addEventListener('hashchange', ()=>{
+  const seg = location.hash.replace('#','').split('/');
+  go(seg[0]);
+  if(seg[0] === 'districts' && seg.length > 1) navRestore();
+});
 // Deferred one turn on purpose. go('districts') calls initMap(), which reads
 // `mapReady` and the other map state declared further down this same script;
 // routing synchronously here threw a TDZ ReferenceError for anyone landing on
 // or refreshing #districts directly, and the map never initialised.
-setTimeout(()=>go(location.hash.replace('#','') || 'home'), 0);
+/* Boot on the first segment too, then replay the drill path. Passing the whole
+   "districts/Kurnool/Adoni" to go() matched no page, so a shared link opened the
+   home page instead of the place it names. navRestore runs after the map has
+   drawn, because it looks the district up by its map path. */
+setTimeout(()=>{
+  const seg = (location.hash.replace('#','') || 'home').split('/');
+  go(seg[0]);
+  if(seg[0] === 'districts' && seg.length > 1){
+    const want = seg.join('/');            // captured BEFORE the map resets it
+    const tryRestore = (n) => {
+      if(document.querySelector('#ap-map path')) { navRestore(want); return; }
+      if(n > 0) setTimeout(() => tryRestore(n - 1), 120);
+    };
+    tryRestore(40);          // ~5s of grace while the geojson lands
+  }
+}, 0);
 
 // ---------- map ----------
 // Two levels off one <svg>: the 28-district state view, and a per-district
@@ -3740,8 +3774,109 @@ function setMapHint(level, districtName){
     : 'Click any district to explore';
 }
 
+/* ---------- going back up ---------------------------------------------------
+   The breadcrumb ("Adoni mandal in Adoni constituency of Kurnool district") was
+   the only thing telling you where you were, and none of it was clickable: from
+   a mandal the single way out was "All districts", which drops you back to the
+   whole state. Its parents now step up exactly one level.
+
+   The parent named in the crumb is always the current ancestor, so this routes
+   off the page's own state rather than re-deriving a key from a display name. */
+document.addEventListener('click', function(e){
+  const up = e.target.closest('[data-crumb-up]');
+  if(!up) return;
+  e.preventDefault();
+  const kind = (up.getAttribute('data-crumb-up') || '').toLowerCase();
+  if(kind.indexOf('district') > -1 && currentDistrictKey){
+    showDistrict(currentDistrictKey, currentDistrictName);
+    showConstituencyView(currentDistrictKey, currentDistrictName);
+  } else if(kind.indexOf('constituenc') > -1 && currentConstituency){
+    showConstituency(currentConstituency, currentDistrictName);
+  }
+});
+
+/* ---------- the drill-down lives in the URL ---------------------------------
+   Picking a district, constituency or mandal changed the page but never the
+   address: browser Back left the site instead of stepping up, a reload dropped
+   you at the state map, and a view could not be sent to anyone. The path is now
+   written into the hash as #districts/<district>/<constituency>/<mandal> and
+   pushed onto history, so Back walks back up and the link is shareable.
+
+   `navLock` guards the replay: restoring a state must not push a new one. */
+let navLock = false;
+
+function navPath(){
+  return ['districts', currentDistrictName, currentConstituency, currentMandal]
+    .filter(Boolean).map(encodeURIComponent).join('/');
+}
+/* The abbreviations footnote only earns its place once something above it uses
+   the terms. */
+function syncAbbr(){
+  const a = document.getElementById('dAbbr');
+  if(a) a.hidden = !currentDistrictName;
+}
+
+function navPush(){
+  syncAbbr();
+  if(navLock) return;
+  const h = '#' + navPath();
+  if(location.hash !== h) history.pushState({drill:1}, '', h);
+}
+async function navRestore(rawPath){
+  /* Takes the path explicitly when booting: initMap calls showStateView, which
+     pushes a bare "#districts" and would otherwise erase the very path we were
+     asked to open. */
+  const src = rawPath != null ? rawPath : location.hash.replace(/^#/,'');
+  const parts = decodeURIComponent(src).split('/').map(function(x){return x.trim();});
+  if(parts[0] !== 'districts') return;
+  const dName = parts[1] || null, cName = parts[2] || null, mName = parts[3] || null;
+  navLock = true;
+  try{
+    if(!dName){ showStateView(); return; }
+
+    // district: re-enter only when it actually changed
+    if(dName !== currentDistrictName){
+      const path = document.querySelector('#ap-map path[data-name="' + CSS.escape(dName) + '"]');
+      const key  = path ? path.getAttribute('data-key') : null;
+      if(key){ await showDistrict(key, dName); showConstituencyView(key, dName); }
+    }
+
+    /* Stepping BACK has to redraw, not just skip. Going from
+       .../Adoni/Adoni to .../Adoni leaves currentConstituency already equal to
+       the target, so a plain equality check does nothing and the mandal panel
+       stays on screen. Compare the whole depth instead. */
+    if(cName){
+      if(cName !== currentConstituency || (currentMandal && !mName)){
+        await showConstituency(cName, dName);
+      }
+    } else if(currentConstituency || currentMandal){
+      await showDistrict(currentDistrictKey, dName);
+      showConstituencyView(currentDistrictKey, dName);
+    }
+
+    if(mName && mName !== currentMandal){
+      currentMandal = mName;
+      await showMandal(mName, cName, dName);
+    }
+  } finally {
+    navLock = false;
+    syncAbbr();
+    // the restore ran with pushes locked, so put the canonical path back on the
+    // address bar without adding another history entry
+    const canon = '#' + navPath();
+    if(location.hash !== canon) history.replaceState(null, '', canon);
+  }
+}
+
+window.addEventListener('popstate', function(){
+  if(location.hash.replace(/^#/,'').split('/')[0] === 'districts') navRestore();
+});
+
 function showStateView(){
   mapLevel='state'; currentDistrict=null;
+  currentDistrictKey = null; currentDistrictName = null;
+  currentConstituency = null; currentMandal = null;
+  navPush();
   if(window.DTABS_DISTRICT) window.DTABS_DISTRICT(null);   // no district, no tab filter
   document.getElementById('mapBox').classList.remove('picked','zoomed');
   setLayoutState(false);
@@ -3818,6 +3953,8 @@ async function initMap(){
     });
 
     document.getElementById('mapBack').addEventListener('click', showStateView);
+
+
   }catch(err){
     // one flaky load must not kill the map for the whole visit — clearing the
     // flag lets the next visit to Districts retry the fetches
@@ -3839,6 +3976,7 @@ const distCache = {};
 async function showDistrict(key, name){
   currentDistrictKey = key; currentDistrictName = name;
   currentConstituency = null; currentMandal = null;   // district level: no deeper pick
+  navPush();
   // the map is the single source of the district filter that scopes every tab
   if(window.DTABS_DISTRICT) window.DTABS_DISTRICT(name);
   setExploreHeading('district', name);
@@ -3996,6 +4134,7 @@ function wireDrillBar(){
     const c = cs.value, m = ms.value;
     if(!m){ if(c) showConstituency(c, currentDistrictName); return; }
     currentMandal = m;
+    navPush();
     showMandal(m, c, currentDistrictName);
   });
 }
@@ -4111,6 +4250,7 @@ async function showConstituency(name, districtName){
   if(!panel || !window.DASH || !window.DASH_TPL) return;
   currentConstituency = name;
   currentMandal = null;      // moving up a level retires any mandal pick
+  navPush();
   setExploreHeading('constituency', name, [{ name: districtName, kind: 'district' }]);
 
   const idx = await loadDashIndex();
@@ -4295,7 +4435,8 @@ window.DASH_PICK_MANDAL = function(mandal){
   const parent = (document.getElementById('constSelect')||{}).value || currentConstituency;
   if(!parent) return;
   currentMandal = mandal;
-  showMandal(mandal, parent, currentDistrictName);
+  navPush();
+  return showMandal(mandal, parent, currentDistrictName);
 };
 
 // --- chatbot link wiring --------------------------------------------------

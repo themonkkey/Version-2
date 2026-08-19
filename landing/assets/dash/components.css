@@ -462,7 +462,13 @@
 .d-crumb-kind{font-weight:600;color:var(--label-2);margin-left:7px;}
 .d-crumb-path{font-weight:500;font-size:.82em;}
 .d-crumb-j{color:var(--label-3);margin:0 4px 0 2px;}
-.d-crumb-parent{color:var(--label-2);}
+/* now a button: reset the UA chrome, keep the crumb's typography, and show it
+   is a route with an underline on hover rather than a boxy control */
+.d-crumb-parent{color:var(--label-2);font:inherit;background:none;border:0;padding:0;
+  cursor:pointer;text-decoration:underline;text-decoration-color:transparent;
+  text-underline-offset:3px;transition:color .15s ease,text-decoration-color .15s ease;}
+.d-crumb-parent:hover{color:var(--lime,#C6FF6A);text-decoration-color:currentColor;}
+.d-crumb-parent:focus-visible{outline:2px solid var(--lime,#C6FF6A);outline-offset:2px;border-radius:4px;}
 .d-crumb-pk{color:var(--label-3);}
 .vstage .d-crumb-kind,.vstage .d-crumb-parent{color:rgba(255,255,255,.66);}
 .vstage .d-crumb-j,.vstage .d-crumb-pk{color:rgba(255,255,255,.42);}

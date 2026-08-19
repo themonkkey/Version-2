@@ -242,8 +242,13 @@
       var joiner = parents[0].joiner || 'of';
       var tail = parents.map(function (p, i) {
         var j = i === 0 ? joiner : (p.joiner || 'of');
+        /* Parents are the only written record of where you are, so they are
+           the natural way back up. Rendered as buttons rather than spans; the
+           page owns the routing and listens for [data-crumb-up]. */
         return '<span class="d-crumb-j">' + esc(j) + '</span>' +
-          '<span class="d-crumb-parent">' + esc(p.name) + '</span>' +
+          '<button type="button" class="d-crumb-parent" data-crumb-up="' +
+            esc(p.kind || '') + '" title="Back to ' + esc(p.name) + '">' +
+            esc(p.name) + '</button>' +
           (p.kind ? ' <span class="d-crumb-pk">' + esc(p.kind) + '</span>' : '');
       }).join(' ');
       out += ' <span class="d-crumb-path">' + tail + '</span>';
