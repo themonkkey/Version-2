@@ -3523,6 +3523,15 @@ setTimeout(()=>{
   go(seg[0]);
   if(seg[0] === 'districts' && seg.length > 1){
     const want = seg.join('/');            // captured BEFORE the map resets it
+
+    /* Switch the tab in THIS tick, before anything paints. go() leaves the map
+       tab showing because that is the page default, and the tab used to be
+       corrected only once tryRestore saw the map finish drawing - so arriving
+       on, say, the capacity tab flashed the map for a frame first. The tab does
+       not depend on the map, so it does not have to wait for it. */
+    const TABS = ['map','docs','gva','capacity','cases'];
+    if(TABS.indexOf(seg[1]) > -1 && window.__setTab) window.__setTab(seg[1], true);
+
     const tryRestore = (n) => {
       if(document.querySelector('#ap-map path')) { navRestore(want); return; }
       if(n > 0) setTimeout(() => tryRestore(n - 1), 120);
