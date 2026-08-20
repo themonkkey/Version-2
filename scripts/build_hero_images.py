@@ -57,21 +57,29 @@ EXTS = {".jpg", ".jpeg", ".png", ".webp", ".heic"}
 # something written in the picture stay undescribed.
 CAPTIONS = {
     "WhatsApp Image 2026-08-19 at 10.51.31.jpeg":
-        "Between sessions, on the sidelines.",
+        "On the sidelines between sessions, where much of the real exchange "
+        "actually happens.",
     "0W8A1306@13885089.JPG":
-        "Twenty-eight districts, one room.",
+        "A full house of district officers, press cameras at the back, two days "
+        "under way.",
     "0W8A1350.JPG":
-        "Dr. Rajiv Kumar on how growth is measured.",
+        "Dr. Rajiv Kumar opens the method: how macroeconomic growth is actually "
+        "measured.",
     "0W8A1727.JPG":
-        "What Uttar Pradesh learned building district GDP.",
+        "Ashish Kumar on Uttar Pradesh's experience compiling district domestic "
+        "product for governance.",
     "0W8A2580@17520707.JPG":
-        "Two days of economic intelligence.",
+        "Two days, one question: how officers read and use the numbers for their "
+        "own district.",
     "0W8A3106@33840301.JPG":
-        "AI, put to work on economic estimation.",
+        "The session on leveraging AI for economic estimation and governance data "
+        "intelligence.",
     "0W8A3177@21918063.JPG":
-        "Dr. Payal Seth: administrative data, faster policy.",
+        "Dr. Payal Seth on how administrative datasets can support faster, "
+        "smarter policy design.",
     "0W8A3413@18685781.JPG":
-        "The people behind the programme.",
+        "The group photograph at the programme banner, Swarna Andhra @2047, "
+        "July 2026.",
 }
 MAX_W = 1920
 QUALITY = 82

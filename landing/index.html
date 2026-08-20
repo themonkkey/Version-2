@@ -502,9 +502,14 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
     rgba(0,0,0,.20) 0%, rgba(0,0,0,.22) 42%,
     rgba(0,0,0,.55) 76%, rgba(0,0,0,.78) 100%);}
 .hero.telling .amb-scrim-photo{opacity:1;}
-.hero-cap-line{color:#FFF;font-weight:600;letter-spacing:-.015em;
-  font-size:clamp(17px,min(2.6vw,3.2vh),30px);line-height:1.32;
-  max-width:20ch;margin:0 auto;text-shadow:0 2px 22px rgba(0,0,0,.45);
+/* The captions are full sentences of 12-15 words now, not three-word labels.
+   At the old 20ch a line of that length broke into four, which read as a column
+   of fragments rather than a sentence; 46ch keeps them to one or two. The type
+   also comes down a step — a 15-word line set at 30px is a headline competing
+   with the photograph rather than a caption sitting under it. */
+.hero-cap-line{color:#FFF;font-weight:600;letter-spacing:-.012em;
+  font-size:clamp(15px,min(1.85vw,2.3vh),22px);line-height:1.42;
+  max-width:46ch;margin:0 auto;text-shadow:0 2px 22px rgba(0,0,0,.45);
   transition:opacity .26s ease;}
 .hero-cap-dots{display:flex;gap:7px;justify-content:center;
   margin-top:clamp(12px,1.6vh,20px);}
