@@ -179,6 +179,22 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 /* the fallback is a later sibling, so it paints over the video — retire it
    once the loop is actually playing, or the footage never shows */
 .amb video.ready ~ .amb-fallback{opacity:0;}
+/* PHOTO STAGE. The hero runs stills of the actual programme instead of a loop.
+   Two layers ping-pong: the incoming one is stacked above and fades in while
+   the outgoing stays fully opaque underneath, so the cross-fade never dips
+   through to the gradient behind. Both are prepended ahead of .amb-fallback so
+   the same "retire the fallback" rule below applies to them too. */
+.amb-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  object-position:center 40%;opacity:0;transition:opacity 1.6s ease;z-index:1;}
+.amb-slide.on{opacity:1;}
+/* The incoming layer only needs to beat the outgoing one. Raising it with an
+   ever-climbing z-index instead put it above the scrim as well, and the wash
+   that makes the white headline readable stopped applying the moment the first
+   cross-fade ran. Two fixed levels for the photos, and the scrim sits above
+   both — it is the top of this layer by definition. */
+.amb-slide.top{z-index:2;}
+.amb-scrim{z-index:3;}
+.amb-slide.on ~ .amb-fallback{opacity:0;}
 .amb-fallback{transition:opacity 1.2s ease;}
 .amb-fallback{position:absolute;inset:-30%;background:var(--ink);}
 .amb-fallback::after{content:"";position:absolute;inset:0;
@@ -2518,7 +2534,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   <!-- Loops live in assets/video/: aerial · longexposure · ink · handloom ·
        ledger · vector · isometric · glass. Change data-vid to swap one.
        ?loop=<name> overrides the hero for side-by-side comparison. -->
-  <header class="hero vstage" data-vid="aerial">
+  <!-- Photographs of the programme itself, from homepageasset/ via
+     scripts/build_hero_images.py. data-vid="photo" selects the heavier scrim
+     these bright indoor frames need; if the manifest cannot be read the stage
+     falls back to the aerial loop. -->
+<header class="hero vstage" data-vid="photo" data-slides="assets/hero/manifest.json">
     <div class="wrap"><div class="hero-content">
     <div class="eyebrow">Pahlé India Foundation · Capacity Building</div>
     <h1>Every district,<br><span>in one place</span></h1>
@@ -3442,6 +3462,11 @@ const LOOP_SCRIM = {
   handloom:     [.72,.64,.84],
   gridwork:     [.72,.64,.84],
   aerial:       [.74,.66,.82],
+  // The hero photographs are bright indoor frames — a hotel ballroom in
+  // cream and gold, not dark green fields. The loop scrims were tuned
+  // against footage that was already dark, so reusing one here left the
+  // white headline sitting on near-white highlights. This one is heavier.
+  photo:        [.80,.74,.88],
   ledger:       [.78,.70,.86],
 };
 (function(){
@@ -3453,6 +3478,72 @@ const LOOP_SCRIM = {
            `radial-gradient(120% 90% at 78% 8%, rgba(52,199,89,.30), transparent 62%)`;
   }
 
+  // ---- photo stage -------------------------------------------------------
+  // manifest.json is written by scripts/build_hero_images.py from whatever sits
+  // in homepageasset/. It is fetched no-store — it is a few hundred bytes, and
+  // caching it is exactly what would stop a newly added photograph from ever
+  // appearing. The images themselves carry ?v=<rev> and so stay fully cacheable.
+  const HOLD = 7000, FADE = 1600;
+
+  function slideshow(amb, url, fallback){
+    fetch(url, {cache:'no-store'})
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(d => {
+        const slides = (d && d.slides) || [];
+        if(!slides.length) return fallback();
+        run(amb, slides.map(x => x.src + '?v=' + (d.rev||0)));
+      })
+      .catch(fallback);
+  }
+
+  function run(amb, urls){
+    const a = document.createElement('img');
+    const b = document.createElement('img');
+    [a,b].forEach(im => {
+      im.className = 'amb-slide';
+      im.alt = '';                      // decorative: the hero text carries the meaning
+      im.decoding = 'async';
+      amb.prepend(im);                  // ahead of .amb-fallback, per the ~ rule
+    });
+
+    let front = a, back = b, i = 0;
+
+    // Assigning a src the element already has fires no load event, which would
+    // stall the rotation dead on the second lap of a two-photo set. Treat an
+    // already-complete image as loaded instead of waiting for an event that is
+    // never coming.
+    function paint(im, u, then){
+      if(im.getAttribute('src') !== u) im.setAttribute('src', u);
+      if(im.complete && im.naturalWidth) return then();
+      im.addEventListener('load', then, {once:true});
+      im.addEventListener('error', then, {once:true});
+    }
+
+    paint(front, urls[0], () => front.classList.add('on'));
+    if(reduce || urls.length < 2) return;   // one frame, no motion
+
+    (function schedule(){
+      setTimeout(function(){
+        if(document.hidden) return schedule();   // nothing to see, spend nothing
+        const next = (i + 1) % urls.length;
+        paint(back, urls[next], function(){
+          if(!back.naturalWidth){ i = next; return schedule(); }  // skip a bad file
+          // The outgoing layer drops out of the top slot NOW, not when its fade
+          // finishes. Holding both at the same level meant that on every other
+          // cycle the incoming photo faded in *underneath* the one it was
+          // replacing — invisible for the whole fade, then a hard cut when the
+          // outgoing finally switched off. Incoming is always the one on top.
+          const out = front;
+          out.classList.remove('top');
+          back.classList.add('top', 'on');
+          setTimeout(() => out.classList.remove('on'), FADE);
+          front = back; back = out; i = next;
+          schedule();
+        });
+      }, HOLD);
+    })();
+  }
+
   // Only the hero autoplays immediately. The rest wait until they scroll near
   // the viewport, so a visit to Home does not pull down eight video files.
   function mount(section, name, eager){
@@ -3462,19 +3553,34 @@ const LOOP_SCRIM = {
     amb.innerHTML = '<div class="amb-fallback"></div>'+
                     '<div class="amb-scrim" style="background:'+scrimCSS(s)+'"></div>';
     section.prepend(amb);
-    if(reduce) return;
 
-    const load = ()=>{
+    // `which` lets a caller ask for a different loop than the one that named
+    // the scrim: the hero's data-vid is "photo", which is a scrim key and not a
+    // file, so its video fallback has to name a real loop.
+    const load = (which)=>{
       const v = document.createElement('video');
       v.muted = true; v.loop = true; v.autoplay = true;
       v.playsInline = true; v.setAttribute('playsinline','');
       v.preload = 'auto';
       v.addEventListener('canplay', ()=>v.classList.add('ready'), {once:true});
       v.addEventListener('error', ()=>v.remove());
-      v.src = 'assets/video/' + name + '.mp4';
+      v.src = 'assets/video/' + (which || name) + '.mp4';
       amb.prepend(v);           // must precede .amb-fallback for the ~ rule
       return v;
     };
+
+    // The hero is photographs, not a loop. Falls back to load() — the video —
+    // if the manifest is missing or empty, so the stage is never blank.
+    // This is deliberately ahead of the reduced-motion bail below: a still
+    // photograph is not motion, so honouring that preference means holding one
+    // frame rather than showing nobody the photographs at all. run() reads the
+    // same flag and simply never starts the rotation.
+    if(section.dataset.slides){
+      slideshow(amb, section.dataset.slides, ()=>{ if(!reduce) load('aerial'); });
+      return;
+    }
+
+    if(reduce) return;
 
     if(eager){ load(); return; }
     const io = new IntersectionObserver(function(es){

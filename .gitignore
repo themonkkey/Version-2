@@ -6,7 +6,11 @@ __pycache__/
 .raw_chunks_cache.pkl
 embed_index.npz
 index.pkl
-corpus_files/vision_documents/
+# Trailing slash matched only a real directory. In the Version 2 working copy
+this path is a symlink to the corpus rather than a 2.8 GB duplicate, and a
+symlink is not a directory to git, so the old rule let it show up as
+untracked and invited committing a machine-specific absolute path.
+corpus_files/vision_documents
 .DS_Store
 
 # eval/benchmark run outputs (ephemeral)
