@@ -533,6 +533,42 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   transition:opacity .26s ease;}
 .hero-cap-dots{display:flex;gap:7px;justify-content:center;
   margin-top:clamp(12px,1.6vh,20px);}
+/* THE 2047 VISUAL. A rounded card on the right of the stage that dissolves
+   between the collage animation and the CM's portrait, back and forth on a
+   14s clock: each face holds ~5.5s, each dissolve takes ~1.5s. Pure-CSS
+   keyframes — the two children share one timeline offset by half a cycle, so
+   exactly one is ever solid. Only opacity animates, and the card is clipped to
+   its own radius: unclipped surfaces and animated transforms are what caused
+   the halo on the district tabs, and nothing here repeats that. */
+/* Not a card - the artwork melts into the stage. A radial mask feathers the
+   outer band of both faces to transparent, so the collage's flat green (and the
+   portrait's, which is the same green) dissolves into the scrimmed footage with
+   no edge, no border, no box. The subject sits in the solid centre; only the
+   plain background falls inside the feather. */
+.hero > .hero-vis{position:absolute;z-index:2;top:50%;transform:translateY(-50%);
+  right:clamp(6px,2vw,36px);
+  width:clamp(260px,26vw,400px);aspect-ratio:910/786;
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at center, #000 52%, transparent 74%);
+  mask-image:radial-gradient(ellipse 50% 50% at center, #000 52%, transparent 74%);}
+.hero-vis > *{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+@keyframes visSwap{0%,39%{opacity:1}50%,89%{opacity:0}100%{opacity:1}}
+.hero-vis video{animation:visSwap 14s ease-in-out infinite;}
+.hero-vis img{animation:visSwap 14s ease-in-out infinite;animation-delay:-7s;}
+/* Split hero on wide screens: the copy sits left-centre and left-aligned, the
+   visual holds the right. This applies ONLY while the visual is shown - below
+   1180px the visual goes and the copy returns to the centre, where a lone block
+   belongs. */
+@media (min-width:1181px){
+  .hero-content{margin:0 0 0 clamp(28px,7vw,120px);text-align:left;
+    max-width:min(600px,50%);}
+  .hero-cta{justify-content:flex-start;}
+}
+@media (max-width:1180px){ .hero > .hero-vis{display:none;} }
+/* No autoplaying footage for reduced motion - the portrait, held. */
+@media (prefers-reduced-motion:reduce){
+  .hero-vis video{display:none;}
+  .hero-vis img{animation:none;opacity:1;}
+}
 /* The arrows sit at the edges of the stage at mid height, clear of the caption,
    so paging the photographs never means aiming at a control stacked on top of
    the words. They are siblings of the caption rather than children of it: the
@@ -2779,6 +2815,18 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
      these bright indoor frames need; if the manifest cannot be read the stage
      falls back to the aerial loop. -->
 <header class="hero vstage" data-vid="photo" data-slides="assets/hero/manifest.json">
+    <!-- The floating visual: the Swarna Andhra 2047 collage animation and the
+         CM's portrait, dissolving into each other on a slow loop. The clip is a
+         14s screen capture re-encoded to 522 KB; the portrait is the official
+         one from the event banner, same crop as the earlier identity card. The
+         card's fill is the collage's own background green (rgb(49,93,61),
+         sampled from the footage) so the dissolve reads as one object changing
+         face rather than two cards swapping. -->
+    <div class="hero-vis" aria-hidden="true">
+      <video src="assets/video/collage2047.mp4?v=2026-08-20a" muted loop autoplay playsinline preload="auto"></video>
+      <img src="assets/cm.png?v=2026-08-20b" alt="" loading="lazy">
+    </div>
+
     <div class="wrap"><div class="hero-content">
     <!-- Both lines are their own span: the translator only touches elements whose
      content is a single text run, and with the <br> as a direct child the h1 was
@@ -3739,7 +3787,7 @@ const LOOP_SCRIM = {
   // the loop and repeats. Set false to hold the hero on the loop alone — the
   // photographs stay built either way (scripts/build_hero_images.py writes
   // assets/hero/manifest.json), so this is the only line that decides it.
-  const HERO_STORY = true;
+  const HERO_STORY = false;
   const INTRO = 6000, HOLD = 4200, FADE = 1200;
 
   function slideshow(amb, url, fallback){
