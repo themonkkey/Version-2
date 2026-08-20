@@ -513,6 +513,35 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   transition:opacity .26s ease;}
 .hero-cap-dots{display:flex;gap:7px;justify-content:center;
   margin-top:clamp(12px,1.6vh,20px);}
+/* The arrows sit at the edges of the stage at mid height, clear of the caption,
+   so paging the photographs never means aiming at a control stacked on top of
+   the words. They are siblings of the caption rather than children of it: the
+   caption block is only as tall as its own text, so centring inside it would
+   have put them level with the text instead of the picture.
+   The two-class selector is needed to beat `.vstage > .amb ~ *`, which sets
+   every sibling after the ambient layer to position:relative.
+   Only opacity animates — translateY(-50%) is a static centring offset, not an
+   animated one. Moving a blurred layer over a backdrop-filtered stage is what
+   produced the halo on the district tabs. */
+.hero > .hero-cap-arrow{position:absolute;top:50%;transform:translateY(-50%);
+  z-index:3;opacity:0;pointer-events:none;
+  transition:opacity .75s ease,background .2s ease,border-color .2s ease,color .2s ease;}
+.hero > .hero-cap-arrow.is-prev{left:clamp(10px,2.4vw,34px);}
+.hero > .hero-cap-arrow.is-next{right:clamp(10px,2.4vw,34px);}
+.hero.telling > .hero-cap-arrow{opacity:1;pointer-events:auto;}
+.hero-cap-arrow{cursor:pointer;
+  width:clamp(34px,4vh,46px);height:clamp(34px,4vh,46px);
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(16px,2.1vh,22px);color:#FFF;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.26);
+  border-radius:50%;clip-path:inset(0 round 50%);isolation:isolate;
+  backdrop-filter:blur(14px) saturate(150%);
+  -webkit-backdrop-filter:blur(14px) saturate(150%);
+  transition:background .2s ease,border-color .2s ease,color .2s ease;}
+.hero-cap-arrow:hover{background:var(--lime);border-color:var(--lime);color:#0E4A3C;}
+.hero-cap-arrow:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
+/* No transform on hover: these sit over a backdrop-filtered stage, and moving a
+   blurred layer is what produced the halo on the district tabs. */
 .hero-cap-dots i{width:6px;height:6px;border-radius:50%;
   background:rgba(255,255,255,.34);transition:background .3s ease,width .3s ease;}
 .hero-cap-dots i.on{background:var(--lime);width:17px;border-radius:3px;}
@@ -2738,7 +2767,12 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     </div></div>
 
     <!-- Filled by the hero story sequencer; empty until the photographs run. -->
-    <div class="hero-cap"><p class="hero-cap-line"></p><div class="hero-cap-dots"></div></div>
+    <div class="hero-cap">
+      <p class="hero-cap-line"></p>
+      <div class="hero-cap-dots"></div>
+    </div>
+    <button class="hero-cap-arrow is-prev" data-cap-step="-1" aria-label="Previous photograph"><i class="ti ti-chevron-left"></i></button>
+    <button class="hero-cap-arrow is-next" data-cap-step="1" aria-label="Next photograph"><i class="ti ti-chevron-right"></i></button>
 
   </header>
 
@@ -3744,15 +3778,22 @@ const LOOP_SCRIM = {
 
     // A tab nobody is looking at should not burn through the sequence; hold the
     // step until it comes back rather than advancing blind.
+    // The handle is kept because the arrows have to be able to cancel a pending
+    // advance — without it a manual jump would be overtaken a moment later by
+    // the tick it interrupted, and the photo would appear to skip on its own.
+    let timer = null;
     function wait(ms, fn){
-      setTimeout(function(){ document.hidden ? wait(600, fn) : fn(); }, ms);
+      clearTimeout(timer);
+      timer = setTimeout(function(){ document.hidden ? wait(600, fn) : fn(); }, ms);
     }
 
+    let cur = 0;                          // the slide currently on screen
     function show(idx){
       paint(back, urls[idx], function(){
         if(!back.naturalWidth){            // unreadable file — skip, do not stall
           return idx + 1 < items.length ? show(idx+1) : end();
         }
+        cur = idx;
         section.classList.add('telling');
         caption(items[idx].cap, idx);
         // The outgoing layer drops out of the top slot NOW, not when its fade
@@ -3783,6 +3824,22 @@ const LOOP_SCRIM = {
       }, 800);
       wait(INTRO, () => show(0));
     }
+
+    // Manual control. A step cancels whatever advance was queued, moves, and
+    // lets show() re-arm the timer — so the story carries on from wherever the
+    // reader left it rather than fighting them for the next few seconds.
+    // Forward off the last photo wraps to the first instead of returning to the
+    // loop: someone pressing "next" is asking for the next picture, not to be
+    // put back on the video.
+    // Bound to the hero, not the caption: the arrows live at the stage edges now,
+    // outside the caption block entirely.
+    section.addEventListener('click', function(e){
+      const btn = e.target.closest('[data-cap-step]');
+      if(!btn || !section.classList.contains('telling')) return;
+      clearTimeout(timer);
+      const n = (cur + Number(btn.dataset.capStep) + items.length) % items.length;
+      show(n);
+    });
 
     wait(INTRO, () => show(0));              // the loop plays first, on its own
   }
