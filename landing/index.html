@@ -138,16 +138,18 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    sticky offsets follow whatever height the nav ends up at. */
 .brand-swap{--bh:clamp(26px,3.1vw,36px);
   position:relative;display:block;height:var(--bh);width:calc(var(--bh) * 6.87);}
-.brand-swap > *{position:absolute;inset:0;display:flex;align-items:center;
-  justify-content:center;}
+.brand-swap > *{position:absolute;inset:0;}
 .brand-logo{height:100%;width:100%;object-fit:contain;object-position:center;}
-.brand-tag{font-size:calc(var(--bh) * .58);font-weight:700;
-  letter-spacing:-.02em;white-space:nowrap;
-  /* The two halves are separate spans so they can carry different colours, and
-     this box is a flex container (see .brand-swap > *), which discards the
-     whitespace-only text node between them — "SwarnaAndhra". The gap restores
-     the word space that markup alone no longer provides. */
-  gap:.3em;}
+/* Plain block, deliberately NOT a flex box. The two halves are separate spans so
+   they can carry the logo's two colours, and a flex parent discards the
+   whitespace-only text node between them — which is what rendered
+   "SwarnaAndhra". A gap patched over that; not being flex removes it, so the
+   ordinary space in the markup is the space on screen, at whatever size the
+   type happens to be. line-height does the vertical centring the flex box was
+   there for in the first place. */
+.brand-tag{display:block;text-align:center;line-height:var(--bh);
+  font-size:calc(var(--bh) * .58);font-weight:700;
+  letter-spacing:-.02em;white-space:nowrap;}
 /* Sampled from the artwork itself rather than matched by eye — the wordmark
    alternates with the logo in the same pill, so any drift between the two would
    show every eight seconds. The lockup stores its text as embedded raster, not
