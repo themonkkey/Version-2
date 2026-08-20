@@ -108,12 +108,12 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    in from the right edge and read as floating mid-bar rather than aligned to
    anything. The nav spans the viewport now: brand hard left, tabs hard right. */
 .nav-inner{max-width:none;margin:0;display:flex;align-items:center;justify-content:space-between;padding:11px clamp(16px,3vw,34px);}
-.brand{display:flex;align-items:center;gap:11px;background:none;border:none;cursor:pointer;}
-.brand-logo-wrap{background:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.4);
-  border-radius:11px;padding:5px 8px;display:flex;align-items:center;
-  box-shadow:0 4px 14px rgba(0,0,0,.18);}
-.brand-logo{height:clamp(24px,3vw,30px);width:auto;}
-.brand-tag{font-size:13.5px;font-weight:700;color:#FFF;letter-spacing:-.012em;white-space:nowrap;}
+.brand{display:flex;align-items:center;background:none;border:none;cursor:pointer;}
+/* The wordmark carries the brand on its own now. It sizes up a little from the
+   13.5px it used beside the logo plate: at that size it read as a label next to
+   a mark, and with the mark gone it has to hold the left of the bar by itself. */
+.brand-tag{font-size:clamp(15px,1.5vw,17px);font-weight:700;color:#FFF;
+  letter-spacing:-.02em;white-space:nowrap;}
 .navlinks{display:flex;gap:clamp(4px,1vw,10px);align-items:center;}
 .navlinks .nl{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.68);cursor:pointer;
   background:none;border:none;padding:7px 12px;border-radius:10px;letter-spacing:-.01em;
@@ -2558,8 +2558,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 <nav class="nav">
   <div class="nav-inner">
     <button class="brand nl" data-page="home">
-      <span class="brand-logo-wrap"><img src="assets/swarna-logo-crop.svg" alt="Swarna Andhra @2047" class="brand-logo"></span>
-      <span class="brand-tag">GVA Assistant</span>
+      <span class="brand-tag">Swarna Andhra 2047</span>
     </button>
     <div class="navlinks">
       <button class="nl active" data-page="home">Home</button>
