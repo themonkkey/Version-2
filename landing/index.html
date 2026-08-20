@@ -666,8 +666,15 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    Every page ends on a dark vstage (ink / handloom / longexposure /
    isometric), so the footer stays on the same dark system permanently
    rather than cutting back to a light bar — no seam, no per-page logic. */
-.footer{background:var(--ink);border-top:1px solid rgba(255,255,255,.10);}
-.footer-inner{max-width:var(--maxw);margin:0 auto;padding:22px var(--pad-x);
+/* Same black as the nav strip, so the page is bookended by one colour instead
+   of a black bar at the top and a deep-green one at the bottom. Opaque rather
+   than the nav's translucency — nothing scrolls behind the footer for a blur to
+   pick up, so a flat fill is both correct and cheaper. */
+.footer{background:#090C0A;border-top:1px solid rgba(255,255,255,.12);}
+/* Full width, matching the nav: the bar was capped at --maxw and centred, which
+   left the brand and the note floating inboard of the nav items directly above
+   them on a wide screen. */
+.footer-inner{max-width:none;margin:0;padding:22px clamp(16px,3vw,34px);
   display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
 .f-brand{font-size:13px;color:#FFF;font-weight:700;letter-spacing:-.01em;}
 .f-note{font-size:12.5px;color:rgba(255,255,255,.5);letter-spacing:-.006em;}
