@@ -581,7 +581,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border:1px solid rgba(255,255,255,.22);}
 .hero h1{color:#FFF;text-shadow:0 2px 24px rgba(0,0,0,.22);}
-.hero h1 span{color:var(--lime);}
+.hero h1 .accent{color:var(--lime);}
 .hero p{color:rgba(255,255,255,.80);}
 /* buttons on the dark stage */
 .hero .btn-ghost{background:rgba(255,255,255,.14);color:#FFF;
@@ -2780,7 +2780,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
      falls back to the aerial loop. -->
 <header class="hero vstage" data-vid="photo" data-slides="assets/hero/manifest.json">
     <div class="wrap"><div class="hero-content">
-    <h1>Every district,<br><span>in one place</span></h1>
+    <!-- Both lines are their own span: the translator only touches elements whose
+     content is a single text run, and with the <br> as a direct child the h1 was
+     a mixed element — so "in one place" translated while "Every district," sat
+     beside it in English. Two plain-text spans let both halves swap. -->
+<h1><span>Every district,</span><br><span class="accent">in one place</span></h1>
     <p>District profiles, vision plans, playbooks, calculators, and an assistant that names its source. All 28 districts, all on the official DDP and GDVA estimates.</p>
     <div class="hero-cta">
       <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
@@ -3444,11 +3448,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
            once another tab was open the only route back was the site's own
            Districts nav item, which reads as leaving the page rather than
            returning to the map. It gets a real tab, first in the row. -->
-      <button class="dtab dtab-live dtab-map" data-dtab="map" aria-pressed="true">District profile<span class="dtab-soon">The map</span></button>
-      <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false">Documents<span class="dtab-soon">Vision plans</span></button>
-            <button class="dtab dtab-live dtab-gva" data-dtab="gva" aria-pressed="false">Improving GVA<span class="dtab-soon">Sector playbooks</span></button>
-            <button class="dtab dtab-live dtab-capacity" data-dtab="capacity" aria-pressed="false">Capacity building<span class="dtab-soon">Training record</span></button>
-      <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false">Case studies<span class="dtab-soon">On-ground stories</span></button>
+      <button class="dtab dtab-live dtab-map" data-dtab="map" aria-pressed="true"><span class="dtab-lbl">District profile</span><span class="dtab-soon">The map</span></button>
+      <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false"><span class="dtab-lbl">Documents</span><span class="dtab-soon">Vision plans</span></button>
+            <button class="dtab dtab-live dtab-gva" data-dtab="gva" aria-pressed="false"><span class="dtab-lbl">Improving GVA</span><span class="dtab-soon">Sector playbooks</span></button>
+            <button class="dtab dtab-live dtab-capacity" data-dtab="capacity" aria-pressed="false"><span class="dtab-lbl">Capacity building</span><span class="dtab-soon">Training record</span></button>
+      <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false"><span class="dtab-lbl">Case studies</span><span class="dtab-soon">On-ground stories</span></button>
     </div>
     <!-- Set by the map: picking a district scopes every tab to it. Hidden until
          a district is chosen; the clear button routes through showStateView()
@@ -3997,9 +4001,18 @@ const LOOP_SCRIM = {
     for(const el of els){
       if(!translatable(el)) continue;
       if(toTelugu){
-        if(original.has(el)) continue;             // already swapped
+        // Translate whenever the CURRENT text is a dictionary key — never skip
+        // because the element was swapped before. This site re-renders parts of
+        // itself from copies captured at boot (the districts heading comes back
+        // in English on every visit to the page), so "already translated" is a
+        // state an element can silently fall out of. Idempotent by construction:
+        // Telugu text matches no English key. `original` keeps the FIRST
+        // English seen, so the revert path is unaffected.
         const te = dict[norm(el.textContent)];
-        if(te){ original.set(el, el.textContent); el.textContent = te; }
+        if(te){
+          if(!original.has(el)) original.set(el, el.textContent);
+          el.textContent = te;
+        }
       } else if(original.has(el)){
         el.textContent = original.get(el);
         original.delete(el);
@@ -4014,6 +4027,11 @@ const LOOP_SCRIM = {
     observer = new MutationObserver(ms => {
       for(const m of ms) for(const node of m.addedNodes){
         if(node.nodeType === 1) apply(node, true);
+        // Setting .textContent inserts a TEXT node, not an element — which is
+        // exactly how this site writes English back over a translated heading
+        // when a page re-renders. Re-apply on the parent, or every navigation
+        // to the districts page quietly reverts its headings.
+        else if(node.nodeType === 3 && node.parentElement) apply(node.parentElement, true);
       }
     });
     observer.observe(document.body, {childList:true, subtree:true});
