@@ -3626,6 +3626,13 @@ const LOOP_SCRIM = {
   // in homepageasset/. It is fetched no-store — it is a few hundred bytes, and
   // caching it is exactly what would stop a newly added photograph from ever
   // appearing. The images themselves carry ?v=<rev> and so stay fully cacheable.
+  // Set true to run the photo story again: the hero opens on the loop, then
+  // hands the stage to the programme photographs with captions before returning
+  // to the loop. Held off for now — the home page stays on the loop with the
+  // headline and the identity card in place. Everything the story needs is
+  // still here and still built (scripts/build_hero_images.py writes
+  // assets/hero/manifest.json), so this one line brings it back.
+  const HERO_STORY = false;
   const INTRO = 6000, HOLD = 4200, FADE = 1200;
 
   function slideshow(amb, url, fallback){
@@ -3771,11 +3778,13 @@ const LOOP_SCRIM = {
       // without reloading or restarting it.
       amb.insertAdjacentHTML('beforeend', '<div class="amb-scrim-photo"></div>');
       if(!reduce) load('aerial');
-      slideshow(amb, section.dataset.slides, function(){
-        // Manifest unreadable: nothing to layer, so the loop just keeps
-        // playing. Under reduced motion no loop was started and the gradient
-        // stands in, exactly as before this feature existed.
-      });
+      if(HERO_STORY){
+        slideshow(amb, section.dataset.slides, function(){
+          // Manifest unreadable: nothing to layer, so the loop just keeps
+          // playing. Under reduced motion no loop was started and the gradient
+          // stands in, exactly as before this feature existed.
+        });
+      }
       return;
     }
 
