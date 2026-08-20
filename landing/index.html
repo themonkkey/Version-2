@@ -94,7 +94,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   box-shadow:0 3px 12px rgba(0,0,0,.35);}
 @media (max-width:700px){.wip-ribbon{display:none;}}
 .nav{position:sticky;top:0;z-index:50;
-  background:rgba(9,12,10,.90);
+  background:rgba(7,43,31,.90);
   backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
   border-bottom:1px solid rgba(255,255,255,.12);
   /* No box-shadow, and the render surface is hard-clipped to the box. Hovering
@@ -144,13 +144,19 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   transition:transform var(--roll-out);}
 .navlinks .nl:hover::before,
 .navlinks .nl:focus-visible::before{transform:scaleY(1);transition:transform var(--roll-in);}
-/* No colour change on hover. The resting label does not stay to be recoloured —
-   it rides up and out of the clip while the dark duplicate takes its place, and
-   darkening it mid-flight made it disappear against the black bar on the way. */
+/* The outgoing label fades as it leaves. It was travelling up across the rising
+   pill still at full strength, so for the length of the roll you saw light text
+   smeared over the lime — which read as the word escaping its button rather than
+   as a swap. Fading the SPAN's own colour is what does it: the duplicate is a
+   ::after with its own explicit colour, so it is untouched and arrives solid
+   while the original goes. Darkening instead of fading is not an option — the
+   original would vanish into the bar on the way out. */
+.navlinks .nl:hover .nl-t,
+.navlinks .nl:focus-visible .nl-t{color:transparent;}
 /* The label and its duplicate. The copy sits exactly one line below and the pair
    slides up together, so the incoming word arrives with the pill. */
 .navlinks .nl .nl-t{display:block;position:relative;
-  transition:transform var(--roll-out);}
+  transition:transform var(--roll-out),color var(--roll-out);}
 /* The offset is the label's own height PLUS the item's bottom padding, or the
    duplicate parks inside that padding and its top edge shows below the resting
    label — overflow:hidden clips at the border box, which is lower down. Both the
@@ -160,7 +166,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   width:100%;text-align:center;font-weight:700;color:var(--ink,#0B2E20);}
 .navlinks .nl:hover .nl-t,
 .navlinks .nl:focus-visible .nl-t{transform:translateY(calc(-100% - var(--nl-py)));
-  transition:transform var(--roll-in);}
+  transition:transform var(--roll-in),color .16s linear;}
 .navlinks .nl:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
 /* Someone who has asked for less motion still gets the state, just without the
    travel: the pill and the label swap instantly instead of rolling. */
@@ -666,11 +672,12 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    Every page ends on a dark vstage (ink / handloom / longexposure /
    isometric), so the footer stays on the same dark system permanently
    rather than cutting back to a light bar — no seam, no per-page logic. */
-/* Same black as the nav strip, so the page is bookended by one colour instead
-   of a black bar at the top and a deep-green one at the bottom. Opaque rather
-   than the nav's translucency — nothing scrolls behind the footer for a blur to
-   pick up, so a flat fill is both correct and cheaper. */
-.footer{background:#090C0A;border-top:1px solid rgba(255,255,255,.12);}
+/* Same deep green as the nav strip, so the page is bookended by one colour.
+   A shade under the page's own --ink (#0B2E20) so the bar still separates from
+   the dark sections it sits against, while the lime pill reads at 13:1 on it.
+   Opaque rather than the nav's translucency — nothing scrolls behind the footer
+   for a blur to pick up, so a flat fill is both correct and cheaper. */
+.footer{background:#072B1F;border-top:1px solid rgba(255,255,255,.12);}
 /* Full width, matching the nav: the bar was capped at --maxw and centred, which
    left the brand and the note floating inboard of the nav items directly above
    them on a wide screen. */
@@ -2510,7 +2517,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   .mobile-menu.open{display:flex;flex-direction:column;gap:2px;
     padding:8px var(--pad-x) 16px;
     /* Matches the bar it drops out of. */
-    background:rgba(9,12,10,.96);
+    background:rgba(7,43,31,.96);
     backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
     border-bottom:1px solid rgba(255,255,255,.12);}
   .mobile-menu .nl{font-family:inherit;text-align:left;font-size:15px;font-weight:500;
