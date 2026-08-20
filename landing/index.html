@@ -238,6 +238,19 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    lands on, so hovering a sibling reads as "this one instead of that one". */
 .navlinks .nl.active{color:var(--ink,#0B2E20);font-weight:700;}
 .navlinks .nl.active::before{transform:scaleY(1);}
+/* Language switch. Deliberately not styled as one of the page links: it changes
+   how the whole site reads rather than where you are in it, so it gets its own
+   outlined shape instead of joining the roll-up row. */
+.langtog{font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;
+  padding:6px 13px;border-radius:999px;white-space:nowrap;
+  color:var(--lime);background:rgba(198,255,106,.10);
+  border:1px solid rgba(198,255,106,.42);
+  transition:background .2s ease,color .2s ease,border-color .2s ease;}
+.langtog:hover{background:var(--lime);color:#0E4A3C;border-color:var(--lime);}
+.langtog:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+.langtog[hidden]{display:none;}
+@media(max-width:900px){ .navlinks .langtog{display:none;} }
+.mobile-menu .langtog{align-self:flex-start;margin-top:10px;}
 .hamburger{display:none;background:none;border:none;font-size:23px;color:#FFF;cursor:pointer;padding:4px 6px;}
 
 /* ---------- BUTTONS ---------- */
@@ -2738,6 +2751,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
       <button class="nl" data-page="districts" data-goto-tab="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
       <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
+      <button class="langtog" id="langTog" type="button" data-no-i18n hidden aria-pressed="false">తెలుగు</button>
       <a href="https://andhrachatbot.streamlit.app" class="btn-wrap"><button class="btn-primary btn-nav">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
     </div>
@@ -2750,6 +2764,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
     <button class="nl" data-page="districts" data-goto-tab="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
     <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
+    <button class="langtog" id="langTogM" type="button" data-no-i18n hidden aria-pressed="false">తెలుగు</button>
     <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary" style="width:100%;justify-content:center;margin-top:12px">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
   </div>
 </nav>
@@ -3946,6 +3961,94 @@ const LOOP_SCRIM = {
     const name  = (eager && override) ? override : sec.dataset.vid;
     mount(sec, LOOP_SCRIM[name] ? name : 'aerial', eager);
   });
+})();
+
+// ---------- Telugu ----------
+// Swaps the page into Telugu without a reload and without a third-party script.
+//
+// The dictionary is keyed by the exact English string and is built offline by
+// scripts/build_i18n.py, which only collects elements holding plain text and
+// nothing else. That constraint is what makes this safe to do at runtime: an
+// element with a link or a bold run inside it is never touched, so no markup is
+// ever rewritten and no handler loses the node it was bound to.
+//
+// Only whole-string matches are replaced. Numbers, district names and the
+// estimate classes are not in the dictionary, so a figure can never be altered
+// by translation — which on a site whose whole claim is traceable numbers is the
+// property that matters most.
+(function(){
+  const STORE = 'sa_lang';
+  const original = new WeakMap();     // element -> its English text
+  let dict = null, on = false, observer = null;
+
+  const norm = t => t.replace(/\s+/g, ' ').trim();
+
+  function translatable(el){
+    return !el.children.length &&
+           el.tagName !== 'SCRIPT' && el.tagName !== 'STYLE' &&
+           !el.closest('[data-no-i18n]');
+  }
+
+  function apply(root, toTelugu){
+    const els = [];
+    if(root.nodeType === 1) els.push(root);
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+    let n; while((n = w.nextNode())) els.push(n);
+    for(const el of els){
+      if(!translatable(el)) continue;
+      if(toTelugu){
+        if(original.has(el)) continue;             // already swapped
+        const te = dict[norm(el.textContent)];
+        if(te){ original.set(el, el.textContent); el.textContent = te; }
+      } else if(original.has(el)){
+        el.textContent = original.get(el);
+        original.delete(el);
+      }
+    }
+  }
+
+  // The district panels and the case-study lists render after load, so anything
+  // added later has to be translated as it appears or half the site reverts.
+  function watch(){
+    if(observer) return;
+    observer = new MutationObserver(ms => {
+      for(const m of ms) for(const node of m.addedNodes){
+        if(node.nodeType === 1) apply(node, true);
+      }
+    });
+    observer.observe(document.body, {childList:true, subtree:true});
+  }
+
+  function setLang(next){
+    on = next === 'te';
+    apply(document.body, on);
+    on ? watch() : (observer && (observer.disconnect(), observer = null));
+    document.documentElement.lang = on ? 'te' : 'en';
+    try{ localStorage.setItem(STORE, on ? 'te' : 'en'); }catch(e){}
+    document.querySelectorAll('.langtog').forEach(b => {
+      b.textContent = on ? 'English' : 'తెలుగు';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  fetch('assets/i18n/te.json')
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(d => {
+      dict = {};
+      for(const k in d) if(d[k]) dict[k] = d[k];   // skip untranslated entries
+      // Nothing translated yet means no switch: a button that silently does
+      // nothing is worse than no button. It appears on its own once
+      // scripts/build_i18n.py --bhashini has filled te.json.
+      if(!Object.keys(dict).length) return;
+      document.querySelectorAll('.langtog').forEach(b => {
+        b.hidden = false;
+        b.addEventListener('click', () => setLang(on ? 'en' : 'te'));
+      });
+      let saved = 'en';
+      try{ saved = localStorage.getItem(STORE) || 'en'; }catch(e){}
+      if(saved === 'te') setLang('te');
+    })
+    .catch(() => {});   // no dictionary: the site stays in English, as before
 })();
 
 // ---------- router ----------
