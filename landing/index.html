@@ -141,8 +141,23 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 .brand-swap > *{position:absolute;inset:0;display:flex;align-items:center;
   justify-content:center;}
 .brand-logo{height:100%;width:100%;object-fit:contain;object-position:center;}
-.brand-tag{font-size:calc(var(--bh) * .58);font-weight:700;color:#0E4A3C;
-  letter-spacing:-.02em;white-space:nowrap;}
+.brand-tag{font-size:calc(var(--bh) * .58);font-weight:700;
+  letter-spacing:-.02em;white-space:nowrap;
+  /* The two halves are separate spans so they can carry different colours, and
+     this box is a flex container (see .brand-swap > *), which discards the
+     whitespace-only text node between them — "SwarnaAndhra". The gap restores
+     the word space that markup alone no longer provides. */
+  gap:.3em;}
+/* Sampled from the artwork itself rather than matched by eye — the wordmark
+   alternates with the logo in the same pill, so any drift between the two would
+   show every eight seconds. The lockup stores its text as embedded raster, not
+   vector, so these came from reading the rendered pixels.
+   The amber is the logo's own #DB9A26 and measures 2.0:1 on this pill, under the
+   3:1 large-text bar. It is kept because the identical word in the logo beside
+   it carries the identical colour; #A96D10 is the same hue at 3.55:1 if the
+   brand match is ever worth trading for legibility. */
+.bt-swarna{color:#DB9A26;}
+.bt-andhra{color:#07661B;}
 /* ~3.4s on each mark with a short cross-fade between, looping. */
 @keyframes brandShowLogo{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
 @keyframes brandShowWord{0%,42%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
@@ -233,6 +248,14 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 .btn-primary:hover{transform:translateY(-1.5px);box-shadow:0 9px 24px rgba(52,199,89,.4), inset 0 1px 0 rgba(255,255,255,.45);}
 .btn-primary:active{transform:translateY(0);box-shadow:0 3px 10px rgba(52,199,89,.3);}
 .btn-nav{font-size:13px;padding:9px 17px;}
+/* One accent in the bar, not two. The assistant button was a mid-green gradient
+   sitting beside a lime roll-up pill, which read as two unrelated systems on the
+   same strip. It takes the pill's lime, with the same dark green type the pill
+   uses — 10:1, so nothing is traded for the match. */
+.nav .btn-nav{background:var(--lime);color:#0E4A3C;
+  box-shadow:0 4px 14px rgba(198,255,106,.26), inset 0 1px 0 rgba(255,255,255,.45);}
+.nav .btn-nav:hover{background:#D4FF87;
+  box-shadow:0 6px 20px rgba(198,255,106,.38), inset 0 1px 0 rgba(255,255,255,.5);}
 .btn-ghost{font-family:inherit;font-size:14px;font-weight:500;letter-spacing:-.012em;
   background:var(--glass);color:var(--label);
   backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);
@@ -2661,7 +2684,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <span class="brand-swap">
         <img class="brand-logo" src="assets/swarna-logo-lockup.svg?v=2026-08-20a"
              alt="Swarna Andhra @2047 · Strategic Framework · NITI Aayog · Planning Department">
-        <span class="brand-tag">Swarna Andhra @2047</span>
+        <span class="brand-tag"><span class="bt-swarna">Swarna</span> <span class="bt-andhra">Andhra @2047</span></span>
       </span>
     </button>
     <div class="navlinks">
