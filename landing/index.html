@@ -111,21 +111,49 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 /* The wordmark sits in a glass pill. clip-path is pinned to the same radius as
    the border — this is a backdrop-filter inside a bar that already has one, and
    an unclipped blur is what bled past the corners on the district tabs. */
+/* The pill is a LIGHT frosted plate, not a dark one. The lockup is drawn in navy
+   and grey on transparency — "Strategic Framework", "NITI Aayog" and "DEPARTMENT"
+   all but disappear on the dark bar, and an SVG cannot be recoloured from CSS.
+   So the glass goes light and the wordmark turns dark to match it.
+   clip-path is pinned to the same radius as the border: this is a
+   backdrop-filter inside a bar that already has one, and an unclipped blur is
+   what bled past the corners on the district tabs. */
 .brand{display:flex;align-items:center;cursor:pointer;
-  padding:7px clamp(13px,1.4vw,18px);border-radius:999px;
-  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);
+  padding:6px clamp(12px,1.3vw,16px);border-radius:999px;
+  background:rgba(255,255,255,.90);border:1px solid rgba(255,255,255,.55);
   clip-path:inset(0 round 999px);isolation:isolate;
   backdrop-filter:blur(14px) saturate(150%);
   -webkit-backdrop-filter:blur(14px) saturate(150%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
-  transition:background .2s ease,border-color .2s ease;}
-.brand:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
+  box-shadow:0 3px 14px rgba(0,0,0,.20);
+  transition:background .2s ease,box-shadow .2s ease;}
+.brand:hover{background:#FFF;box-shadow:0 5px 18px rgba(0,0,0,.26);}
 .brand:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
-/* The wordmark carries the brand on its own now. It sizes up a little from the
-   13.5px it used beside the logo plate: at that size it read as a label next to
-   a mark, and with the mark gone it has to hold the left of the bar by itself. */
-.brand-tag{font-size:clamp(15px,1.5vw,17px);font-weight:700;color:#FFF;
+/* One fixed slot holding both marks, so the pill keeps its width through the
+   swap instead of snapping between two different measurements. The width is
+   derived from the artwork's own 570x83 ratio. */
+/* Sized off the artwork, not off the old text height. This lockup carries four
+   separate marks and three lines of small type; at the ~24px the wordmark alone
+   needed, "Strategic Framework" and "NITI Aayog" were unreadable specks. The bar
+   grows to fit it, which is fine — --navh is measured in JS, so the hero and the
+   sticky offsets follow whatever height the nav ends up at. */
+.brand-swap{--bh:clamp(26px,3.1vw,36px);
+  position:relative;display:block;height:var(--bh);width:calc(var(--bh) * 6.87);}
+.brand-swap > *{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;}
+.brand-logo{height:100%;width:100%;object-fit:contain;object-position:center;}
+.brand-tag{font-size:calc(var(--bh) * .58);font-weight:700;color:#0E4A3C;
   letter-spacing:-.02em;white-space:nowrap;}
+/* ~3.4s on each mark with a short cross-fade between, looping. */
+@keyframes brandShowLogo{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
+@keyframes brandShowWord{0%,42%{opacity:0}50%,92%{opacity:1}100%{opacity:0}}
+.brand-logo{animation:brandShowLogo 8s ease-in-out infinite;}
+.brand-tag{animation:brandShowWord 8s ease-in-out infinite;}
+/* No cycling for anyone who asked for less motion — the wordmark simply stays,
+   since it is the half that carries the name in plain text. */
+@media (prefers-reduced-motion:reduce){
+  .brand-logo{animation:none;opacity:0;}
+  .brand-tag{animation:none;opacity:1;}
+}
 .navlinks{display:flex;gap:clamp(4px,1vw,10px);align-items:center;}
 /* ROLL-UP HOVER.
    A lime pill grows from the bottom edge of the item while a second copy of the
@@ -2630,7 +2658,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 <nav class="nav">
   <div class="nav-inner">
     <button class="brand nl" data-page="home">
-      <span class="brand-tag">Swarna Andhra 2047</span>
+      <span class="brand-swap">
+        <img class="brand-logo" src="assets/swarna-logo-lockup.svg?v=2026-08-20a"
+             alt="Swarna Andhra @2047 · Strategic Framework · NITI Aayog · Planning Department">
+        <span class="brand-tag">Swarna Andhra @2047</span>
+      </span>
     </button>
     <div class="navlinks">
       <button class="nl active" data-page="home"><span class="nl-t" data-t="Home">Home</span></button>
