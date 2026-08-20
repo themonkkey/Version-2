@@ -308,6 +308,13 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    cross-fade ran. Two fixed levels for the photos, and the scrim sits above
    both — it is the top of this layer by definition. */
 .amb-slide.top{z-index:2;}
+/* Paging by hand swaps with no cross-fade. The auto story cross-fades over 1.6s,
+   which is right when a photograph is meant to dissolve into the next one — but
+   a reader pressing the arrow faster than that outran it: the incoming layer was
+   still near-transparent while the outgoing had already gone, and the video
+   underneath showed through the gap. With no transition there is no gap to fall
+   through, however fast the button is pressed. */
+.hero.no-xfade .amb-slide{transition:none;}
 .amb-scrim{z-index:3;}
 .amb-slide.on ~ .amb-fallback{opacity:0;}
 .amb-fallback{transition:opacity 1.2s ease;}
@@ -3767,13 +3774,18 @@ const LOOP_SCRIM = {
       items.forEach(() => dots.appendChild(document.createElement('i')));
     }
 
-    function caption(text, idx){
+    let capTimer = null;
+    function caption(text, idx, instant){
       if(dots) [].forEach.call(dots.children, (d,n) => d.classList.toggle('on', n===idx));
       if(!line) return;
-      // Fade the old line out before swapping the words, so the text never
-      // visibly changes underneath itself mid-transition.
+      clearTimeout(capTimer);
+      // On a manual step the words change with the picture — a 260ms fade meant
+      // the caption briefly described a photograph that was already gone.
+      if(instant){ line.textContent = text; line.style.opacity = ''; return; }
+      // Otherwise fade the old line out before swapping the words, so the text
+      // never visibly changes underneath itself mid-transition.
       line.style.opacity = '0';
-      setTimeout(() => { line.textContent = text; line.style.opacity = ''; }, 260);
+      capTimer = setTimeout(() => { line.textContent = text; line.style.opacity = ''; }, 260);
     }
 
     // A tab nobody is looking at should not burn through the sequence; hold the
@@ -3788,29 +3800,57 @@ const LOOP_SCRIM = {
     }
 
     let cur = 0;                          // the slide currently on screen
-    function show(idx){
+    // Every transition takes a ticket. Anything asynchronous it started —
+    // the image load, the fade-out of the layer it replaced — checks the ticket
+    // before acting, and does nothing if a newer transition has since begun.
+    // Without this, paging quickly left an old fade-out timer running: it fired
+    // a second later and stripped the visible class off a layer that had by then
+    // become the FRONT one, so both photographs went transparent and the video
+    // underneath showed through with the caption still sitting on top of it.
+    let gen = 0, fadeTimer = null;
+    function show(idx, instant){
+      const myGen = ++gen;
       paint(back, urls[idx], function(){
+        if(myGen !== gen) return;          // superseded mid-load; abandon quietly
         if(!back.naturalWidth){            // unreadable file — skip, do not stall
           return idx + 1 < items.length ? show(idx+1) : end();
         }
         cur = idx;
         section.classList.add('telling');
-        caption(items[idx].cap, idx);
+        caption(items[idx].cap, idx, instant);
         // The outgoing layer drops out of the top slot NOW, not when its fade
         // finishes. Holding both at the same level meant that on every other
         // step the incoming photo faded in *underneath* the one it was
         // replacing — invisible for the whole fade, then a hard cut when the
         // outgoing finally switched off. Incoming is always the one on top.
         const out = front;
-        out.classList.remove('top');
-        back.classList.add('top', 'on');
-        setTimeout(() => out.classList.remove('on'), FADE);
+        clearTimeout(fadeTimer);
+        if(instant){
+          // Both changes land in the same frame with transitions off, so the
+          // stage is never showing less than one fully opaque photograph.
+          section.classList.add('no-xfade');
+          out.classList.remove('top');
+          back.classList.add('top', 'on');
+          void back.offsetHeight;        // commit both before animation resumes
+          out.classList.remove('on');
+          void out.offsetHeight;
+          requestAnimationFrame(() => section.classList.remove('no-xfade'));
+        } else {
+          out.classList.remove('top');
+          back.classList.add('top', 'on');
+          // Only the newest fade-out may run, and only while it is still the
+          // newest. The front layer is therefore never the one switched off.
+          fadeTimer = setTimeout(function(){
+            if(myGen === gen) out.classList.remove('on');
+          }, FADE);
+        }
         front = back; back = out;
         wait(HOLD, () => idx + 1 < items.length ? show(idx+1) : end());
       });
     }
 
     function end(){
+      gen++;                                 // cancels any fade still pending
       section.classList.remove('telling');   // headline and CTA come back
       front.classList.remove('on');          // last photo fades off the video
       // Wipe the line only after it has finished fading out. Left in place, the
@@ -3838,7 +3878,7 @@ const LOOP_SCRIM = {
       if(!btn || !section.classList.contains('telling')) return;
       clearTimeout(timer);
       const n = (cur + Number(btn.dataset.capStep) + items.length) % items.length;
-      show(n);
+      show(n, true);                       // instant: no gap to fall through
     });
 
     wait(INTRO, () => show(0));              // the loop plays first, on its own
