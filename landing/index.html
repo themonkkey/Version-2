@@ -324,7 +324,8 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
      clipping off the top, which is the usual flex-end trap. padding-bottom gets
      its own clamp so the block never hugs the edge. */
   display:flex;flex-direction:column;justify-content:flex-end;
-  padding-bottom:clamp(38px,min(7vw,8.5vh),104px);}
+  --hero-pad-b:clamp(38px,min(7vw,8.5vh),104px);
+  padding-bottom:var(--hero-pad-b);}
 .hero .eyebrow{margin-bottom:clamp(11px,min(2.4vw,2.1vh),22px);}
 /* These blocks centre themselves with `margin:0 auto`. Once their parent became a
    flex column, that auto cross-axis margin overrode the default stretch and they
@@ -357,6 +358,29 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 #page-home .hero + .section .sec-cta{margin-top:clamp(20px,min(5.5vw,4.2vh),60px);}
 #page-home .hero + .section .sec-cta-h{margin-bottom:clamp(12px,min(2.2vw,2vh),20px);}
 .hero-content{position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center;}
+/* THE STORY PHASE. The hero opens on the loop with the headline over it, then
+   hands the stage to the photographs: the copy steps aside and a caption takes
+   its place at the same height, so the block does not appear to jump. It is a
+   loop, not a one-way trip — the copy comes back at the end of the run, because
+   "Explore districts" is the page's primary call to action and parking it
+   permanently behind a slideshow would cost more than the photographs gain. */
+.hero > .wrap{transition:opacity .75s ease,transform .75s ease;}
+.hero.telling > .wrap{opacity:0;transform:translateY(10px);pointer-events:none;}
+/* position:absolute has to beat `.vstage > .amb ~ *`, which sets every sibling
+   after the ambient layer to position:relative — hence the two-class selector. */
+.hero > .hero-cap{position:absolute;left:0;right:0;bottom:var(--hero-pad-b);
+  z-index:2;padding:0 var(--pad-x);text-align:center;
+  opacity:0;transition:opacity .75s ease;pointer-events:none;}
+.hero.telling > .hero-cap{opacity:1;}
+.hero-cap-line{color:#FFF;font-weight:600;letter-spacing:-.015em;
+  font-size:clamp(17px,min(2.6vw,3.2vh),30px);line-height:1.32;
+  max-width:20ch;margin:0 auto;text-shadow:0 2px 22px rgba(0,0,0,.45);
+  transition:opacity .26s ease;}
+.hero-cap-dots{display:flex;gap:7px;justify-content:center;
+  margin-top:clamp(12px,1.6vh,20px);}
+.hero-cap-dots i{width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.34);transition:background .3s ease,width .3s ease;}
+.hero-cap-dots i.on{background:var(--lime);width:17px;border-radius:3px;}
 .hero .hero-mark{background:rgba(255,255,255,.14);
   backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
   border:1px solid rgba(255,255,255,.28);
@@ -2557,6 +2581,9 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     </div>
     </div></div>
 
+    <!-- Filled by the hero story sequencer; empty until the photographs run. -->
+    <div class="hero-cap"><p class="hero-cap-line"></p><div class="hero-cap-dots"></div></div>
+
   </header>
 
   <section class="section vstage" data-vid="ink"><div class="wrap">
@@ -3491,7 +3518,7 @@ const LOOP_SCRIM = {
   // in homepageasset/. It is fetched no-store — it is a few hundred bytes, and
   // caching it is exactly what would stop a newly added photograph from ever
   // appearing. The images themselves carry ?v=<rev> and so stay fully cacheable.
-  const HOLD = 7000, FADE = 1600;
+  const INTRO = 6000, HOLD = 4200, FADE = 1200;
 
   function slideshow(amb, url, fallback){
     fetch(url, {cache:'no-store'})
@@ -3499,12 +3526,14 @@ const LOOP_SCRIM = {
       .then(d => {
         const slides = (d && d.slides) || [];
         if(!slides.length) return fallback();
-        run(amb, slides.map(x => x.src + '?v=' + (d.rev||0)));
+        run(amb, slides.map(x => ({src: x.src + '?v=' + (d.rev||0),
+                                   cap: x.caption || ''})));
       })
       .catch(fallback);
   }
 
-  function run(amb, urls){
+  function run(amb, items){
+    const urls = items.map(x => x.src);
     const a = document.createElement('img');
     const b = document.createElement('img');
     [a,b].forEach(im => {
@@ -3527,29 +3556,73 @@ const LOOP_SCRIM = {
       im.addEventListener('error', then, {once:true});
     }
 
-    paint(front, urls[0], () => front.classList.add('on'));
-    if(reduce || urls.length < 2) return;   // one frame, no motion
+    // Reduced motion gets one photograph, held, with the headline over it —
+    // no loop, no sequence, nothing that moves on its own.
+    if(reduce){
+      paint(front, urls[0], () => front.classList.add('on'));
+      return;
+    }
 
-    (function schedule(){
+    const section = amb.parentElement;
+    const cap  = section.querySelector('.hero-cap');
+    const line = cap && cap.querySelector('.hero-cap-line');
+    const dots = cap && cap.querySelector('.hero-cap-dots');
+    if(dots && !dots.children.length){
+      items.forEach(() => dots.appendChild(document.createElement('i')));
+    }
+
+    function caption(text, idx){
+      if(dots) [].forEach.call(dots.children, (d,n) => d.classList.toggle('on', n===idx));
+      if(!line) return;
+      // Fade the old line out before swapping the words, so the text never
+      // visibly changes underneath itself mid-transition.
+      line.style.opacity = '0';
+      setTimeout(() => { line.textContent = text; line.style.opacity = ''; }, 260);
+    }
+
+    // A tab nobody is looking at should not burn through the sequence; hold the
+    // step until it comes back rather than advancing blind.
+    function wait(ms, fn){
+      setTimeout(function(){ document.hidden ? wait(600, fn) : fn(); }, ms);
+    }
+
+    function show(idx){
+      paint(back, urls[idx], function(){
+        if(!back.naturalWidth){            // unreadable file — skip, do not stall
+          return idx + 1 < items.length ? show(idx+1) : end();
+        }
+        section.classList.add('telling');
+        caption(items[idx].cap, idx);
+        // The outgoing layer drops out of the top slot NOW, not when its fade
+        // finishes. Holding both at the same level meant that on every other
+        // step the incoming photo faded in *underneath* the one it was
+        // replacing — invisible for the whole fade, then a hard cut when the
+        // outgoing finally switched off. Incoming is always the one on top.
+        const out = front;
+        out.classList.remove('top');
+        back.classList.add('top', 'on');
+        setTimeout(() => out.classList.remove('on'), FADE);
+        front = back; back = out;
+        wait(HOLD, () => idx + 1 < items.length ? show(idx+1) : end());
+      });
+    }
+
+    function end(){
+      section.classList.remove('telling');   // headline and CTA come back
+      front.classList.remove('on');          // last photo fades off the video
+      // Wipe the line only after it has finished fading out. Left in place, the
+      // last run's caption was still sitting in the DOM when the next run
+      // started, so it flashed for a beat under the first photograph before the
+      // swap caught up. Clearing it immediately would instead make the text
+      // vanish mid-fade, so this waits out the transition first.
       setTimeout(function(){
-        if(document.hidden) return schedule();   // nothing to see, spend nothing
-        const next = (i + 1) % urls.length;
-        paint(back, urls[next], function(){
-          if(!back.naturalWidth){ i = next; return schedule(); }  // skip a bad file
-          // The outgoing layer drops out of the top slot NOW, not when its fade
-          // finishes. Holding both at the same level meant that on every other
-          // cycle the incoming photo faded in *underneath* the one it was
-          // replacing — invisible for the whole fade, then a hard cut when the
-          // outgoing finally switched off. Incoming is always the one on top.
-          const out = front;
-          out.classList.remove('top');
-          back.classList.add('top', 'on');
-          setTimeout(() => out.classList.remove('on'), FADE);
-          front = back; back = out; i = next;
-          schedule();
-        });
-      }, HOLD);
-    })();
+        if(line) line.textContent = '';
+        if(dots) [].forEach.call(dots.children, d => d.classList.remove('on'));
+      }, 800);
+      wait(INTRO, () => show(0));
+    }
+
+    wait(INTRO, () => show(0));              // the loop plays first, on its own
   }
 
   // Only the hero autoplays immediately. The rest wait until they scroll near
@@ -3584,7 +3657,16 @@ const LOOP_SCRIM = {
     // frame rather than showing nobody the photographs at all. run() reads the
     // same flag and simply never starts the rotation.
     if(section.dataset.slides){
-      slideshow(amb, section.dataset.slides, ()=>{ if(!reduce) load('aerial'); });
+      // The loop is the base layer and starts straight away — the story opens
+      // on it. The photographs layer over the top of it and fade off again at
+      // the end of the run, which is what brings the video back into view
+      // without reloading or restarting it.
+      if(!reduce) load('aerial');
+      slideshow(amb, section.dataset.slides, function(){
+        // Manifest unreadable: nothing to layer, so the loop just keeps
+        // playing. Under reduced motion no loop was started and the gradient
+        // stands in, exactly as before this feature existed.
+      });
       return;
     }
 

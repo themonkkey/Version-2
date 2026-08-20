@@ -1,18 +1,62 @@
 {
-  "rev": 1787203206,
-  "count": 2,
+  "rev": 1787205353,
+  "count": 8,
   "slides": [
     {
       "src": "assets/hero/hero-2026-08-19-105131.jpg",
       "w": 1280,
       "h": 994,
-      "source": "WhatsApp Image 2026-08-19 at 10.51.31.jpeg"
+      "source": "WhatsApp Image 2026-08-19 at 10.51.31.jpeg",
+      "caption": "Between sessions, on the sidelines."
     },
     {
-      "src": "assets/hero/hero-2026-08-19-134509.jpg",
-      "w": 1600,
-      "h": 900,
-      "source": "WhatsApp Image 2026-08-19 at 13.45.09.jpeg"
+      "src": "assets/hero/hero-0w8a1306-13885089.jpg",
+      "w": 1920,
+      "h": 1280,
+      "source": "0W8A1306@13885089.JPG",
+      "caption": "Twenty-eight districts, one room."
+    },
+    {
+      "src": "assets/hero/hero-0w8a1350.jpg",
+      "w": 1920,
+      "h": 1280,
+      "source": "0W8A1350.JPG",
+      "caption": "Dr. Rajiv Kumar on how growth is measured."
+    },
+    {
+      "src": "assets/hero/hero-0w8a1727.jpg",
+      "w": 1920,
+      "h": 1280,
+      "source": "0W8A1727.JPG",
+      "caption": "What Uttar Pradesh learned building district GDP."
+    },
+    {
+      "src": "assets/hero/hero-0w8a2580-17520707.jpg",
+      "w": 1920,
+      "h": 1280,
+      "source": "0W8A2580@17520707.JPG",
+      "caption": "Two days of economic intelligence."
+    },
+    {
+      "src": "assets/hero/hero-0w8a3106-33840301.jpg",
+      "w": 1920,
+      "h": 1280,
+      "source": "0W8A3106@33840301.JPG",
+      "caption": "AI, put to work on economic estimation."
+    },
+    {
+      "src": "assets/hero/hero-0w8a3177-21918063.jpg",
+      "w": 1920,
+      "h": 1280,
+      "source": "0W8A3177@21918063.JPG",
+      "caption": "Dr. Payal Seth: administrative data, faster policy."
+    },
+    {
+      "src": "assets/hero/hero-0w8a3413-18685781.jpg",
+      "w": 1920,
+      "h": 1280,
+      "source": "0W8A3413@18685781.JPG",
+      "caption": "The people behind the programme."
     }
   ]
 }

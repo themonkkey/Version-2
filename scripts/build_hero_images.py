@@ -48,6 +48,31 @@ OUT_DIR = os.path.join(ROOT, "landing", "assets", "hero")
 MANIFEST = os.path.join(OUT_DIR, "manifest.json")
 
 EXTS = {".jpg", ".jpeg", ".png", ".webp", ".heic"}
+
+# One catchy line per photograph, shown while that photo is on screen.
+#
+# Keyed by source filename. People are named ONLY where the slide behind them
+# names them — those are readable in the frame, so the caption is quoting the
+# event rather than my guess at who someone is. Faces I cannot verify from
+# something written in the picture stay undescribed.
+CAPTIONS = {
+    "WhatsApp Image 2026-08-19 at 10.51.31.jpeg":
+        "Between sessions, on the sidelines.",
+    "0W8A1306@13885089.JPG":
+        "Twenty-eight districts, one room.",
+    "0W8A1350.JPG":
+        "Dr. Rajiv Kumar on how growth is measured.",
+    "0W8A1727.JPG":
+        "What Uttar Pradesh learned building district GDP.",
+    "0W8A2580@17520707.JPG":
+        "Two days of economic intelligence.",
+    "0W8A3106@33840301.JPG":
+        "AI, put to work on economic estimation.",
+    "0W8A3177@21918063.JPG":
+        "Dr. Payal Seth: administrative data, faster policy.",
+    "0W8A3413@18685781.JPG":
+        "The people behind the programme.",
+}
 MAX_W = 1920
 QUALITY = 82
 
@@ -111,7 +136,8 @@ def main():
                         progressive=True)
 
         slides.append({"src": "assets/hero/" + slug + ".jpg",
-                       "w": w, "h": h, "source": fn})
+                       "w": w, "h": h, "source": fn,
+                       "caption": CAPTIONS.get(fn, "")})
 
     data = {"rev": rev, "count": len(slides), "slides": slides}
 
@@ -143,6 +169,16 @@ def main():
 
     for s in slides:
         print("{}  {}x{}  <- {}".format(s["src"], s["w"], s["h"], s["source"]))
+
+    # A photo with no caption still shows, it just runs without a line. Say so
+    # loudly rather than failing the build, so dropping in a new picture is
+    # never blocked on writing copy for it first.
+    blank = [s["source"] for s in slides if not s["caption"]]
+    if blank:
+        print("\nNOTE: no caption for {} photo(s) — they will run without a "
+              "line. Add them to CAPTIONS in this script:".format(len(blank)))
+        for b in blank:
+            print("    " + repr(b))
     print("wrote {} with {} slide(s), rev {}".format(
         os.path.relpath(MANIFEST, ROOT), len(slides), rev))
 
