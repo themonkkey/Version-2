@@ -94,9 +94,9 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   box-shadow:0 3px 12px rgba(0,0,0,.35);}
 @media (max-width:700px){.wip-ribbon{display:none;}}
 .nav{position:sticky;top:0;z-index:50;
-  background:rgba(255,255,255,.94);
+  background:rgba(9,12,10,.90);
   backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
-  border-bottom:1px solid rgba(11,46,32,.10);
+  border-bottom:1px solid rgba(255,255,255,.12);
   /* No box-shadow, and the render surface is hard-clipped to the box. Hovering
      any link repainted the bar, and Chrome re-composited the blur+saturate over
      the layer's full bounds - which the 24px shadow had pushed below the bar -
@@ -112,7 +112,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 /* The wordmark carries the brand on its own now. It sizes up a little from the
    13.5px it used beside the logo plate: at that size it read as a label next to
    a mark, and with the mark gone it has to hold the left of the bar by itself. */
-.brand-tag{font-size:clamp(15px,1.5vw,17px);font-weight:700;color:var(--ink,#0B2E20);
+.brand-tag{font-size:clamp(15px,1.5vw,17px);font-weight:700;color:#FFF;
   letter-spacing:-.02em;white-space:nowrap;}
 .navlinks{display:flex;gap:clamp(4px,1vw,10px);align-items:center;}
 /* ROLL-UP HOVER.
@@ -129,7 +129,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 .navlinks{--roll-in:.38s cubic-bezier(.22,.9,.28,1);--roll-out:.19s cubic-bezier(.4,0,.7,.3);}
 .navlinks .nl{--nl-py:7px;
   position:relative;isolation:isolate;overflow:hidden;
-  font-size:13.5px;font-weight:500;color:rgba(11,46,32,.66);cursor:pointer;
+  font-size:13.5px;font-weight:500;color:rgba(255,255,255,.72);cursor:pointer;
   background:none;border:none;padding:var(--nl-py) 14px;border-radius:999px;letter-spacing:-.01em;
   /* two-word items ("Capacity building", "Case studies") broke onto a second
      line once the row got tight, which made the bar look ragged. They stay on
@@ -144,8 +144,9 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   transition:transform var(--roll-out);}
 .navlinks .nl:hover::before,
 .navlinks .nl:focus-visible::before{transform:scaleY(1);transition:transform var(--roll-in);}
-.navlinks .nl:hover,.navlinks .nl:focus-visible{color:var(--ink,#0B2E20);
-  transition:color var(--roll-in);}
+/* No colour change on hover. The resting label does not stay to be recoloured —
+   it rides up and out of the clip while the dark duplicate takes its place, and
+   darkening it mid-flight made it disappear against the black bar on the way. */
 /* The label and its duplicate. The copy sits exactly one line below and the pair
    slides up together, so the incoming word arrives with the pill. */
 .navlinks .nl .nl-t{display:block;position:relative;
@@ -160,7 +161,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 .navlinks .nl:hover .nl-t,
 .navlinks .nl:focus-visible .nl-t{transform:translateY(calc(-100% - var(--nl-py)));
   transition:transform var(--roll-in);}
-.navlinks .nl:focus-visible{outline:2px solid var(--ink,#0B2E20);outline-offset:2px;}
+.navlinks .nl:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
 /* Someone who has asked for less motion still gets the state, just without the
    travel: the pill and the label swap instantly instead of rolling. */
 @media (prefers-reduced-motion:reduce){
@@ -174,7 +175,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    lands on, so hovering a sibling reads as "this one instead of that one". */
 .navlinks .nl.active{color:var(--ink,#0B2E20);font-weight:700;}
 .navlinks .nl.active::before{transform:scaleY(1);}
-.hamburger{display:none;background:none;border:none;font-size:23px;color:var(--ink,#0B2E20);cursor:pointer;padding:4px 6px;}
+.hamburger{display:none;background:none;border:none;font-size:23px;color:#FFF;cursor:pointer;padding:4px 6px;}
 
 /* ---------- BUTTONS ---------- */
 .btn-primary{font-family:inherit;font-size:14px;font-weight:600;letter-spacing:-.012em;
@@ -359,16 +360,14 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
      this a zoomed page gets a hero taller than the screen it must fit */
   min-height:calc(100vh / var(--pgz,1) - var(--navh,56px));
   min-height:calc(100svh / var(--pgz,1) - var(--navh,56px));
-  /* Bottom-anchored, not centred. The hero is a photograph of the programme
-     now, and centring the text parked it across the middle of the frame —
-     right over the faces. Sitting the block at the foot of the stage leaves the
-     picture readable above it. min-height (not height) is what makes this safe:
-     if the copy is ever taller than the stage the box grows downward instead of
-     clipping off the top, which is the usual flex-end trap. padding-bottom gets
-     its own clamp so the block never hugs the edge. */
-  display:flex;flex-direction:column;justify-content:flex-end;
-  --hero-pad-b:clamp(38px,min(7vw,8.5vh),104px);
-  padding-bottom:var(--hero-pad-b);}
+  /* Centred. The block was bottom-anchored while the hero ran photographs of
+     the programme and centring parked the text over people's faces; back on the
+     aerial loop there is nothing to keep clear of, so it sits in the middle of
+     the stage again and the shorthand padding above stays symmetric.
+     --hero-pad-b survives because the photo-story caption still measures its
+     offset from it. */
+  display:flex;flex-direction:column;justify-content:center;
+  --hero-pad-b:clamp(38px,min(7vw,8.5vh),104px);}
 .hero .eyebrow{margin-bottom:clamp(11px,min(2.4vw,2.1vh),22px);}
 /* These blocks centre themselves with `margin:0 auto`. Once their parent became a
    flex column, that auto cross-axis margin overrode the default stretch and they
@@ -2503,14 +2502,13 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   .hamburger{display:block;}
   .mobile-menu.open{display:flex;flex-direction:column;gap:2px;
     padding:8px var(--pad-x) 16px;
-    /* Matches the bar it drops out of — a dark sheet under a white bar read as
-       two different components stuck together. */
-    background:rgba(255,255,255,.97);
+    /* Matches the bar it drops out of. */
+    background:rgba(9,12,10,.96);
     backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
-    border-bottom:1px solid rgba(11,46,32,.10);}
+    border-bottom:1px solid rgba(255,255,255,.12);}
   .mobile-menu .nl{font-family:inherit;text-align:left;font-size:15px;font-weight:500;
-    color:rgba(11,46,32,.78);background:none;border:none;padding:13px 10px;cursor:pointer;
-    border-bottom:1px solid rgba(11,46,32,.09);letter-spacing:-.012em;border-radius:10px;}
+    color:rgba(255,255,255,.78);background:none;border:none;padding:13px 10px;cursor:pointer;
+    border-bottom:1px solid rgba(255,255,255,.10);letter-spacing:-.012em;border-radius:10px;}
   /* No roll here — a full-width row sliding its own label is noise on a phone.
      The pill still marks the current page. */
   .mobile-menu .nl.active{color:var(--ink,#0B2E20);font-weight:700;
