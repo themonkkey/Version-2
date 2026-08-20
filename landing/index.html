@@ -372,6 +372,23 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   z-index:2;padding:0 var(--pad-x);text-align:center;
   opacity:0;transition:opacity .75s ease;pointer-events:none;}
 .hero.telling > .hero-cap{opacity:1;}
+/* THE GREEN WASH IS FOR THE LOOP, NOT THE PHOTOGRAPHS. The brand scrim tints
+   the aerial footage deep green, which is right for stock footage but wrong for
+   documentary photographs of a real event — it turned skin, saris and a cream
+   ballroom uniformly green. So a second, colour-neutral scrim cross-fades in for
+   the photo phase and the green one fades out. Two layers swapped by opacity,
+   because gradients do not interpolate reliably between different colours.
+   It is also bottom-weighted rather than flat: the copy and caption both sit at
+   the foot of the stage now, so that is the only band that needs to be dark.
+   The top of the picture keeps its own colour. */
+.hero .amb-scrim{transition:opacity .8s ease;}
+.hero.telling .amb-scrim{opacity:0;}
+.amb-scrim-photo{position:absolute;inset:0;z-index:4;opacity:0;
+  transition:opacity .8s ease;pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,.20) 0%, rgba(0,0,0,.22) 42%,
+    rgba(0,0,0,.55) 76%, rgba(0,0,0,.78) 100%);}
+.hero.telling .amb-scrim-photo{opacity:1;}
 .hero-cap-line{color:#FFF;font-weight:600;letter-spacing:-.015em;
   font-size:clamp(17px,min(2.6vw,3.2vh),30px);line-height:1.32;
   max-width:20ch;margin:0 auto;text-shadow:0 2px 22px rgba(0,0,0,.45);
@@ -3661,6 +3678,7 @@ const LOOP_SCRIM = {
       // on it. The photographs layer over the top of it and fade off again at
       // the end of the run, which is what brings the video back into view
       // without reloading or restarting it.
+      amb.insertAdjacentHTML('beforeend', '<div class="amb-scrim-photo"></div>');
       if(!reduce) load('aerial');
       slideshow(amb, section.dataset.slides, function(){
         // Manifest unreadable: nothing to layer, so the loop just keeps
