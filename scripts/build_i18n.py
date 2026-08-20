@@ -31,9 +31,16 @@ Usage:
     python3 scripts/build_i18n.py --bhashini    # extract, then fill the gaps
     python3 scripts/build_i18n.py --check       # verify only, exit 1 on drift
 
---bhashini needs credentials from https://bhashini.gov.in (free, register as a
-developer), passed as environment variables:
-    BHASHINI_USER_ID, BHASHINI_API_KEY, BHASHINI_PIPELINE_ID
+--bhashini needs credentials from Bhashini's ULCA portal (free):
+  1. Register: https://bhashini.gov.in/ulca/user/register  (verify the email —
+     the authentication mail tends to land in spam)
+  2. Log in:   https://bhashini.gov.in/ulca/user/login
+  3. My Profile -> Generate: name the app (lowercase and underscores) and copy
+     the API Key it creates. The User ID is shown on the same My Profile page.
+Pass them as environment variables:
+    BHASHINI_USER_ID, BHASHINI_API_KEY
+BHASHINI_PIPELINE_ID is optional — it defaults to MeitY's public pipeline id,
+which is the one every published Bhashini integration uses.
 """
 import json, os, re, sys
 from html.parser import HTMLParser
@@ -181,11 +188,15 @@ def bhashini_translate(strings):
 
     user = os.environ.get("BHASHINI_USER_ID")
     key = os.environ.get("BHASHINI_API_KEY")
-    pipe = os.environ.get("BHASHINI_PIPELINE_ID")
-    if not (user and key and pipe):
-        sys.exit("--bhashini needs BHASHINI_USER_ID, BHASHINI_API_KEY and "
-                 "BHASHINI_PIPELINE_ID in the environment. Register free at "
-                 "https://bhashini.gov.in to get them.")
+    # MeitY's public pipeline id, constant across integrations and quoted in the
+    # official examples; AI4Bharat's (643930aa521a4b1ba0f4c41d) also works.
+    pipe = os.environ.get("BHASHINI_PIPELINE_ID", "64392f96daac500b55c543cd")
+    if not (user and key):
+        sys.exit("--bhashini needs BHASHINI_USER_ID and BHASHINI_API_KEY in the "
+                 "environment. Register free at "
+                 "https://bhashini.gov.in/ulca/user/register — after email "
+                 "verification, both values are on the My Profile page "
+                 "(Generate creates the key).")
 
     def post(url, body, headers):
         req = urllib.request.Request(
