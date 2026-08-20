@@ -403,6 +403,41 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   border:1px solid rgba(255,255,255,.28);
   box-shadow:0 12px 34px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.35);}
 .hero .hero-mark i{color:#FFF;}
+/* IDENTITY CARD. Sits inside .hero-content, which is what gives it the
+   behaviour asked for: the copy block already fades out when the photographs
+   take the stage, so the card rides with it and is only ever on screen while
+   the loop is playing. Nothing extra had to be wired to the sequencer.
+   clip-path pins the frosted surface to the pill: the card carries a
+   backdrop-filter inside a parent whose opacity animates, and an unclipped blur
+   layer under that is exactly what produced the halo on the district tabs. */
+/* A full-bleed glass band across the top of the stage, sitting directly under
+   the nav: programme name and subtitle on the left, portrait on the right.
+   Only opacity animates. This element carries a backdrop-filter, and animating
+   a transform underneath one is what produced the halo on the district tabs;
+   clip-path pins the frosted surface to the band for the same reason. */
+.hero > .hero-id{position:absolute;top:0;left:0;right:0;z-index:2;
+  transition:opacity .75s ease;}
+.hero.telling > .hero-id{opacity:0;pointer-events:none;}
+.hero-id{display:flex;align-items:center;justify-content:space-between;
+  text-align:left;gap:clamp(12px,2vw,24px);
+  padding:clamp(8px,1.15vh,13px) var(--pad-x);
+  background:rgba(255,255,255,.10);
+  border-bottom:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  clip-path:inset(0);isolation:isolate;}
+.hero-id-name{color:#FFF;font-weight:700;letter-spacing:-.015em;
+  font-size:clamp(14.5px,min(1.75vw,2.1vh),20px);line-height:1.2;}
+.hero-id-line{color:rgba(255,255,255,.72);font-weight:500;
+  font-size:clamp(11px,min(1.15vw,1.4vh),13px);line-height:1.3;margin-top:2px;}
+/* The attribution is the first thing to go when the pill runs out of room —
+   the programme name and its subtitle are what have to survive. */
+@media (max-width:560px){ .hero-id-org{display:none;} }
+.hero-id-face{width:clamp(38px,min(4.4vw,5.4vh),54px);
+  height:clamp(38px,min(4.4vw,5.4vh),54px);
+  border-radius:50%;display:block;flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.34);
+  box-shadow:0 3px 12px rgba(0,0,0,.28);}
 .hero .eyebrow{color:#D8FBE4;background:rgba(255,255,255,.13);
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
   border:1px solid rgba(255,255,255,.22);}
@@ -2588,8 +2623,19 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
      these bright indoor frames need; if the manifest cannot be read the stage
      falls back to the aerial loop. -->
 <header class="hero vstage" data-vid="photo" data-slides="assets/hero/manifest.json">
+    <!-- Top of the stage, above the bottom-anchored copy. The one-liner is the
+         programme's own subtitle as printed on the event banner: "Swarna Andhra
+         @ 2047: Economic Intelligence for Governance". Portrait provenance is
+         in the crop note beside assets/hero/cm.png. -->
+    <div class="hero-id">
+      <div>
+        <div class="hero-id-name">Swarna Andhra @ 2047</div>
+        <div class="hero-id-line">Economic Intelligence for Governance<span class="hero-id-org"> · Pahlé India Foundation</span></div>
+      </div>
+      <img class="hero-id-face" src="assets/hero/cm.png?v=2026-08-20a" alt="" width="264" height="264">
+    </div>
+
     <div class="wrap"><div class="hero-content">
-    <div class="eyebrow">Pahlé India Foundation · Capacity Building</div>
     <h1>Every district,<br><span>in one place</span></h1>
     <p>District profiles, vision plans, playbooks, calculators, and an assistant that names its source. All 28 districts, all on the official DDP and GDVA estimates.</p>
     <div class="hero-cta">
