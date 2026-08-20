@@ -108,7 +108,19 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    in from the right edge and read as floating mid-bar rather than aligned to
    anything. The nav spans the viewport now: brand hard left, tabs hard right. */
 .nav-inner{max-width:none;margin:0;display:flex;align-items:center;justify-content:space-between;padding:11px clamp(16px,3vw,34px);}
-.brand{display:flex;align-items:center;background:none;border:none;cursor:pointer;}
+/* The wordmark sits in a glass pill. clip-path is pinned to the same radius as
+   the border — this is a backdrop-filter inside a bar that already has one, and
+   an unclipped blur is what bled past the corners on the district tabs. */
+.brand{display:flex;align-items:center;cursor:pointer;
+  padding:7px clamp(13px,1.4vw,18px);border-radius:999px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);
+  clip-path:inset(0 round 999px);isolation:isolate;
+  backdrop-filter:blur(14px) saturate(150%);
+  -webkit-backdrop-filter:blur(14px) saturate(150%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.16);
+  transition:background .2s ease,border-color .2s ease;}
+.brand:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.30);}
+.brand:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* The wordmark carries the brand on its own now. It sizes up a little from the
    13.5px it used beside the logo plate: at that size it read as a label next to
    a mark, and with the mark gone it has to hold the left of the bar by itself. */
