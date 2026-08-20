@@ -94,9 +94,9 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   box-shadow:0 3px 12px rgba(0,0,0,.35);}
 @media (max-width:700px){.wip-ribbon{display:none;}}
 .nav{position:sticky;top:0;z-index:50;
-  background:rgba(11,46,32,.62);
-  backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);
-  border-bottom:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
+  border-bottom:1px solid rgba(11,46,32,.10);
   /* No box-shadow, and the render surface is hard-clipped to the box. Hovering
      any link repainted the bar, and Chrome re-composited the blur+saturate over
      the layer's full bounds - which the 24px shadow had pushed below the bar -
@@ -112,26 +112,69 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 /* The wordmark carries the brand on its own now. It sizes up a little from the
    13.5px it used beside the logo plate: at that size it read as a label next to
    a mark, and with the mark gone it has to hold the left of the bar by itself. */
-.brand-tag{font-size:clamp(15px,1.5vw,17px);font-weight:700;color:#FFF;
+.brand-tag{font-size:clamp(15px,1.5vw,17px);font-weight:700;color:var(--ink,#0B2E20);
   letter-spacing:-.02em;white-space:nowrap;}
 .navlinks{display:flex;gap:clamp(4px,1vw,10px);align-items:center;}
-.navlinks .nl{font-size:13.5px;font-weight:500;color:rgba(255,255,255,.68);cursor:pointer;
-  background:none;border:none;padding:7px 12px;border-radius:10px;letter-spacing:-.01em;
+/* ROLL-UP HOVER.
+   A lime pill grows from the bottom edge of the item while a second copy of the
+   label rolls up into it, so the word appears to be lifted onto the pill rather
+   than just recoloured. Both halves run on transform only — the pill scales, the
+   label translates — which keeps the whole thing on the compositor. That matters
+   here specifically: this bar carries a backdrop-filter, and anything that forces
+   it to re-rasterise on hover is what produced the band that flashed across the
+   district tabs. No animation library: a library would drive these same two
+   properties from JavaScript every frame and buy nothing.
+   --roll-in is the slower reveal, --roll-out the quicker retreat, which is what
+   the reference does and why it feels responsive rather than sluggish. */
+.navlinks{--roll-in:.38s cubic-bezier(.22,.9,.28,1);--roll-out:.19s cubic-bezier(.4,0,.7,.3);}
+.navlinks .nl{--nl-py:7px;
+  position:relative;isolation:isolate;overflow:hidden;
+  font-size:13.5px;font-weight:500;color:rgba(11,46,32,.66);cursor:pointer;
+  background:none;border:none;padding:var(--nl-py) 14px;border-radius:999px;letter-spacing:-.01em;
   /* two-word items ("Capacity building", "Case studies") broke onto a second
      line once the row got tight, which made the bar look ragged. They stay on
      one line and the row tightens instead. */
   white-space:nowrap;
-  transition:color .18s,background .18s;}
+  transition:color var(--roll-out);}
+/* The pill sits behind the label inside the item's own stacking context, so
+   z-index:-1 puts it under the text without escaping behind the bar itself. */
+.navlinks .nl::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:var(--lime);border-radius:999px;
+  transform:scaleY(0);transform-origin:bottom;
+  transition:transform var(--roll-out);}
+.navlinks .nl:hover::before,
+.navlinks .nl:focus-visible::before{transform:scaleY(1);transition:transform var(--roll-in);}
+.navlinks .nl:hover,.navlinks .nl:focus-visible{color:var(--ink,#0B2E20);
+  transition:color var(--roll-in);}
+/* The label and its duplicate. The copy sits exactly one line below and the pair
+   slides up together, so the incoming word arrives with the pill. */
+.navlinks .nl .nl-t{display:block;position:relative;
+  transition:transform var(--roll-out);}
+/* The offset is the label's own height PLUS the item's bottom padding, or the
+   duplicate parks inside that padding and its top edge shows below the resting
+   label — overflow:hidden clips at the border box, which is lower down. Both the
+   offset and the travel read the same --nl-py, so they cannot drift apart. */
+.navlinks .nl .nl-t::after{content:attr(data-t);position:absolute;left:0;
+  top:calc(100% + var(--nl-py));
+  width:100%;text-align:center;font-weight:700;color:var(--ink,#0B2E20);}
+.navlinks .nl:hover .nl-t,
+.navlinks .nl:focus-visible .nl-t{transform:translateY(calc(-100% - var(--nl-py)));
+  transition:transform var(--roll-in);}
+.navlinks .nl:focus-visible{outline:2px solid var(--ink,#0B2E20);outline-offset:2px;}
+/* Someone who has asked for less motion still gets the state, just without the
+   travel: the pill and the label swap instantly instead of rolling. */
+@media (prefers-reduced-motion:reduce){
+  .navlinks{--roll-in:0s;--roll-out:0s;}
+}
 @media(max-width:1180px){
   .navlinks .nl{font-size:12.5px;padding:7px 8px;}
   .navlinks{gap:2px;}
 }
-/* Each link composites on its own so its hover fill repaints the button, not
-   the frosted bar behind it. */
-.navlinks .nl{transform:translateZ(0);}
-.navlinks .nl:hover{color:#FFF;background:rgba(255,255,255,.12);}
-.navlinks .nl.active{color:var(--lime);background:rgba(198,255,106,.14);font-weight:700;}
-.hamburger{display:none;background:none;border:none;font-size:23px;color:#FFF;cursor:pointer;padding:4px 6px;}
+/* The current page keeps the pill up permanently — same shape as the hover
+   lands on, so hovering a sibling reads as "this one instead of that one". */
+.navlinks .nl.active{color:var(--ink,#0B2E20);font-weight:700;}
+.navlinks .nl.active::before{transform:scaleY(1);}
+.hamburger{display:none;background:none;border:none;font-size:23px;color:var(--ink,#0B2E20);cursor:pointer;padding:4px 6px;}
 
 /* ---------- BUTTONS ---------- */
 .btn-primary{font-family:inherit;font-size:14px;font-weight:600;letter-spacing:-.012em;
@@ -2460,13 +2503,18 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   .hamburger{display:block;}
   .mobile-menu.open{display:flex;flex-direction:column;gap:2px;
     padding:8px var(--pad-x) 16px;
-    background:rgba(11,46,32,.92);
-    backdrop-filter:blur(28px) saturate(170%);-webkit-backdrop-filter:blur(28px) saturate(170%);
-    border-bottom:1px solid rgba(255,255,255,.14);}
+    /* Matches the bar it drops out of — a dark sheet under a white bar read as
+       two different components stuck together. */
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
+    border-bottom:1px solid rgba(11,46,32,.10);}
   .mobile-menu .nl{font-family:inherit;text-align:left;font-size:15px;font-weight:500;
-    color:rgba(255,255,255,.78);background:none;border:none;padding:13px 4px;cursor:pointer;
-    border-bottom:1px solid rgba(255,255,255,.12);letter-spacing:-.012em;}
-  .mobile-menu .nl.active{color:var(--lime);font-weight:700;}
+    color:rgba(11,46,32,.78);background:none;border:none;padding:13px 10px;cursor:pointer;
+    border-bottom:1px solid rgba(11,46,32,.09);letter-spacing:-.012em;border-radius:10px;}
+  /* No roll here — a full-width row sliding its own label is noise on a phone.
+     The pill still marks the current page. */
+  .mobile-menu .nl.active{color:var(--ink,#0B2E20);font-weight:700;
+    background:var(--lime);border-bottom-color:transparent;}
   .stats-grid,.hero-stats{grid-template-columns:1fr 1fr;}
   /* Four across is unreadable here — at 375px each tab gets ~78px, and the longest
      label ("Swarna Andhra 2047 capacity building") wraps to five lines. */
@@ -2561,25 +2609,25 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <span class="brand-tag">Swarna Andhra 2047</span>
     </button>
     <div class="navlinks">
-      <button class="nl active" data-page="home">Home</button>
-      <button class="nl" data-page="about">About</button>
-      <button class="nl" data-page="methodology">Methodology</button>
-      <button class="nl" data-page="calculator">Calculator</button>
-      <button class="nl" data-page="districts">Districts</button>
-      <button class="nl" data-page="districts" data-goto-tab="capacity">Capacity building</button>
-      <button class="nl" data-page="districts" data-goto-tab="cases">Case studies</button>
+      <button class="nl active" data-page="home"><span class="nl-t" data-t="Home">Home</span></button>
+      <button class="nl" data-page="about"><span class="nl-t" data-t="About">About</span></button>
+      <button class="nl" data-page="methodology"><span class="nl-t" data-t="Methodology">Methodology</span></button>
+      <button class="nl" data-page="calculator"><span class="nl-t" data-t="Calculator">Calculator</span></button>
+      <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
+      <button class="nl" data-page="districts" data-goto-tab="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
+      <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
       <a href="https://andhrachatbot.streamlit.app" class="btn-wrap"><button class="btn-primary btn-nav">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <button class="nl" data-page="home">Home</button>
-    <button class="nl" data-page="about">About</button>
-    <button class="nl" data-page="methodology">Methodology</button>
-    <button class="nl" data-page="calculator">Calculator</button>
-    <button class="nl" data-page="districts">Districts</button>
-    <button class="nl" data-page="districts" data-goto-tab="capacity">Capacity building</button>
-    <button class="nl" data-page="districts" data-goto-tab="cases">Case studies</button>
+    <button class="nl" data-page="home"><span class="nl-t" data-t="Home">Home</span></button>
+    <button class="nl" data-page="about"><span class="nl-t" data-t="About">About</span></button>
+    <button class="nl" data-page="methodology"><span class="nl-t" data-t="Methodology">Methodology</span></button>
+    <button class="nl" data-page="calculator"><span class="nl-t" data-t="Calculator">Calculator</span></button>
+    <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
+    <button class="nl" data-page="districts" data-goto-tab="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
+    <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
     <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary" style="width:100%;justify-content:center;margin-top:12px">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
   </div>
 </nav>
