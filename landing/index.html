@@ -316,7 +316,15 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
      this a zoomed page gets a hero taller than the screen it must fit */
   min-height:calc(100vh / var(--pgz,1) - var(--navh,56px));
   min-height:calc(100svh / var(--pgz,1) - var(--navh,56px));
-  display:flex;flex-direction:column;justify-content:center;}
+  /* Bottom-anchored, not centred. The hero is a photograph of the programme
+     now, and centring the text parked it across the middle of the frame —
+     right over the faces. Sitting the block at the foot of the stage leaves the
+     picture readable above it. min-height (not height) is what makes this safe:
+     if the copy is ever taller than the stage the box grows downward instead of
+     clipping off the top, which is the usual flex-end trap. padding-bottom gets
+     its own clamp so the block never hugs the edge. */
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-bottom:clamp(38px,min(7vw,8.5vh),104px);}
 .hero .eyebrow{margin-bottom:clamp(11px,min(2.4vw,2.1vh),22px);}
 /* These blocks centre themselves with `margin:0 auto`. Once their parent became a
    flex column, that auto cross-axis margin overrode the default stretch and they
