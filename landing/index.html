@@ -410,22 +410,29 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    clip-path pins the frosted surface to the pill: the card carries a
    backdrop-filter inside a parent whose opacity animates, and an unclipped blur
    layer under that is exactly what produced the halo on the district tabs. */
-/* A full-bleed glass band across the top of the stage, sitting directly under
-   the nav: programme name and subtitle on the left, portrait on the right.
+/* An inset glass card near the top of the stage: programme name and subtitle
+   on the left, portrait on the right. It clears the nav rather than butting
+   against it, and is held off the left and right edges by the same --pad-x the
+   rest of the page uses, so it lines up with everything else.
    Only opacity animates. This element carries a backdrop-filter, and animating
    a transform underneath one is what produced the halo on the district tabs;
-   clip-path pins the frosted surface to the band for the same reason. */
-.hero > .hero-id{position:absolute;top:0;left:0;right:0;z-index:2;
+   clip-path pins the frosted surface to the rounded box for the same reason —
+   same radius in both, or the blur bleeds past the corners. */
+.hero > .hero-id{position:absolute;top:clamp(12px,2.1vh,26px);
+  left:var(--pad-x);right:var(--pad-x);z-index:2;
   transition:opacity .75s ease;}
 .hero.telling > .hero-id{opacity:0;pointer-events:none;}
-.hero-id{display:flex;align-items:center;justify-content:space-between;
+.hero-id{--hero-id-r:clamp(16px,1.7vw,24px);
+  display:flex;align-items:center;justify-content:space-between;
   text-align:left;gap:clamp(12px,2vw,24px);
-  padding:clamp(8px,1.15vh,13px) var(--pad-x);
-  background:rgba(255,255,255,.10);
-  border-bottom:1px solid rgba(255,255,255,.18);
+  padding:clamp(13px,1.9vh,22px) clamp(16px,2vw,28px);
+  background:rgba(255,255,255,.11);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:var(--hero-id-r);
+  clip-path:inset(0 round var(--hero-id-r));isolation:isolate;
   backdrop-filter:blur(18px) saturate(150%);
   -webkit-backdrop-filter:blur(18px) saturate(150%);
-  clip-path:inset(0);isolation:isolate;}
+  box-shadow:0 12px 40px rgba(0,0,0,.22);}
 .hero-id-name{color:#FFF;font-weight:700;letter-spacing:-.015em;
   font-size:clamp(14.5px,min(1.75vw,2.1vh),20px);line-height:1.2;}
 .hero-id-line{color:rgba(255,255,255,.72);font-weight:500;
