@@ -1083,9 +1083,15 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* background-COLOR, not the `background` shorthand: the shorthand resets
    background-image, which silently blanked the motif on whichever tab was
    currently selected. */
-.vstage .dtab-live[aria-pressed="true"]{background-color:rgba(198,236,143,.16);
-  border-color:rgba(198,236,143,.45);box-shadow:0 10px 30px rgba(0,0,0,.20),inset 0 0 0 1px rgba(198,236,143,.25);}
-.vstage .dtab-live[aria-pressed="true"] .dtab-soon{color:rgba(198,236,143,.85);}
+/* Solid lime with dark ink, per the ask - the same colours as the nav's active
+   pill above, so the pressed tab and the highlighted nav item read as one
+   statement of where you are rather than two different highlight languages.
+   The white label/sub rules are .vstage-scoped at equal weight, so the flips
+   below must carry the [aria-pressed] selector or they lose the cascade. */
+.vstage .dtab-live[aria-pressed="true"]{background-color:var(--lime);
+  border-color:var(--lime);box-shadow:0 10px 30px rgba(0,0,0,.20);}
+.vstage .dtab-live[aria-pressed="true"] .dtab-lbl{color:var(--ink,#0B2E20);}
+.vstage .dtab-live[aria-pressed="true"] .dtab-soon{color:rgba(11,46,32,.72);}
 
 /* District filter chip — appears once a district is picked on the map, and
    announces that every tab is scoped to it. Clearing it routes through
