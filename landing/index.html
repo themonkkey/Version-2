@@ -3919,6 +3919,21 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   <div class="f-note">Aligned with Swarna Andhra @2047 · Planning Department</div>
 </div></footer>
 
+<!-- i18n seed. These strings are written into the page by scripts (the case
+     study group heads, the deck chip caption) and so never appear in static
+     markup - but build_i18n.py extracts only static markup, and te.json drops
+     any key the extractor cannot see. Parked here hidden, they stay in the
+     dictionary, and the language toggle's MutationObserver translates them
+     wherever a script paints them. -->
+<div hidden aria-hidden="true" id="i18nSeed">
+  <span>Andhra Pradesh districts</span>
+  <span>Replicable models</span>
+  <span>Case-for-action briefs tied to a specific district.</span>
+  <span>Clusters and models from elsewhere, framed for district and mandal officers.</span>
+  <span>Download PPT</span>
+  <span>Loading the case study library&hellip;</span>
+</div>
+
 <div class="map-tooltip" id="mapTooltip"></div>
 <div class="grain"></div>
 <div class="rail" id="rail"></div>
@@ -4336,11 +4351,18 @@ const LOOP_SCRIM = {
 
   const norm = t => t.replace(/\s+/g, ' ').trim();
 
+  // Formatting children do not disqualify an element: a sentence with a
+  // <b>bold name</b> in it, or a box heading led by a Tabler icon, translates
+  // as a whole. This pairs with build_i18n.py, whose extractor treats the same
+  // tags as transparent - the dictionary keys ARE these elements' textContent.
+  const FMT = {B:1, STRONG:1, EM:1, I:1};
   function translatable(el){
-    return !el.children.length &&
-           el.tagName !== 'SCRIPT' && el.tagName !== 'STYLE' &&
-           !el.closest('[data-no-i18n]');
+    if(el.tagName === 'SCRIPT' || el.tagName === 'STYLE') return false;
+    if(el.closest('[data-no-i18n]')) return false;
+    for(const c of el.children) if(!FMT[c.tagName]) return false;
+    return true;
   }
+  const escHtml = t => t.replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 
   function apply(root, toTelugu){
     const els = [];
@@ -4359,11 +4381,18 @@ const LOOP_SCRIM = {
         // English seen, so the revert path is unaffected.
         const te = dict[norm(el.textContent)];
         if(te){
-          if(!original.has(el)) original.set(el, el.textContent);
-          el.textContent = te;
+          if(!original.has(el)) original.set(el, el.innerHTML);
+          /* Icons survive the swap: a heading's leading <i> is re-emitted in
+             front of the Telugu. A hand-authored value may carry its own <b>
+             emphasis - values live in this repo, not user input - while plain
+             values are escaped. */
+          let icons = '';
+          for(const c of el.children)
+            if(c.tagName === 'I' && !c.textContent.trim()) icons += c.outerHTML + ' ';
+          el.innerHTML = icons + (te.indexOf('<') > -1 ? te : escHtml(te));
         }
       } else if(original.has(el)){
-        el.textContent = original.get(el);
+        el.innerHTML = original.get(el);
         original.delete(el);
       }
     }
@@ -4398,7 +4427,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21k')
+  fetch('assets/i18n/te.json?v=2026-08-21m')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};

@@ -94,7 +94,17 @@ PLACEHOLDER = re.compile(r"^[\s{}\[\]$]*$")
 # than translated badly. The count of those is reported, so the gap is visible
 # rather than silent.
 SKIP_TAGS = {"script", "style", "svg", "path", "code", "pre"}
-VOID_TAGS = {"br", "img", "input", "hr", "meta", "link", "source", "i"}
+VOID_TAGS = {"br", "img", "input", "hr", "meta", "link", "source"}
+
+# Formatting tags are TRANSPARENT: their text flows into the parent's run and
+# they do not make the parent "mixed". Before this, <b>master trainers</b>
+# inside a sentence was collected as its own fragment and the sentence around
+# it was skipped - so the Telugu toggle produced franken-sentences, Telugu
+# words spliced into English prose, while every box heading with an icon <i>
+# stayed English. The runtime swapper pairs with this: it translates such
+# elements whole, keeping the icon and the emphasis. <i> on this site is
+# Tabler icons and never carries text; <br> stays a hard splitter.
+TRANSPARENT_TAGS = {"b", "strong", "em", "i"}
 
 
 class TextOnlyCollector(HTMLParser):
@@ -111,6 +121,8 @@ class TextOnlyCollector(HTMLParser):
         if tag in SKIP_TAGS:
             self.skip += 1
             return
+        if tag in TRANSPARENT_TAGS:
+            return
         if tag in VOID_TAGS:
             # A void tag still counts as an element inside the parent: a line
             # broken by <br> is two strings, not one.
@@ -125,7 +137,7 @@ class TextOnlyCollector(HTMLParser):
         if tag in SKIP_TAGS:
             self.skip = max(0, self.skip - 1)
             return
-        if tag in VOID_TAGS:
+        if tag in TRANSPARENT_TAGS or tag in VOID_TAGS:
             return
         while self.stack:
             el = self.stack.pop()
