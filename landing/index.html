@@ -1473,6 +1473,42 @@ a.docs-leaf:hover .ext{opacity:1;}
 .cap-lb .cap-lb-prev{left:clamp(8px,2vw,22px);}
 .cap-lb .cap-lb-next{right:clamp(8px,2vw,22px);}
 
+/* ── Highlights gallery ────────────────────────────────────────────────
+   The first photograph runs two columns wide and two rows tall. These are
+   group shots of a full room; at one-third width the faces are the size they
+   were in the hero, which is the problem this page exists to fix. One frame
+   given real size sets the scale for the rest.
+   auto-fill, not auto-fit: with a handful of photos auto-fit would stretch
+   three of them across the whole width and blow the aspect ratios out. */
+.hl-grid{display:grid;gap:clamp(10px,1.4vw,16px);
+  grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));}
+.hl-item{position:relative;margin:0;padding:0;border-radius:14px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.04);
+  /* clip-path as well as overflow: the hover lift rides a shadow that would
+     otherwise re-composite over the rounded corner and print a square halo,
+     the same artifact the nav and the district tabs each needed fixing for. */
+  clip-path:inset(0 round 14px);isolation:isolate;}
+.hl-btn{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;
+  font:inherit;color:inherit;text-align:left;}
+.hl-item img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/2;
+  transition:transform .5s cubic-bezier(.22,.9,.28,1);}
+.hl-item:hover img{transform:scale(1.035);}
+.hl-btn:focus-visible{outline:2px solid var(--lime);outline-offset:-3px;}
+/* The caption sits on the photograph, over a gradient rather than a flat panel:
+   a flat bar would crop the bottom of every shot at the same height regardless
+   of what is there. */
+.hl-cap{position:absolute;left:0;right:0;bottom:0;margin:0;
+  padding:clamp(30px,5vw,44px) clamp(12px,1.4vw,16px) clamp(11px,1.3vw,14px);
+  font-size:clamp(12px,1.15vw,13.5px);line-height:1.45;color:rgba(255,255,255,.94);
+  background:linear-gradient(to top,rgba(4,16,11,.92),rgba(4,16,11,.72) 45%,transparent);
+  pointer-events:none;}
+@media (min-width:900px){
+  .hl-item.is-lead{grid-column:span 2;grid-row:span 2;}
+  .hl-item.is-lead img{aspect-ratio:auto;height:100%;}
+  .hl-item.is-lead .hl-cap{font-size:clamp(13px,1.35vw,15.5px);}
+}
+.hl-note{margin-top:clamp(13px,1.8vw,18px);font-size:12.5px;color:rgba(255,255,255,.5);}
+
 /* The measurement pair, as sketched: two equal cards below the brief. Stretch,
    not auto height — otherwise the shorter card's footer floats and the two read
    as unrelated blocks rather than a pair. */
@@ -2810,7 +2846,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <button class="nl" data-page="methodology"><span class="nl-t" data-t="Methodology">Methodology</span></button>
     <button class="nl" data-page="calculator"><span class="nl-t" data-t="Calculator">Calculator</span></button>
     <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
-    <button class="nl" data-page="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
+      <button class="nl" data-page="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
     <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
     <button class="langtog" id="langTogM" type="button" data-no-i18n hidden aria-pressed="false">తెలుగు</button>
     <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary" style="width:100%;justify-content:center;margin-top:12px">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
@@ -3624,6 +3660,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   </div></section>
 </div>
 
+
 <!-- CAPACITY BUILDING — its own page, not a tab.
      It was the fourth tab inside Districts, which forced it to share that
      page's district drill-down and tab row. It never needed either:
@@ -3633,6 +3670,25 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
      #districts/capacity URLs are redirected in the router, so links already
      filed in the capacity sub-pages keep working. -->
 <div class="page" id="page-capacity">
+  <!-- The programme photographs open the page. They used to cycle behind the
+       home-page headline, where they were decorative: cropped to the hero,
+       dimmed under the scrim, four seconds each. They are evidence of the
+       training, so they lead the record they document, at a size where the
+       room is legible. Source is assets/hero/manifest.json, the same manifest
+       the hero reads, written by scripts/build_hero_images.py from
+       homepageasset/ - drop a photograph in, re-run the script, it appears
+       here with no edit to this file. -->
+  <section class="section vstage" data-vid="longexposure"><div class="wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <h2>Highlights</h2>
+        <p>Photographs from the Swarna Andhra @2047 capacity building programme, June to August 2026.</p>
+      </div>
+    </div>
+    <div id="hlBody" aria-live="polite">
+      <div class="docs-loading">Loading the photographs…</div>
+    </div>
+  </div></section>
   <!-- #capacityBody is created once, here, and relocated by mountCapacity(). -->
   <section class="section vstage" data-vid="longexposure"><div class="wrap">
     <div class="sec-head sec-head-row">
@@ -4134,7 +4190,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21a')
+  fetch('assets/i18n/te.json?v=2026-08-21b')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
@@ -4206,6 +4262,7 @@ function go(page){
      uses, so the dropdown, the brief and the filter all follow. */
   if(page==='capacity' && window.__loadCapacity){
     window.__loadCapacity();
+    if(window.__loadHighlights) window.__loadHighlights();
     const want = decodeURIComponent(location.hash.replace(/^#/,'').split('/')[1] || '');
     if(want && window.DTABS_DISTRICT) window.DTABS_DISTRICT(want);
   }
@@ -5942,6 +5999,99 @@ function mountCapacity(slotId){
 /* The standalone page lives outside this IIFE, so the router needs a way in.
    Same escape hatch the tab layer already uses for __setTab. */
 window.__mountCapacity = mountCapacity;
+
+/* ── Highlights gallery ───────────────────────────────────────────────────
+   Reads assets/hero/manifest.json, the same file the home-page hero reads.
+   Fetched no-store for the same reason the hero fetches it that way: it is a
+   few hundred bytes and caching it is exactly what would stop a newly dropped
+   photograph from ever showing up. The images carry ?v=<rev> and stay fully
+   cacheable.
+
+   Built once and left in the DOM — the photographs do not change inside a
+   session, so a second visit to the page is free. */
+(function(){
+  var built = false, shots = [], idx = 0, lb = null;
+
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  function open(i){
+    idx = (i + shots.length) % shots.length;
+    var sh = shots[idx];
+    lb.querySelector('img').src = sh.src;
+    lb.querySelector('img').alt = sh.cap || 'Programme photograph';
+    lb.querySelector('figcaption').textContent = sh.cap || '';
+    lb.classList.add('on');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){ lb.classList.remove('on'); document.body.style.overflow = ''; }
+
+  function paint(d){
+    var body = document.getElementById('hlBody');
+    var slides = (d && d.slides) || [];
+    if(!slides.length){
+      /* No manifest, or an empty drop folder. Say so rather than leaving a
+         heading with nothing under it. */
+      body.innerHTML = '<div class="hl-note">No photographs have been published yet.</div>';
+      return;
+    }
+    var rev = d.rev || 0;
+    shots = slides.map(function(x){
+      return { src: x.src + '?v=' + rev, cap: x.caption || '' };
+    });
+    body.innerHTML =
+      '<div class="hl-grid">' + shots.map(function(sh, i){
+        return '<figure class="hl-item' + (i === 0 ? ' is-lead' : '') + '">' +
+          '<button class="hl-btn" type="button" data-hl="' + i + '" ' +
+            'aria-label="Enlarge photograph' + (sh.cap ? ': ' + esc(sh.cap) : '') + '">' +
+            '<img src="' + esc(sh.src) + '" alt="' + esc(sh.cap || 'Programme photograph') + '" ' +
+              (i === 0 ? '' : 'loading="lazy" ') + 'decoding="async">' +
+          '</button>' +
+          (sh.cap ? '<figcaption class="hl-cap">' + esc(sh.cap) + '</figcaption>' : '') +
+        '</figure>';
+      }).join('') + '</div>' +
+      '<div class="hl-note">' + shots.length + ' photographs from the programme. ' +
+        'Selected sessions are documented district by district under Capacity building.</div>' +
+      /* Same classes as the capacity lightbox so the two viewers look and behave
+         alike; a separate element because that one is bound to the capacity
+         photo index and is destroyed whenever its body re-renders. */
+      '<div class="cap-lb" id="hlLb" role="dialog" aria-modal="true" aria-label="Programme photograph">' +
+        '<button class="cap-lb-x" type="button" aria-label="Close">&times;</button>' +
+        '<button class="cap-lb-nav cap-lb-prev" type="button" aria-label="Previous photograph"><i class="ti ti-chevron-left"></i></button>' +
+        '<button class="cap-lb-nav cap-lb-next" type="button" aria-label="Next photograph"><i class="ti ti-chevron-right"></i></button>' +
+        '<figure><img src="" alt=""><figcaption></figcaption></figure>' +
+      '</div>';
+
+    lb = document.getElementById('hlLb');
+    body.addEventListener('click', function(e){
+      var b = e.target.closest('[data-hl]');
+      if(b){ open(+b.dataset.hl); return; }
+      if(e.target.closest('.cap-lb-prev')){ open(idx - 1); return; }
+      if(e.target.closest('.cap-lb-next')){ open(idx + 1); return; }
+      if(e.target.closest('.cap-lb-x') || e.target === lb) close();
+    });
+    document.addEventListener('keydown', function(e){
+      if(!lb || !lb.classList.contains('on')) return;
+      if(e.key === 'Escape') close();
+      else if(e.key === 'ArrowLeft') open(idx - 1);
+      else if(e.key === 'ArrowRight') open(idx + 1);
+    });
+  }
+
+  window.__loadHighlights = function(){
+    if(built) return;
+    built = true;
+    fetch('assets/hero/manifest.json', {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(paint)
+      .catch(function(){
+        built = false;   // a dropped connection should not poison the next visit
+        document.getElementById('hlBody').innerHTML =
+          '<div class="hl-note">The photographs could not be loaded.</div>';
+      });
+  };
+})();
+
 window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity(); };
   var capBody = document.getElementById('capacityBody');
   var CAP = null, CAPA = null, CAPR = null, CAPF = null, capLoaded = false, capLoading = false;
