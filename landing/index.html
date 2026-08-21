@@ -546,7 +546,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    no edge, no border, no box. The subject sits in the solid centre; only the
    plain background falls inside the feather. */
 .hero > .hero-vis{position:absolute;z-index:2;top:50%;transform:translateY(-50%);
-  right:clamp(6px,2vw,36px);
+  right:clamp(40px,7vw,120px);
   width:clamp(260px,26vw,400px);aspect-ratio:910/786;
   /* Rectangular feather, not a vignette: the ellipse cropped the artwork into
      an oval and cut the subjects at its rim. Two linear gradients intersected
@@ -564,7 +564,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    1180px the visual goes and the copy returns to the centre, where a lone block
    belongs. */
 @media (min-width:1181px){
-  .hero-content{margin:0 0 0 clamp(28px,7vw,120px);text-align:left;
+  .hero-content{margin:0 0 0 clamp(14px,3vw,52px);text-align:left;
     max-width:min(600px,50%);}
   /* One extra level of specificity, not a preference: the base .hero-cta rule
      (justify-content:center) sits LATER in the stylesheet than this block, so
