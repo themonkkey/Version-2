@@ -547,17 +547,20 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
    plain background falls inside the feather. */
 .hero > .hero-vis{position:absolute;z-index:2;top:50%;transform:translateY(-50%);
   right:clamp(40px,7vw,120px);
-  width:clamp(300px,33vw,520px);aspect-ratio:910/786;
-  /* Rectangular feather, not a vignette: the ellipse cropped the artwork into
-     an oval and cut the subjects at its rim. Two linear gradients intersected
-     keep the whole frame visible and melt only the outer ~15% of each edge. */
+  width:clamp(260px,28vw,440px);aspect-ratio:910/786;margin:0;
+}
+/* Rectangular feather, not a vignette: the ellipse cropped the artwork into
+   an oval and cut the subjects at its rim. Two linear gradients intersected
+   keep the whole frame visible and melt only the outer ~15% of each edge.
+   The mask lives on the IMG, not the figure - on the figure it also covered
+   the caption hanging below the box and silently erased it. */
+.hero-vis > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   -webkit-mask-image:linear-gradient(to right, transparent, #000 15%, #000 85%, transparent),
                      linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
   -webkit-mask-composite:source-in;
   mask-image:linear-gradient(to right, transparent, #000 15%, #000 85%, transparent),
              linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
   mask-composite:intersect;}
-.hero-vis > *{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 
 /* Split hero on wide screens: the copy sits left-centre and left-aligned, the
    visual holds the right. This applies ONLY while the visual is shown - below
@@ -572,6 +575,17 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
      headline went left. */
   .hero-content .hero-cta{justify-content:flex-start;}
 }
+/* The caption sits under the portrait, centred, in the government-site order:
+   name first, Hon'ble title beneath. top:100% escapes the aspect-ratio box the
+   image fills. */
+.hero-vis-cap{position:absolute;top:100%;left:0;right:0;margin-top:2px;
+  text-align:center;display:block;}
+.hv-name{display:block;font-family:var(--serif,Fraunces,serif);
+  font-size:clamp(16px,1.5vw,21px);font-weight:650;color:#FFF;letter-spacing:-.01em;
+  text-shadow:0 2px 14px rgba(0,0,0,.35);}
+.hv-title{display:block;margin-top:3px;font-size:clamp(11.5px,1vw,13.5px);
+  font-weight:600;letter-spacing:.05em;color:rgba(198,236,143,.92);
+  text-shadow:0 1px 10px rgba(0,0,0,.35);}
 @media (max-width:1180px){ .hero > .hero-vis{display:none;} }
 
 /* The arrows sit at the edges of the stage at mid height, clear of the caption,
@@ -2993,9 +3007,17 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
          the footage, so it reads as part of the stage rather than a card. The
          2047 collage clip that used to alternate with it is parked at
          assets/video/collage2047.mp4, already retinted to the same green. -->
-    <div class="hero-vis" aria-hidden="true">
-      <img src="assets/cm.png?v=2026-08-20c" alt="">
-    </div>
+    <!-- Captioned in the exact format AP government sites use for the CM
+         (verified against cdma.ap.gov.in/about/key-people): honorific + name,
+         then the Hon'ble title. No longer aria-hidden - a named photograph is
+         content, not decoration. -->
+    <figure class="hero-vis">
+      <img src="assets/cm.png?v=2026-08-20c" alt="Sri Nara Chandrababu Naidu, Hon'ble Chief Minister of Andhra Pradesh">
+      <figcaption class="hero-vis-cap">
+        <span class="hv-name">Sri Nara Chandrababu Naidu</span>
+        <span class="hv-title">Hon'ble Chief Minister of Andhra Pradesh</span>
+      </figcaption>
+    </figure>
 
     <div class="wrap"><div class="hero-content">
     <!-- Both lines are their own span: the translator only touches elements whose
@@ -4427,7 +4449,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21m')
+  fetch('assets/i18n/te.json?v=2026-08-21n')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
