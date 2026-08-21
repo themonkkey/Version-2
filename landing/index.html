@@ -837,6 +837,10 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    the dark sections it sits against, while the lime pill reads at 13:1 on it.
    Opaque rather than the nav's translucency — nothing scrolls behind the footer
    for a blur to pick up, so a flat fill is both correct and cheaper. */
+/* Pure host for the relocatable capacity node - display:contents keeps the
+   wrapper out of the box tree, so the content lays out identically in either
+   slot rather than inheriting a stray block from its host. */
+.cap-slot{display:contents;}
 .footer{background:#072B1F;border-top:1px solid rgba(255,255,255,.12);}
 /* Full width, matching the nav: the bar was capped at --maxw and centred, which
    left the brand and the note floating inboard of the nav items directly above
@@ -1043,6 +1047,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    luminance-as-alpha treatment). */
 .vstage .dtab.dtab-map{background-image:url(assets/tabs/tab-map.png?v=2026-08-12a);}
 .vstage .dtab.dtab-gva{background-image:url(assets/tabs/tab-gva.png?v=2026-08-15a);}
+.vstage .dtab.dtab-capacity{background-image:url(assets/tabs/tab-capacity.png?v=2026-08-12a);}
 /* Live tabs (Documents / map) are clickable and show a pressed state; the two
    coming-soon tabs keep the not-allowed cursor from the base rule. */
 .dtab-live{cursor:pointer;opacity:1;}
@@ -3500,6 +3505,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <button class="dtab dtab-live dtab-map" data-dtab="map" aria-pressed="true"><span class="dtab-lbl">District profile</span><span class="dtab-soon">The map</span></button>
       <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false"><span class="dtab-lbl">Documents</span><span class="dtab-soon">Vision plans</span></button>
             <button class="dtab dtab-live dtab-gva" data-dtab="gva" aria-pressed="false"><span class="dtab-lbl">Improving GVA</span><span class="dtab-soon">Sector playbooks</span></button>
+            <button class="dtab dtab-live dtab-capacity" data-dtab="capacity" aria-pressed="false"><span class="dtab-lbl">Capacity building</span><span class="dtab-soon">Training record</span></button>
             <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false"><span class="dtab-lbl">Case studies</span><span class="dtab-soon">On-ground stories</span></button>
     </div>
     <!-- Set by the map: picking a district scopes every tab to it. Hidden until
@@ -3587,6 +3593,20 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </div>
     </div>
 
+    <!-- Capacity appears in two places: this tab and the standalone #capacity
+         page. There is only ever ONE capacity DOM node - #capacityBody - and it
+         is moved into whichever slot is showing. Rendering it twice would bind
+         the dropdown and the lightbox twice and desynchronise the two copies. -->
+    <div id="capacityView" hidden>
+      <div class="sec-head sec-head-row">
+        <div>
+          <h2>Capacity building programme</h2>
+          <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
+        </div>
+      </div>
+      <div class="cap-slot" id="capSlotTab"></div>
+    </div>
+
     <div id="gvaView" hidden>
       <div class="sec-head sec-head-row">
         <div>
@@ -3610,6 +3630,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
      #districts/capacity URLs are redirected in the router, so links already
      filed in the capacity sub-pages keep working. -->
 <div class="page" id="page-capacity">
+  <!-- #capacityBody is created once, here, and relocated by mountCapacity(). -->
   <section class="section vstage" data-vid="longexposure"><div class="wrap">
     <div class="sec-head sec-head-row">
       <div>
@@ -3617,7 +3638,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
       </div>
     </div>
-    <div id="capacityView">
+    <div class="cap-slot" id="capSlotPage">
       <div id="capacityBody" aria-live="polite">
         <div class="docs-loading">Loading the training record…</div>
       </div>
@@ -4163,7 +4184,17 @@ function go(page){
   if(location.hash.replace(/^#/,'').split('/')[0] !== page){
     history.replaceState(null,'','#'+page);
   }
-  if(page==='districts') initMap();
+  if(page==='districts'){
+    initMap();
+    /* Bring the capacity node home if that tab is the one showing. Relying on
+       setTab for this was wrong: routing to #districts/capacity by hash does
+       not call setTab - the tab was already pressed from an earlier visit - so
+       the node stayed behind in the standalone page's slot and the tab rendered
+       empty. The router knows the page is opening, which is the reliable moment. */
+    if(window.__dtab === 'capacity' && window.__mountCapacity){
+      window.__mountCapacity('capSlotTab');
+    }
+  }
   /* Capacity fetches four JSON files; loadCapacity() guards itself against
      repeats, so calling on every visit is free after the first.
      #capacity/<District> scopes it: the capacity sub-pages link back that way,
@@ -4200,18 +4231,8 @@ document.getElementById('hamburger').addEventListener('click', ()=>{
    rewrote the URL - which is what made browser Back land on the home page
    instead of stepping up a level. Route on the FIRST segment only, and let
    navRestore handle the rest of the path. */
-/* Capacity used to be a tab, so #districts/capacity[/District] is filed in
-   bookmarks and in the capacity sub-pages' own history. Rewrite it to the page
-   rather than dropping such a visitor on the district map. */
-function decapacitate(seg){
-  if(seg[0] === 'districts' && seg[1] === 'capacity'){
-    history.replaceState(null,'','#capacity');
-    return ['capacity'];
-  }
-  return seg;
-}
 window.addEventListener('hashchange', ()=>{
-  const seg = decapacitate(location.hash.replace('#','').split('/'));
+  const seg = location.hash.replace('#','').split('/');
   go(seg[0]);
   if(seg[0] === 'districts' && seg.length > 1) navRestore();
 });
@@ -4224,7 +4245,7 @@ window.addEventListener('hashchange', ()=>{
    home page instead of the place it names. navRestore runs after the map has
    drawn, because it looks the district up by its map path. */
 setTimeout(()=>{
-  const seg = decapacitate((location.hash.replace('#','') || 'home').split('/'));
+  const seg = (location.hash.replace('#','') || 'home').split('/');
   go(seg[0]);
   if(seg[0] === 'districts' && seg.length > 1){
     const want = seg.join('/');            // captured BEFORE the map resets it
@@ -4234,7 +4255,7 @@ setTimeout(()=>{
        corrected only once tryRestore saw the map finish drawing - so arriving
        on, say, the capacity tab flashed the map for a frame first. The tab does
        not depend on the map, so it does not have to wait for it. */
-    const TABS = ['map','docs','gva','cases'];
+    const TABS = ['map','docs','gva','capacity','cases'];
     if(TABS.indexOf(seg[1]) > -1 && window.__setTab) window.__setTab(seg[1], true);
 
     const tryRestore = (n) => {
@@ -5904,9 +5925,21 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
      rails is far too much DOM to hold at once, and the reader only ever wants
      one district anyway. */
   var capView = document.getElementById('capacityView');
-/* The capacity page lives outside this IIFE now, so the router needs a way in.
+/* Capacity shows in two places - the districts tab and the standalone
+   #capacity page - but there is only ONE #capacityBody. Rendering into two
+   copies would bind the district dropdown and the photo lightbox twice, and
+   the two would drift apart the moment either was used. appendChild MOVES a
+   node, listeners and state intact, so the same element simply relocates to
+   whichever slot is on screen. */
+function mountCapacity(slotId){
+  var slot = document.getElementById(slotId);
+  var body = document.getElementById('capacityBody');
+  if(slot && body && body.parentElement !== slot) slot.appendChild(body);
+}
+/* The standalone page lives outside this IIFE, so the router needs a way in.
    Same escape hatch the tab layer already uses for __setTab. */
-window.__loadCapacity = function(){ loadCapacity(); };
+window.__mountCapacity = mountCapacity;
+window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity(); };
   var capBody = document.getElementById('capacityBody');
   var CAP = null, CAPA = null, CAPR = null, CAPF = null, capLoaded = false, capLoading = false;
 
@@ -7315,12 +7348,14 @@ window.__loadCapacity = function(){ loadCapacity(); };
     docsView.hidden  = which !== 'docs';
     casesView.hidden = which !== 'cases';
     if(gvaView) gvaView.hidden = which !== 'gva';
+    if(capView) capView.hidden = which !== 'capacity';
     document.querySelectorAll('.dtab-live').forEach(function(b){
       b.setAttribute('aria-pressed', b.dataset.dtab === which ? 'true' : 'false');
     });
     if(which === 'docs')  load();
     if(which === 'cases') loadCases();
     if(which === 'gva')   loadGva();
+    if(which === 'capacity'){ mountCapacity('capSlotTab'); loadCapacity(); }
     /* The tab is part of where you are, so it belongs in the address. Without
        it, Back could not step between tabs and a tab could not be linked to.
        fromNav means the nav layer is replaying a URL, so it must not push. */
