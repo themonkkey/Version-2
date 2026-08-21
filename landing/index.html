@@ -746,7 +746,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* The two panel heads carry the titles now; a page h2 above them would say the
    same thing a third time, so the page head is the kick alone. */
 .ab-split{display:grid;gap:clamp(10px,1.4vw,18px);
-  grid-template-columns:minmax(0,55fr) minmax(0,45fr);align-items:start;}
+  grid-template-columns:minmax(0,45fr) minmax(0,55fr);align-items:start;}
 /* Symmetry across the seam: both panels carry a head plus four blocks, and
    subgrid puts each pair on one shared row, so every box top aligns with its
    opposite number. Where subgrid is unsupported the panels simply flow their
@@ -761,14 +761,14 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* Fitting one screen is the page's contract, so the split trims the shared
    rhythm slightly rather than asking every box to shed another line. */
 .ab-split .ab-box{padding:clamp(10px,1.3vh,14px) clamp(13px,1.5vw,17px);}
-.ab-split .ab-box p,.ab-split .ab-box li{font-size:13px;line-height:1.45;}
-.ab-split .ab-box h3{font-size:13px;margin-bottom:6px;}
-.ab-split .ab-lead p{font-size:clamp(13.5px,1.2vw,15px);margin:0;}
+.ab-split .ab-box p,.ab-split .ab-box li{font-size:14px;line-height:1.46;}
+.ab-split .ab-box h3{font-size:14px;margin-bottom:7px;}
+.ab-split .ab-lead p{font-size:clamp(14px,1.25vw,15.5px);margin:0;}
 .ab-panel .ab-lead{display:flex;flex-direction:column;gap:10px;align-items:flex-start;padding:0 2px;}
-.ab-col{display:grid;gap:8px;}
+.ab-col{display:grid;gap:7px;}
 /* Two matching panels, one for each subject: same frame, same head, so the
    split reads as a deliberate pairing rather than one grid with a seam. */
-.ab-panel{padding:clamp(12px,1.4vw,15px);border-radius:16px;
+.ab-panel{padding:clamp(11px,1.3vw,13px);border-radius:16px;
   background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);
   clip-path:inset(0 round 16px);isolation:isolate;}
 .ab-panel-head .kick{margin-bottom:4px;}
