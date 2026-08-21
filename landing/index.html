@@ -754,21 +754,20 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    same thing a third time, so the page head is the kick alone. */
 .ab-split{display:grid;gap:clamp(10px,1.4vw,18px);
   grid-template-columns:minmax(0,45fr) minmax(0,55fr);align-items:start;}
-/* Symmetry across the seam: both panels carry a head plus four blocks, and
-   subgrid puts each pair on one shared row, so every box top aligns with its
-   opposite number. Where subgrid is unsupported the panels simply flow their
-   own rows - the layout the page shipped with. */
+/* Only the heads and the button rows align across the seam; between them each
+   column's boxes spread evenly to fill the shared body height. Row-for-row
+   lockstep was tried and rejected: every row took the taller side's height and
+   dumped the difference as a dead gap under the shorter box. Without subgrid
+   each panel just flows and the button rows anchor to the panel bottoms. */
 @supports (grid-template-rows: subgrid){
   @media (min-width:1001px){
-    .ab-split{grid-template-rows:repeat(6,auto);align-items:stretch;}
-    .ab-split .ab-panel{grid-row:1 / 7;display:grid;grid-template-rows:subgrid;}
-    /* The programme panel carries three boxes to the platform's lead + three,
-       so its middle box spans two shared rows and the button rows still meet
-       on the last one. */
-    .ab-split .ab-box-tall{grid-row:span 2;}
+    .ab-split{grid-template-rows:auto 1fr auto;align-items:stretch;}
+    .ab-split .ab-panel{grid-row:1 / 4;display:grid;grid-template-rows:subgrid;}
   }
 }
-.ab-box-tall p + p{margin-top:8px;}
+.ab-body{display:flex;flex-direction:column;gap:8px;justify-content:space-between;}
+.ab-body .ab-box{flex:1 1 auto;}
+.ab-box p + p{margin-top:8px;}
 .ab-cta-row{align-self:end;display:flex;gap:10px;flex-wrap:wrap;padding-top:2px;}
 /* Fitting one screen is the page's contract, so the split trims the shared
    rhythm slightly rather than asking every box to shed another line. */
@@ -3091,6 +3090,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <h3>Every district's economy, in one place</h3>
         </div>
 
+        <div class="ab-body">
         <div class="ab-lead">
           <p>Built by Pahlé India Foundation for the capacity-building programme. Everything a district officer needs: what district income is, how it is measured, where a district stands, and what its plans say about raising it.</p>
         </div>
@@ -3117,6 +3117,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <p>Pick a district on the map and every tab scopes to it: its documents, its playbooks, its training record. Use the calculators to check a figure you already have, the case studies for models worth replicating, and the assistant when you would rather just ask.</p>
         </div>
 
+        </div>
+
         <div class="ab-cta ab-cta-row">
           <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
           <a href="https://andhrachatbot.streamlit.app"><button class="btn-ghost"><i class="ti ti-message-2"></i> Ask the assistant</button></a>
@@ -3133,6 +3135,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <h3>Capacity Building Programme by Pahlé India Foundation</h3>
         </div>
 
+        <div class="ab-body">
         <!-- Who PIF is: taken from pahleindia.org's own self-description
              (think-and-action tank; "Putting India First to Make India First";
              "We don't just recommend what should be done; we partner to ensure
@@ -3142,7 +3145,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <p><b>Pahlé India Foundation</b> is a homegrown, not-for-profit think-and-action tank founded by Dr. Rajiv Kumar, former Vice Chairman of NITI Aayog, on the principle of Putting India First to Make India First. PIF does not just recommend what should be done; it partners to ensure it gets done — rigorous, evidence-based analysis rooted in Indian realities, carried through to implementation.</p>
         </div>
 
-        <div class="ab-box ab-box-tall">
+        <div class="ab-box">
           <h3><i class="ti ti-sitemap"></i> What the programme is</h3>
           <p>A first-of-its-kind, government-led capacity building initiative that PIF designed and delivered for the Planning Department, Government of Andhra Pradesh. The state targets a Rs 308 lakh crore economy by 2047 — the most ambitious growth target in India — and reaching it needs every official, Secretary to mandal officer, fluent in how output is measured and driven.</p>
           <p>It runs on a 3-month cascading model: two-day district trainings, then constituency-level and master trainer rounds, across all <b>5 zones and 28 districts</b> — about <b>980 district officials</b>, over <b>6,125 constituency officials</b> and around <b>2,750 master trainers</b>. Sessions cover the 2047 vision, GSDP / GDDP / GMDP methodology, boosting GVA, the 645 KPIs, district profiling and case studies.</p>
@@ -3155,6 +3158,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <h3><i class="ti ti-trophy"></i> What we achieved</h3>
           <p>Between <b>16 June and 6 August 2026</b>, <b>141 sessions</b> were delivered across <b>18 districts</b> with <b>6,482 recorded attendances</b>, at all three levels — district, constituency and mandal, and master trainers. Every session was filed as a status report, and that record, its photographs and the baseline and endline assessments are all on this platform.</p>
         </div>
+        </div>
+
         <div class="ab-cta ab-cta-row">
           <button class="btn-primary nl" data-page="capacity"><i class="ti ti-school"></i> See the training record</button>
           <button class="btn-ghost nl" data-page="cases"><i class="ti ti-books"></i> Open the case studies</button>
