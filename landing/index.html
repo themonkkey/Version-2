@@ -741,7 +741,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 #page-about .sec-head{margin-bottom:clamp(8px,min(3vw,1.7vh),26px);}
 #page-about .sec-head h2{margin-bottom:0;font-size:clamp(26px,min(4vw,5.2vh),44px);}
 #page-about .sec-head .kick{margin-bottom:clamp(4px,.8vh,10px);}
-#page-about .section{padding-top:clamp(14px,2vh,20px);padding-bottom:clamp(12px,1.6vh,18px);}
+#page-about .section{padding-top:clamp(10px,1.4vh,14px);padding-bottom:clamp(8px,1.2vh,12px);}
 #page-about .sec-head{margin-bottom:clamp(8px,1.2vh,13px);}
 /* The two panel heads carry the titles now; a page h2 above them would say the
    same thing a third time, so the page head is the kick alone. */
@@ -753,21 +753,22 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    own rows - the layout the page shipped with. */
 @supports (grid-template-rows: subgrid){
   @media (min-width:1001px){
-    .ab-split{grid-template-rows:repeat(5,auto);align-items:stretch;}
-    .ab-split .ab-panel{grid-row:1 / 6;display:grid;grid-template-rows:subgrid;}
+    .ab-split{grid-template-rows:repeat(6,auto);align-items:stretch;}
+    .ab-split .ab-panel{grid-row:1 / 7;display:grid;grid-template-rows:subgrid;}
   }
 }
+.ab-cta-row{align-self:end;display:flex;gap:10px;flex-wrap:wrap;padding-top:2px;}
 /* Fitting one screen is the page's contract, so the split trims the shared
    rhythm slightly rather than asking every box to shed another line. */
 .ab-split .ab-box{padding:clamp(10px,1.3vh,14px) clamp(13px,1.5vw,17px);}
-.ab-split .ab-box p,.ab-split .ab-box li{font-size:12.5px;line-height:1.45;}
-.ab-split .ab-box h3{font-size:13px;margin-bottom:5px;}
-.ab-split .ab-lead p{font-size:clamp(13px,1.15vw,14.5px);margin:0;}
+.ab-split .ab-box p,.ab-split .ab-box li{font-size:13px;line-height:1.45;}
+.ab-split .ab-box h3{font-size:13px;margin-bottom:6px;}
+.ab-split .ab-lead p{font-size:clamp(13.5px,1.2vw,15px);margin:0;}
 .ab-panel .ab-lead{display:flex;flex-direction:column;gap:10px;align-items:flex-start;padding:0 2px;}
-.ab-col{display:grid;gap:clamp(8px,1.3vh,12px);}
+.ab-col{display:grid;gap:8px;}
 /* Two matching panels, one for each subject: same frame, same head, so the
    split reads as a deliberate pairing rather than one grid with a seam. */
-.ab-panel{padding:clamp(14px,1.8vw,20px);border-radius:16px;
+.ab-panel{padding:clamp(12px,1.4vw,15px);border-radius:16px;
   background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);
   clip-path:inset(0 round 16px);isolation:isolate;}
 .ab-panel-head .kick{margin-bottom:4px;}
@@ -3080,10 +3081,6 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 
         <div class="ab-lead">
           <p>Built by Pahlé India Foundation for the capacity-building programme. Everything a district officer needs: what district income is, how it is measured, where a district stands, and what its plans say about raising it.</p>
-          <div class="ab-cta">
-            <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
-            <a href="https://andhrachatbot.streamlit.app"><button class="btn-ghost"><i class="ti ti-message-2"></i> Ask the assistant</button></a>
-          </div>
         </div>
 
         <div class="ab-box">
@@ -3106,6 +3103,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         <div class="ab-box ab-caution">
           <h3><i class="ti ti-file-check"></i> Sources, and what it is not</h3>
           <p>Every figure is a published estimate — the NSO DDP guideline, the 2022-23 GSVA compilation, district data for all 28, the vision plans — or derived from one by a stated formula. It does not replace the official estimate: the calculators check a figure, the department's workbook stays the reference, and priority recommendations cover Kurnool only.</p>
+        </div>
+
+        <div class="ab-cta ab-cta-row">
+          <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
+          <a href="https://andhrachatbot.streamlit.app"><button class="btn-ghost"><i class="ti ti-message-2"></i> Ask the assistant</button></a>
         </div>
       </div>
 
@@ -3137,9 +3139,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         <div class="ab-box">
           <h3><i class="ti ti-plant-2"></i> What it leaves behind</h3>
           <p>A self-sustaining master trainer ecosystem extending the methodology to every mandal: local ownership at the lowest administrative level, and sector-wise GVA consistent with the vision's targets.</p>
-          <div class="ab-cta">
-            <button class="btn-primary nl" data-page="capacity"><i class="ti ti-school"></i> See the training record</button>
-          </div>
+        </div>
+
+        <div class="ab-cta ab-cta-row">
+          <button class="btn-primary nl" data-page="capacity"><i class="ti ti-school"></i> See the training record</button>
+          <button class="btn-ghost nl" data-page="cases"><i class="ti ti-books"></i> Open the case studies</button>
         </div>
       </aside>
 
