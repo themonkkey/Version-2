@@ -14,6 +14,12 @@ but the completed sheets are not digitised, so every page states that plainly
 instead of showing an empty chart that reads as "no improvement".
 
 Usage:  python3 scripts/build_capacity_pages.py
+
+BACK LINKS GO TO THE CAPACITY PAGE, NOT THE DASHBOARD. These pages hang off the
+capacity building record, so #districts sent a reader who opened Training
+feedback back to the district map - a different page, mid-task. #capacity/work
+is the record itself; the /work segment skips the page's intro, which someone
+returning from a detail page has already been past.
 """
 
 import html
@@ -183,7 +189,7 @@ def render_feedback(a, c):
     # carried one are the delivered sessions — stated as scope, not as a response rate.
     body = (
         '<div class="top"><div class="wrap">'
-        '<a class="back" href="../index.html#districts">&larr; Capacity building</a>'
+        '<a class="back" href="../index.html#capacity/work">&larr; Capacity building</a>'
         '<div class="eyebrow">Pahlé India Foundation · Capacity building</div>'
         '<h1>Training feedback</h1>'
         '<p class="lede">Every endline paper closes with a feedback block: the same '
@@ -213,7 +219,7 @@ def render_feedback(a, c):
         '</div>'
         '<div class="foot">Built from the endline assessment papers in '
         '<code>corpus_files/training/</code>. '
-        '<a href="../index.html#districts">Back to the dashboard</a></div>'
+        '<a href="../index.html#capacity/work">Back to the capacity building record</a></div>'
         '</div>'
         % (stat(len(fb["statements"]), "Statements"),
            stat("1–5", "Agreement scale"),
@@ -283,7 +289,7 @@ def render_assessment(a, c):
 
     body = (
         '<div class="top"><div class="wrap">'
-        '<a class="back" href="../index.html#districts">&larr; Capacity building</a>'
+        '<a class="back" href="../index.html#capacity/work">&larr; Capacity building</a>'
         '<div class="eyebrow">Pahlé India Foundation · Capacity building</div>'
         '<h1>Baseline &amp; endline</h1>'
         '<p class="lede">The same officers sit a knowledge paper before training and '
@@ -311,7 +317,7 @@ def render_assessment(a, c):
         '%s'
         '<div class="foot">Built from the six assessment papers in '
         '<code>corpus_files/training/</code>. '
-        '<a href="../index.html#districts">Back to the dashboard</a></div>'
+        '<a href="../index.html#capacity/work">Back to the capacity building record</a></div>'
         '</div>'
         % (stat(len([p for p in papers if p["stage"] == "baseline"]), "Baseline papers"),
            stat(len([p for p in papers if p["stage"] == "endline"]), "Endline papers"),

@@ -4349,7 +4349,11 @@ function go(page){
        record — 'work' from the intro button, a district name from the capacity
        sub-pages and the old #districts/capacity links. */
     if(window.__capacityView) window.__capacityView(want ? 'record' : 'intro');
-    if(want && want !== 'work' && window.DTABS_DISTRICT) window.DTABS_DISTRICT(want);
+    /* The page's state comes from its own URL and nothing else: a district after
+       the slash scopes the record to it, /work or a bare #capacity shows it
+       unscoped. Deliberately NOT DTABS_DISTRICT — that is the map's filter and
+       drives four tabs on a different page. */
+    if(window.__capScopeTo) window.__capScopeTo(want === 'work' ? null : want);
   }
 }
 document.addEventListener('click', e=>{
@@ -6080,6 +6084,12 @@ function mountCapacity(slotId){
   var slot = document.getElementById(slotId);
   var body = document.getElementById('capacityBody');
   if(slot && body && body.parentElement !== slot) slot.appendChild(body);
+  /* Each host re-asserts its own scope on arrival, so the two never inherit a
+     district from one another: the tab restores the map's filter, and the page
+     is scoped by the router from its URL. Without this the single shared node
+     would carry whichever district was last picked across to the other
+     surface, which is exactly the coupling the two are meant not to have. */
+  if(slotId === 'capSlotTab' && window.__applyCapFilter) window.__applyCapFilter();
 }
 /* The standalone page lives outside this IIFE, so the router needs a way in.
    Same escape hatch the tab layer already uses for __setTab. */
@@ -6976,9 +6986,13 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
 
     var sel = document.getElementById('capDistrict');
     sel.addEventListener('change', function(){ renderBrief(CAP.districts[+sel.value]); });
-    var startIdx = DISTF ? CAP.districts.findIndex(function(d){ return normName(d.name) === normName(DISTF); }) : -1;
+    /* Whoever asked first wins: a district in the capacity URL, else the map's
+       filter for the districts tab, else nothing selected. */
+    var want = capPendingSet ? capPending : DISTF;
+    var startIdx = want ? CAP.districts.findIndex(function(d){ return normName(d.name) === normName(want); }) : -1;
     if(startIdx >= 0){ sel.value = String(startIdx); renderBrief(CAP.districts[startIdx]); }
     else renderBriefPlaceholder();
+    capPendingSet = false;
 
     var lb = document.getElementById('capLb');
     lb.querySelector('.cap-lb-x').addEventListener('click', closeShot);
@@ -7088,26 +7102,44 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
   // Capacity building: land on the district's brief instead of the first in the
   // list. Ten map districts have no filed status report — say so rather than
   // silently showing someone else's training record.
-  function applyCapFilter(){
-    if(!capLoaded) return;
+  /* Scope the capacity record to one district, or to none.
+     Takes the name as an argument rather than reading DISTF, so the standalone
+     capacity page can drive it without going through the map's filter. That
+     matters: DTABS_DISTRICT also re-renders Documents, Improving GVA and Case
+     studies and raises the district filter bar on the districts page — none of
+     which the capacity page has, or should be reaching into. */
+  /* A scope asked for before the record exists is remembered, not dropped. The
+     router runs on the first frame; capacity.json lands several hundred ms
+     later, so #capacity/Kurnool used to render the placeholder and the district
+     in the URL was silently lost. */
+  var capPending = null, capPendingSet = false;
+  function capScopeTo(name){
     var sel = document.getElementById('capDistrict');
-    if(!sel) return;
+    /* Not ready yet — the fetch is in flight, or it has resolved but the record
+       has not painted. Either way remember the ask; renderCapacity applies it
+       as it builds. */
+    if(!capLoaded || !sel){ capPending = name || null; capPendingSet = true; return; }
     var note = document.getElementById('capAbsent');
     if(note) note.remove();
-    if(!DISTF){
+    if(!name){
       if(sel.value !== ''){ sel.value = ''; renderBriefPlaceholder(); }
       return;
     }
-    var i = CAP.districts.findIndex(function(d){ return normName(d.name) === normName(DISTF); });
+    var i = CAP.districts.findIndex(function(d){ return normName(d.name) === normName(name); });
     if(i >= 0){
       if(+sel.value !== i){ sel.value = String(i); renderBrief(CAP.districts[i]); }
     } else {
       sel.closest('.cap-pick').insertAdjacentHTML('beforebegin',
         '<p class="cap-absent" id="capAbsent"><i class="ti ti-info-circle"></i><span>' +
-        esc(DISTF) + ' is not among the ' + CAP.totals.districts +
+        esc(name) + ' is not among the ' + CAP.totals.districts +
         ' districts with a filed training status report. The briefs below cover the districts that have one.</span></p>');
     }
   }
+  /* The districts tab reads the map's filter; the capacity page passes its own
+     name from the URL. Same renderer, two callers, no shared variable. */
+  function applyCapFilter(){ capScopeTo(DISTF); }
+  window.__applyCapFilter = applyCapFilter;
+  window.__capScopeTo = capScopeTo;
 
   /* Improving GVA: the playbooks are the DDP Toolbox, state-wide by design, so
      the district scope lives inside the sector detail rather than in a card at
