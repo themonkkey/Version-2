@@ -1043,7 +1043,6 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    luminance-as-alpha treatment). */
 .vstage .dtab.dtab-map{background-image:url(assets/tabs/tab-map.png?v=2026-08-12a);}
 .vstage .dtab.dtab-gva{background-image:url(assets/tabs/tab-gva.png?v=2026-08-15a);}
-.vstage .dtab.dtab-capacity{background-image:url(assets/tabs/tab-capacity.png?v=2026-08-12a);}
 /* Live tabs (Documents / map) are clickable and show a pressed state; the two
    coming-soon tabs keep the not-allowed cursor from the base rule. */
 .dtab-live{cursor:pointer;opacity:1;}
@@ -2790,7 +2789,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <button class="nl" data-page="methodology"><span class="nl-t" data-t="Methodology">Methodology</span></button>
       <button class="nl" data-page="calculator"><span class="nl-t" data-t="Calculator">Calculator</span></button>
       <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
-      <button class="nl" data-page="districts" data-goto-tab="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
+      <button class="nl" data-page="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
       <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
       <button class="langtog" id="langTog" type="button" data-no-i18n hidden aria-pressed="false">తెలుగు</button>
       <a href="https://andhrachatbot.streamlit.app" class="btn-wrap"><button class="btn-primary btn-nav">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
@@ -2803,7 +2802,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <button class="nl" data-page="methodology"><span class="nl-t" data-t="Methodology">Methodology</span></button>
     <button class="nl" data-page="calculator"><span class="nl-t" data-t="Calculator">Calculator</span></button>
     <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
-    <button class="nl" data-page="districts" data-goto-tab="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
+    <button class="nl" data-page="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
     <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
     <button class="langtog" id="langTogM" type="button" data-no-i18n hidden aria-pressed="false">తెలుగు</button>
     <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary" style="width:100%;justify-content:center;margin-top:12px">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
@@ -2887,7 +2886,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         <p>Fifteen worked examples, in Andhra Pradesh and beyond, on what moved a sector and what it took.</p>
         <span class="fgo">Read the studies <i class="ti ti-arrow-right"></i></span></button>
 
-      <button class="fcard fcard-go" data-page="districts" data-goto-tab="capacity">
+      <button class="fcard fcard-go" data-page="capacity">
         <div class="ficon"><i class="ti ti-school"></i></div>
         <h4>Capacity building</h4>
         <p>What officers were assessed on, how each cohort scored, and what they said afterwards.</p>
@@ -3501,8 +3500,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <button class="dtab dtab-live dtab-map" data-dtab="map" aria-pressed="true"><span class="dtab-lbl">District profile</span><span class="dtab-soon">The map</span></button>
       <button class="dtab dtab-live" data-dtab="docs" aria-pressed="false"><span class="dtab-lbl">Documents</span><span class="dtab-soon">Vision plans</span></button>
             <button class="dtab dtab-live dtab-gva" data-dtab="gva" aria-pressed="false"><span class="dtab-lbl">Improving GVA</span><span class="dtab-soon">Sector playbooks</span></button>
-            <button class="dtab dtab-live dtab-capacity" data-dtab="capacity" aria-pressed="false"><span class="dtab-lbl">Capacity building</span><span class="dtab-soon">Training record</span></button>
-      <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false"><span class="dtab-lbl">Case studies</span><span class="dtab-soon">On-ground stories</span></button>
+            <button class="dtab dtab-live" data-dtab="cases" aria-pressed="false"><span class="dtab-lbl">Case studies</span><span class="dtab-soon">On-ground stories</span></button>
     </div>
     <!-- Set by the map: picking a district scopes every tab to it. Hidden until
          a district is chosen; the clear button routes through showStateView()
@@ -3589,18 +3587,6 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </div>
     </div>
 
-    <div id="capacityView" hidden>
-      <div class="sec-head sec-head-row">
-        <div>
-          <h2>Capacity building programme</h2>
-          <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
-        </div>
-      </div>
-      <div id="capacityBody" aria-live="polite">
-        <div class="docs-loading">Loading the training record…</div>
-      </div>
-    </div>
-
     <div id="gvaView" hidden>
       <div class="sec-head sec-head-row">
         <div>
@@ -3614,6 +3600,31 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     </div>
   </div></section>
 </div>
+
+<!-- CAPACITY BUILDING — its own page, not a tab.
+     It was the fourth tab inside Districts, which forced it to share that
+     page's district drill-down and tab row. It never needed either:
+     renderCapacity() builds its own district dropdown and reads none of the
+     map's state, so as a page it behaves exactly as it did and is free to
+     diverge from the district tabs from here on. The old
+     #districts/capacity URLs are redirected in the router, so links already
+     filed in the capacity sub-pages keep working. -->
+<div class="page" id="page-capacity">
+  <section class="section vstage" data-vid="longexposure"><div class="wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <h2>Capacity building programme</h2>
+        <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
+      </div>
+    </div>
+    <div id="capacityView">
+      <div id="capacityBody" aria-live="polite">
+        <div class="docs-loading">Loading the training record…</div>
+      </div>
+    </div>
+  </div></section>
+</div>
+
 
 <footer class="footer"><div class="footer-inner">
   <div class="f-brand">Pahlé India Foundation</div>
@@ -4120,7 +4131,7 @@ const LOOP_SCRIM = {
 })();
 
 // ---------- router ----------
-const pages = ['home','about','methodology','calculator','districts'];
+const pages = ['home','about','methodology','calculator','districts','capacity'];
 /* Capacity building and Case studies are nav items that open a tab inside the
    Districts page, so three nav buttons share data-page="districts" and the old
    "highlight anything matching the page" rule lit all three at once. An item
@@ -4133,7 +4144,7 @@ function syncNav(page){
     const on = wants
       ? (page === 'districts' && tab === wants)
       : (b.dataset.page === page &&
-         (page !== 'districts' || !['capacity','cases'].includes(tab)));
+         (page !== 'districts' || tab !== 'cases'));
     b.classList.toggle('active', on);
   });
 }
@@ -4153,6 +4164,17 @@ function go(page){
     history.replaceState(null,'','#'+page);
   }
   if(page==='districts') initMap();
+  /* Capacity fetches four JSON files; loadCapacity() guards itself against
+     repeats, so calling on every visit is free after the first.
+     #capacity/<District> scopes it: the capacity sub-pages link back that way,
+     and landing on the empty state after opening one district's feedback would
+     lose the reader's place. DTABS_DISTRICT is the same entry point the map
+     uses, so the dropdown, the brief and the filter all follow. */
+  if(page==='capacity' && window.__loadCapacity){
+    window.__loadCapacity();
+    const want = decodeURIComponent(location.hash.replace(/^#/,'').split('/')[1] || '');
+    if(want && window.DTABS_DISTRICT) window.DTABS_DISTRICT(want);
+  }
 }
 document.addEventListener('click', e=>{
   const b = e.target.closest('[data-page]');
@@ -4178,8 +4200,18 @@ document.getElementById('hamburger').addEventListener('click', ()=>{
    rewrote the URL - which is what made browser Back land on the home page
    instead of stepping up a level. Route on the FIRST segment only, and let
    navRestore handle the rest of the path. */
+/* Capacity used to be a tab, so #districts/capacity[/District] is filed in
+   bookmarks and in the capacity sub-pages' own history. Rewrite it to the page
+   rather than dropping such a visitor on the district map. */
+function decapacitate(seg){
+  if(seg[0] === 'districts' && seg[1] === 'capacity'){
+    history.replaceState(null,'','#capacity');
+    return ['capacity'];
+  }
+  return seg;
+}
 window.addEventListener('hashchange', ()=>{
-  const seg = location.hash.replace('#','').split('/');
+  const seg = decapacitate(location.hash.replace('#','').split('/'));
   go(seg[0]);
   if(seg[0] === 'districts' && seg.length > 1) navRestore();
 });
@@ -4192,7 +4224,7 @@ window.addEventListener('hashchange', ()=>{
    home page instead of the place it names. navRestore runs after the map has
    drawn, because it looks the district up by its map path. */
 setTimeout(()=>{
-  const seg = (location.hash.replace('#','') || 'home').split('/');
+  const seg = decapacitate((location.hash.replace('#','') || 'home').split('/'));
   go(seg[0]);
   if(seg[0] === 'districts' && seg.length > 1){
     const want = seg.join('/');            // captured BEFORE the map resets it
@@ -4202,7 +4234,7 @@ setTimeout(()=>{
        corrected only once tryRestore saw the map finish drawing - so arriving
        on, say, the capacity tab flashed the map for a frame first. The tab does
        not depend on the map, so it does not have to wait for it. */
-    const TABS = ['map','docs','gva','capacity','cases'];
+    const TABS = ['map','docs','gva','cases'];
     if(TABS.indexOf(seg[1]) > -1 && window.__setTab) window.__setTab(seg[1], true);
 
     const tryRestore = (n) => {
@@ -5872,6 +5904,9 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
      rails is far too much DOM to hold at once, and the reader only ever wants
      one district anyway. */
   var capView = document.getElementById('capacityView');
+/* The capacity page lives outside this IIFE now, so the router needs a way in.
+   Same escape hatch the tab layer already uses for __setTab. */
+window.__loadCapacity = function(){ loadCapacity(); };
   var capBody = document.getElementById('capacityBody');
   var CAP = null, CAPA = null, CAPR = null, CAPF = null, capLoaded = false, capLoading = false;
 
@@ -6257,8 +6292,10 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     if(brief) brief.innerHTML =
       '<div class="cap-brief cap-brief-empty">' +
         '<h3>Select a district</h3>' +
-        '<p class="lede">Pick a district on the map above, or choose one from the ' +
-        'dropdown, to see its training sessions, attendance, and highlights.</p>' +
+        /* No map on this page any more — capacity is standalone, so the only
+           way in is the dropdown and the copy has to say so. */
+        '<p class="lede">Choose a district from the dropdown above to see its ' +
+        'training sessions, attendance, and highlights.</p>' +
       '</div>';
     var meta = document.getElementById('capMeta');
     if(meta) meta.innerHTML = '';
@@ -7278,14 +7315,12 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     docsView.hidden  = which !== 'docs';
     casesView.hidden = which !== 'cases';
     if(gvaView) gvaView.hidden = which !== 'gva';
-    if(capView) capView.hidden = which !== 'capacity';
     document.querySelectorAll('.dtab-live').forEach(function(b){
       b.setAttribute('aria-pressed', b.dataset.dtab === which ? 'true' : 'false');
     });
     if(which === 'docs')  load();
     if(which === 'cases') loadCases();
     if(which === 'gva')   loadGva();
-    if(which === 'capacity') loadCapacity();
     /* The tab is part of where you are, so it belongs in the address. Without
        it, Back could not step between tabs and a tab could not be linked to.
        fromNav means the nav layer is replaying a URL, so it must not push. */

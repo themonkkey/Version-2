@@ -107,7 +107,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
 </head>
 <body>
 <div class="top"><div class="wrap">
-  <a class="back" id="backLink" href="../index.html#districts/capacity">&larr; Back to the capacity building record</a>
+  <a class="back" id="backLink" href="../index.html#capacity">&larr; Back to the capacity building record</a>
   <div class="eyebrow">Capacity building · Feedback</div>
   <h1>Training feedback</h1>
   <p class="lede">How officers rated the district training at the end of the session. Each statement was marked from 1 (strongly disagree) to 5 (strongly agree).</p>
@@ -262,7 +262,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
          tab they had just come from. It now returns to this district's capacity
          tab. */
       var back = document.getElementById('backLink');
-      if(back) back.href = '../index.html#districts/capacity/' + encodeURIComponent(rec.name);
+      if(back) back.href = '../index.html#capacity/' + encodeURIComponent(rec.name);
       var sib = document.getElementById('sibLink');
       if(sib) sib.href = 'results.html?d=' + encodeURIComponent(slug);
 
