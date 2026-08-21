@@ -1509,6 +1509,41 @@ a.docs-leaf:hover .ext{opacity:1;}
 }
 .hl-note{margin-top:clamp(13px,1.8vw,18px);font-size:12.5px;color:rgba(255,255,255,.5);}
 
+/* ── Capacity intro: photographs beside the account of the programme ──────
+   65 / 35, as sketched. minmax(0,...) on both tracks, not plain fractions —
+   a grid track sizes to min-content by default, and the photo grid inside the
+   left column would push that column past its share and squeeze the text. */
+.cap-intro{display:grid;grid-template-columns:minmax(0,65fr) minmax(0,35fr);
+  gap:clamp(14px,1.8vw,22px);align-items:start;}
+.cap-intro-about{padding:clamp(18px,2.2vw,26px);border-radius:16px;
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);
+  clip-path:inset(0 round 16px);isolation:isolate;
+  /* Sticks while the photo column scrolls past: the two columns are very
+     different heights and the button is the point of the panel. */
+  position:sticky;top:calc(var(--navh,72px) + 18px);}
+.cap-about-k{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(198,236,143,.85);}
+.cap-intro-about h3{margin:10px 0 0;font-size:clamp(18px,1.85vw,23px);line-height:1.25;
+  letter-spacing:-.02em;}
+.cap-intro-about p{margin:12px 0 0;font-size:clamp(13.5px,1.15vw,15px);line-height:1.62;
+  color:rgba(255,255,255,.78);}
+.cap-explore{margin-top:clamp(16px,2vw,22px);width:100%;justify-content:center;}
+/* Below the split the two columns stack, and the panel must stop sticking —
+   a sticky block in a single-column flow pins the text over the photographs. */
+@media (max-width:900px){
+  .cap-intro{grid-template-columns:1fr;}
+  .cap-intro-about{position:static;}
+}
+/* Inside the 65% column the grid has roughly two columns to work with, so the
+   lead photograph spans both rather than the four-up it gets full width. */
+.cap-intro-photos .hl-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));}
+.cap-back{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:12.5px;
+  font-weight:650;letter-spacing:.02em;cursor:pointer;margin-bottom:14px;
+  padding:7px 14px 7px 11px;border-radius:999px;color:rgba(198,236,143,.92);
+  background:rgba(255,255,255,.08);border:1px solid rgba(198,236,143,.3);}
+.cap-back:hover{background:rgba(198,236,143,.16);color:#DFF5B4;}
+.cap-back:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+
 /* The measurement pair, as sketched: two equal cards below the brief. Stretch,
    not auto height — otherwise the shorter card's footer floats and the two read
    as unrelated blocks rather than a pair. */
@@ -3670,30 +3705,57 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
      #districts/capacity URLs are redirected in the router, so links already
      filed in the capacity sub-pages keep working. -->
 <div class="page" id="page-capacity">
-  <!-- The programme photographs open the page. They used to cycle behind the
-       home-page headline, where they were decorative: cropped to the hero,
-       dimmed under the scrim, four seconds each. They are evidence of the
-       training, so they lead the record they document, at a size where the
-       room is legible. Source is assets/hero/manifest.json, the same manifest
-       the hero reads, written by scripts/build_hero_images.py from
-       homepageasset/ - drop a photograph in, re-run the script, it appears
-       here with no edit to this file. -->
-  <section class="section vstage" data-vid="longexposure"><div class="wrap">
-    <div class="sec-head sec-head-row">
-      <div>
-        <h2>Highlights</h2>
-        <p>Photographs from the Swarna Andhra @2047 capacity building programme, June to August 2026.</p>
-      </div>
-    </div>
-    <div id="hlBody" aria-live="polite">
-      <div class="docs-loading">Loading the photographs…</div>
-    </div>
-  </div></section>
-  <!-- #capacityBody is created once, here, and relocated by mountCapacity(). -->
-  <section class="section vstage" data-vid="longexposure"><div class="wrap">
+  <!-- Two views, one page.
+       Arriving from the top bar you get the INTRO: the programme photographs
+       beside a short account of what the programme was, and a button through
+       to the record. Arriving from a district link, or from one of the capacity
+       sub-pages, you skip straight to the RECORD — someone following
+       #capacity/Kurnool has already chosen; an interstitial would just be in
+       the way. The record itself is unchanged; it is the same #capacityBody
+       node the districts tab borrows. -->
+  <section class="section vstage" id="capIntro" data-vid="longexposure"><div class="wrap">
     <div class="sec-head sec-head-row">
       <div>
         <h2>Capacity building programme</h2>
+        <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
+      </div>
+    </div>
+    <div class="cap-intro">
+      <!-- The photographs. They used to cycle behind the home-page headline,
+           where they were decorative: cropped to the hero, dimmed under the
+           scrim, four seconds each. Source is assets/hero/manifest.json, the
+           same manifest the hero reads, written by build_hero_images.py from
+           homepageasset/ - drop a photograph in, re-run the script, it appears
+           here with no edit to this file. -->
+      <div class="cap-intro-photos">
+        <div id="hlBody" aria-live="polite">
+          <div class="docs-loading">Loading the photographs…</div>
+        </div>
+      </div>
+      <aside class="cap-intro-about">
+        <div class="cap-about-k">About the programme</div>
+        <h3>Training the officers who produce the numbers</h3>
+        <p>Pahlé India Foundation ran the capacity building programme for the
+           Planning Department of Andhra Pradesh: how district domestic product
+           is compiled, what the KPI framework asks for, and how an officer
+           reads and uses the figures for their own district.</p>
+        <p>It ran at three levels: district, constituency and mandal, plus a
+           master trainer cohort, across 18 districts between June and August
+           2026. Every session was filed as a status report, and those reports
+           are what the record is built from.</p>
+        <button class="btn-primary cap-explore" id="capExplore" type="button">
+          <span>Explore the capacity building work</span> <i class="ti ti-arrow-right"></i>
+        </button>
+      </aside>
+    </div>
+  </div></section>
+
+  <!-- #capacityBody is created once, here, and relocated by mountCapacity(). -->
+  <section class="section vstage" id="capRecord" data-vid="longexposure" hidden><div class="wrap">
+    <button class="cap-back" id="capBack" type="button"><i class="ti ti-arrow-left"></i> <span>Back to the programme</span></button>
+    <div class="sec-head sec-head-row">
+      <div>
+        <h2>The training record</h2>
         <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
       </div>
     </div>
@@ -4190,7 +4252,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21b')
+  fetch('assets/i18n/te.json?v=2026-08-21c')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
@@ -4264,7 +4326,12 @@ function go(page){
     window.__loadCapacity();
     if(window.__loadHighlights) window.__loadHighlights();
     const want = decodeURIComponent(location.hash.replace(/^#/,'').split('/')[1] || '');
-    if(want && window.DTABS_DISTRICT) window.DTABS_DISTRICT(want);
+    /* Which of the two views. Bare #capacity opens on the intro; anything after
+       the slash means the reader has already chosen and goes straight to the
+       record — 'work' from the intro button, a district name from the capacity
+       sub-pages and the old #districts/capacity links. */
+    if(window.__capacityView) window.__capacityView(want ? 'record' : 'intro');
+    if(want && want !== 'work' && window.DTABS_DISTRICT) window.DTABS_DISTRICT(want);
   }
 }
 document.addEventListener('click', e=>{
@@ -6091,6 +6158,30 @@ window.__mountCapacity = mountCapacity;
       });
   };
 })();
+
+/* Intro or record. Both live in the page; this only flips which is shown, so
+   nothing re-renders and the record keeps its selected district when the reader
+   goes back and forth. The hash carries the view so a browser Back out of the
+   record returns to the intro rather than leaving the page. */
+function setCapView(which){
+  var intro = document.getElementById('capIntro');
+  var rec   = document.getElementById('capRecord');
+  if(!intro || !rec) return;
+  var record = (which === 'record');
+  intro.hidden = record;
+  rec.hidden = !record;
+}
+window.__capacityView = setCapView;
+
+document.addEventListener('click', function(e){
+  if(e.target.closest('#capExplore')){
+    location.hash = '#capacity/work';   /* the router does the switching */
+    window.scrollTo({top:0, behavior:'auto'});
+  } else if(e.target.closest('#capBack')){
+    location.hash = '#capacity';
+    window.scrollTo({top:0, behavior:'auto'});
+  }
+});
 
 window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity(); };
   var capBody = document.getElementById('capacityBody');
