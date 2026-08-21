@@ -1473,40 +1473,61 @@ a.docs-leaf:hover .ext{opacity:1;}
 .cap-lb .cap-lb-prev{left:clamp(8px,2vw,22px);}
 .cap-lb .cap-lb-next{right:clamp(8px,2vw,22px);}
 
-/* ── Highlights gallery ────────────────────────────────────────────────
-   The first photograph runs two columns wide and two rows tall. These are
-   group shots of a full room; at one-third width the faces are the size they
-   were in the hero, which is the problem this page exists to fix. One frame
-   given real size sets the scale for the rest.
-   auto-fill, not auto-fit: with a handful of photos auto-fit would stretch
-   three of them across the whole width and blow the aspect ratios out. */
-.hl-grid{display:grid;gap:clamp(10px,1.4vw,16px);
-  grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));}
-.hl-item{position:relative;margin:0;padding:0;border-radius:14px;overflow:hidden;
-  border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.04);
-  /* clip-path as well as overflow: the hover lift rides a shadow that would
-     otherwise re-composite over the rounded corner and print a square halo,
-     the same artifact the nav and the district tabs each needed fixing for. */
-  clip-path:inset(0 round 14px);isolation:isolate;}
-.hl-btn{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;
-  font:inherit;color:inherit;text-align:left;}
-.hl-item img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/2;
-  transition:transform .5s cubic-bezier(.22,.9,.28,1);}
-.hl-item:hover img{transform:scale(1.035);}
-.hl-btn:focus-visible{outline:2px solid var(--lime);outline-offset:-3px;}
-/* The caption sits on the photograph, over a gradient rather than a flat panel:
-   a flat bar would crop the bottom of every shot at the same height regardless
-   of what is there. */
-.hl-cap{position:absolute;left:0;right:0;bottom:0;margin:0;
-  padding:clamp(30px,5vw,44px) clamp(12px,1.4vw,16px) clamp(11px,1.3vw,14px);
-  font-size:clamp(12px,1.15vw,13.5px);line-height:1.45;color:rgba(255,255,255,.94);
-  background:linear-gradient(to top,rgba(4,16,11,.92),rgba(4,16,11,.72) 45%,transparent);
+/* ── Highlights stage: one photograph at a time ────────────────────────
+   A grid showed all eight at thumbnail size, which is the size they already
+   were behind the hero. One frame at full width of the column is the point:
+   these are rooms full of people and the faces have to be legible.
+
+   The stage is a fixed 3/2 box with both photographs stacked inside it, so a
+   change of picture cannot change the height and shove the page around. */
+.hl-stage{position:relative;aspect-ratio:3/2;border-radius:16px;overflow:hidden;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);
+  clip-path:inset(0 round 16px);isolation:isolate;}
+.hl-frame{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .9s ease;}
+/* The slow push. It runs on the frame that is showing and resets when the frame
+   goes back to the pile, so every photograph gets the same move rather than
+   accumulating scale over the loop. transform only — animating width or object
+   position would relayout the image on every frame. */
+.hl-frame.on{opacity:1;animation:hlDrift 9s linear forwards;}
+@keyframes hlDrift{from{transform:scale(1.02);}to{transform:scale(1.075);}}
+.hl-stage.no-anim .hl-frame{transition:none;animation:none;transform:none;}
+/* The caption reads over the photograph, on a gradient rather than a bar: a bar
+   would crop every shot at the same height whatever is at the bottom of it. */
+.hl-scrim{position:absolute;left:0;right:0;bottom:0;
+  padding:clamp(44px,7vw,88px) clamp(14px,1.8vw,22px) clamp(13px,1.6vw,18px);
+  background:linear-gradient(to top,rgba(4,16,11,.94),rgba(4,16,11,.74) 42%,transparent);
   pointer-events:none;}
-@media (min-width:900px){
-  .hl-item.is-lead{grid-column:span 2;grid-row:span 2;}
-  .hl-item.is-lead img{aspect-ratio:auto;height:100%;}
-  .hl-item.is-lead .hl-cap{font-size:clamp(13px,1.35vw,15.5px);}
-}
+.hl-caption{margin:0;font-size:clamp(13px,1.25vw,15.5px);line-height:1.5;
+  color:rgba(255,255,255,.95);
+  /* The caption changes with the picture; fading it in stops the text swapping
+     under the reader mid-sentence while the image is still dissolving. */
+  transition:opacity .35s ease;}
+.hl-caption.fading{opacity:0;}
+.hl-count{position:absolute;top:12px;right:13px;z-index:2;
+  font-size:11px;font-weight:650;letter-spacing:.06em;padding:5px 10px;border-radius:999px;
+  color:rgba(255,255,255,.9);background:rgba(4,16,11,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.16);}
+.hl-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  color:#FFF;font-size:16px;background:rgba(4,16,11,.5);border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:0;transition:opacity .25s ease, background .2s ease;}
+.hl-stage:hover .hl-arrow,.hl-arrow:focus-visible{opacity:1;}
+.hl-arrow:hover{background:rgba(4,16,11,.78);}
+.hl-arrow:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+.hl-prev{left:11px;}
+.hl-next{right:11px;}
+/* Touch has no hover, so the arrows would never appear. */
+@media (hover:none){.hl-arrow{opacity:1;}}
+/* The dots sit under the stage, not on it — on the photograph they compete with
+   the caption for the same corner. */
+.hl-dots{display:flex;gap:7px;justify-content:center;margin-top:13px;flex-wrap:wrap;}
+.hl-dot{width:7px;height:7px;padding:0;border-radius:50%;cursor:pointer;
+  background:rgba(255,255,255,.26);border:0;transition:background .25s ease,width .25s ease;}
+.hl-dot.on{width:20px;border-radius:999px;background:var(--lime);}
+.hl-dot:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .hl-note{margin-top:clamp(13px,1.8vw,18px);font-size:12.5px;color:rgba(255,255,255,.5);}
 
 /* ── Capacity intro: photographs beside the account of the programme ──────
@@ -1534,9 +1555,6 @@ a.docs-leaf:hover .ext{opacity:1;}
   .cap-intro{grid-template-columns:1fr;}
   .cap-intro-about{position:static;}
 }
-/* Inside the 65% column the grid has roughly two columns to work with, so the
-   lead photograph spans both rather than the four-up it gets full width. */
-.cap-intro-photos .hl-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));}
 .cap-back{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:12.5px;
   font-weight:650;letter-spacing:.02em;cursor:pointer;margin-bottom:14px;
   padding:7px 14px 7px 11px;border-radius:999px;color:rgba(198,236,143,.92);
@@ -6067,38 +6085,92 @@ function mountCapacity(slotId){
    Same escape hatch the tab layer already uses for __setTab. */
 window.__mountCapacity = mountCapacity;
 
-/* ── Highlights gallery ───────────────────────────────────────────────────
+/* ── Highlights stage ─────────────────────────────────────────────────────
+   One photograph at a time, advancing on its own like a deck, with the caption
+   under it and arrows for anyone who wants to drive.
+
    Reads assets/hero/manifest.json, the same file the home-page hero reads.
    Fetched no-store for the same reason the hero fetches it that way: it is a
-   few hundred bytes and caching it is exactly what would stop a newly dropped
-   photograph from ever showing up. The images carry ?v=<rev> and stay fully
-   cacheable.
+   few hundred bytes, and caching it is exactly what would stop a newly dropped
+   photograph from ever appearing. The images carry ?v=<rev> and stay cacheable.
 
-   Built once and left in the DOM — the photographs do not change inside a
-   session, so a second visit to the page is free. */
+   TWO FRAMES, NOT ONE. Assigning a new src to a single <img> blanks it while
+   the next file decodes, so a slow image shows a hole. The outgoing photograph
+   stays put until the incoming one has actually decoded, and only then do they
+   cross-fade — the same approach the hero slideshow uses, and for the same
+   reason. */
 (function(){
-  var built = false, shots = [], idx = 0, lb = null;
+  var built = false, shots = [], idx = 0, gen = 0;
+  var stage, capEl, countEl, dots, front, back, timer = null;
+  var HOLD = 5200;        /* long enough to read the caption and look at the room */
+  var reduce = window.matchMedia &&
+               window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function esc(t){ return String(t).replace(/[&<>"]/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
 
-  function open(i){
-    idx = (i + shots.length) % shots.length;
-    var sh = shots[idx];
-    lb.querySelector('img').src = sh.src;
-    lb.querySelector('img').alt = sh.cap || 'Programme photograph';
-    lb.querySelector('figcaption').textContent = sh.cap || '';
-    lb.classList.add('on');
-    document.body.style.overflow = 'hidden';
+  /* An <img> handed a src it already holds fires no load event, which would
+     stall the rotation dead. Treat an already-decoded image as loaded rather
+     than waiting for an event that is never coming. */
+  function paintInto(im, url, then){
+    if(im.getAttribute('src') !== url) im.setAttribute('src', url);
+    if(im.complete && im.naturalWidth) return then();
+    im.addEventListener('load', then, {once:true});
+    im.addEventListener('error', then, {once:true});
   }
-  function close(){ lb.classList.remove('on'); document.body.style.overflow = ''; }
+
+  function show(i, instant){
+    if(!shots.length) return;
+    idx = (i + shots.length) % shots.length;
+    var mine = ++gen;                 /* a later call invalidates this one */
+    var sh = shots[idx];
+
+    countEl.textContent = (idx + 1) + ' / ' + shots.length;
+    dots.forEach(function(d, n){
+      d.classList.toggle('on', n === idx);
+      d.setAttribute('aria-selected', n === idx ? 'true' : 'false');
+    });
+
+    capEl.classList.add('fading');
+    paintInto(back, sh.src, function(){
+      if(mine !== gen) return;        /* the reader clicked on; drop this frame */
+      back.alt = sh.cap || 'Programme photograph';
+      if(instant) stage.classList.add('no-anim');
+      /* Restart the drift: removing and re-adding the class in the same frame
+         is coalesced away, so the animation has to be cleared and reflowed. */
+      front.classList.remove('on');
+      back.classList.add('on');
+      void back.offsetWidth;
+      var t = front; front = back; back = t;
+      if(instant){
+        /* Cleared on the next frame, not immediately — inside the same frame
+           the class is still in effect and the transition never re-arms. */
+        requestAnimationFrame(function(){ stage.classList.remove('no-anim'); });
+      }
+      capEl.textContent = sh.cap || '';
+      capEl.classList.remove('fading');
+    });
+  }
+
+  function step(n, manual){
+    if(manual){ stop(); }
+    /* Manual paging is instant. A cross-fade means both photographs are on
+       screen together for most of a second, and clicking through faster than
+       that leaves the reader watching two rooms dissolve into each other. */
+    show(idx + n, manual);
+    if(manual) start();
+  }
+
+  function start(){ if(!reduce && !timer && shots.length > 1)
+                      timer = setInterval(function(){ show(idx + 1); }, HOLD); }
+  function stop(){ if(timer){ clearInterval(timer); timer = null; } }
 
   function paint(d){
     var body = document.getElementById('hlBody');
     var slides = (d && d.slides) || [];
     if(!slides.length){
-      /* No manifest, or an empty drop folder. Say so rather than leaving a
-         heading with nothing under it. */
+      /* No manifest, or an empty drop folder. Say so rather than leaving the
+         column empty. */
       body.innerHTML = '<div class="hl-note">No photographs have been published yet.</div>';
       return;
     }
@@ -6106,43 +6178,52 @@ window.__mountCapacity = mountCapacity;
     shots = slides.map(function(x){
       return { src: x.src + '?v=' + rev, cap: x.caption || '' };
     });
+
     body.innerHTML =
-      '<div class="hl-grid">' + shots.map(function(sh, i){
-        return '<figure class="hl-item' + (i === 0 ? ' is-lead' : '') + '">' +
-          '<button class="hl-btn" type="button" data-hl="' + i + '" ' +
-            'aria-label="Enlarge photograph' + (sh.cap ? ': ' + esc(sh.cap) : '') + '">' +
-            '<img src="' + esc(sh.src) + '" alt="' + esc(sh.cap || 'Programme photograph') + '" ' +
-              (i === 0 ? '' : 'loading="lazy" ') + 'decoding="async">' +
-          '</button>' +
-          (sh.cap ? '<figcaption class="hl-cap">' + esc(sh.cap) + '</figcaption>' : '') +
-        '</figure>';
-      }).join('') + '</div>' +
-      '<div class="hl-note">' + shots.length + ' photographs from the programme. ' +
-        'Selected sessions are documented district by district under Capacity building.</div>' +
-      /* Same classes as the capacity lightbox so the two viewers look and behave
-         alike; a separate element because that one is bound to the capacity
-         photo index and is destroyed whenever its body re-renders. */
-      '<div class="cap-lb" id="hlLb" role="dialog" aria-modal="true" aria-label="Programme photograph">' +
-        '<button class="cap-lb-x" type="button" aria-label="Close">&times;</button>' +
-        '<button class="cap-lb-nav cap-lb-prev" type="button" aria-label="Previous photograph"><i class="ti ti-chevron-left"></i></button>' +
-        '<button class="cap-lb-nav cap-lb-next" type="button" aria-label="Next photograph"><i class="ti ti-chevron-right"></i></button>' +
-        '<figure><img src="" alt=""><figcaption></figcaption></figure>' +
+      '<div class="hl-stage" id="hlStage">' +
+        '<img class="hl-frame" alt="" decoding="async">' +
+        '<img class="hl-frame" alt="" decoding="async">' +
+        '<div class="hl-count" id="hlCount" aria-hidden="true"></div>' +
+        '<button class="hl-arrow hl-prev" type="button" data-step="-1" aria-label="Previous photograph"><i class="ti ti-chevron-left"></i></button>' +
+        '<button class="hl-arrow hl-next" type="button" data-step="1" aria-label="Next photograph"><i class="ti ti-chevron-right"></i></button>' +
+        '<div class="hl-scrim"><p class="hl-caption" id="hlCap" aria-live="polite"></p></div>' +
+      '</div>' +
+      '<div class="hl-dots" role="tablist" aria-label="Programme photographs">' +
+        shots.map(function(sh, i){
+          return '<button class="hl-dot" type="button" role="tab" data-go="' + i + '" ' +
+                 'aria-selected="false" aria-label="Photograph ' + (i+1) +
+                 (sh.cap ? ': ' + esc(sh.cap) : '') + '"></button>';
+        }).join('') +
       '</div>';
 
-    lb = document.getElementById('hlLb');
+    stage   = document.getElementById('hlStage');
+    capEl   = document.getElementById('hlCap');
+    countEl = document.getElementById('hlCount');
+    dots    = [].slice.call(body.querySelectorAll('.hl-dot'));
+    var frames = body.querySelectorAll('.hl-frame');
+    front = frames[0]; back = frames[1];
+
     body.addEventListener('click', function(e){
-      var b = e.target.closest('[data-hl]');
-      if(b){ open(+b.dataset.hl); return; }
-      if(e.target.closest('.cap-lb-prev')){ open(idx - 1); return; }
-      if(e.target.closest('.cap-lb-next')){ open(idx + 1); return; }
-      if(e.target.closest('.cap-lb-x') || e.target === lb) close();
+      var a = e.target.closest('[data-step]');
+      if(a){ step(+a.dataset.step, true); return; }
+      var g = e.target.closest('[data-go]');
+      if(g){ stop(); show(+g.dataset.go, true); start(); }
     });
-    document.addEventListener('keydown', function(e){
-      if(!lb || !lb.classList.contains('on')) return;
-      if(e.key === 'Escape') close();
-      else if(e.key === 'ArrowLeft') open(idx - 1);
-      else if(e.key === 'ArrowRight') open(idx + 1);
+    /* Paused while the pointer is on it or a control has focus: the reader is
+       looking at this one, and moving it under them is the whole complaint
+       people have about carousels. */
+    stage.addEventListener('mouseenter', stop);
+    stage.addEventListener('mouseleave', start);
+    body.addEventListener('focusin', stop);
+    body.addEventListener('focusout', start);
+    /* A background tab still fires setInterval, so without this the reader
+       returns to a deck that has silently run through several photographs. */
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden) stop(); else start();
     });
+
+    show(0, true);
+    start();
   }
 
   window.__loadHighlights = function(){
