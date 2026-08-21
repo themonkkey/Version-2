@@ -73,7 +73,6 @@
   },
   {
    "slug": "kalamkari-krishna",
-   "page": false,
    "title": "Successful Models Kalamkari Can Emulate for Growth",
    "eyebrow": "Craft cluster strategy",
    "summary": "Growth lessons for the Pedana-Machilipatnam Kalamkari cluster from India's organised craft and textile clusters.",
@@ -81,7 +80,7 @@
    "place": "Krishna",
    "district": "Krishna",
    "districts": [],
-   "sections": 0,
+   "sections": 8,
    "cover": null,
    "decks": {
     "en": "19uN4hX9g8GSEvlF-hu9DXxcIs5Fv-cua",
@@ -246,7 +245,6 @@
   },
   {
    "slug": "mango-processing",
-   "page": false,
    "title": "Mango Processing & Waste-to-Wealth Models",
    "eyebrow": "Agro-processing",
    "summary": "Processing and waste-to-wealth models for India's largest mango producer, from dried-mango export clusters to pulp.",
@@ -254,7 +252,7 @@
    "place": "AP mango belt",
    "district": null,
    "districts": [],
-   "sections": 0,
+   "sections": 10,
    "cover": null,
    "decks": {
     "en": "1HLEZxwpdOQWU6l5hTt6LIXWw8CdkoY2q",

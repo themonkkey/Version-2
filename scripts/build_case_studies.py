@@ -66,29 +66,12 @@ DECK_DOWNLOADS = {
                                    "te": "17DMQcA1DfvvcnIRY9jFZFL7kkkIMmZRs"},
 }
 
-# Cases that exist ONLY as decks. The other 15 are built from flattened HTML
-# decks in corpus_files/; these two arrived as PowerPoints with no source deck
-# to parse, so they enter the manifest directly. "page": False tells the card
-# renderer there is no reader page to link to - the card shows the brief and
-# the downloads and is otherwise inert. Titles and summaries are taken from
-# the decks' own opening slides, not invented. If a reader page is built for
-# one of them later, move it into META and drop it from here.
-EXTRA_CASES = [
-    {"group": "ap", "slug": "kalamkari-krishna", "page": False,
-     "title": "Successful Models Kalamkari Can Emulate for Growth",
-     "eyebrow": "Craft cluster strategy",
-     "summary": "Growth lessons for the Pedana-Machilipatnam Kalamkari cluster "
-                "from India's organised craft and textile clusters.",
-     "theme": "Craft cluster", "place": "Krishna",
-     "district": "Krishna", "districts": []},
-    {"group": "model", "slug": "mango-processing", "page": False,
-     "title": "Mango Processing & Waste-to-Wealth Models",
-     "eyebrow": "Agro-processing",
-     "summary": "Processing and waste-to-wealth models for India's largest "
-                "mango producer, from dried-mango export clusters to pulp.",
-     "theme": "Agro-processing", "place": "AP mango belt",
-     "district": None, "districts": []},
-]
+# Cases that exist ONLY as decks - no reader page. Empty right now: Mango and
+# Kalamkari were promoted into META on 2026-08-21 once their decks were
+# transcribed into corpus_files sources. The machinery stays for the next deck
+# that arrives before its page does ("page": False on an entry here renders an
+# inert card with download chips only).
+EXTRA_CASES = []
 PAGES_DIR = os.path.join(ROOT, "landing", "cases")
 
 # group 'ap'    — a case-for-action for a named Andhra Pradesh district
@@ -221,6 +204,16 @@ META = [
         "source": "Based on: the ATDC Baramati agritourism model, Maharashtra.",
     },
     {
+        "file": "Kalamkari_Growth_Krishna.txt", "slug": "kalamkari-krishna",
+        "group": "ap", "district": "Krishna", "place": "Krishna",
+        "theme": "Craft cluster",
+        "eyebrow": "Craft cluster strategy",
+        "title": "Successful Models Kalamkari Can Emulate for Growth",
+        "summary": "Growth lessons for the Pedana-Machilipatnam Kalamkari cluster "
+                   "from India's organised craft and textile clusters.",
+        "source": "Based on: Bagru, Raghurajpur, Chanderiyaan and Tiruppur cluster models.",
+    },
+    {
         "file": "AP_Cotton_Stalk_Pellets.txt", "slug": "cotton-stalk-pellets",
         "group": "model", "district": None, "districts": ["Kurnool"],
         "place": "Yavatmal, Maharashtra",
@@ -240,6 +233,16 @@ META = [
         "title": "Banana Processing & Waste-to-Wealth Models",
         "summary": "Two replicable cases — KVK Kanyakumari value-added foods and the Jalgaon "
                    "pseudo-stem processing cluster.",
+    },
+    {
+        "file": "Mango_Processing_Waste_to_Wealth.txt", "slug": "mango-processing",
+        "group": "model", "district": None, "place": "AP mango belt",
+        "theme": "Agro-processing",
+        "eyebrow": "Agro-processing",
+        "title": "Mango Processing & Waste-to-Wealth Models",
+        "summary": "Processing and waste-to-wealth models for India's largest "
+                   "mango producer, from dried-mango export clusters to pulp.",
+        "source": "Based on: the Profood Cebu cluster and the Malihabad Dasheri FPO cluster.",
     },
 ]
 
