@@ -1559,6 +1559,12 @@ a.docs-leaf:hover .ext{opacity:1;}
   padding:7px 14px 7px 11px;border-radius:999px;color:rgba(198,236,143,.92);
   background:rgba(255,255,255,.08);border:1px solid rgba(198,236,143,.3);}
 .cap-back:hover{background:rgba(198,236,143,.16);color:#DFF5B4;}
+.cap-by{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:11px;}
+.cap-by-k{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);}
+.cap-by-n{font-size:clamp(13.5px,1.2vw,15px);font-weight:650;color:rgba(198,236,143,.95);}
+/* Sized in em so the mark tracks the name it sits beside when the type scales. */
+.cap-by-logo{height:1.9em;width:auto;display:block;}
 .cap-back:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
 
 /* The measurement pair, as sketched: two equal cards below the brief. Stretch,
@@ -3736,6 +3742,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <div class="sec-head sec-head-row">
       <div>
         <h2>Capacity building programme</h2>
+        <!-- Whose programme it is. The nav lockup credits Swarna Andhra, the
+             Planning Department and NITI Aayog; PIF ran the training, and that
+             was nowhere on the page. -->
+        <p class="cap-by"><span class="cap-by-k">A programme by</span>
+           <span class="cap-by-n">Pahlé India Foundation</span></p>
         <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
       </div>
     </div>
@@ -4268,7 +4279,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21c')
+  fetch('assets/i18n/te.json?v=2026-08-21d')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
