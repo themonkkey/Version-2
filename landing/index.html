@@ -755,8 +755,13 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
   @media (min-width:1001px){
     .ab-split{grid-template-rows:repeat(6,auto);align-items:stretch;}
     .ab-split .ab-panel{grid-row:1 / 7;display:grid;grid-template-rows:subgrid;}
+    /* The programme panel carries three boxes to the platform's lead + three,
+       so its middle box spans two shared rows and the button rows still meet
+       on the last one. */
+    .ab-split .ab-box-tall{grid-row:span 2;}
   }
 }
+.ab-box-tall p + p{margin-top:8px;}
 .ab-cta-row{align-self:end;display:flex;gap:10px;flex-wrap:wrap;padding-top:2px;}
 /* Fitting one screen is the page's contract, so the split trims the shared
    rhythm slightly rather than asking every box to shed another line. */
@@ -3121,26 +3126,28 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <h3>Capacity Building Programme by Pahlé India Foundation</h3>
         </div>
 
+        <!-- Who PIF is: taken from pahleindia.org's own self-description
+             (think-and-action tank; "Putting India First to Make India First";
+             "We don't just recommend what should be done; we partner to ensure
+             it gets done"), not paraphrased from memory. -->
         <div class="ab-box">
           <h3><i class="ti ti-building-bank"></i> Who PIF is</h3>
-          <p><b>Pahlé India Foundation</b> is a New Delhi based not-for-profit policy think tank founded by Dr. Rajiv Kumar, former Vice Chairman of NITI Aayog. PIF designed and delivered the programme for the Planning Department, Government of Andhra Pradesh, and built this platform to carry it.</p>
+          <p><b>Pahlé India Foundation</b> is a homegrown, not-for-profit think-and-action tank founded by Dr. Rajiv Kumar, former Vice Chairman of NITI Aayog, on the principle of Putting India First to Make India First. PIF does not just recommend what should be done; it partners to ensure it gets done — rigorous, evidence-based analysis rooted in Indian realities, carried through to implementation.</p>
         </div>
 
+        <div class="ab-box ab-box-tall">
+          <h3><i class="ti ti-sitemap"></i> What the programme is</h3>
+          <p>A first-of-its-kind, government-led capacity building initiative that PIF designed and delivered for the Planning Department, Government of Andhra Pradesh. The state targets a Rs 308 lakh crore economy by 2047 — the most ambitious growth target in India — and reaching it needs every official, Secretary to mandal officer, fluent in how output is measured and driven.</p>
+          <p>It runs on a 3-month cascading model: two-day district trainings, then constituency-level and master trainer rounds, across all <b>5 zones and 28 districts</b> — about <b>980 district officials</b>, over <b>6,125 constituency officials</b> and around <b>2,750 master trainers</b>. Sessions cover the 2047 vision, GSDP / GDDP / GMDP methodology, boosting GVA, the 645 KPIs, district profiling and case studies.</p>
+        </div>
+
+        <!-- What we achieved: the DELIVERED numbers, from the filed status
+             reports behind assets/capacity.json - not the design targets
+             above. The two are deliberately kept distinct. -->
         <div class="ab-box">
-          <h3><i class="ti ti-target-arrow"></i> Why it exists</h3>
-          <p>Andhra Pradesh targets a Rs 308 lakh crore economy by 2047, the most ambitious state growth target in India. Reaching it needs every official, Secretary to mandal officer, fluent in how output is measured and driven: GSDP, GDDP and GVA as operational tools, not policy jargon.</p>
+          <h3><i class="ti ti-trophy"></i> What we achieved</h3>
+          <p>Between <b>16 June and 6 August 2026</b>, <b>141 sessions</b> were delivered across <b>18 districts</b> with <b>6,482 recorded attendances</b>, at all three levels — district, constituency and mandal, and master trainers. Every session was filed as a status report, and that record, its photographs and the baseline and endline assessments are all on this platform.</p>
         </div>
-
-        <div class="ab-box">
-          <h3><i class="ti ti-sitemap"></i> What it is</h3>
-          <p>A first-of-its-kind, government-led initiative on a 3-month cascading model: two-day district trainings, then constituency-level and master trainer rounds, across all <b>5 zones and 28 districts</b> — about <b>980 district officials</b>, over <b>6,125 constituency officials</b> and around <b>2,750 master trainers</b>. Sessions cover the 2047 vision, GSDP / GDDP / GMDP methodology, boosting GVA, the 645 KPIs, district profiling and case studies.</p>
-        </div>
-
-        <div class="ab-box">
-          <h3><i class="ti ti-plant-2"></i> What it leaves behind</h3>
-          <p>A self-sustaining master trainer ecosystem extending the methodology to every mandal: local ownership at the lowest administrative level, and sector-wise GVA consistent with the vision's targets.</p>
-        </div>
-
         <div class="ab-cta ab-cta-row">
           <button class="btn-primary nl" data-page="capacity"><i class="ti ti-school"></i> See the training record</button>
           <button class="btn-ghost nl" data-page="cases"><i class="ti ti-books"></i> Open the case studies</button>
@@ -4379,7 +4386,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21j')
+  fetch('assets/i18n/te.json?v=2026-08-21k')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
