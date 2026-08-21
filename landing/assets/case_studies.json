@@ -10,7 +10,11 @@
    "district": "East_Godavari",
    "districts": [],
    "sections": 6,
-   "cover": "cases/media/east-godavari-coconut-coir/0.jpg"
+   "cover": "cases/media/east-godavari-coconut-coir/0.jpg",
+   "decks": {
+    "en": "1ZVMvjlkRFYv_DX9ebKI8i00H87W402WO",
+    "te": "1MCgAxPwUJ5rw83VIEzfKUXvX1cnl_lce"
+   }
   },
   {
    "slug": "nellore-shrimp-processing",
@@ -22,7 +26,8 @@
    "district": "Sps_Nellore",
    "districts": [],
    "sections": 6,
-   "cover": null
+   "cover": null,
+   "decks": null
   },
   {
    "slug": "nellore-ethanol-potential",
@@ -34,7 +39,8 @@
    "district": "Sps_Nellore",
    "districts": [],
    "sections": 4,
-   "cover": null
+   "cover": null,
+   "decks": null
   },
   {
    "slug": "srikakulam-blue-economy",
@@ -46,7 +52,8 @@
    "district": "Srikakulam",
    "districts": [],
    "sections": 6,
-   "cover": null
+   "cover": null,
+   "decks": null
   },
   {
    "slug": "kurnool-agritourism",
@@ -58,7 +65,11 @@
    "district": "Kurnool",
    "districts": [],
    "sections": 3,
-   "cover": "cases/media/kurnool-agritourism/0.jpg"
+   "cover": "cases/media/kurnool-agritourism/0.jpg",
+   "decks": {
+    "en": "1OngHn6u1JptnAC7HAGx9207uddgodftW",
+    "te": "1eYGJqVeKqrd6zwzi3_FNbCU7Bh-LjKAc"
+   }
   }
  ],
  "model": [
@@ -72,7 +83,8 @@
    "district": null,
    "districts": [],
    "sections": 10,
-   "cover": null
+   "cover": null,
+   "decks": null
   },
   {
    "slug": "morbi-ceramic-cluster",
@@ -84,7 +96,8 @@
    "district": null,
    "districts": [],
    "sections": 7,
-   "cover": null
+   "cover": null,
+   "decks": null
   },
   {
    "slug": "tiruppur-textiles",
@@ -96,7 +109,8 @@
    "district": null,
    "districts": [],
    "sections": 18,
-   "cover": null
+   "cover": null,
+   "decks": null
   },
   {
    "slug": "kumarakom-tourism",
@@ -108,7 +122,11 @@
    "district": null,
    "districts": [],
    "sections": 10,
-   "cover": null
+   "cover": null,
+   "decks": {
+    "en": "1-_GM820DlWY3oBx9l7R6hVxCBcpje-R2",
+    "te": "1U61sRxvJM280epg-WhHVbRSwCa9ALnd_"
+   }
   },
   {
    "slug": "sahyadri-farms-fpc",
@@ -122,7 +140,11 @@
     "Kurnool"
    ],
    "sections": 5,
-   "cover": null
+   "cover": null,
+   "decks": {
+    "en": "18Y__lsFwJuzDMnm-ENdkFwub9o-EwqF_",
+    "te": "17F8nMrslWqHQgYKbmIZOeex_tZrkMosf"
+   }
   },
   {
    "slug": "chetna-organics-fpo",
@@ -136,7 +158,11 @@
     "Kurnool"
    ],
    "sections": 10,
-   "cover": null
+   "cover": null,
+   "decks": {
+    "en": "1THmZsRJYyOh1wrVolZfisWB2WbBwSq-l",
+    "te": "1uYYKbCIDmS_WPJ_E-EreaReTQyQHUWkj"
+   }
   },
   {
    "slug": "biofloc-tilapia",
@@ -148,7 +174,8 @@
    "district": null,
    "districts": [],
    "sections": 10,
-   "cover": null
+   "cover": null,
+   "decks": null
   },
   {
    "slug": "paddy-fish-farming",
@@ -160,7 +187,11 @@
    "district": null,
    "districts": [],
    "sections": 13,
-   "cover": null
+   "cover": null,
+   "decks": {
+    "en": "1d4FFIVEsU2tTd6dQ_orh4f5cDKMu-53a",
+    "te": "1DNPolMWWu52bBMJEKu2kTDZ6FLoss0Mk"
+   }
   },
   {
    "slug": "cotton-stalk-pellets",
@@ -174,7 +205,11 @@
     "Kurnool"
    ],
    "sections": 5,
-   "cover": "cases/media/cotton-stalk-pellets/0.jpg"
+   "cover": "cases/media/cotton-stalk-pellets/0.jpg",
+   "decks": {
+    "en": "1DlRyiCSe5esCKb7tUPmGHEt3b-tM_JZp",
+    "te": "1QADI_XlUPyxJ5IDrjpXJTqOzxRhaZVqI"
+   }
   },
   {
    "slug": "banana-processing",
@@ -186,7 +221,11 @@
    "district": null,
    "districts": [],
    "sections": 19,
-   "cover": null
+   "cover": null,
+   "decks": {
+    "en": "1H_60VB3Qy2wv4_W1PeUzrTlgvGxUCVe6",
+    "te": "1N7kiqOmfmOzZoZX20G7HLgDJIJw388he"
+   }
   }
  ]
 }

@@ -36,6 +36,36 @@ import re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "corpus_files", "case_studies")
 MANIFEST = os.path.join(ROOT, "landing", "assets", "case_studies.json")
+
+# Downloadable slide decks, English and Telugu, hosted on Google Drive
+# (folder: Swarna_Andhra_Case_Study_Decks, uploaded 2026-08-21 from
+# ~/Downloads/"Case Studies English and Telugu"). Values are Drive file ids;
+# the front end turns them into uc?export=download URLs, which serve the file
+# directly instead of landing on a preview page. Anyone-with-link sharing was
+# set at upload time via rclone link.
+#
+# Two decks in that folder have no case study on the site yet and are parked
+# unwired: Mango Processing (1HLEZxwpdOQWU6l5hTt6LIXWw8CdkoY2q /
+# 1UPgYavS-UYShJ0UfBXXgL0r20Dt9UcsQ) and Kalamkari Krishna
+# (19uN4hX9g8GSEvlF-hu9DXxcIs5Fv-cua / 17DMQcA1DfvvcnIRY9jFZFL7kkkIMmZRs).
+DECK_DOWNLOADS = {
+    "cotton-stalk-pellets":       {"en": "1DlRyiCSe5esCKb7tUPmGHEt3b-tM_JZp",
+                                   "te": "1QADI_XlUPyxJ5IDrjpXJTqOzxRhaZVqI"},
+    "banana-processing":          {"en": "1H_60VB3Qy2wv4_W1PeUzrTlgvGxUCVe6",
+                                   "te": "1N7kiqOmfmOzZoZX20G7HLgDJIJw388he"},
+    "chetna-organics-fpo":        {"en": "1THmZsRJYyOh1wrVolZfisWB2WbBwSq-l",
+                                   "te": "1uYYKbCIDmS_WPJ_E-EreaReTQyQHUWkj"},
+    "east-godavari-coconut-coir": {"en": "1ZVMvjlkRFYv_DX9ebKI8i00H87W402WO",
+                                   "te": "1MCgAxPwUJ5rw83VIEzfKUXvX1cnl_lce"},
+    "kumarakom-tourism":          {"en": "1-_GM820DlWY3oBx9l7R6hVxCBcpje-R2",
+                                   "te": "1U61sRxvJM280epg-WhHVbRSwCa9ALnd_"},
+    "kurnool-agritourism":        {"en": "1OngHn6u1JptnAC7HAGx9207uddgodftW",
+                                   "te": "1eYGJqVeKqrd6zwzi3_FNbCU7Bh-LjKAc"},
+    "paddy-fish-farming":         {"en": "1d4FFIVEsU2tTd6dQ_orh4f5cDKMu-53a",
+                                   "te": "1DNPolMWWu52bBMJEKu2kTDZ6FLoss0Mk"},
+    "sahyadri-farms-fpc":         {"en": "18Y__lsFwJuzDMnm-ENdkFwub9o-EwqF_",
+                                   "te": "17F8nMrslWqHQgYKbmIZOeex_tZrkMosf"},
+}
 PAGES_DIR = os.path.join(ROOT, "landing", "cases")
 
 # group 'ap'    — a case-for-action for a named Andhra Pradesh district
@@ -688,6 +718,8 @@ def main():
             "districts": m.get("districts") or [],
             "sections": sum(1 for b in body if b[0] == "h2"),
             "cover": cover_rel if has_cover else None,
+            # None when no deck pair exists; the card simply shows no chips
+            "decks": DECK_DOWNLOADS.get(m["slug"]),
         })
         written += 1
         stats = sum(1 for b in body if b[0] == "stat")

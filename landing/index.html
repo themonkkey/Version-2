@@ -1241,8 +1241,21 @@ a.docs-leaf:hover .ext{opacity:1;}
 .case-card.has-cover .cbar{background:rgba(7,30,20,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
 .case-card.has-cover:hover{border-color:rgba(198,236,143,.6);background-color:#0A2016;}
 .case-card.has-cover:hover::before{transform:scale(1.04);filter:brightness(2.25) saturate(1.18);}
-.case-card:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
-.case-main{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;}
+.case-main:focus-visible{outline:2px solid var(--lime);outline-offset:-2px;}
+.case-main{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;
+  text-decoration:none;color:inherit;}
+/* Download chips on the eyebrow bar: one deck per language, straight to the
+   file. Chip labels are English / \u0c24\u0c46\u0c32\u0c41\u0c17\u0c41 in
+   both site languages, because the label IS the language being chosen. */
+.cdl-row{margin-left:auto;display:flex;gap:6px;flex:0 0 auto;}
+.cdl{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;
+  letter-spacing:.03em;line-height:1;padding:5px 9px;border-radius:999px;
+  text-decoration:none;color:rgba(198,236,143,.92);
+  background:rgba(255,255,255,.09);border:1px solid rgba(198,236,143,.3);
+  transition:background .15s,color .15s;}
+.cdl:hover{background:rgba(198,236,143,.2);color:#DFF5B4;}
+.cdl:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+.cdl .ti{font-size:11px;}
 /* Place + theme sit directly on the artwork as the last line of the content
    column — no ground of their own, so the image runs unbroken behind them. The
    eyebrow strip below is the only banded element. */
@@ -5587,20 +5600,41 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   var casesBody = document.getElementById('casesBody');
   var casesLoaded = false;
 
+  /* The deck came as a PowerPoint in both languages; the files live on Google
+     Drive (they are 10-18 MB in Telugu, far too heavy to ship with the site)
+     and uc?export=download serves the file itself rather than a preview page. */
+  function deckChips(c){
+    if(!c.decks) return '';
+    var u = function(id){ return 'https://drive.google.com/uc?export=download&id=' + esc(id); };
+    return '<span class="cdl-row">'+
+      '<a class="cdl" href="'+u(c.decks.en)+'" aria-label="Download the '+esc(c.title)+' deck in English (PPT)">'+
+        '<i class="ti ti-download"></i>English</a>'+
+      '<a class="cdl" href="'+u(c.decks.te)+'" data-no-i18n aria-label="Download the '+esc(c.title)+' deck in Telugu (PPT)">'+
+        '<i class="ti ti-download"></i>\u0c24\u0c46\u0c32\u0c41\u0c17\u0c41</a>'+
+    '</span>';
+  }
+
+  /* A div holding an anchor, not one big anchor: the download chips are links
+     too, and an <a> may not contain another <a> — browsers split the nesting
+     apart silently and the card layout falls to pieces. The content column
+     stays the navigation; the eyebrow bar carries the chips. */
   function caseCard(c){
     var foot = '<span class="cplace">'+esc(c.place||'')+'</span>'+
       (c.theme ? '<span class="cdot">·</span><span class="ctheme">'+esc(c.theme)+'</span>' : '');
     var cover = c.cover ? ' style="--cover:url('+esc(c.cover)+')"' : '';
-    return '<a class="case-card'+(c.cover?' has-cover':'')+'" href="cases/'+esc(c.slug)+'.html"'+cover+' target="_blank" rel="noopener">'+
-      '<span class="case-main">'+
+    return '<div class="case-card'+(c.cover?' has-cover':'')+'"'+cover+'>'+
+      '<a class="case-main" href="cases/'+esc(c.slug)+'.html" target="_blank" rel="noopener">'+
         '<span class="ctitle">'+esc(c.title)+'</span>'+
         '<span class="csum">'+esc(c.summary)+'</span>'+
         '<span class="case-foot">'+foot+
           '<span class="cgo"><i class="ti ti-arrow-up-right"></i></span>'+
         '</span>'+
-      '</span>'+
-      (c.eyebrow ? '<span class="cbar"><span class="ceyebrow">'+esc(c.eyebrow)+'</span></span>' : '')+
-    '</a>';
+      '</a>'+
+      ((c.eyebrow || c.decks) ? '<span class="cbar">'+
+        (c.eyebrow ? '<span class="ceyebrow">'+esc(c.eyebrow)+'</span>' : '')+
+        deckChips(c)+
+      '</span>' : '')+
+    '</div>';
   }
 
   function group(title, sub, list){
@@ -5648,7 +5682,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadCases(){
     if(casesLoaded) return;
     casesLoaded = true;
-    fetch('assets/case_studies.json?v=2026-08-14a').then(function(r){ return r.json(); }).then(function(d){
+    fetch('assets/case_studies.json?v=2026-08-21a').then(function(r){ return r.json(); }).then(function(d){
       CASES = d;
       renderCases();
     }).catch(function(err){
