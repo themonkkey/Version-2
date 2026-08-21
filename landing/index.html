@@ -558,9 +558,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
              linear-gradient(to bottom, transparent, #000 15%, #000 85%, transparent);
   mask-composite:intersect;}
 .hero-vis > *{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-@keyframes visSwap{0%,39%{opacity:1}50%,89%{opacity:0}100%{opacity:1}}
-.hero-vis video{animation:visSwap 14s ease-in-out infinite;}
-.hero-vis img{animation:visSwap 14s ease-in-out infinite;animation-delay:-7s;}
+
 /* Split hero on wide screens: the copy sits left-centre and left-aligned, the
    visual holds the right. This applies ONLY while the visual is shown - below
    1180px the visual goes and the copy returns to the centre, where a lone block
@@ -575,11 +573,7 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
   .hero-content .hero-cta{justify-content:flex-start;}
 }
 @media (max-width:1180px){ .hero > .hero-vis{display:none;} }
-/* No autoplaying footage for reduced motion - the portrait, held. */
-@media (prefers-reduced-motion:reduce){
-  .hero-vis video{display:none;}
-  .hero-vis img{animation:none;opacity:1;}
-}
+
 /* The arrows sit at the edges of the stage at mid height, clear of the caption,
    so paging the photographs never means aiming at a control stacked on top of
    the words. They are siblings of the caption rather than children of it: the
@@ -2826,16 +2820,13 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
      these bright indoor frames need; if the manifest cannot be read the stage
      falls back to the aerial loop. -->
 <header class="hero vstage" data-vid="photo" data-slides="assets/hero/manifest.json">
-    <!-- The floating visual: the Swarna Andhra 2047 collage animation and the
-         CM's portrait, dissolving into each other on a slow loop. The clip is a
-         14s screen capture re-encoded to 522 KB; the portrait is the official
-         one from the event banner, same crop as the earlier identity card. The
-         card's fill is the collage's own background green (rgb(49,93,61),
-         sampled from the footage) so the dissolve reads as one object changing
-         face rather than two cards swapping. -->
+    <!-- The floating visual: the CM's portrait, held. Its background is retinted
+         to the hero's measured tone (rgb(38,65,52)) and the edges feather into
+         the footage, so it reads as part of the stage rather than a card. The
+         2047 collage clip that used to alternate with it is parked at
+         assets/video/collage2047.mp4, already retinted to the same green. -->
     <div class="hero-vis" aria-hidden="true">
-      <video src="assets/video/collage2047.mp4?v=2026-08-20b" muted loop autoplay playsinline preload="auto"></video>
-      <img src="assets/cm.png?v=2026-08-20c" alt="" loading="lazy">
+      <img src="assets/cm.png?v=2026-08-20c" alt="">
     </div>
 
     <div class="wrap"><div class="hero-content">
