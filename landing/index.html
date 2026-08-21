@@ -5644,14 +5644,19 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     var foot = '<span class="cplace">'+esc(c.place||'')+'</span>'+
       (c.theme ? '<span class="cdot">·</span><span class="ctheme">'+esc(c.theme)+'</span>' : '');
     var cover = c.cover ? ' style="--cover:url('+esc(c.cover)+')"' : '';
-    return '<div class="case-card'+(c.cover?' has-cover':'')+'"'+cover+'>'+
-      '<a class="case-main" href="cases/'+esc(c.slug)+'.html" target="_blank" rel="noopener">'+
+    /* page:false marks a case that exists only as a downloadable deck - there
+       is no reader page, so the content column is a span, not a dead link,
+       and the open-arrow affordance never appears on it. */
+    var main =
         '<span class="ctitle">'+esc(c.title)+'</span>'+
         '<span class="csum">'+esc(c.summary)+'</span>'+
         '<span class="case-foot">'+foot+
-          '<span class="cgo"><i class="ti ti-arrow-up-right"></i></span>'+
-        '</span>'+
-      '</a>'+
+          (c.page === false ? '' : '<span class="cgo"><i class="ti ti-arrow-up-right"></i></span>')+
+        '</span>';
+    return '<div class="case-card'+(c.cover?' has-cover':'')+'"'+cover+'>'+
+      (c.page === false
+        ? '<span class="case-main">'+main+'</span>'
+        : '<a class="case-main" href="cases/'+esc(c.slug)+'.html" target="_blank" rel="noopener">'+main+'</a>')+
       (c.decks ? '<span class="cbar">'+
         '<span class="ceyebrow">Download PPT</span>'+
         deckChips(c)+
@@ -5724,7 +5729,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     built = true;
     var body = document.getElementById('casesPageBody');
     if(!body) return;
-    fetch('assets/case_studies.json?v=2026-08-21a')
+    fetch('assets/case_studies.json?v=2026-08-21b')
       .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
       .then(function(d){
         var has = function(c){ return !!c.decks; };
@@ -5747,7 +5752,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function loadCases(){
     if(casesLoaded) return;
     casesLoaded = true;
-    fetch('assets/case_studies.json?v=2026-08-21a').then(function(r){ return r.json(); }).then(function(d){
+    fetch('assets/case_studies.json?v=2026-08-21b').then(function(r){ return r.json(); }).then(function(d){
       CASES = d;
       renderCases();
     }).catch(function(err){

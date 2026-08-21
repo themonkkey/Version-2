@@ -43,11 +43,6 @@ MANIFEST = os.path.join(ROOT, "landing", "assets", "case_studies.json")
 # the front end turns them into uc?export=download URLs, which serve the file
 # directly instead of landing on a preview page. Anyone-with-link sharing was
 # set at upload time via rclone link.
-#
-# Two decks in that folder have no case study on the site yet and are parked
-# unwired: Mango Processing (1HLEZxwpdOQWU6l5hTt6LIXWw8CdkoY2q /
-# 1UPgYavS-UYShJ0UfBXXgL0r20Dt9UcsQ) and Kalamkari Krishna
-# (19uN4hX9g8GSEvlF-hu9DXxcIs5Fv-cua / 17DMQcA1DfvvcnIRY9jFZFL7kkkIMmZRs).
 DECK_DOWNLOADS = {
     "cotton-stalk-pellets":       {"en": "1DlRyiCSe5esCKb7tUPmGHEt3b-tM_JZp",
                                    "te": "1QADI_XlUPyxJ5IDrjpXJTqOzxRhaZVqI"},
@@ -65,7 +60,35 @@ DECK_DOWNLOADS = {
                                    "te": "1DNPolMWWu52bBMJEKu2kTDZ6FLoss0Mk"},
     "sahyadri-farms-fpc":         {"en": "18Y__lsFwJuzDMnm-ENdkFwub9o-EwqF_",
                                    "te": "17F8nMrslWqHQgYKbmIZOeex_tZrkMosf"},
+    "mango-processing":           {"en": "1HLEZxwpdOQWU6l5hTt6LIXWw8CdkoY2q",
+                                   "te": "1UPgYavS-UYShJ0UfBXXgL0r20Dt9UcsQ"},
+    "kalamkari-krishna":          {"en": "19uN4hX9g8GSEvlF-hu9DXxcIs5Fv-cua",
+                                   "te": "17DMQcA1DfvvcnIRY9jFZFL7kkkIMmZRs"},
 }
+
+# Cases that exist ONLY as decks. The other 15 are built from flattened HTML
+# decks in corpus_files/; these two arrived as PowerPoints with no source deck
+# to parse, so they enter the manifest directly. "page": False tells the card
+# renderer there is no reader page to link to - the card shows the brief and
+# the downloads and is otherwise inert. Titles and summaries are taken from
+# the decks' own opening slides, not invented. If a reader page is built for
+# one of them later, move it into META and drop it from here.
+EXTRA_CASES = [
+    {"group": "ap", "slug": "kalamkari-krishna", "page": False,
+     "title": "Successful Models Kalamkari Can Emulate for Growth",
+     "eyebrow": "Craft cluster strategy",
+     "summary": "Growth lessons for the Pedana-Machilipatnam Kalamkari cluster "
+                "from India's organised craft and textile clusters.",
+     "theme": "Craft cluster", "place": "Krishna",
+     "district": "Krishna", "districts": []},
+    {"group": "model", "slug": "mango-processing", "page": False,
+     "title": "Mango Processing & Waste-to-Wealth Models",
+     "eyebrow": "Agro-processing",
+     "summary": "Processing and waste-to-wealth models for India's largest "
+                "mango producer, from dried-mango export clusters to pulp.",
+     "theme": "Agro-processing", "place": "AP mango belt",
+     "district": None, "districts": []},
+]
 PAGES_DIR = os.path.join(ROOT, "landing", "cases")
 
 # group 'ap'    — a case-for-action for a named Andhra Pradesh district
@@ -727,6 +750,14 @@ def main():
         print(f"  {m['slug']:28s} {len(body):3d} blk  "
               f"hero:{len(hero)} stat:{stats} entry:{entries}"
               + (f" -> cases/{m['slug']}.html" if write_pages else ""))
+
+    for x in EXTRA_CASES:
+        e = dict(x); g = e.pop("group")
+        e["sections"] = 0
+        e["cover"] = None
+        e["decks"] = DECK_DOWNLOADS.get(e["slug"])
+        manifest[g].append(e)
+        print(f"  {e['slug']:28s} deck-only (no reader page)")
 
     with open(MANIFEST, "w", encoding="utf-8") as f:
         json.dump(manifest, f, indent=1, ensure_ascii=False)
