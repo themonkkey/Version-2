@@ -745,7 +745,10 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* Full-bleed panels, per the ask: the two boxes stretch to the page margins the
    nav uses rather than stopping at the reading-column cap. The extra width is
    also what pays for the 15px type on one screen. */
-#page-about .wrap{max-width:none;padding-left:clamp(18px,2.5vw,42px);padding-right:clamp(18px,2.5vw,42px);}
+#page-about .wrap{max-width:none;}
+/* The width lives in the SECTION's --pad-x, not the wrap - trimming the wrap
+   alone moved nothing. About runs nearly edge to edge. */
+#page-about .section{padding-left:clamp(10px,1vw,18px);padding-right:clamp(10px,1vw,18px);}
 #page-about .sec-head{margin-bottom:clamp(8px,1.2vh,13px);}
 /* The two panel heads carry the titles now; a page h2 above them would say the
    same thing a third time, so the page head is the kick alone. */
@@ -769,7 +772,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .ab-cta-row{align-self:end;display:flex;gap:10px;flex-wrap:wrap;padding-top:2px;}
 /* Fitting one screen is the page's contract, so the split trims the shared
    rhythm slightly rather than asking every box to shed another line. */
-.ab-split .ab-box{padding:clamp(9px,1.1vh,12px) clamp(12px,1.4vw,16px);}
+.ab-split .ab-box{padding:clamp(8px,1vh,11px) clamp(10px,1.2vw,14px);}
 .ab-split .ab-box p,.ab-split .ab-box li{font-size:15px;line-height:1.4;}
 .ab-split .ab-box h3{font-size:15px;margin-bottom:7px;}
 .ab-split .ab-lead p{font-size:clamp(15px,1.35vw,16.5px);margin:0;}
@@ -777,7 +780,7 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .ab-col{display:grid;gap:6px;}
 /* Two matching panels, one for each subject: same frame, same head, so the
    split reads as a deliberate pairing rather than one grid with a seam. */
-.ab-panel{padding:clamp(11px,1.3vw,13px);border-radius:16px;
+.ab-panel{padding:clamp(9px,1vw,11px);border-radius:16px;
   background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);
   clip-path:inset(0 round 16px);isolation:isolate;}
 .ab-panel-head .kick{margin-bottom:4px;}
