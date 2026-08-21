@@ -747,6 +747,16 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
    same thing a third time, so the page head is the kick alone. */
 .ab-split{display:grid;gap:clamp(10px,1.4vw,18px);
   grid-template-columns:minmax(0,55fr) minmax(0,45fr);align-items:start;}
+/* Symmetry across the seam: both panels carry a head plus four blocks, and
+   subgrid puts each pair on one shared row, so every box top aligns with its
+   opposite number. Where subgrid is unsupported the panels simply flow their
+   own rows - the layout the page shipped with. */
+@supports (grid-template-rows: subgrid){
+  @media (min-width:1001px){
+    .ab-split{grid-template-rows:repeat(5,auto);align-items:stretch;}
+    .ab-split .ab-panel{grid-row:1 / 6;display:grid;grid-template-rows:subgrid;}
+  }
+}
 /* Fitting one screen is the page's contract, so the split trims the shared
    rhythm slightly rather than asking every box to shed another line. */
 .ab-split .ab-box{padding:clamp(10px,1.3vh,14px) clamp(13px,1.5vw,17px);}
@@ -3093,14 +3103,9 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <p><b>District and constituency officers</b> who need reliable answers from official material, <b>master trainers</b> preparing sessions on estimation methodology, and <b>planning teams</b> weighing where a district has comparative advantage.</p>
         </div>
 
-        <div class="ab-box">
-          <h3><i class="ti ti-file-check"></i> Where it comes from</h3>
-          <p>The NSO guideline for compiling DDP estimates, the GSVA compilation on base year 2022-23, district GSDP, GDDP and per-capita data for all 28 districts, and the vision and action plans for every constituency and mandal. Each figure on the site is a published estimate or derived from one by a stated formula.</p>
-        </div>
-
         <div class="ab-box ab-caution">
-          <h3><i class="ti ti-alert-triangle"></i> What it is not</h3>
-          <p>It does not replace the official estimate. The calculators show how a figure is built and check one you already have; the department's workbook stays the reference. Priority recommendations cover Kurnool only, because each is checked by hand against that district's plan first.</p>
+          <h3><i class="ti ti-file-check"></i> Sources, and what it is not</h3>
+          <p>Every figure is a published estimate — the NSO DDP guideline, the 2022-23 GSVA compilation, district data for all 28, the vision plans — or derived from one by a stated formula. It does not replace the official estimate: the calculators check a figure, the department's workbook stays the reference, and priority recommendations cover Kurnool only.</p>
         </div>
       </div>
 
@@ -4370,7 +4375,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21h')
+  fetch('assets/i18n/te.json?v=2026-08-21i')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
