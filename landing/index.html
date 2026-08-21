@@ -1560,10 +1560,6 @@ a.docs-leaf:hover .ext{opacity:1;}
   background:rgba(255,255,255,.08);border:1px solid rgba(198,236,143,.3);}
 .cap-back:hover{background:rgba(198,236,143,.16);color:#DFF5B4;}
 .cap-back:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
-/* The case studies sit below the record on the same page, so they need the
-   separation a tab switch used to provide. */
-.cap-cases-head{margin-top:clamp(34px,5vw,60px);
-  padding-top:clamp(26px,3.4vw,40px);border-top:1px solid rgba(255,255,255,.13);}
 
 /* The measurement pair, as sketched: two equal cards below the brief. Stretch,
    not auto height — otherwise the shorter card's footer floats and the two read
@@ -3784,22 +3780,6 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <div id="capacityBodyPage" aria-live="polite">
       <div class="docs-loading">Loading the training record…</div>
     </div>
-
-    <!-- The case studies the programme teaches from. Same library as the
-         districts tab, same wording, same reader pages — a second copy on this
-         page rather than a link across to the other one, because the capacity
-         page is meant to stand on its own. The library is deliberately NOT
-         filtered here: the tab narrows to the district on the map, and this
-         page has no map. -->
-    <div class="sec-head sec-head-row cap-cases-head">
-      <div>
-        <h2>Capacity-building case studies</h2>
-        <p>Case-for-action briefs for Andhra Pradesh districts, and replicable models from clusters across India and beyond.</p>
-      </div>
-    </div>
-    <div id="capCasesBody" aria-live="polite">
-      <div class="docs-loading">Loading the case study library…</div>
-    </div>
   </div></section>
 </div>
 
@@ -4357,7 +4337,6 @@ function go(page){
   if(page==='capacity' && window.__loadCapacity){
     window.__loadCapacity();
     if(window.__loadHighlights) window.__loadHighlights();
-    if(window.__loadCapCases) window.__loadCapCases();
     const want = decodeURIComponent(location.hash.replace(/^#/,'').split('/')[1] || '');
     /* Which of the two views. Bare #capacity opens on the intro; anything after
        the slash means the reader has already chosen and goes straight to the
@@ -6241,67 +6220,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
         built = false;   // a dropped connection should not poison the next visit
         document.getElementById('hlBody').innerHTML =
           '<div class="hl-note">The photographs could not be loaded.</div>';
-      });
-  };
-})();
-
-
-/* ── Case studies on the capacity page ────────────────────────────────────
-   The same library the districts tab shows, rendered from the same
-   assets/case_studies.json with the same card markup and the same group
-   headings. Every word here comes from the manifest or from the tab's own
-   copy; nothing is rewritten for this page.
-
-   Its own fetch and its own body, like the two capacity copies: the tab's
-   renderer narrows the library to the district picked on the map, and this
-   page has no map to narrow by. */
-(function(){
-  var built = false;
-
-  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){
-    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
-
-  function card(c){
-    var foot = '<span class="cplace">'+esc(c.place||'')+'</span>'+
-      (c.theme ? '<span class="cdot">·</span><span class="ctheme">'+esc(c.theme)+'</span>' : '');
-    var cover = c.cover ? ' style="--cover:url('+esc(c.cover)+')"' : '';
-    return '<a class="case-card'+(c.cover?' has-cover':'')+'" href="cases/'+esc(c.slug)+'.html"'+cover+' target="_blank" rel="noopener">'+
-      '<span class="case-main">'+
-        '<span class="ctitle">'+esc(c.title)+'</span>'+
-        '<span class="csum">'+esc(c.summary)+'</span>'+
-        '<span class="case-foot">'+foot+
-          '<span class="cgo"><i class="ti ti-arrow-up-right"></i></span>'+
-        '</span>'+
-      '</span>'+
-      (c.eyebrow ? '<span class="cbar"><span class="ceyebrow">'+esc(c.eyebrow)+'</span></span>' : '')+
-    '</a>';
-  }
-
-  function group(title, sub, list){
-    if(!list || !list.length) return '';
-    return '<div class="cases-group"><h3>'+esc(title)+'</h3>'+
-      '<p class="cg-sub">'+esc(sub)+'</p>'+
-      '<div class="cases-grid">'+list.map(card).join('')+'</div></div>';
-  }
-
-  window.__loadCapCases = function(){
-    if(built) return;
-    built = true;
-    var body = document.getElementById('capCasesBody');
-    if(!body) return;
-    fetch('assets/case_studies.json?v=2026-08-14a')
-      .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
-      .then(function(d){
-        body.innerHTML =
-          group('Andhra Pradesh districts',
-                'Case-for-action briefs tied to a specific district.', d.ap) +
-          group('Replicable models',
-                'Clusters and models from elsewhere, framed for district and mandal officers.', d.model);
-      })
-      .catch(function(err){
-        built = false;   // a dropped connection should not poison the next visit
-        body.innerHTML = '<div class="docs-empty">Could not load the case study library.</div>';
-        console.error('capacity case studies load failed', err);
       });
   };
 })();
