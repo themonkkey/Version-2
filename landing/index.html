@@ -741,6 +741,27 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 #page-about .sec-head{margin-bottom:clamp(8px,min(3vw,1.7vh),26px);}
 #page-about .sec-head h2{margin-bottom:0;font-size:clamp(26px,min(4vw,5.2vh),44px);}
 #page-about .sec-head .kick{margin-bottom:clamp(4px,.8vh,10px);}
+#page-about .section{padding-top:clamp(14px,2vh,20px);padding-bottom:clamp(12px,1.6vh,18px);}
+#page-about .sec-head{margin-bottom:clamp(10px,1.5vh,16px);}
+#page-about .sec-head h2{margin-top:6px;font-size:clamp(22px,2.9vw,31px);}
+.ab-split{display:grid;gap:clamp(10px,1.4vw,18px);
+  grid-template-columns:minmax(0,55fr) minmax(0,45fr);align-items:start;}
+/* Fitting one screen is the page's contract, so the split trims the shared
+   rhythm slightly rather than asking every box to shed another line. */
+.ab-split .ab-box{padding:clamp(10px,1.3vh,14px) clamp(13px,1.5vw,17px);}
+.ab-split .ab-box p,.ab-split .ab-box li{font-size:12.5px;line-height:1.45;}
+.ab-split .ab-box h3{font-size:13px;margin-bottom:5px;}
+.ab-split .ab-lead p{font-size:clamp(13.5px,1.2vw,15px);}
+.ab-col{display:grid;gap:clamp(8px,1.3vh,12px);}
+/* The programme column reads as its own panel: a hairline and a breath of its
+   own ground so the split is a deliberate pairing, not one grid that happens
+   to have a seam. */
+.ab-col-prog{padding:clamp(14px,1.8vw,20px);border-radius:16px;
+  background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);
+  clip-path:inset(0 round 16px);isolation:isolate;}
+.ab-prog-head .kick{margin-bottom:4px;}
+.ab-prog-head h3{font-size:clamp(16px,1.5vw,20px);line-height:1.3;letter-spacing:-.015em;margin:0 0 2px;}
+@media (max-width:1000px){.ab-split{grid-template-columns:1fr;}}
 .ab-grid{display:grid;gap:clamp(8px,1.3vh,12px);grid-template-columns:1fr;}
 @media(min-width:1000px){
   .ab-grid{grid-template-columns:repeat(3,1fr);}
@@ -3034,60 +3055,82 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 <div class="page" id="page-about">
   <section class="section vstage" data-vid="handloom"><div class="wrap">
     <div class="sec-head"><div class="kick">About</div><h2>What this is</h2></div>
-    <!-- Laid out as boxes rather than a column of prose: the page is a summary
-         of what the platform holds, and a summary you have to scroll through is
-         not doing its job. Everything below fits one screen at desktop size. -->
-    <div class="ab-grid">
+    <!-- One page, two columns: the platform at 55%, the programme it was built
+         for at 45%. Boxes rather than prose - a summary you have to dig through
+         is not doing its job. minmax(0,...) on both tracks or the wider
+         column's content pushes past its share. -->
+    <div class="ab-split">
 
-      <div class="ab-lead">
-        <p>Built by Pahlé India Foundation for the state capacity-building programme. It brings what a district officer needs into one place: what district income is, how it is measured, where a district stands, and what its own plans say about raising it.</p>
-        <div class="ab-cta">
-          <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
-          <a href="https://andhrachatbot.streamlit.app"><button class="btn-ghost"><i class="ti ti-message-2"></i> Ask the assistant</button></a>
+      <div class="ab-col">
+        <div class="ab-lead">
+          <p>Built by Pahlé India Foundation for the capacity-building programme. Everything a district officer needs in one place: what district income is, how it is measured, where a district stands, and what its plans say about raising it.</p>
+          <div class="ab-cta">
+            <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> Explore districts</button>
+            <a href="https://andhrachatbot.streamlit.app"><button class="btn-ghost"><i class="ti ti-message-2"></i> Ask the assistant</button></a>
+          </div>
+        </div>
+
+        <div class="ab-box">
+          <h3><i class="ti ti-layout-grid"></i> What is in it</h3>
+          <ul class="ab-two">
+            <li><b>District profiles.</b> All 28, to constituency and mandal.</li>
+            <li><b>Vision plan library.</b> Every plan, searchable and sourced.</li>
+            <li><b>Improving GVA.</b> Playbooks, plus a Kurnool priority list.</li>
+            <li><b>Sector calculators.</b> The workbooks, line by line.</li>
+            <li><b>Case studies.</b> Downloadable in English and Telugu.</li>
+            <li><b>Capacity building.</b> The training record, by district.</li>
+          </ul>
+        </div>
+
+        <div class="ab-box">
+          <h3><i class="ti ti-users"></i> Who it is for</h3>
+          <p><b>District and constituency officers</b> who need reliable answers from official material, <b>master trainers</b> preparing sessions on estimation methodology, and <b>planning teams</b> weighing where a district has comparative advantage.</p>
+        </div>
+
+        <div class="ab-box">
+          <h3><i class="ti ti-file-check"></i> Where it comes from</h3>
+          <p>The NSO guideline for compiling DDP estimates, the GSVA compilation on base year 2022-23, district GSDP, GDDP and per-capita data for all 28 districts, and the vision and action plans for every constituency and mandal. Each figure on the site is a published estimate or derived from one by a stated formula.</p>
+        </div>
+
+        <div class="ab-box ab-caution">
+          <h3><i class="ti ti-alert-triangle"></i> What it is not</h3>
+          <p>It does not replace the official estimate. The calculators show how a figure is built and check one you already have; the department's workbook stays the reference. Priority recommendations cover Kurnool only, because each is checked by hand against that district's plan first.</p>
         </div>
       </div>
 
-      <div class="ab-box">
-        <h3><i class="ti ti-users"></i> Who it is for</h3>
-        <ul>
-          <li><b>District and constituency officers</b> who need reliable answers from official material.</li>
-          <li><b>Master trainers</b> preparing sessions on estimation methodology.</li>
-          <li><b>Planning teams</b> weighing where a district has comparative advantage.</li>
-        </ul>
-      </div>
+      <!-- THE PROGRAMME - every figure and claim from PIF's programme overview
+           deck (Capacity Building Programme for Swarna Andhra Vision). These
+           are the design numbers; what was actually delivered is the training
+           record on the Capacity building page, and the two are not mixed. -->
+      <aside class="ab-col ab-col-prog">
+        <div class="ab-prog-head">
+          <div class="kick">The programme</div>
+          <h3>Capacity Building Programme by Pahlé India Foundation</h3>
+        </div>
 
-      <div class="ab-box ab-wide">
-        <h3><i class="ti ti-layout-grid"></i> What is in it</h3>
-        <ul class="ab-two">
-          <li><b>District profiles.</b> All 28 districts, to constituency and mandal.</li>
-          <li><b>Vision plan library.</b> Every plan, searchable, each result sourced.</li>
-          <li><b>Improving GVA.</b> State playbooks, plus a Kurnool priority list.</li>
-          <li><b>Sector calculators.</b> The department's workbooks, worked line by line.</li>
-          <li><b>Case studies.</b> Fifteen worked examples, in the state and beyond.</li>
-          <li><b>Capacity building.</b> What officers were assessed on and how they scored.</li>
-          <li><b>The assistant.</b> Ask in plain words; every answer names its document.</li>
-        </ul>
-      </div>
+        <div class="ab-box">
+          <h3><i class="ti ti-building-bank"></i> Who PIF is</h3>
+          <p><b>Pahlé India Foundation</b> is a New Delhi based not-for-profit policy think tank founded by Dr. Rajiv Kumar, former Vice Chairman of NITI Aayog. PIF designed and delivered the programme for the Planning Department, Government of Andhra Pradesh, and built this platform to carry it.</p>
+        </div>
 
-      <div class="ab-box">
-        <h3><i class="ti ti-search"></i> How it works</h3>
-        <p>Questions run a semantic search across the corpus, the source documents, the district data and the vision plans, and answers cite what they came from. The pages work the same way: each figure is taken from a published estimate or derived from one by a stated formula.</p>
-      </div>
+        <div class="ab-box">
+          <h3><i class="ti ti-target-arrow"></i> Why it exists</h3>
+          <p>Andhra Pradesh targets a Rs 308 lakh crore economy by 2047, the most ambitious state growth target in India. Reaching it needs every official, Secretary to mandal officer, fluent in how output is measured and driven: GSDP, GDDP and GVA as operational tools, not policy jargon.</p>
+        </div>
 
-      <div class="ab-box">
-        <h3><i class="ti ti-file-check"></i> Where it comes from</h3>
-        <ul>
-          <li>The NSO Guideline for Compilation of DDP Estimates.</li>
-          <li>The Compilation of GSVA Estimates, base year 2022-23.</li>
-          <li>District GSDP, GDDP and per-capita data for all 28 districts.</li>
-          <li>Vision and action plans for every constituency and mandal.</li>
-        </ul>
-      </div>
+        <div class="ab-box">
+          <h3><i class="ti ti-sitemap"></i> What it is</h3>
+          <p>A first-of-its-kind, government-led initiative on a 3-month cascading model: two-day district trainings, then constituency-level and master trainer rounds, across all <b>5 zones and 28 districts</b> — about <b>980 district officials</b>, over <b>6,125 constituency officials</b> and around <b>2,750 master trainers</b>. Sessions cover the 2047 vision, GSDP / GDDP / GMDP methodology, boosting GVA, the 645 KPIs, district profiling and case studies.</p>
+        </div>
 
-      <div class="ab-box ab-caution">
-        <h3><i class="ti ti-alert-triangle"></i> What it is not</h3>
-        <p>It does not replace the official estimate. The calculators show how a figure is built and check one you already have; the department's workbook stays the reference. Priority recommendations cover Kurnool only, because each is checked by hand against that district's plan first. Samples and working figures are labelled as such.</p>
-      </div>
+        <div class="ab-box">
+          <h3><i class="ti ti-plant-2"></i> What it leaves behind</h3>
+          <p>A self-sustaining master trainer ecosystem extending the methodology to every mandal: local ownership at the lowest administrative level, and sector-wise GVA consistent with the vision's targets.</p>
+          <div class="ab-cta">
+            <button class="btn-primary nl" data-page="capacity"><i class="ti ti-school"></i> See the training record</button>
+          </div>
+        </div>
+      </aside>
 
     </div>
   </div></section>
@@ -4321,7 +4364,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21f')
+  fetch('assets/i18n/te.json?v=2026-08-21g')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
@@ -6340,6 +6383,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       });
   };
 })();
+
+
 
 /* Intro or record. Both live in the page; this only flips which is shown, so
    nothing re-renders and the record keeps its selected district when the reader
