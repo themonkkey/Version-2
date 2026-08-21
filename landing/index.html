@@ -568,7 +568,11 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 @media (min-width:1181px){
   .hero-content{margin:0 0 0 clamp(28px,7vw,120px);text-align:left;
     max-width:min(600px,50%);}
-  .hero-cta{justify-content:flex-start;}
+  /* One extra level of specificity, not a preference: the base .hero-cta rule
+     (justify-content:center) sits LATER in the stylesheet than this block, so
+     at equal specificity it wins and the buttons stayed centred while the
+     headline went left. */
+  .hero-content .hero-cta{justify-content:flex-start;}
 }
 @media (max-width:1180px){ .hero > .hero-vis{display:none;} }
 /* No autoplaying footage for reduced motion - the portrait, held. */
