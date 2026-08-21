@@ -840,7 +840,6 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* Pure host for the relocatable capacity node - display:contents keeps the
    wrapper out of the box tree, so the content lays out identically in either
    slot rather than inheriting a stray block from its host. */
-.cap-slot{display:contents;}
 .footer{background:#072B1F;border-top:1px solid rgba(255,255,255,.12);}
 /* Full width, matching the nav: the bar was capped at --maxw and centred, which
    left the brand and the note floating inboard of the nav items directly above
@@ -3696,7 +3695,9 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
         </div>
       </div>
-      <div class="cap-slot" id="capSlotTab"></div>
+      <div id="capacityBodyTab" aria-live="polite">
+        <div class="docs-loading">Loading the training record…</div>
+      </div>
     </div>
 
     <div id="gvaView" hidden>
@@ -3768,7 +3769,6 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     </div>
   </div></section>
 
-  <!-- #capacityBody is created once, here, and relocated by mountCapacity(). -->
   <section class="section vstage" id="capRecord" data-vid="longexposure" hidden><div class="wrap">
     <button class="cap-back" id="capBack" type="button"><i class="ti ti-arrow-left"></i> <span>Back to the programme</span></button>
     <div class="sec-head sec-head-row">
@@ -3777,10 +3777,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
       </div>
     </div>
-    <div class="cap-slot" id="capSlotPage">
-      <div id="capacityBody" aria-live="polite">
-        <div class="docs-loading">Loading the training record…</div>
-      </div>
+    <div id="capacityBodyPage" aria-live="polite">
+      <div class="docs-loading">Loading the training record…</div>
     </div>
   </div></section>
 </div>
@@ -4325,14 +4323,10 @@ function go(page){
   }
   if(page==='districts'){
     initMap();
-    /* Bring the capacity node home if that tab is the one showing. Relying on
-       setTab for this was wrong: routing to #districts/capacity by hash does
-       not call setTab - the tab was already pressed from an earlier visit - so
-       the node stayed behind in the standalone page's slot and the tab rendered
-       empty. The router knows the page is opening, which is the reliable moment. */
-    if(window.__dtab === 'capacity' && window.__mountCapacity){
-      window.__mountCapacity('capSlotTab');
-    }
+    /* The tab's copy re-asserts the map's filter as the page opens. Routing to
+       #districts/capacity by hash does not call setTab — the tab was already
+       pressed from an earlier visit — so this is the reliable moment. */
+    if(window.__dtab === 'capacity' && window.__applyCapFilter) window.__applyCapFilter();
   }
   /* Capacity fetches four JSON files; loadCapacity() guards itself against
      repeats, so calling on every visit is free after the first.
@@ -6074,26 +6068,6 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
      rails is far too much DOM to hold at once, and the reader only ever wants
      one district anyway. */
   var capView = document.getElementById('capacityView');
-/* Capacity shows in two places - the districts tab and the standalone
-   #capacity page - but there is only ONE #capacityBody. Rendering into two
-   copies would bind the district dropdown and the photo lightbox twice, and
-   the two would drift apart the moment either was used. appendChild MOVES a
-   node, listeners and state intact, so the same element simply relocates to
-   whichever slot is on screen. */
-function mountCapacity(slotId){
-  var slot = document.getElementById(slotId);
-  var body = document.getElementById('capacityBody');
-  if(slot && body && body.parentElement !== slot) slot.appendChild(body);
-  /* Each host re-asserts its own scope on arrival, so the two never inherit a
-     district from one another: the tab restores the map's filter, and the page
-     is scoped by the router from its URL. Without this the single shared node
-     would carry whichever district was last picked across to the other
-     surface, which is exactly the coupling the two are meant not to have. */
-  if(slotId === 'capSlotTab' && window.__applyCapFilter) window.__applyCapFilter();
-}
-/* The standalone page lives outside this IIFE, so the router needs a way in.
-   Same escape hatch the tab layer already uses for __setTab. */
-window.__mountCapacity = mountCapacity;
 
 /* ── Highlights stage ─────────────────────────────────────────────────────
    One photograph at a time, advancing on its own like a deck, with the caption
@@ -6274,8 +6248,45 @@ document.addEventListener('click', function(e){
   }
 });
 
-window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity(); };
-  var capBody = document.getElementById('capacityBody');
+window.__loadCapacity = function(){ loadCapacity(); };
+  /* TWO INDEPENDENT COPIES, NOT ONE NODE MOVED.
+     Capacity shows on the districts tab and on its own page. The first version
+     rendered once and relocated that single node between the two hosts, which
+     kept them in sync — and that sync was the bug: picking a district on one
+     surface changed the other, and the page inherited the map's filter.
+
+     So each host gets its own copy, with its own selected district, its own
+     photo index and its own lightbox. What they share is the DATA (one fetch of
+     capacity.json) and the code below. Every id inside a copy is prefixed, so
+     the two never collide in the document, and every lookup goes through cel()
+     rather than document.getElementById.
+
+     CI is the copy currently being rendered or handled. Everything here runs
+     synchronously from an entry point that sets it; the two places that resume
+     later — an image load and the fit timer — capture their own copy. */
+  var CAPS = {}, CI = null;
+  function capInstance(key, hostId, prefix){
+    var host = document.getElementById(hostId);
+    if(!host) return null;
+    var inst = { key:key, prefix:prefix, body:host,
+                 shots:[], activeIdx:0, fbDefault:null, assessDefault:null,
+                 pending:null, pendingSet:false, fitT:null, rendered:false };
+    CAPS[key] = inst;
+    return inst;
+  }
+  /* The two copies, declared once. capInstance only reads its host element, so
+     both exist before any fetch and either can be scoped before data lands. */
+  capInstance('tab',  'capacityBodyTab',  'cap-tab-');
+  capInstance('page', 'capacityBodyPage', 'cap-page-');
+  function cid(name){ return CI.prefix + name; }
+  function cel(name){ return document.getElementById(cid(name)); }
+  /* Run fn with `inst` as the current copy, then put back whatever was current.
+     Restoring rather than clearing matters for the fit pass, which runs inside
+     a render that is itself already scoped. */
+  function withCap(inst, fn){
+    var prev = CI; CI = inst;
+    try { return fn(); } finally { CI = prev; }
+  }
   var CAP = null, CAPA = null, CAPR = null, CAPF = null, capLoaded = false, capLoading = false;
 
   function nfmt(n){ return (n==null) ? '—' : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
@@ -6299,7 +6310,6 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
   /* The photo rail. Every shot on the page shares one lightbox and one flat
      index, so the arrows walk the whole district rather than stopping at the
      end of a session. */
-  var capShots = [];
   function shotRail(session, dname){
     if(!session.photos || !session.photos.length){ return ''; }
     return '<div class="cap-shots">' + session.photos.map(function(p){
@@ -6309,7 +6319,7 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
       var thumb = (typeof p === 'string') ? p : p[0];
       var full  = (typeof p === 'string') ? null : p[1];
       var cap = dname + ' · ' + (session.date ? prettyDate(session.date) : session.kind);
-      var i = capShots.push({ src:thumb, full:full || thumb, cap:cap }) - 1;
+      var i = CI.shots.push({ src:thumb, full:full || thumb, cap:cap }) - 1;
       return '<button class="cap-shot" data-shot="'+i+'" type="button" ' +
              'aria-label="Enlarge photograph from '+esc(cap)+'">' +
              '<img src="'+esc(thumb)+'" alt="Training session, '+esc(cap)+'" loading="lazy" decoding="async">' +
@@ -6513,13 +6523,21 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
       if(over()){ chips[j].hidden = true; vis--; setWhoMore(vis); break; }
     }
   }
-  var capFitT = null;
+  /* One resize listener for both copies: each is re-fitted against itself.
+     The timer lives on the copy, so a resize while the other is off screen
+     cannot cancel this one's pass. */
   window.addEventListener('resize', function(){
-    clearTimeout(capFitT);
-    capFitT = setTimeout(function(){
-      var m = document.getElementById('capActiveSess');
-      if(m && !m.hidden) fitHighlights(m);
-    }, 120);
+    Object.keys(CAPS).forEach(function(k){
+      var inst = CAPS[k];
+      if(!inst.rendered) return;
+      clearTimeout(inst.fitT);
+      inst.fitT = setTimeout(function(){
+        withCap(inst, function(){
+          var m = cel('capActiveSess');
+          if(m && !m.hidden) fitHighlights(m);
+        });
+      }, 120);
+    });
   });
 
   function sessionBlock(s, dname){
@@ -6650,13 +6668,12 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
       '<div class="cap-datechips" role="tablist" aria-label="Choose a session">' + chips + '</div></div>';
   }
 
-  var capActiveIdx = 0;
 
   // Shown until a district is chosen, either by picking it on the map (which
   // drives DISTF via DTABS_DISTRICT) or directly from the dropdown here.
   function renderBriefPlaceholder(){
-    capShots = [];
-    var brief = document.getElementById('capBrief');
+    CI.shots = [];
+    var brief = cel('capBrief');
     if(brief) brief.innerHTML =
       '<div class="cap-brief cap-brief-empty">' +
         '<h3>Select a district</h3>' +
@@ -6665,7 +6682,7 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
         '<p class="lede">Choose a district from the dropdown above to see its ' +
         'training sessions, attendance, and highlights.</p>' +
       '</div>';
-    var meta = document.getElementById('capMeta');
+    var meta = cel('capMeta');
     if(meta) meta.innerHTML = '';
     // The teaser cards already carry their generic default copy from the
     // markup renderCapacity() writes; nothing to reset there until a district
@@ -6673,7 +6690,8 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
   }
 
   function renderBrief(d){
-    capShots = [];
+    var inst = CI;          /* captured for the handlers bound below */
+    CI.shots = [];
     var span = (d.date_from && d.date_to)
       ? prettyDate(d.date_from) + ' – ' + prettyDate(d.date_to) : '';
     var lede = 'The programme ran ' + d.sessions_delivered + ' session' +
@@ -6683,30 +6701,30 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
       'highlights, and who was in the room. Pick a day to read that report.';
 
     d.sessions.forEach(function(s, i){ s._domId = 'cap-sess-' + i; });
-    capActiveIdx = 0;   // day one, every time a district is opened
+    CI.activeIdx = 0;   // day one, every time a district is opened
 
-    var brief = document.getElementById('capBrief');
+    var brief = cel('capBrief');
     brief.innerHTML = '<div class="cap-brief">' +
       '<h3>Brief of the training: ' + esc(d.name) + '</h3>' +
       '<p class="lede">' + esc(lede) + '</p>' +
-      '<div id="capPager"></div>' +
-      '<div id="capActiveSess"></div>' +
+      '<div id="' + cid('capPager') + '"></div>' +
+      '<div id="' + cid('capActiveSess') + '"></div>' +
     '</div>';
 
     function showSession(i){
-      capActiveIdx = i;
+      CI.activeIdx = i;
       // Only one session's photos are ever on screen, so the shot index resets
       // per session rather than growing across every chip click in the visit.
-      capShots = [];
-      document.getElementById('capPager').innerHTML = dateChips(d.sessions, i);
-      var pager = document.getElementById('capPager');
+      CI.shots = [];
+      cel('capPager').innerHTML = dateChips(d.sessions, i);
+      var pager = cel('capPager');
       pager.querySelectorAll('.cap-datechip').forEach(function(c){
-        c.addEventListener('click', function(){ showSession(parseInt(c.dataset.idx, 10)); });
+        c.addEventListener('click', function(){ withCap(inst, function(){ showSession(parseInt(c.dataset.idx, 10)); }); });
       });
-      var mount = document.getElementById('capActiveSess');
+      var mount = cel('capActiveSess');
       mount.innerHTML = sessionBlock(d.sessions[i], d.name);
       mount.querySelectorAll('.cap-shot').forEach(function(b){
-        b.addEventListener('click', function(){ openShot(parseInt(b.dataset.shot,10)); });
+        b.addEventListener('click', function(){ withCap(inst, function(){ openShot(parseInt(b.dataset.shot,10)); }); });
       });
       /* "Show all" reveals the rest of the list in place, no re-render */
       mount.querySelectorAll('.cap-more').forEach(function(b){
@@ -6727,7 +6745,7 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
     renderResults(d);
     renderFeedback(d);
 
-    var meta = document.getElementById('capMeta');
+    var meta = cel('capMeta');
     if(meta){
       meta.innerHTML = '<b>' + d.sessions_delivered + '</b> sessions · <b>' +
         nfmt(d.photos_total) + '</b> photographs' +
@@ -6736,6 +6754,9 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
   }
 
   /* Lightbox */
+  /* One reader, one open lightbox — so the cursor and the zoom state are shared
+     between the two copies rather than duplicated. Which photographs it is
+     paging through comes from CI.shots, which is per copy. */
   var lbAt = 0, lbToken = 0, lbZoomed = false;
 
   /* Size the photo to the pixels it actually has.
@@ -6747,7 +6768,7 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
      one image pixel lands on one device pixel. Smaller, but genuinely crisp.
      Zoom is there for anyone who would rather have it big and accept the mush. */
   function fitShot(img){
-    var lb = document.getElementById('capLb');
+    var lb = cel('capLb');
     var dpr = window.devicePixelRatio || 1;
     var nat = img.naturalWidth || 0;
     if(!nat){ img.style.width = ''; return; }
@@ -6765,10 +6786,11 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
   }
 
   function openShot(i){
-    if(!capShots.length) return;
-    lbAt = (i + capShots.length) % capShots.length;
-    var shot = capShots[lbAt];
-    var lb = document.getElementById('capLb');
+    if(!CI.shots.length) return;
+    var inst = CI;          /* the image callbacks below resume after CI may have moved */
+    lbAt = (i + CI.shots.length) % CI.shots.length;
+    var shot = CI.shots[lbAt];
+    var lb = cel('capLb');
     var img = lb.querySelector('img');
 
     /* Show the thumbnail immediately, then swap in the enhanced copy once it has
@@ -6785,22 +6807,22 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
         if(mine !== lbToken) return;
         img.src = shot.full;
         img.classList.remove('lb-soft');
-        fitShot(img);
+        withCap(inst, function(){ fitShot(img); });
       };
       big.src = shot.full;
     } else {
-      img.onload = function(){ if(mine === lbToken) fitShot(img); };
+      img.onload = function(){ if(mine === lbToken) withCap(inst, function(){ fitShot(img); }); };
     }
     lbZoomed = false;
     lb.classList.remove('zoomed');
     fitShot(img);
 
     lb.querySelector('figcaption').textContent =
-      shot.cap + '  ·  ' + (lbAt+1) + ' of ' + capShots.length;
+      shot.cap + '  ·  ' + (lbAt+1) + ' of ' + CI.shots.length;
     lb.classList.add('on');
     lb.querySelector('.cap-lb-x').focus();
   }
-  function closeShot(){ document.getElementById('capLb').classList.remove('on'); }
+  function closeShot(){ cel('capLb').classList.remove('on'); }
 
   /* ── Baseline and endline results ─────────────────────────────────────
      Per district, from the consolidated assessment report where one has been
@@ -6814,20 +6836,19 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
 
   /* Training feedback, where the district has filed one. Same shape as the
      assessment card: the headline numbers here, the full table on its own page. */
-  var capFbDefault = null;
 
   function renderFeedback(d){
-    var card = document.getElementById('capFbCard');
+    var card = cel('capFbCard');
     if(!card) return;
-    if(capFbDefault == null) capFbDefault = card.innerHTML;
+    if(CI.fbDefault == null) CI.fbDefault = card.innerHTML;
     var rec = CAPF && CAPF.districts && CAPF.districts[d.slug];
-    if(!rec || !rec.levels){ card.innerHTML = capFbDefault; return; }
+    if(!rec || !rec.levels){ card.innerHTML = CI.fbDefault; return; }
     /* Feedback is filed per level and the three rounds can differ sharply, so
        the card leads with the district round and names which one it is showing
        rather than blending them. The page behind it opens on the same level. */
     var ORDER = ['district', 'constituency', 'master'];
     var lvKey = ORDER.filter(function(k){ return rec.levels[k]; })[0];
-    if(!lvKey){ card.innerHTML = capFbDefault; return; }
+    if(!lvKey){ card.innerHTML = CI.fbDefault; return; }
     var lv = rec.levels[lvKey];
     var filed = ORDER.filter(function(k){ return rec.levels[k]; }).length;
     /* The four statements the feedback page reports, by their number on the
@@ -6867,15 +6888,14 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
       '</a>';
   }
 
-  var capAssessDefault = null;
 
   function renderResults(d){
-    var card = document.getElementById('capAssessCard');
+    var card = cel('capAssessCard');
     if(!card) return;
-    if(capAssessDefault == null) capAssessDefault = card.innerHTML;
+    if(CI.assessDefault == null) CI.assessDefault = card.innerHTML;
     var rec = CAPR && CAPR.districts && CAPR.districts[d.slug];
     if(!rec){
-      card.innerHTML = capAssessDefault;
+      card.innerHTML = CI.assessDefault;
       card.classList.remove('has-results');
       return;
     }
@@ -6927,11 +6947,11 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
     }).join('');
     var pick =
       '<div class="cap-pick">' +
-        '<label for="capDistrict">Brief of the training</label>' +
-        '<select id="capDistrict" class="cap-select" aria-label="Choose a district">' +
+        '<label for="' + cid('capDistrict') + '">Brief of the training</label>' +
+        '<select id="' + cid('capDistrict') + '" class="cap-select" aria-label="Choose a district">' +
           '<option value="" disabled selected hidden>Select a district&hellip;</option>' + opts +
         '</select>' +
-        '<span class="cap-meta" id="capMeta"></span>' +
+        '<span class="cap-meta" id="' + cid('capMeta') + '"></span>' +
       '</div>';
 
     var pending = a.responses_available ? '' :
@@ -6940,7 +6960,7 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
 
     var two =
       '<div class="cap-two">' +
-        '<div class="cap-card" id="capFbCard">' +
+        '<div class="cap-card" id="' + cid('capFbCard') + '">' +
           '<a class="cap-card-inner" href="capacity/feedback.html">' +
           '<h3>Training feedback</h3>' +
           '<p>How officers rated each session: objectives, relevance to their role, ' +
@@ -6954,7 +6974,7 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
           '<span class="cap-go">Open the feedback detail <i class="ti ti-arrow-right"></i></span>' +
           '</a>' +
         '</div>' +
-        '<div class="cap-card cap-card-assess" id="capAssessCard">' +
+        '<div class="cap-card cap-card-assess" id="' + cid('capAssessCard') + '">' +
           '<a class="cap-card-inner" href="capacity/assessment.html">' +
           '<h3>Baseline &amp; endline</h3>' +
           '<p>The knowledge assessment run before and after training at all three ' +
@@ -6969,10 +6989,10 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
           '</a>' +
         '</div>' +
       '</div>';
-    capAssessDefault = null;   // captured from the DOM after paint
+    CI.assessDefault = null;   // captured from the DOM after paint
 
     var lightbox =
-      '<div class="cap-lb" id="capLb" role="dialog" aria-modal="true" aria-label="Training photograph">' +
+      '<div class="cap-lb" id="' + cid('capLb') + '" role="dialog" aria-modal="true" aria-label="Training photograph">' +
         '<button class="cap-lb-x" type="button" aria-label="Close">&times;</button>' +
         '<button class="cap-lb-nav cap-lb-prev" type="button" aria-label="Previous photograph"><i class="ti ti-chevron-left"></i></button>' +
         '<button class="cap-lb-nav cap-lb-next" type="button" aria-label="Next photograph"><i class="ti ti-chevron-right"></i></button>' +
@@ -6982,40 +7002,48 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
         '</figure>' +
       '</div>';
 
-    capBody.innerHTML = strip + pick + '<div id="capBrief"></div>' + two + lightbox;
+    CI.body.innerHTML = strip + pick + '<div id="' + cid('capBrief') + '"></div>' + two + lightbox;
 
-    var sel = document.getElementById('capDistrict');
-    sel.addEventListener('change', function(){ renderBrief(CAP.districts[+sel.value]); });
+    var inst = CI;          /* every handler below belongs to THIS copy */
+    var sel = cel('capDistrict');
+    sel.addEventListener('change', function(){
+      withCap(inst, function(){ renderBrief(CAP.districts[+sel.value]); });
+    });
     /* Whoever asked first wins: a district in the capacity URL, else the map's
        filter for the districts tab, else nothing selected. */
-    var want = capPendingSet ? capPending : DISTF;
+    var want = CI.pendingSet ? CI.pending : DISTF;
     var startIdx = want ? CAP.districts.findIndex(function(d){ return normName(d.name) === normName(want); }) : -1;
     if(startIdx >= 0){ sel.value = String(startIdx); renderBrief(CAP.districts[startIdx]); }
     else renderBriefPlaceholder();
-    capPendingSet = false;
+    CI.pendingSet = false;
 
-    var lb = document.getElementById('capLb');
-    lb.querySelector('.cap-lb-x').addEventListener('click', closeShot);
+    var lb = cel('capLb');
+    lb.querySelector('.cap-lb-x').addEventListener('click', function(){ withCap(inst, closeShot); });
     var zoomBtn = lb.querySelector('.cap-lb-zoom');
     function toggleZoom(){
       lbZoomed = !lbZoomed;
       lb.classList.toggle('zoomed', lbZoomed);
-      fitShot(lb.querySelector('img'));
+      withCap(inst, function(){ fitShot(lb.querySelector('img')); });
     }
     if(zoomBtn) zoomBtn.addEventListener('click', function(e){ e.stopPropagation(); toggleZoom(); });
     lb.querySelector('img').addEventListener('click', function(e){ e.stopPropagation(); toggleZoom(); });
     window.addEventListener('resize', function(){
-      if(lb.classList.contains('on')) fitShot(lb.querySelector('img'));
+      if(lb.classList.contains('on')) withCap(inst, function(){ fitShot(lb.querySelector('img')); });
     });
-    lb.querySelector('.cap-lb-prev').addEventListener('click', function(){ openShot(lbAt-1); });
-    lb.querySelector('.cap-lb-next').addEventListener('click', function(){ openShot(lbAt+1); });
-    lb.addEventListener('click', function(e){ if(e.target === lb) closeShot(); });
+    lb.querySelector('.cap-lb-prev').addEventListener('click', function(){ withCap(inst, function(){ openShot(lbAt-1); }); });
+    lb.querySelector('.cap-lb-next').addEventListener('click', function(){ withCap(inst, function(){ openShot(lbAt+1); }); });
+    lb.addEventListener('click', function(e){ if(e.target === lb) withCap(inst, closeShot); });
+    /* Keys are global, so this copy only answers them while ITS lightbox is the
+       one open — otherwise both copies would act on one Escape. */
     document.addEventListener('keydown', function(e){
       if(!lb.classList.contains('on')) return;
-      if(e.key === 'Escape') closeShot();
-      if(e.key === 'ArrowLeft') openShot(lbAt-1);
-      if(e.key === 'ArrowRight') openShot(lbAt+1);
+      withCap(inst, function(){
+        if(e.key === 'Escape') closeShot();
+        if(e.key === 'ArrowLeft') openShot(lbAt-1);
+        if(e.key === 'ArrowRight') openShot(lbAt+1);
+      });
     });
+    inst.rendered = true;
   }
 
   function loadCapacity(){
@@ -7032,11 +7060,16 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
     ]).then(function(res){
       CAP = res[0]; CAPA = res[1]; CAPR = res[2]; CAPF = res[3];
       capLoaded = true; capLoading = false;
-      renderCapacity();
-      applyCapFilter();
+      /* One fetch, both copies. Each renders against its own state: the tab
+         picks up the map's filter, the page whatever its URL asked for. */
+      Object.keys(CAPS).forEach(function(k){
+        withCap(CAPS[k], renderCapacity);
+      });
     }).catch(function(err){
       capLoading = false;
-      capBody.innerHTML = '<div class="docs-empty">Could not load the training record.</div>';
+      Object.keys(CAPS).forEach(function(k){
+        CAPS[k].body.innerHTML = '<div class="docs-empty">Could not load the training record.</div>';
+      });
       console.error('capacity load failed', err);
     });
   }
@@ -7112,14 +7145,17 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
      router runs on the first frame; capacity.json lands several hundred ms
      later, so #capacity/Kurnool used to render the placeholder and the district
      in the URL was silently lost. */
-  var capPending = null, capPendingSet = false;
+  function capScopeIn(key, name){
+    var inst = CAPS[key];
+    if(inst) withCap(inst, function(){ capScopeTo(name); });
+  }
   function capScopeTo(name){
-    var sel = document.getElementById('capDistrict');
+    var sel = cel('capDistrict');
     /* Not ready yet — the fetch is in flight, or it has resolved but the record
        has not painted. Either way remember the ask; renderCapacity applies it
        as it builds. */
-    if(!capLoaded || !sel){ capPending = name || null; capPendingSet = true; return; }
-    var note = document.getElementById('capAbsent');
+    if(!capLoaded || !sel){ CI.pending = name || null; CI.pendingSet = true; return; }
+    var note = cel('capAbsent');
     if(note) note.remove();
     if(!name){
       if(sel.value !== ''){ sel.value = ''; renderBriefPlaceholder(); }
@@ -7130,16 +7166,17 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
       if(+sel.value !== i){ sel.value = String(i); renderBrief(CAP.districts[i]); }
     } else {
       sel.closest('.cap-pick').insertAdjacentHTML('beforebegin',
-        '<p class="cap-absent" id="capAbsent"><i class="ti ti-info-circle"></i><span>' +
+        '<p class="cap-absent" id="' + cid('capAbsent') + '"><i class="ti ti-info-circle"></i><span>' +
         esc(name) + ' is not among the ' + CAP.totals.districts +
         ' districts with a filed training status report. The briefs below cover the districts that have one.</span></p>');
     }
   }
   /* The districts tab reads the map's filter; the capacity page passes its own
      name from the URL. Same renderer, two callers, no shared variable. */
-  function applyCapFilter(){ capScopeTo(DISTF); }
+  function applyCapFilter(){ capScopeIn('tab', DISTF); }
   window.__applyCapFilter = applyCapFilter;
-  window.__capScopeTo = capScopeTo;
+  /* The page drives its own copy only; the tab's is the map's business. */
+  window.__capScopeTo = function(name){ capScopeIn('page', name); };
 
   /* Improving GVA: the playbooks are the DDP Toolbox, state-wide by design, so
      the district scope lives inside the sector detail rather than in a card at
@@ -7712,7 +7749,7 @@ window.__loadCapacity = function(){ mountCapacity('capSlotPage'); loadCapacity()
     if(which === 'docs')  load();
     if(which === 'cases') loadCases();
     if(which === 'gva')   loadGva();
-    if(which === 'capacity'){ mountCapacity('capSlotTab'); loadCapacity(); }
+    if(which === 'capacity'){ loadCapacity(); }
     /* The tab is part of where you are, so it belongs in the address. Without
        it, Back could not step between tabs and a tab could not be linked to.
        fromNav means the nav layer is replaying a URL, so it must not push. */
