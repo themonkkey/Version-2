@@ -1002,6 +1002,9 @@ button.gstat:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 /* one line, not two: the 720px cap on .sec-head wrapped this intro and cost the
    map ~30px of height it can use instead. */
 #page-districts .sec-head{max-width:none;margin-bottom:clamp(15px,2vw,23px);}
+/* the standalone capacity page has no map competing for height, so its intro
+   runs the full width of the wrap rather than wrapping inside the 720px cap. */
+#page-capacity .sec-head{max-width:none;}
 /* fitMap() sizes the map as viewport - boxTop - chrome, so every pixel trimmed
    above the box becomes map. The districts heading is the biggest single
    contributor, so it gets a tighter scale than the shared .sec-head default. */
@@ -3601,7 +3604,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <div class="sec-head sec-head-row">
         <div>
           <h2>Capacity building programme</h2>
-          <p>The sessions run, the officers trained, the photographs filed, district by district.</p>
+          <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
         </div>
       </div>
       <div class="cap-slot" id="capSlotTab"></div>
@@ -3635,7 +3638,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <div class="sec-head sec-head-row">
       <div>
         <h2>Capacity building programme</h2>
-        <p>The sessions run, the officers trained, the photographs filed, district by district.</p>
+        <p>What was run in each district: the sessions, the officers who attended, the photographs filed, and what the training measured.</p>
       </div>
     </div>
     <div class="cap-slot" id="capSlotPage">
