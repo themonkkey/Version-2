@@ -2915,7 +2915,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <button class="nl" data-page="calculator"><span class="nl-t" data-t="Calculator">Calculator</span></button>
       <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
       <button class="nl" data-page="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
-      <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
+      <button class="nl" data-page="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
       <button class="langtog" id="langTog" type="button" data-no-i18n hidden aria-pressed="false">తెలుగు</button>
       <a href="https://andhrachatbot.streamlit.app" class="btn-wrap"><button class="btn-primary btn-nav">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
       <button class="hamburger" id="hamburger" aria-label="Menu"><i class="ti ti-menu-2"></i></button>
@@ -2928,7 +2928,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <button class="nl" data-page="calculator"><span class="nl-t" data-t="Calculator">Calculator</span></button>
     <button class="nl" data-page="districts"><span class="nl-t" data-t="Districts">Districts</span></button>
       <button class="nl" data-page="capacity"><span class="nl-t" data-t="Capacity building">Capacity building</span></button>
-    <button class="nl" data-page="districts" data-goto-tab="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
+    <button class="nl" data-page="cases"><span class="nl-t" data-t="Case studies">Case studies</span></button>
     <button class="langtog" id="langTogM" type="button" data-no-i18n hidden aria-pressed="false">తెలుగు</button>
     <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary" style="width:100%;justify-content:center;margin-top:12px">Open assistant <i class="ti ti-arrow-up-right"></i></button></a>
   </div>
@@ -3815,6 +3815,27 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   </div></section>
 </div>
 
+<!-- CASE STUDIES — its own page, same treatment as capacity building.
+     The nav item used to jump into the districts page's cases tab, which
+     dragged the reader into that page's tab row and map filter. This page
+     shows ONLY the case studies with a downloadable deck pair; the full
+     library, including the ones without decks, stays on the districts tab
+     exactly as it was. Own fetch, own body — nothing shared with the tab
+     but the manifest itself. -->
+<div class="page" id="page-cases">
+  <section class="section vstage" data-vid="longexposure"><div class="wrap">
+    <div class="sec-head sec-head-row">
+      <div>
+        <h2>Capacity-building case studies</h2>
+        <p>The case studies taught in the programme, each downloadable as a slide deck in English and Telugu.</p>
+      </div>
+    </div>
+    <div id="casesPageBody" aria-live="polite">
+      <div class="docs-loading">Loading the case study library…</div>
+    </div>
+  </div></section>
+</div>
+
 
 <footer class="footer"><div class="footer-inner">
   <div class="f-brand">Pahlé India Foundation</div>
@@ -4300,7 +4321,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21e')
+  fetch('assets/i18n/te.json?v=2026-08-21f')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
@@ -4321,21 +4342,15 @@ const LOOP_SCRIM = {
 })();
 
 // ---------- router ----------
-const pages = ['home','about','methodology','calculator','districts','capacity'];
+const pages = ['home','about','methodology','calculator','districts','capacity','cases'];
 /* Capacity building and Case studies are nav items that open a tab inside the
    Districts page, so three nav buttons share data-page="districts" and the old
    "highlight anything matching the page" rule lit all three at once. An item
    that names a tab is active only for that tab; plain Districts covers the tabs
    that have no nav item of their own. */
 function syncNav(page){
-  const tab = window.__dtab || 'map';
   document.querySelectorAll('.navlinks .nl, .mobile-menu .nl').forEach(b=>{
-    const wants = b.dataset.gotoTab;
-    const on = wants
-      ? (page === 'districts' && tab === wants)
-      : (b.dataset.page === page &&
-         (page !== 'districts' || tab !== 'cases'));
-    b.classList.toggle('active', on);
+    b.classList.toggle('active', b.dataset.page === page);
   });
 }
 window.__syncNav = syncNav;
@@ -4366,6 +4381,7 @@ function go(page){
      and landing on the empty state after opening one district's feedback would
      lose the reader's place. DTABS_DISTRICT is the same entry point the map
      uses, so the dropdown, the brief and the filter all follow. */
+  if(page==='cases' && window.__loadCasesPage) window.__loadCasesPage();
   if(page==='capacity' && window.__loadCapacity){
     window.__loadCapacity();
     if(window.__loadHighlights) window.__loadHighlights();
@@ -5685,6 +5701,49 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       group('Andhra Pradesh districts', apSub, CASES.ap)+
       group('Replicable models', moSub, CASES.model);
   }
+
+/* ── Case studies, the standalone page ────────────────────────────────────
+   Only the cases with a downloadable deck pair. The full library — decks or
+   not — stays on the districts tab, whose renderer also handles the map
+   filter; this page has neither a map nor a filter, so it shares nothing
+   with that tab except the manifest. Cards are the same markup the tab
+   renders (caseCard above), so a deck chip or cover added there appears
+   here on the same build. */
+(function(){
+  var built = false;
+
+  function group(title, sub, list){
+    if(!list || !list.length) return '';
+    return '<div class="cases-group"><h3>'+esc(title)+'</h3>'+
+      '<p class="cg-sub">'+esc(sub)+'</p>'+
+      '<div class="cases-grid">'+list.map(caseCard).join('')+'</div></div>';
+  }
+
+  window.__loadCasesPage = function(){
+    if(built) return;
+    built = true;
+    var body = document.getElementById('casesPageBody');
+    if(!body) return;
+    fetch('assets/case_studies.json?v=2026-08-21a')
+      .then(function(r){ return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function(d){
+        var has = function(c){ return !!c.decks; };
+        body.innerHTML =
+          group('Andhra Pradesh districts',
+                'Case-for-action briefs tied to a specific district.',
+                d.ap.filter(has)) +
+          group('Replicable models',
+                'Clusters and models from elsewhere, framed for district and mandal officers.',
+                d.model.filter(has));
+      })
+      .catch(function(err){
+        built = false;   // a dropped connection should not poison the next visit
+        body.innerHTML = '<div class="docs-empty">Could not load the case study library.</div>';
+        console.error('cases page load failed', err);
+      });
+  };
+})();
+
   function loadCases(){
     if(casesLoaded) return;
     casesLoaded = true;
