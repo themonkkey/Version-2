@@ -2832,18 +2832,11 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   align-items:center;
   padding:clamp(10px,1.5vh,15px) clamp(13px,1.5vw,19px);
   border-radius:13px;border:1.7px solid;background:rgba(255,255,255,.05);
-  margin-left:calc(var(--i,0) * 7%);}
+  width:calc(58% + var(--i,0) * 14%);margin-left:auto;}
 .lv-step.gdp{border-color:rgba(255,255,255,.34);}
 .lv-step.gsdp{border-color:#2B93BF;background:rgba(43,147,191,.10);}
 .lv-step.gddp{border-color:#6FA817;background:rgba(111,168,23,.12);}
 .lv-step.mdp{border-color:#C6FF6A;background:rgba(198,255,106,.14);}
-/* elbow connector down into the next step */
-.lv-step:not(:last-child)::after{content:"";position:absolute;
-  left:26px;bottom:calc(-1 * clamp(8px,1.3vh,13px) - 2px);
-  width:14px;height:clamp(8px,1.3vh,13px);
-  border-left:1.7px solid rgba(255,255,255,.30);
-  border-bottom:1.7px solid rgba(255,255,255,.30);
-  border-bottom-left-radius:8px;}
 .lv-ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
   border:1.5px solid;font-size:18px;}
 .lv-step.gdp .lv-ic{border-color:rgba(255,255,255,.4);color:rgba(255,255,255,.75);}
@@ -2880,7 +2873,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 @media (max-width:700px){
   .lv-wrap{grid-template-columns:1fr;}
   .lv-rail{display:none;}
-  .lv-step{margin-left:calc(var(--i,0) * 3%);grid-template-columns:auto auto 1fr;}
+  .lv-step{width:100%;margin-left:0;grid-template-columns:auto auto 1fr;}
   .lv-meta{grid-column:2 / -1;text-align:left;}
 }
 
@@ -2890,19 +2883,20 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 .lv-steps{position:relative;}
 .lv-walker{position:absolute;z-index:2;font-size:24px;color:#C6FF6A;
   filter:drop-shadow(0 2px 6px rgba(0,0,0,.6));
-  left:2%;top:-34px;opacity:0;pointer-events:none;}
+  transform:scaleX(-1);
+  left:60%;top:-40px;opacity:0;pointer-events:none;}
 .lv-walker i{display:block;}
 @keyframes lvWalk{
-  0%   {left:2%;  top:calc(0% - 34px);  opacity:0;}
+  0%   {left:58%; top:calc(0% - 40px);  opacity:0;}
   4%   {opacity:1;}
-  20%  {left:8%;  top:calc(0% - 34px);}
-  26%  {left:10%; top:calc(26.5% - 34px);}
-  42%  {left:16%; top:calc(26.5% - 34px);}
-  48%  {left:18%; top:calc(53% - 34px);}
-  64%  {left:24%; top:calc(53% - 34px);}
-  70%  {left:26%; top:calc(79.5% - 34px);}
-  92%  {left:34%; top:calc(79.5% - 34px);opacity:1;}
-  100% {left:37%; top:calc(79.5% - 34px);opacity:0;}
+  20%  {left:47%; top:calc(0% - 40px);}
+  26%  {left:43%; top:calc(26.5% - 40px);}
+  42%  {left:33%; top:calc(26.5% - 40px);}
+  48%  {left:29%; top:calc(53% - 40px);}
+  64%  {left:19%; top:calc(53% - 40px);}
+  70%  {left:15%; top:calc(79.5% - 40px);}
+  92%  {left:5%;  top:calc(79.5% - 40px);opacity:1;}
+  100% {left:2%;  top:calc(79.5% - 40px);opacity:0;}
 }
 @keyframes lvBob{0%,100%{transform:translateY(0) rotate(0deg);}
   25%{transform:translateY(-2px) rotate(-2deg);}
