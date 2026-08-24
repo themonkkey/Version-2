@@ -1,16 +1,16 @@
 {
   "map": {
-    "title": "assets/video/aerial.mp4",
-    "why": "assets/video/longexposure.mp4",
-    "gva": "assets/video/ledger.mp4",
-    "routes": "assets/video/vector.mp4",
-    "levels": "assets/video/isometric.mp4",
+    "title": "assets/video/gridwork.mp4",
+    "why": "assets/video/gridwork.mp4",
+    "gva": "assets/video/gridwork.mp4",
+    "routes": "assets/video/gridwork.mp4",
+    "levels": "assets/video/gridwork.mp4",
     "split": "assets/video/gridwork.mp4",
-    "approach": "assets/video/handloom.mp4",
-    "chain": "assets/video/collage2047.mp4",
-    "vintage": "assets/video/glass.mp4",
-    "district": "assets/video/ink.mp4",
+    "approach": "assets/video/gridwork.mp4",
+    "chain": "assets/video/gridwork.mp4",
+    "vintage": "assets/video/gridwork.mp4",
+    "district": "assets/video/gridwork.mp4",
     "mandal": "assets/video/gridwork.mp4",
-    "takeaways": "assets/video/aerial.mp4"
+    "takeaways": "assets/video/gridwork.mp4"
   }
 }
