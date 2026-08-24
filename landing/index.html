@@ -2888,7 +2888,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 /* the split bar */
 .gv-bar{max-width:760px;margin:0 auto clamp(10px,1.8vh,18px);display:grid;gap:5px;}
 .gv-row1{border:1.7px solid rgba(255,255,255,.30);border-radius:10px;
-  padding:5px 12px;background:rgba(255,255,255,.05);}
+  padding:5px 12px;background:rgba(255,255,255,.05);
+  display:flex;justify-content:space-between;align-items:baseline;}
 .gv-full{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
   color:rgba(255,255,255,.6);}
 .gv-row2{display:grid;grid-template-columns:40fr 60fr;gap:5px;}
@@ -3508,7 +3509,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
             <div class="gv-term gva" style="--i:2"><span class="gv-tic"><i class="ti ti-sparkles" aria-hidden="true"></i></span><span class="gv-k">Gross Value Added</span><span class="gv-v" data-no-i18n>Rs 60</span></div>
           </div>
           <div class="gv-bar" role="img" aria-label="Rs 100 of output splits into Rs 40 of inputs used up and Rs 60 of value added">
-            <div class="gv-row1"><span class="gv-full">Output</span></div>
+            <div class="gv-row1"><span class="gv-full">Output</span><span class="gv-full" data-no-i18n>Rs 100</span></div>
             <div class="gv-row2">
               <span class="gv-seg gv-in"><span class="gv-st">Inputs used up</span><span data-no-i18n>Rs 40</span></span>
               <span class="gv-seg gv-va"><span class="gv-st">Value added</span><span data-no-i18n>Rs 60</span></span>
