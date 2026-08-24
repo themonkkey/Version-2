@@ -2609,11 +2609,24 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 .md-slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   padding:clamp(10px,1.6vh,20px) clamp(14px,4vw,64px);}
+/* Per-slide video background. The video and its scrim are injected by the deck
+   JS only for the slide on screen (and the one next to it), then removed - so
+   at most two videos ever decode at once. This is the guard against the whole
+   deck decoding twelve loops and cooking the machine, which an earlier version
+   of the hero did. A slide with no video just shows the dark stage. */
+.md-vid{position:absolute;inset:0;z-index:0;overflow:hidden;
+  opacity:0;transition:opacity .6s ease;}
+.md-vid.on{opacity:1;}
+.md-vid video{width:100%;height:100%;object-fit:cover;display:block;}
+/* Scrim so white headings stay legible over any footage. */
+.md-vid::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(6,20,14,.52),rgba(6,20,14,.72));}
+
 /* A slide that is taller than the viewport scrolls INSIDE its panel rather than
    pushing the page - otherwise one long slide reintroduces the scroll problem
    the rebuild exists to remove. */
-.md-panel{width:100%;max-width:1180px;max-height:100%;overflow-y:auto;
-  padding:clamp(14px,2vh,26px) clamp(14px,2vw,30px);
+.md-panel{width:100%;max-width:1320px;max-height:100%;overflow-y:auto;
+  padding:clamp(18px,2.6vh,34px) clamp(18px,2.6vw,40px);
   border-radius:18px;
   background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);
   backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
@@ -2651,10 +2664,10 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   text-transform:uppercase;}
 .md-no{font-size:11px;font-weight:700;letter-spacing:.12em;color:rgba(198,236,143,.8);
   margin-bottom:6px;}
-.md-panel h2{font-size:clamp(26px,3.6vw,46px);line-height:1.1;letter-spacing:-.026em;
-  margin:10px 0 0;}
-.md-panel h3.serif{font-size:clamp(19px,2.3vw,31px);line-height:1.18;letter-spacing:-.022em;
-  margin:0 0 8px;}
+.md-panel h2{font-size:clamp(28px,3.9vw,50px);line-height:1.08;letter-spacing:-.026em;
+  margin:10px 0 0;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35);}
+.md-panel h3.serif{font-size:clamp(21px,2.5vw,34px);line-height:1.16;letter-spacing:-.022em;
+  margin:0 0 8px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35);}
 .md-lede{font-size:clamp(13.5px,1.25vw,15.5px);line-height:1.55;
   color:rgba(255,255,255,.8);margin:0 0 clamp(10px,1.6vh,16px);max-width:78ch;}
 .md-src{font-size:11.5px;color:rgba(255,255,255,.5);margin-top:14px;}
@@ -3131,7 +3144,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <div class="md-track" id="mdTrack">
 
       <!-- 1 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="title">
         <div class="md-panel md-title">
           <div class="kick">Methodology</div>
           <h2 class="serif">How a district&#39;s income is estimated</h2>
@@ -3141,7 +3154,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 2 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="why">
         <div class="md-panel">
           <div class="md-no">01</div>
           <h3 class="serif">Measurement exists to be used, not filed</h3>
@@ -3164,7 +3177,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 3 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="gva">
         <div class="md-panel">
           <div class="md-no">02</div>
           <h3 class="serif">Value added is what is left after inputs</h3>
@@ -3206,7 +3219,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 4 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="routes">
         <div class="md-panel">
           <div class="md-no">03</div>
           <h3 class="serif">Three routes to the same total</h3>
@@ -3229,7 +3242,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 5 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="levels">
         <div class="md-panel">
           <div class="md-no">04</div>
           <h3 class="serif">One economy, measured at four levels</h3>
@@ -3262,7 +3275,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 6 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="split">
         <div class="md-panel">
           <div class="md-no">05</div>
           <h3 class="serif">Sixteen sub-sectors, and the state groups them differently</h3>
@@ -3323,7 +3336,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 7 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="approach">
         <div class="md-panel">
           <div class="md-no">06</div>
           <h3 class="serif">Where district data exists, measure it; where it does not, apportion</h3>
@@ -3375,7 +3388,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 8 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="chain">
         <div class="md-panel">
           <div class="md-no">07</div>
           <h3 class="serif">From value added to rupees per person</h3>
@@ -3403,7 +3416,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 9 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="vintage">
         <div class="md-panel">
           <div class="md-no">08</div>
           <h3 class="serif">The same year is published five times, each firmer than the last</h3>
@@ -3493,7 +3506,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 10 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="district">
         <div class="md-panel">
           <div class="md-no">09</div>
           <h3 class="serif">District estimates are harder, and the method says so</h3>
@@ -3521,7 +3534,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 11 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="mandal">
         <div class="md-panel">
           <div class="md-no">10</div>
           <h3 class="serif">Mandal figures are district figures, shared out by indicator</h3>
@@ -3561,7 +3574,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </section>
 
       <!-- 12 -->
-      <section class="md-slide">
+      <section class="md-slide" data-bg="takeaways">
         <div class="md-panel">
           <div class="md-no">11</div>
           <h3 class="serif">Five things to carry back</h3>
@@ -4040,11 +4053,68 @@ document.querySelectorAll('.gstat.ask').forEach(function(b){
   });
   const dots = [...dotsWrap.children];
 
+  // ── per-slide video backgrounds ──────────────────────────────────────
+  // Only the current slide's video (and the next one, preloaded) is ever in the
+  // DOM and decoding; every other slide's video is torn down. Two videos max at
+  // any moment - the deliberate limit that keeps twelve loops from cooking the
+  // machine. Which slides HAVE a video comes from a manifest, so a slide with
+  // no footage yet simply shows the dark stage and nothing is fetched.
+  var BG = {};                         // data-bg name -> true when a video exists
+  var bgReady = false;
+  fetch('assets/methodology/bg/manifest.json', {cache:'no-store'})
+    .then(function(r){ return r.ok ? r.json() : {}; })
+    .then(function(m){
+      // manifest is { "have": ["gva","vintage", ...] } or { "gva":true, ... }
+      var have = Array.isArray(m.have) ? m.have : Object.keys(m).filter(function(k){ return m[k]; });
+      have.forEach(function(n){ BG[n] = true; });
+      bgReady = true;
+      syncVideos();
+    })
+    .catch(function(){ bgReady = true; });
+
+  function mountVideo(slide){
+    if(slide.querySelector('.md-vid')) return;
+    var name = slide.getAttribute('data-bg');
+    if(!name || !BG[name]) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'md-vid';
+    var v = document.createElement('video');
+    v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('aria-hidden', 'true');
+    v.src = 'assets/methodology/bg/' + name + '.mp4';
+    // A missing or broken file falls back to the dark stage, silently.
+    v.addEventListener('error', function(){ wrap.remove(); });
+    wrap.appendChild(v);
+    slide.insertBefore(wrap, slide.firstChild);
+  }
+  function syncVideos(){
+    if(!bgReady || stacked()) return;
+    slides.forEach(function(sl, i){
+      var near = i === cur || i === cur + 1 || i === cur - 1;
+      var wrap = sl.querySelector('.md-vid');
+      if(near){
+        mountVideo(sl);
+        wrap = sl.querySelector('.md-vid');
+        if(wrap){
+          var v = wrap.querySelector('video');
+          if(i === cur){ wrap.classList.add('on'); if(v) v.play().catch(function(){}); }
+          else { wrap.classList.remove('on'); if(v) v.pause(); }
+        }
+      } else if(wrap){
+        // Off screen and not adjacent: tear the decoder down entirely.
+        var v = wrap.querySelector('video');
+        if(v){ v.pause(); v.removeAttribute('src'); v.load(); }
+        wrap.remove();
+      }
+    });
+  }
+
   function paint(){
     track.style.transform = 'translateX(' + (-cur * 100) + '%)';
     // .on on the current slide both reveals it to the reader and arms its
     // illustration's draw-on animation (see the ILLUSTRATIONS CSS block).
     slides.forEach((s, i) => s.classList.toggle('on', i === cur));
+    syncVideos();
     dots.forEach((d, i) => {
       d.classList.toggle('on', i === cur);
       d.setAttribute('aria-selected', i === cur ? 'true' : 'false');
