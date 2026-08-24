@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 226" fill="none" class="mk" aria-hidden="true">
+<text x="24.0" y="47.0" font-size="12.5" fill="#6FA817" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">Agriculture</text>
+<text x="24.0" y="63.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">4 sub-sectors</text>
+<rect x="168.0" y="30.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#6FA817" stroke-width="1.7" class="mk-tile" style="--i:0"/>
+<rect x="214.0" y="30.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#6FA817" stroke-width="1.7" class="mk-tile" style="--i:1"/>
+<rect x="260.0" y="30.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#6FA817" stroke-width="1.7" class="mk-tile" style="--i:2"/>
+<rect x="306.0" y="30.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#6FA817" stroke-width="1.7" class="mk-tile" style="--i:3"/>
+<text x="24.0" y="109.0" font-size="12.5" fill="#2B93BF" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">Industry</text>
+<text x="24.0" y="125.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">4 sub-sectors</text>
+<rect x="168.0" y="92.0" width="38.0" height="34.0" rx="8" fill="rgba(198,255,106,.20)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:4"/>
+<rect x="214.0" y="92.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#2B93BF" stroke-width="1.7" class="mk-tile" style="--i:5"/>
+<rect x="260.0" y="92.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#2B93BF" stroke-width="1.7" class="mk-tile" style="--i:6"/>
+<rect x="306.0" y="92.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#2B93BF" stroke-width="1.7" class="mk-tile" style="--i:7"/>
+<text x="24.0" y="171.0" font-size="12.5" fill="#BF8A2B" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">Services</text>
+<text x="24.0" y="187.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">8 sub-sectors</text>
+<rect x="168.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:8"/>
+<rect x="214.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:9"/>
+<rect x="260.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:10"/>
+<rect x="306.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:11"/>
+<rect x="352.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:12"/>
+<rect x="398.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:13"/>
+<rect x="444.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:14"/>
+<rect x="490.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:15"/>
+<text x="280.0" y="218.0" font-size="11" fill="#C6FF6A" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Mining sits in Industry for Andhra Pradesh, in Primary for GoI</text>
+</svg>

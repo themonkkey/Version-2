@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" fill="none" class="mk" aria-hidden="true">
+<text x="140.0" y="20.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Top-down</text>
+<rect x="74.0" y="32.0" width="132.0" height="32.0" rx="8" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class=""/>
+<text x="140.0" y="53.0" font-size="11.5" fill="#fff" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">State total</text>
+<path d="M140.0 68.0 L87.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M90.0 97.7 L87.0 104.0 L93.9 103.5" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="74.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:0"/>
+<path d="M140.0 68.0 L123.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M122.4 97.1 L123.0 104.0 L128.7 100.1" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="110.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:1"/>
+<path d="M140.0 68.0 L159.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M153.1 100.3 L159.0 104.0 L159.3 97.1" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="146.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:2"/>
+<path d="M140.0 68.0 L195.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M188.1 103.6 L195.0 104.0 L191.9 97.8" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="182.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:3"/>
+<text x="140.0" y="160.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">shared out on an indicator</text>
+<text x="420.0" y="20.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Bottom-up</text>
+<rect x="354.0" y="32.0" width="132.0" height="32.0" rx="8" fill="rgba(198,255,106,.18)" stroke="#C6FF6A" stroke-width="1.7" class=""/>
+<text x="420.0" y="53.0" font-size="11.5" fill="#C6FF6A" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">State total</text>
+<path d="M367.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M417.0 76.3 L420.0 70.0 L413.1 70.5" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="354.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:0"/>
+<path d="M403.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M420.6 76.9 L420.0 70.0 L414.3 73.9" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="390.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:1"/>
+<path d="M439.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M425.9 73.7 L420.0 70.0 L419.7 76.9" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="426.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:2"/>
+<path d="M475.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M426.9 70.4 L420.0 70.0 L423.1 76.2" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="462.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:3"/>
+<text x="420.0" y="160.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">measured locally, then added up</text>
+<path d="M280 24 L280 172" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="" stroke-dasharray="3 5" opacity=".45"/>
+</svg>

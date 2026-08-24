@@ -82,17 +82,6 @@ h1,h2,h3{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,serif;}
 /* Every page opens straight into a dark vstage (hero / handloom / ledger /
    isometric), so the nav sits permanently on the dark system too — same
    fix as the footer, no light-glass seam at the top of any page. */
-/* TEMP:WIP — remove this block together with the .wip-ribbon div in
-   #page-methodology. Sits below the nav (z-index 50) so it never covers the
-   menu, and is pointer-events:none so it cannot swallow a click. */
-.wip-ribbon{position:fixed;top:var(--navh,56px);right:0;z-index:45;
-  pointer-events:none;overflow:hidden;width:190px;height:190px;}
-.wip-ribbon span{position:absolute;top:38px;right:-52px;width:230px;
-  transform:rotate(45deg);text-align:center;padding:7px 0;
-  background:#C0392B;color:#FFF;font-size:12px;font-weight:750;
-  letter-spacing:.08em;text-transform:uppercase;
-  box-shadow:0 3px 12px rgba(0,0,0,.35);}
-@media (max-width:700px){.wip-ribbon{display:none;}}
 .nav{position:sticky;top:0;z-index:50;
   background:rgba(7,43,31,.90);
   backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
@@ -2590,264 +2579,198 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 @media(max-width:640px){.pdrill{grid-template-columns:1fr;}}
 
 /* ==========================================================================
-   METHODOLOGY — scroll narrative
-   Each chapter pins a visual while its steps scroll past. An
-   IntersectionObserver writes data-step on the chapter; every bit of motion
-   below is driven off that one attribute, so the CSS stays declarative and
-   there is no per-frame JavaScript.
+   METHODOLOGY — the twelve-slide deck
+   Paged, not scrolled. The page before this spent one viewport per idea via
+   .step{min-height:74vh} and needed 18 screens to say 799 words; the material
+   from the DES training deck is far denser than that could hold.
+
+   Two layers, kept apart on purpose:
+     STRUCTURE — the track, the slide box, navigation. Stable.
+     SKIN      — type, colour, the stage behind the panel. Restylable from the
+                 programme's own slide template without touching structure.
+   The interaction model is the one already proven on the 15 case study reader
+   pages: a flex track moved by translateX, arrows, keyboard, wheel and swipe.
    ========================================================================== */
+
+/* .grain is NOT part of this page - it is a global overlay on every page, and
+   the div lives outside all of them. It only ever sat in this CSS block. */
 .grain{position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.055;
   mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>");}
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");}
 
-/* overflow:clip, NOT hidden — hidden makes .narr the sticky containing block
-   (a scroll container that never scrolls), so every chapter's pinned visual
-   silently stopped sticking. clip crops the ambient video the same way without
-   creating a scroll container, and the visuals pin again. */
-.narr{background:var(--ink);color:#FFF;position:relative;overflow:clip;}
-/* Safari before 16 drops overflow:clip entirely, leaving the ambient layers to
-   bleed past the section seams. Fall back to hidden there: chapter pinning
-   degrades (visuals scroll with their steps), but nothing spills. */
-@supports not (overflow:clip){.narr{overflow:hidden;}}
-.narr .serif{font-family:'Bodoni Moda',ui-serif,"New York",Georgia,"Times New Roman",serif;
-  font-weight:400;letter-spacing:-.018em;}
+/* ---------- STRUCTURE ---------- */
+/* One viewport minus the nav. Every vh divides by --pgz because the site
+   auto-scales itself; see the auto-scale IIFE. */
+.md-deck{position:relative;overflow:hidden;
+  height:calc((100vh - var(--navh,64px)) / var(--pgz,1));
+  background:var(--ink);color:#FFF;}
+.md-track{display:flex;height:100%;width:100%;
+  transition:transform .62s cubic-bezier(.76,0,.24,1);will-change:transform;}
+.md-slide{position:relative;flex:0 0 100%;height:100%;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(10px,1.6vh,20px) clamp(14px,4vw,64px);}
+/* A slide that is taller than the viewport scrolls INSIDE its panel rather than
+   pushing the page - otherwise one long slide reintroduces the scroll problem
+   the rebuild exists to remove. */
+.md-panel{width:100%;max-width:1180px;max-height:100%;overflow-y:auto;
+  padding:clamp(14px,2vh,26px) clamp(14px,2vw,30px);
+  border-radius:18px;
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
+  clip-path:inset(0 round 18px);isolation:isolate;
+  scrollbar-width:thin;scrollbar-color:rgba(198,236,143,.4) transparent;}
+.md-panel::-webkit-scrollbar{width:7px;}
+.md-panel::-webkit-scrollbar-thumb{background:rgba(198,236,143,.4);border-radius:99px;}
 
-/* opening title card */
-.narr-open{min-height:calc(88vh / var(--pgz,1));display:flex;flex-direction:column;align-items:center;
-  justify-content:center;text-align:center;padding:clamp(40px,8vw,90px) var(--pad-x);}
-.narr-open .kick{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--lime);margin-bottom:26px;}
-.narr-open h2{font-size:clamp(38px,8vw,86px);line-height:1.02;color:#FFF;}
-.narr-open h2 em{font-style:italic;color:var(--lime);}
-.narr-open p{font-size:clamp(15px,1.7vw,18px);color:rgba(255,255,255,.7);
-  max-width:520px;margin:26px auto 0;line-height:1.6;}
-.narr-scrollcue{margin-top:46px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:rgba(255,255,255,.45);display:flex;flex-direction:column;align-items:center;gap:10px;}
-.narr-scrollcue span{width:1px;height:44px;background:linear-gradient(180deg,var(--lime),transparent);
-  animation:cueDrop 2.4s ease-in-out infinite;}
-@keyframes cueDrop{0%,100%{opacity:.25;transform:scaleY(.6);transform-origin:top;}50%{opacity:1;transform:scaleY(1);}}
+.md-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:12;
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  color:#FFF;font-size:17px;
+  background:rgba(4,16,11,.55);border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:background .2s ease,opacity .2s ease;}
+.md-nav:hover{background:rgba(4,16,11,.82);}
+.md-nav:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+.md-nav[disabled]{opacity:.25;pointer-events:none;}
+.md-prev{left:clamp(6px,1.4vw,16px);}
+.md-next{right:clamp(6px,1.4vw,16px);}
 
-/* progress rail */
-.rail{position:fixed;left:clamp(14px,2.4vw,30px);top:50%;transform:translateY(-50%);
-  z-index:60;display:flex;flex-direction:column;gap:14px;opacity:0;
-  transition:opacity .4s;pointer-events:none;}
-.rail.show{opacity:1;pointer-events:auto;}
-.rail button{width:26px;height:26px;border:none;background:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;padding:0;}
-.rail .dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);
-  transition:all .3s cubic-bezier(.4,0,.2,1);}
-.rail button:hover .dot{background:rgba(255,255,255,.6);}
-.rail button.on .dot{background:var(--lime);width:9px;height:9px;
-  box-shadow:0 0 0 5px rgba(198,255,106,.16);}
+.md-dots{position:absolute;left:50%;bottom:clamp(8px,1.4vh,16px);transform:translateX(-50%);
+  z-index:12;display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:center;
+  max-width:80%;padding:8px 13px;border-radius:999px;
+  background:rgba(4,16,11,.5);border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);}
+.md-dot{width:7px;height:7px;padding:0;border-radius:50%;cursor:pointer;border:0;
+  background:rgba(255,255,255,.28);transition:background .25s ease,width .25s ease;}
+.md-dot.on{width:20px;border-radius:999px;background:var(--lime);}
+.md-dot:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 
-/* chapter shell */
-.chap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad-x);
-  display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);align-items:start;}
-/* every vh here divides by --pgz: viewport units ignore the page's zoom factor,
-   and an un-divided 100vh box is 35% taller than the real screen at full zoom,
-   pushing the pinned scene off-centre */
-.chap-vis{position:sticky;top:0;height:calc(100vh / var(--pgz,1));
-  display:flex;align-items:center;justify-content:center;}
-.chap-vis svg{width:100%;max-width:460px;height:auto;overflow:visible;}
-.chap-steps{padding:calc(22vh / var(--pgz,1)) 0;}
-.step{min-height:calc(74vh / var(--pgz,1));display:flex;flex-direction:column;justify-content:center;
-  opacity:.22;transition:opacity .5s ease;}
-.step.on{opacity:1;}
-.step .no{font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--lime);
-  margin-bottom:14px;font-variant-numeric:tabular-nums;}
-.step h3{font-size:clamp(24px,3.4vw,38px);color:#FFF;line-height:1.14;margin-bottom:16px;}
-.step p{font-size:clamp(14.5px,1.6vw,17px);color:rgba(255,255,255,.72);line-height:1.68;
-  max-width:440px;}
-.step p + p{margin-top:13px;}
-.step .pull{margin-top:20px;padding:15px 19px;border-radius:16px;
-  background:rgba(255,255,255,.09);
-  backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
-  border:1px solid rgba(255,255,255,.18);
-  font-size:14.5px;color:#FFF;line-height:1.5;max-width:440px;
-  font-variant-numeric:tabular-nums;}
-.step .pull b{color:var(--lime);font-weight:600;}
+/* ---------- SKIN ---------- */
+/* Everything below is presentation. Swap freely when the programme template
+   arrives; nothing here is load-bearing for navigation. */
+.md-panel .kick{color:var(--lime);font-size:11px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;}
+.md-no{font-size:11px;font-weight:700;letter-spacing:.12em;color:rgba(198,236,143,.8);
+  margin-bottom:6px;}
+.md-panel h2{font-size:clamp(26px,3.6vw,46px);line-height:1.1;letter-spacing:-.026em;
+  margin:10px 0 0;}
+.md-panel h3.serif{font-size:clamp(19px,2.3vw,31px);line-height:1.18;letter-spacing:-.022em;
+  margin:0 0 8px;}
+.md-lede{font-size:clamp(13.5px,1.25vw,15.5px);line-height:1.55;
+  color:rgba(255,255,255,.8);margin:0 0 clamp(10px,1.6vh,16px);max-width:78ch;}
+.md-src{font-size:11.5px;color:rgba(255,255,255,.5);margin-top:14px;}
+.md-title{text-align:center;}
+.md-title .md-lede{margin-left:auto;margin-right:auto;}
 
-/* chapter marker between chapters */
-.chap-mark{max-width:var(--maxw);margin:0 auto;padding:clamp(40px,7vw,80px) var(--pad-x);
-  display:flex;align-items:baseline;gap:20px;border-top:1px solid rgba(255,255,255,.12);}
-.chap-mark .big{font-size:clamp(48px,9vw,110px);line-height:.9;color:rgba(255,255,255,.10);
-  font-variant-numeric:tabular-nums;}
-.chap-mark .ttl{font-size:clamp(17px,2.2vw,24px);color:#FFF;}
+.md-cols{display:grid;gap:clamp(8px,1.2vw,13px);}
+.md-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.md-2x2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.md-two{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:clamp(10px,1.5vw,18px);align-items:start;}
+.md-panel .ab-box{padding:clamp(10px,1.3vh,14px) clamp(11px,1.2vw,15px);}
+.md-panel .ab-box p{font-size:13px;line-height:1.5;}
+/* the option the method actually settles on */
+.md-lead-box{border-color:rgba(198,236,143,.45);background:rgba(198,236,143,.07);}
 
-/* ---- shared SVG scene styling ---- */
-.sc{transition:opacity .6s ease,transform .6s cubic-bezier(.4,0,.2,1),fill .6s ease;}
-.sc-lbl{font-size:11px;fill:rgba(255,255,255,.62);
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.004em;}
-.sc-lbl.hi{fill:var(--lime);}
-.sc-val{font-size:13px;font-weight:700;fill:#FFF;font-variant-numeric:tabular-nums;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;}
+.md-formula{font-size:clamp(15px,1.7vw,21px);text-align:center;margin:0 0 clamp(10px,1.6vh,16px);}
+.md-tbl{width:100%;}
+.md-tbl .md-num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.md-tbl tr.md-tot td{font-weight:750;color:#FFF;border-top:1px solid rgba(198,236,143,.4);}
+.md-tbl-cls td{vertical-align:top;}
+.md-tbl-cal td{font-size:12.4px;}
+.md-flag{margin-top:clamp(9px,1.4vh,14px);}
 
-/* Figma exports any shape with both a fill and a stroke as a <g> of two
-   rects — fill first, stroke second. Opacity and transform go on the <g>;
-   colour has to reach the child rects. */
+/* the four-level ladder and the process chains share one rhythm */
+.md-ladder{display:grid;gap:7px;}
+.md-rung{display:grid;grid-template-columns:auto 1fr;gap:4px clamp(10px,1.4vw,18px);
+  align-items:baseline;padding:clamp(8px,1.1vh,12px) clamp(11px,1.2vw,15px);
+  border-radius:12px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);}
+.md-rung-k{grid-row:1 / 3;align-self:center;font-weight:750;color:var(--lime);
+  font-size:clamp(15px,1.6vw,20px);min-width:62px;}
+.md-rung-t{font-weight:650;font-size:13.5px;}
+.md-rung-s{grid-column:2;font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.45;}
 
-/* scene 1 — the real Andhra Pradesh outline, read three ways.
-   One set of 28 district paths serves all three steps: at step 1 the stroke
-   matches the fill, so the borders vanish and the 28 shapes read as a single
-   state; step 2 brings the borders in; step 3 lifts one district out. Baked
-   into the markup rather than projected from the geojson at runtime, so the
-   scene needs no fetch and no JS. */
-/* Step 1's seamlessness comes from the GROUP's opacity, not the paths'. Painting
-   28 translucent neighbours side by side doubles the alpha along every shared
-   edge, so the internal borders showed up as bright hairlines. Opaque white
-   paths inside a 15%-opacity group composite white-on-white first and are
-   faded once, as a single silhouette. */
-#sc1 .sc-map{opacity:.15;transition:opacity .55s ease;}
-#sc1 .dist{fill:#FFF;stroke:#FFF;stroke-width:.9;stroke-linejoin:round;
-  transition:fill .55s ease,stroke .55s ease,opacity .55s ease;}
-[data-step="2"] #sc1 .sc-map,[data-step="3"] #sc1 .sc-map{opacity:1;}
-[data-step="2"] #sc1 .dist,[data-step="3"] #sc1 .dist{
-  fill:rgba(255,255,255,.15);stroke:rgba(255,255,255,.55);}
-[data-step="3"] #sc1 .dist:not(.pick){opacity:.3;}
-[data-step="3"] #sc1 .pick{fill:var(--lime);stroke:var(--lime);opacity:1;}
+.md-chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.1vw,12px);}
+.md-link{padding:clamp(10px,1.3vh,14px) clamp(10px,1.1vw,14px);border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);}
+.md-link-n{font-size:11px;font-weight:700;color:rgba(198,236,143,.85);margin-bottom:4px;}
+.md-link-t{font-weight:700;font-size:13.5px;margin-bottom:4px;}
+.md-link-s{font-size:12.4px;line-height:1.45;color:rgba(255,255,255,.74);}
+.md-strip{margin-top:clamp(10px,1.5vh,16px);}
 
-#sc1 .cap{font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;
-  font-size:11px;font-weight:600;letter-spacing:.09em;fill:rgba(255,255,255,.62);
-  opacity:0;transition:opacity .45s ease;}
-#sc1 .cap-pick{fill:var(--lime);}
-[data-step="1"] #sc1 .cap-state,
-[data-step="2"] #sc1 .cap-parts,
-[data-step="3"] #sc1 .cap-pick{opacity:1;}
+.md-take{display:grid;gap:8px;margin:clamp(8px,1.2vh,14px) 0;}
+.md-take-i{display:flex;gap:12px;align-items:flex-start;
+  padding:clamp(8px,1.1vh,12px) clamp(11px,1.2vw,15px);border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);}
+.md-take-n{flex:0 0 auto;width:24px;height:24px;border-radius:50%;display:grid;
+  place-items:center;font-size:12px;font-weight:750;
+  background:var(--lime);color:var(--ink,#0B2E20);}
+.md-take-b{font-size:13.2px;line-height:1.5;color:rgba(255,255,255,.84);}
+.md-take-b b{color:#FFF;}
+.md-cta{margin-top:clamp(10px,1.6vh,18px);}
 
-/* scene 2 — the eleven industry groups, drawn.
-   Rows of 1 / 4 / 6 carry the same fact the step text states, so the shape of
-   the layout is the argument. Glyph strokes take currentColor, which lets one
-   `color` change on the tile recolour the whole illustration; the per-tile
-   transition-delay in the markup makes each row light up as a cascade rather
-   than a block. */
-#sc2 .ind{color:rgba(255,255,255,.62);
-  transition:opacity .5s ease,color .5s ease;}
-#sc2 .tile{fill:rgba(255,255,255,.09);stroke:rgba(255,255,255,.20);
-  transition:fill .5s ease,stroke .5s ease;}
-#sc2 .gl{fill:none;stroke:currentColor;stroke-width:1.7;
-  stroke-linecap:round;stroke-linejoin:round;}
-#sc2 .sym{fill:currentColor;stroke:none;font-size:15px;font-weight:600;
-  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
-#sc2 .lbl{fill:currentColor;stroke:none;font-size:9px;font-weight:600;
-  letter-spacing:.01em;
-  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
-#sc2 .tier{fill:rgba(255,255,255,.42);font-size:9px;font-weight:600;
-  letter-spacing:.14em;
-  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
+/* ---------- ILLUSTRATIONS ----------
+   Inline SVG drawn by scripts/build_methodology_art.py. The figures carry class
+   hooks with a --i stagger index; the deck drives them so a figure draws itself
+   IN when its slide becomes active, and holds still otherwise. */
+.md-art{width:100%;display:flex;justify-content:center;margin:clamp(6px,1vh,12px) 0;}
+.md-art .mk{width:100%;max-width:min(560px,100%);height:auto;}
 
-[data-step="2"] #sc2 .ind:not(.g1),
-[data-step="3"] #sc2 .ind:not(.g2),
-[data-step="4"] #sc2 .ind:not(.g3){opacity:.2;}
+/* At rest, before the slide is active, the animated parts are hidden so the
+   draw-on has somewhere to come from. Non-active slides never show, so this is
+   only ever seen for the one slide the reader is about to land on. */
+.md-art .mk-draw{stroke-dasharray:1;stroke-dashoffset:1;
+  /* pathLength is normalised to 1 by the browser when dasharray is 1, so one
+     rule draws every stroke regardless of its true length. */
+  pathlength:1;}
+.md-art .mk-bar,.md-art .mk-tile,.md-art .mk-frame,.md-art .mk-pop{
+  opacity:0;transform:translateY(6px);transform-box:fill-box;transform-origin:center;}
+.md-art .mk-fade{opacity:0;}
 
-[data-step="2"] #sc2 .g1{color:var(--lime);}
-[data-step="2"] #sc2 .g1 .tile{fill:rgba(198,255,106,.15);stroke:var(--lime);}
-[data-step="3"] #sc2 .g2{color:#5CD6A0;}
-[data-step="3"] #sc2 .g2 .tile{fill:rgba(92,214,160,.15);stroke:#5CD6A0;}
-[data-step="4"] #sc2 .g3{color:#8FE3FF;}
-[data-step="4"] #sc2 .g3 .tile{fill:rgba(143,227,255,.15);stroke:#8FE3FF;}
+/* When the slide is on, everything plays, staggered by --i so the figure
+   assembles piece by piece rather than all at once. */
+.md-slide.on .md-art .mk-draw{
+  animation:mkDraw .7s cubic-bezier(.65,0,.35,1) forwards;
+  animation-delay:calc(.15s + var(--i,0) * .06s);}
+.md-slide.on .md-art .mk-bar{
+  animation:mkRise .5s ease forwards;animation-delay:calc(.2s + var(--i,0) * .07s);}
+.md-slide.on .md-art .mk-tile{
+  animation:mkPop .42s cubic-bezier(.34,1.56,.64,1) forwards;
+  animation-delay:calc(.2s + var(--i,0) * .045s);}
+.md-slide.on .md-art .mk-frame{
+  animation:mkRise .55s ease forwards;animation-delay:calc(.12s + var(--i,0) * .1s);}
+.md-slide.on .md-art .mk-pop{
+  animation:mkPop .5s cubic-bezier(.34,1.56,.64,1) forwards;
+  animation-delay:calc(.35s + var(--i,0) * .08s);}
+.md-slide.on .md-art .mk-fade{
+  animation:mkFade .8s ease forwards;animation-delay:.45s;}
 
-/* scene 3 — three estimation approaches.
-   Each district carries two rails six units apart, one pointing down and one
-   pointing up. Which rails exist IS the choreography: top-down shows the down
-   rails, bottom-up the up rails, and mixed shows both at once. Direction was
-   previously carried only by which way the dashes travelled, which is a detail
-   most readers scroll straight past. Colour doubles the signal: blue arrives
-   from the state, lime rises from the districts. */
-#sc3 .box{fill:rgba(255,255,255,.10);stroke:rgba(255,255,255,.28);
-  transition:fill .5s ease,stroke .5s ease;}
-#sc3 .node{transition:opacity .5s ease;}
-#sc3 .nlbl{fill:#FFF;font-size:12px;font-weight:600;letter-spacing:.13em;}
-#sc3 .nnum{fill:rgba(255,255,255,.8);font-size:12px;font-weight:600;
-  font-variant-numeric:tabular-nums;}
-#sc3 .ell{fill:rgba(255,255,255,.4);font-size:13px;letter-spacing:.1em;}
-#sc3 .foot{fill:rgba(255,255,255,.45);font-size:9px;font-weight:600;letter-spacing:.14em;}
-#sc3 .nlbl,#sc3 .nnum,#sc3 .ell,#sc3 .foot,#sc3 .clbl,#sc3 .cap{
-  font-family:'Public Sans',-apple-system,BlinkMacSystemFont,sans-serif;}
-#sc3 .bus{stroke:rgba(255,255,255,.3);stroke-width:1.5;fill:none;}
+@keyframes mkDraw{to{stroke-dashoffset:0;}}
+@keyframes mkRise{to{opacity:1;transform:none;}}
+@keyframes mkPop{from{opacity:0;transform:scale(.7);}to{opacity:1;transform:scale(1);}}
+@keyframes mkFade{to{opacity:1;}}
 
-/* "flowrail", not "rail": the page already has a .rail component (the fixed
-   chapter progress dots), and its position:fixed + translateY(-50%) applied to
-   these SVG groups too, sliding every rail up by half the viewBox. Scene class
-   names share a global namespace with the page's components. */
-#sc3 .flowrail{opacity:0;transition:opacity .5s ease;}
-#sc3 .flowrail .line{stroke-width:2;stroke-linecap:round;fill:none;stroke-dasharray:6 5;}
-#sc3 .flowrail.down .line{stroke:#8FE3FF;animation:dashDown 1.5s linear infinite;}
-#sc3 .flowrail.up .line{stroke:var(--lime);animation:dashUp 1.5s linear infinite;}
-#sc3 .flowrail.down .head{fill:#8FE3FF;}
-#sc3 .flowrail.up .head{fill:var(--lime);}
-[data-step="1"] #sc3 .flowrail.down,
-[data-step="2"] #sc3 .flowrail.up,
-[data-step="3"] #sc3 .flowrail{opacity:1;}
-
-#sc3 .chips{opacity:0;transition:opacity .5s ease;}
-[data-step="1"] #sc3 .chips{opacity:1;}
-#sc3 .chip{fill:rgba(143,227,255,.14);stroke:rgba(143,227,255,.45);}
-#sc3 .clbl{fill:#8FE3FF;font-size:7.5px;font-weight:600;letter-spacing:.1em;}
-
-/* the node the figure is coming FROM is the lit one */
-[data-step="1"] #sc3 .state .box{fill:rgba(143,227,255,.18);stroke:#8FE3FF;}
-[data-step="2"] #sc3 .dist .box{fill:rgba(198,255,106,.18);stroke:var(--lime);}
-[data-step="1"] #sc3 .dist,[data-step="2"] #sc3 .state{opacity:.45;}
-
-#sc3 .cap{opacity:0;fill:rgba(255,255,255,.62);font-size:9px;font-weight:600;
-  letter-spacing:.1em;transition:opacity .45s ease;}
-[data-step="1"] #sc3 .cap-td,
-[data-step="2"] #sc3 .cap-bu,
-[data-step="3"] #sc3 .cap-mx{opacity:1;}
-[data-step="1"] #sc3 .cap-td{fill:#8FE3FF;}
-[data-step="2"] #sc3 .cap-bu{fill:var(--lime);}
-
-@keyframes dashDown{to{stroke-dashoffset:-22;}}
-@keyframes dashUp{to{stroke-dashoffset:22;}}
-
-/* scene 4 — the formula chain */
-#sc4 .term{opacity:.16;transition:opacity .5s ease;}
-[data-step="1"] #sc4 .t1,
-[data-step="2"] #sc4 .t1,[data-step="2"] #sc4 .t2,
-[data-step="3"] #sc4 .t1,[data-step="3"] #sc4 .t2,[data-step="3"] #sc4 .t3,
-[data-step="4"] #sc4 .t1,[data-step="4"] #sc4 .t2,[data-step="4"] #sc4 .t3,[data-step="4"] #sc4 .t4{opacity:1;}
-[data-step="1"] #sc4 .t1 > rect,[data-step="2"] #sc4 .t2 > rect,
-[data-step="3"] #sc4 .t3 > rect,[data-step="4"] #sc4 .t4 > rect{
-  fill:var(--lime);fill-opacity:.18;stroke:var(--lime);stroke-opacity:1;}
-
-/* scene 5 — estimate classes maturing, top to bottom */
-#sc5 .est{opacity:.16;transition:opacity .5s ease;}
-[data-step="1"] #sc5 .e1,
-[data-step="2"] #sc5 .e1,[data-step="2"] #sc5 .e2,[data-step="2"] #sc5 .e3,
-[data-step="3"] #sc5 .e1,[data-step="3"] #sc5 .e2,[data-step="3"] #sc5 .e3,[data-step="3"] #sc5 .e4,
-[data-step="4"] #sc5 .e1,[data-step="4"] #sc5 .e2,[data-step="4"] #sc5 .e3,[data-step="4"] #sc5 .e4{opacity:1;}
-[data-step="1"] #sc5 .e1 > rect,
-[data-step="2"] #sc5 .e2 > rect,[data-step="2"] #sc5 .e3 > rect,
-[data-step="3"] #sc5 .e4 > rect,
-[data-step="4"] #sc5 .est > rect{
-  fill:var(--lime);fill-opacity:.18;stroke:var(--lime);stroke-opacity:1;}
-
-/* closing */
-.narr-close{text-align:center;padding:clamp(56px,9vw,110px) var(--pad-x) clamp(64px,10vw,120px);
-  border-top:1px solid rgba(255,255,255,.12);}
-.narr-close h3{font-size:clamp(24px,4vw,42px);color:#FFF;max-width:640px;margin:0 auto 12px;}
-.narr-close h3 em{font-style:italic;color:var(--lime);}
-.narr-close p{color:rgba(255,255,255,.66);max-width:480px;margin:0 auto 28px;
-  font-size:16px;line-height:1.6;}
-.narr-close .btn-primary{background:var(--lime);color:#08301C;
-  box-shadow:0 10px 30px rgba(198,255,106,.3), inset 0 1px 0 rgba(255,255,255,.45);}
+@media (max-width:900px),(prefers-reduced-motion:reduce){
+  /* On a phone the deck is a scroll document and there is no single "active"
+     slide; and reduced motion means no motion. Show every figure fully. */
+  .md-art .mk-draw{stroke-dashoffset:0;}
+  .md-art .mk-bar,.md-art .mk-tile,.md-art .mk-frame,.md-art .mk-pop{opacity:1;transform:none;}
+  .md-art .mk-fade{opacity:1;}
+  .md-slide.on .md-art *{animation:none !important;}
+}
 
 @media (max-width:900px){
-  .chap{grid-template-columns:1fr;gap:0;}
-  .chap-vis{height:52vh;top:0;background:linear-gradient(180deg,var(--ink) 78%,transparent);
-    z-index:2;margin:0 calc(var(--pad-x) * -1);padding:0 var(--pad-x);}
-  .chap-vis svg{max-width:300px;}
-  /* six tiles across with labels needs more room than the other scenes */
-  .chap-vis svg#sc2{max-width:360px;}
-  .chap-steps{padding:4vh 0 14vh;}
-  .step{min-height:62vh;}
-  .rail{display:none;}
+  /* The deck stops being a deck: slides stack and the page scrolls normally,
+     which is the right behaviour on a phone. */
+  .md-deck{height:auto;overflow:visible;}
+  .md-track{display:block;transform:none !important;transition:none;}
+  .md-slide{flex:none;height:auto;min-height:0;padding:12px;}
+  .md-panel{max-height:none;overflow:visible;}
+  .md-nav,.md-dots{display:none;}
+  .md-3,.md-2x2,.md-two,.md-chain{grid-template-columns:1fr;}
 }
 @media (prefers-reduced-motion:reduce){
-  .sc,.step,#sc4 .term{transition:none !important;}
-  #sc3 .flow{animation:none !important;}
-  .narr-scrollcue span{animation:none;}
-  .step{opacity:1;}
+  .md-track{transition:none;}
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -3192,368 +3115,478 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 </div>
 
 <!-- METHODOLOGY -->
+<!-- METHODOLOGY — a twelve-slide deck, paged not scrolled.
+     What was here before ran 18 screens of scroll to deliver 799 words, because
+     .step{min-height:74vh} spent a viewport per idea whatever the idea weighed.
+     The material from the DES training deck is denser than that structure could
+     ever hold, so the page pages instead of scrolling: one slide, one message.
+
+     Content is static markup, not generated. The i18n extractor only reads the
+     document, so anything painted by JS renders English in both languages - the
+     gva-ind table is the standing proof. Every element here is authored to the
+     extractor's rules: no <br> inside a translatable element, no omitted end
+     tags, and only b/strong/em/i as children. -->
 <div class="page" id="page-methodology">
- <!-- TEMP:WIP — corner ribbon while this page is being reworked.
-      To remove: delete this div and the .wip-ribbon block in the stylesheet. -->
- <div class="wip-ribbon" role="note"><span>Work in progress</span></div>
- <div class="narr vstage" data-vid="gridwork">
-  <section class="narr-open vstage" data-vid="ledger">
-    <div class="kick">Methodology</div>
-    <h2 class="serif">How a district's<br><em>income</em> is estimated</h2>
-    <p>The official method, from state total to rupees per person. Five chapters, following the National Statistics Office guideline for District Domestic Product.</p>
-    <div class="narr-scrollcue"><span></span>Scroll</div>
-  </section>
+  <div class="md-deck" id="mdDeck">
+    <div class="md-track" id="mdTrack">
 
-<div class="chap-mark"><div class="big serif">01</div><div class="ttl serif">What district income measures</div></div>
-<div class="chap" data-chap-i="0" data-step="1">
-  <div class="chap-vis"><svg id="sc1" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g class="sc-map">
-<path class="sc dist" d="M277.0,70.4L280.2,71.1L282.2,69.8L283.6,70.5L284.4,72.1L283.0,75.3L283.6,76.2L288.1,74.7L289.9,76.6L292.7,75.4L297.8,78.4L302.6,76.7L302.5,75.5L299.8,75.0L300.3,74.0L298.3,75.5L297.8,73.7L299.9,73.5L302.6,71.1L304.8,71.8L304.3,73.0L305.5,72.6L307.0,69.8L310.1,69.5L309.5,66.7L313.6,65.6L311.4,64.1L313.0,64.2L314.0,62.8L313.5,61.9L315.2,61.7L317.2,63.3L319.5,61.6L318.0,60.3L320.7,58.9L323.4,60.4L326.8,56.0L328.6,56.8L331.2,55.7L330.2,55.2L331.0,55.0L330.1,54.2L330.8,53.3L330.2,51.8L331.4,52.4L333.2,50.1L334.7,51.8L335.1,50.3L336.0,51.2L335.7,49.7L337.1,50.7L336.9,48.3L334.8,47.7L335.2,45.6L333.1,46.5L331.5,45.0L329.2,45.1L330.2,42.3L328.0,43.7L326.6,43.2L323.2,44.5L321.3,43.6L321.2,41.8L319.4,41.9L317.7,40.6L316.5,41.5L317.1,42.5L316.1,45.4L310.4,47.0L310.2,49.8L308.1,48.1L307.9,46.4L309.5,44.5L306.1,42.8L307.0,40.8L305.2,40.0L305.7,38.0L303.6,36.5L298.6,41.9L299.4,44.2L297.5,46.0L299.6,45.9L299.7,47.2L297.7,47.9L297.4,50.4L296.3,51.2L298.9,53.6L297.5,53.6L297.7,57.5L294.9,57.3L294.6,59.6L293.6,60.2L290.6,59.1L290.2,57.7L286.2,56.7L285.7,57.5L283.3,57.5L283.4,58.6L282.1,59.5L284.2,62.5L283.1,64.2L283.8,66.8L282.5,66.2L277.0,70.4Z"/>
-<path class="sc dist" d="M297.0,78.9L297.1,81.2L299.0,80.9L298.9,82.2L301.7,82.5L302.9,79.8L303.8,81.3L306.6,80.2L307.0,81.7L308.8,83.0L306.2,86.7L306.8,88.8L305.1,89.9L306.2,92.1L330.6,79.3L332.3,73.9L330.4,73.1L332.5,71.1L332.6,66.7L330.4,62.5L326.0,60.9L326.1,58.4L327.7,56.6L326.2,56.4L323.4,60.4L321.0,58.8L318.0,60.3L319.5,61.6L317.2,63.3L315.2,61.7L313.5,61.9L314.0,62.8L313.0,64.2L311.4,64.1L313.6,65.6L309.4,66.8L310.0,69.6L309.3,69.0L308.4,69.4L308.9,69.8L307.0,69.8L306.2,72.0L304.6,73.0L304.8,71.8L302.6,71.1L299.9,73.5L297.8,73.7L298.3,75.5L300.3,74.0L299.8,75.0L301.3,74.8L302.8,76.3L297.7,77.8L297.0,78.9Z"/>
-<path class="sc dist" d="M58.7,188.8L61.6,190.2L63.3,189.6L63.1,192.8L62.4,193.0L62.7,196.4L59.6,197.5L60.6,199.3L58.9,205.3L63.3,210.8L67.9,210.3L66.6,211.8L66.5,214.0L65.4,213.1L64.1,214.3L64.0,216.2L67.1,218.5L65.7,219.4L66.6,220.7L71.1,220.6L72.4,221.9L73.9,221.6L73.9,218.6L75.7,216.5L79.1,217.5L81.2,216.5L81.1,219.0L84.3,219.3L83.9,217.9L82.7,217.8L82.6,213.5L85.1,209.8L84.2,208.0L85.7,207.4L89.1,206.9L89.8,210.8L91.1,210.2L93.4,211.7L97.5,210.3L97.0,208.2L98.7,208.1L100.5,205.7L103.4,204.8L105.4,205.4L104.9,204.9L106.2,203.1L111.0,204.5L111.1,207.8L113.2,208.4L115.5,204.1L117.0,204.4L117.3,203.3L117.5,201.3L114.6,200.5L115.0,198.9L113.7,198.0L115.0,195.7L116.1,196.1L116.6,194.7L115.6,194.4L115.8,193.2L117.5,190.0L113.2,188.3L111.5,185.5L112.4,183.4L110.7,182.3L110.1,183.6L107.7,183.0L108.5,181.8L107.7,180.7L106.8,180.7L106.4,182.5L103.9,182.2L102.9,183.8L97.4,178.3L95.1,180.4L91.5,178.7L88.3,178.8L88.2,179.5L84.5,178.8L84.0,180.7L82.5,180.7L81.5,182.7L77.6,181.5L75.7,182.1L72.5,188.1L70.9,187.9L71.1,186.9L68.3,187.6L63.7,187.0L63.2,185.7L60.4,184.2L59.3,185.6L59.9,187.9L58.7,188.8Z"/>
-<path class="sc dist" d="M114.6,244.9L115.5,246.4L118.4,245.7L119.0,246.8L120.5,247.0L120.0,249.7L121.9,248.3L129.0,248.7L127.4,258.4L129.2,259.1L127.9,259.5L128.9,260.4L132.4,260.2L132.3,261.0L134.5,262.5L137.5,258.7L140.0,260.2L141.2,258.0L142.5,258.8L144.2,258.4L144.9,260.1L149.4,260.5L151.6,258.1L152.3,255.8L151.6,254.8L153.7,252.9L152.4,249.1L153.0,247.2L154.4,246.9L153.5,245.8L154.3,245.3L153.6,243.2L156.2,241.8L155.4,240.1L156.3,239.1L155.0,237.8L156.6,237.0L154.5,234.9L152.7,236.0L149.0,235.5L148.0,231.0L149.7,229.4L148.7,229.0L148.8,227.5L146.2,228.3L145.6,226.8L147.2,222.4L144.5,221.1L143.8,219.1L144.4,217.9L140.4,218.3L140.7,220.5L139.6,220.4L139.6,219.4L137.2,219.4L138.6,222.0L135.8,224.3L132.2,224.2L130.2,223.2L129.8,224.8L131.5,226.5L130.6,230.3L131.7,231.3L123.4,235.6L122.1,237.7L122.9,240.0L117.2,240.2L115.7,242.1L116.9,243.3L116.6,244.3L114.8,244.0L114.6,244.9Z"/>
-<path class="sc dist" d="M197.4,148.6L203.9,151.7L204.5,154.0L203.3,156.8L204.7,157.4L207.0,153.8L209.1,155.0L208.3,156.0L207.0,155.3L204.7,160.4L204.9,161.7L207.7,162.1L209.9,158.4L213.6,155.2L224.9,150.8L228.3,150.8L231.7,152.1L232.2,156.6L230.2,153.8L233.0,157.8L236.0,149.0L235.0,142.6L232.8,137.0L233.3,136.3L230.7,134.5L229.4,135.6L228.1,135.1L225.9,137.6L222.2,135.7L220.6,139.5L221.8,139.1L223.0,143.5L220.2,145.6L220.0,144.9L218.6,145.7L217.0,145.1L216.7,146.3L215.6,146.3L215.6,145.5L212.7,144.4L211.3,144.7L210.3,143.1L205.3,144.4L203.2,143.6L203.3,144.8L199.3,145.8L197.4,148.6Z"/>
-<path class="sc dist" d="M120.3,287.0L123.2,286.5L127.7,289.9L131.7,290.0L131.8,287.8L133.1,287.7L133.3,286.0L134.0,286.2L132.7,284.9L135.1,286.3L134.7,287.2L135.6,286.7L135.5,284.4L137.1,283.2L138.9,276.8L139.9,276.8L138.3,274.3L139.8,272.6L141.9,273.2L142.3,271.0L143.9,271.6L149.9,269.7L149.9,272.5L151.9,272.6L150.4,271.9L151.3,270.4L154.4,270.2L158.0,272.8L159.5,272.2L161.5,273.0L162.8,271.9L162.3,270.3L164.6,269.4L164.5,267.9L163.5,267.5L164.6,266.6L165.0,268.0L165.6,267.0L166.7,268.6L167.9,268.5L167.3,269.3L169.2,268.0L169.9,268.7L169.8,266.9L171.1,266.3L170.6,265.8L173.3,265.9L173.3,264.5L174.0,264.6L172.0,262.6L173.6,261.0L172.5,261.5L170.9,260.5L173.2,258.9L176.4,259.6L176.1,258.6L177.8,257.2L177.3,256.6L175.1,257.4L175.1,256.3L177.3,254.6L174.8,253.7L176.8,252.7L174.2,252.2L169.2,254.0L169.2,253.1L167.8,253.0L163.9,255.1L165.6,255.8L163.6,255.6L164.2,256.7L161.7,256.8L156.8,255.0L154.0,252.8L151.6,254.8L152.3,255.8L151.6,258.1L149.4,260.5L144.9,260.1L144.0,258.3L142.5,258.8L141.2,258.0L140.0,260.2L137.5,258.7L136.1,260.7L136.5,264.8L135.3,265.3L136.6,266.7L133.9,268.2L134.8,269.4L133.6,270.0L133.8,271.2L131.5,272.0L131.8,275.0L130.4,274.7L129.4,276.2L131.7,278.0L131.6,279.6L130.8,277.7L128.4,277.9L126.9,276.5L125.1,280.0L122.6,279.8L122.1,285.5L120.3,287.0Z M152.4,250.7L153.8,252.1L156.3,250.1L158.1,251.9L162.3,250.5L161.9,248.1L156.7,247.4L158.5,242.9L158.3,240.4L156.6,240.6L156.1,242.0L153.6,243.2L154.3,245.3L153.5,245.8L154.4,246.9L153.0,247.2L152.4,250.7Z M177.4,262.0L179.5,262.9L180.0,261.7L181.6,262.4L183.6,261.2L183.8,263.4L185.0,263.4L184.6,264.4L186.1,263.8L186.8,265.1L188.6,264.2L185.8,261.8L187.2,260.5L184.5,254.9L184.2,256.7L182.7,256.8L182.3,258.8L178.1,258.8L177.4,262.0Z"/>
-<path class="sc dist" d="M252.6,105.4L254.3,105.8L254.5,107.1L256.8,106.7L257.0,108.5L260.9,106.6L261.1,103.9L263.2,104.9L268.2,109.1L266.8,111.5L269.3,112.9L271.2,112.5L271.0,114.3L272.4,114.4L272.9,116.7L274.5,115.8L273.9,113.1L272.6,111.9L271.6,106.3L271.8,105.0L273.7,105.4L274.8,108.6L276.4,108.3L276.5,109.2L279.8,110.7L279.4,112.2L277.4,113.5L282.3,116.1L281.9,114.9L283.0,113.8L281.7,112.9L283.6,112.6L284.1,110.8L283.2,109.4L283.9,108.2L286.1,107.6L285.3,107.0L286.2,101.1L284.3,101.1L284.9,98.8L283.0,97.6L279.7,98.3L278.7,95.2L280.2,94.1L280.9,92.0L283.3,91.4L284.5,89.6L281.8,89.2L279.7,90.8L279.8,89.3L277.8,89.3L277.3,90.4L275.6,89.5L275.5,91.6L270.9,93.2L269.3,92.7L269.5,91.0L268.3,91.0L267.9,95.6L265.7,95.1L265.5,93.6L261.5,94.1L259.5,95.9L260.3,95.6L260.5,97.1L258.5,99.8L259.6,102.4L258.5,100.8L257.1,100.7L255.9,101.5L255.8,103.3L254.6,103.1L252.6,105.4Z"/>
-<path class="sc dist" d="M226.9,116.7L227.2,118.7L230.7,118.9L232.4,116.6L233.6,119.4L235.2,118.5L234.0,116.1L236.2,115.0L240.6,121.5L244.9,120.2L245.0,124.1L243.7,124.9L243.7,127.0L242.1,127.0L243.7,129.1L246.1,129.4L247.0,128.2L248.9,129.2L249.4,127.5L251.0,128.3L253.6,125.9L253.8,127.6L256.7,128.0L257.3,126.8L256.1,125.9L256.0,124.2L254.3,123.7L255.4,120.0L254.1,118.8L254.2,116.0L255.3,115.9L254.8,117.4L259.1,117.1L259.8,115.1L259.0,113.1L260.7,113.1L261.5,110.7L259.8,107.0L257.0,108.5L256.8,106.7L254.5,107.1L254.3,105.8L252.6,105.4L254.6,103.1L255.8,103.3L255.9,101.5L257.1,100.7L258.5,100.8L259.6,102.4L258.5,99.8L260.5,97.1L260.3,95.6L259.5,95.9L261.5,94.1L265.5,93.6L265.7,95.1L268.5,95.4L267.5,93.1L269.2,89.9L266.5,88.6L266.4,85.3L262.8,83.8L261.5,82.1L259.1,83.0L255.7,81.3L253.1,81.7L251.8,78.7L245.8,77.8L244.8,76.1L241.7,77.2L240.6,77.1L240.0,74.8L234.0,75.7L234.1,77.0L238.9,77.2L241.0,80.5L244.4,81.1L245.6,80.2L247.0,82.0L246.5,82.9L253.5,85.2L254.0,86.7L251.9,89.1L248.3,88.9L247.4,92.8L242.5,93.1L241.5,94.6L236.7,93.3L236.9,96.0L235.0,95.8L234.5,97.4L234.9,99.7L233.5,101.0L231.5,100.1L230.7,101.6L232.7,103.0L233.6,107.5L231.6,107.8L230.4,109.1L230.2,111.8L226.9,116.7Z M237.1,115.1L237.8,113.2L240.1,113.4L238.1,115.7L237.1,115.1Z M238.9,117.0L239.8,116.4L240.9,117.7L240.1,118.4L238.9,117.0Z"/>
-<path class="sc dist" d="M202.8,132.2L202.8,133.9L205.5,133.6L207.2,135.0L207.8,133.8L209.3,134.1L212.3,132.0L211.9,133.9L208.5,137.2L210.0,137.4L208.7,140.1L209.7,141.1L207.0,141.8L207.2,143.9L210.3,143.1L211.3,144.7L212.7,144.4L215.6,145.5L215.6,146.3L216.7,146.3L217.0,145.1L218.6,145.7L220.0,144.9L220.2,145.6L223.0,143.5L221.8,139.1L220.6,139.5L222.2,135.7L225.9,137.6L228.1,135.1L229.4,135.6L229.8,134.6L231.8,134.6L226.2,127.3L225.8,125.3L217.4,120.3L215.7,120.3L214.8,122.8L215.6,125.1L211.0,125.7L210.2,127.2L206.8,128.6L206.8,130.9L205.2,130.2L204.1,132.6L202.8,132.2Z"/>
-<path class="sc dist" d="M278.7,95.2L279.7,98.3L283.0,97.6L284.9,98.8L284.3,101.1L286.2,101.0L285.4,107.2L287.4,108.4L286.5,109.1L287.7,109.7L287.4,111.7L289.4,113.4L288.3,114.5L289.2,114.5L289.2,115.4L291.6,115.0L290.9,114.0L292.7,112.9L292.2,114.1L295.3,114.4L295.8,112.3L296.7,112.3L297.5,114.9L298.2,109.1L294.5,108.0L293.4,105.3L294.5,105.2L297.1,99.6L306.2,92.1L305.1,89.9L306.8,88.8L306.2,86.7L308.8,83.0L307.0,81.7L306.6,80.2L303.8,81.3L302.9,79.8L302.3,82.1L300.5,82.7L298.9,82.2L299.0,80.9L297.7,81.6L297.1,80.9L295.0,83.7L289.6,87.4L290.3,88.0L289.3,89.2L291.2,89.0L290.6,89.5L288.3,89.8L289.0,87.9L287.2,88.8L288.1,86.2L286.1,85.5L285.2,86.6L285.2,89.2L287.0,90.3L281.5,91.5L278.7,95.2Z M296.8,103.2L298.3,104.9L298.1,109.0L298.4,104.4L296.8,103.2Z"/>
-<path class="sc dist" d="M270.0,127.8L271.1,132.2L281.2,128.3L295.9,121.0L298.7,113.9L297.6,113.7L297.2,114.8L296.7,112.3L295.8,112.3L296.4,114.4L295.6,115.3L289.2,115.4L289.2,114.5L288.3,114.5L289.4,113.4L288.1,113.0L287.2,111.0L287.7,109.7L286.5,109.1L287.4,108.4L286.1,107.6L283.9,108.2L283.6,112.6L281.7,112.9L282.7,112.9L281.9,114.9L282.7,115.5L281.5,115.9L277.4,113.5L279.7,111.9L279.3,109.8L276.5,109.2L275.8,108.1L274.8,108.6L273.7,105.4L271.8,105.0L272.6,111.9L273.9,113.1L274.5,115.8L276.0,116.6L276.9,121.2L276.3,124.8L272.2,127.7L270.6,126.5L270.0,127.8Z"/>
-<path class="sc dist" d="M225.2,124.9L226.2,127.3L231.5,133.4L231.7,135.2L233.3,136.3L232.8,137.0L235.0,142.6L236.0,149.0L233.0,157.8L237.6,157.5L240.8,155.4L240.8,152.0L246.1,146.6L246.0,144.8L250.4,135.9L249.5,135.9L251.7,133.6L256.9,130.9L263.9,130.3L263.5,129.3L261.3,129.7L257.4,127.2L254.8,128.1L253.8,127.6L253.9,125.9L251.0,128.3L249.4,127.5L248.9,129.2L247.0,128.2L246.1,129.4L243.7,129.1L242.1,127.0L243.7,127.0L243.7,124.9L245.0,124.1L244.9,120.2L240.6,121.5L236.2,115.0L234.0,116.1L235.2,117.4L234.7,119.2L233.1,119.3L232.4,116.6L230.7,118.9L227.2,118.7L226.7,122.3L229.7,123.3L228.5,124.3L225.7,122.1L226.8,124.9L225.2,124.9Z M237.1,115.1L238.1,115.7L240.1,113.4L237.8,113.2L237.1,115.1Z M238.9,117.0L240.1,118.4L240.9,117.7L239.8,116.4L238.9,117.0Z"/>
-<path class="sc dist pick" d="M67.9,166.6L70.3,169.8L71.6,174.3L73.8,174.0L74.0,175.7L76.1,176.8L74.4,178.0L76.2,181.0L74.9,182.2L77.6,181.5L81.5,182.7L82.5,180.7L84.0,180.7L84.5,178.8L88.2,179.5L88.3,178.8L91.5,178.7L95.1,180.4L98.2,177.8L98.4,174.7L96.9,173.8L98.1,171.5L99.6,172.1L101.1,170.3L102.3,171.0L103.9,167.3L107.8,168.3L109.2,170.5L111.6,169.9L111.7,168.7L113.0,168.9L114.0,167.8L113.9,165.1L115.0,165.6L115.3,163.9L117.6,163.5L117.8,165.6L119.9,165.0L119.9,162.9L121.1,163.0L121.0,161.8L123.2,160.9L123.5,158.3L120.8,158.6L118.7,156.0L120.6,154.5L118.5,153.8L118.9,151.7L115.3,152.3L113.1,149.5L112.1,151.4L107.0,149.5L103.4,150.9L100.0,150.0L97.1,150.4L95.2,149.0L87.3,147.7L76.9,147.4L72.6,149.0L70.4,151.6L70.0,152.5L71.8,152.9L71.1,157.1L72.4,157.2L72.3,158.6L74.5,159.8L74.2,161.3L72.5,160.1L70.3,161.2L70.2,166.8L67.9,166.6Z"/>
-<path class="sc dist" d="M143.3,174.3L143.5,180.5L145.0,179.7L151.1,180.3L151.4,178.5L152.3,178.5L153.5,181.1L158.1,180.9L158.4,186.2L160.1,184.0L163.7,184.6L165.7,183.7L167.7,184.6L168.9,183.3L169.3,184.6L169.6,183.3L172.7,185.9L174.6,185.4L178.1,187.3L178.7,186.4L181.5,186.8L180.6,185.8L181.7,184.0L181.3,181.9L182.4,181.7L181.2,180.9L182.9,177.0L182.6,172.8L183.9,171.4L180.9,170.2L178.8,171.4L181.0,167.9L180.1,164.1L180.9,163.0L181.5,163.9L183.3,162.7L188.0,165.4L188.5,164.5L185.3,162.2L181.2,156.9L176.5,158.0L175.9,156.7L172.7,156.4L172.2,154.9L170.9,154.5L169.8,155.7L167.9,153.6L168.3,152.2L173.0,147.9L179.0,145.4L177.5,138.5L178.8,133.7L177.5,132.4L173.7,132.5L170.5,135.5L168.5,135.7L164.1,138.5L163.8,135.8L161.4,136.5L155.8,135.1L150.5,137.6L151.6,141.5L150.8,146.8L146.4,151.2L144.8,159.9L144.8,170.3L143.3,174.3Z"/>
-<path class="sc dist" d="M197.3,108.5L199.3,109.0L200.4,110.5L202.4,110.4L203.6,117.8L213.2,120.4L217.6,120.3L225.2,124.9L226.8,124.9L225.7,122.1L228.5,124.3L229.7,123.3L226.7,122.3L226.8,116.9L230.2,111.8L230.4,109.1L231.6,107.8L233.5,107.6L234.0,106.4L232.6,105.7L232.7,103.0L230.7,101.6L231.5,100.1L227.7,99.2L225.3,99.7L226.0,98.4L222.2,96.2L219.3,97.5L219.0,99.8L217.2,101.4L214.9,98.8L213.9,99.9L214.8,102.0L212.9,103.7L218.5,105.8L218.7,104.6L220.3,104.4L223.1,106.2L221.4,109.8L223.6,111.6L221.8,112.7L217.2,111.5L217.2,110.4L213.8,108.5L214.8,109.2L213.7,110.5L213.4,109.0L211.1,107.9L209.9,102.8L206.3,102.2L205.8,100.8L203.4,103.1L199.7,103.9L197.3,108.5Z"/>
-<path class="sc dist" d="M96.9,173.8L98.4,174.7L97.8,178.1L98.6,180.4L100.3,181.1L101.0,182.8L102.9,183.8L103.9,182.2L106.4,182.5L106.8,180.7L108.3,180.9L107.7,183.0L110.1,183.6L110.7,182.3L111.5,182.6L112.4,183.4L111.5,185.5L112.2,187.1L117.6,190.5L121.2,190.2L124.4,185.1L127.2,186.0L128.1,185.3L128.8,186.2L126.4,188.2L129.3,189.5L129.7,186.9L132.5,186.7L132.6,185.2L133.8,185.7L133.9,188.4L132.2,192.5L134.9,189.8L135.5,191.3L137.5,190.2L138.7,191.5L141.1,190.9L141.4,189.7L142.5,189.6L142.1,187.4L144.4,185.8L143.3,174.3L144.8,170.3L144.8,159.9L146.3,151.5L150.7,146.9L151.2,140.1L149.8,141.9L149.1,139.3L147.5,139.3L147.6,142.5L143.4,145.1L138.4,141.7L135.4,143.7L129.3,142.3L125.2,145.0L122.9,144.4L122.5,148.2L119.5,149.4L119.3,153.0L118.3,153.4L120.6,154.5L118.7,156.0L120.8,158.6L123.5,158.3L123.2,160.9L121.0,161.8L121.1,163.0L119.9,162.9L119.9,165.0L117.8,165.6L117.6,163.5L115.3,163.9L115.0,165.6L113.9,165.1L114.0,167.9L111.7,168.7L111.6,169.9L109.2,170.5L107.8,168.3L103.9,167.3L102.3,171.0L101.1,170.3L99.6,172.1L98.1,171.5L96.9,173.8Z"/>
-<path class="sc dist" d="M158.0,189.0L162.5,200.7L162.6,204.7L164.9,205.7L167.1,210.4L168.1,210.7L170.2,216.1L172.6,219.2L172.9,223.2L177.2,223.7L181.5,226.5L182.0,224.6L183.0,224.7L183.2,225.9L186.5,227.3L185.9,228.1L187.2,230.0L188.1,229.0L189.1,229.8L194.2,229.1L196.6,229.9L196.6,231.2L199.6,231.1L200.8,229.4L202.1,229.4L202.3,228.0L203.4,228.0L202.8,222.5L205.7,205.9L201.7,198.1L199.7,188.1L198.5,189.1L194.5,187.3L191.6,189.8L190.2,189.7L187.9,189.1L188.7,185.9L187.9,185.4L186.0,187.0L185.1,186.0L183.4,186.9L178.7,186.4L178.1,187.3L174.6,185.4L172.4,185.8L169.7,183.3L169.4,184.6L168.6,184.4L168.9,183.3L167.7,184.6L165.7,183.7L163.7,184.6L160.1,184.0L158.9,184.7L158.0,189.0Z"/>
-<path class="sc dist" d="M163.6,126.3L163.6,130.3L164.6,131.2L164.1,138.5L168.5,135.7L170.5,135.5L173.7,132.5L177.5,132.4L178.7,133.6L177.5,138.5L179.1,145.3L178.5,147.7L181.8,149.5L182.9,149.1L185.3,151.5L185.0,152.5L187.2,153.1L186.9,149.8L188.4,148.0L191.8,149.1L193.5,147.2L192.6,145.7L191.5,145.8L191.8,144.2L193.9,143.0L191.7,141.4L192.2,138.9L194.5,139.8L195.3,138.5L198.2,140.6L199.5,139.9L199.1,141.5L200.5,141.6L201.5,145.0L203.3,144.8L203.2,143.6L207.2,144.1L207.0,141.8L209.5,141.5L208.7,140.1L210.0,137.4L208.5,137.2L211.9,133.9L212.3,132.0L209.3,134.1L207.8,133.8L207.2,135.0L205.5,133.6L202.8,133.9L202.6,132.6L204.1,132.6L205.2,130.2L206.8,130.9L206.8,128.6L210.2,127.2L211.0,125.7L215.6,125.1L214.7,123.0L215.7,120.3L208.1,119.4L203.4,117.6L203.0,111.6L202.3,110.4L201.1,110.4L199.6,113.8L195.1,118.3L193.4,118.3L192.1,115.7L189.5,115.9L187.8,114.2L181.7,117.2L180.2,116.7L177.7,118.5L173.7,119.0L172.4,120.7L165.6,121.2L163.8,124.1L164.5,125.8L163.6,126.3Z"/>
-<path class="sc dist" d="M325.7,33.5L326.8,34.7L328.0,34.2L327.0,35.4L327.7,36.6L329.8,36.5L326.6,40.4L327.6,41.8L328.6,41.5L328.5,42.4L330.2,42.3L329.0,44.2L329.7,45.3L330.3,44.7L332.3,45.4L334.3,43.5L333.4,43.4L334.7,41.9L334.0,40.3L336.9,37.2L337.1,35.4L336.2,34.8L337.6,33.1L340.3,32.3L341.1,34.6L341.7,33.6L344.2,33.9L345.0,32.1L346.7,33.8L346.0,35.6L347.8,37.7L348.7,37.3L348.6,35.7L350.2,34.6L349.2,34.4L349.8,31.4L348.8,29.5L354.1,35.0L357.0,35.7L357.9,34.8L358.8,35.7L359.7,34.0L359.4,34.6L362.5,37.1L363.4,36.2L364.6,37.0L365.3,35.2L361.8,30.7L361.7,28.9L363.0,28.1L363.9,28.8L361.4,26.6L363.8,25.9L363.9,24.5L362.2,23.1L360.4,17.5L359.7,16.4L357.7,17.3L359.3,20.0L358.7,20.8L356.1,17.0L357.0,16.2L355.7,16.0L352.5,10.2L350.7,14.7L349.2,13.7L348.7,16.7L347.2,16.2L347.6,14.1L345.8,13.1L346.4,16.5L345.0,16.7L345.5,19.1L342.9,16.7L340.4,16.4L340.2,17.3L339.0,17.2L340.2,19.1L339.7,20.0L340.6,20.3L340.8,18.5L342.3,20.0L340.8,19.5L343.5,22.5L343.1,23.9L337.9,25.8L337.3,27.2L335.3,26.8L334.8,28.7L331.7,26.3L325.7,33.5Z M349.5,36.5L352.7,37.3L352.4,35.8L349.5,36.5Z"/>
-<path class="sc dist" d="M235.2,73.5L236.3,73.8L235.9,75.4L240.4,75.0L240.7,77.1L244.8,76.1L245.8,77.8L251.5,78.6L253.1,81.7L255.7,81.3L259.1,83.0L261.9,82.3L262.8,83.8L266.4,85.3L266.5,88.6L269.1,89.7L268.3,91.0L269.5,91.0L269.3,92.7L270.9,93.2L275.5,91.6L275.6,89.5L277.3,90.4L277.8,89.3L279.8,89.3L279.4,90.7L281.8,89.2L284.5,89.6L285.0,90.7L287.0,90.3L285.2,89.2L285.2,86.6L286.3,85.5L288.1,86.2L287.2,88.8L289.0,87.9L288.3,89.8L290.6,89.5L291.2,89.0L289.3,89.2L290.3,88.0L289.6,87.4L295.1,83.6L295.3,82.2L297.2,80.8L297.7,77.8L292.6,75.4L289.9,76.6L288.1,74.7L283.6,76.2L283.0,75.3L284.4,72.1L283.6,70.5L282.2,69.8L280.2,71.1L277.0,70.5L282.5,66.2L283.8,66.8L283.1,64.2L284.2,62.5L282.1,59.3L274.9,62.0L270.6,65.4L270.2,64.2L268.7,64.8L266.6,67.5L264.8,66.9L261.2,68.0L260.4,66.9L257.1,67.6L256.7,68.7L251.0,68.0L247.0,66.2L244.0,68.0L244.6,69.7L242.6,71.3L239.8,70.6L239.0,69.4L235.9,70.5L235.2,73.5Z"/>
-<path class="sc dist" d="M167.9,153.5L169.8,155.7L170.9,154.5L172.2,154.9L172.7,156.4L175.9,156.7L176.5,158.0L181.2,156.9L185.3,162.2L188.5,164.5L188.0,165.4L183.3,162.7L181.5,163.9L180.9,163.0L180.1,164.1L181.0,167.9L178.8,171.4L180.9,170.2L183.9,171.4L182.6,172.8L182.9,177.0L181.2,180.9L182.4,181.8L181.3,181.9L181.7,184.0L180.7,185.9L183.3,186.9L185.1,186.0L186.0,187.0L187.9,185.4L188.7,185.9L187.9,189.1L190.2,189.7L191.6,189.8L194.6,187.3L198.5,189.1L199.7,188.1L199.5,184.3L202.1,173.6L207.2,165.2L207.7,162.1L204.9,161.7L205.0,159.0L207.0,155.3L208.3,156.0L209.1,155.0L207.0,153.8L204.7,157.4L203.3,156.8L204.5,154.0L203.9,151.7L197.5,148.8L199.3,145.8L201.6,145.1L200.5,141.6L199.1,141.5L199.5,139.9L198.2,140.6L195.3,138.5L194.5,139.8L192.2,138.9L191.7,141.4L193.9,143.0L191.8,144.2L191.5,145.8L192.6,145.7L193.5,147.2L191.8,149.1L188.4,148.0L186.5,151.5L187.5,153.0L185.0,152.5L185.3,151.5L182.9,149.1L181.8,149.5L178.5,147.7L179.0,145.4L173.0,147.9L167.9,153.5Z"/>
-<path class="sc dist" d="M64.1,225.2L65.7,225.2L67.8,227.5L66.0,229.8L70.7,234.0L71.0,235.1L69.9,235.3L68.0,238.5L68.9,242.0L69.7,242.3L70.0,240.6L71.7,242.1L72.6,242.1L72.8,241.1L76.4,241.3L76.2,238.4L74.4,237.2L76.2,236.9L75.9,235.1L76.9,234.3L76.7,236.7L77.5,237.0L79.1,235.2L80.0,237.7L82.3,236.8L82.9,238.3L84.5,237.3L87.5,237.8L87.1,239.7L88.8,239.3L88.4,244.7L90.0,244.4L89.7,243.3L91.6,244.2L91.4,241.7L92.9,243.0L94.6,241.8L96.0,242.4L96.4,241.9L95.4,241.3L96.8,240.3L98.1,240.2L97.7,241.4L99.1,241.0L99.7,242.2L99.7,239.7L102.4,238.9L102.4,237.8L104.8,236.7L103.8,234.7L104.3,233.5L107.3,233.6L108.6,235.2L111.0,232.9L111.1,235.5L109.6,235.9L109.7,238.5L111.8,236.5L113.7,237.0L113.9,235.5L115.3,237.1L116.7,237.0L117.3,240.3L122.2,240.4L123.0,239.7L122.1,237.5L123.4,235.6L127.6,233.0L128.4,233.7L131.8,230.8L130.6,230.3L131.5,226.5L129.8,224.8L130.1,222.6L129.1,222.5L129.8,219.0L124.0,218.6L116.3,214.3L109.4,206.7L110.3,205.9L111.3,206.7L111.1,204.6L106.2,203.1L104.9,204.9L105.4,205.4L103.0,204.9L99.5,206.5L98.7,208.1L97.0,208.2L97.9,209.8L94.9,211.5L92.4,211.4L91.1,210.2L89.8,210.8L89.0,206.8L84.2,208.0L85.1,209.8L82.8,212.5L82.7,217.8L83.9,217.9L84.3,221.1L85.8,222.6L86.9,222.1L85.2,217.3L86.4,216.7L88.1,217.5L88.2,219.1L90.3,219.2L90.0,221.2L91.1,223.1L90.5,224.4L85.8,223.6L85.2,225.3L84.0,225.5L83.8,226.7L86.1,226.0L83.2,229.8L85.7,230.4L85.3,232.1L87.7,232.2L87.6,233.4L86.6,233.4L87.6,234.8L86.3,235.8L83.8,234.7L84.9,233.1L83.9,232.9L84.4,231.5L82.7,229.8L75.5,231.1L74.4,229.1L70.3,228.7L69.9,223.5L66.7,222.6L66.5,223.7L64.4,223.9L64.1,225.2Z"/>
-<path class="sc dist" d="M350.8,44.7L351.7,45.9L356.1,47.3L354.6,47.8L353.7,51.1L351.6,51.1L351.7,53.8L354.1,56.6L371.6,48.1L383.7,36.1L401.3,13.8L398.6,12.1L399.0,10.4L397.4,10.0L397.1,11.6L394.0,11.5L395.4,13.5L397.2,13.9L395.0,14.3L394.2,16.1L393.0,14.0L389.7,15.9L389.0,17.6L386.6,16.2L387.9,18.1L386.8,19.2L387.3,20.5L386.5,21.5L384.7,21.3L385.4,22.4L384.0,21.6L384.5,23.1L383.0,21.8L384.1,24.1L382.3,26.3L378.2,25.7L372.4,27.5L370.2,25.0L363.4,25.0L363.8,25.9L361.5,26.8L362.9,27.2L363.9,28.8L363.0,28.1L361.7,28.9L361.7,30.6L365.3,35.2L364.4,35.8L365.0,36.7L363.4,36.2L362.2,37.1L361.3,35.3L359.4,34.6L359.7,34.0L358.7,35.1L359.3,36.7L360.1,36.5L359.5,38.2L360.7,39.5L361.4,43.3L358.7,43.8L356.4,40.7L355.9,43.4L351.7,43.2L350.8,44.7Z"/>
-<path class="sc dist" d="M153.7,252.9L161.3,256.7L164.2,256.7L163.3,255.8L165.6,255.8L163.8,255.2L165.7,253.7L168.9,252.9L168.6,253.9L169.6,253.9L175.5,252.0L176.8,252.8L175.0,254.2L177.3,254.8L175.1,256.3L175.1,257.4L177.3,256.6L177.8,257.2L176.4,259.3L179.3,258.2L182.3,258.8L184.4,254.9L185.9,259.0L188.4,261.3L195.0,258.3L195.7,257.0L194.5,256.1L196.2,255.5L196.2,253.8L199.3,252.8L197.4,250.5L200.8,250.4L200.7,253.0L203.3,252.3L207.7,253.7L208.8,249.8L207.4,245.8L208.1,240.1L203.4,228.0L202.3,228.0L202.1,229.4L200.8,229.4L199.6,231.1L196.6,231.2L196.6,229.9L194.2,229.1L189.1,229.8L188.1,229.0L187.2,230.0L185.9,228.1L186.5,227.3L183.2,225.9L183.0,224.7L182.0,224.6L181.5,226.5L177.2,223.7L172.9,223.2L172.6,219.2L170.2,216.1L168.1,210.7L167.1,210.4L166.7,212.0L164.9,212.2L164.5,213.4L167.6,215.7L166.4,216.9L165.9,216.1L164.8,218.5L162.1,219.9L165.3,224.1L164.0,223.3L162.0,224.3L162.6,225.4L161.7,226.3L160.7,224.9L156.7,224.9L156.0,222.8L156.1,225.8L155.4,225.7L156.6,227.4L154.7,228.0L156.4,233.2L157.4,234.1L158.7,233.7L160.9,236.8L158.8,237.5L158.4,236.2L154.5,235.0L156.6,237.0L155.0,237.8L156.3,239.1L155.5,240.8L158.3,240.4L158.5,242.9L156.7,247.4L161.9,248.1L162.3,250.5L158.1,251.9L156.3,250.1L153.7,252.9Z"/>
-<path class="sc dist" d="M330.4,73.1L332.3,73.9L330.6,79.3L335.9,76.5L338.5,73.4L337.0,72.2L338.8,73.3L345.3,64.0L348.2,62.2L345.7,61.4L344.5,62.2L344.7,63.2L343.1,61.5L343.9,60.1L342.5,59.2L343.0,57.5L341.1,57.2L338.8,58.6L339.2,59.7L337.4,59.6L335.3,62.2L336.9,63.5L335.5,65.3L334.8,65.0L334.5,66.4L332.8,66.4L332.5,71.1L330.4,73.1Z"/>
-<path class="sc dist" d="M326.3,57.7L326.0,60.9L330.4,62.5L332.6,66.7L335.6,65.2L336.9,63.5L335.3,62.2L337.4,59.6L339.2,59.7L338.8,58.6L341.1,57.2L343.0,57.5L342.5,59.2L343.9,60.1L343.1,61.5L344.7,63.2L344.5,62.2L345.7,61.4L348.4,62.1L350.0,59.5L354.2,56.4L352.4,55.0L351.6,51.1L353.7,51.1L354.6,47.8L356.1,47.3L351.7,45.9L350.9,44.4L351.7,43.2L355.9,43.4L356.4,40.7L358.7,43.8L361.4,43.3L360.7,39.5L359.5,38.2L360.0,36.4L359.3,36.7L357.9,34.8L357.0,35.7L353.6,34.7L349.1,29.5L349.2,34.4L350.2,34.6L349.0,35.0L348.3,36.3L349.0,36.9L347.8,37.7L346.0,35.6L346.7,33.8L345.0,32.1L344.2,33.9L341.7,33.6L341.1,34.6L340.3,32.3L337.6,33.1L336.2,34.8L337.1,35.4L336.9,37.2L334.0,40.3L334.7,41.9L333.4,43.4L334.3,43.5L332.1,45.8L333.1,46.5L335.2,45.6L334.8,47.7L336.8,48.1L337.1,50.7L335.7,49.7L336.0,51.2L335.1,50.3L334.7,51.8L333.2,50.1L331.4,52.4L330.2,51.8L330.8,53.3L330.1,54.2L331.0,55.0L330.2,55.2L331.2,55.6L326.3,57.7Z M349.5,36.5L352.4,35.8L352.7,37.3L349.5,36.5Z"/>
-<path class="sc dist" d="M254.1,118.8L255.4,120.0L254.3,123.7L256.0,124.2L256.4,126.2L261.2,129.6L263.5,129.3L263.8,130.7L270.5,132.1L270.5,126.5L272.2,127.7L276.5,124.3L277.0,119.5L276.0,116.6L274.0,115.8L272.6,116.7L272.4,114.4L271.0,114.3L271.2,112.5L269.3,112.9L266.8,111.5L268.2,109.1L266.8,107.4L264.6,106.9L261.3,103.9L259.7,108.3L261.5,110.7L260.7,113.1L259.0,113.1L259.8,116.6L254.8,117.4L255.3,115.9L254.2,116.0L254.1,118.8Z"/>
-<path class="sc dist" d="M109.4,206.7L116.3,214.3L121.6,217.6L129.8,219.0L129.1,222.5L132.2,224.2L135.5,224.4L138.6,222.0L137.5,219.0L139.6,219.4L140.3,220.6L141.0,219.6L140.3,218.4L144.4,217.9L143.8,219.1L144.5,221.1L147.2,222.4L145.7,225.1L145.9,228.1L147.5,228.4L148.4,227.3L149.7,229.4L148.0,231.0L149.0,235.5L152.7,236.0L154.1,234.9L158.4,236.2L158.8,237.5L160.9,236.8L158.7,233.7L157.1,234.0L156.1,232.7L154.7,228.0L156.6,226.9L155.4,225.8L156.1,225.8L155.4,223.6L156.6,222.7L156.7,224.9L160.7,224.9L161.7,226.3L162.6,225.4L162.0,224.3L164.0,223.3L165.3,224.1L162.1,219.9L164.8,218.5L165.9,216.1L166.4,216.9L167.6,215.7L164.5,213.4L164.9,212.2L166.7,212.0L167.1,209.9L164.9,205.7L162.6,204.5L162.5,200.7L158.1,189.2L158.1,180.9L153.5,181.1L152.3,178.5L151.4,178.5L151.1,180.3L145.0,179.7L143.9,182.6L144.3,186.0L142.1,187.4L142.5,189.6L138.7,191.5L137.5,190.2L135.2,191.2L134.9,189.8L132.5,192.6L133.9,188.4L133.5,185.4L132.1,185.6L132.5,186.7L129.7,186.9L128.5,189.7L126.4,188.2L128.8,186.2L128.1,185.3L127.3,186.1L124.1,185.2L123.9,187.0L121.9,188.2L121.2,190.2L118.5,189.9L116.6,191.2L115.6,194.2L116.6,194.7L116.1,196.1L115.0,195.7L113.7,198.0L115.0,198.9L114.6,200.5L117.5,201.3L117.0,204.4L115.5,204.1L113.2,208.4L111.2,208.0L110.3,205.9L109.4,206.7Z"/>
-</g>
-<text class="cap cap-state" x="230" y="330" text-anchor="middle">STATE TOTAL</text>
-<text class="cap cap-parts" x="230" y="330" text-anchor="middle">28 DISTRICTS</text>
-<text class="cap cap-pick" x="230" y="330" text-anchor="middle">KURNOOL &#183; 1 OF 28</text>
-</svg></div>
-  <div class="chap-steps">
-<div class="step" data-chap="0"><div class="no">01</div><h3 class="serif">One state total</h3><p>Gross State Domestic Product is a single number for all of Andhra Pradesh: the value of everything produced in the state in a year.</p><p>Useful for comparing states. Useless for deciding where to build a cold-storage unit.</p></div>
-<div class="step" data-chap="0"><div class="no">02</div><h3 class="serif">Twenty-eight parts</h3><p>District Domestic Product breaks that total apart. Each district gets its own estimate, built from its own economy.</p><div class='pull'>DDP is to a district what <b>GSDP</b> is to a state and <b>GDP</b> is to the country. Same idea, smaller frame.</div></div>
-<div class="step" data-chap="0"><div class="no">03</div><h3 class="serif">One district, in focus</h3><p>Once a district has its own number, it can be compared, tracked across years, and divided by population to give per-capita income.</p><div class='pull'>All <b>28</b> districts, <b>four</b> years each, are in the corpus behind this assistant.</div></div>
+      <!-- 1 -->
+      <section class="md-slide">
+        <div class="md-panel md-title">
+          <div class="kick">Methodology</div>
+          <h2 class="serif">How a district&#39;s income is estimated</h2>
+          <p class="md-lede">The official method, from state total to rupees per person, as taught in the Swarna Andhra capacity building programme.</p>
+          <p class="md-src">Source: Directorate of Economics &amp; Statistics, Andhra Pradesh. Base year 2022-23.</p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">01</div>
+          <h3 class="serif">Measurement exists to be used, not filed</h3>
+          <p class="md-lede">National income is the total value of everything a territory produces in a year. The accounts built on it are working instruments, not statistical housekeeping.</p>
+          <div class="md-cols md-3">
+            <div class="ab-box">
+              <h3>Planning</h3>
+              <p>Investment and tax policy, and budget allocation aimed at the things holding growth back.</p>
+            </div>
+            <div class="ab-box">
+              <h3>Monitoring</h3>
+              <p>Tracking whether plans are actually raising productivity, output and welfare.</p>
+            </div>
+            <div class="ab-box">
+              <h3>Comparison</h3>
+              <p>Setting one region against another on the same basis, which is what makes a gap arguable.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">02</div>
+          <h3 class="serif">Value added is what is left after inputs</h3>
+          <p class="md-lede">Gross Value Added is the single building block everything else is assembled from.</p>
+          <div class="gva-est md-formula">Output &minus; Intermediate Consumption = GVA</div>
+          <div class="md-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 240" fill="none" class="mk" role="img" aria-label="Value added is the area between an output curve and an input curve">
+<path d="M66.0 68.0 L67.9 66.9 L69.7 65.8 L71.6 64.7 L73.5 63.6 L75.3 62.5 L77.2 61.4 L79.1 60.3 L80.9 59.2 L82.8 58.1 L84.7 57.0 L86.5 56.0 L88.4 54.9 L90.3 53.9 L92.1 52.9 L94.0 51.9 L95.9 50.9 L97.7 49.9 L99.6 48.9 L101.5 47.9 L103.3 47.0 L105.2 46.1 L107.1 45.2 L108.9 44.3 L110.8 43.4 L112.7 42.6 L114.5 41.8 L116.4 41.0 L118.3 40.2 L120.1 39.4 L122.0 38.7 L123.8 38.0 L125.7 37.3 L127.6 36.7 L129.4 36.0 L131.3 35.4 L133.2 34.9 L135.0 34.3 L136.9 33.8 L138.8 33.3 L140.6 32.8 L142.5 32.4 L144.4 32.0 L146.2 31.6 L148.1 31.3 L150.0 31.0 L151.8 30.7 L153.7 30.5 L155.6 30.2 L157.4 30.1 L159.3 29.9 L161.2 29.8 L163.0 29.7 L164.9 29.6 L166.8 29.6 L168.6 29.6 L170.5 29.6 L172.4 29.7 L174.2 29.8 L176.1 30.0 L178.0 30.1 L179.8 30.3 L181.7 30.5 L183.6 30.8 L185.4 31.1 L187.3 31.4 L189.2 31.8 L191.0 32.2 L192.9 32.6 L194.8 33.0 L196.6 33.5 L198.5 34.0 L200.4 34.5 L202.2 35.1 L204.1 35.7 L206.0 36.3 L207.8 36.9 L209.7 37.6 L211.6 38.3 L213.4 39.0 L215.3 39.7 L217.2 40.5 L219.0 41.3 L220.9 42.1 L222.8 42.9 L224.6 43.7 L226.5 44.6 L228.4 45.5 L230.2 46.4 L232.1 47.3 L233.9 48.3 L235.8 49.3 L237.7 50.2 L239.5 51.2 L241.4 52.2 L243.3 53.2 L245.1 54.3 L247.0 55.3 L248.9 56.4 L250.7 57.4 L252.6 58.5 L254.5 59.6 L256.3 60.7 L258.2 61.8 L260.1 62.9 L261.9 64.0 L263.8 65.1 L265.7 66.2 L267.5 67.3 L269.4 68.4 L271.3 69.5 L273.1 70.6 L275.0 71.7 L276.9 72.8 L278.7 73.9 L280.6 75.0 L282.5 76.1 L284.3 77.2 L286.2 78.3 L288.1 79.3 L289.9 80.4 L291.8 81.4 L293.7 82.5 L295.5 83.5 L297.4 84.5 L299.3 85.5 L301.1 86.5 L303.0 87.4 L304.9 88.4 L306.7 89.3 L308.6 90.2 L310.5 91.1 L312.3 92.0 L314.2 92.9 L316.1 93.7 L317.9 94.5 L319.8 95.3 L321.7 96.1 L323.5 96.8 L325.4 97.5 L327.3 98.2 L329.1 98.9 L331.0 99.6 L332.9 100.2 L334.7 100.8 L336.6 101.3 L338.5 101.9 L340.3 102.4 L342.2 102.9 L344.1 103.3 L345.9 103.7 L347.8 104.1 L349.6 104.5 L351.5 104.8 L353.4 105.1 L355.2 105.4 L357.1 105.6 L359.0 105.8 L360.8 106.0 L362.7 106.1 L364.6 106.3 L366.4 106.3 L368.3 106.4 L370.2 106.4 L372.0 106.4 L373.9 106.3 L375.8 106.3 L377.6 106.1 L379.5 106.0 L381.4 105.8 L383.2 105.6 L385.1 105.4 L387.0 105.1 L388.8 104.8 L390.7 104.5 L392.6 104.1 L394.4 103.7 L396.3 103.3 L398.2 102.8 L400.0 102.3 L401.9 101.8 L403.8 101.3 L405.6 100.7 L407.5 100.1 L409.4 99.5 L411.2 98.9 L413.1 98.2 L415.0 97.5 L416.8 96.8 L418.7 96.0 L420.6 95.2 L422.4 94.4 L424.3 93.6 L426.2 92.8 L428.0 91.9 L429.9 91.1 L431.8 90.2 L433.6 89.2 L435.5 88.3 L437.4 87.4 L439.2 86.4 L441.1 85.4 L443.0 84.4 L444.8 83.4 L446.7 82.4 L448.6 81.3 L450.4 80.3 L452.3 79.2 L454.2 78.2 L456.0 77.1 L457.9 76.0 L459.7 74.9 L461.6 73.8 L463.5 72.7 L465.3 71.6 L467.2 70.5 L469.1 69.4 L470.9 68.3 L472.8 67.2 L474.7 66.1 L476.5 65.0 L478.4 63.9 L480.3 62.8 L482.1 61.7 L484.0 60.6 L485.9 59.5 L487.7 58.4 L489.6 57.3 L491.5 56.3 L493.3 55.2 L495.2 54.2 L497.1 53.2 L498.9 52.1 L500.8 51.1 L502.7 50.1 L504.5 49.2 L506.4 48.2 L508.3 47.3 L510.1 46.3 L512.0 45.4 L512.0 172.2 L510.1 172.0 L508.3 171.6 L506.4 171.2 L504.5 170.8 L502.7 170.3 L500.8 169.8 L498.9 169.3 L497.1 168.7 L495.2 168.1 L493.3 167.4 L491.5 166.7 L489.6 165.9 L487.7 165.2 L485.9 164.3 L484.0 163.5 L482.1 162.6 L480.3 161.7 L478.4 160.8 L476.5 159.8 L474.7 158.9 L472.8 157.9 L470.9 156.8 L469.1 155.8 L467.2 154.7 L465.3 153.7 L463.5 152.6 L461.6 151.5 L459.7 150.4 L457.9 149.3 L456.0 148.2 L454.2 147.0 L452.3 145.9 L450.4 144.8 L448.6 143.7 L446.7 142.6 L444.8 141.5 L443.0 140.4 L441.1 139.3 L439.2 138.2 L437.4 137.2 L435.5 136.1 L433.6 135.1 L431.8 134.1 L429.9 133.1 L428.0 132.2 L426.2 131.2 L424.3 130.3 L422.4 129.4 L420.6 128.6 L418.7 127.8 L416.8 127.0 L415.0 126.2 L413.1 125.5 L411.2 124.9 L409.4 124.2 L407.5 123.6 L405.6 123.1 L403.8 122.5 L401.9 122.1 L400.0 121.6 L398.2 121.2 L396.3 120.9 L394.4 120.6 L392.6 120.3 L390.7 120.1 L388.8 120.0 L387.0 119.9 L385.1 119.8 L383.2 119.8 L381.4 119.8 L379.5 119.9 L377.6 120.0 L375.8 120.2 L373.9 120.4 L372.0 120.6 L370.2 120.9 L368.3 121.3 L366.4 121.7 L364.6 122.1 L362.7 122.6 L360.8 123.1 L359.0 123.7 L357.1 124.3 L355.2 125.0 L353.4 125.6 L351.5 126.4 L349.6 127.1 L347.8 127.9 L345.9 128.7 L344.1 129.6 L342.2 130.5 L340.3 131.4 L338.5 132.3 L336.6 133.3 L334.7 134.2 L332.9 135.3 L331.0 136.3 L329.1 137.3 L327.3 138.4 L325.4 139.5 L323.5 140.6 L321.7 141.6 L319.8 142.8 L317.9 143.9 L316.1 145.0 L314.2 146.1 L312.3 147.2 L310.5 148.3 L308.6 149.5 L306.7 150.6 L304.9 151.7 L303.0 152.8 L301.1 153.8 L299.3 154.9 L297.4 156.0 L295.5 157.0 L293.7 158.0 L291.8 159.0 L289.9 160.0 L288.1 160.9 L286.2 161.9 L284.3 162.8 L282.5 163.6 L280.6 164.5 L278.7 165.3 L276.9 166.0 L275.0 166.8 L273.1 167.5 L271.3 168.2 L269.4 168.8 L267.5 169.4 L265.7 169.9 L263.8 170.4 L261.9 170.9 L260.1 171.3 L258.2 171.7 L256.3 172.0 L254.5 172.3 L252.6 172.5 L250.7 172.7 L248.9 172.9 L247.0 173.0 L245.1 173.0 L243.3 173.0 L241.4 173.0 L239.5 172.9 L237.7 172.8 L235.8 172.6 L233.9 172.3 L232.1 172.1 L230.2 171.7 L228.4 171.4 L226.5 171.0 L224.6 170.5 L222.8 170.0 L220.9 169.5 L219.0 168.9 L217.2 168.3 L215.3 167.6 L213.4 166.9 L211.6 166.2 L209.7 165.4 L207.8 164.6 L206.0 163.8 L204.1 163.0 L202.2 162.1 L200.4 161.1 L198.5 160.2 L196.6 159.2 L194.8 158.2 L192.9 157.2 L191.0 156.2 L189.2 155.1 L187.3 154.1 L185.4 153.0 L183.6 151.9 L181.7 150.8 L179.8 149.7 L178.0 148.6 L176.1 147.5 L174.2 146.3 L172.4 145.2 L170.5 144.1 L168.6 143.0 L166.8 141.9 L164.9 140.8 L163.0 139.7 L161.2 138.6 L159.3 137.6 L157.4 136.5 L155.6 135.5 L153.7 134.5 L151.8 133.5 L150.0 132.5 L148.1 131.6 L146.2 130.7 L144.4 129.8 L142.5 128.9 L140.6 128.1 L138.8 127.3 L136.9 126.5 L135.0 125.8 L133.2 125.1 L131.3 124.4 L129.4 123.8 L127.6 123.3 L125.7 122.7 L123.8 122.2 L122.0 121.8 L120.1 121.4 L118.3 121.0 L116.4 120.7 L114.5 120.4 L112.7 120.2 L110.8 120.0 L108.9 119.9 L107.1 119.8 L105.2 119.8 L103.3 119.8 L101.5 119.8 L99.6 119.9 L97.7 120.1 L95.9 120.3 L94.0 120.5 L92.1 120.8 L90.3 121.2 L88.4 121.5 L86.5 122.0 L84.7 122.4 L82.8 122.9 L80.9 123.5 L79.1 124.1 L77.2 124.7 L75.3 125.4 L73.5 126.1 L71.6 126.8 L69.7 127.6 L67.9 128.4 L66.0 129.2 Z" fill="rgba(198,255,106,.20)" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="mk-fade"/>
+<path d="M66.0 129.2 L67.9 128.4 L69.7 127.6 L71.6 126.8 L73.5 126.1 L75.3 125.4 L77.2 124.7 L79.1 124.1 L80.9 123.5 L82.8 122.9 L84.7 122.4 L86.5 122.0 L88.4 121.5 L90.3 121.2 L92.1 120.8 L94.0 120.5 L95.9 120.3 L97.7 120.1 L99.6 119.9 L101.5 119.8 L103.3 119.8 L105.2 119.8 L107.1 119.8 L108.9 119.9 L110.8 120.0 L112.7 120.2 L114.5 120.4 L116.4 120.7 L118.3 121.0 L120.1 121.4 L122.0 121.8 L123.8 122.2 L125.7 122.7 L127.6 123.3 L129.4 123.8 L131.3 124.4 L133.2 125.1 L135.0 125.8 L136.9 126.5 L138.8 127.3 L140.6 128.1 L142.5 128.9 L144.4 129.8 L146.2 130.7 L148.1 131.6 L150.0 132.5 L151.8 133.5 L153.7 134.5 L155.6 135.5 L157.4 136.5 L159.3 137.6 L161.2 138.6 L163.0 139.7 L164.9 140.8 L166.8 141.9 L168.6 143.0 L170.5 144.1 L172.4 145.2 L174.2 146.3 L176.1 147.5 L178.0 148.6 L179.8 149.7 L181.7 150.8 L183.6 151.9 L185.4 153.0 L187.3 154.1 L189.2 155.1 L191.0 156.2 L192.9 157.2 L194.8 158.2 L196.6 159.2 L198.5 160.2 L200.4 161.1 L202.2 162.1 L204.1 163.0 L206.0 163.8 L207.8 164.6 L209.7 165.4 L211.6 166.2 L213.4 166.9 L215.3 167.6 L217.2 168.3 L219.0 168.9 L220.9 169.5 L222.8 170.0 L224.6 170.5 L226.5 171.0 L228.4 171.4 L230.2 171.7 L232.1 172.1 L233.9 172.3 L235.8 172.6 L237.7 172.8 L239.5 172.9 L241.4 173.0 L243.3 173.0 L245.1 173.0 L247.0 173.0 L248.9 172.9 L250.7 172.7 L252.6 172.5 L254.5 172.3 L256.3 172.0 L258.2 171.7 L260.1 171.3 L261.9 170.9 L263.8 170.4 L265.7 169.9 L267.5 169.4 L269.4 168.8 L271.3 168.2 L273.1 167.5 L275.0 166.8 L276.9 166.0 L278.7 165.3 L280.6 164.5 L282.5 163.6 L284.3 162.8 L286.2 161.9 L288.1 160.9 L289.9 160.0 L291.8 159.0 L293.7 158.0 L295.5 157.0 L297.4 156.0 L299.3 154.9 L301.1 153.8 L303.0 152.8 L304.9 151.7 L306.7 150.6 L308.6 149.5 L310.5 148.3 L312.3 147.2 L314.2 146.1 L316.1 145.0 L317.9 143.9 L319.8 142.8 L321.7 141.6 L323.5 140.6 L325.4 139.5 L327.3 138.4 L329.1 137.3 L331.0 136.3 L332.9 135.3 L334.7 134.2 L336.6 133.3 L338.5 132.3 L340.3 131.4 L342.2 130.5 L344.1 129.6 L345.9 128.7 L347.8 127.9 L349.6 127.1 L351.5 126.4 L353.4 125.6 L355.2 125.0 L357.1 124.3 L359.0 123.7 L360.8 123.1 L362.7 122.6 L364.6 122.1 L366.4 121.7 L368.3 121.3 L370.2 120.9 L372.0 120.6 L373.9 120.4 L375.8 120.2 L377.6 120.0 L379.5 119.9 L381.4 119.8 L383.2 119.8 L385.1 119.8 L387.0 119.9 L388.8 120.0 L390.7 120.1 L392.6 120.3 L394.4 120.6 L396.3 120.9 L398.2 121.2 L400.0 121.6 L401.9 122.1 L403.8 122.5 L405.6 123.1 L407.5 123.6 L409.4 124.2 L411.2 124.9 L413.1 125.5 L415.0 126.2 L416.8 127.0 L418.7 127.8 L420.6 128.6 L422.4 129.4 L424.3 130.3 L426.2 131.2 L428.0 132.2 L429.9 133.1 L431.8 134.1 L433.6 135.1 L435.5 136.1 L437.4 137.2 L439.2 138.2 L441.1 139.3 L443.0 140.4 L444.8 141.5 L446.7 142.6 L448.6 143.7 L450.4 144.8 L452.3 145.9 L454.2 147.0 L456.0 148.2 L457.9 149.3 L459.7 150.4 L461.6 151.5 L463.5 152.6 L465.3 153.7 L467.2 154.7 L469.1 155.8 L470.9 156.8 L472.8 157.9 L474.7 158.9 L476.5 159.8 L478.4 160.8 L480.3 161.7 L482.1 162.6 L484.0 163.5 L485.9 164.3 L487.7 165.2 L489.6 165.9 L491.5 166.7 L493.3 167.4 L495.2 168.1 L497.1 168.7 L498.9 169.3 L500.8 169.8 L502.7 170.3 L504.5 170.8 L506.4 171.2 L508.3 171.6 L510.1 172.0 L512.0 172.2" fill="none" stroke="rgba(255,255,255,.42)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw" style="--i:1"/>
+<path d="M66.0 68.0 L67.9 66.9 L69.7 65.8 L71.6 64.7 L73.5 63.6 L75.3 62.5 L77.2 61.4 L79.1 60.3 L80.9 59.2 L82.8 58.1 L84.7 57.0 L86.5 56.0 L88.4 54.9 L90.3 53.9 L92.1 52.9 L94.0 51.9 L95.9 50.9 L97.7 49.9 L99.6 48.9 L101.5 47.9 L103.3 47.0 L105.2 46.1 L107.1 45.2 L108.9 44.3 L110.8 43.4 L112.7 42.6 L114.5 41.8 L116.4 41.0 L118.3 40.2 L120.1 39.4 L122.0 38.7 L123.8 38.0 L125.7 37.3 L127.6 36.7 L129.4 36.0 L131.3 35.4 L133.2 34.9 L135.0 34.3 L136.9 33.8 L138.8 33.3 L140.6 32.8 L142.5 32.4 L144.4 32.0 L146.2 31.6 L148.1 31.3 L150.0 31.0 L151.8 30.7 L153.7 30.5 L155.6 30.2 L157.4 30.1 L159.3 29.9 L161.2 29.8 L163.0 29.7 L164.9 29.6 L166.8 29.6 L168.6 29.6 L170.5 29.6 L172.4 29.7 L174.2 29.8 L176.1 30.0 L178.0 30.1 L179.8 30.3 L181.7 30.5 L183.6 30.8 L185.4 31.1 L187.3 31.4 L189.2 31.8 L191.0 32.2 L192.9 32.6 L194.8 33.0 L196.6 33.5 L198.5 34.0 L200.4 34.5 L202.2 35.1 L204.1 35.7 L206.0 36.3 L207.8 36.9 L209.7 37.6 L211.6 38.3 L213.4 39.0 L215.3 39.7 L217.2 40.5 L219.0 41.3 L220.9 42.1 L222.8 42.9 L224.6 43.7 L226.5 44.6 L228.4 45.5 L230.2 46.4 L232.1 47.3 L233.9 48.3 L235.8 49.3 L237.7 50.2 L239.5 51.2 L241.4 52.2 L243.3 53.2 L245.1 54.3 L247.0 55.3 L248.9 56.4 L250.7 57.4 L252.6 58.5 L254.5 59.6 L256.3 60.7 L258.2 61.8 L260.1 62.9 L261.9 64.0 L263.8 65.1 L265.7 66.2 L267.5 67.3 L269.4 68.4 L271.3 69.5 L273.1 70.6 L275.0 71.7 L276.9 72.8 L278.7 73.9 L280.6 75.0 L282.5 76.1 L284.3 77.2 L286.2 78.3 L288.1 79.3 L289.9 80.4 L291.8 81.4 L293.7 82.5 L295.5 83.5 L297.4 84.5 L299.3 85.5 L301.1 86.5 L303.0 87.4 L304.9 88.4 L306.7 89.3 L308.6 90.2 L310.5 91.1 L312.3 92.0 L314.2 92.9 L316.1 93.7 L317.9 94.5 L319.8 95.3 L321.7 96.1 L323.5 96.8 L325.4 97.5 L327.3 98.2 L329.1 98.9 L331.0 99.6 L332.9 100.2 L334.7 100.8 L336.6 101.3 L338.5 101.9 L340.3 102.4 L342.2 102.9 L344.1 103.3 L345.9 103.7 L347.8 104.1 L349.6 104.5 L351.5 104.8 L353.4 105.1 L355.2 105.4 L357.1 105.6 L359.0 105.8 L360.8 106.0 L362.7 106.1 L364.6 106.3 L366.4 106.3 L368.3 106.4 L370.2 106.4 L372.0 106.4 L373.9 106.3 L375.8 106.3 L377.6 106.1 L379.5 106.0 L381.4 105.8 L383.2 105.6 L385.1 105.4 L387.0 105.1 L388.8 104.8 L390.7 104.5 L392.6 104.1 L394.4 103.7 L396.3 103.3 L398.2 102.8 L400.0 102.3 L401.9 101.8 L403.8 101.3 L405.6 100.7 L407.5 100.1 L409.4 99.5 L411.2 98.9 L413.1 98.2 L415.0 97.5 L416.8 96.8 L418.7 96.0 L420.6 95.2 L422.4 94.4 L424.3 93.6 L426.2 92.8 L428.0 91.9 L429.9 91.1 L431.8 90.2 L433.6 89.2 L435.5 88.3 L437.4 87.4 L439.2 86.4 L441.1 85.4 L443.0 84.4 L444.8 83.4 L446.7 82.4 L448.6 81.3 L450.4 80.3 L452.3 79.2 L454.2 78.2 L456.0 77.1 L457.9 76.0 L459.7 74.9 L461.6 73.8 L463.5 72.7 L465.3 71.6 L467.2 70.5 L469.1 69.4 L470.9 68.3 L472.8 67.2 L474.7 66.1 L476.5 65.0 L478.4 63.9 L480.3 62.8 L482.1 61.7 L484.0 60.6 L485.9 59.5 L487.7 58.4 L489.6 57.3 L491.5 56.3 L493.3 55.2 L495.2 54.2 L497.1 53.2 L498.9 52.1 L500.8 51.1 L502.7 50.1 L504.5 49.2 L506.4 48.2 L508.3 47.3 L510.1 46.3 L512.0 45.4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mk-draw" style="--i:0"/>
+<path d="M54 196 L522 196" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class=""/>
+<text x="520.0" y="49.4" font-size="12" fill="#fff" font-weight="700" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">output</text>
+<text x="520.0" y="176.2" font-size="12" fill="rgba(255,255,255,.55)" font-weight="600" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">inputs</text>
+<text x="289.9" y="125.2" font-size="13.5" fill="#C6FF6A" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">value added</text>
+<text x="280.0" y="230.0" font-size="12" fill="rgba(255,255,255,.55)" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Rs 100 output  &#8722;  Rs 40 inputs  =  Rs 60 value added</text>
+</svg>
+          </div>
+          <div class="md-two">
+            <div>
+              <div class="gva-scroll">
+                <table class="gva-ind md-tbl">
+                  <thead>
+                    <tr><th>Illustrative example</th><th>Amount</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Value of rice produced</td><td class="md-num" data-no-i18n>Rs 100</td></tr>
+                    <tr><td>Seeds, fertiliser, electricity, transport and other inputs</td><td class="md-num" data-no-i18n>Rs 40</td></tr>
+                    <tr class="md-tot"><td>Gross Value Added</td><td class="md-num" data-no-i18n>Rs 60</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <div class="cap-flag md-flag">Higher output does not always mean higher value added. If input costs rise faster than output, or prices fall, GVA can shrink while production grows.</div>
+              <p>GVA is measured at basic prices, before product taxes and subsidies enter the figure.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">03</div>
+          <h3 class="serif">Three routes to the same total</h3>
+          <p class="md-lede">An economy can be counted by what it makes, by what it pays out, or by what it spends. Done correctly the three agree, which is what makes them useful as cross-checks.</p>
+          <div class="md-cols md-3">
+            <div class="ab-box md-lead-box">
+              <h3>Production</h3>
+              <p>Output less intermediate consumption, sector by sector. The most intuitive route for linking sector data to GVA, and the one used for most of Andhra Pradesh.</p>
+            </div>
+            <div class="ab-box">
+              <h3>Income</h3>
+              <p>Compensation of employees, operating surplus, mixed income, plus taxes less subsidies on production. Used for government services and organised sectors.</p>
+            </div>
+            <div class="ab-box">
+              <h3>Expenditure</h3>
+              <p>Consumption, investment, government spending and net exports. Rarely available below the national level.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">04</div>
+          <h3 class="serif">One economy, measured at four levels</h3>
+          <p class="md-lede">The same activity is counted nationally, by state, by district and by mandal. Data availability falls and estimation difficulty rises at every step down.</p>
+          <div class="md-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 268" fill="none" class="mk" role="img" aria-label="GDP, GSDP, GDDP and MDP as four nested levels">
+<rect x="34.0" y="22.0" width="372.0" height="62.0" rx="13" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-frame" style="--i:0"/>
+<text x="50.0" y="48.0" font-size="14.5" fill="rgba(255,255,255,.34)" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">GDP</text>
+<text x="50.0" y="67.0" font-size="11.5" fill="#fff" font-weight="600" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">India</text>
+<text x="390.0" y="60.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="end" font-family="Public Sans, Inter, system-ui, sans-serif">MoSPI, quarterly</text>
+<path d="M52.0 86.0 L64.0 96.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M58.3 95.0 L64.0 96.0 L62.0 90.6" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="64.0" y="74.0" width="372.0" height="62.0" rx="13" fill="rgba(43,147,191,.16)" stroke="#2B93BF" stroke-width="1.7" class="mk-frame" style="--i:1"/>
+<text x="80.0" y="100.0" font-size="14.5" fill="#2B93BF" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">GSDP</text>
+<text x="80.0" y="119.0" font-size="11.5" fill="#fff" font-weight="600" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">Andhra Pradesh</text>
+<text x="420.0" y="112.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="end" font-family="Public Sans, Inter, system-ui, sans-serif">State DES, annual</text>
+<path d="M82.0 138.0 L94.0 148.0" fill="none" stroke="#2B93BF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M88.3 147.0 L94.0 148.0 L92.0 142.6" fill="none" stroke="#2B93BF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="94.0" y="126.0" width="372.0" height="62.0" rx="13" fill="rgba(111,168,23,.18)" stroke="#6FA817" stroke-width="1.7" class="mk-frame" style="--i:2"/>
+<text x="110.0" y="152.0" font-size="14.5" fill="#6FA817" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">GDDP</text>
+<text x="110.0" y="171.0" font-size="11.5" fill="#fff" font-weight="600" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">District</text>
+<text x="450.0" y="164.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="end" font-family="Public Sans, Inter, system-ui, sans-serif">annual, 26 districts</text>
+<path d="M112.0 190.0 L124.0 200.0" fill="none" stroke="#6FA817" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M118.3 199.0 L124.0 200.0 L122.0 194.6" fill="none" stroke="#6FA817" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="124.0" y="178.0" width="372.0" height="62.0" rx="13" fill="rgba(198,255,106,.20)" stroke="#C6FF6A" stroke-width="1.7" class="mk-frame" style="--i:3"/>
+<text x="140.0" y="204.0" font-size="14.5" fill="#C6FF6A" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">MDP</text>
+<text x="140.0" y="223.0" font-size="11.5" fill="#fff" font-weight="600" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">Mandal</text>
+<text x="480.0" y="216.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="end" font-family="Public Sans, Inter, system-ui, sans-serif">shared out on indicators</text>
+<text x="280.0" y="260.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">each level is estimated from the one above it, or built up from the one below</text>
+</svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">05</div>
+          <h3 class="serif">Sixteen sub-sectors, and the state groups them differently</h3>
+          <p class="md-lede">The Government of India and Andhra Pradesh cover the same sixteen sub-sectors but draw the boundary in different places. Andhra Pradesh moves Mining and Quarrying out of Primary and into Industry.</p>
+          <div class="md-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 226" fill="none" class="mk" role="img" aria-label="Sixteen sub-sectors grouped four, four and eight">
+<text x="24.0" y="47.0" font-size="12.5" fill="#6FA817" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">Agriculture</text>
+<text x="24.0" y="63.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">4 sub-sectors</text>
+<rect x="168.0" y="30.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#6FA817" stroke-width="1.7" class="mk-tile" style="--i:0"/>
+<rect x="214.0" y="30.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#6FA817" stroke-width="1.7" class="mk-tile" style="--i:1"/>
+<rect x="260.0" y="30.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#6FA817" stroke-width="1.7" class="mk-tile" style="--i:2"/>
+<rect x="306.0" y="30.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#6FA817" stroke-width="1.7" class="mk-tile" style="--i:3"/>
+<text x="24.0" y="109.0" font-size="12.5" fill="#2B93BF" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">Industry</text>
+<text x="24.0" y="125.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">4 sub-sectors</text>
+<rect x="168.0" y="92.0" width="38.0" height="34.0" rx="8" fill="rgba(198,255,106,.20)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:4"/>
+<rect x="214.0" y="92.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#2B93BF" stroke-width="1.7" class="mk-tile" style="--i:5"/>
+<rect x="260.0" y="92.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#2B93BF" stroke-width="1.7" class="mk-tile" style="--i:6"/>
+<rect x="306.0" y="92.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#2B93BF" stroke-width="1.7" class="mk-tile" style="--i:7"/>
+<text x="24.0" y="171.0" font-size="12.5" fill="#BF8A2B" font-weight="750" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">Services</text>
+<text x="24.0" y="187.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">8 sub-sectors</text>
+<rect x="168.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:8"/>
+<rect x="214.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:9"/>
+<rect x="260.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:10"/>
+<rect x="306.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:11"/>
+<rect x="352.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:12"/>
+<rect x="398.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:13"/>
+<rect x="444.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:14"/>
+<rect x="490.0" y="154.0" width="38.0" height="34.0" rx="8" fill="rgba(255,255,255,.07)" stroke="#BF8A2B" stroke-width="1.7" class="mk-tile" style="--i:15"/>
+<text x="280.0" y="218.0" font-size="11" fill="#C6FF6A" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Mining sits in Industry for Andhra Pradesh, in Primary for GoI</text>
+</svg>
+          </div>
+          <div class="gva-scroll">
+            <table class="gva-ind md-tbl md-tbl-cls">
+              <thead>
+                <tr><th>Group</th><th>Government of India</th><th>Andhra Pradesh</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>First group</td>
+                  <td>Primary: crops, livestock, forestry and logging, fishing and aquaculture, <b>mining and quarrying</b></td>
+                  <td>Agriculture: crops, livestock, forestry and logging, fishing and aquaculture</td>
+                </tr>
+                <tr>
+                  <td>Second group</td>
+                  <td>Secondary: manufacturing, electricity and utilities, construction</td>
+                  <td>Industry: <b>mining and quarrying</b>, manufacturing, electricity and utilities, construction</td>
+                </tr>
+                <tr>
+                  <td>Third group</td>
+                  <td>Tertiary: the eight service sub-sectors</td>
+                  <td>Services: the same eight service sub-sectors</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="cap-flag md-flag">Andhra Pradesh splits Crops into Agriculture and Horticulture when reporting, which is why district tables on this site show seventeen lines rather than sixteen.</div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">06</div>
+          <h3 class="serif">Where district data exists, measure it; where it does not, apportion</h3>
+          <p class="md-lede">Neither approach wins outright. The official method uses each where its data holds.</p>
+          <div class="md-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" fill="none" class="mk" role="img" aria-label="Top-down shares a state total out; bottom-up adds districts up">
+<text x="140.0" y="20.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Top-down</text>
+<rect x="74.0" y="32.0" width="132.0" height="32.0" rx="8" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class=""/>
+<text x="140.0" y="53.0" font-size="11.5" fill="#fff" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">State total</text>
+<path d="M140.0 68.0 L87.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M90.0 97.7 L87.0 104.0 L93.9 103.5" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="74.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:0"/>
+<path d="M140.0 68.0 L123.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M122.4 97.1 L123.0 104.0 L128.7 100.1" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="110.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:1"/>
+<path d="M140.0 68.0 L159.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M153.1 100.3 L159.0 104.0 L159.3 97.1" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="146.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:2"/>
+<path d="M140.0 68.0 L195.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M188.1 103.6 L195.0 104.0 L191.9 97.8" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="182.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:3"/>
+<text x="140.0" y="160.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">shared out on an indicator</text>
+<text x="420.0" y="20.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Bottom-up</text>
+<rect x="354.0" y="32.0" width="132.0" height="32.0" rx="8" fill="rgba(198,255,106,.18)" stroke="#C6FF6A" stroke-width="1.7" class=""/>
+<text x="420.0" y="53.0" font-size="11.5" fill="#C6FF6A" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">State total</text>
+<path d="M367.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M417.0 76.3 L420.0 70.0 L413.1 70.5" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="354.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:0"/>
+<path d="M403.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M420.6 76.9 L420.0 70.0 L414.3 73.9" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="390.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:1"/>
+<path d="M439.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M425.9 73.7 L420.0 70.0 L419.7 76.9" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="426.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:2"/>
+<path d="M475.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M426.9 70.4 L420.0 70.0 L423.1 76.2" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="462.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:3"/>
+<text x="420.0" y="160.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">measured locally, then added up</text>
+<path d="M280 24 L280 172" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="" stroke-dasharray="3 5" opacity=".45"/>
+</svg>
+          </div>
+          <div class="md-cols md-3">
+            <div class="ab-box">
+              <h3>Top-down</h3>
+              <p>Estimate the state total first, then distribute it across districts on a suitable indicator. Keeps districts consistent with the state figure, but will not capture local variation.</p>
+            </div>
+            <div class="ab-box">
+              <h3>Bottom-up</h3>
+              <p>Measure each district directly from local production, enterprise and administrative records, then add them up. Reflects local conditions, but demands reliable district data.</p>
+            </div>
+            <div class="ab-box md-lead-box">
+              <h3>Mixed, in practice</h3>
+              <p>Bottom-up wherever district data is reliable, top-down apportionment everywhere else. This is what Andhra Pradesh actually does.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">07</div>
+          <h3 class="serif">From value added to rupees per person</h3>
+          <p class="md-lede">Four moves take a sector&#39;s value added to the number an officer is asked about in a review.</p>
+          <div class="md-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 148" fill="none" class="mk" role="img" aria-label="Four moves from value added to income per person">
+<rect x="18.0" y="42.0" width="118.0" height="58.0" rx="11" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:0"/>
+<text x="77.0" y="69.0" font-size="11.5" fill="#fff" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">GVA</text>
+<text x="77.0" y="87.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">at basic prices</text>
+<path d="M140.0 71.0 L152.0 71.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M146.0 74.5 L152.0 71.0 L146.0 67.5" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="156.0" y="42.0" width="118.0" height="58.0" rx="11" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:1"/>
+<text x="215.0" y="69.0" font-size="11.5" fill="#fff" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">+ taxes &#8722; subsidies</text>
+<text x="215.0" y="87.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">market prices</text>
+<path d="M278.0 71.0 L290.0 71.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M284.0 74.5 L290.0 71.0 L284.0 67.5" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="294.0" y="42.0" width="118.0" height="58.0" rx="11" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:2"/>
+<text x="353.0" y="69.0" font-size="11.5" fill="#fff" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">&#8722; capital used up</text>
+<text x="353.0" y="87.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">net product</text>
+<path d="M416.0 71.0 L428.0 71.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M422.0 74.5 L428.0 71.0 L422.0 67.5" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="432.0" y="42.0" width="118.0" height="58.0" rx="11" fill="rgba(198,255,106,.18)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:3"/>
+<text x="491.0" y="69.0" font-size="11.5" fill="#C6FF6A" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">&#247; population</text>
+<text x="491.0" y="87.0" font-size="10.5" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">per person</text>
+</svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">08</div>
+          <h3 class="serif">The same year is published five times, each firmer than the last</h3>
+          <p class="md-lede">A year&#39;s first figure arrives before its records are complete. Each later release replaces projection with measurement, so two figures for the same year can differ legitimately.</p>
+          <div class="md-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" fill="none" class="mk" role="img" aria-label="Successive estimates converging on the final figure">
+<path d="M52 118 L534 118" fill="none" stroke="#C6FF6A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="" stroke-dasharray="5 5" opacity=".65"/>
+<text x="538.0" y="122.0" font-size="11.5" fill="#C6FF6A" font-weight="700" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">final</text>
+<path d="M62.0 65.8 L63.7 66.4 L65.4 66.9 L67.1 67.4 L68.8 68.0 L70.5 68.5 L72.1 69.0 L73.8 69.5 L75.5 70.1 L77.2 70.6 L78.9 71.1 L80.6 71.6 L82.3 72.0 L84.0 72.5 L85.7 73.0 L87.4 73.5 L89.1 74.0 L90.7 74.4 L92.4 74.9 L94.1 75.3 L95.8 75.8 L97.5 76.2 L99.2 76.7 L100.9 77.1 L102.6 77.5 L104.3 78.0 L106.0 78.4 L107.7 78.8 L109.4 79.2 L111.0 79.6 L112.7 80.0 L114.4 80.4 L116.1 80.8 L117.8 81.2 L119.5 81.6 L121.2 82.0 L122.9 82.4 L124.6 82.8 L126.3 83.1 L128.0 83.5 L129.6 83.9 L131.3 84.2 L133.0 84.6 L134.7 84.9 L136.4 85.3 L138.1 85.6 L139.8 86.0 L141.5 86.3 L143.2 86.6 L144.9 87.0 L146.6 87.3 L148.2 87.6 L149.9 87.9 L151.6 88.3 L153.3 88.6 L155.0 88.9 L156.7 89.2 L158.4 89.5 L160.1 89.8 L161.8 90.1 L163.5 90.4 L165.2 90.7 L166.8 91.0 L168.5 91.3 L170.2 91.5 L171.9 91.8 L173.6 92.1 L175.3 92.4 L177.0 92.6 L178.7 92.9 L180.4 93.2 L182.1 93.4 L183.8 93.7 L185.5 94.0 L187.1 94.2 L188.8 94.5 L190.5 94.7 L192.2 95.0 L193.9 95.2 L195.6 95.4 L197.3 95.7 L199.0 95.9 L200.7 96.1 L202.4 96.4 L204.1 96.6 L205.7 96.8 L207.4 97.1 L209.1 97.3 L210.8 97.5 L212.5 97.7 L214.2 97.9 L215.9 98.1 L217.6 98.3 L219.3 98.6 L221.0 98.8 L222.7 99.0 L224.3 99.2 L226.0 99.4 L227.7 99.6 L229.4 99.8 L231.1 99.9 L232.8 100.1 L234.5 100.3 L236.2 100.5 L237.9 100.7 L239.6 100.9 L241.3 101.1 L242.9 101.2 L244.6 101.4 L246.3 101.6 L248.0 101.8 L249.7 101.9 L251.4 102.1 L253.1 102.3 L254.8 102.4 L256.5 102.6 L258.2 102.8 L259.9 102.9 L261.6 103.1 L263.2 103.2 L264.9 103.4 L266.6 103.6 L268.3 103.7 L270.0 103.9 L271.7 104.0 L273.4 104.2 L275.1 104.3 L276.8 104.4 L278.5 104.6 L280.2 104.7 L281.8 104.9 L283.5 105.0 L285.2 105.1 L286.9 105.3 L288.6 105.4 L290.3 105.6 L292.0 105.7 L293.7 105.8 L295.4 105.9 L297.1 106.1 L298.8 106.2 L300.4 106.3 L302.1 106.4 L303.8 106.6 L305.5 106.7 L307.2 106.8 L308.9 106.9 L310.6 107.0 L312.3 107.2 L314.0 107.3 L315.7 107.4 L317.4 107.5 L319.1 107.6 L320.7 107.7 L322.4 107.8 L324.1 107.9 L325.8 108.0 L327.5 108.1 L329.2 108.2 L330.9 108.4 L332.6 108.5 L334.3 108.6 L336.0 108.7 L337.7 108.8 L339.3 108.8 L341.0 108.9 L342.7 109.0 L344.4 109.1 L346.1 109.2 L347.8 109.3 L349.5 109.4 L351.2 109.5 L352.9 109.6 L354.6 109.7 L356.3 109.8 L357.9 109.9 L359.6 109.9 L361.3 110.0 L363.0 110.1 L364.7 110.2 L366.4 110.3 L368.1 110.4 L369.8 110.4 L371.5 110.5 L373.2 110.6 L374.9 110.7 L376.5 110.8 L378.2 110.8 L379.9 110.9 L381.6 111.0 L383.3 111.1 L385.0 111.1 L386.7 111.2 L388.4 111.3 L390.1 111.3 L391.8 111.4 L393.5 111.5 L395.2 111.6 L396.8 111.6 L398.5 111.7 L400.2 111.8 L401.9 111.8 L403.6 111.9 L405.3 112.0 L407.0 112.0 L408.7 112.1 L410.4 112.1 L412.1 112.2 L413.8 112.3 L415.4 112.3 L417.1 112.4 L418.8 112.4 L420.5 112.5 L422.2 112.6 L423.9 112.6 L425.6 112.7 L427.3 112.7 L429.0 112.8 L430.7 112.8 L432.4 112.9 L434.0 113.0 L435.7 113.0 L437.4 113.1 L439.1 113.1 L440.8 113.2 L442.5 113.2 L444.2 113.3 L445.9 113.3 L447.6 113.4 L449.3 113.4 L451.0 113.5 L452.6 113.5 L454.3 113.6 L456.0 113.6 L457.7 113.6 L459.4 113.7 L461.1 113.7 L462.8 113.8 L464.5 113.8 L466.2 113.9 L467.9 113.9 L469.6 114.0 L471.3 114.0 L472.9 114.0 L474.6 114.1 L476.3 114.1 L478.0 114.2 L479.7 114.2 L481.4 114.2 L483.1 114.3 L484.8 114.3 L486.5 114.4 L488.2 114.4 L489.9 114.4 L491.5 114.5 L493.2 114.5 L494.9 114.6 L496.6 114.6 L498.3 114.6 L500.0 114.7" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="" stroke-dasharray="3 6"/>
+<path d="M62.0 170.2 L63.7 169.6 L65.4 169.1 L67.1 168.6 L68.8 168.0 L70.5 167.5 L72.1 167.0 L73.8 166.5 L75.5 165.9 L77.2 165.4 L78.9 164.9 L80.6 164.4 L82.3 164.0 L84.0 163.5 L85.7 163.0 L87.4 162.5 L89.1 162.0 L90.7 161.6 L92.4 161.1 L94.1 160.7 L95.8 160.2 L97.5 159.8 L99.2 159.3 L100.9 158.9 L102.6 158.5 L104.3 158.0 L106.0 157.6 L107.7 157.2 L109.4 156.8 L111.0 156.4 L112.7 156.0 L114.4 155.6 L116.1 155.2 L117.8 154.8 L119.5 154.4 L121.2 154.0 L122.9 153.6 L124.6 153.2 L126.3 152.9 L128.0 152.5 L129.6 152.1 L131.3 151.8 L133.0 151.4 L134.7 151.1 L136.4 150.7 L138.1 150.4 L139.8 150.0 L141.5 149.7 L143.2 149.4 L144.9 149.0 L146.6 148.7 L148.2 148.4 L149.9 148.1 L151.6 147.7 L153.3 147.4 L155.0 147.1 L156.7 146.8 L158.4 146.5 L160.1 146.2 L161.8 145.9 L163.5 145.6 L165.2 145.3 L166.8 145.0 L168.5 144.7 L170.2 144.5 L171.9 144.2 L173.6 143.9 L175.3 143.6 L177.0 143.4 L178.7 143.1 L180.4 142.8 L182.1 142.6 L183.8 142.3 L185.5 142.0 L187.1 141.8 L188.8 141.5 L190.5 141.3 L192.2 141.0 L193.9 140.8 L195.6 140.6 L197.3 140.3 L199.0 140.1 L200.7 139.9 L202.4 139.6 L204.1 139.4 L205.7 139.2 L207.4 138.9 L209.1 138.7 L210.8 138.5 L212.5 138.3 L214.2 138.1 L215.9 137.9 L217.6 137.7 L219.3 137.4 L221.0 137.2 L222.7 137.0 L224.3 136.8 L226.0 136.6 L227.7 136.4 L229.4 136.2 L231.1 136.1 L232.8 135.9 L234.5 135.7 L236.2 135.5 L237.9 135.3 L239.6 135.1 L241.3 134.9 L242.9 134.8 L244.6 134.6 L246.3 134.4 L248.0 134.2 L249.7 134.1 L251.4 133.9 L253.1 133.7 L254.8 133.6 L256.5 133.4 L258.2 133.2 L259.9 133.1 L261.6 132.9 L263.2 132.8 L264.9 132.6 L266.6 132.4 L268.3 132.3 L270.0 132.1 L271.7 132.0 L273.4 131.8 L275.1 131.7 L276.8 131.6 L278.5 131.4 L280.2 131.3 L281.8 131.1 L283.5 131.0 L285.2 130.9 L286.9 130.7 L288.6 130.6 L290.3 130.4 L292.0 130.3 L293.7 130.2 L295.4 130.1 L297.1 129.9 L298.8 129.8 L300.4 129.7 L302.1 129.6 L303.8 129.4 L305.5 129.3 L307.2 129.2 L308.9 129.1 L310.6 129.0 L312.3 128.8 L314.0 128.7 L315.7 128.6 L317.4 128.5 L319.1 128.4 L320.7 128.3 L322.4 128.2 L324.1 128.1 L325.8 128.0 L327.5 127.9 L329.2 127.8 L330.9 127.6 L332.6 127.5 L334.3 127.4 L336.0 127.3 L337.7 127.2 L339.3 127.2 L341.0 127.1 L342.7 127.0 L344.4 126.9 L346.1 126.8 L347.8 126.7 L349.5 126.6 L351.2 126.5 L352.9 126.4 L354.6 126.3 L356.3 126.2 L357.9 126.1 L359.6 126.1 L361.3 126.0 L363.0 125.9 L364.7 125.8 L366.4 125.7 L368.1 125.6 L369.8 125.6 L371.5 125.5 L373.2 125.4 L374.9 125.3 L376.5 125.2 L378.2 125.2 L379.9 125.1 L381.6 125.0 L383.3 124.9 L385.0 124.9 L386.7 124.8 L388.4 124.7 L390.1 124.7 L391.8 124.6 L393.5 124.5 L395.2 124.4 L396.8 124.4 L398.5 124.3 L400.2 124.2 L401.9 124.2 L403.6 124.1 L405.3 124.0 L407.0 124.0 L408.7 123.9 L410.4 123.9 L412.1 123.8 L413.8 123.7 L415.4 123.7 L417.1 123.6 L418.8 123.6 L420.5 123.5 L422.2 123.4 L423.9 123.4 L425.6 123.3 L427.3 123.3 L429.0 123.2 L430.7 123.2 L432.4 123.1 L434.0 123.0 L435.7 123.0 L437.4 122.9 L439.1 122.9 L440.8 122.8 L442.5 122.8 L444.2 122.7 L445.9 122.7 L447.6 122.6 L449.3 122.6 L451.0 122.5 L452.6 122.5 L454.3 122.4 L456.0 122.4 L457.7 122.4 L459.4 122.3 L461.1 122.3 L462.8 122.2 L464.5 122.2 L466.2 122.1 L467.9 122.1 L469.6 122.0 L471.3 122.0 L472.9 122.0 L474.6 121.9 L476.3 121.9 L478.0 121.8 L479.7 121.8 L481.4 121.8 L483.1 121.7 L484.8 121.7 L486.5 121.6 L488.2 121.6 L489.9 121.6 L491.5 121.5 L493.2 121.5 L494.9 121.4 L496.6 121.4 L498.3 121.4 L500.0 121.3" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="" stroke-dasharray="3 6"/>
+<path d="M62.0 65.8 L63.7 66.4 L65.4 67.0 L67.1 67.7 L68.8 68.5 L70.5 69.3 L72.1 70.2 L73.8 71.1 L75.5 72.1 L77.2 73.1 L78.9 74.2 L80.6 75.3 L82.3 76.4 L84.0 77.6 L85.7 78.8 L87.4 80.1 L89.1 81.3 L90.7 82.6 L92.4 83.9 L94.1 85.3 L95.8 86.6 L97.5 88.0 L99.2 89.4 L100.9 90.8 L102.6 92.2 L104.3 93.7 L106.0 95.1 L107.7 96.5 L109.4 97.9 L111.0 99.4 L112.7 100.8 L114.4 102.2 L116.1 103.6 L117.8 105.0 L119.5 106.4 L121.2 107.8 L122.9 109.2 L124.6 110.5 L126.3 111.9 L128.0 113.2 L129.6 114.5 L131.3 115.7 L133.0 117.0 L134.7 118.2 L136.4 119.4 L138.1 120.6 L139.8 121.7 L141.5 122.8 L143.2 123.9 L144.9 125.0 L146.6 126.0 L148.2 127.0 L149.9 127.9 L151.6 128.8 L153.3 129.7 L155.0 130.6 L156.7 131.4 L158.4 132.2 L160.1 132.9 L161.8 133.6 L163.5 134.3 L165.2 134.9 L166.8 135.5 L168.5 136.0 L170.2 136.5 L171.9 137.0 L173.6 137.5 L175.3 137.9 L177.0 138.2 L178.7 138.6 L180.4 138.8 L182.1 139.1 L183.8 139.3 L185.5 139.5 L187.1 139.7 L188.8 139.8 L190.5 139.8 L192.2 139.9 L193.9 139.9 L195.6 139.9 L197.3 139.8 L199.0 139.8 L200.7 139.7 L202.4 139.5 L204.1 139.4 L205.7 139.2 L207.4 138.9 L209.1 138.7 L210.8 138.4 L212.5 138.1 L214.2 137.8 L215.9 137.5 L217.6 137.1 L219.3 136.7 L221.0 136.3 L222.7 135.9 L224.3 135.5 L226.0 135.0 L227.7 134.6 L229.4 134.1 L231.1 133.6 L232.8 133.1 L234.5 132.6 L236.2 132.1 L237.9 131.5 L239.6 131.0 L241.3 130.4 L242.9 129.9 L244.6 129.3 L246.3 128.7 L248.0 128.2 L249.7 127.6 L251.4 127.0 L253.1 126.5 L254.8 125.9 L256.5 125.3 L258.2 124.7 L259.9 124.2 L261.6 123.6 L263.2 123.0 L264.9 122.5 L266.6 121.9 L268.3 121.4 L270.0 120.8 L271.7 120.3 L273.4 119.8 L275.1 119.2 L276.8 118.7 L278.5 118.2 L280.2 117.7 L281.8 117.3 L283.5 116.8 L285.2 116.3 L286.9 115.9 L288.6 115.5 L290.3 115.0 L292.0 114.6 L293.7 114.3 L295.4 113.9 L297.1 113.5 L298.8 113.2 L300.4 112.8 L302.1 112.5 L303.8 112.2 L305.5 111.9 L307.2 111.6 L308.9 111.4 L310.6 111.1 L312.3 110.9 L314.0 110.7 L315.7 110.5 L317.4 110.3 L319.1 110.1 L320.7 109.9 L322.4 109.8 L324.1 109.7 L325.8 109.6 L327.5 109.5 L329.2 109.4 L330.9 109.3 L332.6 109.3 L334.3 109.2 L336.0 109.2 L337.7 109.2 L339.3 109.2 L341.0 109.2 L342.7 109.2 L344.4 109.2 L346.1 109.3 L347.8 109.4 L349.5 109.4 L351.2 109.5 L352.9 109.6 L354.6 109.7 L356.3 109.8 L357.9 109.9 L359.6 110.1 L361.3 110.2 L363.0 110.4 L364.7 110.5 L366.4 110.7 L368.1 110.8 L369.8 111.0 L371.5 111.2 L373.2 111.4 L374.9 111.6 L376.5 111.8 L378.2 112.0 L379.9 112.2 L381.6 112.4 L383.3 112.6 L385.0 112.8 L386.7 113.1 L388.4 113.3 L390.1 113.5 L391.8 113.8 L393.5 114.0 L395.2 114.2 L396.8 114.4 L398.5 114.7 L400.2 114.9 L401.9 115.1 L403.6 115.4 L405.3 115.6 L407.0 115.8 L408.7 116.1 L410.4 116.3 L412.1 116.5 L413.8 116.7 L415.4 116.9 L417.1 117.2 L418.8 117.4 L420.5 117.6 L422.2 117.8 L423.9 118.0 L425.6 118.2 L427.3 118.4 L429.0 118.5 L430.7 118.7 L432.4 118.9 L434.0 119.1 L435.7 119.2 L437.4 119.4 L439.1 119.6 L440.8 119.7 L442.5 119.9 L444.2 120.0 L445.9 120.1 L447.6 120.3 L449.3 120.4 L451.0 120.5 L452.6 120.6 L454.3 120.7 L456.0 120.8 L457.7 120.9 L459.4 121.0 L461.1 121.1 L462.8 121.1 L464.5 121.2 L466.2 121.3 L467.9 121.3 L469.6 121.4 L471.3 121.4 L472.9 121.4 L474.6 121.5 L476.3 121.5 L478.0 121.5 L479.7 121.5 L481.4 121.6 L483.1 121.6 L484.8 121.6 L486.5 121.5 L488.2 121.5 L489.9 121.5 L491.5 121.5 L493.2 121.5 L494.9 121.4 L496.6 121.4 L498.3 121.4 L500.0 121.3" fill="none" stroke="rgba(198,255,106,.75)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw" style="--i:0"/>
+<circle cx="62.0" cy="65.8" r="5" fill="rgba(11,46,32,1)" stroke="#C6FF6A" stroke-width="1.7" class="mk-pop" style="--i:0"/>
+<text x="62.0" y="196.0" font-size="12" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">FAE</text>
+<text x="62.0" y="212.0" font-size="10" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Jan 26</text>
+<circle cx="149.6" cy="127.7" r="5" fill="rgba(11,46,32,1)" stroke="#C6FF6A" stroke-width="1.7" class="mk-pop" style="--i:1"/>
+<text x="149.6" y="196.0" font-size="12" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">SAE</text>
+<text x="149.6" y="212.0" font-size="10" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Feb 26</text>
+<circle cx="237.2" cy="131.7" r="5" fill="rgba(11,46,32,1)" stroke="#C6FF6A" stroke-width="1.7" class="mk-pop" style="--i:2"/>
+<text x="237.2" y="196.0" font-size="12" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">PE</text>
+<text x="237.2" y="212.0" font-size="10" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">May 26</text>
+<circle cx="324.8" cy="109.6" r="5" fill="rgba(11,46,32,1)" stroke="#C6FF6A" stroke-width="1.7" class="mk-pop" style="--i:3"/>
+<text x="324.8" y="196.0" font-size="12" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">FRE</text>
+<text x="324.8" y="212.0" font-size="10" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Feb 27</text>
+<circle cx="412.4" cy="116.5" r="5" fill="rgba(11,46,32,1)" stroke="#C6FF6A" stroke-width="1.7" class="mk-pop" style="--i:4"/>
+<text x="412.4" y="196.0" font-size="12" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">SRE</text>
+<text x="412.4" y="212.0" font-size="10" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Feb 28</text>
+<circle cx="500.0" cy="121.3" r="6.5" fill="#C6FF6A" stroke="#C6FF6A" stroke-width="1.7" class="mk-pop" style="--i:5"/>
+<text x="500.0" y="196.0" font-size="12" fill="#C6FF6A" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">TRE</text>
+<text x="500.0" y="212.0" font-size="10" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Mar 29</text>
+<text x="58.0" y="30.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="600" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">projection</text>
+<text x="534.0" y="30.0" font-size="11" fill="#C6FF6A" font-weight="650" text-anchor="end" font-family="Public Sans, Inter, system-ui, sans-serif">measurement</text>
+</svg>
+          </div>
+          <div class="gva-scroll">
+            <table class="gva-ind md-tbl md-tbl-cal">
+              <thead>
+                <tr><th>Estimate</th><th>Released by NSO</th><th>Released in AP</th><th>Timing</th><th>For 2025-26</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>First Advance Estimate</td>
+                  <td class="md-num" data-no-i18n>7 January</td>
+                  <td class="md-num" data-no-i18n>&mdash;</td>
+                  <td>Before the year ends</td>
+                  <td class="md-num" data-no-i18n>Jan 2026</td>
+                </tr>
+                <tr>
+                  <td>Second Advance Estimate</td>
+                  <td class="md-num" data-no-i18n>28 February</td>
+                  <td class="md-num" data-no-i18n>7 March</td>
+                  <td>One month before the year ends</td>
+                  <td class="md-num" data-no-i18n>Feb 2026</td>
+                </tr>
+                <tr>
+                  <td>Provisional Estimate</td>
+                  <td class="md-num" data-no-i18n>31 May</td>
+                  <td class="md-num" data-no-i18n>&mdash;</td>
+                  <td>Two months after the year ends</td>
+                  <td class="md-num" data-no-i18n>May 2026</td>
+                </tr>
+                <tr>
+                  <td>First Revised Estimate</td>
+                  <td class="md-num" data-no-i18n>28 February</td>
+                  <td class="md-num" data-no-i18n>7 March</td>
+                  <td>Eleven months after the year ends</td>
+                  <td class="md-num" data-no-i18n>Feb 2027</td>
+                </tr>
+                <tr>
+                  <td>Second Revised Estimate</td>
+                  <td class="md-num" data-no-i18n>28 February</td>
+                  <td class="md-num" data-no-i18n>7 March</td>
+                  <td>Twenty-three months after the year ends</td>
+                  <td class="md-num" data-no-i18n>Feb 2028</td>
+                </tr>
+                <tr class="md-tot">
+                  <td>Third Revised Estimate, final</td>
+                  <td class="md-num" data-no-i18n>7 March</td>
+                  <td class="md-num" data-no-i18n>7 March</td>
+                  <td>Thirty-five months after the year ends, once reconciled with NSO</td>
+                  <td class="md-num" data-no-i18n>Mar 2029</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="cap-flag md-flag">A growth rate that compares an Advance Estimate with a Third Revised Estimate compares a forecast with a measurement. Every figure on this site carries the stage it was published at.</div>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">09</div>
+          <h3 class="serif">District estimates are harder, and the method says so</h3>
+          <p class="md-lede">More local detail usually means more data constraints. Four of them shape every district figure.</p>
+          <div class="md-cols md-2x2">
+            <div class="ab-box">
+              <h3>Data availability</h3>
+              <p>Some sector data exists only at state level, or carries weak district identifiers.</p>
+            </div>
+            <div class="ab-box">
+              <h3>Informality</h3>
+              <p>A large share of activity is unregistered and never enters routine reporting systems.</p>
+            </div>
+            <div class="ab-box">
+              <h3>Headquarter effects</h3>
+              <p>Company and service records are booked where the office is, not where the work happens.</p>
+            </div>
+            <div class="ab-box">
+              <h3>Proxy dependence</h3>
+              <p>Where direct data is missing, allocation keys and proxy indicators stand in for measurement.</p>
+            </div>
+          </div>
+          <div class="cap-flag md-flag">The core rule: use the same sectoral logic as the state accounts wherever district data exists, and apportion the state estimate on the best available indicator where it does not.</div>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">10</div>
+          <h3 class="serif">Mandal figures are district figures, shared out by indicator</h3>
+          <p class="md-lede">A mandal is not measured directly. Its district&#39;s value added is distributed on an indicator that tracks where the activity actually sits.</p>
+          <div class="md-art">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 212" fill="none" class="mk" role="img" aria-label="A district value added shared out to four mandals by indicator share">
+<rect x="196.0" y="18.0" width="168.0" height="40.0" rx="10" fill="rgba(43,147,191,.18)" stroke="#2B93BF" stroke-width="1.7" class=""/>
+<text x="280.0" y="43.0" font-size="13" fill="#fff" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">District GVA</text>
+<path d="M280.0 62.0 L100.0 102.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M105.1 97.3 L100.0 102.0 L106.6 104.1" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="40.0" y="106.0" width="112.0" height="46.0" rx="9" fill="rgba(198,255,106,.16)" stroke="#C6FF6A" stroke-width="1.7" class="mk-bar" style="--i:0"/>
+<text x="96.0" y="127.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">A</text>
+<text x="96.0" y="143.0" font-size="11" fill="#C6FF6A" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">25%</text>
+<path d="M280.0 62.0 L250.0 102.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M250.8 95.1 L250.0 102.0 L256.4 99.3" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="160.0" y="106.0" width="172.0" height="46.0" rx="9" fill="rgba(198,255,106,.16)" stroke="#C6FF6A" stroke-width="1.7" class="mk-bar" style="--i:1"/>
+<text x="246.0" y="127.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">B</text>
+<text x="246.0" y="143.0" font-size="11" fill="#C6FF6A" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">37.5%</text>
+<path d="M280.0 62.0 L400.0 102.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M393.2 103.4 L400.0 102.0 L395.4 96.8" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="340.0" y="106.0" width="112.0" height="46.0" rx="9" fill="rgba(198,255,106,.16)" stroke="#C6FF6A" stroke-width="1.7" class="mk-bar" style="--i:2"/>
+<text x="396.0" y="127.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">C</text>
+<text x="396.0" y="143.0" font-size="11" fill="#C6FF6A" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">25%</text>
+<path d="M280.0 62.0 L490.0 102.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M483.5 104.3 L490.0 102.0 L484.8 97.5" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
+<rect x="460.0" y="106.0" width="52.0" height="46.0" rx="9" fill="rgba(198,255,106,.16)" stroke="#C6FF6A" stroke-width="1.7" class="mk-bar" style="--i:3"/>
+<text x="486.0" y="127.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">D</text>
+<text x="486.0" y="143.0" font-size="11" fill="#C6FF6A" font-weight="700" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">12.5%</text>
+<text x="280.0" y="176.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">four mandals: each share is that mandal&#39;s allocation indicator, for example paddy produced</text>
+<text x="280.0" y="196.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">18 sub-sectors  &#183;  110 indicators  &#183;  each owned by a named department</text>
+</svg>
+          </div>
+          <div class="cap-strip md-strip">
+            <div class="cap-stat"><div class="v" data-no-i18n>18</div><div class="k">Sub-sectors</div></div>
+            <div class="cap-stat"><div class="v" data-no-i18n>110</div><div class="k">Allocation indicators</div></div>
+            <div class="cap-stat"><div class="v" data-no-i18n>32</div><div class="k">From Horticulture offices</div></div>
+            <div class="cap-stat"><div class="v" data-no-i18n>17</div><div class="k">From DE&amp;SO offices</div></div>
+            <div class="cap-stat"><div class="v" data-no-i18n>11</div><div class="k">From Mines &amp; Geology</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="md-slide">
+        <div class="md-panel">
+          <div class="md-no">11</div>
+          <h3 class="serif">Five things to carry back</h3>
+          <div class="md-take">
+            <div class="md-take-i"><div class="md-take-n">1</div><div class="md-take-b"><b>GVA measures value added</b>, not production, sales or expenditure.</div></div>
+            <div class="md-take-i"><div class="md-take-n">2</div><div class="md-take-b"><b>Always read an estimate with its source, method and revision stage.</b> A figure without its vintage cannot be compared.</div></div>
+            <div class="md-take-i"><div class="md-take-n">3</div><div class="md-take-b"><b>Validation is central.</b> Triangulate the official estimate against administrative data and proxies.</div></div>
+            <div class="md-take-i"><div class="md-take-n">4</div><div class="md-take-b"><b>Measurement becomes management only through assigned follow-up.</b></div></div>
+            <div class="md-take-i"><div class="md-take-n">5</div><div class="md-take-b"><b>Data should not end at reporting.</b> It should improve diagnosis, prioritisation and administrative decisions.</div></div>
+          </div>
+          <div class="ab-cta md-cta">
+            <button class="btn-primary nl" data-page="districts"><i class="ti ti-map-2"></i> See a district</button>
+            <a href="https://andhrachatbot.streamlit.app"><button class="btn-ghost"><i class="ti ti-message-2"></i> Ask the assistant</button></a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <button class="md-nav md-prev" id="mdPrev" type="button" aria-label="Previous slide"><i class="ti ti-chevron-left"></i></button>
+    <button class="md-nav md-next" id="mdNext" type="button" aria-label="Next slide"><i class="ti ti-chevron-right"></i></button>
+    <div class="md-dots" id="mdDots" role="tablist" aria-label="Methodology slides"></div>
   </div>
 </div>
 
-<div class="chap-mark"><div class="big serif">02</div><div class="ttl serif">The eleven industries</div></div>
-<div class="chap" data-chap-i="1" data-step="1">
-  <div class="chap-vis"><svg id="sc2" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<text class="tier" x="30" y="20">PRIMARY · 1</text>
-<g class="ind g1" style="transition-delay:0.00s">
-<rect class="tile" x="30" y="28" width="60" height="60" rx="14"/>
-<g transform="translate(43,41)">
-<path class="gl" d="M17,31 V14"/>
-<path class="gl" d="M17,21 C11,21 8,18 8,13 C14,13 17,16 17,21 Z"/>
-<path class="gl" d="M17,17 C23,17 26,14 26,9 C20,9 17,12 17,17 Z"/>
-<path class="gl" d="M7,31 H27"/>
-</g>
-<text class="lbl" x="60" y="100" text-anchor="middle">Agriculture</text>
-</g>
-<text class="tier" x="30" y="122">SECONDARY · 4</text>
-<g class="ind g2" style="transition-delay:0.00s">
-<rect class="tile" x="30" y="130" width="60" height="60" rx="14"/>
-<g transform="translate(43,143)">
-<path class="gl" d="M9,31 L22,9"/>
-<path class="gl" d="M14,6 Q22,2 29,10"/>
-</g>
-<text class="lbl" x="60" y="202" text-anchor="middle">Mining</text>
-</g>
-<g class="ind g2" style="transition-delay:0.04s">
-<rect class="tile" x="98" y="130" width="60" height="60" rx="14"/>
-<g transform="translate(111,143)">
-<path class="gl" d="M5,31 V17 L12,22 V17 L19,22 V17 L26,22 V9 H30 V31 Z"/>
-<path class="gl" d="M13,31 V26 H18 V31"/>
-</g>
-<text class="lbl" x="128" y="202" text-anchor="middle">Manufacturing</text>
-</g>
-<g class="ind g2" style="transition-delay:0.09s">
-<rect class="tile" x="166" y="130" width="60" height="60" rx="14"/>
-<g transform="translate(179,143)">
-<path class="gl" d="M20,3 L10,19 H17 L15,31 L26,14 H19 Z"/>
-</g>
-<text class="lbl" x="196" y="202" text-anchor="middle">Utilities</text>
-</g>
-<g class="ind g2" style="transition-delay:0.14s">
-<rect class="tile" x="234" y="130" width="60" height="60" rx="14"/>
-<g transform="translate(247,143)">
-<path class="gl" d="M12,31 V6"/>
-<path class="gl" d="M5,6 H30"/>
-<path class="gl" d="M8,31 H17"/>
-<path class="gl" d="M12,12 L20,6"/>
-<path class="gl" d="M26,6 V13"/>
-<path class="gl" d="M23,13 H29 V17 H23 Z"/>
-</g>
-<text class="lbl" x="264" y="202" text-anchor="middle">Construction</text>
-</g>
-<text class="tier" x="30" y="224">TERTIARY · 6</text>
-<g class="ind g3" style="transition-delay:0.00s">
-<rect class="tile" x="30" y="232" width="60" height="60" rx="14"/>
-<g transform="translate(43,245)">
-<path class="gl" d="M5,12 H29 L26,6 H8 Z"/>
-<path class="gl" d="M5,12 L9,17 L13,12 L17,17 L21,12 L25,17 L29,12"/>
-<path class="gl" d="M7,17 V31 H27 V17"/>
-<path class="gl" d="M14,31 V23 H20 V31"/>
-</g>
-<text class="lbl" x="60" y="304" text-anchor="middle">Trade</text>
-</g>
-<g class="ind g3" style="transition-delay:0.04s">
-<rect class="tile" x="98" y="232" width="60" height="60" rx="14"/>
-<g transform="translate(111,245)">
-<path class="gl" d="M3,10 H19 V24 H3 Z"/>
-<path class="gl" d="M19,15 H25 L29,19 V24 H19"/>
-<circle class="gl" cx="9" cy="27" r="3"/>
-<circle class="gl" cx="24" cy="27" r="3"/>
-</g>
-<text class="lbl" x="128" y="304" text-anchor="middle">Transport</text>
-</g>
-<g class="ind g3" style="transition-delay:0.09s">
-<rect class="tile" x="166" y="232" width="60" height="60" rx="14"/>
-<g transform="translate(179,245)">
-<circle class="gl" cx="17" cy="17" r="12"/>
-<text class="sym" x="17" y="23" text-anchor="middle">₹</text>
-</g>
-<text class="lbl" x="196" y="304" text-anchor="middle">Finance</text>
-</g>
-<g class="ind g3" style="transition-delay:0.14s">
-<rect class="tile" x="234" y="232" width="60" height="60" rx="14"/>
-<g transform="translate(247,245)">
-<path class="gl" d="M5,31 V12 H15 V31"/>
-<path class="gl" d="M8,17 H12"/>
-<path class="gl" d="M8,22 H12"/>
-<path class="gl" d="M8,27 H12"/>
-<path class="gl" d="M17,31 V19 L24,13 L31,19 V31"/>
-<path class="gl" d="M22,31 V25 H26 V31"/>
-</g>
-<text class="lbl" x="264" y="304" text-anchor="middle">Real estate</text>
-</g>
-<g class="ind g3" style="transition-delay:0.18s">
-<rect class="tile" x="302" y="232" width="60" height="60" rx="14"/>
-<g transform="translate(315,245)">
-<path class="gl" d="M4,13 L17,5 L30,13 Z"/>
-<path class="gl" d="M5,27 H29"/>
-<path class="gl" d="M3,31 H31"/>
-<path class="gl" d="M9,13 V27"/>
-<path class="gl" d="M14,13 V27"/>
-<path class="gl" d="M20,13 V27"/>
-<path class="gl" d="M25,13 V27"/>
-</g>
-<text class="lbl" x="332" y="304" text-anchor="middle">Public admin</text>
-</g>
-<g class="ind g3" style="transition-delay:0.22s">
-<rect class="tile" x="370" y="232" width="60" height="60" rx="14"/>
-<g transform="translate(383,245)">
-<path class="gl" d="M17,11 C13,8 8,8 4,9 V28 C8,27 13,27 17,30 C21,27 26,27 30,28 V9 C26,8 21,8 17,11 Z"/>
-<path class="gl" d="M17,11 V30"/>
-</g>
-<text class="lbl" x="400" y="304" text-anchor="middle">Other</text>
-</g>
-</svg></div>
-  <div class="chap-steps">
-<div class="step" data-chap="1"><div class="no">04</div><h3 class="serif">The economy, divided</h3><p>Estimation never treats a district as one lump. It is split into eleven broad industry groups, each measured on its own terms.</p></div>
-<div class="step" data-chap="1"><div class="no">05</div><h3 class="serif">Primary</h3><p>Agriculture and allied activities: crops, livestock, forestry, fishing. Measured from production volumes and prices.</p><div class='pull'>In most AP districts this is where <b>comparative advantage</b> shows up first.</div></div>
-<div class="step" data-chap="1"><div class="no">06</div><h3 class="serif">Secondary</h3><p>Mining, manufacturing, electricity and utilities, construction. Estimated from registered output, sales tax records and workforce data.</p></div>
-<div class="step" data-chap="1"><div class="no">07</div><h3 class="serif">Tertiary</h3><p>Trade and hotels, transport and communication, financial services, real estate, public administration, other services. The hardest to measure and the fastest growing.</p><div class='pull'>Six of the eleven groups are services, which is why service-sector indicators drive so much of the estimate.</div></div>
-  </div>
-</div>
-
-<div class="chap-mark"><div class="big serif">03</div><div class="ttl serif">How the numbers are built</div></div>
-<div class="chap" data-chap-i="2" data-step="1">
-  <div class="chap-vis"><svg id="sc3" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g class="node state">
-<rect class="box" x="130" y="28" width="200" height="48" rx="13"/>
-<text class="nlbl" x="230" y="58" text-anchor="middle">STATE TOTAL</text>
-</g>
-<path class="bus" d="M230,76 V100"/>
-<path class="bus" d="M74,100 H386"/>
-<g class="flowrail down" style="transition-delay:0.10s">
-<path class="line" d="M71.0,100 V246"/>
-<path class="head" d="M66.0,231 L76.0,231 L71.0,241 Z"/>
-</g>
-<g class="flowrail up" style="transition-delay:0.10s">
-<path class="line" d="M77.0,246 V100"/>
-<path class="head" d="M72.0,119 L82.0,119 L77.0,109 Z"/>
-</g>
-<g class="flowrail down" style="transition-delay:0.05s">
-<path class="line" d="M149.0,100 V246"/>
-<path class="head" d="M144.0,231 L154.0,231 L149.0,241 Z"/>
-</g>
-<g class="flowrail up" style="transition-delay:0.05s">
-<path class="line" d="M155.0,246 V100"/>
-<path class="head" d="M150.0,119 L160.0,119 L155.0,109 Z"/>
-</g>
-<g class="flowrail down" style="transition-delay:0.00s">
-<path class="line" d="M227.0,100 V246"/>
-<path class="head" d="M222.0,231 L232.0,231 L227.0,241 Z"/>
-</g>
-<g class="flowrail up" style="transition-delay:0.00s">
-<path class="line" d="M233.0,246 V100"/>
-<path class="head" d="M228.0,119 L238.0,119 L233.0,109 Z"/>
-</g>
-<g class="flowrail down" style="transition-delay:0.05s">
-<path class="line" d="M305.0,100 V246"/>
-<path class="head" d="M300.0,231 L310.0,231 L305.0,241 Z"/>
-</g>
-<g class="flowrail up" style="transition-delay:0.05s">
-<path class="line" d="M311.0,246 V100"/>
-<path class="head" d="M306.0,119 L316.0,119 L311.0,109 Z"/>
-</g>
-<g class="flowrail down" style="transition-delay:0.10s">
-<path class="line" d="M383.0,100 V246"/>
-<path class="head" d="M378.0,231 L388.0,231 L383.0,241 Z"/>
-</g>
-<g class="flowrail up" style="transition-delay:0.10s">
-<path class="line" d="M389.0,246 V100"/>
-<path class="head" d="M384.0,119 L394.0,119 L389.0,109 Z"/>
-</g>
-<g class="chips">
-<rect class="chip" x="140" y="156" width="66" height="22" rx="11"/>
-<text class="clbl" x="173" y="171" text-anchor="middle">WORKFORCE</text>
-<rect class="chip" x="216" y="156" width="50" height="22" rx="11"/>
-<text class="clbl" x="241" y="171" text-anchor="middle">OUTPUT</text>
-<rect class="chip" x="276" y="156" width="46" height="22" rx="11"/>
-<text class="clbl" x="299" y="171" text-anchor="middle">UNITS</text>
-</g>
-<g class="node dist" style="transition-delay:0.10s">
-<rect class="box" x="42" y="252" width="64" height="48" rx="12"/>
-<text class="nnum" x="74" y="282" text-anchor="middle">1</text>
-</g>
-<g class="node dist" style="transition-delay:0.05s">
-<rect class="box" x="120" y="252" width="64" height="48" rx="12"/>
-<text class="nnum" x="152" y="282" text-anchor="middle">2</text>
-</g>
-<g class="node dist" style="transition-delay:0.00s">
-<rect class="box" x="198" y="252" width="64" height="48" rx="12"/>
-<text class="nnum" x="230" y="282" text-anchor="middle">3</text>
-</g>
-<g class="node dist" style="transition-delay:0.05s">
-<rect class="box" x="276" y="252" width="64" height="48" rx="12"/>
-<text class="nnum" x="308" y="282" text-anchor="middle">4</text>
-</g>
-<g class="node dist" style="transition-delay:0.10s">
-<rect class="box" x="354" y="252" width="64" height="48" rx="12"/>
-<text class="nnum" x="386" y="282" text-anchor="middle">28</text>
-</g>
-<text class="ell" x="347" y="282" text-anchor="middle">···</text>
-<text class="foot" x="230" y="318" text-anchor="middle">28 DISTRICTS</text>
-<text class="cap cap-td" x="230" y="336" text-anchor="middle">TOP-DOWN · THE STATE TOTAL, SHARED OUT</text>
-<text class="cap cap-bu" x="230" y="336" text-anchor="middle">BOTTOM-UP · DISTRICTS MEASURED, THEN SUMMED</text>
-<text class="cap cap-mx" x="230" y="336" text-anchor="middle">MIXED · BY INDUSTRY, NOT BY DISTRICT</text>
-</svg></div>
-  <div class="chap-steps">
-<div class="step" data-chap="2"><div class="no">08</div><h3 class="serif">Top-down</h3><p>Start with the state total, then share it out across districts using an indicator that tracks where the activity actually happened: workforce, output, or registered units.</p><p>Used wherever direct district data does not exist.</p></div>
-<div class="step" data-chap="2"><div class="no">09</div><h3 class="serif">Bottom-up</h3><p>Go the other way. Measure each district directly from local data, then add them up. The state total is whatever the districts sum to.</p><div class='pull'>Bottom-up reflects local conditions best, so it is preferred <b>wherever the data supports it</b>.</div></div>
-<div class="step" data-chap="2"><div class="no">10</div><h3 class="serif">Mixed, in practice</h3><p>Neither approach wins outright. The official method uses bottom-up for industries with reliable district data and top-down for the rest.</p><div class='pull'>Accuracy where possible, coverage everywhere else.</div></div>
-  </div>
-</div>
-
-<div class="chap-mark"><div class="big serif">04</div><div class="ttl serif">From value added to income</div></div>
-<div class="chap" data-chap-i="3" data-step="1">
-  <div class="chap-vis"><svg id="sc4" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g >
-<g class="sc term t1">
-<rect x="80" y="52" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
-<rect x="80.5" y="52.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
-</g>
-<circle class="sc dot" cx="230" cy="117" r="3" fill="white" fill-opacity="0.3"/>
-<g class="sc term t2">
-<rect x="80" y="128" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
-<rect x="80.5" y="128.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
-</g>
-<circle class="sc dot" cx="230" cy="193" r="3" fill="white" fill-opacity="0.3"/>
-<g class="sc term t3">
-<rect x="80" y="204" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
-<rect x="80.5" y="204.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
-</g>
-<circle class="sc dot" cx="230" cy="269" r="3" fill="white" fill-opacity="0.3"/>
-<g class="sc term t4">
-<rect x="80" y="280" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
-<rect x="80.5" y="280.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
-</g>
-<text class="term t1" x="98" y="85" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GVA</text>
-<text class="term t1" x="380" y="83" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Gross Value Added</text>
-<text class="term t2" x="98" y="161" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GDVA</text>
-<text class="term t2" x="380" y="159" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Summed across sectors</text>
-<text class="term t3" x="98" y="237" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">GDDP</text>
-<text class="term t3" x="380" y="235" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">+ Taxes &#8722; Subsidies</text>
-<text class="term t4" x="98" y="313" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">PER CAPITA</text>
-<text class="term t4" x="380" y="311" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">&#247; population</text>
-</g>
-</svg></div>
-  <div class="chap-steps">
-<div class="step" data-chap="3"><div class="no">11</div><h3 class="serif">Gross Value Added</h3><p>Each industry's contribution, measured at basic prices: the value it produces, less the cost of what it consumed producing it.</p><div class='pull'>GVA is measured at <b>basic prices</b>, before product taxes and subsidies enter.</div></div>
-<div class="step" data-chap="3"><div class="no">12</div><h3 class="serif">Summed across sectors</h3><p>Add the adjusted GVA of all eleven industries and you have Gross District Value Added.</p><div class='pull'>GDVA = sum of adjusted GVA across all sectors</div></div>
-<div class="step" data-chap="3"><div class="no">13</div><h3 class="serif">To district product</h3><p>Add taxes on products, subtract subsidies on products. That shift from basic prices to market prices is what separates value added from domestic product.</p><div class='pull'>GDDP = GDVA + Taxes on Products &minus; Subsidies on Products</div></div>
-<div class="step" data-chap="3"><div class="no">14</div><h3 class="serif">To income per person</h3><p>Subtract consumption of fixed capital for the net figure, then divide by mid-year projected population.</p><div class='pull'>Per capita district income, in rupees per person: the number most often quoted, and most often quoted without its base year.</div></div>
-  </div>
-</div>
-
-<div class="chap-mark"><div class="big serif">05</div><div class="ttl serif">How final is the figure</div></div>
-<div class="chap" data-chap-i="4" data-step="1">
-  <div class="chap-vis"><svg id="sc5" viewBox="0 0 460 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<g>
-<g class="sc est e1">
-<rect x="80" y="52" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
-<rect x="80.5" y="52.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
-</g>
-<circle class="sc dot" cx="230" cy="117" r="3" fill="white" fill-opacity="0.3"/>
-<g class="sc est e2">
-<rect x="80" y="128" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
-<rect x="80.5" y="128.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
-</g>
-<circle class="sc dot" cx="230" cy="193" r="3" fill="white" fill-opacity="0.3"/>
-<g class="sc est e3">
-<rect x="80" y="204" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
-<rect x="80.5" y="204.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
-</g>
-<circle class="sc dot" cx="230" cy="269" r="3" fill="white" fill-opacity="0.3"/>
-<g class="sc est e4">
-<rect x="80" y="280" width="300" height="54" rx="13" fill="white" fill-opacity="0.1"/>
-<rect x="80.5" y="280.5" width="299" height="53" rx="12.5" stroke="white" stroke-opacity="0.22"/>
-</g>
-<text class="est e1" x="98" y="85" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">FAE</text>
-<text class="est e1" x="380" y="78" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">First Advance Estimate</text>
-<text class="est e1" x="380" y="94" font-family="Public Sans" font-size="10.5" fill="white" fill-opacity="0.38" text-anchor="end">2025-26 on this site</text>
-<text class="est e2" x="98" y="161" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">FRE</text>
-<text class="est e2" x="380" y="154" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">First Revised Estimate</text>
-<text class="est e2" x="380" y="170" font-family="Public Sans" font-size="10.5" fill="white" fill-opacity="0.38" text-anchor="end">2024-25 on this site</text>
-<text class="est e3" x="98" y="237" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">SRE</text>
-<text class="est e3" x="380" y="230" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Second Revised Estimate</text>
-<text class="est e3" x="380" y="246" font-family="Public Sans" font-size="10.5" fill="white" fill-opacity="0.38" text-anchor="end">2023-24 on this site</text>
-<text class="est e4" x="98" y="313" font-family="Bodoni Moda" font-weight="600" font-size="20" letter-spacing="0.2" fill="white">TRE</text>
-<text class="est e4" x="380" y="306" font-family="Public Sans" font-size="11.5" fill="white" fill-opacity="0.55" text-anchor="end">Third Revised Estimate</text>
-<text class="est e4" x="380" y="322" font-family="Public Sans" font-size="10.5" fill="white" fill-opacity="0.38" text-anchor="end">2022-23 on this site</text>
-</g>
-</svg></div>
-  <div class="chap-steps">
-<div class="step" data-chap="4"><div class="no">15</div><h3 class="serif">Published early</h3><p>A year's first figure arrives before the year's records are complete. The First Advance Estimate is built from part-year indicators, so planning does not have to wait for the accounts to close.</p><div class='pull'>2025-26 carries <b>FAE</b> wherever it appears on this site.</div></div>
-<div class="step" data-chap="4"><div class="no">16</div><h3 class="serif">Revised as records arrive</h3><p>As crop surveys, tax records and filings come in, projection is replaced with measurement and the figure is re-issued. First Revised, then Second Revised.</p><div class='pull'>2024-25 stands at <b>FRE</b>, and 2023-24 at <b>SRE</b>.</div></div>
-<div class="step" data-chap="4"><div class="no">17</div><h3 class="serif">Settled</h3><p>By the third revision nearly all source records are in. The Third Revised Estimate is the closest the series comes to a final figure.</p><div class='pull'>2022-23 carries <b>TRE</b>, the firmest year in the four-year window.</div></div>
-<div class="step" data-chap="4"><div class="no">18</div><h3 class="serif">Read the label</h3><p>The same year can be quoted at different stages, and the stages differ. That is why every figure in this assistant names its year and its estimate class together.</p><div class='pull'>A growth rate that mixes an <b>FAE</b> with a <b>TRE</b> compares a forecast with a measurement.</div></div>
-  </div>
-</div>
-  <section class="narr-close vstage" data-vid="glass">
-    <h3 class="serif">Now ask it about <em>a real district.</em></h3>
-    <p>The assistant holds every figure behind this method, for all 28 districts, and cites the source document for each one.</p>
-    <a href="https://andhrachatbot.streamlit.app"><button class="btn-primary">Open the assistant <i class="ti ti-arrow-right"></i></button></a>
-  </section>
- </div>
-</div>
-
-<!-- DISTRICTS -->
-<!-- CALCULATOR -->
 <div class="page" id="page-calculator">
   <section class="section vstage" data-vid="ledger"><div class="wrap">
 
@@ -3957,7 +3990,6 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 
 <div class="map-tooltip" id="mapTooltip"></div>
 <div class="grain"></div>
-<div class="rail" id="rail"></div>
 
 <script>
 // ---------- hero stat tiles are questions ----------
@@ -3970,71 +4002,118 @@ document.querySelectorAll('.gstat.ask').forEach(function(b){
   });
 });
 
-// ---------- methodology scroll narrative ----------
-// One observer over every .step. The step nearest the middle of the viewport
-// wins; it sets data-step on its chapter and lights its rail dot. All motion
-// is CSS off that attribute, so there is no scroll handler and no rAF loop.
+// ---------- methodology deck ----------
+// A paged deck, not a scroll narrative. The interaction is the one already
+// proven on the 15 case study reader pages, with one important difference:
+// those are standalone documents, so they bind keydown and wheel globally.
+// This deck lives inside the single-page router, so every global listener
+// FIRST checks the methodology page is the one on screen. Without that guard,
+// arrow keys would page the deck while the reader is on the district map.
 (function(){
-  const steps = [...document.querySelectorAll('#page-methodology .step')];
-  if(!steps.length) return;
-  const chaps = [...document.querySelectorAll('#page-methodology .chap')];
-  const rail  = document.getElementById('rail');
+  const deck = document.getElementById('mdDeck');
+  if(!deck) return;
+  const track = document.getElementById('mdTrack');
+  const slides = [...track.querySelectorAll('.md-slide')];
+  const prev = document.getElementById('mdPrev');
+  const next = document.getElementById('mdNext');
+  const dotsWrap = document.getElementById('mdDots');
+  const N = slides.length;
+  let cur = 0;
 
-  // rail dots, one per chapter
-  chaps.forEach((c,i)=>{
-    const b=document.createElement('button');
-    b.innerHTML='<span class="dot"></span>';
-    b.setAttribute('aria-label','Chapter '+(i+1));
-    b.addEventListener('click',()=>c.scrollIntoView({behavior:'smooth',block:'start'}));
-    rail.appendChild(b);
+  const stacked = () => matchMedia('(max-width:900px)').matches;
+  // offsetParent is null for a display:none page, which is exactly how the
+  // router hides the other pages - so this is the cheapest "am I visible" test.
+  const live = () => !!deck.offsetParent && !stacked();
+
+  slides.forEach((sl, i) => {
+    sl.setAttribute('role', 'group');
+    sl.setAttribute('aria-roledescription', 'slide');
+    sl.setAttribute('aria-label', (i + 1) + ' of ' + N);
+    const b = document.createElement('button');
+    b.className = 'md-dot' + (i ? '' : ' on');
+    b.type = 'button';
+    b.setAttribute('role', 'tab');
+    b.setAttribute('aria-label', 'Slide ' + (i + 1));
+    b.setAttribute('aria-selected', i ? 'false' : 'true');
+    b.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(b);
   });
-  const dots=[...rail.children];
+  const dots = [...dotsWrap.children];
 
-  // index of each step within its own chapter
-  steps.forEach(s=>{
-    const sib=[...s.parentElement.children];
-    s._i = sib.indexOf(s)+1;
+  function paint(){
+    track.style.transform = 'translateX(' + (-cur * 100) + '%)';
+    // .on on the current slide both reveals it to the reader and arms its
+    // illustration's draw-on animation (see the ILLUSTRATIONS CSS block).
+    slides.forEach((s, i) => s.classList.toggle('on', i === cur));
+    dots.forEach((d, i) => {
+      d.classList.toggle('on', i === cur);
+      d.setAttribute('aria-selected', i === cur ? 'true' : 'false');
+    });
+    prev.disabled = cur === 0;
+    next.disabled = cur === N - 1;
+    // A slide the reader has paged away from keeps its scroll position
+    // otherwise, so coming back lands mid-panel with no way to tell why.
+    const p = slides[cur].querySelector('.md-panel');
+    if(p) p.scrollTop = 0;
+  }
+  function go(i){ cur = Math.max(0, Math.min(N - 1, i)); paint(); }
+  function step(d){ go(cur + d); }
+  window.__mdGo = go;          // lets the deck be driven in tests
+
+  prev.addEventListener('click', () => step(-1));
+  next.addEventListener('click', () => step(1));
+
+  document.addEventListener('keydown', e => {
+    if(!live()) return;
+    // Never steal a key from someone typing, on any page.
+    const t = e.target;
+    if(t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+    if(e.key === 'ArrowRight' || e.key === 'PageDown'){ step(1); e.preventDefault(); }
+    else if(e.key === 'ArrowLeft' || e.key === 'PageUp'){ step(-1); e.preventDefault(); }
+    else if(e.key === 'Home'){ go(0); e.preventDefault(); }
+    else if(e.key === 'End'){ go(N - 1); e.preventDefault(); }
   });
 
-  const narr=document.querySelector('#page-methodology .narr');
-  let active=null, queued=false;
-
-  function sync(){
-    queued=false;
-    if(!narr.offsetParent){ rail.classList.remove('show'); return; }
-    const mid=window.innerHeight/2;
-
-    // rail visible only while the narrative occupies the viewport
-    const nb=narr.getBoundingClientRect();
-    rail.classList.toggle('show', nb.top < mid && nb.bottom > mid);
-
-    // the step whose centre is nearest the viewport centre wins
-    let best=null, bestD=Infinity;
-    for(const s of steps){
-      const b=s.getBoundingClientRect();
-      const d=Math.abs((b.top+b.bottom)/2 - mid);
-      if(d<bestD){ bestD=d; best=s; }
+  // Wheel. A trackpad swipe is not one event - macOS momentum fires dozens over
+  // about a second, and a plain time lock still let two or three through. So the
+  // gesture must fully SETTLE (240ms of quiet) before another advance is armed;
+  // one physical swipe then moves exactly one slide. Same lesson as the hero
+  // arrows. A panel that can scroll gets the wheel first, until it hits an edge.
+  let armed = true, wheelTimer = null;
+  deck.addEventListener('wheel', e => {
+    if(!live()) return;
+    const p = slides[cur].querySelector('.md-panel');
+    const canScroll = p && p.scrollHeight > p.clientHeight + 2;
+    const dom = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if(canScroll && Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+      const atTop = p.scrollTop <= 0;
+      const atBot = p.scrollTop + p.clientHeight >= p.scrollHeight - 1;
+      if(!(atTop && dom < 0) && !(atBot && dom > 0)) return;
     }
-    if(!best || best===active) return;
-    active=best;
-    steps.forEach(x=>x.classList.toggle('on', x===best));
-    const chap=best.closest('.chap');
-    chap.setAttribute('data-step', best._i);
-    const ci=chaps.indexOf(chap);
-    dots.forEach((d,i)=>d.classList.toggle('on', i===ci));
-  }
+    clearTimeout(wheelTimer);
+    wheelTimer = setTimeout(() => { armed = true; }, 240);
+    if(!armed || Math.abs(dom) < 28) return;
+    armed = false;
+    step(dom > 0 ? 1 : -1);
+  }, {passive:true});
 
-  function onScroll(){
-    if(queued) return;
-    queued=true;
-    requestAnimationFrame(sync);
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll, {passive:true});
-  // the router shows this page after first paint, so sync once it is visible
-  window.addEventListener('hashchange', ()=>setTimeout(sync,0));
-  sync();
-  window.__syncNarr = sync;   // lets the page be driven in tests
+  let sx = 0, sy = 0;
+  deck.addEventListener('touchstart', e => {
+    sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+  }, {passive:true});
+  deck.addEventListener('touchend', e => {
+    if(!live()) return;
+    const dx = e.changedTouches[0].clientX - sx;
+    const dy = e.changedTouches[0].clientY - sy;
+    if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+  }, {passive:true});
+
+  // Landing on #methodology always opens at slide one; a deck resumed halfway
+  // with no visible reason reads as a bug.
+  window.addEventListener('hashchange', () => {
+    if(location.hash.replace(/^#/, '').split('/')[0] === 'methodology') go(0);
+  });
+  paint();
 })();
 
 // ---------- auto-scale ----------
@@ -4448,7 +4527,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-21n')
+  fetch('assets/i18n/te.json?v=2026-08-24a')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};

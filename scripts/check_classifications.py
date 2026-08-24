@@ -4,10 +4,16 @@
 They look contradictory and they are NOT. Do not "reconcile" them.
 
   METHODOLOGY PAGE  (#page-methodology in landing/index.html)
-      The official NSO method for District Domestic Product: eleven broad
-      industry groups, arranged Primary 1 / Secondary 4 / Tertiary 6. This is a
-      description of how the published estimates are actually produced, so it
-      has to match the source method exactly. It is not ours to simplify.
+      The official method for District Domestic Product: SIXTEEN sub-sectors,
+      grouped Agriculture 4 / Industry 4 / Services 8, per the Directorate of
+      Economics & Statistics training material. This is a description of how the
+      published estimates are actually produced, so it has to match the source
+      method exactly. It is not ours to simplify.
+
+      (Until 2026-08 this page and this guard both said ELEVEN, which was simply
+      wrong; the guard was enforcing the error. The district workbook files under
+      landing/assets/dist/ carry seventeen lines because Andhra Pradesh reports
+      Crops split into Agriculture and Horticulture.)
 
   IMPROVING GVA TAB  (landing/assets/gva_playbook.json)
       An advisory surface: what a district officer can actually pull on. It uses
@@ -38,10 +44,18 @@ EXPECTED_PLAYBOOK = {
     "services":    ["services"],
 }
 
-# Markers that the methodology page still teaches the official eleven-industry
-# split. Loose enough to survive copy edits, tight enough to catch a rewrite
-# that quietly drops the framing.
-EXPECTED_METHOD_MARKERS = ["eleven", "PRIMARY", "SECONDARY", "TERTIARY"]
+# Markers that the methodology page still teaches the official sub-sector split.
+#
+# This list used to read ["eleven", "PRIMARY", "SECONDARY", "TERTIARY"] and so
+# was ENFORCING an error: the page claimed eleven industry groups, but the DES
+# training deck's own classification (and the workbook the district files come
+# from) is SIXTEEN sub-sectors, grouped 4 / 4 / 8. The old uppercase markers
+# also existed in exactly one place each, inside a hand-drawn SVG, so any
+# redesign of that diagram failed the guard for no real reason.
+#
+# The markers now name the three official groups and the count, which is what
+# actually has to stay true on the page.
+EXPECTED_METHOD_MARKERS = ["Sixteen", "Agriculture", "Industry", "Services"]
 
 
 def fail(msg, problems):
@@ -81,8 +95,8 @@ def main():
         for marker in EXPECTED_METHOD_MARKERS:
             if marker not in seg:
                 problems.append("methodology page no longer mentions %r; the "
-                                "official eleven-industry framing may have been "
-                                "edited away" % marker)
+                                "official sixteen sub-sector framing may have "
+                                "been edited away" % marker)
 
     if problems:
         return fail("classification guard FAILED", problems)
@@ -90,10 +104,10 @@ def main():
     print("classification guard ok")
     for gkey in ("agriculture", "industry", "services"):
         print("  playbook %-12s %d  %s" % (gkey, len(got[gkey]), ", ".join(got[gkey])))
-    print("  methodology page still teaches the eleven-industry "
-          "Primary/Secondary/Tertiary split")
+    print("  methodology page teaches the sixteen sub-sector "
+          "Agriculture/Industry/Services split")
     print("\nThe two differ on purpose: the methodology page describes the official")
-    print("NSO method, the playbook is an advisory cut on the AP state grouping.")
+    print("method as published, the playbook is an advisory cut on the AP state grouping.")
     return 0
 
 
