@@ -65,6 +65,7 @@
   "Crops / Horticulture": "పంటలు / ఉద్యాన పంటలు",
   "Cultivable waste, over 5 years": "సాగుయోగ్య బంజరు, 5 సంవత్సరాలకు పైగా",
   "Current fallow": "ప్రస్తుత బీడు",
+  "DES, annual": "DES, వార్షికం",
   "Data availability": "డేటా లభ్యత",
   "Data should not end at reporting. It should improve diagnosis, prioritisation and administrative decisions.": "డేటా నివేదనతో ముగియకూడదు. అది నిర్ధారణ, ప్రాధాన్యత మరియు పరిపాలనా నిర్ణయాలను మెరుగుపరచాలి.",
   "District": "జిల్లా",
@@ -331,11 +332,14 @@
   "Who it is for": "ఎవరి కోసం",
   "Why this matters": "ఇది ఎందుకు ముఖ్యం",
   "Work fisheries GVA through the department's own estimator, then check it against the published figure.": "శాఖ సొంత అంచనా సాధనం ద్వారా మత్స్య రంగం GVA ను లెక్కించి, ఆపై ప్రచురించిన గణాంకంతో సరిచూడండి.",
-  "annual, 26 districts": "వార్షికం, 26 జిల్లాలు",
   "at basic prices, net of FISIM": "ప్రాథమిక ధరల వద్ద, FISIM మినహాయించి",
   "data availability falls": "డేటా లభ్యత తగ్గుతుంది",
+  "districts": "జిల్లాలు",
   "estimation difficulty rises": "అంచనా కష్టం పెరుగుతుంది",
   "in one place": "ఒకే చోట",
   "lakh": "లక్ష",
-  "shared out on indicators": "సూచికలపై పంచబడుతుంది"
+  "mandal units": "మండల యూనిట్లు",
+  "nation": "దేశం",
+  "shared out on indicators": "సూచికలపై పంచబడుతుంది",
+  "state": "రాష్ట్రం"
 }

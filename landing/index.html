@@ -2828,7 +2828,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   max-width:1000px;margin:clamp(10px,1.8vh,20px) auto 0;}
 .lv-steps{display:grid;gap:clamp(8px,1.3vh,13px);}
 .lv-step{position:relative;display:grid;
-  grid-template-columns:auto auto 1fr auto;gap:4px clamp(10px,1.3vw,16px);
+  grid-template-columns:auto auto 1fr auto auto;gap:4px clamp(10px,1.3vw,16px);
   align-items:center;
   padding:clamp(10px,1.5vh,15px) clamp(13px,1.5vw,19px);
   border-radius:13px;border:1.7px solid;background:rgba(255,255,255,.05);
@@ -2876,6 +2876,22 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   .lv-step{width:100%;margin-left:0;grid-template-columns:auto auto 1fr;}
   .lv-meta{grid-column:2 / -1;text-align:left;}
 }
+
+/* Unit-count chips: the growth the widening staircase draws - one nation
+   out to 28 districts and 794 mandal-level units (the site's mandal index:
+   rural mandals plus urban units). */
+.lv-n{display:flex;flex-direction:column;align-items:center;line-height:1.15;
+  padding:5px 13px;border-radius:10px;background:rgba(0,0,0,.28);
+  border:1px solid rgba(255,255,255,.14);}
+.lv-n b{font-size:clamp(14px,1.6vw,20px);font-weight:750;
+  font-variant-numeric:tabular-nums;}
+.lv-n span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);}
+.lv-step.gdp .lv-n b{color:rgba(255,255,255,.75);}
+.lv-step.gsdp .lv-n b{color:#63bfe6;}
+.lv-step.gddp .lv-n b{color:#9ed44a;}
+.lv-step.mdp .lv-n b{color:#C6FF6A;}
+@media (max-width:700px){.lv-n{display:none;}}
 
 /* The walker: a figure descending the staircase the four levels form.
    He walks along each step, hops down to the next, and starts over - the
@@ -3461,7 +3477,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <div class="md-no">04</div>
           <h3 class="serif">One economy, measured at four levels</h3>
           <p class="md-lede">The same activity is counted nationally, by state, by district and by mandal. Data availability falls and estimation difficulty rises at every step down.</p>
-          <div class="lv-wrap"><div class="lv-steps"><span class="lv-walker" aria-hidden="true"><i class="ti ti-walk"></i></span><div class="lv-step gdp" style="--i:0"><span class="lv-ic"><i class="ti ti-world" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GDP</span><span class="lv-pl">India</span><span class="lv-meta">MoSPI, quarterly</span></div><div class="lv-step gsdp" style="--i:1"><span class="lv-ic"><i class="ti ti-map-2" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GSDP</span><span class="lv-pl">Andhra Pradesh</span><span class="lv-meta">State DES, annual</span></div><div class="lv-step gddp" style="--i:2"><span class="lv-ic"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GDDP</span><span class="lv-pl">District</span><span class="lv-meta">annual, 26 districts</span></div><div class="lv-step mdp" style="--i:3"><span class="lv-ic"><i class="ti ti-grid-dots" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>MDP</span><span class="lv-pl">Mandal</span><span class="lv-meta">shared out on indicators</span></div></div><div class="lv-rail" aria-hidden="true"><span class="lv-rail-a">data availability falls</span><span class="lv-rail-bar"></span><span class="lv-rail-b">estimation difficulty rises</span></div><p class="lv-note">Each level is estimated from the one above it, or built up from the one below.</p></div>
+          <div class="lv-wrap"><div class="lv-steps"><span class="lv-walker" aria-hidden="true"><i class="ti ti-walk"></i></span><div class="lv-step gdp" style="--i:0"><span class="lv-ic"><i class="ti ti-world" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GDP</span><span class="lv-pl">India</span><span class="lv-n"><b data-no-i18n>1</b><span>nation</span></span><span class="lv-meta">MoSPI, quarterly</span></div><div class="lv-step gsdp" style="--i:1"><span class="lv-ic"><i class="ti ti-map-2" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GSDP</span><span class="lv-pl">Andhra Pradesh</span><span class="lv-n"><b data-no-i18n>1</b><span>state</span></span><span class="lv-meta">State DES, annual</span></div><div class="lv-step gddp" style="--i:2"><span class="lv-ic"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GDDP</span><span class="lv-pl">District</span><span class="lv-n"><b data-no-i18n>28</b><span>districts</span></span><span class="lv-meta">DES, annual</span></div><div class="lv-step mdp" style="--i:3"><span class="lv-ic"><i class="ti ti-grid-dots" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>MDP</span><span class="lv-pl">Mandal</span><span class="lv-n"><b data-no-i18n>794</b><span>mandal units</span></span><span class="lv-meta">shared out on indicators</span></div></div><div class="lv-rail" aria-hidden="true"><span class="lv-rail-a">data availability falls</span><span class="lv-rail-bar"></span><span class="lv-rail-b">estimation difficulty rises</span></div><p class="lv-note">Each level is estimated from the one above it, or built up from the one below.</p></div>
         </div>
       </section>
 
@@ -4790,7 +4806,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-24e')
+  fetch('assets/i18n/te.json?v=2026-08-24f')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};

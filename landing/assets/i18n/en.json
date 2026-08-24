@@ -65,6 +65,7 @@
  "Crops / Horticulture",
  "Cultivable waste, over 5 years",
  "Current fallow",
+ "DES, annual",
  "Data availability",
  "Data should not end at reporting. It should improve diagnosis, prioritisation and administrative decisions.",
  "District",
@@ -331,11 +332,14 @@
  "Who it is for",
  "Why this matters",
  "Work fisheries GVA through the department's own estimator, then check it against the published figure.",
- "annual, 26 districts",
  "at basic prices, net of FISIM",
  "data availability falls",
+ "districts",
  "estimation difficulty rises",
  "in one place",
  "lakh",
- "shared out on indicators"
+ "mandal units",
+ "nation",
+ "shared out on indicators",
+ "state"
 ]
