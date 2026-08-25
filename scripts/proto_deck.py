@@ -1001,7 +1001,8 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 
 
 def render(m):
-    hero, blocks = B.parse_deck(os.path.join(B.SRC, m["file"]))
+    hero, blocks = B.parse_deck(os.path.join(B.SRC, m["file"]),
+                                m.get("section_titles"))
     secs = sections_of(blocks)
     slides = slides_html(m, hero, secs)
     t1, t2 = tint_for(m)

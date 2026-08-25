@@ -195,6 +195,16 @@ META = [
     # via "districts"; these two are new.
     {
         "file": "Kurnool_ATDC_Agritourism.txt", "slug": "kurnool-agritourism",
+        "section_titles": [
+            "Market signal: large domestic tourism base, limited farm experience supply",
+            "Case study anchor: ATDC Baramati, Maharashtra",
+            "How the ATDC model operates",
+            "Reported impact in Maharashtra: demand, income and scale",
+            "Experiences offered: the product is the working farm",
+            "Why the model works for government and farmers",
+            "Replication opportunity in Kurnool: cluster, do not scatter",
+            "Decision slide: 90-day pilot launch pathway",
+        ],
         "group": "ap", "district": "Kurnool", "place": "Kurnool",
         "theme": "Agritourism",
         "eyebrow": "Agritourism strategy",
@@ -358,13 +368,22 @@ def clean_lines(raw):
     return out
 
 
-def parse_deck(path):
+def parse_deck(path, section_titles=None):
     """Parse the deck into structured blocks that a real template can render.
 
     The decks are HTML slide decks flattened to text, so their structure survives
     as line rhythm rather than markup. Reconstructed conservatively — anything not
     confidently a stat/entry/heading falls back to prose, so the worst case ties
     the old flat render, never invents structure that is not in the file.
+
+    section_titles: exact source lines to force into section banners. The
+    automatic test demands an ALL-CAPS or Title-Case line; a deck whose section
+    heads are sentence-case with a colon ('Market signal: large domestic tourism
+    base...') therefore yields no sections at all, and stray caps lines inside
+    the body ('PILOT LAUNCHED') get promoted in their place. Naming the real
+    heads per case fixes that deck without loosening the test for the others.
+    A named list is AUTHORITATIVE: when one is given the automatic promotion is
+    switched off entirely, so no stray line can mint a section beside it.
 
     Returns (hero_stats, blocks):
       hero_stats — [(value, label)] pulled from the cover slide, e.g.
@@ -405,7 +424,8 @@ def parse_deck(path):
     while i < len(kept):
         s = kept[i]
         nxt = kept[i + 1] if i + 1 < len(kept) else ""
-        if is_section_title(s):
+        if (section_titles and s in section_titles) or \
+                (not section_titles and is_section_title(s)):
             blocks.append(("h2", s))
             i += 1
         elif is_value(s):
@@ -431,7 +451,8 @@ def parse_deck(path):
                 # heading immediately followed by its paragraph = a sub-heading
                 blocks.append(("h3", s))
                 i += 1
-            elif is_heading(s) and heading_like(nxt) and is_prose(nxt2):
+            elif not section_titles and is_heading(s) and heading_like(nxt) \
+                    and is_prose(nxt2):
                 # a deliberate TITLE-CASE line that introduces a sub-heading+prose
                 # is a SECTION head, e.g. 'The Problem We Are Trying to Solve' →
                 # 'The raw-nut & loose-husk trap' → prose. Gated on is_heading (not
@@ -724,7 +745,7 @@ def main():
         if not os.path.exists(path):
             print("MISSING:", m["file"])
             continue
-        hero, body = parse_deck(path)
+        hero, body = parse_deck(path, m.get("section_titles"))
         if write_pages:
             page = render_page(m, hero, body)
             with open(os.path.join(PAGES_DIR, m["slug"] + ".html"), "w", encoding="utf-8") as f:
