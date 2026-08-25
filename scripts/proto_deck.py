@@ -573,12 +573,18 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 .tag.place{color:var(--fg);}
 .hint{font-size:12.5px;color:var(--mut2);margin:22px 0 0;letter-spacing:.02em;}
 
-.sechead{display:flex;align-items:baseline;gap:14px;margin:0 0 20px;
-  padding-bottom:14px;border-bottom:1px solid var(--line);}
+.sechead{display:flex;align-items:center;gap:14px;margin:0 0 20px;
+  padding-bottom:14px;border-bottom:1px solid var(--line);position:relative;}
+/* the accent rule the methodology deck puts under every action title */
+.sechead::after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;
+  border-radius:3px;background:linear-gradient(90deg,var(--t2),transparent);}
 .sechead h2 .cont{font-size:.5em;font-weight:600;letter-spacing:.08em;
   text-transform:uppercase;color:var(--mut2);vertical-align:middle;margin-left:6px;}
-.secnum{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;font-size:16px;color:var(--t2);
-  letter-spacing:.04em;}
+.secnum{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;font-size:13px;
+  color:var(--t2);letter-spacing:.1em;flex:0 0 auto;
+  padding:3px 12px;border-radius:999px;
+  border:1px solid color-mix(in srgb,var(--t2) 45%,transparent);
+  background:color-mix(in srgb,var(--t2) 12%,transparent);}
 .sechead h2{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;
   font-size:clamp(22px,3.2vw,32px);letter-spacing:-.01em;color:#fff;margin:0;line-height:1.1;}
 .secbody{counter-reset:cardno;}
@@ -597,7 +603,7 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 .scell:hover,.cell:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--t2) 50%,var(--line));}
 .scell .v,.cell .v{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;
   font-size:clamp(22px,3vw,30px);line-height:1;color:var(--t2);}
-.scell .l,.cell .l{margin-top:7px;font-size:12.5px;line-height:1.4;color:var(--mut);font-weight:600;}
+.scell .l,.cell .l{margin-top:7px;font-size:13px;line-height:1.4;color:var(--mut);font-weight:600;}
 
 /* icons: inline sprite, tinted by the slide accent, in a soft disc so they read
    against both the mesh gradient and a photo background */
@@ -627,14 +633,15 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   color:var(--t2);letter-spacing:.04em;display:block;margin-bottom:8px;}
 /* .secbody h3 carries list spacing; inside a card it is the card's own title */
 .card h3{margin:0 0 8px;font-size:clamp(15px,1.5vw,17.5px);line-height:1.3;}
-.card p{margin:0 0 8px;font-size:14px;line-height:1.55;max-width:none;}
+.card p{margin:0 0 8px;font-size:14.5px;line-height:1.55;max-width:none;}
 .card p:last-child{margin-bottom:0;}
 
 /* chips - the parser's leftover emphasis lines, laid out as peers not a column */
 .chips{display:grid;gap:10px;margin:14px 0 18px;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.chip>.ic{flex:0 0 auto;}
 .chip{background:var(--glass2);border:1px solid var(--line);border-left:3px solid var(--t2);
-  border-radius:10px;padding:11px 14px;font-size:13.5px;font-weight:600;
+  border-radius:10px;padding:12px 15px;font-size:14px;font-weight:600;
   color:var(--fg);line-height:1.45;}
 
 /* column chart, recovered from a flattened value/period table */
@@ -669,7 +676,7 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   border-radius:50%;background:var(--t2);box-shadow:0 0 0 4px var(--ink);}
 .step-v{position:absolute;top:26px;left:0;font-weight:700;font-size:clamp(20px,2.6vw,27px);
   line-height:1;color:var(--t2);letter-spacing:-.01em;}
-.step-b p{margin:0 0 7px;font-size:13.5px;line-height:1.55;color:var(--mut);max-width:none;}
+.step-b p{margin:0 0 7px;font-size:14px;line-height:1.55;color:var(--mut);max-width:none;}
 .step-b p:last-child{margin-bottom:0;}
 
 /* a lone milestone is not a sequence: figure beside its text, not a band across
@@ -691,7 +698,7 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 .entry.noterm .term{display:none;}
 .entry .term{font-weight:700;font-size:13px;color:var(--t2);}
 .entry .eh{font-weight:700;font-size:15px;color:#fff;margin:0 0 5px;}
-.entry .eb{margin:0;font-size:14px;color:var(--mut);line-height:1.55;}
+.entry .eb{margin:0;font-size:14.5px;color:var(--mut);line-height:1.55;}
 
 /* ---------- chrome: arrows, dots, progress, back ---------- */
 .nav{position:fixed;top:50%;transform:translateY(-50%);z-index:30;
@@ -723,6 +730,54 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 
 /* entrance reveals (gsap sets these when .anim survives the rAF probe) */
 .anim .slide.active .r{opacity:0;}
+
+/* Staggered pop-in for the repeating units, the rhythm the methodology deck
+   uses: each card/chip/step/figure arrives just after the one before it, so a
+   slide assembles rather than appearing whole. CSS only, so it runs with or
+   without the script layer, and it is disabled on the stacked mobile layout
+   and under reduced motion with everything left visible. */
+@keyframes cdPop{from{opacity:0;transform:translateY(10px) scale(.985);}
+  to{opacity:1;transform:none;}}
+/* Gated on .anim, the class the page only sets when rAF and IntersectionObserver
+   are both alive and motion is allowed. Without it nothing is hidden at rest, so
+   a frozen or throttled animation timeline can never leave a slide blank - the
+   same guarantee the .r reveals above are built on. */
+@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+  .anim .slide .card,.anim .slide .chip,.anim .slide .step,.anim .slide .scell,
+  .anim .slide .cell,.anim .slide .entry,.anim .slide .statnote,.anim .slide .col{opacity:0;}
+  .anim .slide.active .card,.anim .slide.active .chip,.anim .slide.active .step,
+  .anim .slide.active .scell,.anim .slide.active .cell,.anim .slide.active .entry,
+  .anim .slide.active .statnote,.anim .slide.active .col{
+    animation:cdPop .5s cubic-bezier(.2,.8,.3,1) forwards;}
+  .anim .slide.active .card:nth-child(n),.anim .slide.active .chip:nth-child(n),
+  .anim .slide.active .step:nth-child(n),.anim .slide.active .scell:nth-child(n),
+  .anim .slide.active .cell:nth-child(n),.anim .slide.active .entry:nth-child(n),
+  .anim .slide.active .col:nth-child(n){animation-delay:.12s;}
+  .anim .slide.active .card:nth-child(2),.anim .slide.active .chip:nth-child(2),
+  .anim .slide.active .step:nth-child(2),.anim .slide.active .scell:nth-child(2),
+  .anim .slide.active .cell:nth-child(2),.anim .slide.active .entry:nth-child(2),
+  .anim .slide.active .col:nth-child(2){animation-delay:.22s;}
+  .anim .slide.active .card:nth-child(3),.anim .slide.active .chip:nth-child(3),
+  .anim .slide.active .step:nth-child(3),.anim .slide.active .scell:nth-child(3),
+  .anim .slide.active .cell:nth-child(3),.anim .slide.active .entry:nth-child(3),
+  .anim .slide.active .col:nth-child(3){animation-delay:.32s;}
+  .anim .slide.active .card:nth-child(4),.anim .slide.active .chip:nth-child(4),
+  .anim .slide.active .step:nth-child(4),.anim .slide.active .scell:nth-child(4),
+  .anim .slide.active .cell:nth-child(4),.anim .slide.active .entry:nth-child(4),
+  .anim .slide.active .col:nth-child(4){animation-delay:.42s;}
+  .anim .slide.active .card:nth-child(n+5),.anim .slide.active .chip:nth-child(n+5),
+  .anim .slide.active .step:nth-child(n+5),.anim .slide.active .scell:nth-child(n+5),
+  .anim .slide.active .cell:nth-child(n+5),.anim .slide.active .entry:nth-child(n+5),
+  .anim .slide.active .col:nth-child(n+5){animation-delay:.52s;}
+  /* the column chart grows from its baseline instead of sliding */
+  .anim .slide.active .colbar{transform-origin:bottom;animation:cdGrow .55s cubic-bezier(.2,.8,.3,1) .3s both;}
+}
+@keyframes cdGrow{from{transform:scaleY(0);}to{transform:scaleY(1);}}
+@media (max-width:760px),(prefers-reduced-motion:reduce){
+  .slide .card,.slide .chip,.slide .step,.slide .scell,
+  .slide .cell,.slide .entry,.slide .statnote,.slide .col{opacity:1!important;}
+  .slide .colbar{animation:none!important;transform:none!important;}
+}
 
 /* ---------- mobile: degrade to a vertical stack ---------- */
 @media (max-width:760px){
