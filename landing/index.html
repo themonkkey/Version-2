@@ -3006,6 +3006,14 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   .ap-div{display:none;}
 }
 
+/* Crop calculator: the area sub-row sits under its crop, and derived
+   fields are visibly not for typing in. */
+.cr-arearow{opacity:.82;}
+.cr-am{padding-left:14px;font-size:12px;color:rgba(255,255,255,.62);}
+.cr-sub{font-size:10.5px;color:rgba(255,255,255,.5);}
+#sector-crops input:disabled{background:rgba(198,236,143,.10);
+  border-color:rgba(198,236,143,.28);color:#e4ffb0;cursor:not-allowed;}
+
 /* ---------- LEVEL LADDER ----------
    GDP -> GSDP -> GDDP -> MDP as a full-width stepped ladder. Each step indents
    and narrows - the geography shrinking - while the rail alongside says what
@@ -3926,7 +3934,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <div class="sec-head">
       <div class="kick">Calculator</div>
       <h2>Sector calculators</h2>
-      <p>Built from the department's own estimator workbooks: fisheries by species and product form, livestock by product group from milk to increment in stock, each following its district GVA workbook line for line. Every figure is one you enter; nothing is pre-filled from official estimates.</p>
+      <p>Built from the department's own estimator workbooks: fisheries by species and product form, livestock by product group, and crops across twelve groups from cereals to floriculture, each following its district GVA workbook line for line. Every figure is one you enter; nothing is pre-filled from official estimates.</p>
     </div>
     <div class="calc-tabs sector-tabs">
       <button class="calc-tab on" data-sector="fisheries" role="tab" aria-selected="true">
@@ -3935,6 +3943,9 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <button class="calc-tab" data-sector="livestock" role="tab" aria-selected="false">
         <span class="ct-n">PRIMARY</span><span class="ct-t">Livestock</span>
         <span class="ct-s">Milk, meat, eggs &amp; stock</span></button>
+      <button class="calc-tab" data-sector="crops" role="tab" aria-selected="false">
+        <span class="ct-n">PRIMARY</span><span class="ct-t">Crops</span>
+        <span class="ct-s">Cereals to floriculture</span></button>
     </div>
 
     <div class="calc-panel" id="sector-fisheries">
@@ -4159,6 +4170,100 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         </div>
       </div>
       <p class="calc-note" id="ls_flag"></p>
+      </div><!-- /.fc-outbody -->
+      </div><!-- /.fc-out -->
+    </div>
+
+    <!-- CROPS - traced from the District Crop GVA Calculator workbook: twelve
+         crop groups priced line by line, the Ratios Applied sheet as editable
+         assumptions, and the value-of-output less inputs less FISIM chain from
+         the GVA Calculation sheet. Crop rows are rendered from CROP below,
+         because eighty-eight of them written out by hand would be eighty-eight
+         chances to mistype a divisor. -->
+    <div class="calc-panel" id="sector-crops" hidden>
+      <div class="calc-formula">Value of Output &minus; Input costs = <b>GVA</b>, across twelve crop groups</div>
+      <div class="fc-intro">
+        <div class="fc-intro-l">
+          <p class="calc-lede">Follows the District Crop GVA Calculator workbook: cereals, pulses, oilseeds, sugarcane and gur, fibres, drugs and narcotics, condiments and spices, fruits and vegetables, other crops, cotton by-product, kitchen garden and floriculture, with the workbook&#39;s own derived prices applied at each line.</p>
+          <a class="fc-dlbtn" href="assets/tools/District_Crop_GVA_Calculator.xlsx" download>
+            <i class="ti ti-file-spreadsheet"></i>
+            <span><b>Download the Excel workbook</b>
+              <small>Same formulas, every intermediate sheet.</small></span>
+            <i class="ti ti-download fc-dlbtn-go"></i></a>
+        </div>
+        <aside class="fc-scope">
+          <div class="fc-scope-h"><i class="ti ti-bulb"></i><span>What this calculator is for</span></div>
+          <p>A way to understand how the estimate is built, not to produce the
+            official one. For the ratio tables and every intermediate sheet, work
+            in the Excel workbook.</p>
+        </aside>
+      </div>
+
+      <p class="fc-samplenote is-off" id="cr_samplenote">
+        <i class="ti ti-flask"></i>
+        <span><b>The workbook&#39;s own figures are loaded.</b> They are the district data
+        already sitting in the sheet, so you can check this tool against the Excel
+        line for line, then clear them and enter your own.</span>
+      </p>
+
+      <div class="calc-fieldset">
+        <h4>District totals</h4>
+        <div class="fc-shead"><span>Item</span><span>Value</span><span></span></div>
+        <div id="cr_macro"></div>
+      </div>
+
+      <div id="cr_groups"></div>
+
+      <details class="fc-assump">
+        <summary>
+          <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
+          <span class="fc-assump-t">Ratios applied
+            <span class="fc-assump-hint">The workbook&#39;s own ratios and price conversions. Edit only if your district&#39;s are known to differ.</span></span>
+          <span class="fc-assump-act">
+            <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
+            <i class="ti ti-chevron-down chev"></i></span>
+        </summary>
+        <div id="cr_ratios"></div>
+        <button class="calc-add" id="cr_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook&#39;s defaults</button>
+      </details>
+
+      <div class="fc-actions">
+        <button class="fc-go" id="cr_calc" type="button">
+          <i class="ti ti-equal"></i> Calculate GVA</button>
+        <button class="fc-clear" id="cr_sample" type="button">
+          <i class="ti ti-flask"></i> Load the workbook&#39;s figures</button>
+        <button class="fc-clear" id="cr_clearall" type="button">
+          <i class="ti ti-eraser"></i> Clear entries</button>
+        <span class="fc-state" id="cr_state" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="fc-out is-empty" id="cr_out">
+      <div class="fc-placeholder">
+        <i class="ti ti-calculator"></i>
+        <div><b>No result yet.</b> Fill in production and prices above, then press
+          Calculate GVA.</div>
+      </div>
+      <div class="fc-outbody">
+      <div class="fc-results">
+        <div class="calc-result" data-stage="1">
+          <h5 class="fc-rh">Value of output by group</h5>
+          <div class="calc-steps" id="cr_gvo_steps"></div>
+          <div class="calc-out strong"><span>TOTAL VALUE OF OUTPUT</span><b id="cr_gvo">&mdash;</b></div>
+        </div>
+        <div class="calc-result" data-stage="2">
+          <h5 class="fc-rh">Derived prices</h5>
+          <div class="calc-steps" id="cr_dp_steps"></div>
+        </div>
+      </div>
+      <div class="calc-result fc-final" data-stage="3">
+        <div class="calc-steps" id="cr_final_steps"></div>
+        <div class="calc-answer" data-stage="4">
+          <div class="ca-k">Gross Value Added, adjusted</div>
+          <div class="ca-v" id="cr_gva">&mdash;</div>
+          <div class="ca-s">at basic prices, net of FISIM</div>
+        </div>
+      </div>
+      <p class="calc-note" id="cr_flag"></p>
       </div><!-- /.fc-outbody -->
       </div><!-- /.fc-out -->
     </div>
@@ -5015,7 +5120,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-25b')
+  fetch('assets/i18n/te.json?v=2026-08-25c')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
@@ -8870,6 +8975,377 @@ window.__loadCapacity = function(){ loadCapacity(); };
         });
         note.classList.remove('is-off');
         reset();
+      });
+    })();
+
+    /* ---- sector calculators: crops --------------------------------------
+       Traced from the "District Crop GVA Calculator" workbook. The crop table
+       below is generated from the sheet itself rather than typed out, so the
+       eighty-eight lines cannot drift from their source. Two cells in the
+       workbook contradict their own stated method and are computed here as the
+       workbook describes them, not as it calculates them; both are named in the
+       result note so nobody reconciling against the Excel is surprised. */
+    var CROP = {"groups":[{"id":"cereals","label":"A. Cereals","items":[{"id":"paddy_less_procurement_7","label":"Paddy less procurement","note":"Price = weighted average of winter/summer/autumn paddy","dp":"paddy"},{"id":"paddy_procurement_8","label":"Paddy procurement","note":"Price = same weighted paddy price; source structure retained","dp":"paddy"},{"id":"wheat_9","label":"Wheat","note":"Direct officer input for quantity and price"},{"id":"maize_10","label":"Maize","note":"Direct officer input for quantity and price"},{"id":"small_millets_other_cereals_11","label":"Small Millets & other Cereals","note":"Price = 75% of maize price","dp":"millet"}]},{"id":"pulses","label":"B. Pulses","items":[{"id":"gram_14","label":"Gram","note":"Direct officer input for quantity and price"},{"id":"arahar_15","label":"Arahar (Tur)","note":"Direct officer input for quantity and price"},{"id":"urid_16","label":"Urid (Matikalai)","note":"Direct officer input for quantity and price"},{"id":"moong_17","label":"Moong","note":"Direct officer input for quantity and price"},{"id":"masoor_18","label":"Masoor","note":"Direct officer input for quantity and price"},{"id":"peas_19","label":"Peas","note":"Direct officer input for quantity and price"},{"id":"other_pulses_20","label":"Other Pulses","note":"Price = 85% of weighted Urid/Moong/Masoor price","dp":"otherpulse"}]},{"id":"oilseeds","label":"C. Oil seeds","items":[{"id":"linseed_23","label":"Linseed","note":"Direct officer input for quantity and price"},{"id":"sesamum_24","label":"Sesamum","note":"Direct officer input for quantity and price"},{"id":"groundnut_25","label":"Groundnut","note":"Direct officer input for quantity and price"},{"id":"rape_and_mustard_26","label":"Rape and Mustard","note":"Direct officer input for quantity and price"},{"id":"castor_27","label":"Castor","note":"Direct officer input for quantity and price"},{"id":"coconut_28","label":"Coconut ('000' nuts)","note":"Direct officer input for quantity and price"},{"id":"nizer_29","label":"Nizer","note":"Direct officer input for quantity and price"},{"id":"other_oilseed_30","label":"Other  Oilseed","note":"Direct officer input for quantity and price"}]},{"id":"cane","label":"D. Sugarcane and gur","items":[{"id":"sugarcane_33","label":"Sugarcane","note":"Quantity estimated from sugarcane allocation rules","dq":"cane","area":1},{"id":"gur_34","label":"Gur","note":"Gur quantity = 9.23% of residual sugarcane","dq":"gur"}]},{"id":"fibres","label":"E. Fibres","items":[{"id":"kapas_37","label":"Kapas (in Bales)","note":"Price estimated from Rs/Qtl × bale weight (shows zero while production is zero)","dp":"kapas","area":1},{"id":"jute_38","label":"Jute ( in Bales)","note":"Price = Jute Rs/Qtl × 180 kg/bale","dp":"jute"},{"id":"mesta_39","label":"Mesta (in Bales)","note":"Price = Mesta Rs/Qtl × 180 kg/bale","dp":"mesta"}]},{"id":"drugs","label":"F. Drugs and narcotics","items":[{"id":"tea_42","label":"Tea","note":"Direct officer input for quantity and price"},{"id":"coffee_43","label":"Coffee","note":"Direct officer input for quantity and price"},{"id":"betel_leaf_44","label":"Betel Leaf","note":"Direct officer input for quantity and price"},{"id":"tobacco_leaf_45","label":"Tobacco Leaf","note":"Direct officer input for quantity and price"},{"id":"tobacco_steam_46","label":"Tobacco Steam","note":"Quantity = 82% of separate base quantity; price = 50% of base tobacco price","dp":"tobsteamP","dq":"tobsteamQ"},{"id":"toddy_47","label":"Toddy","note":"Direct officer input for quantity and price"}]},{"id":"spices","label":"G. Condiments and spices","items":[{"id":"dry_chillies_50","label":"Dry Chillies","note":"Direct officer input for quantity and price"},{"id":"black_pepper_51","label":"Black Pepper","note":"Direct officer input for quantity and price"},{"id":"ginger_52","label":"Ginger","note":"Direct officer input for quantity and price"},{"id":"dry_turmaric_53","label":"Dry Turmaric","note":"Direct officer input for quantity and price"},{"id":"arecanut_54","label":"Arecanut","note":"Price derived from 22 nuts/kg and price per 100 nuts","dp":"arecanut"},{"id":"garlic_55","label":"Garlic","note":"Direct officer input for quantity and price"},{"id":"coriander_56","label":"Coriander","note":"Direct officer input for quantity and price"},{"id":"other_condiments_spices_57","label":"Other Condiments & Spices","note":"Price = 90% of weighted auxiliary condiment basket","dp":"othercond"}]},{"id":"fruitveg","label":"H. Fruits and vegetables","items":[{"id":"banana_60","label":"Banana","note":"Price derived from 10 bananas/kg and price per 100","dp":"banana","area":1},{"id":"mango_61","label":"Mango","note":"Direct officer input for quantity and price","area":1},{"id":"cashewnut_62","label":"Cashewnut","note":"Direct officer input for quantity and price","area":1},{"id":"aonla_63","label":"Aonla","note":"Direct officer input for quantity and price","area":1},{"id":"papaya_64","label":"Papaya","note":"Direct officer input for quantity and price","area":1},{"id":"assam_lemon_65","label":"Assam Lemon","note":"Price derived from 10.72 fruits/kg and price per 100","dp":"assamlemon","area":1},{"id":"orange_66","label":"Orange","note":"Price derived from 10.72 fruits/kg and price per 100","dp":"orange","area":1},{"id":"litchi_67","label":"Litchi","note":"Direct officer input for quantity and price","area":1},{"id":"pine_apple_68","label":"Pine Apple","note":"Price derived from 1.30 fruits/kg and price per 100","dp":"pineapple","area":1},{"id":"guava_69","label":"Guava","note":"Direct officer input for quantity and price","area":1},{"id":"watermelon_70","label":"Watermelon","note":"Direct officer input for quantity and price","area":1},{"id":"jack_fruits_71","label":"Jack Fruits","note":"Direct officer input for quantity and price","area":1},{"id":"potato_72","label":"Potato","note":"Direct officer input for quantity and price","area":1},{"id":"sweet_potato_73","label":"Sweet Potato","note":"Direct officer input for quantity and price","area":1},{"id":"tapioca_74","label":"Tapioca","note":"Price = 39.36% of potato price","dp":"tapioca","area":1},{"id":"onion_75","label":"Onion","note":"Direct officer input for quantity and price","area":1},{"id":"brinjal_76","label":"Brinjal","note":"Direct officer input for quantity and price","area":1},{"id":"cabbage_77","label":"Cabbage","note":"Direct officer input for quantity and price","area":1},{"id":"cauliflower_78","label":"Cauliflower","note":"Direct officer input for quantity and price","area":1},{"id":"okra_79","label":"Okra","note":"Direct officer input for quantity and price","area":1},{"id":"tomato_80","label":"Tomato","note":"Direct officer input for quantity and price","area":1},{"id":"bittergourd_81","label":"Bittergourd","note":"Direct officer input for quantity and price","area":1},{"id":"carrot_82","label":"Carrot","note":"Direct officer input for quantity and price","area":1},{"id":"cucumber_83","label":"Cucumber","note":"Direct officer input for quantity and price","area":1},{"id":"radish_84","label":"Radish","note":"Direct officer input for quantity and price","area":1},{"id":"beans_85","label":"Beans","note":"Direct officer input for quantity and price","area":1},{"id":"bottleguard_86","label":"Bottleguard","note":"Direct officer input for quantity and price","area":1},{"id":"capsicum_87","label":"Capsicum","note":"Direct officer input for quantity and price","area":1},{"id":"parmal_88","label":"Parmal(Patal)","note":"Direct officer input for quantity and price","area":1},{"id":"green_peas_89","label":"Green Peas","note":"Direct officer input for quantity and price","area":1},{"id":"other_vegetables_90","label":"Other Vegetables","note":"Direct officer input for quantity and price","area":1},{"id":"other_fruits_91","label":"Other Fruits","note":"Price = weighted average of selected fruit basket","dp":"otherfruits","area":1}]},{"id":"misc","label":"I. Other misc. crops","items":[{"id":"rubber_94","label":"Rubber","note":"Direct officer input for quantity and price"},{"id":"fodder_95","label":"Fodder","note":"Direct officer input for quantity and price"},{"id":"grass_96","label":"Grass","note":"Area built from land-use components; production = area × grass yield","dq":"grassQ"},{"id":"misc_food_crops_97","label":"Misc. Food Crops","note":"Direct officer input for quantity and price"},{"id":"misc_non_food_crops_98","label":"Misc. Non-Food Crops","note":"Direct officer input for quantity and price"}]},{"id":"flori","label":"L. Floriculture","items":[{"id":"cut_flower_107","label":"Cut Flower (in Lakh No.)","note":"Cut flower value uses quantity × price (no ÷100 scaling)","nodiv":1},{"id":"loose_flower_108","label":"Loose Flower(in  M.Tonne)","note":"Direct officer input for quantity and price"}]}],"sample":{"q":{"paddy_less_procurement_7":160.59,"paddy_procurement_8":4.879,"wheat_9":0.213,"maize_10":15.436,"small_millets_other_cereals_11":0.342,"gram_14":0.054,"arahar_15":0.195,"urid_16":1.818,"moong_17":0.275,"masoor_18":1.129,"peas_19":0.42,"other_pulses_20":0.269,"linseed_23":0.131,"sesamum_24":0.255,"groundnut_25":0.0,"rape_and_mustard_26":12.15,"castor_27":0.006,"coconut_28":1.809,"nizer_29":0.116,"other_oilseed_30":0.0,"sugarcane_33":0.194956,"gur_34":0.142423,"kapas_37":0.0,"jute_38":14.509,"mesta_39":0.823,"tea_42":0.2564,"coffee_43":0.0075,"betel_leaf_44":673.38,"tobacco_leaf_45":0.00126,"tobacco_steam_46":0.00574,"toddy_47":0.0,"dry_chillies_50":0.783,"black_pepper_51":0.139,"ginger_52":3.864,"dry_turmaric_53":0.999,"arecanut_54":2.7,"garlic_55":3.404,"coriander_56":2.168,"other_condiments_spices_57":0.206,"banana_60":42.558,"mango_61":0.645,"cashewnut_62":0.277,"aonla_63":0.261,"papaya_64":5.418,"assam_lemon_65":1.946,"orange_66":3.351,"litchi_67":0.615,"pine_apple_68":16.019,"guava_69":1.814,"watermelon_70":0.0,"jack_fruits_71":2.962,"potato_72":45.49,"sweet_potato_73":0.714,"tapioca_74":2.552,"onion_75":2.25,"brinjal_76":16.77,"cabbage_77":9.734,"cauliflower_78":10.894,"okra_79":5.475,"tomato_80":10.078,"bittergourd_81":1.541,"carrot_82":4.083,"cucumber_83":2.214,"radish_84":8.109,"beans_85":0.486,"bottleguard_86":2.207,"capsicum_87":0.068,"parmal_88":0.98,"green_peas_89":0.238,"other_vegetables_90":0.0,"other_fruits_91":1.438,"rubber_94":2.301,"fodder_95":0.0,"grass_96":50.962338,"misc_food_crops_97":0.0,"misc_non_food_crops_98":0.0,"cut_flower_107":195.4,"loose_flower_108":0.774},"p":{"wheat_9":30056.6,"maize_10":12805.0,"gram_14":49471.7,"arahar_15":78116.5,"urid_16":48263.0,"moong_17":84203.5,"masoor_18":84063.3,"peas_19":40408.4,"linseed_23":42970.5,"sesamum_24":82193.7,"groundnut_25":0.0,"rape_and_mustard_26":46415.1,"castor_27":81507.8,"coconut_28":20200.0,"nizer_29":44126.3,"other_oilseed_30":0.0,"sugarcane_33":3982.0,"gur_34":45980.2,"tea_42":45328.0,"coffee_43":146000.0,"betel_leaf_44":320.66,"tobacco_leaf_45":85623.0,"toddy_47":0.0,"dry_chillies_50":122875.0,"black_pepper_51":672500.0,"ginger_52":51000.0,"dry_turmaric_53":115347.1,"garlic_55":62800.0,"coriander_56":34302.0,"mango_61":42852.0,"cashewnut_62":799500.0,"aonla_63":26280.0,"papaya_64":15801.0,"litchi_67":40752.0,"guava_69":30751.5,"watermelon_70":0.0,"jack_fruits_71":15302.0,"potato_72":20753.7,"sweet_potato_73":13652.0,"onion_75":31202.0,"brinjal_76":28000.0,"cabbage_77":20301.0,"cauliflower_78":20801.0,"okra_79":27201.0,"tomato_80":21502.0,"bittergourd_81":30850.0,"carrot_82":30000.0,"cucumber_83":23201.0,"radish_84":18405.0,"beans_85":27552.0,"bottleguard_86":18900.0,"capsicum_87":72700.0,"parmal_88":30500.0,"green_peas_89":41002.0,"other_vegetables_90":0.0,"rubber_94":146000.0,"fodder_95":0.0,"grass_96":3605.53,"misc_food_crops_97":2095.84,"misc_non_food_crops_98":3618.0,"cut_flower_107":2.46,"loose_flower_108":86076.0},"a":{"sugarcane_33":0.039,"kapas_37":0.0,"banana_60":2.964,"mango_61":0.061,"cashewnut_62":0.225,"aonla_63":0.012,"papaya_64":0.257,"assam_lemon_65":0.184,"orange_66":0.537,"litchi_67":0.057,"pine_apple_68":0.777,"guava_69":0.085,"watermelon_70":0.0,"jack_fruits_71":0.232,"potato_72":3.736,"sweet_potato_73":0.15,"tapioca_74":0.305,"onion_75":0.328,"brinjal_76":0.901,"cabbage_77":0.586,"cauliflower_78":0.852,"okra_79":0.262,"tomato_80":0.683,"bittergourd_81":0.271,"carrot_82":0.236,"cucumber_83":0.171,"radish_84":0.652,"beans_85":0.029,"bottleguard_86":0.106,"capsicum_87":0.01,"parmal_88":0.068,"green_peas_89":0.332,"other_vegetables_90":0.0,"other_fruits_91":0.125}},"seasons":[{"id":"winter","label":"Winter","q":151.471,"p":15366.0},{"id":"summer","label":"Summer","q":5.864,"p":13502.0},{"id":"autumn","label":"Autumn","q":3.259,"p":12500.0}],"units":[{"id":"pineapple","label":"Pine Apple","n":1.3,"p":2080.0},{"id":"orange","label":"Orange","n":10.72,"p":700.0},{"id":"assamlemon","label":"Assam Lemon","n":10.72,"p":500.0},{"id":"arecanut","label":"Arecanut","n":22.0,"p":196.0},{"id":"banana","label":"Banana","n":10.0,"p":290.0}],"fibres":[{"id":"kapas","label":"Kapas","q":5132.23,"w":170.0},{"id":"jute","label":"Jute","q":2703.0,"w":180.0},{"id":"mesta","label":"Mesta","q":1750.0,"w":180.0}],"cond":[{"id":"chil","label":"Dry Chillies","q":0.601,"p":122875.0},{"id":"pep","label":"Black Pepper","q":0.137,"p":672500.0},{"id":"gin","label":"Ginger","q":3.468,"p":51000.0}],"land":[{"id":"past","label":"Permanent pastures","b":2103.0,"m":4.0},{"id":"groves","label":"Miscellaneous trees and groves","b":4060.0,"m":1.0},{"id":"cwaste","label":"Culturable waste land","b":3450.0,"m":2.0},{"id":"fallow","label":"Fallow land","b":2044.0,"m":2.0},{"id":"netother","label":"Net area sown, other component","b":60277.0,"m":1.0}],"ratios":{"millet":0.75,"otherpulse":0.85,"othercond":0.9,"tapioca":0.3936,"tobsteamR":0.82,"tobbaseQ":0.007,"tobpriceR":0.5,"cane_chew":0.01,"cane_mill":0.0,"cane_khand":0.0362,"cane_seed":2.94,"gur":0.0923,"grass_yield":0.6086,"cotton_vph":5000.0,"kg_ratio":0.0021,"kg_net":2722530.0},"macro":{"cane_total":1.738,"tob_baseQ":0.007,"tob_baseP":85841.0,"inputs":10000.0,"fisim":0.0579,"grass_price":3605.53,"misc_food_p":2095.84,"misc_nonfood_p":3618.0}};
+
+    /* Crop value of output, traced from the District Crop GVA Calculator workbook.
+       Every divisor is the workbook's own: a crop line is production ('000 unit)
+       times price (Rs/unit) over 100, which lands in Rs lakh. Cut flower is the one
+       line the workbook values without that division. */
+    function cropCompute(S){
+      var R=S.ratios, M=S.macro, q=S.q, p=S.p, a=S.a, d={};
+      var byId={}; S.groups.forEach(function(g){ g.items.forEach(function(i){ byId[i.id]=i; }); });
+      function id(pfx){ for(var k in byId){ if(k.indexOf(pfx)===0) return k; } return null; }
+
+      // paddy: production-weighted price across the three seasons
+      var sq=0, sv=0;
+      S.seasons.forEach(function(s){ sq+=s.q; sv+=s.q*s.p/100; });
+      d.paddy = sq ? sv/sq*100 : 0;
+      // unit-count crops: nos per kg x price per 100 nos -> Rs per MT
+      S.units.forEach(function(u){ d[u.id] = u.n*1000*u.p/100; });
+      // fibres: Rs per quintal x bale weight -> Rs per bale
+      S.fibres.forEach(function(f){ d[f.id] = f.q/100*f.w; });
+      // tobacco steam rides on its own base quantity and price
+      d.tobsteamQ = M.tob_baseQ * R.tobsteamR;
+      d.tobsteamP = M.tob_baseP * R.tobpriceR;
+      // grass area is built from land-use components, then yields its production
+      var ha=0; S.land.forEach(function(l){ ha += l.b*l.m; });
+      d.grassArea = ha/1000;
+      d.grassQ    = d.grassArea * R.grass_yield;
+      d.kgArea    = R.kg_net * R.kg_ratio / 1000;
+
+      var maize=id("maize_"), potato=id("potato_");
+      d.millet  = (p[maize]  || 0) * R.millet;
+      d.tapioca = (p[potato] || 0) * R.tapioca;
+
+      function price(k){ var it=byId[k]; if(!it) return 0; return it.dp ? (d[it.dp]||0) : (p[k]||0); }
+      function qty(k){   var it=byId[k]; if(!it) return 0; return it.dq ? (d[it.dq]||0) : (q[k]||0); }
+      function weighted(keys){
+        var wq=0, wv=0;
+        keys.forEach(function(pfx){ var k=id(pfx); if(k){ wq+=qty(k); wv+=qty(k)*price(k); } });
+        return wq ? wv/wq : 0;
+      }
+      // these two baskets price themselves off other crop lines
+      d.otherpulse  = weighted(["urid","moong","masoor"]) * R.otherpulse;
+      var cq=0, cv=0;
+      S.cond.forEach(function(c){ cq+=c.q; cv+=c.q*c.p; });
+      d.othercond   = (cq ? cv/cq : 0) * R.othercond;
+      d.otherfruits = weighted(["banana_","mango_","cashewnut_","aonla_","papaya_",
+                                "assam_lemon_","orange_","litchi_","pine_apple_",
+                                "watermelon_","jack_fruits_"]);
+      // sugarcane splits into chewing, mills, khandsari and seed; gur takes a
+      // share of what is left
+      var caneRow=id("sugarcane_");
+      d.cane = M.cane_total*(R.cane_chew + R.cane_mill + R.cane_khand) +
+               (a[caneRow]||0)*R.cane_seed;
+      d.gur  = (M.cane_total - d.cane) * R.gur;
+
+      var groups=[], total=0;
+      S.groups.forEach(function(g){
+        var sum=0;
+        g.items.forEach(function(i){
+          var v=qty(i.id)*price(i.id); if(!i.nodiv) v/=100;
+          i._v=v; sum+=v;
+        });
+        groups.push({id:g.id,label:g.label,value:sum}); total+=sum;
+      });
+      var kapas=id("kapas_");
+      var cotton=(a[kapas]||0)*R.cotton_vph;
+      groups.push({id:"cotton",label:"J. By-products, cotton",value:cotton}); total+=cotton;
+      var fvArea=0, fvVal=0;
+      S.groups.forEach(function(g){ if(g.id!=="fruitveg") return;
+        g.items.forEach(function(i){ fvArea+=a[i.id]||0; fvVal+=i._v; }); });
+      var kg = fvArea ? d.kgArea*fvVal/fvArea : 0;
+      groups.push({id:"kitchen",label:"K. Kitchen garden",value:kg}); total+=kg;
+
+      var inputs=M.inputs, unadj=total-inputs, fisim=unadj>0?unadj*M.fisim:0;
+      return {derived:d,groups:groups,total:total,inputs:inputs,unadj:unadj,
+              fisim:fisim,adjusted:unadj-fisim,kgArea:d.kgArea,fvArea:fvArea,kg:kg,cotton:cotton};
+    }
+
+    var crHost = document.getElementById('sector-crops');
+    var CR_MACRO = [
+      ['cane_total', "Total sugarcane production ('000 MT)"],
+      ['tob_baseQ',  "Tobacco steam base quantity ('000 MT)"],
+      ['tob_baseP',  'Tobacco steam base price (Rs/MT)'],
+      ['inputs',     'Total input cost (Rs lakh)'],
+      ['fisim',      'FISIM ratio, share of unadjusted GVA']
+    ];
+    var CR_RATIO_META = {
+      millet:['Prices from other crops','Small millets as share of maize price'],
+      otherpulse:['Prices from other crops','Other pulses as share of weighted pulse price'],
+      othercond:['Prices from other crops','Other condiments as share of the basket'],
+      tapioca:['Prices from other crops','Tapioca as share of potato price'],
+      tobsteamR:['Tobacco','Steam production ratio'],
+      tobpriceR:['Tobacco','Steam price factor'],
+      cane_chew:['Sugarcane','Share used for chewing'],
+      cane_mill:['Sugarcane','Share used by mills'],
+      cane_khand:['Sugarcane','Share used for khandsari'],
+      cane_seed:['Sugarcane','Seed requirement, tonnes per hectare'],
+      gur:['Sugarcane','Gur extraction from residual cane'],
+      grass_yield:['Grass and kitchen garden','Grass yield, MT per hectare'],
+      kg_net:['Grass and kitchen garden','Net sown area (ha)'],
+      kg_ratio:['Grass and kitchen garden','Kitchen garden share of net area'],
+      cotton_vph:['By-products','Cotton by-product value per hectare (Rs)']
+    };
+    function crn(id){ var e=document.getElementById(id); var v=e?parseFloat(e.value):NaN;
+      return isFinite(v)?v:0; }
+
+    if(crHost){
+      document.getElementById('cr_macro').innerHTML = CR_MACRO.map(function(m){
+        return '<div class="fc-srow"><span class="fc-slabel">'+m[1]+'</span>'+
+          '<input type="number" id="cm_'+m[0]+'" value="0" min="0" step="any" aria-label="'+m[1]+'">'+
+          '<span></span></div>';
+      }).join('');
+
+      document.getElementById('cr_groups').innerHTML = CROP.groups.map(function(g){
+        var head='<div class="fc-shead"><span>Crop</span>'+
+          '<span>Production</span><span>Price (Rs/unit)</span></div>';
+        var rows=g.items.map(function(i){
+          var pf = i.dp
+            ? '<input type="number" id="cp_'+i.id+'" value="0" step="any" disabled aria-label="'+i.label+' price, derived">'
+            : '<input type="number" id="cp_'+i.id+'" value="0" min="0" step="any" aria-label="'+i.label+' price">';
+          var qf = i.dq
+            ? '<input type="number" id="cq_'+i.id+'" value="0" step="any" disabled aria-label="'+i.label+' production, derived">'
+            : '<input type="number" id="cq_'+i.id+'" value="0" min="0" step="any" aria-label="'+i.label+' production">';
+          var lab='<span class="fc-slabel">'+i.label+
+            (i.area?'<br><span class="cr-sub">area \u2018000 ha</span>':'')+'</span>';
+          var r='<div class="fc-srow">'+lab+qf+pf+'</div>';
+          if(i.area) r+='<div class="fc-srow cr-arearow"><span class="fc-slabel cr-am">Area under '+
+            i.label+'</span><input type="number" id="ca_'+i.id+'" value="0" min="0" step="any" aria-label="'+
+            i.label+' area">'+'<span></span></div>';
+          return r;
+        }).join('');
+        return '<details class="calc-fieldset ls-details"><summary>'+g.label+
+          ' <span class="fc-assump-hint">'+g.items.length+' crops</span></summary>'+
+          head+rows+'</details>';
+      }).join('');
+
+      (function buildCrRatios(){
+        var h='';
+        var groups={};
+        Object.keys(CR_RATIO_META).forEach(function(k){
+          var gname=CR_RATIO_META[k][0];
+          (groups[gname]=groups[gname]||[]).push(k);
+        });
+        h += Object.keys(groups).map(function(gn){
+          return '<div class="fc-rgroup"><h6>'+gn+'</h6>'+groups[gn].map(function(k){
+            return '<label class="cf"><span>'+CR_RATIO_META[k][1]+'</span>'+
+              '<input type="number" id="crr_'+k+'" value="'+CROP.ratios[k]+'" min="0" step="any">'+
+              '<span class="cf-suf">ratio</span></label>';
+          }).join('')+'</div>';
+        }).join('');
+        h += '<div class="fc-rgroup"><h6>Paddy price, weighted across the seasons</h6>'+
+          CROP.seasons.map(function(s){
+            return '<label class="cf"><span>'+s.label+", production '000 MT</span>"+
+              '<input type="number" id="crs_q_'+s.id+'" value="'+s.q+'" min="0" step="any">'+
+              '<span class="cf-suf">\u2018000 MT</span></label>'+
+              '<label class="cf"><span>'+s.label+' price</span>'+
+              '<input type="number" id="crs_p_'+s.id+'" value="'+s.p+'" min="0" step="any">'+
+              '<span class="cf-suf">Rs/MT</span></label>';
+          }).join('')+'</div>';
+        h += '<div class="fc-rgroup"><h6>Prices from a count of fruit or nuts</h6>'+
+          CROP.units.map(function(u){
+            return '<label class="cf"><span>'+u.label+', numbers per kg</span>'+
+              '<input type="number" id="cru_n_'+u.id+'" value="'+u.n+'" min="0" step="any">'+
+              '<span class="cf-suf">nos/kg</span></label>'+
+              '<label class="cf"><span>'+u.label+', price per 100</span>'+
+              '<input type="number" id="cru_p_'+u.id+'" value="'+u.p+'" min="0" step="any">'+
+              '<span class="cf-suf">Rs</span></label>';
+          }).join('')+'</div>';
+        h += '<div class="fc-rgroup"><h6>Fibre prices, per bale</h6>'+
+          CROP.fibres.map(function(f){
+            return '<label class="cf"><span>'+f.label+' price</span>'+
+              '<input type="number" id="crf_q_'+f.id+'" value="'+f.q+'" min="0" step="any">'+
+              '<span class="cf-suf">Rs/Qtl</span></label>'+
+              '<label class="cf"><span>'+f.label+' bale weight</span>'+
+              '<input type="number" id="crf_w_'+f.id+'" value="'+f.w+'" min="0" step="any">'+
+              '<span class="cf-suf">kg</span></label>';
+          }).join('')+'</div>';
+        h += '<div class="fc-rgroup"><h6>Condiment basket that prices the residual line</h6>'+
+          CROP.cond.map(function(c){
+            return '<label class="cf"><span>'+c.label+", production</span>"+
+              '<input type="number" id="crc_q_'+c.id+'" value="'+c.q+'" min="0" step="any">'+
+              '<span class="cf-suf">\u2018000 MT</span></label>'+
+              '<label class="cf"><span>'+c.label+' price</span>'+
+              '<input type="number" id="crc_p_'+c.id+'" value="'+c.p+'" min="0" step="any">'+
+              '<span class="cf-suf">Rs/MT</span></label>';
+          }).join('')+'</div>';
+        h += '<div class="fc-rgroup"><h6>Land use that builds the grass area</h6>'+
+          CROP.land.map(function(l){
+            return '<label class="cf"><span>'+l.label+', base area</span>'+
+              '<input type="number" id="crl_b_'+l.id+'" value="'+l.b+'" min="0" step="any">'+
+              '<span class="cf-suf">ha</span></label>'+
+              '<label class="cf"><span>'+l.label+', multiplier</span>'+
+              '<input type="number" id="crl_m_'+l.id+'" value="'+l.m+'" min="0" step="any">'+
+              '<span class="cf-suf">x</span></label>';
+          }).join('')+'</div>';
+        document.getElementById('cr_ratios').innerHTML=h;
+      })();
+
+      document.getElementById('cr_reset').addEventListener('click', function(){
+        Object.keys(CROP.ratios).forEach(function(k){
+          var e=document.getElementById('crr_'+k); if(e) e.value=CROP.ratios[k]; });
+        CROP.seasons.forEach(function(s){
+          document.getElementById('crs_q_'+s.id).value=s.q;
+          document.getElementById('crs_p_'+s.id).value=s.p; });
+        CROP.units.forEach(function(u){
+          document.getElementById('cru_n_'+u.id).value=u.n;
+          document.getElementById('cru_p_'+u.id).value=u.p; });
+        CROP.fibres.forEach(function(f){
+          document.getElementById('crf_q_'+f.id).value=f.q;
+          document.getElementById('crf_w_'+f.id).value=f.w; });
+        CROP.cond.forEach(function(c){
+          document.getElementById('crc_q_'+c.id).value=c.q;
+          document.getElementById('crc_p_'+c.id).value=c.p; });
+        CROP.land.forEach(function(l){
+          document.getElementById('crl_b_'+l.id).value=l.b;
+          document.getElementById('crl_m_'+l.id).value=l.m; });
+        if(window.__crMarkStale) window.__crMarkStale();
+      });
+    }
+
+    function crState(){
+      var q={}, p={}, a={};
+      CROP.groups.forEach(function(g){ g.items.forEach(function(i){
+        q[i.id]=crn('cq_'+i.id); p[i.id]=crn('cp_'+i.id);
+        if(i.area) a[i.id]=crn('ca_'+i.id);
+      }); });
+      var ratios={}; Object.keys(CROP.ratios).forEach(function(k){
+        var e=document.getElementById('crr_'+k);
+        ratios[k]= e ? (isFinite(parseFloat(e.value))?parseFloat(e.value):CROP.ratios[k]) : CROP.ratios[k];
+      });
+      var macro={};
+      CR_MACRO.forEach(function(m){ macro[m[0]]=crn('cm_'+m[0]); });
+      return {
+        groups:CROP.groups, ratios:ratios, macro:macro,
+        seasons:CROP.seasons.map(function(s){
+          return {id:s.id,label:s.label,q:crn('crs_q_'+s.id),p:crn('crs_p_'+s.id)}; }),
+        units:CROP.units.map(function(u){
+          return {id:u.id,label:u.label,n:crn('cru_n_'+u.id),p:crn('cru_p_'+u.id)}; }),
+        fibres:CROP.fibres.map(function(f){
+          return {id:f.id,label:f.label,q:crn('crf_q_'+f.id),w:crn('crf_w_'+f.id)}; }),
+        cond:CROP.cond.map(function(c){
+          return {id:c.id,label:c.label,q:crn('crc_q_'+c.id),p:crn('crc_p_'+c.id)}; }),
+        land:CROP.land.map(function(l){
+          return {id:l.id,label:l.label,b:crn('crl_b_'+l.id),m:crn('crl_m_'+l.id)}; }),
+        q:q, p:p, a:a
+      };
+    }
+
+    function crops(){
+      if(!crHost) return 0;
+      var S=crState(), r=cropCompute(S), d=r.derived;
+      // show the derived prices back in their own disabled fields
+      CROP.groups.forEach(function(g){ g.items.forEach(function(i){
+        if(i.dp){ var e=document.getElementById('cp_'+i.id);
+          if(e) e.value=(d[i.dp]||0).toFixed(2); }
+        if(i.dq){ var e2=document.getElementById('cq_'+i.id);
+          if(e2) e2.value=(d[i.dq]||0).toFixed(4); }
+      }); });
+
+      document.getElementById('cr_gvo_steps').innerHTML = r.groups.map(function(g){
+        return '<div class="cs"><span>'+g.label+'</span><b>'+money(g.value,'lakh')+'</b></div>';
+      }).join('');
+      document.getElementById('cr_gvo').textContent = money(r.total,'lakh');
+
+      document.getElementById('cr_dp_steps').innerHTML =
+        [['Paddy, weighted across seasons', d.paddy, 'Rs/MT'],
+         ['Other pulses', d.otherpulse, 'Rs/MT'],
+         ['Other condiments', d.othercond, 'Rs/MT'],
+         ['Other fruits', d.otherfruits, 'Rs/MT'],
+         ['Sugarcane retained', d.cane, "'000 MT"],
+         ['Gur', d.gur, "'000 MT"],
+         ['Grass production', d.grassQ, "'000 MT"],
+         ['Kitchen garden area', d.kgArea, "'000 ha"]]
+        .map(function(x){
+          return '<div class="cs"><span>'+x[0]+'</span><b>'+
+            inr(x[1],2)+' '+x[2]+'</b></div>'; }).join('');
+
+      document.getElementById('cr_final_steps').innerHTML =
+        '<div class="cs"><span>Total value of output</span><b>'+money(r.total,'lakh')+'</b></div>'+
+        '<div class="cs minus"><span>less total input cost</span><b>\u2212 '+money(r.inputs,'lakh')+'</b></div>'+
+        '<div class="cs"><span>Gross Value Added, unadjusted</span><b>'+money(r.unadj,'lakh')+'</b></div>'+
+        '<div class="cs minus"><span>less FISIM</span><b>\u2212 '+money(r.fisim,'lakh')+'</b></div>';
+      document.getElementById('cr_gva').textContent = money(r.adjusted,'lakh');
+
+      var flag=document.getElementById('cr_flag');
+      if(r.total===0){
+        flag.textContent = 'Enter at least one crop\u2019s production and price to begin.';
+      } else {
+        flag.innerHTML = '<b>Two cells differ from the workbook, deliberately.</b> '+
+          'The kitchen garden line is valued here as its area times the value per '+
+          'hectare of fruits and vegetables, which is what the workbook\u2019s own note '+
+          'describes; the sheet\u2019s formula multiplies by that area a second time, '+
+          'which on its own figures makes kitchen garden about half the district total. '+
+          'The cotton by-product line is valued as area times value per hectare, as its '+
+          'column headings say; the sheet points at an empty cell, so it always returns zero.';
+      }
+      return r.adjusted;
+    }
+
+    // Independent state wiring for the crops panel, mirroring the other two.
+    (function(){
+      if(!crHost) return;
+      var out=document.getElementById('cr_out');
+      var st=document.getElementById('cr_state');
+      var done=false, timers=[];
+      function stages(){
+        timers.forEach(clearTimeout); timers=[];
+        var els=out.querySelectorAll('[data-stage]');
+        out.classList.add('is-staging');
+        els.forEach(function(el){ el.classList.remove('shown'); });
+        void out.offsetHeight;
+        els.forEach(function(el,i){
+          timers.push(setTimeout(function(){ el.classList.add('shown'); }, slowOK ? i*380 : 0));
+        });
+      }
+      function calc(){
+        crops(); done=true;
+        out.classList.remove('is-empty','is-stale');
+        stages();
+        st.textContent='Calculated'; st.className='fc-state ok';
+        var ans=out.querySelector('.fc-final');
+        if(ans){ var r=ans.getBoundingClientRect();
+          if(r.top>window.innerHeight-120||r.bottom<0)
+            window.scrollBy({top:r.top-160,behavior:'smooth'}); }
+      }
+      function stale(){
+        if(!done) return;
+        out.classList.add('is-stale');
+        st.textContent='Inputs changed since this was calculated';
+        st.className='fc-state stale';
+      }
+      window.__crMarkStale=stale;
+      function reset(){
+        timers.forEach(clearTimeout); timers=[];
+        out.classList.remove('is-staging');
+        out.querySelectorAll('[data-stage]').forEach(function(el){ el.classList.remove('shown'); });
+        done=false;
+        out.classList.add('is-empty'); out.classList.remove('is-stale');
+        st.textContent=''; st.className='fc-state';
+      }
+      document.getElementById('cr_calc').addEventListener('click', calc);
+      crHost.addEventListener('input', stale);
+      crHost.addEventListener('change', stale);
+      crHost.addEventListener('keydown', function(e){
+        if(e.key==='Enter' && e.target.tagName==='INPUT'){ e.preventDefault(); calc(); }
+      });
+      var note=document.getElementById('cr_samplenote');
+      document.getElementById('cr_clearall').addEventListener('click', function(){
+        crHost.querySelectorAll('#cr_groups input, #cr_macro input').forEach(function(el){ el.value=0; });
+        note.classList.add('is-off'); reset();
+      });
+      document.getElementById('cr_sample').addEventListener('click', function(){
+        crHost.querySelectorAll('#cr_groups input').forEach(function(el){ el.value=0; });
+        Object.keys(CROP.sample.q).forEach(function(k){
+          var e=document.getElementById('cq_'+k); if(e) e.value=CROP.sample.q[k]; });
+        Object.keys(CROP.sample.p).forEach(function(k){
+          var e=document.getElementById('cp_'+k); if(e) e.value=CROP.sample.p[k]; });
+        Object.keys(CROP.sample.a).forEach(function(k){
+          var e=document.getElementById('ca_'+k); if(e) e.value=CROP.sample.a[k]; });
+        CR_MACRO.forEach(function(m){
+          document.getElementById('cm_'+m[0]).value=CROP.macro[m[0]]; });
+        note.classList.remove('is-off'); reset();
       });
     })();
 
