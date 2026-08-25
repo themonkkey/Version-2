@@ -2943,6 +2943,51 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 .md-link-f{font-size:11px;color:rgba(255,255,255,.6);margin:-2px 0 4px;}
 @media (max-width:700px){.lv-full{white-space:normal;}}
 
+/* ---------- APPROACH FIGURE ----------
+   Top-down and bottom-up as two live trees: a state-total chip, four district
+   tiles with pins, and a stream of arrows flowing down one side and up the
+   other. */
+.ap-fig{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;
+  gap:clamp(12px,2vw,28px);max-width:860px;margin:clamp(8px,1.4vh,16px) auto;}
+.ap-tree{display:grid;justify-items:center;gap:9px;}
+.ap-t{font-size:14px;font-weight:750;color:#fff;}
+.ap-root{display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;border-radius:10px;border:1.7px solid;font-size:13px;font-weight:650;}
+.ap-tree.td .ap-root{border-color:rgba(255,255,255,.38);background:rgba(255,255,255,.10);color:#fff;}
+.ap-tree.bu .ap-root{border-color:#C6FF6A;background:rgba(198,255,106,.16);color:#C6FF6A;}
+.ap-root i{font-size:17px;}
+.ap-flow{display:flex;gap:26px;height:30px;align-items:center;}
+.ap-flow i{font-size:17px;line-height:1;}
+.ap-tree.td .ap-flow i{color:rgba(255,255,255,.55);}
+.ap-tree.bu .ap-flow i{color:#C6FF6A;}
+.ap-tiles{display:flex;gap:12px;}
+.ap-tile{width:38px;height:36px;border-radius:9px;display:grid;place-items:center;
+  border:1.7px solid;font-size:17px;}
+.ap-tree.td .ap-tile{border-color:rgba(255,255,255,.34);background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.7);}
+.ap-tree.bu .ap-tile{border-color:#C6FF6A;background:rgba(198,255,106,.13);color:#C6FF6A;}
+.ap-cap{font-size:12.5px;color:rgba(255,255,255,.72);}
+.ap-div{width:1.5px;align-self:stretch;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.28) 0 4px,transparent 4px 10px);}
+@keyframes apDown{0%{transform:translateY(-6px);opacity:0;}
+  35%{opacity:1;}100%{transform:translateY(8px);opacity:0;}}
+@keyframes apUp{0%{transform:translateY(8px);opacity:0;}
+  35%{opacity:1;}100%{transform:translateY(-6px);opacity:0;}}
+@media (min-width:901px) and (prefers-reduced-motion: no-preference){
+  .ap-tile{opacity:0;}
+  .md-slide.on .ap-tile{animation:gvPop .45s cubic-bezier(.2,.8,.3,1) forwards;
+    animation-delay:calc(.2s + var(--i,0) * .08s);}
+  .md-slide.on .ap-tree.td .ap-flow i{animation:apDown 1.6s ease-in infinite;
+    animation-delay:calc(var(--i,0) * .28s);}
+  .md-slide.on .ap-tree.bu .ap-flow i{animation:apUp 1.6s ease-in infinite;
+    animation-delay:calc(var(--i,0) * .28s);}
+  .ap-flow i{opacity:0;}
+}
+@media (max-width:700px){
+  .ap-fig{grid-template-columns:1fr;}
+  .ap-div{display:none;}
+}
+
 /* ---------- LEVEL LADDER ----------
    GDP -> GSDP -> GDDP -> MDP as a full-width stepped ladder. Each step indents
    and narrows - the geography shrinking - while the rail alongside says what
@@ -3611,35 +3656,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <div class="md-no">06</div>
           <h3 class="serif">Where district data exists, measure it; where it does not, apportion</h3>
           <p class="md-lede">Neither approach wins outright. The official method uses each where its data holds.</p>
-          <div class="md-art">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" fill="none" class="mk" role="img" aria-label="Top-down shares a state total out; bottom-up adds districts up">
-<text x="140.0" y="20.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Top-down</text>
-<rect x="74.0" y="32.0" width="132.0" height="32.0" rx="8" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class=""/>
-<text x="140.0" y="53.0" font-size="11.5" fill="#fff" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">State total</text>
-<path d="M140.0 68.0 L87.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M90.0 97.7 L87.0 104.0 L93.9 103.5" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
-<rect x="74.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:0"/>
-<path d="M140.0 68.0 L123.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M122.4 97.1 L123.0 104.0 L128.7 100.1" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
-<rect x="110.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:1"/>
-<path d="M140.0 68.0 L159.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M153.1 100.3 L159.0 104.0 L159.3 97.1" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
-<rect x="146.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:2"/>
-<path d="M140.0 68.0 L195.0 104.0" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M188.1 103.6 L195.0 104.0 L191.9 97.8" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
-<rect x="182.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.34)" stroke-width="1.7" class="mk-tile" style="--i:3"/>
-<text x="140.0" y="160.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">shared out on an indicator</text>
-<text x="420.0" y="20.0" font-size="13" fill="#fff" font-weight="750" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">Bottom-up</text>
-<rect x="354.0" y="32.0" width="132.0" height="32.0" rx="8" fill="rgba(198,255,106,.18)" stroke="#C6FF6A" stroke-width="1.7" class=""/>
-<text x="420.0" y="53.0" font-size="11.5" fill="#C6FF6A" font-weight="600" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">State total</text>
-<path d="M367.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M417.0 76.3 L420.0 70.0 L413.1 70.5" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
-<rect x="354.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:0"/>
-<path d="M403.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M420.6 76.9 L420.0 70.0 L414.3 73.9" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
-<rect x="390.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:1"/>
-<path d="M439.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M425.9 73.7 L420.0 70.0 L419.7 76.9" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
-<rect x="426.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:2"/>
-<path d="M475.0 106.0 L420.0 70.0" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/><path d="M426.9 70.4 L420.0 70.0 L423.1 76.2" fill="none" stroke="#C6FF6A" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="mk-draw"/>
-<rect x="462.0" y="110.0" width="26.0" height="26.0" rx="6" fill="rgba(198,255,106,.14)" stroke="#C6FF6A" stroke-width="1.7" class="mk-tile" style="--i:3"/>
-<text x="420.0" y="160.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="500" text-anchor="middle" font-family="Public Sans, Inter, system-ui, sans-serif">measured locally, then added up</text>
-<path d="M280 24 L280 172" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="" stroke-dasharray="3 5" opacity=".45"/>
-</svg>
-          </div>
+          <div class="ap-fig"><div class="ap-tree td"><b class="ap-t">Top-down</b><div class="ap-root"><i class="ti ti-map-2" aria-hidden="true"></i><span>State total</span></div><div class="ap-flow"><i class="ti ti-arrow-down" style="--i:0" aria-hidden="true"></i><i class="ti ti-arrow-down" style="--i:1" aria-hidden="true"></i><i class="ti ti-arrow-down" style="--i:2" aria-hidden="true"></i><i class="ti ti-arrow-down" style="--i:3" aria-hidden="true"></i></div><div class="ap-tiles"><span class="ap-tile" style="--i:0"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="ap-tile" style="--i:1"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="ap-tile" style="--i:2"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="ap-tile" style="--i:3"><i class="ti ti-map-pin" aria-hidden="true"></i></span></div><span class="ap-cap">shared out on an indicator</span></div><div class="ap-div"></div><div class="ap-tree bu"><b class="ap-t">Bottom-up</b><div class="ap-root"><i class="ti ti-sum" aria-hidden="true"></i><span>State total</span></div><div class="ap-flow"><i class="ti ti-arrow-up" style="--i:0" aria-hidden="true"></i><i class="ti ti-arrow-up" style="--i:1" aria-hidden="true"></i><i class="ti ti-arrow-up" style="--i:2" aria-hidden="true"></i><i class="ti ti-arrow-up" style="--i:3" aria-hidden="true"></i></div><div class="ap-tiles"><span class="ap-tile" style="--i:0"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="ap-tile" style="--i:1"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="ap-tile" style="--i:2"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="ap-tile" style="--i:3"><i class="ti ti-map-pin" aria-hidden="true"></i></span></div><span class="ap-cap">measured locally, then added up</span></div></div>
           <div class="md-cols md-3">
             <div class="ab-box ap-card" style="--i:0">
               <div class="tpl-ic tpl-fi"><i class="ti ti-arrow-big-down" aria-hidden="true"></i></div><h3>Top-down</h3>
@@ -4883,7 +4900,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-24k')
+  fetch('assets/i18n/te.json?v=2026-08-24l')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
