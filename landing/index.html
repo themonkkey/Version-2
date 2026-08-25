@@ -2934,9 +2934,13 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 /* release-calendar figure row: curve on the left, explanation and the full
    forms on the right */
 .vg-fig{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:center;
-  gap:clamp(14px,2vw,30px);margin-bottom:clamp(6px,1vh,10px);}
+  gap:clamp(14px,2vw,30px);margin-bottom:4px;}
+.md-slide[data-bg="vintage"] .md-lede{margin-bottom:6px;}
 .md-slide[data-bg="vintage"] .md-art .mk{max-width:100%;}
 .md-slide[data-bg="vintage"] .md-art{margin:0;}
+.vg-left{display:grid;gap:2px;min-width:0;}
+.vg-h{font-size:12px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--lime);margin-bottom:2px;}
 .vg-exp{border:1px solid rgba(198,236,143,.26);border-radius:14px;
   background:rgba(6,18,13,.30);padding:clamp(13px,1.8vh,19px) clamp(14px,1.5vw,20px);}
 .vg-exp .md-figexp{text-align:left;max-width:none;margin:0 0 12px;
@@ -3713,7 +3717,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <h3 class="serif">The same year is published five times, each firmer than the last</h3>
           <p class="md-lede">A year&#39;s first figure arrives before its records are complete. Each later release replaces projection with measurement, so two figures for the same year can differ legitimately.</p>
           <div class="md-two vg-fig">
-            <div class="md-art">
+            <div class="vg-left"><div class="vg-h">One year, six releases</div><div class="md-art">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 230" fill="none" class="mk" role="img" aria-label="Successive estimates converging on the final figure">
 <path d="M52 118 L534 118" fill="none" stroke="#C6FF6A" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="" stroke-dasharray="5 5" opacity=".65"/>
 <text x="538.0" y="122.0" font-size="11.5" fill="#C6FF6A" font-weight="700" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">final</text>
@@ -3741,9 +3745,9 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 <text x="58.0" y="30.0" font-size="11" fill="rgba(255,255,255,.55)" font-weight="600" text-anchor="start" font-family="Public Sans, Inter, system-ui, sans-serif">projection</text>
 <text x="534.0" y="30.0" font-size="11" fill="#C6FF6A" font-weight="650" text-anchor="end" font-family="Public Sans, Inter, system-ui, sans-serif">measurement</text>
 </svg>
-          </div>
+          </div></div>
             <div class="vg-exp">
-              <p class="md-figexp">One year&#39;s figure through its six releases: the early estimates swing around the truth, each revision settles closer, and the Third Revised Estimate is final.</p>
+              <div class="vg-h">How to read it</div><p class="md-figexp">The early estimates swing around the truth, each revision settles closer, and the Third Revised Estimate is final.</p>
               <div class="md-abbr vg-list"><span class="ab"><b data-no-i18n>FAE</b><span>First Advance Estimate</span></span><span class="ab"><b data-no-i18n>SAE</b><span>Second Advance Estimate</span></span><span class="ab"><b data-no-i18n>PE</b><span>Provisional Estimate</span></span><span class="ab"><b data-no-i18n>FRE</b><span>First Revised Estimate</span></span><span class="ab"><b data-no-i18n>SRE</b><span>Second Revised Estimate</span></span><span class="ab"><b data-no-i18n>TRE</b><span>Third Revised Estimate</span></span><span class="ab ab-note"><b data-no-i18n>NSO</b><span>National Statistics Office</span></span></div>
             </div>
           </div>
@@ -4918,7 +4922,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-24l')
+  fetch('assets/i18n/te.json?v=2026-08-24m')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
