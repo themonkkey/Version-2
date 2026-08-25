@@ -245,7 +245,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
         var has = avail.indexOf(l) !== -1;
         return '<button type="button" class="ltab" role="tab" data-lv="'+l+'"' +
           ' aria-selected="'+(l===level)+'"'+(has?'':' disabled')+
-          ' title="'+esc(has ? LABEL[l] : LABEL[l]+' — no feedback filed')+'">' +
+          ' title="'+esc(has ? LABEL[l] : LABEL[l]+', no feedback filed')+'">' +
           esc(LABEL[l] || l) +
           (has ? '' : '<span class="ln">none</span>') +
         '</button>';

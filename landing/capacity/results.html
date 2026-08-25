@@ -235,7 +235,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
       var when = /endline/i.test(stage) ? 'after the training' : 'before the training';
       bits.push('Of the ' + n + ' officers who sat the paper ' + when + ', ' +
         pass + ' scored more than half marks' +
-        (top ? ' — and ' + top + ' of those scored 75% or above' : '') + '.' +
+        (top ? ', and ' + top + ' of those scored 75% or above' : '') + '.' +
         (fail ? ' ' + fail + (fail === 1 ? ' scored' : ' scored') + ' below half.' : ''));
     }
     if(r.read) bits.push(esc(r.read));
@@ -373,7 +373,7 @@ footer{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 28px;font-size:
         var L = byLevel[l], has = !!L;
         return '<button type="button" class="ltab" role="tab" data-lv="'+l+'"' +
           ' aria-selected="'+(l === level)+'"'+(has ? '' : ' disabled') +
-          ' title="'+esc(has ? (L.label || l) : (l + ' — no assessment filed'))+'">' +
+          ' title="'+esc(has ? (L.label || l) : (l + ', no assessment filed'))+'">' +
           esc(has ? (L.label || l) : (l.charAt(0).toUpperCase() + l.slice(1) + ' training')) +
           (has ? '' : '<span class="ln">none</span>') +
         '</button>';
