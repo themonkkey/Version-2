@@ -3006,6 +3006,39 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   .ap-div{display:none;}
 }
 
+/* Crop groups as a picker of boxes rather than a stack of dropdowns: the
+   whole sheet is visible at a glance, and each box carries its own value of
+   output once the calculation has run. */
+.cr-pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
+  gap:clamp(8px,1vw,12px);margin-bottom:clamp(12px,1.8vh,18px);}
+.cr-box{position:relative;display:flex;flex-direction:column;align-items:flex-start;
+  gap:3px;padding:clamp(11px,1.5vh,15px) clamp(12px,1.2vw,16px);
+  border-radius:14px;cursor:pointer;text-align:left;
+  border:1.7px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);
+  color:inherit;font:inherit;transition:border-color .15s ease,background .15s ease,transform .15s ease;}
+.cr-box:hover{transform:translateY(-1px);border-color:rgba(198,236,143,.45);}
+.cr-box:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
+.cr-box.on{background:rgba(198,236,143,.16);border-color:rgba(198,236,143,.6);
+  box-shadow:0 8px 26px rgba(198,255,106,.10);}
+.cr-box-l{position:absolute;top:9px;right:12px;font-size:11px;font-weight:750;
+  letter-spacing:.08em;color:rgba(198,236,143,.55);}
+.cr-box-ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;
+  border:1.5px solid rgba(198,236,143,.35);background:rgba(198,255,106,.08);
+  color:var(--lime);font-size:17px;margin-bottom:3px;}
+.cr-box.on .cr-box-ic{background:rgba(198,255,106,.18);border-color:var(--lime);}
+.cr-box-t{font-size:13.2px;font-weight:700;line-height:1.25;color:#fff;}
+.cr-box-n{font-size:11px;color:rgba(255,255,255,.6);}
+.cr-box-n b{color:rgba(198,236,143,.9);font-weight:700;}
+.cr-box-v{font-size:12.5px;font-weight:750;color:var(--lime);
+  font-variant-numeric:tabular-nums;min-height:1em;}
+.cr-panel.is-off{display:none;}
+.cr-der{display:inline-block;margin-left:8px;padding:1px 7px;border-radius:999px;
+  font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:rgba(198,236,143,.9);border:1px solid rgba(198,236,143,.3);
+  background:rgba(198,255,106,.10);vertical-align:middle;}
+.cr-unit{font-size:11px;color:rgba(255,255,255,.5);align-self:center;}
+@media (max-width:560px){.cr-pick{grid-template-columns:repeat(2,minmax(0,1fr));}}
+
 /* Crop calculator: the area sub-row sits under its crop, and derived
    fields are visibly not for typing in. */
 .cr-arearow{opacity:.82;}
@@ -9097,28 +9130,65 @@ window.__loadCapacity = function(){ loadCapacity(); };
           '<span></span></div>';
       }).join('');
 
-      document.getElementById('cr_groups').innerHTML = CROP.groups.map(function(g){
-        var head='<div class="fc-shead"><span>Crop</span>'+
-          '<span>Production</span><span>Price (Rs/unit)</span></div>';
-        var rows=g.items.map(function(i){
-          var pf = i.dp
-            ? '<input type="number" id="cp_'+i.id+'" value="0" step="any" disabled aria-label="'+i.label+' price, derived">'
-            : '<input type="number" id="cp_'+i.id+'" value="0" min="0" step="any" aria-label="'+i.label+' price">';
-          var qf = i.dq
-            ? '<input type="number" id="cq_'+i.id+'" value="0" step="any" disabled aria-label="'+i.label+' production, derived">'
-            : '<input type="number" id="cq_'+i.id+'" value="0" min="0" step="any" aria-label="'+i.label+' production">';
-          var lab='<span class="fc-slabel">'+i.label+
-            (i.area?'<br><span class="cr-sub">area \u2018000 ha</span>':'')+'</span>';
-          var r='<div class="fc-srow">'+lab+qf+pf+'</div>';
-          if(i.area) r+='<div class="fc-srow cr-arearow"><span class="fc-slabel cr-am">Area under '+
-            i.label+'</span><input type="number" id="ca_'+i.id+'" value="0" min="0" step="any" aria-label="'+
-            i.label+' area">'+'<span></span></div>';
-          return r;
+      /* Twelve stacked dropdowns made the officer hunt for a group and hid how
+         much each one carried. The groups become a picker of boxes instead:
+         one box per group, the selected one open below it, and each box shows
+         its own value of output once the calculation has run. Every row stays
+         in the DOM whether or not its group is on screen, so the calculation
+         always reads the whole sheet. */
+      var CR_ICON = {cereals:'grain',pulses:'seeding',oilseeds:'droplet',
+        cane:'candy',fibres:'texture',drugs:'smoking',spices:'pepper',
+        fruitveg:'apple',misc:'plant',flori:'flower'};
+      document.getElementById('cr_groups').innerHTML =
+        '<div class="cr-pick" id="cr_pick" role="tablist" aria-label="Crop groups">' +
+        CROP.groups.map(function(g, gi){
+          var m = g.label.match(/^([A-Z])\.\s*(.*)$/) || ['', '', g.label];
+          return '<button type="button" class="cr-box' + (gi ? '' : ' on') +
+            '" data-cg="' + g.id + '" role="tab" aria-selected="' + (gi ? 'false' : 'true') + '">' +
+            '<span class="cr-box-l" data-no-i18n>' + m[1] + '</span>' +
+            '<span class="cr-box-ic"><i class="ti ti-' + (CR_ICON[g.id] || 'plant') + '" aria-hidden="true"></i></span>' +
+            '<span class="cr-box-t">' + m[2] + '</span>' +
+            '<span class="cr-box-n"><b data-no-i18n>' + g.items.length + '</b> crops</span>' +
+            '<span class="cr-box-v" id="crv_' + g.id + '" data-no-i18n></span>' +
+            '</button>';
+        }).join('') + '</div>' +
+        CROP.groups.map(function(g, gi){
+          var head='<div class="fc-shead"><span>Crop</span>' +
+            '<span>Production</span><span>Price (Rs/unit)</span></div>';
+          var rows=g.items.map(function(i){
+            var pf = i.dp
+              ? '<input type="number" id="cp_'+i.id+'" value="0" step="any" disabled aria-label="'+i.label+' price, derived">'
+              : '<input type="number" id="cp_'+i.id+'" value="0" min="0" step="any" aria-label="'+i.label+' price">';
+            var qf = i.dq
+              ? '<input type="number" id="cq_'+i.id+'" value="0" step="any" disabled aria-label="'+i.label+' production, derived">'
+              : '<input type="number" id="cq_'+i.id+'" value="0" min="0" step="any" aria-label="'+i.label+' production">';
+            var tag = (i.dp || i.dq)
+              ? '<span class="cr-der" title="'+(i.note||'Derived by the workbook')+'">derived</span>' : '';
+            var r='<div class="fc-srow"><span class="fc-slabel">'+i.label+tag+'</span>'+qf+pf+'</div>';
+            if(i.area) r+='<div class="fc-srow cr-arearow"><span class="fc-slabel cr-am">Area under '+
+              i.label+"</span><input type=\"number\" id=\"ca_"+i.id+"\" value=\"0\" min=\"0\" step=\"any\" aria-label=\""+
+              i.label+' area"><span class="cr-unit">\u2018000 ha</span></div>';
+            return r;
+          }).join('');
+          return '<div class="calc-fieldset cr-panel'+(gi?' is-off':'')+'" data-cgp="'+g.id+'">'+
+            '<h4>'+g.label+'</h4>'+head+rows+'</div>';
         }).join('');
-        return '<details class="calc-fieldset ls-details"><summary>'+g.label+
-          ' <span class="fc-assump-hint">'+g.items.length+' crops</span></summary>'+
-          head+rows+'</details>';
-      }).join('');
+
+      (function wireCrPick(){
+        var boxes=[].slice.call(document.querySelectorAll('.cr-box'));
+        boxes.forEach(function(b){
+          b.addEventListener('click', function(){
+            boxes.forEach(function(o){
+              var on = o===b;
+              o.classList.toggle('on', on);
+              o.setAttribute('aria-selected', on?'true':'false');
+            });
+            document.querySelectorAll('.cr-panel').forEach(function(p){
+              p.classList.toggle('is-off', p.dataset.cgp !== b.dataset.cg);
+            });
+          });
+        });
+      })();
 
       (function buildCrRatios(){
         var h='';
@@ -9247,6 +9317,10 @@ window.__loadCapacity = function(){ loadCapacity(); };
         return '<div class="cs"><span>'+g.label+'</span><b>'+money(g.value,'lakh')+'</b></div>';
       }).join('');
       document.getElementById('cr_gvo').textContent = money(r.total,'lakh');
+      r.groups.forEach(function(g){
+        var e=document.getElementById('crv_'+g.id);
+        if(e) e.textContent = money(g.value,'');
+      });
 
       document.getElementById('cr_dp_steps').innerHTML =
         [['Paddy, weighted across seasons', d.paddy, 'Rs/MT'],
@@ -9333,6 +9407,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
       var note=document.getElementById('cr_samplenote');
       document.getElementById('cr_clearall').addEventListener('click', function(){
         crHost.querySelectorAll('#cr_groups input, #cr_macro input').forEach(function(el){ el.value=0; });
+        crHost.querySelectorAll('.cr-box-v').forEach(function(el){ el.textContent=''; });
         note.classList.add('is-off'); reset();
       });
       document.getElementById('cr_sample').addEventListener('click', function(){
