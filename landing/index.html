@@ -3925,12 +3925,15 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
     <div class="sec-head">
       <div class="kick">Calculator</div>
       <h2>Sector calculators</h2>
-      <p>Built from the department's own estimator workbooks — species and product form for fisheries, following the district fishery GVA workbook line for line. Every figure is one you enter; nothing is pre-filled from official estimates.</p>
+      <p>Built from the department's own estimator workbooks — fisheries by species and product form, livestock by product group from milk to increment in stock — each following its district GVA workbook line for line. Every figure is one you enter; nothing is pre-filled from official estimates.</p>
     </div>
     <div class="calc-tabs sector-tabs">
       <button class="calc-tab on" data-sector="fisheries" role="tab" aria-selected="true">
         <span class="ct-n">PRIMARY</span><span class="ct-t">Fisheries</span>
         <span class="ct-s">Marine, inland &amp; prawn</span></button>
+      <button class="calc-tab" data-sector="livestock" role="tab" aria-selected="false">
+        <span class="ct-n">PRIMARY</span><span class="ct-t">Livestock</span>
+        <span class="ct-s">Milk, meat, eggs &amp; stock</span></button>
     </div>
 
     <div class="calc-panel" id="sector-fisheries">
@@ -4066,6 +4069,95 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         </div>
         <div class="fc-bench-body" id="fc_bench_body" hidden></div>
       </div>
+      </div><!-- /.fc-outbody -->
+      </div><!-- /.fc-out -->
+    </div>
+
+    <!-- LIVESTOCK - traced from the Livestock_GVA Estimator workbook: nine
+         input groups (milk, eggs, dung, silk & honey, meat, poultry, fallen
+         animals, increment in stock, input costs), the Ratios Applied sheet as
+         editable assumptions plus the fixed by-product matrix, and the
+         GVO - inputs - FISIM chain from the GVA Calculation sheet. -->
+    <div class="calc-panel" id="sector-livestock" hidden>
+      <div class="calc-formula">Gross Value of Output &minus; Input costs = <b>GVA</b>, by product group</div>
+      <div class="fc-intro">
+        <div class="fc-intro-l">
+          <p class="calc-lede">Follows the District Livestock GVA Estimator workbook: milk, eggs, dung, silk and honey, meat with its products and by-products, poultry, fallen animals and the increment in stock, with the workbook&#39;s own ratios applied at each step.</p>
+          <a class="fc-dlbtn" href="assets/tools/Livestock_GVA_Estimator.xlsx" download>
+            <i class="ti ti-file-spreadsheet"></i>
+            <span><b>Download the Excel workbook</b>
+              <small>Same formulas, every intermediate sheet.</small></span>
+            <i class="ti ti-download fc-dlbtn-go"></i></a>
+        </div>
+        <aside class="fc-scope">
+          <div class="fc-scope-h"><i class="ti ti-bulb"></i><span>What this calculator is for</span></div>
+          <p>A way to understand how the estimate is built, not to produce the
+            official one. For the ratio tables and every intermediate sheet, work
+            in the Excel workbook.</p>
+        </aside>
+      </div>
+
+      <p class="fc-samplenote is-off" id="ls_samplenote">
+        <i class="ti ti-flask"></i>
+        <span><b>Sample figures are loaded.</b> They are illustrative only, not any
+        district&#39;s production. Press Calculate GVA to see the method run end to end,
+        then clear them and enter your own.</span>
+      </p>
+
+      <div id="ls_sections"></div>
+
+      <details class="fc-assump">
+        <summary>
+          <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
+          <span class="fc-assump-t">Ratios applied
+            <span class="fc-assump-hint">The workbook&#39;s own ratios. Edit only if your district&#39;s are known to differ.</span></span>
+          <span class="fc-assump-act">
+            <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
+            <i class="ti ti-chevron-down chev"></i></span>
+        </summary>
+        <div id="ls_ratios"></div>
+        <div id="ls_byp"></div>
+        <button class="calc-add" id="ls_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook&#39;s defaults</button>
+      </details>
+
+      <div class="fc-actions">
+        <button class="fc-go" id="ls_calc" type="button">
+          <i class="ti ti-equal"></i> Calculate GVA</button>
+        <button class="fc-clear" id="ls_sample" type="button">
+          <i class="ti ti-flask"></i> Load sample figures</button>
+        <button class="fc-clear" id="ls_clearall" type="button">
+          <i class="ti ti-eraser"></i> Clear entries</button>
+        <span class="fc-state" id="ls_state" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="fc-out is-empty" id="ls_out">
+      <div class="fc-placeholder">
+        <i class="ti ti-calculator"></i>
+        <div><b>No result yet.</b> Fill in production and prices above, then press
+          Calculate GVA.</div>
+      </div>
+      <div class="fc-outbody">
+      <div class="fc-results">
+        <div class="calc-result" data-stage="1">
+          <h5 class="fc-rh">Gross Value of Output</h5>
+          <div class="calc-steps" id="ls_gvo_steps"></div>
+          <div class="calc-out strong"><span>GROSS VALUE OF OUTPUT</span><b id="ls_gvo">&mdash;</b></div>
+        </div>
+        <div class="calc-result" data-stage="2">
+          <h5 class="fc-rh">Input costs</h5>
+          <div class="calc-steps" id="ls_ic_steps"></div>
+          <div class="calc-out strong"><span>TOTAL INPUT COSTS</span><b id="ls_ic">&mdash;</b></div>
+        </div>
+      </div>
+      <div class="calc-result fc-final" data-stage="3">
+        <div class="calc-steps" id="ls_final_steps"></div>
+        <div class="calc-answer" data-stage="4">
+          <div class="ca-k">Gross Value Added — adjusted</div>
+          <div class="ca-v" id="ls_gva">&mdash;</div>
+          <div class="ca-s">at basic prices, net of FISIM</div>
+        </div>
+      </div>
+      <p class="calc-note" id="ls_flag"></p>
       </div><!-- /.fc-outbody -->
       </div><!-- /.fc-out -->
     </div>
@@ -4922,7 +5014,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-24m')
+  fetch('assets/i18n/te.json?v=2026-08-25a')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
@@ -8440,6 +8532,344 @@ window.__loadCapacity = function(){ loadCapacity(); };
       if(sampleNote) sampleNote.classList.remove('is-off');
       resetOutput();
     });
+
+    /* ---- sector calculators: livestock ----------------------------------
+       Traced from the "Livestock_GVA Estimator (Final)" workbook, sheet for
+       sheet. Quantities keep the workbook's own units - '000 tonne milk at
+       Rs/tonne divides by 100 to land in Rs lakh, '00 tonne meat divides by
+       1000, '000 eggs at Rs/1000 divide by 100000 - so every divisor below is
+       the workbook's, not a rederivation. Meat is retained at 94% for
+       manufacturing before valuation; its products and by-products are fixed
+       shares of the five species' meat VALUES (the Ratios Applied matrix);
+       poultry killed counts follow the census identity in the workbook,
+       including the hatching term; fallen hides apply species mortality to
+       population. GVO less the four input costs gives unadjusted GVA; FISIM
+       (default 0.04% of unadjusted GVA, the workbook's C11) nets to the
+       adjusted figure. */
+    var lsHost = document.getElementById('sector-livestock');
+    var LS_R_DEF = {
+      egg_adj:0.79, hatch_eggs:0.2001, hatch_surv:0.3333, fowl_sl:0.5, duck_sl:0.5,
+      other_surv:0.625, evac:1.78, dung_manure:0.85, dung_fuel:0.15, cake_conv:0.4,
+      goat_drop:0.3, sheep_drop:0.8, retention:0.94,
+      mort_cattle:0.0588, mort_buffalo:0.1065, mort_goat:0.0685, mort_sheep:0.0668,
+      fisim_rate:0.0004
+    };
+    var LS_R_META = {
+      egg_adj:['Eggs','Egg production adjustment'],
+      hatch_eggs:['Poultry','Eggs used for hatching'], hatch_surv:['Poultry','Hatch survival ratio'],
+      fowl_sl:['Poultry','Adult fowl slaughter ratio'], duck_sl:['Poultry','Adult duck slaughter ratio'],
+      other_surv:['Poultry','Other poultry survival ratio'],
+      evac:['Dung','Bovine evacuation, tonnes per animal per year'],
+      dung_manure:['Dung','Share used as manure'], dung_fuel:['Dung','Share used as fuel'],
+      cake_conv:['Dung','Fuel cake conversion'],
+      goat_drop:['Dung','Goat droppings, kg per day'], sheep_drop:['Dung','Sheep droppings, kg per day'],
+      retention:['Meat','Manufacturing retention'],
+      mort_cattle:['Mortality','Cattle'], mort_buffalo:['Mortality','Buffalo'],
+      mort_goat:['Mortality','Goat'], mort_sheep:['Mortality','Sheep'],
+      fisim_rate:['FISIM','Rate, share of unadjusted GVA']
+    };
+    /* Meat products / by-products matrix - fixed shares of each species' meat
+       value, straight from the Ratios Applied sheet. Columns: edible offals,
+       heads & legs, fats, inedible offals, guts, blood, skin (slaughtered),
+       tails, bones, horns, hides (additional), hooves. */
+    var LS_BYP = {
+      cattle:[0.0269,0.0224,0.0207,0.008,0.06,0.0038,0.0193,0.0024,0.0303,0.023,0.016,0.023],
+      buffalo:[0.0131,0.0237,0.0192,0.0463,0.0339,0.0032,0.0222,0.0013,0.0489,0.053,0.016,0.053],
+      goat:[0.0718,0.0538,0.0273,0.0216,0.0337,0.0169,0.0323,0,0,0,0,0],
+      sheep:[0.0672,0.0633,0.0298,0,0,0,0.037,0,0,0,0,0],
+      pig:[0.0366,0.0211,0.0258,0.022,0.0393,0.0216,0,0,0,0,0,0]
+    };
+    var LS_BYP_COLS = ['Edible offals','Heads & legs','Fats','Inedible offals','Guts','Blood',
+      'Skin (slaughtered)','Tails','Bones','Horns','Hides (additional)','Hooves'];
+    /* [id, label, qty unit, price unit] - null price unit = quantity-only row */
+    var LS_SECTIONS = [
+      {id:'milk', title:'Milk', qu:"'000 tonne", pu:'₹/tonne', rows:[
+        ['cowmilk','Cow milk'],['bufmilk','Buffalo milk'],['goatmilk','Goat milk'],['camelmilk','Camel milk']]},
+      {id:'eggs', title:'Eggs', qu:"'000 nos.", pu:'₹/1000 eggs', rows:[
+        ['heneggs','Hen eggs'],['duckeggs','Duck eggs']]},
+      {id:'dung', title:'Dung & droppings', qu:'Nos.', pu:'₹/tonne', rows:[
+        ['bovine_pop','Bovine mid-year population',1,0],
+        ['goat_pop','Goat population',1,0],
+        ['sheep_pop','Sheep population',1,0],
+        ['cake_price','Dung fuel cake price',0,1],
+        ['manure_price','Dung manure & droppings price',0,1]]},
+      {id:'silk', title:'Silk & honey', qu:'unit shown', pu:'price unit shown', rows:[
+        ['mulberry',"Mulberry reeling cocoon ('000 kg · ₹/kg)"],
+        ['eri',"Eri ('000 kg · ₹/kg)"],
+        ['tassar','Tassar (Kahan · ₹/Kahan)'],
+        ['muga','Muga (lakh nos. · ₹/1000)'],
+        ['honey','Honey & bee wax (kg · ₹/kg)']]},
+      {id:'meat', title:'Meat — production from the AHV department', qu:"'00 tonne", pu:'₹/tonne', rows:[
+        ['cattle','Cattle'],['buffalo','Buffalo'],['goat','Goat'],['sheep','Sheep'],['pig','Pig']]},
+      {id:'poultry', title:'Poultry', qu:'Nos.', pu:'₹/bird', rows:[
+        ['fowl_pop','Adult fowl population'],
+        ['duck_pop','Adult duck population'],
+        ['other_pop','Other poultry population'],
+        ['chicks_ilc',"Chickens from ILC ('000 nos.)",1,0],
+        ['ducklings_ilc',"Ducklings from ILC ('000 nos.)",1,0],
+        ['total_next',"Total poultry for next year ('000 nos.)",1,0],
+        ['chick_price','Chicken & ducklings composite price',0,1]]},
+      {id:'fallen', title:'Fallen animals — hides & skins', qu:"'000 nos.", pu:'₹/hide or skin', rows:[
+        ['f_cattle','Cattle population'],['f_buffalo','Buffalo population'],
+        ['f_goat','Goat population'],['f_sheep','Sheep population']]},
+      {id:'stock', title:'Increment in stock', qu:"'000 nos.", pu:'₹/animal', collapsible:true, rows:[
+        ['st_cbc_m','Crossbreed cattle — Male'],['st_cbc_f','Crossbreed cattle — Female'],
+        ['st_cbc_y','Crossbreed cattle — Young stock'],['st_cbc_nc','Crossbreed cattle — Female not calved'],
+        ['st_ic_m','Indigenous cattle — Male'],['st_ic_f','Indigenous cattle — Female'],
+        ['st_ic_y','Indigenous cattle — Young stock'],['st_ic_nc','Indigenous cattle — Female not calved'],
+        ['st_bf_m','Buffalo — Male'],['st_bf_f','Buffalo — Female'],
+        ['st_bf_y','Buffalo — Young stock'],['st_bf_nc','Buffalo — Female not calved'],
+        ['st_goat','Goat'],['st_sheep','Sheep'],['st_pig','Pig'],
+        ['st_fowl','Adult fowls'],['st_duck','Adult ducks'],
+        ['st_chick','Chicken & ducklings'],['st_other','Other poultry'],
+        ['st_camel','Camel'],['st_horse','Horses & ponies'],
+        ['st_mule','Mules, yaks & mithuns'],['st_donkey','Donkey']]},
+      {id:'costs', title:'Input costs, Rs lakh', qu:'Rs lakh', pu:null, rows:[
+        ['feed','Direct feed cost used in GVA',1,0],
+        ['market','Market charges',1,0],
+        ['rm_con','Repair & maintenance — construction',1,0],
+        ['rm_op','Repair & maintenance — operational',1,0]]}
+    ];
+    var LS_SAMPLE = {
+      q:{cowmilk:120, bufmilk:260, goatmilk:6, heneggs:90000, duckeggs:4000,
+         bovine_pop:400000, goat_pop:250000, sheep_pop:900000,
+         mulberry:40, honey:12000,
+         cattle:30, buffalo:120, goat:180, sheep:260, pig:15,
+         fowl_pop:1200000, duck_pop:40000, other_pop:20000,
+         chicks_ilc:300, ducklings_ilc:10, total_next:7400,
+         f_cattle:600, f_buffalo:500, f_goat:250, f_sheep:900,
+         st_cbc_f:12, st_bf_f:18, st_goat:20, st_sheep:35, st_fowl:60,
+         feed:9000, market:600, rm_con:250, rm_op:400},
+      p:{cowmilk:38000, bufmilk:52000, goatmilk:45000, heneggs:5200, duckeggs:6000,
+         cake_price:1500, manure_price:800,
+         mulberry:420, honey:250,
+         cattle:180000, buffalo:190000, goat:520000, sheep:500000, pig:160000,
+         fowl_pop:180, duck_pop:200, other_pop:150, chick_price:60,
+         f_cattle:400, f_buffalo:450, f_goat:120, f_sheep:110,
+         st_cbc_f:35000, st_bf_f:40000, st_goat:6000, st_sheep:6500, st_fowl:180}
+    };
+
+    if(lsHost){
+      document.getElementById('ls_sections').innerHTML = LS_SECTIONS.map(function(sec){
+        var head = '<div class="fc-shead"><span>Item</span><span>' +
+          (sec.qu || '') + '</span><span>' + (sec.pu || '') + '</span></div>';
+        var rows = sec.rows.map(function(r){
+          var hasQ = r.length < 3 ? 1 : r[2];
+          var hasP = r.length < 4 ? 1 : r[3];
+          return '<div class="fc-srow"><span class="fc-slabel">' + r[1] + '</span>' +
+            (hasQ ? '<input type="number" id="lq_' + r[0] + '" value="0" min="0" step="any" aria-label="' + r[1] + ' quantity">' : '<span></span>') +
+            (hasP ? '<input type="number" id="lp_' + r[0] + '" value="0" min="0" step="any" aria-label="' + r[1] + ' price">' : '<span></span>') +
+            '</div>';
+        }).join('');
+        var body = '<h4>' + sec.title + '</h4>' + head + rows;
+        if(sec.collapsible){
+          return '<details class="calc-fieldset ls-details"><summary>' + sec.title +
+            ' <span class="fc-assump-hint">' + sec.rows.length + ' categories · open to enter</span></summary>' +
+            head + rows + '</details>';
+        }
+        return '<div class="calc-fieldset">' + body + '</div>';
+      }).join('');
+
+      (function buildLsRatios(){
+        var groups = {};
+        Object.keys(LS_R_META).forEach(function(k){
+          var g = LS_R_META[k][0];
+          (groups[g] = groups[g] || []).push(k);
+        });
+        document.getElementById('ls_ratios').innerHTML = Object.keys(groups).map(function(g){
+          return '<div class="fc-rgroup"><h6>' + g + '</h6>' + groups[g].map(function(k){
+            return '<label class="cf"><span>' + LS_R_META[k][1] + '</span>' +
+              '<input type="number" id="lr_' + k + '" value="' + LS_R_DEF[k] + '" min="0" step="any">' +
+              '<span class="cf-suf">ratio</span></label>';
+          }).join('') + '</div>';
+        }).join('');
+        document.getElementById('ls_byp').innerHTML =
+          '<div class="fc-rgroup"><h6>Meat products & by-products, share of species meat value (fixed in the workbook)</h6>' +
+          '<div class="gva-scroll"><table class="gva-ind"><thead><tr><th>Species</th>' +
+          LS_BYP_COLS.map(function(c){ return '<th>' + c + '</th>'; }).join('') +
+          '</tr></thead><tbody>' +
+          Object.keys(LS_BYP).map(function(sp){
+            return '<tr><td style="text-transform:capitalize">' + sp + '</td>' +
+              LS_BYP[sp].map(function(v){ return '<td data-no-i18n>' + v + '</td>'; }).join('') + '</tr>';
+          }).join('') + '</tbody></table></div></div>';
+      })();
+
+      document.getElementById('ls_reset').addEventListener('click', function(){
+        Object.keys(LS_R_DEF).forEach(function(k){
+          var el = document.getElementById('lr_' + k);
+          if(el) el.value = LS_R_DEF[k];
+        });
+        if(window.__lsMarkStale) window.__lsMarkStale();
+      });
+    }
+
+    function lq(id){ return num('lq_' + id); }
+    function lp(id){ return num('lp_' + id); }
+    function lr(k){
+      var el = document.getElementById('lr_' + k);
+      var v = el ? parseFloat(el.value) : NaN;
+      return isFinite(v) ? v : LS_R_DEF[k];
+    }
+
+    function livestock(){
+      if(!lsHost) return 0;
+      // Milk: '000 t x Rs/t -> /100 = Rs lakh
+      var milk = ['cowmilk','bufmilk','goatmilk','camelmilk'].reduce(function(t,id){
+        return t + lq(id) * lp(id) / 100; }, 0);
+      // Eggs: '000 nos x adjustment x Rs/1000 -> /100000
+      var eggs = ['heneggs','duckeggs'].reduce(function(t,id){
+        return t + lq(id) * lr('egg_adj') * lp(id) / 100000; }, 0);
+      // Dung: population x evacuation, split fuel/manure; droppings by kg/day
+      var cakeQ = Math.round(lq('bovine_pop') * lr('evac') * lr('dung_fuel') * lr('cake_conv') / 1000 * 1000) / 1000;
+      var manQ  = Math.round(lq('bovine_pop') * lr('evac') * lr('dung_manure') / 1000 * 1000) / 1000;
+      var dropQ = Math.round(((lq('goat_pop') * lr('goat_drop') * 365 / 1000) +
+                              (lq('sheep_pop') * lr('sheep_drop') * 365 / 1000)) / 1000 * 100) / 100;
+      var dung = cakeQ * lp('cake_price') / 100 + (manQ + dropQ) * lp('manure_price') / 100;
+      // Silk & honey: unit-specific divisors from the workbook
+      var silk = lq('mulberry') * lp('mulberry') / 100 + lq('eri') * lp('eri') / 100 +
+                 lq('tassar') * lp('tassar') / 100 + lq('muga') * lp('muga') / 1000 +
+                 lq('honey') * lp('honey') / 100000;
+      // Meat: '00 t raw x 94% retention x Rs/t -> /1000; keep per-species values
+      var meatV = {};
+      var meat = ['cattle','buffalo','goat','sheep','pig'].reduce(function(t,id){
+        var v = lq(id) * lr('retention') * lp(id) / 1000;
+        meatV[id] = v; return t + v; }, 0);
+      function byp(col){
+        return Object.keys(LS_BYP).reduce(function(t,sp){ return t + meatV[sp] * LS_BYP[sp][col]; }, 0);
+      }
+      var offals = byp(0);
+      var meatProducts = byp(1) + byp(2);                        // heads & legs + fats
+      var meatByproducts = 0;
+      for(var c = 3; c < 12; c++) meatByproducts += byp(c);      // the nine by-product columns
+      // Fallen hides: '000 population x mortality x price -> /100
+      meatByproducts += lq('f_cattle') * lr('mort_cattle') * lp('f_cattle') / 100 +
+                        lq('f_buffalo') * lr('mort_buffalo') * lp('f_buffalo') / 100 +
+                        lq('f_goat') * lr('mort_goat') * lp('f_goat') / 100 +
+                        lq('f_sheep') * lr('mort_sheep') * lp('f_sheep') / 100;
+      // Poultry killed counts, in '000 birds
+      var fowlsK  = lq('fowl_pop') / 1000 * lr('fowl_sl');
+      var ducksK  = lq('duck_pop') / 1000 * lr('duck_sl');
+      var otherK  = lq('other_pop') / 1000 * (1 - lr('other_surv'));
+      var hatched = (lq('heneggs') + lq('duckeggs')) * lr('hatch_eggs') * lr('hatch_surv');
+      var chicksK = lq('total_next') - (hatched + fowlsK + ducksK + otherK +
+                    lq('chicks_ilc') + lq('ducklings_ilc'));
+      var poultry = fowlsK * lp('fowl_pop') / 100 + ducksK * lp('duck_pop') / 100 +
+                    otherK * lp('other_pop') / 100 + chicksK * lp('chick_price') / 100;
+      var meatGroup = meat + offals + poultry + meatProducts + meatByproducts;
+      // Increment in stock: '000 nos x Rs/animal -> /100
+      var stock = LS_SECTIONS.filter(function(x){ return x.id === 'stock'; })[0]
+        .rows.reduce(function(t,r){ return t + lq(r[0]) * lp(r[0]) / 100; }, 0);
+
+      var gvo = milk + eggs + dung + silk + meatGroup + stock;
+      var feed = lq('feed'), market = lq('market'), rmc = lq('rm_con'), rmo = lq('rm_op');
+      var inputs = feed + market + rmc + rmo;
+      var unadj = gvo - inputs;
+      var fisim = unadj > 0 ? unadj * lr('fisim_rate') : 0;
+      var adjusted = unadj - fisim;
+
+      document.getElementById('ls_gvo_steps').innerHTML =
+        [['Milk', milk], ['Eggs', eggs], ['Dung & droppings', dung],
+         ['Silk & honey', silk], ['Meat group', meatGroup], ['Increment in stock', stock]]
+        .map(function(r){ return '<div class="cs"><span>' + r[0] + '</span><b>' + money(r[1], 'lakh') + '</b></div>'; }).join('');
+      document.getElementById('ls_gvo').textContent = money(gvo, 'lakh');
+
+      document.getElementById('ls_ic_steps').innerHTML =
+        [['Feed cost', feed], ['Market charges', market],
+         ['R&M — construction', rmc], ['R&M — operational', rmo]]
+        .map(function(r){ return '<div class="cs minus"><span>' + r[0] + '</span><b>− ' + money(r[1], 'lakh') + '</b></div>'; }).join('');
+      document.getElementById('ls_ic').textContent = money(inputs, 'lakh');
+
+      document.getElementById('ls_final_steps').innerHTML =
+        '<div class="cs"><span>Gross Value of Output</span><b>' + money(gvo, 'lakh') + '</b></div>' +
+        '<div class="cs minus"><span>less total input costs</span><b>− ' + money(inputs, 'lakh') + '</b></div>' +
+        '<div class="cs"><span>Gross Value Added — unadjusted</span><b>' + money(unadj, 'lakh') + '</b></div>' +
+        '<div class="cs minus"><span>less FISIM</span><b>− ' + money(fisim, 'lakh') + '</b></div>';
+      document.getElementById('ls_gva').textContent = money(adjusted, 'lakh');
+
+      var flag = document.getElementById('ls_flag');
+      if(gvo === 0){
+        flag.textContent = 'Enter at least one product’s quantity and price to begin.';
+      } else if(chicksK < 0){
+        flag.innerHTML = '<b>Check the poultry section:</b> chicken & ducklings killed came out negative, ' +
+          'which means next year’s total poultry is smaller than this year’s surviving birds plus hatch. ' +
+          'The workbook allows it, but it usually signals a units slip.';
+      } else {
+        flag.innerHTML = '<b>Note:</b> meat products and by-products are valued as fixed shares of each ' +
+          'species’ meat value, exactly as the workbook’s ratio matrix applies them.';
+      }
+      return adjusted;
+    }
+
+    // Independent state wiring for the livestock panel, mirroring fisheries.
+    (function(){
+      if(!lsHost) return;
+      var out = document.getElementById('ls_out');
+      var st = document.getElementById('ls_state');
+      var done = false;
+      var timers = [];
+      function stages(){
+        timers.forEach(clearTimeout); timers = [];
+        var els = out.querySelectorAll('[data-stage]');
+        out.classList.add('is-staging');
+        els.forEach(function(el){ el.classList.remove('shown'); });
+        void out.offsetHeight;
+        els.forEach(function(el, i){
+          timers.push(setTimeout(function(){ el.classList.add('shown'); }, slowOK ? i * 380 : 0));
+        });
+      }
+      function calc(){
+        livestock();
+        done = true;
+        out.classList.remove('is-empty', 'is-stale');
+        stages();
+        st.textContent = 'Calculated'; st.className = 'fc-state ok';
+        var ans = out.querySelector('.fc-final');
+        if(ans){
+          var r = ans.getBoundingClientRect();
+          if(r.top > window.innerHeight - 120 || r.bottom < 0){
+            window.scrollBy({top: r.top - 160, behavior: 'smooth'});
+          }
+        }
+      }
+      function stale(){
+        if(!done) return;
+        out.classList.add('is-stale');
+        st.textContent = 'Inputs changed since this was calculated';
+        st.className = 'fc-state stale';
+      }
+      window.__lsMarkStale = stale;
+      function reset(){
+        timers.forEach(clearTimeout); timers = [];
+        out.classList.remove('is-staging');
+        out.querySelectorAll('[data-stage]').forEach(function(el){ el.classList.remove('shown'); });
+        done = false;
+        out.classList.add('is-empty'); out.classList.remove('is-stale');
+        st.textContent = ''; st.className = 'fc-state';
+      }
+      document.getElementById('ls_calc').addEventListener('click', calc);
+      lsHost.addEventListener('input', stale);
+      lsHost.addEventListener('change', stale);
+      lsHost.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' && e.target.tagName === 'INPUT'){ e.preventDefault(); calc(); }
+      });
+      var note = document.getElementById('ls_samplenote');
+      document.getElementById('ls_clearall').addEventListener('click', function(){
+        lsHost.querySelectorAll('#ls_sections input').forEach(function(el){ el.value = 0; });
+        note.classList.add('is-off');
+        reset();
+      });
+      document.getElementById('ls_sample').addEventListener('click', function(){
+        lsHost.querySelectorAll('#ls_sections input').forEach(function(el){ el.value = 0; });
+        Object.keys(LS_SAMPLE.q).forEach(function(k){
+          var el = document.getElementById('lq_' + k); if(el) el.value = LS_SAMPLE.q[k];
+        });
+        Object.keys(LS_SAMPLE.p).forEach(function(k){
+          var el = document.getElementById('lp_' + k); if(el) el.value = LS_SAMPLE.p[k];
+        });
+        note.classList.remove('is-off');
+        reset();
+      });
+    })();
 
     root.addEventListener('input', markStale);
     root.addEventListener('change', markStale);
