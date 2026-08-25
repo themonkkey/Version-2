@@ -2926,6 +2926,23 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   to{opacity:1;transform:translateY(0);}}
 @keyframes gvGrow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
 
+/* Acronym full forms and figure explanations. */
+.lv-acr-w{display:flex;flex-direction:column;line-height:1.15;min-width:0;}
+.lv-full{font-size:10.5px;color:rgba(255,255,255,.55);white-space:nowrap;}
+.md-figexp{font-size:13px;line-height:1.5;color:rgba(255,255,255,.78);
+  text-align:center;max-width:88ch;margin:0 auto 6px;}
+/* the calendar slide gained an explanation and a legend; the figure gives a
+   little height back so the slide still fits one viewport */
+.md-slide[data-bg="vintage"] .md-art .mk{max-width:490px;}
+.md-slide[data-bg="vintage"] .md-art{margin:0;}
+.md-abbr{display:flex;flex-wrap:wrap;justify-content:center;
+  gap:6px clamp(10px,1.4vw,18px);margin-bottom:clamp(6px,1vh,10px);}
+.md-abbr .ab{display:inline-flex;align-items:baseline;gap:6px;font-size:11.5px;
+  color:rgba(255,255,255,.66);white-space:nowrap;}
+.md-abbr .ab b{color:#e4ffb0;font-size:11.5px;letter-spacing:.04em;}
+.md-link-f{font-size:11px;color:rgba(255,255,255,.6);margin:-2px 0 4px;}
+@media (max-width:700px){.lv-full{white-space:normal;}}
+
 /* ---------- LEVEL LADDER ----------
    GDP -> GSDP -> GDDP -> MDP as a full-width stepped ladder. Each step indents
    and narrows - the geography shrinking - while the rail alongside says what
@@ -3549,7 +3566,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <div class="md-no">04</div>
           <h3 class="serif">One economy, measured at four levels</h3>
           <p class="md-lede">The same activity is counted nationally, by state, by district and by mandal. Data availability falls and estimation difficulty rises at every step down.</p>
-          <div class="lv-wrap"><div class="lv-steps"><div class="lv-step gdp" style="--i:0"><span class="lv-ic"><i class="ti ti-world" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GDP</span><span class="lv-pl">India</span><span class="lv-n"><b data-no-i18n>1</b><span>nation</span></span><span class="lv-meta">MoSPI, quarterly</span></div><div class="lv-step gsdp" style="--i:1"><span class="lv-ic"><i class="ti ti-map-2" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GSDP</span><span class="lv-pl">Andhra Pradesh</span><span class="lv-n"><b data-no-i18n>1</b><span>state</span></span><span class="lv-meta">State DES, annual</span></div><div class="lv-step gddp" style="--i:2"><span class="lv-ic"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>GDDP</span><span class="lv-pl">District</span><span class="lv-n"><b data-no-i18n>28</b><span>districts</span></span><span class="lv-meta">DES, annual</span></div><div class="lv-step mdp" style="--i:3"><span class="lv-ic"><i class="ti ti-grid-dots" aria-hidden="true"></i></span><span class="lv-acr" data-no-i18n>MDP</span><span class="lv-pl">Mandal</span><span class="lv-n"><b data-no-i18n>794</b><span>mandal units</span></span><span class="lv-meta">shared out on indicators</span></div></div><div class="lv-rail" aria-hidden="true"><span class="lv-rail-a">data availability falls</span><span class="lv-rail-bar"></span><span class="lv-rail-b">estimation difficulty rises</span></div><p class="lv-note">Each level is estimated from the one above it, or built up from the one below.</p></div>
+          <div class="lv-wrap"><div class="lv-steps"><div class="lv-step gdp" style="--i:0"><span class="lv-ic"><i class="ti ti-world" aria-hidden="true"></i></span><span class="lv-acr-w"><span class="lv-acr" data-no-i18n>GDP</span><span class="lv-full">Gross Domestic Product</span></span><span class="lv-pl">India</span><span class="lv-n"><b data-no-i18n>1</b><span>nation</span></span><span class="lv-meta">MoSPI, quarterly</span></div><div class="lv-step gsdp" style="--i:1"><span class="lv-ic"><i class="ti ti-map-2" aria-hidden="true"></i></span><span class="lv-acr-w"><span class="lv-acr" data-no-i18n>GSDP</span><span class="lv-full">Gross State Domestic Product</span></span><span class="lv-pl">Andhra Pradesh</span><span class="lv-n"><b data-no-i18n>1</b><span>state</span></span><span class="lv-meta">State DES, annual</span></div><div class="lv-step gddp" style="--i:2"><span class="lv-ic"><i class="ti ti-map-pin" aria-hidden="true"></i></span><span class="lv-acr-w"><span class="lv-acr" data-no-i18n>GDDP</span><span class="lv-full">Gross District Domestic Product</span></span><span class="lv-pl">District</span><span class="lv-n"><b data-no-i18n>28</b><span>districts</span></span><span class="lv-meta">DES, annual</span></div><div class="lv-step mdp" style="--i:3"><span class="lv-ic"><i class="ti ti-grid-dots" aria-hidden="true"></i></span><span class="lv-acr-w"><span class="lv-acr" data-no-i18n>MDP</span><span class="lv-full">Mandal Domestic Product</span></span><span class="lv-pl">Mandal</span><span class="lv-n"><b data-no-i18n>794</b><span>mandal units</span></span><span class="lv-meta">shared out on indicators</span></div></div><div class="lv-rail" aria-hidden="true"><span class="lv-rail-a">data availability falls</span><span class="lv-rail-bar"></span><span class="lv-rail-b">estimation difficulty rises</span></div><p class="lv-note">Each level is estimated from the one above it, or built up from the one below.</p></div>
         </div>
       </section>
 
@@ -3647,7 +3664,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
           <h3 class="serif">From value added to rupees per person</h3>
           <p class="md-lede">Four moves take a sector&#39;s value added to the number an officer is asked about in a review.</p>
           <div class="ch-row">
-            <div class="md-link ch-card" style="--i:0"><span class="ch-ic"><i class="ti ti-sparkles" aria-hidden="true"></i></span><div class="md-link-n" data-no-i18n>01</div><div class="md-link-t" data-no-i18n>GVA</div><div class="md-link-s">Value added at basic prices.</div></div>
+            <div class="md-link ch-card" style="--i:0"><span class="ch-ic"><i class="ti ti-sparkles" aria-hidden="true"></i></span><div class="md-link-n" data-no-i18n>01</div><div class="md-link-t" data-no-i18n>GVA</div><div class="md-link-f">Gross Value Added</div><div class="md-link-s">Value added at basic prices.</div></div>
             <span class="ch-arrow" style="--i:1"><i class="ti ti-chevron-right" aria-hidden="true"></i></span>
             <div class="md-link ch-card" style="--i:1"><span class="ch-ic"><i class="ti ti-receipt" aria-hidden="true"></i></span><div class="md-link-n" data-no-i18n>02</div><div class="md-link-t">Plus taxes, less subsidies</div><div class="md-link-s">Brings it to market prices.</div></div>
             <span class="ch-arrow" style="--i:2"><i class="ti ti-chevron-right" aria-hidden="true"></i></span>
@@ -3693,6 +3710,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 <text x="534.0" y="30.0" font-size="11" fill="#C6FF6A" font-weight="650" text-anchor="end" font-family="Public Sans, Inter, system-ui, sans-serif">measurement</text>
 </svg>
           </div>
+          <p class="md-figexp">One year&#39;s figure through its six releases: the early estimates swing around the truth, each revision settles closer, and the Third Revised Estimate is final.</p>
+          <div class="md-abbr"><span class="ab"><b data-no-i18n>FAE</b><span>First Advance Estimate</span></span><span class="ab"><b data-no-i18n>SAE</b><span>Second Advance Estimate</span></span><span class="ab"><b data-no-i18n>PE</b><span>Provisional Estimate</span></span><span class="ab"><b data-no-i18n>FRE</b><span>First Revised Estimate</span></span><span class="ab"><b data-no-i18n>SRE</b><span>Second Revised Estimate</span></span><span class="ab"><b data-no-i18n>TRE</b><span>Third Revised Estimate</span></span><span class="ab"><b data-no-i18n>NSO</b><span>National Statistics Office</span></span></div>
           <div class="gva-scroll">
             <table class="gva-ind md-tbl md-tbl-cal">
               <thead>
@@ -4864,7 +4883,7 @@ const LOOP_SCRIM = {
     });
   }
 
-  fetch('assets/i18n/te.json?v=2026-08-24j')
+  fetch('assets/i18n/te.json?v=2026-08-24k')
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(d => {
       dict = {};
