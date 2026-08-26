@@ -184,6 +184,50 @@ ICON_SPRITE = ('<svg class="sprite" aria-hidden="true"><defs>'
                + '</defs></svg>')
 
 
+# ---------------------------------------------------------------- role furniture
+# The PPTX built by the deck engine signposts every slide twice: a kicker line
+# above the title that says what KIND of slide this is, and a large line
+# illustration that carries the same idea visually. Both are reproduced here so a
+# reader moving between the .pptx and this page meets the same structure.
+ROLE_KICKER = {
+    "action":      "The case for action",
+    "solution":    "The answer",
+    "key-factors": "What made it work",
+    "policy":      "Policy and institutions",
+    "context":     "The bigger picture",
+    "challenges":  "Risks and constraints",
+    "takeaways":   "Lessons and next steps",
+}
+
+# 120x120 stroke line-art, drawn once per role and stamped faintly into the panel
+# corner. Not decoration for its own sake: it is the same visual index as the
+# kicker, so the role of a slide is readable before a word is.
+WATERMARKS = {
+    "action":      '<path d="M14 96h92M22 96V64M46 96V46M70 96V72M94 96V30"/>'
+                   '<path d="M22 40h26l-9-9M22 40l9 9"/>',
+    "solution":    '<circle cx="60" cy="52" r="24"/><path d="M52 76h16M54 86h12"/>'
+                   '<path d="M60 12v10M28 52H18M102 52h-10M32 24l7 7M88 24l-7 7"/>',
+    "key-factors": '<path d="M18 100h84M26 100V44M50 100V44M74 100V44M98 100V44"/>'
+                   '<path d="M14 44h92L60 18z"/>',
+    "policy":      '<path d="M16 52 60 24l44 28M26 52v44M94 52v44M44 96V64M76 96V64M12 104h96"/>',
+    "context":     '<circle cx="60" cy="58" r="38"/><path d="M22 58h76M60 20c14 16 14 60 0 76'
+                   'M60 20c-14 16-14 60 0 76"/>',
+    "challenges":  '<path d="M60 20 104 96H16z"/><path d="M60 48v22M60 82v4"/>',
+    "takeaways":   '<path d="M30 100V18M30 22h52l-12 16 12 16H30"/><path d="M30 100h60"/>',
+}
+
+
+def kicker_for(role):
+    return ROLE_KICKER.get(role, "In this section")
+
+
+def wm_html(role):
+    d = WATERMARKS.get(role)
+    if not d:
+        return ""
+    return ('<svg class="wm" viewBox="0 0 120 120" aria-hidden="true">' + d + '</svg>')
+
+
 def sections_of(blocks):
     """Split the block stream into title-led sections; drop title-only stubs."""
     secs, cur = [], {"title": None, "blocks": []}
@@ -199,7 +243,32 @@ def sections_of(blocks):
     return secs
 
 
-e = B.e
+# The case-study corpus is research prose and is left exactly as written, but the
+# site itself carries no em dashes. Rather than rewrite the source files, the
+# dash is resolved here, at the render layer: a colon when what follows is a
+# gloss that runs on with its own commas, a comma otherwise. En dashes (ranges)
+# are untouched.
+_DASH = re.compile(r"\s*\u2014\s*")
+
+
+def dedash(t):
+    if not t or "\u2014" not in t:
+        return t
+    out, i = [], 0
+    for m in _DASH.finditer(t):
+        tail = t[m.end():]
+        stop = min([x for x in (tail.find("."), tail.find("?"), tail.find("!"))
+                    if x >= 0] or [len(tail)])
+        out.append(t[i:m.start()])
+        out.append(": " if "," in tail[:stop] else ", ")
+        i = m.end()
+    out.append(t[i:])
+    return "".join(out)
+
+
+def e(t):
+    return B.e(dedash(t))
+
 
 
 def block_html(b):
@@ -218,9 +287,13 @@ def block_html(b):
 
 
 def grid_html(cells):
+    """Stat run. Two to four figures are the deck's BIG NUMBER slide, so they are
+    given the full-width treatment instead of being shrunk into tiles; five or
+    more stay a tile grid, which is what the source is actually carrying there."""
+    big = 2 <= len(cells) <= 4
     inner = "".join('<div class="cell"><div class="v">' + e(v) + '</div>'
                     '<div class="l">' + e(l) + '</div></div>' for v, l in cells)
-    return '<div class="grid">' + inner + '</div>'
+    return '<div class="grid' + (' big' if big else '') + '">' + inner + '</div>'
 
 
 def card_run(blocks, i):
@@ -242,22 +315,144 @@ def card_run(blocks, i):
 
 
 def cards_html(units):
-    """A run of sub-headings becomes a card grid, not a vertical list.
+    """A run of sub-headings becomes one of the deck's two peer layouts.
 
     WHY: the decks carry these as peer items - four success factors, three
     constraints - and stacking them as h3/p/h3/p reads as one long column that
-    hides the fact they are parallel. The grid is the SWOT/objectives layout from
-    the PIF deck template, restyled in the case-study palette. Runs of one are
-    left alone: a lone sub-heading is a section lead-in, not a card.
+    hides the fact they are parallel. Which layout is used mirrors the .pptx:
+    three short items become the ICON ROW (a large icon over each head, no
+    numbering, read left to right); anything longer becomes PILLARS (numbered,
+    each under its own accent rail, read as an ordered set). Runs of one are left
+    alone: a lone sub-heading is a section lead-in, not a card.
     """
+    avg = sum(len(" ".join(p)) for _, p in units) / float(len(units))
+    row = len(units) in (3, 4) and avg <= 150
     cells = []
     for head, paras in units:
         body = "".join('<p>' + e(t) + '</p>' for t in paras)
         cells.append('<div class="card">'
                      + icon_html(head if icon_for(head) != "spark"
-                                 else head + " " + " ".join(paras))
+                                 else head + " " + " ".join(paras),
+                                 "ic xl" if row else "ic")
                      + '<h3>' + e(head) + '</h3>' + body + '</div>')
-    return '<div class="cards">' + "".join(cells) + '</div>'
+    return ('<div class="cards ' + ("iconrow" if row else "pillars") + '">'
+            + "".join(cells) + '</div>')
+
+
+# ---------------------------------------------------------------- SWOT
+# A SWOT arrives from the parser as a flat run of short lines: an optional
+# "SWOT - ..." caption, then the four quadrant words each on their own line with
+# their points beneath. Rendered as chips it loses the one thing that makes it a
+# framework - the 2x2. Recovered here into the real matrix: internal factors on
+# the top row, external on the bottom; helpful on the left, harmful on the right,
+# each quadrant keyed by its own colour so the reading is instant.
+SWOT_QUADS = [
+    ("strengths",     "Strengths",     "#9ED44A", "trend"),
+    ("weaknesses",    "Weaknesses",    "#E0B25E", "gear"),
+    ("opportunities", "Opportunities", "#63BFE6", "target"),
+    ("threats",       "Threats",       "#E88A8A", "alert"),
+]
+_SWOT_KEY = {q[1].lower(): q for q in SWOT_QUADS}
+
+
+def swot_run(blocks, i):
+    """If a run of short lines is a SWOT, return (caption, ordered_quads, next_i).
+
+    ordered_quads is [(key, label, colour, icon, [points]), ...] in S-W-O-T order
+    regardless of the order the source listed them. Returns None when fewer than
+    two quadrant headers are present, so a normal emphasis run still becomes chips.
+    """
+    j = i
+    lines = []
+    while j < len(blocks) and blocks[j][0] == "k":
+        lines.append(blocks[j][1])
+        j += 1
+    heads = [k for k, ln in enumerate(lines) if ln.strip().lower() in _SWOT_KEY]
+    if len(heads) < 2:
+        return None
+    caption = ""
+    if heads[0] > 0:
+        # anything before the first quadrant word is the caption; keep the last
+        # such line (the "SWOT - ..." title), drop stray lead-ins
+        caption = lines[heads[0] - 1]
+    found = {}
+    for idx, h in enumerate(heads):
+        end = heads[idx + 1] if idx + 1 < len(heads) else len(lines)
+        key = lines[h].strip().lower()
+        found[key] = [ln for ln in lines[h + 1:end] if ln.strip()]
+    quads = [(k, lab, col, ic, found[lab.lower()])
+             for (k, lab, col, ic) in SWOT_QUADS if lab.lower() in found]
+    return caption, quads, j
+
+
+def swot_html(caption, quads):
+    cap = ('<p class="swot-cap">' + e(caption) + '</p>') if caption else ""
+    cells = []
+    for key, lab, col, ic, points in quads:
+        lis = "".join('<li>' + e(pt) + '</li>' for pt in points)
+        cells.append(
+            '<div class="swot-q swot-' + key + '" style="--q:' + col + '">'
+            '<div class="swot-h">'
+            '<span class="swot-ic" aria-hidden="true"><svg viewBox="0 0 24 24">'
+            '<use href="#i-' + ic + '"/></svg></span>'
+            '<span class="swot-t">' + e(lab) + '</span></div>'
+            '<ul class="swot-l">' + lis + '</ul></div>')
+    return cap + '<div class="swot">' + "".join(cells) + '</div>'
+
+
+# ---------------------------------------------------------------- definition list
+# The other way these decks flatten structure: a short LABEL line followed by the
+# sentence that defines it - "Shelf-life" / "Converts perishable banana into
+# marketable foods". The parser hands both over as peer emphasis lines, so a whole
+# labelled feature list collapses into an even run of chips and the pairing is
+# lost. Recovered here into term + description cards, the deck template's feature
+# list, so the label leads and its definition sits under it.
+def _is_term(t):
+    t = t.strip()
+    return 0 < len(t) <= 26 and t.count(" ") <= 3 and not t.endswith((".", ":"))
+
+
+def _is_desc(t):
+    return len(t.strip()) >= 20
+
+
+def deflist_run(blocks, i):
+    """If a k-run is a label/definition list, return (caption, pairs, next_i).
+
+    pairs is [(term, description)]. An optional single leading line that is not
+    itself a term becomes the caption. Returns None unless at least two clean
+    pairs are found and nothing else in the run is left unpaired, so a genuine
+    run of peer keywords still renders as chips.
+    """
+    j = i
+    lines = []
+    while j < len(blocks) and blocks[j][0] == "k":
+        lines.append(blocks[j][1])
+        j += 1
+    # walk strict term/desc pairs, allowing exactly one leading caption line
+    caption = ""
+    pairs = []
+    idx = 0
+    if lines and not _is_term(lines[0]):
+        caption = lines[0]
+        idx = 1
+    while idx + 1 < len(lines) and _is_term(lines[idx]) and _is_desc(lines[idx + 1])             and not _is_term(lines[idx + 1]):
+        pairs.append((lines[idx], lines[idx + 1]))
+        idx += 2
+    if len(pairs) < 2 or idx != len(lines):
+        return None
+    return caption, pairs, j
+
+
+def deflist_html(caption, pairs):
+    cap = ('<p class="dl-cap">' + e(caption) + '</p>') if caption else ""
+    cells = []
+    for term, desc in pairs:
+        cells.append('<div class="card dl-card">'
+                     + icon_html(term + " " + desc)
+                     + '<h3>' + e(term) + '</h3>'
+                     '<p>' + e(desc) + '</p></div>')
+    return cap + '<div class="cards deflist">' + "".join(cells) + '</div>'
 
 
 def chips_html(items):
@@ -420,6 +615,18 @@ def render_blocks(blocks):
                 continue
 
         if kind == "k":
+            sw = swot_run(blocks, i)
+            if sw:
+                caption, quads, j = sw
+                out.append(swot_html(caption, quads))
+                i = j
+                continue
+            dl = deflist_run(blocks, i)
+            if dl:
+                caption, pairs, j = dl
+                out.append(deflist_html(caption, pairs))
+                i = j
+                continue
             run = []
             while i < len(blocks) and blocks[i][0] == "k":
                 run.append(blocks[i][1])
@@ -434,6 +641,8 @@ def render_blocks(blocks):
 
 def slides_html(m, hero, secs):
     slides = []
+    roles = [role_for(x["title"], x["blocks"]) for x in secs]
+    titles = [x["title"] or "Overview" for x in secs]
 
     # cover slide
     tags = ['<span class="tag place">' + e(m["place"]) + "</span>"] if m.get("place") else []
@@ -458,22 +667,62 @@ def slides_html(m, hero, secs):
         '<div class="meta r">' + "".join(tags) + '</div>'
         '</div>'
         '<div class="cover-r r">' + herohtml + '</div>'
-        '<p class="hint r">Use ← → or the arrows to move through the story</p>'
+        '<p class="hint r">Use \u2190 \u2192 or the arrows to move through the story</p>'
         '</div></section>')
     slides.append(cover)
 
-    for idx, s in enumerate(secs, start=1):
-        body = render_blocks(s["blocks"])
+    # agenda slide - the deck engine opens every .pptx with one, and it is the
+    # only place a reader can see the whole argument at once. Built entirely from
+    # the section titles that already exist, so it can never drift from the deck.
+    items = "".join(
+        '<li class="ag-i" style="--i:' + str(i) + '"><span class="ag-n">' + f"{i:02d}" + '</span>'
+        + icon_html(t, "ic")
+        + '<span class="ag-t">' + e(t) + '</span></li>'
+        for i, t in enumerate(titles, start=1))
+    slides.append(
+        '<section class="slide" data-i="1">'
+        '<div class="media" data-media="0" data-role="context"></div>'
+        '<div class="glass reveal-root">'
+        + wm_html("context") +
+        '<div class="sechead r"><span class="secnum">Contents</span>'
+        + icon_html("plan document", "ic lg")
+        + '<h2>What this story covers</h2></div>'
+        '<ul class="agenda r">' + items + '</ul>'
+        '</div></section>')
+
+    for idx, s_ in enumerate(secs, start=1):
+        body = render_blocks(s_["blocks"])
+        role = roles[idx - 1]
         slides.append(
-            '<section class="slide" data-i="' + str(idx) + '">'
+            '<section class="slide" data-i="' + str(idx + 1) + '">'
             '<div class="media" data-media="' + str(idx) + '" data-role="'
-            + role_for(s["title"], s["blocks"]) + '"></div>'
+            + role + '"></div>'
             '<div class="glass reveal-root">'
+            + wm_html(role) +
             '<div class="sechead r"><span class="secnum">' + f"{idx:02d}" + '</span>'
-            + icon_html(s["title"] or "", "ic lg")
-            + '<h2>' + e(s["title"] or "Overview") + '</h2></div>'
+            + icon_html(s_["title"] or "", "ic lg")
+            + '<div class="sectext"><p class="kick">' + e(kicker_for(role)) + '</p>'
+            '<h2>' + e(s_["title"] or "Overview") + '</h2></div></div>'
             '<div class="secbody r">' + body + '</div>'
             '</div></section>')
+
+    # closing plate, after the .pptx closing archetype: the identity of the case,
+    # its source line and the way back. No new claims, only what the deck already
+    # carries.
+    src = ('<p class="cl-src r">' + e(m["source"]) + '</p>') if m.get("source") else ""
+    slides.append(
+        '<section class="slide closing" data-i="' + str(len(secs) + 2) + '">'
+        '<div class="media" data-media="' + str(len(secs) + 1) + '" data-role="takeaways"></div>'
+        '<div class="glass cl-glass reveal-root">'
+        + wm_html("takeaways") +
+        '<p class="eyebrow r">End of the story</p>'
+        '<h2 class="cl-h r">' + e(m["title"]) + '</h2>'
+        '<p class="summary r">' + e(m["summary"]) + '</p>'
+        + src +
+        '<div class="cl-foot r"><span>Pahl\u00e9 India Foundation</span>'
+        '<span class="cl-dot">\u00b7</span><span>Swarna Andhra @2047</span></div>'
+        '<a class="cl-cta r" href="../index.html#districts">Back to the case library</a>'
+        '</div></section>')
     return slides
 
 
@@ -482,7 +731,7 @@ TMPL = r"""<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>%%TITLE%% — Swarna Andhra case study</title>
+<title>%%TITLE%% · Swarna Andhra case study</title>
 <script>
 (function(){try{var ok=!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window;if(ok)document.documentElement.className+=' anim';}catch(e){}})();
 </script>
@@ -744,10 +993,11 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
    same guarantee the .r reveals above are built on. */
 @media (min-width:761px) and (prefers-reduced-motion:no-preference){
   .anim .slide .card,.anim .slide .chip,.anim .slide .step,.anim .slide .scell,
-  .anim .slide .cell,.anim .slide .entry,.anim .slide .statnote,.anim .slide .col{opacity:0;}
+  .anim .slide .cell,.anim .slide .entry,.anim .slide .statnote,.anim .slide .col,
+  .anim .slide .ag-i{opacity:0;}
   .anim .slide.active .card,.anim .slide.active .chip,.anim .slide.active .step,
   .anim .slide.active .scell,.anim .slide.active .cell,.anim .slide.active .entry,
-  .anim .slide.active .statnote,.anim .slide.active .col{
+  .anim .slide.active .statnote,.anim .slide.active .col,.anim .slide.active .ag-i{
     animation:cdPop .5s cubic-bezier(.2,.8,.3,1) forwards;}
   .anim .slide.active .card:nth-child(n),.anim .slide.active .chip:nth-child(n),
   .anim .slide.active .step:nth-child(n),.anim .slide.active .scell:nth-child(n),
@@ -775,9 +1025,178 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 @keyframes cdGrow{from{transform:scaleY(0);}to{transform:scaleY(1);}}
 @media (max-width:760px),(prefers-reduced-motion:reduce){
   .slide .card,.slide .chip,.slide .step,.slide .scell,
-  .slide .cell,.slide .entry,.slide .statnote,.slide .col{opacity:1!important;}
+  .slide .cell,.slide .entry,.slide .statnote,.slide .col,
+  .slide .ag-i{opacity:1!important;}
   .slide .colbar{animation:none!important;transform:none!important;}
 }
+
+/* ================= METHODOLOGY SKIN =================
+   Same soul as the methodology deck on the dashboard: one lime accent for all
+   the furniture (slide-number pill, title rule, card heads, numbered badges,
+   icons), the same glass recipe on the panel, and the same staggered pop-in for
+   the repeating units. The per-case tint stays where it belongs - in the
+   background mesh and the chart bars - so a case still reads as its own theme
+   without every deck inventing its own accent colour. Declared last on purpose:
+   it overrides the base rules above rather than editing each of them. */
+:root{--lime:#C6EC8F;--lime-hot:#C6FF6A;}
+
+.glass{border-radius:18px;border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(180deg,rgba(9,26,19,.36),rgba(6,18,13,.46));
+  -webkit-backdrop-filter:blur(26px) saturate(150%);backdrop-filter:blur(26px) saturate(150%);
+  clip-path:inset(0 round 18px);isolation:isolate;
+  scrollbar-color:rgba(198,236,143,.4) transparent;}
+.glass::-webkit-scrollbar-thumb{background:rgba(198,236,143,.4);}
+
+/* the slide-role watermark: the same idea the methodology deck carries as a
+   figure, reduced to a quiet index mark so it never competes with the text */
+.wm{position:absolute;right:clamp(14px,2.2vw,34px);bottom:clamp(14px,2.2vh,30px);
+  width:clamp(120px,15vw,210px);height:auto;z-index:0;pointer-events:none;
+  fill:none;stroke:var(--lime);stroke-width:1.6;stroke-linecap:round;
+  stroke-linejoin:round;opacity:.13;}
+.glass>*:not(.wm){position:relative;z-index:1;}
+@media (max-width:900px){ .wm{display:none;} }
+
+/* ---- section head: number pill, icon, kicker, ruled title ---- */
+.sechead{align-items:flex-start;gap:clamp(11px,1.3vw,16px);border-bottom:none;
+  padding-bottom:0;margin-bottom:clamp(14px,2vh,22px);}
+.sechead::after{display:none;}
+.sectext{min-width:0;}
+.secnum{color:var(--lime);border:1px solid rgba(198,236,143,.45);
+  background:rgba(198,236,143,.10);align-self:center;}
+.kick{color:var(--lime);font-size:11.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;margin:0 0 5px;}
+.sechead h2{position:relative;}
+.sechead h2::after{content:"";display:block;width:52px;height:3px;border-radius:3px;
+  margin-top:10px;background:linear-gradient(90deg,var(--lime),rgba(198,236,143,0));}
+.sechead .ic{align-self:center;}
+
+/* ---- icons in the template's tile language ---- */
+.ic{color:var(--lime);border-color:rgba(198,236,143,.32);
+  background:rgba(198,255,106,.08);}
+.ic.xl{width:52px;height:52px;border-radius:14px;border-width:1.5px;}
+.ic.xl svg{width:28px;height:28px;stroke-width:1.5;}
+@media (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .anim .slide.active .cards.iconrow .ic svg{animation:mtFloat 3.4s ease-in-out infinite;}
+  .anim .slide.active .cards.iconrow .card:nth-child(2) .ic svg{animation-delay:.25s;}
+  .anim .slide.active .cards.iconrow .card:nth-child(3) .ic svg{animation-delay:.5s;}
+}
+@keyframes mtFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+
+/* ---- ICON ROW: three peers, icon-led, centred (the .pptx iconrow) ---- */
+.cards.iconrow{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));}
+.cards.iconrow .card{text-align:center;padding:22px 20px 20px;
+  background:rgba(255,255,255,.05);border-color:rgba(198,236,143,.22);}
+.cards.iconrow .card::before{display:none;}
+.cards.iconrow .card>.ic{margin:0 auto 12px;}
+.cards.iconrow .card h3{color:#e4ffb0;}
+@media (max-width:900px){ .cards.iconrow{grid-template-columns:1fr;} }
+
+/* ---- PILLARS: an ordered set, each under its own accent rail ---- */
+.cards.pillars .card{background:rgba(255,255,255,.05);
+  border-color:rgba(198,236,143,.22);padding-top:22px;}
+.cards.pillars .card::after{content:"";position:absolute;left:20px;right:20px;top:0;
+  height:3px;border-radius:0 0 3px 3px;
+  background:linear-gradient(90deg,var(--lime),rgba(198,236,143,0));}
+.cards.pillars .card h3{color:#e4ffb0;}
+.cards.pillars .card::before{top:20px;color:var(--lime);}
+.cards .card>.ic{margin-bottom:10px;}
+
+/* ---- BIG NUMBER band ---- */
+.grid.big{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(10px,1.4vw,16px);}
+.grid.big .cell{border-color:rgba(198,236,143,.30);background:rgba(198,236,143,.06);
+  padding:22px 22px 18px;}
+.grid.big .cell .v{font-size:clamp(30px,4.4vw,46px);color:var(--lime);letter-spacing:-.02em;}
+.grid.big .cell .l{font-size:13.5px;color:rgba(255,255,255,.8);}
+.cell .v,.scell .v{color:var(--lime);}
+.scell{border-color:rgba(198,236,143,.26);background:rgba(198,236,143,.05);}
+
+/* ---- chips, steps, entries, quotes: the same numbered-card rhythm ---- */
+.chip{border-color:rgba(198,236,143,.22);border-left:3px solid var(--lime);
+  background:rgba(255,255,255,.05);}
+.step::before{background:var(--lime);}
+.step-v,.statnote-v,.entry .term{color:var(--lime);}
+.statnote{border-color:rgba(198,236,143,.22);background:rgba(255,255,255,.05);}
+.secbody .k{color:var(--lime);}
+.secbody h3{color:#e4ffb0;}
+.colbar{background:linear-gradient(180deg,var(--lime),color-mix(in srgb,var(--t1) 70%,transparent));
+  border-color:rgba(198,236,143,.45);}
+
+/* ---- SWOT: the real 2x2 matrix, colour-keyed per quadrant ---- */
+.swot-cap{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--mut2);margin:2px 0 14px;}
+.swot{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.4vw,16px);
+  margin:4px 0 20px;}
+.swot-q{position:relative;border-radius:16px;padding:16px 18px 14px;
+  background:color-mix(in srgb,var(--q) 8%,rgba(255,255,255,.04));
+  border:1px solid color-mix(in srgb,var(--q) 34%,transparent);
+  border-top:3px solid var(--q);}
+.swot-h{display:flex;align-items:center;gap:10px;margin:0 0 10px;
+  padding-bottom:9px;border-bottom:1px solid color-mix(in srgb,var(--q) 26%,transparent);}
+.swot-ic{flex:0 0 auto;display:inline-grid;place-items:center;width:30px;height:30px;
+  border-radius:9px;color:var(--q);
+  background:color-mix(in srgb,var(--q) 16%,transparent);
+  border:1px solid color-mix(in srgb,var(--q) 34%,transparent);}
+.swot-ic svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;}
+.swot-t{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;
+  font-size:clamp(15px,1.6vw,18px);letter-spacing:.02em;color:var(--q);}
+.swot-l{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.swot-l li{position:relative;padding-left:16px;font-size:14px;line-height:1.5;
+  color:var(--mut);}
+.swot-l li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;
+  border-radius:50%;background:var(--q);}
+@media (max-width:820px){ .swot{grid-template-columns:1fr;} }
+/* the four quadrants pop in on a diagonal, like the deck template's SWOT build */
+@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+  .anim .slide .swot-q{opacity:0;}
+  .anim .slide.active .swot-q{animation:cdPop .5s cubic-bezier(.2,.8,.3,1) forwards;}
+  .anim .slide.active .swot-q:nth-child(1){animation-delay:.12s;}
+  .anim .slide.active .swot-q:nth-child(2){animation-delay:.24s;}
+  .anim .slide.active .swot-q:nth-child(3){animation-delay:.36s;}
+  .anim .slide.active .swot-q:nth-child(4){animation-delay:.48s;}
+}
+@media (max-width:760px),(prefers-reduced-motion:reduce){ .swot-q{opacity:1!important;} }
+
+/* ---- DEFINITION LIST: label leads, its definition beneath ---- */
+.dl-cap{font-size:14.5px;line-height:1.5;color:var(--mut);margin:0 0 14px;max-width:78ch;}
+.cards.deflist{grid-template-columns:repeat(auto-fit,minmax(232px,1fr));}
+.cards.deflist .dl-card{padding:16px 18px 14px;background:rgba(255,255,255,.05);
+  border-color:rgba(198,236,143,.22);}
+.cards.deflist .dl-card::before{display:none;}
+.cards.deflist .dl-card>.ic{margin-bottom:10px;}
+.cards.deflist .dl-card h3{color:#e4ffb0;margin:0 0 5px;font-size:clamp(15px,1.5vw,17px);}
+.cards.deflist .dl-card p{margin:0;font-size:14px;line-height:1.5;color:var(--mut);max-width:none;}
+
+/* ---- AGENDA: what the deck covers, straight off the section titles ---- */
+.agenda{list-style:none;margin:0;padding:0;display:grid;gap:9px;
+  grid-template-columns:repeat(2,minmax(0,1fr));}
+.ag-i{display:flex;align-items:center;gap:12px;padding:11px 15px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(198,236,143,.2);
+  transition:transform .26s cubic-bezier(.2,.7,.2,1),border-color .26s ease;}
+.ag-i:hover{transform:translateX(3px);border-color:rgba(198,236,143,.5);}
+.ag-n{flex:0 0 auto;font-weight:750;font-size:12.5px;letter-spacing:.06em;
+  color:var(--lime);width:24px;}
+.ag-t{font-weight:650;font-size:14.5px;line-height:1.35;color:#fff;}
+@media (max-width:900px){ .agenda{grid-template-columns:1fr;} }
+@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+  .anim .slide.active .ag-i:nth-child(n){animation-delay:calc(.10s + var(--i,0) * .05s);}
+}
+
+/* ---- CLOSING plate ---- */
+.cl-glass{display:flex;flex-direction:column;justify-content:center;text-align:center;}
+.cl-glass .summary{margin-left:auto;margin-right:auto;}
+.cl-h{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;
+  font-size:clamp(26px,4.4vw,44px);line-height:1.1;letter-spacing:-.02em;color:#fff;margin:0 0 16px;}
+.cl-h::after{content:"";display:block;width:64px;height:3px;border-radius:3px;
+  margin:16px auto 0;background:linear-gradient(90deg,rgba(198,236,143,0),var(--lime),rgba(198,236,143,0));}
+.cl-src{font-size:12.5px;color:rgba(255,255,255,.5);margin:6px 0 0;}
+.cl-foot{display:flex;gap:9px;justify-content:center;align-items:center;margin-top:18px;
+  font-size:12.5px;font-weight:650;letter-spacing:.04em;color:rgba(255,255,255,.72);}
+.cl-dot{color:var(--lime);}
+.cl-cta{display:inline-block;margin:20px auto 0;padding:11px 22px;border-radius:999px;
+  font-size:14px;font-weight:700;text-decoration:none;color:#0B2E20;background:var(--lime);
+  transition:transform .2s ease,background .2s ease;}
+.cl-cta:hover{transform:translateY(-2px);background:var(--lime-hot);}
 
 /* ---------- mobile: degrade to a vertical stack ---------- */
 @media (max-width:760px){
@@ -841,18 +1260,38 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 
       var page=sl, pbody=body;
       out.push(page);
+      // A grid of peer cards (icon row, pillars, definition list, chips) can be
+      // broken between its cards when it alone is taller than the panel; a SWOT
+      // never is, because splitting it would break the 2x2 that is the point.
+      function splittable(el){ return el && /(^|\s)(cards|chips)(\s|$)/.test(el.className); }
+      function fits(){ var g=page.querySelector('.glass'); return g.scrollHeight<=g.clientHeight+2; }
       kids.forEach(function(k){
         pbody.appendChild(k);
-        var g=page.querySelector('.glass');
-        if(g.scrollHeight<=g.clientHeight+2) return;
-        // A single block taller than the panel cannot be broken further. Leave it
-        // where it is and let that one page scroll, rather than loop forever.
-        if(pbody.children.length===1) return;
-        pbody.removeChild(k);
-        page=newPage(sl);
-        out.push(page);
-        pbody=page.querySelector('.secbody');
-        pbody.appendChild(k);
+        if(fits()) return;
+        if(pbody.children.length>1){
+          pbody.removeChild(k);
+          page=newPage(sl); out.push(page);
+          pbody=page.querySelector('.secbody');
+          pbody.appendChild(k);
+          if(fits()) return;
+        }
+        // k is now alone on its page and still overflows.
+        if(splittable(k) && k.children.length>1){
+          var items=[].slice.call(k.children);
+          k.textContent='';
+          var grid=k;
+          items.forEach(function(it){
+            grid.appendChild(it);
+            if(fits()) return;
+            if(grid.children.length===1) return; // one card taller than panel: unavoidable
+            grid.removeChild(it);
+            page=newPage(sl); out.push(page);
+            pbody=page.querySelector('.secbody');
+            grid=k.cloneNode(false);           // same grid class, empty
+            pbody.appendChild(grid);
+            grid.appendChild(it);
+          });
+        }
       });
     });
     // newPage appends to the track, so continuation slides land at the end while
@@ -913,7 +1352,8 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
     var i=m.getAttribute('data-media'), role=m.getAttribute('data-role');
     tryAsset(m, [
       'media/'+SLUG+'/'+i+'.mp4', 'media/'+SLUG+'/'+i+'.gif', 'media/'+SLUG+'/'+i+'.jpg',
-      'media/common/'+role+'.mp4', 'media/common/'+role+'.gif', 'media/common/'+role+'.jpg'
+      'media/common/'+role+'.mp4', 'media/common/'+role+'.gif', 'media/common/'+role+'.jpg',
+      '../assets/video/gridwork.mp4'
     ]);
   });
 
