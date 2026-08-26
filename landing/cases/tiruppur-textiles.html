@@ -225,13 +225,37 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 .nav{position:fixed;top:50%;transform:translateY(-50%);z-index:30;
   width:52px;height:52px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
   background:var(--glass);border:1px solid var(--line);color:var(--fg);
+  font:inherit;padding:0;margin:0;appearance:none;-webkit-appearance:none;
   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-  transition:transform .2s ease,background .2s ease,opacity .2s ease;user-select:none;}
+  transition:transform .2s ease,background .2s ease,opacity .2s ease,box-shadow .25s ease;user-select:none;}
+.nav:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
 .nav:hover{background:color-mix(in srgb,var(--t1) 30%,var(--glass));transform:translateY(-50%) scale(1.07);}
 .nav.prev{left:clamp(12px,2.5vw,30px);}
 .nav.next{right:clamp(12px,2.5vw,30px);}
 .nav[disabled]{opacity:.3;pointer-events:none;}
 .nav svg{width:20px;height:20px;}
+/* Glow + directional pulse. With wheel paging removed the arrows carry the whole
+   "which way now" job, so they are made unmissable: an enabled arrow wears a soft
+   lime halo, the suggested arrow (.nudge, set per slide by the deck JS) breathes
+   and its chevron leans toward the direction of travel. Disabled arrows stay dim. */
+.nav:not([disabled]){color:var(--lime);border-color:rgba(198,236,143,.5);
+  box-shadow:0 0 0 1px rgba(198,236,143,.2),0 0 18px rgba(198,255,106,.24);}
+.nav:not([disabled]):hover{
+  box-shadow:0 0 0 1px rgba(198,236,143,.5),0 0 28px rgba(198,255,106,.55);}
+.nav svg{transition:transform .2s ease;}
+@keyframes navGlow{0%,100%{box-shadow:0 0 0 1px rgba(198,236,143,.2),0 0 15px rgba(198,255,106,.22);}
+  50%{box-shadow:0 0 0 1px rgba(198,236,143,.6),0 0 32px rgba(198,255,106,.6);}}
+@keyframes navNudgeR{0%,100%{transform:translateX(0);}50%{transform:translateX(3px);}}
+@keyframes navNudgeL{0%,100%{transform:translateX(0);}50%{transform:translateX(-3px);}}
+.nav.nudge{animation:navGlow 1.9s ease-in-out infinite;}
+.nav.next.nudge svg{animation:navNudgeR 1.9s ease-in-out infinite;}
+.nav.prev.nudge svg{animation:navNudgeL 1.9s ease-in-out infinite;}
+@media (prefers-reduced-motion:reduce){
+  /* Match the pulse rules' specificity (.nav.next.nudge svg is 0,3,1) so these
+     overrides win inside the query rather than being outranked. */
+  .nav.nudge{animation:none;}
+  .nav.next.nudge svg,.nav.prev.nudge svg{animation:none;}
+}
 .dots{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:30;
   display:flex;gap:10px;align-items:center;
   background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:9px 14px;
@@ -550,8 +574,8 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 <section class="slide closing" data-i="19"><div class="media" data-media="18" data-role="takeaways"></div><div class="glass cl-glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><path d="M30 100V18M30 22h52l-12 16 12 16H30"/><path d="M30 100h60"/></svg><p class="eyebrow r">End of the story</p><h2 class="cl-h r">Tiruppur: Innovation in Textiles &amp; Garments</h2><p class="summary r">The rise of South India&#x27;s “Banian City”, a knitwear cluster that moved from job-work to a global export base.</p><div class="cl-foot r"><span>Pahlé India Foundation</span><span class="cl-dot">·</span><span>Swarna Andhra @2047</span></div><a class="cl-cta r" href="../index.html#districts">Back to the case library</a></div></section>
   </div>
 </div>
-<div class="nav prev" id="prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></div>
-<div class="nav next" id="next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
+<button class="nav prev" id="prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+<button class="nav next" id="next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
 <div class="dots" id="dots"></div>
 
 <script src="../assets/dash/gsap.js"></script>
@@ -705,6 +729,11 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
     cnum.textContent=('0'+(cur+1)).slice(-2);
     prev.toggleAttribute('disabled', cur===0);
     next.toggleAttribute('disabled', cur===N-1);
+    // The suggested next move breathes: forward while a next slide exists, back
+    // only at the very end. Enabled arrows also carry a static glow so which way
+    // to go is legible without the wheel.
+    next.classList.toggle('nudge', cur!==N-1);
+    prev.classList.toggle('nudge', cur===N-1 && cur!==0);
     slides.forEach(function(s,i){ s.classList.toggle('active', i===cur); });
     reveal(slides[cur]);
   }
@@ -718,27 +747,10 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
     else if(ev.key==='ArrowLeft'||ev.key==='PageUp'){ step(-1); }
     else if(ev.key==='Home'){ go(0); } else if(ev.key==='End'){ go(N-1); }
   });
-  // Wheel: horizontal intent, or vertical when the panel isn't scrollable.
-  // A trackpad swipe is not one event — macOS momentum fires dozens over ~1s. A
-  // plain time lock still let 2-3 of them through per swipe, so instead the
-  // gesture must fully SETTLE (no wheel events for 240ms) before another advance
-  // is armed. One physical swipe therefore moves exactly one slide.
-  var wheelArmed=true, wheelTimer=null;
-  addEventListener('wheel',function(ev){
-    if(mobile()) return;
-    var g=slides[cur].querySelector('.glass');
-    var canScroll=g && g.scrollHeight>g.clientHeight+2;
-    var dom=Math.abs(ev.deltaX)>Math.abs(ev.deltaY)?ev.deltaX:ev.deltaY;
-    if(canScroll && Math.abs(ev.deltaY)>Math.abs(ev.deltaX)){
-      var atTop=g.scrollTop<=0, atBot=g.scrollTop+g.clientHeight>=g.scrollHeight-1;
-      if(!(atTop&&dom<0)&&!(atBot&&dom>0)) return; // let the panel scroll
-    }
-    clearTimeout(wheelTimer);
-    wheelTimer=setTimeout(function(){ wheelArmed=true; }, 240);
-    if(!wheelArmed || Math.abs(dom)<28) return;
-    wheelArmed=false;
-    step(dom>0?1:-1);
-  },{passive:true});
+  // Wheel no longer advances slides: paging is by the on-screen arrows and the
+  // keyboard only, so scrolling the window never jumps the deck. A panel that
+  // still overflows (a single card taller than the viewport) scrolls natively
+  // under the wheel, because nothing here intercepts it.
   // touch swipe
   var sx=0,sy=0;
   addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});

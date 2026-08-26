@@ -2589,7 +2589,8 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
      SKIN      — type, colour, the stage behind the panel. Restylable from the
                  programme's own slide template without touching structure.
    The interaction model is the one already proven on the 15 case study reader
-   pages: a flex track moved by translateX, arrows, keyboard, wheel and swipe.
+   pages: a flex track moved by translateX, driven by arrows, keyboard and swipe
+   (wheel paging was removed, so scrolling the page never jumps the deck).
    ========================================================================== */
 
 /* .grain is NOT part of this page - it is a global overlay on every page, and
@@ -2673,6 +2674,31 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 .md-nav[disabled]{opacity:.25;pointer-events:none;}
 .md-prev{left:clamp(6px,1.4vw,16px);}
 .md-next{right:clamp(6px,1.4vw,16px);}
+/* Glow + directional pulse. Wheel paging is gone, so the arrows carry the whole
+   burden of "which way now"; they are made unmissable. An ENABLED arrow wears a
+   soft lime halo so it reads as the way through the deck. The SUGGESTED arrow
+   (.nudge, set per slide by the deck JS) breathes and its chevron leans toward
+   the direction of travel. Disabled arrows stay dim with no glow. */
+.md-nav{transition:background .2s ease,opacity .2s ease,box-shadow .25s ease,transform .2s ease;}
+.md-nav:not([disabled]){color:var(--lime);border-color:rgba(198,236,143,.55);
+  box-shadow:0 0 0 1px rgba(198,236,143,.22),0 0 18px rgba(198,255,106,.26);}
+.md-nav:not([disabled]):hover{background:rgba(4,16,11,.9);
+  box-shadow:0 0 0 1px rgba(198,236,143,.5),0 0 28px rgba(198,255,106,.55);
+  transform:translateY(-50%) scale(1.09);}
+.md-nav .ti{transition:transform .2s ease;}
+@keyframes mdNavGlow{0%,100%{box-shadow:0 0 0 1px rgba(198,236,143,.22),0 0 15px rgba(198,255,106,.22);}
+  50%{box-shadow:0 0 0 1px rgba(198,236,143,.62),0 0 32px rgba(198,255,106,.62);}}
+@keyframes mdNudgeR{0%,100%{transform:translateX(0);}50%{transform:translateX(3px);}}
+@keyframes mdNudgeL{0%,100%{transform:translateX(0);}50%{transform:translateX(-3px);}}
+.md-nav.nudge{animation:mdNavGlow 1.9s ease-in-out infinite;}
+.md-nav.nudge.md-next .ti{animation:mdNudgeR 1.9s ease-in-out infinite;}
+.md-nav.nudge.md-prev .ti{animation:mdNudgeL 1.9s ease-in-out infinite;}
+@media (prefers-reduced-motion:reduce){
+  /* Match the pulse rules' specificity exactly (.md-nav.nudge.md-next .ti is
+     0,3,1) so these overrides actually win inside the query, not just tie. */
+  .md-nav.nudge{animation:none;}
+  .md-nav.nudge.md-next .ti,.md-nav.nudge.md-prev .ti{animation:none;}
+}
 
 .md-dots{position:absolute;left:50%;bottom:clamp(8px,1.4vh,16px);transform:translateX(-50%);
   z-index:12;display:flex;gap:7px;align-items:center;flex-wrap:wrap;justify-content:center;
@@ -4589,7 +4615,7 @@ document.querySelectorAll('.gstat.ask').forEach(function(b){
 // ---------- methodology deck ----------
 // A paged deck, not a scroll narrative. The interaction is the one already
 // proven on the 15 case study reader pages, with one important difference:
-// those are standalone documents, so they bind keydown and wheel globally.
+// those are standalone documents, so they bind keydown globally.
 // This deck lives inside the single-page router, so every global listener
 // FIRST checks the methodology page is the one on screen. Without that guard,
 // arrow keys would page the deck while the reader is on the district map.
@@ -4701,6 +4727,11 @@ document.querySelectorAll('.gstat.ask').forEach(function(b){
     });
     prev.disabled = cur === 0;
     next.disabled = cur === N - 1;
+    // The suggested next move breathes: forward while a next slide exists, back
+    // only once the reader is at the end. Enabled arrows also carry a static
+    // glow (CSS), so which way to go is always legible at a glance.
+    next.classList.toggle('nudge', cur !== N - 1);
+    prev.classList.toggle('nudge', cur === N - 1 && cur !== 0);
     // A slide the reader has paged away from keeps its scroll position
     // otherwise, so coming back lands mid-panel with no way to tell why.
     const p = slides[cur].querySelector('.md-panel');
@@ -4724,28 +4755,10 @@ document.querySelectorAll('.gstat.ask').forEach(function(b){
     else if(e.key === 'End'){ go(N - 1); e.preventDefault(); }
   });
 
-  // Wheel. A trackpad swipe is not one event - macOS momentum fires dozens over
-  // about a second, and a plain time lock still let two or three through. So the
-  // gesture must fully SETTLE (240ms of quiet) before another advance is armed;
-  // one physical swipe then moves exactly one slide. Same lesson as the hero
-  // arrows. A panel that can scroll gets the wheel first, until it hits an edge.
-  let armed = true, wheelTimer = null;
-  deck.addEventListener('wheel', e => {
-    if(!live()) return;
-    const p = slides[cur].querySelector('.md-panel');
-    const canScroll = p && p.scrollHeight > p.clientHeight + 2;
-    const dom = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-    if(canScroll && Math.abs(e.deltaY) > Math.abs(e.deltaX)){
-      const atTop = p.scrollTop <= 0;
-      const atBot = p.scrollTop + p.clientHeight >= p.scrollHeight - 1;
-      if(!(atTop && dom < 0) && !(atBot && dom > 0)) return;
-    }
-    clearTimeout(wheelTimer);
-    wheelTimer = setTimeout(() => { armed = true; }, 240);
-    if(!armed || Math.abs(dom) < 28) return;
-    armed = false;
-    step(dom > 0 ? 1 : -1);
-  }, {passive:true});
+  // Wheel no longer advances slides. Paging is by the on-screen arrows and the
+  // keyboard only, so a reader scrolling the window never loses their place in
+  // the deck (the previous trackpad-momentum jump was the top complaint). A
+  // panel that overflows still scrolls natively under the wheel, untouched.
 
   let sx = 0, sy = 0;
   deck.addEventListener('touchstart', e => {
