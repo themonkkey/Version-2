@@ -3006,31 +3006,51 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   .ap-div{display:none;}
 }
 
-/* Crop groups as a picker of boxes rather than a stack of dropdowns: the
-   whole sheet is visible at a glance, and each box carries its own value of
-   output once the calculation has run. */
-.cr-pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
-  gap:clamp(8px,1vw,12px);margin-bottom:clamp(12px,1.8vh,18px);}
-.cr-box{position:relative;display:flex;flex-direction:column;align-items:flex-start;
-  gap:3px;padding:clamp(11px,1.5vh,15px) clamp(12px,1.2vw,16px);
-  border-radius:14px;cursor:pointer;text-align:left;
-  border:1.7px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);
-  color:inherit;font:inherit;transition:border-color .15s ease,background .15s ease,transform .15s ease;}
-.cr-box:hover{transform:translateY(-1px);border-color:rgba(198,236,143,.45);}
-.cr-box:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
-.cr-box.on{background:rgba(198,236,143,.16);border-color:rgba(198,236,143,.6);
-  box-shadow:0 8px 26px rgba(198,255,106,.10);}
-.cr-box-l{position:absolute;top:9px;right:12px;font-size:11px;font-weight:750;
-  letter-spacing:.08em;color:rgba(198,236,143,.55);}
-.cr-box-ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;
-  border:1.5px solid rgba(198,236,143,.35);background:rgba(198,255,106,.08);
-  color:var(--lime);font-size:17px;margin-bottom:3px;}
-.cr-box.on .cr-box-ic{background:rgba(198,255,106,.18);border-color:var(--lime);}
-.cr-box-t{font-size:13.2px;font-weight:700;line-height:1.25;color:#fff;}
-.cr-box-n{font-size:11px;color:rgba(255,255,255,.6);}
-.cr-box-n b{color:rgba(198,236,143,.9);font-weight:700;}
-.cr-box-v{font-size:12.5px;font-weight:750;color:var(--lime);
-  font-variant-numeric:tabular-nums;min-height:1em;}
+/* Crop groups as a compact strip of boxes: the letter carries the step, the
+   name and count sit beside it, and the value of output lands underneath once
+   the calculation has run. A tick marks a group the officer has filled, so the
+   strip doubles as a progress bar through the sheet. */
+.cr-pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
+  gap:7px;margin-bottom:clamp(10px,1.5vh,15px);}
+.cr-box{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);
+  align-items:center;gap:9px;padding:8px 10px;border-radius:11px;cursor:pointer;
+  text-align:left;border:1.5px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.045);color:inherit;font:inherit;
+  transition:border-color .15s ease,background .15s ease;}
+.cr-box:hover{border-color:rgba(198,236,143,.45);}
+.cr-box:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+.cr-box.on{background:rgba(198,236,143,.16);border-color:rgba(198,236,143,.62);}
+.cr-box-l{font-size:22px;font-weight:800;line-height:1;letter-spacing:-.02em;
+  color:rgba(198,236,143,.5);min-width:20px;text-align:center;
+  align-self:stretch;display:flex;align-items:center;justify-content:center;
+  padding-right:9px;border-right:1.5px solid rgba(198,236,143,.22);}
+.cr-box.on .cr-box-l{color:var(--lime);border-right-color:rgba(198,236,143,.6);}
+.cr-box.done .cr-box-l{color:rgba(198,236,143,.85);}
+.cr-box-b{display:flex;flex-direction:column;gap:1px;min-width:0;}
+.cr-box-t{display:flex;align-items:center;gap:5px;font-size:12.4px;font-weight:700;
+  line-height:1.2;color:#fff;}
+.cr-box-t i{font-size:13px;color:rgba(198,236,143,.75);flex:none;}
+.cr-box-n{font-size:10.5px;color:rgba(255,255,255,.55);}
+.cr-box-n b{color:rgba(198,236,143,.85);font-weight:700;}
+.cr-box-v{font-size:11.5px;font-weight:750;color:var(--lime);
+  font-variant-numeric:tabular-nums;}
+.cr-box-ok{position:absolute;top:6px;right:8px;font-size:12px;color:var(--lime);
+  opacity:0;transition:opacity .15s ease;}
+.cr-box.done .cr-box-ok{opacity:1;}
+/* step footer inside each group */
+.cr-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin-top:clamp(10px,1.5vh,16px);padding-top:clamp(9px,1.3vh,13px);
+  border-top:1px solid rgba(198,236,143,.18);}
+.cr-nav-b{display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  padding:7px 13px;border-radius:999px;font:inherit;font-size:12.5px;font-weight:650;
+  border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;}
+.cr-nav-b:hover{border-color:var(--lime);}
+.cr-nav-b:focus-visible{outline:2px solid var(--lime);outline-offset:2px;}
+.cr-nav-next,.cr-nav-go{background:rgba(198,255,106,.16);
+  border-color:rgba(198,236,143,.5);color:#e4ffb0;}
+.cr-nav-go{background:var(--lime);color:#0B2E20;border-color:var(--lime);font-weight:750;}
+.cr-step{font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.5);
+  font-variant-numeric:tabular-nums;}
 .cr-panel.is-off{display:none;}
 .cr-der{display:inline-block;margin-left:8px;padding:1px 7px;border-radius:999px;
   font-size:9.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
@@ -9144,13 +9164,15 @@ window.__loadCapacity = function(){ loadCapacity(); };
         CROP.groups.map(function(g, gi){
           var m = g.label.match(/^([A-Z])\.\s*(.*)$/) || ['', '', g.label];
           return '<button type="button" class="cr-box' + (gi ? '' : ' on') +
-            '" data-cg="' + g.id + '" role="tab" aria-selected="' + (gi ? 'false' : 'true') + '">' +
+            '" data-cg="' + g.id + '" data-gi="' + gi + '" role="tab" aria-selected="' +
+            (gi ? 'false' : 'true') + '">' +
             '<span class="cr-box-l" data-no-i18n>' + m[1] + '</span>' +
-            '<span class="cr-box-ic"><i class="ti ti-' + (CR_ICON[g.id] || 'plant') + '" aria-hidden="true"></i></span>' +
-            '<span class="cr-box-t">' + m[2] + '</span>' +
-            '<span class="cr-box-n"><b data-no-i18n>' + g.items.length + '</b> crops</span>' +
-            '<span class="cr-box-v" id="crv_' + g.id + '" data-no-i18n></span>' +
-            '</button>';
+            '<span class="cr-box-b">' +
+              '<span class="cr-box-t"><i class="ti ti-' + (CR_ICON[g.id] || 'plant') +
+                '" aria-hidden="true"></i>' + m[2] + '</span>' +
+              '<span class="cr-box-n"><b data-no-i18n>' + g.items.length + '</b> crops</span>' +
+              '<span class="cr-box-v" id="crv_' + g.id + '" data-no-i18n></span>' +
+            '</span><i class="ti ti-check cr-box-ok" aria-hidden="true"></i></button>';
         }).join('') + '</div>' +
         CROP.groups.map(function(g, gi){
           var head='<div class="fc-shead"><span>Crop</span>' +
@@ -9170,22 +9192,78 @@ window.__loadCapacity = function(){ loadCapacity(); };
               i.label+' area"><span class="cr-unit">\u2018000 ha</span></div>';
             return r;
           }).join('');
-          return '<div class="calc-fieldset cr-panel'+(gi?' is-off':'')+'" data-cgp="'+g.id+'">'+
-            '<h4>'+g.label+'</h4>'+head+rows+'</div>';
+          var last = gi === CROP.groups.length - 1;
+          var nxt = last ? null : CROP.groups[gi+1].label;
+          var foot = '<div class="cr-nav">' +
+            (gi ? '<button type="button" class="cr-nav-b" data-cgo="'+(gi-1)+'">' +
+                  '<i class="ti ti-arrow-left"></i> Back</button>' : '<span></span>') +
+            '<span class="cr-step" data-no-i18n>'+(gi+1)+' / '+CROP.groups.length+'</span>' +
+            (last
+              ? '<button type="button" class="cr-nav-b cr-nav-go" id="cr_navdone">' +
+                'Ready, calculate <i class="ti ti-arrow-right"></i></button>'
+              : '<button type="button" class="cr-nav-b cr-nav-next" data-cgo="'+(gi+1)+'">' +
+                'Next: '+nxt+' <i class="ti ti-arrow-right"></i></button>') +
+            '</div>';
+          return '<div class="calc-fieldset cr-panel'+(gi?' is-off':'')+'" data-cgp="'+g.id+
+            '" data-gi="'+gi+'">'+'<h4>'+g.label+'</h4>'+head+rows+foot+'</div>';
         }).join('');
 
       (function wireCrPick(){
         var boxes=[].slice.call(document.querySelectorAll('.cr-box'));
-        boxes.forEach(function(b){
-          b.addEventListener('click', function(){
-            boxes.forEach(function(o){
-              var on = o===b;
-              o.classList.toggle('on', on);
-              o.setAttribute('aria-selected', on?'true':'false');
+        var panels=[].slice.call(document.querySelectorAll('.cr-panel'));
+
+        function show(i, focus){
+          i = Math.max(0, Math.min(boxes.length-1, i));
+          boxes.forEach(function(o,k){
+            var on = k===i;
+            o.classList.toggle('on', on);
+            o.setAttribute('aria-selected', on?'true':'false');
+          });
+          panels.forEach(function(p,k){ p.classList.toggle('is-off', k!==i); });
+          var panel = panels[i];
+          if(focus){
+            var first = panel.querySelector('input:not([disabled])');
+            if(first) first.focus({preventScroll:true});
+            var r = panel.getBoundingClientRect();
+            if(r.top < 70 || r.top > window.innerHeight - 160)
+              window.scrollBy({top: r.top - 110, behavior:'smooth'});
+          }
+        }
+        window.__crShow = show;
+
+        boxes.forEach(function(b,i){ b.addEventListener('click', function(){ show(i,false); }); });
+        document.querySelectorAll('[data-cgo]').forEach(function(btn){
+          btn.addEventListener('click', function(){ show(parseInt(btn.dataset.cgo,10), true); });
+        });
+        var done=document.getElementById('cr_navdone');
+        if(done) done.addEventListener('click', function(){
+          var c=document.getElementById('cr_calc'); if(c) c.click();
+        });
+
+        /* A group counts as filled once any of its rows carries a figure. The
+           box shows a tick, which is what makes the row of boxes a progress
+           bar rather than just a picker. */
+        function marks(){
+          CROP.groups.forEach(function(g,i){
+            var any=g.items.some(function(it){
+              return crn('cq_'+it.id)>0 || crn('cp_'+it.id)>0 ||
+                     (it.area && crn('ca_'+it.id)>0);
             });
-            document.querySelectorAll('.cr-panel').forEach(function(p){
-              p.classList.toggle('is-off', p.dataset.cgp !== b.dataset.cg);
-            });
+            boxes[i].classList.toggle('done', any);
+          });
+        }
+        window.__crMarks = marks;
+        document.getElementById('cr_groups').addEventListener('input', marks);
+
+        /* Tabbing off the last field of a group steps to the next one, so a
+           straight run down the sheet never needs the mouse. */
+        panels.forEach(function(panel,i){
+          if(i===panels.length-1) return;
+          var ins=panel.querySelectorAll('input:not([disabled])');
+          var lastIn=ins[ins.length-1];
+          if(!lastIn) return;
+          lastIn.addEventListener('keydown', function(e){
+            if(e.key==='Tab' && !e.shiftKey){ e.preventDefault(); show(i+1, true); }
           });
         });
       })();
@@ -9408,6 +9486,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
       document.getElementById('cr_clearall').addEventListener('click', function(){
         crHost.querySelectorAll('#cr_groups input, #cr_macro input').forEach(function(el){ el.value=0; });
         crHost.querySelectorAll('.cr-box-v').forEach(function(el){ el.textContent=''; });
+        if(window.__crMarks) window.__crMarks();
         note.classList.add('is-off'); reset();
       });
       document.getElementById('cr_sample').addEventListener('click', function(){
@@ -9420,6 +9499,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
           var e=document.getElementById('ca_'+k); if(e) e.value=CROP.sample.a[k]; });
         CR_MACRO.forEach(function(m){
           document.getElementById('cm_'+m[0]).value=CROP.macro[m[0]]; });
+        if(window.__crMarks) window.__crMarks();
         note.classList.remove('is-off'); reset();
       });
     })();
