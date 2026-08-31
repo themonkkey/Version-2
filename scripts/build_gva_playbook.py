@@ -55,18 +55,18 @@ GROUP_ORDER = ["Agriculture", "Industry", "Services"]
 GROUP_META = {
     "Agriculture": (
         "#6FA817",
-        "Land, water and what grows on it — where acreage, yield and price "
+        "Land, water and what grows on it: where acreage, yield and price "
         "realisation are the levers a district can actually move.",
     ),
     "Industry": (
         "#2B93BF",
-        "Extracting, making and building — where formalisation, power reliability "
+        "Extracting, making and building: where formalisation, power reliability "
         "and capital works convert into measurable value added. Includes mining, "
         "which the state classification counts here rather than with agriculture.",
     ),
     "Services": (
         "#BF8A2B",
-        "Trade, movement, finance and human capital — the fastest growing share of "
+        "Trade, movement, finance and human capital: the fastest growing share of "
         "most district economies.",
     ),
 }
@@ -155,7 +155,7 @@ def main():
                  "building one from scratch."],
                 ["Small levers compound.",
                  "Timely seed delivery, a faster land-use approval, a cold-chain link "
-                 "— each adds measurable GVA."],
+                 ": each adds measurable GVA."],
                 ["Learn from peers.",
                  "The NITI for States portal and AI tools surface what comparable districts did."],
             ],

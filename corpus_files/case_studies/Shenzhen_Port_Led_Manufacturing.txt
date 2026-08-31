@@ -34,7 +34,7 @@ No GDP contribution — 0.06% of China
 
 Coastal geography, underused land
 
-Cheap labor, zero tech base
+Cheap labour, zero tech base
 
 Received flexible SEZ policy mandate
 
@@ -74,7 +74,7 @@ Foundation Stage
 
 GDP share: 0.06% → 0.5%
 
-Labor-intensive manufacturing via 'Three Supplies One Compensation'. District focus: land allocation, basic roads, power supply, foreign investment facilitation.
+Labour-intensive manufacturing via 'Three Supplies One Compensation'. District focus: land allocation, basic roads, power supply, foreign investment facilitation.
 
 District Role:
 
@@ -128,7 +128,7 @@ Shekou Industrial Zone: attracted HK manufacturers, grew investment from $500M t
 
 Tech Enterprise Incentives
 
-Since 2010: preferential policies for tech firms & high-end talent. Districts ran talent attraction programs.
+Since 2010: preferential policies for tech firms & high-end talent. Districts ran talent attraction programmes.
 
 AP District Collector's Policy Levers (Immediately Available)
 
@@ -146,7 +146,7 @@ Ensure MSME units in your district receive eligible subsidies. Track conversion 
 
 Skilling & Workforce Pipeline
 
-Link ITIs to anchor investors. Co-create skill programs with industries before they set up — not after.
+Link ITIs to anchor investors. Co-create skill programmes with industries before they set up — not after.
 
 Shenzhen's policy success was about speed and autonomy. AP's district collectors have more authority than they typically use. The question is whether systems, processes, and will are in place to act.
 
@@ -185,7 +185,7 @@ District Infrastructure Planning Matrix
 | Port Hinterland Connectivity | Pearl River + deep-water berths → 'front shop' | NH/SH road access to Vizag, KPT, Kakinada — identify last-mile gaps | NHAI, APRRDA, Port Trust |
 | Industrial Power & Water | Uninterrupted 24×7 supply to SEZ zones | Dedicated industrial feeders; water for agri-processing clusters | APEPDCL / APSPDCL, APSIDC |
 | Logistics & Cold Chain | Container depots, air cargo linkage | Inland Container Depots, cold storage clusters near NH junctions | APGICL, NHB, MoRTH |
-| Skill Infrastructure | Co-located ITIs + factory campuses | ITI-to-industry placement MoUs; short-term skill centers in MSME zones | APSSDC, DIC, Industry Assoc. |
+| Skill Infrastructure | Co-located ITIs + factory campuses | ITI-to-industry placement MoUs; short-term skill centres in MSME zones | APSSDC, DIC, Industry Assoc. |
 
 District Task: Commission a District Infrastructure Gap Assessment Report. Use DPIIT/ADB frameworks. Table it at the next DPC meeting.
 
@@ -261,7 +261,7 @@ Supply Chain Ecosystem
 
 Map SMEs that can serve anchor firms as vendors/suppliers
 
-Create vendor development programs through DIC
+Create vendor development programmes through DIC
 
 Build common facility centres (CFCs) for MSMEs
 
@@ -322,7 +322,7 @@ Evidence: Shenzhen spent significant resources on port & road infrastructure bef
 
 ✗ Premature Stage Jump
 
-Evidence: Shenzhen stayed in Stage 1 (labor-intensive) for 12 years before moving to high-tech — allowing capital and skills to accumulate.
+Evidence: Shenzhen stayed in Stage 1 (labour-intensive) for 12 years before moving to high-tech — allowing capital and skills to accumulate.
 
 ✓ Agree on a 5-year horizon for each stage transition. Set KPIs, not just announcements.
 
@@ -334,7 +334,7 @@ District Economic Planning Dashboard — 12-Month Priority Actions
 
 Q1
 
-Commission District Endowment Audit (land, labor, port proximity, existing industries)
+Commission District Endowment Audit (land, labour, port proximity, existing industries)
 
 Owner: DC + DIC
 

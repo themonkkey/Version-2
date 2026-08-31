@@ -1,0 +1,11 @@
+# Exceptions for check_language.py - one regex per line.
+# A finding whose text matches any pattern here is suppressed.
+
+# Bare em-dash placeholder glyphs for missing values: a symbol, not prose.
+^—$
+>—</span>
+
+# Assessment instrument statements are quoted verbatim as administered in the
+# field; the wording is the instrument's, not ours.
+prioritize economic interventions
+prioritize actions

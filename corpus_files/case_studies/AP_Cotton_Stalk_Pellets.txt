@@ -44,7 +44,7 @@ stalks can become pellets, briquettes, biochar and carbon credits
 
 The usual end-of-season problem: stalks occupy fields, removal is laborious, burning causes local air pollution, and farmers receive no value.
 
-The opportunity: organize post-harvest collection through FPOs/SHGs, chip within villages, and link to nearby pellet/briquette units or industrial users.
+The opportunity: organise post-harvest collection through FPOs/SHGs, chip within villages, and link to nearby pellet/briquette units or industrial users.
 
 District lens
 
@@ -146,7 +146,7 @@ Sources: ICAR-CIRCOT logistics model; CAI/Cottonguru URJA case study.
 
 4. Logistics model: the missing link solved
 
-CIRCOT identifies logistics—not pellet technology alone—as the key barrier to cotton stalk utilization.
+CIRCOT identifies logistics—not pellet technology alone—as the key barrier to cotton stalk utilisation.
 
 CIRCOT model
 
@@ -158,7 +158,7 @@ Shred/chip with tractor-operated shredder.
 
 Transport chipped stalks to pellet/briquette plant within a 50 km radius.
 
-Why it fits AP: existing tractors, custom-hiring centres, FPO networks and ginning clusters can be used to organize the seasonal collection window.
+Why it fits AP: existing tractors, custom-hiring centres, FPO networks and ginning clusters can be used to organise the seasonal collection window.
 
 ₹1,000/t
 
@@ -182,7 +182,7 @@ Source: ICAR-CIRCOT, “Logistics Model for Cotton Stalk Supply for Preparation 
 
 5. Business case: value is created at several points
 
-A district program should keep value local: farmers earn, rural youth operate logistics, women SHGs manage distribution and plants get feedstock.
+A district programme should keep value local: farmers earn, rural youth operate logistics, women SHGs manage distribution and plants get feedstock.
 
 Illustrative value from CIRCOT logistics model
 
@@ -276,7 +276,7 @@ Source basis: ANGRAU Cotton Outlook 2022; ICAR-CIRCOT logistics model; recent AP
 
 7. Benefits for district administration
 
-The program can align environment, agriculture, livelihoods and local industry priorities.
+The programme can align environment, agriculture, livelihoods and local industry priorities.
 
 Cleaner villages
 
@@ -358,7 +358,7 @@ Source basis: ICAR-CIRCOT logistics model and URJA community/FPO model.
 
 9. Governance and partnerships
 
-A district mission structure can convert a pilot into a bankable, replicable program.
+A district mission structure can convert a pilot into a bankable, replicable programme.
 
 District Collector / JC
 
@@ -392,7 +392,7 @@ CSR / carbon partners
 
 biochar MRV, carbon credit readiness, buyer financing
 
-Recommended structure: District Cotton Stalk Utilization Cell with a weekly 30-minute review during the harvest/residue collection window.
+Recommended structure: District Cotton Stalk Utilisation Cell with a weekly 30-minute review during the harvest/residue collection window.
 
 Source basis: institutional suggestions adapted for Andhra Pradesh from CIRCOT and URJA case study models.
 
@@ -440,7 +440,7 @@ Source basis: implementation plan adapted from CIRCOT logistics steps and URJA s
 
 11. Ask from district officials
 
-A small, well-governed pilot can unlock a statewide cotton-stalk bioenergy program.
+A small, well-governed pilot can unlock a statewide cotton-stalk bioenergy programme.
 
 Approve district pilot
 
