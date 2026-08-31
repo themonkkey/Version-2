@@ -1676,6 +1676,9 @@ a.docs-leaf:hover .ext{opacity:1;}
   font-size:12.5px;font-weight:700;letter-spacing:.03em;color:var(--lime);}
 .cap-card:hover .cap-go i{transform:translateX(3px);}
 .cap-card .cap-go i{transition:transform .16s;}
+/* No-district state: a muted prompt, not a link, so the reader is pointed at
+   the picker instead of an aggregate page that is not what this card is for. */
+.cap-card .cap-go-muted{color:rgba(198,236,143,.6);font-weight:650;}
 /* Status line for the two cards. The endline instruments exist but the responses
    are not digitised yet, and the page must say so rather than imply a result. */
 .cap-flag{font-size:11.5px;line-height:1.5;color:rgba(255,255,255,.55);
@@ -7988,22 +7991,22 @@ window.__loadCapacity = function(){ loadCapacity(); };
     var two =
       '<div class="cap-two">' +
         '<div class="cap-card" id="' + cid('capFbCard') + '">' +
-          '<a class="cap-card-inner" href="capacity/feedback.html">' +
+          '<div class="cap-card-inner">' +
           '<h3>Training feedback</h3>' +
           '<p>How officers rated each session: objectives, relevance to their role, ' +
           'clarity of the concepts, the case studies, pace, and overall usefulness.</p>' +
           pending +
-          '<span class="cap-go">Open the feedback detail <i class="ti ti-arrow-right"></i></span>' +
-          '</a>' +
+          '<span class="cap-go cap-go-muted">Select a district to open its feedback</span>' +
+          '</div>' +
         '</div>' +
         '<div class="cap-card cap-card-assess" id="' + cid('capAssessCard') + '">' +
-          '<a class="cap-card-inner" href="capacity/assessment.html">' +
+          '<div class="cap-card-inner">' +
           '<h3>Baseline &amp; endline</h3>' +
           '<p>The knowledge assessment run before and after training at all three ' +
           'levels: Swarna Andhra awareness, the KPI framework, and GDP / GVA / GDDP.</p>' +
           pending +
-          '<span class="cap-go">Open the assessment detail <i class="ti ti-arrow-right"></i></span>' +
-          '</a>' +
+          '<span class="cap-go cap-go-muted">Select a district to open its results</span>' +
+          '</div>' +
         '</div>' +
       '</div>';
     CI.assessDefault = null;   // captured from the DOM after paint
