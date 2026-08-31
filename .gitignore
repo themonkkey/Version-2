@@ -56,3 +56,14 @@ landing/_audit_stage.html
 
 # other session review scratch — under landing/, would publish if committed
 landing/__*_tmp.html
+
+# Suggested-interventions engine (scripts/build_suggested_interventions.py):
+# local source docs pulled from the programme Drive, and the pdftotext / docx
+# text caches and per-district briefs. The SHIPPED artifact is
+# landing/assets/suggested_interventions.json and the authored interventions are
+# scripts/suggested_authored.json; both are committed. These inputs are not.
+corpus_files/district_docs/
+scripts/_plan_txt/
+scripts/_drive_txt/
+scripts/_briefs/
+scripts/_suggest_briefs.json

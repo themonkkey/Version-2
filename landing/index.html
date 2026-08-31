@@ -6659,12 +6659,41 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   /* Look up the recommendations for the district currently filtered, if any.
      Returns null when nothing is selected or the district has no entry yet. */
   function recsUnit(){
-    if(!DISTF || !RECS || !RECS.levels || !RECS.levels.district) return null;
-    var by = RECS.levels.district, hit = null;
-    Object.keys(by).forEach(function(k){
-      if(normName(k) === normName(DISTF)) hit = by[k];
+    if(!DISTF) return null;
+    // The all-district layer: diagnosis for every district plus the specialised
+    // SUGGESTED interventions, from suggested_interventions.json.
+    var sugg = null;
+    if(SUGG && SUGG.districts){
+      Object.keys(SUGG.districts).forEach(function(k){
+        if(normName(SUGG.districts[k].name) === normName(DISTF)) sugg = SUGG.districts[k];
+      });
+    }
+    // The verbatim PLAN-quote layer, where a district's plan has been anchored
+    // (Kurnool for now), from recommendations.json.
+    var rec = null;
+    if(RECS && RECS.levels && RECS.levels.district){
+      var by = RECS.levels.district;
+      Object.keys(by).forEach(function(k){
+        if(normName(k) === normName(DISTF)) rec = by[k];
+      });
+    }
+    if(!sugg) return rec;                       // no suggestions built yet
+    if(!rec) return sugg;                        // most districts: diagnosis + suggestions
+    // Kurnool: overlay the verified prescriptions onto the all-district recs, so
+    // a sector the plan names keeps its quotes while a silent one shows the
+    // suggestion. Match by bucket; the prescription rec wins, carrying the
+    // suggestion across for its own silent-sector branch.
+    var presByBucket = {};
+    (rec.recs || []).forEach(function(r){ presByBucket[r.bucket] = r; });
+    var merged = (sugg.recs || []).map(function(s){
+      var p = presByBucket[s.bucket];
+      if(p){ var m = {}; for(var kk in p) m[kk] = p[kk];
+             m.suggested = s.suggested; m.grounding = s.grounding; return m; }
+      return s;
     });
-    return hit;
+    return { name: rec.name || sugg.name,
+             districts_total: rec.districts_total || sugg.districts_total,
+             data_year: rec.data_year || sugg.data_year, recs: merged };
   }
 
   /* The district layer for ONE playbook sector, shown in the drop box when that
@@ -6737,6 +6766,14 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       var summary = nCon + (nCon === 1 ? ' constraint' : ' constraints') + ' named' +
                     (nIv ? ' · ' + nIv + (nIv === 1 ? ' intervention' : ' interventions') : '');
 
+      /* The specialised suggestions for this district and sector, authored by
+         the engine from the district's own plan, its field/WOOP docs and the
+         toolkit. Falls back to the generic playbook actions if none were built. */
+      var rsug = (r.suggested && r.suggested.length) ? r.suggested : sugActions;
+      var rnote = (r.grounding ? esc2(r.grounding) + ' ' :
+                   'Drawn from the ' + esc2(sugTitle) + ' sector playbook and general sector practice. ') +
+                  'Weigh them as options, not commitments.';
+
       /* No per-card playbook button here: the playbook is one button for the
          whole box, below, because every card in this box shares it. */
       return '<section class="rec-item rec-' + esc2(r.pattern) + '">' +
@@ -6755,15 +6792,15 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
                          '<span class="rec-detsum">'+esc2(summary)+'</span>' +
                          '<i class="ti ti-chevron-down"></i></summary>' +
                          '<div class="rec-presw">'+pres+'</div></details>'
-                     : (sugActions.length
+                     : (rsug.length
                         ? '<details class="rec-det rec-det-sug"><summary>' +
-                            '<span class="rec-detsum">No plan interventions \u00b7 '+sugActions.length+' suggested</span>' +
+                            '<span class="rec-detsum">No plan interventions \u00b7 '+rsug.length+' suggested</span>' +
                             '<i class="ti ti-chevron-down"></i></summary>' +
                             '<div class="rec-presw"><article class="rec-pres rec-pres-sug">' +
                               '<div class="rec-act">' +
                                 '<div class="rec-tag rec-tag-sug">Suggested interventions</div>' +
-                                '<ol class="rec-ivs">'+sugActions.map(function(i){return '<li>'+esc2(i)+'</li>';}).join('')+'</ol>' +
-                                '<p class="rec-sugnote">Drawn from the '+esc2(sugTitle)+' sector playbook and general sector practice; weigh them as options, not commitments.</p>' +
+                                '<ol class="rec-ivs">'+rsug.map(function(i){return '<li>'+esc2(i)+'</li>';}).join('')+'</ol>' +
+                                '<p class="rec-sugnote">'+rnote+'</p>' +
                               '</div>' +
                             '</article></div></details>'
                         : '<p class="rec-none">The district plan does not name interventions ' +
@@ -6772,14 +6809,22 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     }).join('');
 
     var top = mine.slice().sort(function(a, b){ return a.rank - b.rank; })[0];
+    /* The lede is honest about what the reader is looking at: a district whose
+       plan has been anchored shows its own quoted interventions, and every
+       district shows specialised suggestions where the plan is silent. */
+    var anyPres = mine.some(function(r){ return (r.prescription || []).length; });
+    var lede = anyPres
+      ? 'The district’s position here, with the interventions its own Vision and ' +
+        'Action Plan names against it, and specialised suggestions where the plan is silent. '
+      : 'The district’s position here, with specialised suggestions for raising each ' +
+        'sector, grounded in the district plan, the sector toolkit and field notes. ';
     return '<div class="gva-districtblk">' +
              '<div class="gva-dbhead">' +
                '<h4>Where ' + esc2(unit.name) + ' stands</h4>' +
                '<span class="gva-dbtag">' + mine.length +
                  (mine.length === 1 ? ' sector' : ' sectors') + '</span>' +
              '</div>' +
-             '<p class="gva-dblede">The district’s position here, and the interventions its own ' +
-             'Vision and Action Plan names against it. ' +
+             '<p class="gva-dblede">' + lede +
              (top ? esc2(top.label) + ' ranks #' + top.rank + ' across all of ' +
                     esc2(unit.name) + '’s sectors. ' : '') +
              'Figures are from ' + esc2(unit.data_year || 'the latest year') + '.</p>' +
@@ -7056,12 +7101,23 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       .catch(function(err){ RECS = {}; console.warn('recommendations unavailable', err); });
   }
 
+  var SUGG = null;
+  function loadSuggested(){
+    /* The all-district diagnosis + specialised suggestions. Same rule: a failure
+       here must not break the playbook, so it resolves to an empty set. */
+    return fetch('assets/suggested_interventions.json?v=2026-08-31a')
+      .then(function(r){ return r.json(); })
+      .then(function(j){ SUGG = j; })
+      .catch(function(err){ SUGG = { districts:{} }; console.warn('suggestions unavailable', err); });
+  }
+
   function loadGva(){
     if(gvaLoaded || gvaLoading) return;
     gvaLoading = true;
     Promise.all([
       fetch('assets/gva_playbook.json?v=2026-08-17a').then(function(r){ return r.json(); }),
-      loadRecs()
+      loadRecs(),
+      loadSuggested()
     ]).then(function(res){ var j = res[0];
       return j; })
       .then(function(j){ GVA=j; gvaLoaded=true; gvaLoading=false; renderGva(); applyGvaFilter(); })
