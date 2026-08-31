@@ -6569,8 +6569,8 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
                  .concat(CASES.model.filter(caseMatchesDistrict));
       if(mine.length){
         casesBody.innerHTML =
-          group('Case studies for ' + DISTF,
-                'Selected for this district by the capacity-building programme.', mine);
+          group('Relevant case studies for ' + DISTF,
+                'Discussed during the capacity building sessions.', mine);
         return;
       }
       casesBody.innerHTML =
@@ -7619,9 +7619,15 @@ window.__loadCapacity = function(){ loadCapacity(); };
       (s.kind ? '<span class="cap-kind">'+esc(s.kind)+'</span>' : '') +
       '</div>';
 
+    /* A day where the session did not actually run (a note, but no attendance
+       and nothing to report) shows only the note: the three fact boxes would
+       just say dashes around it (PIF). */
+    var hp0 = sessionPoints(s);
+    var skipped = !hp0.points.length && !s.participants && !!s.note;
+
     /* the three facts */
     var mode = sessionMode(s.format, s.coverage);
-    var facts = '<div class="cap-facts">' +
+    var facts = skipped ? '' : '<div class="cap-facts">' +
       '<div class="cap-fact cap-fact-type"><span class="k">Type of training</span>' +
         '<span class="v">'+(TYPE_LBL[s.level]||'District level')+'</span>' +
         '<span class="s">'+(TYPE_SUB[s.level]||'District officers')+'</span></div>' +
@@ -7639,7 +7645,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
     '</div>';
 
     /* highlights */
-    var hp = sessionPoints(s), hl = '';
+    var hp = hp0, hl = '';
     if(hp.points.length){
       var lastHead = null, items = [];
       hp.points.forEach(function(p, i){
@@ -7754,6 +7760,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
         '<p class="lede">Choose a district from the dropdown above to see its ' +
         'training sessions, attendance, and highlights.</p>' +
       '</div>';
+    capSectionHeads(null);
     var meta = cel('capMeta');
     if(meta) meta.innerHTML = '';
     // The teaser cards already carry their generic default copy from the
@@ -7761,24 +7768,41 @@ window.__loadCapacity = function(){ loadCapacity(); };
     // is actually chosen and renderFeedback/renderResults overwrite them.
   }
 
+  /* The section header above the capacity body: generic copy until a district
+     is chosen, then it names the district and what the record holds (PIF).
+     One DOM body moves between two slots, so both headers are kept in step. */
+  function capSectionHeads(d){
+    ['#capacityView .sec-head', '#capRecord .sec-head'].forEach(function(sel){
+      var head = document.querySelector(sel);
+      if(!head) return;
+      var h2 = head.querySelector('h2'), p = head.querySelector('p');
+      if(!h2 || !p) return;
+      if(h2.dataset.def == null){ h2.dataset.def = h2.textContent; p.dataset.def = p.textContent; }
+      if(d){
+        h2.textContent = 'Details of the ' + d.name + ' capacity building programme';
+        p.textContent  = 'The participants, the day-wise report, the training feedback and the assessment, all from the filed reports.';
+      } else {
+        h2.textContent = h2.dataset.def;
+        p.textContent  = p.dataset.def;
+      }
+    });
+  }
+
   function renderBrief(d){
     var inst = CI;          /* captured for the handlers bound below */
     CI.shots = [];
+    capSectionHeads(d);
     var span = (d.date_from && d.date_to)
-      ? prettyDate(d.date_from) + ' – ' + prettyDate(d.date_to) : '';
-    var lede = 'The programme ran ' + d.sessions_delivered + ' session' +
-      (d.sessions_delivered === 1 ? '' : 's') + ' in ' + d.name +
-      (span ? ', ' + span : '') + '. Each day is summarised in the same card: ' +
-      'the type of training, how many officers attended, how it was held, the ' +
-      'highlights, and who was in the room. Pick a day to read that report.';
+      ? prettyDate(d.date_from) + ' to ' + prettyDate(d.date_to) : '';
 
     d.sessions.forEach(function(s, i){ s._domId = 'cap-sess-' + i; });
     CI.activeIdx = 0;   // day one, every time a district is opened
 
     var brief = cel('capBrief');
     brief.innerHTML = '<div class="cap-brief">' +
-      '<h3>Brief of the training: ' + esc(d.name) + '</h3>' +
-      '<p class="lede">' + esc(lede) + '</p>' +
+      '<h3>Day-wise capacity building programme in ' + esc(d.name) +
+        (span ? ' (' + esc(span) + ')' : '') + '</h3>' +
+      '<p class="lede">Pick a day to read that day&rsquo;s report.</p>' +
       '<div id="' + cid('capPager') + '"></div>' +
       '<div id="' + cid('capActiveSess') + '"></div>' +
     '</div>';
