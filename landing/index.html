@@ -7761,11 +7761,40 @@ window.__loadCapacity = function(){ loadCapacity(); };
         'training sessions, attendance, and highlights.</p>' +
       '</div>';
     capSectionHeads(null);
+    var strp0 = cel('capStrip');
+    if(strp0) strp0.innerHTML = capStripTiles(null);
     var meta = cel('capMeta');
     if(meta) meta.innerHTML = '';
     // The teaser cards already carry their generic default copy from the
     // markup renderCapacity() writes; nothing to reset there until a district
     // is actually chosen and renderFeedback/renderResults overwrite them.
+  }
+
+  /* The stat strip: programme-wide totals until a district is chosen, then
+     that district's own record (PIF). Same five-tile shape either way. */
+  function capStripTiles(d){
+    function tile(v,k,s){
+      return '<div class="cap-stat"><div class="v">'+v+'</div><div class="k">'+k+'</div>'+
+             (s ? '<div class="s">'+s+'</div>' : '')+'</div>';
+    }
+    if(d){
+      var LVORD = ['district','constituency','master'];
+      var lv = (d.levels || []).slice().sort(function(a,b){
+        return LVORD.indexOf(a) - LVORD.indexOf(b); });
+      return tile(d.sessions_delivered, 'Sessions',
+                  shortDate(d.date_from)+' – '+shortDate(d.date_to)) +
+             tile(d.sessions_total, 'Filed reports', 'one per training day') +
+             tile(nfmt(d.participants_total), 'Attendances',
+                  'across '+d.participants_reported_for+' sessions with a count') +
+             tile(nfmt(d.photos_total), 'Photographs', 'filed with the reports') +
+             tile(lv.length, (lv.length===1?'Level':'Levels'), esc(lv.join(' · ')));
+    }
+    var t = CAP.totals;
+    return tile(t.districts, 'Districts', shortDate(t.date_from)+' – '+shortDate(t.date_to)) +
+           tile(t.sessions_delivered, 'Sessions', 'across '+t.sessions+' filed reports') +
+           tile(nfmt(t.participants), 'Attendances', 'where a count was reported') +
+           tile(nfmt(t.photos), 'Photographs', 'filed with the reports') +
+           tile(3, 'Levels', 'district · constituency · master');
   }
 
   /* The section header above the capacity body: generic copy until a district
@@ -7792,6 +7821,8 @@ window.__loadCapacity = function(){ loadCapacity(); };
     var inst = CI;          /* captured for the handlers bound below */
     CI.shots = [];
     capSectionHeads(d);
+    var strp = cel('capStrip');
+    if(strp) strp.innerHTML = capStripTiles(d);
     var span = (d.date_from && d.date_to)
       ? prettyDate(d.date_from) + ' to ' + prettyDate(d.date_to) : '';
 
@@ -8018,18 +8049,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
     var baseline = papers.filter(function(p){ return p.stage === 'baseline'; });
 
     var strip =
-      '<div class="cap-strip">' +
-        '<div class="cap-stat"><div class="v">' + t.districts + '</div><div class="k">Districts</div>' +
-          '<div class="s">' + shortDate(t.date_from) + ' – ' + shortDate(t.date_to) + '</div></div>' +
-        '<div class="cap-stat"><div class="v">' + t.sessions_delivered + '</div><div class="k">Sessions</div>' +
-          '<div class="s">across ' + t.sessions + ' filed reports</div></div>' +
-        '<div class="cap-stat"><div class="v">' + nfmt(t.participants) + '</div><div class="k">Attendances</div>' +
-          '<div class="s">where a count was reported</div></div>' +
-        '<div class="cap-stat"><div class="v">' + nfmt(t.photos) + '</div><div class="k">Photographs</div>' +
-          '<div class="s">filed with the reports</div></div>' +
-        '<div class="cap-stat"><div class="v">3</div><div class="k">Levels</div>' +
-          '<div class="s">district · constituency · master</div></div>' +
-      '</div>';
+      '<div class="cap-strip" id="' + cid('capStrip') + '">' + capStripTiles(null) + '</div>';
 
     var opts = CAP.districts.map(function(d, i){
       return '<option value="'+i+'">' + esc(d.name) + '</option>';
