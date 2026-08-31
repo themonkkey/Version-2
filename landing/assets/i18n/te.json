@@ -314,13 +314,11 @@
  "The Government of India and Andhra Pradesh cover the same sixteen sub-sectors but draw the boundary in different places. Andhra Pradesh moves Mining and Quarrying out of Primary and into Industry.": "భారత ప్రభుత్వం మరియు ఆంధ్రప్రదేశ్ అవే పదహారు ఉప-రంగాలను కవర్ చేస్తాయి కానీ సరిహద్దును వేర్వేరు చోట్ల గీస్తాయి. ఆంధ్రప్రదేశ్ మైనింగ్ మరియు క్వారీయింగ్‌ను ప్రైమరీ నుండి పరిశ్రమకు మారుస్తుంది.",
  "The Swarna Andhra 2047 vision documents, from the state plan down to every constituency and mandal.": "రాష్ట్ర ప్రణాళిక నుంచి ప్రతి నియోజకవర్గం, ప్రతి మండలం వరకు విస్తరించిన స్వర్ణ ఆంధ్ర 2047 విజన్ పత్రాలు.",
  "The assistant holds every figure behind these pages, for all 28 districts, and tells you which document each answer came from.": "ఈ పేజీల వెనుక ఉన్న ప్రతి గణాంకాన్ని సహాయకుడు మొత్తం 28 జిల్లాలకూ కలిగి ఉంటాడు; ప్రతి సమాధానం ఏ పత్రం నుంచి వచ్చిందో కూడా తెలియజేస్తాడు.",
- "The case studies taught in the programme, each downloadable as a slide deck in English and Telugu.": "కార్యక్రమంలో బోధించిన కేస్ స్టడీలు, ప్రతి ఒక్కటి ఇంగ్లీష్ మరియు తెలుగులో స్లయిడ్ డెక్‌గా డౌన్‌లోడ్ చేసుకోవచ్చు.",
  "The core rule: use the same sectoral logic as the state accounts wherever district data exists, and apportion the state estimate on the best available indicator where it does not.": "ప్రధాన నియమం: జిల్లా డేటా ఉన్నచోట రాష్ట్ర ఖాతాల రంగ తర్కాన్నే వాడాలి, లేనిచోట అందుబాటులో ఉన్న ఉత్తమ సూచికపై రాష్ట్ర అంచనాను పంచాలి.",
  "The district officer's leverage": "జిల్లా అధికారి చేతిలోని శక్తి",
  "The early estimates swing around the truth, each revision settles closer, and the Third Revised Estimate is final.": "తొలి అంచనాలు నిజం చుట్టూ ఊగుతాయి, ప్రతి సవరణ మరింత దగ్గరగా స్థిరపడుతుంది, మూడవ సవరించిన అంచనా తుది.",
  "The map": "మ్యాప్",
  "The method": "పద్ధతి",
- "The official method, from state total to rupees per person, as taught in the Swarna Andhra capacity building programme.": "రాష్ట్ర మొత్తం నుండి తలసరి రూపాయల వరకు అధికారిక పద్ధతి, స్వర్ణ ఆంధ్ర సామర్థ్య నిర్మాణ కార్యక్రమంలో బోధించినట్లు.",
  "The platform": "వేదిక",
  "The programme": "కార్యక్రమం",
  "The same activity is counted nationally, by state, by district and by mandal. Data availability falls and estimation difficulty rises at every step down.": "ఒకే కార్యకలాపం జాతీయంగా, రాష్ట్రం, జిల్లా మరియు మండలం వారీగా లెక్కించబడుతుంది. ప్రతి కింది మెట్టులో డేటా లభ్యత తగ్గి, అంచనా కష్టం పెరుగుతుంది.",
@@ -382,5 +380,7 @@
  "nation": "దేశం",
  "shared out on an indicator": "ఒక సూచికపై పంచబడుతుంది",
  "shared out on indicators": "సూచికలపై పంచబడుతుంది",
- "state": "రాష్ట్రం"
+ "state": "రాష్ట్రం",
+ "The official method, from state total to rupees per person, as delivered in the Swarna Andhra capacity building programme.": "రాష్ట్ర మొత్తం నుండి తలసరి రూపాయల వరకు అధికారిక పద్ధతి, స్వర్ణ ఆంధ్ర సామర్థ్య నిర్మాణ కార్యక్రమంలో అందించినట్లు.",
+ "The case studies discussed in the programme, each downloadable as a slide deck in English and Telugu.": "కార్యక్రమంలో చర్చించిన కేస్ స్టడీలు, ప్రతి ఒక్కటి ఇంగ్లీష్ మరియు తెలుగులో స్లయిడ్ డెక్‌గా డౌన్‌లోడ్ చేసుకోవచ్చు."
 }
