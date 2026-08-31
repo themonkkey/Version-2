@@ -5271,6 +5271,11 @@ function go(page, push){
      and landing on the empty state after opening one district's feedback would
      lose the reader's place. DTABS_DISTRICT is the same entry point the map
      uses, so the dropdown, the brief and the filter all follow. */
+  /* #calculator/<sector> deep-links and replays the sector picker; the bare
+     hash (or an unknown segment) falls back to the first tab. */
+  if(page==='calculator' && window.__calcSector){
+    window.__calcSector(decodeSeg(location.hash.replace(/^#/,'').split('/')[1] || ''));
+  }
   if(page==='cases' && window.__loadCasesPage) window.__loadCasesPage();
   if(page==='capacity' && window.__loadCapacity){
     window.__loadCapacity();
@@ -8417,7 +8422,9 @@ window.__loadCapacity = function(){ loadCapacity(); };
     var bar = document.getElementById('dtabFilterBar');
     if(bar){
       bar.hidden = !DISTF;
-      if(DISTF) document.getElementById('dtabFilterName').textContent = DISTF;
+      /* Clear the text too, not just the visibility: a stale name in the
+         hidden chip flashes the wrong district when the bar next shows. */
+      document.getElementById('dtabFilterName').textContent = DISTF || '';
     }
     applyDocsFilter(); applyCapFilter(); applyGvaFilter(); applyCasesFilter();
   };
@@ -8463,15 +8470,30 @@ window.__loadCapacity = function(){ loadCapacity(); };
 
     // ---- tab switching (sector picker — one tab today, built for more)
     var tabs = root.querySelectorAll('.calc-tab');
+    function applySector(sec){
+      var target = null;
+      tabs.forEach(function(o){ if(o.dataset.sector === sec) target = o; });
+      if(!target) target = tabs[0];   // unknown or empty segment: the default
+      tabs.forEach(function(o){
+        var on = o === target;
+        o.classList.toggle('on', on);
+        o.setAttribute('aria-selected', on ? 'true' : 'false');
+        var panel = document.getElementById('sector-' + o.dataset.sector);
+        if(panel) panel.hidden = !on;
+      });
+    }
+    /* The router replays the sector from the hash (go()'s calculator branch),
+       so Back/Forward and a shared #calculator/livestock link both land on the
+       right sector instead of silently resetting to fisheries. */
+    window.__calcSector = applySector;
     tabs.forEach(function(t){
       t.addEventListener('click', function(){
-        tabs.forEach(function(o){
-          var on = o === t;
-          o.classList.toggle('on', on);
-          o.setAttribute('aria-selected', on ? 'true' : 'false');
-          var panel = document.getElementById('sector-' + o.dataset.sector);
-          if(panel) panel.hidden = !on;
-        });
+        applySector(t.dataset.sector);
+        if(location.hash.replace(/^#/,'').split('/')[0] === 'calculator'){
+          var want = '#calculator' +
+            (t.dataset.sector === tabs[0].dataset.sector ? '' : '/' + t.dataset.sector);
+          if(location.hash !== want) history.pushState(null, '', want);
+        }
       });
     });
 
