@@ -1663,7 +1663,7 @@ a.docs-leaf:hover .ext{opacity:1;}
   background-color:rgba(12,52,35,.86);}
 .cap-card:focus-visible{outline:2px solid var(--lime);outline-offset:3px;}
 .cap-card h3{font-size:clamp(16px,1.9vw,19px);font-weight:700;color:#FFF;margin:0 0 6px;}
-.cap-card > p{font-size:13.5px;line-height:1.58;color:rgba(255,255,255,.78);margin:0 0 14px;}
+.cap-card > p,.cap-card .cap-card-inner > p{font-size:13.5px;line-height:1.58;color:rgba(255,255,255,.78);margin:0 0 14px;}
 .cap-mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:10px;
   margin-bottom:14px;}
 .cap-mini div{border-radius:12px;padding:9px 11px;background:rgba(255,255,255,.06);
@@ -7912,18 +7912,38 @@ window.__loadCapacity = function(){ loadCapacity(); };
     if(!card) return;
     if(CI.fbDefault == null) CI.fbDefault = card.innerHTML;
     var rec = CAPF && CAPF.districts && CAPF.districts[d.slug];
-    if(!rec || !rec.levels){ card.innerHTML = CI.fbDefault; return; }
+    /* A district is chosen here, so 'select a district' would be wrong: say
+       plainly that this district's sheets are not in yet. */
+    var fbNone =
+      '<div class="cap-card-inner">' +
+      '<h3>Training feedback</h3>' +
+      '<p>How officers rated each session: objectives, relevance to their role, ' +
+      'clarity of the concepts, the case studies, pace, and overall usefulness.</p>' +
+      '<span class="cap-go cap-go-muted">No feedback filed for ' + esc(d.name) + ' yet</span>' +
+      '</div>';
+    if(!rec || !rec.levels){ card.innerHTML = fbNone; return; }
     /* Feedback is filed per level and the three rounds can differ sharply, so
        the card leads with the district round and names which one it is showing
        rather than blending them. The page behind it opens on the same level. */
     var ORDER = ['district', 'constituency', 'master'];
-    var lvKey = ORDER.filter(function(k){ return rec.levels[k]; })[0];
-    if(!lvKey){ card.innerHTML = CI.fbDefault; return; }
+    var have  = ORDER.filter(function(k){ return rec.levels[k]; });
+    var lvKey = have[0];
+    if(!lvKey){ card.innerHTML = fbNone; return; }
+    /* Name the district and say exactly which rounds it filed and how many
+       officers responded, so the card reads as this district's record rather
+       than boilerplate. The scores themselves stay one click away. */
+    var LVN = { district:'district', constituency:'constituency', master:'master-training' };
+    var rounds = have.map(function(k){ return LVN[k]; });
+    var roundTxt = rounds.length === 1 ? rounds[0] + ' round' :
+                   rounds.slice(0,-1).join(', ') + ' and ' + rounds[rounds.length-1] + ' rounds';
+    var nTot = have.reduce(function(s,k){ return s + (Number(rec.levels[k].n) || 0); }, 0);
     card.innerHTML =
       '<a class="cap-card-inner" href="capacity/feedback-results.html?d='+encodeURIComponent(d.slug)+'&lv='+lvKey+'">' +
       '<h3>Training feedback</h3>' +
-      '<p>Feedback given by officers on overall training quality and relevance, across the district, constituency and master-training levels. Open the full feedback for the round-by-round, statement-by-statement scores.</p>' +
-      '<span class="cap-go">Open the full feedback <i class="ti ti-arrow-right"></i></span>' +
+      '<p>How ' + esc(d.name) + '’s officers rated the training: feedback was filed at the ' +
+      roundTxt + (nTot ? ', from ' + nfmt(nTot) + ' officers in all' : '') +
+      '. Open the full feedback for the statement-by-statement scores.</p>' +
+      '<span class="cap-go">Open ' + esc(d.name) + '’s feedback <i class="ti ti-arrow-right"></i></span>' +
       '</a>';
   }
 
@@ -7934,18 +7954,33 @@ window.__loadCapacity = function(){ loadCapacity(); };
     if(CI.assessDefault == null) CI.assessDefault = card.innerHTML;
     var rec = CAPR && CAPR.districts && CAPR.districts[d.slug];
     if(!rec){
-      card.innerHTML = CI.assessDefault;
+      /* District chosen but no assessment sheets in: say so by name. */
+      card.innerHTML =
+        '<div class="cap-card-inner">' +
+        '<h3>Baseline &amp; endline</h3>' +
+        '<p>The knowledge assessment run before and after training: Swarna Andhra ' +
+        'awareness, the KPI framework, and GDP / GVA / GDDP.</p>' +
+        '<span class="cap-go cap-go-muted">No assessment filed for ' + esc(d.name) + ' yet</span>' +
+        '</div>';
       card.classList.remove('has-results');
       return;
     }
     /* the card itself carries the scores per type of training and links to
        the full report page */
     card.classList.add('has-results');
+    /* Same principle as the feedback card: say what ran in THIS district.
+       levels[] carries one entry per round that was assessed here. */
+    var lvs = (rec.levels || []);
+    var nLv = lvs.length;
+    var lvTxt = nLv === 1 ? 'one training level' :
+                nLv === 2 ? 'two training levels' :
+                nLv === 3 ? 'all three training levels' : nLv + ' training levels';
     card.innerHTML =
       '<a class="cap-card-inner" href="capacity/results.html?d='+encodeURIComponent(d.slug)+'">' +
       '<h3>Baseline &amp; endline</h3>' +
-      '<p>A baseline records what officers knew before the training; an endline measures the same after it. Open the full results to see the before and after scores for each training level.</p>' +
-      '<span class="cap-go">Open the full results <i class="ti ti-arrow-right"></i></span>' +
+      '<p>What ' + esc(d.name) + '’s officers knew before the training and after it: the assessment ran at ' +
+      lvTxt + ', a baseline before each round and an endline after. Open the full results for the before-and-after scores.</p>' +
+      '<span class="cap-go">Open ' + esc(d.name) + '’s results <i class="ti ti-arrow-right"></i></span>' +
       '</a>';
   }
 
