@@ -2161,6 +2161,12 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
   width:14px;height:14px;line-height:14px;text-align:center;border-radius:4px;
   background:rgba(198,236,143,.85);font-variant-numeric:tabular-nums;}
 .rec-none{font-size:12.8px;line-height:1.55;color:rgba(255,255,255,.55);margin:0;font-style:italic;}
+/* Suggested interventions (shown when the district plan names none): advisory
+   lime accent so they never read as the district's own committed plan. */
+.rec-pres-sug{border-color:rgba(198,236,143,.22)!important;background:rgba(198,236,143,.05)!important;}
+.rec-tag-sug{color:rgba(198,236,143,.9);}
+.rec-det-sug .rec-detsum{color:rgba(198,236,143,.9);}
+.rec-sugnote{font-size:11px;line-height:1.5;color:rgba(255,255,255,.5);margin:9px 0 0;font-style:italic;}
 .rec-count{font-size:12.6px;line-height:1.5;color:rgba(198,236,143,.85);margin:0;font-weight:600;}
 /* The district layer renders in the full-width detail box under the accordion.
    One sector card per row, using the whole width. Sharing the row between two
@@ -6664,8 +6670,9 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   /* The district layer for ONE playbook sector, shown in the drop box when that
      sector is picked. Several buckets can map to one key: Crops and
      Horticulture both frame as `crops`, every services line as `services`. */
-  function recsForSector(key){
+  function recsForSector(sec){
     var unit = recsUnit();
+    var key = sec && sec.key;
     if(!unit || !key) return '';
     var mine = (unit.recs || []).filter(function(r){ return r.playbook_sector === key; });
     if(!mine.length) return '';
@@ -6673,6 +6680,12 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
        classification, so Crops comes before Horticulture as the sector title
        reads. The rank badge still carries the priority. */
     mine = mine.slice().sort(function(a, b){ return (a.order || 0) - (b.order || 0); });
+    /* When the district plan is silent on a sector, the card should not dead-end.
+       The sector playbook (the Toolkit) already carries curated, sourced actions;
+       surface those as SUGGESTIONS, clearly marked as not from the district plan. */
+    var sugActions = (sec && sec.actions && sec.actions.length) ? sec.actions
+                   : (sec && sec.pathways ? sec.pathways : []);
+    var sugTitle = (sec && sec.title) ? sec.title : 'sector';
 
     var blocks = mine.map(function(r){
       var d = r.diagnosis, g = d.growth_pct;
@@ -6698,7 +6711,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
       var pres = (r.prescription || []).map(function(p, pi){
         var ivs = p.interventions.length
           ? '<div class="rec-act">' +
-              '<div class="rec-tag">What the plan proposes</div>' +
+              '<div class="rec-tag">Proposed interventions</div>' +
               '<ol class="rec-ivs">' + p.interventions.map(function(i){
                 return '<li>'+esc2(i)+'</li>'; }).join('') + '</ol>' +
             '</div>' : '';
@@ -6742,8 +6755,19 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
                          '<span class="rec-detsum">'+esc2(summary)+'</span>' +
                          '<i class="ti ti-chevron-down"></i></summary>' +
                          '<div class="rec-presw">'+pres+'</div></details>'
-                     : '<p class="rec-none">The district plan does not name interventions ' +
-                       'for this one. The sector playbook still applies.</p>') +
+                     : (sugActions.length
+                        ? '<details class="rec-det rec-det-sug"><summary>' +
+                            '<span class="rec-detsum">No plan interventions \u00b7 '+sugActions.length+' suggested</span>' +
+                            '<i class="ti ti-chevron-down"></i></summary>' +
+                            '<div class="rec-presw"><article class="rec-pres rec-pres-sug">' +
+                              '<div class="rec-act">' +
+                                '<div class="rec-tag rec-tag-sug">Suggested interventions</div>' +
+                                '<ol class="rec-ivs">'+sugActions.map(function(i){return '<li>'+esc2(i)+'</li>';}).join('')+'</ol>' +
+                                '<p class="rec-sugnote">Drawn from the '+esc2(sugTitle)+' sector playbook and general sector practice; weigh them as options, not commitments.</p>' +
+                              '</div>' +
+                            '</article></div></details>'
+                        : '<p class="rec-none">The district plan does not name interventions ' +
+                          'for this one. The sector playbook still applies.</p>')) +
              '</section>';
     }).join('');
 
@@ -6767,7 +6791,7 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
      with the state-wide playbook one button away rather than pushed in front of
      it; with no district selected the playbook IS the content, as before. */
   function sectorDetailHtml(s){
-    var dist = recsForSector(s.key);
+    var dist = recsForSector(s);
     if(!dist) return gvaSectorBody(s);
     return dist +
       '<div class="gva-pbwrap">' +
