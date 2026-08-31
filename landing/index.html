@@ -8106,7 +8106,15 @@ window.__loadCapacity = function(){ loadCapacity(); };
     var inst = CI;          /* every handler below belongs to THIS copy */
     var sel = cel('capDistrict');
     sel.addEventListener('change', function(){
-      withCap(inst, function(){ renderBrief(CAP.districts[+sel.value]); });
+      var d = CAP.districts[+sel.value];
+      withCap(inst, function(){ renderBrief(d); });
+      /* Keep the site-wide district filter in step: picking a district here
+         should read the same as picking it on the map, or the chip above
+         would keep naming the old district (PIF). capScopeTo sees the select
+         already on this district and does not re-render, so no loop. */
+      if(window.DTABS_DISTRICT && (!DISTF || normName(DISTF) !== normName(d.name))){
+        window.DTABS_DISTRICT(d.name);
+      }
     });
     /* Whoever asked first wins: a district in the capacity URL, else the map's
        filter for the districts tab, else nothing selected. */
