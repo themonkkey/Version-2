@@ -7819,8 +7819,6 @@ window.__loadCapacity = function(){ loadCapacity(); };
      two rounds side by side, then the comparison in the report's own words.
      Every figure is transcribed from the report; nothing is computed here.
      Districts without a report keep the two instrument cards instead. */
-  function pctf(x){ return (x == null) ? '—' : (Math.round(x * 10) / 10).toFixed(1).replace(/\.0$/, '') + '%'; }
-  function numf(x){ return (x == null) ? '—' : String(Math.round(x * 100) / 100); }
 
 
   /* Training feedback, where the district has filed one. Same shape as the
@@ -7838,41 +7836,10 @@ window.__loadCapacity = function(){ loadCapacity(); };
     var ORDER = ['district', 'constituency', 'master'];
     var lvKey = ORDER.filter(function(k){ return rec.levels[k]; })[0];
     if(!lvKey){ card.innerHTML = CI.fbDefault; return; }
-    var lv = rec.levels[lvKey];
-    var filed = ORDER.filter(function(k){ return rec.levels[k]; }).length;
-    /* The four statements the feedback page reports, by their number on the
-       nine-statement instrument. Kept in step with SHOW_Q in
-       capacity/feedback-results.html: the card names the highest and lowest
-       rated statement, and naming one the page behind it does not list would
-       send the reader looking for a row that is not there. */
-    var SHOW_Q = [3, 4, 5, 9];
-    var all = lv.questions || [];
-    var qs = all.filter(function(q){ return SHOW_Q.indexOf(q.n) !== -1; });
-    if(!qs.length) qs = all;
-    var best = qs.length ? qs.reduce(function(a,b){ return b.avg > a.avg ? b : a; }) : null;
-    var worst = qs.length ? qs.reduce(function(a,b){ return b.avg < a.avg ? b : a; }) : null;
     card.innerHTML =
       '<a class="cap-card-inner" href="capacity/feedback-results.html?d='+encodeURIComponent(d.slug)+'&lv='+lvKey+'">' +
       '<h3>Training feedback</h3>' +
-      '<p>How officers in '+esc(rec.name)+' rated the '+esc(lv.label.toLowerCase())+', scored 1 to 5' +
-        (filed > 1 ? '. '+filed+' rounds filed feedback' : '') + '.</p>' +
-      '<div class="cap-mini">' +
-        '<div><div class="v">'+lv.avg.toFixed(2)+'<small>/5</small></div><div class="k">Average</div></div>' +
-        '<div><div class="v">'+lv.n+'</div><div class="k">Responses</div></div>' +
-        '<div><div class="v">'+lv.favorable.toFixed(1)+'<small>%</small></div><div class="k">Favourable</div></div>' +
-      '</div>' +
-      /* a flat four-statement result names the same row twice otherwise */
-      (best && worst && best.avg !== worst.avg
-        ? '<div class="cap-mini cap-mini-rows">' +
-            '<div class="row"><span class="k">Rated highest</span>' +
-              '<span class="v">'+best.avg.toFixed(2)+'</span><span class="s">'+esc(best.short)+'</span></div>' +
-            '<div class="row"><span class="k">Rated lowest</span>' +
-              '<span class="v">'+worst.avg.toFixed(2)+'</span><span class="s">'+esc(worst.short)+'</span></div>' +
-          '</div>'
-        : best ? '<div class="cap-mini cap-mini-rows">' +
-            '<div class="row"><span class="k">All four rated alike</span>' +
-              '<span class="v">'+best.avg.toFixed(2)+'</span><span class="s">no statement stood apart</span></div>' +
-          '</div>' : '') +
+      '<p>Feedback given by officers on overall training quality and relevance, across the district, constituency and master-training levels. Open the full feedback for the round-by-round, statement-by-statement scores.</p>' +
       '<span class="cap-go">Open the full feedback <i class="ti ti-arrow-right"></i></span>' +
       '</a>';
   }
@@ -7894,16 +7861,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
     card.innerHTML =
       '<a class="cap-card-inner" href="capacity/results.html?d='+encodeURIComponent(d.slug)+'">' +
       '<h3>Baseline &amp; endline</h3>' +
-      '<p>Scores before and after training in '+esc(rec.name)+', from the consolidated assessment report.</p>' +
-      '<div class="cap-mini cap-mini-rows">' + rec.levels.map(function(L){
-        var b = L.baseline, e = L.endline;
-        var dd = (L.change && L.change.pct_pp != null)
-          ? '<em class="'+(L.change.pct_pp >= 0 ? 'up' : 'down')+'">'+(L.change.pct_pp > 0 ? '+' : '')+numf(L.change.pct_pp)+' pp</em>'
-          : '<em class="na">not comparable</em>';
-        return '<div class="row"><span class="k">'+esc(L.label)+'</span>' +
-          '<span class="v">'+pctf(b && b.pct)+' <i class="ti ti-arrow-narrow-right"></i> '+pctf(e && e.pct)+' '+dd+'</span>' +
-          '<span class="s">n = '+(b ? b.n : '—')+' → '+(e ? e.n : '—')+'</span></div>';
-      }).join('') + '</div>' +
+      '<p>A baseline records what officers knew before the training; an endline measures the same after it. Open the full results to see the before and after scores for each training level.</p>' +
       '<span class="cap-go">Open the full results <i class="ti ti-arrow-right"></i></span>' +
       '</a>';
   }
