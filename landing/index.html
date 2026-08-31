@@ -5232,8 +5232,16 @@ function syncNav(page){
   });
 }
 window.__syncNav = syncNav;
+/* A malformed percent-escape in the hash (someone edits '#capacity/100%')
+   makes decodeURIComponent throw URIError out of the router, which aborts the
+   boot before navReady is ever set and leaves the URL stuck for the whole
+   session. Decode defensively: on a bad escape, use the raw text. */
+function decodeSeg(s){
+  try{ return decodeURIComponent(s); }
+  catch(e){ return s; }
+}
 
-function go(page){
+function go(page, push){
   if(!pages.includes(page)) page='home';
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
@@ -5242,9 +5250,13 @@ function go(page){
   window.scrollTo(0,0);
   /* Only rewrite the hash when it is not already pointing into this page: the
      districts hash carries the drill-down path (#districts/Kurnool/Adoni) and a
-     blanket replaceState would throw that away on every re-render. */
+     blanket replaceState would throw that away on every re-render.
+     A reader-initiated switch (push) must ADD a history entry so Back means
+     "previous page"; a boot/hashchange replay must NOT, or every replayed hash
+     would double the stack. replaceState alone made Back exit the site. */
   if(location.hash.replace(/^#/,'').split('/')[0] !== page){
-    history.replaceState(null,'','#'+page);
+    if(push) history.pushState(null,'','#'+page);
+    else history.replaceState(null,'','#'+page);
   }
   if(page==='districts'){
     initMap();
@@ -5263,7 +5275,7 @@ function go(page){
   if(page==='capacity' && window.__loadCapacity){
     window.__loadCapacity();
     if(window.__loadHighlights) window.__loadHighlights();
-    const want = decodeURIComponent(location.hash.replace(/^#/,'').split('/')[1] || '');
+    const want = decodeSeg(location.hash.replace(/^#/,'').split('/')[1] || '');
     /* Which of the two views. Bare #capacity opens on the intro; anything after
        the slash means the reader has already chosen and goes straight to the
        record — 'work' from the intro button, a district name from the capacity
@@ -5280,7 +5292,8 @@ document.addEventListener('click', e=>{
   const b = e.target.closest('[data-page]');
   if(b){
     e.preventDefault();
-    go(b.dataset.page);
+    bootRestoreCancelled = true;   // the reader chose a page; drop any pending boot replay
+    go(b.dataset.page, true);      // reader click: push, so Back returns here
     /* Home's cards route to a specific tab inside Districts, not just to the
        page. The tab handler lives in another IIFE, so the tab's own button is
        clicked rather than reaching across for setTab. Deferred a frame: the
@@ -5302,6 +5315,7 @@ document.getElementById('hamburger').addEventListener('click', ()=>{
    navRestore handle the rest of the path. */
 window.addEventListener('hashchange', ()=>{
   const seg = location.hash.replace('#','').split('/');
+  if(seg[0] !== 'districts') bootRestoreCancelled = true;
   go(seg[0]);
   if(seg[0] === 'districts' && seg.length > 1) navRestore();
 });
@@ -5327,9 +5341,30 @@ setTimeout(()=>{
     const TABS = ['map','docs','gva','capacity','cases'];
     if(TABS.indexOf(seg[1]) > -1 && window.__setTab) window.__setTab(seg[1], true);
 
+    /* Only the map drill needs the geojson: it looks the district up by its
+       drawn path. The docs/gva/capacity/cases tabs read the district by name.
+       So when the boundaries never land, scope those tabs anyway rather than
+       leaving them state-wide while the address bar still names a district,
+       and keep the name in currentDistrictName so the next tab switch does not
+       quietly drop it from the URL. Deeper segments (constituency, mandal) are
+       map-only, so the hash is trimmed back to what was actually restored. */
+    const restoreWithoutMap = () => {
+      const seg2 = decodeSeg(want).split('/').map(x => x.trim());
+      const tab = TABS.indexOf(seg2[1]) > -1 ? seg2[1] : 'map';
+      const dName = (TABS.indexOf(seg2[1]) > -1 ? seg2[2] : seg2[1]) || null;
+      if(tab === 'map' || !dName) return;
+      currentDistrictName = dName;
+      if(window.DTABS_DISTRICT) window.DTABS_DISTRICT(dName);
+      syncAbbr();
+      const canon = '#' + navPath();
+      if(location.hash !== canon) history.replaceState(null, '', canon);
+    };
+
     const tryRestore = (n) => {
+      if(bootRestoreCancelled) return;   // reader left while we were waiting
       if(document.querySelector('#ap-map path')) { navRestore(want); return; }
       if(n > 0) setTimeout(() => tryRestore(n - 1), 120);
+      else restoreWithoutMap();
     };
     tryRestore(40);          // ~5s of grace while the geojson lands
   }
@@ -5608,16 +5643,28 @@ document.addEventListener('click', function(e){
    pushed onto history, so Back walks back up and the link is shareable.
 
    `navLock` guards the replay: restoring a state must not push a new one. */
-let navLock = false, navReady = false;
+let navLock = false, navReady = false, navPending = false;
+/* The boot deep-link replay waits up to 5s for the geojson. If the reader gives
+   up on that wait and goes somewhere else, the replay is stale: finishing it
+   would drill a hidden page and put its path on the address bar of the page the
+   reader is actually looking at. Any explicit navigation cancels it. */
+let bootRestoreCancelled = false;
 
 /* #districts/<tab>[/<district>[/<constituency>[/<mandal>]]]
    The tab comes first because it is the coarser choice: every deeper segment is
    scoped by the district, which every tab shares. */
 function navPath(){
   const tab = window.__dtab || 'map';
-  const parts = ['districts', tab, currentDistrictName];
-  if(tab === 'map'){ parts.push(currentConstituency, currentMandal); }
-  return parts.filter(Boolean).map(encodeURIComponent).join('/');
+  /* The drill stays in the path on every tab, not just the map. Dropping it
+     elsewhere made the URL lie: switching tabs truncated it to the district
+     while the map still sat on a constituency, so a reload came back somewhere
+     else, and navRestore reads these segments positionally for any tab. */
+  const parts = ['districts', tab];
+  for(const seg of [currentDistrictName, currentConstituency, currentMandal]){
+    if(!seg) break;   // truncate: a gap must not promote deeper names a slot up
+    parts.push(seg);
+  }
+  return parts.map(encodeURIComponent).join('/');
 }
 /* The abbreviations footnote only earns its place once something above it uses
    the terms. */
@@ -5628,7 +5675,16 @@ function syncAbbr(){
 
 function navPush(){
   syncAbbr();
-  if(navLock) return;
+  /* A restore can take seconds on a slow district load, and a tab click in that
+     window still changes the view. Dropping its push silently loses the click
+     from history; remember it instead and let navRestore push it once the lock
+     lifts. */
+  if(navLock){ navPending = true; return; }
+  /* The map finishes loading in its own time, and it can finish after the reader
+     has moved to another page. Writing the map's path onto that page's address
+     bar names a view they cannot see and leaves two adjacent history entries
+     sharing one hash, which makes Back look broken. */
+  if(!document.querySelector('.page.active#page-districts')) return;
   const h = '#' + navPath();
   if(location.hash !== h) history.pushState({drill:1}, '', h);
 }
@@ -5637,13 +5693,22 @@ async function navRestore(rawPath){
      pushes a bare "#districts" and would otherwise erase the very path we were
      asked to open. */
   const src = rawPath != null ? rawPath : location.hash.replace(/^#/,'');
-  const parts = decodeURIComponent(src).split('/').map(function(x){return x.trim();});
+  const parts = decodeSeg(src).split('/').map(function(x){return x.trim();});
   if(parts[0] !== 'districts') return;
   const TABS = ['map','docs','gva','capacity','cases'];
   let i = 1, tab = 'map';
   if(TABS.indexOf(parts[1]) > -1){ tab = parts[1]; i = 2; }
   const dName = parts[i] || null, cName = parts[i+1] || null, mName = parts[i+2] || null;
+  /* An in-session hashchange can land before the map's geojson has resolved;
+     the cold-boot path retries but this one used to run synchronously and
+     silently drop the district. Wait for the paths (up to 4s) before locking. */
+  if(dName && !document.querySelector('#ap-map path')){
+    for(let t = 0; t < 40 && !document.querySelector('#ap-map path'); t++){
+      await new Promise(r => setTimeout(r, 100));
+    }
+  }
   navLock = true;
+  navPending = false;
   try{
     if(window.__setTab && window.__dtab !== tab) window.__setTab(tab, true);
     if(!dName){ showStateView(); return; }
@@ -5678,7 +5743,20 @@ async function navRestore(rawPath){
     // the restore ran with pushes locked, so put the canonical path back on the
     // address bar without adding another history entry
     const canon = '#' + navPath();
-    if(location.hash !== canon) history.replaceState(null, '', canon);
+    /* Never write the drill path onto the address bar of a page the reader has
+       moved to: the URL would name a view they cannot see, and Back would look
+       dead because two adjacent entries carry the same hash. */
+    const onDistricts = !!document.querySelector('.page.active#page-districts');
+    if(!onDistricts){ /* nothing to canonicalise from here */ }
+    else if(navPending){
+      /* the reader moved while we were restoring: replacing here would overwrite
+         the entry they had just come back to and lose it from history, so give
+         their move its own entry instead */
+      navPending = false;
+      if(location.hash !== canon) history.pushState({drill:1}, '', canon);
+    } else if(location.hash !== canon){
+      history.replaceState(null, '', canon);
+    }
   }
 }
 
@@ -6226,9 +6304,15 @@ async function showMandal(mandalName, constituencyKey, districtName){
   const [idx, mi] = await Promise.all([loadDashIndex(), loadMandalIndex()]);
   const m = findMandal(mi, constituencyKey, mandalName);
   if(!m){
-    panel.innerHTML = window.DASH.empty
+    /* The pick did not resolve, so release the claim: leaving currentMandal set
+       to a name no roster knows would keep navPath emitting it, so the canonical
+       replaceState writes the bad segment back and every reload lands here again.
+       Keep the drill bar in the panel too, otherwise there is no way back up. */
+    currentMandal = null;
+    const msg = window.DASH.empty
       ? window.DASH.empty('No roster entry is published for '+String(mandalName).replace(/_/g,' ')+' mandal.')
       : '';
+    panel.innerHTML = panelHtml('', drillBarHtml(constituencyKey, null), msg);
     return;
   }
 
@@ -8108,12 +8192,19 @@ window.__loadCapacity = function(){ loadCapacity(); };
     sel.addEventListener('change', function(){
       var d = CAP.districts[+sel.value];
       withCap(inst, function(){ renderBrief(d); });
+      /* The standalone #capacity page keeps its own URL: riding showDistrict
+         from here pushed a #districts path under a visible capacity page, so
+         reload landed somewhere else. It scopes only itself. */
+      var onTab = !document.getElementById('page-capacity').classList.contains('active');
+      if(!onTab){
+        history.replaceState(null, '', '#capacity/' + encodeURIComponent(d.name));
+        return;
+      }
       if(DISTF && normName(DISTF) === normName(d.name)) return;
       /* Ride the map's own route when it is on the page: showDistrict drills
          the map, paints the profile panel, sets the chip and every tab's
          filter, and pushes #districts/capacity/<name>, so the pick here reads
-         exactly like a pick on the map, with the reader left on this tab.
-         The standalone capacity page has no map; the filter alone moves. */
+         exactly like a pick on the map, with the reader left on this tab. */
       var routed = false;
       if(typeof showDistrict === 'function'){
         var paths = document.querySelectorAll('#ap-map path[data-key]');
