@@ -133,10 +133,13 @@ def main():
                  "Look at GDDP, rank, growth and per-capita income in the district map."],
                 ["Find your competitive advantage.",
                  "Compare each sector's share in your district with its share in the state. "
-                 "Where your share is higher, you likely have an edge (a Location Quotient above 1)."],
+                 "Where your share is higher, you likely have an edge (a Location Quotient above 1). "
+                 "The Location Quotient is a sector's share of your district's GDVA divided by "
+                 "its share of the state's GDVA: above 1 means it is more concentrated here than "
+                 "statewide (a relative strength), below 1 means less."],
                 ["Understand how that GVA is created",
-                 "and which pathways raise it — yield, acreage, price realisation, "
-                 "formalisation — using the sector playbooks below."],
+                 "and which pathways raise it (yield, acreage, price realisation, "
+                 "formalisation) using the sector playbooks below."],
                 ["Pick the administrative levers you control,",
                  "attach a scheme and a monitoring indicator, and act."],
             ],
