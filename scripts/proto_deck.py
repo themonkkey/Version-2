@@ -20,6 +20,7 @@ import re
 import os
 import sys
 import json
+import math
 import tempfile
 
 import build_case_studies as B
@@ -106,7 +107,10 @@ ICONS = {
     "users":   '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5M17 20a5.8 5.8 0 0 0-2-4.2"/>',
     "school":  '<path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V17c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5v-5.5"/>',
     "cart":    '<circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2 3h3l2.4 11.2a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L21 7H6"/>',
-    "factory": '<path d="M3 21V10l6 4V10l6 4V7l6 3v11z"/><path d="M7 21v-3M13 21v-3M18 21v-3"/>',
+    # the smoke dot rides above the tallest stack; it is inert until the idle
+    # puff loop fades it in and lifts it (see the icon-animation CSS)
+    "factory": '<path d="M3 21V10l6 4V10l6 4V7l6 3v11z"/><path d="M7 21v-3M13 21v-3M18 21v-3"/>'
+               '<circle class="smoke" cx="18" cy="5" r="1.15"/>',
     "trend":   '<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
     "calendar":'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
     "target":  '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/>',
@@ -137,7 +141,10 @@ ICON_WORDS = [
     ("cart",    ("market", "brand", "sell", "sales", "buyer", "demand", "export",
                  "booking", "packag", "product")),
     ("factory", ("factory", "unit", "process", "manufactur", "plant", "mill",
-                 "industr", "machin", "capacity build")),
+                 "industr", "machin", "capacity build",
+                 # clearly-typed clusters that otherwise fell to the generic spark
+                 "textile", "apparel", "garment", "loom", "yarn", "weav", "knit",
+                 "spinning", "ceramic", "pottery", "kiln", "porcelain", "coir")),
     ("trend",   ("growth", "grew", "rise", "rising", "increas", "scale", "share",
                  "trajector", "outlook", "project")),
     ("calendar",("year", "phase", "timeline", "pilot", "launch", "90-day", "roadmap",
@@ -179,12 +186,24 @@ def icon_for(text):
 
 
 def icon_html(text, cls="ic"):
-    return ('<span class="' + cls + '" aria-hidden="true"><svg viewBox="0 0 24 24">'
-            '<use href="#i-' + icon_for(text) + '"/></svg></span>')
+    # the icon name rides along as a class (ic-leaf, ic-factory...) so the
+    # idle-animation CSS can key a motion to what the glyph depicts
+    name = icon_for(text)
+    return ('<span class="' + cls + ' ic-' + name + '" aria-hidden="true"><svg viewBox="0 0 24 24">'
+            '<use href="#i-' + name + '"/></svg></span>')
+
+
+# pathLength normalises every shape to 100 units so one stroke-dasharray/offset
+# pair draws every icon uniformly on entrance, whatever its real geometry.
+_SHAPE = re.compile(r'<(path|circle|rect|line|polyline|polygon)\b')
+
+
+def _sprite_shape(v):
+    return _SHAPE.sub(r'<\1 pathLength="100"', v)
 
 
 ICON_SPRITE = ('<svg class="sprite" aria-hidden="true"><defs>'
-               + "".join('<g id="i-' + k + '">' + v + '</g>' for k, v in ICONS.items())
+               + "".join('<g id="i-' + k + '">' + _sprite_shape(v) + '</g>' for k, v in ICONS.items())
                + '</defs></svg>')
 
 
@@ -632,28 +651,339 @@ def render_blocks(blocks):
     return "\n".join(render_block(b) for b in blocks)
 
 
-# Which block types are "heavy" for slide splitting: a section stays on one
-# slide until it carries more than six cards or more than two heavy blocks, at
-# which point the overflow continues on a fresh slide that repeats the header
-# with a CONT. marker. This is the build-time half of the split; the browser
-# pagination below is the viewport-measured safety net for a single block that
-# is still taller than the panel.
-_HEAVY = {"table", "series", "swot", "compare", "groups", "hierarchy", "fanout",
-          "phases", "timeline", "flow", "steps"}
+# ---------------------------------------------------------------- fit engine
+# A slide must never scroll: the old split counted cards and "heavy" blocks,
+# which has no idea how TALL a block actually renders, so a five-stat band and a
+# nine-row table both counted as "one heavy" and one of them overflowed. The
+# packer below estimates each block's rendered height in pixels and fills a slide
+# to a fixed budget, continuing a section onto CONT slides at block boundaries
+# and, when a single block is itself taller than the panel, splitting that block
+# by its own items/rows/groups.
+#
+# The height model is calibrated empirically: every block in all 17 decks was
+# measured in the browser at the tighter of the two reference viewports
+# (1280x800), and each per-type formula is a least-squares fit shifted up so the
+# estimate is an UPPER BOUND of the measured height (est >= actual for every
+# sampled block). Over-estimating only ever adds a CONT slide; under-estimating
+# would scroll, so the model leans high on purpose. Recalibrate (scripts measure
+# `.glass` content boxes and per-block offsetHeights) if the CSS metrics change.
+#
+# Budget geometry at 1280x800: .glass max-height is min(94vh,940px)=752px
+# border-box; minus 2px border and 2x33.28px padding leaves a 683px content box
+# that holds the section head plus the body. _SAFETY absorbs margin-collapse
+# between blocks and real-font jitter. The wider 1440x860 viewport has a taller
+# panel AND less text wrapping, so a layout that fits 1280x800 fits it too, which
+# is why the model is calibrated to the smaller box.
+_AVAIL = 683
+_SAFETY = 22
+_AUX = 34          # a block's own title/closing/footnote renders as an extra line
 
 
-def split_blocks(blocks):
-    pages, cards, heavy = [[]], 0, 0
+def _tlen(b):
+    """Total characters of visible text in a block, the wrapping driver."""
+    return sum(len(s) for s in block_strings(b))
+
+
+def _grid_rows(n, cols):
+    return max(1, math.ceil(n / max(1, cols)))
+
+
+def _card_kind(b):
+    """Which card layout cards_html/steps_html will pick, so the height formula
+    matches the class that actually renders (iconrow, numbered pillars, plain)."""
+    items = b.get("items", [])
+    if b.get("type") == "steps":
+        return "steps"
+    numbered = any("n" in it for it in items)
+    short = all(len(it.get("body", "")) <= 150 for it in items)
+    if not numbered and len(items) in (3, 4) and short:
+        return "iconrow"
+    if numbered:
+        return "steps"
+    return "cards"
+
+
+def est_height(b):
+    """Estimated rendered footprint of one block in px (height + bottom margin).
+    Coefficients are browser-calibrated upper bounds; see the fit-engine note."""
+    t = b.get("type")
+    tl = _tlen(b)
+    if t == "p":
+        return 23 + 0.268 * tl + 13
+    if t == "callout":
+        return 69 + 0.245 * tl + 18
+    if t == "quote":
+        return 21 + 0.682 * tl + 18
+    if t == "chips":
+        rows = math.ceil(max(1, len(b.get("items", []))) / 4)   # auto-fit ~4/row
+        return rows * 48 + (rows - 1) * 10 + 18
+    if t == "list":
+        n = len(b.get("items", []))
+        return 32 + 28.2 * n + 0.138 * tl + 18
+    if t == "stats":
+        items = b.get("items", [])
+        n = len(items)
+        rows = _grid_rows(n, grid_cols(n))
+        foot = _AUX if b.get("footnote") else 0
+        if 2 <= n <= 4:                                          # the big-number band
+            return 6 + 116 * rows + 0.204 * tl + 20 + foot
+        return 23 + 69 * rows + 0.198 * tl + 20 + foot
+    if t in ("cards", "steps"):
+        kind = _card_kind(b)
+        n = len(b.get("items", []))
+        rows = _grid_rows(n, grid_cols(n))
+        if kind == "iconrow":
+            return 13 + 156.5 * rows + 0.132 * tl + 20
+        if kind == "steps":
+            return 6 + 125.6 * rows + 0.205 * tl + 20
+        return 6 + 124.1 * rows + 0.195 * tl + 20
+    if t == "pairs":
+        n = len(b.get("items", []))
+        rows = _grid_rows(n, grid_cols(n))
+        return 122.2 * rows + 0.142 * tl + 20 + (_AUX if b.get("title") else 0)
+    if t == "flow":
+        n = len(b.get("stages", []))
+        extra = (_AUX if b.get("title") else 0) + (_AUX if b.get("closing") else 0)
+        return 26 + 6.95 * n + 0.263 * tl + 6 + extra
+    if t == "phases":
+        return 128 + 38.8 * len(b.get("groups", [])) + 0.117 * tl + 18
+    if t == "groups":
+        return 194 + 27.5 * len(b.get("groups", [])) + 0.084 * tl + 18
+    if t == "compare":
+        # more columns read shorter (the fit's negative per-column term)
+        return 201 - 14.4 * len(b.get("cols", [])) + 0.142 * tl + 18
+    if t == "hierarchy":
+        return 82.2 * len(b.get("tiers", [])) + 0.341 * tl + 6 + (_AUX if b.get("closing") else 0)
+    if t == "timeline":
+        return 20 + 46 * len(b.get("items", [])) + 0.55 * tl + 18 + (_AUX if b.get("title") else 0)
+    if t == "table":
+        # Length-aware rows: a cell past ~45 chars wraps to a second line at
+        # mid widths (the Shenzhen quarterly dashboard measured 68px/row), so
+        # flat 58/row under-budgeted exactly the tables that most need splitting
+        rows_h = sum(74 if max((len(str(c)) for c in r), default=0) > 45 else 48
+                     for r in b.get("rows", []))
+        return 48 + rows_h + 6 + (_AUX if b.get("footnote") else 0)
+    if t == "series":
+        return 260                                              # fixed 210px plot + labels
+    if t == "swot":
+        def qh(k):
+            return 74 + 24 * len(b.get(k, []))
+        return max(qh("s"), qh("w")) + max(qh("o"), qh("t")) + 36
+    if t == "fanout":
+        br = b.get("branches", [])
+        rows = _grid_rows(len(br), grid_cols(len(br)))
+        maxp = max((len(x.get("products", [])) for x in br), default=0)
+        return 70 + rows * (46 + 24 * maxp) + 18
+    return 0.35 * tl + 60                                        # unknown: rough guess
+
+
+def _sechead_h(heading, kick):
+    """Section-head footprint: 64px one-line (88 with a kicker eyebrow), plus a
+    line every ~60 chars when the title wraps. Matches the measured envelope."""
+    base = 88 if kick else 64
+    lines = max(1, math.ceil(len(heading or "") / 60))
+    return base + (lines - 1) * 35
+
+
+def _lead_h(text):
+    return 16 + math.ceil(len(text) / 85) * 27 if text else 0
+
+
+def _src_h(text):
+    return 16 + math.ceil(len(text) / 100) * 22 if text else 0
+
+
+# List/dict key that carries the splittable items for each block type; a type not
+# here (swot, series, compare, quote, callout, p) is kept whole - splitting it
+# would break the shape that is its whole point.
+_SPLIT_KEY = {"cards": "items", "steps": "items", "stats": "items", "pairs": "items",
+              "list": "items", "chips": "items", "timeline": "items",
+              "phases": "groups", "groups": "groups", "hierarchy": "tiers",
+              "flow": "stages", "fanout": "branches"}
+
+
+def _split_table(b, budget):
+    """Split a tall table by rows, repeating the header on each piece; the
+    footnote rides the last piece. If even one row will not fit, the table is
+    left whole and keeps its own internal scroll (the sanctioned exception)."""
+    rows = b.get("rows", [])
+    if len(rows) <= 1:
+        return [b]
+    room = budget - 48 - 6 - (_AUX if b.get("footnote") else 0)
+    # pack rows greedily by the same length-aware cost est_height uses; a flat
+    # divisor let two-line wrapped rows (long cells) overshoot the budget
+    def row_h(r):
+        return 74 if max((len(str(c)) for c in r), default=0) > 45 else 48
+    chunks, cur, h = [], [], 0
+    for r in rows:
+        rh = row_h(r)
+        if cur and h + rh > room:
+            chunks.append(cur)
+            cur, h = [], 0
+        cur.append(r)
+        h += rh
+    if cur:
+        chunks.append(cur)
+    if len(chunks) <= 1:
+        return [b]
+    out = []
+    for ch in chunks:
+        sub = dict(b)
+        sub["rows"] = ch
+        out.append(sub)
+    for idx, s in enumerate(out):                # footnote only on the final piece
+        if idx < len(out) - 1:
+            s.pop("footnote", None)
+    return out
+
+
+def _split_block(b, budget):
+    """Break one oversized block into same-type pieces that each fit `budget`,
+    preserving item order. Grids recompute their column count per piece (grid_cols
+    runs again in the renderer) so each piece stays symmetric; the block-level
+    title stays on the first piece and the closing on the last."""
+    t = b.get("type")
+    if t == "table":
+        return _split_table(b, budget)
+    key = _SPLIT_KEY.get(t)
+    if not key:
+        return [b]
+    items = b.get(key, [])
+    if len(items) <= 1:
+        return [b]
+    pieces, i = [], 0
+    while i < len(items):
+        k = 1
+        while i + k < len(items):
+            trial = dict(b)
+            trial[key] = items[i:i + k + 1]
+            if est_height(trial) > budget:
+                break
+            k += 1
+        sub = dict(b)
+        sub[key] = items[i:i + k]
+        pieces.append(sub)
+        i += k
+    for idx, p in enumerate(pieces):
+        if idx > 0:
+            p.pop("title", None)                 # title leads the first piece only
+        if idx < len(pieces) - 1:
+            p.pop("closing", None)               # closing tails the last piece only
+    return pieces
+
+
+_ORPHAN_SMALL = 190          # a lone block under this reads as a widow on a CONT slide
+
+
+def _budget_at(i, P, avail0, availc, src_h):
+    """Room for page i of P: page 0 shares with the lead, the last page with the
+    source line, every page after the first repeats the (same-height) head."""
+    b = avail0 if i == 0 else availc
+    if i == P - 1:
+        b -= src_h
+    return b
+
+
+def _minmax_partition(hs, budgets):
+    """Cut the atom heights `hs` into len(budgets) contiguous pages, each within
+    its budget, minimising the fullest page's FILL RATIO. Balancing on the ratio
+    (not the raw height) shares the load evenly even though page 0 has less room,
+    so a section never ends on one packed slide plus a near-empty tail. Returns
+    the (start, end) spans or None when no split keeps every page within budget."""
+    n, P = len(hs), len(budgets)
+    INF = float("inf")
+    dp = [[INF] * (P + 1) for _ in range(n + 1)]
+    cut = [[None] * (P + 1) for _ in range(n + 1)]
+    dp[0][0] = 0.0
+    for p in range(1, P + 1):
+        for i in range(p, n + 1):
+            s = 0.0
+            for j in range(i - 1, p - 2, -1):    # last group = atoms[j:i]
+                s += hs[j]
+                if s > budgets[p - 1]:
+                    break
+                val = max(dp[j][p - 1], s / budgets[p - 1])
+                if val < dp[i][p]:
+                    dp[i][p] = val
+                    cut[i][p] = j
+    if dp[n][P] == INF:
+        return None
+    groups, i, p = [], n, P
+    while p > 0:
+        j = cut[i][p]
+        groups.append((j, i))
+        i, p = j, p - 1
+    groups.reverse()
+    return groups
+
+
+def _partition(atoms, avail0, availc, src_h):
+    """Fewest pages that hold `atoms`, balanced by fill ratio. Grows the page
+    count only until a feasible balanced cut exists; falls back to one block per
+    page (and, last resort, drops the source reservation) if a tail block is too
+    tall to share its page with the source line."""
+    hs = [est_height(a) for a in atoms]
+    for P in range(1, len(atoms) + 1):
+        g = _minmax_partition(hs, [_budget_at(i, P, avail0, availc, src_h) for i in range(P)])
+        if g:
+            return g
+    # a final atom too tall to sit with the source: let the source ride anyway
+    # (the browser safety net absorbs the few px), rather than invent a blank page
+    for P in range(1, len(atoms) + 1):
+        g = _minmax_partition(hs, [_budget_at(i, P, avail0, availc, 0) for i in range(P)])
+        if g:
+            return g
+    return [(i, i + 1) for i in range(len(atoms))]
+
+
+def pack_section(sec):
+    """Pack one section's blocks into slide-sized pages by estimated height.
+    Page 0 also carries the lead; the last page carries the source line; every
+    page repeats the section head (as a CONT slide after the first). Returns a
+    list of block lists, one per slide, in reading order.
+
+    The packer (1) pre-splits any block taller than a panel, (2) balances the
+    blocks across the fewest pages by fill ratio, then (3) cures a leftover widow
+    (a CONT slide holding one small block) by splitting the section's largest
+    splittable block so the balancer has finer pieces to even out."""
+    blocks = sec.get("blocks", [])
+    heading = sec_heading(sec)
+    kick = bool(sec.get("kicker") and sec.get("title"))
+    sh = _sechead_h(heading, kick)               # a CONT head is the same height
+    lead_h = _lead_h(sec.get("lead") or "")
+    src_h = _src_h(sec.get("source") or "")
+    avail0 = _AVAIL - sh - lead_h - _SAFETY       # first page shares room with the lead
+    availc = _AVAIL - sh - _SAFETY                # a continuation page
+
+    # 1. pre-split any block too tall for even a continuation page
+    atoms = []
     for b in blocks:
-        bt = b.get("type")
-        bc = len(b.get("items", [])) if bt == "cards" else 0
-        bh = 1 if bt in _HEAVY else 0
-        if pages[-1] and (cards + bc > 6 or heavy + bh > 2):
-            pages.append([])
-            cards, heavy = 0, 0
-        pages[-1].append(b)
-        cards += bc
-        heavy += bh
+        if est_height(b) > availc:
+            atoms.extend(_split_block(b, availc))
+        else:
+            atoms.append(b)
+    if not atoms:
+        return [[]]
+
+    # 2. balance across the fewest pages, then 3. break a widow if splitting a
+    #    block lets the balancer fill the tail. Bounded so it always terminates.
+    for _ in range(5):
+        groups = _partition(atoms, avail0, availc, src_h)
+        pages = [atoms[a:b] for (a, b) in groups]
+        widow = (len(pages) > 1 and len(pages[-1]) == 1
+                 and est_height(pages[-1][0]) < _ORPHAN_SMALL)
+        if not widow:
+            break
+        # split the tallest splittable atom into halves so the tail can fill out
+        cand = [(est_height(a), k) for k, a in enumerate(atoms)
+                if a.get("type") in _SPLIT_KEY and len(a.get(_SPLIT_KEY[a["type"]], [])) > 1]
+        if not cand:
+            break
+        _, k = max(cand)
+        halves = _split_block(atoms[k], est_height(atoms[k]) * 0.55)
+        if len(halves) < 2:
+            break
+        atoms[k:k + 1] = halves
     return pages
 
 
@@ -754,7 +1084,7 @@ def slides_html(content, m):
     # ---- section slides (one section = one slide; overflow continues with CONT.) ----
     di = 2
     for idx, (sec, role) in enumerate(zip(sections, roles), start=1):
-        pages = split_blocks(sec.get("blocks", []))
+        pages = pack_section(sec)
         for pi, page in enumerate(pages):
             lead = ('<p class="seclead">' + e(sec["lead"]) + '</p>') if (pi == 0 and sec.get("lead")) else ""
             src = ('<p class="secsrc">' + e(sec["source"]) + '</p>') if (pi == len(pages) - 1 and sec.get("source")) else ""
@@ -917,7 +1247,11 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 
 /* icons: inline sprite, tinted by the slide accent, in a soft disc so they read
    against both the mesh gradient and a photo background */
-.sprite{display:none;}
+/* The sprite is visually hidden but NOT display:none: a display:none subtree runs
+   no CSS animations, and the factory smoke dot lives here and must keep puffing
+   for every <use> clone to reflect it. Zero-boxed and clipped, it paints nothing
+   itself. */
+.sprite{position:absolute;width:0;height:0;overflow:hidden;}
 .ic{flex:0 0 auto;display:inline-grid;place-items:center;width:30px;height:30px;
   border-radius:9px;background:color-mix(in srgb,var(--t2) 15%,transparent);
   border:1px solid color-mix(in srgb,var(--t2) 28%,transparent);color:var(--t2);}
@@ -1166,6 +1500,53 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   .anim .slide.active .cards.iconrow .card:nth-child(3) .ic svg{animation-delay:.5s;}
 }
 @keyframes mtFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-3px);}}
+
+/* ---- ANIMATED CONTENT ICONS ----
+   Two layers of life, pure CSS, no runtime: an entrance stroke-DRAW when a slide
+   becomes active, and a slow, tiny IDLE loop keyed to what each glyph depicts
+   (leaf sways, droplet bobs, fish swims, cart/truck nudge, spark twinkles, bolt
+   flickers, sun/gear turn, trend/target pulse, factory puffs a smoke dot).
+   WHY the split across two elements: the sprite normalises every shape to
+   pathLength 100, and stroke-* properties INHERIT into each <use> clone, so the
+   draw is set on the <use> (stroke-dashoffset) while the idle transform sits on
+   the parent <svg> - keeping them on different elements means neither `animation`
+   overwrites the other. Amplitudes stay under a few px / degrees and periods run
+   4-8s so nothing distracts a reader. Everything is gated on
+   (prefers-reduced-motion:no-preference), so a reduced-motion reader simply never
+   sees these rules and gets fully drawn, perfectly still icons - no lower-
+   specificity override left to be beaten. */
+.ic svg use{stroke-dasharray:100;}                 /* pathLength-normalised: solid at offset 0 */
+#i-factory .smoke{stroke:none;fill:currentColor;opacity:0;transform-box:fill-box;transform-origin:center;}
+@keyframes icDraw{from{stroke-dashoffset:100;}to{stroke-dashoffset:0;}}
+@keyframes idLeaf{0%,100%{transform:rotate(-3deg);}50%{transform:rotate(3deg);}}
+@keyframes idBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-1.6px);}}
+@keyframes idSwim{0%,100%{transform:translateX(-2px);}50%{transform:translateX(2px);}}
+@keyframes idNudge{0%,100%{transform:translateX(-1.4px);}50%{transform:translateX(1.4px);}}
+@keyframes idTwinkle{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.55;transform:scale(.9);}}
+@keyframes idFlic{0%,40%,60%,100%{opacity:1;}50%{opacity:.5;}}
+@keyframes idSpin{0%,100%{transform:rotate(-9deg);}50%{transform:rotate(9deg);}}
+@keyframes idPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.06);}}
+@keyframes idPuff{0%{opacity:0;transform:translateY(0) scale(.5);}
+  15%{opacity:.7;}100%{opacity:0;transform:translateY(-7px) scale(1.15);}}
+@media (min-width:761px) and (prefers-reduced-motion:no-preference){
+  .anim .slide.active .ic svg use{animation:icDraw .7s ease .05s both;}
+  .anim .slide.active .ic-leaf svg{transform-origin:28% 82%;animation:idLeaf 6s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-drop svg{transform-origin:50% 60%;animation:idBob 4.5s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-fish svg{transform-origin:50% 50%;animation:idSwim 5s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-cart svg{transform-origin:50% 80%;animation:idNudge 5s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-truck svg{transform-origin:50% 80%;animation:idNudge 5.5s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-spark svg{transform-origin:50% 50%;animation:idTwinkle 4s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-bolt svg{transform-origin:50% 50%;animation:idFlic 4.5s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-sun svg{transform-origin:50% 50%;animation:idSpin 7s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-gear svg{transform-origin:50% 50%;animation:idSpin 6.5s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-trend svg{transform-origin:50% 70%;animation:idPulse 5s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-target svg{transform-origin:50% 50%;animation:idPulse 4.5s ease-in-out .7s infinite;}
+  .anim .slide.active .ic-alert svg{transform-origin:50% 60%;animation:idFlic 5s ease-in-out .7s infinite;}
+  /* the smoke dot lives in the shared sprite, not inside any one .ic span, so it
+     is driven on the referenced element and puffs in every factory glyph at once
+     (off-screen instances animate invisibly, which costs nothing to a reader) */
+  #i-factory .smoke{animation:idPuff 5s ease-in-out infinite;}
+}
 
 /* ---- ICON ROW: three peers, icon-led, centred (the .pptx iconrow) ---- */
 .cards.iconrow{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));}
@@ -1611,8 +1992,14 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
       img.src=url;
     }
   }
+  // The build-time packer (est_height in proto_deck.py) is authoritative: it
+  // splits sections into CONT slides that already fit the panel. This browser
+  // pass stays as a safety net for the rare block whose real font metrics beat
+  // the model by a few px. `?nopag` disables the net so the model can be proven
+  // on its own during calibration; production keeps the net on.
+  var NOPAG=/[?&]nopag\b/.test(location.search);
   function layout(){
-  try{ paginate(); }catch(err){ /* never let layout maths kill the deck */ }
+  try{ if(!NOPAG) paginate(); }catch(err){ /* never let layout maths kill the deck */ }
 
   slides.forEach(function(sl){
     var m=sl.querySelector('.media'); if(!m) return;
