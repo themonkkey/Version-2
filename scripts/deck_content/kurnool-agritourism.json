@@ -1,0 +1,370 @@
+{
+ "slug": "kurnool-agritourism",
+ "title": "Agritourism for Kurnool District",
+ "eyebrow": "Learning from ATDC Baramati, Maharashtra",
+ "subtitle": "A practical, farmer-owned model to convert Kurnool’s horticulture, heritage and rural culture into supplementary income.",
+ "audience": "Immediate opportunity: pilot 8–12 centres around existing tourism and horticulture clusters, then scale by mandal.",
+ "hero_stats": [
+  {
+   "value": "7,977",
+   "label": "sq km district area"
+  },
+  {
+   "value": "22,71,686",
+   "label": "district population"
+  },
+  {
+   "value": "519",
+   "label": "villages"
+  }
+ ],
+ "sections": [
+  {
+   "title": "Market signal: large domestic tourism base, limited farm experience supply",
+   "lead": "Domestic tourists are the core market; schools, families and weekend travellers are priority segments.",
+   "blocks": [
+    {
+     "type": "groups",
+     "groups": [
+      {
+       "name": "Where Kurnool fits",
+       "items": [
+        {
+         "term": "Weekend + school demand",
+         "desc": "Accessible, day-trip friendly, education-led farm visits"
+        },
+        {
+         "term": "Horticulture diversity",
+         "desc": "Mango, banana, sweet orange, pomegranate, guava; onion & chillies"
+        },
+        {
+         "term": "Experience economy",
+         "desc": "Urban families seek authentic rural food, open space and hands-on learning"
+        },
+        {
+         "term": "Farmer resilience",
+         "desc": "Supplementary income reduces dependence on volatile crop prices and rainfall"
+        },
+        {
+         "term": "Educational Tour",
+         "desc": "Demonstration of natural farming and other agri practices"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Core proposition for the district",
+     "text": "Convert existing farms into curated learning destinations with low additional capital."
+    }
+   ]
+  },
+  {
+   "title": "Case study anchor: ATDC Baramati, Maharashtra",
+   "lead": "The model demonstrates how working farms can add tourism income without replacing agriculture.",
+   "blocks": [
+    {
+     "type": "callout",
+     "label": "PILOT LAUNCHED · 2005",
+     "text": "ATDC was incorporated with a 38-acre pilot near Pune / Baramati and trained farmers to run agritourism as supplementary income."
+    },
+    {
+     "type": "cards",
+     "items": [
+      {
+       "title": "Farmer-owned assets",
+       "body": "Use land, crops, livestock, food and culture already present."
+      },
+      {
+       "title": "ATDC support",
+       "body": "Training, project reports, marketing and tour coordination."
+      },
+      {
+       "title": "Urban visitors",
+       "body": "Schools, families, corporates and tourists from nearby cities."
+      },
+      {
+       "title": "Local income",
+       "body": "Fees, meals, stays, farm produce and employment."
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Transferable lesson",
+     "text": "ATDC works because it centralises skills and market access, while farmers retain ownership and authenticity."
+    }
+   ]
+  },
+  {
+   "title": "How the ATDC model operates",
+   "lead": "A hub-and-spoke system: central support + farmer-owned farm experiences.",
+   "blocks": [
+    {
+     "type": "flow",
+     "stages": [
+      {
+       "name": "Identify farms",
+       "desc": "Land + farmer interest + accessibility"
+      },
+      {
+       "name": "Train & certify",
+       "desc": "Hospitality, hygiene, safety, pricing"
+      },
+      {
+       "name": "Package visits",
+       "desc": "Food, farm walk, rides, culture, stays"
+      },
+      {
+       "name": "Market centrally",
+       "desc": "Schools, families, corporates, tour operators"
+      },
+      {
+       "name": "Deliver locally",
+       "desc": "Farmer, SHGs, youth, artisans host visitors"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Institutional spine",
+     "text": "Agriculture + Tourism departments / district administration provide registration, convergence, quality checks, school-linkages and risk governance."
+    },
+    {
+     "type": "chips",
+     "items": [
+      "Farmer remains the entrepreneur",
+      "District platform reduces marketing cost"
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Reported impact in Maharashtra: demand, income and scale",
+   "lead": "Use as benchmark, not as guarantee; figures are from the case-study/ATDC survey base.",
+   "blocks": [
+    {
+     "type": "stats",
+     "items": [
+      {
+       "value": "+25%",
+       "label": "extra income",
+       "qualifier": "farmer income uplift reported"
+      },
+      {
+       "value": "8+",
+       "label": "Million Tourists (5 lakhs Foreign Tourist)",
+       "qualifier": "As per latest data on website"
+      },
+      {
+       "value": "30 districts",
+       "label": "districts in Maharashtra"
+      },
+      {
+       "value": "1000+",
+       "label": "centres",
+       "qualifier": "centres across districts"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Policy lever observed in Maharashtra",
+     "text": "Annual education visits by Classes V–X helped convert schools into stable weekday demand."
+    },
+    {
+     "type": "series",
+     "title": "Agritourists in Maharashtra (million)",
+     "points": [
+      {
+       "label": "Agritourists, 2017",
+       "value": "0.47 M"
+      },
+      {
+       "label": "Agritourists, 2018",
+       "value": "0.58 M"
+      },
+      {
+       "label": "Agritourists, 2019",
+       "value": "0.79 M"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Experiences offered: the product is the working farm",
+   "lead": "The visitor pays for interpretation, participation, food and culture—not only accommodation.",
+   "blocks": [
+    {
+     "type": "cards",
+     "items": [
+      {
+       "title": "Farm learning",
+       "body": "Crop walk, seed-to-market story, soil and water practices, natural farming"
+      },
+      {
+       "title": "Rural recreation",
+       "body": "Bullock-cart/tractor rides, games, safe open-space activities"
+      },
+      {
+       "title": "Farm-to-plate",
+       "body": "Traditional meals, millet menus, produce tasting, cooking demos"
+      },
+      {
+       "title": "Local culture",
+       "body": "Folk arts, village festivals, handloom/craft displays"
+      },
+      {
+       "title": "Direct sales",
+       "body": "Fresh produce, processed foods, seeds, SHG products"
+      },
+      {
+       "title": "School modules",
+       "body": "Age-wise learning kits linked to agriculture and environment"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Why the model works for government and farmers",
+   "lead": "It spreads benefits while keeping capital requirements moderate and assets locally owned.",
+   "blocks": [
+    {
+     "type": "groups",
+     "groups": [
+      {
+       "name": "Success factors from Baramati / Maharashtra",
+       "items": [
+        {
+         "term": "Agriculture remains central",
+         "desc": "tourism is supplementary"
+        },
+        {
+         "term": "Training converts farmers",
+         "desc": "into hospitality micro-entrepreneurs"
+        },
+        {
+         "term": "Collective marketing",
+         "desc": "connects dispersed farms to urban demand"
+        },
+        {
+         "term": "School groups smooth demand",
+         "desc": "beyond weekend leisure"
+        },
+        {
+         "term": "Village economy participates",
+         "desc": "SHGs, youth, artisans, drivers"
+        }
+       ]
+      },
+      {
+       "name": "Risk controls needed before scaling",
+       "items": [
+        {
+         "term": "Hygiene & food safety",
+         "desc": "FSSAI, toilets, drinking water, waste management"
+        },
+        {
+         "term": "Visitor safety",
+         "desc": "first-aid, liability, animals, water bodies, child groups"
+        },
+        {
+         "term": "Authenticity",
+         "desc": "avoid resortisation; farm-first eligibility"
+        },
+        {
+         "term": "Seasonality",
+         "desc": "crop calendars, festival calendars, school calendar"
+        },
+        {
+         "term": "Environmental load",
+         "desc": "water use, carrying capacity, no plastics"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Replication opportunity in Kurnool: cluster, do not scatter",
+   "lead": "Start where agriculture, tourism anchors and access already overlap.",
+   "blocks": [
+    {
+     "type": "callout",
+     "text": "Minimum standard: 1-acre farm base; 5-acre threshold for school picnics can be adopted from Maharashtra as a safety benchmark."
+    },
+    {
+     "type": "groups",
+     "groups": [
+      {
+       "name": "Suggested pilot clusters",
+       "items": [
+        {
+         "term": "Kurnool–Orvakallu belt",
+         "desc": "Day trips, airport gateway, adventure + farm visits"
+        },
+        {
+         "term": "Mantralayam corridor",
+         "desc": "Pilgrim add-on packages and traditional food experiences"
+        },
+        {
+         "term": "Adoni–Yemmiganur belt",
+         "desc": "Handloom + farms + heritage linkages"
+        },
+        {
+         "term": "Horticulture villages",
+         "desc": "Mango, sweet orange, pomegranate, onion/chilli stories"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Decision slide: 90-day pilot launch pathway",
+   "lead": "A low-risk pilot can demonstrate demand before scale-up investments.",
+   "blocks": [
+    {
+     "type": "steps",
+     "items": [
+      {
+       "n": 1,
+       "title": "Constitute District AgriTourism Cell",
+       "body": "Tourism, Agriculture, Horticulture, Education, DRDA/SERB, FPOs, SHGs"
+      },
+      {
+       "n": 2,
+       "title": "Select 8–12 pilot farms",
+       "body": "Access, safety, horticulture diversity, toilets/water, motivated farmers"
+      },
+      {
+       "n": 3,
+       "title": "Training + product design",
+       "body": "Hygiene, pricing, farm interpretation, school modules, safety SOP"
+      },
+      {
+       "n": 4,
+       "title": "Soft launch",
+       "body": "Schools, officials, local influencers, tour operators, feedback capture"
+      },
+      {
+       "n": 5,
+       "title": "District rollout plan",
+       "body": "Branding, booking page, convergence funds, monitoring dashboard"
+      }
+     ]
+    },
+    {
+     "type": "callout",
+     "label": "Immediate ask from District Administration",
+     "text": "Approve pilot cell, shortlist farms, nominate nodal officers and permit a joint field visit to Maharashtra/ATDC for operational learning."
+    }
+   ]
+  }
+ ]
+}

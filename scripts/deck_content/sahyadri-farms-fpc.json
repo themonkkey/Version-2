@@ -1,0 +1,319 @@
+{
+ "slug": "sahyadri-farms-fpc",
+ "eyebrow": "CASE STUDY • REPLICATION PLAYBOOK",
+ "title": "Revolutionizing Smallholder Farming through Integrated Supply Chains",
+ "subtitle": "What the Sahyadri Farms (FPC) model means for our Mandals & Districts",
+ "audience": "Officer Training Session | Government of Andhra Pradesh",
+ "source_note": "Source: Sancheti et al., Journal of Postharvest Technology, 2024.",
+ "sections": [
+  {
+   "title": "The Problem We Are Trying to Solve",
+   "blocks": [
+    {
+     "type": "cards",
+     "items": [
+      {
+       "title": "Climate stress",
+       "body": "Erratic weather, unpredictable water, and pests put fragile smallholder incomes at constant risk."
+      },
+      {
+       "title": "Fragmented supply chains",
+       "body": "Poor coordination among players raises cost and blocks access to markets, quality inputs and timely information."
+      },
+      {
+       "title": "Post-harvest losses",
+       "body": "Around 40% of produce never reaches the market due to weak storage, processing and logistics."
+      },
+      {
+       "title": "Tiny, scattered holdings",
+       "body": "Small & marginal farmers cannot reach economies of scale alone; past co-operatives largely under-delivered."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Answer: Aggregate Farmers into an FPC",
+   "blocks": [
+    {
+     "type": "p",
+     "text": "A Farmer Producer Company (FPC) is registered under the Companies Act, owned and democratically run by farmer-members, with professional managers handling day-to-day operations."
+    },
+    {
+     "type": "p",
+     "text": "It lets small farmers act at scale — managing the whole chain from input to market."
+    },
+    {
+     "type": "stats",
+     "items": [
+      {
+       "value": "~10,000",
+       "label": "FPCs registered",
+       "qualifier": "Under Central Sector Scheme"
+      },
+      {
+       "value": "~40%",
+       "label": "produce lost",
+       "qualifier": "without aggregation"
+      }
+     ]
+    },
+    {
+     "type": "list",
+     "title": "What an FPC delivers",
+     "items": [
+      "Pooled resources & shared knowledge",
+      "Collective bargaining for better prices",
+      "Access to finance, inputs & technology",
+      "Higher production, productivity & profit",
+      "Professional management, farmer ownership"
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Sahyadri Farms at a Glance",
+   "lead": "Nashik, Maharashtra • Founded 27 Dec 2010 by farmer Vilas Shinde • India's largest grape producer",
+   "blocks": [
+    {
+     "type": "stats",
+     "items": [
+      {
+       "value": "26,000",
+       "label": "Registered farmers"
+      },
+      {
+       "value": "252+",
+       "label": "Villages covered"
+      },
+      {
+       "value": "40,000",
+       "label": "Acres aggregated"
+      },
+      {
+       "value": "42+",
+       "label": "Countries served"
+      },
+      {
+       "value": "110+",
+       "label": "Corporate customers"
+      },
+      {
+       "value": "₹1,482 Cr",
+       "label": "Annual turnover"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "Started as just 4 smallholder farmers with a shared vision."
+    }
+   ]
+  },
+  {
+   "title": "How the Model Works: One Integrated Chain",
+   "blocks": [
+    {
+     "type": "flow",
+     "stages": [
+      {
+       "name": "Farmer",
+       "desc": "Transparent procurement from member-farmers"
+      },
+      {
+       "name": "Processing",
+       "desc": "Central pack-house, grading, processing"
+      },
+      {
+       "name": "Distribution",
+       "desc": "Cold chain & logistics to buyers"
+      },
+      {
+       "name": "Retail",
+       "desc": "Domestic retail, e-commerce, wholesale"
+      },
+      {
+       "name": "Consumer",
+       "desc": "Traceable produce, India & 42+ countries"
+      }
+     ],
+     "closing": "The FPC owns every link — so margins that once leaked to middlemen stay with farmers, and quality is controlled end-to-end."
+    }
+   ]
+  },
+  {
+   "title": "Five Pillars Behind the Results",
+   "blocks": [
+    {
+     "type": "cards",
+     "items": [
+      {
+       "title": "Agro-advisory teams",
+       "body": "Experts guide crop choice, cultivation, pest & soil management — building farmer skills."
+      },
+      {
+       "title": "Pack-house & processing",
+       "body": "Sorting, grading, packaging plus dehydration/pulping/canning add value & consistency."
+      },
+      {
+       "title": "Cold storage & logistics",
+       "body": "Optimal temperature/humidity extends shelf life and slashes post-harvest loss."
+      },
+      {
+       "title": "Modern tech",
+       "body": "Precision agriculture, GPS, drones and drip irrigation cut input waste, raise yields."
+      },
+      {
+       "title": "Blockchain & ERP",
+       "body": "Full traceability and transparent, fair-trade pricing — a first among Indian FPCs."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Who Benefits — Farmers and Consumers",
+   "blocks": [
+    {
+     "type": "compare",
+     "cols": [
+      {
+       "title": "For Farmers",
+       "items": [
+        "Direct access to domestic & export markets",
+        "Fair prices — no exploitative middlemen",
+        "Capacity building: training & workshops",
+        "Financial inclusion: credit, insurance, inputs",
+        "Higher, more stable & dignified incomes"
+       ]
+      },
+      {
+       "title": "For Consumers",
+       "items": [
+        "Consistently high quality, fresh produce",
+        "Strict quality assurance to global standards",
+        "Lower post-harvest loss → better availability",
+        "Full traceability of origin & safety",
+        "Greater trust, confidence and loyalty"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Replication Roadmap for Your Mandal",
+   "blocks": [
+    {
+     "type": "steps",
+     "items": [
+      {
+       "n": "1",
+       "title": "Identify & mobilise",
+       "body": "Map crops with surplus/loss; convene smallholders around one or two high-value crops. Start small — Sahyadri began with 4 farmers."
+      },
+      {
+       "n": "2",
+       "title": "Form / revive the FPC",
+       "body": "Register or re-activate an FPC. Lock in farmer ownership + professional management from day one."
+      },
+      {
+       "n": "3",
+       "title": "Build shared infrastructure",
+       "body": "Phase pack-house, grading and cold storage as volumes grow. Pool member capital + leverage govt & FI partnerships."
+      },
+      {
+       "n": "4",
+       "title": "Adopt technology & traceability",
+       "body": "Introduce agro-advisory, precision inputs, drip irrigation, and ERP/traceability for transparent pricing."
+      },
+      {
+       "n": "5",
+       "title": "Link to markets & scale",
+       "body": "Secure direct buyers, retail, e-commerce and exports. Reinvest surplus; expand crops and villages."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Challenges to Plan For",
+   "blocks": [
+    {
+     "type": "cards",
+     "items": [
+      {
+       "title": "Climate & water risk",
+       "body": "Drought-resistant varieties, precision/drip irrigation, climate-smart practices."
+      },
+      {
+       "title": "Soil & resource overuse",
+       "body": "Organic fertilisers, crop rotation, integrated pest management to protect long-term fertility."
+      },
+      {
+       "title": "Heavy capital needs",
+       "body": "Phase infrastructure investment; blend member capital with FI and government partnerships."
+      },
+      {
+       "title": "Coordination across stakeholders",
+       "body": "Engage farmers, govt, research bodies & private partners; share knowledge and risk."
+      },
+      {
+       "title": "Staying competitive",
+       "body": "Embed continuous improvement — feedback, evaluation and innovation at every level."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "What Officers Should Take Away",
+   "blocks": [
+    {
+     "type": "cards",
+     "items": [
+      {
+       "title": "Aggregation is the unlock",
+       "body": "An FPC turns scattered small farmers into a market force. Without scale, none of the rest works."
+      },
+      {
+       "title": "Own the chain, not just the farm",
+       "body": "Value leaks at every handoff. Capturing processing, storage and sales keeps margins with farmers."
+      },
+      {
+       "title": "Sequence the investment",
+       "body": "Start with people & advisory; build pack-house, cold chain and tech as revenue grows."
+      },
+      {
+       "title": "Technology builds trust",
+       "body": "ERP, blockchain and traceability convert quality into premium prices and loyal buyers."
+      },
+      {
+       "title": "Start small, think long",
+       "body": "From 4 farmers to ₹1,000 Cr — patient, compounding growth, not a one-off scheme."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "From Case Study to Action",
+   "source": "Source: Sancheti, Sanghavi, Sanghavi & Sancheti (2024), Journal of Postharvest Technology, 12(3): 37-49.",
+   "blocks": [
+    {
+     "type": "list",
+     "title": "Your task before you leave today:",
+     "items": [
+      "Name 1 high-value crop in your mandal suited to an FPC pilot.",
+      "Identify an existing FPO/FPC to revive — or farmers to mobilise.",
+      "List the partners (banks, govt schemes) you can bring to the table."
+     ]
+    },
+    {
+     "type": "quote",
+     "text": "A model of best practice — inspiring others to emulate its success."
+    }
+   ]
+  }
+ ]
+}

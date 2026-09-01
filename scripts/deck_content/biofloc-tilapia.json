@@ -1,0 +1,158 @@
+{
+  "slug": "biofloc-tilapia",
+  "title": "Biofloc Tilapia Farming",
+  "eyebrow": "CASE STUDY • RURAL LIVELIHOODS TRAINING",
+  "subtitle": "A Replicable Model for Mandal-Level Income Generation",
+  "audience": "Training Session — Mandal Officers, Andhra Pradesh",
+  "source_note": "Based on CMFRI's Scheduled Caste Sub-Plan (SCSP) initiative",
+  "sections": [
+    {
+      "title": "Session Details",
+      "blocks": [
+        { "type": "p", "text": "Cheranellur, Ernakulam, Kerala — November 2021" },
+        { "type": "callout", "label": "Objective", "text": "Understand the model and plan replication in your mandal" }
+      ]
+    },
+    {
+      "kicker": "THE CONCEPT",
+      "title": "What is Biofloc Fish Farming?",
+      "lead": "Biofloc is a high-density fish farming method carried out in a controlled tank, where naturally occurring microbes convert fish waste into useful protein-rich nutrients — recycled back as feed.",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            { "title": "Controlled environment", "body": "Farming happens in a single tank, not an open pond — usable even where no water body exists." },
+            { "title": "Waste becomes feed", "body": "Microbial 'floc' converts fish waste into nutrients, cutting feed cost and pollution." },
+            { "title": "High density, small space", "body": "Large yields from a compact footprint set up beside the household." }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "WHY IT SUITS RURAL HOUSEHOLDS",
+          "items": [
+            "No pond or river required",
+            "Set up next to the home",
+            "Low land requirement",
+            "Family-run, low labour",
+            "Steady 8-month income cycle",
+            "Reuses water & feed efficiently"
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "THE CASE STUDY",
+      "title": "Cheranellur, Ernakulam — The Numbers",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            { "value": "5", "label": "Scheduled Caste families formed one self-help group" },
+            { "value": "1,800", "label": "GIFT tilapia fry stocked in a single tank" },
+            { "value": "23,500 L", "label": "Biofloc tank built beside their homes" },
+            { "value": "₹1,35,000", "label": "Income per cycle", "qualifier": "≈ $1,800 every 8 months" }
+          ]
+        },
+        { "type": "p", "text": "Fish reach 300–500 g in a single 8-month cycle." },
+        { "type": "callout", "text": "A previously landless group now runs a viable micro-enterprise — proof that the model creates real, repeatable household income without access to open water." }
+      ]
+    },
+    {
+      "kicker": "THE MECHANICS",
+      "title": "How the CMFRI Model Was Delivered",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            { "n": "1", "title": "Identify & organise", "body": "Select eligible SC families and form a self-help group (SHG)." },
+            { "n": "2", "title": "Build the unit", "body": "Install a 23,500 L biofloc tank next to households." },
+            { "n": "3", "title": "Stock the fry", "body": "Source GIFT tilapia fry from a certified hatchery (MPEDA)." },
+            { "n": "4", "title": "Manage & monitor", "body": "Use a water-quality kit; CMFRI guides every growth phase." },
+            { "n": "5", "title": "Harvest & sell", "body": "Harvest at 300–500 g; earn ₹1.35 lakh per 8-month cycle." }
+          ]
+        },
+        { "type": "callout", "text": "CMFRI provided the tank, fry, feed and continuous technical guidance — the families provided labour and ownership." }
+      ]
+    },
+    {
+      "kicker": "WHY IT MATTERS",
+      "title": "A Tool for Inclusive Rural Development",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            { "title": "Reaches the landless", "body": "Designed under the Scheduled Caste Sub-Plan to benefit families without access to open water bodies." },
+            { "title": "Builds entrepreneurs", "body": "Families become small-scale business owners, not just beneficiaries — income stays in the community." },
+            { "title": "Environmentally sound", "body": "Closed, water-efficient system that recycles waste and avoids polluting local water sources." },
+            { "title": "Already proven & scaling", "body": "Running across Palakkad, Thrissur, Idukki, Kottayam & Kollam under CMFRI guidance." }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "ACTION PLAN",
+      "title": "Replication Roadmap for Your Mandal",
+      "blocks": [
+        {
+          "type": "phases",
+          "groups": [
+            {
+              "label": "PHASE 1",
+              "name": "Survey & Select",
+              "tasks": [
+                "Map SC/landless households lacking water-body access",
+                "Identify motivated families willing to form an SHG",
+                "Confirm space (~40 m²) and power/water near homes"
+              ]
+            },
+            {
+              "label": "PHASE 2",
+              "name": "Mobilise & Fund",
+              "tasks": [
+                "Form & register the self-help group",
+                "Tap SCSP / state fishery & NRLM convergence funds",
+                "Link group to a bank account for the cycle"
+              ]
+            },
+            {
+              "label": "PHASE 3",
+              "name": "Set Up & Train",
+              "tasks": [
+                "Install biofloc tank; supply fry, feed & test kit",
+                "Hands-on training on water quality & feeding",
+                "Source GIFT fry from a certified hatchery"
+              ]
+            },
+            {
+              "label": "PHASE 4",
+              "name": "Run & Scale",
+              "tasks": [
+                "Mentor through the first 8-month cycle",
+                "Track growth, costs & sales as a demo unit",
+                "Use success to onboard more groups"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "FOR THE OFFICER",
+      "title": "Key Factors for a Successful Replication",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            { "title": "Convergence", "body": "Combine SCSP, fishery dept & NRLM schemes for capital and subsidy." },
+            { "title": "Technical hand-holding", "body": "Tie up with a research/KVK partner for continuous guidance like CMFRI." },
+            { "title": "Quality inputs", "body": "Use certified GIFT fry and reliable feed — the single biggest yield driver." },
+            { "title": "Water discipline", "body": "Daily water-quality monitoring decides survival and growth rates." },
+            { "title": "Group ownership", "body": "A genuine SHG with shared stake sustains the unit beyond officials." },
+            { "title": "Demo-led scaling", "body": "Run one model unit well, then let visible income recruit the next groups." }
+          ]
+        },
+        { "type": "callout", "text": "Pick one ward. Form one group. Build one tank. Prove the income — then replicate." }
+      ]
+    }
+  ]
+}

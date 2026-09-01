@@ -1,0 +1,287 @@
+{
+  "slug": "paddy-fish-farming",
+  "title": "Paddy + Fish Integrated Farming",
+  "eyebrow": "Capacity Building Session",
+  "subtitle": "Successful models from India and China, and a practical implementation roadmap for paddy-growing districts of Andhra Pradesh",
+  "audience": "Case study deck for district & mandal officials",
+  "source_note": "Focus: dual productivity, farmer income, nutrition, sustainability and mandal-level execution. Visual generated for training use; data sources on relevant slides.",
+  "sections": [
+    {
+      "kicker": "STRATEGIC CONTEXT",
+      "title": "Why paddy + fish integration matters for Andhra Pradesh",
+      "source": "Sources: AP Seeds paddy crop note; CGIAR, 2023; TNAU fishery integration note.",
+      "blocks": [
+        {
+          "type": "pairs",
+          "items": [
+            {"term": "Paddy base already exists", "desc": "West Godavari, East Godavari and Krishna are among the most important rice-producing districts of Andhra Pradesh and India."},
+            {"term": "Need to raise net income", "desc": "Rice monoculture often faces cost, price and climate risks. Fish adds a second output from the same field and water."},
+            {"term": "AP has fisheries capability", "desc": "Coastal and delta districts already have farmers, markets and departments familiar with fish seed, stocking and marketing."}
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Policy fit for AP",
+          "items": [
+            "Supports district GVA growth through allied-sector income.",
+            "Works well with natural farming, water-efficiency and nutrition goals.",
+            "Creates a field-level demonstration model that officers can scale through RBKs and mandal teams."
+          ]
+        },
+        {
+          "type": "cards",
+          "items": [
+            {"title": "Dual output", "body": "Rice + fish from same plot"},
+            {"title": "Lower input", "body": "Less weeding / pest pressure"},
+            {"title": "Higher resilience", "body": "Diversified farmer income"}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "BASIC CONCEPT",
+      "title": "The model: one paddy field, two harvests",
+      "lead": "How the symbiosis works",
+      "source": "Sources: FAO GIAHS Qingtian Rice-Fish Culture; UNDP/NITI Assam rice-fish case.",
+      "blocks": [
+        {
+          "type": "pairs",
+          "items": [
+            {"term": "Fish help rice", "desc": "Fish manure fertilizes soil; fish movement aerates water and softens soil; fish eat larvae, weeds and insects."},
+            {"term": "Rice helps fish", "desc": "Rice canopy provides shade; the flooded field gives habitat; plankton and organic matter support fish growth."},
+            {"term": "Field modification", "desc": "Raised bunds, fish refuge trench/pond, screened inlet/outlet, controlled water depth and safe harvest channel."},
+            {"term": "Management shift", "desc": "Rice calendar must align with stocking; pesticide use must be avoided or carefully controlled."}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Core lesson",
+          "text": "this is not \"fish added to paddy\"; it is a planned field system requiring water control, species choice and farmer training."
+        }
+      ]
+    },
+    {
+      "kicker": "SUCCESSFUL INDIAN PILOT",
+      "title": "India case study 1: Climate-resilient rice–fish farming in Assam",
+      "source": "Source: UNDP SDG Knowledge Hub / NITI for States, \"Climate Resilient Rice–Fish Farming in Assam\".",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {"value": "431 ha", "label": "water bodies covered"},
+            {"value": "11", "label": "districts"},
+            {"value": "867", "label": "beneficiaries"}
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Implemented by the Fishery Department, Assam during 2018–19 to 2020–21 as a climate-resilient livelihood model."
+        },
+        {
+          "type": "steps",
+          "items": [
+            {"n": "1", "title": "Field/trench prep", "body": ""},
+            {"n": "2", "title": "Liming & stocking", "body": ""},
+            {"n": "3", "title": "Feed & health", "body": ""},
+            {"n": "4", "title": "Harvest & market", "body": ""}
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Reported outcomes",
+          "items": [
+            "Paddy yield increased by 10%–25%.",
+            "Average rice production reported around 7 tonnes/ha/year.",
+            "Fish production reported nearly 2 tonnes/ha/crop.",
+            "Reduced weeding labour and improved local fish availability."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Learning for AP officials",
+          "text": "Start with technically suitable fields and invest in handholding. The model succeeds when fisheries and agriculture staff work together through a common mandal plan."
+        }
+      ]
+    },
+    {
+      "kicker": "INDIGENOUS MODEL",
+      "title": "India case study 2: Apatani paddy-cum-fish farming, Arunachal Pradesh",
+      "source": "Source: Directorate of Fisheries, Government of Arunachal Pradesh, \"Paddy-cum-fish-culture\".",
+      "blocks": [
+        {
+          "type": "list",
+          "title": "Why this model is important",
+          "items": [
+            "Widely practiced in the Apatani plateau and described by the state fisheries department as profitable and sustainable.",
+            "Generates two crops — paddy and fish — from the same cultivable area.",
+            "Uses low-lying fields, raised bunds, irrigation channels and suitable carp species."
+          ]
+        },
+        {
+          "type": "stats",
+          "items": [
+            {"value": "2–3 ft", "label": "recommended bund height in government note"},
+            {"value": "Common / Amur carp", "label": "common species in model"}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Transferable lesson",
+          "text": "Rice–fish integration works best when water channels, community rules and farmer skills are designed together — not as isolated input distribution."
+        }
+      ]
+    },
+    {
+      "kicker": "GLOBAL HERITAGE MODEL",
+      "title": "China case study: Qingtian Rice–Fish Culture System",
+      "source": "Sources: FAO GIAHS Qingtian Rice-Fish Culture; Frontiers in Sustainable Food Systems, 2024.",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {"value": "1,300+ yrs", "label": "traditional system in Qingtian"},
+            {"value": "2005", "label": "FAO GIAHS recognition"},
+            {"value": "Eco-brand", "label": "rice + fish + tourism"}
+          ]
+        },
+        {
+          "type": "list",
+          "title": "What makes it successful",
+          "items": [
+            "Fish fertilize rice, disturb water, soften soil, and eat larvae and weeds.",
+            "Rice gives fish shade, food and habitat.",
+            "Lower-cost inputs reduce use of chemical fertilizers, pesticides and herbicides.",
+            "Heritage branding supports higher-value products and rural revitalization."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Learning for AP",
+          "text": "protect ecology + build product identity. This can become a \"safe rice + local fish\" brand, not just a production technique."
+        }
+      ]
+    },
+    {
+      "kicker": "SUCCESS FACTORS",
+      "title": "What the India and China cases have in common",
+      "source": "Sources synthesized from Assam case, Arunachal Pradesh fisheries note and FAO Qingtian GIAHS documentation.",
+      "blocks": [
+        {
+          "type": "pairs",
+          "items": [
+            {"term": "Right site", "desc": "Low-lying, water-retentive fields with controlled inlet/outlet."},
+            {"term": "Field design", "desc": "Strong bunds, trenches/refuge pond, screened flow points and harvest channel."},
+            {"term": "Species choice", "desc": "Carp or locally suited species matched to water depth, salinity and crop calendar."},
+            {"term": "Input discipline", "desc": "Avoid harmful pesticides; shift to natural/safer pest management."},
+            {"term": "Technical handholding", "desc": "Regular visits by agriculture + fisheries teams during first crop cycle."},
+            {"term": "Market linkage", "desc": "Farmer groups, aggregators, fish markets and cold chain for better returns."}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Officer takeaway",
+          "text": "pilots should be selected for technical feasibility first, then scaled through farmer confidence and demonstrated profitability."
+        }
+      ]
+    },
+    {
+      "kicker": "WHERE TO APPLY",
+      "title": "Relevance for paddy-growing districts of Andhra Pradesh",
+      "source": "Sources: AP Seeds; ANGRAU Paddy Outlook 2023–24; CGIAR 2023 note on IRFS in West Godavari.",
+      "blocks": [
+        {
+          "type": "list",
+          "title": "Prioritise districts/mandals with:",
+          "items": [
+            "Contiguous paddy area and assured water retention.",
+            "Existing canal or tank-based irrigation with manageable drainage.",
+            "Farmer interest in natural farming / lower chemical input practices.",
+            "Access to fish seed, local markets and fisheries extension.",
+            "Low-lying paddy patches where waterlogging is common."
+          ]
+        },
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "Potential AP focus areas",
+              "items": [
+                {"term": "Delta paddy belts", "desc": "Krishna, East/West Godavari and adjoining delta mandals can test field-refuge models."},
+                {"term": "High paddy districts", "desc": "ANGRAU paddy outlook identifies West Godavari, Krishna, Srikakulam and Kakinada as major paddy-growing districts."},
+                {"term": "APCNF alignment", "desc": "Integrated model can reduce chemical dependence and support biodiversity if field protocols are followed."},
+                {"term": "Nutrition & income", "desc": "Freshwater fish availability improves household protein while rice yield is protected or improved."}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Do not universalise. Start with feasibility screening and demonstration mandals before district-wide scale-up."
+        }
+      ]
+    },
+    {
+      "kicker": "ROLE OF DISTRICT OFFICERS",
+      "title": "District-level implementation model",
+      "source": "Sources: Implementation logic adapted from Assam and Qingtian cases; scheme convergence to be validated by state departments.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {"n": "1", "title": "Map suitable fields", "body": ""},
+            {"n": "2", "title": "Select demo clusters", "body": ""},
+            {"n": "3", "title": "Converge schemes", "body": ""},
+            {"n": "4", "title": "Train farmers", "body": ""},
+            {"n": "5", "title": "Monitor crop cycle", "body": ""},
+            {"n": "6", "title": "Aggregate & market", "body": ""}
+          ]
+        },
+        {
+          "type": "steps",
+          "items": [
+            {"n": "1", "title": "Feasibility mapping", "body": "Use paddy area, irrigation, water depth, drainage and pesticide-use pattern to shortlist mandals."},
+            {"n": "2", "title": "Demonstration clusters", "body": "Start with 5–10 fields per mandal through volunteer farmers, FPOs or natural farming groups."},
+            {"n": "3", "title": "Convergence", "body": "Pool agriculture, fisheries, RBK, MGNREGS, PMMSY/NFSM and local training resources."},
+            {"n": "4", "title": "Market planning", "body": "Tie up local fish vendors, ice boxes, collection points and rice branding before harvest."}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "WHAT OFFICERS SHOULD TRACK",
+      "title": "Monitoring framework and takeaways",
+      "source": "Key sources: Assam UNDP/NITI case; Arunachal Pradesh Fisheries note; FAO Qingtian GIAHS; Frontiers 2024; AP Seeds; ANGRAU Paddy Outlook; CGIAR.",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "Simple KPI dashboard",
+              "items": [
+                {"term": "Productivity", "desc": "Paddy yield, fish yield, survival rate"},
+                {"term": "Income", "desc": "Net income/acre vs paddy-only field"},
+                {"term": "Input use", "desc": "Fertilizer, pesticide and weeding labour"},
+                {"term": "Water", "desc": "Retention days, depth, drainage events"},
+                {"term": "Adoption", "desc": "Farmers trained, pilots completed, replication demand"},
+                {"term": "Market", "desc": "Fish price, buyer linkage, aggregation volume"}
+              ]
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "items": [
+            {"n": "1", "title": "Start small, but design properly", "body": "Pilot only in technically suitable fields with water control and farmer consent."},
+            {"n": "2", "title": "Converge agriculture and fisheries teams", "body": "Joint field visits are essential during design, stocking and harvest."},
+            {"n": "3", "title": "Show income evidence", "body": "Compare with paddy-only plots; scale only when pilots show net returns and risk control."}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Final message",
+          "text": "rice–fish farming is a district productivity strategy, not just a farm technique."
+        }
+      ]
+    }
+  ]
+}

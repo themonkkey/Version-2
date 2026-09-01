@@ -1,0 +1,245 @@
+{
+  "slug": "kalamkari-krishna",
+  "title": "Successful Models Kalamkari Can Emulate for Growth",
+  "eyebrow": "CASE STUDY • CRAFT CLUSTER STRATEGY",
+  "subtitle": "Focus: Pedana–Machilipatnam Kalamkari — growth, tourism, digital markets, aggregation, GI branding and clean production",
+  "audience": "A practical case study deck for mandal officers in Krishna district",
+  "sections": [
+    {
+      "title": "Core Idea: Build a Hybrid Kalamkari Growth Model",
+      "lead": "No single case is enough; Krishna should combine the best lessons from successful Indian craft and textile clusters.",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {"title": "Bagru Block Printing", "body": "Closest craft-process model: block printing + washing + common environmental infrastructure."},
+            {"title": "Raghurajpur Heritage Village", "body": "Craft tourism model: turn production into a visitor experience and village identity."},
+            {"title": "Chanderiyaan, Chanderi", "body": "Digital market model: design archive, e-commerce and youth-led digital skills."},
+            {"title": "Tiruppur ZLD", "body": "Compliance model: common treatment, reuse and monitoring for water-sensitive steps."}
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Recommended model for Krishna: Bagru-style cluster infrastructure + Raghurajpur-style craft tourism + Chanderiyaan-style digital access + Tiruppur-lite water management."
+        }
+      ]
+    },
+    {
+      "kicker": "THE KRISHNA DISTRICT BASELINE",
+      "title": "Strong Identity, Unorganised Growth",
+      "lead": "The challenge is to move from dispersed craft production to a managed, market-ready and sustainable cluster.",
+      "blocks": [
+        {
+          "type": "compare",
+          "cols": [
+            {
+              "title": "Current strengths",
+              "items": [
+                "ODOP identity and GI recognition.",
+                "Vegetable dye and wooden block heritage.",
+                "A product range of sarees, rugs, towels, paintings, bed covers and clothing material, geographically concentrated around Pedana and nearby centres."
+              ]
+            },
+            {
+              "title": "Growth bottlenecks",
+              "items": [
+                "Fragmented producers and weak order aggregation.",
+                "Limited contemporary product development.",
+                "Water-use and wastewater risks in the washing and dyeing steps.",
+                "Inconsistent packaging, quality assurance and digital marketing, and low linkage with tourism, exports and premium buyers."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "CASE STUDY 1 — BAGRU BLOCK PRINTING, RAJASTHAN",
+      "title": "The Common-Infrastructure Model",
+      "lead": "Best fit for Kalamkari because Bagru is also a traditional hand block-printing cluster.",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "What the model did",
+              "items": [
+                "Built common infrastructure for a craft-based textile cluster.",
+                "Used a common effluent treatment approach with zero-discharge intent.",
+                "Recycled and reused a large share of wastewater.",
+                "Protected the credibility of hand block printing as an eco-sensitive craft."
+              ]
+            },
+            {
+              "name": "Lesson for Krishna officials",
+              "items": [
+                "Create a common Kalamkari washing and dyeing facility rather than unit-level ETPs.",
+                "Anchor it around the Pedana–Machilipatnam craft identity.",
+                "Link environmental compliance with branding as water-responsible Kalamkari, and run cluster-level governance through an artisan committee or SPV."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "CASE STUDY 2 — RAGHURAJPUR HERITAGE CRAFTS VILLAGE, ODISHA",
+      "title": "The Craft Tourism Model",
+      "lead": "Best model for converting a craft cluster into a visitor experience and a local tourism economy.",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "What the model did",
+              "items": [
+                "Positioned the village itself as the product.",
+                "Visitors experience artisans, homes, studios and live demonstrations.",
+                "Craft became a tourism asset rather than only a retail product, and local identity was built around a recognised art tradition."
+              ]
+            },
+            {
+              "name": "Action for Krishna",
+              "items": [
+                "Develop a Pedana Kalamkari Craft Trail.",
+                "Create visitor-friendly demo centres and retail outlets.",
+                "Train artisans to host paid workshops for schools, tourists and designers.",
+                "Link the Kalamkari trail with Machilipatnam beach and cultural circuits."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "CASE STUDY 3 — CHANDERIYAAN, CHANDERI, MADHYA PRADESH",
+      "title": "The Digital Market Model",
+      "lead": "Best model for digital empowerment, design cataloguing and e-commerce in a traditional textile cluster.",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "What the model did",
+              "items": [
+                "Built an ICT resource centre for weavers.",
+                "Supported digital literacy, product cataloguing and market access.",
+                "Used a design archive and e-commerce to reduce dependence on local intermediaries.",
+                "Engaged youth in cluster modernisation."
+              ]
+            },
+            {
+              "name": "Action for Krishna",
+              "items": [
+                "Create a Kalamkari digital design bank of motifs, blocks, borders and colourways.",
+                "Train youth in product photography, cataloguing, QR stories and online listings.",
+                "Onboard producer groups on ONDC, GeM, Amazon Karigar and state emporia platforms, and make every product traceable to artisan, process and GI authenticity."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "CASE STUDY 4 — TIRUPPUR ZLD AS A COMPLIANCE BENCHMARK",
+      "title": "Common Treatment, Reuse and Monitoring",
+      "lead": "Do not copy Tiruppur's scale directly; copy its principle of common treatment, reuse and monitoring.",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "Technical lesson",
+              "items": [
+                "Wastewater is collected at cluster level.",
+                "Common treatment and recycling reduce freshwater dependence.",
+                "Monitoring and compliance are built into the operating model.",
+                "Salt and sludge management must be planned from the beginning."
+              ]
+            },
+            {
+              "name": "Action for Kalamkari",
+              "items": [
+                "Start with common washing, dyeing and wastewater collection points.",
+                "Install a mini-CETP or closed-loop treatment facility after an effluent audit.",
+                "Reuse treated water for first-stage washing and cleaning.",
+                "Use APPCB-approved monitoring before scaling to advanced ZLD modules."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "THE PROPOSED MODEL",
+      "title": "Pedana Kalamkari Integrated Craft Growth Model",
+      "lead": "A practical package combining infrastructure, tourism, digital marketing, aggregation, GI and clean production.",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {"title": "Common facility centre", "body": "Dye preparation, washing, drying, testing, packaging and mini-effluent treatment."},
+            {"title": "Craft tourism trail", "body": "Live demo centre, workshops, craft cafe, retail outlet and school and tourist visits."},
+            {"title": "Digital marketplace", "body": "Design bank, QR traceability, product catalogues and online platform onboarding."},
+            {"title": "Producer enterprise", "body": "Aggregation, order management, quality standardisation and payment systems."},
+            {"title": "GI and authenticity", "body": "Certified Machilipatnam Kalamkari tags, artisan registration and an anti-imitation campaign."},
+            {"title": "Water-responsible production", "body": "Water audit, common treatment, reuse, a sludge and salt protocol and APPCB monitoring."}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "WHAT MANDAL OFFICERS CAN DO",
+      "title": "Six Steps in the Kalamkari Centres",
+      "lead": "Translate the case studies into local action in Pedana, Machilipatnam, Polavaram, Kappaladoddi and nearby production points.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {"n": 1, "title": "Map and mobilise", "body": "List artisans, SHGs, workshops, water-use steps, current markets and infrastructure gaps."},
+            {"n": 2, "title": "Create a common platform", "body": "Facilitate an artisan association, SPV or producer company for orders, quality and shared assets."},
+            {"n": 3, "title": "Prepare two DPRs", "body": "One for a craft growth common facility centre and one for common washing and mini-CETP water management."},
+            {"n": 4, "title": "Build market linkages", "body": "Connect with designers, boutiques, hotel chains, AP Tourism, Lepakshi, ONDC, GeM and export councils."},
+            {"n": 5, "title": "Launch a tourism pilot", "body": "Identify 10–15 demonstration-ready artisan homes and workshops and one common visitor centre."},
+            {"n": 6, "title": "Track KPIs monthly", "body": "Artisan income, orders, tourist visits, digital sales, treated water, reuse rate and GI-tagged products."}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "RECOMMENDATIONS AND TRACKING INDICATORS",
+      "title": "The Action Checklist After Training",
+      "lead": "Use this as the action checklist after the training session.",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "Top recommendations",
+              "items": [
+                "Adopt Bagru as the anchor model with common facilities for the block-printing cluster.",
+                "Create a Pedana Kalamkari craft trail before peak tourism seasons.",
+                "Build a Kalamkari digital design bank and online catalogue.",
+                "Form a producer enterprise to handle quality, orders and payments.",
+                "Start water management with an audit, common washing and a mini-CETP pilot.",
+                "Use GI tags and QR stories to fight imitation and support premium pricing."
+              ]
+            },
+            {
+              "name": "KPIs to review monthly",
+              "items": [
+                "Number of artisans mapped and onboarded.",
+                "Number of GI-tagged and QR-traceable products.",
+                "Digital sales value and buyer inquiries.",
+                "Tourist and workshop footfall and direct sales.",
+                "Share of products passing quality and colour-fastness checks.",
+                "Wastewater treated and the share of treated water reused.",
+                "Average artisan income and repeat orders."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

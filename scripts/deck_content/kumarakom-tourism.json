@@ -1,0 +1,263 @@
+{
+  "slug": "kumarakom-tourism",
+  "title": "Kumarakom Responsible Tourism Model",
+  "eyebrow": "CASE STUDY | RESPONSIBLE TOURISM",
+  "subtitle": "How a destination-level partnership linked tourism demand with local livelihoods, culture and conservation.",
+  "audience": "Training deck for District & Mandal Level Officials, Andhra Pradesh",
+  "source_note": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+  "sections": [
+    {
+      "title": "Why Kumarakom needed a new approach",
+      "lead": "Tourism growth was strong, but local communities were not fully integrated into benefits and decisions.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "list",
+          "title": "Core challenge",
+          "items": [
+            "Top-down tourism planning with limited community voice",
+            "Conflicts over resource use, employment and benefit sharing",
+            "Leakage of tourism spending outside the local economy",
+            "Need to conserve fragile backwater ecosystems and local culture"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Case question for officials",
+          "text": "How can mandals convert tourism footfall into local income without damaging natural and cultural assets?"
+        }
+      ]
+    },
+    {
+      "title": "Institutional model: a destination-level platform",
+      "lead": "A Responsible Tourism Committee brought local government, industry and community together.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "compare",
+          "cols": [
+            {
+              "title": "Who sits at the table?",
+              "items": [
+                "Panchayat / local government",
+                "Tourism Dept. / KITTS",
+                "Hotels & resorts",
+                "SHGs, farmers & artisans",
+                "NGOs / community reps"
+              ]
+            },
+            {
+              "title": "What it decides",
+              "items": [
+                "Local procurement norms",
+                "Price and quality assurance",
+                "Training and livelihood pilots",
+                "Resource protection measures",
+                "Visitor experience packages"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Responsible Tourism Committee",
+          "text": "A shared governance platform at destination level"
+        },
+        {
+          "type": "callout",
+          "label": "Design principle",
+          "text": "put government, industry and community in one recurring forum so decisions on tourism products, benefits and safeguards are made jointly."
+        }
+      ]
+    },
+    {
+      "title": "Strategy 1: Link hotel demand with local supply",
+      "lead": "Local procurement became the economic engine of the model.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {"n": 1, "title": "Demand mapping", "body": "What hotels buy regularly"},
+            {"n": 2, "title": "Production calendar", "body": "When local supply can meet demand"},
+            {"n": 3, "title": "Supply groups", "body": "Samrudhi groups / SHGs aggregate produce"},
+            {"n": 4, "title": "Price + quality", "body": "Committees build transparency"},
+            {"n": 5, "title": "Hotel linkage", "body": "Farm/unit visits and regular orders"}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Key learning",
+          "text": "Do not start with tourist packages alone. Start by organising the local supply chain so community members can reliably serve tourism demand."
+        }
+      ]
+    },
+    {
+      "title": "Strategy 2: Build community livelihoods around visitor experience",
+      "lead": "The model diversified income by converting local skills, food and culture into tourism services.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "pairs",
+          "items": [
+            {"term": "Labour directories", "desc": "Map skills and local workers for hotel jobs and services"},
+            {"term": "Training for vulnerable groups", "desc": "Prepare people for tourism-linked microenterprises"},
+            {"term": "Ethnic food & souvenirs", "desc": "Use local recipes, crafts and SHG production"},
+            {"term": "Village Life Experience", "desc": "Package farming, fishing, crafts and local livelihoods as authentic experiences"}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Replicable insight for AP",
+          "text": "Build one local experience around each mandal's strongest asset: agriculture, crafts, cuisine, temples, coastal livelihoods, tribal culture, nature trails or wetlands."
+        }
+      ]
+    },
+    {
+      "title": "Strategy 3: Protect the assets that attract tourists",
+      "lead": "Kumarakom treated conservation, sanitation and cultural mapping as part of tourism management.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "Ecosystem care",
+              "items": [
+                "Mangrove regeneration",
+                "Organic farming",
+                "Fish farming / lotus in unused ponds"
+              ]
+            },
+            {
+              "name": "Low-carbon mobility",
+              "items": [
+                "Rowing boats",
+                "Bicycles for village packages"
+              ]
+            },
+            {
+              "name": "Reduced footprint",
+              "items": [
+                "Waste systems",
+                "Hotel sewage treatment plants",
+                "Household pipe composts",
+                "Periodic bird sanctuary cleaning"
+              ]
+            },
+            {
+              "name": "Culture mapping",
+              "items": [
+                "Resource mapping",
+                "Local art performance groups",
+                "Handicraft training"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Key learning",
+          "text": "Tourism plans must include environmental safeguards and cultural preservation from day one—not as a later add-on."
+        }
+      ]
+    },
+    {
+      "title": "Results achieved: measurable economic and social impact",
+      "lead": "The model increased local income, enterprise creation, cultivation and tourist arrivals.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {"value": "USD 626k", "label": "Estimated additional revenue"},
+            {"value": "285", "label": "Families benefitted"},
+            {"value": "646", "label": "Community members trained"},
+            {"value": "33", "label": "Local tourism-linked microenterprises"},
+            {"value": "82%", "label": "Households involved in tourism-related activities"},
+            {"value": "168 acres", "label": "Land reclaimed for cultivation"},
+            {"value": "+20%", "label": "international arrivals"},
+            {"value": "+30%", "label": "domestic arrivals"},
+            {"value": "13", "label": "resorts under RT Classification"}
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Key lessons for district and mandal officials",
+      "lead": "What made the model work—and what should be replicated carefully.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {"n": 1, "title": "Local government must anchor the platform", "body": "Mandal/district administration gives legitimacy and continuity."},
+            {"n": 2, "title": "Private sector concerns need practical solutions", "body": "Price, quality and reliability committees make procurement possible."},
+            {"n": 3, "title": "Community confidence has to be built", "body": "Use regular hotel-community interactions, exposure visits and transparent processes."},
+            {"n": 4, "title": "Capacity building must be demand-led", "body": "Train people in skills linked to actual hotel/visitor demand."},
+            {"n": 5, "title": "Destination assets must be protected", "body": "Tourism income depends on wetlands, beaches, culture, cleanliness and trust."}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Training prompt",
+          "text": "Which 2–3 assets in your mandal can be converted into community-led tourism products without overuse?"
+        }
+      ]
+    },
+    {
+      "title": "Replication strategy for Andhra Pradesh",
+      "lead": "A practical sequence district and mandal teams can adapt to local tourism assets.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {"n": 1, "title": "Identify tourism anchors", "body": "Map beaches, temples, crafts, food, wetlands, hills, tribal circuits and agri-tourism points."},
+            {"n": 2, "title": "Create a destination task force", "body": "Include Mandal Parishad, Gram Panchayat, Tourism, DRDA/SHGs, hotels, transporters, youth and artisans."},
+            {"n": 3, "title": "Map local supply and skills", "body": "List farmers, fishers, SHGs, artisans, cooks, guides and available facilities."},
+            {"n": 4, "title": "Match supply with demand", "body": "Run structured discussions with hotels/tour operators to define price, quality, quantity and delivery."},
+            {"n": 5, "title": "Pilot and monitor", "body": "Launch 1–2 low-risk experiences and procurement linkages; track income, participation, cleanliness and visitor feedback."}
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Replicate the principles, not the exact product: coastal mandals may focus on fishing/boat experiences; temple towns on local food, crafts and heritage walks; tribal/hill mandals on guided nature and culture routes."
+        }
+      ]
+    },
+    {
+      "title": "90-day action plan and monitoring metrics",
+      "lead": "Use the case study to move from awareness to a small, visible pilot.",
+      "source": "Source: NITI for States Best Practice ID 101989; UNWTO Tourism for Development, Vol. II, Case Study 9.",
+      "blocks": [
+        {
+          "type": "phases",
+          "groups": [
+            {"label": "0–15 days", "name": "Asset & stakeholder mapping", "tasks": ["Tourism assets, hotels, SHGs, producers, existing schemes"]},
+            {"label": "15–30 days", "name": "Task force + MoU structure", "tasks": ["Roles, meeting rhythm, price/quality norms, grievance loop"]},
+            {"label": "30–60 days", "name": "Capacity building + supply groups", "tasks": ["Guide training, food/craft hygiene, production calendars"]},
+            {"label": "60–90 days", "name": "Pilot product launch", "tasks": ["Village/heritage/craft/eco experience + procurement linkage"]}
+          ]
+        },
+        {
+          "type": "list",
+          "title": "Suggested monitoring metrics",
+          "items": [
+            "Local income generated",
+            "No. of families / SHGs linked",
+            "No. of tourists using local experiences",
+            "Hotel procurement from local groups",
+            "Waste management and cleanliness status",
+            "Visitor satisfaction / complaints"
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Closing activity",
+          "text": "Each official identifies one pilot destination, one community group and one private-sector partner to begin with."
+        }
+      ]
+    }
+  ]
+}

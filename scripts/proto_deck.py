@@ -1,28 +1,31 @@
 #!/usr/bin/env python3
-"""PROTOTYPE — hybrid horizontal 'deck' reader for one case study.
+"""Horizontal "deck" reader for one case study, rendered from typed content.
 
-Renders a single case (default: Morbi) to landing/cases/_proto-<slug>.html so the
-new design can be judged before it touches the 13 live pages. Reuses the parser in
-build_case_studies.py; only the presentation is new.
+Consumes scripts/deck_content/<slug>.json (see scripts/deck_schema.md) and
+writes landing/cases/<slug>.html. Each section is a full-viewport slide laid
+out horizontally; left/right arrows, keyboard and swipe move between slides.
+Content is typed one block per source structure and each block type owns a
+purpose-built layout, so the flattening failures of the old parse-based
+pipeline (peer items losing their grouping, headers reading as items, stats
+losing labels, flows/tables/phases collapsed into chip walls) cannot recur.
 
-Design: each section is a full-viewport slide laid out horizontally. Left/right
-arrows + keyboard + swipe move between slides (CSS-transform track, so it works
-even where requestAnimationFrame is throttled). Content sits in a real
-glassmorphism panel over a full-bleed background. Background is a theme-tinted
-animated mesh gradient by default and auto-upgrades to a photo/video the moment
-one is dropped at landing/cases/media/<slug>/coverN.(jpg|mp4). If a slide's
-content is taller than the panel, the panel scrolls internally — never trapped.
-On narrow screens the whole thing degrades to a vertical stack.
+The visual chrome (page skeleton, glass panel, cover/agenda/closing, role
+tinting, nav) is unchanged; only the content pipeline is new.
 
-    python3 scripts/proto_deck.py [Morbi_Ceramics_Industry.txt]
+    python3 scripts/proto_deck.py [slug|File.txt]   # write pages
+    python3 scripts/proto_deck.py --check           # integrity engine
+    python3 scripts/proto_deck.py --fixture         # render the fixture
 """
 import re
 import os
 import sys
+import json
+import tempfile
 
 import build_case_studies as B
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CONTENT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "deck_content")
 
 # theme tint by keyword — CVD-aware base hues, matched to the dashboard palette
 TINTS = [
@@ -77,7 +80,8 @@ def role_for(title, blocks=None):
         if any(k in t for k in keys):
             return role
     if blocks:
-        body = " ".join(str(x) for b in blocks for x in b[1:]).lower()
+        body = (blocks if isinstance(blocks, str)
+                else " ".join(str(x) for b in blocks for x in b[1:])).lower()
         best, hits = None, 0
         for role, keys in ROLES:
             n = _hits(body, keys)
@@ -252,137 +256,65 @@ _DASH = re.compile(r"\s*\u2014\s*")
 
 
 def dedash(t):
+    """Resolve source em dashes at the render layer (the JSON keeps the dash).
+    A PAIR of dashes sets off an aside and becomes parentheses ('What Drives
+    (and Constrains) the Cluster'); a single dash introduces a gloss and
+    becomes a colon, unless the clause already carries a colon, where a comma
+    keeps a double colon impossible. A clause already ending in punctuation
+    gets only a space. En dashes (ranges like 80\u201390%) are untouched, and
+    no em dash ever reaches the HTML."""
     if not t or "\u2014" not in t:
         return t
-    out, i = [], 0
-    for m in _DASH.finditer(t):
-        tail = t[m.end():]
-        stop = min([x for x in (tail.find("."), tail.find("?"), tail.find("!"))
-                    if x >= 0] or [len(tail)])
-        out.append(t[i:m.start()])
-        out.append(": " if "," in tail[:stop] else ", ")
-        i = m.end()
-    out.append(t[i:])
-    return "".join(out)
+    sentences = re.split(r"(?<=[.!?])\s+", t)
+    out = []
+    for s in sentences:
+        n = s.count("\u2014")
+        if n == 0:
+            out.append(s)
+            continue
+        if n == 2:
+            s = _DASH.sub(" (", s, count=1)
+            s = _DASH.sub(") ", s, count=1)
+            s = s.replace("( ", "(").replace(" )", ")").replace(") ,", "),")
+            out.append(re.sub(r"\)\s+([.,;:])", r")\1", s))
+            continue
+        parts, i2 = [], 0
+        for m in _DASH.finditer(s):
+            parts.append(s[i2:m.start()])
+            prev = "".join(parts).rstrip()
+            if prev.endswith((",", ":", ";")):
+                parts.append(" ")
+            elif ":" in prev:
+                parts.append(", ")
+            else:
+                parts.append(": ")
+            i2 = m.end()
+        parts.append(s[i2:])
+        out.append("".join(parts))
+    return " ".join(out)
 
 
 def e(t):
     return B.e(dedash(t))
 
 
-
-def block_html(b):
-    if b[0] == "entry":
-        _, term, head, body = b
-        # the term column collapses when empty: series_run borrows a trailing
-        # period out of an entry and would otherwise leave a blank indent
-        return ('<div class="entry' + ('' if term else ' noterm') + '">'
-                '<div class="term">' + e(term) + '</div>'
-                '<div><p class="eh">' + e(head) + '</p><p class="eb">' + e(body) + '</p></div></div>')
-    if b[0] == "h3":
-        return '<h3>' + e(b[1]) + '</h3>'
-    if b[0] == "k":
-        return '<p class="k">' + e(b[1]) + '</p>'
-    return '<p>' + e(b[1]) + '</p>'
+# ---------------------------------------------------------------- typed blocks
+# The renderer consumes typed content JSON (scripts/deck_content/<slug>.json),
+# one block per structure the source carries. Each block type below owns a
+# layout built for its shape, so the flattening failures the audit catalogued
+# (peer items losing their grouping, headers reading as items, stats losing
+# labels, flows/tables/phases collapsed into chip walls) cannot recur.
 
 
-def grid_html(cells):
-    """Stat run. Two to four figures are the deck's BIG NUMBER slide, so they are
-    given the full-width treatment instead of being shrunk into tiles; five or
-    more stay a tile grid, which is what the source is actually carrying there."""
-    big = 2 <= len(cells) <= 4
-    inner = "".join('<div class="cell"><div class="v">' + e(v) + '</div>'
-                    '<div class="l">' + e(l) + '</div></div>' for v, l in cells)
-    return '<div class="grid' + (' big' if big else '') + '">' + inner + '</div>'
-
-
-def card_run(blocks, i):
-    """Collect a run of consecutive 'h3 + its prose' units starting at i.
-
-    Returns (units, next_i) where each unit is (heading, [paragraphs]). A unit
-    ends at the next h3 or at anything that is not prose, so a stat grid or a
-    timeline entry still breaks the run and renders in its own right.
-    """
-    units, j = [], i
-    while j < len(blocks) and blocks[j][0] == "h3":
-        head, j = blocks[j][1], j + 1
-        paras = []
-        while j < len(blocks) and blocks[j][0] == "p":
-            paras.append(blocks[j][1])
-            j += 1
-        units.append((head, paras))
-    return units, j
-
-
-def cards_html(units):
-    """A run of sub-headings becomes one of the deck's two peer layouts.
-
-    WHY: the decks carry these as peer items - four success factors, three
-    constraints - and stacking them as h3/p/h3/p reads as one long column that
-    hides the fact they are parallel. Which layout is used mirrors the .pptx:
-    three short items become the ICON ROW (a large icon over each head, no
-    numbering, read left to right); anything longer becomes PILLARS (numbered,
-    each under its own accent rail, read as an ordered set). Runs of one are left
-    alone: a lone sub-heading is a section lead-in, not a card.
-    """
-    avg = sum(len(" ".join(p)) for _, p in units) / float(len(units))
-    row = len(units) in (3, 4) and avg <= 150
-    cells = []
-    for head, paras in units:
-        body = "".join('<p>' + e(t) + '</p>' for t in paras)
-        cells.append('<div class="card">'
-                     + icon_html(head if icon_for(head) != "spark"
-                                 else head + " " + " ".join(paras),
-                                 "ic xl" if row else "ic")
-                     + '<h3>' + e(head) + '</h3>' + body + '</div>')
-    return ('<div class="cards ' + ("iconrow" if row else "pillars") + '">'
-            + "".join(cells) + '</div>')
-
-
-# ---------------------------------------------------------------- SWOT
-# A SWOT arrives from the parser as a flat run of short lines: an optional
-# "SWOT - ..." caption, then the four quadrant words each on their own line with
-# their points beneath. Rendered as chips it loses the one thing that makes it a
-# framework - the 2x2. Recovered here into the real matrix: internal factors on
-# the top row, external on the bottom; helpful on the left, harmful on the right,
-# each quadrant keyed by its own colour so the reading is instant.
+# --- kept from the previous renderer: the SWOT matrix and bar chart primitives,
+# unchanged in output, now fed from typed JSON instead of recovered from a run
+# of flattened lines. ---
 SWOT_QUADS = [
     ("strengths",     "Strengths",     "#9ED44A", "trend"),
     ("weaknesses",    "Weaknesses",    "#E0B25E", "gear"),
     ("opportunities", "Opportunities", "#63BFE6", "target"),
     ("threats",       "Threats",       "#E88A8A", "alert"),
 ]
-_SWOT_KEY = {q[1].lower(): q for q in SWOT_QUADS}
-
-
-def swot_run(blocks, i):
-    """If a run of short lines is a SWOT, return (caption, ordered_quads, next_i).
-
-    ordered_quads is [(key, label, colour, icon, [points]), ...] in S-W-O-T order
-    regardless of the order the source listed them. Returns None when fewer than
-    two quadrant headers are present, so a normal emphasis run still becomes chips.
-    """
-    j = i
-    lines = []
-    while j < len(blocks) and blocks[j][0] == "k":
-        lines.append(blocks[j][1])
-        j += 1
-    heads = [k for k, ln in enumerate(lines) if ln.strip().lower() in _SWOT_KEY]
-    if len(heads) < 2:
-        return None
-    caption = ""
-    if heads[0] > 0:
-        # anything before the first quadrant word is the caption; keep the last
-        # such line (the "SWOT - ..." title), drop stray lead-ins
-        caption = lines[heads[0] - 1]
-    found = {}
-    for idx, h in enumerate(heads):
-        end = heads[idx + 1] if idx + 1 < len(heads) else len(lines)
-        key = lines[h].strip().lower()
-        found[key] = [ln for ln in lines[h + 1:end] if ln.strip()]
-    quads = [(k, lab, col, ic, found[lab.lower()])
-             for (k, lab, col, ic) in SWOT_QUADS if lab.lower() in found]
-    return caption, quads, j
 
 
 def swot_html(caption, quads):
@@ -400,176 +332,18 @@ def swot_html(caption, quads):
     return cap + '<div class="swot">' + "".join(cells) + '</div>'
 
 
-# ---------------------------------------------------------------- definition list
-# The other way these decks flatten structure: a short LABEL line followed by the
-# sentence that defines it - "Shelf-life" / "Converts perishable banana into
-# marketable foods". The parser hands both over as peer emphasis lines, so a whole
-# labelled feature list collapses into an even run of chips and the pairing is
-# lost. Recovered here into term + description cards, the deck template's feature
-# list, so the label leads and its definition sits under it.
-def _is_term(t):
-    t = t.strip()
-    return 0 < len(t) <= 26 and t.count(" ") <= 3 and not t.endswith((".", ":"))
-
-
-def _is_desc(t):
-    return len(t.strip()) >= 20
-
-
-def deflist_run(blocks, i):
-    """If a k-run is a label/definition list, return (caption, pairs, next_i).
-
-    pairs is [(term, description)]. An optional single leading line that is not
-    itself a term becomes the caption. Returns None unless at least two clean
-    pairs are found and nothing else in the run is left unpaired, so a genuine
-    run of peer keywords still renders as chips.
-    """
-    j = i
-    lines = []
-    while j < len(blocks) and blocks[j][0] == "k":
-        lines.append(blocks[j][1])
-        j += 1
-    # walk strict term/desc pairs, allowing exactly one leading caption line
-    caption = ""
-    pairs = []
-    idx = 0
-    if lines and not _is_term(lines[0]):
-        caption = lines[0]
-        idx = 1
-    while idx + 1 < len(lines) and _is_term(lines[idx]) and _is_desc(lines[idx + 1])             and not _is_term(lines[idx + 1]):
-        pairs.append((lines[idx], lines[idx + 1]))
-        idx += 2
-    if len(pairs) < 2 or idx != len(lines):
-        return None
-    return caption, pairs, j
-
-
-def deflist_html(caption, pairs):
-    cap = ('<p class="dl-cap">' + e(caption) + '</p>') if caption else ""
-    cells = []
-    for term, desc in pairs:
-        cells.append('<div class="card dl-card">'
-                     + icon_html(term + " " + desc)
-                     + '<h3>' + e(term) + '</h3>'
-                     '<p>' + e(desc) + '</p></div>')
-    return cap + '<div class="cards deflist">' + "".join(cells) + '</div>'
-
-
-def chips_html(items):
-    """Runs of the parser's leftover short lines, laid out as equal chips.
-
-    These arrive as orphan emphasis lines. They often LOOK like label/value pairs
-    but the run length is not reliably even, so nothing is paired up here - that
-    would be inventing structure the source does not carry.
-    """
-    return ('<div class="chips">'
-            + "".join('<div class="chip">' + icon_html(t, "ic sm") + '<span>'
-                      + e(t) + '</span></div>' for t in items)
-            + '</div>')
-
-
-def step_run(blocks, i):
-    """Collect label-less stats that are each explained by the prose after them.
-
-    parse_deck emits a bare ('stat', '2005', '') for a year or milestone figure,
-    then the sentence about it as a separate paragraph. Rendered literally that is
-    a full-width number card with an orphan line underneath - the single ugliest
-    thing in these decks. Pairing them back up is what lets the timeline layout
-    below exist at all.
-    """
-    units, j = [], i
-    while j < len(blocks) and blocks[j][0] == "stat" and not blocks[j][2]:
-        val, j = blocks[j][1], j + 1
-        body = []
-        while j < len(blocks) and blocks[j][0] in ("p", "k"):
-            body.append(blocks[j][1])
-            j += 1
-        if not body:
-            return units, j - 1 if units else i   # a bare figure: leave it to the grid
-        units.append((val, body))
-    return units, j
-
-
-def steps_html(units):
-    """Horizontal timeline, after the deck template's milestone-band layout.
-
-    A run of dated milestones reads as a sequence, so it is laid out as one - the
-    figures on a shared rail, each with its own text beneath. One unit is not a
-    sequence, so it renders as a single figure beside its text instead of a lone
-    band across the slide.
-    """
-    if len(units) == 1:
-        val, body = units[0]
-        return ('<div class="statnote"><div class="statnote-v">' + e(val) + '</div>'
-                '<div class="statnote-b">'
-                + "".join('<p>' + e(t) + '</p>' for t in body)
-                + '</div></div>')
-    cells = []
-    for val, body in units:
-        cells.append('<div class="step"><div class="step-v">' + e(val) + '</div>'
-                     '<div class="step-b">'
-                     + "".join('<p>' + e(t) + '</p>' for t in body)
-                     + '</div></div>')
-    return '<div class="steps">' + "".join(cells) + '</div>'
-
-
-PERIOD = re.compile(r"^(?:FY\s*)?\d{4}\s*[-\u2013/]\s*\d{2,4}$")
-
-
 def _num(v):
-    """Parse a stat value to a float, or None if it is not a plain number."""
-    t = (v or "").replace(",", "").strip()
+    """Parse a stat/series value to a float, or None if it is not a plain number."""
+    t = str(v if v is not None else "").replace(",", "").strip()
     try:
         return float(t)
     except ValueError:
         return None
 
 
-def series_run(blocks, i):
-    """Recover a chart that the source flattened into a column of figures.
-
-    The deck text prints a table as every VALUE in order, then every PERIOD in
-    order, so the parser sees ~16 unrelated stats and lays them out as a grid of
-    tiles - values and years jumbled together with no way to tell which belongs
-    to which. Reading them back as one series is the only way that slide makes
-    sense.
-
-    The pairing is positional, which is exactly how the source printed them, and
-    it only fires when the two runs are the same length. The one allowance is a
-    trailing period that parse_deck swallowed into an 'entry' (its heading looked
-    like a term), which is why the final year can come from the block after the
-    run.
-
-    Returns (labels, values, unit, next_i) or None.
-    """
-    j, vals, unit = i, [], ""
-    while j < len(blocks) and blocks[j][0] == "stat" and _num(blocks[j][1]) is not None \
-            and not PERIOD.match(blocks[j][1]):
-        vals.append(_num(blocks[j][1]))
-        if blocks[j][2]:
-            unit = blocks[j][2]
-        j += 1
-    periods = []
-    while j < len(blocks) and blocks[j][0] == "stat" and PERIOD.match(blocks[j][1]):
-        periods.append(blocks[j][1])
-        j += 1
-    if len(vals) < 3 or not periods:
-        return None
-    if len(vals) == len(periods) + 1 and j < len(blocks) and blocks[j][0] == "entry" \
-            and PERIOD.match(blocks[j][1]):
-        periods.append(blocks[j][1])
-        # the entry's prose is real content: leave the block in place, take only
-        # its term, and rewrite it so the term is not printed twice
-        blocks[j] = ("entry", "", blocks[j][2], blocks[j][3])
-    if len(vals) != len(periods):
-        return None
-    return periods, vals, unit, j
-
-
 def chart_html(periods, vals, unit):
-    """Column chart, drawn from the recovered series. Bars are scaled to the
-    largest value; every bar still prints its own figure, so nothing depends on
-    reading the height."""
+    """Column chart. Bars scale to the largest value; every bar prints its own
+    figure, so nothing depends on reading the height."""
     top = max(vals) or 1
     cols = []
     for lab, v in zip(periods, vals):
@@ -582,100 +356,387 @@ def chart_html(periods, vals, unit):
     return '<div class="chart">' + cap + '<div class="cols">' + "".join(cols) + '</div></div>'
 
 
+def grid_cols(n):
+    """Columns for a peer grid, chosen so a row never leaves a single-cell hole.
+
+    The audit's most common presentation defect was asymmetry: 4 items in a
+    3-column grid (3+1 with a dead cell), a 5-stat panel split across four
+    layouts. Here the count alone fixes the geometry: 4 -> 2x2, 5 -> 3+2, and
+    for larger runs a width is chosen that never leaves exactly one orphan.
+    """
+    if n <= 3:
+        return max(1, n)
+    if n == 4:
+        return 2
+    if n in (5, 6):
+        return 3
+    for c in (4, 3):            # >=7: avoid a trailing row of one
+        if n % c != 1:
+            return c
+    return 3
+
+
+# ---- stats: value + full label in one tile; 2-4 big, 5+ tiled ----
+def stats_html(b):
+    items = b.get("items", [])
+    n = len(items)
+    big = 2 <= n <= 4
+    cols = grid_cols(n)
+    cells = []
+    for it in items:
+        q = ('<div class="q">' + e(it["qualifier"]) + '</div>') if it.get("qualifier") else ""
+        cells.append('<div class="cell"><div class="v">' + e(it.get("value", "")) + '</div>'
+                     '<div class="l">' + e(it.get("label", "")) + '</div>' + q + '</div>')
+    foot = ('<p class="grid-foot">' + e(b["footnote"]) + '</p>') if b.get("footnote") else ""
+    return ('<div class="grid' + (' big' if big else '') + '" style="--cols:' + str(cols) + '">'
+            + "".join(cells) + '</div>' + foot)
+
+
+# ---- cards: heading + body peers; iconrow for a short trio/quartet, else
+# numbered/plain pillars. `n` on items keeps the source's asserted ordinals. ----
+def _card_grid(items, numbered):
+    cols = grid_cols(len(items))
+    cells = []
+    for idx, it in enumerate(items, start=1):
+        title, body = it.get("title", ""), it.get("body", "")
+        num = ('<span class="pnum">' + e(str(it.get("n", idx))) + '</span>') if numbered else ""
+        seed = title if icon_for(title) != "spark" else (title + " " + body)
+        cells.append('<div class="card">' + num + icon_html(seed)
+                     + '<h3>' + e(title) + '</h3>'
+                     + ('<p>' + e(body) + '</p>' if body else '') + '</div>')
+    cls = "cards pillars num" if numbered else "cards"
+    return '<div class="' + cls + '" style="--cols:' + str(cols) + '">' + "".join(cells) + '</div>'
+
+
+def cards_html(b):
+    items = b.get("items", [])
+    numbered = any("n" in it for it in items)
+    short = all(len(it.get("body", "")) <= 150 for it in items)
+    if not numbered and len(items) in (3, 4) and short:
+        # ICON ROW: a short peer set, read left to right, no implied order
+        cols = grid_cols(len(items))
+        cells = []
+        for it in items:
+            title, body = it.get("title", ""), it.get("body", "")
+            seed = title if icon_for(title) != "spark" else (title + " " + body)
+            cells.append('<div class="card">' + icon_html(seed, "ic xl")
+                         + '<h3>' + e(title) + '</h3>'
+                         + ('<p>' + e(body) + '</p>' if body else '') + '</div>')
+        return ('<div class="cards iconrow" style="--cols:' + str(cols) + '">'
+                + "".join(cells) + '</div>')
+    return _card_grid(items, numbered)
+
+
+def steps_html(b):
+    """A numbered sequence / roadmap: the same pillar card, always numbered."""
+    return _card_grid(b.get("items", []), True)
+
+
+# ---- list: titled bullet list; items are full statements ----
+def list_html(b):
+    title = ('<p class="blist-title">' + e(b["title"]) + '</p>') if b.get("title") else ""
+    lis = "".join('<li>' + e(x) + '</li>' for x in b.get("items", []))
+    return '<div class="blist">' + title + '<ul>' + lis + '</ul></div>'
+
+
+# ---- chips: short standalone phrases only ----
+def chips_html(b):
+    return ('<div class="chips">'
+            + "".join('<div class="chip">' + icon_html(x, "ic sm") + '<span>' + e(x) + '</span></div>'
+                      for x in b.get("items", []))
+            + '</div>')
+
+
+# ---- pairs: term + gloss definition cards ----
+def pairs_html(b):
+    items = b.get("items", [])
+    cols = grid_cols(len(items))
+    cells = []
+    for it in items:
+        term, desc = it.get("term", ""), it.get("desc", "")
+        cells.append('<div class="card dl-card">' + icon_html(term + " " + desc)
+                     + '<h3>' + e(term) + '</h3><p>' + e(desc) + '</p></div>')
+    title = ('<p class="blist-title">' + e(b["title"]) + '</p>') if b.get("title") else ""
+    return title + '<div class="cards deflist" style="--cols:' + str(cols) + '">' + "".join(cells) + '</div>'
+
+
+# ---- callout / quote: emphasis boxes, deliberately unlike cards ----
+def callout_html(b):
+    label = ""
+    if b.get("label"):
+        label = ('<p class="callout-label">' + icon_html(b["label"], "ic sm")
+                 + '<span>' + e(b["label"]) + '</span></p>')
+    return '<div class="callout">' + label + '<p>' + e(b.get("text", "")) + '</p></div>'
+
+
+def quote_html(b):
+    attr = ('<footer class="quote-attr">' + e(b["attribution"]) + '</footer>') if b.get("attribution") else ""
+    return '<blockquote class="quote"><p>' + e(b.get("text", "")) + '</p>' + attr + '</blockquote>'
+
+
+# ---- flow: horizontal stage chain; arrows are CSS/SVG connectors, never chips ----
+_FLOW_ARROW = ('<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 24 24">'
+               '<path d="M4 12h14M13 6l6 6-6 6"/></svg></div>')
+
+
+def flow_html(b):
+    stages = b.get("stages", [])
+    parts = []
+    for i, s in enumerate(stages):
+        parts.append('<div class="flow-stage"><div class="fs-name">' + e(s.get("name", "")) + '</div>'
+                     '<div class="fs-desc">' + e(s.get("desc", "")) + '</div></div>')
+        if i < len(stages) - 1:
+            parts.append(_FLOW_ARROW)
+    closing = ('<p class="flow-closing">' + e(b["closing"]) + '</p>') if b.get("closing") else ""
+    # an optional title labels the chain (BEFORE / AFTER comparisons need it);
+    # reuses the bullet-list title style so labels never float as bare prose
+    title = ('<p class="blist-title">' + e(b["title"]) + '</p>') if b.get("title") else ""
+    return title + '<div class="flow">' + "".join(parts) + '</div>' + closing
+
+
+# ---- phases: each group a labelled cluster in balanced columns ----
+def phases_html(b):
+    groups = b.get("groups", [])
+    cols = grid_cols(len(groups))
+    cells = []
+    for g in groups:
+        period = ('<span class="phase-period">' + e(g["period"]) + '</span>') if g.get("period") else ""
+        name = ('<div class="phase-name">' + e(g["name"]) + '</div>') if g.get("name") else ""
+        tasks = "".join('<li>' + e(t) + '</li>' for t in g.get("tasks", []))
+        cells.append('<div class="phase"><div class="phase-head">'
+                     '<span class="phase-label">' + e(g.get("label", "")) + '</span>' + period + '</div>'
+                     + name + '<ul>' + tasks + '</ul></div>')
+    return '<div class="phases" style="--cols:' + str(cols) + '">' + "".join(cells) + '</div>'
+
+
+# ---- timeline: era / date rows on a rail ----
+def timeline_html(b):
+    rows = []
+    for it in b.get("items", []):
+        title = ('<p class="tl-title">' + e(it["title"]) + '</p>') if it.get("title") else ""
+        rows.append('<div class="tl-row"><div class="tl-period">' + e(it.get("period", "")) + '</div>'
+                    '<div class="tl-body">' + title
+                    + '<p class="tl-desc">' + e(it.get("desc", "")) + '</p></div></div>')
+    # optional block-level title, same label style as lists and flows
+    head = ('<p class="blist-title">' + e(b["title"]) + '</p>') if b.get("title") else ""
+    return head + '<div class="timeline">' + "".join(rows) + '</div>'
+
+
+# ---- table: a real table; cells verbatim, row integrity sacred ----
+def table_html(b):
+    cols = b.get("cols", [])
+    head = "".join('<th>' + e(str(c)) + '</th>' for c in cols)
+    body = ""
+    for row in b.get("rows", []):
+        body += '<tr>' + "".join('<td>' + e(str(c)) + '</td>' for c in row) + '</tr>'
+    foot = ('<p class="tbl-foot">' + e(b["footnote"]) + '</p>') if b.get("footnote") else ""
+    return ('<div class="tbl-wrap"><table class="tbl"><thead><tr>' + head + '</tr></thead>'
+            '<tbody>' + body + '</tbody></table></div>' + foot)
+
+
+# ---- compare: two/three column lists, headers distinct from items ----
+def compare_html(b):
+    cols = b.get("cols", [])
+    parts = []
+    for c in cols:
+        lis = "".join('<li>' + e(x) + '</li>' for x in c.get("items", []))
+        parts.append('<div class="cmp-col"><div class="cmp-h">' + e(c.get("title", "")) + '</div>'
+                     '<ul>' + lis + '</ul></div>')
+    return '<div class="compare" style="--cols:' + str(len(cols)) + '">' + "".join(parts) + '</div>'
+
+
+# ---- groups: grouped checklist, header distinct; items strings or term/desc ----
+def groups_html(b):
+    groups = b.get("groups", [])
+    cols = grid_cols(len(groups))
+    parts = []
+    for g in groups:
+        lis = []
+        for x in g.get("items", []):
+            if isinstance(x, dict):
+                lis.append('<li><span class="grp-term">' + e(x.get("term", "")) + '</span> '
+                           + e(x.get("desc", "")) + '</li>')
+            else:
+                lis.append('<li>' + e(x) + '</li>')
+        parts.append('<div class="grp"><div class="grp-h">' + e(g.get("name", "")) + '</div>'
+                     '<ul>' + "".join(lis) + '</ul></div>')
+    return '<div class="groups" style="--cols:' + str(cols) + '">' + "".join(parts) + '</div>'
+
+
+# ---- hierarchy: org tiers, level label distinct from entity + gloss ----
+def hierarchy_html(b):
+    rows = []
+    for t in b.get("tiers", []):
+        lvl = ('<div class="tier-level">' + e(t["level"]) + '</div>') if t.get("level") else ""
+        rows.append('<div class="tier">' + lvl + '<div class="tier-body">'
+                    '<p class="tier-name">' + e(t.get("name", "")) + '</p>'
+                    '<p class="tier-desc">' + e(t.get("desc", "")) + '</p></div></div>')
+    closing = ('<p class="tiers-closing">' + e(b["closing"]) + '</p>') if b.get("closing") else ""
+    return '<div class="tiers">' + "".join(rows) + '</div>' + closing
+
+
+# ---- fanout: one input to many component -> product branches ----
+def fanout_html(b):
+    branches = b.get("branches", [])
+    cols = grid_cols(len(branches))
+    hub = ('<div class="fan-hub"><div class="fan-input">' + icon_html(b.get("input", ""))
+           + '<span>' + e(b.get("input", "")) + '</span></div></div>')
+    cells = []
+    for br in branches:
+        prods = "".join('<li>' + e(p) + '</li>' for p in br.get("products", []))
+        cells.append('<div class="fan-branch"><div class="fan-comp">' + e(br.get("component", "")) + '</div>'
+                     '<ul>' + prods + '</ul></div>')
+    return ('<div class="fanout">' + hub + '<div class="fan-branches" style="--cols:' + str(cols) + '">'
+            + "".join(cells) + '</div></div>')
+
+
+# ---- series: bar chart, drawn by the kept chart_html ----
+def series_html(b):
+    pts = b.get("points", [])
+    periods = [p.get("label", "") for p in pts]
+    vals = [(_num(p.get("value", "")) or 0.0) for p in pts]
+    return chart_html(periods, vals, b.get("unit", ""))
+
+
+# ---- swot: the 2x2 matrix, drawn by the kept swot_html ----
+_SWOT_SRC = {"strengths": "s", "weaknesses": "w", "opportunities": "o", "threats": "t"}
+
+
+def swot_block_html(b):
+    quads = [(k, lab, col, ic, b.get(_SWOT_SRC[k], []))
+             for (k, lab, col, ic) in SWOT_QUADS]
+    return swot_html("", quads)
+
+
+def p_html(b):
+    return '<p>' + e(b.get("text", "")) + '</p>'
+
+
+RENDERERS = {
+    "p": p_html, "callout": callout_html, "quote": quote_html, "stats": stats_html,
+    "cards": cards_html, "list": list_html, "chips": chips_html, "pairs": pairs_html,
+    "steps": steps_html, "flow": flow_html, "phases": phases_html, "timeline": timeline_html,
+    "table": table_html, "compare": compare_html, "groups": groups_html, "series": series_html,
+    "swot": swot_block_html, "hierarchy": hierarchy_html, "fanout": fanout_html,
+}
+
+
+def render_block(b):
+    fn = RENDERERS.get(b.get("type"))
+    if not fn:
+        raise ValueError("unknown block type: " + repr(b.get("type")))
+    return fn(b)
+
+
 def render_blocks(blocks):
-    out, i = [], 0
-    while i < len(blocks):
-        kind = blocks[i][0]
-
-        if kind == "stat":
-            ser = series_run(blocks, i)
-            if ser:
-                periods, vals, unit, j = ser
-                out.append(chart_html(periods, vals, unit))
-                i = j
-                continue
-
-            units, j = step_run(blocks, i)
-            if units:
-                out.append(steps_html(units))
-                i = j
-                continue
-            run = []
-            while i < len(blocks) and blocks[i][0] == "stat":
-                run.append((blocks[i][1], blocks[i][2]))
-                i += 1
-            out.append(grid_html(run))
-            continue
-
-        if kind == "h3":
-            units, j = card_run(blocks, i)
-            if len(units) >= 2:
-                out.append(cards_html(units))
-                i = j
-                continue
-
-        if kind == "k":
-            sw = swot_run(blocks, i)
-            if sw:
-                caption, quads, j = sw
-                out.append(swot_html(caption, quads))
-                i = j
-                continue
-            dl = deflist_run(blocks, i)
-            if dl:
-                caption, pairs, j = dl
-                out.append(deflist_html(caption, pairs))
-                i = j
-                continue
-            run = []
-            while i < len(blocks) and blocks[i][0] == "k":
-                run.append(blocks[i][1])
-                i += 1
-            out.append(chips_html(run) if len(run) >= 2 else '<p class="k">' + e(run[0]) + '</p>')
-            continue
-
-        out.append(block_html(blocks[i]))
-        i += 1
-    return "\n".join(out)
+    return "\n".join(render_block(b) for b in blocks)
 
 
-def slides_html(m, hero, secs):
+# Which block types are "heavy" for slide splitting: a section stays on one
+# slide until it carries more than six cards or more than two heavy blocks, at
+# which point the overflow continues on a fresh slide that repeats the header
+# with a CONT. marker. This is the build-time half of the split; the browser
+# pagination below is the viewport-measured safety net for a single block that
+# is still taller than the panel.
+_HEAVY = {"table", "series", "swot", "compare", "groups", "hierarchy", "fanout",
+          "phases", "timeline", "flow", "steps"}
+
+
+def split_blocks(blocks):
+    pages, cards, heavy = [[]], 0, 0
+    for b in blocks:
+        bt = b.get("type")
+        bc = len(b.get("items", [])) if bt == "cards" else 0
+        bh = 1 if bt in _HEAVY else 0
+        if pages[-1] and (cards + bc > 6 or heavy + bh > 2):
+            pages.append([])
+            cards, heavy = 0, 0
+        pages[-1].append(b)
+        cards += bc
+        heavy += bh
+    return pages
+
+
+def sec_text(sec):
+    """All human-readable strings in a section, for role/icon inference."""
+    out = [sec.get("title") or "", sec.get("kicker") or "", sec.get("lead") or ""]
+    for b in sec.get("blocks", []):
+        out.extend(block_strings(b))
+    return " ".join(x for x in out if x)
+
+
+def sec_heading(sec):
+    """The section's visible headline: its title, or its kicker when title-only
+    sections (e.g. Morbi's ALL-CAPS banners) carry the heading in the kicker.
+    A source's own manual numbering ('1. Why this matters...') is stripped:
+    the deck stamps section numbers itself, and keeping both left every badge
+    one off from the embedded number."""
+    t = sec.get("title") or sec.get("kicker") or "Overview"
+    return re.sub(r"^\d+\.\s+", "", t)
+
+
+def section_head(idx, sec, cont=False):
+    heading = sec_heading(sec)
+    # A kicker eyebrow is shown only when the author supplied BOTH a kicker and a
+    # distinct title; no role-derived eyebrows are fabricated, so the duplicated
+    # "The bigger picture" labels the audit flagged cannot appear.
+    kick = ""
+    if sec.get("kicker") and sec.get("title"):
+        kick = '<p class="kick">' + e(sec["kicker"]) + '</p>'
+    cont_mark = ' <span class="cont">CONT.</span>' if cont else ""
+    return ('<div class="sechead r"><span class="secnum">' + ("%02d" % idx) + '</span>'
+            + icon_html(heading, "ic lg")
+            + '<div class="sectext">' + kick
+            + '<h2>' + e(heading) + cont_mark + '</h2></div></div>')
+
+
+def slides_html(content, m):
+    sections = content.get("sections", [])
+    roles = [role_for(sec_heading(s), sec_text(s)) for s in sections]
+    titles = [sec_heading(s) for s in sections]
+
+    title = content.get("title") or m.get("title", "")
+    eyebrow = content.get("eyebrow") or m.get("eyebrow", "")
+    subtitle = content.get("subtitle") or m.get("summary", "")
+
     slides = []
-    roles = [role_for(x["title"], x["blocks"]) for x in secs]
-    titles = [x["title"] or "Overview" for x in secs]
 
-    # cover slide
-    tags = ['<span class="tag place">' + e(m["place"]) + "</span>"] if m.get("place") else []
+    # ---- cover ----
+    tags = []
+    if m.get("place"):
+        tags.append('<span class="tag place">' + e(m["place"]) + '</span>')
     if m.get("theme"):
-        tags.append('<span class="tag">' + e(m["theme"]) + "</span>")
+        tags.append('<span class="tag">' + e(m["theme"]) + '</span>')
     tags.append('<span class="tag">'
-                + ("Andhra Pradesh district" if m["group"] == "ap" else "Replicable model")
-                + "</span>")
+                + ("Andhra Pradesh district" if m.get("group") == "ap" else "Replicable model")
+                + '</span>')
+    hero = content.get("hero_stats") or []
     herohtml = ""
     if hero:
-        cells = "".join('<div class="scell"><div class="v">' + e(v) + '</div>'
-                        '<div class="l">' + e(l) + '</div></div>' for v, l in hero)
+        cells = "".join('<div class="scell"><div class="v">' + e(h.get("value", "")) + '</div>'
+                        '<div class="l">' + e(h.get("label", "")) + '</div></div>' for h in hero)
         herohtml = '<div class="hero">' + cells + '</div>'
-    cover = (
+    aud = ('<p class="cover-aud r">' + e(content["audience"]) + '</p>') if content.get("audience") else ""
+    slides.append(
         '<section class="slide cover" data-i="0">'
         '<div class="media" data-media="0" data-role="cover"></div>'
-        '<div class="glass cover-glass reveal-root">'
+        '<div class="glass cover-glass reveal-root' + (' has-hero' if herohtml else '') + '">'
         '<div class="cover-l">'
-        '<p class="eyebrow r">' + e(m["eyebrow"]) + '</p>'
-        '<h1 class="r">' + e(m["title"]) + '</h1>'
-        '<p class="summary r">' + e(m["summary"]) + '</p>'
-        '<div class="meta r">' + "".join(tags) + '</div>'
-        '</div>'
-        '<div class="cover-r r">' + herohtml + '</div>'
-        '<p class="hint r">Use \u2190 \u2192 or the arrows to move through the story</p>'
+        '<p class="eyebrow r">' + e(eyebrow) + '</p>'
+        '<h1 class="r">' + e(title) + '</h1>'
+        '<p class="summary r">' + e(subtitle) + '</p>'
+        '<div class="meta r">' + "".join(tags) + '</div>' + aud +
+        '</div>' +
+        # no hero stats: skip the right column entirely so the desktop grid
+        # does not strand a blank panel beside the title
+        ('<div class="cover-r r">' + herohtml + '</div>' if herohtml else '') +
+        '<p class="hint r">Use ← → or the arrows to move through the story</p>'
         '</div></section>')
-    slides.append(cover)
 
-    # agenda slide - the deck engine opens every .pptx with one, and it is the
-    # only place a reader can see the whole argument at once. Built entirely from
-    # the section titles that already exist, so it can never drift from the deck.
+    # ---- agenda: one entry per section, sequential numbers, no duplicates,
+    # built straight off the section headings so it can never drift ----
     items = "".join(
-        '<li class="ag-i" style="--i:' + str(i) + '"><span class="ag-n">' + f"{i:02d}" + '</span>'
+        '<li class="ag-i" style="--i:' + str(i) + '"><span class="ag-n">' + ("%02d" % i) + '</span>'
         + icon_html(t, "ic")
         + '<span class="ag-t">' + e(t) + '</span></li>'
         for i, t in enumerate(titles, start=1))
@@ -690,37 +751,37 @@ def slides_html(m, hero, secs):
         '<ul class="agenda r">' + items + '</ul>'
         '</div></section>')
 
-    for idx, s_ in enumerate(secs, start=1):
-        body = render_blocks(s_["blocks"])
-        role = roles[idx - 1]
-        slides.append(
-            '<section class="slide" data-i="' + str(idx + 1) + '">'
-            '<div class="media" data-media="' + str(idx) + '" data-role="'
-            + role + '"></div>'
-            '<div class="glass reveal-root">'
-            + wm_html(role) +
-            '<div class="sechead r"><span class="secnum">' + f"{idx:02d}" + '</span>'
-            + icon_html(s_["title"] or "", "ic lg")
-            + '<div class="sectext"><p class="kick">' + e(kicker_for(role)) + '</p>'
-            '<h2>' + e(s_["title"] or "Overview") + '</h2></div></div>'
-            '<div class="secbody r">' + body + '</div>'
-            '</div></section>')
+    # ---- section slides (one section = one slide; overflow continues with CONT.) ----
+    di = 2
+    for idx, (sec, role) in enumerate(zip(sections, roles), start=1):
+        pages = split_blocks(sec.get("blocks", []))
+        for pi, page in enumerate(pages):
+            lead = ('<p class="seclead">' + e(sec["lead"]) + '</p>') if (pi == 0 and sec.get("lead")) else ""
+            src = ('<p class="secsrc">' + e(sec["source"]) + '</p>') if (pi == len(pages) - 1 and sec.get("source")) else ""
+            slides.append(
+                '<section class="slide" data-i="' + str(di) + '">'
+                '<div class="media" data-media="' + str(idx) + '" data-role="' + role + '"></div>'
+                '<div class="glass reveal-root">'
+                + wm_html(role)
+                + section_head(idx, sec, cont=(pi > 0))
+                + '<div class="secbody r">' + lead + render_blocks(page) + src + '</div>'
+                '</div></section>')
+            di += 1
 
-    # closing plate, after the .pptx closing archetype: the identity of the case,
-    # its source line and the way back. No new claims, only what the deck already
-    # carries.
-    src = ('<p class="cl-src r">' + e(m["source"]) + '</p>') if m.get("source") else ""
+    # ---- closing plate ----
+    src_line = content.get("source_note") or m.get("source")
+    src = ('<p class="cl-src r">' + e(src_line) + '</p>') if src_line else ""
     slides.append(
-        '<section class="slide closing" data-i="' + str(len(secs) + 2) + '">'
-        '<div class="media" data-media="' + str(len(secs) + 1) + '" data-role="takeaways"></div>'
+        '<section class="slide closing" data-i="' + str(di) + '">'
+        '<div class="media" data-media="' + str(len(sections) + 1) + '" data-role="takeaways"></div>'
         '<div class="glass cl-glass reveal-root">'
         + wm_html("takeaways") +
         '<p class="eyebrow r">End of the story</p>'
-        '<h2 class="cl-h r">' + e(m["title"]) + '</h2>'
-        '<p class="summary r">' + e(m["summary"]) + '</p>'
+        '<h2 class="cl-h r">' + e(title) + '</h2>'
+        '<p class="summary r">' + e(subtitle) + '</p>'
         + src +
-        '<div class="cl-foot r"><span>Pahl\u00e9 India Foundation</span>'
-        '<span class="cl-dot">\u00b7</span><span>Swarna Andhra @2047</span></div>'
+        '<div class="cl-foot r"><span>Pahlé India Foundation</span>'
+        '<span class="cl-dot">·</span><span>Swarna Andhra @2047</span></div>'
         '<a class="cl-cta r" href="../index.html#districts">Back to the case library</a>'
         '</div></section>')
     return slides
@@ -762,7 +823,7 @@ a{color:var(--t2);}
 /* full-bleed background: animated mesh, tinted; photo/video overlays it if present */
 .media{position:absolute;inset:0;z-index:0;
   /* The tint used to sit at 42%/34% of the theme hue. For the agri cases that hue
-     is #6FA817 — a yellow-green — so the whole stage read olive rather than the
+     is #6FA817 - a yellow-green - so the whole stage read olive rather than the
      site's deep forest green. Dropped to a whisper: enough to tell the themes
      apart, not enough to cast. The deep-green base now dominates. */
   background:
@@ -803,7 +864,7 @@ a{color:var(--t2);}
    half. Split it: identity left, the hero figures as a column on the right.
    Collapses back to one column below 900px, where the stack is correct. */
 @media (min-width:900px){
-  .cover-glass{display:grid;grid-template-columns:1.35fr .85fr;
+  .cover-glass.has-hero{display:grid;grid-template-columns:1.35fr .85fr;
     align-items:center;align-content:center;gap:clamp(28px,4vw,64px);}
   .cover-glass .cover-l,.cover-glass .cover-r{min-width:0;}
   .cover-glass .cover-r .hero{grid-template-columns:1fr;margin:0;}
@@ -1236,6 +1297,188 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   .track{transition:none;} .media{animation:none;}
   .anim .r{opacity:1!important;}
 }
+
+/* ================= TYPED-BLOCK LAYOUTS (JSON content pipeline) =================
+   The renderer now consumes typed content JSON, so each block type gets a
+   purpose-built layout instead of being recovered from a flattened chip run.
+   Declared after the base rules so the column-count control wins over the old
+   auto-fit grids. WHY per-type: the audit's presentation_issues were all one
+   family - peer items losing their grouping, headers reading as items, stats
+   losing labels, flows/tables/phases flattened. A dedicated layout per shape
+   removes that whole class. */
+
+/* SYMMETRY: item count drives the column count (never a 3+1 hole). --cols is set
+   inline per block from grid_cols(); mobile collapses every peer grid to one. */
+.cards,.grid,.grid.big,.cards.iconrow,.cards.pillars,.cards.deflist,
+.phases,.compare,.groups,.fan-branches{
+  grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));}
+/* equal card heights within a row: grid stretch + full-height card */
+.cards .card{height:100%;}
+
+/* explicit ordinals for numbered sets (steps, n-tagged cards): the asserted n,
+   not a CSS counter, so the source's own numbering survives */
+.cards.num .card::before{display:none;}
+.pnum{position:absolute;top:18px;right:18px;
+  font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;font-size:13px;
+  color:var(--lime);letter-spacing:.04em;}
+
+/* stats footnote + qualifier line (stat keeps value AND full label in one tile) */
+.grid-foot,.tbl-foot{font-size:12px;color:var(--mut2);margin:2px 0 18px;font-style:italic;}
+.cell .q{margin-top:5px;font-size:12px;color:var(--mut2);line-height:1.4;}
+
+/* CALLOUT: an emphasis box, deliberately unlike a card (accent fill + left rail) */
+.callout{position:relative;margin:16px 0 18px;padding:15px 20px 13px;border-radius:14px;
+  background:rgba(198,255,106,.07);border:1px solid rgba(198,236,143,.30);
+  border-left:4px solid var(--lime);}
+.callout-label{display:flex;align-items:center;gap:8px;margin:0 0 6px;
+  font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);}
+.callout-label .ic{flex:0 0 auto;}
+.callout>p{margin:0;color:var(--fg);font-size:15px;line-height:1.55;max-width:82ch;}
+
+/* QUOTE: a pull quote, distinct from both card and callout */
+.quote{position:relative;margin:16px 0 18px;padding:18px 22px 16px 48px;border-radius:14px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);}
+.quote::before{content:"\201C";position:absolute;left:15px;top:4px;font-size:46px;line-height:1;
+  color:var(--lime);opacity:.5;font-family:Georgia,'Times New Roman',serif;}
+.quote p{margin:0;font-size:clamp(16px,1.9vw,20px);line-height:1.5;color:#fff;
+  font-style:italic;max-width:74ch;}
+/* attribution dash is chrome (CSS escape, never a literal em dash in the HTML) */
+.quote-attr{margin-top:10px;font-size:13px;font-weight:600;color:var(--lime);font-style:normal;}
+.quote-attr::before{content:"\2014\00a0";}
+
+/* titled bullet LIST */
+.blist{margin:14px 0 18px;}
+.blist-title{font-weight:700;font-size:14px;color:#e4ffb0;margin:0 0 8px;}
+.blist ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.blist li{position:relative;padding-left:20px;font-size:14.5px;line-height:1.55;
+  color:var(--mut);max-width:82ch;}
+.blist li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;
+  border-radius:2px;background:var(--lime);transform:rotate(45deg);}
+
+/* FLOW: horizontal stage chain, arrows are CSS/SVG connectors (never content) */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:16px 0 6px;}
+.flow-stage{flex:1 1 150px;min-width:138px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(198,236,143,.24);border-radius:12px;padding:13px 16px;}
+.fs-name{font-weight:700;font-size:15px;color:#e4ffb0;margin-bottom:5px;}
+.fs-desc{font-size:13px;line-height:1.5;color:var(--mut);}
+.flow-arrow{flex:0 0 auto;align-self:center;display:grid;place-items:center;color:var(--lime);}
+.flow-arrow svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;}
+.flow-closing{margin:12px 0 18px;font-size:14px;font-weight:600;color:#e4ffb0;
+  padding-left:12px;border-left:3px solid var(--lime);}
+
+/* PHASES: each group a labelled cluster (pill + optional period/name + tasks) */
+.phases{display:grid;gap:14px;margin:16px 0 18px;}
+.phase{background:rgba(255,255,255,.05);border:1px solid rgba(198,236,143,.22);
+  border-radius:14px;padding:15px 18px 13px;}
+.phase-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:9px;}
+.phase-label{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;
+  font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#0B2E20;
+  background:var(--lime);padding:4px 11px;border-radius:999px;}
+.phase-period{font-size:12px;color:var(--mut2);}
+.phase-name{font-weight:700;font-size:14.5px;color:#e4ffb0;margin-bottom:8px;}
+.phase ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.phase li{position:relative;padding-left:16px;font-size:13.5px;line-height:1.5;color:var(--mut);}
+.phase li::before{content:"";position:absolute;left:2px;top:8px;width:5px;height:5px;
+  border-radius:50%;background:var(--lime);}
+
+/* TIMELINE: era rows on a continuous rail (chronology is now expressed) */
+.timeline{position:relative;margin:16px 0 18px;padding-left:6px;}
+.timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(180deg,var(--lime),rgba(198,236,143,.15));}
+.tl-row{position:relative;padding:0 0 16px 22px;}
+.tl-row:last-child{padding-bottom:0;}
+.tl-row::before{content:"";position:absolute;left:0;top:5px;width:11px;height:11px;
+  border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px var(--ink);}
+.tl-period{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;
+  font-size:13px;color:var(--lime);letter-spacing:.03em;margin-bottom:3px;}
+.tl-title{font-weight:700;font-size:15px;color:#fff;margin:0 0 3px;}
+.tl-desc{margin:0;font-size:14px;line-height:1.55;color:var(--mut);max-width:82ch;}
+
+/* real TABLE: header row, zebra body, scrolls horizontally when wide */
+.tbl-wrap{overflow-x:auto;margin:16px 0 6px;border:1px solid var(--line);border-radius:12px;
+  scrollbar-width:thin;scrollbar-color:rgba(198,236,143,.4) transparent;}
+.tbl-wrap::-webkit-scrollbar{height:8px;}
+.tbl-wrap::-webkit-scrollbar-thumb{background:rgba(198,236,143,.4);border-radius:8px;}
+.tbl{border-collapse:collapse;width:100%;min-width:420px;font-size:14px;}
+.tbl th,.tbl td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--line);}
+.tbl thead th{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;
+  font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:#0B2E20;
+  background:var(--lime);border-bottom:none;white-space:nowrap;}
+.tbl tbody tr:nth-child(even){background:rgba(255,255,255,.04);}
+.tbl tbody tr:hover{background:rgba(198,236,143,.08);}
+.tbl td{color:var(--mut);}
+.tbl td:first-child{color:#e4ffb0;font-weight:600;}
+
+/* COMPARE: two/three columns, header visually distinct from its items */
+.compare{display:grid;gap:14px;margin:16px 0 18px;align-items:start;}
+.cmp-col{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;
+  padding:0 0 12px;overflow:hidden;}
+.cmp-h{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;
+  font-size:14.5px;color:#0B2E20;background:var(--lime);padding:11px 16px;margin-bottom:10px;}
+.cmp-col ul{list-style:none;margin:0;padding:0 16px;display:grid;gap:8px;}
+.cmp-col li{position:relative;padding-left:16px;font-size:14px;line-height:1.5;color:var(--mut);}
+.cmp-col li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;
+  border-radius:50%;background:var(--lime);}
+
+/* GROUPS: grouped checklist, group header distinct from its items */
+.groups{display:grid;gap:14px;margin:16px 0 18px;align-items:start;}
+.grp{background:rgba(255,255,255,.05);border:1px solid rgba(198,236,143,.2);border-radius:14px;
+  padding:14px 18px 12px;}
+.grp-h{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;font-size:13px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--lime);margin-bottom:10px;
+  padding-bottom:8px;border-bottom:1px solid rgba(198,236,143,.22);}
+.grp ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;}
+.grp li{position:relative;padding-left:16px;font-size:14px;line-height:1.5;color:var(--mut);}
+.grp li::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;
+  border-radius:50%;background:var(--lime);}
+.grp-term{font-weight:700;color:#e4ffb0;}
+
+/* HIERARCHY: org tiers, level label distinct from the entity + gloss */
+.tiers{display:grid;gap:12px;margin:16px 0 6px;}
+.tier{display:grid;grid-template-columns:minmax(120px,188px) 1fr;gap:16px;align-items:center;
+  background:rgba(255,255,255,.05);border:1px solid rgba(198,236,143,.2);border-radius:14px;
+  padding:14px 18px;}
+.tier-level{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:700;
+  font-size:13px;letter-spacing:.03em;text-transform:uppercase;color:#0B2E20;
+  background:var(--lime);padding:7px 12px;border-radius:8px;text-align:center;}
+.tier-name{font-weight:700;font-size:15px;color:#e4ffb0;margin:0 0 4px;}
+.tier-desc{margin:0;font-size:14px;line-height:1.5;color:var(--mut);}
+.tiers-closing{margin:8px 0 18px;font-size:14px;font-weight:600;color:#e4ffb0;
+  padding-left:12px;border-left:3px solid var(--lime);}
+@media(max-width:640px){.tier{grid-template-columns:1fr;gap:8px;}}
+
+/* FANOUT: one input hub fanning out to component -> product branches */
+.fanout{margin:16px 0 18px;}
+.fan-hub{display:flex;justify-content:center;margin-bottom:6px;}
+.fan-input{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;
+  color:#0B2E20;background:var(--lime);padding:9px 20px;border-radius:999px;}
+.fan-input .ic{color:#0B2E20;border-color:rgba(11,46,32,.3);background:rgba(11,46,32,.12);}
+.fan-branches{display:grid;gap:12px;position:relative;padding-top:16px;}
+.fan-branches::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(198,236,143,.45),transparent);}
+.fan-branch{background:rgba(255,255,255,.05);border:1px solid rgba(198,236,143,.22);
+  border-radius:12px;padding:12px 16px;}
+.fan-comp{font-weight:700;font-size:14px;color:#e4ffb0;margin-bottom:8px;
+  padding-bottom:6px;border-bottom:1px solid rgba(198,236,143,.2);}
+.fan-branch ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.fan-branch li{position:relative;padding-left:14px;font-size:13.5px;line-height:1.45;color:var(--mut);}
+.fan-branch li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;
+  border-radius:50%;background:var(--lime);}
+
+/* section standfirst (lead) + per-section source footnote + CONT. marker */
+.seclead{font-size:clamp(15px,1.8vw,17px);line-height:1.55;color:#dfeee0;margin:0 0 14px;
+  max-width:84ch;font-weight:500;}
+.secsrc{margin:16px 0 0;font-size:12px;color:var(--mut2);font-style:italic;}
+.sechead h2 .cont{font-size:.46em;font-weight:700;letter-spacing:.09em;color:var(--mut2);
+  vertical-align:middle;margin-left:8px;text-transform:uppercase;}
+.cover-aud{font-size:13px;color:var(--mut2);margin:14px 0 0;line-height:1.5;}
+
+/* mobile: every peer grid collapses to a single column */
+@media(max-width:760px){
+  .cards,.grid,.grid.big,.cards.iconrow,.cards.pillars,.cards.deflist,
+  .phases,.compare,.groups,.fan-branches{grid-template-columns:1fr!important;}
+}
 </style>
 </head>
 <body>
@@ -1452,44 +1695,270 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 """
 
 
-def render(m):
-    hero, blocks = B.parse_deck(os.path.join(B.SRC, m["file"]),
-                                m.get("section_titles"))
-    secs = sections_of(blocks)
-    slides = slides_html(m, hero, secs)
+def load_content(slug):
+    """Read scripts/deck_content/<slug>.json. A missing file is a hard error that
+    names the slug, so a mistyped or not-yet-authored deck fails loudly."""
+    path = os.path.join(CONTENT_DIR, slug + ".json")
+    if not os.path.exists(path):
+        raise SystemExit("proto_deck: no content JSON for slug '" + slug
+                         + "' (expected " + path + ")")
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def render(m, content=None):
+    if content is None:
+        content = load_content(m["slug"])
+    slides = slides_html(content, m)
     t1, t2 = tint_for(m)
-    src = ('<p class="src">' + e(m["source"]) + "</p>") if m.get("source") else ""
+    title = content.get("title") or m.get("title", "")
     html = (TMPL
-            .replace("%%TITLE%%", e(m["title"]))
+            .replace("%%TITLE%%", e(title))
             .replace("%%TINT1%%", t1).replace("%%TINT2%%", t2)
-            .replace("%%COUNT%%", f"{len(slides):02d}")
+            .replace("%%COUNT%%", "%02d" % len(slides))
             .replace("%%SLUG%%", m["slug"])
             .replace("%%SPRITE%%", ICON_SPRITE)
-            .replace("%%SOURCE%%", src)
             .replace("%%SLIDES%%", "\n".join(slides)))
-    return html, len(slides), secs
+    return html, len(slides), content
+
+
+# ---------------------------------------------------------------- integrity engine
+# `--check` renders every deck whose JSON exists and asserts the invariants the
+# audit's presentation_issues turned into rules. Any finding fails the run.
+# Terminal words that signal a rejoin failure (a wrapped label cut mid-phrase).
+# "in" and "with" are omitted from the terminal test because this verbatim corpus
+# legitimately closes phrasal verbs with them ("effluent treatment built in",
+# "one community group to work with"); a string ending in real sentence
+# punctuation or a colon (a list-introducing header) is also treated as complete.
+_DANGLE = {"of", "and", "the", "for", "to", "vs", "among"}
+_COMPLETE_END = (".", "!", "?", ":", ")")
+
+
+def block_strings(b):
+    """Every human-readable string a block carries (for role/icon inference and
+    for the integrity scans). Kept exhaustive so no field escapes the checks."""
+    t = b.get("type")
+    out = []
+    if t == "p":
+        out = [b.get("text", "")]
+    elif t == "callout":
+        out = [b.get("label", ""), b.get("text", "")]
+    elif t == "quote":
+        out = [b.get("text", ""), b.get("attribution", "")]
+    elif t == "stats":
+        for it in b.get("items", []):
+            out += [it.get("value", ""), it.get("label", ""), it.get("qualifier", "")]
+        out.append(b.get("footnote", ""))
+    elif t in ("cards", "steps"):
+        for it in b.get("items", []):
+            out += [it.get("title", ""), it.get("body", "")]
+    elif t == "list":
+        out = [b.get("title", "")] + list(b.get("items", []))
+    elif t == "chips":
+        out = list(b.get("items", []))
+    elif t == "pairs":
+        for it in b.get("items", []):
+            out += [it.get("term", ""), it.get("desc", "")]
+    elif t == "flow":
+        for s in b.get("stages", []):
+            out += [s.get("name", ""), s.get("desc", "")]
+        out.append(b.get("closing", ""))
+    elif t == "phases":
+        for g in b.get("groups", []):
+            out += [g.get("label", ""), g.get("name", ""), g.get("period", "")]
+            out += list(g.get("tasks", []))
+    elif t == "timeline":
+        for it in b.get("items", []):
+            out += [it.get("period", ""), it.get("title", ""), it.get("desc", "")]
+    elif t == "table":
+        out += [str(c) for c in b.get("cols", [])]
+        for row in b.get("rows", []):
+            out += [str(c) for c in row]
+        out.append(b.get("footnote", ""))
+    elif t == "compare":
+        for c in b.get("cols", []):
+            out.append(c.get("title", ""))
+            out += list(c.get("items", []))
+    elif t == "groups":
+        for g in b.get("groups", []):
+            out.append(g.get("name", ""))
+            for x in g.get("items", []):
+                out += [x.get("term", ""), x.get("desc", "")] if isinstance(x, dict) else [x]
+    elif t == "series":
+        out = [b.get("unit", "")] + [p.get("label", "") for p in b.get("points", [])]
+    elif t == "swot":
+        for k in ("s", "w", "o", "t"):
+            out += list(b.get(k, []))
+    elif t == "hierarchy":
+        for tier in b.get("tiers", []):
+            out += [tier.get("level", ""), tier.get("name", ""), tier.get("desc", "")]
+        out.append(b.get("closing", ""))
+    elif t == "fanout":
+        out.append(b.get("input", ""))
+        for br in b.get("branches", []):
+            out.append(br.get("component", ""))
+            out += list(br.get("products", []))
+    return [x for x in out if x]
+
+
+def _last_word(s):
+    trimmed = re.sub(r"[^0-9A-Za-z]+$", "", s.strip())
+    parts = trimmed.split()
+    return parts[-1].lower() if parts else ""
+
+
+def check_deck(slug, content, html, findings):
+    def add(msg):
+        findings.append(slug + ": " + msg)
+
+    for i, sec in enumerate(content.get("sections", []), start=1):
+        if not (sec.get("title") or sec.get("kicker")):
+            add("section %d has neither title nor kicker" % i)
+        for b in sec.get("blocks", []):
+            t = b.get("type")
+            if t == "stats":
+                for j, it in enumerate(b.get("items", []), start=1):
+                    if not str(it.get("value", "")).strip():
+                        add("stats item %d has empty value" % j)
+                    if not str(it.get("label", "")).strip():
+                        add("stats item %d has empty label" % j)
+            elif t == "chips":
+                for x in b.get("items", []):
+                    if len(x) > 60:
+                        add("chip over 60 chars: " + x[:50] + "...")
+            elif t == "table":
+                nc = len(b.get("cols", []))
+                for r, row in enumerate(b.get("rows", []), start=1):
+                    if len(row) != nc:
+                        add("table row %d has %d cells, header has %d" % (r, len(row), nc))
+            for s in block_strings(b):
+                if s.rstrip().endswith(_COMPLETE_END):
+                    continue
+                if len(s.split()) >= 3 and _last_word(s) in _DANGLE:
+                    add("string ends on dangling '%s': %s" % (_last_word(s), s[:64]))
+
+    # rendered-HTML scans: no em dash survives to the page, no '›' token
+    if "—" in html:
+        add("em dash present in rendered HTML")
+    if "›" in html:
+        add("'›' present in rendered HTML")
+
+
+def run_check():
+    findings, checked = [], 0
+    for m in B.META:
+        slug = m["slug"]
+        path = os.path.join(CONTENT_DIR, slug + ".json")
+        if not os.path.exists(path):
+            continue
+        try:
+            content = json.load(open(path, encoding="utf-8"))
+        except (ValueError, OSError) as ex:
+            findings.append(slug + ": invalid JSON (" + str(ex) + ")")
+            continue
+        try:
+            html, _, _ = render(m, content)
+        except Exception as ex:
+            findings.append(slug + ": render error (" + str(ex) + ")")
+            continue
+        check_deck(slug, content, html, findings)
+        checked += 1
+    print("checked %d deck(s)" % checked)
+    if findings:
+        print("\nINTEGRITY FAILURES (%d):" % len(findings))
+        for f in findings:
+            print("  - " + f)
+        return 1
+    print("all integrity assertions passed")
+    return 0
+
+
+# ---------------------------------------------------------------- fixture / smoke
+def _meta_for(slug):
+    for m in B.META:
+        if m.get("slug") == slug:
+            return m
+    return None
+
+
+def _write_deck(m, content):
+    html, n, _ = render(m, content)
+    out = os.path.join(ROOT, "landing", "cases", m["slug"] + ".html")
+    with open(out, "w", encoding="utf-8") as f:
+        f.write(html)
+    secs = content.get("sections", [])
+    roles = ",".join(sorted({role_for(sec_heading(s), sec_text(s)) for s in secs}))
+    print("  %-30s %2d slides  [%s]" % (m["slug"], n, roles))
+    return n
+
+
+def build_fixture():
+    """Render scripts/deck_content/_fixture.json (every block type) to the scratch
+    dir, never to landing/cases, and sanity-check the HTML. Excluded from normal
+    runs and --check because it is not in B.META."""
+    fx = os.path.join(CONTENT_DIR, "_fixture.json")
+    content = json.load(open(fx, encoding="utf-8"))
+    m = {"slug": "_fixture", "title": content.get("title", "Fixture"),
+         "eyebrow": content.get("eyebrow", ""), "summary": content.get("subtitle", ""),
+         "place": "Fixture", "group": "model",
+         "theme": content.get("_theme", "Manufacturing cluster"),
+         "source": content.get("source_note")}
+    html, n, _ = render(m, content)
+    out = os.path.join(tempfile.gettempdir(), "proto_deck_fixture.html")
+    with open(out, "w", encoding="utf-8") as f:
+        f.write(html)
+    findings = []
+    check_deck("_fixture", content, html, findings)
+    types = sorted({b.get("type") for sec in content["sections"] for b in sec.get("blocks", [])})
+    print("fixture: %d slides, %d block types [%s]" % (n, len(types), ",".join(types)))
+    print("fixture HTML -> " + out)
+    if findings:
+        print("FIXTURE INTEGRITY FAILURES (%d):" % len(findings))
+        for f in findings:
+            print("  - " + f)
+        return 1
+    print("fixture integrity assertions passed")
+    return 0
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("-")]
-    proto = "--proto" in sys.argv
+    argv = sys.argv[1:]
+    flags = [a for a in argv if a.startswith("-")]
+    args = [a for a in argv if not a.startswith("-")]
 
-    if args:                                   # one named deck
-        targets = [next(x for x in B.META if x["file"] == args[0])]
-    else:                                      # all 13
-        targets = list(B.META)
+    if "--check" in flags:
+        sys.exit(run_check())
+    if "--fixture" in flags:
+        sys.exit(build_fixture())
 
+    if args:                                   # one named deck (slug or filename)
+        key = args[0]
+        m = _meta_for(key) or next((x for x in B.META if x.get("file") == key), None)
+        if not m:
+            raise SystemExit("proto_deck: no META entry for '" + key + "'")
+        _write_deck(m, load_content(m["slug"]))   # missing JSON is a hard error
+        return
+
+    # plain run: write a page for every slug whose JSON exists; skip an invalid
+    # or mid-write file (real decks are authored concurrently) with a note. This
+    # doubles as the smoke test over whatever valid decks are present.
     total = 0
-    for m in targets:
-        html, n, secs = render(m)
-        name = ("_proto-" + m["slug"] if proto else m["slug"]) + ".html"
-        out = os.path.join(ROOT, "landing", "cases", name)
-        with open(out, "w", encoding="utf-8") as f:
-            f.write(html)
-        roles = ",".join(sorted({role_for(s["title"], s["blocks"]) for s in secs}))
-        print(f"  {m['slug']:30s} {n:2d} slides  [{roles}]")
-        total += 1
-    print(f"\nwrote {total} deck page(s) -> landing/cases/")
+    for m in B.META:
+        slug = m["slug"]
+        path = os.path.join(CONTENT_DIR, slug + ".json")
+        if not os.path.exists(path):
+            continue
+        try:
+            content = json.load(open(path, encoding="utf-8"))
+        except (ValueError, OSError) as ex:
+            print("  skip %-30s (invalid/mid-write JSON: %s)" % (slug, ex))
+            continue
+        try:
+            _write_deck(m, content)
+            total += 1
+        except Exception as ex:
+            print("  skip %-30s (render error: %s)" % (slug, ex))
+    print("\nwrote %d deck page(s) -> landing/cases/" % total)
 
 
 if __name__ == "__main__":

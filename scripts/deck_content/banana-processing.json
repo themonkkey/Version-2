@@ -1,0 +1,353 @@
+{
+  "slug": "banana-processing",
+  "eyebrow": "CAPACITY BUILDING CASE STUDY",
+  "title": "Banana Processing & Waste-to-Wealth Models",
+  "subtitle": "Two replicable cases for Andhra Pradesh districts: KVK Kanyakumari value-added foods and Jalgaon pseudo-stem processing cluster",
+  "audience": "For District & Mandal Officers",
+  "source_note": "Sources: TNAU Agritech Portal success story; RKVY/Tapti Valley Banana Pseudo-stem case document",
+  "sections": [
+    {
+      "kicker": "HORTICULTURE · SHGs/FPOs · MSMEs",
+      "title": "Waste → Income",
+      "blocks": [
+        {
+          "type": "pairs",
+          "items": [
+            {"term": "Waste", "desc": "Income"},
+            {"term": "Fruits", "desc": "Food Products"},
+            {"term": "Pseudostem", "desc": "Fibre + Sap + Compost"}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "Why banana processing matters for Andhra districts",
+      "source": "Sources: TNAU Agritech Portal success story; RKVY/Tapti Valley Banana Pseudo-stem case document",
+      "blocks": [
+        {
+          "type": "pairs",
+          "items": [
+            {"term": "Shelf-life", "desc": "Converts perishable banana into marketable foods"},
+            {"term": "Waste-to-wealth", "desc": "Uses pseudo-stem, central core, sap and scutcher"},
+            {"term": "Women/SHGs", "desc": "Creates cottage-level processing and packaging work"},
+            {"term": "Local value", "desc": "Keeps value addition inside the mandal or cluster"}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "OFFICER TAKEAWAY",
+          "text": "Banana is not only a fruit crop. It is a full value chain: fruit, flower, pseudo-stem, fibre, sap, scutcher and central core can each be turned into income-generating products."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fresh fruit glut can be managed through chips, flour, powder, candy, halwa and pickles.",
+            "Pseudo-stem disposal cost can be converted into farmer income and rural jobs.",
+            "District officers can converge horticulture, DRDA/SHG, PMFME, MSME and FPO support."
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "Case Study 1: KVK Kanyakumari — value addition in banana",
+      "source": "Source: TNAU Agritech Portal, “success story - value addition in banana”",
+      "blocks": [
+        {
+          "type": "callout",
+          "label": "Training-led model",
+          "text": "KVK Kanyakumari conducted a special programme on value addition in banana for farmers and farm women in banana-growing areas."
+        },
+        {
+          "type": "list",
+          "title": "PRODUCT BASKET SHOWN TO FARMERS",
+          "items": [
+            "Pseudostem pickle",
+            "Flower pickle",
+            "Unripe fruit pickle",
+            "Pseudostem candy",
+            "Fruit candy",
+            "Fruit halwa",
+            "Fruit powder",
+            "Flower vadagam",
+            "Nendran-based products"
+          ]
+        },
+        {
+          "type": "list",
+          "title": "WHY IT IS PRACTICAL",
+          "items": [
+            "Uses locally available fruit, flower and pseudo-stem inputs.",
+            "Can be started through SHG/FPO training without heavy capital expenditure.",
+            "Works well for farm women, rural youth and small food entrepreneurs.",
+            "Useful for AP districts where banana is grown but local processing is limited."
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "How the Kanyakumari model works: from training to enterprise",
+      "source": "Source: TNAU Agritech Portal; application framework prepared for AP district officials",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {"n": "1", "title": "Mobilise", "body": "Identify banana growers, women SHGs and rural youth in banana mandals."},
+            {"n": "2", "title": "Train", "body": "Demonstrate recipes, hygiene, processing, shelf-life and packaging."},
+            {"n": "3", "title": "Standardise", "body": "Fix product standards: taste, weight, label, batch and expiry date."},
+            {"n": "4", "title": "Market", "body": "Sell through local fairs, retail outlets, institutions and online channels."}
+          ]
+        },
+        {
+          "type": "list",
+          "title": "District/Mandal officer role",
+          "items": [
+            "Select 2–3 banana villages per mandal for demonstration.",
+            "Link KVK / food technology institution / horticulture officer as technical partner.",
+            "Enable FSSAI registration, packaging design, brand name and basic bookkeeping.",
+            "Review sales, repeat orders and product quality every month."
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "Case Study 2: Jalgaon — pseudo-stem waste-to-wealth cluster",
+      "source": "Source: RKVY/Tapti Valley Banana Pseudo-stem case document",
+      "blocks": [
+        {
+          "type": "list",
+          "title": "THE PROBLEM",
+          "items": [
+            "Pseudo-stem after harvest was commonly thrown on field boundaries and burnt after drying.",
+            "Farmers faced disposal cost without income from a bulky biomass resource.",
+            "Jalgaon district alone generated around 38.5 lakh MT pseudo-stem biomass annually."
+          ]
+        },
+        {
+          "type": "list",
+          "title": "THE OPPORTUNITY",
+          "items": [
+            "Extract fibre, sap and scutcher close to farms.",
+            "Use sap for organic liquid fertilizer and scutcher for compost/vermi-compost.",
+            "Create village-level cottage units operated by local farmer SHGs."
+          ]
+        },
+        {
+          "type": "stats",
+          "items": [
+            {"value": "70–80 MT/ha", "label": "Pseudo-stem availability after harvest"},
+            {"value": "55,000–60,000 ha", "label": "Banana plantation in Jalgaon"},
+            {"value": "10 clusters", "label": "Functional cottage industrial units initially established"},
+            {"value": "₹500/MT", "label": "Paid to growers for pseudo-stem at unit"}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "Institutional model: decentralised units + central processing",
+      "source": "Source: RKVY/Tapti Valley Banana Pseudo-stem case document",
+      "blocks": [
+        {
+          "type": "hierarchy",
+          "tiers": [
+            {"name": "Banana growers"},
+            {"name": "Farmer SHG"},
+            {"name": "Cottage Units"},
+            {"name": "Tapti Valley Co-operative Society"},
+            {"name": "Navsari Agri. Univ.", "desc": "Technical Support"}
+          ],
+          "closing": "Funding / sanction: RKVY, Government of Maharashtra and NABARD support"
+        },
+        {
+          "type": "list",
+          "title": "STANDARD COTTAGE UNIT PACKAGE",
+          "items": [
+            "2,000 sq. ft. shed",
+            "10 fibre extraction machines",
+            "2 pseudo-stem splitting machines",
+            "1 press machine for sap",
+            "3 compost pits",
+            "5 storage tanks",
+            "75 crates and trays",
+            "Electrical fitting/connection"
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "Jalgaon value chain: every component gets a use",
+      "lead": "Banana → Pseudo-stem → Cottage Industrial Unit",
+      "source": "Source: RKVY/Tapti Valley Banana Pseudo-stem case document",
+      "blocks": [
+        {
+          "type": "fanout",
+          "input": "Pseudo-stem",
+          "branches": [
+            {"component": "Fibre", "products": ["Paper", "Textile", "Handicrafts"]},
+            {"component": "Sap", "products": ["Organic liquid fertilizer", "Plant growth promoter"]},
+            {"component": "Scutcher", "products": ["Compost", "Vermi-compost", "Vermi-wash"]},
+            {"component": "Central core", "products": ["Candy", "Pickle", "Soft drink"]}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Principle",
+          "text": "localise bulky primary processing; centralise advanced processing and marketing."
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "Impact: from zero-value waste to saleable products",
+      "source": "Source: RKVY/Tapti Valley Banana Pseudo-stem case document, impact table for 2016-17 and 2017-18",
+      "blocks": [
+        {
+          "type": "table",
+          "cols": ["Product", "Production", "Sale"],
+          "rows": [
+            ["Banana fibre", "4,248 kg", "4,034 kg sold"],
+            ["Pseudo-stem sap", "93,833 L", "89,410 L sold"],
+            ["Tapti Amrut", "21,310 L", "21,310 L sold"],
+            ["Tapti Energy loose", "26,718 L", "16,245 L sold"],
+            ["Organic compost", "44,000 kg", "44,000 kg sold"],
+            ["Vermicompost", "8,315 kg", "8,875 kg sold*"]
+          ],
+          "footnote": "*Sales may include opening stock/measurement differences as reported in the source table."
+        },
+        {
+          "type": "list",
+          "title": "Impact pathway",
+          "items": [
+            "Farmer earns for pseudo-stem instead of paying disposal cost.",
+            "SHG-run cottage units generate local employment.",
+            "Sap and scutcher return to farming as low-cost inputs.",
+            "Central processing creates branding and market scale."
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Message for AP",
+          "text": "Review each banana cluster not only for area and production, but also for “processing potential” and “waste monetisation potential”."
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "Lessons for Andhra Pradesh district and mandal officials",
+      "source": "Sources: TNAU Agritech Portal success story; RKVY/Tapti Valley Banana Pseudo-stem case document",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {"title": "Start with clusters", "body": "Select banana-dense villages so raw material aggregation is viable."},
+            {"title": "Keep first processing local", "body": "Bulky pseudo-stem cannot travel long distances economically."},
+            {"title": "Use SHGs/FPOs", "body": "Women and farmer groups are ideal operators for food products and cottage units."},
+            {"title": "Standardise products", "body": "Recipes, packaging, label, FSSAI, batch tracking and quality control are essential."},
+            {"title": "Converge schemes", "body": "Horticulture + DRDA/SHG + PMFME + MSME + bank credit + KVK support."},
+            {"title": "Track outcomes", "body": "Measure income, jobs, waste processed, product sales and repeat buyers."}
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Do not begin with machinery purchase alone. Begin with cluster selection, entrepreneurs, technical recipes, market testing and confirmed raw material flow."
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "How AP districts can adapt the models",
+      "source": "Sources: TNAU Agritech Portal success story; RKVY/Tapti Valley Banana Pseudo-stem case document",
+      "blocks": [
+        {
+          "type": "compare",
+          "cols": [
+            {
+              "title": "Fresh banana processing",
+              "items": [
+                "Chips, flour, fruit powder, halwa, candy, pickle and ready-to-eat snacks.",
+                "Best for SHG/FPO-led units near production and consumption centres.",
+                "Use local fairs, schools/hostels, tourism points and retail shops for market testing."
+              ]
+            },
+            {
+              "title": "Pseudo-stem processing",
+              "items": [
+                "Fibre extraction, sap collection, scutcher composting and central value addition.",
+                "Best for banana clusters with adequate post-harvest pseudo-stem availability.",
+                "Small units reduce transport cost; central unit handles branding and bulk sale."
+              ]
+            },
+            {
+              "title": "District-level enablers",
+              "items": [
+                "District product plan and value-chain map.",
+                "Tie-up with KVK/TNAU/NRCB/food technology institutes.",
+                "Common brand, FSSAI handholding, packaging and buyer linkage.",
+                "Monthly review through agriculture/horticulture and livelihood KPIs."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Ideal first step",
+          "text": "identify one banana cluster per district and run a 100-day pilot before scaling."
+        }
+      ]
+    },
+    {
+      "kicker": "BANANA PROCESSING CASE STUDIES",
+      "title": "Monitoring checklist: what to review every month",
+      "source": "Sources: TNAU Agritech Portal success story; RKVY/Tapti Valley Banana Pseudo-stem case document",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "INPUT & PROCESS KPIs",
+              "items": [
+                "No. of banana farmers/SHGs/FPOs mobilised",
+                "Quantity of fruit/pseudo-stem aggregated",
+                "No. of trainees completing practical training",
+                "Unit utilisation and days of operation"
+              ]
+            },
+            {
+              "name": "OUTPUT KPIs",
+              "items": [
+                "Kg/L of processed products produced",
+                "Kg/L sold and value realised",
+                "Packaging/branding/FSSAI registrations completed",
+                "Compost/liquid fertilizer supplied back to farmers"
+              ]
+            },
+            {
+              "name": "OUTCOME KPIs",
+              "items": [
+                "Additional income to farmers/SHGs",
+                "Jobs created for women/rural youth",
+                "Reduction in waste burning/disposal cost",
+                "Repeat buyers and market expansion"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Closing message",
+          "text": "For district and mandal officials, the banana case studies show how a crop-specific value chain can move from “production monitoring” to “income, enterprise and employment generation”."
+        },
+        {
+          "type": "callout",
+          "label": "Action after training",
+          "text": "select one banana cluster, one food product pilot and one pseudo-stem waste-to-wealth pilot."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "slug": "morbi-ceramic-cluster",
+  "title": "Morbi Ceramic Cluster",
+  "eyebrow": "Gujarat, India",
+  "subtitle": "From Traditional Craft to Global Manufacturing Hub",
+  "hero_stats": [
+    {"value": "#2", "label": "Global Producer"},
+    {"value": "80–90%", "label": "India's Output"},
+    {"value": "~100 yrs", "label": "Industrial Heritage"}
+  ],
+  "sections": [
+    {
+      "kicker": "EVOLUTION OF THE INDUSTRY",
+      "blocks": [
+        {
+          "type": "timeline",
+          "items": [
+            {"period": "Pre-1980s", "title": "Traditional Craft Origins", "desc": "Clay roofing tiles (nalia), wall clocks, and local earthenware. A locally-rooted, labour-intensive, informal industry."},
+            {"period": "1980s–90s", "title": "First Major Shift", "desc": "Transition from traditional products to modern ceramic tiles. Mosaic and galicha tiles replaced clay roofing as primary output."},
+            {"period": "Mid-1990s", "title": "The Game Changer", "desc": "Collective adoption of automation, digital printing & spool-roller tunnel firing — the defining technological turning point."},
+            {"period": "2000s–Now", "title": "Global Standing", "desc": "High-end vitrified tiles, sanitaryware, and large-format slabs. India becomes the world's #2 ceramic tile producer."}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "GLOBAL STANDING",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {"value": "#2", "label": "Globally", "qualifier": "World's second-largest producer & consumer of ceramic tiles, trailing only China."},
+            {"value": "80–90%", "label": "of India", "qualifier": "Morbi cluster alone produces 80–90% of India's total ceramic tile output."},
+            {"value": "~100", "label": "Years Old", "qualifier": "A century of ceramic industrial heritage underpins Morbi's global reputation."}
+          ],
+          "footnote": "Trailing only China in global production scale"
+        }
+      ]
+    },
+    {
+      "kicker": "THE SUPPORT ECOSYSTEM",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "INDUSTRY INITIATIVES",
+              "items": [
+                {"term": "Morbi Ceramic Association (MCA)", "desc": "Umbrella body enabling cooperation — fraud prevention, order-sharing via subcontracting, and unified representation to state authorities."},
+                {"term": "Community Cohesion", "desc": "Patel-Prajapati networks foster mutual support during financial stress, enabling informal credit and minimising conflict."},
+                {"term": "Collective Lobbying", "desc": "Unified voice successfully secured GST cuts, anti-dumping duties, and infrastructure investments."}
+              ]
+            },
+            {
+              "name": "GOVERNMENT SUPPORT",
+              "items": [
+                {"term": "Critical Infrastructure", "desc": "Dedicated gas pipelines, reliable power supply, road network linking to Kandla & Mundra ports for seamless export logistics."},
+                {"term": "Anti-Dumping Duties", "desc": "Central government tariffs shield domestic manufacturers from low-cost Chinese imports and price undercutting."},
+                {"term": "GST Rate Reduction", "desc": "Tax rate cut from 28% to 18% after industry protests, significantly boosting domestic consumption."}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "CHALLENGES FACING THE CLUSTER",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {"title": "Global Competition", "body": "Chinese manufacturers with massive scale & lower costs pressure both domestic and export markets persistently."},
+            {"title": "Environmental Regulation", "body": "NGT ordered closure of coal gasifiers, forcing costly transition to LNG to reduce SO₂ and particulate pollution."},
+            {"title": "Labour Informality", "body": "Reliance on migrant & casual workers — dust hazards, no social security, no permanent employment status."},
+            {"title": "Urban Sprawl & Finance", "body": "Cash crunches + ribbon development, water scarcity, and unplanned land growth along highways."}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "KEY TAKEAWAYS",
+      "title": "What makes Morbi remarkable",
+      "source": "Morbi, Gujarat · India's Ceramic Capital",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {"n": "01", "title": "Collective Reinvention", "body": "Technology adopted cluster-wide and across all the firms simultaneously."},
+            {"n": "02", "title": "Social Capital", "body": "Community trust networks enabled non-competitive cooperation — replicable only with deep social embeddedness."},
+            {"n": "03", "title": "Unresolved Tensions", "body": "Environment, labour formalisation & urban planning remain the defining challenges of the next chapter."}
+          ]
+        }
+      ]
+    }
+  ]
+}

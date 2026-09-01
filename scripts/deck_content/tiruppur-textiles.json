@@ -1,0 +1,299 @@
+{
+  "slug": "tiruppur-textiles",
+  "title": "Tiruppur",
+  "eyebrow": "Innovation in India's Textile & Garments Sector",
+  "subtitle": "The rise of South India's “Banian City” — a knitwear cluster case study",
+  "hero_stats": [
+    {"value": "90%", "label": "of India's cotton knitwear exports"},
+    {"value": "20,000", "label": "units across the textile value chain"},
+    {"value": "Rs 46,000 Cr", "label": "knitwear exports (FY 2025-26)"}
+  ],
+  "sections": [
+    {
+      "kicker": "THE BIGGER PICTURE",
+      "title": "Textiles: A Pillar of the Indian Economy",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {"value": "13%", "label": "of industrial production"},
+            {"value": "12%", "label": "of India's total exports"},
+            {"value": "2.3%", "label": "of national GDP"},
+            {"value": "45M+", "label": "people directly employed"}
+          ]
+        },
+        {
+          "type": "list",
+          "title": "THE GLOBAL & POLICY CONTEXT",
+          "items": [
+            "India is the world's second-largest producer of textiles & garments and its sixth-largest exporter, holding about 4% of global textile & apparel trade.",
+            "The global apparel market is worth ~$1.9 trillion (2025); world textile & apparel trade is projected to reach $1.2 trillion by 2030.",
+            "New FTAs — the India-UK FTA, UAE CEPA and Australia ECTA — plus the “China+1” sourcing shift are reshaping market access.",
+            "India targets $100 bn (Rs 9 lakh Cr) of textile exports by 2030, up from ~$37 bn — a leap that frames Tiruppur's strategic importance.",
+            "India's textile & apparel exports touched $36.6 bn (Rs 3.3 lakh Cr) in FY25; readymade garments led at $16 bn, 49% of it knitwear."
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "BANIAN CITY",
+      "title": "Tiruppur at a Glance",
+      "lead": "FROM COTTON MARKET TO KNITWEAR CAPITAL",
+      "blocks": [
+        {
+          "type": "timeline",
+          "items": [
+            {"period": "1937", "desc": "Gulam Kadar starts “Baby Knitting Industries” — knitting arrives in Tiruppur"},
+            {"period": "1960", "desc": "Cluster grows to ~450 knitting units serving the domestic market"},
+            {"period": "1972", "desc": "Mohan Knits makes the first knitwear export, to the US & Ghana"},
+            {"period": "1987", "desc": "Export revenue reaches Rs 75 Crores — the cluster never looks back"},
+            {"period": "2026", "desc": "Knitwear exports hit a record Rs 46,000 Crores in FY 2025-26"}
+          ]
+        },
+        {
+          "type": "stats",
+          "items": [
+            {"value": "90%", "label": "of India's cotton knitwear exports originate in Tiruppur — nearly 60% of the country's total knitwear exports."},
+            {"value": "20,000", "label": "units across the textile value chain"},
+            {"value": "49%", "label": "of India's readymade garment exports are knitwear"}
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Known as both the “Banian City” and “T-shirt City”, Tiruppur is recognised by the Government of India as a “Town of Export Excellence.”"
+        }
+      ]
+    },
+    {
+      "kicker": "TRAJECTORY",
+      "title": "Four Decades of Export Growth",
+      "lead": "Tiruppur knitwear exports — value in Crore INR (TEA data, FY 2018-19 to FY 2025-26)",
+      "blocks": [
+        {
+          "type": "series",
+          "unit": "Value (Crore INR)",
+          "points": [
+            {"label": "2018-19", "value": "27650"},
+            {"label": "2019-20", "value": "27280"},
+            {"label": "2020-21", "value": "24750"},
+            {"label": "2021-22", "value": "40247"},
+            {"label": "2022-23", "value": "40059"},
+            {"label": "2023-24", "value": "38408"},
+            {"label": "2024-25", "value": "44747"},
+            {"label": "2025-26", "value": "46000"}
+          ]
+        },
+        {
+          "type": "callout",
+          "label": "Rs 75 Cr → Rs 46,000 Cr",
+          "text": "Export revenue grew from Rs 75 Crores in 1987 to a record Rs 46,000 Crores in FY 2025-26."
+        },
+        {
+          "type": "callout",
+          "label": "RISING SHARE",
+          "text": "Tiruppur's slice of all-India knitwear exports climbed from 53% (2020-21) → 69% (2024-25)"
+        },
+        {
+          "type": "p",
+          "text": "Global majors — Walmart, Primark, H&M, Zara, Adidas — source here; next stop: Rs 1 lakh Cr by 2030."
+        }
+      ]
+    },
+    {
+      "kicker": "CLUSTER ANATOMY",
+      "title": "Composition of the Textile Value Chain",
+      "blocks": [
+        {
+          "type": "table",
+          "cols": ["Segment", "Units"],
+          "rows": [
+            ["Knitting / Garmenting", "6700"],
+            ["Dyeing & Bleaching", "410"],
+            ["Fabric Printing", "400"],
+            ["Embroidery", "600"],
+            ["Other Ancillary", "11100"],
+            ["Compacting & Calendering", "790"]
+          ],
+          "footnote": "20,000 mapped units"
+        },
+        {
+          "type": "list",
+          "title": "DEFINING FEATURES OF THE CLUSTER",
+          "items": [
+            "Cotton-based knitted garments — T-shirts, polos, sportswear, nightwear and children's wear.",
+            "Mostly proprietorship / partnership firms under family management.",
+            "Many units specialise in cutting, making and trimming (CMT) of knitted fabric.",
+            "Few vertically integrated plants — a high degree of subcontracting across knitting, processing and finishing."
+          ]
+        },
+        {
+          "type": "stats",
+          "items": [
+            {"value": "15+", "label": "active industry associations settle disputes, ease formalities and lobby government."}
+          ]
+        },
+        {
+          "type": "cards",
+          "items": [
+            {"title": "Household roots", "body": "Built on self-funded household workshops; specialised skills evolved into a globally competitive cluster."}
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "COMPETITIVENESS",
+      "title": "What Drives — and Constrains — the Cluster",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "ENGINES OF GROWTH",
+              "items": [
+                {"term": "Proximity to Coimbatore", "desc": "Close to a major cotton-spinning hub — fast, reliable access to yarn."},
+                {"term": "Speed to market", "desc": "Customised samples in under 12 hours; half a million pieces in days."},
+                {"term": "Entrepreneurial management", "desc": "Personalised, family-run control of negotiations and operations."},
+                {"term": "Pro-active marketing", "desc": "Buyers from 35+ countries; ZLD-led “Green Tiruppur” brand wins ESG-minded orders."}
+              ]
+            },
+            {
+              "name": "STRUCTURAL CONSTRAINTS",
+              "items": [
+                "Tariff disadvantage against FTA-backed rivals such as Bangladesh and Vietnam.",
+                "Mainly commodity / price competition with limited high-income market knowledge.",
+                "Cotton-heavy product mix while global demand shifts to man-made fibre (MMF).",
+                "Rising labour and raw-material costs — polyester ~33% costlier than in China.",
+                "Infrastructure growth lags far behind the pace of industrial expansion."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "ENABLING ECOSYSTEM",
+      "title": "Support Institutions & Incentives",
+      "blocks": [
+        {
+          "type": "pairs",
+          "items": [
+            {"term": "Textiles Committee", "desc": "Ministry of Textiles body ensuring quality, testing, research and statistics across the value chain."},
+            {"term": "AEPC (since 1978)", "desc": "Apparel Export Promotion Council — export promotion, buyer-seller meets and market intelligence."},
+            {"term": "TEA (since 1990)", "desc": "Tiruppur Exporters Association — NIFT-TEA training, the India Knit Fair complex and apparel park."},
+            {"term": "SIHMA (since 1951)", "desc": "South India Hosiery Mfrs. — finance facilitation, HRD, CAD courses and ISO certification support."}
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Plus 16+ specialised associations spanning dyers, printers, yarn merchants, power-loom and knit-compactor trades."
+        },
+        {
+          "type": "list",
+          "title": "POLICY INCENTIVES",
+          "items": [
+            "PM MITRA — seven mega textile parks with world-class, plug-and-play infrastructure to anchor scale.",
+            "PLI Scheme for Textiles — incentives for MMF apparel, MMF fabrics and technical textiles.",
+            "RoSCTL & RoDTEP — rebates of embedded central and state taxes on garment exports.",
+            "SAMARTH skilling, plus Tamil Nadu's Rs 1,250 Cr plan for women workers' hostels over five years.",
+            "Private-sector drive remains Tiruppur's engine — now amplified by schemes targeting $100 bn of textile exports by 2030."
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "SUSTAINABILITY",
+      "title": "Water: From Crisis to Zero Liquid Discharge",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {"value": "13 Cr", "label": "litres of water recycled every single day across the cluster's ZLD treatment plants."},
+            {"value": "96%", "label": "of waste-water recovered and reused — freshwater demand cut from 125 to under 30 MLD."},
+            {"value": "18", "label": "ZLD-enabled Common Effluent Treatment Plants, built at a cost of over Rs 1,000 Crores."}
+          ]
+        },
+        {
+          "type": "compare",
+          "cols": [
+            {
+              "title": "THE STRAIN",
+              "items": [
+                "Dyeing & bleaching effluents (caustic soda, acids, peroxides) once choked the Noyyal & Nallar rivers.",
+                "Groundwater was depleted and contaminated — unfit for domestic, industrial or farm use.",
+                "In 2011 the Madras High Court ordered all ~700 dyeing & bleaching units closed until zero discharge was achieved."
+              ]
+            },
+            {
+              "title": "THE RESPONSE",
+              "items": [
+                "By 2012, 18 CETPs and individual ETPs reopened with full Zero Liquid Discharge — a world first for a textile cluster.",
+                "RO, evaporation and salt-recovery systems now reclaim both water and salts, cutting input costs.",
+                "Wind & solar power and mass tree planting underpin the carbon-conscious “Green Tiruppur” strategy."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "INNOVATION & CAPITAL",
+      "title": "Innovating & Financing the Next Phase",
+      "blocks": [
+        {
+          "type": "groups",
+          "groups": [
+            {
+              "name": "INNOVATIONS ACHIEVED & PLANNED",
+              "items": [
+                {"term": "Special Purpose Vehicles", "desc": "SPVs delivered shared infrastructure — e.g. the NTADCL industrial water project."},
+                {"term": "AI & automation", "desc": "AI-driven manufacturing has lifted capacity utilisation from 45% to 65%."},
+                {"term": "Early entrepreneurship", "desc": "Vivekananda Vidyalaya school sensitises students to the textile trade."}
+              ]
+            },
+            {
+              "name": "ACCESS TO FINANCE & VENTURE CAPITAL",
+              "items": [
+                {"term": "NSIC", "desc": "Bill financing, working-capital and export-development finance, plus an equipment-leasing scheme for MSME modernisation."},
+                {"term": "SIDBI", "desc": "Apex MSME institution (est. 1990). Direct & indirect schemes span project finance, technology upgradation, ISO certification and venture capital."},
+                {"term": "New SIDBI initiatives", "desc": "SIDBI Venture Capital Ltd., a Technology Bureau for Small Enterprise, a Marketing Development Fund and a Foundation for Micro Credit."}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kicker": "OVERALL ASSESSMENT",
+      "title": "SWOT — Tiruppur's Textile & Garments Cluster",
+      "blocks": [
+        {
+          "type": "swot",
+          "s": [
+            "Strong raw-material base & cheap, flexible labour",
+            "Hard-working, innovative entrepreneurs",
+            "Strong industry associations & inter-firm trust",
+            "World-first ZLD & green-energy credentials win ESG buyers"
+          ],
+          "w": [
+            "Under-used machinery; low-end, seasonal focus",
+            "High input costs — polyester & viscose pricier than rivals'",
+            "Low labour productivity; rising wage costs",
+            "Reliance on foreign design; little vertical integration"
+          ],
+          "o": [
+            "India-UK FTA & UAE CEPA open duty-free markets",
+            "MMF, technical textiles & value-added fashion-wear",
+            "“China+1” & Bangladesh disruption shifting orders to India",
+            "PM MITRA parks; Rs 1 lakh Cr export target by 2030"
+          ],
+          "t": [
+            "Duty-free rivals — Bangladesh & Vietnam at full capacity",
+            "US tariffs & EU sustainability rules (CSDDD, traceability)",
+            "Cotton price volatility & costly man-made fibre inputs",
+            "Rival textile hubs rising in nearby districts"
+          ]
+        }
+      ]
+    }
+  ]
+}

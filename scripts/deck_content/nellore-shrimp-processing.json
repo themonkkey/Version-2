@@ -1,0 +1,324 @@
+{
+  "slug": "nellore-shrimp-processing",
+  "title": "Unlocking Nellore's Shrimp Processing Potential",
+  "eyebrow": "CASE FOR ACTION • VALUE-CHAIN STRATEGY",
+  "subtitle": "From aquaculture capital to value-addition hub — why the district must move up the shrimp chain",
+  "audience": "Capacity building programme | Government of Andhra Pradesh",
+  "sections": [
+    {
+      "title": "The Problem We Are Trying to Solve",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "The raw-commodity trap",
+              "body": "Most Nellore shrimp leaves the district as head-on, shell-on raw — the lowest-margin form in the global chain."
+            },
+            {
+              "title": "Value leaks downstream",
+              "body": "Peeling, IQF, breading, cooking and branding — the profitable steps — happen in Vizag, Chennai, or overseas."
+            },
+            {
+              "title": "Farm-gate price volatility",
+              "body": "Ponds are exposed to global spot swings, anti-dumping duties, and a handful of buyers. Farmer income is fragile."
+            },
+            {
+              "title": "Concentrated risk",
+              "body": "Near-total dependence on Vannamei and a few export markets. One disease outbreak or tariff decision hits the whole district."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "The Answer: Build the Processing Ecosystem",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Shift Nellore from a shrimp-production district to a shrimp-value district. Anchor processing, cold chain, testing and branding inside the district — so the margins that currently leave with the truck stay with local farmers, workers and MSMEs."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "~70%",
+              "label": "of India's cultured shrimp comes from Andhra Pradesh"
+            },
+            {
+              "value": "~40%",
+              "label": "of that AP volume from Nellore & neighbouring districts"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "What local processing delivers",
+          "items": [
+            "2–4× higher realisation per kg vs. raw farm-gate",
+            "Thousands of local jobs — especially for women",
+            "Access to premium buyers: US, EU, Japan retail",
+            "Compliance & traceability as a competitive moat",
+            "A Nellore brand — not an anonymous ingredient"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nellore's Shrimp Sector at a Glance",
+      "lead": "SPSR Nellore, Andhra Pradesh • ~169 km of coastline • One of India's densest shrimp-farming districts",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "~50,000+",
+              "label": "hectares under shrimp cultivation"
+            },
+            {
+              "value": "~1 in 3",
+              "label": "coastal AP shrimp farms lie in Nellore"
+            },
+            {
+              "value": "L. vannamei",
+              "label": "dominant species — over 90% of ponds"
+            },
+            {
+              "value": "~₹8,900 Cr",
+              "label": "value of India's frozen shrimp exports/month*"
+            },
+            {
+              "value": "#1",
+              "label": "India — world's largest shrimp exporter"
+            },
+            {
+              "value": "~15%",
+              "label": "of India's shrimp processing capacity in AP"
+            }
+          ],
+          "footnote": "*Approximate ranges based on MPEDA / industry reporting; exact figures vary year to year."
+        }
+      ]
+    },
+    {
+      "title": "How the Model Works: One Integrated Chain",
+      "blocks": [
+        {
+          "type": "flow",
+          "stages": [
+            {
+              "name": "Farm",
+              "desc": "Hatchery-linked ponds; SPF seed, BMP protocols"
+            },
+            {
+              "name": "Aggregate",
+              "desc": "FPO / cluster procurement, ice at pond-side"
+            },
+            {
+              "name": "Process",
+              "desc": "Peeling, IQF, value-add: breaded, ready-to-cook"
+            },
+            {
+              "name": "Cold chain",
+              "desc": "Reefer trucks, cold storage, port linkage"
+            },
+            {
+              "name": "Market",
+              "desc": "Export (US/EU/Japan) + growing domestic retail"
+            }
+          ],
+          "closing": "Nellore captures every link — not just the pond"
+        },
+        {
+          "type": "p",
+          "text": "Today, most links after \"Aggregate\" happen outside the district. Localising even two of them — processing and cold chain — meaningfully lifts realised price per kg and creates thousands of downstream jobs."
+        }
+      ]
+    },
+    {
+      "title": "Five Pillars Behind the Results",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Quality seed & hatcheries",
+              "body": "SPF broodstock, cluster-linked hatcheries, and BMPs to bring down disease losses at pond level."
+            },
+            {
+              "title": "Modern processing units",
+              "body": "IQF lines, peeling, breading, ready-to-cook — closer to the ponds, not 500 km away."
+            },
+            {
+              "title": "Cold chain & port linkage",
+              "body": "Ice plants, reefer trucks, cold storage, and short haul to Krishnapatnam/Chennai for export."
+            },
+            {
+              "title": "Testing & certification",
+              "body": "NABL labs, antibiotic-residue testing, BAP/ASC certification — the passport to premium markets."
+            },
+            {
+              "title": "Traceability & branding",
+              "body": "Blockchain-linked pond-to-pack traceability; a \"Nellore Shrimp\" origin brand for global buyers."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Who Benefits — Farmers, Workers and the State",
+      "blocks": [
+        {
+          "type": "compare",
+          "cols": [
+            {
+              "title": "For Farmers & Workers",
+              "items": [
+                "Direct access to processors + export markets, less middleman leakage",
+                "Fairer, more stable farm-gate prices tied to processed-product value",
+                "Thousands of downstream jobs — especially for women in peeling & packing",
+                "Skill upgrade via training in HACCP, food safety, and cold-chain handling",
+                "Insurance, credit and quality-input access through FPO / cluster structures"
+              ]
+            },
+            {
+              "title": "For the District & Global Buyers",
+              "items": [
+                "MSME cluster growth — packaging, ice, transport, testing, engineering",
+                "Higher GST / export revenue captured within the district and the state",
+                "Environmental compliance built in — ETPs, waste-water reuse, mangrove buffers",
+                "Traceable, certified product for US / EU / Japan retail chains",
+                "A resilient, diversified shrimp economy, less exposed to a single buyer or tariff"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Roadmap for Nellore District",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "n": 1,
+              "title": "Map & mobilise",
+              "body": "Identify shrimp-farming clusters and existing FPOs by mandal. Prioritise mandals with high pond density, weak processing, and viable land near a highway/port corridor."
+            },
+            {
+              "n": 2,
+              "title": "Anchor the processing zone",
+              "body": "Designate a shrimp processing cluster (SEZ / mega food park model). Blend private capex with MPEDA, PMMSY, NABARD and state matching support."
+            },
+            {
+              "n": 3,
+              "title": "Build shared infrastructure",
+              "body": "Common ice plants, effluent treatment, testing labs, cold storage, reefer parking. Shared infra brings small processors above the compliance bar."
+            },
+            {
+              "n": 4,
+              "title": "Certify for premium markets",
+              "body": "Push BAP, ASC, MSC and country-of-origin certification. Pre-empt US anti-dumping duties with clean, traceable, documented supply."
+            },
+            {
+              "n": 5,
+              "title": "Link to markets & diversify",
+              "body": "Anchor buyer contracts (US/EU/Japan retail), plus a domestic Nellore-brand play. Diversify products: ready-to-cook, sushi-grade, chitosan from shell waste."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Challenges to Plan For",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Disease & broodstock quality",
+              "body": "EHP, WSSV and running-mortality risk. Cluster-linked SPF hatcheries, biosecurity, and pond-side diagnostics are non-negotiable."
+            },
+            {
+              "title": "Antibiotic residue & rejections",
+              "body": "Even a single shipment failure hurts India's brand. Push farmer-level compliance and pre-shipment residue testing."
+            },
+            {
+              "title": "Effluent & environmental load",
+              "body": "High-density ponds strain groundwater and coastal ecology. Mandatory ETPs, water reuse, and mangrove-buffer zones."
+            },
+            {
+              "title": "Tariff & anti-dumping exposure",
+              "body": "US CVD/AD duties can swing quickly. Certified, traceable supply + diversified geographies is the hedge."
+            },
+            {
+              "title": "Capital intensity of cold chain",
+              "body": "IQF and reefer infra are lumpy investments. Phase spend, blend PMMSY/NABARD subsidies, use anchor-buyer commitments."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "What Officers Should Take Away",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Processing is the multiplier",
+              "body": "The same kilo of Nellore shrimp is worth 2–4× more once peeled, IQF-frozen and value-added. That gap is captured today by someone else."
+            },
+            {
+              "title": "Cluster, don't scatter",
+              "body": "Processing thrives on density — shared ice, ETPs, labs, port access. Concentrate incentives in a few well-chosen zones, not every mandal."
+            },
+            {
+              "title": "Compliance is the moat",
+              "body": "BAP, ASC, MSC and clean residue records are what unlock US, EU and Japan retail. Certification is not paperwork — it is the product."
+            },
+            {
+              "title": "Diversify what you sell",
+              "body": "Move beyond frozen HOSO. Ready-to-cook, sushi-grade, breaded, chitosan and marine-collagen open new margins and hedge tariff risk."
+            },
+            {
+              "title": "Farmers gain only if integrated",
+              "body": "Processing without the farmer in the value chain reproduces the middleman problem. Anchor FPOs and cluster contracts from day one."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "From Case for Action to Action",
+      "lead": "Your task before you leave today:",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "n": 1,
+              "title": "",
+              "body": "Name one high-density shrimp-farming cluster in your mandal fit for a processing pilot."
+            },
+            {
+              "n": 2,
+              "title": "",
+              "body": "Identify one existing FPO / MSME processor to strengthen — or partners to bring together."
+            },
+            {
+              "n": 3,
+              "title": "",
+              "body": "List the partners (MPEDA, NABARD, banks, exporters) you can bring to the table."
+            }
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Nellore already grows the shrimp — the next decade decides whether it also earns from it."
+        }
+      ]
+    }
+  ]
+}

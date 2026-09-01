@@ -1,0 +1,313 @@
+{
+  "slug": "nellore-ethanol-potential",
+  "eyebrow": "SECTOR BRIEF • INVESTMENT POTENTIAL",
+  "title": "Unlocking Nellore's Ethanol Opportunity",
+  "subtitle": "Feedstock, Infrastructure & the Road to E20",
+  "audience": "Capacity building programme | Government of Andhra Pradesh",
+  "source_note": "What the National Ethanol Blending Programme means for Sri Potti Sriramulu Nellore District",
+  "sections": [
+    {
+      "title": "The Case for Ethanol — Why Now",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Import dependence",
+              "body": "India imports over 85% of its crude oil; every litre of blended ethanol displaces imported fuel and saves foreign exchange."
+            },
+            {
+              "title": "Untapped feedstock surplus",
+              "body": "Nellore's paddy, maize and sugarcane belts generate surplus and damaged grain that fetch limited value beyond the food-grain market."
+            },
+            {
+              "title": "Volatile farm incomes",
+              "body": "Single-crop dependence and price swings leave paddy and cane growers exposed to weak, unpredictable seasonal returns."
+            },
+            {
+              "title": "Rising national demand",
+              "body": "The push toward 20% blending (E20) is opening assured, long-term offtake for new distillery capacity across India."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "The Answer: National Ethanol Blending Programme",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Under the EBP, Oil Marketing Companies purchase ethanol from molasses- and grain-based distilleries at pre-fixed prices for blending into petrol. It lets districts like Nellore convert surplus grain and cane into a guaranteed second market."
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "20%",
+              "label": "national blending target set for ESY 2025-26 (E20)"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "What the EBP delivers",
+          "items": [
+            "Assured, price-linked offtake by OMCs",
+            "A new demand stream for surplus paddy, maize & molasses",
+            "Investment in distillery & storage infrastructure",
+            "Valuable by-products — DDGS cattle feed, bio-CNG",
+            "Reduced crude import bill & vehicular emissions"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nellore District at a Glance",
+      "lead": "Coastal Andhra Pradesh • Part of the state's paddy heartland • Anchored by Krishnapatnam Port",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "2.5 lakh+ ha",
+              "label": "Paddy area under cultivation"
+            },
+            {
+              "value": "3",
+              "label": "Existing sugar mills / distilleries in the region"
+            },
+            {
+              "value": "1",
+              "label": "Major deep-water port — Krishnapatnam"
+            },
+            {
+              "value": "NH16",
+              "label": "National highway & rail corridor access"
+            },
+            {
+              "value": "~40 km",
+              "label": "Feedstock catchment to the port-linked industrial belt"
+            },
+            {
+              "value": "12 Mandals",
+              "label": "With sizeable paddy & maize surplus"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Anchored by an existing sugar and grain-processing base — positioned to scale into a full ethanol hub."
+        },
+        {
+          "type": "p",
+          "text": "Figures are indicative, based on the district's cropping pattern and existing agro-industrial base."
+        }
+      ]
+    },
+    {
+      "title": "How an Ethanol Value Chain Would Work",
+      "blocks": [
+        {
+          "type": "flow",
+          "stages": [
+            {
+              "name": "Feedstock",
+              "desc": "Paddy, maize & cane surplus aggregated from farmers and mandi networks"
+            },
+            {
+              "name": "Distillery",
+              "desc": "Grain- and molasses-based distillation into fuel-grade ethanol"
+            },
+            {
+              "name": "Blending",
+              "desc": "Ethanol supplied to OMC depots for blending into petrol (E20)"
+            },
+            {
+              "name": "Distribution",
+              "desc": "Blended fuel moves via road & Krishnapatnam Port to retail pumps"
+            },
+            {
+              "name": "End Use",
+              "desc": "Cleaner-burning fuel for vehicles across Andhra Pradesh and beyond"
+            }
+          ],
+          "closing": "A district-anchored distillery keeps processing margins local — while by-products like DDGS and bio-CNG open a second revenue line."
+        }
+      ]
+    },
+    {
+      "title": "Five Pillars for Building Nellore's Ethanol Capacity",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Feedstock aggregation & FPCs",
+              "body": "Organise paddy, maize and cane growers so distilleries get consistent, quality-graded volumes."
+            },
+            {
+              "title": "Distillery capacity",
+              "body": "Attract new dual-feed (grain + molasses) distilleries, or expand existing sugar-mill capacity."
+            },
+            {
+              "title": "Assured OMC offtake",
+              "body": "Long-term supply agreements with Oil Marketing Companies de-risk investment and lock in prices."
+            },
+            {
+              "title": "Port & logistics",
+              "body": "Krishnapatnam Port and NH16 connectivity support feedstock movement and by-product export."
+            },
+            {
+              "title": "By-product utilisation",
+              "body": "DDGS as cattle feed and bio-CNG from spent wash add income and cut waste."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Who Benefits — Farmers and the State",
+      "blocks": [
+        {
+          "type": "compare",
+          "cols": [
+            {
+              "title": "For Farmers",
+              "items": [
+                "Assured market for surplus & damaged grain",
+                "Additional income stream beyond food-grain sales",
+                "Reduced price volatility & storage losses",
+                "Demand for maize as a rotation crop",
+                "New rural jobs in distilleries & logistics"
+              ]
+            },
+            {
+              "title": "For the State & Nation",
+              "items": [
+                "Progress toward the national E20 blending target",
+                "Reduced crude oil import bill",
+                "Cleaner-burning fuel & lower emissions",
+                "Industrial investment & employment in Nellore",
+                "A replicable model for other AP grain belts"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Development Roadmap for Nellore",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "n": 1,
+              "title": "Assess feedstock surplus",
+              "body": "Map paddy, maize and molasses surplus by mandal; identify volumes viable for a distillery-ready supply chain."
+            },
+            {
+              "n": 2,
+              "title": "Attract distillery investment",
+              "body": "Court dual-feed (grain + molasses) distillery investment, or support expansion of existing sugar mills."
+            },
+            {
+              "n": 3,
+              "title": "Secure OMC offtake agreements",
+              "body": "Tie up long-term ethanol supply contracts with Oil Marketing Companies before capacity is built."
+            },
+            {
+              "n": 4,
+              "title": "Build farmer aggregation",
+              "body": "Strengthen FPCs/FPOs so growers can supply consistent, graded feedstock volumes."
+            },
+            {
+              "n": 5,
+              "title": "Scale via by-products & logistics",
+              "body": "Add DDGS and bio-CNG lines; route exports and inputs through Krishnapatnam Port."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Challenges to Plan For",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Feedstock price volatility",
+              "body": "Grain and cane prices can swing with the food market, affecting distillery economics."
+            },
+            {
+              "title": "Water stress",
+              "body": "Cane cultivation is water-intensive; distilleries also need managed effluent and water use."
+            },
+            {
+              "title": "Capital intensity",
+              "body": "New distillery and storage infrastructure requires significant upfront investment."
+            },
+            {
+              "title": "Food-versus-fuel concerns",
+              "body": "Diverting grain to ethanol must be balanced against local food and fodder needs."
+            },
+            {
+              "title": "Logistics bottlenecks",
+              "body": "Moving feedstock and by-products smoothly needs coordinated road, rail and port capacity."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Take Away",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Ethanol is a new demand stream",
+              "body": "It turns surplus and damaged grain into an assured, price-linked market."
+            },
+            {
+              "title": "Offtake de-risks investment",
+              "body": "OMC agreements guarantee buyers before a rupee of distillery capital is spent."
+            },
+            {
+              "title": "By-products add a second revenue layer",
+              "body": "DDGS and bio-CNG turn waste streams into additional income."
+            },
+            {
+              "title": "Infrastructure is a natural advantage",
+              "body": "Krishnapatnam Port and NH16 give Nellore logistics few districts can match."
+            },
+            {
+              "title": "Start with pilots, scale with policy",
+              "body": "Anchor around one distillery and one crop belt, then expand as volumes and offtake grow."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "From Opportunity to Action",
+      "lead": "Your task before you leave today:",
+      "source": "Source: Ministry of Petroleum & Natural Gas, Ethanol Blending Programme roadmap; Andhra Pradesh district agricultural profile (illustrative estimates).",
+      "blocks": [
+        {
+          "type": "list",
+          "items": [
+            "Identify one distillery-ready site or existing sugar mill for ethanol expansion.",
+            "Map surplus paddy, maize and molasses feedstock by mandal.",
+            "List the financing and OMC partners you can bring to the table."
+          ]
+        },
+        {
+          "type": "quote",
+          "text": "Every litre of local ethanol is a litre of imported fuel we no longer need."
+        }
+      ]
+    }
+  ]
+}

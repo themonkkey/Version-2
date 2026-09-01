@@ -1,0 +1,291 @@
+{
+  "slug": "srikakulam-blue-economy",
+  "eyebrow": "CASE FOR ACTION • BLUE ECONOMY STRATEGY",
+  "title": "Unlocking Srikakulam's Blue Economy Potential",
+  "subtitle": "From coastal aquaculture belt to a diversified seafood processing hub — shrimp, fish and marine value-added products",
+  "audience": "Capacity building programme | Government of Andhra Pradesh",
+  "sections": [
+    {
+      "title": "The Problem We Are Trying to Solve",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "The raw-catch trap",
+              "body": "Most Srikakulam shrimp and fish leave the district as raw, whole or block-frozen catch — the lowest-margin forms in the value chain."
+            },
+            {
+              "title": "Value leaks downstream",
+              "body": "Peeled & deveined shrimp, IQF freezing, breaded/ready-to-cook lines and fishmeal — the profitable steps — happen in Visakhapatnam, other states, or overseas."
+            },
+            {
+              "title": "Farm-gate price volatility",
+              "body": "Shrimp and fish prices swing with global export demand, leaving aquaculture farmers as price-takers with thin, unstable margins."
+            },
+            {
+              "title": "By-catch & shell go to waste",
+              "body": "Tonnes of shrimp shell, heads and low-value fish are discarded instead of becoming fishmeal, fish oil or chitosan feedstock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "The Answer: Build the Blue Economy Ecosystem",
+      "lead": "Shift Srikakulam from a raw-catch aquaculture district to a seafood-value district. Anchor shrimp & fish processing, fishmeal manufacturing, testing and branding inside the district — so the margins that currently leave with the truck stay with local farmers, workers and MSMEs.",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "1st",
+              "label": "shrimp-exporting state in India (Andhra Pradesh)"
+            },
+            {
+              "value": "~15%",
+              "label": "of AP's aquaculture area lies along the Srikakulam coastal belt*"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "title": "What local processing delivers",
+          "items": [
+            "2–3× higher realisation per kg vs. raw/frozen whole export",
+            "Thousands of local jobs — especially for women",
+            "Access to premium buyers: US, EU, Japan & South-East Asia",
+            "Quality certification as a competitive moat",
+            "A \"Srikakulam Seafood\" brand — not an anonymous input"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Srikakulam's Blue Economy Sector at a Glance",
+      "lead": "Srikakulam, Andhra Pradesh • Coastal aquaculture belt • One of AP's leading shrimp & fish farming districts",
+      "blocks": [
+        {
+          "type": "stats",
+          "items": [
+            {
+              "value": "~50,000+",
+              "label": "hectares under shrimp & fish aquaculture*"
+            },
+            {
+              "value": "Naupada",
+              "label": "AP's aquaculture heartland region"
+            },
+            {
+              "value": "~2 lakh+",
+              "label": "tonnes of shrimp & fish produced per year, district-wide*"
+            },
+            {
+              "value": "~70%",
+              "label": "exported raw or frozen with little value addition*"
+            },
+            {
+              "value": "Top 3",
+              "label": "AP districts — among India's leading shrimp-producing belts"
+            },
+            {
+              "value": "2 chains",
+              "label": "flagship value chains — shrimp processing & fishmeal"
+            }
+          ],
+          "footnote": "*Indicative figures based on MPEDA / Dept. of Fisheries, Andhra Pradesh / industry reporting; exact figures vary year to year."
+        }
+      ]
+    },
+    {
+      "title": "How the Model Works: One Integrated Chain",
+      "blocks": [
+        {
+          "type": "flow",
+          "stages": [
+            {
+              "name": "Farm",
+              "desc": "Shrimp ponds & fish cages along the coast"
+            },
+            {
+              "name": "Aggregate",
+              "desc": "FPO / cluster procurement, village collection centres"
+            },
+            {
+              "name": "Process",
+              "desc": "Peeling, deveining, IQF freezing; fish filleting"
+            },
+            {
+              "name": "Value-add",
+              "desc": "Fishmeal, fish oil, chitosan, ready-to-cook lines"
+            },
+            {
+              "name": "Market",
+              "desc": "Export (US/EU/Japan/SE Asia) + growing domestic demand"
+            }
+          ],
+          "closing": "Srikakulam captures every link — not just the pond"
+        },
+        {
+          "type": "p",
+          "text": "Today, most links after \"Aggregate\" happen outside the district. Localising even two of them — shrimp processing and fishmeal/by-product manufacturing — meaningfully lifts realised value per kg and creates thousands of downstream jobs."
+        }
+      ]
+    },
+    {
+      "title": "Five Pillars Behind the Results",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Quality seed & feed",
+              "body": "Disease-free shrimp seed, certified hatcheries and quality feed mills to lift farm productivity."
+            },
+            {
+              "title": "Modern shrimp & fish processing units",
+              "body": "Peeling, deveining, IQF freezing and filleting lines — closer to the ponds, not hundreds of km away."
+            },
+            {
+              "title": "Fishmeal & by-product manufacturing",
+              "body": "Fishmeal, fish oil and chitosan plants turning shrimp shell and by-catch into high-value inputs."
+            },
+            {
+              "title": "Testing & certification",
+              "body": "EIC/HACCP/BAP export quality labs, residue-testing certification and consistent grading — the passport to premium markets."
+            },
+            {
+              "title": "Traceability & branding",
+              "body": "Digital farm-to-fork traceability; a \"Srikakulam Seafood\" origin brand for global buyers."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Who Benefits — Farmers, Workers and the State",
+      "blocks": [
+        {
+          "type": "compare",
+          "cols": [
+            {
+              "title": "For Farmers & Workers",
+              "items": [
+                "Direct access to processors + export markets, less middleman leakage",
+                "Fair value for shrimp shell & by-catch — no longer discarded as waste",
+                "Thousands of downstream jobs — especially for women in peeling & processing units",
+                "Skill upgrade via training in grading, IQF operations, and quality-control practices",
+                "Insurance, credit and quality-input access through FPO / cluster structures"
+              ]
+            },
+            {
+              "title": "For the District & Global Buyers",
+              "items": [
+                "MSME cluster growth — seafood processing, fishmeal, packaging, cold-chain logistics",
+                "Higher GST / export revenue captured within the district and the state",
+                "Environmental gains — sustainable aquaculture practices, effluent treatment built in",
+                "Traceable, certified product for US / EU / Japan retail and industrial buyers",
+                "A resilient, diversified blue economy, less exposed to a single species or price cycle"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Roadmap for Srikakulam District",
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "n": "1",
+              "title": "Map & mobilise",
+              "body": "Identify high-density aquaculture mandals (Naupada, Ichchapuram, Sompeta belt) and existing FPOs/co-operatives. Prioritise areas with weak processing and viable land near a port/highway corridor."
+            },
+            {
+              "n": "2",
+              "title": "Anchor the processing zone",
+              "body": "Designate a seafood processing cluster near Kalingapatnam/Baruva (mini industrial park model). Blend private capex with MPEDA, MSME and state matching support."
+            },
+            {
+              "n": "3",
+              "title": "Build shared infrastructure",
+              "body": "Common cold storage, IQF freezing units, ice plants, effluent treatment. Shared infra brings small processors above the compliance bar."
+            },
+            {
+              "n": "4",
+              "title": "Certify for premium markets",
+              "body": "Push HACCP, BAP/ASC and EIC export-quality certification, plus consistent residue-testing grading. Certification is what unlocks premium buyers."
+            },
+            {
+              "n": "5",
+              "title": "Link to markets & diversify",
+              "body": "Anchor buyer contracts (US/EU/Japan/SE Asia) plus a domestic \"Srikakulam Seafood\" brand play. Diversify into fishmeal, fish oil, chitosan and ready-to-eat products."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Challenges to Plan For",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Disease outbreaks & seed quality",
+              "body": "Shrimp diseases (e.g. white-spot) can wipe out ponds overnight. Disease-free seed, biosecurity protocols, and farmer training are non-negotiable."
+            },
+            {
+              "title": "Fragmented small-holder ponds",
+              "body": "Ponds are scattered across thousands of small holdings along the coast. Aggregation logistics and cluster-level collection points are essential."
+            },
+            {
+              "title": "Cold-chain & power gaps",
+              "body": "Processing depends on reliable power and cold storage; gaps cause spoilage and quality loss. Backup power and cold-chain investment are essential."
+            },
+            {
+              "title": "Market volatility & competition",
+              "body": "Established players in Vietnam, Ecuador and other AP districts (Visakhapatnam, West Godavari) compete hard. Certification and differentiation are the hedge."
+            },
+            {
+              "title": "Capital intensity of processing",
+              "body": "IQF freezing lines and processing plants are lumpy investments. Phase spend, blend MPEDA/MSME subsidies, use anchor-buyer commitments."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "What Officers Should Take Away",
+      "blocks": [
+        {
+          "type": "cards",
+          "items": [
+            {
+              "title": "Processing is the multiplier",
+              "body": "The same shrimp is worth several times more once peeled, deveined and IQF frozen or converted to value-added products. That gap is captured today by someone else."
+            },
+            {
+              "title": "Cluster, don't scatter",
+              "body": "Processing thrives on density — shared cold storage, ETPs, labs, port access. Concentrate incentives in a few well-chosen zones, not every mandal."
+            },
+            {
+              "title": "Compliance is the moat",
+              "body": "HACCP, BAP/ASC certification and consistent quality grading are what unlock US, EU and Japan buyers. Certification is not paperwork — it is the product."
+            },
+            {
+              "title": "Diversify what you sell",
+              "body": "Move beyond raw frozen shrimp. Fishmeal, fish oil, chitosan and ready-to-eat products open new margins and hedge price risk."
+            },
+            {
+              "title": "Farmers gain only if integrated",
+              "body": "Processing without the farmer in the value chain reproduces the middleman problem. Anchor FPOs and cluster contracts from day one."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

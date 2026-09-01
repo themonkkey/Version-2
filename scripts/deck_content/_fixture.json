@@ -1,0 +1,156 @@
+{
+  "slug": "_fixture",
+  "eyebrow": "Renderer fixture",
+  "title": "Every Block Type, Once",
+  "subtitle": "A synthetic deck that exercises all nineteen typed blocks — symmetry, em-dash resolution and header/item distinction included.",
+  "audience": "For the renderer test only; not a real case study.",
+  "source_note": "Fixture data — invented for testing, not from any source.",
+  "hero_stats": [
+    {"value": "19", "label": "Block types exercised"},
+    {"value": "100%", "label": "Coverage of the schema"},
+    {"value": "0", "label": "Em dashes in output"}
+  ],
+  "sections": [
+    {
+      "kicker": "PROSE, CALLOUT, QUOTE",
+      "title": "Emphasis blocks and dash policy",
+      "lead": "A standfirst sentence that leads the section.",
+      "source": "Source: fixture footnote line.",
+      "blocks": [
+        {"type": "p", "text": "A plain paragraph with an em dash appositive — resolved to a comma here — and an en-dash range 80–90% left untouched."},
+        {"type": "p", "text": "A clause that already contains a colon: the gloss follows — and the dash after it must still become a comma, never a second colon."},
+        {"type": "callout", "label": "Officer takeaway", "text": "A callout is an emphasis box, visibly unlike a card or a bullet."},
+        {"type": "quote", "text": "A model of best practice — inspiring others to emulate its success.", "attribution": "Fixture reviewer"}
+      ]
+    },
+    {
+      "kicker": "STATS AND CARDS",
+      "title": "Big numbers and peer cards",
+      "blocks": [
+        {"type": "stats", "items": [
+          {"value": "4th", "label": "largest producer in the country"},
+          {"value": "~30%", "label": "of regional output, by value", "qualifier": "provisional estimate"},
+          {"value": "5", "label": "families in the first self-help group"},
+          {"value": "₹1,35,000", "label": "income per cycle", "qualifier": "≈ $1,800 every 8 months"},
+          {"value": "23,500 L", "label": "water recycled per tank"}
+        ], "footnote": "* All figures illustrative."},
+        {"type": "cards", "items": [
+          {"title": "Collective reinvention", "body": "Technology adopted cluster-wide, all firms at once."},
+          {"title": "Shared infrastructure", "body": "Common facilities lift small units above the compliance bar."},
+          {"title": "Certification moat", "body": "Quality grading unlocks premium buyers."},
+          {"title": "Brand identity", "body": "A named product, not an anonymous input."}
+        ]}
+      ]
+    },
+    {
+      "kicker": "LIST, CHIPS, PAIRS, STEPS",
+      "title": "Lists, chips, definitions and a roadmap",
+      "blocks": [
+        {"type": "list", "title": "What local processing delivers", "items": [
+          "2–4× higher realisation per unit vs. raw farm-gate sale",
+          "Thousands of local jobs, especially for women",
+          "Access to premium buyers: EU, US and Gulf markets"
+        ]},
+        {"type": "chips", "items": ["Organise", "Demonstrate", "Connect to markets", "Certify", "Brand"]},
+        {"type": "pairs", "items": [
+          {"term": "Shelf-life", "desc": "Converts perishable produce into marketable foods."},
+          {"term": "Waste-to-wealth", "desc": "By-products become saleable rather than a disposal cost."},
+          {"term": "Local value", "desc": "Margins stay in the district instead of leaving with the truck."},
+          {"term": "Women & SHGs", "desc": "Livelihoods anchored in self-help groups."}
+        ]},
+        {"type": "steps", "items": [
+          {"n": 1, "title": "Map & mobilise", "body": "Identify high-density mandals and existing producer groups."},
+          {"n": 2, "title": "Anchor the zone", "body": "Designate a processing cluster with blended capex support."},
+          {"n": 3, "title": "Build shared infra", "body": "Common yards, testing, effluent treatment."},
+          {"n": 4, "title": "Certify for markets", "body": "Push export-quality certification and grading."}
+        ]}
+      ]
+    },
+    {
+      "kicker": "FLOW, PHASES, TIMELINE",
+      "title": "Chains, phases and eras",
+      "blocks": [
+        {"type": "flow", "stages": [
+          {"name": "Farm", "desc": "Raw material collected at source"},
+          {"name": "Aggregate", "desc": "FPO / cluster procurement"},
+          {"name": "Process", "desc": "Primary processing and grading"},
+          {"name": "Value-add", "desc": "Finished, certified product"},
+          {"name": "Market", "desc": "Export plus domestic demand"}
+        ], "closing": "The district captures every link — not just the first."},
+        {"type": "phases", "groups": [
+          {"label": "0–15 days", "name": "Asset mapping", "tasks": ["Map assets, producers and existing schemes"]},
+          {"label": "15–30 days", "name": "Task force + MoU", "tasks": ["Roles, meeting rhythm, price and quality norms"]},
+          {"label": "30–60 days", "name": "Capacity building", "tasks": ["Training, hygiene, production calendars"]},
+          {"label": "60–90 days", "name": "Pilot launch", "tasks": ["First product launch and procurement linkage"]}
+        ]},
+        {"type": "timeline", "items": [
+          {"period": "Pre-1980s", "title": "Traditional origins", "desc": "A locally-rooted, informal craft industry."},
+          {"period": "1980s–90s", "title": "First shift", "desc": "Transition to modern manufacturing."},
+          {"period": "Mid-1990s", "title": "The game changer", "desc": "Collective adoption of automation."},
+          {"period": "2000s–Now", "title": "Global standing", "desc": "High-end output and export scale."}
+        ]}
+      ]
+    },
+    {
+      "kicker": "TABLE, COMPARE, GROUPS",
+      "title": "Tabular, comparative and grouped data",
+      "blocks": [
+        {"type": "table", "cols": ["Segment", "Units", "Share"], "rows": [
+          ["Knitting / Garmenting", "6,700", "34%"],
+          ["Dyeing & Bleaching", "410", "2%"],
+          ["Fabric Printing", "400", "2%"],
+          ["Other Ancillary", "11,100", "55%"]
+        ], "footnote": "20,000 mapped units in total."},
+        {"type": "compare", "cols": [
+          {"title": "For Farmers & Workers", "items": [
+            "Direct access to processors and export markets",
+            "Fair value for by-products",
+            "Thousands of downstream jobs"
+          ]},
+          {"title": "For the District & Buyers", "items": [
+            "MSME cluster growth",
+            "Higher revenue captured locally",
+            "Traceable, certified product"
+          ]}
+        ]},
+        {"type": "groups", "groups": [
+          {"name": "Input & process KPIs", "items": ["Adoption rate", "Water use per unit", "Compliance pass rate"]},
+          {"name": "Output KPIs", "items": ["Units produced", "Quality-graded share"]},
+          {"name": "Outcome KPIs", "items": [
+            {"term": "Income", "desc": "Net earnings per household"},
+            {"term": "Jobs", "desc": "Persons employed, women's share"}
+          ]}
+        ]}
+      ]
+    },
+    {
+      "kicker": "SERIES, SWOT, HIERARCHY, FANOUT",
+      "title": "Chart, matrix, tiers and fan-out",
+      "blocks": [
+        {"type": "series", "unit": "Value (Crore INR)", "points": [
+          {"label": "2020-21", "value": "24750"},
+          {"label": "2021-22", "value": "40247"},
+          {"label": "2022-23", "value": "40059"},
+          {"label": "2023-24", "value": "38408"},
+          {"label": "2024-25", "value": "44747"},
+          {"label": "2025-26", "value": "46000"}
+        ]},
+        {"type": "swot",
+          "s": ["Strong raw-material base", "Cheap, flexible labour", "Strong industry associations"],
+          "w": ["Under-used machinery", "High input costs", "Low labour productivity"],
+          "o": ["New free-trade access", "Value-added segments", "Order shifts toward India"],
+          "t": ["Duty-free rivals", "Tariffs and new rules", "Input price volatility"]},
+        {"type": "hierarchy", "tiers": [
+          {"level": "Village level", "name": "Self-Help Group", "desc": "10–20 farmers meeting monthly on inputs and standards."},
+          {"level": "District level", "name": "Cooperative", "desc": "A legal entity that can take loans and aggregate produce."},
+          {"level": "National level", "name": "Producer Company", "desc": "Farmer-owned trading arm selling directly to retailers."}
+        ], "closing": "Democratic and bottom-up: the board is elected from each cooperative."},
+        {"type": "fanout", "input": "Pseudo-stem", "branches": [
+          {"component": "Fibre", "products": ["Paper", "Textile", "Handicrafts"]},
+          {"component": "Sap", "products": ["Organic liquid fertilizer", "Plant growth promoter"]},
+          {"component": "Scutcher", "products": ["Compost", "Vermi-compost", "Vermi-wash"]}
+        ]}
+      ]
+    }
+  ]
+}
