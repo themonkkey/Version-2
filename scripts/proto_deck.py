@@ -50,6 +50,36 @@ def tint_for(m):
     return DEFAULT_TINT
 
 
+# Slug -> cover animation asset (landing/cases/anim/<name>.json). One authored
+# Lottie per theme group; decks in the same group share it. These are the calm,
+# loopable lime-on-deep-green flourishes that ride the cover slide only - the
+# per-slide CSS content icons are a separate system and are untouched by this.
+ANIM_BY_SLUG = {
+    # crop / plant - swaying palm+leaf cluster
+    "east-godavari-coconut-coir": "crop", "banana-processing": "crop",
+    "mango-processing": "crop",
+    # fish / water - fish gliding with rising bubbles
+    "biofloc-tilapia": "fish", "paddy-fish-farming": "fish",
+    "nellore-shrimp-processing": "fish", "srikakulam-blue-economy": "fish",
+    # textile / loom - shuttle crossing warp threads
+    "kalamkari-krishna": "loom", "tiruppur-textiles": "loom",
+    # kiln / pottery - kiln mouth glowing, heat rising
+    "morbi-ceramic-cluster": "kiln",
+    # energy / biofuel - flame with a leaf over pellets
+    "cotton-stalk-pellets": "energy", "nellore-ethanol-potential": "energy",
+    # port / growth - crane lifting a container beside a rising bar stack
+    "shenzhen-growth-model": "growth",
+    # tourism / landscape - sun and rays over rolling hills
+    "kumarakom-tourism": "tourism", "kurnool-agritourism": "tourism",
+    # farmer collective / plant - a sprout in cupped hands
+    "sahyadri-farms-fpc": "collective", "chetna-organics-fpo": "collective",
+}
+
+
+def anim_for(m):
+    return ANIM_BY_SLUG.get(m.get("slug", ""), "")
+
+
 # Map a section title to a REUSABLE role, so one common asset (media/common/<role>.jpg
 # or .mp4) can back the same kind of slide across every case study. Per-case assets
 # still win when present; this is the shared fallback layer before the mesh gradient.
@@ -1047,19 +1077,33 @@ def slides_html(content, m):
                         '<div class="l">' + e(h.get("label", "")) + '</div></div>' for h in hero)
         herohtml = '<div class="hero">' + cells + '</div>'
     aud = ('<p class="cover-aud r">' + e(content["audience"]) + '</p>') if content.get("audience") else ""
+    # Theme flourish on the cover. With hero stats present the right column is
+    # taken, so the animation rides the panel as a quiet bottom-right corner
+    # accent; with no hero stats it fills the space the empty right column left,
+    # turning wasted panel width into the themed motif. Either way it is inert
+    # decoration that collapses to nothing if the JSON or lottie-web fails.
+    anim = anim_for(m)
+    anim_box = ('<div class="cover-anim' + ('' if herohtml else ' fill')
+                + '" data-anim="' + anim + '" aria-hidden="true"></div>') if anim else ""
+    if herohtml:
+        right = '<div class="cover-r r">' + herohtml + '</div>'
+        corner = anim_box                      # absolute corner accent in the glass
+        mod = ' has-hero'
+    else:
+        right = ('<div class="cover-r r">' + anim_box + '</div>') if anim else ""
+        corner = ""
+        mod = ' has-anim' if anim else ""
     slides.append(
         '<section class="slide cover" data-i="0">'
         '<div class="media" data-media="0" data-role="cover"></div>'
-        '<div class="glass cover-glass reveal-root' + (' has-hero' if herohtml else '') + '">'
+        '<div class="glass cover-glass reveal-root' + mod + '">'
+        + corner +
         '<div class="cover-l">'
         '<p class="eyebrow r">' + e(eyebrow) + '</p>'
         '<h1 class="r">' + e(title) + '</h1>'
         '<p class="summary r">' + e(subtitle) + '</p>'
         '<div class="meta r">' + "".join(tags) + '</div>' + aud +
-        '</div>' +
-        # no hero stats: skip the right column entirely so the desktop grid
-        # does not strand a blank panel beside the title
-        ('<div class="cover-r r">' + herohtml + '</div>' if herohtml else '') +
+        '</div>' + right +
         '<p class="hint r">Use ← → or the arrows to move through the story</p>'
         '</div></section>')
 
@@ -1200,7 +1244,31 @@ a{color:var(--t2);}
   .cover-glass .cover-r .hero{grid-template-columns:1fr;margin:0;}
   .cover-glass .cover-r .scell{padding:18px 20px 16px;}
   .cover-glass .hint{grid-column:1/-1;margin:4px 0 0;}
+  /* no hero stats: the themed animation takes the right column instead */
+  .cover-glass.has-anim{display:grid;grid-template-columns:1.35fr .85fr;
+    align-items:center;align-content:center;gap:clamp(28px,4vw,64px);}
+  .cover-glass.has-anim .cover-l,.cover-glass.has-anim .cover-r{min-width:0;}
+  .cover-glass.has-anim .hint{grid-column:1/-1;margin:4px 0 0;}
 }
+
+/* ---------- cover theme animation (Lottie) ----------
+   Purely decorative: pointer-events off, hidden from the a11y tree, and it is an
+   empty box until lottie-web injects an <svg>. If the runtime or JSON never
+   arrives the box has no intrinsic size and the cover reads exactly as before. */
+.cover-anim{pointer-events:none;}
+.cover-anim.fill{width:min(340px,100%);aspect-ratio:1;margin:6px auto 0;
+  opacity:.92;filter:drop-shadow(0 14px 32px rgba(0,0,0,.34));}
+.cover-glass.has-anim .cover-r{display:flex;align-items:center;justify-content:center;}
+/* corner accent when the hero column is already spoken for: quiet, low, behind
+   the title text (the identity columns are lifted above it). The two-class
+   .cover-glass.has-hero prefix is deliberate: the panel already ships a
+   `.glass > :not(.wm){position:relative}` rule that ties a plain .cover-anim
+   selector on specificity and, being later in source, would win and drop the
+   accent back into the grid as a real column - reversing the whole cover. */
+.cover-glass.has-hero .cover-anim{position:absolute;right:clamp(10px,2vw,26px);
+  bottom:clamp(10px,2vw,22px);width:clamp(112px,15vw,188px);
+  height:clamp(112px,15vw,188px);opacity:.4;z-index:0;}
+.cover-glass.has-hero>.cover-l,.cover-glass.has-hero>.cover-r{position:relative;z-index:1;}
 
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
   color:var(--t2);margin:0 0 16px;}
@@ -1876,6 +1944,9 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 <div class="dots" id="dots"></div>
 
 <script src="../assets/dash/gsap.js"></script>
+<!-- lottie-web, deck pages only, deferred and self-guarding: if the CDN is blocked
+     the cover animation simply never appears and nothing else is affected. -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 <script>
 (function(){
   var root=document.documentElement;
@@ -2075,6 +2146,35 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
     g.fromTo(els,{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.08,ease:'power3.out'});
   }
   // first paint happens after the probe above; if gsap absent it already ran
+})();
+</script>
+<script>
+// Cover theme flourish. Runs after the deferred lottie-web has executed (defer
+// scripts finish before DOMContentLoaded), and every step is wrapped so a missing
+// runtime, a blocked CDN or a bad JSON leaves the cover exactly as authored.
+(function(){
+  function init(){
+    if(!window.lottie) return;                       // CDN blocked -> no flourish
+    var hosts=document.querySelectorAll('.cover-anim[data-anim]');
+    if(!hosts.length) return;
+    // Autoplay only when the reader has no reduced-motion preference; otherwise
+    // load a single representative frame and hold it (still a themed image, no motion).
+    var motion=true;
+    try{ motion=!matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+    [].forEach.call(hosts,function(host){
+      try{
+        var a=lottie.loadAnimation({
+          container:host, renderer:'svg', loop:motion, autoplay:motion,
+          path:'anim/'+host.getAttribute('data-anim')+'.json'
+        });
+        if(!motion){ a.addEventListener('DOMLoaded',function(){
+          try{ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }catch(e){}
+        }); }
+      }catch(e){ /* one bad asset must never break the cover */ }
+    });
+  }
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',init); }
+  else { init(); }
 })();
 </script>
 </body>
