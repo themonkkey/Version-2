@@ -215,11 +215,20 @@ def icon_for(text):
     return "spark"
 
 
-def icon_html(text, cls="ic"):
+def icon_html(text, cls="ic", lottie=None):
     # the icon name rides along as a class (ic-leaf, ic-factory...) so the
-    # idle-animation CSS can key a motion to what the glyph depicts
+    # idle-animation CSS can key a motion to what the glyph depicts.
+    # `lottie` (a ROLE) opts this chip into a mini Lottie loop: the sprite <svg>
+    # stays inside as the silent fallback (marked .ic-fallback so the page loader
+    # can hide ONLY it, never the <svg> lottie injects), and data-lottie-icon
+    # tells the loader which icons/<role>.json to mount. If the runtime, the JSON
+    # or the parse fails the loader never touches the chip and the sprite shows
+    # exactly as before.
     name = icon_for(text)
-    return ('<span class="' + cls + ' ic-' + name + '" aria-hidden="true"><svg viewBox="0 0 24 24">'
+    data = (' data-lottie-icon="' + lottie + '"') if lottie else ""
+    svgcls = ' class="ic-fallback"' if lottie else ""
+    return ('<span class="' + cls + ' ic-' + name + '"' + data + ' aria-hidden="true">'
+            '<svg' + svgcls + ' viewBox="0 0 24 24">'
             '<use href="#i-' + name + '"/></svg></span>')
 
 
@@ -1044,8 +1053,14 @@ def section_head(idx, sec, cont=False):
     if sec.get("kicker") and sec.get("title"):
         kick = '<p class="kick">' + e(sec["kicker"]) + '</p>'
     cont_mark = ' <span class="cont">CONT.</span>' if cont else ""
+    # The chip's Lottie is chosen by the section ROLE (role_for), the same signal
+    # that drives the slide background and the corner watermark, so the motion
+    # reinforces the kind of slide. The sprite fallback INSIDE the chip is still
+    # the content-keyword glyph (icon_html -> icon_for), so if Lottie never
+    # mounts the chip reads exactly as it did before this change.
+    role = role_for(heading, sec_text(sec))
     return ('<div class="sechead r"><span class="secnum">' + ("%02d" % idx) + '</span>'
-            + icon_html(heading, "ic lg")
+            + icon_html(heading, "ic lg", lottie=role)
             + '<div class="sectext">' + kick
             + '<h2>' + e(heading) + cont_mark + '</h2></div></div>')
 
@@ -1329,6 +1344,13 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 .ic.sm svg{width:13px;height:13px;}
 .ic.lg{width:38px;height:38px;border-radius:11px;}
 .ic.lg svg{width:21px;height:21px;}
+/* section-head chip opted into a mini Lottie loop (data-lottie-icon). The loader
+   adds .lottie-on only after it has mounted its own <svg>; until then (or on any
+   failure) the sprite fallback shows exactly as before. Hide ONLY the fallback,
+   never the injected <svg>, and let that one fill the chip (lottie also sets this
+   inline, so this is just a belt-and-braces against the 21px rule above). */
+.ic.lg.lottie-on>svg.ic-fallback{display:none;}
+.ic.lg[data-lottie-icon]>svg:not(.ic-fallback){width:100%;height:100%;}
 .card>.ic{margin-bottom:10px;}
 .chip{display:flex;align-items:center;gap:10px;}
 
@@ -2090,6 +2112,12 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   });
   dots=[].slice.call(dotsWrap.children);
   paint();
+  // Signal that pagination is done and every slide (originals + CONT clones)
+  // exists in its final form. The section-head Lottie loader waits for this so
+  // it mounts into the cloned CONT headers too, not just the originals. The flag
+  // is a backstop for the (rare, no document.fonts) path where layout runs
+  // synchronously at parse time, before that loader has registered its listener.
+  try{ window.__deckLaidOut=1; document.dispatchEvent(new CustomEvent('deck:laidout')); }catch(e){}
   }
   // Measure only once the webfont is in: against the fallback face the line
   // count is wrong and the deck breaks pages in the wrong places.
@@ -2110,6 +2138,10 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
     prev.classList.toggle('nudge', cur===N-1 && cur!==0);
     slides.forEach(function(s,i){ s.classList.toggle('active', i===cur); });
     reveal(slides[cur]);
+    // Tell the section-head Lottie loader which slide is live, so it can run
+    // only the active slide's header and keep the rest paused (perf: a deck can
+    // carry 10-25 headers and running them all at once is wasteful).
+    try{ document.dispatchEvent(new CustomEvent('deck:slide',{detail:cur})); }catch(e){}
   }
   function go(i){ cur=Math.max(0,Math.min(N-1,i)); paint(); }
   function step(d){ go(cur+d); }
@@ -2175,6 +2207,73 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',init); }
   else { init(); }
+})();
+</script>
+<script>
+// Section-head mini icons. Each .sechead chip carries a static sprite <svg> and
+// (opted in via data-lottie-icon="<role>") we mount a tiny Lottie loop over it
+// from anim/icons/<role>.json, then hide the sprite. Every step is guarded: a
+// missing runtime, a 404, or a bad JSON leaves the sprite chip exactly as
+// authored and logs nothing. It waits for 'deck:laidout' so the CONT-slide
+// header clones (built during pagination) are mounted too.
+//
+// PERFORMANCE CHOICE: a deck can carry 10-25 headers; running them all at once
+// wastes rAF on off-screen slides. So for motion readers every header is mounted
+// but left PAUSED, and only the active slide's header(s) play - driven by the
+// 'deck:slide' event the deck fires on every move. Reduced-motion readers get a
+// single frozen representative frame and nothing ever animates.
+(function(){
+  var mounted=false;
+  function init(){
+    if(mounted) return;                              // 'deck:laidout' fires once, but guard anyway
+    if(!window.lottie) return;                       // CDN blocked -> sprites stay
+    var hosts=document.querySelectorAll('.ic.lg[data-lottie-icon]');
+    if(!hosts.length) return;
+    mounted=true;
+    var motion=true;
+    try{ motion=!matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+    var items=[];   // {slide, anim} so slide changes can play/pause per slide
+    [].forEach.call(hosts,function(host){
+      try{
+        var a=lottie.loadAnimation({
+          container:host, renderer:'svg', loop:true,
+          autoplay:false,                            // play is driven by deck:slide (or frozen)
+          path:'anim/icons/'+host.getAttribute('data-lottie-icon')+'.json'
+        });
+        // Only once Lottie has actually injected its <svg> do we hide the sprite
+        // fallback; a load error never reaches here, so the sprite survives.
+        a.addEventListener('DOMLoaded',function(){
+          try{
+            host.classList.add('lottie-on');
+            if(!motion){ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }
+          }catch(e){}
+        });
+        if(motion){
+          var slide=host.closest('.slide');
+          items.push({slide:slide, anim:a});
+          // if this header is already on the active slide, start it now
+          if(slide&&slide.classList.contains('active')){ try{a.play();}catch(e){} }
+        }
+      }catch(e){ /* one bad icon must never break the deck */ }
+    });
+    if(motion&&items.length){
+      document.addEventListener('deck:slide',function(){
+        items.forEach(function(it){
+          try{
+            var on=it.slide&&it.slide.classList.contains('active');
+            if(on){ it.anim.play(); } else { it.anim.pause(); }
+          }catch(e){}
+        });
+      });
+    }
+  }
+  // 'deck:laidout' is the reliable signal (pagination done, all clones present).
+  // The window-load backstop is gated on the same flag the deck sets, so it can
+  // only mount AFTER layout genuinely finished - never in a race ahead of the
+  // CONT-clone creation. It covers the no-document.fonts path where the event
+  // fired synchronously before this listener existed.
+  document.addEventListener('deck:laidout',init);
+  addEventListener('load',function(){ if(window.__deckLaidOut){ init(); } });
 })();
 </script>
 </body>

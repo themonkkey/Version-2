@@ -166,6 +166,13 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 .ic.sm svg{width:13px;height:13px;}
 .ic.lg{width:38px;height:38px;border-radius:11px;}
 .ic.lg svg{width:21px;height:21px;}
+/* section-head chip opted into a mini Lottie loop (data-lottie-icon). The loader
+   adds .lottie-on only after it has mounted its own <svg>; until then (or on any
+   failure) the sprite fallback shows exactly as before. Hide ONLY the fallback,
+   never the injected <svg>, and let that one fill the chip (lottie also sets this
+   inline, so this is just a belt-and-braces against the 21px rule above). */
+.ic.lg.lottie-on>svg.ic-fallback{display:none;}
+.ic.lg[data-lottie-icon]>svg:not(.ic-fallback){width:100%;height:100%;}
 .card>.ic{margin-bottom:10px;}
 .chip{display:flex;align-items:center;gap:10px;}
 
@@ -775,11 +782,11 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   <div class="track" id="track">
 <section class="slide cover" data-i="0"><div class="media" data-media="0" data-role="cover"></div><div class="glass cover-glass reveal-root has-hero"><div class="cover-anim" data-anim="kiln" aria-hidden="true"></div><div class="cover-l"><p class="eyebrow r">Gujarat, India</p><h1 class="r">Morbi Ceramic Cluster</h1><p class="summary r">From Traditional Craft to Global Manufacturing Hub</p><div class="meta r"><span class="tag place">Morbi, Gujarat</span><span class="tag">Manufacturing cluster</span><span class="tag">Replicable model</span></div></div><div class="cover-r r"><div class="hero"><div class="scell"><div class="v">#2</div><div class="l">Global Producer</div></div><div class="scell"><div class="v">80–90%</div><div class="l">India&#x27;s Output</div></div><div class="scell"><div class="v">~100 yrs</div><div class="l">Industrial Heritage</div></div></div></div><p class="hint r">Use ← → or the arrows to move through the story</p></div></section>
 <section class="slide" data-i="1"><div class="media" data-media="0" data-role="context"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="58" r="38"/><path d="M22 58h76M60 20c14 16 14 60 0 76M60 20c-14 16-14 60 0 76"/></svg><div class="sechead r"><span class="secnum">Contents</span><span class="ic lg ic-doc" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg></span><h2>What this story covers</h2></div><ul class="agenda r"><li class="ag-i" style="--i:1"><span class="ag-n">01</span><span class="ic ic-factory" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-factory"/></svg></span><span class="ag-t">EVOLUTION OF THE INDUSTRY</span></li><li class="ag-i" style="--i:2"><span class="ag-n">02</span><span class="ic ic-spark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span class="ag-t">GLOBAL STANDING</span></li><li class="ag-i" style="--i:3"><span class="ag-n">03</span><span class="ic ic-spark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span class="ag-t">THE SUPPORT ECOSYSTEM</span></li><li class="ag-i" style="--i:4"><span class="ag-n">04</span><span class="ic ic-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><span class="ag-t">CHALLENGES FACING THE CLUSTER</span></li><li class="ag-i" style="--i:5"><span class="ag-n">05</span><span class="ic ic-spark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><span class="ag-t">What makes Morbi remarkable</span></li></ul></div></section>
-<section class="slide" data-i="2"><div class="media" data-media="1" data-role="context"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="58" r="38"/><path d="M22 58h76M60 20c14 16 14 60 0 76M60 20c-14 16-14 60 0 76"/></svg><div class="sechead r"><span class="secnum">01</span><span class="ic lg ic-factory" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-factory"/></svg></span><div class="sectext"><h2>EVOLUTION OF THE INDUSTRY</h2></div></div><div class="secbody r"><div class="timeline"><div class="tl-row"><div class="tl-period">Pre-1980s</div><div class="tl-body"><p class="tl-title">Traditional Craft Origins</p><p class="tl-desc">Clay roofing tiles (nalia), wall clocks, and local earthenware. A locally-rooted, labour-intensive, informal industry.</p></div></div><div class="tl-row"><div class="tl-period">1980s–90s</div><div class="tl-body"><p class="tl-title">First Major Shift</p><p class="tl-desc">Transition from traditional products to modern ceramic tiles. Mosaic and galicha tiles replaced clay roofing as primary output.</p></div></div><div class="tl-row"><div class="tl-period">Mid-1990s</div><div class="tl-body"><p class="tl-title">The Game Changer</p><p class="tl-desc">Collective adoption of automation, digital printing &amp; spool-roller tunnel firing: the defining technological turning point.</p></div></div><div class="tl-row"><div class="tl-period">2000s–Now</div><div class="tl-body"><p class="tl-title">Global Standing</p><p class="tl-desc">High-end vitrified tiles, sanitaryware, and large-format slabs. India becomes the world&#x27;s #2 ceramic tile producer.</p></div></div></div></div></div></section>
-<section class="slide" data-i="3"><div class="media" data-media="2" data-role="context"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="58" r="38"/><path d="M22 58h76M60 20c14 16 14 60 0 76M60 20c-14 16-14 60 0 76"/></svg><div class="sechead r"><span class="secnum">02</span><span class="ic lg ic-spark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><div class="sectext"><h2>GLOBAL STANDING</h2></div></div><div class="secbody r"><div class="grid big" style="--cols:3"><div class="cell"><div class="v">#2</div><div class="l">Globally</div><div class="q">World&#x27;s second-largest producer &amp; consumer of ceramic tiles, trailing only China.</div></div><div class="cell"><div class="v">80–90%</div><div class="l">of India</div><div class="q">Morbi cluster alone produces 80–90% of India&#x27;s total ceramic tile output.</div></div><div class="cell"><div class="v">~100</div><div class="l">Years Old</div><div class="q">A century of ceramic industrial heritage underpins Morbi&#x27;s global reputation.</div></div></div><p class="grid-foot">Trailing only China in global production scale</p></div></div></section>
-<section class="slide" data-i="4"><div class="media" data-media="3" data-role="solution"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="52" r="24"/><path d="M52 76h16M54 86h12"/><path d="M60 12v10M28 52H18M102 52h-10M32 24l7 7M88 24l-7 7"/></svg><div class="sechead r"><span class="secnum">03</span><span class="ic lg ic-spark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><div class="sectext"><h2>THE SUPPORT ECOSYSTEM</h2></div></div><div class="secbody r"><div class="groups" style="--cols:2"><div class="grp"><div class="grp-h">INDUSTRY INITIATIVES</div><ul><li><span class="grp-term">Morbi Ceramic Association (MCA)</span> Umbrella body enabling cooperation: fraud prevention, order-sharing via subcontracting, and unified representation to state authorities.</li><li><span class="grp-term">Community Cohesion</span> Patel-Prajapati networks foster mutual support during financial stress, enabling informal credit and minimising conflict.</li><li><span class="grp-term">Collective Lobbying</span> Unified voice successfully secured GST cuts, anti-dumping duties, and infrastructure investments.</li></ul></div><div class="grp"><div class="grp-h">GOVERNMENT SUPPORT</div><ul><li><span class="grp-term">Critical Infrastructure</span> Dedicated gas pipelines, reliable power supply, road network linking to Kandla &amp; Mundra ports for seamless export logistics.</li><li><span class="grp-term">Anti-Dumping Duties</span> Central government tariffs shield domestic manufacturers from low-cost Chinese imports and price undercutting.</li><li><span class="grp-term">GST Rate Reduction</span> Tax rate cut from 28% to 18% after industry protests, significantly boosting domestic consumption.</li></ul></div></div></div></div></section>
-<section class="slide" data-i="5"><div class="media" data-media="4" data-role="challenges"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 20 104 96H16z"/><path d="M60 48v22M60 82v4"/></svg><div class="sechead r"><span class="secnum">04</span><span class="ic lg ic-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><div class="sectext"><h2>CHALLENGES FACING THE CLUSTER</h2></div></div><div class="secbody r"><div class="cards iconrow" style="--cols:2"><div class="card"><span class="ic xl ic-rupee" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><h3>Global Competition</h3><p>Chinese manufacturers with massive scale &amp; lower costs pressure both domestic and export markets persistently.</p></div><div class="card"><span class="ic xl ic-sun" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg></span><h3>Environmental Regulation</h3><p>NGT ordered closure of coal gasifiers, forcing costly transition to LNG to reduce SO₂ and particulate pollution.</p></div><div class="card"><span class="ic xl ic-users" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h3>Labour Informality</h3><p>Reliance on migrant &amp; casual workers: dust hazards, no social security, no permanent employment status.</p></div><div class="card"><span class="ic xl ic-rupee" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><h3>Urban Sprawl &amp; Finance</h3><p>Cash crunches + ribbon development, water scarcity, and unplanned land growth along highways.</p></div></div></div></div></section>
-<section class="slide" data-i="6"><div class="media" data-media="5" data-role="challenges"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 20 104 96H16z"/><path d="M60 48v22M60 82v4"/></svg><div class="sechead r"><span class="secnum">05</span><span class="ic lg ic-spark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><div class="sectext"><p class="kick">KEY TAKEAWAYS</p><h2>What makes Morbi remarkable</h2></div></div><div class="secbody r"><div class="cards pillars num" style="--cols:3"><div class="card"><span class="pnum">01</span><span class="ic ic-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Collective Reinvention</h3><p>Technology adopted cluster-wide and across all the firms simultaneously.</p></div><div class="card"><span class="pnum">02</span><span class="ic ic-users" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h3>Social Capital</h3><p>Community trust networks enabled non-competitive cooperation: replicable only with deep social embeddedness.</p></div><div class="card"><span class="pnum">03</span><span class="ic ic-alert" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-alert"/></svg></span><h3>Unresolved Tensions</h3><p>Environment, labour formalisation &amp; urban planning remain the defining challenges of the next chapter.</p></div></div><p class="secsrc">Morbi, Gujarat · India&#x27;s Ceramic Capital</p></div></div></section>
+<section class="slide" data-i="2"><div class="media" data-media="1" data-role="context"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="58" r="38"/><path d="M22 58h76M60 20c14 16 14 60 0 76M60 20c-14 16-14 60 0 76"/></svg><div class="sechead r"><span class="secnum">01</span><span class="ic lg ic-factory" data-lottie-icon="context" aria-hidden="true"><svg class="ic-fallback" viewBox="0 0 24 24"><use href="#i-factory"/></svg></span><div class="sectext"><h2>EVOLUTION OF THE INDUSTRY</h2></div></div><div class="secbody r"><div class="timeline"><div class="tl-row"><div class="tl-period">Pre-1980s</div><div class="tl-body"><p class="tl-title">Traditional Craft Origins</p><p class="tl-desc">Clay roofing tiles (nalia), wall clocks, and local earthenware. A locally-rooted, labour-intensive, informal industry.</p></div></div><div class="tl-row"><div class="tl-period">1980s–90s</div><div class="tl-body"><p class="tl-title">First Major Shift</p><p class="tl-desc">Transition from traditional products to modern ceramic tiles. Mosaic and galicha tiles replaced clay roofing as primary output.</p></div></div><div class="tl-row"><div class="tl-period">Mid-1990s</div><div class="tl-body"><p class="tl-title">The Game Changer</p><p class="tl-desc">Collective adoption of automation, digital printing &amp; spool-roller tunnel firing: the defining technological turning point.</p></div></div><div class="tl-row"><div class="tl-period">2000s–Now</div><div class="tl-body"><p class="tl-title">Global Standing</p><p class="tl-desc">High-end vitrified tiles, sanitaryware, and large-format slabs. India becomes the world&#x27;s #2 ceramic tile producer.</p></div></div></div></div></div></section>
+<section class="slide" data-i="3"><div class="media" data-media="2" data-role="context"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="58" r="38"/><path d="M22 58h76M60 20c14 16 14 60 0 76M60 20c-14 16-14 60 0 76"/></svg><div class="sechead r"><span class="secnum">02</span><span class="ic lg ic-spark" data-lottie-icon="context" aria-hidden="true"><svg class="ic-fallback" viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><div class="sectext"><h2>GLOBAL STANDING</h2></div></div><div class="secbody r"><div class="grid big" style="--cols:3"><div class="cell"><div class="v">#2</div><div class="l">Globally</div><div class="q">World&#x27;s second-largest producer &amp; consumer of ceramic tiles, trailing only China.</div></div><div class="cell"><div class="v">80–90%</div><div class="l">of India</div><div class="q">Morbi cluster alone produces 80–90% of India&#x27;s total ceramic tile output.</div></div><div class="cell"><div class="v">~100</div><div class="l">Years Old</div><div class="q">A century of ceramic industrial heritage underpins Morbi&#x27;s global reputation.</div></div></div><p class="grid-foot">Trailing only China in global production scale</p></div></div></section>
+<section class="slide" data-i="4"><div class="media" data-media="3" data-role="solution"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="52" r="24"/><path d="M52 76h16M54 86h12"/><path d="M60 12v10M28 52H18M102 52h-10M32 24l7 7M88 24l-7 7"/></svg><div class="sechead r"><span class="secnum">03</span><span class="ic lg ic-spark" data-lottie-icon="solution" aria-hidden="true"><svg class="ic-fallback" viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><div class="sectext"><h2>THE SUPPORT ECOSYSTEM</h2></div></div><div class="secbody r"><div class="groups" style="--cols:2"><div class="grp"><div class="grp-h">INDUSTRY INITIATIVES</div><ul><li><span class="grp-term">Morbi Ceramic Association (MCA)</span> Umbrella body enabling cooperation: fraud prevention, order-sharing via subcontracting, and unified representation to state authorities.</li><li><span class="grp-term">Community Cohesion</span> Patel-Prajapati networks foster mutual support during financial stress, enabling informal credit and minimising conflict.</li><li><span class="grp-term">Collective Lobbying</span> Unified voice successfully secured GST cuts, anti-dumping duties, and infrastructure investments.</li></ul></div><div class="grp"><div class="grp-h">GOVERNMENT SUPPORT</div><ul><li><span class="grp-term">Critical Infrastructure</span> Dedicated gas pipelines, reliable power supply, road network linking to Kandla &amp; Mundra ports for seamless export logistics.</li><li><span class="grp-term">Anti-Dumping Duties</span> Central government tariffs shield domestic manufacturers from low-cost Chinese imports and price undercutting.</li><li><span class="grp-term">GST Rate Reduction</span> Tax rate cut from 28% to 18% after industry protests, significantly boosting domestic consumption.</li></ul></div></div></div></div></section>
+<section class="slide" data-i="5"><div class="media" data-media="4" data-role="challenges"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 20 104 96H16z"/><path d="M60 48v22M60 82v4"/></svg><div class="sechead r"><span class="secnum">04</span><span class="ic lg ic-pin" data-lottie-icon="challenges" aria-hidden="true"><svg class="ic-fallback" viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><div class="sectext"><h2>CHALLENGES FACING THE CLUSTER</h2></div></div><div class="secbody r"><div class="cards iconrow" style="--cols:2"><div class="card"><span class="ic xl ic-rupee" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><h3>Global Competition</h3><p>Chinese manufacturers with massive scale &amp; lower costs pressure both domestic and export markets persistently.</p></div><div class="card"><span class="ic xl ic-sun" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-sun"/></svg></span><h3>Environmental Regulation</h3><p>NGT ordered closure of coal gasifiers, forcing costly transition to LNG to reduce SO₂ and particulate pollution.</p></div><div class="card"><span class="ic xl ic-users" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h3>Labour Informality</h3><p>Reliance on migrant &amp; casual workers: dust hazards, no social security, no permanent employment status.</p></div><div class="card"><span class="ic xl ic-rupee" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-rupee"/></svg></span><h3>Urban Sprawl &amp; Finance</h3><p>Cash crunches + ribbon development, water scarcity, and unplanned land growth along highways.</p></div></div></div></div></section>
+<section class="slide" data-i="6"><div class="media" data-media="5" data-role="challenges"></div><div class="glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 20 104 96H16z"/><path d="M60 48v22M60 82v4"/></svg><div class="sechead r"><span class="secnum">05</span><span class="ic lg ic-spark" data-lottie-icon="challenges" aria-hidden="true"><svg class="ic-fallback" viewBox="0 0 24 24"><use href="#i-spark"/></svg></span><div class="sectext"><p class="kick">KEY TAKEAWAYS</p><h2>What makes Morbi remarkable</h2></div></div><div class="secbody r"><div class="cards pillars num" style="--cols:3"><div class="card"><span class="pnum">01</span><span class="ic ic-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></span><h3>Collective Reinvention</h3><p>Technology adopted cluster-wide and across all the firms simultaneously.</p></div><div class="card"><span class="pnum">02</span><span class="ic ic-users" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-users"/></svg></span><h3>Social Capital</h3><p>Community trust networks enabled non-competitive cooperation: replicable only with deep social embeddedness.</p></div><div class="card"><span class="pnum">03</span><span class="ic ic-alert" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-alert"/></svg></span><h3>Unresolved Tensions</h3><p>Environment, labour formalisation &amp; urban planning remain the defining challenges of the next chapter.</p></div></div><p class="secsrc">Morbi, Gujarat · India&#x27;s Ceramic Capital</p></div></div></section>
 <section class="slide closing" data-i="7"><div class="media" data-media="6" data-role="takeaways"></div><div class="glass cl-glass reveal-root"><svg class="wm" viewBox="0 0 120 120" aria-hidden="true"><path d="M30 100V18M30 22h52l-12 16 12 16H30"/><path d="M30 100h60"/></svg><p class="eyebrow r">End of the story</p><h2 class="cl-h r">Morbi Ceramic Cluster</h2><p class="summary r">From Traditional Craft to Global Manufacturing Hub</p><div class="cl-foot r"><span>Pahlé India Foundation</span><span class="cl-dot">·</span><span>Swarna Andhra @2047</span></div><a class="cl-cta r" href="../index.html#districts">Back to the case library</a></div></section>
   </div>
 </div>
@@ -934,6 +941,12 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   });
   dots=[].slice.call(dotsWrap.children);
   paint();
+  // Signal that pagination is done and every slide (originals + CONT clones)
+  // exists in its final form. The section-head Lottie loader waits for this so
+  // it mounts into the cloned CONT headers too, not just the originals. The flag
+  // is a backstop for the (rare, no document.fonts) path where layout runs
+  // synchronously at parse time, before that loader has registered its listener.
+  try{ window.__deckLaidOut=1; document.dispatchEvent(new CustomEvent('deck:laidout')); }catch(e){}
   }
   // Measure only once the webfont is in: against the fallback face the line
   // count is wrong and the deck breaks pages in the wrong places.
@@ -954,6 +967,10 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
     prev.classList.toggle('nudge', cur===N-1 && cur!==0);
     slides.forEach(function(s,i){ s.classList.toggle('active', i===cur); });
     reveal(slides[cur]);
+    // Tell the section-head Lottie loader which slide is live, so it can run
+    // only the active slide's header and keep the rest paused (perf: a deck can
+    // carry 10-25 headers and running them all at once is wasteful).
+    try{ document.dispatchEvent(new CustomEvent('deck:slide',{detail:cur})); }catch(e){}
   }
   function go(i){ cur=Math.max(0,Math.min(N-1,i)); paint(); }
   function step(d){ go(cur+d); }
@@ -1019,6 +1036,73 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',init); }
   else { init(); }
+})();
+</script>
+<script>
+// Section-head mini icons. Each .sechead chip carries a static sprite <svg> and
+// (opted in via data-lottie-icon="<role>") we mount a tiny Lottie loop over it
+// from anim/icons/<role>.json, then hide the sprite. Every step is guarded: a
+// missing runtime, a 404, or a bad JSON leaves the sprite chip exactly as
+// authored and logs nothing. It waits for 'deck:laidout' so the CONT-slide
+// header clones (built during pagination) are mounted too.
+//
+// PERFORMANCE CHOICE: a deck can carry 10-25 headers; running them all at once
+// wastes rAF on off-screen slides. So for motion readers every header is mounted
+// but left PAUSED, and only the active slide's header(s) play - driven by the
+// 'deck:slide' event the deck fires on every move. Reduced-motion readers get a
+// single frozen representative frame and nothing ever animates.
+(function(){
+  var mounted=false;
+  function init(){
+    if(mounted) return;                              // 'deck:laidout' fires once, but guard anyway
+    if(!window.lottie) return;                       // CDN blocked -> sprites stay
+    var hosts=document.querySelectorAll('.ic.lg[data-lottie-icon]');
+    if(!hosts.length) return;
+    mounted=true;
+    var motion=true;
+    try{ motion=!matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+    var items=[];   // {slide, anim} so slide changes can play/pause per slide
+    [].forEach.call(hosts,function(host){
+      try{
+        var a=lottie.loadAnimation({
+          container:host, renderer:'svg', loop:true,
+          autoplay:false,                            // play is driven by deck:slide (or frozen)
+          path:'anim/icons/'+host.getAttribute('data-lottie-icon')+'.json'
+        });
+        // Only once Lottie has actually injected its <svg> do we hide the sprite
+        // fallback; a load error never reaches here, so the sprite survives.
+        a.addEventListener('DOMLoaded',function(){
+          try{
+            host.classList.add('lottie-on');
+            if(!motion){ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }
+          }catch(e){}
+        });
+        if(motion){
+          var slide=host.closest('.slide');
+          items.push({slide:slide, anim:a});
+          // if this header is already on the active slide, start it now
+          if(slide&&slide.classList.contains('active')){ try{a.play();}catch(e){} }
+        }
+      }catch(e){ /* one bad icon must never break the deck */ }
+    });
+    if(motion&&items.length){
+      document.addEventListener('deck:slide',function(){
+        items.forEach(function(it){
+          try{
+            var on=it.slide&&it.slide.classList.contains('active');
+            if(on){ it.anim.play(); } else { it.anim.pause(); }
+          }catch(e){}
+        });
+      });
+    }
+  }
+  // 'deck:laidout' is the reliable signal (pagination done, all clones present).
+  // The window-load backstop is gated on the same flag the deck sets, so it can
+  // only mount AFTER layout genuinely finished - never in a race ahead of the
+  // CONT-clone creation. It covers the no-document.fonts path where the event
+  // fired synchronously before this listener existed.
+  document.addEventListener('deck:laidout',init);
+  addEventListener('load',function(){ if(window.__deckLaidOut){ init(); } });
 })();
 </script>
 </body>
