@@ -61,14 +61,19 @@ ANIM_BY_SLUG = {
     # fish / water - fish gliding with rising bubbles
     "biofloc-tilapia": "fish", "paddy-fish-farming": "fish",
     "nellore-shrimp-processing": "fish", "srikakulam-blue-economy": "fish",
-    # textile / loom - shuttle crossing warp threads
-    "kalamkari-krishna": "loom", "tiruppur-textiles": "loom",
+    # textile / loom - shuttle crossing warp threads (artisan Kalamkari weave)
+    "kalamkari-krishna": "loom",
     # kiln / pottery - kiln mouth glowing, heat rising
     "morbi-ceramic-cluster": "kiln",
     # energy / biofuel - flame with a leaf over pellets
     "cotton-stalk-pellets": "energy", "nellore-ethanol-potential": "energy",
-    # port / growth - crane lifting a container beside a rising bar stack
-    "shenzhen-growth-model": "growth",
+    # port / trade - gantry crane. Shenzhen is a port-city trade-and-growth model,
+    # so the crane reads truer than the old bar chart it used to carry.
+    "shenzhen-growth-model": "port",
+    # growth / scale - rising bar chart. Tiruppur's story is export-scale growth,
+    # which the chart fits; it also splits the two textile decks apart (Kalamkari
+    # keeps the artisan loom) instead of repeating one motif.
+    "tiruppur-textiles": "growth",
     # tourism / landscape - sun and rays over rolling hills
     "kumarakom-tourism": "tourism", "kurnool-agritourism": "tourism",
     # farmer collective / plant - a sprout in cupped hands
@@ -78,6 +83,17 @@ ANIM_BY_SLUG = {
 
 def anim_for(m):
     return ANIM_BY_SLUG.get(m.get("slug", ""), "")
+
+
+# A theme maps to a concrete cover asset. fish is a Rive file (fish.riv, played by
+# the Rive runtime, not lottie-web); every other theme is a recolored Lottie JSON.
+# The data-anim attribute carries the filename WITH its extension so the cover
+# loader can branch on .riv vs .json without hardcoding any theme name.
+ANIM_FILE = {"fish": "fish.riv"}
+
+
+def anim_asset(theme):
+    return (ANIM_FILE.get(theme, theme + ".json")) if theme else ""
 
 
 # Map a section title to a REUSABLE role, so one common asset (media/common/<role>.jpg
@@ -215,18 +231,26 @@ def icon_for(text):
     return "spark"
 
 
-def icon_html(text, cls="ic", lottie=None):
+def icon_html(text, cls="ic", lottie=None, src=None):
     # the icon name rides along as a class (ic-leaf, ic-factory...) so the
     # idle-animation CSS can key a motion to what the glyph depicts.
-    # `lottie` (a ROLE) opts this chip into a mini Lottie loop: the sprite <svg>
-    # stays inside as the silent fallback (marked .ic-fallback so the page loader
-    # can hide ONLY it, never the <svg> lottie injects), and data-lottie-icon
-    # tells the loader which icons/<role>.json to mount. If the runtime, the JSON
-    # or the parse fails the loader never touches the chip and the sprite shows
-    # exactly as before.
+    # `src` (a per-deck JSON path) and `lottie` (a ROLE) each opt this chip into a
+    # mini Lottie loop. The loader mounts the FIRST candidate that loads, in order:
+    # the per-deck file (data-lottie-src) then the role file (data-lottie-fallback),
+    # each silent on a 404 or bad JSON, so the role file is tried ONLY when the
+    # per-deck one failed. The sprite <svg> stays inside as the silent last resort
+    # (marked .ic-fallback so the loader can hide ONLY it, never the <svg> lottie
+    # injects). Full JSON paths are emitted, not a bare role name, so the loader
+    # never hardcodes the anim/icons/<x>.json convention and authors can drop a
+    # personalised file in with zero code change. If nothing loads (or the runtime
+    # is blocked) the loader never touches the chip and the sprite shows as before.
     name = icon_for(text)
-    data = (' data-lottie-icon="' + lottie + '"') if lottie else ""
-    svgcls = ' class="ic-fallback"' if lottie else ""
+    data = ""
+    if src:
+        data += ' data-lottie-src="' + src + '"'
+    if lottie:
+        data += ' data-lottie-fallback="anim/icons/' + lottie + '.json"'
+    svgcls = ' class="ic-fallback"' if (src or lottie) else ""
     return ('<span class="' + cls + ' ic-' + name + '"' + data + ' aria-hidden="true">'
             '<svg' + svgcls + ' viewBox="0 0 24 24">'
             '<use href="#i-' + name + '"/></svg></span>')
@@ -1044,7 +1068,7 @@ def sec_heading(sec):
     return re.sub(r"^\d+\.\s+", "", t)
 
 
-def section_head(idx, sec, cont=False):
+def section_head(idx, sec, cont=False, slug=""):
     heading = sec_heading(sec)
     # A kicker eyebrow is shown only when the author supplied BOTH a kicker and a
     # distinct title; no role-derived eyebrows are fabricated, so the duplicated
@@ -1053,14 +1077,17 @@ def section_head(idx, sec, cont=False):
     if sec.get("kicker") and sec.get("title"):
         kick = '<p class="kick">' + e(sec["kicker"]) + '</p>'
     cont_mark = ' <span class="cont">CONT.</span>' if cont else ""
-    # The chip's Lottie is chosen by the section ROLE (role_for), the same signal
-    # that drives the slide background and the corner watermark, so the motion
-    # reinforces the kind of slide. The sprite fallback INSIDE the chip is still
-    # the content-keyword glyph (icon_html -> icon_for), so if Lottie never
-    # mounts the chip reads exactly as it did before this change.
+    # The chip's motion resolves in three tiers, each silent on failure: FIRST a
+    # file personalised to THIS section (anim/icons/<slug>/sec<i>.json, i the
+    # 0-based section index; a section's CONT slides share it because they carry
+    # the same idx), THEN the role Lottie (role_for, the same signal that drives
+    # the slide background and the corner watermark, so the motion reinforces the
+    # kind of slide), THEN the content-keyword sprite glyph inside the chip. So a
+    # deck reads exactly as it did until its own sec<i>.json is dropped in.
     role = role_for(heading, sec_text(sec))
+    src = ('anim/icons/' + slug + '/sec' + str(idx - 1) + '.json') if slug else None
     return ('<div class="sechead r"><span class="secnum">' + ("%02d" % idx) + '</span>'
-            + icon_html(heading, "ic lg", lottie=role)
+            + icon_html(heading, "ic lg", lottie=role, src=src)
             + '<div class="sectext">' + kick
             + '<h2>' + e(heading) + cont_mark + '</h2></div></div>')
 
@@ -1073,6 +1100,12 @@ def slides_html(content, m):
     title = content.get("title") or m.get("title", "")
     eyebrow = content.get("eyebrow") or m.get("eyebrow", "")
     subtitle = content.get("subtitle") or m.get("summary", "")
+
+    # The per-deck personalised Lottie folder is keyed on the slug: section heads
+    # take anim/icons/<slug>/sec<i>.json, the agenda head anim/icons/<slug>/agenda.json,
+    # the closing head anim/icons/<slug>/closing.json. Empty slug (fixture) means
+    # no per-deck path is emitted, so those chips fall straight to role/sprite.
+    slug = m.get("slug", "")
 
     slides = []
 
@@ -1099,7 +1132,7 @@ def slides_html(content, m):
     # decoration that collapses to nothing if the JSON or lottie-web fails.
     anim = anim_for(m)
     anim_box = ('<div class="cover-anim' + ('' if herohtml else ' fill')
-                + '" data-anim="' + anim + '" aria-hidden="true"></div>') if anim else ""
+                + '" data-anim="' + anim_asset(anim) + '" aria-hidden="true"></div>') if anim else ""
     if herohtml:
         right = '<div class="cover-r r">' + herohtml + '</div>'
         corner = anim_box                      # absolute corner accent in the glass
@@ -1135,7 +1168,11 @@ def slides_html(content, m):
         '<div class="glass reveal-root">'
         + wm_html("context") +
         '<div class="sechead r"><span class="secnum">Contents</span>'
-        + icon_html("plan document", "ic lg")
+        # the agenda head chip takes the deck's own anim/icons/<slug>/agenda.json;
+        # no role fallback here (the agenda is not a section), so it drops straight
+        # to the sprite glyph if that file is absent, exactly as it renders today.
+        + icon_html("plan document", "ic lg",
+                    src=(('anim/icons/' + slug + '/agenda.json') if slug else None))
         + '<h2>What this story covers</h2></div>'
         '<ul class="agenda r">' + items + '</ul>'
         '</div></section>')
@@ -1152,7 +1189,7 @@ def slides_html(content, m):
                 '<div class="media" data-media="' + str(idx) + '" data-role="' + role + '"></div>'
                 '<div class="glass reveal-root">'
                 + wm_html(role)
-                + section_head(idx, sec, cont=(pi > 0))
+                + section_head(idx, sec, cont=(pi > 0), slug=slug)
                 + '<div class="secbody r">' + lead + render_blocks(page) + src + '</div>'
                 '</div></section>')
             di += 1
@@ -1165,6 +1202,12 @@ def slides_html(content, m):
         '<div class="media" data-media="' + str(len(sections) + 1) + '" data-role="takeaways"></div>'
         '<div class="glass cl-glass reveal-root">'
         + wm_html("takeaways") +
+        # the closing head chip takes the deck's own anim/icons/<slug>/closing.json;
+        # like the agenda it has no role fallback and drops to the sprite glyph when
+        # that file is absent. Seeded off the deck title so the sprite stays themed,
+        # and marked .r so it rides the same reveal cascade as the plate below it.
+        icon_html(title, "ic lg r",
+                  src=(('anim/icons/' + slug + '/closing.json') if slug else None)) +
         '<p class="eyebrow r">End of the story</p>'
         '<h2 class="cl-h r">' + e(title) + '</h2>'
         '<p class="summary r">' + e(subtitle) + '</p>'
@@ -1344,14 +1387,21 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 .ic.sm svg{width:13px;height:13px;}
 .ic.lg{width:38px;height:38px;border-radius:11px;}
 .ic.lg svg{width:21px;height:21px;}
-/* section-head chip opted into a mini Lottie loop (data-lottie-icon). The loader
-   adds .lottie-on only after it has mounted its own <svg>; until then (or on any
-   failure) the sprite fallback shows exactly as before. Hide ONLY the fallback,
-   never the injected <svg>, and let that one fill the chip (lottie also sets this
-   inline, so this is just a belt-and-braces against the 21px rule above). */
-.ic.lg.lottie-on>svg.ic-fallback{display:none;}
-.ic.lg[data-lottie-icon]>svg:not(.ic-fallback){width:100%;height:100%;}
+/* a chip opted into a mini Lottie loop (data-lottie-src per-deck and/or
+   data-lottie-fallback role). The loader adds .lottie-on only after it has
+   mounted its own <svg>; until then (or on any failure) the sprite fallback
+   shows exactly as before. Hide ONLY the fallback, never the injected <svg>, and
+   let that one fill the chip (lottie also sets this inline, so this is just a
+   belt-and-braces against the sized-svg rules above). Keyed on the data attribute
+   rather than the size class, so the agenda and closing heads fill the same way
+   as the section heads. */
+.ic.lottie-on>svg.ic-fallback{display:none;}
+.ic[data-lottie-src]>svg:not(.ic-fallback),
+.ic[data-lottie-fallback]>svg:not(.ic-fallback){width:100%;height:100%;}
 .card>.ic{margin-bottom:10px;}
+/* the closing plate is a centred flex column; auto margins keep its head chip
+   centred and sized to content instead of stretching across the panel */
+.cl-glass>.ic{margin:0 auto 16px;}
 .chip{display:flex;align-items:center;gap:10px;}
 
 /* card grid - peer sub-sections, from the deck template's SWOT/objectives layout */
@@ -1969,6 +2019,7 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 <!-- lottie-web, deck pages only, deferred and self-guarding: if the CDN is blocked
      the cover animation simply never appears and nothing else is affected. -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+%%RIVE%%
 <script>
 (function(){
   var root=document.documentElement;
@@ -2186,23 +2237,41 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 // runtime, a blocked CDN or a bad JSON leaves the cover exactly as authored.
 (function(){
   function init(){
-    if(!window.lottie) return;                       // CDN blocked -> no flourish
     var hosts=document.querySelectorAll('.cover-anim[data-anim]');
     if(!hosts.length) return;
     // Autoplay only when the reader has no reduced-motion preference; otherwise
-    // load a single representative frame and hold it (still a themed image, no motion).
+    // hold a still (Lottie: a representative frame; Rive: loaded but not autoplayed).
     var motion=true;
     try{ motion=!matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
     [].forEach.call(hosts,function(host){
-      try{
-        var a=lottie.loadAnimation({
-          container:host, renderer:'svg', loop:motion, autoplay:motion,
-          path:'anim/'+host.getAttribute('data-anim')+'.json'
-        });
-        if(!motion){ a.addEventListener('DOMLoaded',function(){
-          try{ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }catch(e){}
-        }); }
-      }catch(e){ /* one bad asset must never break the cover */ }
+      var asset=host.getAttribute('data-anim'); if(!asset) return;
+      var path='anim/'+asset;                        // filename carries its extension
+      if(/\.riv$/i.test(asset)){
+        // Rive branch: mount a <canvas> the runtime paints into. Reduced-motion
+        // readers get the file loaded but NOT autoplayed (first frame, no motion).
+        if(!window.rive) return;                     // runtime blocked -> plain cover
+        try{
+          var c=document.createElement('canvas');
+          c.style.display='block'; c.style.width='100%'; c.style.height='100%';
+          host.appendChild(c);
+          // default Rive layout is contain+center, which is what the box wants.
+          var r=new rive.Rive({
+            src:path, canvas:c, autoplay:motion,
+            onLoad:function(){ try{ r.resizeDrawingSurfaceToCanvas(); }catch(e){} }
+          });
+        }catch(e){ /* one bad asset must never break the cover */ }
+      } else {
+        // Lottie branch (unchanged behaviour; guarded per-asset).
+        if(!window.lottie) return;                   // CDN blocked -> plain cover
+        try{
+          var a=lottie.loadAnimation({
+            container:host, renderer:'svg', loop:motion, autoplay:motion, path:path
+          });
+          if(!motion){ a.addEventListener('DOMLoaded',function(){
+            try{ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }catch(e){}
+          }); }
+        }catch(e){ /* one bad asset must never break the cover */ }
+      }
     });
   }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',init); }
@@ -2210,12 +2279,19 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 })();
 </script>
 <script>
-// Section-head mini icons. Each .sechead chip carries a static sprite <svg> and
-// (opted in via data-lottie-icon="<role>") we mount a tiny Lottie loop over it
-// from anim/icons/<role>.json, then hide the sprite. Every step is guarded: a
-// missing runtime, a 404, or a bad JSON leaves the sprite chip exactly as
-// authored and logs nothing. It waits for 'deck:laidout' so the CONT-slide
-// header clones (built during pagination) are mounted too.
+// Header mini icons (section heads, plus the agenda and closing plate heads).
+// Each chip carries a static sprite <svg> and, opted in via data attributes, a
+// mini Lottie loop is mounted over it and then the sprite is hidden. The chip
+// carries an ORDERED candidate list, most specific first:
+//   data-lottie-src        anim/icons/<slug>/{sec<i>|agenda|closing}.json  (per deck)
+//   data-lottie-fallback   anim/icons/<role>.json                          (section heads only)
+// The loader mounts the FIRST that loads; a candidate that 404s or is bad JSON
+// fires Lottie's own 'data_failed', so we tear it down and try the next - the
+// role file therefore mounts ONLY when the per-deck file failed. If every
+// candidate fails (or the runtime is blocked) the sprite chip stays exactly as
+// authored and nothing is logged. Full paths come from the markup, so this loader
+// hardcodes no naming convention: authors add files by name alone. It waits for
+// 'deck:laidout' so the CONT-slide header clones (built during pagination) mount too.
 //
 // PERFORMANCE CHOICE: a deck can carry 10-25 headers; running them all at once
 // wastes rAF on off-screen slides. So for motion readers every header is mounted
@@ -2227,36 +2303,51 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   function init(){
     if(mounted) return;                              // 'deck:laidout' fires once, but guard anyway
     if(!window.lottie) return;                       // CDN blocked -> sprites stay
-    var hosts=document.querySelectorAll('.ic.lg[data-lottie-icon]');
+    var hosts=document.querySelectorAll('.ic[data-lottie-src],.ic[data-lottie-fallback]');
     if(!hosts.length) return;
     mounted=true;
     var motion=true;
     try{ motion=!matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
     var items=[];   // {slide, anim} so slide changes can play/pause per slide
-    [].forEach.call(hosts,function(host){
+    // Try candidate `i`; on data_failed (404/bad JSON) destroy it and recurse to
+    // the next, so each step is silent and the sprite survives when all fail.
+    function mount(host, cands, i){
+      if(i>=cands.length) return;                    // exhausted: sprite stays
+      var a;
       try{
-        var a=lottie.loadAnimation({
+        a=lottie.loadAnimation({
           container:host, renderer:'svg', loop:true,
           autoplay:false,                            // play is driven by deck:slide (or frozen)
-          path:'anim/icons/'+host.getAttribute('data-lottie-icon')+'.json'
+          path:cands[i]
         });
-        // Only once Lottie has actually injected its <svg> do we hide the sprite
-        // fallback; a load error never reaches here, so the sprite survives.
-        a.addEventListener('DOMLoaded',function(){
-          try{
-            host.classList.add('lottie-on');
-            if(!motion){ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }
-          }catch(e){}
-        });
-        if(motion){
-          var slide=host.closest('.slide');
-          items.push({slide:slide, anim:a});
-          // if this header is already on the active slide, start it now
-          if(slide&&slide.classList.contains('active')){ try{a.play();}catch(e){} }
-        }
-      }catch(e){ /* one bad icon must never break the deck */ }
+      }catch(e){ return; }                           // one bad icon must never break the deck
+      a.addEventListener('data_failed',function(){
+        try{ a.destroy(); }catch(e){}                // clear the empty container, then fall through
+        try{ mount(host, cands, i+1); }catch(e){}
+      });
+      // Only once Lottie has actually injected its <svg> do we hide the sprite
+      // fallback and enrol the anim for play/pause; a failed candidate never
+      // reaches here (it took the data_failed path), so the sprite survives.
+      a.addEventListener('DOMLoaded',function(){
+        try{
+          host.classList.add('lottie-on');
+          if(motion){
+            var slide=host.closest('.slide');
+            items.push({slide:slide, anim:a});
+            if(slide&&slide.classList.contains('active')){ a.play(); }
+          } else {
+            a.goToAndStop(Math.floor(a.totalFrames*0.4),true);
+          }
+        }catch(e){}
+      });
+    }
+    [].forEach.call(hosts,function(host){
+      var cands=[];
+      var s=host.getAttribute('data-lottie-src');      if(s) cands.push(s);
+      var f=host.getAttribute('data-lottie-fallback'); if(f) cands.push(f);
+      try{ mount(host, cands, 0); }catch(e){}
     });
-    if(motion&&items.length){
+    if(motion){
       document.addEventListener('deck:slide',function(){
         items.forEach(function(it){
           try{
@@ -2292,17 +2383,28 @@ def load_content(slug):
         return json.load(f)
 
 
+# Rive runtime tag, injected ONLY on decks whose cover flourish is a .riv (fish).
+# Deferred and self-guarding exactly like the lottie-web tag above it: if unpkg is
+# blocked the flourish simply never appears and nothing else on the page is touched.
+RIVE_SCRIPT = ('<!-- Rive runtime (canvas), only on decks whose cover flourish is a '
+               '.riv; deferred and self-guarding like lottie-web above. -->\n'
+               '<script defer src="https://unpkg.com/@rive-app/canvas@2.21.6"></script>')
+
+
 def render(m, content=None):
     if content is None:
         content = load_content(m["slug"])
     slides = slides_html(content, m)
     t1, t2 = tint_for(m)
     title = content.get("title") or m.get("title", "")
+    # Load the Rive runtime only when this deck's flourish is actually a .riv.
+    rive_tag = RIVE_SCRIPT if anim_asset(anim_for(m)).endswith(".riv") else ""
     html = (TMPL
             .replace("%%TITLE%%", e(title))
             .replace("%%TINT1%%", t1).replace("%%TINT2%%", t2)
             .replace("%%COUNT%%", "%02d" % len(slides))
             .replace("%%SLUG%%", m["slug"])
+            .replace("%%RIVE%%", rive_tag)
             .replace("%%SPRITE%%", ICON_SPRITE)
             .replace("%%SLIDES%%", "\n".join(slides)))
     return html, len(slides), content

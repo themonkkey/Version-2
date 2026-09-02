@@ -68,3 +68,4 @@ scripts/_drive_txt/
 scripts/_briefs/
 scripts/_suggest_briefs.json
 scripts/_deck_audit.json
+*.bak
