@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>District Crop GVA Calculator</title>
+<style>
+  :root{
+    --paper:#FBF7EC; --paper-2:#F4EEDD; --line:#E3DAC3;
+    --navy:#1B3455; --navy-700:#24446E; --ink:#26303B; --ink-soft:#6B7683;
+    --gold:#C9A227; --gold-line:#E0C878; --gold-050:#FBF3DA;
+    --green:#2E7D4F; --serif:Georgia,'Times New Roman',serif;
+    --sans:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5}
+
+  /* ===== hero ===== */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,#132441 100%);color:#fff;padding:34px 20px 30px;position:relative;overflow:hidden}
+  .hero-inner{max-width:920px;margin:0 auto;display:flex;align-items:center;gap:20px}
+  .hero .lot{width:110px;height:110px;flex:none;filter:drop-shadow(0 4px 14px rgba(0,0,0,.35))}
+  .hero .eyebrow{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-line);font-weight:700}
+  .hero h1{font-family:var(--serif);font-size:1.9rem;margin:6px 0 6px}
+  .hero p{margin:0;color:#C9D4E4;font-size:.92rem;max-width:560px}
+  .meta{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+  .meta label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#9DB0CC;display:block;margin-bottom:3px}
+  .meta input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:8px;color:#fff;padding:7px 10px;font-size:.9rem;width:160px}
+  .meta input:focus{outline:2px solid var(--gold)}
+
+  /* ===== calculator shell ===== */
+  .shell{max-width:920px;margin:-18px auto 60px;padding:0 16px}
+  .machine{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(27,52,85,.14);overflow:hidden}
+
+  /* progress rail */
+  .rail{display:flex;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .rail button{flex:1;border:0;background:none;padding:13px 6px;cursor:pointer;font-family:var(--sans);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;position:relative;transition:color .25s}
+  .rail button .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#D8D0BA;color:#fff;margin-right:6px;font-family:var(--serif);transition:all .3s}
+  .rail button.active{color:var(--navy)}
+  .rail button.active .n{background:var(--navy);transform:scale(1.15)}
+  .rail button.done .n{background:var(--green)}
+  .rail button.done .n::before{content:"✓"}
+  .rail button.done .n span{display:none}
+  .rail button::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--gold);transform:scaleX(0);transition:transform .35s}
+  .rail button.active::after{transform:scaleX(1)}
+
+  /* running total ticker */
+  .ticker{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:12px 22px;background:var(--gold-050);border-bottom:1px solid var(--gold-line);font-size:.82rem;color:var(--ink-soft)}
+  .ticker b{font-family:var(--serif);font-size:1.25rem;color:var(--navy-700);font-variant-numeric:tabular-nums}
+
+  /* panels */
+  .panel{display:none;padding:26px 26px 30px;animation:slidein .45s ease}
+  .panel.on{display:block}
+  @keyframes slidein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .panel h2{font-family:var(--serif);color:var(--navy);margin:0 0 4px;font-size:1.35rem}
+  .panel .formula{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+
+  /* category accordions */
+  details.cat{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff;overflow:hidden}
+  details.cat[open]{box-shadow:0 6px 18px rgba(27,52,85,.08)}
+  details.cat summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:11px 16px;font-weight:700;color:var(--navy-700);font-size:.9rem;background:var(--paper-2);transition:background .2s}
+  details.cat summary::-webkit-details-marker{display:none}
+  details.cat summary:hover{background:var(--gold-050)}
+  details.cat summary .chev{transition:transform .3s;color:var(--gold)}
+  details.cat[open] summary .chev{transform:rotate(90deg)}
+  details.cat summary .sub{margin-left:auto;font-family:var(--serif);font-variant-numeric:tabular-nums;color:var(--navy);font-size:.95rem}
+  .rows{padding:4px 0 8px}
+  .crow{display:grid;grid-template-columns:1fr 96px 110px 110px;gap:8px;align-items:center;padding:5px 16px;font-size:.85rem}
+  .crow.hdr{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;padding-top:8px}
+  .crow .nm{color:var(--ink)}
+  .crow .why{grid-column:1/-1;font-size:.72rem;color:var(--ink-soft);font-style:italic;padding-left:2px;margin-top:-3px;display:none}
+  .crow:hover .why{display:block}
+  .crow input{width:100%;text-align:right;font-size:.84rem;padding:5px 8px;border:1px solid var(--gold-line);border-radius:6px;background:#FDF7E6;color:var(--navy-700);font-variant-numeric:tabular-nums}
+  .crow input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+  .crow input:disabled,.crow .lockp{background:var(--paper-2);border:1px dashed var(--line);color:var(--ink-soft);border-radius:6px;padding:5px 8px;text-align:right;font-size:.8rem;cursor:help}
+  .crow .val{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--navy-700)}
+  .crow .val.bump{animation:bump .4s}
+  @keyframes bump{40%{transform:scale(1.12);color:var(--gold)}}
+
+  /* simple line rows (steps 2-3) */
+  .line{display:flex;justify-content:space-between;align-items:center;padding:13px 4px;border-bottom:1px solid var(--line);font-size:.95rem}
+  .line .lab{color:var(--ink)}
+  .line .amt{font-family:var(--serif);font-size:1.15rem;color:var(--navy-700);font-variant-numeric:tabular-nums}
+  .line input{width:120px;text-align:right;padding:7px 10px;border:1px solid var(--gold-line);border-radius:8px;background:#FDF7E6;color:var(--navy-700);font-size:.95rem;font-variant-numeric:tabular-nums}
+  .line input:focus{outline:2px solid var(--gold)}
+  .line.result{background:var(--gold-050);border-radius:10px;padding:13px 14px;border:1px solid var(--gold-line);margin-top:10px}
+
+  /* one-line why under each step result */
+  .stepwhy{margin-top:12px;padding:10px 14px;border-left:3px solid var(--gold);background:var(--paper-2);border-radius:0 10px 10px 0;font-size:.84rem;color:var(--ink);animation:slidein .6s ease}
+  .stepwhy b{color:var(--navy-700)}
+
+  /* nav */
+  .nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+  .btn{border:0;border-radius:10px;padding:12px 26px;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--sans);transition:transform .15s,box-shadow .15s}
+  .btn.primary{background:var(--navy);color:#fff;box-shadow:0 6px 16px rgba(27,52,85,.3)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(27,52,85,.35)}
+  .btn.ghost{background:#fff;border:1px solid var(--line);color:var(--navy-700)}
+  .btn.ghost:hover{border-color:var(--gold)}
+
+  /* final */
+  .final{text-align:center;padding:12px 0 6px}
+  .final .lab{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .final .big{font-family:var(--serif);font-size:3rem;color:var(--navy);font-variant-numeric:tabular-nums;margin:8px 0 2px;position:relative;display:inline-block}
+  .final .big.pulse::after{content:"";position:absolute;inset:-14px -22px;border:2px solid var(--gold);border-radius:16px;animation:ring 1.2s ease-out infinite}
+  @keyframes ring{from{opacity:.8;transform:scale(.94)}to{opacity:0;transform:scale(1.12)}}
+  .final .unit{color:var(--ink-soft);font-size:.95rem}
+  .trail{max-width:460px;margin:22px auto 0;text-align:left}
+  .trail .t{display:flex;justify-content:space-between;padding:8px 4px;border-bottom:1px dashed var(--line);font-size:.88rem;opacity:0;transform:translateX(-10px);animation:tin .5s forwards}
+  .trail .t:nth-child(2){animation-delay:.15s}.trail .t:nth-child(3){animation-delay:.3s}.trail .t:nth-child(4){animation-delay:.45s}
+  @keyframes tin{to{opacity:1;transform:none}}
+  .trail .t .a{font-variant-numeric:tabular-nums;font-weight:600;color:var(--navy-700)}
+  .trail .t.neg .a{color:#A2551F}
+  .trail .t.fin{border-bottom:0;font-weight:700}.trail .t.fin .a{color:var(--green)}
+
+  /* assumptions drawer */
+  details.assume{margin-top:16px;border:1px solid var(--line);border-radius:12px;background:var(--paper-2)}
+  details.assume summary{cursor:pointer;padding:10px 16px;font-size:.8rem;font-weight:700;color:var(--ink-soft);letter-spacing:.05em;text-transform:uppercase;list-style:none}
+  details.assume summary::-webkit-details-marker{display:none}
+  .agrid{display:grid;grid-template-columns:1fr 100px;gap:6px 12px;padding:6px 16px 14px;font-size:.8rem;align-items:center}
+  .agrid input{text-align:right;padding:4px 8px;border:1px solid var(--gold-line);border-radius:6px;background:#FDF7E6;font-size:.8rem}
+  .agrid .ah{grid-column:1/-1;font-weight:700;color:var(--navy-700);margin-top:6px}
+  .paddy{display:grid;grid-template-columns:1fr 90px 90px;gap:6px 12px;padding:0 16px 8px;font-size:.8rem;align-items:center}
+  .paddy input{text-align:right;padding:4px 8px;border:1px solid var(--gold-line);border-radius:6px;background:#FDF7E6;font-size:.8rem}
+  .paddy .ph{font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+
+  .foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}
+  .reset{font-size:.8rem;font-weight:600;color:var(--navy-700);background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer}
+  .reset:hover{border-color:var(--gold)}
+  .hint{font-size:.78rem;color:var(--ink-soft)}
+  @media(max-width:640px){.crow{grid-template-columns:1fr 70px 84px 84px;font-size:.78rem}.hero .lot{display:none}.final .big{font-size:2.2rem}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="lot" id="lot"></div>
+    <div>
+      <div class="eyebrow">Swarna Andhra · GVA Practice Sheet</div>
+      <h1>District Crop GVA Calculator</h1>
+      <p>The Excel sheet, rebuilt as a step-by-step calculator. Same formulas, same ratios · answer in four steps.</p>
+      <div class="meta">
+        <div><label>District</label><input id="dist" value="" placeholder="Your district"></div>
+        <div><label>Year</label><input id="yr" value="" placeholder="e.g. 2024-25" style="width:110px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="shell"><div class="machine">
+
+  <div class="rail" id="rail">
+    <button data-s="0" class="active"><span class="n"><span>1</span></span>Value of output</button>
+    <button data-s="1"><span class="n"><span>2</span></span>Less inputs</button>
+    <button data-s="2"><span class="n"><span>3</span></span>Less FISIM</button>
+    <button data-s="3"><span class="n"><span>4</span></span>Adjusted GVA</button>
+  </div>
+
+  <div class="ticker"><span>Running figure so far</span><span><b id="tick">0</b> <span style="font-size:.75rem">₹ lakh</span></span></div>
+
+  <!-- STEP 1 -->
+  <div class="panel on" data-p="0">
+    <h2>Value of output</h2>
+    <div class="formula">Production × Price ÷ 100 · per crop · ₹ lakh</div>
+    <div id="cats"></div>
+
+    <details class="assume"><summary>Assumptions &amp; ratios (advanced — from the “Ratios Applied” tab)</summary>
+      <div class="agrid" id="agrid"></div>
+      <div class="agrid ah" style="padding-bottom:0">Paddy weighted price (by season)</div>
+      <div class="paddy" id="paddy"></div>
+    </details>
+
+    <div class="stepwhy" id="why0"></div>
+    <div class="nav"><span></span><button class="btn primary" onclick="go(1)">Next: subtract inputs →</button></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="panel" data-p="1">
+    <h2>Less total input</h2>
+    <div class="formula">Value of output − intermediate consumption</div>
+    <div class="line"><span class="lab">Value of output (from step 1)</span><span class="amt" id="s2vo">–</span></div>
+    <div class="line"><span class="lab">Total input (₹ lakh) — seed, fertiliser, pesticide, diesel, repairs…</span><input type="number" step="any" id="inpTotal" value="10000"></div>
+    <div class="line result"><span class="lab"><b>= Unadjusted crop GVA</b></span><span class="amt" id="s2unadj">–</span></div>
+    <div class="stepwhy" id="why1"></div>
+    <div class="nav"><button class="btn ghost" onclick="go(0)">← Back</button><button class="btn primary" onclick="go(2)">Next: remove FISIM →</button></div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="panel" data-p="2">
+    <h2>Less FISIM</h2>
+    <div class="formula">FISIM = ratio × unadjusted GVA</div>
+    <div class="line"><span class="lab">Unadjusted crop GVA (from step 2)</span><span class="amt" id="s3unadj">–</span></div>
+    <div class="line"><span class="lab">FISIM ratio (% of unadjusted GVA)</span><input type="number" step="any" id="fisimPct" value="5.79" style="width:90px"></div>
+    <div class="line result"><span class="lab"><b>− FISIM charge</b></span><span class="amt" id="s3amt">–</span></div>
+    <div class="stepwhy" id="why2"></div>
+    <div class="nav"><button class="btn ghost" onclick="go(1)">← Back</button><button class="btn primary" onclick="go(3)">See the final figure →</button></div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="panel" data-p="3">
+    <h2 style="text-align:center">Adjusted district crop GVA</h2>
+    <div class="final">
+      <div class="lab">The reportable figure</div>
+      <div class="big pulse">₹ <span id="finalN">0</span></div>
+      <div class="unit">₹ lakh · current prices</div>
+      <div class="trail" id="trail"></div>
+    </div>
+    <div class="stepwhy" id="why3"></div>
+    <div class="nav"><button class="btn ghost" onclick="go(2)">← Back</button><button class="btn primary" onclick="go(0)">Start again with new numbers</button></div>
+  </div>
+
+  <div style="padding:0 26px 24px"><div class="foot">
+    <button class="reset" onclick="resetAll()">Reset to the worked example</button>
+    <span class="hint">Hover any row to see how its figure is estimated. Dashed prices are derived automatically from the ratios.</span>
+  </div></div>
+
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+<script>
+/* ============ DATA — lifted 1:1 from District_Crop_GVA_Calculator.xlsx ============ */
+// row: [name, production ('000 units), price or null-if-derived, whyline, derivedKey]
+const CATS=[
+ {k:'cereals',n:'A. Cereals',rows:[
+  ['Paddy (less procurement)',160.59,null,'Price = weighted average of winter / summer / autumn paddy','paddy'],
+  ['Paddy procurement',4.879,null,'Same weighted paddy price; procurement kept separate as in the source sheet','paddy'],
+  ['Wheat',0.213,30056.6,'Direct officer entry: quantity and price'],
+  ['Maize',15.436,12805,'Direct officer entry: quantity and price'],
+  ['Small millets & other cereals',0.342,null,'Price taken as 75% of the maize price','millets'],
+ ]},
+ {k:'pulses',n:'B. Pulses',rows:[
+  ['Gram',0.054,49471.7,'Direct officer entry'],
+  ['Arahar (Tur)',0.195,78116.5,'Direct officer entry'],
+  ['Urid',1.818,48263,'Direct officer entry'],
+  ['Moong',0.275,84203.5,'Direct officer entry'],
+  ['Masoor',1.129,84063.3,'Direct officer entry'],
+  ['Peas',0.42,40408.4,'Direct officer entry'],
+  ['Other pulses',0.269,null,'Price = 85% of the weighted Urid / Moong / Masoor price','otherPulses'],
+ ]},
+ {k:'oilseeds',n:'C. Oil seeds',rows:[
+  ['Linseed',0.131,42970.5,'Direct officer entry'],
+  ['Sesamum',0.255,82193.7,'Direct officer entry'],
+  ['Groundnut',0,0,'Direct officer entry'],
+  ['Rape & mustard',12.15,46415.1,'Direct officer entry'],
+  ['Castor',0.006,81507.8,'Direct officer entry'],
+  ["Coconut ('000 nuts)",1.809,20200,'Counted in ’000 nuts; source scaling retained'],
+  ['Nizer',0.116,44126.3,'Direct officer entry'],
+  ['Other oilseed',0,0,'Direct officer entry'],
+ ]},
+ {k:'cane',n:'D. Sugarcane & gur',special:'cane'},
+ {k:'fibres',n:'E. Fibres',rows:[
+  ['Kapas (bales)',0,null,'Price = ₹/quintal × 170 kg per bale (zero while production is zero)','kapas'],
+  ['Jute (bales)',14.509,null,'Price = jute ₹/quintal × 180 kg per bale','jute'],
+  ['Mesta (bales)',0.823,null,'Price = mesta ₹/quintal × 180 kg per bale','mesta'],
+ ]},
+ {k:'drugs',n:'F. Drugs & narcotics',rows:[
+  ['Tea',0.2564,45328,'Direct officer entry'],
+  ['Coffee',0.0075,146000,'Direct officer entry'],
+  ['Betel leaf',673.38,320.66,'Source-specific quantity × price ÷ 100'],
+  ['Tobacco leaf',0.00126,85623,'Direct officer entry'],
+  ['Tobacco steam',null,null,'Quantity = 82% of base quantity; price = 50% of base tobacco price','tobSteam'],
+  ['Toddy',0,0,'Direct officer entry'],
+ ]},
+ {k:'spices',n:'G. Condiments & spices',rows:[
+  ['Dry chillies',0.783,122875,'Direct officer entry'],
+  ['Black pepper',0.139,672500,'Direct officer entry'],
+  ['Ginger',3.864,51000,'Direct officer entry'],
+  ['Dry turmeric',0.999,115347.1,'Direct officer entry'],
+  ['Arecanut',2.7,null,'Price from 22 nuts/kg and the price per 100 nuts','arecanut'],
+  ['Garlic',3.404,62800,'Direct officer entry'],
+  ['Coriander',2.168,34302,'Direct officer entry'],
+  ['Other condiments & spices',0.206,null,'Price = 90% of the weighted chilli–pepper–ginger basket','otherSpice'],
+ ]},
+ {k:'fruitveg',n:'H. Fruits & vegetables',rows:[
+  ['Banana',42.558,null,'Price from 10 bananas/kg and the price per 100','banana'],
+  ['Mango',0.645,42852,'Direct officer entry'],
+  ['Cashewnut',0.277,799500,'Direct officer entry'],
+  ['Aonla',0.261,26280,'Direct officer entry'],
+  ['Papaya',5.418,15801,'Direct officer entry'],
+  ['Lemon',1.946,null,'Price from 10.72 fruits/kg and the price per 100','lemon'],
+  ['Orange',3.351,null,'Price from 10.72 fruits/kg and the price per 100','orange'],
+  ['Litchi',0.615,40752,'Direct officer entry'],
+  ['Pineapple',16.019,null,'Price from 1.30 fruits/kg and the price per 100','pineapple'],
+  ['Guava',1.814,30751.5,'Direct officer entry'],
+  ['Watermelon',0,0,'Direct officer entry'],
+  ['Jack fruit',2.962,15302,'Direct officer entry'],
+  ['Potato',45.49,20753.7,'Direct officer entry'],
+  ['Sweet potato',0.714,13652,'Direct officer entry'],
+  ['Tapioca',2.552,null,'Price = 39.36% of the potato price','tapioca'],
+  ['Onion',2.25,31202,'Direct officer entry'],
+  ['Brinjal',16.77,28000,'Direct officer entry'],
+  ['Cabbage',9.734,20301,'Direct officer entry'],
+  ['Cauliflower',10.894,20801,'Direct officer entry'],
+  ['Okra',5.475,27201,'Direct officer entry'],
+  ['Tomato',10.078,21502,'Direct officer entry'],
+  ['Bittergourd',1.541,30850,'Direct officer entry'],
+  ['Carrot',4.083,30000,'Direct officer entry'],
+  ['Cucumber',2.214,23201,'Direct officer entry'],
+  ['Radish',8.109,18405,'Direct officer entry'],
+  ['Beans',0.486,27552,'Direct officer entry'],
+  ['Bottlegourd',2.207,18900,'Direct officer entry'],
+  ['Capsicum',0.068,72700,'Direct officer entry'],
+  ['Parmal (Patal)',0.98,30500,'Direct officer entry'],
+  ['Green peas',0.238,41002,'Direct officer entry'],
+  ['Other vegetables',0,0,'Direct officer entry'],
+  ['Other fruits',1.438,null,'Price = weighted average of the fruit basket entered above','otherFruit'],
+ ]},
+ {k:'misc',n:'I. Other misc. crops',rows:[
+  ['Rubber',2.301,146000,'Direct officer entry'],
+  ['Fodder',0,0,'Direct officer entry'],
+  ['Grass',null,3605.53,'Production = effective grass area (from land-use components) × grass yield rate','grass'],
+  ['Misc. food crops',0,2095.84,'Direct officer entry'],
+  ['Misc. non-food crops',0,3618,'Direct officer entry'],
+ ]},
+ {k:'byprod',n:'J. By-products (cotton)',special:'byprod'},
+ {k:'kitchen',n:'K. Kitchen garden',special:'kitchen'},
+ {k:'flori',n:'L. Floriculture',rows:[
+  ['Cut flower (lakh no.)',195.4,2.46,'Value = quantity × price directly (no ÷100 scaling)','cutflower'],
+  ['Loose flower (MT)',0.774,86076,'Standard ’000 MT × ₹/MT ÷ 100'],
+ ]},
+];
+
+// editable assumptions (Ratios Applied tab)
+const A={
+ milletsPct:0.75, otherPulsesPct:0.85, otherSpicePct:0.90, tapiocaPct:0.3936,
+ tobRatio:0.82, tobBaseQ:0.007, tobBaseP:85841, tobPriceF:0.5,
+ caneChew:0.01, caneMills:0, caneKhand:0.0362, caneSeedTPH:2.94, gurPct:0.0923,
+ grassYield:0.6086, kgShare:0.0021, kgNetArea:2722530, cottonVPH:5000,
+ kapasQtl:5132.23, kapasBale:170, juteQtl:2703, juteBale:180, mestaQtl:1750, mestaBale:180,
+ arecaPerKg:22, arecaP100:196, bananaPerKg:10, bananaP100:290,
+ lemonPerKg:10.72, lemonP100:500, orangePerKg:10.72, orangeP100:700, pinePerKg:1.3, pineP100:2080,
+ basket:[[0.601,122875],[0.137,672500],[3.468,51000]], // chillies, pepper, ginger
+ grassLand:[[2103,4],[4060,1],[3450,2],[2044,2],[60277,1]],
+};
+const PADDY=[['Winter',151.471,15366],['Summer',5.864,13502],['Autumn',3.259,12500]];
+// cane extra inputs
+let caneTotal=1.738, caneArea=0.039, caneP=3982, gurP=45980.2;
+let tickerVal=0;
+
+const fmt=n=>{ if(!isFinite(n))return'–'; const v=Math.round(n); return v.toLocaleString('en-IN'); };
+const fmt2=n=>isFinite(n)?n.toLocaleString('en-IN',{maximumFractionDigits:0}):'–';
+
+/* derived prices */
+function derived(key,st){
+ switch(key){
+  case 'paddy':{const num=PADDY.reduce((s,[,q,p])=>s+q*p,0),den=PADDY.reduce((s,[,q])=>s+q,0);return den?num/den:0;}
+  case 'millets':return st.price('cereals','Maize')*A.milletsPct;
+  case 'otherPulses':{const rs=['Urid','Moong','Masoor'].map(n=>st.row('pulses',n));const den=rs.reduce((s,r)=>s+r.prod,0);return den?rs.reduce((s,r)=>s+r.prod*r.price,0)/den*A.otherPulsesPct:0;}
+  case 'kapas':{const el=document.querySelector('[data-cat="fibres"][data-name="Kapas (bales)"] [data-f="prod"]');const q=parseFloat(el?.value)||0;return q===0?0:A.kapasQtl/100*A.kapasBale;}
+  case 'jute':return A.juteQtl/100*A.juteBale;
+  case 'mesta':return A.mestaQtl/100*A.mestaBale;
+  case 'arecanut':return A.arecaPerKg*1000*A.arecaP100/100;
+  case 'otherSpice':{const den=A.basket.reduce((s,[q])=>s+q,0);return den?A.basket.reduce((s,[q,p])=>s+q*p,0)/den*A.otherSpicePct:0;}
+  case 'banana':return A.bananaPerKg*1000*A.bananaP100/100;
+  case 'lemon':return A.lemonPerKg*1000*A.lemonP100/100;
+  case 'orange':return A.orangePerKg*1000*A.orangeP100/100;
+  case 'pineapple':return A.pinePerKg*1000*A.pineP100/100;
+  case 'tapioca':return st.price('fruitveg','Potato')*A.tapiocaPct;
+  case 'otherFruit':{const names=['Banana','Mango','Cashewnut','Aonla','Papaya','Lemon','Orange','Litchi','Pineapple','Watermelon','Jack fruit'];
+    let num=0,den=0;names.forEach(n=>{const r=st.row('fruitveg',n);if(r){num+=r.prod*r.price;den+=r.prod;}});return den?num/den:0;}
+ }
+ return 0;
+}
+
+/* live state read from DOM inputs */
+const S={
+ row(cat,name){const el=document.querySelector(`[data-cat="${cat}"][data-name="${CSS.escape(name)}"]`);if(!el)return null;
+   const prod=parseFloat(el.querySelector('[data-f="prod"]')?.value)||0;
+   let price; const pEl=el.querySelector('[data-f="price"]');
+   if(pEl) price=parseFloat(pEl.value)||0; else price=derived(el.dataset.dk,S);
+   return {prod,price};},
+ price(cat,name){return this.row(cat,name)?.price||0;},
+};
+
+/* category value calculators */
+function catValue(cat){
+ if(cat.special==='cane'){
+  const chew=caneTotal*A.caneChew, mills=caneTotal*A.caneMills, khand=caneTotal*A.caneKhand, seed=caneArea*A.caneSeedTPH;
+  const caneQ=chew+mills+khand+seed, gurQ=(caneTotal-caneQ)*A.gurPct;
+  return {total:caneQ*caneP/100+gurQ*gurP/100, detail:{caneQ,gurQ}};
+ }
+ if(cat.special==='byprod'){
+  const kap=S.row('fibres','Kapas (bales)'); const area=kap?0:0; // area of kapas = D37 = 0 in the sheet (kapas area entry)
+  const kapasArea=parseFloat(document.getElementById('kapasArea')?.value)||0;
+  return {total:kapasArea*A.cottonVPH/100};
+ }
+ if(cat.special==='kitchen'){
+  const fv=catValue(CATS.find(c=>c.k==='fruitveg')).total;
+  const kgArea=A.kgNetArea*A.kgShare/1000;           // '000 ha, sheet D104
+  const fvAreaSum=25.297;                            // Σ area of F&V rows in the sheet (D60:D91)
+  const price=fvAreaSum? kgArea*fv/fvAreaSum : 0;    // sheet F104
+  return {total:kgArea*price, detail:{kgArea}};      // sheet G104 = D104 × F104
+ }
+ let t=0;
+ cat.rows.forEach(r=>{
+  const [name,prod0,price0,,dk]=r;
+  const row=S.row(cat.k,name); if(!row)return;
+  let prod=row.prod, price=row.price;
+  if(dk==='tobSteam'){prod=A.tobBaseQ*A.tobRatio; price=A.tobBaseP*A.tobPriceF;}
+  if(dk==='grass'){const areaHa=A.grassLand.reduce((s,[b,m])=>s+b*m,0); prod=areaHa/1000*A.grassYield;}
+  if(dk==='cutflower'){t+=prod*price;return;}       // no ÷100
+  t+=prod*price/100;
+ });
+ return {total:t};
+}
+
+function valueOfOutput(){let t=0;CATS.forEach(c=>t+=catValue(c).total);return t;}
+
+/* ============ RENDER ============ */
+function buildRows(){
+ const wrap=document.getElementById('cats');wrap.innerHTML='';
+ CATS.forEach((cat,i)=>{
+  const d=document.createElement('details');d.className='cat';if(i===0)d.open=true;
+  let inner=`<summary><span class="chev">▸</span>${cat.n}<span class="sub" data-sub="${cat.k}">–</span></summary><div class="rows">`;
+  if(cat.special==='cane'){
+   inner+=`<div class="crow hdr"><span>Input</span><span></span><span style="text-align:right">Value</span><span></span></div>
+    <div class="crow"><span class="nm">Total sugarcane production ('000 MT)</span><input type="number" step="any" id="caneTotal" value="${caneTotal}"><span></span><span></span>
+      <span class="why">Cane is split by rule: 1% chewing, 3.62% khandsari, seed = 2.94 t/ha × area; gur = 9.23% of the residual.</span></div>
+    <div class="crow"><span class="nm">Area under sugarcane ('000 ha)</span><input type="number" step="any" id="caneArea" value="${caneArea}"><span></span><span></span></div>
+    <div class="crow"><span class="nm">Sugarcane price (₹/unit)</span><span></span><input type="number" step="any" id="caneP" value="${caneP}"><span></span></div>
+    <div class="crow"><span class="nm">Gur price (₹/unit)</span><span></span><input type="number" step="any" id="gurP" value="${gurP}"><span></span></div>`;
+  } else if(cat.special==='byprod'){
+   inner+=`<div class="crow"><span class="nm">Area under cotton ('000 ha)</span><input type="number" step="any" id="kapasArea" value="0"><span class="lockp" title="Fixed by rule">₹${A.cottonVPH}/ha</span><span class="val" data-v="byprod">0</span>
+     <span class="why">Cotton by-product value = cotton area × ₹5,000 per hectare, no price entry needed.</span></div>`;
+  } else if(cat.special==='kitchen'){
+   inner+=`<div class="crow"><span class="nm">Kitchen garden (backyard)</span><span class="lockp" title="Derived">auto</span><span class="lockp" title="Derived">auto</span><span class="val" data-v="kitchen">0</span>
+     <span class="why">Area = 0.21% of net sown area; valued at the per-hectare output of the fruits &amp; vegetables you entered above.</span></div>`;
+  } else {
+   inner+=`<div class="crow hdr"><span>Crop</span><span style="text-align:right">Prod.</span><span style="text-align:right">Price ₹/unit</span><span style="text-align:right">Value ₹ lakh</span></div>`;
+   cat.rows.forEach(r=>{
+    const [name,prod,price,why,dk]=r;
+    const prodCell = prod===null ? `<span class="lockp" title="${why}">auto</span>` : `<input type="number" step="any" data-f="prod" value="${prod}">`;
+    const priceCell = price===null ? `<span class="lockp" data-dp="1" title="${why}">auto</span>` : `<input type="number" step="any" data-f="price" value="${price}">`;
+    inner+=`<div class="crow" data-cat="${cat.k}" data-name="${name}" ${dk?`data-dk="${dk}"`:''}>
+      <span class="nm">${name}</span>${prodCell}${priceCell}<span class="val">–</span>
+      <span class="why">${why}</span></div>`;
+   });
+  }
+  inner+='</div>';d.innerHTML=inner;wrap.appendChild(d);
+ });
+}
+
+function buildAssume(){
+ const g=document.getElementById('agrid');
+ const items=[['milletsPct','Small millets price, % of maize'],['otherPulsesPct','Other pulses, % of weighted pulses'],['otherSpicePct','Other condiments, % of basket'],['tapiocaPct','Tapioca, % of potato price'],['gurPct','Gur extraction from residual cane'],['grassYield','Grass yield (MT/ha)'],['kgShare','Kitchen garden share of net area'],['tobRatio','Tobacco steam production ratio']];
+ g.innerHTML=items.map(([k,l])=>`<span>${l}</span><input type="number" step="any" data-a="${k}" value="${A[k]}">`).join('');
+ const p=document.getElementById('paddy');
+ p.innerHTML='<span class="ph">Season</span><span class="ph" style="text-align:right">Prod. \'000 MT</span><span class="ph" style="text-align:right">Price ₹/MT</span>'+
+  PADDY.map((s,i)=>`<span>${s[0]}</span><input type="number" step="any" data-pq="${i}" value="${s[1]}"><input type="number" step="any" data-pp="${i}" value="${s[2]}">`).join('');
+}
+
+/* ============ RECALC ============ */
+function recalc(){
+ caneTotal=parseFloat(document.getElementById('caneTotal')?.value)||0;
+ caneArea=parseFloat(document.getElementById('caneArea')?.value)||0;
+ caneP=parseFloat(document.getElementById('caneP')?.value)||0;
+ gurP=parseFloat(document.getElementById('gurP')?.value)||0;
+ document.querySelectorAll('[data-a]').forEach(el=>A[el.dataset.a]=parseFloat(el.value)||0);
+ document.querySelectorAll('[data-pq]').forEach(el=>PADDY[+el.dataset.pq][1]=parseFloat(el.value)||0);
+ document.querySelectorAll('[data-pp]').forEach(el=>PADDY[+el.dataset.pp][2]=parseFloat(el.value)||0);
+
+ // per-row values + derived price labels
+ document.querySelectorAll('.crow[data-cat]').forEach(el=>{
+  const cat=el.dataset.cat,name=el.dataset.name,dk=el.dataset.dk;
+  let prod=parseFloat(el.querySelector('[data-f="prod"]')?.value)||0;
+  let price; const pEl=el.querySelector('[data-f="price"]');
+  if(pEl)price=parseFloat(pEl.value)||0;else price=derived(dk,S);
+  if(dk==='tobSteam'){prod=A.tobBaseQ*A.tobRatio;price=A.tobBaseP*A.tobPriceF;}
+  if(dk==='grass'){const ha=A.grassLand.reduce((s,[b,m])=>s+b*m,0);prod=ha/1000*A.grassYield;price=parseFloat(el.querySelector('[data-f="price"]')?.value)||3605.53;}
+  const dp=el.querySelector('[data-dp]');if(dp)dp.textContent='₹'+fmt2(price);
+  const v = dk==='cutflower'? prod*price : prod*price/100;
+  const vEl=el.querySelector('.val');
+  if(vEl){const old=vEl.textContent,nw=fmt(v);if(old!==nw){vEl.textContent=nw;vEl.classList.remove('bump');void vEl.offsetWidth;vEl.classList.add('bump');}}
+ });
+
+ // subtotals
+ CATS.forEach(c=>{const s=document.querySelector(`[data-sub="${c.k}"]`);if(s)s.textContent=fmt(catValue(c).total);});
+ const bp=document.querySelector('[data-v="byprod"]');if(bp)bp.textContent=fmt(catValue(CATS.find(c=>c.k==='byprod')).total);
+ const kg=document.querySelector('[data-v="kitchen"]');if(kg)kg.textContent=fmt(catValue(CATS.find(c=>c.k==='kitchen')).total);
+
+ const vo=valueOfOutput();
+ const inp=parseFloat(document.getElementById('inpTotal').value)||0;
+ const unadj=vo-inp;
+ const fp=parseFloat(document.getElementById('fisimPct').value)||0;
+ const fisim=unadj*fp/100, adj=unadj-fisim;
+
+ document.getElementById('s2vo').textContent='₹ '+fmt(vo)+' lakh';
+ document.getElementById('s2unadj').textContent='₹ '+fmt(unadj)+' lakh';
+ document.getElementById('s3unadj').textContent='₹ '+fmt(unadj)+' lakh';
+ document.getElementById('s3amt').textContent='− ₹ '+fmt(fisim)+' lakh';
+
+ // one-line whys
+ document.getElementById('why0').innerHTML=`<b>Why ₹ ${fmt(vo)} lakh?</b> It is every crop's production × its price, summed across all 12 categories — the gross worth of everything the district's fields produced.`;
+ document.getElementById('why1').innerHTML=`<b>Why subtract ₹ ${fmt(inp)} lakh?</b> Seed, fertiliser and fuel were bought, not created — GVA only counts the value the district <i>added</i> on top of them.`;
+ document.getElementById('why2').innerHTML=`<b>Why remove ₹ ${fmt(fisim)} lakh?</b> FISIM is the hidden cost of bank credit used in farming (${fp}% of unadjusted GVA) — national accounts move it to the finance sector so it isn't counted twice.`;
+ document.getElementById('why3').innerHTML=`<b>Why ₹ ${fmt(adj)} lakh?</b> Output ₹ ${fmt(vo)} − inputs ₹ ${fmt(inp)} − FISIM ₹ ${fmt(fisim)} = the crop sector's true contribution to the district economy.`;
+
+ // trail on final panel
+ document.getElementById('trail').innerHTML=
+  `<div class="t"><span>Value of output</span><span class="a">₹ ${fmt(vo)}</span></div>
+   <div class="t neg"><span>− Total input</span><span class="a">₹ ${fmt(inp)}</span></div>
+   <div class="t neg"><span>− FISIM (${fp}%)</span><span class="a">₹ ${fmt(fisim)}</span></div>
+   <div class="t fin"><span>Adjusted district crop GVA</span><span class="a">₹ ${fmt(adj)}</span></div>`;
+
+ return {vo,inp,unadj,fisim,adj};
+}
+
+/* animated counters */
+function countTo(el,target,dur=800){
+ const start=parseFloat((el.textContent||'0').replace(/[^\d.-]/g,''))||0;
+ const t0=performance.now();
+ function f(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);
+  el.textContent=fmt(start+(target-start)*e);
+  if(p<1)requestAnimationFrame(f);}
+ requestAnimationFrame(f);
+}
+
+/* wizard */
+let step=0;
+function go(s){
+ const r=recalc();
+ step=s;
+ document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('on',+p.dataset.p===s));
+ document.querySelectorAll('#rail button').forEach(b=>{
+  const i=+b.dataset.s;
+  b.classList.toggle('active',i===s);
+  b.classList.toggle('done',i<s);
+ });
+ const tickTargets=[r.vo,r.unadj,r.unadj-r.fisim,r.adj];
+ countTo(document.getElementById('tick'),tickTargets[s]);
+ if(s===3)countTo(document.getElementById('finalN'),r.adj,1200);
+ document.querySelector('.machine').scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.getElementById('rail').addEventListener('click',e=>{const b=e.target.closest('button');if(b)go(+b.dataset.s);});
+
+function resetAll(){buildRows();buildAssume();document.getElementById('inpTotal').value=10000;document.getElementById('fisimPct').value=5.79;bind();go(0);}
+function bind(){document.querySelectorAll('input').forEach(el=>el.addEventListener('input',()=>{const r=recalc();const t=[r.vo,r.unadj,r.unadj-r.fisim,r.adj];countTo(document.getElementById('tick'),t[step],400);if(step===3)countTo(document.getElementById('finalN'),r.adj,500);}));}
+
+buildRows();buildAssume();bind();
+const r0=recalc();countTo(document.getElementById('tick'),r0.vo,1200);
+
+/* hero lottie */
+try{lottie.loadAnimation({container:document.getElementById('lot'),renderer:'svg',loop:true,autoplay:true,path:'crop-gold.json'});}catch(e){}
+</script>
+</body>
+</html>

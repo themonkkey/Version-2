@@ -32,9 +32,10 @@
      in for the generic system-font stack every AI-built page defaults to. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.4.0/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="calculator/chassis.css">
 <style>
 :root{
   --bg:#EEF1F0;
@@ -4065,65 +4066,83 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         </aside>
       </div>
 
-      <!-- A and B sit side by side on a wide screen. Stacked, each row put its
-           two small inputs ~700px away from the label they belong to; paired,
-           the label and its fields stay together and the panel is not half
-           empty. Each keeps its own heading, so the split stays legible. -->
-      <p class="fc-samplenote" id="fc_samplenote">
-        <i class="ti ti-flask"></i>
-        <span><b>Sample figures are loaded.</b> They are illustrative only, not any
-        district's landings. Press Calculate GVA to see the method run end to end,
-        then clear them and enter your own.</span>
-      </p>
+      <!-- The flat form became a calculator object: the widget.html chassis
+           (shell, LCD, lamps, keypad) rethemed to the site's dark-green + lime
+           tokens, with the same fieldsets and ids living inside its steps so
+           the fisheries engine below is untouched. Behavior is wired by
+           calculator/chassis.js at the foot of the page. -->
+      <div class="gvac-stage">
+      <div class="gvac-calc" id="fc_shell">
+        <span class="gvac-screw tl"></span><span class="gvac-screw tr"></span><span class="gvac-screw bl"></span><span class="gvac-screw br"></span>
+        <div class="gvac-badge">
+          <span class="gvac-brand">Fisheries GVA</span>
+          <span class="gvac-badge-r"><span class="gvac-model" data-no-i18n>FISH · ₹ LAKH</span>
+            <span class="gvac-solar"><i></i><i></i><i></i><i></i></span></span>
+        </div>
+        <div class="gvac-lcd" id="fc_lcd">
+          <div class="gvac-tag"><span class="gvac-glass" id="fc_lcdlab" data-no-i18n>PRODUCTION &amp; PRICES</span></div>
+          <div class="gvac-mid">
+            <div class="gvac-stepbig gvac-glass" data-no-i18n><small>STEP</small><span id="fc_lcdstep">1</span>/<span id="fc_lcdtot">4</span></div>
+            <div class="gvac-num" data-no-i18n><span id="fc_lcdnum">0</span><small>₹ L</small></div>
+          </div>
+          <div class="gvac-op" id="fc_lcdop" data-no-i18n>Σ raw production × price</div>
+        </div>
+        <div class="gvac-lamps" id="fc_lamps" aria-hidden="true"></div>
+        <div class="gvac-samplerow">
+          <button class="gvac-chip" id="fc_sample" type="button">
+            <span class="gvac-led"></span> Load sample figures</button>
+          <button class="gvac-chip clear" id="fc_clearall" type="button">
+            <i class="ti ti-eraser"></i> Clear entries</button>
+        </div>
+        <div class="gvac-well"><div class="gvac-face">
 
-      <div class="fc-inputs">
-        <div class="calc-fieldset">
-          <h4>A · Production &amp; average price</h4>
-          <p class="calc-hint" style="margin:-2px 0 10px">Enter what the district actually landed this year. Leave a species at zero if it does not apply.</p>
-          <div id="fc_species"></div>
+        <div class="gvac-step on" data-s="0" role="group" aria-label="Step 1: production and average price">
+          <div class="gvac-head"><h3><span class="gvac-k">1</span>Production &amp; average price</h3>
+            <p class="gvac-sub">Tonnes × ₹/tonne · by species</p></div>
+          <p class="fc-samplenote" id="fc_samplenote">
+            <i class="ti ti-flask"></i>
+            <span><b>Sample figures are loaded.</b> They are illustrative only, not any
+            district's landings. Step through to see the method run end to end,
+            then clear them and enter your own.</span>
+          </p>
+          <div class="calc-fieldset">
+            <p class="calc-hint" style="margin:-2px 0 10px">Enter what the district actually landed this year. Leave a species at zero if it does not apply.</p>
+            <div id="fc_species"></div>
+          </div>
         </div>
 
-        <div class="calc-fieldset">
-          <h4>B · Processed-product prices</h4>
-          <p class="calc-hint" style="margin:-2px 0 10px">Only needed where that species is actually processed that way; the raw-form price above already covers what is sold fresh. Left blank, that stream contributes nothing rather than blocking the rest.</p>
-          <div id="fc_proc"></div>
+        <div class="gvac-step" data-s="1" role="group" aria-label="Step 2: processed-product prices">
+          <div class="gvac-head"><h3><span class="gvac-k">2</span>Processed-product prices</h3>
+            <p class="gvac-sub">Raw + salted + dried + frozen = gross output</p></div>
+          <div class="calc-fieldset">
+            <p class="calc-hint" style="margin:-2px 0 10px">Only needed where that species is actually processed that way; the raw-form price already covers what is sold fresh. Left blank, that stream contributes nothing rather than blocking the rest.</p>
+            <div id="fc_proc"></div>
+          </div>
         </div>
-      </div>
 
-      <div class="calc-fieldset">
-        <label class="cf"><span>Less: FISIM</span>
-          <span class="cf-pre">₹</span><input type="number" id="fc_fisim" value="0" min="0" step="any"><span class="cf-suf">lakh</span></label>
-        <p class="calc-hint">Financial Intermediation Services Indirectly Measured: the imputed banking-service charge national accounting nets out of every sector's GVA.</p>
-      </div>
+        <div class="gvac-step" data-s="2" role="group" aria-label="Step 3: ratios and FISIM">
+          <div class="gvac-head"><h3><span class="gvac-k">3</span>Ratios &amp; FISIM</h3>
+            <p class="gvac-sub">Output − intermediate consumption − FISIM</p></div>
+          <div class="calc-fieldset">
+            <label class="cf"><span>Less: FISIM</span>
+              <span class="cf-pre">₹</span><input type="number" id="fc_fisim" value="0" min="0" step="any"><span class="cf-suf">lakh</span></label>
+            <p class="calc-hint">Financial Intermediation Services Indirectly Measured: the imputed banking-service charge national accounting nets out of every sector's GVA.</p>
+          </div>
+          <details class="fc-assump">
+            <summary>
+              <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
+              <span class="fc-assump-t">Ratios applied
+                <span class="fc-assump-hint">The workbook's own ratios. Edit only if your district's are known to differ.</span></span>
+              <span class="fc-assump-act">
+                <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
+                <i class="ti ti-chevron-down chev"></i></span>
+            </summary>
+            <div id="fc_ratios"></div>
+            <button class="calc-add" id="fc_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook's defaults</button>
+          </details>
+        </div>
 
-      <details class="fc-assump">
-        <summary>
-          <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
-          <span class="fc-assump-t">Ratios applied
-            <span class="fc-assump-hint">The workbook's own ratios. Edit only if your district's are known to differ.</span></span>
-          <span class="fc-assump-act">
-            <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
-            <i class="ti ti-chevron-down chev"></i></span>
-        </summary>
-        <div id="fc_ratios"></div>
-        <button class="calc-add" id="fc_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook's defaults</button>
-      </details>
-
-      <!-- Press to calculate. The panel used to recompute on every keystroke,
-           which meant a half-typed "1" in a price field briefly showed a real
-           looking answer. Now nothing is claimed until it is asked for, and if
-           an input changes afterwards the result is marked stale rather than
-           silently drifting out of step with the fields above it. -->
-      <div class="fc-actions">
-        <button class="fc-go" id="fc_calc" type="button">
-          <i class="ti ti-equal"></i> Calculate GVA</button>
-        <button class="fc-clear" id="fc_sample" type="button">
-          <i class="ti ti-flask"></i> Load sample figures</button>
-        <button class="fc-clear" id="fc_clearall" type="button">
-          <i class="ti ti-eraser"></i> Clear entries</button>
-        <span class="fc-state" id="fc_state" role="status" aria-live="polite"></span>
-      </div>
-
+        <div class="gvac-step" data-s="3" role="group" aria-label="Step 4: the result">
       <div class="fc-out is-empty" id="fc_out">
       <div class="fc-placeholder">
         <i class="ti ti-calculator"></i>
@@ -4175,6 +4194,23 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       </div>
       </div><!-- /.fc-outbody -->
       </div><!-- /.fc-out -->
+        </div><!-- /.gvac-step result -->
+
+        </div></div><!-- /.gvac-face /.gvac-well -->
+        <!-- Kept for the Enter key and the state wiring; NEXT into the result
+             step presses it. -->
+        <button id="fc_calc" type="button" hidden tabindex="-1">Calculate GVA</button>
+        <div class="gvac-pad">
+          <button class="gvac-kbtn gvac-ac" id="fc_ac" type="button">AC · STEP 1</button>
+          <button class="gvac-kbtn" id="fc_back" type="button">← BACK</button>
+          <button class="gvac-kbtn gvac-eq" id="fc_next" type="button" data-no-i18n>NEXT ▸</button>
+        </div>
+        <div class="gvac-foot">
+          <span class="fc-state" id="fc_state" role="status" aria-live="polite"></span>
+          <span>Same formulas as the Excel workbook</span>
+        </div>
+      </div>
+      </div><!-- /.gvac-calc /.gvac-stage -->
     </div>
 
     <!-- LIVESTOCK - traced from the Livestock_GVA Estimator workbook: nine
@@ -4201,39 +4237,62 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         </aside>
       </div>
 
-      <p class="fc-samplenote is-off" id="ls_samplenote">
-        <i class="ti ti-flask"></i>
-        <span><b>Sample figures are loaded.</b> They are illustrative only, not any
-        district&#39;s production. Press Calculate GVA to see the method run end to end,
-        then clear them and enter your own.</span>
-      </p>
+      <div class="gvac-stage">
+      <div class="gvac-calc" id="ls_shell">
+        <span class="gvac-screw tl"></span><span class="gvac-screw tr"></span><span class="gvac-screw bl"></span><span class="gvac-screw br"></span>
+        <div class="gvac-badge">
+          <span class="gvac-brand">Livestock GVA</span>
+          <span class="gvac-badge-r"><span class="gvac-model" data-no-i18n>LVSK · ₹ LAKH</span>
+            <span class="gvac-solar"><i></i><i></i><i></i><i></i></span></span>
+        </div>
+        <div class="gvac-lcd" id="ls_lcd">
+          <div class="gvac-tag"><span class="gvac-glass" id="ls_lcdlab" data-no-i18n>PRODUCTS &amp; COSTS</span></div>
+          <div class="gvac-mid">
+            <div class="gvac-stepbig gvac-glass" data-no-i18n><small>STEP</small><span id="ls_lcdstep">1</span>/<span id="ls_lcdtot">3</span></div>
+            <div class="gvac-num" data-no-i18n><span id="ls_lcdnum">0</span><small>₹ L</small></div>
+          </div>
+          <div class="gvac-op" id="ls_lcdop" data-no-i18n>gross value of output</div>
+        </div>
+        <div class="gvac-lamps" id="ls_lamps" aria-hidden="true"></div>
+        <div class="gvac-samplerow">
+          <button class="gvac-chip" id="ls_sample" type="button">
+            <span class="gvac-led"></span> Load sample figures</button>
+          <button class="gvac-chip clear" id="ls_clearall" type="button">
+            <i class="ti ti-eraser"></i> Clear entries</button>
+        </div>
+        <div class="gvac-well"><div class="gvac-face">
 
-      <div id="ls_sections"></div>
+        <div class="gvac-step on" data-s="0" role="group" aria-label="Step 1: products and costs">
+          <div class="gvac-head"><h3><span class="gvac-k">1</span>Products &amp; costs</h3>
+            <p class="gvac-sub">Milk to increment in stock · workbook units</p></div>
+          <p class="fc-samplenote is-off" id="ls_samplenote">
+            <i class="ti ti-flask"></i>
+            <span><b>Sample figures are loaded.</b> They are illustrative only, not any
+            district&#39;s production. Step through to see the method run end to end,
+            then clear them and enter your own.</span>
+          </p>
+          <div id="ls_sections"></div>
+        </div>
 
-      <details class="fc-assump">
-        <summary>
-          <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
-          <span class="fc-assump-t">Ratios applied
-            <span class="fc-assump-hint">The workbook&#39;s own ratios. Edit only if your district&#39;s are known to differ.</span></span>
-          <span class="fc-assump-act">
-            <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
-            <i class="ti ti-chevron-down chev"></i></span>
-        </summary>
-        <div id="ls_ratios"></div>
-        <div id="ls_byp"></div>
-        <button class="calc-add" id="ls_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook&#39;s defaults</button>
-      </details>
+        <div class="gvac-step" data-s="1" role="group" aria-label="Step 2: ratios applied">
+          <div class="gvac-head"><h3><span class="gvac-k">2</span>Ratios applied</h3>
+            <p class="gvac-sub">GVO − inputs − FISIM</p></div>
+          <details class="fc-assump">
+            <summary>
+              <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
+              <span class="fc-assump-t">Ratios applied
+                <span class="fc-assump-hint">The workbook&#39;s own ratios. Edit only if your district&#39;s are known to differ.</span></span>
+              <span class="fc-assump-act">
+                <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
+                <i class="ti ti-chevron-down chev"></i></span>
+            </summary>
+            <div id="ls_ratios"></div>
+            <div id="ls_byp"></div>
+            <button class="calc-add" id="ls_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook&#39;s defaults</button>
+          </details>
+        </div>
 
-      <div class="fc-actions">
-        <button class="fc-go" id="ls_calc" type="button">
-          <i class="ti ti-equal"></i> Calculate GVA</button>
-        <button class="fc-clear" id="ls_sample" type="button">
-          <i class="ti ti-flask"></i> Load sample figures</button>
-        <button class="fc-clear" id="ls_clearall" type="button">
-          <i class="ti ti-eraser"></i> Clear entries</button>
-        <span class="fc-state" id="ls_state" role="status" aria-live="polite"></span>
-      </div>
-
+        <div class="gvac-step" data-s="2" role="group" aria-label="Step 3: the result">
       <div class="fc-out is-empty" id="ls_out">
       <div class="fc-placeholder">
         <i class="ti ti-calculator"></i>
@@ -4264,6 +4323,21 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <p class="calc-note" id="ls_flag"></p>
       </div><!-- /.fc-outbody -->
       </div><!-- /.fc-out -->
+        </div><!-- /.gvac-step result -->
+
+        </div></div><!-- /.gvac-face /.gvac-well -->
+        <button id="ls_calc" type="button" hidden tabindex="-1">Calculate GVA</button>
+        <div class="gvac-pad">
+          <button class="gvac-kbtn gvac-ac" id="ls_ac" type="button">AC · STEP 1</button>
+          <button class="gvac-kbtn" id="ls_back" type="button">← BACK</button>
+          <button class="gvac-kbtn gvac-eq" id="ls_next" type="button" data-no-i18n>NEXT ▸</button>
+        </div>
+        <div class="gvac-foot">
+          <span class="fc-state" id="ls_state" role="status" aria-live="polite"></span>
+          <span>Same formulas as the Excel workbook</span>
+        </div>
+      </div>
+      </div><!-- /.gvac-calc /.gvac-stage -->
     </div>
 
     <!-- CROPS - traced from the District Crop GVA Calculator workbook: twelve
@@ -4291,44 +4365,70 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         </aside>
       </div>
 
-      <p class="fc-samplenote is-off" id="cr_samplenote">
-        <i class="ti ti-flask"></i>
-        <span><b>The workbook&#39;s own figures are loaded.</b> They are the district data
-        already sitting in the sheet, so you can check this tool against the Excel
-        line for line, then clear them and enter your own.</span>
-      </p>
+      <div class="gvac-stage">
+      <div class="gvac-calc" id="cr_shell">
+        <span class="gvac-screw tl"></span><span class="gvac-screw tr"></span><span class="gvac-screw bl"></span><span class="gvac-screw br"></span>
+        <div class="gvac-badge">
+          <span class="gvac-brand">Crop GVA</span>
+          <span class="gvac-badge-r"><span class="gvac-model" data-no-i18n>CROP · ₹ LAKH</span>
+            <span class="gvac-solar"><i></i><i></i><i></i><i></i></span></span>
+        </div>
+        <div class="gvac-lcd" id="cr_lcd">
+          <div class="gvac-tag"><span class="gvac-glass" id="cr_lcdlab" data-no-i18n>DISTRICT TOTALS</span></div>
+          <div class="gvac-mid">
+            <div class="gvac-stepbig gvac-glass" data-no-i18n><small>STEP</small><span id="cr_lcdstep">1</span>/<span id="cr_lcdtot">4</span></div>
+            <div class="gvac-num" data-no-i18n><span id="cr_lcdnum">0</span><small>₹ L</small></div>
+          </div>
+          <div class="gvac-op" id="cr_lcdop" data-no-i18n>total input cost</div>
+        </div>
+        <div class="gvac-lamps" id="cr_lamps" aria-hidden="true"></div>
+        <div class="gvac-samplerow">
+          <button class="gvac-chip" id="cr_sample" type="button">
+            <span class="gvac-led"></span> Load the workbook&#39;s figures</button>
+          <button class="gvac-chip clear" id="cr_clearall" type="button">
+            <i class="ti ti-eraser"></i> Clear entries</button>
+        </div>
+        <div class="gvac-well"><div class="gvac-face">
 
-      <div class="calc-fieldset">
-        <h4>District totals</h4>
-        <div class="fc-shead"><span>Item</span><span>Value</span><span></span></div>
-        <div id="cr_macro"></div>
-      </div>
+        <div class="gvac-step on" data-s="0" role="group" aria-label="Step 1: district totals">
+          <div class="gvac-head"><h3><span class="gvac-k">1</span>District totals</h3>
+            <p class="gvac-sub">Sugarcane, tobacco base, inputs &amp; FISIM ratio</p></div>
+          <p class="fc-samplenote is-off" id="cr_samplenote">
+            <i class="ti ti-flask"></i>
+            <span><b>The workbook&#39;s own figures are loaded.</b> They are the district data
+            already sitting in the sheet, so you can check this tool against the Excel
+            line for line, then clear them and enter your own.</span>
+          </p>
+          <div class="calc-fieldset">
+            <div class="fc-shead"><span>Item</span><span>Value</span><span></span></div>
+            <div id="cr_macro"></div>
+          </div>
+        </div>
 
-      <div id="cr_groups"></div>
+        <div class="gvac-step" data-s="1" role="group" aria-label="Step 2: crop groups">
+          <div class="gvac-head"><h3><span class="gvac-k">2</span>Crop groups</h3>
+            <p class="gvac-sub">Twelve groups · production × price ÷ 100</p></div>
+          <div id="cr_groups"></div>
+        </div>
 
-      <details class="fc-assump">
-        <summary>
-          <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
-          <span class="fc-assump-t">Ratios applied
-            <span class="fc-assump-hint">The workbook&#39;s own ratios and price conversions. Edit only if your district&#39;s are known to differ.</span></span>
-          <span class="fc-assump-act">
-            <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
-            <i class="ti ti-chevron-down chev"></i></span>
-        </summary>
-        <div id="cr_ratios"></div>
-        <button class="calc-add" id="cr_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook&#39;s defaults</button>
-      </details>
+        <div class="gvac-step" data-s="2" role="group" aria-label="Step 3: ratios applied">
+          <div class="gvac-head"><h3><span class="gvac-k">3</span>Ratios applied</h3>
+            <p class="gvac-sub">Derived prices &amp; conversions</p></div>
+          <details class="fc-assump">
+            <summary>
+              <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
+              <span class="fc-assump-t">Ratios applied
+                <span class="fc-assump-hint">The workbook&#39;s own ratios and price conversions. Edit only if your district&#39;s are known to differ.</span></span>
+              <span class="fc-assump-act">
+                <span class="lbl-open">Show</span><span class="lbl-close">Hide</span>
+                <i class="ti ti-chevron-down chev"></i></span>
+            </summary>
+            <div id="cr_ratios"></div>
+            <button class="calc-add" id="cr_reset" type="button"><i class="ti ti-refresh"></i> Reset to the workbook&#39;s defaults</button>
+          </details>
+        </div>
 
-      <div class="fc-actions">
-        <button class="fc-go" id="cr_calc" type="button">
-          <i class="ti ti-equal"></i> Calculate GVA</button>
-        <button class="fc-clear" id="cr_sample" type="button">
-          <i class="ti ti-flask"></i> Load the workbook&#39;s figures</button>
-        <button class="fc-clear" id="cr_clearall" type="button">
-          <i class="ti ti-eraser"></i> Clear entries</button>
-        <span class="fc-state" id="cr_state" role="status" aria-live="polite"></span>
-      </div>
-
+        <div class="gvac-step" data-s="3" role="group" aria-label="Step 4: the result">
       <div class="fc-out is-empty" id="cr_out">
       <div class="fc-placeholder">
         <i class="ti ti-calculator"></i>
@@ -4358,6 +4458,21 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <p class="calc-note" id="cr_flag"></p>
       </div><!-- /.fc-outbody -->
       </div><!-- /.fc-out -->
+        </div><!-- /.gvac-step result -->
+
+        </div></div><!-- /.gvac-face /.gvac-well -->
+        <button id="cr_calc" type="button" hidden tabindex="-1">Calculate GVA</button>
+        <div class="gvac-pad">
+          <button class="gvac-kbtn gvac-ac" id="cr_ac" type="button">AC · STEP 1</button>
+          <button class="gvac-kbtn" id="cr_back" type="button">← BACK</button>
+          <button class="gvac-kbtn gvac-eq" id="cr_next" type="button" data-no-i18n>NEXT ▸</button>
+        </div>
+        <div class="gvac-foot">
+          <span class="fc-state" id="cr_state" role="status" aria-live="polite"></span>
+          <span>Same formulas as the Excel workbook</span>
+        </div>
+      </div>
+      </div><!-- /.gvac-calc /.gvac-stage -->
     </div>
   </div></section>
 </div>
@@ -8733,6 +8848,8 @@ window.__loadCapacity = function(){ loadCapacity(); };
         flag.innerHTML = '<b>Note:</b> the source workbook’s own "GVA (unadjusted)" cell carries no formula; ' +
           'this fills it with the standard Output − Intermediate Consumption identity.';
       }
+      /* Stage figures for the chassis LCD: raw output, GVO, unadjusted, adjusted. */
+      window.__gvaStages_fc = [rawTotal, gvo, gvaUnadjusted, gvaAdjusted];
       return gvaAdjusted;   // the benchmark compares against this
     }
 
@@ -9217,6 +9334,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
         flag.innerHTML = '<b>Note:</b> meat products and by-products are valued as fixed shares of each ' +
           'species’ meat value, exactly as the workbook’s ratio matrix applies them.';
       }
+      window.__gvaStages_ls = [gvo, unadj, adjusted];
       return adjusted;
     }
 
@@ -9694,6 +9812,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
           'The cotton by-product line is valued as area times value per hectare, as its '+
           'column headings say; the sheet points at an empty cell, so it always returns zero.';
       }
+      window.__gvaStages_cr = [r.inputs, r.total, r.unadj, r.adjusted];
       return r.adjusted;
     }
 
@@ -9766,19 +9885,30 @@ window.__loadCapacity = function(){ loadCapacity(); };
       });
     })();
 
-    root.addEventListener('input', markStale);
-    root.addEventListener('change', markStale);
-    // Enter anywhere in the form calculates, as it would in a spreadsheet.
-    root.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' && e.target.tagName === 'INPUT'){
-        e.preventDefault();
-        doCalculate();
-      }
-    });
+    /* Scoped to the fisheries panel, not the whole page: livestock and crops
+       carry their own identical listeners, and page-wide ones fired the
+       fisheries stale/calculate path from every panel. */
+    if(fishHost){
+      fishHost.addEventListener('input', markStale);
+      fishHost.addEventListener('change', markStale);
+      // Enter anywhere in the form calculates, as it would in a spreadsheet.
+      fishHost.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' && e.target.tagName === 'INPUT'){
+          e.preventDefault();
+          doCalculate();
+        }
+      });
+    }
 
     // Populate the result nodes once so the markup is never empty behind the
     // placeholder, but leave the panel in its empty state.
     recalc();
+
+    /* The chassis (calculator/chassis.js) reads each sector's stage figures
+       through these; the engines stay private to this IIFE. */
+    window.__gvaCompute_fc = function(){ fisheries(); return window.__gvaStages_fc || []; };
+    window.__gvaCompute_ls = function(){ livestock(); return window.__gvaStages_ls || []; };
+    window.__gvaCompute_cr = function(){ crops();     return window.__gvaStages_cr || []; };
   })();
 
   function setTab(which, fromNav){
@@ -9824,6 +9954,32 @@ window.__loadCapacity = function(){ loadCapacity(); };
 })();
 
 
+</script>
+<script src="calculator/chassis.js"></script>
+<script>
+/* Three chassis instances, one per sector. Labels and formulas are LCD copy;
+   the figures come from the engines via window.__gvaCompute_*. */
+(function(){
+  if(!window.makeGvaChassis) return;
+  makeGvaChassis({
+    prefix:'fc', calcId:'fc_calc', sampleId:'fc_sample', clearId:'fc_clearall',
+    labels:['PRODUCTION & PRICES','PROCESSED PRODUCTS','RATIOS & FISIM','ADJUSTED GVA ✓'],
+    ops:['Σ raw production × price','gross value of output','GVA before FISIM','output − IC − FISIM'],
+    compute:function(){ return window.__gvaCompute_fc ? window.__gvaCompute_fc() : []; }
+  });
+  makeGvaChassis({
+    prefix:'ls', calcId:'ls_calc', sampleId:'ls_sample', clearId:'ls_clearall',
+    labels:['PRODUCTS & COSTS','RATIOS APPLIED','ADJUSTED GVA ✓'],
+    ops:['gross value of output','GVA before FISIM','GVO − inputs − FISIM'],
+    compute:function(){ return window.__gvaCompute_ls ? window.__gvaCompute_ls() : []; }
+  });
+  makeGvaChassis({
+    prefix:'cr', calcId:'cr_calc', sampleId:'cr_sample', clearId:'cr_clearall',
+    labels:['DISTRICT TOTALS','CROP GROUPS','RATIOS APPLIED','ADJUSTED GVA ✓'],
+    ops:['total input cost','Σ value of output','GVA before FISIM','output − inputs − FISIM'],
+    compute:function(){ return window.__gvaCompute_cr ? window.__gvaCompute_cr() : []; }
+  });
+})();
 </script>
 </body>
 </html>
