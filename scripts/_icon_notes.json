@@ -1,0 +1,2073 @@
+{
+ "decks": [
+  {
+   "slug": "banana-processing",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Cover — Banana Processing & Waste-to-Wealth Models",
+     "current_icon": "none",
+     "proposed_icon": "whole banana plant: a fruit bunch (hand of bananas) crowning a thick pseudostem trunk with one broad leaf",
+     "motion": "leaf and bunch sway gently, ~3s ease loop",
+     "why": "Hero for the deck's core thesis: banana is a full plant value chain (fruit + pseudostem), the two things every later slide draws from"
+    },
+    {
+     "n": 2,
+     "title": "Agenda — Contents (11 sections)",
+     "current_icon": "none",
+     "proposed_icon": "a furled banana leaf unrolling to reveal ruled lines like a rolled list",
+     "motion": "leaf unfurls left-to-right revealing lines, ~2.5s",
+     "why": "Table of contents; a banana leaf as the 'page' keeps the botanical family without repeating the cover plant"
+    },
+    {
+     "n": 3,
+     "title": "01 Waste → Income",
+     "current_icon": "compass",
+     "proposed_icon": "a discarded pseudostem cross-section on the left with an arrow sweeping into a single coin on the right",
+     "motion": "arrow sweeps, coin glints on arrival, ~2.5s",
+     "why": "Depicts the three pair-mappings Waste→Income, Fruits→Food, Pseudostem→Fibre+Sap+Compost as one waste-to-value transformation"
+    },
+    {
+     "n": 4,
+     "title": "02 Why banana processing matters",
+     "current_icon": "arrows",
+     "proposed_icon": "a banana slice sealed inside a screw-top jar (preserved product)",
+     "motion": "jar lid twists down and seals with a small shine, ~2.5s",
+     "why": "Lead block is 'Shelf-life — converts perishable banana into marketable foods'; a sealed jar shows perishable fruit made storable"
+    },
+    {
+     "n": 5,
+     "title": "02 CONT — Officer takeaway: full value chain",
+     "current_icon": "arrows",
+     "proposed_icon": "a stem node fanning into four labelled by-product sprigs (flower, fibre strand, sap drop, core)",
+     "motion": "four sprigs fan open from the node in sequence, ~3s",
+     "why": "Callout says fruit, flower, pseudo-stem, fibre, sap, scutcher and core each become income — a fan of whole-plant components"
+    },
+    {
+     "n": 6,
+     "title": "03 Case Study 1: KVK Kanyakumari product basket",
+     "current_icon": "arrows",
+     "proposed_icon": "a woven tray holding banana food products — a chip, a candy piece and a small pickle jar",
+     "motion": "the three products settle into the tray one by one, ~2.5s",
+     "why": "Slide lists the KVK product basket (pickle, candy, halwa, powder, vadagam) shown to farmers"
+    },
+    {
+     "n": 7,
+     "title": "03 CONT — Why it is practical",
+     "current_icon": "arrows",
+     "proposed_icon": "two cupped hands lifting a finished banana product jar (SHG/farm-woman enterprise)",
+     "motion": "hands rise slightly, jar gleams, ~2.5s",
+     "why": "Block stresses SHG/FPO training, low capital, farm women and rural youth as the practical operators"
+    },
+    {
+     "n": 8,
+     "title": "04 How the Kanyakumari model works (steps)",
+     "current_icon": "key",
+     "proposed_icon": "a banana travelling along a 4-notch arrow into a labelled retail pack",
+     "motion": "banana slides along the arrow, pack label pops at the end, ~3s",
+     "why": "Four steps Mobilise → Train → Standardise → Market: raw fruit becoming a marketed packaged good"
+    },
+    {
+     "n": 9,
+     "title": "04 CONT — District/Mandal officer role",
+     "current_icon": "key",
+     "proposed_icon": "a product hang-tag stamped with a checkmark (FSSAI / brand / bookkeeping)",
+     "motion": "the checkmark draws itself on the tag, ~2s",
+     "why": "Role list is FSSAI registration, packaging, brand name, monthly review — compliance and standardisation stamped onto the product"
+    },
+    {
+     "n": 10,
+     "title": "05 Case Study 2: Jalgaon — the problem",
+     "current_icon": "arrows",
+     "proposed_icon": "a pile of cut pseudostem stalks with a thin wisp of smoke rising (burnt waste)",
+     "motion": "smoke wisp curls upward slowly, ~3s",
+     "why": "THE PROBLEM: pseudo-stem thrown on field boundaries and burnt; 38.5 lakh MT biomass wasted annually"
+    },
+    {
+     "n": 11,
+     "title": "05 CONT — Jalgaon stats",
+     "current_icon": "arrows",
+     "proposed_icon": "a bundle of pseudostem on a weighing scale pan with a small ₹ tag",
+     "motion": "scale pan dips and settles to a reading, ~2.5s",
+     "why": "Stats are tonnage-per-hectare, hectares, clusters and ₹500/MT paid to growers — weight converted to a rate"
+    },
+    {
+     "n": 12,
+     "title": "06 Institutional model: decentralised units + central processing",
+     "current_icon": "key",
+     "proposed_icon": "three small cottage-unit sheds linked by lines up to one larger central co-op building",
+     "motion": "link lines light upward from sheds to the hub, ~3s",
+     "why": "Hierarchy growers → SHG → cottage units → Tapti Valley Co-operative → university: decentralised units feeding a central body"
+    },
+    {
+     "n": 13,
+     "title": "06 CONT — Standard cottage unit package",
+     "current_icon": "key",
+     "proposed_icon": "a fibre-extraction machine (roller with feeding stalk) inside a shed outline",
+     "motion": "the extraction roller rotates and a fibre strand feeds through, ~3s",
+     "why": "Package spec lists the shed plus 10 fibre-extraction machines, splitters, sap press and compost pits — the equipped unit"
+    },
+    {
+     "n": 14,
+     "title": "07 Jalgaon value chain: every component gets a use",
+     "current_icon": "compass",
+     "proposed_icon": "a pseudostem cross-section radiating four branches — fibre strands, a sap droplet, a compost clump, a core piece",
+     "motion": "the four branches extend outward one after another, ~3s",
+     "why": "Fanout: Pseudo-stem → Fibre / Sap / Scutcher / Central core, each splitting to end-products"
+    },
+    {
+     "n": 15,
+     "title": "08 Impact: zero-value waste to saleable products",
+     "current_icon": "compass",
+     "proposed_icon": "a row of product vessels — a sap bottle, a fibre bale and a compost sack — with rising fill levels",
+     "motion": "fill levels rise and a small 'sold' tick lands, ~3s",
+     "why": "Impact table quantifies fibre kg, sap L, Tapti Amrut, compost and vermicompost produced and sold"
+    },
+    {
+     "n": 16,
+     "title": "08 CONT — Impact pathway",
+     "current_icon": "compass",
+     "proposed_icon": "a circular arrow: pseudostem leaving the field at top, compost/sap droplet returning to the field at bottom",
+     "motion": "the loop rotates once slowly, ~3.5s",
+     "why": "Pathway: farmer earns, jobs created, sap and scutcher return to farming as inputs, central processing brands — a closed loop"
+    },
+    {
+     "n": 17,
+     "title": "09 Lessons for AP officials (cards)",
+     "current_icon": "book",
+     "proposed_icon": "a cluster of map pins gathered tightly around a small banana grove",
+     "motion": "pins drop in and cluster, ~2.5s",
+     "why": "First and governing lesson is 'Start with clusters — select banana-dense villages' for raw-material aggregation"
+    },
+    {
+     "n": 18,
+     "title": "10 How AP districts can adapt the models",
+     "current_icon": "key",
+     "proposed_icon": "a banana forking into two diverging roads — one ending in a food packet, the other in a fibre spool",
+     "motion": "the two paths glow alternately, ~3s",
+     "why": "Compare of two adaptation routes: fresh-banana food processing vs pseudo-stem processing, plus district enablers"
+    },
+    {
+     "n": 19,
+     "title": "11 Monitoring checklist: review every month",
+     "current_icon": "key",
+     "proposed_icon": "a gauge dial with a banana at its centre and a needle over input/output/outcome bands",
+     "motion": "needle sweeps across the bands and settles, ~2.5s",
+     "why": "Three KPI groups (input & process, output, outcome) — a monthly-review dashboard reading"
+    },
+    {
+     "n": 20,
+     "title": "11 CONT — Closing message / action after training",
+     "current_icon": "key",
+     "proposed_icon": "a rising staircase of banana-stem bars climbing into a small worker figure (jobs)",
+     "motion": "bars grow upward in sequence, figure appears at top, ~3s",
+     "why": "Message: move from production monitoring to income, enterprise and employment generation"
+    },
+    {
+     "n": 21,
+     "title": "Closing — End of the story",
+     "current_icon": "none",
+     "proposed_icon": "a ripe banana hand tied with a ribbon and a small completion seal",
+     "motion": "gentle bob, seal shine passes once, ~3s",
+     "why": "Sign-off / back to library; resolves the cover's banana motif as a finished, delivered story"
+    }
+   ]
+  },
+  {
+   "slug": "kumarakom-tourism",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Cover — Kumarakom Responsible Tourism Model",
+     "current_icon": "none",
+     "proposed_icon": "a Kerala kettuvallam houseboat gliding on backwater with a palm silhouette",
+     "motion": "boat bobs, water ripple drifts past, ~3s",
+     "why": "Signature of Kumarakom's backwater destination — the houseboat is the emblem the whole model is built around"
+    },
+    {
+     "n": 2,
+     "title": "Agenda — Contents (9 sections)",
+     "current_icon": "none",
+     "proposed_icon": "a winding backwater channel unspooling like a route line past small numbered markers",
+     "motion": "the channel line draws itself forward, ~2.5s",
+     "why": "Table of contents rendered as a backwater route through the destination, keeping the water theme without repeating the boat"
+    },
+    {
+     "n": 3,
+     "title": "01 Why Kumarakom needed a new approach",
+     "current_icon": "arrows",
+     "proposed_icon": "an unbalanced scale: a tall resort block on the heavy side, a small village hut on the light side",
+     "motion": "scale tips toward the resort then wobbles, ~3s",
+     "why": "Core challenge is benefit-sharing imbalance and leakage — communities not integrated into tourism gains"
+    },
+    {
+     "n": 4,
+     "title": "02 Institutional model: destination-level platform",
+     "current_icon": "key",
+     "proposed_icon": "a round table ringed by five differing seats (panchayat, dept, hotel, SHG, NGO)",
+     "motion": "seats fill in around the table one by one, ~3s",
+     "why": "Responsible Tourism Committee = shared governance putting government, industry and community in one forum"
+    },
+    {
+     "n": 5,
+     "title": "03 Strategy 1: Link hotel demand with local supply",
+     "current_icon": "bulb",
+     "proposed_icon": "a produce basket travelling along an arrow from a farm to a hotel building",
+     "motion": "basket slides the arrow from farm to hotel, ~3s",
+     "why": "Five steps from demand mapping to hotel linkage — local procurement as the economic engine"
+    },
+    {
+     "n": 6,
+     "title": "04 Strategy 2: Community livelihoods",
+     "current_icon": "bulb",
+     "proposed_icon": "a directory card listing rows of hands/skills (labour & skills register)",
+     "motion": "skill rows tick in down the card, ~2.5s",
+     "why": "Blocks on labour directories and training vulnerable groups — mapping local people and skills to tourism jobs"
+    },
+    {
+     "n": 7,
+     "title": "04 CONT — Ethnic food, souvenirs & Village Life Experience",
+     "current_icon": "bulb",
+     "proposed_icon": "a banana-leaf meal platter beside a small handicraft pot",
+     "motion": "steam rises from the platter, ~3s",
+     "why": "CONT covers ethnic food, souvenirs and packaging farming/fishing/crafts as authentic village experiences"
+    },
+    {
+     "n": 8,
+     "title": "05 Strategy 3: Protect the assets",
+     "current_icon": "bulb",
+     "proposed_icon": "a mangrove sapling with arching prop-roots standing in water",
+     "motion": "leaves shimmer, a ripple spreads around the roots, ~3s",
+     "why": "Ecosystem-care block: mangrove regeneration, organic farming, fish/lotus ponds"
+    },
+    {
+     "n": 9,
+     "title": "05 CONT — Low-carbon mobility",
+     "current_icon": "bulb",
+     "proposed_icon": "a bicycle and a rowing oar crossed together",
+     "motion": "the bicycle wheel spins slowly, ~2.5s",
+     "why": "CONT lists rowing boats and bicycles for village packages — low-carbon travel modes"
+    },
+    {
+     "n": 10,
+     "title": "05 CONT — Culture mapping",
+     "current_icon": "bulb",
+     "proposed_icon": "a Kathakali dancer's masked face with its ornate headdress",
+     "motion": "a soft glow passes across the mask, slight nod, ~3s",
+     "why": "CONT covers local art performance groups and handicraft training — Kerala's living culture"
+    },
+    {
+     "n": 11,
+     "title": "06 Results achieved (stats)",
+     "current_icon": "key",
+     "proposed_icon": "rising bars beside an upward tourist-arrival arrow",
+     "motion": "bars grow and the arrow lifts, ~3s",
+     "why": "Nine outcome metrics — revenue, families, trainees, enterprises, +20%/+30% arrivals, 168 acres reclaimed"
+    },
+    {
+     "n": 12,
+     "title": "07 Key lessons for officials (cards)",
+     "current_icon": "book",
+     "proposed_icon": "a ship's anchor holding a small jetty/platform steady",
+     "motion": "anchor sways, mooring rope pulls taut, ~3s",
+     "why": "First and anchoring lesson: local government must anchor the platform for legitimacy and continuity"
+    },
+    {
+     "n": 13,
+     "title": "07 CONT — Lesson 5: protect destination assets",
+     "current_icon": "book",
+     "proposed_icon": "two cupped hands sheltering a wetland egret",
+     "motion": "the egret preens, hands hold steady, ~3s",
+     "why": "Lesson that tourism income depends on wetlands, culture and trust — Kumarakom's bird sanctuary made protective"
+    },
+    {
+     "n": 14,
+     "title": "08 Replication strategy for Andhra Pradesh",
+     "current_icon": "bulb",
+     "proposed_icon": "an Andhra coastline map with tourism pins and a dotted connecting route",
+     "motion": "pins drop and the dotted route draws between them, ~3s",
+     "why": "Five-step AP sequence beginning with 'identify tourism anchors' — mapping beaches, temples, wetlands, tribal circuits"
+    },
+    {
+     "n": 15,
+     "title": "08 CONT — Step 5: pilot and monitor",
+     "current_icon": "bulb",
+     "proposed_icon": "a small pilot flag planted on a destination map pin",
+     "motion": "the flag unfurls and waves, ~2.5s",
+     "why": "CONT is the pilot-and-monitor step: launch 1–2 low-risk experiences and track feedback"
+    },
+    {
+     "n": 16,
+     "title": "09 90-day action plan (phases)",
+     "current_icon": "book",
+     "proposed_icon": "four ascending calendar blocks forming a timeline ramp (0–15 → 60–90 days)",
+     "motion": "blocks light up in sequence up the ramp, ~3s",
+     "why": "Four dated phases from asset mapping to pilot launch across 90 days"
+    },
+    {
+     "n": 17,
+     "title": "09 CONT — Monitoring metrics",
+     "current_icon": "book",
+     "proposed_icon": "a monitoring dial with a visitor-satisfaction star on its face",
+     "motion": "needle sweeps, the star twinkles, ~2.5s",
+     "why": "Metrics list income, families linked, tourist use, procurement, cleanliness and visitor satisfaction"
+    },
+    {
+     "n": 18,
+     "title": "Closing — End of the story",
+     "current_icon": "none",
+     "proposed_icon": "the sun setting over backwater with a moored houseboat",
+     "motion": "shimmer drifts across the water, ~3.5s",
+     "why": "Sign-off / back to library; resolves the cover's houseboat as a calm, moored close of day"
+    }
+   ]
+  },
+  {
+   "slug": "paddy-fish-farming",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Cover — Paddy + Fish Integrated Farming",
+     "current_icon": "none",
+     "proposed_icon": "a rice stalk arching over a fish swimming in a flooded paddy",
+     "motion": "fish swims across, stalk sways above, ~3s",
+     "why": "Hero for the integration thesis — one field yielding rice above and fish in the water below"
+    },
+    {
+     "n": 2,
+     "title": "Agenda — Contents (9 sections)",
+     "current_icon": "none",
+     "proposed_icon": "a rice seedling unfurling beside numbered field rows",
+     "motion": "the seedling leaf unfurls upward, ~2.5s",
+     "why": "Table of contents as a sprouting rice seedling marking the sections, keeping the paddy family off the cover motif"
+    },
+    {
+     "n": 3,
+     "title": "01 Why paddy + fish matters for AP",
+     "current_icon": "arrows",
+     "proposed_icon": "a rice grain and a fish flanking a rising rupee coin",
+     "motion": "the coin rises between them, ~2.5s",
+     "why": "Pairs: paddy base exists, need to raise net income, AP has fisheries capability — two outputs lifting farmer income"
+    },
+    {
+     "n": 4,
+     "title": "01 CONT — Dual output / lower input / resilience",
+     "current_icon": "arrows",
+     "proposed_icon": "a single square field plot lifting out a rice bundle and a fish",
+     "motion": "the two yields rise out of the plot together, ~3s",
+     "why": "Cards: dual output (rice + fish from same plot), lower input, higher resilience"
+    },
+    {
+     "n": 5,
+     "title": "02 The model: one field, two harvests",
+     "current_icon": "key",
+     "proposed_icon": "two circular arrows linking a fish and a rice plant (mutual symbiosis)",
+     "motion": "the cycle rotates once slowly, ~3.5s",
+     "why": "Pairs show fish-help-rice and rice-help-fish — a designed symbiotic system, not fish merely added"
+    },
+    {
+     "n": 6,
+     "title": "03 Assam case 1 (stats + steps)",
+     "current_icon": "key",
+     "proposed_icon": "a scatter of water-body ponds across a district map outline",
+     "motion": "ponds ripple/fill across the map, ~3s",
+     "why": "Stats are 431 ha water bodies, 11 districts, 867 beneficiaries — a spread of water bodies over districts"
+    },
+    {
+     "n": 7,
+     "title": "03 CONT — Reported outcomes",
+     "current_icon": "key",
+     "proposed_icon": "a rice sack and a fish sitting on two rising bars with a +25% tick",
+     "motion": "both bars grow, the percent tick pops, ~3s",
+     "why": "Outcomes: paddy yield +10–25%, ~7 t/ha rice, ~2 t/ha fish — dual yields quantified"
+    },
+    {
+     "n": 8,
+     "title": "04 Apatani case, Arunachal Pradesh",
+     "current_icon": "key",
+     "proposed_icon": "hill-terrace paddy steps with a raised bund and a carp in the channel",
+     "motion": "water trickles down the terraces, carp flicks, ~3s",
+     "why": "Apatani plateau model: terraced low-lying fields, 2–3 ft raised bunds, carp species in channels"
+    },
+    {
+     "n": 9,
+     "title": "05 China case: Qingtian Rice–Fish System",
+     "current_icon": "key",
+     "proposed_icon": "a heritage medallion/seal stamped over a small rice-and-fish emblem",
+     "motion": "the seal presses down with a glow, ~2.5s",
+     "why": "1,300+ year system, 2005 FAO GIAHS recognition, eco-brand — a heritage-certified rice-fish identity"
+    },
+    {
+     "n": 10,
+     "title": "06 Common success factors",
+     "current_icon": "key",
+     "proposed_icon": "a paddy field cross-section blueprint: bund, refuge trench and screened inlet",
+     "motion": "water level settles inside the section, ~3s",
+     "why": "Factors centre on right site and field design — strong bunds, refuge trench, screened flow points"
+    },
+    {
+     "n": 11,
+     "title": "07 Relevance for AP paddy districts",
+     "current_icon": "key",
+     "proposed_icon": "an Andhra delta map tinted as paddy with flowing canal lines",
+     "motion": "canal water flows along the lines, ~3s",
+     "why": "Prioritise mandals with contiguous paddy, canal/tank irrigation and low-lying waterlogged patches"
+    },
+    {
+     "n": 12,
+     "title": "07 CONT — Potential AP focus areas",
+     "current_icon": "key",
+     "proposed_icon": "a rice-and-fish bowl with small district location tags around it",
+     "motion": "steam rises from the bowl, tags settle in, ~3s",
+     "why": "Groups: delta belts, high-paddy districts, APCNF alignment and nutrition/income (fish protein + rice)"
+    },
+    {
+     "n": 13,
+     "title": "08 District-level implementation (6 steps)",
+     "current_icon": "key",
+     "proposed_icon": "a stepped path winding across paddy plots with 6 stops",
+     "motion": "the path draws forward stop by stop, ~3.5s",
+     "why": "Six-stop officer roadmap: map fields → demo clusters → converge → train → monitor → aggregate & market"
+    },
+    {
+     "n": 14,
+     "title": "08 CONT — Detailed 4-step plan",
+     "current_icon": "key",
+     "proposed_icon": "several scheme streams converging into a single demo field",
+     "motion": "the streams flow in and merge at the field, ~3s",
+     "why": "Detailed steps include convergence of agriculture, fisheries, RBK, MGNREGS and PMMSY into demonstration clusters"
+    },
+    {
+     "n": 15,
+     "title": "09 Monitoring KPI dashboard",
+     "current_icon": "book",
+     "proposed_icon": "a monitoring dashboard with a paddy-yield gauge and a fish gauge side by side",
+     "motion": "both needles sweep and settle, ~2.5s",
+     "why": "KPI dashboard tracks productivity, income, input use, water, adoption and market — two-output monitoring"
+    },
+    {
+     "n": 16,
+     "title": "09 CONT — Takeaway steps",
+     "current_icon": "book",
+     "proposed_icon": "two hands (agriculture + fisheries) joining over a small pilot plot",
+     "motion": "the hands meet and the plot glows, ~3s",
+     "why": "Takeaways: start small but design properly, converge agriculture and fisheries teams, show income evidence"
+    },
+    {
+     "n": 17,
+     "title": "Closing — End of the story",
+     "current_icon": "none",
+     "proposed_icon": "a harvest basket holding a rice sheaf and a fish together",
+     "motion": "gentle bob, a shine passes over the basket, ~3s",
+     "why": "Sign-off / back to library; resolves the cover's rice+fish pairing as a completed dual harvest"
+    }
+   ]
+  },
+  {
+   "slug": "biofloc-tilapia",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Biofloc Tilapia Farming (cover)",
+     "current_icon": "none (cover)",
+     "proposed_icon": "a GIFT tilapia arcing over the rim of a round biofloc tank, one water-drop falling from its tail",
+     "motion": "fish rises and dips over the rim in a slow 3s arc; the drop falls and a ripple expands",
+     "why": "cover of a biofloc tilapia tank case study — the fish + circular tank is the deck's hero object"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "compass",
+     "proposed_icon": "a single water droplet holding three stacked water-line rules inside it (a contents list submerged)",
+     "motion": "the three lines draw in one by one, then the droplet gently bobs, 3s loop",
+     "why": "agenda/overview slide; keeps the water family while reading as a table of contents"
+    },
+    {
+     "n": 3,
+     "title": "Session Details — Cheranellur, Ernakulam, Kerala, Nov 2021",
+     "current_icon": "key",
+     "proposed_icon": "a location pin dropping onto water, concentric ripples spreading beneath it",
+     "motion": "pin drops, three ripple rings expand outward and fade, 2.5s loop",
+     "why": "slide fixes the case to one Kerala backwater location and date — a geo-locate moment"
+    },
+    {
+     "n": 4,
+     "title": "What is Biofloc Fish Farming?",
+     "current_icon": "arrows",
+     "proposed_icon": "a small fish encircled by a ring of microbial floc granules, a recycle arrow closing the loop",
+     "motion": "floc granules orbit the fish and the recycle arrow sweeps once, 3s loop",
+     "why": "slide explains microbes converting fish waste back into protein feed — the recycled floc loop is the concept"
+    },
+    {
+     "n": 5,
+     "title": "Cheranellur — The Numbers (5 families, 1,800 fry, 23,500 L, ₹1.35L)",
+     "current_icon": "key",
+     "proposed_icon": "a tall cylindrical biofloc tank standing beside a small pitched-roof house, tiny fry dots inside",
+     "motion": "water level inside the tank rises slightly and fry dots drift, 3s loop",
+     "why": "the stats describe a 23,500 L tank built next to households stocked with 1,800 fry — depict that exact unit"
+    },
+    {
+     "n": 6,
+     "title": "How the CMFRI Model Was Delivered (5 steps)",
+     "current_icon": "key",
+     "proposed_icon": "a water-quality test dropper releasing a drop into a graduated test tube with a colour scale",
+     "motion": "dropper squeezes, drop falls, tube colour shifts up the scale, 3s loop",
+     "why": "the delivery steps hinge on a water-quality kit and CMFRI monitoring each growth phase"
+    },
+    {
+     "n": 7,
+     "title": "A Tool for Inclusive Rural Development",
+     "current_icon": "arrows",
+     "proposed_icon": "two cupped hands lifting a single fish above shallow ripples",
+     "motion": "hands rise gently and ripples shimmer beneath, 3s loop",
+     "why": "slide is about landless SC families becoming owner-entrepreneurs — livelihood held in the hands"
+    },
+    {
+     "n": 8,
+     "title": "Replication Roadmap for Your Mandal (4 phases)",
+     "current_icon": "book",
+     "proposed_icon": "one biofloc tank multiplying into a staggered row of identical tanks across a light grid",
+     "motion": "tanks appear left-to-right one by one, then reset, 3.5s loop",
+     "why": "phases move survey→setup→run→scale; the roadmap is one demo tank replicating across the mandal"
+    },
+    {
+     "n": 9,
+     "title": "Key Factors for a Successful Replication",
+     "current_icon": "key",
+     "proposed_icon": "a plump harvest-weight tilapia (300–500 g) beside a rupee coin",
+     "motion": "the coin flips once and the fish flexes gently, 2.5s loop",
+     "why": "the success factors — quality GIFT fry, water discipline — converge on a healthy harvest that earns income"
+    },
+    {
+     "n": 10,
+     "title": "Biofloc Tilapia Farming (closing)",
+     "current_icon": "book",
+     "proposed_icon": "a tilapia leaping out of a tank toward a rising sun on the horizon",
+     "motion": "fish leaps in a slow arc as the sun edges up, 3.5s loop",
+     "why": "closing call to prove the income then replicate — an optimistic leap-out beat, distinct from the cover's arc"
+    }
+   ]
+  },
+  {
+   "slug": "kurnool-agritourism",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Agritourism for Kurnool District (cover)",
+     "current_icon": "none (cover)",
+     "proposed_icon": "a rustic farm gateway arch with a winding path leading into an orchard row",
+     "motion": "the path draws inward and a small leaf sways on the arch, 3s loop",
+     "why": "cover for converting farms into visitor destinations — the welcoming farm gate is the entry metaphor"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "compass",
+     "proposed_icon": "a wooden farm signpost with three directional arms pointing off a central post",
+     "motion": "each arm swings into place one by one, then settles, 3s loop",
+     "why": "agenda/route overview; a farm-tour signpost reads as contents while staying in the agritourism world"
+    },
+    {
+     "n": 3,
+     "title": "Market signal: tourism base vs farm-experience supply",
+     "current_icon": "compass",
+     "proposed_icon": "a woven basket of mixed horticulture fruit — mango, banana, pomegranate",
+     "motion": "fruit settles into the basket with a soft bounce, 2.5s loop",
+     "why": "slide names Kurnool's horticulture diversity (mango, banana, sweet orange, pomegranate) as the demand hook"
+    },
+    {
+     "n": 4,
+     "title": "Case study anchor: ATDC Baramati, Maharashtra",
+     "current_icon": "key",
+     "proposed_icon": "a foundation milestone stone set in a field, carved '2005'",
+     "motion": "a small flag plants beside the stone and holds, 3s loop",
+     "why": "slide marks the 2005 incorporation of ATDC on a 38-acre pilot near Baramati — a founding milestone"
+    },
+    {
+     "n": 5,
+     "title": "ATDC Baramati (CONT) — farmer-owned assets, support, visitors, income",
+     "current_icon": "key",
+     "proposed_icon": "a farmer handing a produce crate to an urban visitor while a coin returns along an arc",
+     "motion": "crate passes right, coin travels back left, 3s loop",
+     "why": "the four cards describe farmer-owned assets + ATDC support meeting urban visitors and returning local income"
+    },
+    {
+     "n": 6,
+     "title": "How the ATDC model operates (hub-and-spoke flow)",
+     "current_icon": "key",
+     "proposed_icon": "a central hub circle linked by spokes to several small farm plots around it",
+     "motion": "spokes light up outward from the hub in sequence, 3s loop",
+     "why": "slide explicitly describes a hub-and-spoke: central support radiating to farmer-owned experiences"
+    },
+    {
+     "n": 7,
+     "title": "Reported impact: +25% income, 8M tourists, 30 districts, 1000+ centres",
+     "current_icon": "flag",
+     "proposed_icon": "a small cluster of walking tourist figures under an upward trend arrow",
+     "motion": "figures step forward as the arrow rises, 3s loop",
+     "why": "the stats are footfall and reach — millions of tourists and rising farmer income across districts"
+    },
+    {
+     "n": 8,
+     "title": "Reported impact (CONT) — agritourists 2017→2019",
+     "current_icon": "flag",
+     "proposed_icon": "a rising line graph climbing across three year-posts (0.47→0.58→0.79 M)",
+     "motion": "the line draws upward point to point, then resets, 3s loop",
+     "why": "this slide is a three-year time series of agritourist numbers in Maharashtra"
+    },
+    {
+     "n": 9,
+     "title": "Experiences offered: the working farm is the product",
+     "current_icon": "compass",
+     "proposed_icon": "a bullock cart carrying seated visitors past a crop row",
+     "motion": "the cart rolls slowly across as wheels turn, 3.5s loop",
+     "why": "among the listed experiences the bullock-cart farm ride is the signature hands-on offering"
+    },
+    {
+     "n": 10,
+     "title": "Why the model works for government and farmers",
+     "current_icon": "arrows",
+     "proposed_icon": "a shield with a small farm inside and a checkmark",
+     "motion": "the checkmark draws in and the shield gives a soft pulse, 2.5s loop",
+     "why": "slide pairs success factors with risk controls — hygiene, safety, authenticity — a safeguarding shield"
+    },
+    {
+     "n": 11,
+     "title": "Replication opportunity in Kurnool: cluster, do not scatter",
+     "current_icon": "bulb",
+     "proposed_icon": "the Kurnool district outline with four tight clusters of location pins",
+     "motion": "pins drop into their clusters in turn, 3s loop",
+     "why": "slide names four pilot clusters (Orvakallu, Mantralayam, Adoni, horticulture villages) — cluster the pins, don't scatter"
+    },
+    {
+     "n": 12,
+     "title": "Decision slide: 90-day pilot launch pathway (5 steps)",
+     "current_icon": "alert",
+     "proposed_icon": "a calendar page with day 90 circled and a launch flag rising from it",
+     "motion": "pages flip forward to 90, then the flag rises, 3.5s loop",
+     "why": "the decision is a time-boxed 90-day pilot launch sequence"
+    },
+    {
+     "n": 13,
+     "title": "Agritourism for Kurnool District (closing)",
+     "current_icon": "book",
+     "proposed_icon": "an official and a farmer shaking hands over a field horizon",
+     "motion": "the handshake meets and a sun edges up behind, 3s loop",
+     "why": "closing ask is district administration approval and partnership — a compact between government and farmer"
+    }
+   ]
+  },
+  {
+   "slug": "sahyadri-farms-fpc",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Revolutionizing Smallholder Farming through Integrated Supply Chains (cover)",
+     "current_icon": "none (cover)",
+     "proposed_icon": "a grape bunch whose lowest grape morphs into a supply-chain link ring",
+     "motion": "the link rotates and clicks closed under the bunch, 3s loop",
+     "why": "cover marries the crop (grapes) to the one-integrated-chain thesis of the Sahyadri FPC"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "compass",
+     "proposed_icon": "four numbered chain links joined into a short horizontal contents strip",
+     "motion": "links connect left to right one by one, 3s loop",
+     "why": "agenda/overview; a chain-of-links reads as contents and previews the integrated-chain motif"
+    },
+    {
+     "n": 3,
+     "title": "The Problem We Are Trying to Solve",
+     "current_icon": "arrows",
+     "proposed_icon": "scattered tiny farm plots with a broken chain link snapped between them",
+     "motion": "the link cracks apart and the halves drift, 2.5s loop",
+     "why": "the four problems are fragmented chains, scattered holdings and ~40% loss — depict fragmentation as a broken link"
+    },
+    {
+     "n": 4,
+     "title": "The Answer: Aggregate Farmers into an FPC",
+     "current_icon": "bulb",
+     "proposed_icon": "many small farmer figures converging inward into one solid ring (the FPC)",
+     "motion": "figures slide inward and the ring closes, 3s loop",
+     "why": "slide's answer is aggregating scattered farmers into a single farmer-owned company"
+    },
+    {
+     "n": 5,
+     "title": "Sahyadri Farms at a Glance (26,000 farmers, 42+ countries)",
+     "current_icon": "bulb",
+     "proposed_icon": "a grape bunch shaped like a globe with faint export routes arcing off it",
+     "motion": "the globe rotates slowly as one route arcs outward, 3.5s loop",
+     "why": "the stats span 26k farmers to 42+ countries for India's largest grape producer — grapes going global"
+    },
+    {
+     "n": 6,
+     "title": "How the Model Works: One Integrated Chain (5-stage flow)",
+     "current_icon": "key",
+     "proposed_icon": "grape crates moving along a conveyor from farm through a pack-house to a shopper",
+     "motion": "crates advance one step along the belt, then loop, 3s loop",
+     "why": "slide is the farmer→processing→distribution→retail→consumer conveyor the FPC owns end to end"
+    },
+    {
+     "n": 7,
+     "title": "Five Pillars Behind the Results",
+     "current_icon": "key",
+     "proposed_icon": "five slender columns supporting a flat roof over a grape crate",
+     "motion": "columns rise into place one by one, roof settles, 3s loop",
+     "why": "slide literally lists five pillars (advisory, pack-house, cold chain, tech, blockchain) holding up the results"
+    },
+    {
+     "n": 8,
+     "title": "Who Benefits — Farmers and Consumers",
+     "current_icon": "compass",
+     "proposed_icon": "a balance scale with a grape bunch on one pan and a coin on the other, level",
+     "motion": "the pans tip once and settle level, 2.5s loop",
+     "why": "slide is a two-column compare of gains for farmers versus consumers — a balanced exchange"
+    },
+    {
+     "n": 9,
+     "title": "Replication Roadmap for Your Mandal (5 steps)",
+     "current_icon": "book",
+     "proposed_icon": "a stepped path climbing from a single seedling up to a pack-house building",
+     "motion": "steps light up upward from seedling to building, 3.5s loop",
+     "why": "the roadmap sequences mobilise→form FPC→build infrastructure→tech→market — growth from seedling to plant"
+    },
+    {
+     "n": 10,
+     "title": "Challenges to Plan For",
+     "current_icon": "alert",
+     "proposed_icon": "a storm cloud with one rain drop over a vineyard row with cracked soil beneath",
+     "motion": "the drop falls and the cloud drifts slightly, 3s loop",
+     "why": "the challenges lead with climate/water risk and soil overuse threatening the vineyard"
+    },
+    {
+     "n": 11,
+     "title": "What Officers Should Take Away",
+     "current_icon": "flag",
+     "proposed_icon": "four small grapes growing into one large full bunch",
+     "motion": "grapes swell and the bunch fills out, then resets, 3s loop",
+     "why": "the core takeaway is compounding from 4 farmers to ₹1,000 Cr — start small, grow the bunch"
+    },
+    {
+     "n": 12,
+     "title": "From Case Study to Action (closing)",
+     "current_icon": "book",
+     "proposed_icon": "a clipboard checklist beside a grape bunch, a pen ticking a box",
+     "motion": "the pen ticks each box down the list, 3.5s loop",
+     "why": "closing gives officers a three-item task to complete before leaving — a to-do checklist"
+    }
+   ]
+  },
+  {
+   "slug": "chetna-organics-fpo",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Chetna Organics (cover)",
+     "current_icon": "none",
+     "proposed_icon": "cotton boll bursting open from its brown burr, white fibre puffing out",
+     "motion": "the boll splits and the fibre puffs outward over 3s, then eases back",
+     "why": "deck subject is a farmer-owned ORGANIC COTTON supply chain; the opened boll is the deck's core family motif"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "none",
+     "proposed_icon": "a cotton plant stem bearing three bolls at three heights (a mini roadmap of the story)",
+     "motion": "the three bolls open in sequence, staggered, then reset",
+     "why": "agenda page; three bolls foreshadow the three-part arc (problem, model, lessons) on a real cotton stem"
+    },
+    {
+     "n": 3,
+     "title": "Why This Case Study Matters to You",
+     "current_icon": "compass",
+     "proposed_icon": "a hand-scale (mandi balance) tilted off-true, one pan heavier",
+     "motion": "the beam rocks and settles crooked, never balancing",
+     "why": "the slide's pain points are cheated weight/quality/price at the mandi and Rs2000 in for Rs1500 out — a rigged weighing scale depicts the exploitation"
+    },
+    {
+     "n": 4,
+     "title": "What Chetna Organics Did",
+     "current_icon": "bulb",
+     "proposed_icon": "a cotton seedling sprouting from soil beside three year-milestone dots (2004-2007-2009)",
+     "motion": "seedling grows a leaf as the three dots light up along a line",
+     "why": "this section is the 2004->2009 timeline of pilot to COFA to producer company; a sprout climbing milestones shows the journey"
+    },
+    {
+     "n": 5,
+     "title": "What Chetna Organics Did (cont.)",
+     "current_icon": "bulb",
+     "proposed_icon": "same sprout-and-milestones motif (section continuation carrying the 24cr / 35,000-farmer stats)",
+     "motion": "seedling grows a leaf as the three dots light up along a line",
+     "why": "CONT slide of the same section; repeats the journey icon over the scale stats"
+    },
+    {
+     "n": 6,
+     "title": "The Three-Tier Farmer Structure",
+     "current_icon": "key",
+     "proposed_icon": "three stacked tiers of linked farmer figures forming a pyramid (SHG > Cooperative > Producer Company)",
+     "motion": "the tiers assemble bottom-up, each row snapping into place",
+     "why": "slide shows the SHG -> Cooperative -> COAPCL hierarchy; a bottom-up three-tier stack of farmers is literal"
+    },
+    {
+     "n": 7,
+     "title": "Transforming the Supply Chain",
+     "current_icon": "bulb",
+     "proposed_icon": "a supply-chain arrow that shortcuts past two greyed middleman nodes to reach the buyer",
+     "motion": "the long zig-zag path collapses into a short direct arrow, looping",
+     "why": "the before/after flow removes Mandi-Middlemen-Trader hand-offs; the shortcutting arrow depicts disintermediation"
+    },
+    {
+     "n": 8,
+     "title": "Four Things That Made It Work",
+     "current_icon": "key",
+     "proposed_icon": "four short pillars (each a cotton stem) holding up a single beam",
+     "motion": "the four pillars rise one by one to lift the beam level",
+     "why": "the slide names four pillars behind success (trust, supply chain, niche, buyer ties); four cotton-stem columns under a beam"
+    },
+    {
+     "n": 9,
+     "title": "Lessons for Strengthening Your FPO",
+     "current_icon": "book",
+     "proposed_icon": "an open field-ledger with a cotton sprig laid across the page",
+     "motion": "a page turns and the sprig settles onto the new page",
+     "why": "section is transferable lessons for the officer's own FPO; a ledger with a cotton sprig reads as recorded, crop-specific learning"
+    },
+    {
+     "n": 10,
+     "title": "Your Role as a Mandal Officer",
+     "current_icon": "arrows",
+     "proposed_icon": "a clipboard checklist with a cotton stem tucked behind it, ticks appearing",
+     "motion": "three tick marks appear down the list in sequence, then clear",
+     "why": "slide is a practical field checklist for the officer (identify, enable, link, open markets); a ticking clipboard is the action tool"
+    },
+    {
+     "n": 11,
+     "title": "When farmers own the supply chain, they capture the value (closing)",
+     "current_icon": "book",
+     "proposed_icon": "two cupped hands cradling a single open cotton boll",
+     "motion": "the hands lift gently and the boll glows, breathing slowly",
+     "why": "the one takeaway is farmer OWNERSHIP capturing value; hands cupping the boll is ownership of the crop's worth"
+    },
+    {
+     "n": 12,
+     "title": "Chetna Organics (closing cover)",
+     "current_icon": "none",
+     "proposed_icon": "cotton boll bursting open (mirror of the cover)",
+     "motion": "the boll splits and the fibre puffs outward, then eases back",
+     "why": "closing repeat of the title slide; bookends the deck with the same opened-boll motif"
+    }
+   ]
+  },
+  {
+   "slug": "mango-processing",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Mango Processing & Waste-to-Wealth Models (cover)",
+     "current_icon": "none",
+     "proposed_icon": "a whole mango with one clean slice cut away, cheek lifting off",
+     "motion": "the sliced cheek lifts away from the stone and returns over 3s",
+     "why": "deck is about processing mango; the sliced mango is the family motif and signals conversion from fruit to product"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "none",
+     "proposed_icon": "a mango hanging on a leafy branch (whole fruit, pre-processing)",
+     "motion": "the mango sways gently on its stem, leaves rustling",
+     "why": "agenda page; the whole fruit on the branch is the starting point before the story's processing stages"
+    },
+    {
+     "n": 3,
+     "title": "Why Mango Processing Matters for AP Districts",
+     "current_icon": "compass",
+     "proposed_icon": "a mango beside a sealed preserve jar, an arrow from fruit to jar",
+     "motion": "the fruit fades as the jar fills and its lid seals, looping",
+     "why": "slide argues processing turns perishable fruit (31 lakh MT) into 12-24 month shelf-life products; fruit-to-jar shows preservation"
+    },
+    {
+     "n": 4,
+     "title": "A Brand-Led Export Model (Philippines)",
+     "current_icon": "bulb",
+     "proposed_icon": "a branded retail pouch of dried mango strips with a small globe tag",
+     "motion": "the pouch's brand mark glints; the globe tag rotates slowly",
+     "why": "Case 1 is Profood's BRANDED dried-mango export to 60+ countries; a branded pouch plus globe captures brand-led global reach"
+    },
+    {
+     "n": 5,
+     "title": "From Farm to Export Shelf",
+     "current_icon": "bulb",
+     "proposed_icon": "dried mango slices on a dehydration tray with rising heat waves",
+     "motion": "heat waves ripple up over the tray as a slice darkens slightly",
+     "why": "the four-step chain centres on osmotic dehydration/freeze-drying in the Cebu plant; a drying tray depicts the processing core"
+    },
+    {
+     "n": 6,
+     "title": "FPO-Led Processing (Malihabad Dasheri)",
+     "current_icon": "bulb",
+     "proposed_icon": "a mango pickle (achaar) jar with mango wedges and spices inside",
+     "motion": "oil and spice settle in the jar; a wedge drifts slowly down",
+     "why": "Case 2's Malihabad cluster is 15,700 MT mostly PICKLE; a mango achaar jar is the literal product of this FPO"
+    },
+    {
+     "n": 7,
+     "title": "FPO-Led Aggregation and Processing",
+     "current_icon": "key",
+     "proposed_icon": "many small mangoes funnelling into one collection crate feeding a unit",
+     "motion": "mangoes drop one by one into the crate, which fills and resets",
+     "why": "the institutional model aggregates many growers' fruit into one FPC processing unit; a funnel into a crate shows aggregation"
+    },
+    {
+     "n": 8,
+     "title": "FPO-Led Aggregation and Processing (cont.)",
+     "current_icon": "key",
+     "proposed_icon": "same aggregation-funnel-into-crate motif (carrying the capex/equipment package)",
+     "motion": "mangoes drop one by one into the crate, which fills and resets",
+     "why": "CONT of the aggregation section; repeats the funnel icon over the unit equipment and capex detail"
+    },
+    {
+     "n": 9,
+     "title": "Every Component Gets a Use",
+     "current_icon": "key",
+     "proposed_icon": "a mango cross-section split to show peel, flesh and the flat kernel",
+     "motion": "the mango splits open to reveal the kernel, then closes",
+     "why": "the waste-to-wealth slide breaks the fruit into peel/kernel/scutcher/sap uses; a labelled cross-section shows every component"
+    },
+    {
+     "n": 10,
+     "title": "Every Component Gets a Use (cont.)",
+     "current_icon": "key",
+     "proposed_icon": "same mango cross-section motif (carrying the localise/centralise principle)",
+     "motion": "the mango splits open to reveal the kernel, then closes",
+     "why": "CONT of the by-product section; repeats the cross-section over the processing-tier principle"
+    },
+    {
+     "n": 11,
+     "title": "From Bulk Pulp to Branded Diversification",
+     "current_icon": "key",
+     "proposed_icon": "a large aseptic pulp drum with three small retail pouches budding off it",
+     "motion": "the drum stays put as three little pouches pop out beside it",
+     "why": "AP's 45 pulp units export bulk Totapuri pulp; the slide urges diversification into retail SKUs — one drum spawning pouches"
+    },
+    {
+     "n": 12,
+     "title": "Six Lessons That Translate Directly",
+     "current_icon": "book",
+     "proposed_icon": "a location pin dropped over rows of orchard trees inside a radius ring",
+     "motion": "the pin drops and a 25km radius ring pulses outward once",
+     "why": "lesson 1 is cluster selection — 1,000 ha within a 25km radius; a pin over orchards inside a radius ring is that minimum viable cluster"
+    },
+    {
+     "n": 13,
+     "title": "Three Parallel Tracks",
+     "current_icon": "arrows",
+     "proposed_icon": "three parallel rails running forward, a mango riding the centre rail",
+     "motion": "the mango glides along the centre rail while all three run",
+     "why": "slide sets three tracks running together (fresh processing, by-product, enablers); three parallel rails is literal"
+    },
+    {
+     "n": 14,
+     "title": "What to Review Every Month",
+     "current_icon": "arrows",
+     "proposed_icon": "a wall calendar page with a mango mark and a review tick",
+     "motion": "the tick lands on the calendar and the page flips to next month",
+     "why": "slide is a MONTHLY KPI review checklist; a calendar with a recurring tick shows the monthly cadence"
+    },
+    {
+     "n": 15,
+     "title": "Mango Processing & Waste-to-Wealth Models (closing cover)",
+     "current_icon": "none",
+     "proposed_icon": "a sliced mango (mirror of the cover)",
+     "motion": "the sliced cheek lifts away from the stone and returns",
+     "why": "closing repeat of the title slide; bookends the deck with the same sliced-mango motif"
+    }
+   ]
+  },
+  {
+   "slug": "shenzhen-growth-model",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Shenzhen's Economic Miracle (cover)",
+     "current_icon": "none",
+     "proposed_icon": "a waterfront skyline rising behind a single port gantry crane",
+     "motion": "the skyline towers rise from the waterline over 3s, then settle",
+     "why": "deck is Shenzhen's coastal-city growth model for AP ports; crane-plus-skyline is the family motif of port-led urban rise"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "none",
+     "proposed_icon": "a winding road leading from foreground up to a small skyline",
+     "motion": "a dot travels along the road toward the skyline and loops back",
+     "why": "agenda page; the road to the skyline previews the district's journey to a Shenzhen-scale economy"
+    },
+    {
+     "n": 3,
+     "title": "The Shenzhen Parallel — Why This Matters for AP",
+     "current_icon": "compass",
+     "proposed_icon": "a split panel: a fishing village on the left, skyscrapers on the right",
+     "motion": "a seam sweeps left-to-right, the village transforming into towers",
+     "why": "the slide compares Shenzhen 1980 (0.06% of GDP, fishing coast) with AP's underused coast today; the before/after split is the comparison"
+    },
+    {
+     "n": 4,
+     "title": "Shenzhen's 3-Stage Journey",
+     "current_icon": "bulb",
+     "proposed_icon": "three ascending buildings on a rising staircase (labour > electronics > R&D)",
+     "motion": "each building rises taller in sequence up the steps, then resets",
+     "why": "slide is the 1980->now three-stage climb with rising GDP share; three growing towers on a staircase depict staged upgrading"
+    },
+    {
+     "n": 5,
+     "title": "Policy Architecture — Strategic Toolkit",
+     "current_icon": "key",
+     "proposed_icon": "an open toolbox with a policy document and a gear resting on top",
+     "motion": "the toolbox lid opens and the gear turns a quarter-rotation",
+     "why": "slide frames SEZ mandate and single-window levers as the collector's TOOLKIT; a policy toolbox with a gear is that instrument set"
+    },
+    {
+     "n": 6,
+     "title": "Infrastructure Strategy — Master Planning",
+     "current_icon": "flag",
+     "proposed_icon": "a gantry crane lowering a shipping container onto a berth",
+     "motion": "the crane lowers the container to the dock, then lifts to repeat",
+     "why": "slide leads with Shenzhen's #4 global port and 7.9% port CAGR; a container crane is the port-infrastructure spine of the section"
+    },
+    {
+     "n": 7,
+     "title": "Infrastructure Strategy — Master Planning (cont.)",
+     "current_icon": "flag",
+     "proposed_icon": "same container-crane motif (carrying the infrastructure-layer table)",
+     "motion": "the crane lowers the container to the dock, then lifts to repeat",
+     "why": "CONT of the infrastructure section; repeats the crane over the port/power/logistics/skill layer table"
+    },
+    {
+     "n": 8,
+     "title": "Comparative Advantage — Endowment Mapping",
+     "current_icon": "key",
+     "proposed_icon": "a district map split into four zones marked waves, wheat-ear, rock and road",
+     "motion": "the four zone symbols fade in one by one across the map",
+     "why": "slide maps endowments to industries across coastal/agri/mineral/highway districts; a four-zone map is the endowment atlas"
+    },
+    {
+     "n": 9,
+     "title": "Comparative Advantage — Endowment Mapping (cont.)",
+     "current_icon": "key",
+     "proposed_icon": "same four-zone endowment-map motif",
+     "motion": "the four zone symbols fade in one by one across the map",
+     "why": "CONT of the endowment section; repeats the four-zone map"
+    },
+    {
+     "n": 10,
+     "title": "Comparative Advantage — Endowment Mapping (cont.)",
+     "current_icon": "key",
+     "proposed_icon": "same four-zone endowment-map motif (carrying the endowment-audit task)",
+     "motion": "the four zone symbols fade in one by one across the map",
+     "why": "second CONT of the endowment section; repeats the four-zone map over the district-audit callout"
+    },
+    {
+     "n": 11,
+     "title": "Industrial Cluster Strategy — Ecosystems",
+     "current_icon": "bulb",
+     "proposed_icon": "one anchor factory ringed by smaller satellite vendor nodes, linked",
+     "motion": "the satellite nodes light up around the anchor in a slow orbit",
+     "why": "slide is the Shekou anchor-plus-supply-chain cluster; a hub factory with vendor satellites is the manufacturing+commerce ecosystem"
+    },
+    {
+     "n": 12,
+     "title": "Industrial Cluster Strategy — Ecosystems (cont.)",
+     "current_icon": "bulb",
+     "proposed_icon": "same anchor-and-satellite-cluster motif",
+     "motion": "the satellite nodes light up around the anchor in a slow orbit",
+     "why": "CONT of the cluster section; repeats the hub-and-satellite motif"
+    },
+    {
+     "n": 13,
+     "title": "Industrial Cluster Strategy — Ecosystems (cont.)",
+     "current_icon": "bulb",
+     "proposed_icon": "same anchor-and-satellite-cluster motif (carrying the Shekou concentration lesson)",
+     "motion": "the satellite nodes light up around the anchor in a slow orbit",
+     "why": "second CONT of the cluster section; repeats the hub-and-satellite motif over the concentrate-in-one-zone lesson"
+    },
+    {
+     "n": 14,
+     "title": "AP's Port Strategy — Front Shop, Back District",
+     "current_icon": "flag",
+     "proposed_icon": "a shopfront in front, a factory shed behind it, a ship at the quay",
+     "motion": "a container slides from the back factory through the front shop to the ship",
+     "why": "slide replicates Shenzhen's 'front shop, back factory' via AP ports; a storefront-over-factory with a ship is that exact model"
+    },
+    {
+     "n": 15,
+     "title": "AP's Port Strategy — Front Shop, Back District (cont.)",
+     "current_icon": "flag",
+     "proposed_icon": "same front-shop-back-factory-with-ship motif (carrying the four-port table)",
+     "motion": "a container slides from the back factory through the front shop to the ship",
+     "why": "CONT of the port section; repeats the front-shop motif over the Vizag/Krishnapatnam/Kakinada/Machilipatnam table"
+    },
+    {
+     "n": 16,
+     "title": "Strategic Failure Modes — Warnings",
+     "current_icon": "alert",
+     "proposed_icon": "a caution triangle over a railway track that forks toward a broken rail",
+     "motion": "the track's points switch toward the broken fork, then flick back",
+     "why": "slide lists failure modes (mismatch, copy-paste, sequencing error, premature jump); a track derailing at a bad fork warns of the wrong path"
+    },
+    {
+     "n": 17,
+     "title": "District Economic Planning Dashboard — 12-Month Actions",
+     "current_icon": "arrows",
+     "proposed_icon": "a quarterly gauge dial divided into Q1-Q4 with a sweeping needle",
+     "motion": "the needle sweeps from Q1 round to Q4, then resets",
+     "why": "slide is a Q1-Q4 action dashboard with owners and KPIs; a four-quarter dashboard dial is the planning instrument"
+    },
+    {
+     "n": 18,
+     "title": "District Economic Planning Dashboard (cont.)",
+     "current_icon": "arrows",
+     "proposed_icon": "same quarterly gauge-dial motif",
+     "motion": "the needle sweeps from Q1 round to Q4, then resets",
+     "why": "CONT of the dashboard section; repeats the quarterly dial over the Q3-Q4 rows"
+    },
+    {
+     "n": 19,
+     "title": "Shenzhen in Numbers — The Benchmark",
+     "current_icon": "book",
+     "proposed_icon": "an ascending bar chart with an arrow breaking past the top bar",
+     "motion": "the bars grow left-to-right and the arrow shoots up past them",
+     "why": "slide is the benchmark stat wall (20% GDP growth, exports $180M->$431.5B); a soaring bar chart embodies the growth benchmark"
+    },
+    {
+     "n": 20,
+     "title": "Strategic Summary — Collector as Chief Economic Officer",
+     "current_icon": "book",
+     "proposed_icon": "a chess king piece standing on a folded district map",
+     "motion": "the king piece sets down on the map with a soft settle, glinting",
+     "why": "summary casts the District Collector as strategic CEO of the district economy; a king on the district map is that command role"
+    },
+    {
+     "n": 21,
+     "title": "Strategic Summary (cont.)",
+     "current_icon": "book",
+     "proposed_icon": "same king-on-district-map motif (carrying the Lin Yifu endowment quote)",
+     "motion": "the king piece sets down on the map with a soft settle, glinting",
+     "why": "CONT of the summary section; repeats the king-on-map motif over the closing quote"
+    },
+    {
+     "n": 22,
+     "title": "Shenzhen's Economic Miracle (closing cover)",
+     "current_icon": "none",
+     "proposed_icon": "a skyline rising behind a port gantry crane (mirror of the cover)",
+     "motion": "the skyline towers rise from the waterline, then settle",
+     "why": "closing repeat of the title slide; bookends the deck with the same crane-and-skyline motif"
+    }
+   ]
+  },
+  {
+   "slug": "cotton-stalk-pellets",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Cotton Stalk to Pellets (cover)",
+     "current_icon": "none",
+     "proposed_icon": "a bare uprooted cotton stalk (with one open boll) whose lower end is compressed into a cylindrical fuel pellet",
+     "motion": "the boll puffs open then the stalk base tightens into a pellet, 3s loop",
+     "why": "cover of a waste-to-wealth story: field residue becoming clean fuel — the whole deck in one glyph"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "doc",
+     "proposed_icon": "three short cotton-stalk twigs laid as bullet rows, each capped with a small open boll marker",
+     "motion": "bolls fade in one after another down the list, 2.5s",
+     "why": "agenda/contents — stalks-as-list keeps it in the cotton family instead of a generic document"
+    },
+    {
+     "n": 3,
+     "title": "Cotton Stalk to Pellets (section intro)",
+     "current_icon": "leaf",
+     "proposed_icon": "a four-link chain: stubble field → flame → soil layer → rupee coin",
+     "motion": "a highlight travels left-to-right along the chain links, 3s",
+     "why": "depicts the intro callout 'Field residue → clean fuel → soil carbon → income'"
+    },
+    {
+     "n": 4,
+     "title": "Why this matters in Andhra Pradesh",
+     "current_icon": "spark",
+     "proposed_icon": "a strapped, pressed cotton bale",
+     "motion": "the strap tightens and the bale settles with a soft nudge, 2.5s",
+     "why": "stats are 13.0 lakh bales pressed and 5 cotton districts — the pressed bale is the literal unit on the slide"
+    },
+    {
+     "n": 5,
+     "title": "Why this matters in Andhra Pradesh CONT.",
+     "current_icon": "spark",
+     "proposed_icon": "a strapped, pressed cotton bale (same as slide 4)",
+     "motion": "the strap tightens and the bale settles with a soft nudge, 2.5s",
+     "why": "continuation of section 1 — repeats the section motif"
+    },
+    {
+     "n": 6,
+     "title": "Case study: URJA Project in Yavatmal",
+     "current_icon": "trend",
+     "proposed_icon": "a small pellet-fed cookstove with a clean low flame and a wisp of smoke curling away",
+     "motion": "the flame flickers gently while the smoke wisp thins to nothing, 3s",
+     "why": "case-study outcomes are pellet cooking, ~90% less indoor smoke, LPG-cheaper fuel for tribal women"
+    },
+    {
+     "n": 7,
+     "title": "Case study: URJA Project in Yavatmal CONT.",
+     "current_icon": "trend",
+     "proposed_icon": "a small pellet-fed cookstove with a clean low flame (same as slide 6)",
+     "motion": "the flame flickers gently while the smoke wisp thins to nothing, 3s",
+     "why": "continuation — carries the URJA case-study motif over the income/biochar stats"
+    },
+    {
+     "n": 8,
+     "title": "Technology pathway: stalk → pellets + biochar + credits",
+     "current_icon": "rupee",
+     "proposed_icon": "a tractor-mounted shredder hopper with chipped stalk going in and round pellets dropping out below",
+     "motion": "chips fall into the hopper and pellets drop out in a slow cycle, 3s",
+     "why": "this is the Uproot→Dry→Chip→Densify→Use flow; densification of chipped stalk into pellets is the core stage"
+    },
+    {
+     "n": 9,
+     "title": "Logistics model: the missing link solved",
+     "current_icon": "truck",
+     "proposed_icon": "a tractor pulling a stalk-loaded trailer, encircled by a dashed 50 km radius ring",
+     "motion": "the tractor inches along the ring, dashes rotating slowly, 3.5s",
+     "why": "CIRCOT model's defining number is the 50 km collection radius solved by tractors and CHCs"
+    },
+    {
+     "n": 10,
+     "title": "Business case: value is created at several points",
+     "current_icon": "spark",
+     "proposed_icon": "a stack of rupee coins rising in steps, each coin tagged pellet / biochar / credit / service",
+     "motion": "coins stack up one step at a time, 3s",
+     "why": "slide lists four revenue streams and the ₹1,000 cost vs ₹2,500–3,000 factory-gate margin"
+    },
+    {
+     "n": 11,
+     "title": "Business case: value is created at several points CONT.",
+     "current_icon": "spark",
+     "proposed_icon": "a rising stack of rupee coins in steps (same as slide 10)",
+     "motion": "coins stack up one step at a time, 3s",
+     "why": "continuation of the business-case / revenue-streams section"
+    },
+    {
+     "n": 12,
+     "title": "Priority AP districts and cluster logic",
+     "current_icon": "pin",
+     "proposed_icon": "a simplified Andhra district outline with three cluster pins each ringed by a small collection circle",
+     "motion": "the three cluster rings pulse outward in sequence, 3s",
+     "why": "the table names Rayalaseema, Guntur–Palnadu and coastal clusters, each a 50 km catchment around an anchor buyer"
+    },
+    {
+     "n": 13,
+     "title": "Priority AP districts and cluster logic CONT.",
+     "current_icon": "pin",
+     "proposed_icon": "Andhra outline with three ringed cluster pins (same as slide 12)",
+     "motion": "the three cluster rings pulse outward in sequence, 3s",
+     "why": "continuation — selection-criteria list for the same priority-district section"
+    },
+    {
+     "n": 14,
+     "title": "Benefits for district administration",
+     "current_icon": "pin",
+     "proposed_icon": "a seedling sprouting from a dark biochar-enriched soil mound with faint smoke-free air above",
+     "motion": "the sprout unfurls a leaf as the soil layer darkens, 3s",
+     "why": "benefit pairs center on cleaner villages, biochar soil resilience and reduced burning — soil + clean air is the payoff"
+    },
+    {
+     "n": 15,
+     "title": "District implementation model",
+     "current_icon": "pin",
+     "proposed_icon": "a relay of four cupped hands passing a bundle of stalk from one to the next",
+     "motion": "the stalk bundle hops hand-to-hand along the relay, 3.5s",
+     "why": "depicts the Farmers→FPO/SHG→Machine group→Plant→End-users hand-off chain"
+    },
+    {
+     "n": 16,
+     "title": "District implementation model CONT.",
+     "current_icon": "pin",
+     "proposed_icon": "a relay of cupped hands passing a stalk bundle (same as slide 15)",
+     "motion": "the stalk bundle hops hand-to-hand along the relay, 3.5s",
+     "why": "continuation — operating safeguards for the same implementation-chain section"
+    },
+    {
+     "n": 17,
+     "title": "Governance and partnerships",
+     "current_icon": "spark",
+     "proposed_icon": "a round review table ringed by distinct seats (collector, FPO, CHC, buyer, technical partner)",
+     "motion": "seats light up one by one around the table, 3s",
+     "why": "slide is a partner roster convened into a District Cotton Stalk Utilisation Cell with weekly reviews"
+    },
+    {
+     "n": 18,
+     "title": "90-day pilot plan for one district",
+     "current_icon": "pin",
+     "proposed_icon": "a three-month calendar strip with five phase bands marked across the days",
+     "motion": "a progress marker sweeps across the 90 days filling each band, 3.5s",
+     "why": "content is a Days 0–15…76–90 five-phase pilot timeline"
+    },
+    {
+     "n": 19,
+     "title": "90-day pilot plan for one district CONT.",
+     "current_icon": "pin",
+     "proposed_icon": "three-month calendar strip with five phase bands (same as slide 18)",
+     "motion": "a progress marker sweeps across the 90 days filling each band, 3.5s",
+     "why": "continuation of the 90-day pilot phases"
+    },
+    {
+     "n": 20,
+     "title": "90-day pilot plan for one district CONT.",
+     "current_icon": "pin",
+     "proposed_icon": "three-month calendar strip with five phase bands (same as slide 18)",
+     "motion": "a progress marker sweeps across the 90 days filling each band, 3.5s",
+     "why": "second continuation of the same pilot-plan section"
+    },
+    {
+     "n": 21,
+     "title": "Ask from district officials",
+     "current_icon": "pin",
+     "proposed_icon": "a rubber approval stamp pressing an 'approved' mark onto a one-page pilot document",
+     "motion": "the stamp lifts, presses down and leaves the mark, 2.5s",
+     "why": "the ask is: approve the district pilot, convene partners, sign buyer MoUs before collection"
+    },
+    {
+     "n": 22,
+     "title": "Cotton Stalk to Pellets (closing)",
+     "current_icon": "none",
+     "proposed_icon": "a single finished fuel pellet with a tiny green sprout emerging from its top",
+     "motion": "the sprout gently rises and a soft glow pulses once, 3s",
+     "why": "closing — the residue-to-fuel-to-soil loop resolved in one clean object"
+    }
+   ]
+  },
+  {
+   "slug": "morbi-ceramic-cluster",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Morbi Ceramic Cluster (cover)",
+     "current_icon": "none",
+     "proposed_icon": "a neat stack of large glossy ceramic tiles with a specular glint sliding across the top slab",
+     "motion": "a highlight streak sweeps across the top tile's glaze, 3s",
+     "why": "cover of India's #2 tile hub producing 80–90% of national output — the polished tile stack is the product"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "doc",
+     "proposed_icon": "a 2x2 grid of tile swatches with slightly different glaze fills, like a sample board",
+     "motion": "each swatch fills with its glaze one after another, 2.5s",
+     "why": "agenda/contents — a tile sample board is the ceramic-native way to show a list of sections"
+    },
+    {
+     "n": 3,
+     "title": "EVOLUTION OF THE INDUSTRY",
+     "current_icon": "factory",
+     "proposed_icon": "a curved traditional clay roof tile (nalia) morphing into a flat modern glazed floor tile",
+     "motion": "the curved nalia flattens and gains gloss, then loops back, 4s",
+     "why": "the timeline runs from pre-1980s clay nalia roofing to modern vitrified slabs — this is that transformation"
+    },
+    {
+     "n": 4,
+     "title": "GLOBAL STANDING",
+     "current_icon": "spark",
+     "proposed_icon": "a globe with a small tile-shaped '#2' medal hanging on it, one notch below the top",
+     "motion": "the globe rotates a few degrees and the medal swings gently, 3s",
+     "why": "slide states world's #2 producer/consumer, trailing only China"
+    },
+    {
+     "n": 5,
+     "title": "THE SUPPORT ECOSYSTEM",
+     "current_icon": "spark",
+     "proposed_icon": "a large open umbrella sheltering several small tile-firm blocks, a gas-pipe valve feeding in at the base",
+     "motion": "the umbrella opens over the firms and the pipe valve pulses once, 3.5s",
+     "why": "content is the MCA 'umbrella body', community credit, plus govt gas pipelines and port logistics holding the cluster together"
+    },
+    {
+     "n": 6,
+     "title": "CHALLENGES FACING THE CLUSTER",
+     "current_icon": "pin",
+     "proposed_icon": "a kiln chimney emitting smoke, crossed by a regulatory gauge/ban arc (SO2)",
+     "motion": "smoke rises then the gauge needle swings into the red, 3s",
+     "why": "lead challenge is the NGT coal-gasifier closure forcing costly LNG transition to cut SO2 and particulates"
+    },
+    {
+     "n": 7,
+     "title": "What makes Morbi remarkable (takeaways)",
+     "current_icon": "spark",
+     "proposed_icon": "three meshed gears turning together in lock-step",
+     "motion": "all three gears rotate in sync, 3s",
+     "why": "the standout takeaway is collective, cluster-wide technology adoption 'across all firms simultaneously' — social capital as synchronised gears"
+    },
+    {
+     "n": 8,
+     "title": "Morbi Ceramic Cluster (closing)",
+     "current_icon": "none",
+     "proposed_icon": "a single large-format vitrified slab standing upright with a clean gloss glint",
+     "motion": "a soft highlight passes across the slab and it settles, 3s",
+     "why": "closing — the finished premium slab that a century of reinvention now produces"
+    }
+   ]
+  },
+  {
+   "slug": "srikakulam-blue-economy",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Unlocking Srikakulam's Blue Economy Potential (cover)",
+     "current_icon": "none",
+     "proposed_icon": "a curled shrimp riding over a single stylised sea wave",
+     "motion": "the wave rolls under the shrimp which bobs gently, 3s",
+     "why": "cover of a shrimp/fish coastal blue-economy strategy — shrimp over wave is the district's signature"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "doc",
+     "proposed_icon": "a fishing net holding a few small round catch-markers, arranged as list rows",
+     "motion": "catch-markers settle into the net one by one, 2.5s",
+     "why": "agenda/contents rendered in the seafood register instead of a plain document"
+    },
+    {
+     "n": 3,
+     "title": "The Problem We Are Trying to Solve",
+     "current_icon": "alert",
+     "proposed_icon": "a whole raw shrimp encased in a rectangular block of ice",
+     "motion": "a faint frost creeps across the ice block, 3s",
+     "why": "the problem is the 'raw-catch trap' — shrimp leaving as raw, whole, block-frozen catch at the lowest margin"
+    },
+    {
+     "n": 4,
+     "title": "The Answer: Build the Blue Economy Ecosystem",
+     "current_icon": "rupee",
+     "proposed_icon": "a small processing-unit building with an upward value arrow and a shrimp rising along it",
+     "motion": "the arrow extends upward and the shrimp climbs a step, 3s",
+     "why": "the answer is to localise processing for 2–3x realisation, keeping margins in the district"
+    },
+    {
+     "n": 5,
+     "title": "Srikakulam's Blue Economy Sector at a Glance",
+     "current_icon": "rupee",
+     "proposed_icon": "an aerial grid of rectangular shrimp ponds running along a coastline edge",
+     "motion": "sunlight glints across the ponds in a slow ripple, 3.5s",
+     "why": "stats are ~50,000+ ha of aquaculture, Naupada heartland, ~2 lakh tonnes — the pond belt itself"
+    },
+    {
+     "n": 6,
+     "title": "How the Model Works: One Integrated Chain",
+     "current_icon": "gear",
+     "proposed_icon": "five linked chain-loops running from a pond to a sealed export package",
+     "motion": "a pulse of light travels link-to-link along the chain, 3.5s",
+     "why": "depicts the Farm→Aggregate→Process→Value-add→Market integrated chain that 'captures every link'"
+    },
+    {
+     "n": 7,
+     "title": "Five Pillars Behind the Results",
+     "current_icon": "spark",
+     "proposed_icon": "five upright pillars/columns supporting a horizontal seafood-crate lintel",
+     "motion": "the five pillars rise into place then the lintel settles on top, 3s",
+     "why": "content is literally five pillars: seed & feed, processing, fishmeal, testing/certification, traceability"
+    },
+    {
+     "n": 8,
+     "title": "Who Benefits: Farmers, Workers and the State",
+     "current_icon": "leaf",
+     "proposed_icon": "two cupped hands side by side, one cradling a shrimp, the other rupee coins",
+     "motion": "both hands lift slightly in turn, balancing, 3s",
+     "why": "the compare table splits gains between farmers/workers and the district/state — shared benefit"
+    },
+    {
+     "n": 9,
+     "title": "Roadmap for Srikakulam District",
+     "current_icon": "pin",
+     "proposed_icon": "a winding coastal road with five numbered milestone markers along it",
+     "motion": "a marker glides along the road lighting each milestone, 3.5s",
+     "why": "content is a five-step roadmap from map & mobilise to anchor zone (Kalingapatnam) to markets"
+    },
+    {
+     "n": 10,
+     "title": "Challenges to Plan For",
+     "current_icon": "alert",
+     "proposed_icon": "a shrimp marked with warning white spots and a small caution ring",
+     "motion": "the white spots blink and the caution ring pulses once, 3s",
+     "why": "the headline challenge is white-spot disease wiping out ponds — distinct from the clean cover shrimp"
+    },
+    {
+     "n": 11,
+     "title": "What Officers Should Take Away",
+     "current_icon": "spark",
+     "proposed_icon": "a sealed ready-to-cook seafood pack with an IQF/HACCP certification seal",
+     "motion": "the certification seal stamps on with a soft pop, 2.5s",
+     "why": "key takeaway is that processing + compliance certification is the multiplier and the moat"
+    },
+    {
+     "n": 12,
+     "title": "Unlocking Srikakulam's Blue Economy Potential (closing)",
+     "current_icon": "none",
+     "proposed_icon": "a shrimp inside an export carton stamped with a 'Srikakulam Seafood' brand label, wave beneath",
+     "motion": "the brand label fades in and the carton lid settles, 3s",
+     "why": "closing — the branded, certified export product bound for global buyers, the strategy realised"
+    }
+   ]
+  },
+  {
+   "slug": "east-godavari-coconut-coir",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Unlocking East Godavari's Coconut & Coir Potential (cover)",
+     "current_icon": "none",
+     "proposed_icon": "a whole coconut cross-sectioning open to reveal husk fibre and the shell kernel",
+     "motion": "the coconut splits apart to show fibre + shell, then eases closed, ~3s loop",
+     "why": "Depicts the deck's core thesis on the cover subtitle: moving from raw nut to coir/carbon by opening up what is inside the husk"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "none",
+     "proposed_icon": "a coconut frond unfurling its leaflets one after another",
+     "motion": "leaflets fan open in sequence then settle, 3-4s",
+     "why": "Agenda/contents reveal — the frond's sequential leaflets stand in for the list of sections about to unfold"
+    },
+    {
+     "n": 3,
+     "title": "The Problem We Are Trying to Solve",
+     "current_icon": "compass",
+     "proposed_icon": "a whole raw coconut riding away on a truck bed, a loose husk pile left behind",
+     "motion": "the truck edges off-frame while a wisp rises from the abandoned husk, 3s",
+     "why": "The four cards say nuts/copra/husk leave the district in the lowest-margin raw form and husk is dumped/burnt — value leaving on the truck"
+    },
+    {
+     "n": 4,
+     "title": "The Answer: Build the Coconut Value Ecosystem",
+     "current_icon": "bulb",
+     "proposed_icon": "a central coconut ringed by orbiting value-add nodes (fibre coil, carbon block, VCO drop)",
+     "motion": "the nodes orbit the nut slowly, 4s loop",
+     "why": "The section argues for anchoring coir, activated carbon, testing and branding around the nut so margins stay local — an ecosystem circling the coconut"
+    },
+    {
+     "n": 5,
+     "title": "East Godavari's Coconut Sector at a Glance",
+     "current_icon": "compass",
+     "proposed_icon": "one coconut branching into a coir-rope strand and an activated-carbon block",
+     "motion": "the two branches draw outward from the nut, 3s",
+     "why": "The stats headline the district's two flagship value chains (coir & activated carbon) drawn from the same coconut base"
+    },
+    {
+     "n": 6,
+     "title": "How the Model Works: One Integrated Chain",
+     "current_icon": "arrows",
+     "proposed_icon": "a coconut advancing along a five-link processing conveyor (Farm to Market)",
+     "motion": "the nut travels link to link, transforming as it moves, 4s",
+     "why": "Directly renders the five-stage flow Farm > Aggregate > Process > Value-add > Market on the slide"
+    },
+    {
+     "n": 7,
+     "title": "Five Pillars Behind the Results",
+     "current_icon": "key",
+     "proposed_icon": "five columns of coiled coir rope holding up a beam",
+     "motion": "the five rope columns rise into place one by one, 3-4s",
+     "why": "Five pillars (planting material, coir units, carbon plants, testing, branding) literally as five coir-rope pillars"
+    },
+    {
+     "n": 8,
+     "title": "Who Benefits: Farmers, Workers and the State",
+     "current_icon": "arrows",
+     "proposed_icon": "a spinning wheel (ratt) twisting loose coir fibre into yarn",
+     "motion": "the wheel turns and yarn winds on, steady 4s loop",
+     "why": "The benefits column foregrounds thousands of coir spinning/weaving jobs, especially for women — the spinning wheel is that livelihood"
+    },
+    {
+     "n": 9,
+     "title": "Roadmap for East Godavari District",
+     "current_icon": "arrows",
+     "proposed_icon": "a path winding through coconut groves past five milestone flags toward a port",
+     "motion": "the dashed path draws forward, flags pop up at each milestone, 4s",
+     "why": "The five roadmap steps map/mobilise > anchor zone > shared infra > certify > link-to-markets, ending at export/port"
+    },
+    {
+     "n": 10,
+     "title": "Challenges to Plan For",
+     "current_icon": "alert",
+     "proposed_icon": "an ageing coconut palm with a drooping, wilted frond",
+     "motion": "the wilted frond sags and sways faintly, 3s",
+     "why": "Lead challenge card is ageing palms, low yields and root-wilt disease — the drooping palm signals the productivity risk"
+    },
+    {
+     "n": 11,
+     "title": "What Officers Should Take Away",
+     "current_icon": "book",
+     "proposed_icon": "one coconut fanning out into multiple value products with a rising value arrow",
+     "motion": "products fan out from the nut as the value arrow climbs, 3s",
+     "why": "The headline takeaway is that processing is the multiplier — the same coconut worth several times more once converted"
+    },
+    {
+     "n": 12,
+     "title": "Unlocking East Godavari's Coconut & Coir Potential (closing)",
+     "current_icon": "none",
+     "proposed_icon": "a thriving coconut palm laden with nuts against a rising sun",
+     "motion": "the palm sways gently as the sun glow swells, 4s",
+     "why": "Closing vision slide — the realised, diversified coconut economy shown as a flourishing laden palm at dawn"
+    }
+   ]
+  },
+  {
+   "slug": "nellore-ethanol-potential",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Unlocking Nellore's Ethanol Opportunity (cover)",
+     "current_icon": "none",
+     "proposed_icon": "an ear of paddy morphing into a fuel droplet",
+     "motion": "the grain ear gradually transforms into a fuel drop and back, 3-4s",
+     "why": "Cover captures the whole premise — turning Nellore's surplus grain into fuel-grade ethanol"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "none",
+     "proposed_icon": "a row of paddy stalks lighting up one by one",
+     "motion": "stalks illuminate left to right in sequence, 3-4s",
+     "why": "Agenda reveal rendered in the deck's feedstock material — each lit stalk a section to come"
+    },
+    {
+     "n": 3,
+     "title": "The Case for Ethanol: Why Now",
+     "current_icon": "compass",
+     "proposed_icon": "an oil barrel shrinking with a downward import arrow beside a rising ethanol drop",
+     "motion": "the barrel contracts as the ethanol drop rises to replace it, 3s",
+     "why": "Lead card is 85% crude-import dependence and every blended litre displacing imported fuel"
+    },
+    {
+     "n": 4,
+     "title": "The Answer: National Ethanol Blending Programme",
+     "current_icon": "bulb",
+     "proposed_icon": "a petrol-pump nozzle dispensing a blended drop marked to a 20% (E20) line",
+     "motion": "the drop fills up to the 20% mark, 3s",
+     "why": "The EBP section headlines the 20% E20 blending target and OMC purchase for blending into petrol"
+    },
+    {
+     "n": 5,
+     "title": "Nellore District at a Glance",
+     "current_icon": "compass",
+     "proposed_icon": "a paddy sheaf standing beside a port anchor",
+     "motion": "a small wave laps the anchor while the sheaf sways, 3s",
+     "why": "The stats pair the paddy heartland (2.5 lakh ha) with its Krishnapatnam deep-water port anchor"
+    },
+    {
+     "n": 6,
+     "title": "How an Ethanol Value Chain Would Work",
+     "current_icon": "arrows",
+     "proposed_icon": "a five-link chain: grain sheaf > distillation column > blend drop > tanker > car",
+     "motion": "product flows link to link along the chain, 4s",
+     "why": "Renders the flow Feedstock > Distillery > Blending > Distribution > End Use on the slide"
+    },
+    {
+     "n": 7,
+     "title": "Five Pillars for Building Nellore's Ethanol Capacity",
+     "current_icon": "key",
+     "proposed_icon": "five ethanol storage tanks of ascending height in a row",
+     "motion": "the tanks fill up in turn, 3-4s",
+     "why": "Five capacity pillars (aggregation, distillery capacity, OMC offtake, port logistics, by-products) as five tanks"
+    },
+    {
+     "n": 8,
+     "title": "Who Benefits: Farmers and the State",
+     "current_icon": "arrows",
+     "proposed_icon": "a balance scale with a grain sheaf on one pan and a fuel drop on the other",
+     "motion": "the scale tips gently and levels into balance, 3s",
+     "why": "The two-column benefits (farmers vs state/nation) shown as grain and fuel balanced together"
+    },
+    {
+     "n": 9,
+     "title": "Development Roadmap for Nellore",
+     "current_icon": "arrows",
+     "proposed_icon": "an NH16 highway ribbon with five milestone markers ending at a distillery and port",
+     "motion": "the road draws forward, markers plant along it, 4s",
+     "why": "Five roadmap steps culminating in port-routed scaling — NH16 is named as the corridor"
+    },
+    {
+     "n": 10,
+     "title": "Challenges to Plan For",
+     "current_icon": "alert",
+     "proposed_icon": "a grain ear splitting between a dinner plate and a fuel drop",
+     "motion": "the ear tips back and forth between plate and fuel, 3s",
+     "why": "Captures the section's signature food-versus-fuel concern (grain diverted from food/fodder)"
+    },
+    {
+     "n": 11,
+     "title": "Take Away",
+     "current_icon": "book",
+     "proposed_icon": "a single grain feeding twin output streams — a fuel drop and a DDGS/bio-CNG pellet flame",
+     "motion": "the two streams flow out from the grain in parallel, 4s",
+     "why": "Key takeaway that by-products (DDGS, bio-CNG) add a second revenue layer on top of ethanol"
+    },
+    {
+     "n": 12,
+     "title": "From Opportunity to Action",
+     "current_icon": "arrows",
+     "proposed_icon": "a hand planting a location pin/flag on a distillery site on a map",
+     "motion": "the pin drops and the flag plants firmly, 3s",
+     "why": "The leave-today task is to identify one distillery-ready site — the action of pinning the site"
+    },
+    {
+     "n": 13,
+     "title": "Unlocking Nellore's Ethanol Opportunity (closing)",
+     "current_icon": "none",
+     "proposed_icon": "a distillery silhouette beside a port crane at sunrise",
+     "motion": "the sun glow swells behind the skyline, 4s",
+     "why": "Closing vision — Nellore realised as a full ethanol hub anchored by its port, at dawn"
+    }
+   ]
+  },
+  {
+   "slug": "tiruppur-textiles",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Tiruppur (cover)",
+     "current_icon": "none",
+     "proposed_icon": "a knitted T-shirt forming loop by loop from a single yarn strand",
+     "motion": "knit stitches build up the shirt row by row, then reset, 4s",
+     "why": "Cover of the Banian/T-shirt City — the knitwear garment literally knitting into being"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "none",
+     "proposed_icon": "two knitting needles casting stitches on one at a time",
+     "motion": "stitches cast onto the needle in sequence, 3-4s",
+     "why": "Agenda reveal in knit register — each cast-on stitch stands for a section to come"
+    },
+    {
+     "n": 3,
+     "title": "Textiles: A Pillar of the Indian Economy",
+     "current_icon": "compass",
+     "proposed_icon": "a bolt of fabric unrolling across an outline of India",
+     "motion": "the cloth unrolls to drape the map, 4s",
+     "why": "Macro national framing — 13% of industrial output, 12% of exports, textiles as a national pillar"
+    },
+    {
+     "n": 4,
+     "title": "Tiruppur at a Glance",
+     "current_icon": "compass",
+     "proposed_icon": "a T-shirt with a map pin marking Tiruppur",
+     "motion": "the pin drops onto the shirt, which sways gently, 3s",
+     "why": "Locates the Banian City / Town of Export Excellence and its 90% knitwear share"
+    },
+    {
+     "n": 5,
+     "title": "Tiruppur at a Glance CONT.",
+     "current_icon": "compass",
+     "proposed_icon": "a T-shirt with a map pin marking Tiruppur (same as slide 4, section CONT)",
+     "motion": "the pin drops onto the shirt, which sways gently, 3s",
+     "why": "Continuation of the same section (timeline + share stats); section-header icon repeats"
+    },
+    {
+     "n": 6,
+     "title": "Four Decades of Export Growth",
+     "current_icon": "arrows",
+     "proposed_icon": "an upward growth curve rendered as a yarn thread rising from a cone",
+     "motion": "the yarn thread climbs and traces the rising curve, 4s",
+     "why": "The series chart from Rs 75 Cr to Rs 46,000 Cr — a growth line drawn in yarn"
+    },
+    {
+     "n": 7,
+     "title": "Four Decades of Export Growth CONT.",
+     "current_icon": "arrows",
+     "proposed_icon": "an upward growth curve rendered as a yarn thread rising from a cone (same as slide 6, section CONT)",
+     "motion": "the yarn thread climbs and traces the rising curve, 4s",
+     "why": "Continuation of the growth section (callouts, rising share, global brands); icon repeats"
+    },
+    {
+     "n": 8,
+     "title": "Composition of the Textile Value Chain",
+     "current_icon": "key",
+     "proposed_icon": "a T-shirt exploding into stacked process layers (knit, dye, print, embroider)",
+     "motion": "the layers fan apart then reassemble, 3-4s",
+     "why": "The table breaks the 20,000 units into segments — knitting, dyeing, printing, embroidery, ancillary"
+    },
+    {
+     "n": 9,
+     "title": "Composition of the Textile Value Chain CONT.",
+     "current_icon": "key",
+     "proposed_icon": "a T-shirt exploding into stacked process layers (same as slide 8, section CONT)",
+     "motion": "the layers fan apart then reassemble, 3-4s",
+     "why": "Continuation (defining features, associations, household roots); section-header icon repeats"
+    },
+    {
+     "n": 10,
+     "title": "What Drives (and Constrains) the Cluster",
+     "current_icon": "key",
+     "proposed_icon": "a spinning yarn spool with a brake shoe pressing against it",
+     "motion": "the spool spins fast, the brake nudges in and eases off, 3s",
+     "why": "Section pairs engines of growth (speed to market) against structural constraints — drive vs brake"
+    },
+    {
+     "n": 11,
+     "title": "Support Institutions & Incentives",
+     "current_icon": "flag",
+     "proposed_icon": "a knit spool sheltered under an institutional umbrella",
+     "motion": "the umbrella opens over the spool, 3s",
+     "why": "Textiles Committee, AEPC, TEA, SIHMA and policy schemes sheltering the cluster"
+    },
+    {
+     "n": 12,
+     "title": "Support Institutions & Incentives CONT.",
+     "current_icon": "flag",
+     "proposed_icon": "a knit spool sheltered under an institutional umbrella (same as slide 11, section CONT)",
+     "motion": "the umbrella opens over the spool, 3s",
+     "why": "Continuation (PM MITRA, PLI, RoSCTL/RoDTEP policy list); section-header icon repeats"
+    },
+    {
+     "n": 13,
+     "title": "Water: From Crisis to Zero Liquid Discharge",
+     "current_icon": "alert",
+     "proposed_icon": "a water droplet circulating a closed-loop recycle ring over a dye vat",
+     "motion": "the droplet travels the closed recycle loop continuously, 4s",
+     "why": "ZLD is the section — 96% water recovered, 18 CETPs, a closed-loop world-first for a textile cluster"
+    },
+    {
+     "n": 14,
+     "title": "Innovating & Financing the Next Phase",
+     "current_icon": "bulb",
+     "proposed_icon": "an automated knitting needle traced by circuit lines with a rupee coin at its base",
+     "motion": "circuit lines pulse along the needle, coin glints, 3-4s",
+     "why": "Pairs AI-driven manufacturing (45% to 65% utilisation) with NSIC/SIDBI finance and venture capital"
+    },
+    {
+     "n": 15,
+     "title": "SWOT: Tiruppur's Textile & Garments Cluster",
+     "current_icon": "book",
+     "proposed_icon": "a 2x2 grid of knit-fabric swatches (four quadrants)",
+     "motion": "the four swatches fill in one quadrant at a time, 3-4s",
+     "why": "The SWOT block is a four-quadrant assessment — rendered as four fabric squares"
+    },
+    {
+     "n": 16,
+     "title": "Tiruppur (closing)",
+     "current_icon": "none",
+     "proposed_icon": "a folded knit T-shirt with an export shipping tag, a cargo ship behind",
+     "motion": "the ship drifts slowly as the tag flutters, 4s",
+     "why": "Closing vision toward Rs 1 lakh Cr exports by 2030 — the finished garment shipping to the world"
+    }
+   ]
+  },
+  {
+   "slug": "kalamkari-krishna",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Cover — Successful Models Kalamkari Can Emulate",
+     "current_icon": "none (cover animation)",
+     "proposed_icon": "carved wooden kalamkari block pressing a tree-of-life motif onto cloth, ink kissing the fabric",
+     "motion": "block lowers, presses, lifts to reveal the inked motif, then repeats (3s)",
+     "why": "Pedana Kalamkari is a hand block-printing craft; the print act is the deck's signature subject"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "compass",
+     "proposed_icon": "a bolt of printed Kalamkari cloth unrolling into distinct printed panels",
+     "motion": "cloth unspools left-to-right, panels appearing one by one (3.5s)",
+     "why": "agenda previewing the sections as successive panels of one continuous story"
+    },
+    {
+     "n": 3,
+     "title": "Core Idea: Build a Hybrid Kalamkari Growth Model",
+     "current_icon": "key",
+     "proposed_icon": "four small carved blocks (Bagru, Raghurajpur, Chanderiyaan, Tiruppur) converging to stamp one composite motif",
+     "motion": "four blocks slide inward and overlap into a single combined imprint (3s)",
+     "why": "the four case-study cards plus the callout that blends their best lessons into one model"
+    },
+    {
+     "n": 4,
+     "title": "Strong Identity, Unorganised Growth",
+     "current_icon": "alert",
+     "proposed_icon": "a tangled skein of thread resolving into a neat wound spool beside a small GI rosette",
+     "motion": "loose tangle gently pulls taut and winds onto the spool (3s)",
+     "why": "compare block: strong GI identity vs fragmented producers — dispersed becoming organised"
+    },
+    {
+     "n": 5,
+     "title": "The Common-Infrastructure Model (Bagru)",
+     "current_icon": "key",
+     "proposed_icon": "a communal indigo dye vat with cloth dipping and a water-reuse loop arrow around it",
+     "motion": "cloth dips, lifts dyed; the reuse arrow circles once (3s)",
+     "why": "Bagru's shared washing/dyeing facility with zero-discharge water recycling"
+    },
+    {
+     "n": 6,
+     "title": "The Craft Tourism Model (Raghurajpur)",
+     "current_icon": "key",
+     "proposed_icon": "an artisan hut under a canopy with a dashed visitor footpath winding up to it",
+     "motion": "footprints appear along the trail toward the hut (3.5s)",
+     "why": "village-as-product craft trail: visitor demo centres and the Pedana Kalamkari trail"
+    },
+    {
+     "n": 7,
+     "title": "The Digital Market Model (Chanderiyaan)",
+     "current_icon": "key",
+     "proposed_icon": "a Kalamkari motif displayed on a phone screen with a small QR tag beside it",
+     "motion": "motif loads onto the screen, QR ticks into place (2.5s)",
+     "why": "ICT centre, design archive, e-commerce onboarding and QR traceability"
+    },
+    {
+     "n": 8,
+     "title": "Common Treatment, Reuse and Monitoring (Tiruppur)",
+     "current_icon": "key",
+     "proposed_icon": "a CETP filtration tank with a monitoring gauge/dial and a treated water droplet cycling back",
+     "motion": "droplet falls through the tank, dial needle sweeps, droplet returns (3s)",
+     "why": "cluster-level common treatment, reuse for first-stage washing, and APPCB monitoring"
+    },
+    {
+     "n": 9,
+     "title": "Pedana Kalamkari Integrated Craft Growth Model",
+     "current_icon": "key",
+     "proposed_icon": "a Kalamkari tree-of-life with six branches, each branch tipped by a pillar glyph (facility, tourism, digital, enterprise, GI, water)",
+     "motion": "branches unfurl outward one by one from the trunk (4s)",
+     "why": "the six-card integrated package rendered as the craft's own tree-of-life motif"
+    },
+    {
+     "n": 10,
+     "title": "Six Steps in the Kalamkari Centres",
+     "current_icon": "arrows",
+     "proposed_icon": "six numbered indigo footprints marching along a stitched dashed path across cloth",
+     "motion": "footprints step forward in sequence 1 to 6 (3.5s)",
+     "why": "the six-step local rollout (map, platform, DPRs, linkages, pilot, KPIs) as a march of action"
+    },
+    {
+     "n": 11,
+     "title": "The Action Checklist After Training",
+     "current_icon": "book",
+     "proposed_icon": "a Kalamkari GI swing-tag/hangtag with ticked checkboxes and a small QR corner",
+     "motion": "checkmarks tick down the tag one by one (3s)",
+     "why": "recommendations checklist plus monthly KPIs, anchored to GI-tag and QR authenticity"
+    },
+    {
+     "n": 12,
+     "title": "Closing slide",
+     "current_icon": "book",
+     "proposed_icon": "a neatly folded finished Kalamkari textile bearing a wax-seal GI authenticity mark",
+     "motion": "the seal presses down and glows softly (2.5s)",
+     "why": "the deck's closing — the finished, certified, premium-priced Kalamkari product"
+    }
+   ]
+  },
+  {
+   "slug": "nellore-shrimp-processing",
+   "slides": [
+    {
+     "n": 1,
+     "title": "Cover — Unlocking Nellore's Shrimp Processing Potential",
+     "current_icon": "none (cover animation)",
+     "proposed_icon": "a single elegant line-drawn Vannamei shrimp with a gentle tail curl",
+     "motion": "the shrimp's antennae and tail flex slowly as if swimming in place (3s)",
+     "why": "the shrimp is the district's whole subject — the hero glyph for the deck"
+    },
+    {
+     "n": 2,
+     "title": "What this story covers (agenda)",
+     "current_icon": "compass",
+     "proposed_icon": "a stretch of Nellore coastline with a grid of aquaculture pond squares along it",
+     "motion": "pond squares fill in along the coast one row at a time (3.5s)",
+     "why": "agenda over the district baseline: ~169 km coastline, one of India's densest pond belts"
+    },
+    {
+     "n": 3,
+     "title": "The Problem We Are Trying to Solve",
+     "current_icon": "arrows",
+     "proposed_icon": "a whole head-on shell-on raw shrimp riding away on a departing truck, a down-arrow trailing",
+     "motion": "truck rolls off-frame as the value arrow dips (3s)",
+     "why": "the raw-commodity trap: lowest-margin form leaving the district, value leaking downstream"
+    },
+    {
+     "n": 4,
+     "title": "The Answer: Build the Processing Ecosystem",
+     "current_icon": "bulb",
+     "proposed_icon": "a raw shrimp transforming into a peeled, value-added retail pack with an upward rupee arrow",
+     "motion": "shrimp morphs into the packed block; rupee arrow rises (3s)",
+     "why": "shift from production to value district — 2-4x realisation, margins staying local (70%/40% stats)"
+    },
+    {
+     "n": 5,
+     "title": "Nellore's Shrimp Sector at a Glance",
+     "current_icon": "compass",
+     "proposed_icon": "a shrimp pond cross-section with a paddlewheel aerator churning a ring of ripples",
+     "motion": "the paddlewheel rotates, ripples spreading outward (3s)",
+     "why": "the at-scale farming base: 50,000+ ha, 1-in-3 farms, 90% Vannamei ponds"
+    },
+    {
+     "n": 6,
+     "title": "How the Model Works: One Integrated Chain",
+     "current_icon": "key",
+     "proposed_icon": "a five-link chain, each link a tiny glyph: pond, ice box, factory, reefer truck, globe",
+     "motion": "links connect left to right, snapping into one chain (3.5s)",
+     "why": "the literal Farm to Aggregate to Process to Cold-chain to Market flow, captured end to end"
+    },
+    {
+     "n": 7,
+     "title": "Five Pillars Behind the Results",
+     "current_icon": "key",
+     "proposed_icon": "five upright pillars in a row supporting a shrimp keystone above them",
+     "motion": "pillars rise into place one by one, keystone settles on top (3.5s)",
+     "why": "the five enabling pillars: seed, processing, cold chain, testing/cert, traceability"
+    },
+    {
+     "n": 8,
+     "title": "Who Benefits — Farmers, Workers and the State",
+     "current_icon": "compass",
+     "proposed_icon": "two hands passing a shrimp between them — a pond-farmer hand and a market/globe hand",
+     "motion": "the shrimp passes gently from one hand toward the other (3s)",
+     "why": "compare block: shared value for farmers/workers and for the district/global buyers"
+    },
+    {
+     "n": 9,
+     "title": "Roadmap for Nellore District",
+     "current_icon": "book",
+     "proposed_icon": "a winding road with five numbered milestone markers leading to a port crane/ship",
+     "motion": "milestones light up 1 to 5 as the road draws toward the port (4s)",
+     "why": "the five-step roadmap ending at export markets and port linkage"
+    },
+    {
+     "n": 10,
+     "title": "Challenges to Plan For",
+     "current_icon": "alert",
+     "proposed_icon": "a shrimp behind a protective shield with a small caution triangle at the shield's edge",
+     "motion": "shield sweeps up in front of the shrimp; caution triangle blinks once (2.5s)",
+     "why": "disease, residue rejections, effluent, tariff and capital risks — biosecurity and hedging"
+    },
+    {
+     "n": 11,
+     "title": "What Officers Should Take Away",
+     "current_icon": "arrows",
+     "proposed_icon": "one shrimp beside a bold x2-4 multiplier with rising step-bars of margin",
+     "motion": "the step-bars grow taller in sequence beside the shrimp (3s)",
+     "why": "the core takeaway: the same kilo is worth 2-4x once processed and value-added"
+    },
+    {
+     "n": 12,
+     "title": "From Case for Action to Action",
+     "current_icon": "arrows",
+     "proposed_icon": "a pen dropping a target map-pin onto a coastal pond cluster",
+     "motion": "the pin drops and plants on the cluster with a soft pulse (2.5s)",
+     "why": "the leave-the-room task: name one cluster, one FPO/processor, and the partners to convene"
+    },
+    {
+     "n": 13,
+     "title": "Closing slide",
+     "current_icon": "book",
+     "proposed_icon": "a shrimp curving upward into a rising-sun arc over the coast, with a rupee coin",
+     "motion": "the shrimp sweeps up into the arc as the sun rises behind it (3.5s)",
+     "why": "the closing line — Nellore grows the shrimp; the next decade decides whether it also earns from it"
+    }
+   ]
+  }
+ ]
+}
