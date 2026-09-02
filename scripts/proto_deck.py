@@ -85,11 +85,14 @@ def anim_for(m):
     return ANIM_BY_SLUG.get(m.get("slug", ""), "")
 
 
-# A theme maps to a concrete cover asset. fish is a Rive file (fish.riv, played by
-# the Rive runtime, not lottie-web); every other theme is a recolored Lottie JSON.
-# The data-anim attribute carries the filename WITH its extension so the cover
-# loader can branch on .riv vs .json without hardcoding any theme name.
-ANIM_FILE = {"fish": "fish.riv"}
+# A theme maps to a concrete cover asset. Every theme (fish now included) is a
+# recolored, background-stripped Lottie JSON in the glowing-lime family, so the
+# default `<theme>.json` covers all of them and ANIM_FILE holds no overrides.
+# (fish was a Rive canvas until the lime pass; it is now fish.json - a Lottie the
+# lime glow filter can reach, which a backdrop-filtered canvas could not.) The
+# data-anim attribute still carries the filename WITH its extension so the loader
+# branches on the extension rather than hardcoding any theme name.
+ANIM_FILE = {}
 
 
 def anim_asset(theme):
@@ -1131,11 +1134,9 @@ def slides_html(content, m):
     # turning wasted panel width into the themed motif. Either way it is inert
     # decoration that collapses to nothing if the JSON or lottie-web fails.
     anim = anim_for(m)
-    # .rv marks a Rive canvas host: it gets the frame + tint-overlay treatment
-    # instead of a CSS filter (a filtered canvas inside the backdrop-filtered
-    # glass blanks the whole panel's paint in Chromium)
+    # Every cover flourish is now a Lottie <svg> the CSS lime glow can filter
+    # directly, so the box needs no per-asset class beyond the .fill sizing hook.
     anim_box = ('<div class="cover-anim' + ('' if herohtml else ' fill')
-                + (' rv' if anim and anim_asset(anim).endswith('.riv') else '')
                 + '" data-anim="' + anim_asset(anim) + '" aria-hidden="true"></div>') if anim else ""
     if herohtml:
         right = '<div class="cover-r r">' + herohtml + '</div>'
@@ -1319,16 +1320,16 @@ a{color:var(--t2);}
    arrives the box has no intrinsic size and the cover reads exactly as before. */
 .cover-anim{pointer-events:none;}
 .cover-anim.fill{width:min(340px,100%);aspect-ratio:1;margin:6px auto 0;
-  opacity:.92;filter:drop-shadow(0 14px 32px rgba(0,0,0,.34));}
-/* A .riv canvas ships its own baked scene background (the fish arrives on
-   light blue), which pastes a hard alien rectangle onto the dark glass. The
-   canvas cannot be recolored in code, so it is blended in at the CSS layer:
-   rounded frame + border make it a deliberate framed illustration, and the
-   hue shift drags the blue toward the site's teal-green family. */
-.cover-anim.rv{position:relative;border-radius:22px;overflow:hidden;
-  border:1px solid rgba(198,236,143,.28);}
-.cover-anim.rv::after{content:"";position:absolute;inset:0;
-  background:rgba(11,36,27,.34);border-radius:22px;}
+  opacity:.92;}
+/* THE lime glow. The flourishes are now background-stripped lime line-art on
+   transparency, so a drop-shadow on the injected <svg> haloes the strokes the
+   way the deck nav arrows glow - a soft wide bloom plus a tight inner one, both
+   in the site lime #C6EC8F. Applied to the SVG, never a canvas: a filter on a
+   canvas inside the backdrop-filtered glass blanks the panel's paint in Chromium
+   (the reason fish left Rive), whereas an SVG filter is safe here - the palm has
+   used drop-shadow all along. Covers the corner-accent copy too. */
+.cover-anim svg{filter:drop-shadow(0 0 14px rgba(198,236,143,.35))
+  drop-shadow(0 0 3px rgba(198,236,143,.5));}
 .cover-glass.has-anim .cover-r{display:flex;align-items:center;justify-content:center;}
 /* corner accent when the hero column is already spoken for: quiet, low, behind
    the title text (the identity columns are lifted above it). The two-class
@@ -2032,7 +2033,6 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
 <!-- lottie-web, deck pages only, deferred and self-guarding: if the CDN is blocked
      the cover animation simply never appears and nothing else is affected. -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
-%%RIVE%%
 <script>
 (function(){
   var root=document.documentElement;
@@ -2253,38 +2253,24 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
     var hosts=document.querySelectorAll('.cover-anim[data-anim]');
     if(!hosts.length) return;
     // Autoplay only when the reader has no reduced-motion preference; otherwise
-    // hold a still (Lottie: a representative frame; Rive: loaded but not autoplayed).
+    // hold a representative still frame.
     var motion=true;
     try{ motion=!matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
     [].forEach.call(hosts,function(host){
       var asset=host.getAttribute('data-anim'); if(!asset) return;
       var path='anim/'+asset;                        // filename carries its extension
-      if(/\.riv$/i.test(asset)){
-        // Rive branch: mount a <canvas> the runtime paints into. Reduced-motion
-        // readers get the file loaded but NOT autoplayed (first frame, no motion).
-        if(!window.rive) return;                     // runtime blocked -> plain cover
-        try{
-          var c=document.createElement('canvas');
-          c.style.display='block'; c.style.width='100%'; c.style.height='100%';
-          host.appendChild(c);
-          // default Rive layout is contain+center, which is what the box wants.
-          var r=new rive.Rive({
-            src:path, canvas:c, autoplay:motion,
-            onLoad:function(){ try{ r.resizeDrawingSurfaceToCanvas(); }catch(e){} }
-          });
-        }catch(e){ /* one bad asset must never break the cover */ }
-      } else {
-        // Lottie branch (unchanged behaviour; guarded per-asset).
-        if(!window.lottie) return;                   // CDN blocked -> plain cover
-        try{
-          var a=lottie.loadAnimation({
-            container:host, renderer:'svg', loop:motion, autoplay:motion, path:path
-          });
-          if(!motion){ a.addEventListener('DOMLoaded',function(){
-            try{ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }catch(e){}
-          }); }
-        }catch(e){ /* one bad asset must never break the cover */ }
-      }
+      // Every cover flourish is a Lottie <svg> now (fish included), so this is a
+      // single guarded lottie-web mount; a missing runtime or bad JSON leaves the
+      // cover exactly as authored.
+      if(!window.lottie) return;                     // CDN blocked -> plain cover
+      try{
+        var a=lottie.loadAnimation({
+          container:host, renderer:'svg', loop:motion, autoplay:motion, path:path
+        });
+        if(!motion){ a.addEventListener('DOMLoaded',function(){
+          try{ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }catch(e){}
+        }); }
+      }catch(e){ /* one bad asset must never break the cover */ }
     });
   }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',init); }
@@ -2396,28 +2382,19 @@ def load_content(slug):
         return json.load(f)
 
 
-# Rive runtime tag, injected ONLY on decks whose cover flourish is a .riv (fish).
-# Deferred and self-guarding exactly like the lottie-web tag above it: if unpkg is
-# blocked the flourish simply never appears and nothing else on the page is touched.
-RIVE_SCRIPT = ('<!-- Rive runtime (canvas), only on decks whose cover flourish is a '
-               '.riv; deferred and self-guarding like lottie-web above. -->\n'
-               '<script defer src="https://unpkg.com/@rive-app/canvas@2.21.6"></script>')
-
-
 def render(m, content=None):
     if content is None:
         content = load_content(m["slug"])
     slides = slides_html(content, m)
     t1, t2 = tint_for(m)
     title = content.get("title") or m.get("title", "")
-    # Load the Rive runtime only when this deck's flourish is actually a .riv.
-    rive_tag = RIVE_SCRIPT if anim_asset(anim_for(m)).endswith(".riv") else ""
+    # Every cover flourish is a Lottie now, so lottie-web (loaded in TMPL) is the
+    # only runtime; the Rive canvas tag that used to ride fish decks is gone.
     html = (TMPL
             .replace("%%TITLE%%", e(title))
             .replace("%%TINT1%%", t1).replace("%%TINT2%%", t2)
             .replace("%%COUNT%%", "%02d" % len(slides))
             .replace("%%SLUG%%", m["slug"])
-            .replace("%%RIVE%%", rive_tag)
             .replace("%%SPRITE%%", ICON_SPRITE)
             .replace("%%SLIDES%%", "\n".join(slides)))
     return html, len(slides), content
