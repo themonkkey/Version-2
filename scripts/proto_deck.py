@@ -1131,7 +1131,11 @@ def slides_html(content, m):
     # turning wasted panel width into the themed motif. Either way it is inert
     # decoration that collapses to nothing if the JSON or lottie-web fails.
     anim = anim_for(m)
+    # .rv marks a Rive canvas host: it gets the frame + tint-overlay treatment
+    # instead of a CSS filter (a filtered canvas inside the backdrop-filtered
+    # glass blanks the whole panel's paint in Chromium)
     anim_box = ('<div class="cover-anim' + ('' if herohtml else ' fill')
+                + (' rv' if anim and anim_asset(anim).endswith('.riv') else '')
                 + '" data-anim="' + anim_asset(anim) + '" aria-hidden="true"></div>') if anim else ""
     if herohtml:
         right = '<div class="cover-r r">' + herohtml + '</div>'
@@ -1316,6 +1320,15 @@ a{color:var(--t2);}
 .cover-anim{pointer-events:none;}
 .cover-anim.fill{width:min(340px,100%);aspect-ratio:1;margin:6px auto 0;
   opacity:.92;filter:drop-shadow(0 14px 32px rgba(0,0,0,.34));}
+/* A .riv canvas ships its own baked scene background (the fish arrives on
+   light blue), which pastes a hard alien rectangle onto the dark glass. The
+   canvas cannot be recolored in code, so it is blended in at the CSS layer:
+   rounded frame + border make it a deliberate framed illustration, and the
+   hue shift drags the blue toward the site's teal-green family. */
+.cover-anim.rv{position:relative;border-radius:22px;overflow:hidden;
+  border:1px solid rgba(198,236,143,.28);}
+.cover-anim.rv::after{content:"";position:absolute;inset:0;
+  background:rgba(11,36,27,.34);border-radius:22px;}
 .cover-glass.has-anim .cover-r{display:flex;align-items:center;justify-content:center;}
 /* corner accent when the hero column is already spoken for: quiet, low, behind
    the title text (the identity columns are lifted above it). The two-class
