@@ -125,10 +125,16 @@ a{color:var(--t2);}
   height:clamp(88px,11vw,132px);opacity:.26;z-index:0;}
 /* the lime bloom is right for a 40px accent and muddy behind body text */
 .cover-glass.has-hero .cover-anim svg{filter:none;}
-/* Covers that carry an audience line have text where the mark sits, so it has
-   to drop back to texture there; the covers without one can afford to let it
-   read. :has() rather than a per-deck class - the difference is structural. */
-.cover-glass.has-hero:has(.cover-aud) .cover-anim{opacity:.15;}
+/* Covers with a hero column place the mark per cover, because the free space is
+   per cover: how many lines the audience note wraps to, and how tall the stat
+   column runs, differ enough that one offset cannot clear the text on all of
+   them. Each deck sets its own below, measured against its own layout. Full
+   strength and glow - it sits in open space now, not under type. */
+.cover-glass.has-hero:has(.cover-aud) .cover-anim{opacity:.85;}
+.cover-glass.has-hero:has(.cover-aud) .cover-anim svg{
+  filter:drop-shadow(0 0 10px rgba(198,236,143,.35));}
+.cover-glass.has-hero .cover-anim{left:auto;right:29px;bottom:56px;
+  width:64px;height:64px;}
 /* Stacked layout: the hero cards sit under the text rather than beside it, so
    the left-column pocket the accent lives in on a wide screen is gone. It has
    nowhere safe to go at this width - hide it rather than let it land on a card. */
