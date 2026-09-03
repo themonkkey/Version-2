@@ -35,7 +35,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.4.0/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="calculator/chassis.css?v=2026-09-03n">
+<link rel="stylesheet" href="calculator/chassis.css?v=2026-09-03o">
 <style>
 :root{
   --bg:#EEF1F0;
@@ -4374,7 +4374,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
             <span class="gvac-solar"><i></i><i></i><i></i><i></i></span></span>
         </div>
         <div class="gvac-lcd" id="cr_lcd">
-          <div class="gvac-tag"><span class="gvac-glass" id="cr_lcdlab" data-no-i18n>DISTRICT TOTALS</span></div>
+          <div class="gvac-tag"><span class="gvac-glass" id="cr_lcdlab" data-no-i18n>INPUTS &amp; FISIM</span></div>
           <div class="gvac-mid">
             <div class="gvac-stepbig gvac-glass" data-no-i18n><small>STEP</small><span id="cr_lcdstep">1</span>/<span id="cr_lcdtot">4</span></div>
             <div class="gvac-num" data-no-i18n><span id="cr_lcdnum">0</span><small>₹ L</small></div>
@@ -4390,9 +4390,9 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         </div>
         <div class="gvac-well"><div class="gvac-face">
 
-        <div class="gvac-step on" data-s="0" role="group" aria-label="Step 1: district totals">
-          <div class="gvac-head"><h3><span class="gvac-k">1</span>District totals</h3>
-            <p class="gvac-sub">Sugarcane, tobacco base, inputs &amp; FISIM ratio</p></div>
+        <div class="gvac-step on" data-s="0" role="group" aria-label="Step 1: inputs and FISIM">
+          <div class="gvac-head"><h3><span class="gvac-k">1</span>Inputs &amp; FISIM</h3>
+            <p class="gvac-sub">The workbook&#39;s first sheet: total input cost and the FISIM ratio. Crops come next.</p></div>
           <p class="fc-samplenote is-off" id="cr_samplenote">
             <i class="ti ti-flask"></i>
             <span><b>The workbook&#39;s own figures are loaded.</b> They are the district data
@@ -4413,7 +4413,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 
         <div class="gvac-step" data-s="2" role="group" aria-label="Step 3: ratios applied">
           <div class="gvac-head"><h3><span class="gvac-k">3</span>Ratios applied</h3>
-            <p class="gvac-sub">Derived prices &amp; conversions</p></div>
+            <p class="gvac-sub">The workbook&#39;s ratios, and the district prices and land use that feed them</p></div>
           <details class="fc-assump">
             <summary>
               <span class="fc-assump-ic"><i class="ti ti-adjustments-horizontal"></i></span>
@@ -9522,7 +9522,22 @@ window.__loadCapacity = function(){ loadCapacity(); };
       return isFinite(v)?v:0; }
 
     if(crHost){
-      document.getElementById('cr_macro').innerHTML = CR_MACRO.map(function(m){
+      /* Sheet 1 of the workbook holds only input cost and the FISIM ratio. The
+         sugarcane total and tobacco base are district lines too, but the sheet
+         keeps them inside groups D and F next to the rows they feed - asking
+         for them up front, before any crop, read as "why is sugarcane here?" */
+      var CR_INLINE = {
+        cane: '<div class="fc-srow"><span class="fc-slabel">Total sugarcane production' +
+          '<span class="cr-der" title="The district\'s whole cane crop. The Sugarcane row below is the share retained for chewing, mills, khandsari and seed; the rest goes to gur.">district total</span></span>' +
+          '<input type="number" id="cm_cane_total" value="0" min="0" step="any" aria-label="Total sugarcane production, \'000 MT"><span></span></div>',
+        drugs: '<div class="fc-srow"><span class="fc-slabel">Tobacco steam base' +
+          '<span class="cr-der" title="Base quantity and price; the Tobacco Steam row takes 82% of the quantity at 50% of the price.">district base</span></span>' +
+          '<input type="number" id="cm_tob_baseQ" value="0" min="0" step="any" aria-label="Tobacco steam base quantity, \'000 MT">' +
+          '<input type="number" id="cm_tob_baseP" value="0" min="0" step="any" aria-label="Tobacco steam base price, Rs/MT"></div>'
+      };
+      document.getElementById('cr_macro').innerHTML = CR_MACRO.filter(function(m){
+        return m[0] === 'inputs' || m[0] === 'fisim';
+      }).map(function(m){
         return '<div class="fc-srow"><span class="fc-slabel">'+m[1]+'</span>'+
           '<input type="number" id="cm_'+m[0]+'" value="0" min="0" step="any" aria-label="'+m[1]+'">'+
           '<span></span></div>';
@@ -9585,7 +9600,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
                 'Next: '+nxt+' <i class="ti ti-arrow-right"></i></button>') +
             '</div>';
           return '<div class="calc-fieldset cr-panel'+(gi?' is-off':'')+'" data-cgp="'+g.id+
-            '" data-gi="'+gi+'">'+'<h4>'+g.label+'</h4>'+head+rows+foot+'</div>';
+            '" data-gi="'+gi+'">'+'<h4>'+g.label+'</h4>'+head+(CR_INLINE[g.id]||'')+rows+foot+'</div>';
         }).join('');
 
       (function wireCrPick(){
@@ -9710,7 +9725,11 @@ window.__loadCapacity = function(){ loadCapacity(); };
         document.getElementById('cr_ratios').innerHTML=h;
       })();
 
-      document.getElementById('cr_reset').addEventListener('click', function(){
+      /* The ratios panel carries two kinds of cell: the workbook's ratios, and
+         the sample district's own prices, seasonal paddy and land use. Clearing
+         the form must clear the second kind too, or another district's paddy,
+         jute and grass get priced off the demo. */
+      function crRestoreWorkbook(){
         Object.keys(CROP.ratios).forEach(function(k){
           var e=document.getElementById('crr_'+k); if(e) e.value=CROP.ratios[k]; });
         CROP.seasons.forEach(function(s){
@@ -9729,7 +9748,21 @@ window.__loadCapacity = function(){ loadCapacity(); };
           document.getElementById('crl_b_'+l.id).value=l.b;
           document.getElementById('crl_m_'+l.id).value=l.m; });
         if(window.__crMarkStale) window.__crMarkStale();
-      });
+      }
+      function crClearDistrictData(){
+        CROP.seasons.forEach(function(s){
+          document.getElementById('crs_q_'+s.id).value=0;
+          document.getElementById('crs_p_'+s.id).value=0; });
+        CROP.units.forEach(function(u){ document.getElementById('cru_p_'+u.id).value=0; });
+        CROP.fibres.forEach(function(f){ document.getElementById('crf_q_'+f.id).value=0; });
+        CROP.cond.forEach(function(c){
+          document.getElementById('crc_q_'+c.id).value=0;
+          document.getElementById('crc_p_'+c.id).value=0; });
+        CROP.land.forEach(function(l){ document.getElementById('crl_b_'+l.id).value=0; });
+      }
+      window.__crRestoreWorkbook = crRestoreWorkbook;
+      window.__crClearDistrictData = crClearDistrictData;
+      document.getElementById('cr_reset').addEventListener('click', crRestoreWorkbook);
     }
 
     function crState(){
@@ -9766,7 +9799,9 @@ window.__loadCapacity = function(){ loadCapacity(); };
       // show the derived prices back in their own disabled fields
       CROP.groups.forEach(function(g){ g.items.forEach(function(i){
         if(i.dp){ var e=document.getElementById('cp_'+i.id);
-          if(e) e.value=(d[i.dp]||0).toFixed(2); }
+          var pv = d[i.dp]||0;
+          if(i.dp==='kapas' && !(S.q[i.id]>0)) pv = 0;   // sheet: IF(E37=0,0,...)
+          if(e) e.value=pv.toFixed(2); }
         if(i.dq){ var e2=document.getElementById('cq_'+i.id);
           if(e2) e2.value=(d[i.dq]||0).toFixed(4); }
       }); });
@@ -9804,13 +9839,15 @@ window.__loadCapacity = function(){ loadCapacity(); };
       if(r.total===0){
         flag.textContent = 'Enter at least one crop\u2019s production and price to begin.';
       } else {
-        flag.innerHTML = '<b>Two cells differ from the workbook, deliberately.</b> '+
+        flag.innerHTML = '<b>Three cells differ from the workbook, deliberately.</b> '+
           'The kitchen garden line is valued here as its area times the value per '+
           'hectare of fruits and vegetables, which is what the workbook\u2019s own note '+
           'describes; the sheet\u2019s formula multiplies by that area a second time, '+
           'which on its own figures makes kitchen garden about half the district total. '+
           'The cotton by-product line is valued as area times value per hectare, as its '+
-          'column headings say; the sheet points at an empty cell, so it always returns zero.';
+          'column headings say; the sheet points at an empty cell, so it always returns zero. '+
+          'And FISIM is taken only when unadjusted GVA is positive; the sheet applies the '+
+          'ratio unguarded, which would add a negative FISIM back to a loss.';
       }
       window.__gvaStages_cr = [r.inputs, r.total, r.unadj, r.adjusted];
       window.__crGroups = r.groups;            // the chassis readout follows the picked group
@@ -9868,6 +9905,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
       document.getElementById('cr_clearall').addEventListener('click', function(){
         crHost.querySelectorAll('#cr_groups input, #cr_macro input').forEach(function(el){ el.value=0; });
         crHost.querySelectorAll('.cr-box-v').forEach(function(el){ el.textContent=''; });
+        if(window.__crClearDistrictData) window.__crClearDistrictData();
         if(window.__crMarks) window.__crMarks();
         note.classList.add('is-off'); reset();
       });
@@ -9881,6 +9919,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
           var e=document.getElementById('ca_'+k); if(e) e.value=CROP.sample.a[k]; });
         CR_MACRO.forEach(function(m){
           document.getElementById('cm_'+m[0]).value=CROP.macro[m[0]]; });
+        if(window.__crRestoreWorkbook) window.__crRestoreWorkbook();
         if(window.__crMarks) window.__crMarks();
         note.classList.remove('is-off'); reset();
       });
@@ -9956,7 +9995,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
 
 
 </script>
-<script src="calculator/chassis.js?v=2026-09-03n"></script>
+<script src="calculator/chassis.js?v=2026-09-03o"></script>
 <script>
 /* Three chassis instances, one per sector. Labels and formulas are LCD copy;
    the figures come from the engines via window.__gvaCompute_*. */
@@ -9976,7 +10015,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
   });
   makeGvaChassis({
     prefix:'cr', calcId:'cr_calc', sampleId:'cr_sample', clearId:'cr_clearall',
-    labels:['DISTRICT TOTALS','CROP GROUPS','RATIOS APPLIED','ADJUSTED GVA ✓'],
+    labels:['INPUTS & FISIM','CROP GROUPS','RATIOS APPLIED','ADJUSTED GVA ✓'],
     ops:['total input cost','Σ value of output','GVA before FISIM','output − inputs − FISIM'],
     compute:function(){ return window.__gvaCompute_cr ? window.__gvaCompute_cr() : []; },
     /* On the crop-groups step the readout is the picked group alone - "A.
