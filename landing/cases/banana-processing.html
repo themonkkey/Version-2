@@ -120,9 +120,14 @@ a{color:var(--t2);}
    competing for a gap. Shrinking it to dodge the text made it a speck; the
    fix is opacity, not size. Bottom-LEFT because bottom-right is where the
    hero stat cards live, and a mark that faint still must not sit on a figure. */
-.cover-glass.has-hero .cover-anim{position:absolute;left:clamp(8px,2vw,22px);
-  bottom:clamp(16px,2.6vw,30px);width:clamp(88px,11vw,132px);
-  height:clamp(88px,11vw,132px);opacity:.26;z-index:0;}
+/* Hidden unless a deck asks for it. This used to be a placement - bottom-left,
+   132px, .26 opacity - which made it the silent fallback: when a deck's own
+   placement block went missing the mark did not disappear, it reappeared here,
+   dim and sitting on a figure card, and looked like a rendering fault rather
+   than a missing rule. Twice on the Kurnool cover. Defaulting to hidden means
+   a mark shows only where a deck has deliberately placed it, and losing that
+   block fails visibly and harmlessly instead. */
+.cover-glass.has-hero .cover-anim{display:none;}
 /* the lime bloom is right for a 40px accent and muddy behind body text */
 .cover-glass.has-hero .cover-anim svg{filter:none;}
 /* Covers with a hero column place the mark per cover, because the free space is
@@ -133,10 +138,7 @@ a{color:var(--t2);}
 .cover-glass.has-hero:has(.cover-aud) .cover-anim{opacity:.85;}
 .cover-glass.has-hero:has(.cover-aud) .cover-anim svg{
   filter:drop-shadow(0 0 10px rgba(198,236,143,.35));}
-/* Stacked layout: the hero cards sit under the text rather than beside it, so
-   the left-column pocket the accent lives in on a wide screen is gone. It has
-   nowhere safe to go at this width - hide it rather than let it land on a card. */
-@media(max-width:860px){ .cover-glass.has-hero .cover-anim{display:none;} }
+
 .cover-glass.has-hero>.cover-l,.cover-glass.has-hero>.cover-r{position:relative;z-index:1;}
 
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
