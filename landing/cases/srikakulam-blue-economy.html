@@ -1084,6 +1084,21 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
         // state is the only frame that always composes.
         a.addEventListener('DOMLoaded',function(){
           try{ a.goToAndStop(Math.max(0,a.totalFrames-1),true); }catch(e){}
+          // Crop the viewBox to the drawing. These assets are authored on a
+          // square 1080 canvas but the art rarely fills it - Tiruppur's chart
+          // occupies 615x858 of that, so 'meet' letterboxed it and the mark
+          // floated in a third of its own box however the box was sized. With
+          // the viewBox trimmed to the ink, the box it is given is the box it
+          // fills. Frozen first, so the bounds are the finished frame's.
+          try{
+            var svg=host.querySelector('svg'); if(!svg) return;
+            var bb=svg.getBBox();
+            if(bb && bb.width > 0 && bb.height > 0){
+              var pad=Math.max(bb.width,bb.height)*0.03;
+              svg.setAttribute('viewBox',
+                (bb.x-pad)+' '+(bb.y-pad)+' '+(bb.width+pad*2)+' '+(bb.height+pad*2));
+            }
+          }catch(e){}
         });
       }catch(e){ /* one bad asset must never break the cover */ }
     });
