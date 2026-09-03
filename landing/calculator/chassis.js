@@ -157,6 +157,16 @@
         cur.push(a); used += h;
       });
       if(cur.length) pages.push(cur);
+      /* A page must not end on a section title: the reader gets a heading with
+         nothing under it and has to press NEXT to find out what it introduced.
+         Trailing titles travel to the page their rows are on. */
+      for(var i = pages.length - 2; i >= 0; i--){
+        while(pages[i].length &&
+              pages[i][pages[i].length - 1].matches('h3,h4,summary,.gvac-head')){
+          pages[i + 1].unshift(pages[i].pop());
+        }
+      }
+      pages = pages.filter(function(pg){ return pg.length; });
       w.__pages = pages; w.__containers = containers; w.__sticky = sticky;
       return pages;
     }
@@ -171,7 +181,11 @@
       var sticky = w.__sticky || [];
       var live = sticky.filter(function(a){
         if(a.matches('.calc-hint')) return true;
-        return pages[idx].some(function(b){ return b.parentNode === a.parentNode; });
+        return pages[idx].some(function(b){
+          /* a section title is a sibling too - pinning on that alone printed
+             SILK & HONEY with its column header and no rows beneath it */
+          return b.parentNode === a.parentNode && !b.matches('h3,h4,summary,.fc-shead');
+        });
       });
       var shown = pages[idx].concat(live);
       pages.forEach(function(pg){
