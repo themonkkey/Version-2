@@ -137,6 +137,41 @@ a{color:var(--t2);}
    the left-column pocket the accent lives in on a wide screen is gone. It has
    nowhere safe to go at this width - hide it rather than let it land on a card. */
 @media(max-width:860px){ .cover-glass.has-hero .cover-anim{display:none;} }
+
+/* ── Tiruppur cover: stacked-left layout ──────────────────────────────────
+   The identity block rides up to the top of the panel, the three figures sit
+   in a row beneath it, and the growth mark takes the whole right column - the
+   space the figures used to occupy. The mark is a rising chart, so giving it
+   a tall column to rise through says more than tucking it in a corner did.
+   Scoped to this deck: it only works because the copy here is short enough
+   for the figures to fit under it, which is not true of every cover. */
+@media (min-width:900px){
+  .cover-glass.has-hero{
+    grid-template-columns:1.35fr .85fr;
+    grid-template-rows:auto auto;
+    align-items:start;align-content:start;
+    row-gap:clamp(18px,2.4vw,28px);}
+  .cover-glass.has-hero>.cover-l{grid-column:1;grid-row:1;}
+  .cover-glass.has-hero>.cover-r{grid-column:1;grid-row:2;}
+  /* three across now that they have the wide column */
+  .cover-glass.has-hero .cover-r .hero{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,16px);}
+  .cover-glass.has-hero .cover-r .scell{padding:14px 16px 12px;}
+  /* three to a row is narrower than the old stacked column, and the longest
+     value here ("Rs 46,000 Cr") broke onto three lines at the inherited size */
+  .cover-glass.has-hero .cover-r .scell .v{font-size:clamp(17px,1.85vw,21px);
+    white-space:nowrap;}
+  .cover-glass.has-hero .cover-r .scell .l{font-size:12px;}
+  /* the mark becomes a real grid item rather than an absolute corner accent */
+  .cover-glass.has-hero .cover-anim{
+    position:static;left:auto;right:auto;bottom:auto;
+    grid-column:2;grid-row:1 / span 2;
+    width:100%;height:auto;aspect-ratio:1;max-width:300px;
+    justify-self:center;align-self:center;
+    opacity:.92;}
+  .cover-glass.has-hero .cover-anim svg{
+    filter:drop-shadow(0 0 18px rgba(198,236,143,.30));}
+}
 .cover-glass.has-hero>.cover-l,.cover-glass.has-hero>.cover-r{position:relative;z-index:1;}
 
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
