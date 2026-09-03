@@ -120,30 +120,41 @@
     /* Blocks that must stay on screen on every page: the instruction line and
        the column header that names the units. Paging them away leaves a reader
        on page 2 typing numbers into unlabelled boxes. */
-    var STICKY = '.calc-hint,.fc-shead,.cap-shead,.gvac-sticky';
+    var STICKY = '.calc-hint,.fc-shead,.cap-shead,.gvac-sticky,.cr-pick';
+    /* Of those, the ones that pin on every page regardless of what else is
+       on it. Column headers pin only over their own rows; these have no rows
+       of their own. The crop-group picker is here because choosing a group
+       and seeing nothing happen - the rows landed on the next page - reads as
+       a broken control, not as pagination. */
+    var ALWAYS = '.calc-hint,.gvac-sticky,.cr-pick';
 
     function buildPages(w, avail){
       var all = [], containers = [];
       collectAtoms(w, avail, all, containers);
-      var sticky = [], atoms = [];
-      all.forEach(function(a){ (a.matches(STICKY) ? sticky : atoms).push(a); });
       var hOf = function(a){ return a.getBoundingClientRect().height + 10; };
-      /* Charge a page for what it will actually carry: the hint, plus the one
-         section header that pins over its rows - not every header in the step,
-         which in livestock would be a dozen. */
-      var reserved = sticky.reduce(function(n, a){
-        return a.matches('.calc-hint') ? n + hOf(a) : n;
-      }, 0) + sticky.reduce(function(mx, a){
-        return a.matches('.calc-hint') ? mx : Math.max(mx, hOf(a));
-      }, 0);
+      var sticky = all.filter(function(a){ return a.matches(STICKY); });
+      /* A block that would swallow more than half the face cannot pin - on a
+         short laptop the picker is taller than the room left under it. It
+         goes back to being an ordinary page-one atom there. */
+      sticky = sticky.filter(function(a){
+        return !(a.matches(ALWAYS) && !a.matches('.calc-hint') && hOf(a) > avail * .55);
+      });
+      /* Charge a page for what it will actually carry: everything that always
+         pins, plus the one section header that pins over its rows - not every
+         header in the step, which in livestock would be a dozen. */
+      var reserve = function(list){
+        return list.reduce(function(n, a){ return a.matches(ALWAYS) ? n + hOf(a) : n; }, 0) +
+               list.reduce(function(mx, a){ return a.matches(ALWAYS) ? mx : Math.max(mx, hOf(a)); }, 0);
+      };
+      var reserved = reserve(sticky);
       /* On a very short face the prose hint would cost more than the rows it
          explains. The unit header is the part that must not page away, so drop
          the hint back to page one and keep the columns labelled. */
-      if(reserved > avail * .38){
+      if(reserved > avail * .38 && sticky.some(function(a){ return a.matches('.calc-hint'); })){
         sticky = sticky.filter(function(a){ return !a.matches('.calc-hint'); });
-        atoms = all.filter(function(a){ return sticky.indexOf(a) === -1; });
-        reserved = sticky.reduce(function(mx, a){ return Math.max(mx, hOf(a)); }, 0);
+        reserved = reserve(sticky);
       }
+      var atoms = all.filter(function(a){ return sticky.indexOf(a) === -1; });
       var pages = [], cur = [], used = 0;
       /* Pack to the room that is actually left. The old flat .78 haircut was
          applied on top of the 30px already taken off avail, and with sticky
@@ -180,7 +191,7 @@
          hint has no rows of its own, so it always pins. */
       var sticky = w.__sticky || [];
       var live = sticky.filter(function(a){
-        if(a.matches('.calc-hint')) return true;
+        if(a.matches(ALWAYS)) return true;
         return pages[idx].some(function(b){
           /* a section title is a sibling too - pinning on that alone printed
              SILK & HONEY with its column header and no rows beneath it */
@@ -252,6 +263,10 @@
          budget rather than leave content sitting under the keypad. Two passes
          at most; renderPage's own squeeze catches whatever survives that. */
       for(var pass = 0; pass < 2 && w.scrollHeight > avail; pass++){
+        /* Show everything again before re-measuring. The first render has
+           already hidden the other pages, and a hidden row measures zero -
+           repacking on those numbers dropped rows and scrambled their order. */
+        resetStep(w);
         buildPages(w, avail * (pass ? 0.66 : 0.8));
         page = Math.min(page, (w.__pages || [1]).length - 1);
         renderPage(w, page);
@@ -292,10 +307,9 @@
         b.className = i === s ? 'on' : (i < s ? 'done' : '');
       });
       if(lcdLab) lcdLab.textContent = cfg.labels[s];
-      if(lcdOp)  lcdOp.textContent  = cfg.ops[s];
       if(lcdStep) lcdStep.textContent = s + 1;
       if(lcd){ lcd.classList.remove('flash'); void lcd.offsetWidth; lcd.classList.add('flash'); }
-      if(vals.length) lcdTo(vals[s], s === N - 1 ? 1000 : 700);
+      readout(vals, s === N - 1 ? 1000 : 700);
       fit();
       if(startPage === 'last'){
         page = pageCount() - 1;
@@ -305,6 +319,20 @@
       syncKeys();
       var r = host.getBoundingClientRect();
       if(r.top < 0) window.scrollBy({top: r.top - 90, behavior: slowOK ? 'smooth' : 'auto'});
+    }
+
+    /* What the readout shows for the current step. Normally the step's own
+       stage figure under its formula label - but a sector may narrow it:
+       on the crop-groups step the reader has picked one group, and a
+       district-wide total above ten boxes reads as a final answer they have
+       not reached yet. cfg.focus(step) returns {value, op} to say "show this,
+       call it this", or null to fall back to the stage figure. */
+    function readout(vals, dur){
+      var f = null;
+      try{ f = cfg.focus ? cfg.focus(step) : null; }catch(e){ f = null; }
+      if(lcdOp) lcdOp.textContent = f ? f.op : cfg.ops[step];
+      if(f) lcdTo(f.value, dur);
+      else if(vals && vals.length) lcdTo(vals[step], dur);
     }
 
     function goNext(){
@@ -408,9 +436,16 @@
       if(sampleBtn) sampleBtn.classList.add('edited');
       clearTimeout(tickT);
       tickT = setTimeout(function(){
-        var vals = stages();
-        if(vals.length) lcdTo(vals[step], 300);
+        readout(stages(), 300);
       }, 160);
+    });
+    /* picking a crop group changes what the readout is about, not just what
+       is on the page */
+    host.addEventListener('click', function(e){
+      if(e.target.closest('.cr-box, [data-cgo]')){
+        page = 0;                              // a new group starts on its first page
+        setTimeout(function(){ readout(stages(), 400); }, 0);
+      }
     });
 
     /* sample / clear chips: their existing handlers (registered earlier)

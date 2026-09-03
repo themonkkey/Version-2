@@ -35,7 +35,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.4.0/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="calculator/chassis.css?v=2026-09-03j">
+<link rel="stylesheet" href="calculator/chassis.css?v=2026-09-03n">
 <style>
 :root{
   --bg:#EEF1F0;
@@ -4407,7 +4407,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
 
         <div class="gvac-step" data-s="1" role="group" aria-label="Step 2: crop groups">
           <div class="gvac-head"><h3><span class="gvac-k">2</span>Crop groups</h3>
-            <p class="gvac-sub">Twelve groups · production × price ÷ 100</p></div>
+            <p class="gvac-sub">Ten groups to fill · J and K are derived · production × price ÷ 100</p></div>
           <div id="cr_groups"></div>
         </div>
 
@@ -9813,6 +9813,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
           'column headings say; the sheet points at an empty cell, so it always returns zero.';
       }
       window.__gvaStages_cr = [r.inputs, r.total, r.unadj, r.adjusted];
+      window.__crGroups = r.groups;            // the chassis readout follows the picked group
       return r.adjusted;
     }
 
@@ -9955,7 +9956,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
 
 
 </script>
-<script src="calculator/chassis.js?v=2026-09-03j"></script>
+<script src="calculator/chassis.js?v=2026-09-03n"></script>
 <script>
 /* Three chassis instances, one per sector. Labels and formulas are LCD copy;
    the figures come from the engines via window.__gvaCompute_*. */
@@ -9977,7 +9978,19 @@ window.__loadCapacity = function(){ loadCapacity(); };
     prefix:'cr', calcId:'cr_calc', sampleId:'cr_sample', clearId:'cr_clearall',
     labels:['DISTRICT TOTALS','CROP GROUPS','RATIOS APPLIED','ADJUSTED GVA ✓'],
     ops:['total input cost','Σ value of output','GVA before FISIM','output − inputs − FISIM'],
-    compute:function(){ return window.__gvaCompute_cr ? window.__gvaCompute_cr() : []; }
+    compute:function(){ return window.__gvaCompute_cr ? window.__gvaCompute_cr() : []; },
+    /* On the crop-groups step the readout is the picked group alone - "A.
+       Cereals", its own value of output - not the district total, which is
+       not a figure the reader has reached yet. */
+    focus:function(s){
+      if(s !== 1) return null;
+      var b = document.querySelector('#cr_shell .cr-box.on');
+      var gs = window.__crGroups || [];
+      for(var i = 0; b && i < gs.length; i++){
+        if(gs[i].id === b.dataset.cg) return {value: gs[i].value, op: gs[i].label + ' · production × price ÷ 100'};
+      }
+      return null;
+    }
   });
 })();
 </script>
