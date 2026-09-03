@@ -1,0 +1,277 @@
+/* ── GVA calculator chassis ─────────────────────────────────────────────
+   The physical-calculator shell from calculator/widget.html, re-expressed in
+   the site's dark-green + lime language and namespaced gvac- so nothing here
+   can collide with the page's own .calc-*, .num, .step or .key rules.
+   Deliberately no backdrop-filter on the shell: the site documents a Chrome
+   flashing-band bug when a transform animates over a blurred layer, so the
+   shell is near-opaque paint instead of frost. No cursor tilt for the same
+   reason. */
+.gvac-stage{position:relative;margin:0 auto clamp(20px,3vw,34px);
+  width:min(1180px,100%);}
+.gvac-stage{opacity:0;transform:translateY(40px) scale(.97);}
+.gvac-stage.go{opacity:1;transform:none;
+  transition:opacity .8s cubic-bezier(.2,.9,.3,1),transform .8s cubic-bezier(.2,.9,.3,1.1);}
+@media (prefers-reduced-motion: reduce){
+  .gvac-stage{opacity:1;transform:none;}
+}
+.gvac-calc{
+  background:linear-gradient(160deg,#16482F 0%,#0E3623 40%,#082616 100%);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:26px;
+  padding:16px 16px 16px;
+  position:relative;
+  /* The whole instrument fits the screen: the chrome (badge, LCD, lamps,
+     chips, keypad) is fixed and the face plate absorbs the difference,
+     scrolling internally when a step is taller than the room left. dvh so a
+     phone's collapsing URL bar doesn't clip the keypad; the header pill and
+     a little breathing room are subtracted. */
+  display:flex;flex-direction:column;
+  height:min(1040px,calc(100dvh - 120px));
+  box-shadow:
+    0 40px 70px rgba(0,0,0,.45),
+    0 12px 24px rgba(0,0,0,.3),
+    inset 0 2px 0 rgba(255,255,255,.12),
+    inset 0 -4px 0 rgba(0,0,0,.4),
+    inset 2px 0 0 rgba(255,255,255,.04),
+    inset -2px 0 0 rgba(0,0,0,.2);
+}
+/* the chrome never shrinks; only the well/face gives way */
+.gvac-badge,.gvac-lcd,.gvac-lamps,.gvac-samplerow,.gvac-pad,.gvac-foot{flex:0 0 auto;}
+/* plastic grain, static (the widget's cursor-following glare is dropped) */
+.gvac-calc::before{
+  content:"";position:absolute;inset:0;border-radius:26px;pointer-events:none;z-index:5;
+  background:
+    radial-gradient(600px 300px at 30% 0%,rgba(255,255,255,.07),transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.gvac-screw{position:absolute;width:11px;height:11px;border-radius:50%;z-index:6;
+  background:radial-gradient(circle at 35% 30%,#4E7A5C,#1B3A28 65%);
+  box-shadow:inset 0 -1px 2px rgba(0,0,0,.7), 0 1px 1px rgba(255,255,255,.1);}
+.gvac-screw::after{content:"";position:absolute;left:1.5px;right:1.5px;top:50%;height:1.6px;
+  margin-top:-0.8px;background:#07130C;border-radius:1px;box-shadow:0 1px 0 rgba(255,255,255,.12);}
+.gvac-screw.tl{top:9px;left:9px;transform:rotate(35deg)}
+.gvac-screw.tr{top:9px;right:9px;transform:rotate(-20deg)}
+.gvac-screw.bl{bottom:9px;left:9px;transform:rotate(70deg)}
+.gvac-screw.br{bottom:9px;right:9px;transform:rotate(10deg)}
+
+/* brand strip */
+.gvac-badge{display:flex;justify-content:space-between;align-items:center;
+  margin:2px 6px 12px;color:rgba(255,255,255,.55);}
+.gvac-brand{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:800;color:rgba(198,236,143,.85);}
+.gvac-badge-r{display:flex;align-items:center;}
+.gvac-model{font-size:.72rem;letter-spacing:.12em;
+  font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  font-weight:600;color:rgba(255,255,255,.7);}
+.gvac-solar{display:flex;gap:2px;margin-left:10px;}
+.gvac-solar i{width:9px;height:14px;border-radius:2px;display:block;
+  background:linear-gradient(180deg,#1E4A33,#123024);}
+
+/* ── LCD ── dark well, lime digits */
+.gvac-lcd{
+  background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.22) 30%,rgba(0,0,0,.3));
+  border-radius:12px;
+  border:2px solid rgba(0,0,0,.5);
+  box-shadow:inset 0 4px 12px rgba(0,0,0,.5), inset 0 -1px 0 rgba(255,255,255,.08),
+    0 1px 0 rgba(255,255,255,.08);
+  padding:10px 16px 12px;
+  margin-bottom:10px;
+  color:#EAF4EC;
+  position:relative;overflow:hidden;
+}
+.gvac-lcd::before{
+  content:"";position:absolute;top:-40%;bottom:-40%;width:55%;left:-70%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.10) 45%,rgba(255,255,255,.03) 55%,transparent);
+  transform:skewX(-18deg);
+  animation:gvac-sheen 6.5s ease-in-out infinite;
+}
+@keyframes gvac-sheen{0%,60%{left:-70%}90%,100%{left:130%}}
+.gvac-lcd::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.3;
+  background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(198,236,143,.05) 2px 3px);
+}
+.gvac-tag{display:flex;justify-content:space-between;
+  font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(198,236,143,.9);}
+.gvac-glass{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:9px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1);
+}
+.gvac-tag .gvac-glass{padding:4px 10px;}
+.gvac-mid{display:flex;align-items:center;gap:12px;margin-top:6px;}
+.gvac-stepbig{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  font-weight:700;font-size:1.45rem;line-height:1;letter-spacing:-.02em;
+  color:rgba(255,255,255,.9);flex:none;padding:6px 12px 7px;}
+.gvac-stepbig small{display:block;font-size:.54rem;font-weight:700;
+  letter-spacing:.16em;margin-bottom:2px;color:rgba(198,236,143,.8);}
+.gvac-num{flex:1;
+  font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  font-weight:600;font-size:2.4rem;text-align:right;
+  letter-spacing:.02em;font-variant-numeric:tabular-nums;line-height:1.15;
+  color:var(--lime,#C6FF6A);
+  text-shadow:0 0 14px rgba(198,255,106,.35);
+}
+.gvac-num small{font-size:1.05rem;font-weight:600;opacity:.75;margin-left:5px;}
+.gvac-op{font-family:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  font-size:.8rem;font-weight:500;text-align:right;min-height:1em;
+  color:rgba(255,255,255,.6);}
+.gvac-lcd.flash .gvac-num{animation:gvac-lcdflash .45s;}
+@keyframes gvac-lcdflash{30%{opacity:.25}}
+
+/* step lamps */
+.gvac-lamps{display:flex;gap:8px;justify-content:center;margin:0 0 10px;}
+.gvac-lamps b{width:34px;height:6px;border-radius:3px;background:rgba(0,0,0,.4);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.6);transition:background .3s;}
+.gvac-lamps b.on{background:var(--lime,#C6FF6A);
+  box-shadow:0 0 8px rgba(198,255,106,.8);animation:gvac-lampglow 1.6s ease-in-out infinite;}
+.gvac-lamps b.done{background:rgba(198,236,143,.55);box-shadow:0 0 6px rgba(198,236,143,.4);}
+@keyframes gvac-lampglow{50%{box-shadow:0 0 14px rgba(198,255,106,1)}}
+@media (prefers-reduced-motion: reduce){
+  .gvac-lcd::before,.gvac-lamps b.on,.gvac-lcd.flash .gvac-num{animation:none;}
+}
+
+/* sample / clear key-chips — pressable keys with a bottom lip */
+.gvac-samplerow{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:-2px 0 10px;}
+.gvac-chip{
+  display:inline-flex;align-items:center;gap:8px;font:inherit;
+  font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  color:#EAF4EC;cursor:pointer;padding:9px 16px;border-radius:10px;
+  background:linear-gradient(180deg,#2E6144,#1F4A32);
+  border:0;border-bottom:4px solid #12301F;
+  box-shadow:0 2px 4px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.18);
+  transition:transform .08s,border-bottom-width .08s,filter .2s;
+}
+.gvac-chip:active{transform:translateY(2px);border-bottom-width:2px;}
+.gvac-chip:hover{filter:brightness(1.12);}
+.gvac-chip .gvac-led{width:8px;height:8px;border-radius:50%;flex:none;
+  background:#C6FF6A;box-shadow:0 0 8px rgba(198,255,106,.9);
+  animation:gvac-blink 2s ease-in-out infinite;}
+@keyframes gvac-blink{50%{opacity:.4}}
+.gvac-chip.clear{background:linear-gradient(180deg,#9C5238,#7E3F28);
+  border-bottom-color:#552514;color:#F6E3DA;}
+.gvac-chip.edited{background:linear-gradient(180deg,#B99427,#97781C);
+  border-bottom-color:#6B540F;color:#FBF3D8;}
+.gvac-chip.edited .gvac-led{background:#FFE9A8;box-shadow:0 0 8px rgba(255,233,168,.9);}
+.gvac-chip i.ti{font-size:13px;}
+
+/* ── face plate: the recessed well the step panels sit in */
+.gvac-well{background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.24));
+  border-radius:18px;padding:7px;
+  box-shadow:inset 0 3px 8px rgba(0,0,0,.55), inset 0 -1px 0 rgba(255,255,255,.06);
+  flex:1 1 auto;min-height:0;display:flex;}
+.gvac-face{background:rgba(255,255,255,.05);border-radius:12px;
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 2px 6px rgba(0,0,0,.3);
+  padding:16px 16px 14px;min-height:220px;position:relative;
+  flex:1 1 auto;min-width:0;overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;scrollbar-width:thin;
+  scrollbar-color:rgba(198,236,143,.35) transparent;}
+.gvac-face::-webkit-scrollbar{width:8px;}
+.gvac-face::-webkit-scrollbar-thumb{background:rgba(198,236,143,.28);border-radius:4px;}
+.gvac-face::-webkit-scrollbar-track{background:transparent;}
+/* fit engine (chassis.js): tall steps reflow into two columns before being
+   scaled to the face — rows and labeled fields never split mid-item */
+.gvac-fit.gvac-cols{column-count:2;column-gap:20px;}
+.gvac-fit.gvac-cols .fc-srow,.gvac-fit.gvac-cols .cf,
+.gvac-fit.gvac-cols .fc-pgroup,.gvac-fit.gvac-cols .fc-rgroup,
+.gvac-fit.gvac-cols .calc-result,.gvac-fit.gvac-cols .fc-samplenote,
+.gvac-fit.gvac-cols .gvac-head,.gvac-fit.gvac-cols .fc-shead{break-inside:avoid;}
+/* grid and flex boxes fragment across CSS columns by overlapping their
+   children in Chrome — flatten them in columns mode so each result card
+   flows as its own unbreakable block instead */
+.gvac-fit.gvac-cols .fc-results,
+.gvac-fit.gvac-cols #fc_ratios,.gvac-fit.gvac-cols #ls_ratios,
+.gvac-fit.gvac-cols #cr_ratios{display:block;}
+.gvac-fit.gvac-cols .fc-results .calc-result,
+.gvac-fit.gvac-cols .fc-rgroup{margin-bottom:14px;}
+.gvac-fit.gvac-cols .fc-final,.gvac-fit.gvac-cols .fc-bench,
+.gvac-fit.gvac-cols .calc-answer,.gvac-fit.gvac-cols .calc-note{break-inside:avoid;}
+.gvac-step{display:none;animation:gvac-in .4s ease;}
+.gvac-step.on{display:block;}
+@keyframes gvac-in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){ .gvac-step{animation:none;} }
+.gvac-head{display:flex;flex-direction:column;gap:2px;margin:0 0 12px;padding:0 0 9px;
+  border-bottom:2px solid rgba(198,236,143,.5);}
+.gvac-head h3{font-family:'Bodoni Moda',Georgia,serif;color:#FFF;margin:0;
+  font-size:1.15rem;font-weight:600;display:flex;align-items:center;gap:9px;}
+.gvac-head h3 .gvac-k{width:23px;height:23px;border-radius:7px;
+  background:var(--lime,#C6FF6A);color:#0B2E20;display:inline-grid;place-items:center;
+  font-family:'Public Sans',sans-serif;font-size:.8rem;font-weight:800;flex:none;
+  box-shadow:0 2px 4px rgba(0,0,0,.35);}
+.gvac-head .gvac-sub{
+  font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(198,236,143,.9);font-weight:800;
+  margin:4px 0 0 32px;padding:4px 10px;align-self:flex-start;
+  background:rgba(198,236,143,.1);border:1px solid rgba(198,236,143,.28);border-radius:7px;
+}
+/* the shell is a full-screen instrument now, so the form text inside it runs
+   a size up from the page's compact defaults */
+.gvac-face .fc-srow .fc-slabel{font-size:14.5px;}
+.gvac-face .fc-srow input{font-size:14.5px;padding:9px 11px;}
+.gvac-face .cf{font-size:14.5px;}
+.gvac-face .cf input{font-size:14.5px;padding:9px 11px;}
+.gvac-face .calc-hint{font-size:13px;}
+.gvac-face .fc-samplenote{font-size:14px;}
+.gvac-face .calc-steps .cs{font-size:13.8px;}
+.gvac-face .calc-out b{font-size:16px;}
+.gvac-face .ca-v{font-size:clamp(28px,3.8vw,40px);}
+
+/* the fieldsets already carry the site's glass recipe; inside the face they
+   only need their outer margins calmed */
+.gvac-step > .calc-fieldset:last-child{margin-bottom:0;}
+.gvac-step .fc-samplenote{margin-bottom:12px;}
+.gvac-step details.fc-assump{margin-top:0;}
+.gvac-step .fc-out{margin-top:0;}
+.gvac-step .fc-placeholder{margin-top:0;}
+
+/* page dots: a tall step splits into face-sized pages the NEXT key walks */
+.gvac-pages{display:flex;gap:7px;justify-content:center;margin-top:10px;flex:0 0 auto;}
+.gvac-pages:empty{display:none;margin:0;}
+.gvac-pages b{width:26px;height:5px;border-radius:3px;background:rgba(255,255,255,.15);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,.5);}
+.gvac-pages b.on{background:var(--lime,#C6FF6A);box-shadow:0 0 6px rgba(198,255,106,.7);}
+
+/* ── keypad */
+.gvac-pad{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:10px;margin-top:12px;}
+.gvac-kbtn{
+  border:0;border-radius:12px;padding:13px 8px;cursor:pointer;font:inherit;
+  font-weight:800;font-size:.8rem;letter-spacing:.04em;
+  color:#DFF3E4;background:linear-gradient(180deg,#1E4A33,#153726);
+  border-bottom:4px solid #0A2418;box-shadow:0 2px 4px rgba(0,0,0,.3);
+  transition:transform .08s,border-bottom-width .08s;
+}
+.gvac-kbtn:active{transform:translateY(2px);border-bottom-width:2px;}
+.gvac-kbtn.gvac-eq{background:linear-gradient(180deg,#D8FF8E,var(--lime,#C6FF6A));
+  color:#0B2E20;border-bottom-color:#7FA33C;font-size:.9rem;}
+.gvac-kbtn.gvac-ac{background:linear-gradient(180deg,#2A5B40,#1C4530);font-size:.74rem;}
+.gvac-kbtn:disabled{opacity:.35;cursor:default;transform:none;}
+.gvac-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;
+  font-size:.72rem;color:rgba(255,255,255,.5);margin-top:8px;letter-spacing:.04em;}
+.gvac-foot .fc-state{flex:0 0 auto;}
+
+/* ── mobile */
+@media(max-width:600px){
+  .gvac-calc{border-radius:18px;padding:12px 10px 16px;}
+  .gvac-badge{margin:0 2px 10px;}
+  .gvac-brand{font-size:.6rem;letter-spacing:.14em;}
+  .gvac-model{font-size:.6rem;}
+  .gvac-lcd{padding:8px 10px 10px;}
+  .gvac-num{font-size:1.5rem;}
+  .gvac-num small{font-size:.8rem;}
+  .gvac-op{font-size:.66rem;}
+  .gvac-stepbig{font-size:1.1rem;padding:4px 8px 5px;}
+  .gvac-tag .gvac-glass{font-size:.6rem;padding:3px 8px;}
+  .gvac-samplerow{gap:6px;}
+  .gvac-chip{font-size:.58rem;padding:8px 10px;gap:5px;}
+  .gvac-well{padding:4px;border-radius:14px;}
+  .gvac-face{padding:10px 8px 10px;border-radius:10px;}
+  .gvac-head h3{font-size:1rem;}
+  .gvac-head .gvac-sub{font-size:.58rem;padding:3px 8px;margin-left:0;}
+  .gvac-pad{gap:6px;}
+  .gvac-kbtn{font-size:.66rem;padding:11px 4px;letter-spacing:.02em;}
+  .gvac-foot{flex-direction:column;gap:4px;}
+  .gvac-screw{display:none;}
+}

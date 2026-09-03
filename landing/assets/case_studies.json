@@ -26,7 +26,7 @@
    "district": "Sps_Nellore",
    "districts": [],
    "sections": 6,
-   "cover": null,
+   "cover": "cases/media/nellore-shrimp-processing/0.jpg",
    "decks": null
   },
   {
@@ -39,7 +39,7 @@
    "district": "Sps_Nellore",
    "districts": [],
    "sections": 4,
-   "cover": null,
+   "cover": "cases/media/nellore-ethanol-potential/0.jpg",
    "decks": null
   },
   {
@@ -52,7 +52,7 @@
    "district": "Srikakulam",
    "districts": [],
    "sections": 6,
-   "cover": null,
+   "cover": "cases/media/srikakulam-blue-economy/0.jpg",
    "decks": null
   },
   {
@@ -81,7 +81,7 @@
    "district": "Krishna",
    "districts": [],
    "sections": 8,
-   "cover": null,
+   "cover": "cases/media/kalamkari-krishna/0.jpg",
    "decks": {
     "en": "19uN4hX9g8GSEvlF-hu9DXxcIs5Fv-cua",
     "te": "17DMQcA1DfvvcnIRY9jFZFL7kkkIMmZRs"
@@ -99,7 +99,7 @@
    "district": null,
    "districts": [],
    "sections": 10,
-   "cover": null,
+   "cover": "cases/media/shenzhen-growth-model/0.jpg",
    "decks": null
   },
   {
@@ -112,7 +112,7 @@
    "district": null,
    "districts": [],
    "sections": 7,
-   "cover": null,
+   "cover": "cases/media/morbi-ceramic-cluster/0.jpg",
    "decks": null
   },
   {
@@ -125,7 +125,7 @@
    "district": null,
    "districts": [],
    "sections": 18,
-   "cover": null,
+   "cover": "cases/media/tiruppur-textiles/0.jpg",
    "decks": null
   },
   {
@@ -138,7 +138,7 @@
    "district": null,
    "districts": [],
    "sections": 10,
-   "cover": null,
+   "cover": "cases/media/kumarakom-tourism/0.jpg",
    "decks": {
     "en": "1-_GM820DlWY3oBx9l7R6hVxCBcpje-R2",
     "te": "1U61sRxvJM280epg-WhHVbRSwCa9ALnd_"
@@ -156,7 +156,7 @@
     "Kurnool"
    ],
    "sections": 5,
-   "cover": null,
+   "cover": "cases/media/sahyadri-farms-fpc/0.jpg",
    "decks": {
     "en": "18Y__lsFwJuzDMnm-ENdkFwub9o-EwqF_",
     "te": "17F8nMrslWqHQgYKbmIZOeex_tZrkMosf"
@@ -174,7 +174,7 @@
     "Kurnool"
    ],
    "sections": 10,
-   "cover": null,
+   "cover": "cases/media/chetna-organics-fpo/0.jpg",
    "decks": {
     "en": "1THmZsRJYyOh1wrVolZfisWB2WbBwSq-l",
     "te": "1uYYKbCIDmS_WPJ_E-EreaReTQyQHUWkj"
@@ -190,7 +190,7 @@
    "district": null,
    "districts": [],
    "sections": 10,
-   "cover": null,
+   "cover": "cases/media/biofloc-tilapia/0.jpg",
    "decks": null
   },
   {
@@ -203,7 +203,7 @@
    "district": null,
    "districts": [],
    "sections": 13,
-   "cover": null,
+   "cover": "cases/media/paddy-fish-farming/0.jpg",
    "decks": {
     "en": "1d4FFIVEsU2tTd6dQ_orh4f5cDKMu-53a",
     "te": "1DNPolMWWu52bBMJEKu2kTDZ6FLoss0Mk"
@@ -237,7 +237,7 @@
    "district": null,
    "districts": [],
    "sections": 19,
-   "cover": null,
+   "cover": "cases/media/banana-processing/0.jpg",
    "decks": {
     "en": "1H_60VB3Qy2wv4_W1PeUzrTlgvGxUCVe6",
     "te": "1N7kiqOmfmOzZoZX20G7HLgDJIJw388he"
@@ -253,7 +253,7 @@
    "district": null,
    "districts": [],
    "sections": 10,
-   "cover": null,
+   "cover": "cases/media/mango-processing/0.jpg",
    "decks": {
     "en": "1HLEZxwpdOQWU6l5hTt6LIXWw8CdkoY2q",
     "te": "1UPgYavS-UYShJ0UfBXXgL0r20Dt9UcsQ"
