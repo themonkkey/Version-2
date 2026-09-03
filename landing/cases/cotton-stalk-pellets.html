@@ -111,9 +111,17 @@ a{color:var(--t2);}
    `.glass > :not(.wm){position:relative}` rule that ties a plain .cover-anim
    selector on specificity and, being later in source, would win and drop the
    accent back into the grid as a real column - reversing the whole cover. */
-.cover-glass.has-hero .cover-anim{position:absolute;right:clamp(10px,2vw,26px);
-  bottom:clamp(10px,2vw,22px);width:clamp(112px,15vw,188px);
-  height:clamp(112px,15vw,188px);opacity:.4;z-index:0;}
+/* Sized and anchored to the pocket between the tag row and the hint line. That
+   gap is the tightest on the covers whose tags wrap (mango is 87px), so the
+   accent is capped at 72px and sits a fixed distance above the hint rather
+   than scaling with the viewport - vh units grew it back into the tags. */
+.cover-glass.has-hero .cover-anim{position:absolute;left:clamp(10px,2vw,26px);
+  bottom:54px;width:clamp(30px,4vw,38px);
+  height:clamp(30px,4vw,38px);opacity:.38;z-index:0;}
+/* Stacked layout: the hero cards sit under the text rather than beside it, so
+   the left-column pocket the accent lives in on a wide screen is gone. It has
+   nowhere safe to go at this width - hide it rather than let it land on a card. */
+@media(max-width:860px){ .cover-glass.has-hero .cover-anim{display:none;} }
 .cover-glass.has-hero>.cover-l,.cover-glass.has-hero>.cover-r{position:relative;z-index:1;}
 
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
