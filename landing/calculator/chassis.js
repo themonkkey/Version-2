@@ -190,6 +190,15 @@
       buildPages(w, avail);
       page = Math.min(page, (w.__pages || [1]).length - 1);
       renderPage(w, page);
+      /* Verify, do not assume. If a page still overspills - the usual cause is
+         one atom that grew after it was measured - repack with a tighter
+         budget rather than leave content sitting under the keypad. Two passes
+         at most; renderPage's own squeeze catches whatever survives that. */
+      for(var pass = 0; pass < 2 && w.scrollHeight > avail; pass++){
+        buildPages(w, avail * (pass ? 0.66 : 0.8));
+        page = Math.min(page, (w.__pages || [1]).length - 1);
+        renderPage(w, page);
+      }
       syncKeys();
     }
 
@@ -280,13 +289,42 @@
        for anything else that settles late (a slow stylesheet, an icon font on
        a very slow link). fit() is idempotent - it resets the wrapper before
        measuring - so running it again is free. */
-    function refitSoon(){ setTimeout(fit, 60); }
+    /* Rather than guess when the reflow lands, watch for it. fit() is wrapped so
+       it records what it measured; a ResizeObserver re-runs it whenever the
+       face or the content genuinely changes size, and the signature check
+       stops the observer chasing fit()'s own writes round in a loop. This
+       covers late fonts, late stylesheets, the reveal animation settling, a
+       zoom change - anything - without naming any of them. */
+    var lastSig = '';
+    function fitGuarded(force){
+      if(!face || !face.clientHeight) return;
+      var st = host.querySelector('.gvac-step.on');
+      var w = st && st.querySelector('.gvac-fit');
+      if(!w) return;
+      var sig = face.clientHeight + ':' + step + ':' + page;
+      if(!force && sig === lastSig && w.__pages) return;   // nothing meaningful moved
+      lastSig = sig;
+      fit();
+    }
+    var refitT = null;
+    function refitSoon(){ clearTimeout(refitT); refitT = setTimeout(function(){ fitGuarded(true); }, 80); }
+
     try{
       if(document.fonts && document.fonts.ready) document.fonts.ready.then(refitSoon);
     }catch(e){}
-    setTimeout(fit, 700);
-    setTimeout(fit, 1800);
-    window.addEventListener('resize', fit);
+    setTimeout(refitSoon, 700);
+    setTimeout(refitSoon, 1800);
+
+    try{
+      if(window.ResizeObserver && face){
+        var ro = new ResizeObserver(function(){ refitSoon(); });
+        ro.observe(face);                        // the box the content must fit
+        var wellEl = host.querySelector('.gvac-well');
+        if(wellEl) ro.observe(wellEl);
+      }
+    }catch(e){}
+
+    window.addEventListener('resize', function(){ fitGuarded(true); });
     window.addEventListener('hashchange', function(){ setTimeout(fit, 150); });
     if(face) face.addEventListener('toggle', function(){ setTimeout(fit, 0); }, true);
     host.addEventListener('click', function(e){
