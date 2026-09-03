@@ -115,9 +115,20 @@ a{color:var(--t2);}
    gap is the tightest on the covers whose tags wrap (mango is 87px), so the
    accent is capped at 72px and sits a fixed distance above the hint rather
    than scaling with the viewport - vh units grew it back into the tags. */
-.cover-glass.has-hero .cover-anim{position:absolute;left:clamp(10px,2vw,26px);
-  bottom:54px;width:clamp(30px,4vw,38px);
-  height:clamp(30px,4vw,38px);opacity:.38;z-index:0;}
+/* Big and quiet, the way the rule below always intended: the identity columns
+   are lifted to z-index 1, so this sits behind them as texture rather than
+   competing for a gap. Shrinking it to dodge the text made it a speck; the
+   fix is opacity, not size. Bottom-LEFT because bottom-right is where the
+   hero stat cards live, and a mark that faint still must not sit on a figure. */
+.cover-glass.has-hero .cover-anim{position:absolute;left:clamp(8px,2vw,22px);
+  bottom:clamp(16px,2.6vw,30px);width:clamp(88px,11vw,132px);
+  height:clamp(88px,11vw,132px);opacity:.26;z-index:0;}
+/* the lime bloom is right for a 40px accent and muddy behind body text */
+.cover-glass.has-hero .cover-anim svg{filter:none;}
+/* Covers that carry an audience line have text where the mark sits, so it has
+   to drop back to texture there; the covers without one can afford to let it
+   read. :has() rather than a per-deck class - the difference is structural. */
+.cover-glass.has-hero:has(.cover-aud) .cover-anim{opacity:.15;}
 /* Stacked layout: the hero cards sit under the text rather than beside it, so
    the left-column pocket the accent lives in on a wide screen is gone. It has
    nowhere safe to go at this width - hide it rather than let it land on a card. */
@@ -1054,11 +1065,16 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
       if(!window.lottie) return;                     // CDN blocked -> plain cover
       try{
         var a=lottie.loadAnimation({
-          container:host, renderer:'svg', loop:motion, autoplay:motion, path:path
+          container:host, renderer:'svg', loop:false, autoplay:false, path:path
         });
-        if(!motion){ a.addEventListener('DOMLoaded',function(){
-          try{ a.goToAndStop(Math.floor(a.totalFrames*0.4),true); }catch(e){}
-        }); }
+        // Hold the finished frame instead of looping. These assets build
+        // themselves from nothing - the growth chart starts as a single stub -
+        // so a loop spends most of its cycle showing a fragment, which behind
+        // the cover text reads as debris rather than as a mark. The completed
+        // state is the only frame that always composes.
+        a.addEventListener('DOMLoaded',function(){
+          try{ a.goToAndStop(Math.max(0,a.totalFrames-1),true); }catch(e){}
+        });
       }catch(e){ /* one bad asset must never break the cover */ }
     });
   }
