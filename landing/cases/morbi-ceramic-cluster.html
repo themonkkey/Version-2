@@ -137,6 +137,37 @@ a{color:var(--t2);}
    the left-column pocket the accent lives in on a wide screen is gone. It has
    nowhere safe to go at this width - hide it rather than let it land on a card. */
 @media(max-width:860px){ .cover-glass.has-hero .cover-anim{display:none;} }
+
+/* ── Morbi cover: stacked-left layout ─────────────────────────────────────
+   Same arrangement as Tiruppur, and for the same reason: the copy is short
+   and the three values are short, so the figures fit in a row beneath the
+   identity block and the potter gets the whole right column. The aspect is
+   left to the loader, which measures each mark's painted pixels - guessing
+   it here is what put 10px of letterbox under Tiruppur's chart. */
+@media (min-width:900px){
+  .cover-glass.has-hero{
+    grid-template-columns:1.35fr .85fr;
+    grid-template-rows:min-content min-content;
+    grid-auto-rows:min-content;
+    align-items:start;align-content:center;
+    row-gap:clamp(20px,2.6vw,30px);}
+  .cover-glass.has-hero>.cover-l{grid-column:1;grid-row:1;}
+  .cover-glass.has-hero>.cover-r{grid-column:1;grid-row:2;}
+  .cover-glass.has-hero .cover-r .hero{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,16px);}
+  .cover-glass.has-hero .cover-r .scell{padding:26px 20px 24px;}
+  .cover-glass.has-hero .cover-r .scell .v{font-size:clamp(17px,1.85vw,21px);
+    white-space:nowrap;}
+  .cover-glass.has-hero .cover-r .scell .l{font-size:12px;}
+  .cover-glass.has-hero .cover-anim{
+    position:static;left:auto;right:auto;bottom:auto;
+    grid-column:2;grid-row:1 / span 2;
+    height:clamp(230px,25vw,310px);width:auto;max-width:100%;
+    justify-self:center;align-self:end;
+    opacity:.92;}
+  .cover-glass.has-hero .cover-anim svg{
+    filter:drop-shadow(0 0 18px rgba(198,236,143,.30));}
+}
 .cover-glass.has-hero>.cover-l,.cover-glass.has-hero>.cover-r{position:relative;z-index:1;}
 
 .eyebrow{font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
