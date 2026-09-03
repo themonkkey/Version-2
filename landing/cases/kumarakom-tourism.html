@@ -1110,10 +1110,15 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
             var svg=host.querySelector('svg'); if(!svg) return;
             var bb=svg.getBBox();
             if(bb && bb.width > 0 && bb.height > 0){
-              // First pass: geometry. Tight, no padding - any margin baked into
-              // the viewBox becomes a gap between the ink and the box edge.
+              // Measure against the ORIGINAL canvas, never a cropped one. The
+              // geometry box is not a superset of what gets painted - strokes
+              // and filters spill past it - so cropping first and scanning
+              // second can only ever cut further. On the Shenzhen crane that
+              // lost 55 units off the right: the end of the jib and its hook,
+              // which is why it read as a beam that simply stopped.
+              var ovb=(svg.getAttribute('viewBox')||'').split(' ').map(Number);
+              if(!(ovb.length===4 && ovb[2]>0 && ovb[3]>0)) ovb=[0,0,bb.x+bb.width,bb.y+bb.height];
               var w=bb.width, h=bb.height;
-              svg.setAttribute('viewBox',bb.x+' '+bb.y+' '+w+' '+h);
               host.style.aspectRatio = w + ' / ' + h;
               // Second pass: what is actually PAINTED. getBBox reports geometry,
               // including parts a mask hides - Tiruppur's bars measure 52px
@@ -1124,8 +1129,8 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
               // fails the geometry crop above still stands.
               (function(){
                 try{
-                  var vb=[bb.x,bb.y,w,h];
-                  var W=240, H=Math.max(1,Math.round(240*h/w));
+                  var vb=ovb;                        // original canvas, uncropped
+                  var W=260, H=Math.max(1,Math.round(260*vb[3]/vb[2]));
                   var img=new Image();
                   img.onload=function(){
                     try{
