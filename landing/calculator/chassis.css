@@ -307,3 +307,20 @@
   .gvac-kbtn{padding:9px 6px;font-size:.72rem;}
   .gvac-foot{margin-top:5px;font-size:.62rem;}
 }
+
+/* Second tier, for the ~566px viewport a 1366x768 laptop reports at 150%
+   zoom. Trimming the chrome is no longer enough there - the shell itself has
+   to give ground, so it claims back the outer margin, drops the footnote and
+   shrinks the readout. Without this the face is 156px, and a face that small
+   paginates one input row at a time. */
+@media (max-height:640px){
+  .gvac-calc{height:min(1040px,calc(100dvh - 76px));padding:8px 10px 8px;}
+  .gvac-lcd{padding:5px 10px 6px;margin-bottom:5px;}
+  .gvac-num{font-size:1.35rem;}
+  .gvac-stepbig{font-size:1rem;padding:3px 8px 4px;}
+  .gvac-samplerow{margin-bottom:5px;}
+  .gvac-chip{padding:5px 10px;}
+  .gvac-foot{display:none;}
+  .gvac-pad{margin-top:6px;gap:6px;}
+  .gvac-kbtn{padding:7px 6px;font-size:.68rem;}
+}

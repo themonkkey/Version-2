@@ -96,7 +96,7 @@
       w.querySelectorAll('[data-gvacpage]').forEach(function(el){
         el.style.display = ''; el.removeAttribute('data-gvacpage');
       });
-      w.__pages = null; w.__containers = null;
+      w.__pages = null; w.__containers = null; w.__sticky = null;
     }
 
     function collectAtoms(el, avail, out, containers){
@@ -117,30 +117,57 @@
       });
     }
 
+    /* Blocks that must stay on screen on every page: the instruction line and
+       the column header that names the units. Paging them away leaves a reader
+       on page 2 typing numbers into unlabelled boxes. */
+    var STICKY = '.calc-hint,.fc-shead,.cap-shead,.gvac-sticky';
+
     function buildPages(w, avail){
-      var atoms = [], containers = [];
-      collectAtoms(w, avail, atoms, containers);
+      var all = [], containers = [];
+      collectAtoms(w, avail, all, containers);
+      var sticky = [], atoms = [];
+      all.forEach(function(a){ (a.matches(STICKY) ? sticky : atoms).push(a); });
+      var hOf = function(a){ return a.getBoundingClientRect().height + 10; };
+      var sum = function(list){ return list.reduce(function(n, a){ return n + hOf(a); }, 0); };
+      /* sticky blocks are charged against every page, not just the first */
+      var reserved = sum(sticky);
+      /* On a very short face the prose hint would cost more than the rows it
+         explains. The unit header is the part that must not page away, so drop
+         the hint back to page one and keep the columns labelled. */
+      if(reserved > avail * .38){
+        sticky = sticky.filter(function(a){ return !a.matches('.calc-hint'); });
+        atoms = all.filter(function(a){ return sticky.indexOf(a) === -1; });
+        reserved = sum(sticky);
+      }
       var pages = [], cur = [], used = 0;
-      var budget = avail * .78;                 // headroom for repeated headings and container padding
+      /* Pack to the room that is actually left. The old flat .78 haircut was
+         applied on top of the 30px already taken off avail, and with sticky
+         blocks charged as well it left a third of the face empty and paged one
+         row at a time. fit() verifies afterwards and repacks tighter if a page
+         still overspills, so budgeting close to the true height is safe. */
+      var budget = Math.max((avail - reserved) * .95, avail * .3);
       atoms.forEach(function(a){
         var h = a.getBoundingClientRect().height + 10;
         if(cur.length && used + h > budget){ pages.push(cur); cur = []; used = 0; }
         cur.push(a); used += h;
       });
       if(cur.length) pages.push(cur);
-      w.__pages = pages; w.__containers = containers;
+      w.__pages = pages; w.__containers = containers; w.__sticky = sticky;
       return pages;
     }
 
     function renderPage(w, idx){
       var pages = w.__pages;
       if(!pages || pages.length < 2){ dots.innerHTML = ''; return; }
-      var shown = pages[idx];
+      var shown = pages[idx].concat(w.__sticky || []);
       pages.forEach(function(pg){
         pg.forEach(function(a){
           a.setAttribute('data-gvacpage', '1');
           a.style.display = shown.indexOf(a) > -1 ? '' : 'none';
         });
+      });
+      (w.__sticky || []).forEach(function(a){
+        a.setAttribute('data-gvacpage', '1'); a.style.display = '';
       });
       /* a container none of whose atoms are on this page hides with them */
       (w.__containers || []).forEach(function(c){
@@ -175,6 +202,7 @@
       dots.innerHTML = '';
       var avail = face.clientHeight - 30;
       var h = w.scrollHeight;
+      lastFitAt = Date.now();
       if(h <= avail) return;
       var k = avail / h;
       if(k >= MILD){                            // barely over: shrink a touch, no paging
@@ -200,6 +228,7 @@
         renderPage(w, page);
       }
       syncKeys();
+      lastFitAt = Date.now();
     }
 
     function pageCount(){
@@ -306,8 +335,12 @@
       lastSig = sig;
       fit();
     }
-    var refitT = null;
+    var refitT = null, lastFitAt = 0;
     function refitSoon(){ clearTimeout(refitT); refitT = setTimeout(function(){ fitGuarded(true); }, 80); }
+    /* An observer that watches the content will also see fit()'s own writes.
+       Ignoring anything that lands right after a fit breaks that loop while
+       still catching a genuine change - those come from a click, far later. */
+    function refitOnContent(){ if(Date.now() - lastFitAt > 200) refitSoon(); }
 
     try{
       if(document.fonts && document.fonts.ready) document.fonts.ready.then(refitSoon);
@@ -321,6 +354,12 @@
         ro.observe(face);                        // the box the content must fit
         var wellEl = host.querySelector('.gvac-well');
         if(wellEl) ro.observe(wellEl);
+        /* ...and the content itself. Watching only the container missed the
+           case that actually shipped: pressing "Load sample figures" injects a
+           tall banner, the face never changes size, so nothing refit and the
+           extra height spilled out under the keypad. */
+        var ro2 = new ResizeObserver(function(){ refitOnContent(); });
+        host.querySelectorAll('.gvac-fit').forEach(function(el){ ro2.observe(el); });
       }
     }catch(e){}
 
@@ -328,7 +367,7 @@
     window.addEventListener('hashchange', function(){ setTimeout(fit, 150); });
     if(face) face.addEventListener('toggle', function(){ setTimeout(fit, 0); }, true);
     host.addEventListener('click', function(e){
-      if(e.target.closest('.cr-box, [data-cgo], .calc-add, summary')) setTimeout(fit, 60);
+      if(e.target.closest('.cr-box, [data-cgo], .calc-add, summary, .gvac-chip')) setTimeout(fit, 60);
     });
     document.addEventListener('click', function(e){
       if(e.target.closest('.calc-tab')) setTimeout(fit, 60);
