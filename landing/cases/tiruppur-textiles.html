@@ -148,15 +148,23 @@ a{color:var(--t2);}
 @media (min-width:900px){
   .cover-glass.has-hero{
     grid-template-columns:1.35fr .85fr;
-    grid-template-rows:auto auto;
-    align-items:start;align-content:start;
-    row-gap:clamp(18px,2.4vw,28px);}
+    /* min-content, not auto: auto rows absorb the panel's spare height, which
+       inflated each row ~40px past its content and left align-content nothing
+       to centre - the dead air between the figures and the hint was that.
+       Pinned to content, the spare height becomes real free space and the
+       block genuinely centres. */
+    grid-template-rows:min-content min-content;
+    grid-auto-rows:min-content;
+    align-items:start;align-content:center;
+    row-gap:clamp(20px,2.6vw,30px);}
   .cover-glass.has-hero>.cover-l{grid-column:1;grid-row:1;}
   .cover-glass.has-hero>.cover-r{grid-column:1;grid-row:2;}
   /* three across now that they have the wide column */
   .cover-glass.has-hero .cover-r .hero{
     display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,16px);}
-  .cover-glass.has-hero .cover-r .scell{padding:14px 16px 12px;}
+  /* the figures were the shortest thing on the cover at 89px; they carry the
+     numbers, so they get the height the dead space was holding */
+  .cover-glass.has-hero .cover-r .scell{padding:26px 20px 24px;}
   /* three to a row is narrower than the old stacked column, and the longest
      value here ("Rs 46,000 Cr") broke onto three lines at the inherited size */
   .cover-glass.has-hero .cover-r .scell .v{font-size:clamp(17px,1.85vw,21px);
@@ -172,7 +180,11 @@ a{color:var(--t2);}
     position:static;left:auto;right:auto;bottom:auto;
     grid-column:2;grid-row:1 / span 2;
     aspect-ratio:615 / 858;
-    height:min(330px,100%);width:auto;max-width:100%;
+    /* no percentage height: it resolves against the row area, whose size
+       depends on this item, and the browser settles that circularity by
+       inflating both spanned rows - which is what was padding 40px into each
+       and swallowing the free space */
+    height:clamp(230px,25vw,310px);width:auto;max-width:100%;
     justify-self:center;align-self:end;
     opacity:.92;}
   .cover-glass.has-hero .cover-anim svg{
