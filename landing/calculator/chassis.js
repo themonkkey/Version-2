@@ -268,7 +268,24 @@
       fromCalc = true; show(N - 1); fromCalc = false;
     });
 
-    /* refit whenever the content's shape can change */
+    /* Refit when the page reflows underneath us. fit() measures once and, when
+       it scales, writes an explicit height onto the wrapper - so any reflow
+       that happens AFTER that measurement is not contained by it and the
+       content spills out from under the keypad.
+       Webfonts are the usual cause: Public Sans, Bodoni and the icon font all
+       arrive asynchronously, and on a cold cache or a slow link they land
+       after the first fit, growing every line of text. It looked fine on a
+       warm cache and broken on someone else's laptop.
+       document.fonts.ready covers that; the two delayed passes are a backstop
+       for anything else that settles late (a slow stylesheet, an icon font on
+       a very slow link). fit() is idempotent - it resets the wrapper before
+       measuring - so running it again is free. */
+    function refitSoon(){ setTimeout(fit, 60); }
+    try{
+      if(document.fonts && document.fonts.ready) document.fonts.ready.then(refitSoon);
+    }catch(e){}
+    setTimeout(fit, 700);
+    setTimeout(fit, 1800);
     window.addEventListener('resize', fit);
     window.addEventListener('hashchange', function(){ setTimeout(fit, 150); });
     if(face) face.addEventListener('toggle', function(){ setTimeout(fit, 0); }, true);
