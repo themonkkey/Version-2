@@ -128,16 +128,21 @@
       var sticky = [], atoms = [];
       all.forEach(function(a){ (a.matches(STICKY) ? sticky : atoms).push(a); });
       var hOf = function(a){ return a.getBoundingClientRect().height + 10; };
-      var sum = function(list){ return list.reduce(function(n, a){ return n + hOf(a); }, 0); };
-      /* sticky blocks are charged against every page, not just the first */
-      var reserved = sum(sticky);
+      /* Charge a page for what it will actually carry: the hint, plus the one
+         section header that pins over its rows - not every header in the step,
+         which in livestock would be a dozen. */
+      var reserved = sticky.reduce(function(n, a){
+        return a.matches('.calc-hint') ? n + hOf(a) : n;
+      }, 0) + sticky.reduce(function(mx, a){
+        return a.matches('.calc-hint') ? mx : Math.max(mx, hOf(a));
+      }, 0);
       /* On a very short face the prose hint would cost more than the rows it
          explains. The unit header is the part that must not page away, so drop
          the hint back to page one and keep the columns labelled. */
       if(reserved > avail * .38){
         sticky = sticky.filter(function(a){ return !a.matches('.calc-hint'); });
         atoms = all.filter(function(a){ return sticky.indexOf(a) === -1; });
-        reserved = sum(sticky);
+        reserved = sticky.reduce(function(mx, a){ return Math.max(mx, hOf(a)); }, 0);
       }
       var pages = [], cur = [], used = 0;
       /* Pack to the room that is actually left. The old flat .78 haircut was
@@ -159,15 +164,25 @@
     function renderPage(w, idx){
       var pages = w.__pages;
       if(!pages || pages.length < 2){ dots.innerHTML = ''; return; }
-      var shown = pages[idx].concat(w.__sticky || []);
+      /* A sticky header pins only over the rows it actually labels - its own
+         siblings. Livestock has one header per section, and pinning them all
+         filled the page with column headings and no rows. The instruction
+         hint has no rows of its own, so it always pins. */
+      var sticky = w.__sticky || [];
+      var live = sticky.filter(function(a){
+        if(a.matches('.calc-hint')) return true;
+        return pages[idx].some(function(b){ return b.parentNode === a.parentNode; });
+      });
+      var shown = pages[idx].concat(live);
       pages.forEach(function(pg){
         pg.forEach(function(a){
           a.setAttribute('data-gvacpage', '1');
           a.style.display = shown.indexOf(a) > -1 ? '' : 'none';
         });
       });
-      (w.__sticky || []).forEach(function(a){
-        a.setAttribute('data-gvacpage', '1'); a.style.display = '';
+      sticky.forEach(function(a){
+        a.setAttribute('data-gvacpage', '1');
+        a.style.display = live.indexOf(a) > -1 ? '' : 'none';
       });
       /* a container none of whose atoms are on this page hides with them */
       (w.__containers || []).forEach(function(c){
