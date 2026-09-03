@@ -165,7 +165,14 @@
 .gvac-face{background:rgba(255,255,255,.05);border-radius:12px;
   border:1px solid rgba(255,255,255,.13);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 2px 6px rgba(0,0,0,.3);
-  padding:16px 16px 14px;min-height:220px;position:relative;
+  padding:16px 16px 14px;min-height:0;position:relative;
+  /* min-height was 220px. On a short viewport - a small laptop, or any
+     screen at 125-150% browser zoom, where 900px of screen becomes 585px
+     of CSS - the shell has only ~112px left for the well after its own
+     chrome, and a face that refuses to go below 220px simply bursts out
+     of it and lands under the keypad. It has flex:1 1 auto, so it still
+     fills whatever the well can give it; the fit engine then paginates
+     into that height instead of overflowing it. */
   flex:1 1 auto;min-width:0;overflow-y:auto;overflow-x:hidden;
   overscroll-behavior:contain;scrollbar-width:thin;
   scrollbar-color:rgba(198,236,143,.35) transparent;}
@@ -274,4 +281,29 @@
   .gvac-kbtn{font-size:.66rem;padding:11px 4px;letter-spacing:.02em;}
   .gvac-foot{flex-direction:column;gap:4px;}
   .gvac-screw{display:none;}
+}
+
+/* ── Short viewports ──────────────────────────────────────────────────────
+   A 1366x768 laptop, or any screen at 125-150% browser zoom, leaves ~585px
+   of CSS height. The chrome is fixed-size by design, so on those screens it
+   eats nearly all of the shell and the face is left with almost nothing to
+   paginate into. Trim the chrome instead: the readout, keys and chips all
+   step down, which hands roughly seventy pixels back to the content. */
+@media (max-height:760px){
+  .gvac-calc{padding:10px 12px 10px;}
+  .gvac-lcd{padding:6px 12px 8px;margin-bottom:6px;}
+  .gvac-num{font-size:1.7rem;}
+  .gvac-num small{font-size:.85rem;}
+  .gvac-stepbig{font-size:1.1rem;padding:4px 9px 5px;}
+  .gvac-op{font-size:.7rem;}
+  .gvac-lamps{margin-bottom:6px;}
+  .gvac-lamps b{height:5px;}
+  .gvac-samplerow{margin-bottom:6px;}
+  .gvac-chip{padding:6px 12px;font-size:.6rem;}
+  .gvac-well{padding:5px;}
+  .gvac-face{padding:11px 12px 10px;}
+  .gvac-pages{margin-top:6px;}
+  .gvac-pad{margin-top:8px;gap:8px;}
+  .gvac-kbtn{padding:9px 6px;font-size:.72rem;}
+  .gvac-foot{margin-top:5px;font-size:.62rem;}
 }
