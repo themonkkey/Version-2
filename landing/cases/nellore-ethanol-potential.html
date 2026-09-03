@@ -1116,6 +1116,17 @@ h1{font-family:'Trebuchet MS','Verdana Pro',Verdana,sans-serif;font-weight:600;f
   var mounted=false;
   function init(){
     if(mounted) return;                              // 'deck:laidout' fires once, but guard anyway
+    // Header icons are the static sprites, deliberately. The role animations
+    // available to them build themselves out of nothing and spend part of every
+    // loop in a state that does not read as the object: key-factors pulls the
+    // key's shaft off its head, and the takeaways arrow crosses frames where
+    // both of its copies sit at zero opacity, leaving a bare shadow ellipse and
+    // an apparently empty chip. A header icon is a label, not a performance -
+    // it has to be legible at every instant, and the sprite already is.
+    // Mounting is skipped rather than the markup stripped, so restoring motion
+    // is a one-line change if assets that read at every frame turn up.
+    return;
+    /* eslint-disable no-unreachable */
     if(!window.lottie) return;                       // CDN blocked -> sprites stay
     var hosts=document.querySelectorAll('.ic[data-lottie-src],.ic[data-lottie-fallback]');
     if(!hosts.length) return;
