@@ -346,6 +346,8 @@
 .gvac-sheetactions{display:none;}
 .gvac-sheet .gvac-sheetactions{display:flex;flex-wrap:wrap;align-items:center;
   gap:12px;margin:0 0 clamp(14px,1.8vw,18px);}
+/* the chips live in the actions row down here; their old row collapses */
+.gvac-sheet .gvac-samplerow{display:none;}
 /* fisheries opts in: steps 1 and 2 pair up on a wide screen, as the old page did */
 @media (min-width:1040px){
   .gvac-sheet.gvac-sheet-pair .gvac-face{display:grid;

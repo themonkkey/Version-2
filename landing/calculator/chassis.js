@@ -395,9 +395,17 @@
           actionsRow.appendChild(calcBtn);
           calcBtn.hidden = false; calcBtn.removeAttribute('tabindex');
           calcBtn.classList.add('fc-go');
+          /* the old page kept sample and clear beside Calculate; so does the sheet */
+          if(sampleBtn) actionsRow.appendChild(sampleBtn);
+          if(clearBtn)  actionsRow.appendChild(clearBtn);
         }
       } else {
         if(calcBtn){ calcBtn.hidden = true; calcBtn.setAttribute('tabindex','-1'); }
+        var srow = host.querySelector('.gvac-samplerow');
+        if(srow){
+          if(sampleBtn) srow.appendChild(sampleBtn);
+          if(clearBtn)  srow.appendChild(clearBtn);
+        }
         show(step);
         fitGuarded(true);
       }
