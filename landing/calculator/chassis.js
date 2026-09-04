@@ -25,23 +25,6 @@
     return (neg ? '−' : '') + rest + last3;
   }
 
-  /* One choice for the whole page, remembered across visits. Applied before
-     the shells first fit, so a returning sheet-view reader never sees the
-     calculator flash by. */
-  try{ window.__gvaView = localStorage.getItem('gva_view') || 'calc'; }
-  catch(e){ window.__gvaView = 'calc'; }
-  window.__gvaSetView = function(v){
-    window.__gvaView = v;
-    try{ localStorage.setItem('gva_view', v); }catch(e){}
-    document.querySelectorAll('.gvac-calc').forEach(function(h){
-      if(h.__gvaSetView) h.__gvaSetView(v);
-    });
-    document.querySelectorAll('.gvac-viewtoggle button').forEach(function(b){
-      b.setAttribute('aria-pressed', String(b.dataset.view === v));
-      b.classList.toggle('on', b.dataset.view === v);
-    });
-  };
-
   window.makeGvaChassis = function(cfg){
     var px = cfg.prefix;
     function $(suffix){ return document.getElementById(px + '_' + suffix); }
@@ -531,7 +514,10 @@
     io.observe(host);
 
     show(0);
-    if(window.__gvaView === 'sheet') setView('sheet');
+    /* The calculator layout is retired: the sheet is the only view. The
+       chassis machinery stays underneath - setView('calc') would bring it
+       back - but nothing in the page offers that any more. */
+    setView('sheet');
     return {show: show, setView: setView, get step(){ return step; }};
   };
 })();

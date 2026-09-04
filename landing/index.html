@@ -35,7 +35,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.4.0/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="calculator/chassis.css?v=2026-09-03q">
+<link rel="stylesheet" href="calculator/chassis.css?v=2026-09-03r">
 <style>
 :root{
   --bg:#EEF1F0;
@@ -4039,13 +4039,6 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
       <button class="calc-tab" data-sector="crops" role="tab" aria-selected="false">
         <span class="ct-n">PRIMARY</span><span class="ct-t">Crops</span>
         <span class="ct-s">Cereals to floriculture</span></button>
-    </div>
-
-    <div class="gvac-viewtoggle-row">
-      <div class="gvac-viewtoggle" role="group" aria-label="Calculator layout">
-        <button type="button" class="on" data-view="calc" aria-pressed="true">Calculator</button>
-        <button type="button" data-view="sheet" aria-pressed="false">Sheet</button>
-      </div>
     </div>
 
     <div class="calc-panel" id="sector-fisheries">
@@ -10002,7 +9995,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
 
 
 </script>
-<script src="calculator/chassis.js?v=2026-09-03q"></script>
+<script src="calculator/chassis.js?v=2026-09-03r"></script>
 <script>
 /* Three chassis instances, one per sector. Labels and formulas are LCD copy;
    the figures come from the engines via window.__gvaCompute_*. */
@@ -10038,10 +10031,6 @@ window.__loadCapacity = function(){ loadCapacity(); };
       return null;
     }
   });
-  document.querySelectorAll('.gvac-viewtoggle button').forEach(function(b){
-    b.addEventListener('click', function(){ window.__gvaSetView(b.dataset.view); });
-  });
-  if(window.__gvaView === 'sheet') window.__gvaSetView('sheet');
 })();
 </script>
 </body>
