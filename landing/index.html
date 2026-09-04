@@ -35,7 +35,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.4.0/dist/tabler-icons.min.css">
-<link rel="stylesheet" href="calculator/chassis.css?v=2026-09-03o">
+<link rel="stylesheet" href="calculator/chassis.css?v=2026-09-03p">
 <style>
 :root{
   --bg:#EEF1F0;
@@ -4041,6 +4041,13 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
         <span class="ct-s">Cereals to floriculture</span></button>
     </div>
 
+    <div class="gvac-viewtoggle-row">
+      <div class="gvac-viewtoggle" role="group" aria-label="Calculator layout">
+        <button type="button" class="on" data-view="calc" aria-pressed="true">Calculator</button>
+        <button type="button" data-view="sheet" aria-pressed="false">Sheet</button>
+      </div>
+    </div>
+
     <div class="calc-panel" id="sector-fisheries">
       <div class="calc-formula">Output &minus; Intermediate Consumption = <b>GVA</b>, by species and product form</div>
       <!-- The lede alone left most of a wide panel empty, so it now shares the
@@ -4072,7 +4079,7 @@ details.fc-assump[open] .fc-assump-act .lbl-close{display:inline;}
            the fisheries engine below is untouched. Behavior is wired by
            calculator/chassis.js at the foot of the page. -->
       <div class="gvac-stage">
-      <div class="gvac-calc" id="fc_shell">
+      <div class="gvac-calc gvac-sheet-pair" id="fc_shell">
         <span class="gvac-screw tl"></span><span class="gvac-screw tr"></span><span class="gvac-screw bl"></span><span class="gvac-screw br"></span>
         <div class="gvac-badge">
           <span class="gvac-brand">Fisheries GVA</span>
@@ -9995,7 +10002,7 @@ window.__loadCapacity = function(){ loadCapacity(); };
 
 
 </script>
-<script src="calculator/chassis.js?v=2026-09-03o"></script>
+<script src="calculator/chassis.js?v=2026-09-03p"></script>
 <script>
 /* Three chassis instances, one per sector. Labels and formulas are LCD copy;
    the figures come from the engines via window.__gvaCompute_*. */
@@ -10031,6 +10038,10 @@ window.__loadCapacity = function(){ loadCapacity(); };
       return null;
     }
   });
+  document.querySelectorAll('.gvac-viewtoggle button').forEach(function(b){
+    b.addEventListener('click', function(){ window.__gvaSetView(b.dataset.view); });
+  });
+  if(window.__gvaView === 'sheet') window.__gvaSetView('sheet');
 })();
 </script>
 </body>

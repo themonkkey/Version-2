@@ -25,6 +25,23 @@
     return (neg ? '−' : '') + rest + last3;
   }
 
+  /* One choice for the whole page, remembered across visits. Applied before
+     the shells first fit, so a returning sheet-view reader never sees the
+     calculator flash by. */
+  try{ window.__gvaView = localStorage.getItem('gva_view') || 'calc'; }
+  catch(e){ window.__gvaView = 'calc'; }
+  window.__gvaSetView = function(v){
+    window.__gvaView = v;
+    try{ localStorage.setItem('gva_view', v); }catch(e){}
+    document.querySelectorAll('.gvac-calc').forEach(function(h){
+      if(h.__gvaSetView) h.__gvaSetView(v);
+    });
+    document.querySelectorAll('.gvac-viewtoggle button').forEach(function(b){
+      b.setAttribute('aria-pressed', String(b.dataset.view === v));
+      b.classList.toggle('on', b.dataset.view === v);
+    });
+  };
+
   window.makeGvaChassis = function(cfg){
     var px = cfg.prefix;
     function $(suffix){ return document.getElementById(px + '_' + suffix); }
@@ -39,7 +56,7 @@
         clearBtn = document.getElementById(cfg.clearId);
 
     var N = cfg.labels.length;
-    var step = 0, page = 0, fromCalc = false;
+    var step = 0, page = 0, fromCalc = false, sheetMode = false;
     var face = host.querySelector('.gvac-face');
 
     if(lcdTot) lcdTot.textContent = N;
@@ -234,6 +251,7 @@
     }
 
     function fit(){
+      if(sheetMode) return;               // the sheet lays itself out
       if(!face || !face.clientHeight) return;
       var st = host.querySelector('.gvac-step.on');
       var w = st && st.querySelector('.gvac-fit');
@@ -293,6 +311,7 @@
     }
 
     function show(s, startPage){
+      if(sheetMode){ step = Math.max(0, Math.min(N - 1, s)); return; }
       if(s < 0 || s >= N) return;
       var vals = stages();
       if(s === N - 1 && !fromCalc && calcBtn){
@@ -351,6 +370,39 @@
       }
       if(step > 0) show(step - 1, 'last');
     }
+
+    /* ── sheet view ──────────────────────────────────────────────────
+       The same DOM in a second layout: every step visible at once, like the
+       workbook page this calculator came from. No cloning - the class flips
+       the CSS, the pagination is undone, and the real Calculate button comes
+       out of hiding into a form-style actions row above the result. */
+    var actionsRow = null;
+    function setView(v){
+      var toSheet = v === 'sheet';
+      if(toSheet === sheetMode) return;
+      sheetMode = toSheet;
+      host.classList.toggle('gvac-sheet', toSheet);
+      if(toSheet){
+        host.querySelectorAll('.gvac-fit').forEach(resetStep);
+        dots.innerHTML = '';
+        if(calcBtn){
+          if(!actionsRow){
+            actionsRow = document.createElement('div');
+            actionsRow.className = 'fc-actions gvac-sheetactions';
+            var lastStep = host.querySelector('.gvac-step:last-of-type');
+            if(lastStep) lastStep.parentNode.insertBefore(actionsRow, lastStep);
+          }
+          actionsRow.appendChild(calcBtn);
+          calcBtn.hidden = false; calcBtn.removeAttribute('tabindex');
+          calcBtn.classList.add('fc-go');
+        }
+      } else {
+        if(calcBtn){ calcBtn.hidden = true; calcBtn.setAttribute('tabindex','-1'); }
+        show(step);
+        fitGuarded(true);
+      }
+    }
+    host.__gvaSetView = setView;
 
     if(next) next.addEventListener('click', goNext);
     if(back) back.addEventListener('click', goBack);
@@ -471,6 +523,7 @@
     io.observe(host);
 
     show(0);
-    return {show: show, get step(){ return step; }};
+    if(window.__gvaView === 'sheet') setView('sheet');
+    return {show: show, setView: setView, get step(){ return step; }};
   };
 })();

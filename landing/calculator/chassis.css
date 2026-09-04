@@ -324,3 +324,44 @@
   .gvac-pad{margin-top:6px;gap:6px;}
   .gvac-kbtn{padding:7px 6px;font-size:.68rem;}
 }
+
+/* ── Sheet view ───────────────────────────────────────────────────────────
+   The chassis's second layout: the same DOM laid flat, every step on screen
+   at once like the workbook page it was ported from. The physical-calculator
+   chrome - readout, lamps, keypad, footnote, screws - steps aside; the brand
+   line and the sample/clear chips stay. Nothing is cloned, so values carry
+   across the toggle untouched. */
+.gvac-calc.gvac-sheet{height:auto;}
+.gvac-sheet .gvac-lcd,.gvac-sheet .gvac-lamps,.gvac-sheet .gvac-pad,
+.gvac-sheet .gvac-pages,.gvac-sheet .gvac-screw,.gvac-sheet .gvac-solar{display:none;}
+.gvac-sheet .gvac-well{background:none;border:none;box-shadow:none;padding:0;
+  height:auto;display:block;}
+.gvac-sheet .gvac-face{background:none;border:none;box-shadow:none;border-radius:0;
+  padding:2px;height:auto;overflow:visible;display:block;flex:none;}
+.gvac-sheet .gvac-step{display:block;margin-bottom:clamp(14px,1.8vw,18px);}
+.gvac-sheet .gvac-step:last-of-type{margin-bottom:0;}
+.gvac-sheet .gvac-fit{transform:none !important;width:auto !important;height:auto !important;}
+.gvac-sheet .gvac-badge{margin-bottom:10px;}
+/* the actions row exists only for sheet view; the chips sit beside the button */
+.gvac-sheetactions{display:none;}
+.gvac-sheet .gvac-sheetactions{display:flex;flex-wrap:wrap;align-items:center;
+  gap:12px;margin:0 0 clamp(14px,1.8vw,18px);}
+/* fisheries opts in: steps 1 and 2 pair up on a wide screen, as the old page did */
+@media (min-width:1040px){
+  .gvac-sheet.gvac-sheet-pair .gvac-face{display:grid;
+    grid-template-columns:1fr 1fr;gap:clamp(14px,1.8vw,18px);align-items:start;}
+  .gvac-sheet.gvac-sheet-pair .gvac-step{margin-bottom:0;}
+  .gvac-sheet.gvac-sheet-pair .gvac-step[data-s="2"],
+  .gvac-sheet.gvac-sheet-pair .gvac-step[data-s="3"],
+  .gvac-sheet.gvac-sheet-pair .gvac-sheetactions{grid-column:1 / -1;}
+}
+/* the toggle itself, on the sector-tab row */
+.gvac-viewtoggle{display:inline-flex;gap:0;margin:-6px 0 clamp(14px,2vw,20px) auto;
+  border:1px solid rgba(198,236,143,.3);border-radius:999px;padding:3px;
+  background:rgba(0,0,0,.25);}
+.gvac-viewtoggle button{font:inherit;font-size:12.5px;font-weight:700;
+  letter-spacing:.02em;cursor:pointer;border:none;border-radius:999px;
+  padding:6px 16px;background:none;color:rgba(255,255,255,.7);}
+.gvac-viewtoggle button.on{background:rgba(198,236,143,.9);color:#15291b;}
+.gvac-viewtoggle button:focus-visible{outline:2px solid rgba(198,236,143,.9);outline-offset:2px;}
+.gvac-viewtoggle-row{display:flex;justify-content:flex-end;}
