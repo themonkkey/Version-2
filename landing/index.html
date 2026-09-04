@@ -1388,6 +1388,10 @@ a.docs-leaf:hover .ext{opacity:1;}
 .cap-datebar{display:flex;align-items:center;gap:11px;margin-bottom:clamp(14px,1.8vw,20px);}
 .cap-datebar-label{flex:0 0 auto;font-size:11px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:rgba(198,236,143,.75);}
+.cap-datebar{flex-wrap:wrap;}
+.cap-datebar-hint{flex:0 1 auto;font-size:12px;font-weight:550;font-style:italic;
+  color:rgba(255,255,255,.55);}
+.cap-datebar-hint::before{content:"\2190\00a0";color:rgba(198,236,143,.7);font-style:normal;}
 .cap-datechips{display:flex;gap:7px;overflow-x:auto;padding:2px 2px 6px;
   scrollbar-width:thin;scrollbar-color:rgba(198,236,143,.35) transparent;}
 .cap-datechips::-webkit-scrollbar{height:5px;}
@@ -7946,8 +7950,15 @@ window.__loadCapacity = function(){ loadCapacity(); };
         'role="tab" aria-selected="'+(i===activeIdx?'true':'false')+'" ' +
         'title="'+esc(s.date ? prettyDate(s.date) : (s.kind||'Report'))+'">' + inner + '</button>';
     }).join('');
+    /* The chips looked like a legend, not a control - nothing said they were
+       buttons, so readers saw day one and stopped. A short line after them
+       says what selecting a date does; one session needs no such invitation. */
     return '<div class="cap-datebar"><span class="cap-datebar-label">Day '+(activeIdx+1)+' of '+sessions.length+'</span>' +
-      '<div class="cap-datechips" role="tablist" aria-label="Choose a session">' + chips + '</div></div>';
+      '<div class="cap-datechips" role="tablist" aria-label="Choose a session">' + chips + '</div>' +
+      (sessions.length > 1
+        ? '<span class="cap-datebar-hint">Select a date to see what happened that day</span>'
+        : '') +
+      '</div>';
   }
 
 
