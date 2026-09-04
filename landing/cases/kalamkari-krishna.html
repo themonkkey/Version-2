@@ -92,7 +92,10 @@ a{color:var(--t2);}
    Purely decorative: pointer-events off, hidden from the a11y tree, and it is an
    empty box until lottie-web injects an <svg>. If the runtime or JSON never
    arrives the box has no intrinsic size and the cover reads exactly as before. */
-.cover-anim{pointer-events:none;}
+/* The cover flourish is retired: with no per-deck animation files the slot
+   fell back to a generic sprite that read as a green blob, not an icon. The
+   cover carries its title, hero and chips; it needs no ornament. */
+.cover-anim{display:none !important;}
 .cover-anim.fill{width:min(340px,100%);aspect-ratio:1;margin:6px auto 0;
   opacity:.92;}
 /* THE lime glow. The flourishes are now background-stripped lime line-art on
