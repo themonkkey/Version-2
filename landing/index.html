@@ -6541,12 +6541,23 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
     return null;
   }
 
+  /* Clicking a plan used to open Drive's preview page; the reader wanted the
+     file. The same uc?export=download endpoint the case-study decks use
+     serves the document itself, so a plan link IS the download now, and the
+     leaf wears a download icon to say so. */
+  function downloadUrl(url){
+    var m = url && url.match(/drive\.google\.com\/(?:file\/d\/([-\w]+)|open\?id=([-\w]+))/);
+    var id = m && (m[1] || m[2]);
+    return id ? 'https://drive.google.com/uc?export=download&id=' + id : url;
+  }
+
   function leafHtml(leaf, dist, cons, icon){
-    var url = linkFor(leaf, dist, cons);
+    var url = downloadUrl(linkFor(leaf, dist, cons));
     var mb = leaf.mb ? '<span class="lm">'+leaf.mb+' MB</span>' : '';
     var inner = '<i class="ti '+icon+' li"></i><span class="lt">'+esc(leaf.title)+'</span>'+mb;
-    if(url) return '<a class="docs-leaf" href="'+esc(url)+'" target="_blank" rel="noopener">'+
-      inner+'<i class="ti ti-external-link ext"></i></a>';
+    if(url) return '<a class="docs-leaf" href="'+esc(url)+'" '+
+      'aria-label="Download '+esc(leaf.title)+'">'+
+      inner+'<i class="ti ti-download ext"></i></a>';
     return '<span class="docs-leaf muted" title="Not yet linked">'+inner+'</span>';
   }
 
@@ -6609,11 +6620,11 @@ document.querySelectorAll('a[href*="andhrachatbot.streamlit.app"]').forEach(func
   function render(){
     var h = '';
     if(DATA.state){
-      var url = linkFor(DATA.state, null, null);
+      var url = downloadUrl(linkFor(DATA.state, null, null));
       var head = '<i class="ti ti-flag-3 di"></i><div><div class="dt">'+esc(DATA.state.title)+'</div>'+
         '<div class="dm">State vision plan · '+(DATA.state.mb||'')+' MB</div></div>';
       h += url
-        ? '<a class="docs-state" href="'+esc(url)+'" target="_blank" rel="noopener" style="cursor:pointer">'+head+'<i class="ti ti-external-link ext" style="opacity:.7;margin-left:auto"></i></a>'
+        ? '<a class="docs-state" href="'+esc(url)+'" style="cursor:pointer" aria-label="Download the state vision plan">'+head+'<i class="ti ti-download ext" style="opacity:.7;margin-left:auto"></i></a>'
         : '<div class="docs-state">'+head+'</div>';
     }
     treeEl.innerHTML = h + '<div class="docs-districts"></div>';
