@@ -1,5 +1,21 @@
 # Working notes
 
+## WhatsApp bot — parked (2026-09-07)
+
+Decision: web chatbot only for now. The WhatsApp bot is BUILT AND TESTED
+(whatsapp/: FastAPI webhook, text + Sarvam voice notes, Dockerfile) and was
+deployed successfully to Railway (aitech account, project humorous-youthfulness,
+service swarna-andhra-v2) — /health, webhook verify all green. Taken down to
+conserve trial credit.
+
+Blocked on: Meta/Facebook signup for the developer account (registration
+error on org email; retry via FB mobile app / phone number, or use an aged
+personal FB account and transfer to a PIF Business portfolio later).
+
+To revive: reconnect the GitHub repo service on Railway (env vars are in the
+service config: RAILWAY_DOCKERFILE_PATH=whatsapp/Dockerfile, Gemini + Cohere
+keys, WA_VERIFY_TOKEN) -> Meta sandbox setup per whatsapp/README.md.
+
 ## TurboVec / vector compression — parked (2026-09-06)
 
 TurboVec (Rust index on Google's TurboQuant, ICLR 2026) compresses embeddings
