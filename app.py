@@ -414,6 +414,40 @@ def district_ranking_fact(query, district_folder):
             f"When asked for the strongest/top sectors, name ONLY these three, in this order.")
 
 
+def is_conceptual(query, district_folder):
+    """True for explain/why/how questions, False for 'what is X's GDDP' lookups.
+
+    Benchmarked on 60 conceptual prompts (same judge, same set): the flash-lite models
+    answer district FIGURES perfectly (100%) but reason at ~80%, while gemini-3.6-flash
+    reaches 95% -- at ~7x the price and ~7x the latency. Routing sends only the
+    questions that need reasoning to the expensive model, so most traffic stays fast
+    and free. Inert unless CONCEPTUAL_MODEL is set.
+    """
+    if not query:
+        return False
+    q = query.lower()
+    reasoning = re.search(r"\bwhy\b|\bhow\b|explain|compare|difference|should|risk", q)
+    if reasoning:
+        return True
+    # A ranked-sectors question is answered from the injected VERIFIED RANKING, which
+    # every model repeats correctly (28/28 across the board) -- no reason to pay.
+    if district_folder and RANKING_INTENT_RE.search(q):
+        return False
+    if district_folder and re.search(
+            r"productiv|target|growth|\brate\b|income|gdp|gddp|gsdp|nddp|\bddp\b|gdva|"
+            r"per capita|population|contribution|hectare|\barea\b|yield|percent|"
+            r"\bvalue\b|figure", q):
+        return False
+    return True
+
+
+def model_for(query, district_folder):
+    conceptual = os.environ.get("CONCEPTUAL_MODEL")
+    if conceptual and is_conceptual(query, district_folder):
+        return conceptual
+    return os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
+
+
 def build_context_block(hits, query=None, district_folder=None):
     if not hits:
         return "(No relevant material found in the PIF corpus for this query.)"
@@ -977,6 +1011,10 @@ def handle_query(user_input):
             + history
             + [{"role": "user", "content": f"CONTEXT:\n{context_block}\n\nQUESTION: {user_input}"}]
         )
+        # Reasoning questions go to the stronger model when one is configured; figure
+        # lookups stay on the fast one, which already answers them perfectly.
+        prev_model = os.environ.get("GEMINI_MODEL")
+        os.environ["GEMINI_MODEL"] = model_for(user_input, district_folder)
         try:
             first = True
 
@@ -993,6 +1031,11 @@ def handle_query(user_input):
             answer = f"Missing API key: {e}."
         except Exception as e:
             answer = f"Sorry, something went wrong: {e}"
+        finally:
+            if prev_model is None:
+                os.environ.pop("GEMINI_MODEL", None)
+            else:
+                os.environ["GEMINI_MODEL"] = prev_model
         progress.empty()
         if not isinstance(answer, str):
             answer = "".join(answer)

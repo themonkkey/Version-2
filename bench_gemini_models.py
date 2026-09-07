@@ -77,6 +77,15 @@ def retrieve_for(q):
             raise
 
 
+# Bench-only key pool. The premium Gemini models allow ~20 free requests/day per
+# project, so a 60-prompt run cannot complete on one key -- 3-flash-preview failed 55
+# of 60 that way, which reads as "terrible model" rather than "out of quota". Rotating
+# spare dev-project keys measures the MODEL instead of the quota. Never wired into the
+# app: production runs on a single key.
+_KEYS = [k.strip() for k in os.environ.get("GEMINI_API_KEYS", "").split(",") if k.strip()] \
+        or [os.environ.get("GEMINI_API_KEY", "")]
+
+
 def answer_with(model, q, block):
     # "openrouter:google/gemini-3.6-flash" benches through OpenRouter; a bare name
     # goes direct to Google, so both routes share one harness.
@@ -91,7 +100,19 @@ def answer_with(model, q, block):
                  "content": f"CONTEXT:\n{block}\n\nQUESTION: {q}\n\n"
                             f"Answer, citing the source file:"}]
     t0 = time.time()
-    ans = app.call_llm(messages).strip()
+    last = None
+    for key in _KEYS:  # move to the next project's key when this one is out of quota
+        os.environ["GEMINI_API_KEY"] = key
+        try:
+            ans = app.call_llm(messages).strip()
+            break
+        except Exception as e:
+            last = e
+            if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e).upper():
+                continue
+            raise
+    else:
+        raise last
     return ans, time.time() - t0
 
 
