@@ -75,7 +75,19 @@ def _load_matrix():
     if os.path.exists(EMBED_NPZ):
         return np.load(EMBED_NPZ)["matrix"]
     if all(os.path.exists(p) for p in EMBED_PARTS):
-        return np.concatenate([np.load(p)["matrix"] for p in EMBED_PARTS], axis=0)
+        # Load part-by-part into a preallocated array instead of concatenate():
+        # concatenate holds every part AND the result at once, and that peak alone
+        # OOM-killed the 512MB Railway container.
+        parts = [np.load(p) for p in EMBED_PARTS]
+        shapes = [p["matrix"].shape for p in parts]
+        dtype = np.dtype(os.environ.get("INDEX_DTYPE", "float32"))
+        out = np.empty((sum(s[0] for s in shapes), shapes[0][1]), dtype=dtype)
+        row = 0
+        for p, s in zip(parts, shapes):
+            out[row:row + s[0]] = p["matrix"]
+            row += s[0]
+            p.close()
+        return out
     return None
 
 # Recognizable district-name aliases for direct lookup — TF-IDF alone under-ranks a district
@@ -202,7 +214,8 @@ def load_index():
                 f"EMBED_PROVIDER resolves to '{embeddings.model_id()}'. "
                 f"Set EMBED_PROVIDER to match the index, or rebuild the index.")
         return {"mode": "embed", "chunks": meta["chunks"],
-                "matrix": matrix.astype(np.float32), "model_id": model_id}
+                "matrix": matrix if matrix.dtype != np.float64 else matrix.astype(np.float32),
+                "model_id": model_id}
     # legacy TF-IDF fallback
     if os.path.exists(INDEX_PATH):
         with open(INDEX_PATH, "rb") as f:
