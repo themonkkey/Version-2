@@ -14,6 +14,8 @@ import os
 import pickle
 import re
 
+import requests
+
 import numpy as np
 import streamlit as st
 
@@ -460,6 +462,20 @@ def call_llm(messages):
                     continue
                 raise
         raise last
+    elif provider == "openrouter":
+        # Prepaid credits, one key, every model behind an OpenAI-shaped endpoint. Used
+        # because Google's own free tier caps the bigger Gemini models at 20 requests/day
+        # and the paid tier needs a Google Cloud billing account.
+        r = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}"},
+            json={"model": os.environ.get("OPENROUTER_MODEL", "google/gemini-3.6-flash"),
+                  "messages": messages, "temperature": 0.2},
+            timeout=120,
+        )
+        if r.status_code != 200:
+            raise RuntimeError(f"OpenRouter {r.status_code}: {r.text[:200]}")
+        return r.json()["choices"][0]["message"]["content"]
     elif provider == "claude":
         # local Claude Code CLI backend (no API key) — uses `claude -p`
         import subprocess
@@ -484,6 +500,32 @@ def stream_llm(messages):
     provider yields its answer in one piece, so the caller needs no special case.
     """
     provider = os.environ.get("LLM_PROVIDER", "groq").lower()
+
+    if provider == "openrouter":
+        import json as _json
+        r = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={"Authorization": f"Bearer {os.environ['OPENROUTER_API_KEY']}"},
+            json={"model": os.environ.get("OPENROUTER_MODEL", "google/gemini-3.6-flash"),
+                  "messages": messages, "temperature": 0.2, "stream": True},
+            stream=True, timeout=120,
+        )
+        if r.status_code != 200:
+            raise RuntimeError(f"OpenRouter {r.status_code}: {r.text[:200]}")
+        for line in r.iter_lines(decode_unicode=True):
+            if not line or not line.startswith("data: "):
+                continue
+            data = line[6:]
+            if data == "[DONE]":
+                break
+            try:
+                delta = _json.loads(data)["choices"][0]["delta"].get("content")
+            except (ValueError, KeyError, IndexError):
+                continue  # keep-alive or a non-content frame
+            if delta:
+                yield delta
+        return
+
     if provider != "gemini":
         yield call_llm(messages)
         return

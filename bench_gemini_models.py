@@ -78,8 +78,14 @@ def retrieve_for(q):
 
 
 def answer_with(model, q, block):
-    os.environ["LLM_PROVIDER"] = "gemini"
-    os.environ["GEMINI_MODEL"] = model
+    # "openrouter:google/gemini-3.6-flash" benches through OpenRouter; a bare name
+    # goes direct to Google, so both routes share one harness.
+    if model.startswith("openrouter:"):
+        os.environ["LLM_PROVIDER"] = "openrouter"
+        os.environ["OPENROUTER_MODEL"] = model.split(":", 1)[1]
+    else:
+        os.environ["LLM_PROVIDER"] = "gemini"
+        os.environ["GEMINI_MODEL"] = model
     messages = [{"role": "system", "content": app.SYSTEM_PROMPT},
                 {"role": "user",
                  "content": f"CONTEXT:\n{block}\n\nQUESTION: {q}\n\n"
