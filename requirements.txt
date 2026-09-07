@@ -3,3 +3,4 @@ numpy
 requests
 groq
 google-genai
+scikit-learn
