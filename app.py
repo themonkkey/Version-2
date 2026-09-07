@@ -476,6 +476,45 @@ def call_llm(messages):
         raise RuntimeError(f"Unknown LLM_PROVIDER: {provider}")
 
 
+def stream_llm(messages):
+    """Yield the answer in fragments as the model writes it.
+
+    An officer watching a blank spinner for 3-20s assumes the app has hung; the same
+    wait with text appearing reads as fast. Only Gemini streams here -- every other
+    provider yields its answer in one piece, so the caller needs no special case.
+    """
+    provider = os.environ.get("LLM_PROVIDER", "groq").lower()
+    if provider != "gemini":
+        yield call_llm(messages)
+        return
+
+    from google import genai
+    import time as _t
+
+    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
+    model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
+    for attempt in range(4):
+        try:
+            got = False
+            for part in client.models.generate_content_stream(model=model, contents=prompt):
+                if part.text:
+                    got = True
+                    yield part.text
+            if not got:
+                yield call_llm(messages)
+            return
+        except Exception as e:
+            s = str(e).upper()
+            transient = ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s)
+            # Only retry before any text has been shown; re-running a half-streamed
+            # answer would print the opening twice.
+            if transient and attempt < 3 and not got:
+                _t.sleep(2 ** attempt)
+                continue
+            raise
+
+
 st.set_page_config(
     page_title="Swarna Andhra GVA Assistant",
     page_icon="🏛️",
@@ -892,22 +931,38 @@ def handle_query(user_input):
             + [{"role": "user", "content": f"CONTEXT:\n{context_block}\n\nQUESTION: {user_input}"}]
         )
         try:
-            answer = call_llm(llm_messages)
+            first = True
+
+            def _stream():
+                nonlocal first
+                for part in stream_llm(llm_messages):
+                    if first:
+                        progress.empty()
+                        first = False
+                    yield part
+
+            answer = st.write_stream(_stream())
         except KeyError as e:
             answer = f"Missing API key: {e}."
         except Exception as e:
             answer = f"Sorry, something went wrong: {e}"
         progress.empty()
-        st.markdown(answer)
+        if not isinstance(answer, str):
+            answer = "".join(answer)
+        if first:  # nothing streamed (error path) -- render it ourselves
+            st.markdown(answer)
+        # Cite only what the model could actually read. The hit list runs longer than
+        # the context window, so listing all of it credited sources the answer never saw.
         sources_md = ""
-        if hits:
+        used = hits[:CONTEXT_MAX_CHUNKS]
+        if used:
             seen = []
-            for h in hits:
+            for h in used:
                 lbl = _label(h["source"], h["page"])
                 if lbl not in seen:
                     seen.append(lbl)
-            sources_md = "\n".join(f"- `{s}`" for s in seen[:8])
-            with st.expander("Sources"):
+            sources_md = "\n".join(f"- `{s}`" for s in seen)
+            with st.expander(f"Sources ({len(seen)})"):
                 st.markdown(sources_md)
 
     st.session_state.messages.append(
