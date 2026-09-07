@@ -1,5 +1,19 @@
 # Working notes
 
+## Hosting plan (2026-09-07)
+
+Now: Streamlit Community Cloud under the aitechpif account (repo
+aitechpif/swarna-andhra-v2, main, app.py; secrets = gemini + cohere keys).
+
+Next: migrate to Oracle Cloud Always Free ARM VM (4 OCPU / 24 GB RAM, Rs.0
+forever) once an instance is secured — signup needs a card, Indian regions
+often show "out of capacity", retry. One box then hosts the web app, the
+parked WhatsApp bot (whatsapp/), and replaces Railway. Setup: Docker + Caddy
+for HTTPS; keep the instance active so Oracle doesn't reclaim it.
+
+Ruled out: HF Spaces (compute Spaces went paid ~Rs.800/mo, only static free);
+Cloudflare Workers/Pages (can't run a long-lived Python app with a 240MB index).
+
 ## WhatsApp bot — parked (2026-09-07)
 
 Decision: web chatbot only for now. The WhatsApp bot is BUILT AND TESTED
