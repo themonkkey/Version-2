@@ -327,18 +327,18 @@ def retrieve(query, index, district_folder=None):
             "are", "to", "me", "tell", "about", "give", "show", "district", "mandal",
             "constituency", "target", "targets", "plan"}
     qwords = set(w for w in re.findall(r"[a-z]+", query.lower()) if len(w) > 3 and w not in stop)
+    # queries seeking figures ("productivity", "target", "growth"...) want the
+    # number-bearing table page, which embeds poorly and has few keywords
+    data_intent = bool(re.search(
+        r"productiv|target|growth|\brate\b|income|gdp|gddp|gsdp|\bddp\b|per capita|"
+        r"population|contribution|hectare|\barea\b|yield|percent|\bvalue\b|figure",
+        query.lower()))
     if qwords and not ABLATE_RESCUE:
         top_sources = []
         for i in primary[:5]:
             s = index["chunks"][i]["source"]
             if s not in top_sources:
                 top_sources.append(s)
-        # queries seeking figures ("productivity", "target", "growth"...) want the
-        # number-bearing table page, which embeds poorly and has few keywords
-        data_intent = bool(re.search(
-            r"productiv|target|growth|\brate\b|income|gdp|gddp|gsdp|\bddp\b|per capita|"
-            r"population|contribution|hectare|\barea\b|yield|percent|\bvalue\b|figure",
-            query.lower()))
         for src in top_sources[:3]:
             # exclude query words that are just the place/name (they appear in the
             # document's own path), so within-document ranking uses topic words only
@@ -365,10 +365,15 @@ def retrieve(query, index, district_folder=None):
     for i in primary:
         add_chunk(i, float(sims[i]))
 
-    # pass 2: neighbor expansion (adjacent pages) for multi-page PDFs, appended after
+    # pass 2: neighbor expansion (adjacent pages) for multi-page PDFs, appended after.
+    # A figure lookup for a named district is answered entirely by district_data files;
+    # expanding a vision plan's adjacent pages there spent context on prose the answer
+    # never used and credited it in the Sources list, so skip that combination.
+    expand_folders = ("methodology",) if (data_intent and district_folder) \
+        else ("methodology", "vision_documents")
     for i in primary:
         c = index["chunks"][i]
-        if c.get("page") is not None and c.get("folder") in ("methodology", "vision_documents"):
+        if c.get("page") is not None and c.get("folder") in expand_folders:
             for delta in (-1, +1):
                 neighbor_key = (c["source"], c["page"] + delta)
                 if neighbor_key in page_index:
