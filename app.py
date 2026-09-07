@@ -158,6 +158,27 @@ general knowledge/not verified against official data.
 
 If asked for district-level GSDP/DDP numeric data that is not in the context, say plainly that you \
 don't have that specific figure rather than guessing numbers.
+
+Answer discipline — these rules override verbosity:
+- Answer exactly what is asked, nothing more. If asked for the top 3 sectors, name ONLY the 3 \
+ranked highest in the context — do not append additional sectors, honourable mentions, or hedges. \
+Extra items make a correct answer wrong.
+- Complete every explanation you start. A short, finished answer beats a long, truncated one.
+- Never invent a district figure, ranking, or sector position the context does not state — for \
+those, if it is not stated, say so.
+- Analytical questions (why/how/what-if — e.g. real vs nominal growth, comparability across \
+years, risks of a strategy) are different: answer them fully, reasoning from standard economics, \
+and note which parts are general economic knowledge rather than PIF corpus content. Do NOT \
+refuse these for lack of context.
+
+Example of the expected style:
+Q: Which sectors give District X its strongest comparative advantage?
+A: Per the District X snapshot, its top comparative-advantage sectors are: 1) Horticulture, \
+2) Fishing & Aquaculture, 3) Livestock. (Source: district_data/DistrictX_Snapshot.txt)
+Q: What are the three approaches to estimating GDP?
+A: The three approaches are: 1) Production (output) approach — GVA as output minus intermediate \
+consumption; 2) Income approach — sum of factor incomes; 3) Expenditure approach — C + I + G + \
+(X − M). (Source: methodology deck, slide N)
 """
 
 
@@ -349,10 +370,37 @@ CONTEXT_CHARS_PROSE = 900       # vision/methodology prose — trim hard
 CONTEXT_CHARS_DATA = 1600       # district_data files are short + dense with exact numbers
 
 
-def build_context_block(hits):
+# "Top/strongest sectors of X" has one deterministic answer (the snapshot's
+# contribution-ordered list — the same source gen_gold.py grades against). The LLM
+# kept padding it with extra sectors, so hand it the closed list as a verified fact.
+RANKING_INTENT_RE = re.compile(
+    r"comparative advantage|strongest|top (?:3 |three )?sectors?|key sectors?|"
+    r"leading sectors?|main sectors?|best sectors?", re.I)
+
+
+def district_ranking_fact(query, district_folder):
+    if not district_folder or not query or not RANKING_INTENT_RE.search(query):
+        return None
+    path = os.path.join("corpus_files", "District_Data", f"{district_folder}_Snapshot.txt")
+    if not os.path.exists(path):
+        return None
+    sects = re.findall(r"- ([A-Za-z &.,'()]+?): ([\d.]+)% of district GVA", open(path).read())
+    if len(sects) < 3:
+        return None
+    top = "; ".join(f"{i+1}) {s.strip()} ({p}% of district GVA)"
+                    for i, (s, p) in enumerate(sects[:3]))
+    return (f"--- VERIFIED RANKING (from district_data/{district_folder}_Snapshot.txt) ---\n"
+            f"The top-3 comparative-advantage sectors are exactly: {top}. "
+            f"When asked for the strongest/top sectors, name ONLY these three, in this order.")
+
+
+def build_context_block(hits, query=None, district_folder=None):
     if not hits:
         return "(No relevant material found in the PIF corpus for this query.)"
     parts = []
+    fact = district_ranking_fact(query, district_folder)
+    if fact:
+        parts.append(fact)
     for h in hits[:CONTEXT_MAX_CHUNKS]:
         label = _label(h["source"], h["page"])
         cap = CONTEXT_CHARS_DATA if h["source"].startswith("district_data/") else CONTEXT_CHARS_PROSE
@@ -820,7 +868,7 @@ def handle_query(user_input):
             st.markdown(msg)
             st.session_state.messages.append({"role": "assistant", "content": msg, "sources": ""})
             return
-        context_block = build_context_block(hits)
+        context_block = build_context_block(hits, query=user_input, district_folder=district_folder)
         history = [
             {"role": m["role"], "content": m["content"][:600]}
             for m in st.session_state.messages[:-1][-4:]
