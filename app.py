@@ -584,25 +584,33 @@ def stream_llm(messages):
     )
     prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
     model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
-    for attempt in range(4):
-        try:
-            got = False
-            for part in client.models.generate_content_stream(model=model, contents=prompt):
-                if part.text:
-                    got = True
-                    yield part.text
-            if not got:
-                yield call_llm(messages)
-            return
-        except Exception as e:
-            s = str(e).upper()
-            transient = ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s)
-            # Only retry before any text has been shown; re-running a half-streamed
-            # answer would print the opening twice.
-            if transient and attempt < 3 and not got:
-                _t.sleep(2 ** attempt)
-                continue
-            raise
+    # The strong models allow only ~20 free requests a day. Running out must degrade to
+    # the everyday model, not show an officer an error: a slightly weaker answer beats
+    # no answer. FALLBACK_MODEL is skipped when it is already the model in use.
+    fallback = os.environ.get("FALLBACK_MODEL", "")
+    models = [model] + ([fallback] if fallback and fallback != model else [])
+    for model in models:
+        for attempt in range(4):
+            try:
+                got = False
+                for part in client.models.generate_content_stream(model=model, contents=prompt):
+                    if part.text:
+                        got = True
+                        yield part.text
+                if not got:
+                    yield call_llm(messages)
+                return
+            except Exception as e:
+                s = str(e).upper()
+                if got:
+                    raise  # mid-answer: retrying would print the opening twice
+                if ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s) and attempt < 3:
+                    _t.sleep(2 ** attempt)
+                    continue
+                quota = "429" in s or "RESOURCE_EXHAUSTED" in s
+                if quota and model is not models[-1]:
+                    break  # out of quota on this model -- drop to the fallback
+                raise
 
 
 st.set_page_config(
