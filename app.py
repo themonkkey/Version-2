@@ -481,7 +481,13 @@ def call_llm(messages):
 
         import time as _t
 
-        client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+        # Without an explicit timeout a stalled call hangs forever -- it silently wedged
+        # a benchmark run for over an hour, and in the app it would hang an officer's
+        # question with the spinner still turning.
+        client = genai.Client(
+            api_key=os.environ["GEMINI_API_KEY"],
+            http_options={"timeout": int(os.environ.get("LLM_TIMEOUT_MS", "120000"))},
+        )
         prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
         # Pinned to the chosen production model. gemini-2.0-flash (the old default) is two
         # generations old and quota-blocked on this account.
@@ -572,7 +578,10 @@ def stream_llm(messages):
     from google import genai
     import time as _t
 
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+    client = genai.Client(
+        api_key=os.environ["GEMINI_API_KEY"],
+        http_options={"timeout": int(os.environ.get("LLM_TIMEOUT_MS", "120000"))},
+    )
     prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
     model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
     for attempt in range(4):
