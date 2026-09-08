@@ -169,7 +169,9 @@ if __name__ == "__main__":
         cen_rows = []
         for i, g in enumerate(cen):
             df, hits = retrieve_for(g["prompt"])
-            block = app.build_context_block(hits, query=g["prompt"], district_folder=df)
+            block = app.build_context_block(
+            hits, query=g["prompt"], district_folder=df,
+            max_chunks=int(os.environ["CONTEXT_CHUNKS"]) if os.environ.get("CONTEXT_CHUNKS") else None)
             hit = (norm(g["target"]) in norm(block) or norm(g.get("target_alt", "\x00")) in norm(block))
             logline({"id": g["id"], "kind": "census", "metric": g["metric"], "hit": bool(hit)})
             cen_rows.append((g["metric"], hit))
@@ -189,7 +191,9 @@ if __name__ == "__main__":
     rows = []
     for i, (kind, g) in enumerate(sample):
         df, hits = retrieve_for(g["prompt"])
-        block = app.build_context_block(hits, query=g["prompt"], district_folder=df)
+        block = app.build_context_block(
+            hits, query=g["prompt"], district_folder=df,
+            max_chunks=int(os.environ["CONTEXT_CHUNKS"]) if os.environ.get("CONTEXT_CHUNKS") else None)
         # retrieval ceiling: is the figure even in the context each model sees?
         ctx_hit = (kind == "numeric" and
                    (norm(g["target"]) in norm(block) or norm(g.get("target_alt", "\x00")) in norm(block)))

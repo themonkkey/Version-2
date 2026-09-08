@@ -448,19 +448,39 @@ def model_for(query, district_folder):
     return os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
 
 
-def build_context_block(hits, query=None, district_folder=None):
+# The strong model reads input ~10x slower than the everyday one: measured 21.6s to
+# first token on a 3,460-token prompt versus 2.1s, with identical output length. So the
+# latency is prefill, not reasoning, and the fix is a shorter prompt. Reasoning questions
+# lean on economics rather than on many corpus chunks, so they get a smaller context.
+CONTEXT_MAX_CHUNKS_CONCEPTUAL = 6
+
+
+def build_context_block(hits, query=None, district_folder=None, max_chunks=None):
     if not hits:
         return "(No relevant material found in the PIF corpus for this query.)"
     parts = []
     fact = district_ranking_fact(query, district_folder)
     if fact:
         parts.append(fact)
-    for h in hits[:CONTEXT_MAX_CHUNKS]:
+    for h in hits[:max_chunks or CONTEXT_MAX_CHUNKS]:
         label = _label(h["source"], h["page"])
         cap = CONTEXT_CHARS_DATA if h["source"].startswith("district_data/") else CONTEXT_CHARS_PROSE
         text = h["text"][:cap]
         parts.append(f"--- Source: {label} (relevance {h['score']:.2f}) ---\n{text}")
     return "\n\n".join(parts)
+
+
+def gemini_keys():
+    """Every configured Gemini key, in order. GEMINI_API_KEYS (comma-separated) lets a
+    quota-exhausted key hand off to the next instead of failing the question; falls back
+    to the single GEMINI_API_KEY."""
+    keys = [k.strip() for k in os.environ.get("GEMINI_API_KEYS", "").split(",") if k.strip()]
+    if not keys:
+        single = os.environ.get("GEMINI_API_KEY", "").strip()
+        keys = [single] if single else []
+    if not keys:
+        raise RuntimeError("No Gemini API key configured (set GEMINI_API_KEYS or GEMINI_API_KEY).")
+    return keys
 
 
 def call_llm(messages):
@@ -484,10 +504,6 @@ def call_llm(messages):
         # Without an explicit timeout a stalled call hangs forever -- it silently wedged
         # a benchmark run for over an hour, and in the app it would hang an officer's
         # question with the spinner still turning.
-        client = genai.Client(
-            api_key=os.environ["GEMINI_API_KEY"],
-            http_options={"timeout": int(os.environ.get("LLM_TIMEOUT_MS", "120000"))},
-        )
         prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
         # Pinned to the chosen production model. gemini-2.0-flash (the old default) is two
         # generations old and quota-blocked on this account.
@@ -495,17 +511,24 @@ def call_llm(messages):
         # 503/UNAVAILABLE is transient (seen twice in testing) — retry with backoff so a
         # blip does not surface to an officer as a failed answer. Quota (429) is not retried.
         last = None
-        for attempt in range(4):
-            try:
-                return client.models.generate_content(model=model, contents=prompt).text
-            except Exception as e:
-                last = e
-                s = str(e).upper()
-                transient = ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s)
-                if transient and attempt < 3:
-                    _t.sleep(2 ** attempt)
-                    continue
-                raise
+        keys = gemini_keys()
+        for key in keys:
+            client = genai.Client(
+                api_key=key,
+                http_options={"timeout": int(os.environ.get("LLM_TIMEOUT_MS", "120000"))},
+            )
+            for attempt in range(4):
+                try:
+                    return client.models.generate_content(model=model, contents=prompt).text
+                except Exception as e:
+                    last = e
+                    s = str(e).upper()
+                    if ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s) and attempt < 3:
+                        _t.sleep(2 ** attempt)
+                        continue
+                    if ("429" in s or "RESOURCE_EXHAUSTED" in s) and key is not keys[-1]:
+                        break  # spent key -- try the next one
+                    raise
         raise last
     elif provider == "openrouter":
         # Prepaid credits, one key, every model behind an OpenAI-shaped endpoint. Used
@@ -578,39 +601,41 @@ def stream_llm(messages):
     from google import genai
     import time as _t
 
-    client = genai.Client(
-        api_key=os.environ["GEMINI_API_KEY"],
-        http_options={"timeout": int(os.environ.get("LLM_TIMEOUT_MS", "120000"))},
-    )
     prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
     model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
-    # The strong models allow only ~20 free requests a day. Running out must degrade to
-    # the everyday model, not show an officer an error: a slightly weaker answer beats
-    # no answer. FALLBACK_MODEL is skipped when it is already the model in use.
+    # The strong models allow only ~20 free requests a day per key. Exhausting them must
+    # degrade to the everyday model, never show an officer an error: a slightly weaker
+    # answer beats no answer. Each model is tried against every key before giving up.
     fallback = os.environ.get("FALLBACK_MODEL", "")
     models = [model] + ([fallback] if fallback and fallback != model else [])
+    keys = gemini_keys()
     for model in models:
-        for attempt in range(4):
-            try:
-                got = False
-                for part in client.models.generate_content_stream(model=model, contents=prompt):
-                    if part.text:
-                        got = True
-                        yield part.text
-                if not got:
-                    yield call_llm(messages)
-                return
-            except Exception as e:
-                s = str(e).upper()
-                if got:
-                    raise  # mid-answer: retrying would print the opening twice
-                if ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s) and attempt < 3:
-                    _t.sleep(2 ** attempt)
-                    continue
-                quota = "429" in s or "RESOURCE_EXHAUSTED" in s
-                if quota and model is not models[-1]:
-                    break  # out of quota on this model -- drop to the fallback
-                raise
+        for key in keys:
+            client = genai.Client(
+                api_key=key,
+                http_options={"timeout": int(os.environ.get("LLM_TIMEOUT_MS", "120000"))},
+            )
+            for attempt in range(4):
+                try:
+                    got = False
+                    for part in client.models.generate_content_stream(model=model, contents=prompt):
+                        if part.text:
+                            got = True
+                            yield part.text
+                    if not got:
+                        yield call_llm(messages)
+                    return
+                except Exception as e:
+                    s = str(e).upper()
+                    if got:
+                        raise  # mid-answer: retrying would print the opening twice
+                    if ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s) and attempt < 3:
+                        _t.sleep(2 ** attempt)
+                        continue
+                    quota = "429" in s or "RESOURCE_EXHAUSTED" in s
+                    if quota and not (model is models[-1] and key is keys[-1]):
+                        break  # this key is spent -- next key, then the fallback model
+                    raise
 
 
 st.set_page_config(
@@ -1018,7 +1043,13 @@ def handle_query(user_input):
             st.markdown(msg)
             st.session_state.messages.append({"role": "assistant", "content": msg, "sources": ""})
             return
-        context_block = build_context_block(hits, query=user_input, district_folder=district_folder)
+        chosen_model = model_for(user_input, district_folder)
+        # Trim the prompt when the slow model will read it (see CONTEXT_MAX_CHUNKS_CONCEPTUAL).
+        context_block = build_context_block(
+            hits, query=user_input, district_folder=district_folder,
+            max_chunks=(CONTEXT_MAX_CHUNKS_CONCEPTUAL
+                        if chosen_model != os.environ.get("GEMINI_MODEL") else None),
+        )
         history = [
             {"role": m["role"], "content": m["content"][:600]}
             for m in st.session_state.messages[:-1][-4:]
@@ -1031,7 +1062,7 @@ def handle_query(user_input):
         # Reasoning questions go to the stronger model when one is configured; figure
         # lookups stay on the fast one, which already answers them perfectly.
         prev_model = os.environ.get("GEMINI_MODEL")
-        os.environ["GEMINI_MODEL"] = model_for(user_input, district_folder)
+        os.environ["GEMINI_MODEL"] = chosen_model
         try:
             first = True
 
