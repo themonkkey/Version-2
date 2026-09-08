@@ -559,9 +559,7 @@ def direct_answer(query, district_folder):
 
     row = years[year]
     district = district_folder.replace("_", " ").title()
-    unit = "" if "Population" in metric or "Per Capita" in metric else " Cr."
-    prefix = "" if "Population" in metric else "Rs. "
-    parts = [f"**{metric}** for {district} in {year}: {prefix}{_fmt(row['value_rs_cr'])}{unit}"]
+    parts = [f"**{metric}** for {district} in {year}: {_money(metric, row['value_rs_cr'])}"]
     extra = []
     if row.get("rank"):
         extra.append(f"rank {int(float(row['rank']))} of 28 districts")
@@ -576,6 +574,164 @@ def direct_answer(query, district_folder):
     return "".join(parts)
 
 
+# ---------------------------------------------------------------------------
+# Precomputed fact injection.
+#
+# Same idea as district_ranking_fact, widened. A question like "compare Guntur and
+# Bapatla GDDP" or "which district has the highest per-capita income" has one exact
+# answer in the table, but semantic retrieval hands the model a pile of prose chunks
+# and hopes it adds up correctly -- so it invents plausible-but-wrong orderings. We
+# compute the answer and hand it over as a stated fact; the model only has to phrase
+# it. Costs nothing at query time and works on every model, free tier included.
+# ---------------------------------------------------------------------------
+_COMPARE_RE = re.compile(r"\bvs\b|versus|compare|comparison|against|between|"
+                         r"which of|higher|lower|bigger|smaller|more than|less than", re.I)
+_TREND_RE = re.compile(r"trend|over the years|across years|since 20|from 20|"
+                       r"year[- ]on[- ]year|growth rate|grown|improv|declin|change", re.I)
+_TOPN_RE = re.compile(r"highest|lowest|top \d+|top (three|five|ten)|best|worst|"
+                      r"which district|leading district|rank(ed|ing)? (first|last|\d)", re.I)
+
+
+def detect_districts(query):
+    """Every district named in the query, in order of appearance (not just the first)."""
+    if not query:
+        return []
+    low = query.lower()
+    found = []
+    for pat, folder in _ALIAS_RE or []:
+        m = pat.search(low)
+        if m and folder not in found:
+            found.append((m.start(), folder))
+    return [f for _, f in sorted(found)]
+
+
+def _csv_name(folder):
+    return folder.replace("_", " ").upper()
+
+
+def _metric_from(query):
+    return next((lbl for pat, lbl in _METRIC_PATTERNS if re.search(pat, query, re.I)), None)
+
+
+def _latest_year(years):
+    return sorted(years)[-1]
+
+
+def _money(metric, value):
+    """Format a figure with the unit its metric actually uses.
+
+    Per-capita income is in rupees and population in thousands; printing either as
+    "Rs. X Cr." states a number that is wrong by seven orders of magnitude.
+    """
+    if "Population" in metric:
+        return f"{_fmt(value)} ('000)"
+    if "Per Capita" in metric:
+        return f"Rs. {_fmt(value)}"
+    return f"Rs. {_fmt(value)} Cr."
+
+
+def comparison_fact(query, table):
+    districts = detect_districts(query)
+    if len(districts) < 2 or not _COMPARE_RE.search(query):
+        return None
+    metric = _metric_from(query) or "Gross District Domestic Product (GDDP)"
+    rows = []
+    for d in districts[:4]:
+        years = table.get((_csv_name(d), metric))
+        if years:
+            y = _latest_year(years)
+            rows.append((d.replace("_", " ").title(), years[y], y))
+    if len(rows) < 2:
+        return None
+    year = rows[0][2]
+    rows.sort(key=lambda r: -float(r[1]["value_rs_cr"] or 0))
+    lines = [f"--- VERIFIED COMPARISON ({metric}, {year}) ---"]
+    for name, r, _ in rows:
+        bits = [_money(metric, r['value_rs_cr'])]
+        if r.get("rank"):
+            bits.append(f"statewide rank {int(float(r['rank']))} of 28")
+        if r.get("growth_pct"):
+            bits.append(f"{_fmt(r['growth_pct'])}% YoY")
+        lines.append(f"  {name}: " + ", ".join(bits))
+    hi, lo = rows[0], rows[-1]
+    gap = float(hi[1]["value_rs_cr"] or 0) - float(lo[1]["value_rs_cr"] or 0)
+    lines.append(f"  => {hi[0]} is higher by {_money(metric, gap)}. "
+                 f"State these figures exactly; do not re-order or estimate them.")
+    return "\n".join(lines)
+
+
+def trend_fact(query, district_folder, table):
+    if not district_folder or not _TREND_RE.search(query):
+        return None
+    metric = _metric_from(query)
+    if not metric:
+        return None
+    years = table.get((_csv_name(district_folder), metric))
+    if not years or len(years) < 2:
+        return None
+    lines = [f"--- VERIFIED SERIES ({metric}, {district_folder.replace('_', ' ').title()}) ---"]
+    for y in sorted(years):
+        r = years[y]
+        g = f", {_fmt(r['growth_pct'])}% YoY" if r.get("growth_pct") else ""
+        lines.append(f"  {y}: {_money(metric, r['value_rs_cr'])}{g}")
+    first, last = sorted(years)[0], sorted(years)[-1]
+    a = float(years[first]["value_rs_cr"] or 0)
+    b = float(years[last]["value_rs_cr"] or 0)
+    if a:
+        lines.append(f"  => {((b - a) / a) * 100:+.1f}% overall from {first} to {last}. "
+                     f"Use these figures exactly.")
+    return "\n".join(lines)
+
+
+def topn_fact(query, table):
+    if not _TOPN_RE.search(query):
+        return None
+    metric = _metric_from(query)
+    if not metric:
+        return None
+    lowest = bool(re.search(r"lowest|worst|least", query, re.I))
+    rows = []
+    for (dist, m), years in table.items():
+        if m != metric or dist.startswith("ANDHRA PRADESH"):
+            continue
+        y = _latest_year(years)
+        try:
+            rows.append((float(years[y]["value_rs_cr"]), dist.title(), y))
+        except (TypeError, ValueError):
+            continue
+    if len(rows) < 5:
+        return None
+    rows.sort(reverse=not lowest)
+    year = rows[0][2]
+    want = re.search(r"top (\d+)", query, re.I)
+    n = int(want.group(1)) if want else 5
+    lines = [f"--- VERIFIED STATE RANKING ({metric}, {year}, "
+             f"{'lowest' if lowest else 'highest'} first) ---"]
+    for i, (val, name, _) in enumerate(rows[:max(n, 5)], 1):
+        lines.append(f"  {i}. {name}: {_money(metric, val)}")
+    lines.append("  => This ordering is computed from the dataset. "
+                 "Name only these districts, in this order.")
+    return "\n".join(lines)
+
+
+def structured_facts(query, district_folder):
+    """All deterministic facts worth handing the model for this question."""
+    table = _structured_rows()
+    if not table or not query:
+        return []
+    facts = []
+    for fn in (lambda: comparison_fact(query, table),
+               lambda: trend_fact(query, district_folder, table),
+               lambda: topn_fact(query, table)):
+        try:
+            f = fn()
+        except Exception:
+            f = None  # a malformed row must never take down the answer
+        if f:
+            facts.append(f)
+    return facts
+
+
 def build_context_block(hits, query=None, district_folder=None, max_chunks=None):
     if not hits:
         return "(No relevant material found in the PIF corpus for this query.)"
@@ -583,6 +739,7 @@ def build_context_block(hits, query=None, district_folder=None, max_chunks=None)
     fact = district_ranking_fact(query, district_folder)
     if fact:
         parts.append(fact)
+    parts.extend(structured_facts(query, district_folder))
     for h in hits[:max_chunks or CONTEXT_MAX_CHUNKS]:
         label = _label(h["source"], h["page"])
         cap = CONTEXT_CHARS_DATA if h["source"].startswith("district_data/") else CONTEXT_CHARS_PROSE

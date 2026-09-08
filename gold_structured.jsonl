@@ -1,0 +1,27 @@
+{"id": "cmp0", "kind": "comparison", "prompt": "Compare Markapuram and West Godavari Agriculture. Which is higher?", "expect": "West Godavari", "grade": "contains"}
+{"id": "cmp1", "kind": "comparison", "prompt": "Compare West Godavari and Tirupati Manufacturing. Which is higher?", "expect": "Tirupati", "grade": "contains"}
+{"id": "cmp2", "kind": "comparison", "prompt": "Compare Markapuram and Ntr Agriculture. Which is higher?", "expect": "Ntr", "grade": "contains"}
+{"id": "cmp3", "kind": "comparison", "prompt": "Compare Chittoor and Bapatla Agriculture. Which is higher?", "expect": "Bapatla", "grade": "contains"}
+{"id": "cmp4", "kind": "comparison", "prompt": "Compare Nandyal and Prakasam Agriculture. Which is higher?", "expect": "Nandyal", "grade": "contains"}
+{"id": "cmp5", "kind": "comparison", "prompt": "Compare Visakhapatnam and Bapatla Gross District Domestic Product. Which is higher?", "expect": "Visakhapatnam", "grade": "contains"}
+{"id": "cmp6", "kind": "comparison", "prompt": "Compare Markapuram and Eluru Net District Domestic Product. Which is higher?", "expect": "Eluru", "grade": "contains"}
+{"id": "cmp7", "kind": "comparison", "prompt": "Compare Ananthapuramu and Palnadu Gross District Domestic Product. Which is higher?", "expect": "Ananthapuramu", "grade": "contains"}
+{"id": "cmp8", "kind": "comparison", "prompt": "Compare Polavaram and Krishna Manufacturing. Which is higher?", "expect": "Krishna", "grade": "contains"}
+{"id": "cmp9", "kind": "comparison", "prompt": "Compare Prakasam and Srikakulam Agriculture. Which is higher?", "expect": "Srikakulam", "grade": "contains"}
+{"id": "cmp10", "kind": "comparison", "prompt": "Compare Prakasam and Bapatla Agriculture. Which is higher?", "expect": "Bapatla", "grade": "contains"}
+{"id": "cmp11", "kind": "comparison", "prompt": "Compare Alluri Seetha Rama Raju and Vizianagaram Agriculture. Which is higher?", "expect": "Vizianagaram", "grade": "contains"}
+{"id": "cmp12", "kind": "comparison", "prompt": "Compare Ananthapuramu and Anakapalle Gross District Domestic Product. Which is higher?", "expect": "Ananthapuramu", "grade": "contains"}
+{"id": "cmp13", "kind": "comparison", "prompt": "Compare Chittoor and Ysr Kadapa Net District Domestic Product. Which is higher?", "expect": "Ysr Kadapa", "grade": "contains"}
+{"id": "cmp14", "kind": "comparison", "prompt": "Compare Polavaram and Alluri Seetha Rama Raju Manufacturing. Which is higher?", "expect": "Polavaram", "grade": "contains"}
+{"id": "top15", "kind": "topn", "prompt": "Which district has the highest Gross District Domestic Product?", "expect": "Visakhapatnam", "grade": "contains"}
+{"id": "top16", "kind": "topn", "prompt": "Which district has the highest Per Capita Income?", "expect": "Visakhapatnam", "grade": "contains"}
+{"id": "top17", "kind": "topn", "prompt": "Which district has the highest Manufacturing?", "expect": "Visakhapatnam", "grade": "contains"}
+{"id": "top18", "kind": "topn", "prompt": "Which district has the highest Fishing & Aquaculture?", "expect": "Krishna", "grade": "contains"}
+{"id": "top19", "kind": "topn", "prompt": "Which district has the highest Horticulture?", "expect": "Ananthapuramu", "grade": "contains"}
+{"id": "top20", "kind": "topn", "prompt": "Which district has the highest Mining & Quarrying?", "expect": "Dr.B.R.Ambedkar Konaseema", "grade": "contains"}
+{"id": "trd21", "kind": "trend", "prompt": "How has Guntur Gross District Domestic Product changed over the years?", "expect": "83,911.00", "grade": "contains"}
+{"id": "trd22", "kind": "trend", "prompt": "How has Markapuram Gross District Domestic Product changed over the years?", "expect": "28,994.00", "grade": "contains"}
+{"id": "trd23", "kind": "trend", "prompt": "How has Parvathipuram Manyam Gross District Domestic Product changed over the years?", "expect": "17,262.00", "grade": "contains"}
+{"id": "trd24", "kind": "trend", "prompt": "How has Chittoor Gross District Domestic Product changed over the years?", "expect": "49,290.00", "grade": "contains"}
+{"id": "trd25", "kind": "trend", "prompt": "How has Ntr Gross District Domestic Product changed over the years?", "expect": "105,135.00", "grade": "contains"}
+{"id": "trd26", "kind": "trend", "prompt": "How has Dr.B.R.Ambedkar Konaseema Gross District Domestic Product changed over the years?", "expect": "44,795.00", "grade": "contains"}
