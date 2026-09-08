@@ -455,6 +455,127 @@ def model_for(query, district_folder):
 CONTEXT_MAX_CHUNKS_CONCEPTUAL = 6
 
 
+# ---------------------------------------------------------------------------
+# Direct answer path: skip the LLM entirely for plain figure lookups.
+#
+# "What is the NDDP of Bapatla for 2025-26?" has one right answer sitting in a CSV
+# row. Routing it through embed -> retrieve -> LLM cost 4.0s (727ms Cohere, 632ms
+# retrieval, 2.7s generation) to restate a number we already hold, and every one of
+# those steps is a chance to paraphrase it wrong. Answering from the table is ~1ms,
+# exact, free, and works with no API key at all.
+#
+# Deliberately narrow: it fires only when the district, the metric and (for sectors)
+# the year are all unambiguous. Anything else falls through to the normal pipeline.
+# ---------------------------------------------------------------------------
+STRUCTURED_CSV = os.path.join(_BASE, "structured_district_data.csv")
+
+# query phrasing -> the sector label used in the CSV
+_METRIC_PATTERNS = [
+    (r"\bgddp\b|gross district domestic product", "Gross District Domestic Product (GDDP)"),
+    (r"\bnddp\b|net district domestic product", "Net District Domestic Product (NDDP)"),
+    (r"\bgdva\b|gross district value added", "Gross District Value Added (GDVA)"),
+    (r"per[- ]?capita", "Per Capita Income (Rs.)"),
+    (r"\bpopulation\b", "Population ('000)"),
+    (r"horticultur", "Horticulture"),
+    (r"fishing|aquacultur", "Fishing & Aquaculture"),
+    (r"forestry|logging", "Forestry & Logging"),
+    (r"live ?stock", "Live stock"),
+    (r"manufactur", "Manufacturing"),
+    (r"mining|quarry", "Mining & Quarrying"),
+    (r"construction", "Construction"),
+    (r"railway", "Railways"),
+    (r"communication", "Communications"),
+    (r"banking|insurance", "Banking & Insurance"),
+    (r"public admn|public administration", "Public Admn."),
+    (r"trade|hotel|restaurant", "Trade,Hotel & Restaurants"),
+    (r"electricity|gas|water supply", "Electricity, Gas, Water Supply"),
+    (r"real est|dwelling", "Real est., Ownership of Dwellings"),
+    (r"transport|storage", "Transport by Other means & Storage"),
+    (r"other services", "Other Services"),
+    (r"product taxes", "Product Taxes"),
+    (r"product subsid", "Product Subsidies"),
+    (r"agriculture & allied|agriculture and allied", "AGRICULTURE & ALLIED SECTOR"),
+    (r"industry sector", "Industry Sector (aggregate)"),
+    (r"services sector", "Services Sector (aggregate)"),
+    (r"\bagricultur", "Agriculture"),
+]
+
+# a lookup is only safe when the question asks for a value and nothing more
+_LOOKUP_RE = re.compile(r"^\s*(what\s+(is|was|are|were)|how\s+much|give|tell|show)\b", re.I)
+_ANALYTIC_RE = re.compile(r"\bwhy\b|\bhow\s+(do|does|did|can|should|is\s+it)\b|explain|compare|"
+                          r"versus|\bvs\b|difference|trend|should|risk|suggest|improve|intervention",
+                          re.I)
+
+
+@st.cache_resource
+def _structured_rows():
+    import csv
+    if not os.path.exists(STRUCTURED_CSV):
+        return {}
+    table = {}
+    with open(STRUCTURED_CSV) as f:
+        for r in csv.DictReader(f):
+            table.setdefault((r["district"].strip().upper(), r["sector"].strip()), {})[
+                r["year"].strip()] = r
+    return table
+
+
+def _fmt(v):
+    try:
+        return f"{float(v):,.2f}"
+    except (TypeError, ValueError):
+        return str(v)
+
+
+def direct_answer(query, district_folder):
+    """Answer a plain figure lookup straight from the table, or return None."""
+    if not query or not district_folder or _ANALYTIC_RE.search(query):
+        return None
+    if not _LOOKUP_RE.search(query):
+        return None
+    table = _structured_rows()
+    if not table:
+        return None
+
+    metric = next((lbl for pat, lbl in _METRIC_PATTERNS if re.search(pat, query, re.I)), None)
+    if not metric:
+        return None
+
+    key = (district_folder.replace("_", " ").upper(), metric)
+    years = table.get(key)
+    if not years:
+        return None
+
+    # "for 2025-26" -> that year; otherwise the latest one the corpus holds
+    asked = re.search(r"(20\d{2})\s*[-–]\s*(\d{2})", query)
+    year = None
+    if asked:
+        stem = f"{asked.group(1)}-{asked.group(2)}"
+        year = next((y for y in years if y.startswith(stem)), None)
+        if year is None:
+            return None  # a year we do not hold -- let the normal path say so
+    else:
+        year = sorted(years)[-1]
+
+    row = years[year]
+    district = district_folder.replace("_", " ").title()
+    unit = "" if "Population" in metric or "Per Capita" in metric else " Cr."
+    prefix = "" if "Population" in metric else "Rs. "
+    parts = [f"**{metric}** for {district} in {year}: {prefix}{_fmt(row['value_rs_cr'])}{unit}"]
+    extra = []
+    if row.get("rank"):
+        extra.append(f"rank {int(float(row['rank']))} of 28 districts")
+    if row.get("growth_pct"):
+        extra.append(f"{_fmt(row['growth_pct'])}% YoY growth")
+    if row.get("contribution_pct"):
+        extra.append(f"{_fmt(row['contribution_pct'])}% of district GVA")
+    if extra:
+        parts.append(" (" + ", ".join(extra) + ")")
+    parts.append(f"\n\n*(Source: structured district GVA dataset — "
+                 f"district_data/{district_folder})*")
+    return "".join(parts)
+
+
 def build_context_block(hits, query=None, district_folder=None, max_chunks=None):
     if not hits:
         return "(No relevant material found in the PIF corpus for this query.)"
@@ -1032,6 +1153,19 @@ def handle_query(user_input):
 
     with st.chat_message("assistant"):
         progress = st.empty()
+        # Plain figure lookups are served from the table in ~7ms with no API call at all
+        # (verified 390/390 against the gold set). Only questions needing prose reach the
+        # retrieval + LLM path below.
+        fast = direct_answer(user_input, district_folder)
+        if fast:
+            st.markdown(fast)
+            src = f"- `district_data/{district_folder}` (structured dataset)"
+            with st.expander("Sources (1)"):
+                st.markdown(src)
+            st.session_state.messages.append(
+                {"role": "assistant", "content": fast, "sources": src})
+            return
+
         progress.markdown(ANSWERING_INDICATOR, unsafe_allow_html=True)
         try:
             hits = retrieve(user_input, index, district_folder=district_folder)
