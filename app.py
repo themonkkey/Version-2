@@ -596,6 +596,7 @@ def detect_districts(query):
     """Every district named in the query, in order of appearance (not just the first)."""
     if not query:
         return []
+    detect_district(query)  # ensure _ALIAS_RE is built; it is compiled lazily
     low = query.lower()
     found = []
     for pat, folder in _ALIAS_RE or []:
@@ -761,7 +762,7 @@ def gemini_keys():
     return keys
 
 
-def call_llm(messages):
+def call_llm(messages, model=None):
     provider = os.environ.get("LLM_PROVIDER", "groq").lower()
     if provider == "groq":
         from groq import Groq
@@ -785,12 +786,12 @@ def call_llm(messages):
         prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
         # Pinned to the chosen production model. gemini-2.0-flash (the old default) is two
         # generations old and quota-blocked on this account.
-        model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
+        model = model or os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
         # 503/UNAVAILABLE is transient (seen twice in testing) — retry with backoff so a
         # blip does not surface to an officer as a failed answer. Quota (429) is not retried.
         last = None
         keys = gemini_keys()
-        for key in keys:
+        for ki, key in enumerate(keys):
             client = genai.Client(
                 api_key=key,
                 http_options={"timeout": int(os.environ.get("LLM_TIMEOUT_MS", "120000"))},
@@ -804,7 +805,7 @@ def call_llm(messages):
                     if ("503" in s or "UNAVAILABLE" in s or "OVERLOADED" in s) and attempt < 3:
                         _t.sleep(2 ** attempt)
                         continue
-                    if ("429" in s or "RESOURCE_EXHAUSTED" in s) and key is not keys[-1]:
+                    if ("429" in s or "RESOURCE_EXHAUSTED" in s) and ki < len(keys) - 1:
                         break  # spent key -- try the next one
                     raise
         raise last
@@ -838,7 +839,7 @@ def call_llm(messages):
         raise RuntimeError(f"Unknown LLM_PROVIDER: {provider}")
 
 
-def stream_llm(messages):
+def stream_llm(messages, model=None):
     """Yield the answer in fragments as the model writes it.
 
     An officer watching a blank spinner for 3-20s assumes the app has hung; the same
@@ -880,15 +881,15 @@ def stream_llm(messages):
     import time as _t
 
     prompt = "\n\n".join(f"[{m['role']}]\n{m['content']}" for m in messages)
-    model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
+    model = model or os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
     # The strong models allow only ~20 free requests a day per key. Exhausting them must
     # degrade to the everyday model, never show an officer an error: a slightly weaker
     # answer beats no answer. Each model is tried against every key before giving up.
     fallback = os.environ.get("FALLBACK_MODEL", "")
     models = [model] + ([fallback] if fallback and fallback != model else [])
     keys = gemini_keys()
-    for model in models:
-        for key in keys:
+    for mi, model in enumerate(models):
+        for ki, key in enumerate(keys):
             client = genai.Client(
                 api_key=key,
                 http_options={"timeout": int(os.environ.get("LLM_TIMEOUT_MS", "120000"))},
@@ -901,7 +902,7 @@ def stream_llm(messages):
                             got = True
                             yield part.text
                     if not got:
-                        yield call_llm(messages)
+                        yield call_llm(messages, model=model)
                     return
                 except Exception as e:
                     s = str(e).upper()
@@ -911,7 +912,7 @@ def stream_llm(messages):
                         _t.sleep(2 ** attempt)
                         continue
                     quota = "429" in s or "RESOURCE_EXHAUSTED" in s
-                    if quota and not (model is models[-1] and key is keys[-1]):
+                    if quota and not (mi == len(models) - 1 and ki == len(keys) - 1):
                         break  # this key is spent -- next key, then the fallback model
                     raise
 
@@ -1350,16 +1351,13 @@ def handle_query(user_input):
             + history
             + [{"role": "user", "content": f"CONTEXT:\n{context_block}\n\nQUESTION: {user_input}"}]
         )
-        # Reasoning questions go to the stronger model when one is configured; figure
-        # lookups stay on the fast one, which already answers them perfectly.
-        prev_model = os.environ.get("GEMINI_MODEL")
-        os.environ["GEMINI_MODEL"] = chosen_model
+
         try:
             first = True
 
             def _stream():
                 nonlocal first
-                for part in stream_llm(llm_messages):
+                for part in stream_llm(llm_messages, model=chosen_model):
                     if first:
                         progress.empty()
                         first = False
@@ -1370,11 +1368,6 @@ def handle_query(user_input):
             answer = f"Missing API key: {e}."
         except Exception as e:
             answer = f"Sorry, something went wrong: {e}"
-        finally:
-            if prev_model is None:
-                os.environ.pop("GEMINI_MODEL", None)
-            else:
-                os.environ["GEMINI_MODEL"] = prev_model
         progress.empty()
         if not isinstance(answer, str):
             answer = "".join(answer)
